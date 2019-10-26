@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block htmltitle %}
+  {{page.title}}
+  {# macros::title_or_last(component=section) }} - {{ config.title #}
+{% endblock htmltitle %}
+
+{% block title %}
+  {# macros::title_or_last(component=section) #}
+{% endblock title %}
+
+{% block content %}
+<h2>{{section.title}}</h2>
+
+<ul>
+  {% for page in section.pages %}
+    <li>
+      <a href="{{ page.permalink }}">{{page.title}}</a>
+      {% if page.taxonomies.tags %}
+        {% for tag in page.taxonomies.tags %}
+          <a class="tag" href="/tags/{{tag}}">{{tag}}</a>
+        {% endfor %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

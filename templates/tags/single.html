@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h2># {{term.name}}</h2>
+
+  <ul>
+    {% for page in term.pages %}
+      <li>
+        {% if page.taxonomies.categories %}
+          <span>{{page.taxonomies.categories[0] | title}}</span>
+        {% else %}
+          <span>Language</span>
+        {% endif %}
+        <a href="{{page.permalink}}">
+          {{page.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

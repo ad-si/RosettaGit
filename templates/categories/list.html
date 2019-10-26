@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block content %}
+  <div class="taxonomy">
+    <h3> {{ config.extra.label_categories }} </h3>
+
+    <ul>
+      {% for category in terms %}
+        <li>
+          <a href="{{ category.permalink }}">{{ category.name }}</a>
+          <small>({{ category.pages | length }})</small>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

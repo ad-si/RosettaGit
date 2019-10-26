@@ -1,0 +1,60 @@
+base_url = "https://rosettagit.org"
+compile_sass = true
+highlight_code = true
+build_search_index = true
+# theme = "dinkleberg"
+highlight_theme = "monokai"
+
+taxonomies = [
+  {name = "categories"},
+  {name = "languages"},
+  {name = "tags"},
+]
+
+[extra]
+author = "Adrian Sieber"
+blog_logo = "icon.png" #will appear on top header
+blog_title = "RosettaGit" #will appear on top header after logo
+header_links = [
+  { name = "Tasks", url = "/tasks" },
+  { name = "Drafts", url = "/drafts" },
+  { name = "Languages", url = "/languages" },
+  { name = "Tags", url = "/tags"},
+]
+
+paginate_by = 20
+
+## i18n words
+label_tags = "Tags"
+label_tag = "Tag"
+label_categories = "Categories"
+label_category = "Category"
+label_relative_posts = "Relative Posts"
+label_next = "Next"
+label_previous = "Previous"
+label_page = "Page"
+label_of = "of"
+
+og_image = "" # Image that will appear on social media
+og_alt_image = "" # Alt for og_image
+og_site_name = "" # Site Name for Open Graphic
+keywords = "" # Keywords for SEO
+
+educational_use = "knowledge share" # OPTIONAL
+copyright_year = "2018" # OPTIONAL
+
+fb_app_id = "???" # OPTIONAL, Facebook App Id to help in metrics
+twitter_username = "@AdrianSieber" # OPTIONAL, Twitter User to help with metrics
+
+[[extra.sidebar]]
+name = "Links"
+urls = [
+  { name = "Github", url = "https://github.com/ad-si/rosettagit" },
+]
+
+[[extra.sidebar]]
+name = "Contributing"
+urls = [
+  { name = "Issues", url = "https://github.com/ad-si/rosettagit/issues" },
+  { name = "Changelog", url = "https://github.com/ad-si/rosettagit/blob/changelog.md" },
+]

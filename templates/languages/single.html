@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <section>
+    <h2>
+      {% if term.name %} {{ term.name | title }}
+      {% else %} {{ page.title }}
+      {% endif %}
+    </h2>
+
+    {% if term.name %}
+      {% set language = get_page(path="languages/" ~ term.name ~ ".md") %}
+    {% else %}
+      {% set language = page %}
+    {% endif %}
+
+    <div class="tags">
+      {% if language.taxonomies.tags %}
+        {% for tag in language.taxonomies.tags %}
+          <a
+            class="tag"
+            href="{{ get_taxonomy_url(kind="tags", name=tag) }}"
+          >#{{ tag }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {{ language.content | safe }}
+  </section>
+
+  {% if term.pages%}
+    <section>
+      <h3>Tasks</h3>
+
+      <ul>
+        {% for page in term.pages %}
+          <li>
+            <a href="{{page.permalink}}">
+              {{page.title}}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+{% endblock content %}

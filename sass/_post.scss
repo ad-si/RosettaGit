@@ -1,0 +1,73 @@
+.post {
+  width: 100%;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 50px;
+
+  .category, .description, .title {
+    display: block;
+  }
+
+  .category, .description, .extra {
+    color: $color-gray;
+    font-size: 15px;
+    line-height: 14px;
+    text-decoration: none;
+  }
+
+  .category {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .title {
+    color: $color-black;
+    font-size: 24px;
+    line-height: 20px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+
+  .extra > a {
+    color: $color-link
+  }
+
+  address > span, .extra {
+    font-size: 12px;
+    line-height: 13px;
+  }
+
+  address {
+    height: 20px;
+    margin: 10px 0 3px;
+    font-style: normal;
+
+    & > span { color: $color-black }
+  }
+}
+
+.post-page {
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  header {
+    @media screen and (min-width: 900px) {
+      position: fixed;
+      width: calc(30% - 35px);
+      max-width: 285px;
+    }
+  }
+
+  .relative-posts {
+    margin-top: 10px;
+    padding-top: 10px;
+
+    & > .base-list {
+      padding: 0px;
+      margin-top: 5px;
+    }
+  }
+}

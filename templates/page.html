@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+
+{% block title %} {{page.title}} {% endblock title %}
+{% block ogtitle %} {{page.title}} {% endblock ogtitle %}">
+{% block ogdesc %} {{page.description}} {% endblock ogdesc %}">
+{% block ogurl %}{{page.permalink}}{% endblock ogurl%}">
+{% block ogaltimg %}{{page.title}}{% endblock ogaltimg %}">
+{% block ogimg %}
+  {% if page.extra.image %}
+    {{page.extra.image}}
+  {% else %}
+    {% if config.extra.og_image %}
+      {{config.extra.og_image}}
+    {% endif %}
+  {% endif %}
+{% endblock ogimg %}
+
+{% block content %}
+  <article
+    itemscope
+    itemtype="http://schema.org/BlogPosting"
+    class="post post-page"
+  >
+    {% if page.extra.image %}
+      <meta itemprop="image" content="{{page.extra.image}}">
+    {% else %}
+      {% if config.extra.og_image %}
+        <meta itemprop="image" content="{{config.extra.og_image}}">
+      {% endif %}
+    {% endif %}
+
+    <div itemprop="articleBody">
+      {{ page.content | safe }}
+    </div>
+  </article>
+{% endblock content %}
+
+{% block sidebar %}
+  <h2 itemprop="headline">{{ page.title }}</h2>
+
+  {% if page.taxonomies.tags %}
+    <div>
+      {% for tag in page.taxonomies.tags %}
+        <a
+          class="tag"
+          href="{{ get_taxonomy_url(kind="tags", name=tag) }}"
+        >{{ tag }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <hr>
+
+  {% if toc %}
+    <div class="post-toc" id="post-toc">
+      <h2 class="post-toc-title">Contents</h2>
+      <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+          <ul>
+            {% for h1 in toc %}
+            <li>
+              <a href="{{h1.permalink | safe}}" class="toc-link">
+                {{ h1.title }}
+              </a>
+              {% if h1.children %}
+              <ul>
+                {% for h2 in h1.children %}
+                <li>
+                  <a href="{{h2.permalink | safe}}" class="toc-link">
+                    {{ h2.title }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if page.extra.relative_posts %}
+    <div class="relative-posts">
+      {{config.extra.label_relative_posts}}:
+      <ul class="base-list">
+        {% for relative in page.extra.relative_posts %}
+          <li>
+            - <a href="{{config.base_url}}{{relative.url}}">{{relative.label}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endblock sidebar %}

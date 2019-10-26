@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h3>{{term.name | capitalize }}s</h3>
+
+  <ul>
+    {% for page in term.pages %}
+      <li>
+        <a href="{{page.permalink}}">
+          {{page.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}

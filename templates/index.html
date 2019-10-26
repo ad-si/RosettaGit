@@ -1,0 +1,224 @@
+{% import "macros.html" as macro %}
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Blog">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+
+  {% block seo %}
+    <link rel="apple-touch-icon" sizes="57x57"
+      href="{{ get_url(path="apple-icon-57x57.png", trailing_slash=false) }}"
+    >
+    <link rel="apple-touch-icon" sizes="60x60"
+      href="{{ get_url(path="/apple-icon-60x60.png", trailing_slash=false) }}"
+    >
+    <link rel="apple-touch-icon" sizes="72x72"
+      href="{{ get_url(path="/apple-icon-72x72.png", trailing_slash=false) }}"
+    >
+    <link rel="apple-touch-icon" sizes="76x76"
+      href="{{ get_url(path="/apple-icon-76x76.png", trailing_slash=false) }}"
+    >
+    <link rel="apple-touch-icon" sizes="114x114"
+      href="{{ get_url(path="/apple-icon-114x114.png", trailing_slash=false) }}"
+    >
+    <link rel="apple-touch-icon" sizes="120x120"
+      href="{{ get_url(path="/apple-icon-120x120.png", trailing_slash=false) }}"
+    >
+    <link rel="apple-touch-icon" sizes="144x144"
+      href="{{ get_url(path="/apple-icon-144x144.png", trailing_slash=false) }}"
+    >
+    <link rel="apple-touch-icon" sizes="152x152"
+      href="{{ get_url(path="/apple-icon-152x152.png", trailing_slash=false) }}"
+    >
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="{{ get_url(path="/apple-icon-180x180.png", trailing_slash=false) }}"
+    >
+    <link rel="icon"
+      href="/favicon.ico" type="image/x-icon"
+    >
+    <link rel="icon" type="image/png" sizes="192x192"
+      href="{{ get_url(path="/android-icon-192x192.png", trailing_slash=false) }}"
+    >
+    <link rel="icon" type="image/png" sizes="32x32"
+      href="{{ get_url(path="/favicon-32x32.png", trailing_slash=false) }}"
+    >
+    <link rel="icon" type="image/png" sizes="96x96"
+      href="{{ get_url(path="/favicon-96x96.png", trailing_slash=false) }}"
+    >
+    <link rel="icon" type="image/png" sizes="16x16"
+      href="{{ get_url(path="/favicon-16x16.png", trailing_slash=false) }}"
+    >
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" itemprop="about" content="{{config.description}}">
+    <meta name="keywords" itemprop="keywords" content="{{config.extra.keywords}}">
+    <meta itemprop="headline" content="{{config.title}}"/>
+
+    {% if config.extra.educational_use %}
+      <meta
+        itemprop="educationalUse"
+        content="{{config.extra.educational_use}}"
+      />
+    {% endif %}
+
+    {% if config.extra.copyright_year %}
+      <meta
+        itemprop="copyrightYear"
+        content="{{config.extra.copyright_year}}"
+      />
+    {% endif %}
+
+    <!--  Social Media -->
+    <meta
+      property="og:title"
+      content="{{config.title}}{% block ogtitle %}{% endblock ogtitle %}"
+    />
+    <meta
+      property="og:description"
+      content="{% block ogdesc %}{{config.description}}{% endblock ogdesc %}"
+    />
+    <meta
+      property="og:image"
+      content="{% block ogimg %}{{config.extra.og_image}}{% endblock ogimg %}"
+    />
+    <meta
+      property="og:url"
+      content="{% block ogurl %}{{config.base_url}}{% endblock ogurl%}"
+    />
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      property="og:site_name"
+      content="{{config.extra.og_site_name}}"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="{% block ogaltimg %}{{config.extra.og_alt_image}}{% endblock ogaltimg %}"
+    />
+
+
+    {% if config.extra.fb_app_id %}
+      <meta property="fb:app_id" content="{{config.extra.fb_app_id}}" />
+    {% endif %}
+
+    {% if config.extra.twitter_username %}
+      <meta name="twitter:site" content="{{config.extra.twitter_username}}">
+    {% endif %}
+  {% endblock seo %}
+
+  {% if config.generate_rss %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml") }}">
+  {% endif %}
+
+  {% block css %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Source+Code+Pro">
+    <link rel="stylesheet" href="{{ get_url(path="site.css", trailing_slash=false) }}">
+  {% endblock css %}
+</head>
+
+<body>
+  {{ macro::organization(itemprop=false) }}
+
+  <header class="header">
+    <div class="container">
+      <a class="title" href="{{config.base_url}}">
+        {% block header_title %}
+          {% if config.extra.blog_logo %}
+            <img
+              src="{{get_url(path=config.extra.blog_logo, trailing_slash=false)}}"
+              alt=""
+            >
+          {% endif %}
+
+          {% if config.extra.blog_title %}
+            <h1>{{config.extra.blog_title}}</h1>
+          {% endif %}
+        {% endblock header_title %}
+      </a>
+      {% if config.extra.header_links %}
+        <ul class="links">
+          {% for link in config.extra.header_links %}
+            <li>
+              <a href="{{link.url}}">{{link.name}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="container padding-header">
+
+    <aside class="sidebar">
+      {% block sidebar %}
+        {% for sidebar in config.extra.sidebar %}
+          <h3>{{ sidebar.name }}</h3>
+          <ul class="base-list">
+            {% for item in sidebar.urls %}
+              <li>
+                <a href="{{item.url}}">{{item.name}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      {% endblock sidebar %}
+    </aside>
+
+    <main>
+      {% block content %}
+        <div id="introduction">
+          <p>
+            RosettaGit is a programming
+            <a href="https://en.wikipedia.org/wiki/Chrestomathy"
+              >chrestomathy</a>
+            site.
+            The idea is to present solutions to the same task
+            in as many different languages as possible,
+            to demonstrate how languages are similar and different,
+            and to aid a person with a grounding in one approach
+            to a problem in learning another.
+          </p>
+
+          <p>
+            RosettaGit currently features
+            <strong>{{paginator.pages | length}} pages</strong>
+            with numerous tasks.
+            Our ultimate goal is to have solutions
+            to every task in every language.
+          </p>
+
+          <p>
+            The data was originally forked from
+            <a href="https://rosettacode.org">rosettacode.org</a>
+            on 2019-10-22.
+          </p>
+        </div>
+
+        {% set subsection = get_section(path="tasks/_index.md") %}
+        <div class="task-listing-container">
+          <ul>
+            {% for page in subsection.pages %}
+              <li class="{% if current_path == page.path %}active{% endif %}">
+                <a href="{{page.permalink}}">{{page.title}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endblock content %}
+    </main>
+  </div>
+  <footer>
+    Created ay <a href="https://adriansieber.com">Adrian Sieber</a>
+  </footer>
+</body>
+</html>
