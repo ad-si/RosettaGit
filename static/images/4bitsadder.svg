@@ -1,0 +1,420 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5-alpha7 -->
+<!-- CreationDate: Tue Jun 15 16:30:46 2010 -->
+<!-- Magnification: 1.000 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="4.0in" height="4.3in" viewBox="285 363 4789 5124">
+<g style="stroke-width:.025in; stroke:black; fill:none">
+<!-- Line: box -->
+<rect x="1050" y="2250" width="600" height="600" rx="0" 
+style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1200,2100
+1200,2250
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1500,2100
+1500,2250
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1200,2850
+1200,3000
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1500,2850
+1500,3000
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1050,2550
+900,2550
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Text -->
+<g transform="translate(1575,2325) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">B</text>
+</g><!-- Text -->
+<g transform="translate(1275,2325) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">A</text>
+</g><!-- Text -->
+<g transform="translate(1575,2700) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">S</text>
+</g><!-- Text -->
+<g transform="translate(1275,2625) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">C0</text>
+</g><!-- Text -->
+<g transform="translate(1200,2415) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">C1</text>
+</g><!-- Text -->
+<text xml:space="preserve" x="1530" y="2625" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">FA</text>
+<!-- Line: box -->
+<rect x="1950" y="2700" width="600" height="600" rx="0" 
+style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2100,2550
+2100,2700
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2400,2550
+2400,2700
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2100,3300
+2100,3450
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2400,3300
+2400,3450
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1950,3000
+1800,3000
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Text -->
+<g transform="translate(2475,2775) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">B</text>
+</g><!-- Text -->
+<g transform="translate(2175,2775) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">A</text>
+</g><!-- Text -->
+<g transform="translate(2475,3150) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">S</text>
+</g><!-- Text -->
+<g transform="translate(2175,3075) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">C0</text>
+</g><!-- Text -->
+<g transform="translate(2100,2865) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">C1</text>
+</g><!-- Text -->
+<text xml:space="preserve" x="2430" y="3075" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">FA</text>
+<!-- Line: box -->
+<rect x="2850" y="3150" width="600" height="600" rx="0" 
+style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3000,3000
+3000,3150
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3300,3000
+3300,3150
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3000,3750
+3000,3900
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3300,3750
+3300,3900
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2850,3450
+2700,3450
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Text -->
+<g transform="translate(3375,3225) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">B</text>
+</g><!-- Text -->
+<g transform="translate(3075,3225) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">A</text>
+</g><!-- Text -->
+<g transform="translate(3375,3600) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">S</text>
+</g><!-- Text -->
+<g transform="translate(3075,3525) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">C0</text>
+</g><!-- Text -->
+<g transform="translate(3000,3315) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">C1</text>
+</g><!-- Text -->
+<text xml:space="preserve" x="3330" y="3525" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">FA</text>
+<!-- Line: box -->
+<rect x="3750" y="3600" width="600" height="600" rx="0" 
+style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3900,3450
+3900,3600
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4200,3450
+4200,3600
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3900,4200
+3900,4350
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4200,4200
+4200,4350
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3750,3900
+3600,3900
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Text -->
+<g transform="translate(4275,3675) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">B</text>
+</g><!-- Text -->
+<g transform="translate(3975,3675) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">A</text>
+</g><!-- Text -->
+<g transform="translate(4275,4050) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">S</text>
+</g><!-- Text -->
+<g transform="translate(3975,3975) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">C0</text>
+</g><!-- Text -->
+<g transform="translate(3900,3765) rotate(-90.00021046)" >
+<text xml:space="preserve" x="0" y="0" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">C1</text>
+</g><!-- Text -->
+<text xml:space="preserve" x="4230" y="3975" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="end">FA</text>
+<!-- Line -->
+<polyline points="600,600
+1200,600
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="600,750
+2100,750
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="600,900
+3000,900
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="600,1050
+3900,1050
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1500,1350
+600,1350
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="600,1500
+2400,1500
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="600,1650
+3300,1650
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="600,1800
+4200,1800
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1200,2100
+1200,600
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1500,2100
+1500,1350
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1500,3000
+1500,4800
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1200,3000
+1800,3000
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2100,2550
+2100,750
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2400,2550
+2400,1500
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2400,3450
+2400,4950
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2100,3450
+2700,3450
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3000,3000
+3000,900
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3300,3000
+3300,1650
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3300,3900
+3300,5100
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3000,3900
+3600,3900
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3900,3450
+3900,1050
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4200,3450
+4200,1800
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4200,4350
+4200,5250
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3900,4350
+4800,4350
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="1500,4800
+4800,4800
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="2400,4950
+4800,4950
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="3300,5100
+4800,5100
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="4200,5250
+4800,5250
+" style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line: box -->
+<rect x="750" y="375" width="3750" height="5100" rx="0" 
+style="stroke:#000000;stroke-width:7;
+stroke-linejoin:miter; stroke-linecap:butt;
+stroke-dasharray:50 50;
+"/>
+<!-- Text -->
+<text xml:space="preserve" x="300" y="675" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">a0</text>
+<!-- Text -->
+<text xml:space="preserve" x="300" y="825" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">a1</text>
+<!-- Text -->
+<text xml:space="preserve" x="300" y="975" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">a2</text>
+<!-- Text -->
+<text xml:space="preserve" x="300" y="1125" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">a3</text>
+<!-- Text -->
+<text xml:space="preserve" x="300" y="1575" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">b1</text>
+<!-- Text -->
+<text xml:space="preserve" x="300" y="1425" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">b0</text>
+<!-- Text -->
+<text xml:space="preserve" x="300" y="1725" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">b2</text>
+<!-- Text -->
+<text xml:space="preserve" x="300" y="1875" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">b3</text>
+<!-- Text -->
+<text xml:space="preserve" x="4875" y="4875" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">s0</text>
+<!-- Text -->
+<text xml:space="preserve" x="4875" y="5025" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">s1</text>
+<!-- Text -->
+<text xml:space="preserve" x="4875" y="5175" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">s2</text>
+<!-- Text -->
+<text xml:space="preserve" x="4875" y="5325" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">s3</text>
+<!-- Text -->
+<text xml:space="preserve" x="4875" y="4425" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">v</text>
+<!-- Text -->
+<text xml:space="preserve" x="825" y="2475" stroke="#000000" fill="#000000"  font-family="Bitstream Vera Sans" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">0</text>
+</g>
+</svg>

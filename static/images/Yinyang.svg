@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="600" height="600">
+
+<!-- We create the symbol in the rectangle from (0, 0) to (1, 1)
+and then translate it so it's centered on the origin. -->
+<symbol id="yinyang">
+  <g transform="translate(-0.5, -0.5)">
+    <!-- A white circle, for the bulk of the left-hand part -->
+    <circle cx="0.5" cy="0.5" r="0.5" fill="white"/>
+    <!-- A black semicircle, for the bulk of the right-hand part -->
+    <path d="M 0.5,0 A 0.5,0.5 0 0,1 0.5,1 z" fill="black"/>
+    <!-- Circles to extend each part -->
+    <circle cx="0.5" cy="0.25" r="0.25" fill="white"/>
+    <circle cx="0.5" cy="0.75" r="0.25" fill="black"/>
+    <!-- The spots -->
+    <circle cx="0.5" cy="0.25" r="0.1" fill="black"/>
+    <circle cx="0.5" cy="0.75" r="0.1" fill="white"/>
+    <!-- An outline for the whole shape -->
+    <circle cx="0.5" cy="0.5" r="0.5" fill="none"
+      stroke="gray" stroke-width=".01"/>
+  </g>
+</symbol>
+
+<use xlink:href="#yinyang"
+  transform="translate(125, 125) scale(200, 200)"/>
+
+<use xlink:href="#yinyang"
+  transform="translate(375, 375) scale(400, 400)"/>
+
+</svg>

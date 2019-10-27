@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+	"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	width="420" height="420" viewBox="-10 -10 610 610">
+<defs><filter id="l" filterUnits="objectBoundingBox"
+		x="-100%" y="-100%" width="300%" height="300%">
+	<feGaussianBlur in="SourceAlpha" stdDeviation="70" result="blur"/>
+	<feOffset in="blur" dx="50" dy="50" result="offsetBlur"/>
+	<feSpecularLighting in="blur" surfaceScale="15" specularConstant=".85"
+			specularExponent="20"
+			lighting-color="white"
+			result="specOut">
+		<fePointLight x="-500" y="-1000" z="2000"/>
+	</feSpecularLighting>
+	<feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>
+	<feComposite in="SourceGraphic" in2="specOut" operator="arithmetic"
+			k1="0" k2="1" k3="1" k4="0" result="lit"/>
+	<feMerge>
+		<feMergeNode in="offsetBlur"/>
+		<feMergeNode in="lit"/>
+	</feMerge>
+</filter>
+</defs>
+<path d="M 0 0 600 0 600 600 0 600 0" fill="rgb(200,200,200)"/> 
+<circle cx="300" cy="300" r="180" fill="cyan" filter="url(#l)"/>
+</svg>

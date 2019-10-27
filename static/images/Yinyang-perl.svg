@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+	"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+<circle cx='250' cy='250' r='200' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 450A 100 100 0 0 1 250 250 100 100 0 0 0 250 50 200 200 0 0 1 250 450 z' fill='black' stroke='none' /><g transform='rotate(90, 250, 350)'><circle cx='250' cy='350' r='50' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 400A 25 25 0 0 1 250 350 25 25 0 0 0 250 300 50 50 0 0 1 250 400 z' fill='white' stroke='none' /><g transform='rotate(90, 250, 375)'><circle cx='250' cy='375' r='12.5' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 387.5A 6.25 6.25 0 0 1 250 375 6.25 6.25 0 0 0 250 362.5 12.5 12.5 0 0 1 250 387.5 z' fill='black' stroke='none' /><g transform='rotate(90, 250, 381.25)'><circle cx='250' cy='381.25' r='3.125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 384.375A 1.5625 1.5625 0 0 1 250 381.25 1.5625 1.5625 0 0 0 250 378.125 3.125 3.125 0 0 1 250 384.375 z' fill='white' stroke='none' /><g transform='rotate(90, 250, 382.8125)'><circle cx='250' cy='382.8125' r='0.78125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 383.59375A 0.390625 0.390625 0 0 1 250 382.8125 0.390625 0.390625 0 0 0 250 382.03125 0.78125 0.78125 0 0 1 250 383.59375 z' fill='black' stroke='none' /><circle cx='250' cy='383.203125' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='250' cy='382.421875' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+</g><g transform='rotate(270, 250, 379.6875)'><circle cx='250' cy='379.6875' r='0.78125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 380.46875A 0.390625 0.390625 0 0 1 250 379.6875 0.390625 0.390625 0 0 0 250 378.90625 0.78125 0.78125 0 0 1 250 380.46875 z' fill='white' stroke='none' /><circle cx='250' cy='380.078125' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+<circle cx='250' cy='379.296875' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+</g></g><g transform='rotate(270, 250, 368.75)'><circle cx='250' cy='368.75' r='3.125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 371.875A 1.5625 1.5625 0 0 1 250 368.75 1.5625 1.5625 0 0 0 250 365.625 3.125 3.125 0 0 1 250 371.875 z' fill='black' stroke='none' /><g transform='rotate(90, 250, 370.3125)'><circle cx='250' cy='370.3125' r='0.78125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 371.09375A 0.390625 0.390625 0 0 1 250 370.3125 0.390625 0.390625 0 0 0 250 369.53125 0.78125 0.78125 0 0 1 250 371.09375 z' fill='white' stroke='none' /><circle cx='250' cy='370.703125' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+<circle cx='250' cy='369.921875' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+</g><g transform='rotate(270, 250, 367.1875)'><circle cx='250' cy='367.1875' r='0.78125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 367.96875A 0.390625 0.390625 0 0 1 250 367.1875 0.390625 0.390625 0 0 0 250 366.40625 0.78125 0.78125 0 0 1 250 367.96875 z' fill='black' stroke='none' /><circle cx='250' cy='367.578125' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='250' cy='366.796875' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+</g></g></g><g transform='rotate(270, 250, 325)'><circle cx='250' cy='325' r='12.5' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 337.5A 6.25 6.25 0 0 1 250 325 6.25 6.25 0 0 0 250 312.5 12.5 12.5 0 0 1 250 337.5 z' fill='white' stroke='none' /><g transform='rotate(90, 250, 331.25)'><circle cx='250' cy='331.25' r='3.125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 334.375A 1.5625 1.5625 0 0 1 250 331.25 1.5625 1.5625 0 0 0 250 328.125 3.125 3.125 0 0 1 250 334.375 z' fill='black' stroke='none' /><g transform='rotate(90, 250, 332.8125)'><circle cx='250' cy='332.8125' r='0.78125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 333.59375A 0.390625 0.390625 0 0 1 250 332.8125 0.390625 0.390625 0 0 0 250 332.03125 0.78125 0.78125 0 0 1 250 333.59375 z' fill='white' stroke='none' /><circle cx='250' cy='333.203125' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+<circle cx='250' cy='332.421875' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+</g><g transform='rotate(270, 250, 329.6875)'><circle cx='250' cy='329.6875' r='0.78125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 330.46875A 0.390625 0.390625 0 0 1 250 329.6875 0.390625 0.390625 0 0 0 250 328.90625 0.78125 0.78125 0 0 1 250 330.46875 z' fill='black' stroke='none' /><circle cx='250' cy='330.078125' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='250' cy='329.296875' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+</g></g><g transform='rotate(270, 250, 318.75)'><circle cx='250' cy='318.75' r='3.125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 321.875A 1.5625 1.5625 0 0 1 250 318.75 1.5625 1.5625 0 0 0 250 315.625 3.125 3.125 0 0 1 250 321.875 z' fill='white' stroke='none' /><g transform='rotate(90, 250, 320.3125)'><circle cx='250' cy='320.3125' r='0.78125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 321.09375A 0.390625 0.390625 0 0 1 250 320.3125 0.390625 0.390625 0 0 0 250 319.53125 0.78125 0.78125 0 0 1 250 321.09375 z' fill='black' stroke='none' /><circle cx='250' cy='320.703125' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='250' cy='319.921875' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+</g><g transform='rotate(270, 250, 317.1875)'><circle cx='250' cy='317.1875' r='0.78125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 317.96875A 0.390625 0.390625 0 0 1 250 317.1875 0.390625 0.390625 0 0 0 250 316.40625 0.78125 0.78125 0 0 1 250 317.96875 z' fill='white' stroke='none' /><circle cx='250' cy='317.578125' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+<circle cx='250' cy='316.796875' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+</g></g></g></g><g transform='rotate(270, 250, 150)'><circle cx='250' cy='150' r='50' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 200A 25 25 0 0 1 250 150 25 25 0 0 0 250 100 50 50 0 0 1 250 200 z' fill='black' stroke='none' /><g transform='rotate(90, 250, 175)'><circle cx='250' cy='175' r='12.5' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 187.5A 6.25 6.25 0 0 1 250 175 6.25 6.25 0 0 0 250 162.5 12.5 12.5 0 0 1 250 187.5 z' fill='white' stroke='none' /><g transform='rotate(90, 250, 181.25)'><circle cx='250' cy='181.25' r='3.125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 184.375A 1.5625 1.5625 0 0 1 250 181.25 1.5625 1.5625 0 0 0 250 178.125 3.125 3.125 0 0 1 250 184.375 z' fill='black' stroke='none' /><g transform='rotate(90, 250, 182.8125)'><circle cx='250' cy='182.8125' r='0.78125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 183.59375A 0.390625 0.390625 0 0 1 250 182.8125 0.390625 0.390625 0 0 0 250 182.03125 0.78125 0.78125 0 0 1 250 183.59375 z' fill='white' stroke='none' /><circle cx='250' cy='183.203125' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+<circle cx='250' cy='182.421875' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+</g><g transform='rotate(270, 250, 179.6875)'><circle cx='250' cy='179.6875' r='0.78125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 180.46875A 0.390625 0.390625 0 0 1 250 179.6875 0.390625 0.390625 0 0 0 250 178.90625 0.78125 0.78125 0 0 1 250 180.46875 z' fill='black' stroke='none' /><circle cx='250' cy='180.078125' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='250' cy='179.296875' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+</g></g><g transform='rotate(270, 250, 168.75)'><circle cx='250' cy='168.75' r='3.125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 171.875A 1.5625 1.5625 0 0 1 250 168.75 1.5625 1.5625 0 0 0 250 165.625 3.125 3.125 0 0 1 250 171.875 z' fill='white' stroke='none' /><g transform='rotate(90, 250, 170.3125)'><circle cx='250' cy='170.3125' r='0.78125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 171.09375A 0.390625 0.390625 0 0 1 250 170.3125 0.390625 0.390625 0 0 0 250 169.53125 0.78125 0.78125 0 0 1 250 171.09375 z' fill='black' stroke='none' /><circle cx='250' cy='170.703125' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='250' cy='169.921875' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+</g><g transform='rotate(270, 250, 167.1875)'><circle cx='250' cy='167.1875' r='0.78125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 167.96875A 0.390625 0.390625 0 0 1 250 167.1875 0.390625 0.390625 0 0 0 250 166.40625 0.78125 0.78125 0 0 1 250 167.96875 z' fill='white' stroke='none' /><circle cx='250' cy='167.578125' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+<circle cx='250' cy='166.796875' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+</g></g></g><g transform='rotate(270, 250, 125)'><circle cx='250' cy='125' r='12.5' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 137.5A 6.25 6.25 0 0 1 250 125 6.25 6.25 0 0 0 250 112.5 12.5 12.5 0 0 1 250 137.5 z' fill='black' stroke='none' /><g transform='rotate(90, 250, 131.25)'><circle cx='250' cy='131.25' r='3.125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 134.375A 1.5625 1.5625 0 0 1 250 131.25 1.5625 1.5625 0 0 0 250 128.125 3.125 3.125 0 0 1 250 134.375 z' fill='white' stroke='none' /><g transform='rotate(90, 250, 132.8125)'><circle cx='250' cy='132.8125' r='0.78125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 133.59375A 0.390625 0.390625 0 0 1 250 132.8125 0.390625 0.390625 0 0 0 250 132.03125 0.78125 0.78125 0 0 1 250 133.59375 z' fill='black' stroke='none' /><circle cx='250' cy='133.203125' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='250' cy='132.421875' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+</g><g transform='rotate(270, 250, 129.6875)'><circle cx='250' cy='129.6875' r='0.78125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 130.46875A 0.390625 0.390625 0 0 1 250 129.6875 0.390625 0.390625 0 0 0 250 128.90625 0.78125 0.78125 0 0 1 250 130.46875 z' fill='white' stroke='none' /><circle cx='250' cy='130.078125' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+<circle cx='250' cy='129.296875' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+</g></g><g transform='rotate(270, 250, 118.75)'><circle cx='250' cy='118.75' r='3.125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 121.875A 1.5625 1.5625 0 0 1 250 118.75 1.5625 1.5625 0 0 0 250 115.625 3.125 3.125 0 0 1 250 121.875 z' fill='black' stroke='none' /><g transform='rotate(90, 250, 120.3125)'><circle cx='250' cy='120.3125' r='0.78125' fill='black' stroke='white' stroke-width='1'/>
+<path d='M 250 121.09375A 0.390625 0.390625 0 0 1 250 120.3125 0.390625 0.390625 0 0 0 250 119.53125 0.78125 0.78125 0 0 1 250 121.09375 z' fill='white' stroke='none' /><circle cx='250' cy='120.703125' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+<circle cx='250' cy='119.921875' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+</g><g transform='rotate(270, 250, 117.1875)'><circle cx='250' cy='117.1875' r='0.78125' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 250 117.96875A 0.390625 0.390625 0 0 1 250 117.1875 0.390625 0.390625 0 0 0 250 116.40625 0.78125 0.78125 0 0 1 250 117.96875 z' fill='black' stroke='none' /><circle cx='250' cy='117.578125' r='0.15625' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='250' cy='116.796875' r='0.15625' fill='black' stroke='white' stroke-width='1'/>
+</g></g></g></g><circle cx='500' cy='500' r='100' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 500 600A 50 50 0 0 1 500 500 50 50 0 0 0 500 400 100 100 0 0 1 500 600 z' fill='black' stroke='none' /><circle cx='500' cy='550' r='20' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='500' cy='450' r='20' fill='black' stroke='white' stroke-width='1'/>
+</svg>

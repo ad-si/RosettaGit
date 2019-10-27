@@ -1,0 +1,59 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="400">
+  <style type="text/css"><![CDATA[
+    line { stroke: black; stroke-width: .05; }
+    circle { fill: black; }
+  ]]></style>
+ 
+<defs>
+ 
+  <g id="marks">
+    <circle cx="0" cy="0" r=".03"/>
+    <circle cx="1" cy="0" r=".03"/>
+  </g>
+ 
+  <g id="l0">
+    <line x1="0" y1="0" x2="1" y2="0"/>
+    <!-- useful for studying the transformation stages:
+         <line x1="0.1" y1="0" x2="0.9" y2="0.1"/> -->
+  </g>
+ 
+  <!-- These are identical except for the id and href. -->
+  <g id="l1"> <use xlink:href="#l0" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l0" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+  <g id="l2"> <use xlink:href="#l1" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l1" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+  <g id="l3"> <use xlink:href="#l2" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l2" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+  <g id="l4"> <use xlink:href="#l3" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l3" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+  <g id="l5"> <use xlink:href="#l4" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l4" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+  <g id="l6"> <use xlink:href="#l5" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l5" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+  <g id="l7"> <use xlink:href="#l6" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l6" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+  <g id="l8"> <use xlink:href="#l7" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l7" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+  <g id="l9"> <use xlink:href="#l8" transform="matrix( .5 .5  -.5  .5  0 0)"/>
+              <use xlink:href="#l8" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
+              <use xlink:href="#marks"/></g>
+</defs>
+ 
+<g transform="translate(100, 200) scale(200)">
+  <use xlink:href="#marks"/>
+  <use xlink:href="#l9"/>
+</g>
+ 
+</svg>

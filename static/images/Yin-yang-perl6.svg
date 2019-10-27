@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform='rotate(90, 50, 50)'>
+<circle cx='50' cy='50' r='40' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 50 90A 20 20 0 0 1 50 50 20 20 0 0 0 50 10 40 40 0 0 1 50 90 z' fill='black' stroke='none' />
+<circle cx='50' cy='70' r='8' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='50' cy='30' r='8' fill='black' stroke='white' stroke-width='1'/>
+</g>
+<g transform='rotate(90, 120, 120)'>
+<circle cx='120' cy='120' r='20' fill='white' stroke='black' stroke-width='1'/>
+<path d='M 120 140A 10 10 0 0 1 120 120 10 10 0 0 0 120 100 20 20 0 0 1 120 140 z' fill='black' stroke='none' />
+<circle cx='120' cy='130' r='4' fill='white' stroke='black' stroke-width='1'/>
+<circle cx='120' cy='110' r='4' fill='black' stroke='white' stroke-width='1'/>
+</g>
+</svg>
+
+
+
+
+
