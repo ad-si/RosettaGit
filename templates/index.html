@@ -183,16 +183,20 @@
               >chrestomathy</a>
             site.
             The idea is to present solutions to the same task
-            in as many different languages as possible,
-            to demonstrate how languages are similar and different,
-            and to aid a person with a grounding in one approach
-            to a problem in learning another.
+            in as many different languages as possible.
+            It demonstrates how languages are similar and different
+            and can help you learn new approaches to solving problems.
           </p>
 
+          {% set taskSection = get_section(path="tasks/_index.md") %}
+          {% set draftSection = get_section(path="drafts/_index.md") %}
+          {% set langSection = get_section(path="languages/_index.md") %}
           <p>
-            RosettaGit currently features
-            <strong>{{paginator.pages | length}} pages</strong>
-            with numerous tasks.
+            RosettaGit currently has
+            <strong>{{taskSection.pages | length}} tasks</strong>,
+            <strong>{{draftSection.pages | length}} drafts</strong>,
+            and features
+            <strong>{{langSection.pages | length}} languages</strong>.
             Our ultimate goal is to have solutions
             to every task in every language.
           </p>
@@ -204,10 +208,9 @@
           </p>
         </div>
 
-        {% set subsection = get_section(path="tasks/_index.md") %}
         <div class="task-listing-container">
           <ul>
-            {% for page in subsection.pages %}
+            {% for page in taskSection.pages %}
               <li class="{% if current_path == page.path %}active{% endif %}">
                 <a href="{{page.permalink}}">{{page.title}}</a>
               </li>

@@ -12,18 +12,20 @@
 {% endblock title %}
 
 {% block content %}
-<h2>{{section.title}}</h2>
+<div id="section-container">
+  <h2>{{section.title}}</h2>
 
-<ul>
-  {% for page in section.pages %}
-    <li>
-      <a href="{{ page.permalink }}">{{page.title}}</a>
-      {% if page.taxonomies.tags %}
-        {% for tag in page.taxonomies.tags %}
-          <a class="tag" href="/tags/{{tag}}">{{tag}}</a>
-        {% endfor %}
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
-{% endblock content %}
+  <ul>
+    {% for page in section.pages %}
+      <li>
+        <a href="{{ page.permalink }}">{{page.title}}</a>
+        {% if page.taxonomies.tags %}
+          {% for tag in page.taxonomies.tags %}
+            <a class="tag" href="/tags/{{tag}}">{{tag}}</a>
+          {% endfor %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% endblock content %}
+</div>

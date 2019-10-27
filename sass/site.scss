@@ -51,6 +51,21 @@ section {
   margin-bottom: 2rem;
 }
 
+pre {
+  padding: 1rem;
+  overflow-x: scroll;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+code {
+  color: #e74c3c;
+  border: 1px solid #ecf0f1;
+  padding: 5px;
+  border-radius: 5px;
+  background: rgba(236, 240, 241, 0.19);
+}
+
 
 .tags {
   margin-bottom: 1rem;
@@ -78,19 +93,6 @@ section {
 
 .padding-header {
   padding-top: 6rem;
-}
-
-pre {
-  padding: 10px;
-  overflow-x: scroll;
-}
-
-code {
-  color: #e74c3c;
-  border: 1px solid #ecf0f1;
-  padding: 5px;
-  border-radius: 5px;
-  background: rgba(236, 240, 241, 0.19);
 }
 
 .header {
@@ -185,6 +187,12 @@ main {
   @media screen and (min-width: 900px) {
     display: initial;
     padding-right: 2em;
+  }
+}
+
+#section-container {
+  ul {
+    columns: 2;
   }
 }
 
