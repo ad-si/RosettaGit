@@ -1,0 +1,24 @@
++++
+title = "Talk:Happy numbers"
+description = ""
+date = 2010-02-06T13:31:17Z
+aliases = []
+[extra]
+id = 4143
+[taxonomies]
+categories = []
+tags = []
++++
+
+==On caching (and laziness)==
+It seemed prudent to put in simple caching of n in the Python solution, but not the full-length permutations of the digits of n as cache size grows very quickly. I had thought of just putting in a 'normal form' of n into the cache which would be the digits in sorted order, but then you would have to calculate the normal form before every search of the cache, which would take more time. Time vs space, space vs time? I chose the lazy option and left them both out of the Python, but maybe I should add an example with the normal-form space optimised cache so an implementation is out there? --[[User:Paddy3118|Paddy3118]] 00:28, 7 May 2009 (UTC)
+
+: You don't need ''any'' caching (see the alternative C++ version I've just added). Of course you'll do more calculations anyway, so this is still a time/space tradeof.
+: Also note that your "normal form" is "half" of the iteration step. Of course your cache is more effective if you also add the second step (because, after all, numbers which have a different normal form may still have the same next number (e.g. both 1111 and 2 have 4 as next value). But that's the same as using the original cache, but not caching in the first iteration. So the savings with your optimized cache are probably negligible. --[[User:Ce|Ce]] 07:20, 7 May 2009 (UTC)
+
+:: We don't need to store the permutations. Since, for the final computation, what really matters is how many of every digits there are...; e.g. 910: I don't need to store 190, 910, 109 (and eventually 019, which indeed with the "Bag" technics is considered different from 19); it is enough I say that a number containing one 0, one 1 and one 9 is happy. --[[User:ShinTakezou|ShinTakezou]] 10:50, 7 May 2009 (UTC)
+
+::: However if instead of the "bunch of numbers" you instead store the sum of their squares (which is actually the only thing that matters), you still get more efficient (indeed, you get more efficient in two ways; you need less storage per entry, and you need less entries, because e.g. the cases "4 ones", "4 ones and a zero", "one two", "one two and ten zeroes", etc. all go into the same cache entry).
+::: However, I now think it would be a saving anyway. The digit square sums tend to be much smaller than the original numbers; indeed, with a 32 bit unsigned int, the largest possible value after one step would be 657 (unless I mis-calculated). If storing the flags in single bits, you'd need just 83 bytes, and lookup would be strictly O(1). Moreover, if you don't have that number in the cache, you have to do this calculation anyway, so you don't lose much time in that case, so the only efficiency loss is for numbers already in the cache, but that's just one iteration (for 32 bit uint in the worst case, 18 divisions, 18 modulo operations, 9 multiplications and 17 additions, if I counted correctly). Moreover the needed memory then goes linear in the number of digits, so even with 64 bits you won't need too much memory. --[[User:Ce|Ce]] 13:30, 7 May 2009 (UTC)
+:::: Likely. However happy numbers seem not to be memory or cpu intensive (even with Smalltalk, which surely is not a "light") I was able to find fastly happy numbers upto 10000 (and not beyond just since I've not changed the constant!), where with "fastly" I mean just the time to output them; "no time" among one output line and the other one ("no time" meaning: far less than 1s, i.e. less than a human can perceive like a "estimable by eye" duration). --[[User:ShinTakezou|ShinTakezou]] 17:19, 7 May 2009 (UTC)
+::::: Indeed, I just calculated the first million happy numbers with the non-caching C++ code (the last one being 7105849), and it took 11.670 seconds real (wall clock) time, and 7.156 seconds user (CPU) time (I didn't make any statistics, and there are other processes running on the computer, so those numbers are only to be taken as aproximate values). So caching is probably not useful. However, if caching is done, it should IMHO be the "after first step" strategy because it's both algorithmically simpler and more memory efficient, and I'm not even convinced that it takes more time than the bag strategy: while calculating the whole iteration step is more costly than calculating the bag, it will be zero lost time (except for the array lookup) in case of a miss, and the hit rate will be larger. On the other hand, calculating the bag will always have an overhead, and the bag cannot be directly used as array index, so you'll use either a hash map (so you'll have to calculate a hash function for each lookup, which is likely as expensive as adding the squares) or a search tree (which is O(log N) instead of O(1)). Of course, one would have to measure to know for sure. --[[User:Ce|Ce]] 07:42, 8 May 2009 (UTC)

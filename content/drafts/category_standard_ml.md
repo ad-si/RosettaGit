@@ -1,0 +1,25 @@
++++
+title = "Category:Standard ML"
+description = ""
+date = 2011-09-13T03:39:32Z
+aliases = []
+[extra]
+id = 1730
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{language
+|exec=machine
+|strength=strong
+|checking=static
+|parampass=value
+|gc=yes
+|express=implicit
+|site=http://www.smlnj.org/
+}}{{language programming paradigm|functional}}
+{{Wikipedia}}
+'''Standard ML''' (SML) is a general-purpose, modular, [[functional programming]] language with [[compile-time]] [[type checking]] and type inference. It is popular among compiler writers and programming language researchers, as well as in the development of theorem provers.
+
+SML is a modern descendant of the [[derived from::ML]] programming language used in the LCF theorem-proving project. It is unique among widely used languages in that it has a formal specification, given as typing rules and operational semantics in The Definition of Standard ML (1990, revised and simplified as The Definition of Standard ML (Revised) in 1997).

@@ -1,0 +1,34 @@
++++
+title = "Talk:String case"
+description = ""
+date = 2017-09-03T10:10:20Z
+aliases = []
+[extra]
+id = 4370
+[taxonomies]
+categories = []
+tags = []
++++
+
+== Encoding ==
+I think the task must explicitly refer to an encoding to use. I guess it is should be ASCII or else 8-bit Latin-1. If not, as in the case of a more or less full Unicode, changing the case would require some further definitions, see [http://unicode.org/reports/tr21/tr21-5.html Unicode case mappings]. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 10:18, 11 June 2009 (UTC)
+:I think the idea was to use the default encoding for a string variable. The hope was probably to show string functions built in to languages. Maybe we could specify to use the encoding of a string literal? --[[User:Mwn3d|Mwn3d]] 12:03, 11 June 2009 (UTC)
+::That sounds reasonable. However I think that the task reader would rather expect something else, e.g. an advise how to capitalize a string, which is another and quite non-trivial task. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 12:21, 11 June 2009 (UTC)
+:::This task gets hard once you're dealing with non-ASCII, so I'd accept solutions that only handle ASCII and leave everything else alone. If a language supports more (e.g., through locale control) it should be highlighted. —[[User:Dkf|Donal Fellows]] 12:52, 11 June 2009 (UTC)
+::::Different encodings do indeed present additional problems, but that's why most platforms provide facilities to handle them.  Thus, you'll get at least three types of examples: Those which only handle ASCII, those which only handle Unicode, and those which handle both.  Regardless of the scenario, I'm typically strongly against limiting coverage to only handle the simplest and/or most common cases.  If a language or library has a difficult time coping with a scenario, and that difficulty can be illustrated by comparison with something that can handle that scenario more easily, then that scenario is a valid point of comparison.  The biggest problem arises when a single task ends up covering multiple fairly categorical scenarios, causing the task page to balloon to difficult-to-manage sizes.  At that point, it usually needs to be divided into multiple pages, usually one per scenario, as in [[String Length]].  The converse is when the language presents one scenario, but few or no languages can provide an idiomatic implementation within a screenfull of lines*; In that case, a per-language division such as in [[RCBF]] or [[RCSNUSP]] becomes warranted. (*) The calculation of what constitutes a "screenfull of lines" could involve taking the minimum vertical resolution that covers 90% of the visitors, assuming a 72 dpi and a font size of 12-14 points&mdash;or it could be entirely subjective. --[[User:Short Circuit|Short Circuit]] 15:59, 11 June 2009 (UTC)
+
+:I disagree: this is a question on the abstraction level the language provides.On a high level, a string is a collection of characters, and I really do not care how it is encoded internally. I may care when talking to the outside world via file or socket. On a low level, this is a sequence of bytes, which have to be interpreted according to a rule in order to know which character is represented. If a programming language mixes those two, you are in trouble, as you need to know the encoding in order for a string to be interpreted. Higher level String datatypes should hide this (separate those two) and provide conversions. Smalltalk, Java, JS and many others do it. In Smalltalk, for example, I would write "(CharacterEncoder encoderFor:#'iso8859-5') encode: 'someString')" to get a string's particlar encoding. The result is conceptionally no longer a sequence of characters, but a sequence of bytes which represent those in that particular encoding. So, as soon as you ask for a particular encoding to be part of the task, we actually no longer talk about the language's String implementation and capabilities, but instead about the language's byte-collection support. Of course, I see the problem that in many low level languages, these are the same. [[User:Cg|Cg]] 09:37, 25 January 2013 (UTC)
+
+::Conceptually, though, the issue of representing fat unicode characters is not much different from the issue of supporting different numeric types (consider, especially, the distinction between <code>signed char</code> and <code>float</code> in C).  The significant differences between numeric types and character types are the conversion process, along with the issue that most non-ascii characters are represented by a sequence of bytes in utf-8 rather than a single byte.  That said, in this context we are not talking about which storage formats the language uses to represent unicode characters - any language that can represent bytes can represent sequences of unicode characters.  And we do not know, without knowing the language, whether 'String' represents a unicode type, or an ascii type or whether it even exists in a particular langauge.  In other words, I am inclined to consider Short Circuit's point of view to be more relevant here than Cg's disagreement.  Still, I agree with both that expanding this to unicode will significantly increase the complexity of the task.  Simply representing the translation between upper and lower case, in a language which does not implement that for you, will be bulky.   --[[User:Rdm|Rdm]] 13:24, 25 January 2013 (UTC)
+
+== C++ ==
+The C++ version is *not* using STL. It is using a class template from standard C++ (basic_string), which was not even adopted from STL (see [http://c2.com/cgi/wiki?StandardTemplateLibrary]).
+
+: The current C++ code includes <algorithm>, which is an STL header? --[[User:Kernigh|Kernigh]] 02:17, 27 September 2011 (UTC)
+
+== Unicode ==
+
+I suggest to add an example to the task to show the effect of case change, in both directions, on Unicode characters. I added an example in the Stata task in ancient greek, and the result is not perfect. I know it's not either in other languages, and I suspect it depends on the underlying implementation of Unicode, but not only: Python seems to behave like Stata, but the Notepad++ text editor does not. As a side note, the example is the first sentence of the [https://en.wikipedia.org/wiki/Book_of_Genesis Book of Genesis].
+[[User:Eoraptor|Eoraptor]] ([[User talk:Eoraptor|talk]]) 09:29, 3 September 2017 (UTC)
+: Good example – in the (traditionally Aramaic) lettering of the original Hebrew of that sentence, 'upper case' is not defined. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 09:39, 3 September 2017 (UTC)
+:: I expect that unicode case handling would belong in a different task, and would also tend to be language specific (depending on the significance of case for the task in question). See http://unicode.org/faq/casemap_charprop.html for some of the issues. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 10:08, 3 September 2017 (UTC)

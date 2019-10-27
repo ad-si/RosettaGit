@@ -1,0 +1,2254 @@
++++
+title = "Variable-length quantity"
+description = ""
+date = 2018-10-19T17:26:27Z
+aliases = []
+[extra]
+id = 8488
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{task|Data Structures}}
+
+Implement some operations on [[wp:Variable-length quantity|variable-length quantities]], at least including conversions from a normal number in the language to the binary representation of the variable-length quantity for that number, and ''vice versa''. Any variants are acceptable.
+
+
+;Task:
+With above operations, 
+*convert these two numbers 0x200000 (2097152 in decimal) and 0x1fffff (2097151 in decimal) into sequences of octets (an eight-bit byte); 
+*display these sequences of octets;
+*convert these sequences of octets back to numbers, and check that they are equal to original numbers.
+
+
+
+
+
+## Ada
+
+
+
+```Ada
+with Ada.Containers.Vectors;
+with Ada.Text_IO;
+with Ada.Unchecked_Conversion;
+
+procedure VLQ is
+
+   package Nat_IO is new Ada.Text_IO.Integer_IO (Natural);
+
+   type Byte is mod 2**8;
+
+   package Byte_IO is new Ada.Text_IO.Modular_IO (Byte);
+
+   type Int7 is mod 2**7;
+
+   package Int7_IO is new Ada.Text_IO.Modular_IO (Int7);
+
+   type VLQ_Octet is record
+      Value : Int7 := 0;
+      Next  : Boolean := True;
+   end record;
+   pragma Pack (VLQ_Octet);
+   for VLQ_Octet'Size use 8;
+
+   function VLQ_To_Byte is new Ada.Unchecked_Conversion (VLQ_Octet, Byte);
+   function Byte_To_VLQ is new Ada.Unchecked_Conversion (Byte, VLQ_Octet);
+
+   package VLQ_Vectors is new Ada.Containers.Vectors (Natural, VLQ_Octet);
+
+   procedure Hex_Print (Position : in VLQ_Vectors.Cursor) is
+      Value : Byte := VLQ_To_Byte (VLQ_Vectors.Element (Position));
+   begin
+      Ada.Text_IO.Put (':');
+      Byte_IO.Put (Item => Value, Width => 6, Base => 16);
+   end Hex_Print;
+
+   procedure Print (X : VLQ_Vectors.Vector) is
+   begin
+      X.Iterate (Hex_Print'Access);
+      Ada.Text_IO.New_Line;
+   end Print;
+
+   function To_VLQ (From : Natural) return VLQ_Vectors.Vector is
+      Result : VLQ_Vectors.Vector;
+      Current : Natural := From;
+      Element : VLQ_Octet;
+   begin
+      loop
+         Element.Value := Int7 (Current mod 2**7);
+         Result.Prepend (Element);
+         Current := Current / 2**7;
+         exit when Current = 0;
+      end loop;
+      Element := Result.Last_Element;
+      Element.Next := False;
+      VLQ_Vectors.Replace_Element (Result, Result.Last, Element);
+      return Result;
+   end To_VLQ;
+
+   function To_Int (From : VLQ_Vectors.Vector) return Natural is
+      use type VLQ_Vectors.Cursor;
+      Result : Natural := 0;
+      Iterator : VLQ_Vectors.Cursor := From.First;
+   begin
+      while Iterator /= VLQ_Vectors.No_Element loop
+         Result := Result * 2**7;
+         Result := Result + Natural(VLQ_Vectors.Element (Iterator).Value);
+         VLQ_Vectors.Next (Iterator);
+      end loop;
+      return Result;
+   end To_Int;
+
+   Test : VLQ_Vectors.Vector;
+begin
+   Test := To_VLQ (16#7f#);
+   Nat_IO.Put (To_Int (Test), 10, 16); Ada.Text_IO.Put (" = ");
+   Print (Test);
+   Test := To_VLQ (16#4000#);
+   Nat_IO.Put (To_Int (Test), 10, 16); Ada.Text_IO.Put (" = ");
+   Print (Test);
+   Test := To_VLQ (16#0#);
+   Nat_IO.Put (To_Int (Test), 10, 16); Ada.Text_IO.Put (" = ");
+   Print (Test);
+   Test := To_VLQ (16#3FFFFE#);
+   Nat_IO.Put (To_Int (Test), 10, 16); Ada.Text_IO.Put (" = ");
+   Print (Test);
+   Test := To_VLQ (16#1FFFFF#);
+   Nat_IO.Put (To_Int (Test), 10, 16); Ada.Text_IO.Put (" = ");
+   Print (Test);
+   Test := To_VLQ (16#200000#);
+   Nat_IO.Put (To_Int (Test), 10, 16); Ada.Text_IO.Put (" = ");
+   Print (Test);
+end VLQ;
+```
+
+
+Output:
+
+```txt
+    16#7F# = :16#7F#
+  16#4000# = :16#81#:16#80#: 16#0#
+     16#0# = : 16#0#
+16#3FFFFE# = :16#81#:16#FF#:16#FF#:16#7E#
+16#1FFFFF# = :16#FF#:16#FF#:16#7F#
+16#200000# = :16#81#:16#80#:16#80#: 16#0#
+```
+
+
+
+## ANSI Standard BASIC
+
+
+```ANSI BASIC
+INPUT s$
+LET s$ = LTRIM$(RTRIM$(s$))
+LET v = 0
+FOR i = 1 TO LEN(s$)
+   LET c$ = s$(i:i)
+   LET k = POS("0123456789abcdef", c$)
+   IF k > 0 THEN LET v = v*16 + k - 1
+NEXT i
+PRINT "S= ";s$, "V=";v
+ 
+! Convert back to hex
+LET hex$ ="0123456789abcdef"
+LET hs$="                    "
+ 
+FOR i = LEN(hs$) TO 1 STEP -1
+   IF v = 0 THEN EXIT FOR
+   LET d = MOD(v, 16) + 1
+   LET hs$(i:i) = hex$(d:d)
+   LET v = INT(v/16)
+NEXT i
+PRINT hs$
+END
+```
+
+OUTPUT:
+
+```txt
+
+S= 200000              V= 2097152
+              200000 
+S= 1fffff              V= 2097151
+              1fffff 
+
+```
+
+
+
+## Bracmat
+
+Bracmat has no native octet array type. Luckily, the only octet that possibly can be zero in a VLQ is the last octet. Therefore a solitary VLQ can be expressed as a Bracmat string, which, just as a C string, is null terminated. If the last byte of the VLQ string has the high bit set, we know that the last octet contained 0-bits only. A problem is of course that VLQ's probably are meant to be concatenizable. With null bytes missing, this is no option for the VLQ's generated by this solution.
+
+```bracmat
+(  ( VLQ
+  =   b07 b8 vlq
+    .   0:?b8
+      & :?vlq
+      &   whl
+        ' ( !arg:>0
+          & mod$(!arg.128):?b07
+          & (chr$(!b8+!b07)|) !vlq:?vlq
+          & 128:?b8
+          & div$(!arg.128):?arg
+          )
+      & str$!vlq
+  )
+& ( NUM
+  =   c num d
+    .   0:?num:?d
+      &   whl
+        ' ( @(!arg:%@?c ?arg)
+          & asc$!c:?c:~<128
+          & 128*(!c+-128+!num):?num
+          & 1+!d:?d
+          )
+      & (!c:<128&!c+!num:?num|)
+      & !num
+  )
+& ( printVLQ
+  =   c h
+    .   :?h
+      &   whl
+        ' ( @(!arg:%@?c ?arg)
+          & d2x$(asc$!c):?x
+          &   !h (@(!x:? [1)&0|) !x
+            : ?h
+          )
+      & ( asc$!c:~<128&!h 00:?h
+        |
+        )
+      & out$("VLQ  :" str$!h)
+  )
+& ( test
+  =   vlq num
+    .   out$("input:" !arg)
+      & VLQ$(x2d$!arg):?vlq
+      & printVLQ$!vlq
+      & NUM$!vlq:?num
+      & out$("back :" d2x$!num \n)
+  )
+& test$200000
+& test$1fffff
+& test$00
+& test$7f
+& test$80
+& test$81
+& test$82
+& test$894E410E0A
+);
+```
+
+Output:
+
+```txt
+input: 200000
+VLQ  : 81808000
+back : 200000
+
+input: 1fffff
+VLQ  : FFFF7F
+back : 1FFFFF
+
+input: 00
+VLQ  :
+back : 0
+
+input: 7f
+VLQ  : 7F
+back : 7F
+
+input: 80
+VLQ  : 8100
+back : 80
+
+input: 81
+VLQ  : 8101
+back : 81
+
+input: 82
+VLQ  : 8102
+back : 82
+
+input: 894E410E0A
+VLQ  : 9194F2849C0A
+back : 894E410E0A
+
+```
+
+
+
+## C
+
+
+```c>#include <stdio.h
+
+#include <stdint.h>
+
+void to_seq(uint64_t x, uint8_t *out)
+{
+	int i, j;
+	for (i = 9; i > 0; i--) {
+		if (x & 127ULL << i * 7) break;
+	}
+	for (j = 0; j <= i; j++)
+		out[j] = ((x >> ((i - j) * 7)) & 127) | 128;
+
+	out[i] ^= 128;
+}
+
+uint64_t from_seq(uint8_t *in)
+{
+	uint64_t r = 0;
+
+	do {
+		r = (r << 7) | (uint64_t)(*in & 127);
+	} while (*in++ & 128);
+
+	return r;
+}
+
+int main()
+{
+	uint8_t s[10];
+	uint64_t x[] = { 0x7f, 0x4000, 0, 0x3ffffe, 0x1fffff, 0x200000, 0x3311a1234df31413ULL};
+
+	int i, j;
+	for (j = 0; j < sizeof(x)/8; j++) {
+		to_seq(x[j], s);
+		printf("seq from %llx: [ ", x[j]);
+
+		i = 0;
+		do { printf("%02x ", s[i]); } while ((s[i++] & 128));
+		printf("] back: %llx\n", from_seq(s));
+	}
+
+	return 0;
+}
+```
+output<lang>seq from 7f: [ 7f ] back: 7f
+seq from 4000: [ 81 80 00 ] back: 4000
+seq from 0: [ 00 ] back: 0
+seq from 3ffffe: [ 81 ff ff 7e ] back: 3ffffe
+seq from 1fffff: [ ff ff 7f ] back: 1fffff
+seq from 200000: [ 81 80 80 00 ] back: 200000
+seq from 3311a1234df31413: [ b3 88 e8 a4 b4 ef cc a8 13 ] back: 3311a1234df31413
+```
+
+
+=={{header|C sharp|C#}}==
+For methods involving a '''BinaryReader''' or '''BinaryWriter''' please refer to [http://rosettacode.org/wiki/User:Shimmy/Variable-length_quantity this] page.
+
+```csharp
+namespace Vlq
+{
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+
+  public static class VarLenQuantity
+  {
+    public static ulong ToVlq(ulong integer)
+    {
+      var array = new byte[8];
+      var buffer = ToVlqCollection(integer)
+        .SkipWhile(b => b == 0)
+        .Reverse()
+        .ToArray();
+      Array.Copy(buffer, array, buffer.Length);
+      return BitConverter.ToUInt64(array, 0);
+    }
+
+    public static ulong FromVlq(ulong integer)
+    {
+      var collection = BitConverter.GetBytes(integer).Reverse();
+      return FromVlqCollection(collection);
+    }
+
+    public static IEnumerable<byte> ToVlqCollection(ulong integer)
+    {
+      if (integer > Math.Pow(2, 56))
+        throw new OverflowException("Integer exceeds max value.");
+
+      var index = 7;
+      var significantBitReached = false;
+      var mask = 0x7fUL << (index * 7);
+      while (index >= 0)
+      {
+        var buffer = (mask & integer);
+        if (buffer > 0 || significantBitReached)
+        {
+          significantBitReached = true;
+          buffer >>= index * 7;
+          if (index > 0)
+            buffer |= 0x80;
+          yield return (byte)buffer;
+        }
+        mask >>= 7;
+        index--;
+      }
+    }
+
+
+    public static ulong FromVlqCollection(IEnumerable<byte> vlq)
+    {
+      ulong integer = 0;
+      var significantBitReached = false;
+
+      using (var enumerator = vlq.GetEnumerator())
+      {
+        int index = 0;
+        while (enumerator.MoveNext())
+        {
+          var buffer = enumerator.Current;
+          if (buffer > 0 || significantBitReached)
+          {
+            significantBitReached = true;
+            integer <<= 7;
+            integer |= (buffer & 0x7fUL);
+          }
+
+          if (++index == 8 || (significantBitReached && (buffer & 0x80) != 0x80))
+            break;
+        }
+      }
+      return integer;
+    }
+
+    public static void Main()
+    {
+      var integers = new ulong[] { 0x7fUL << 7 * 7, 0x80, 0x2000, 0x3FFF, 0x4000, 0x200000, 0x1fffff };
+
+      foreach (var original in integers)
+      {
+        Console.WriteLine("Original: 0x{0:X}", original);
+
+        //collection
+        var seq = ToVlqCollection(original);
+        Console.WriteLine("Sequence: 0x{0}", seq.Select(b => b.ToString("X2")).Aggregate(string.Concat));
+
+        var decoded = FromVlqCollection(seq);
+        Console.WriteLine("Decoded: 0x{0:X}", decoded);
+
+        //ints
+        var encoded = ToVlq(original);
+        Console.WriteLine("Encoded: 0x{0:X}", encoded);
+
+        decoded = FromVlq(encoded);
+        Console.WriteLine("Decoded: 0x{0:X}", decoded);
+
+        Console.WriteLine();
+      }
+      Console.WriteLine("Press any key to continue...");
+      Console.ReadKey();
+    }
+  }
+}
+```
+output<lang>Original: 0xFE000000000000
+Sequence: 0xFF80808080808000
+Decoded: 0xFE000000000000
+Encoded: 0xFF80808080808000
+Decoded: 0xFE000000000000
+
+Original: 0x80
+Sequence: 0x8100
+Decoded: 0x80
+Encoded: 0x8100
+Decoded: 0x80
+
+Original: 0x2000
+Sequence: 0xC000
+Decoded: 0x2000
+Encoded: 0xC000
+Decoded: 0x2000
+
+Original: 0x3FFF
+Sequence: 0xFF7F
+Decoded: 0x3FFF
+Encoded: 0xFF7F
+Decoded: 0x3FFF
+
+Original: 0x4000
+Sequence: 0x818000
+Decoded: 0x4000
+Encoded: 0x818000
+Decoded: 0x4000
+
+Original: 0x200000
+Sequence: 0x81808000
+Decoded: 0x200000
+Encoded: 0x81808000
+Decoded: 0x200000
+
+Original: 0x1FFFFF
+Sequence: 0xFFFF7F
+Decoded: 0x1FFFFF
+Encoded: 0xFFFF7F
+Decoded: 0x1FFFFF
+
+Press any key to continue...
+```
+
+
+
+## D
+
+This implements a Variable-length Quantity struct for an ulong integer.
+
+```d
+import std.stdio, std.string, std.file, std.algorithm;
+
+/// Variable length quantity (unsigned long, max 63-bit).
+struct VLQ {
+    ulong value;
+
+    // This allows VLQ to work like an ulong.
+    alias value this;
+
+    uint extract(in ubyte[] v) pure
+    in {
+        assert(v.length > 0);
+    } body {
+        immutable limit = min(v.length - 1, 8);
+        ulong t = 0;
+        size_t idx = 0;
+        while ((idx < limit) && ((v[idx] & 0x80) > 0))
+            t = (t << 7) | (0x7f & v[idx++]);
+        if (idx > limit)
+            throw new Exception(
+                "Too large for ulong or invalid format.");
+        else
+            value = (t << 7) | v[idx];
+        return idx + 1;
+    }
+
+    VLQ from(in ubyte[] v) pure {
+        extract(v);
+        return this;
+    }
+
+    @property ubyte[] toVLQ() const pure {
+        ubyte[] v = [0x7f & value];
+        for (ulong k = value >>> 7; k > 0; k >>>= 7)
+            v ~= (k & 0x7f) | 0x80;
+        if (v.length > 9)
+            throw new Exception("Too large value.");
+        v.reverse();
+        return v;
+    }
+
+    static ulong[] split(in ubyte[] b) pure {
+        ulong[] res;
+        VLQ v;
+        for (size_t i = 0; i < b.length; ) {
+            i += v.extract(b[i .. $]);
+            res ~= v.value;
+        }
+        return res;
+    }
+
+    string toString() const pure /*nothrow*/ {
+        return format("(%(%02X:%))", this.toVLQ);
+    }
+}
+
+
+void main() { // VLQ demo code.
+    VLQ a = VLQ(0x7f),
+        b = VLQ(0x4000),
+        c;
+    writefln("a:%8x = %s\nb:%8x = %s\nc:%8x = %s",
+             a.value, a, b.value, b, c.value, c);
+
+    // Some operations.
+    c = (a + 1) * b;
+    a = c - 1;
+    b = VLQ().from(a.toVLQ);
+    a <<= 1;
+
+    // Convert ulong to octet sequence.
+    writefln("\na:%8x = %s\nb:%8x = %s\nc:%8x = %s",
+             a.value, a, b.value, b, c.value, c);
+
+    // Write them to a binary file.
+    std.file.write("vlqtest.bin", a.toVLQ ~ b.toVLQ ~ c.toVLQ);
+
+    // Read them back.
+    const buf = cast(ubyte[])std.file.read("vlqtest.bin");
+    writefln("\nFile length: %d bytes.", buf.length);
+
+    // Convert octet sequence to ulongs.
+    foreach (immutable i, immutable v; VLQ.split(buf))
+        writefln("%d:%8x = %s", i + 1, v, VLQ(v));
+}
+```
+
+{{out}}
+
+```txt
+a:      7f = (7F)
+b:    4000 = (81:80:00)
+c:       0 = (00)
+
+a:  3ffffe = (81:FF:FF:7E)
+b:  1fffff = (FF:FF:7F)
+c:  200000 = (81:80:80:00)
+
+File length: 11 bytes.
+1:  3ffffe = (81:FF:FF:7E)
+2:  1fffff = (FF:FF:7F)
+3:  200000 = (81:80:80:00)
+```
+
+
+
+## Erlang
+
+This is built in.
+
+```txt
+
+7> binary:encode_unsigned(2097152).
+<<32,0,0>>
+8> binary:decode_unsigned(<<32,0,0>>).
+2097152
+13> binary:encode_unsigned(16#1fffff).
+<<31,255,255>>
+14> binary:decode_unsigned(<<31,255,255>>).
+2097151
+
+```
+
+
+
+## Euphoria
+
+
+```euphoria
+function vlq_encode(integer n)
+    sequence s
+    s = {}
+    while n > 0 do
+        s = prepend(s, #80 * (length(s) > 0) + and_bits(n, #7F))
+        n = floor(n / #80)
+    end while
+    if length(s) = 0 then
+        s = {0}
+    end if
+    return s
+end function
+
+function vlq_decode(sequence s)
+    integer n
+    n = 0
+    for i = 1 to length(s) do
+        n *= #80
+        n += and_bits(s[i], #7F)
+        if not and_bits(s[i], #80) then
+            exit
+        end if
+    end for
+    return n
+end function
+
+function svlg(sequence s)
+    sequence out
+    out = ""
+    for i = 1 to length(s) do
+        out &= sprintf("#%02x:", {s[i]})
+    end for
+    return out[1..$-1]
+end function
+
+constant testNumbers = { #200000, #1FFFFF, 1, 127, 128 }
+sequence s
+for i = 1 to length(testNumbers) do
+    s = vlq_encode(testNumbers[i])
+    printf(1, "#%02x -> %s -> #%02x\n", {testNumbers[i], svlg(s), vlq_decode(s)})
+end for
+```
+
+
+Output:
+
+```txt
+#200000 -> #81:#80:#80:#00 -> #200000
+#1FFFFF -> #FF:#FF:#7F -> #1FFFFF
+#01 -> #01 -> #01
+#7F -> #7F -> #7F
+#80 -> #81:#00 -> #80
+
+```
+
+
+## Go
+
+Go has an implementation of variable length quantities in the standard library.
+
+```go
+package main
+
+import (
+    "fmt"
+    "encoding/binary"
+)
+
+func main() {
+    buf := make([]byte, binary.MaxVarintLen64)
+    for _, x := range []int64{0x200000, 0x1fffff} {
+        v := buf[:binary.PutVarint(buf, x)]
+        fmt.Printf("%d encodes into %d bytes: %x\n", x, len(v), v)
+        x, _ = binary.Varint(v)
+        fmt.Println(x, "decoded")
+    }
+}
+```
+
+Output required by task:
+
+```txt
+
+2097152 encodes into 4 bytes: 80808002
+2097152 decoded
+2097151 encodes into 4 bytes: feffff01
+2097151 decoded
+
+```
+
+More output showing negative numbers, the roll over from one byte to two, and larger numbers of different lengths:
+
+```txt
+
+0 encodes into 1 bytes: 00
+0 decoded
+1 encodes into 1 bytes: 02
+1 decoded
+2 encodes into 1 bytes: 04
+2 decoded
+-1 encodes into 1 bytes: 01
+-1 decoded
+-2 encodes into 1 bytes: 03
+-2 decoded
+63 encodes into 1 bytes: 7e
+63 decoded
+64 encodes into 2 bytes: 8001
+64 decoded
+589723405834 encodes into 6 bytes: 94b888e4a922
+589723405834 decoded
+3679899543542109203 encodes into 9 bytes: a6d098dfe9c8d09166
+3679899543542109203 decoded
+
+```
+
+
+
+## Groovy
+
+Solution:
+
+```groovy
+final RADIX = 7
+final MASK = 2**RADIX - 1
+ 
+def octetify = { n ->
+    def octets = []
+    for (def i = n; i != 0; i >>>= RADIX) {
+        octets << ((byte)((i & MASK) + (octets.empty ? 0 : MASK + 1)))
+    }
+    octets.reverse()
+}
+ 
+def deoctetify = { octets ->
+    octets.inject(0) { long n, octet ->
+        (n << RADIX) + ((int)(octet) & MASK)
+    }
+}
+```
+
+
+Test (samples borrowed from [[Java]] example):
+
+```groovy
+def testNumbers = [ 0x200000, 0x1fffff, 1, 127, 128, 589723405834L ]
+ 
+testNumbers.each { a ->
+    def octets = octetify(a)
+    octets.each { printf "0x%02x ", it }; println ()
+    def a1 = deoctetify(octets)
+    assert a1 == a
+}
+```
+
+
+Output:
+
+```txt
+0x81 0x80 0x80 0x00 
+0xff 0xff 0x7f 
+0x01 
+0x7f 
+0x81 0x00 
+0x91 0x94 0xf2 0x84 0x9c 0x0a
+```
+
+
+
+## Haskell
+
+
+
+```Haskell
+import Numeric (readOct, showOct)
+import Data.List (intercalate)
+
+to :: Int -> String
+to = flip showOct ""
+
+from :: String -> Int
+from = fst . head . readOct
+
+main :: IO ()
+main =
+  mapM_
+    (putStrLn .
+     intercalate " <-> " . (pure (:) <*> to <*> (return . show . from . to)))
+    [2097152, 2097151]
+```
+
+
+Homemade Version:
+
+
+```Haskell
+import Data.List (intercalate)
+
+base :: Int
+base = 8
+
+to :: Int -> [Int]
+to 0 = []
+to i = to (div i base) ++ [mod i base]
+
+from :: [Int] -> Int
+from = foldl1 ((+) . (base *))
+
+main :: IO ()
+main =
+  mapM_
+    (putStrLn .
+     intercalate " <-> " .
+     (((:) . concatMap show . to) <*> (return . show . from . to)))
+    [2097152, 2097151]
+```
+
+{{out}}
+
+```txt
+10000000 <-> 2097152
+7777777 <-> 2097151
+```
+
+
+=={{header|Icon}} and {{header|Unicon}}==
+
+```Icon
+procedure main()
+every i := 2097152 | 2097151 | 1 | 127 | 128 | 589723405834 | 165 | 256 do 
+   write(image(i)," = ",string2hex(v := uint2vlq(i))," = ",vlq2uint(v))
+end
+
+procedure vlq2uint(s)    #: decode a variable length quantity 
+   if *s > 0 then {
+      i := 0
+      s ? while h := ord(move(1)) do {
+         if (pos(0) & h > 128) | (not pos(0) & h < 128) then fail
+         i := 128 * i + h % 128
+         }
+      return i
+      }
+end
+
+procedure uint2vlq(i,c)  #: encode a whole number as a variable length quantity
+   if "integer" == type(-1 < i) then 
+      return if i = 0 then 
+         char((/c := 0)) | ""
+      else          
+         uint2vlq(i/128,1) || char((i % 128) + ((/c := 0) | 128) )
+end
+
+procedure string2hex(s)  #: convert a string to hex
+   h := ""
+   every i := ord(!s) do 
+      h ||:= "0123456789abcdef"[i/16+1] || "0123456789abcdef"[i%16+1]
+   return h
+end
+```
+
+
+Output:
+```txt
+2097152 = 81808000 = 2097152
+2097151 = ffff7f = 2097151
+1 = 01 = 1
+127 = 7f = 127
+128 = 8100 = 128
+589723405834 = 9194f2849c0a = 589723405834
+165 = 8125 = 165
+256 = 8200 = 256
+```
+
+
+
+## J
+
+
+
+```j
+N=: 128x
+v2i=: (N&| N&#./.~ [: +/\ _1 |. N&>)@i.~&a.
+i2v=: a. {~ [:;}.@(N+//.@,:N&#.inv)&.>
+ifv=: v2i :. i2v
+vfi=: i2v :. v2i
+```
+
+
+<code>ifv</code> is an invertible function which gets an (unsigned, arbitrary precision) integer sequence from a variable-length quantity sequence.  <code>vfi</code> is an invertable function which gets a variable-length quantity sequence from an unsigned integer sequence.  <code>av</code> displays character code numbers corresponding to the characters in its argument.
+
+Example use:
+
+
+```j
+   require'convert' 
+   numbers=: 16b7f 16b4000 0 16b3ffffe 16b1fffff 200000
+   av vlq=: vfi numbers
+127 129 128 0 0 129 255 255 126 255 255 127 140 154 64
+   av (vfi 1 2 3 4 5 6) +&.ifv vlq
+129 0 129 128 2 3 130 128 128 2 129 128 128 4 140 154 70
+```
+
+
+
+## Java
+
+
+
+```java
+public class VLQCode
+{
+  public static byte[] encode(long n)
+  {
+    int numRelevantBits = 64 - Long.numberOfLeadingZeros(n);
+    int numBytes = (numRelevantBits + 6) / 7;
+    if (numBytes == 0)
+      numBytes = 1;
+    byte[] output = new byte[numBytes];
+    for (int i = numBytes - 1; i >= 0; i--)
+    {
+      int curByte = (int)(n & 0x7F);
+      if (i != (numBytes - 1))
+        curByte |= 0x80;
+      output[i] = (byte)curByte;
+      n >>>= 7;
+    }
+    return output;
+  }
+  
+  public static long decode(byte[] b)
+  {
+    long n = 0;
+    for (int i = 0; i < b.length; i++)
+    {
+      int curByte = b[i] & 0xFF;
+      n = (n << 7) | (curByte & 0x7F);
+      if ((curByte & 0x80) == 0)
+        break;
+    }
+    return n;
+  }
+  
+  public static String byteArrayToString(byte[] b)
+  {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < b.length; i++)
+    {
+      if (i > 0)
+        sb.append(", ");
+      String s = Integer.toHexString(b[i] & 0xFF);
+      if (s.length() < 2)
+        s = "0" + s;
+      sb.append(s);
+    }
+    return sb.toString();
+  }
+  
+  public static void main(String[] args)
+  {
+    long[] testNumbers = { 2097152, 2097151, 1, 127, 128, 589723405834L };
+    for (long n : testNumbers)
+    {
+      byte[] encoded = encode(n);
+      long decoded = decode(encoded);
+      System.out.println("Original input=" + n + ", encoded = [" + byteArrayToString(encoded) + "], decoded=" + decoded + ", " + ((n == decoded) ? "OK" : "FAIL"));
+    }
+  }
+}
+
+```
+
+
+Output:
+
+```txt
+Original input=2097152, encoded = [81, 80, 80, 00], decoded=2097152, OK
+Original input=2097151, encoded = [ff, ff, 7f], decoded=2097151, OK
+Original input=1, encoded = [01], decoded=1, OK
+Original input=127, encoded = [7f], decoded=127, OK
+Original input=128, encoded = [81, 00], decoded=128, OK
+Original input=589723405834, encoded = [91, 94, f2, 84, 9c, 0a], decoded=589723405834, OK
+```
+
+
+
+## Julia
+
+
+```julia
+mutable struct VLQ
+    quant::Vector{UInt8}
+end
+
+function VLQ(n::T) where T <: Integer
+    quant = UInt8.(digits(n, 128))
+    @inbounds for i in 2:length(quant) quant[i] |= 0x80 end
+    VLQ(reverse(quant))
+end
+
+import Base.UInt64
+function Base.UInt64(vlq::VLQ)
+    quant = reverse(vlq.quant)
+    n = shift!(quant)
+    p = one(UInt64)
+    for i in quant
+        p *= 0x80
+        n += p * ( i & 0x7f)
+    end
+    return n
+end
+
+const test = [0x00200000, 0x001fffff, 0x00000000, 0x0000007f,
+              0x00000080, 0x00002000, 0x00003fff, 0x00004000,
+              0x08000000, 0x0fffffff]
+
+for i in test
+    vlq = VLQ(i)
+    j = UInt(vlq)
+    @printf "0x%-8x => [%-25s] => 0x%x\n" i join(("0x" * hex(r, 2) for r in vlq.quant), ", ") j
+end
+```
+
+
+{{out}}
+
+```txt
+0x200000   => [0x81, 0x80, 0x80, 0x00   ] => 0x200000
+0x1fffff   => [0xff, 0xff, 0x7f         ] => 0x1fffff
+0x0        => [0x00                     ] => 0x0
+0x7f       => [0x7f                     ] => 0x7f
+0x80       => [0x81, 0x00               ] => 0x80
+0x2000     => [0xc0, 0x00               ] => 0x2000
+0x3fff     => [0xff, 0x7f               ] => 0x3fff
+0x4000     => [0x81, 0x80, 0x00         ] => 0x4000
+0x8000000  => [0xc0, 0x80, 0x80, 0x00   ] => 0x8000000
+0xfffffff  => [0xff, 0xff, 0xff, 0x7f   ] => 0xfffffff
+```
+
+
+
+## Kotlin
+
+
+```scala
+// version 1.0.6
+
+fun Int.toOctets(): ByteArray {
+    var s = Integer.toBinaryString(this)
+    val r = s.length % 7
+    var z = s.length / 7
+    if (r > 0) {
+        z++
+        s = s.padStart(z * 7, '0')
+    }
+    s = Array(z) { "1" + s.slice(it * 7 until (it + 1) * 7) }.joinToString("")
+    s = s.take(s.length - 8) + "0" + s.takeLast(7)
+    return ByteArray(z) { Integer.parseInt(s.slice(it * 8 until (it + 1) * 8), 2).toByte() }
+}
+
+fun ByteArray.fromOctets(): Int {
+    var s = ""
+    for (b in this) s += Integer.toBinaryString(b.toInt()).padStart(7, '0').takeLast(7)
+    return Integer.parseInt(s, 2)
+}
+
+fun main(args: Array<String>) {
+    val tests = intArrayOf(0x7f, 0x3fff, 0x200000, 0x1fffff)
+    for (test in tests) {
+        val ba = test.toOctets()
+        print("${"0x%x".format(test).padEnd(8)} -> ")
+        var s = ""
+        ba.forEach { s += "0x%02x ".format(it) }
+        println("${s.padEnd(20)} <- ${"0x%x".format(ba.fromOctets())}")
+    }
+}
+```
+
+
+{{out}}
+
+```txt
+
+0x7f     -> 0x7f                 <- 0x7f
+0x3fff   -> 0xff 0x7f            <- 0x3fff
+0x200000 -> 0x81 0x80 0x80 0x00  <- 0x200000
+0x1fffff -> 0xff 0xff 0x7f       <- 0x1fffff
+
+```
+
+
+
+## LiveCode
+
+
+This task was completed a different (and better) way a long time ago in UDI's PMD/MakeSMF Lib for LiveCode (back when it was MetaCard).
+Here is my own (and probably slower) version.
+-- Paul McClernan
+
+
+```LiveCode
+
+on DecToVLQ
+   Ask "Enter base 10 value:" -- input dialog box
+   if it is not empty then
+      if it is a number then
+         put it into theString
+         if isWholeNumString(theString) is false then -- I think there is built in equivalent for this but I rolled my own!
+            answer "Only Whole Decimal Numbers Are Allowed!"
+            exit DecToVLQ
+         end if
+         if theString>4294967295 then
+            answer "This function fails with whole numbers over 4294967295!"&cr\
+            & "4294967295 is the maximum allowed value for 32bits (4 bytes)" 
+            exit DecToVLQ
+         end if
+         if theString>268435455 then
+            answer "This function is not accurate with whole numbers over 268435455!"&cr\
+            & "268435455 is the maximum allowed value for 28bit (7bits per byte) MIDI delta-time VLQ" 
+         end if
+         put "Original Whole Number="& theString & cr & \
+               "Original Whole Number in Hex="& baseConvert(theString,10,16) & cr & \ --- LC's built in baseConvert function 
+               "Variable Length Quantity in Hex=" & wholeNumToVLQ(theString) into fld "Output"
+      else
+         answer "Only Whole Decimal Numbers Are Allowed!"
+      end if
+   end if
+end DecToVLQ
+
+function wholeNumToVLQ theWholeNum
+   -- baseConvert(number,originalBase,destinationBase) -- there is also bitwise operations in LC but I took the long road
+   if theWholeNum < 127 then -- if it fits into a single 7bit byte value and theres no need to process it
+      put baseConvert(theWholeNum,10,16) into VQLinHex
+      if the number of chars in VQLinHex=1 then put "0" before VQLinHex
+      return VQLinHex
+      exit wholeNumToVLQ
+   end if
+   put baseConvert(theWholeNum,10,2) into theBits
+   put number of chars in theBits into x
+   put 0 into bitCounter
+   put empty into the7bitBytes
+   repeat
+      if char x of theBits is not empty then 
+         put char x theBits before the7bitBytes
+         delete char x of theBits
+         if theBits is empty then exit repeat
+         put number of chars in theBits into x
+         add 1 to bitCounter
+         if bitCounter=7 then
+            put "," before the7bitBytes
+            put 0 into bitCounter
+            next repeat
+         end if
+      else
+         exit repeat
+      end if
+   end repeat
+   get the number of chars in item 1 of the7bitBytes
+   if it<7 then
+      put 7 - it into x
+      repeat x
+         put "0" before item 1 of the7bitBytes
+      end repeat
+   end if
+   put the number of items in the7bitBytes into y
+   repeat with x = 1 to y
+      if x is not y then 
+         put "1" before item x of the7bitBytes
+      else 
+         put "0" before item x of the7bitBytes
+      end if
+      put baseConvert(item x of the7bitBytes,2,16) into item x of the7bitBytes
+      if the number of chars in item x of the7bitBytes<2 then put "0" before item x of the7bitBytes
+      put item x of the7bitBytes after VQLinHex
+   end repeat
+   return VQLinHex
+end wholeNumToVLQ
+
+function isWholeNumString theString
+   put the number of chars in theString into y
+   repeat with x = 1 to y
+      if char x of theString is not in "0123456789" then
+         return false 
+         exit isWholeNumString
+      end if
+   end repeat
+   return true 
+end isWholeNumString
+
+```
+
+
+{{out}}
+
+```txt
+
+Original Whole Number=2097152
+Original Whole Number in Hex=200000
+Variable Length Quantity in Hex=81808000
+
+```
+
+
+Convert back:
+
+
+```LiveCode
+
+function VLQtoWholeNum theHexVLQ
+   -- The number must be an integer between zero and 4,294,967,295
+   put baseConvert(theHexVLQ,16,2) into theBits
+   put 0 into bitCounter
+   put empty into the8bitBytes
+   repeat
+      if char 1 of theBits is not empty then 
+         put char 1 theBits after the8bitBytes
+         delete char 1 of theBits
+         if theBits is empty then exit repeat
+         add 1 to bitCounter
+         if bitCounter=8 then
+            put "," after the8bitBytes
+            put 0 into bitCounter
+            next repeat
+         end if
+      else
+         exit repeat
+      end if
+   end repeat
+   put the number of items in the8bitBytes into y
+   repeat with x = 1 to y
+      put char 1 of item x of the8bitBytes into lengthCntrlBit
+      delete char 1 of item x of the8bitBytes
+      if the number of chars in item x of the8bitBytes < 7 then 
+         repeat 7 - (the number of chars in item x of the8bitBytes)
+            put "0" before item x of the8bitBytes
+         end repeat
+      end if
+      put item x of the8bitBytes after WholeNumInBinary
+      switch lengthCntrlBit
+         case "1"
+            next repeat
+            break
+         case "0"
+            exit repeat
+            break
+      end switch
+   end repeat
+   return baseConvert(WholeNumInBinary,2,10)
+end VLQtoWholeNum
+
+function isHexString theString
+   ---again there is probably an easier way to do this:
+   if char 1 to 2 of theString is "0x" then delete char 1 to 2 of theString
+   put the number of chars in theString into y
+   repeat with x = 1 to y
+      if char x of theString is not in "abcdefABCDEF0123456789" then
+         return false 
+      end if
+   end repeat
+end isHexString
+
+on VLQHexToWholeNum
+   Ask "Enter Variable Length Quantity Hex Value:" -- input dialog
+   if it is not empty then
+      if char 1 to 2 of it is "0x" then delete char 1 to 2 of it
+      put it into hexString
+      if isHexString(hexString) is false then 
+         answer "Only Valid Hex Digits Are Allowed!"
+         exit VLQHexToWholeNum
+      else
+         put "Original Variable Length Quantity in Hex="& hexString & cr & \
+               "Whole Number=" & VLQtoWholeNum(hexString) into fld "Output"
+      end if
+   end if
+end VLQHexToWholeNum
+
+```
+
+
+{{out}}
+
+```txt
+
+Original Variable Length Quantity in Hex=FFFF7F
+Whole Number=2097151
+
+```
+
+
+
+## Mathematica
+
+
+```Mathematica
+toOctets[n_Integer] := 
+ StringJoin @@@ 
+  Partition[
+   PadLeft[Characters@IntegerString[n, 16], 
+    2 Ceiling[Plus @@ DigitCount[n, 16]/2], {"0"}], 2]
+
+fromOctets[octets_List] := FromDigits[StringJoin @@ octets, 16]
+    
+Grid[{#, toOctets@#, fromOctets[toOctets@#]} & /@ {16^^3ffffe, 
+   16^^1fffff, 16^^200000}]
+```
+
+{{out}}
+```txt
+
+4194302	{3f,ff,fe}	4194302
+2097151	{1f,ff,ff}	2097151
+2097152	{20,00,00}	2097152
+
+```
+
+
+
+## Nim
+
+
+```nim
+import unsigned, strutils
+
+proc toSeq(x: uint64): seq[uint8] =
+  var x = x
+  result = @[]
+  var f = 0
+  for i in countdown(9, 1):
+    if (x and (127'u64 shl uint((i * 7)))) > 0'u64:
+      f = i
+      break
+  for j in 0..f:
+    result.add(uint8((x shr uint64((f - j) * 7)) and 127) or 128)
+
+  result[f] = result[f] xor 128'u8
+
+proc fromSeq(xs): uint64 =
+  result = 0
+  for x in xs:
+    result = (result shl 7) or (x and 127)
+
+for x in [0x7f'u64, 0x4000'u64, 0'u64, 0x3ffffe'u64, 0x1fffff'u64,
+          0x200000'u64, 0x3311a1234df31413'u64]:
+  let c = toSeq(x)
+  echo "seq from $#: $# back: $#".format(x, c, fromSeq(c))
+```
+
+Output:
+
+```txt
+seq from 127: @[127] back: 127
+seq from 16384: @[129, 128, 0] back: 16384
+seq from 0: @[0] back: 0
+seq from 4194302: @[129, 255, 255, 126] back: 4194302
+seq from 2097151: @[255, 255, 127] back: 2097151
+seq from 2097152: @[129, 128, 128, 0] back: 2097152
+seq from 3679899543542109203: @[179, 136, 232, 164, 180, 239, 204, 168, 19] back: 3679899543542109203
+```
+
+
+
+## OCaml
+
+
+```ocaml
+let to_vlq n =
+  let a, b = n lsr 7, n land 0x7F in
+  let rec aux n acc =
+    let x = (n land 0x7F) lor 0x80
+    and xs = n lsr 7 in
+    if xs > 0
+    then aux xs (x::acc)
+    else x::acc
+  in
+  aux a [b]
+ 
+let to_num = List.fold_left (fun n x -> n lsl 7 + (x land 0x7F)) 0
+ 
+let v_rep n =
+  Printf.printf "%d ->" n;
+  let seq = to_vlq n in
+  List.iter (Printf.printf " 0x%02X") seq;
+  let num = to_num seq in
+  Printf.printf "-> %d\n%!" num;
+  assert (n = num)
+ 
+let _ =
+  v_rep 0x200000;
+  v_rep 0x1FFFFF
+
+```
+
+
+Outputs:
+
+
+```txt
+$ ocaml variable_length.ml
+2097152 -> 0x81 0x80 0x80 0x00 -> 2097152
+2097151 -> 0xFF 0xFF 0x7F -> 2097151
+```
+
+
+
+## PARI/GP
+
+
+```parigp
+hex(s)=my(a=10,b=11,c=12,d=13,e=14,f=15);subst(Pol(eval(Vec(s))),'x,16);
+n1=hex("200000");n2=hex("1fffff");
+v1=digits(n1,256)
+v2=digits(n2,256)
+subst(Pol(v1),'x,256)==n1
+subst(Pol(v2),'x,256)==n2
+```
+
+{{out}}
+
+```txt
+%1 = [32, 0, 0]
+%2 = [31, 255, 255]
+%3 = 1
+%4 = 1
+```
+
+
+
+## Perl
+
+The vlg_encode sub returns an array of octets in most -> least significant order. Simply reverse the array to reverse the order.
+
+
+```perl
+
+use warnings;
+use strict;
+
+for my $testcase (
+    0,   0xa,   123,   254,   255,   256,
+    257, 65534, 65535, 65536, 65537, 0x1fffff,
+    0x200000
+  )
+{
+    my @vlq = vlq_encode($testcase);
+    printf "%8s %12s %8s\n", $testcase, ( join ':', @vlq ), vlq_decode(@vlq);
+}
+
+sub vlq_encode {
+    my @vlq;
+    my $binary = sprintf "%s%b", 0 x 7, shift;
+    $binary =~ s/(.{7})$//;
+    @vlq = ( unpack 'H2', ( pack 'B8', '0' . $1 ) );
+    while ( 0 + $binary ) {
+        $binary =~ s/(.{7})$//;
+        unshift @vlq, ( unpack 'H2', pack 'B8', '1' . $1 );
+    }
+    return @vlq;
+}
+
+sub vlq_decode {
+    my $num;
+    $num .= sprintf "%07b", hex(shift @_) & 0x7f while @_;
+    return oct '0b' . $num;
+}
+
+```
+
+
+Output:
+
+
+```txt
+
+       0           00        0
+      10           0a       10
+     123           7b      123
+     254        81:7e      254
+     255        81:7f      255
+     256        82:00      256
+     257        82:01      257
+   65534     83:ff:7e    65534
+   65535     83:ff:7f    65535
+   65536     84:80:00    65536
+   65537     84:80:01    65537
+ 2097151     ff:ff:7f  2097151
+ 2097152  81:80:80:00  2097152
+
+```
+
+
+
+## Perl 6
+
+vlq_encode() returns a string of characters whose ordinals are the encoded octets. vlq_decode() takes a string and returns a decimal number.
+
+```perl6
+sub vlq_encode ($number is copy) {
+    my $string = '';
+    my $t = 0x7F +& $number;
+    $number +>= 7;
+    $string = $t.chr ~ $string;
+    while ($number) {
+       $t = 0x7F +& $number;
+       $string = (0x80 +| $t).chr ~ $string;
+       $number +>= 7; 
+    }
+    return $string;
+}
+
+sub vlq_decode ($string is copy) {
+    my $number = '0b';
+    for $string.ords -> $oct {
+        $number ~= ($oct +& 0x7F).fmt("%07b");
+    }
+    return :2($number);
+}
+
+#test encoding and decoding
+for (
+    0,   0xa,   123,   254,   255,   256,
+    257, 65534, 65535, 65536, 65537, 0x1fffff,
+    0x200000
+ ) -> $testcase {
+    my $encoded = vlq_encode($testcase);
+    printf "%8s %12s %8s\n", $testcase,
+      ( join ':', $encoded.ords>>.fmt("%02X") ),
+      vlq_decode($encoded);
+}
+```
+
+
+Output:
+
+```txt
+
+       0           00        0
+      10           0A       10
+     123           7B      123
+     254        81:7E      254
+     255        81:7F      255
+     256        82:00      256
+     257        82:01      257
+   65534     83:FF:7E    65534
+   65535     83:FF:7F    65535
+   65536     84:80:00    65536
+   65537     84:80:01    65537
+ 2097151     FF:FF:7F  2097151
+ 2097152  81:80:80:00  2097152
+
+```
+
+
+
+## Phix
+
+Copy of [[Variable-length_quantity#Euphoria|Euphoria]], modified to pack several numbers into a single stream. Also added an explicit check that (as per wp) only unsigned numbers are attempted.
+
+```Phix
+function vlq_encode(sequence s)
+sequence res = {}
+integer n, msb
+    for i=length(s) to 1 by -1 do
+        n = s[i]
+        if n<0 then crash("unsigned integers only!") end if
+        msb = 0
+        while 1 do
+            res = prepend(res,msb+and_bits(n,#7F))
+            n = floor(n/#80)
+            if n=0 then exit end if
+            msb = #80
+        end while
+    end for
+    return res
+end function
+ 
+function vlq_decode(sequence s)
+sequence res = {}
+integer n = 0, byte
+    for i=1 to length(s) do
+        byte = s[i]
+        n = n*#80+and_bits(byte,#7F)
+        if not and_bits(byte,#80) then
+            res = append(res,n)
+            n = 0
+        end if
+    end for
+    return res
+end function
+ 
+function svlg(sequence s)
+string res = ""
+    for i=1 to length(s) do
+        res &= sprintf("#%02x:",{s[i]})
+    end for
+    return res[1..$-1]
+end function
+ 
+constant testNumbers = { #200000, #1FFFFF, 1, 127, 128 }
+sequence s = vlq_encode(testNumbers)
+sequence decoded = vlq_decode(s)
+printf(1,"%s -> %s -> %s\n",{svlg(testNumbers),svlg(s),svlg(decoded)})
+if decoded!=testNumbers then crash("something wrong") end if
+```
+
+{{out}}
+
+```txt
+
+#200000:#1FFFFF:#01:#7F:#80 -> #81:#80:#80:#00:#FF:#FF:#7F:#01:#7F:#81:#00 -> #200000:#1FFFFF:#01:#7F:#80
+
+```
+
+
+
+## PicoLisp
+
+
+```PicoLisp
+(de numToVlq (Num)
+   (let Res (cons (& Num 127))
+      (while (gt0 (setq Num (>> 7 Num)))
+         (push 'Res (| 128 (& Num 127))) )
+      Res ) )
+
+(de vlqToNum (Vlq)
+   (let Res 0
+      (for N Vlq
+         (setq Res (| (>> -7 Res) (& N 127))) ) ) )
+
+(for Num (0 15 16 127 128 255 2097151 2097152)
+   (let Vlq (numToVlq Num)
+      (tab (12 12 12) Num (glue ":" (mapcar hex Vlq)) (vlqToNum Vlq)) ) )
+```
+
+Output:
+
+```txt
+           0           0           0
+          15           F          15
+          16          10          16
+         127          7F         127
+         128        81:0         128
+         255       81:7F         255
+     2097151    FF:FF:7F     2097151
+     2097152  81:80:80:0     2097152
+```
+
+
+
+## PL/I
+
+
+```PL/I
+
+test: procedure options(main);
+   declare s character (20) varying;
+   declare c character (1);
+   declare v fixed binary (31);
+   declare (i, k) fixed binary;
+
+   get edit (s) (L);
+   s = trim (s);
+   v = 0;
+   do i = 1 to length(s);
+      c = substr(s, i, 1);
+      k = index('0123456789abcdef', c);
+      if k > 0 then v = v*16 + k - 1;
+   end;
+   put skip data (s, v);
+
+   /* Convert back to hex */
+   declare hex character(16) initial ('0123456789abcdef');
+   declare hs character (20) initial ('');
+   declare d fixed binary;
+
+   do i = length(hs) to 1 by -1 until (v = 0);
+      d = mod(v, 16) + 1;
+      substr(hs, i, 1) = substr(hex, d, 1);
+      v = v/16;
+   end;
+   put skip list (hs);
+end test;
+
+```
+
+OUTPUT:
+
+```txt
+
+S='200000'              V=       2097152;
+              200000 
+S='1fffff'              V=       2097151;
+              1fffff 
+
+```
+
+
+
+## Python
+
+The vlq format is computed in a form for printing. This could easily be changed to a series of 8 bit ASCII chars whose integer value corresponds to the vlq for saving or transmission.
+
+When transmitting the Vlq, octets are sent from the rightmost of the Vlq first.
+
+
+```python
+def tobits(n, _group=8, _sep='_', _pad=False):
+    'Express n as binary bits with separator'
+    bits = '{0:b}'.format(n)[::-1]
+    if _pad:
+        bits = '{0:0{1}b}'.format(n,
+                                  ((_group+len(bits)-1)//_group)*_group)[::-1]
+        answer = _sep.join(bits[i:i+_group]
+                                 for i in range(0, len(bits), _group))[::-1]
+        answer = '0'*(len(_sep)-1) + answer
+    else:
+        answer = _sep.join(bits[i:i+_group]
+                           for i in range(0, len(bits), _group))[::-1]
+    return answer
+
+def tovlq(n):
+    return tobits(n, _group=7, _sep='1_', _pad=True)
+
+def toint(vlq):
+    return int(''.join(vlq.split('_1')), 2)    
+
+def vlqsend(vlq):
+    for i, byte in enumerate(vlq.split('_')[::-1]):
+        print('Sent byte {0:3}: {1:#04x}'.format(i, int(byte,2)))
+```
+
+
+
+'''Sample Output'''
+The underscore separates groups of eight bits (octets), for readability
+
+```python>>>
+ for n in (254, 255, 256, 257, -2+(1<<16), -1+(1<<16), 1<<16, 1+(1<<16), 0x200000, 0x1fffff ):
+    print('int: %7i bin: %26s vlq: %35s vlq->int: %7i' % (n, tobits(n,_pad=True), tovlq(n), toint(tovlq(n))))
+
+    
+int:     254 bin:                   11111110 vlq:                   00000001_11111110 vlq->int:     254
+int:     255 bin:                   11111111 vlq:                   00000001_11111111 vlq->int:     255
+int:     256 bin:          00000001_00000000 vlq:                   00000010_10000000 vlq->int:     256
+int:     257 bin:          00000001_00000001 vlq:                   00000010_10000001 vlq->int:     257
+int:   65534 bin:          11111111_11111110 vlq:          00000011_11111111_11111110 vlq->int:   65534
+int:   65535 bin:          11111111_11111111 vlq:          00000011_11111111_11111111 vlq->int:   65535
+int:   65536 bin: 00000001_00000000_00000000 vlq:          00000100_10000000_10000000 vlq->int:   65536
+int:   65537 bin: 00000001_00000000_00000001 vlq:          00000100_10000000_10000001 vlq->int:   65537
+int: 2097152 bin: 00100000_00000000_00000000 vlq: 00000001_10000000_10000000_10000000 vlq->int: 2097152
+int: 2097151 bin: 00011111_11111111_11111111 vlq:          01111111_11111111_11111111 vlq->int: 2097151
+>>> vlqsend(tovlq(0x200000))
+Sent byte   0: 0x80
+Sent byte   1: 0x80
+Sent byte   2: 0x80
+Sent byte   3: 0x01
+>>> vlqsend(tovlq(0x1fffff))
+Sent byte   0: 0xff
+Sent byte   1: 0xff
+Sent byte   2: 0x7f
+>>> 
+```
+
+
+
+
+## Racket
+
+
+
+```Racket
+
+#lang racket
+
+(define (try n)
+  (printf "Original number: ~s (0x~x)\n" n n)
+  (define 4octets (integer->integer-bytes n 4 #f))
+  (printf "Octets: ~a (byte-string: ~s)\n"
+          (string-join (map (λ(o) (~r o #:base 16))
+                            (bytes->list 4octets))
+                       ":")
+          4octets)
+  (define m (integer-bytes->integer 4octets #f))
+  (printf "Back to a number: ~s (~a)\n"
+          m (if (= m n) "OK" "BAD")))
+
+(for-each try '(#x200000 #x1fffff))
+
+```
+
+
+Output:
+
+```txt
+
+Original number: 2097152 (0x200000)
+Octets: 0:0:20:0 (byte-string: #"\0\0 \0")
+Back to a number: 2097152 (OK)
+Original number: 2097151 (0x1fffff)
+Octets: ff:ff:1f:0 (byte-string: #"\377\377\37\0")
+Back to a number: 2097151 (OK)
+
+```
+
+
+
+## REXX
+
+
+```rexx
+/*REXX program displays  (and also tests/verifies)  some numbers as  octets.            */
+nums = x2d(200000)     x2d(1fffff)       2097172      2097151
+#=words(nums)
+say '  number       hex       octet    original'
+say '══════════ ══════════ ══════════ ══════════'
+ok=1
+     do j=1  for #;      @.j= word(nums,j)
+                      onum.j=octet(@.j)
+                      orig.j=  x2d( space(onum.j, 0) )
+     w=10
+     say center(@.j, w)     center(d2x(@.j), w)     center(onum.j, w)    center(orig.j, w)
+     if @.j\==orig.j  then ok=0
+     end   /*j*/
+say
+if ok  then say 'All '   #    " numbers are OK." /*all  of the numbers are   good.      */
+       else say "Some numbers are not OK."       /*some of the numbers are  ¬good.      */
+exit                                             /*stick a fork in it,  we're all done. */
+/*──────────────────────────────────────────────────────────────────────────────────────*/
+octet: procedure;  parse arg z,$                 /*obtain  Z  from the passed arguments.*/
+       x=d2x(z)                                  /*convert Z  to a hexadecimal octet.   */
+                   do j=length(x)  by -2  to 1   /*process the  "little"  end first.    */
+                   $= substr(x, j-1, 2, 0)   $   /*pad odd hexadecimal characters with  */
+                   end   /*j*/                   /*           ···  a zero on the left.  */
+       return strip($)
+```
+
+{{out|output|text=  when using the default input:}}
+
+```txt
+
+  number       hex       octet    original
+══════════ ══════════ ══════════ ══════════
+ 2097152     200000    20 00 00   2097152
+ 2097151     1FFFFF    1F FF FF   2097151
+ 2097172     200014    20 00 14   2097172
+ 2097151     1FFFFF    1F FF FF   2097151
+
+All  4  numbers are OK.
+
+```
+
+
+
+## Ruby
+
+Array#pack can encode the ''BER-compressed integer'', which is identical to the ''variable-length quantity'' from the [http://sander.vanzoest.com/talks/2002/audio_and_apache/midispec.html MIDI specification]. String#unpack can decode it.
+
+
+```ruby
+[0x200000, 0x1fffff].each do |i|
+  # Encode i => BER
+  ber = [i].pack("w")
+  hex = ber.unpack("C*").collect {|c| "%02x" % c}.join(":")
+  printf "%s => %s\n", i, hex
+
+  # Decode BER => j
+  j = ber.unpack("w").first
+  i == j or fail "BER not preserve integer"
+end
+```
+
+
+
+```txt
+2097152 => 81:80:80:00
+2097151 => ff:ff:7f
+```
+
+
+
+## Scala
+
+
+```scala
+object VlqCode {
+  def encode(x:Long)={
+    val result=scala.collection.mutable.Stack[Byte]()
+    result push (x&0x7f).toByte
+    var l = x >>> 7
+    while(l>0){
+      result push ((l&0x7f)|0x80).toByte
+      l >>>= 7
+    }
+    result.toArray
+  }
+  
+  def decode(a:Array[Byte])=a.foldLeft(0L)((r, b) => r<<7|b&0x7f)
+  
+  def toString(a:Array[Byte])=a map("%02x".format(_)) mkString("[", ", ", "]")  
+  
+  def test(x:Long)={
+    val enc=encode(x)
+    println("0x%x => %s => 0x%x".format(x, toString(enc), decode(enc)))
+  }
+  
+  def main(args: Array[String]): Unit = {
+    val xs=Seq(0, 0x7f, 0x80, 0x2000, 0x3fff, 0x4000, 0x1FFFFF, 0x200000, 0x8000000,
+               0xFFFFFFF, 0xFFFFFFFFL, 0x842FFFFFFFFL, 0x0FFFFFFFFFFFFFFFL)
+    xs foreach test
+  }
+}
+```
+
+Output:
+
+```txt
+0x0 => [00] => 0x0
+0x7f => [7f] => 0x7f
+0x80 => [81, 00] => 0x80
+0x2000 => [c0, 00] => 0x2000
+0x3fff => [ff, 7f] => 0x3fff
+0x4000 => [81, 80, 00] => 0x4000
+0x1fffff => [ff, ff, 7f] => 0x1fffff
+0x200000 => [81, 80, 80, 00] => 0x200000
+0x8000000 => [c0, 80, 80, 00] => 0x8000000
+0xfffffff => [ff, ff, ff, 7f] => 0xfffffff
+0xffffffff => [8f, ff, ff, ff, 7f] => 0xffffffff
+0x842ffffffff => [82, 88, af, ff, ff, ff, 7f] => 0x842ffffffff
+0xfffffffffffffff => [8f, ff, ff, ff, ff, ff, ff, ff, 7f] => 0xfffffffffffffff
+```
+
+
+
+## Seed7
+
+The example below uses [http://seed7.sourceforge.net/libraries/bigint.htm bigInteger] numbers,
+since variable-length quantities are able to represent integer numbers of unlimited size.
+
+```seed7
+$ include "seed7_05.s7i";
+  include "bigint.s7i";
+ 
+const func string: toSequence (in var bigInteger: number) is func
+  result
+    var string: sequence is "";
+  begin
+    sequence := str(chr(ord(number mod 128_)));
+    number >>:= 7;
+    while number <> 0_ do
+      sequence := str(chr(ord(number mod 128_) + 128)) & sequence;
+      number >>:= 7;
+    end while;
+  end func;
+
+const func bigInteger: fromSequence (in string: sequence) is func
+  result
+    var bigInteger: number is 0_;
+  local
+    var integer: index is 1;
+  begin
+    while ord(sequence[index]) >= 128 do
+      number <<:= 7;
+      number +:= bigInteger conv (ord(sequence[index]) - 128);
+      incr(index);
+    end while;
+    number <<:= 7;
+    number +:= bigInteger conv ord(sequence[index]);
+  end func;
+ 
+const proc: main is func
+  local
+    const array bigInteger: testValues is [] (
+        0_, 10_, 123_, 254_, 255_, 256_, 257_, 65534_, 65535_, 65536_, 65537_, 2097151_, 2097152_);
+    var string: sequence is "";
+    var bigInteger: testValue is 0_;
+    var char: element is ' ';
+  begin
+    for testValue range testValues do
+      sequence := toSequence(testValue);
+      write("sequence from " <& testValue <& ": [ ");
+      for element range sequence do
+        write(ord(element) radix 16 lpad0 2 <& " ");
+      end for;
+      writeln("] back: " <& fromSequence(sequence));
+    end for;
+  end func;
+```
+
+
+Output:
+
+```txt
+
+sequence from 0: [ 00 ] back: 0
+sequence from 10: [ 0a ] back: 10
+sequence from 123: [ 7b ] back: 123
+sequence from 254: [ 81 7e ] back: 254
+sequence from 255: [ 81 7f ] back: 255
+sequence from 256: [ 82 00 ] back: 256
+sequence from 257: [ 82 01 ] back: 257
+sequence from 65534: [ 83 ff 7e ] back: 65534
+sequence from 65535: [ 83 ff 7f ] back: 65535
+sequence from 65536: [ 84 80 00 ] back: 65536
+sequence from 65537: [ 84 80 01 ] back: 65537
+sequence from 2097151: [ ff ff 7f ] back: 2097151
+sequence from 2097152: [ 81 80 80 00 ] back: 2097152
+
+```
+
+
+
+## Sidef
+
+{{trans|Perl 6}}
+
+```ruby
+func vlq_encode(num) {
+    var t = (0x7F & num)
+    var str = t.chr
+    while (num >>= 7) {
+       t = (0x7F & num)
+       str += chr(0x80 | t)
+    }
+    str.reverse
+}
+
+func vlq_decode(str) {
+    var num = ''
+    str.each_byte { |b|
+        num += ('%07b' % (b & 0x7F))
+    }
+    Num(num, 2)
+}
+
+var tests = [0,   0xa,   123,   254,   255,   256,
+             257, 65534, 65535, 65536, 65537, 0x1fffff,
+             0x200000]
+
+tests.each { |t|
+    var vlq = vlq_encode(t)
+    printf("%8s %12s %8s\n", t,
+        vlq.bytes.join(':', { "%02X" % _ }), vlq_decode(vlq))
+}
+```
+
+{{out}}
+
+```txt
+
+       0           00        0
+      10           0A       10
+     123           7B      123
+     254        81:7E      254
+     255        81:7F      255
+     256        82:00      256
+     257        82:01      257
+   65534     83:FF:7E    65534
+   65535     83:FF:7F    65535
+   65536     84:80:00    65536
+   65537     84:80:01    65537
+ 2097151     FF:FF:7F  2097151
+ 2097152  81:80:80:00  2097152
+
+```
+
+
+
+## Tcl
+
+
+```tcl
+package require Tcl 8.5
+
+proc vlqEncode number {
+    if {$number < 0} {error "negative not supported"}
+    while 1 {
+	lappend digits [expr {$number & 0x7f}]
+	if {[set number [expr {$number >> 7}]] == 0} break
+    }
+    set out [format %c [lindex $digits 0]]
+    foreach digit [lrange $digits 1 end] {
+	set out [format %c%s [expr {0x80+$digit}] $out]
+    }
+    return $out
+}
+proc vlqDecode chars {
+    set n 0
+    foreach c [split $chars ""] {
+	scan $c %c c
+	set n [expr {($n<<7) | ($c&0x7f)}]
+	if {!($c&0x80)} break
+    }
+    return $n
+}
+```
+
+Demo code:
+
+```tcl
+proc numtohex {num} {
+    binary scan [string trimleft [binary format W $num] \0] H* hexEncoded
+    regsub -all "..(?=.)" $hexEncoded "&:"
+}
+proc strtohex {string} {
+    binary scan $string H* hexEncoded
+    regsub -all "..(?=.)" $hexEncoded "&:"
+}
+foreach testcase {
+    123
+    254 255 256 257
+    65534 65535 65536 65537
+    2097152 2097151
+    12345678901234566789
+} {
+    set encoded [vlqEncode $testcase]
+    binary scan $encoded H* hexEncoded
+    regsub -all {..(?=.)} $hexEncoded &: hexEncoded
+    set decoded [vlqDecode $encoded]
+    puts "$testcase ([numtohex $testcase]) ==>\
+	[strtohex $encoded] ([string length $encoded] bytes) ==>\
+	$decoded"
+}
+```
+
+Output:
+
+```txt
+
+123 (7b) ==> 7b (1 bytes) ==> 123
+254 (fe) ==> 81:7e (2 bytes) ==> 254
+255 (ff) ==> 81:7f (2 bytes) ==> 255
+256 (01:00) ==> 82:00 (2 bytes) ==> 256
+257 (01:01) ==> 82:01 (2 bytes) ==> 257
+65534 (ff:fe) ==> 83:ff:7e (3 bytes) ==> 65534
+65535 (ff:ff) ==> 83:ff:7f (3 bytes) ==> 65535
+65536 (01:00:00) ==> 84:80:00 (3 bytes) ==> 65536
+65537 (01:00:01) ==> 84:80:01 (3 bytes) ==> 65537
+2097152 (20:00:00) ==> 81:80:80:00 (4 bytes) ==> 2097152
+2097151 (1f:ff:ff) ==> ff:ff:7f (3 bytes) ==> 2097151
+12345678901234566789 (ab:54:a9:8c:eb:1f:06:85) ==> 81:ab:aa:aa:b1:ce:d8:fc:8d:05 (10 bytes) ==> 12345678901234566789
+
+```
+
+
+
+## TXR
+
+
+TXR's <code>carray</code> type, closely associated with the Foreign Function Interface, has functions for converting between integers and foreign arrays. The arrays can use any element type. The integer is stored in big endian order, and "right justified" within the buffer, so that its least significant byte is aligned with the least significant byte of the last element of the array.
+
+Two representations are supported: unsigned and signed. The unsigned representation takes only non-negative integers. It is a straightforward pure binary enumeration.   The signed representation uses twos complement. The most significant byte of the array representation is in the range 80-FF if the value is negative, otherwise in the range 0 to 7F. This means that in some cases, a zero byte has to be added.
+
+Interactive session:
+
+
+```txt
+1> (carray-num #x200000)
+#<carray 3 #<ffi-type uchar>>
+2> (carray-get *1)
+#(32 0 0)
+3> (carray-num #x1FFFFF)
+#<carray 3 #<ffi-type uchar>>
+4> (carray-get *3)
+#(31 255 255)
+5> (num-carray *1)
+2097152
+6> (num-carray *3)
+2097151
+```
+
+
+Conversion to a <code>carray</code> not based on the default <code>uchar</code>:
+
+
+```txt
+1> (carray-num #x123456789 (ffi uint32))
+#<carray 2 #<ffi-type uint32>>
+2> (carray-get *1)
+#(16777216 2305246499)
+```
+
+
+This number requires two 32-bit units to store. Because <code>uint32</code> is in the native endian, opposite to the big endian storage of the integer, the words come out byte swapped. The <code>be-uint32</code> type could be used to change this.
+
+
+## zkl
+
+{{trans|C}}
+
+```zkl
+fcn to_seq(x){ //--> list of ints
+   z:=(x.log2()/7);
+   (0).pump(z+1,List,'wrap(j){
+      x.shiftRight((z-j)*7).bitAnd(0x7f).bitOr((j!=z) and 0x80 or 0)
+   });
+}
+
+fcn from_seq(in){ in.reduce(fcn(p,n){ p.shiftLeft(7).bitOr(n.bitAnd(0x7f)) },0) }
+```
+
+
+```zkl
+ns:=T(0x7f, 0x4000, 0, 0x3ffffe, 0x1fffff, 0x200000, 0x3311a1234df31413);
+ms:=ns.apply(to_seq); 
+ns.zipWith(fcn{"%8,x --> %s --> %,x".fmt(vm.arglist.xplode()).println()},
+   ms.apply("apply","%,x".fmt),
+   ms.apply(from_seq));
+```
+
+{{out}}
+
+```txt
+
+      7f --> L("7f") --> 7f
+   40|00 --> L("81","80","0") --> 40|00
+       0 --> L("0") --> 0
+3f|ff|fe --> L("81","ff","ff","7e") --> 3f|ff|fe
+1f|ff|ff --> L("ff","ff","7f") --> 1f|ff|ff
+20|00|00 --> L("81","80","80","0") --> 20|00|00
+33|11|a1|23|4d|f3|14|13 --> L("b3","88","e8","a4","b4","ef","cc","a8","13")
+   --> 33|11|a1|23|4d|f3|14|13
+
+```
+
+Note: the strings in the output are numbers formatted to hex (ie to_seq returns a list of ints). A "|" is used between bytes for ease of reading.

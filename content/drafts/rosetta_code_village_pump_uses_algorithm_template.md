@@ -1,0 +1,41 @@
++++
+title = "Rosetta Code:Village Pump/Uses Algorithm Template"
+description = ""
+date = 2010-11-10T11:21:25Z
+aliases = []
+[extra]
+id = 7583
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{Vptopic
+|topic=Uses Algorithm Template
+|summary=Whether it is justifiable to have a template for characterizing the tasks that are focused on particular algorithms, and what are the consequences of this.
+}}
+I have often struggled with tasks which specify that a specific algorithm be used.
+
+If someone were paying me to write code, and they asked me to use a specific algorithm, I would typically ask them why they wanted me to use that algorithm.  And then I would try and get them to agree that they should specify those reasons, as requirements, rather than the algorithm itself.  This approach almost always results in a superior result.
+
+The point here is that if you want good code, technology issues should be factored out of specifications.  At worst, you have a specification which specifies an interface to some existing system.
+
+Of course, here at rosetta code we are doing something different -- chrestomathy has an explicit goal of showing how languages relate to each other.
+
+Nevertheless, I am wondering if we should not have a template which cautions people about this issue.  An algorithm which offers superior performance in one language might sometimes be suboptimal by factors of thousands or millions in another language.  So I am thinking perhaps a "uses a language" template might warn that because the algorithm has been specified it that performance should not be an issue for this task?
+
+--[[User:Rdm|Rdm]] 11:26, 22 June 2010 (UTC)
+: I would agree that such a template is desireable, but for my own reasons. Ultimately, I'd like to move away from MediaWiki to a more reorganizable system, and being able to tag examples with the presence of a template like that is easily high on my desirability list.
+:
+: The other thing I'd suggest is that rather than use [[Template:Uses algorithm]] as a warning, use something like [[Template:Unidiomatic]]. Additionally, for any task that specifies "Use technique X to accomplish Y", you could generalize that to "Accomplish Y". For any "Do Y" task that exists where a "Use X to do Y" task's example exists, you can link over to that example. (You could also try transcluding an example ''page'' to both positionsm, but the hackary and difficult-to-edit nature of that is exactly the reason I want to move away from MediaWiki.) --[[User:Short Circuit|Michael Mol]] 12:39, 22 June 2010 (UTC)
+
+: For a lot of tasks like Ethiopian multiplication, or Linked list, it should be clear that using a particular data structure or algorithm is ''the'' reason for the task. Efficiencies might only be accepted if they follow the task description. I, and others might occasionally point out the preferred way of doing things in a particular language. --[[User:Paddy3118|Paddy3118]] 13:04, 22 June 2010 (UTC)
+
+:: Clearly, when an algorithm is specified the reason the task writer wanted to write that task was to see how that algorithm would be implemented.  However, the point here is that such tasks may lacky utility outside of that rosetta code task page, and they may offer little insight as well.  Obviously, few people would use ethiopian multiplication when most (but not all) languages implement multiplication already.  However, it might be less obvious that a linked list implementation has little utility in some languages when in other languages the implementation might be useful and in other languages the facility is fundamental to an understanding of the language itself -- here the implementation does something useful (it lets the programmer work with a collection of items) but the specification can sometimes get in the way of that usefulness.  But perhaps instead of a template, these tasks could be arranged hierarchically -- each "requires algorithm" or "unidiomatic" task could be required to have a parent task which asks to solve the problem without any restrictions on the algorithm.  In other words, we might have a general Sort task and then underneath it would be filed all the various sort algorithm tasks.  Or, we might have a simple "multiplication" task (which would mostly distinguish between infix, prefix and postfix and esoteric languages) and Ethiopian Multiplication would be filed underneath it.  Or does this idea have flaws or introduce future issues? --[[User:Rdm|Rdm]] 15:29, 22 June 2010 (UTC)
+:: Yes, but the example problem specified to be solved by the algorithm can be abstracted into a more general task. (In Ethiopian Multiplication, the more general task would be to multiply two integers. Trivial in most languages, but so are the control flow tasks. In the case of linked lists, the more generalized form might be a mutable sequence/container.) I don't see a problem with that. It also allows languages to note on one page that, no, ''this isn't the way you should do it'', and then ''point'' to a more appropriate solution for some part of the problem.  That's a recurring gripe I've seen on this wiki and elsewhere about some of the poor-fit-but-not-impossible lang/task intersections. I've also seen people question whether or not the more-idiomatic-but-not-task-conformative examples as being on the task pages. This gives those examples somewhere more appropriate to go. --[[User:Short Circuit|Michael Mol]] 15:50, 22 June 2010 (UTC)
+::: so... do you think my hierarchical suggestion would be a good or bad way of addressing this issue?  --[[User:Rdm|Rdm]] 15:57, 22 June 2010 (UTC)
+:::: TBH, TLDNR, and there may have been elements of an SEP field; I'm not so focused on implementation details as end result, so I try to let RC users figure things out.  What you're describing with the hierarchy sounds like a simple transformation of what I was thinking, but I'd stop short of forcing the automatic creation of parent tasks when the itch at hand is a particular algorithm or solve a particular scenario. It forces too much empty space too quickly for the few contributors who work at implementing ''everything'', and the site already has a bit of a problem with the number of tasks with unnecessarily-small example sets (A task that doesn't contain a language the viewer is familiar with isn't helpful for comparative purposes.). Does that make sense? --[[User:Short Circuit|Michael Mol]] 18:49, 22 June 2010 (UTC)
+::::: Ok, so... as a suggestion or guidline this might work but it should not be rigidly enforced nor implemented as a structural requirement? --[[User:Rdm|Rdm]] 19:55, 22 June 2010 (UTC)
+:::::: As is convenient  to create them, I can see it manifesting as a set of "Related tasks" links. "More general forms of this task" "More specific forms of this task" Some of the existing tasks with distinct optional components might easily break out into that latter set. But this isn't a decision I want to make by fiat. I would '''specifically''' like to see some more input from other regular contributors. --[[User:Short Circuit|Michael Mol]] 02:10, 23 June 2010 (UTC)
+
+: There's value in both having “implement this algorithm” and “achieve this goal” type tasks; they serve different requirements. Implementing a specific algorithm is about doing detailed comparison between broadly-similar languages (e.g., I'd use them to study the differences between [[Ruby]] and [[Python]], but probably not between either of them and [[Prolog]] as they just have different approaches to considering the task). Achieving a goal is more about showing how there are different ways to achieve something and is suited to comparing languages that are quite different (whereas largely similar languages will probably not show much difference at that point). What there ''should'' be is semantic links between the tasks; e.g., one task for doing language-idiomatic sorting, many other tasks for specific sorting algorithms, and relations so that everyone knows that in production code it is probably best to use the idiomatic form. I'm not sure that we can maintain all these things automatically yet, but manual maintenance is better than nothing. –[[User:Dkf|Donal Fellows]] 11:18, 10 November 2010 (UTC)

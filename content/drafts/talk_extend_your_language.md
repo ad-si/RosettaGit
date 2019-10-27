@@ -1,0 +1,46 @@
++++
+title = "Talk:Extend your language"
+description = ""
+date = 2011-01-09T13:26:32Z
+aliases = []
+[extra]
+id = 8151
+[taxonomies]
+categories = []
+tags = []
++++
+
+It sounds like the purpose of this task is to add flow-control mechanisms. It should be renamed as such, and the task description should be changed to remove language-specific elements. (Particular capabilities of languages should be demonstrated in their examples, not in the task description.) --[[User:Short Circuit|Michael Mol]] 13:41, 27 August 2010 (UTC)
+: Not necessarily just flow-controls. 'if2' is just an easy to explain example. As mentioned in the task, in some languages ''all'' programming involves such extensions.
+:: Then I'm probably misunderstanding. The task seems too specific with language references, but too generic in its title. How can we improve this? (I'd love to see some more folks chime in, too.) --[[User:Short Circuit|Michael Mol]] 13:56, 27 August 2010 (UTC)
+::: "Extend your language" does seem a bit generic for the actually specified task -- especially if you take the view that all definitions of words are language extensions -- and I think a better name would be a good idea.  But I do not have any ideas for a better name. --[[User:Rdm|Rdm]] 18:25, 27 August 2010 (UTC)
+:::: "Create a keyword"? --[[User:Short Circuit|Michael Mol]] 18:34, 27 August 2010 (UTC)
+
+:::: "Language extension without using macros"? Or: "Language syntax extension"? --[[User:Paddy3118|Paddy3118]] 18:56, 27 August 2010 (UTC)
+::::: Is it even appropriate to disallow macros? Acknowledging them and asking that it be done with them and without them, for whichever approaches are possible, would strike me as a better approach; it allows on-page classification of which languages support which approach, while showing how to use either approach to accomplish a similar end. --[[User:Short Circuit|Michael Mol]] 18:58, 27 August 2010 (UTC)
+
+::::: The task does not actually require new syntax -- for example, the TCL implementation uses the same syntax rules that all TCL implementations follow.  (And, "macro" is itself a language-specific concept.)  --[[User:Rdm|Rdm]] 18:59, 27 August 2010 (UTC)
+
+:::::: For a ''real'' example of syntax extension in Tcl, check out [[Window_creation/X11#Tcl]] which embeds [[C]] directly inside Tcl. Putting one (syntactically totally different) language inside another has got to be real extension, right? :-) However, the code to do it (as opposed to making use of it) is also rather longer than I normally put in an RC solution; that example uses an external library (and an external C compiler too, as it happens, plus weaving of the code back into Tcl). –[[User:Dkf|Donal Fellows]] 07:41, 28 August 2010 (UTC)
+
+::::: I wasn't sure, but I guess the concept of  "macro" may vary between languages and should ''not'' be banned? --[[User:Paddy3118|Paddy3118]] 19:03, 27 August 2010 (UTC)
+
+:::::: I currently do not see any reason to ban any kind of "[[wp:Macro_(computer_science)|macros]]" for this task.  And, on a task where it does make sense to ban macros, the undesirable features of macros should be carefully defined so that a person can avoid the undesirable features without also avoiding desirable language features.  --[[User:Rdm|Rdm]] 19:13, 27 August 2010 (UTC)
+::::::: I hate wikitalk; I need a more convenient way to Upvote or Like points in debates like these. --[[User:Short Circuit|Michael Mol]] 19:15, 27 August 2010 (UTC)
+:::::::: If you upvote or give like points, it's not a debate any more. --[[User:Ce|Ce]] 20:58, 27 August 2010 (UTC)
+
+:::: IMHO, "create a keyword" would not be optimal. In languages where those extensions are a natural programming style, the term "keyword" is seldom used. Also, "extending the language" then almost always involves flow control in some way, which needs not to be mentioned specifically.
+
+::::  For example, the typical case of a domain specific language extension like a HTML library, where a syntax like (please allow me to stay with Lisp syntax) 
+```PicoLisp
+(<div>
+   (<head> (build-the-header))
+   (<p> (get-some-text))
+   (<table> (make-table-header)
+      (for X (foo)
+         (<row> (row-data X)) ) ) )
+```
+ ''also'' involves flow control, but the central issue is structured output.  Still I would call this a language extension. --[[User:Abu|Abu]] 09:48, 28 August 2010 (UTC)
+::::: Another area where Tcl can [http://tclxml.sourceforge.net/xmlgen/htmlgen.html do quite well]. :-) –[[User:Dkf|Donal Fellows]] 11:30, 28 August 2010 (UTC)
+:::::: If you have an idea, how about posting a new task along that line? Then we might better understand the domain of tasks about "extending the language" --[[User:Abu|Abu]] 11:50, 28 August 2010 (UTC)
+Some of the solutions that use macros (Clojure, Common Lisp, Scheme, other?) result in code where the second condition is expanded twice, and thus partially defy the purpose of the new language construct (see the task description: "the code generated by the compiler might be unnecessarily large"). Better solutions might involve direct function calls instead of macros, or variables to keep temporary results. --[[User:Abu|Abu]] 09:15, 31 December 2010 (UTC)

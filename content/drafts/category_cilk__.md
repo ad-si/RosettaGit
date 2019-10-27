@@ -1,0 +1,25 @@
++++
+title = "Category:Cilk++"
+description = ""
+date = 2010-05-14T12:55:26Z
+aliases = []
+[extra]
+id = 6796
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{language|Cilk++
+|site=http://software.intel.com/en-us/articles/intel-cilk/
+}}
+
+Cilk++ is an extension to C++ that offers a quick, easy and reliable way to improve the performance of C++ programs on multi-core processors. 
+
+It introduces three new key words:
+
+* The cilk_spawn keyword modifies a function call statement to tell the Cilk++ runtime system that the function may (but is not required to) run in parallel with the caller
+
+* The cilk_sync statement indicates that the current function cannot run in parallel with its spawned children. After the children all complete, the current function can continue.
+
+* A cilk_for loop is a replacement for the normal C++ for loop that permits loop iterations to run in parallel. The Cilk++ compiler converts a cilk_for loop into an efficient divide-and-conquer recursive traversal over the loop iterations.

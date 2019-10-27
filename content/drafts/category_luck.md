@@ -1,0 +1,25 @@
++++
+title = "Category:Luck"
+description = ""
+date = 2015-05-04T03:14:07Z
+aliases = []
+[extra]
+id = 19091
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{language
+|exec=machine
+|gc=yes
+|safety=unsafe
+|parampass=value
+|checking=static
+|compat=nominative
+|express=explicit
+|strength=weak
+|tags=luck
+|LCT=yes
+}}{{language programming paradigm|Imperative}}{{Codepad}}
+'''Luck''' is a general-purpose, [[functional programming|functional]], [[imperative programming|imperative]] computer programming language developed in 2013 by Andrew Johnson at [[Subarctic Limited|Subarctic Limited]] for use with the [[UNIX]] operating system. Luck was influenced by several languages, [[derived from::Standard ML]], [[derived from::C]].

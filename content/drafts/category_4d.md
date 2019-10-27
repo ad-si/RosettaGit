@@ -1,0 +1,15 @@
++++
+title = "Category:4D"
+description = ""
+date = 2010-12-03T18:38:33Z
+aliases = []
+[extra]
+id = 1958
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{stub}}{{language|4D}}{{IDE}}'''4D''' (or '''4th Dimension''') is a database management system and [[:Category:Integrated Development Environments|integrated development environment]] authored by Laurent Ribardière in 1984.
+==Citations==
+*[[wp:4th_Dimension_%28Software%29|Wikipedia:4th Dimension (Software)]]

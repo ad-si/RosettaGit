@@ -1,0 +1,18 @@
++++
+title = "Category:LabVIEW"
+description = ""
+date = 2017-05-25T22:09:49Z
+aliases = []
+[extra]
+id = 4394
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{language
+|site=http://www.ni.com/labview/}}LabVIEW is a proprietary graphical programming language produced by National Instruments that is used mainly for data acquisition, instrument control, test automation and industrial control.
+The basic building block of a LabVIEW application is a VI (virtual instrument), which consists of a front panel, where you design a user interface, and a block diagram, where you create graphical code.
+
+==See also==
+* [[wp:Labview|Wikipedia article]]
