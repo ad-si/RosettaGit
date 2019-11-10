@@ -15,6 +15,10 @@
 <div id="section-container">
   <h2>{{section.title}}</h2>
 
+  <div>
+    {{section.content | safe}}
+  </div>
+
   <ul>
     {% for page in section.pages %}
       <li>

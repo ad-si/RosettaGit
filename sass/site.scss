@@ -103,6 +103,21 @@ a {
   }
 }
 
+blockquote {
+  border-left: 4px solid $color-task;
+  background-color: $color-task-bg;
+  padding: 0.4em 0.8em;
+  margin-bottom: 1em;
+  width: 80%;
+  & > p {
+    margin-bottom: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
 
 .tags {
   margin-bottom: 1rem;
