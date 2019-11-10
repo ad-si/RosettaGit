@@ -177,36 +177,23 @@
     <main>
       {% block content %}
         <div id="introduction">
-          <p>
-            RosettaGit is a programming
-            <a href="https://en.wikipedia.org/wiki/Chrestomathy"
-              >chrestomathy</a>
-            site.
-            The idea is to present solutions to the same task
-            in as many different programming languages as possible.
-            It demonstrates how languages are similar and different
-            and can help you learn new approaches to solving problems.
-          </p>
-
           {% set taskSection = get_section(path="tasks/_index.md") %}
-          {% set draftSection = get_section(path="drafts/_index.md") %}
-          {% set langSection = get_section(path="languages/_index.md") %}
-          <p>
-            RosettaGit currently has
-            <strong>{{taskSection.pages | length}} tasks</strong>,
-            <strong>{{draftSection.pages | length}} drafts</strong>,
-            and features
-            <strong>{{langSection.pages | length}} languages</strong>.
-            The ultimate goal is to have solutions
-            to every task in every language.
-          </p>
+          {% set number_of_tasks = taskSection.pages | length | as_str %}
 
-          <p>
-            The data was originally forked from
-            <a href="https://rosettacode.org">rosettacode.org</a>
-            on 2019-10-22.
-          </p>
+          {% set draftSection = get_section(path="drafts/_index.md") %}
+          {% set number_of_drafts = draftSection.pages | length | as_str %}
+
+          {% set langSection = get_section(path="languages/_index.md") %}
+          {% set number_of_langs = langSection.pages | length | as_str %}
+
+          {{ section.content
+            | replace(from="{{number_of_tasks}}", to=number_of_tasks )
+            | replace(from="{{number_of_drafts}}", to=number_of_drafts)
+            | replace(from="{{number_of_langs}}", to=number_of_langs)
+            | safe }}
         </div>
+
+        <hr>
 
         <div class="task-listing-container">
           <ul>
