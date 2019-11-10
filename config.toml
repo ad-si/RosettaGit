@@ -49,7 +49,7 @@ twitter_username = "@AdrianSieber" # OPTIONAL, Twitter User to help with metrics
 [[extra.sidebar]]
 name = "Contributing"
 urls = [
-  { name = "Github", url = "https://github.com/ad-si/rosettagit" },
+  { name = "Code on GitHub", url = "https://github.com/ad-si/rosettagit" },
   { name = "Issues", url = "https://github.com/ad-si/rosettagit/issues" },
   { name = "Changelog", url = "https://github.com/ad-si/rosettagit/blob/changelog.md" },
 ]

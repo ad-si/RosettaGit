@@ -12,7 +12,7 @@
 {% endblock title %}
 
 {% block content %}
-<div id="section-container">
+<div id="section-{{section.title | slugify}}" class="section-container">
   <h2>{{section.title}}</h2>
 
   <div>

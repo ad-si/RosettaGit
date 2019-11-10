@@ -42,7 +42,9 @@
 {% endblock content %}
 
 {% block sidebar %}
-  <h2 itemprop="headline">{{ page.title }}</h2>
+  <h2 class="page-heading" itemprop="headline">
+    {{ page.title }}
+  </h2>
 
   {% if page.taxonomies.tags %}
     <div>
@@ -54,6 +56,30 @@
       {% endfor %}
     </div>
   {% endif %}
+
+  <hr>
+
+  <p>
+    <ul>
+      <li>
+        {% set repoUrl = "https://github.com/ad-si/RosettaGit" %}
+        {% set contentPath = repoUrl ~ "/tree/master/content" %}
+
+        <a href="{{contentPath}}/{{page.relative_path | safe}}">
+          Edit this page
+        </a>
+      </li>
+      <li>
+        {% set title = page.title | as_str %}
+        {% set queryParams = "body=Issue+on+page+%22" ~ title ~ "%22:&" ~
+                             "assignees=ad-si" %}
+
+        <a href="{{repoUrl}}/issues/new?{{queryParams}}">
+          Submit an issue
+        </a>
+      </li>
+    </ul>
+  </p>
 
   <hr>
 

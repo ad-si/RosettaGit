@@ -64,7 +64,7 @@ languages = [
   "zkl",
   "zx-spectrum-basic",
 ]
-tags = ["geometry", "fractals", "raster", "graphics"]
+tags = ["geometry", "fractals", "graphics", "raster-graphics"]
 +++
 
 ![Brownian tree](/images/Brownian_tree.jpg)
