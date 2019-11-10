@@ -5,39 +5,43 @@ date = 2019-10-14T03:21:04Z
 aliases = []
 [extra]
 id = 3212
+task = """
+  Show a basic storage type to handle a simple RGB raster graphics image
+  and some primitive associated functions.
+"""
 [taxonomies]
 categories = []
-tags = []
+tags = ["graphics", "raster-graphics"]
 +++
 
-{{task|Raster graphics operations}}
-{{omit from|AWK}}
-{{omit from|PARI/GP}}
 
-Show a basic storage type to handle a simple RGB raster graphics image, 
-and some primitive associated functions.
-
-If possible provide a function to allocate an uninitialised image, 
+If possible provide a function to allocate an uninitialised image,
 given its width and height, and provide 3 additional functions:
-* one to fill an image with a plain RGB color,
-* one to set a given pixel with a color,
-* one to get the color of a pixel.
+
+- one to fill an image with a plain RGB color,
+- one to set a given pixel with a color,
+- one to get the color of a pixel.
 
 (If there are specificities about the storage or the allocation, explain those.)
 
-''These functions are used as a base for the articles in the category [[Raster_graphics_operations|raster graphics operations]], 
-and a basic output function to check the results 
-is available in the article [[write ppm file]].''
+These functions are used as a base for the
+[tasks with the "raster-graphics" tag](/tags/raster-graphics)
+and a basic output function to check the results
+is available in the task [write ppm file](/tasks/write_ppm_file).''
 
 
 ## ActionScript
 
-ActionScript 3 has a [http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/BitmapData.html BitmapData class] (in the <code>flash.display</code> package) which can be used for storage and handling of bitmap images. 
-To display these images, the [http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/Bitmap.html Bitmap] class can be used.
+ActionScript 3 has a
+[BitmapData class](http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/BitmapData.html)
+(in the <code>flash.display</code> package)
+which can be used for storage and handling of bitmap images.
+To display these images, the
+[Bitmap](http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/Bitmap.html)
+class can be used.
 
 
 ```ActionScript3
-
 // To import the BitmapData class:
 import flash.display.BitmapData;
 
@@ -47,22 +51,20 @@ var bitmap:BitmapData = new BitmapData(500, 300);
 // Create a BitmapData with transparency disallowed
 var opaqueBitmap:BitmapData = new BitmapData(500, 300, false);
 
-// Bitmap with initial fill colour, as 0xAARRGGBB (default is white)
+// Bitmap with initial fill color, as 0xAARRGGBB (default is white)
 var redFilledBitmap:BitmapData = new BitmapData(400, 300, true, 0xFFFF0000);
 
-// Get the colour value of the pixel at point (200, 200)
+// Get the color value of the pixel at point (200, 200)
 bitmap.getPixel(200, 200)     // As 0xRRGGBB
 bitmap.getPixel32(200, 200)   // As 0xAARRGGBB
 
-// Set the colour value of the pixel at point (300, 200) to blue
+// Set the color value of the pixel at point (300, 200) to blue
 bitmap.setPixel(300, 200, 0x0000FF);       // As 0xRRGGBB
 bitmap.setPixel32(300, 200, 0xFF0000FF);   // As 0xAARRGGBB
 
-// Fill the bitmap with a given colour (as 0xAARRGGBB) after construction
+// Fill the bitmap with a given color (as 0xAARRGGBB) after construction
 bitmap.fillRect(bitmap.rect, 0xFF44FF44);
-
 ```
-
 
 
 ## Ada
@@ -78,11 +80,11 @@ package Bitmap_Store is
    Black : constant Pixel := (others => Luminance'First);
    White : constant Pixel := (others => Luminance'Last);
    type Image is array (Positive range <>, Positive range <>) of Pixel;
- 
+
    procedure Fill (Picture : in out Image; Color : Pixel);
- 
+
    procedure Print (Picture : Image);
- 
+
    type Point is record
       X, Y : Positive;
    end record;
@@ -100,7 +102,7 @@ package body Bitmap_Store is
    begin
       for p of Picture loop x:= Color;end loop;
    end Fill;
- 
+
    procedure Print (Picture : Image) is
    begin
       for I in Picture'Range (1) loop
@@ -108,7 +110,7 @@ package body Bitmap_Store is
                Put (if Picture (I, J) = White then ' ' else 'H');
          end loop;
          New_Line;
-      end loop; 
+      end loop;
    end Print;
 
 end Bitmap_Store;
@@ -127,18 +129,20 @@ begin
 ```
 
 
-
 ## ALGOL 68
 
-{{trans|ada}}
+Translated from ada
 
-Note: '''short''' and '''shorten''' need to be tuned (added or removed) 
-to match the underlying graphic hardware colour depth.
+Note: '''short''' and '''shorten''' need to be tuned (added or removed)
+to match the underlying graphic hardware color depth.
 
-{{works with|ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive.}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6 algol68g-2.6].}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}
+Works with ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive..
+Works with ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6 algol68g-2.6]..
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release
+[1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) -
+due to extensive use of '''format'''[ted] ''transput''.}}
 '''File: prelude/Bitmap.a68'''
+
 ```algol68
 # -*- coding: utf-8 -*- #
 
@@ -189,7 +193,9 @@ OP INIT = (REF IMAGE image)REF IMAGE: (init OF (CLASSOF image))(image);
 
 SKIP
 ```
+
 '''File: test/Bitmap.a68'''
+
 ```algol68
 #!/usr/bin/a68g --script #
 # -*- coding: utf-8 -*- #
@@ -204,7 +210,7 @@ test:(
 )
 ```
 
-{{out}} (A 16x16 white block)
+Output: (A 16x16 white block)
 
 ```txt
 
@@ -228,15 +234,14 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ```
 
 
-
 ## AutoHotkey
 
-{{works with|AutoHotkey_L}}
+Works with AutoHotkey_L.
 
 ```AutoHotkey
-test: 
+test:
 blue := color(0,0,255)  ; rgb
-cyan := color(0,255,255) 
+cyan := color(0,255,255)
 blue_square := Bitmap(10, 10, blue)
 cyanppm := Bitmap(10, 10, cyan)
 x := blue_square[4,4] ; get pixel(4,4)
@@ -245,30 +250,30 @@ blue_square[4,4] := cyan ; set pixel(4,4)
 x := blue_square[4,4] ; get pixel(4,4)
 blue_square.write("blue.ppm")
 return
- 
+
 Bitmap(width = 1, height = 1, background = 0)
 {
 global black
 black := color(0,0,0)
 if !background
 background := black
- 
+
     static BitmapType
     if !BitmapType
         BitmapType
         := Object("fill", "Bitmap_Fill"
 	         ,"write", "Bitmap_write_ppm3")
- 
+
 	img := Object("width", width
                 ,"height", height
                 , "base"    , BitmapType)
- 
+
 	img._SetCapacity(height) ; an array of rows
   img.fill(background)
 Return img
 }
- 
- 
+
+
 Bitmap_Fill(bitmap, color)
 {
 r := color.r
@@ -285,12 +290,12 @@ b := color.b
   }
  return bitmap
 }
- 
+
 Bitmap_write_ppm3(bitmap, filename)
 {
 file := FileOpen(filename, 0x11) ; utf-8, write
 file.seek(0,0)
-file.write("P3`n" 
+file.write("P3`n"
 . bitmap.width . " " . bitmap.height . "`n"
 . "255`n")
   loop % bitmap.height
@@ -299,7 +304,7 @@ file.write("P3`n"
     loop % bitmap.width
     {
       width := A_Index
-      color := bitmap[height, width] 
+      color := bitmap[height, width]
       file.Write(color.R . " ")
       file.Write(color.G . " ")
       file.Write(color.B . " ")
@@ -309,20 +314,20 @@ file.write("P3`n"
   file.close()
  return 0
 }
- 
+
 Color(r, g, b)
 {
     static ColorType
     if !ColorType
         ColorType
         := Object("rgb"   , "Color_rgb")
- 
+
     return Object("r" , r, "g", g, "b", b
                 , "base"    , ColorType)
- 
+
  ; return Object("r" , r, "g", g, "b", b, "rgb", "Color_rgb")
 }
- 
+
 Color_rgb(clr)
 {
 return clr.R << 16 | clr.G << 8 | clr.B
@@ -330,10 +335,11 @@ return clr.R << 16 | clr.G << 8 | clr.B
 ```
 
 
-
 ## Axe
 
-All of the functions specified in the task are built in to Axe. Note that bitmaps are always 96x64 black and white. Thus, since each pixel takes 1 bit, a complete bitmap is 768 bytes.
+All of the functions specified in the task are built in to Axe.
+Note that bitmaps are always 96x64 black and white.
+Thus, since each pixel takes 1 bit, a complete bitmap is 768 bytes.
 
 Two bitmaps can be masked together to create 3- and 4-color grayscale.
 
@@ -378,7 +384,7 @@ plot x,y
 end subroutine
 ```
 
-{{out}}
+Output:
 
 ```txt
 pixel 10,10 is 4278255615
@@ -386,43 +392,42 @@ pixel 20,20 is 4294901760
 ```
 
 
-
 ## BBC BASIC
 
-{{works with|BBC BASIC for Windows}}
-BBC BASIC expects a bitmap always to be associated with a window; 
+Works with BBC BASIC for Windows.
+BBC BASIC expects a bitmap always to be associated with a window;
 for simplicity this code uses the main output window.
 
 ```bbcbasic
       Width% = 200
       Height% = 200
-      
+
       REM Set window size:
       VDU 23,22,Width%;Height%;8,16,16,128
-      
-      REM Fill with an RGB colour:
+
+      REM Fill with an RGB color:
       PROCfill(100,150,200)
-      
+
       REM Set a pixel:
       PROCsetpixel(100,100,255,255,0)
-      
+
       REM Get a pixel:
       rgb% = FNgetpixel(100,100)
       PRINT RIGHT$("00000" + STR$~rgb%, 6)
       END
-      
+
       DEF PROCfill(r%,g%,b%)
-      COLOUR 1,r%,g%,b%
+      COLOR 1,r%,g%,b%
       GCOL 1+128
       CLG
       ENDPROC
-      
+
       DEF PROCsetpixel(x%,y%,r%,g%,b%)
-      COLOUR 1,r%,g%,b%
+      COLOR 1,r%,g%,b%
       GCOL 1
       LINE x%*2,y%*2,x%*2,y%*2
       ENDPROC
-      
+
       DEF FNgetpixel(x%,y%)
       LOCAL col%
       col% = TINT(x%*2,y%*2)
@@ -435,10 +440,10 @@ for simplicity this code uses the main output window.
 ## C
 
 
-Working excerpt from <tt>imglib.h</tt> usable as "interface" 
+Working excerpt from <tt>imglib.h</tt> usable as "interface"
 (some includes are needed for other functions of the same category).
-This code uses functions from category [[:Category:Raster graphics operations| Raster graphics operations]]. 
-One must create files imglib.h and imglib.c using code from these pages. 
+This code uses functions from category [[:Category:Raster graphics operations| Raster graphics operations]].
+One must create files imglib.h and imglib.c using code from these pages.
 Start from [[Bitmap| bitmap page]]
 
 
@@ -485,7 +490,6 @@ void put_pixel_clip(
 #define GET_PIXEL(IMG, X, Y) (IMG->buf[ ((Y) * IMG->width + (X)) ])
 #endif
 ```
-
 
 
 ```c
@@ -550,15 +554,14 @@ void put_pixel_clip(
 ```
 
 
-
 ## C++
 
-
-{{works with|C++98}}
+Works with C++98.
 {{libheader|boost}}
 
 
-```cpp>#include <iostream
+```c++
+#include <iostream
 
 #include <boost/gil/gil_all.hpp>
 int main()
@@ -581,16 +584,17 @@ int main()
 }
 ```
 
-
 See also [[Basic bitmap storage/C++]]
 
-=={{header|C sharp|C#}}==
-This implementation uses a multidemensional array to store the Color structure 
-(which stores the RGB values). 
-No exception catching for out-of-bounds errors if they occur, 
+
+## C \#
+
+This implementation uses a multidemensional array to store the Color structure
+(which stores the RGB values).
+No exception catching for out-of-bounds errors if they occur,
 but provides Height and Width properties so a program using it can avoid them.
 
-```csharp
+```c#
 public class Bitmap
 {
     public struct Color
@@ -626,9 +630,7 @@ public class Bitmap
 ```
 
 
-
 ## Clojure
-
 
 ```Clojure
 (import '[java.awt Color Graphics Image]
@@ -650,10 +652,7 @@ public class Bitmap
 ```
 
 
-
 ## Common Lisp
-
-
 
 ```lisp
 (defpackage #:rgb-pixel-buffer
@@ -664,8 +663,6 @@ public class Bitmap
            #:rgb-pixel-buffer-height #:rgb-pixel-red #:rgb-pixel-green
            #:rgb-pixel-blue #:fill-rgb-pixel-buffer))
 ```
-
-
 
 ```lisp
 (in-package #:rgb-pixel-buffer)
@@ -704,8 +701,8 @@ public class Bitmap
 (defun make-rgb-pixel-buffer (width height &optional (initial-element +black+))
   (declare (type (integer 1) width height))
   (declare (type rgb-pixel initial-element))
-  (make-array (list width height) 
-    :element-type 'rgb-pixel 
+  (make-array (list width height)
+    :element-type 'rgb-pixel
     :initial-element initial-element))
 
 (defun rgb-pixel-buffer-width (buffer)
@@ -731,17 +728,15 @@ public class Bitmap
   (let* ((dimensions (array-dimensions buffer))
 	 (width (first dimensions))
 	 (height (second dimensions)))
-    (loop 
+    (loop
        :for y :of-type fixnum :upfrom 0 :below height
-       :do (loop 
+       :do (loop
 	      :for x :of-type fixnum :upfrom 0 :below width
 	      :do (setf (rgb-pixel buffer x y) pixel)))
     buffer))
 ```
 
-
 Example:
-
 
 ```lisp
 (defvar *buffer* (make-rgb-pixel-buffer 10 10))
@@ -753,18 +748,15 @@ Example:
 ```
 
 
-
 ## Crystal
 
-
 ```crystal
-
 class RGBColor
   getter red, green, blue
 
   def initialize(@red = 0_u8, @green = 0_u8, @blue = 0_u8)
   end
- 
+
   RED   = new(red: 255_u8)
   GREEN = new(green: 255_u8)
   BLUE  = new(blue: 255_u8)
@@ -795,14 +787,13 @@ end
 
 bmap = Pixmap.new(5, 5)
 pp bmap
-
 ```
-
 
 
 ## D
 
-This code is a little complex because many Tasks use this module for various purposes.
+This code is a little complex
+because many tasks use this module for various purposes.
 
 ```d
 module bitmap;
@@ -987,8 +978,7 @@ version (bitmap_main) {
 }
 ```
 
-Compiling it with <code>version=bitmap_main</code> prints:
-{{out}}
+Compiling it with `version=bitmap_main` prints:
 
 ```txt
 ##############################
@@ -1004,15 +994,14 @@ Compiling it with <code>version=bitmap_main</code> prints:
 ```
 
 
-
 ## E
 
-
-This example includes the [[write ppm file]] code, 
+This example includes the [write ppm file](/tasks/write_ppm_file) code,
 because it is most naturally written as a method on the image object.
 
 
-```e>def makeFlexList := <elib:tables.makeFlexList
+```e
+def makeFlexList := <elib:tables.makeFlexList
 
 def format := <import:java.lang.makeString>.format
 
@@ -1047,12 +1036,12 @@ def sign(v) {
 }
 
 def makeImage(width, height) {
-  # NOTE: The primary E implementation is in Java and Java's fixed-size integers only 
+  # NOTE: The primary E implementation is in Java and Java's fixed-size integers only
   # come in signed varieties. Therefore, there is a little bit of extra arithmetic.
   #
   # In an ideal E implementation we would specify the type 0..255, but this is not
   # currently possible everywhere, or efficient.
-  
+
   def storage := makeFlexList.fromType(<type:java.lang.Byte>, width * height * CHANNELS)
   storage.setSize(width * height * CHANNELS)
 
@@ -1091,7 +1080,7 @@ def makeImage(width, height) {
              storage[base + 1] <=> sign(c.gb()) &&
              storage[base + 2] <=> sign(c.bb())
     }
-    to put(x :X, y :Y, c) { 
+    to put(x :X, y :Y, c) {
       def base := (y * width + x) * CHANNELS
       storage[base + 0] := sign(c.rb())
       storage[base + 1] := sign(c.gb())
@@ -1107,7 +1096,7 @@ def makeImage(width, height) {
       storage(0) := list
     }
   }
-  
+
   return flexImage
 }
 ```
@@ -1121,14 +1110,14 @@ Examples/tests:
 # value: [000000 000000 000000 ]
 #        [000000 000000 000000 ]
 #        [000000 000000 000000 ]
-#        
+#
 
 ? i.fill(makeColor.fromFloat(1, 0, 0))
 ? i
 # value: [ff0000 ff0000 ff0000 ]
 #        [ff0000 ff0000 ff0000 ]
 #        [ff0000 ff0000 ff0000 ]
-#        
+#
 
 ? i[1, 1] := makeColor.fromFloat(0.5, 0.5, 0.5)
 # value: 808080
@@ -1137,7 +1126,7 @@ Examples/tests:
 # value: [ff0000 ff0000 ff0000 ]
 #        [ff0000 808080 ff0000 ]
 #        [ff0000 ff0000 ff0000 ]
-#        
+#
 
 ? i[0, 1]
 # value: ff0000
@@ -1149,12 +1138,9 @@ Examples/tests:
 ```
 
 
-
 ## EchoLisp
 
-
 ```scheme
-
 (lib 'plot)
 (define width 600)
 (define height 400)
@@ -1187,18 +1173,14 @@ Examples/tests:
 (define (blue-at-xy x y) (vector-ref bitmap (+ x 3 (* y width)))) ;; 3 = blue component
 (blue-at-xy 100 200)
     → 255
-
 ```
-
 
 
 ## Elixir
 
 Translation of the erlang version of the code.
 
-
 ```elixir
-
 defmodule RosBitmap do
   defrecord Bitmap, pixels: nil, shape: {0, 0}
 
@@ -1227,19 +1209,14 @@ defmodule RosBitmap do
     {:rgb, r, g, b}
   end
 end
-
 ```
-
 
 
 ## Erlang
 
-
 Stores pixels as a 1d array and colors as binaries.
 
-
 ```erlang
-
 -module(ros_bitmap).
 
 -export([new/2, fill/2, set_pixel/3, get_pixel/2]).
@@ -1265,13 +1242,10 @@ get_pixel(#bitmap{pixels=Pixels, shape={Width, _Height}}, {at, X, Y}) ->
   Index = X + Y * Width,
   <<R:8, G:8, B:8>> = array:get(Index, Pixels),
   {rgb, R, G, B}.
-
 ```
 
 
-
 ## Euphoria
-
 
 ```euphoria
 -- Some color constants:
@@ -1301,50 +1275,54 @@ color = image[400][300] -- Now color is #FF0000
 
 ?color -- Should print out 16711680
 
-=={{header|F Sharp|F#}}==
-FSharp can accomplish this task in several ways. This version is purely functional. The bitmap data structure does not mutate. Set pixel, for example, simply transforms the input bitmap into a new bitmap with that pixel set to the input color. If you have Framework 4.5, you can use ImmutableArray to force this immutability. 
 
-'''Solution:'''
+## F\#
+
+FSharp can accomplish this task in several ways.
+This version is purely functional.
+The bitmap data structure does not mutate.
+Set pixel, for example, simply transforms the input bitmap
+into a new bitmap with that pixel set to the input color.
+If you have Framework 4.5,
+you can use `ImmutableArray` to force this immutability.
 
 ```fsharp
 
 //pure functional version ... changing a pixel color provides a new Bitmap
 type Color = {red: byte; green: byte; blue: byte}
 type Point = {x:uint32; y:uint32}
-type Bitmap = {color: Color array; maxX: uint32; maxY: uint32} 
+type Bitmap = {color: Color array; maxX: uint32; maxY: uint32}
 
 let colorBlack = {red = (byte) 0; green = (byte) 0; blue = (byte) 0}
 let emptyBitmap = {color = Array.empty; maxX = (uint32) 0; maxY = (uint32) 0}
-let bitmap (width: uint32) (height: uint32) = 
+let bitmap (width: uint32) (height: uint32) =
     match width, height with
     | 0u,0u | 0u,_ | _, 0u -> emptyBitmap
-    | _,_ -> {color = Array.create ((int) (width * height)) colorBlack; 
-            maxX = width; 
+    | _,_ -> {color = Array.create ((int) (width * height)) colorBlack;
+            maxX = width;
             maxY = height}
 let getPixel point bitmap =
     match bitmap.color with
-    | c when c |> Array.isEmpty -> None 
+    | c when c |> Array.isEmpty -> None
     | c when (uint32) c.Length <= (point.y * bitmap.maxY + point.x) -> None
     | c -> Some c.[(int) (point.y * bitmap.maxY + point.x)]
 let setPixel point color bitmap =
-    {bitmap with color = bitmap.color |> Array.mapi (function 
-                | i when i = (int) (point.y * bitmap.maxY + point.x) -> 
-                    (fun _ -> color) 
-                | _ -> id)}    
+    {bitmap with color = bitmap.color |> Array.mapi (function
+                | i when i = (int) (point.y * bitmap.maxY + point.x) ->
+                    (fun _ -> color)
+                | _ -> id)}
 let fill color bitmap = {bitmap with color = bitmap.color |> Array.map (fun _ ->color)}
 
 ```
 
-
 '''Tests:'''
 
 ```fsharp
-
 //setups
 //==check pixel for color function
-let check bitmap color (x,y) = 
-    match (getPixel {x=x;y=y} bitmap) with 
-    | Some(v) -> v = color 
+let check bitmap color (x,y) =
+    match (getPixel {x=x;y=y} bitmap) with
+    | Some(v) -> v = color
     | _ -> false
 let allPixels i j = [for x in [0u..(i-1u)] do for y in [0u..(j-1u)] -> (x,y)]
 
@@ -1354,27 +1332,29 @@ printfn "Is empty: %b" (myBitmap = emptyBitmap)
 let myBitmap2 = bitmap 1u 0u
 printfn "Is empty: %b" (myBitmap2 = emptyBitmap)
 let myBitmap3 = bitmap 0u 1u
-printfn "Is empty: %b" (myBitmap3 = emptyBitmap)    
+printfn "Is empty: %b" (myBitmap3 = emptyBitmap)
 //create normal bitmap
 let myBitmap4 = bitmap 14u 14u
-printfn "Is not empty: %b" (not (myBitmap4 = emptyBitmap))    
+printfn "Is not empty: %b" (not (myBitmap4 = emptyBitmap))
 //just check one color
 printfn "Is 1,1 black: %b" (check myBitmap4 colorBlack (1u,1u))
 //check out of range color
 printfn "Is 100,100 nothing: %b" (not(check myBitmap4 colorBlack (100u,100u)))
 //make sure all pixels are black
-printfn "Is all black: %b" ((allPixels 14u 14u) |> List.forall (check myBitmap4 colorBlack)) 
+printfn "Is all black: %b" ((allPixels 14u 14u) |> List.forall (check myBitmap4 colorBlack))
 //fill bitmap color
 let colorWhite = {red = (byte) 255; green = (byte) 255; blue = (byte) 255}
 let myBitmap5 = myBitmap4 |> fill colorWhite
-printfn "Is all white: %b" ((allPixels 14u 14u) |> List.forall (check myBitmap5 colorWhite)) 
+printfn "Is all white: %b" ((allPixels 14u 14u) |> List.forall (check myBitmap5 colorWhite))
 //change just one pixel
 let myBitmap6 = myBitmap5 |> setPixel {x=5u;y=10u} colorBlack
 printfn "Is 5,10 black: %b" (check myBitmap4 colorBlack (5u,10u))
-
 ```
 
-{{out}}Is empty: true
+Output:
+
+```txt
+Is empty: true
 
 Is empty: true
 
@@ -1391,31 +1371,38 @@ Is all black: true
 Is all white: true
 
 Is 5,10 black: true
+```
+
 '''Usage:'''
 
 ```fsharp
-
 bitmap 14u 14u
 |> fill {red = (byte) 200; green = (byte) 0; blue = (byte) 10}
 |> setPixel {x=5u;y=10u} {red = (byte) 0; green = (byte) 0; blue = (byte) 0}
 |> getPixel {x=5u;y=10u}
 |> printfn "%A"
-
 ```
 
-{{out}}
+Output:
+
+```txt
 Some {red = 0uy;
       green = 0uy;
       blue = 0uy;}
+```
 
 
 ## FBSL
 
-Volatility in FBSL is a feature uncommon to most other languages. It is the ability of its intrinsic functions as well as its user-defined functions, DynAsm and DynC blocks, and functions imported from 3rd-party DLL's to preserve their return values between function calls in FBSL Variants that have the same names as their respective functions but use neither the parentheses nor the arguments. 
-These Variants belong to the global namespace and can be used throughout the entire script until another fully qualified function call to their respective functions is made, whereby they change their values accordingly. 
+Volatility in FBSL is a feature uncommon to most other languages.
+It is the ability of its intrinsic functions as well as its user-defined functions,
+DynAsm and DynC blocks, and functions imported from 3rd-party DLL's to preserve their return values between function calls in FBSL Variants that have the same names as their respective functions but use neither the parentheses nor the arguments.
+These Variants belong to the global namespace and can be used throughout the entire script until another fully qualified function call to their respective functions is made,
+whereby they change their values accordingly.
 The feature minimizes the need for temporary variables and assignments.
 
-This feature is a logical extension of VisualBasic way to formalize its function return value by assigning it to a Variant of the same name as that of the respective function. However, the VB Variant is only effective within the scope of its own function.
+This feature is a logical extension of VisualBasic way to formalize its function return value by assigning it to a Variant of the same name as that of the respective function.
+However, the VB Variant is only effective within the scope of its own function.
 
 '''Using pure FBSL's built-in graphics functions:'''
 
@@ -1444,15 +1431,15 @@ BEGIN EVENTS
 END EVENTS
 ```
 
-{{out}} [[File:FBSL_RC_Bitmap.PNG]]
+Output: [[File:FBSL_RC_Bitmap.PNG]]
 
 
 ## Factor
 
-The image is a matrix of triples {R,G,B}. 
-The various utilities could be defined in another file, 
-most of them are not used right now, but we need them for drawing 
-so I put every thing here.. 
+The image is a matrix of triples {R,G,B}.
+The various utilities could be defined in another file,
+most of them are not used right now, but we need them for drawing
+so I put every thing here..
 
 ```factor
 USING: arrays fry kernel math.matrices sequences ;
@@ -1460,12 +1447,12 @@ IN: rosettacode.raster.storage
 
 ! Various utilities
 : meach ( matrix quot -- ) [ each ] curry each ; inline
-: meach-index ( matrix quot -- ) 
+: meach-index ( matrix quot -- )
     [ swap 2array ] prepose
     [ curry each-index ] curry each-index ; inline
 : mmap ( matrix quot -- matrix' ) [ map ] curry map ; inline
 : mmap! ( matrix quot -- matrix' ) [ map! ] curry map! ; inline
-: mmap-index ( matrix quot -- matrix' ) 
+: mmap-index ( matrix quot -- matrix' )
     [ swap 2array ] prepose
     [ curry map-index ] curry map-index ; inline
 
@@ -1474,21 +1461,20 @@ IN: rosettacode.raster.storage
 : Mi,j ( {i,j} matrix -- elt ) [ first2 swap ] dip nth nth ;
 
 ! The storage functions
-: <raster-image> ( width height -- image ) 
+: <raster-image> ( width height -- image )
     zero-matrix [ drop { 0 0 0 } ] mmap ;
-: fill-image ( {R,G,B} image -- image ) 
+: fill-image ( {R,G,B} image -- image )
     swap '[ drop _ ] mmap! ;
 : set-pixel ( {R,G,B} {i,j} image -- ) set-Mi,j ; inline
 : get-pixel ( {i,j} image -- pixel ) Mi,j ; inline
-
 ```
 
 
 
 ## Forth
 
-This creates bitmaps on the heap (they may be deallocated with "FREE"). 
-32-bit or greater cells are assumed, one pixel per cell. 
+This creates bitmaps on the heap (they may be deallocated with "FREE").
+32-bit or greater cells are assumed, one pixel per cell.
 This automatically word-aligns rows, so a separate ''stride'' field is not required.
 
 ```forth
@@ -1539,13 +1525,12 @@ test bshow cr
 ```
 
 
-
 ## Fortran
 
 See [[Basic bitmap storage/Fortran]]
 
-## Go
 
+## Go
 
 ### Standard library
 
@@ -1615,7 +1600,7 @@ func main() {
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
 
@@ -1628,10 +1613,10 @@ Pixel at (30,40) has R=4112, G=8224, B=12336
 ```
 
 
-
 ### DIY
 
-Not a complete working program.  Presented here are just types and functions requested by the task.
+Not a complete working program.
+Presented here are just types and functions requested by the task.
 
 ```go
 // Raster package used with a number of RC tasks.
@@ -1757,15 +1742,14 @@ func (b *Bitmap) GetPxRgb(x, y int) (Rgb, bool) {
 ```
 
 
-
 ## Haskell
 
-We implement the <tt>Image</tt> type as an <tt>STArray</tt> so that we can use it in an imperative fashion in the <tt>ST</tt> monad.
-
+We implement the `Image` type as an `STArray`
+so that we can use it in an imperative fashion in the `ST` monad.
 
 ```haskell
 module Bitmap(module Bitmap) where
- 
+
 import Control.Monad
 import Control.Monad.ST
 import Data.Array.ST
@@ -1843,8 +1827,7 @@ mapImage :: (Color c, Color c') =>
 mapImage f (Image i) = liftM Image $ mapArray f i
 ```
 
-
-This module provides an instance of <tt>Color</tt>.
+This module provides an instance of `Color`.
 
 ```haskell
 module Bitmap.RGB(module Bitmap.RGB) where
@@ -1874,8 +1857,10 @@ toRGBImage = mapImage $ f . luminance
 
 
 
-=={{header|Icon}} and {{header|Unicon}}==
-The language has a built-in window data type with associated graphics primitives. A bitmap is just a window that isn't visible on-screen at the moment.
+## Icon and Unicon
+
+The language has a built-in window data type with associated graphics primitives.
+A bitmap is just a window that isn't visible on-screen at the moment.
 
 ```Icon
 procedure makebitmap(width,height)
@@ -1896,17 +1881,24 @@ end
 ```
 
 
-
 ## J
 
-A number of addon packages are available for J that work with common image formats (including PPM), but here we will show a basic bitmap storage type as per the task description.
+A number of addon packages are available for J that work with common image formats (including PPM),
+but here we will show a basic bitmap storage type as per the task description.
 
-The structure is a 3-dimensional array of numbers. The shape of the array is height by width by 3. Each 1-dimensional cell of size 3 contains R, G and B numbers, in that order. Indexing is zero based. (We could instead have encoded RGB in a single integer...)
+The structure is a 3-dimensional array of numbers.
+The shape of the array is height by width by 3.
+Each 1-dimensional cell of size 3 contains R, G and B numbers, in that order.
+Indexing is zero based. (We could instead have encoded RGB in a single integer...)
 
 No parameter validity checks are currently implemented.
 
 In J, allocating an uninitialized image would not normally be separated from creating
-the colored image, so <tt>makeRGB</tt> allows the specification of color during allocation. As a monad, <code>makeRGB</code> creates a black image with the specified height and width. It can also take a left argument (dyadic form) specifying the color(s) of the image. <code>fillRGB</code> requires a left argument specifying the color(s), but takes a bitmap (RGB) structure as the right argument.
+the colored image, so `makeRGB` allows the specification of color during allocation.
+As a monad, `makeRGB` creates a black image with the specified height and width.
+It can also take a left argument (dyadic form) specifying the color(s) of the image.
+`fillRGB` requires a left argument specifying the color(s),
+but takes a bitmap (RGB) structure as the right argument.
 
 '''Solution:'''
 
@@ -1917,9 +1909,7 @@ setPixels=: (1&{::@[)`(<"1@(0&{::@[))`]}
 getPixels=: <"1@[ { ]
 ```
 
-
 '''Examples:'''
-
 
 ```j
    myimg=: makeRGB 5 8               NB. create a bitmap with height 5 and width 8 (black)
@@ -1940,8 +1930,7 @@ getPixels=: <"1@[ { ]
 5 8
 ```
 
-
-<code>getPixels</code> and <code>setPixels</code> are generalized to set and get lists/arrays of pixels.
+`getPixels` and `setPixels` are generalized to set and get lists/arrays of pixels.
 
 
 ```j
@@ -1966,12 +1955,14 @@ viewRGB myimg
 ```
 
 
-Note that height comes before width here. This is inconsistent with marketing of display resolutions, but matches J's treatment of dimensions.
+Note that height comes before width here.
+This is inconsistent with marketing of display resolutions,
+but matches J's treatment of dimensions.
 
 
 ## Java
 
-Solution {{libheader|AWT}}
+Solution AWT
 
 ```java
 import java.awt.Color;
@@ -2007,8 +1998,7 @@ public class BasicBitmapStorage {
 }
 ```
 
-
-Test Program {{libheader|JUnit}}
+Test Program JUnit
 
 ```java
 import static org.junit.Assert.assertEquals;
@@ -2036,15 +2026,12 @@ public class BasicBitmapStorageTest {
 ```
 
 
-
 ## JavaScript
-
 
 JavaScript can interact with a drawing context using the HTML5 Canvas API.
 
 
 ```javascript
-
 // Set up the canvas
 var canvas = document.createElement("canvas"),
     ctx = canvas.getContext("2d"),
@@ -2073,16 +2060,16 @@ ctx.fillRect(0, 0, width, height);
 // This is the fastest method as of 2012 benchmarks
 ctx.fillStyle = "black";
 ctx.fillRect(width / 2, height / 2, 1, 1);
-
 ```
-
 
 
 ## Julia
 
-{{works with|Julia|0.6}}
+Works with Julia 0.6.
 
-'''Using packages''' ([https://github.com/JuliaImages/Images.jl Images.jl], [https://github.com/JuliaGraphics/Colors.jl Colors.jl]):
+'''Using packages'''
+([https://github.com/JuliaImages/Images.jl Images.jl],
+[https://github.com/JuliaGraphics/Colors.jl Colors.jl]):
 
 ```julia
 using Images, Colors
@@ -2111,8 +2098,7 @@ println("\nImage with a pixel set for foreground color:")
 showhex(img)
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 Uninitialized image:
@@ -2144,10 +2130,9 @@ Image with a pixel set for foreground color:
 ```
 
 
-
 ## Kotlin
 
-{{trans|Java}}
+Translated from Java
 
 ```scala
 // version 1.1.4-3
@@ -2187,30 +2172,25 @@ fun main(args: Array<String>) {
 }
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
 The color of the pixel at (320, 240) is black
 The color of the pixel at (120, 120) is cyan
-
 ```
-
 
 
 ## KonsolScript
 
-
 ```KonsolScript
 function main() {
   Var:Number shape;
-  
+
   Image:New(50, 50, shape)
   Draw:RectFill(0, 0, 50, 50, 0xFF0000, shape)  //one to fill an image with a plain RED color
-  
+
   Draw:Pixel(30, 30, 0x0000FF, shape)           //set a given pixel at (30,30) with a BLUE color
-  
+
   while (B1 == false) {
     Image:Blit(10, 10, shape, screen)
     Screen:Render()
@@ -2219,9 +2199,7 @@ function main() {
 ```
 
 
-
 ## Lingo
-
 
 ```lingo
 -- Creates a new image object of size 640x480 pixel and 32-bit color depth
@@ -2238,9 +2216,7 @@ img.setPixel(320, 240, rgb(0,0,0))
 ```
 
 
-
 ## Lua
-
 
 ```lua
 function Allocate_Bitmap( width, height )
@@ -2277,21 +2253,28 @@ print( pixel[1], pixel[2], pixel[3] )
 ```
 
 
-
 ## M2000 Interpreter
 
-The easy way is to make a function to return an object with all functions on it, for specific image. We have to make the image in a way to render it to screen. The render statement get data in a string using a header of 12 characters (24 bytes). Raster lines are in down-top order. So last raster line is the top one. Also RGB is BGR in this data structure. Raster lines has to be aligned proper, so we may have add some bytes.
+The easy way is to make a function to return an object with all functions on it,
+for specific image.
+We have to make the image in a way to render it to screen.
+The render statement get data in a string using a header of 12 characters (24 bytes).
+Raster lines are in down-top order. So last raster line is the top one.
+Also RGB is BGR in this data structure. Raster lines has to be aligned proper,
+so we may have add some bytes.
 
-There are four functions (lambda functions) in the returned group, each of them has closures, an one of that closure is a pointer to a buffer object. We use this object to set and get pixels.
+There are four functions (lambda functions) in the returned group,
+each of them has closures, an one of that closure is a pointer to a buffer object.
+We use this object to set and get pixels.
 
-First two functions are for set and get pixel. Third return image as a string. Forth function copy an image as string to buffer, if they have the same width and height (else we get error)
+First two functions are for set and get pixel. Third return image as a string.
+Forth function copy an image as string to buffer,
+if they have the same width and height (else we get error)
 
 
 ### P3 ppm
 
-
 ```M2000 Interpreter
-
 \ Bitmap width in pixels, height in pixels
 \ Return a group object with some lambda as members: SetPixel, GetPixel, Image$
 \ copyimage
@@ -2308,9 +2291,9 @@ Function Bitmap (x as long, y as long) {
       if m>0 then m=4-m  ' add some bytes to raster line
       m+=len(rgb) *x
       Structure rasterline {
-            { 
+            {
                   pad as byte*m
-            }   
+            }
             \\ union pad+hline
             hline as rgb*x
       }
@@ -2334,7 +2317,7 @@ Function Bitmap (x as long, y as long) {
             c-!
             Return Pad, 0:=c as long
             Return Image1, 0!where:=Eval(Pad, 2) as byte, 0!where+1:=Eval(Pad, 1) as byte, 0!where+2:=Eval(Pad, 0) as byte
-      
+
       }
       GetPixel=Lambda Image1,aLines=Len(Raster)-Len(Rasterline), blines=-Len(Rasterline) (x,y) ->{
             where=alines+3*x+blines*y
@@ -2364,10 +2347,7 @@ copy 100*twipsx,50*twipsy use A.Image$()
 A1=Bitmap(100,100)
 Call A1.copy(A.Image$())
 copy 500*twipsx,50*twipsy use A1.Image$()
-
-
 ```
-
 
 
 ### P6 ppm
@@ -2375,11 +2355,10 @@ copy 500*twipsx,50*twipsy use A1.Image$()
 Need Version 9.4, Rev >=19
 
 ```M2000 Interpreter
-
 Module  P6 {
       Function Bitmap  {
             def x as long, y as long, Import as boolean
-            
+
             If match("NN") then {
                  Read x, y
             } else.if Match("N") Then  {
@@ -2424,10 +2403,10 @@ Module  P6 {
                                     }
                                     iF eof(f) then Error "Not a ppm file"
                               } until getV=false
-                        }  else Error "Not a P6 ppm" 
+                        }  else Error "Not a P6 ppm"
                         Import=True
                   }
-            } else Error "No proper arguments" 
+            } else Error "No proper arguments"
             if x<1 or y<1 then  Error "Wrong dimensions"
             structure rgb {
                   red as byte
@@ -2438,9 +2417,9 @@ Module  P6 {
             if m>0 then m=4-m  ' add some bytes to raster line
             m+=len(rgb) *x
             Structure rasterline {
-                  { 
+                  {
                         pad as byte*m
-                  }   
+                  }
                   hline as rgb*x
             }
             Structure Raster {
@@ -2487,13 +2466,13 @@ Module  P6 {
                              Put #f, pad : where+=3
                         }
                         m=where mod 4 : if m<>0 then where+=4-m
-                  } 
+                  }
             }
             if Import then {
                   x0=x-1 : where=0
                   Buffer Pad1 as byte*3
                   For y1=y-1 to 0 {
-                        For x1=0 to x0 {Get #f, Pad1 : Push Eval(pad1, 2) : Return pad1, 2:=Eval(pad1, 0), 0:=Number                                    
+                        For x1=0 to x0 {Get #f, Pad1 : Push Eval(pad1, 2) : Return pad1, 2:=Eval(pad1, 0), 0:=Number
                               Return Image1, 0!linesB!where:=Eval$(Pad1) : where+=3}
                         m=where mod 4 : if m<>0 then where+=4-m}
             }
@@ -2532,31 +2511,28 @@ Module  P6 {
       Move 5000,8000
       Image "a1.jpg"
       Move 8000, 5000
-      Image "a.bmp"     
+      Image "a.bmp"
 }
 P6
-
 ```
 
-Export using M2000 code for ppm is slower than using internal jpg and bmp encoders. Jpg encoder has a 100% quality, and because this image is black and white we get the best compression. Time 0.304sec is for three exports, two jpg and one bmp.
+Export using M2000 code for ppm is slower than using internal jpg and bmp encoders.
+Jpg encoder has a 100% quality, and because this image is black and white we get the best compression.
+Time 0.304sec is for three exports, two jpg and one bmp.
 
-{{Out}}
+Output:
 
 ```txt
-
      45049
 47.3661341sec
       1018
        691
      45254
 0.3040944sec
-
 ```
 
 
-
 ## Maple
-
 
 ```Maple
 allocateImg := proc(width, height)
@@ -2584,7 +2560,7 @@ getColor := proc(x,y,img)
 end proc:
 ```
 
-{{Out|Use}}
+Usage:
 
 ```txt
 a := allocateImg(200,200);
@@ -2596,8 +2572,8 @@ ImageTools:-Embed(ImageTools:-Create(a))
 ```
 
 
+## Mathematica / Wolfram Language
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}==
 In Mathematica 7/8:
 
 ```Mathematica
@@ -2615,13 +2591,12 @@ ImageValue[img, {1, 1}]
 ```
 
 
-
 ## MATLAB
 
-Save this in a file named Bitmap.mat in a folder named @Bitmap in your MATLAB root directory.
+Save this in a file named Bitmap.mat in a folder
+named @Bitmap in your MATLAB root directory.
 
 ```MATLAB
-
 %Bitmap class
 %
 %Implements a class to manage bitmap images without the need for the
@@ -2711,7 +2686,7 @@ classdef Bitmap
         %  'g' or 'green' for green channel
         %  'b' or 'blue' for blue channel
         function display(obj,varargin)
-            
+
             if( ~isempty(varargin) )
                 switch (varargin{1})
                     case {'r','red'}
@@ -2721,7 +2696,7 @@ classdef Bitmap
                     case {'b','blue'}
                         image(obj.blue)
                 end
-                
+
                 colormap bone;
             else
                 bitmap = cat(3,obj.red,obj.green,obj.blue);
@@ -2781,14 +2756,11 @@ classdef Bitmap
 
     end %methods
 end %classdef
-
 ```
-
 
 Sample Usage:
 
 ```MATLAB
-
 >> img = Bitmap(20,30);
 >> img.fill([30 30 150]);
 >> img.setPixel([10 15],[20 130 66]);
@@ -2807,42 +2779,46 @@ ans =
 
 >> img.save()
 Save Complete
-
 ```
-
 
 
 ## MAXScript
 
-
 MAXScript provides a built-in Bitmap class.
 
-```maxscript>local myBitmap = bitmap 512 512</lang
+```maxscript
+local myBitmap = bitmap 512 512
+```
 
-
-Filling the image with a single colour can be accomplished at creation time by setting the color property.
+Filling the image with a single color can be accomplished at creation time
+by setting the color property.
 
 ```maxscript
 local myBitmap = bitmap 512 512 color:(color 128 128 128)
 ```
 
-
-Use setPixels to set the colour of a pixel. This function takes an array of colours and is optimised to set the colours of a whole row of pixels.
+Use setPixels to set the color of a pixel.
+This function takes an array of colors
+and is optimized to set the colors of a whole row of pixels.
 
 ```maxscript
 setPixels myBitmap [256, 256] #((color 255 255 255))
 ```
 
-
-Use getPixels to retrieve the colour of a pixel. As with setPixels, this function is optimised to retrieve one row at a time as an array of colour values.
+Use getPixels to retrieve the color of a pixel.
+As with setPixels,
+this function is optimised to retrieve one row at a time
+as an array of color values.
 
 ```maxscript
 local myPixel = getPixels myBitmap [256, 256] 1
 ```
 
 
-=={{header|Modula-3}}==
-Since this code is for use with other tasks, it uses an interface as well as the implementation module.
+## Modula-3
+
+Since this code is for use with other tasks,
+it uses an interface as well as the implementation module.
 
 ```modula3
 INTERFACE Bitmap;
@@ -2876,7 +2852,7 @@ END Bitmap.
 MODULE Bitmap;
 
 PROCEDURE NewImage(height, width: UByte): T RAISES {BadImage} =
-  (* To make things easier, limit image size to also 
+  (* To make things easier, limit image size to also
      be UByte (0 to 255), and to have equal dimensions. *)
   BEGIN
     IF height # width THEN
@@ -2918,15 +2894,13 @@ PROCEDURE SetPixel(VAR pic: T; point: Point; color: Pixel) =
   BEGIN
     pic[point.x, point.y] := color;
   END SetPixel;
-  
+
 BEGIN
 END Bitmap.
 ```
 
 
-
 ## Nim
-
 
 ```nim
 {.experimental.}
@@ -2993,10 +2967,7 @@ when isMainModule:
 ```
 
 
-
 ## OCaml
-
-
 
 ```ocaml
 let new_img ~width ~height =
@@ -3016,18 +2987,28 @@ let new_img ~width ~height =
    b_channel)
 ```
 
-
 and here is the type of the raster image this function returns:
 
+```ocaml
  type raster =
    (int, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array3.t *
    (int, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array2.t *
    (int, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array2.t *
    (int, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Bigarray.Array2.t
+```
 
-What is particular with this allocation and its associated type is that there is not only one buffer for each RGB channel, but also an additionnal one that handles all the three channels, and what is important here is that it is not additionnal memory, the memory is shared, so there are 2 ways to access the raster buffer: through the separated RGB channels, or through the joint channel (all_channels).
+What is particular with this allocation and its associated type
+is that there is not only one buffer for each RGB channel,
+but also an additionnal one that handles all the three channels,
+and what is important here is that it is not additionnal memory,
+the memory is shared, so there are 2 ways to access the raster buffer:
+through the separated RGB channels, or through the joint channel (all_channels).
 
-This solution have a lot of advantages across a more naive one: this type is compatible to memory-map a file (a ppm file for instance, where the data is not compressed), the buffer can be shared/exchanged with C (for OpenGL textures for instance), etc.
+This solution have a lot of advantages across a more naive one:
+this type is compatible to memory-map a file
+(a ppm file for instance, where the data is not compressed),
+the buffer can be shared/exchanged with C
+(for OpenGL textures for instance), etc.
 
 A more naive form would be this one:
 
@@ -3047,9 +3028,7 @@ let new_img ~width ~height =
    b_channel)
 ```
 
-
 Here are the functions to fill with a color and to set one given pixel:
-
 
 ```ocaml
 let fill_img ~img:(_, r_channel, g_channel, b_channel) ~color:(r,g,b) =
@@ -3058,8 +3037,6 @@ let fill_img ~img:(_, r_channel, g_channel, b_channel) ~color:(r,g,b) =
   Bigarray.Array2.fill b_channel b;
 ;;
 ```
-
-
 
 ```ocaml
 let put_pixel_unsafe (_, r_channel, g_channel, b_channel) (r,g,b) =
@@ -3070,8 +3047,6 @@ let put_pixel_unsafe (_, r_channel, g_channel, b_channel) (r,g,b) =
   )
 ```
 
-
-
 ```ocaml
 let get_pixel_unsafe (_, r_channel, g_channel, b_channel) =
   (fun x y ->
@@ -3081,9 +3056,7 @@ let get_pixel_unsafe (_, r_channel, g_channel, b_channel) =
   )
 ```
 
-
 we can overload these functions to make some bound checks:
-
 
 ```ocaml
 let put_pixel img color x y =
@@ -3112,9 +3085,7 @@ let get_pixel ~img ~pt:(x, y) =
 ;;
 ```
 
-
 and a function to get the dimensions:
-
 
 ```ocaml
 let get_dims ~img:(_, r_channel, _, _) =
@@ -3124,11 +3095,15 @@ let get_dims ~img:(_, r_channel, _, _) =
 ```
 
 
-
 ## Octave
 
-In Octave, images are matrix. A grayscale W×H image is stored as a W×H matrix, and RGB W×H image is stored as a W×H×3 image. Possible levels depend on the class of the storage: if it is double, the intensity is a floating point double number between 0 and 1; if it is uint8, the intensity is from 0 to 255; if it is uint16, the intensity is between 0 and 65535.
-
+In Octave, images are a matrix.
+A grayscale W×H image is stored as a W×H matrix,
+and RGB W×H image is stored as a W×H×3 image.
+Possible levels depend on the class of the storage: if it is double,
+the intensity is a floating point double number between 0 and 1;
+if it is uint8, the intensity is from 0 to 255;
+if it is uint16, the intensity is between 0 and 65535.
 
 ```octave
 im = zeros(W, H, 3, "uint8"); % create an RGB image of width W and height H
@@ -3143,9 +3118,7 @@ p = im(40,40,:); % or just store it in the vector p, so that
                  % p(1) is R, p(2) G and p(3) is B
 ```
 
-
 We can hide this in helper functions like:
-
 
 ```octave
 function im = create_rgb_image(w, h)
@@ -3171,9 +3144,7 @@ function [r, g, b] = get_pixel(im, coord)
 endfunction
 ```
 
-
 The only thing to note is that indexing start from 1.
-
 
 ```octave
 %example
@@ -3187,12 +3158,9 @@ saveimage("image.ppm", double(im)./256, "ppm");
 ```
 
 
-
 ## OxygenBasic
 
-
 ```oxygenbasic
-
 'GENERIC BITMAP
 
 type pixel byte r,g,b
@@ -3238,9 +3206,7 @@ print "" p.r "," p.g "," p.b 'result 10,20,40
 
 
 del m
-
 ```
-
 
 
 ## Oz
@@ -3287,7 +3253,6 @@ define
 end
 ```
 
-
 Based on this, we create a functor "Bitmap.oz":
 
 ```oz
@@ -3304,7 +3269,7 @@ export
    SetPixel
 define
    Black = color(0x00 0x00 0x00)
-   
+
    fun {New Width Height}
       bitmap( {Array2D.new Width Height Black} )
    end
@@ -3312,11 +3277,11 @@ define
    proc {Fill bitmap(Arr) Color}
       {Array2D.transform Arr fun {$ _} Color end}
    end
-   
+
    fun {GetPixel bitmap(Arr) X Y}
       {Array2D.get Arr X Y}
    end
-   
+
    proc {SetPixel bitmap(Arr) X Y Color}
       {Array2D.set Arr X Y Color}
    end
@@ -3325,12 +3290,11 @@ define
 end
 ```
 
-
-Some functions that are used in other tasks were omitted. See here for the complete module definitions: [[Basic bitmap storage/Oz]]
+Some functions that are used in other tasks were omitted.
+See here for the complete module definitions: [[Basic bitmap storage/Oz]]
 
 
 ## Pascal
-
 
 ```Pascal
 Interface
@@ -3464,14 +3428,10 @@ Procedure CreateBmpFile32(directory: string; FileName: string;
       Close(bmpFile);
     end; { with bmpInfoHeader, bmpFileHeader }
    end; { procedure }
-
 ```
 
 
-
 ## Perl
-
-{{libheader|Imlib2}}
 
 ```perl
 #! /usr/bin/perl
@@ -3495,7 +3455,7 @@ $img->draw_point(40,40);
 my ($red, $green, $blue, $alpha) = $img->query_pixel(40,40);
 undef $img;
 
-# another way of creating a canvas with a bg colour (or from
+# another way of creating a canvas with a bg color (or from
 # an existing "raw" data)
 my $col = pack("CCCC", 255, 255, 0, 0); # a, r, g, b
 my $img = Image::Imlib2->new_using_data(200, 200, $col x (200 * 200));
@@ -3504,9 +3464,7 @@ exit 0;
 ```
 
 
-
 ## Perl 6
-
 
 ```perl6
 class Pixel { has UInt ($.R, $.G, $.B) }
@@ -3540,8 +3498,12 @@ $b.set-pixel( 7, 5, Pixel.new( R => 100, G => 200, B => 0) );
 say $b.perl;
 ```
 
-
-Thanks to the <tt>rw</tt> trait on the <tt>pixel</tt> method, we don't actually need to define two separate methods, <tt>set-pixel</tt> and <tt>get-pixel</tt>, but that is an explicit requirement of the task.  (Beware your presuppositions!  In Perl 6, accessors only determine identity, not use.  In particular, identity is considered orthogonal to lvalue/rvalue context.)
+Thanks to the <tt>rw</tt> trait on the <tt>pixel</tt> method,
+we don't actually need to define two separate methods,
+<tt>set-pixel</tt> and <tt>get-pixel</tt>, but that is an explicit requirement of the task.
+(Beware your presuppositions!
+In Perl 6, accessors only determine identity, not use.
+In particular, identity is considered orthogonal to lvalue/rvalue context.)
 
 
 ## Phix
@@ -3549,32 +3511,30 @@ Thanks to the <tt>rw</tt> trait on the <tt>pixel</tt> method, we don't actually 
 Copy of [[Bitmap#Euphoria|Euphoria]]
 
 ```Phix
--- Some colour constants:
+-- Some color constants:
 constant black = #000000,
 --       blue  = #0000FF,
 --       green = #00FF00,
 --       red   = #FF0000,
          white = #FFFFFF
- 
--- Create new image filled with some colour
+
+-- Create new image filled with some color
 function new_image(integer width, integer height, integer fill_colour=black)
     return repeat(repeat(fill_colour,height),width)
 end function
- 
+
 -- Usage example:
 sequence image = new_image(800,600)
- 
+
 -- Set pixel color:
 image[400][300] = white
 
 -- Get pixel color
-integer colour = image[400][300] -- Now colour is #FF0000
+integer color = image[400][300] -- Now color is #FF0000
 ```
 
 
-
 ## PHP
-
 
 ```PHP
 class Bitmap {
@@ -3619,12 +3579,9 @@ print_r($b->getPixel(3,3)); //(240,240,240)
 ```
 
 
-
 ## PL/I
 
-
 ```PL/I
-
 /* Declaration for an image, suitable for BMP files. */
 declare image(0:500, 0:500) bit (24) aligned;
 
@@ -3651,9 +3608,7 @@ end allocate_image;
 /* the image in the calling program thus, for BMP images: */
 
 declare image(*,*) controlled bit (24) aligned;
-
 ```
-
 
 
 ## PicoLisp
@@ -3682,13 +3637,11 @@ but especially for small bitmaps the following makes sense.
 ```
 
 
-
 ## PureBasic
-
 
 ```PureBasic
 w=800 : h=600
-CreateImage(1,w,h) 
+CreateImage(1,w,h)
 ;1 is internal id of image
 StartDrawing(ImageOutput(1))
 ; fill with color red
@@ -3699,9 +3652,7 @@ FillArea(0,0,-1,$ff00)
 Plot(10,10,$ff0000)
 ; check if we set it right (should be 255)
 Debug Blue(Point(10,10))
-
 ```
-
 
 
 ## Python
@@ -3713,46 +3664,44 @@ See [[Basic bitmap storage/Python]]
 
 {{libheader|pixmap}}
 
-R can write to most bitmap image formats by default (mostly for the purpose of saving graphs), however there is no built-in way of manipulating images.  The pixmap package reads, writes and manipulates portable bitmap file types: PBM, PGM, PPM.  
-See also, the image function, and the rimage and ReadImage packages, which use libjpeg to read JPEG and PNG files.
+R can write to most bitmap image formats by default (mostly for the purpose of saving graphs),
+however there is no built-in way of manipulating images.
+The pixmap package reads, writes and manipulates portable bitmap file types: PBM, PGM, PPM.
+See also, the image function, and the rimage and ReadImage packages,
+which use libjpeg to read JPEG and PNG files.
 
 ```r
-#  See the class definitions and constructors with, e.g. 
+#  See the class definitions and constructors with, e.g.
 getClass("pixmapIndexed", package=pixmap)
 pixmapIndexed
 
-# Image with all one colour
+# Image with all one color
 plot(p1 <- pixmapIndexed(matrix(0, nrow=3, ncol=4), col="red"))
 
 # Image with one pixel specified
 cols <- rep("blue", 12); cols[7] <- "red"
 plot(p2 <- pixmapIndexed(matrix(1:12, nrow=3, ncol=4), col=cols))
 
-# Retrieve colour of a pixel
+# Retrieve color of a pixel
 getcol <- function(pm, i, j)
 {
    pmcol <- pm@col
    dim(pmcol) <- dim(pm@index)
-   pmcol[i,j]   
+   pmcol[i,j]
 }
 getcol(p2, 3, 4)  #red
 ```
 
 
-
-
-
 ## Racket
 
-
 ```racket
-
 #lang racket
 
 ;; The racket/draw libraries provide imperative drawing functions.
 ;; http://docs.racket-lang.org/draw/index.html
 (require racket/draw)
-         
+
 ;; To create an image with width and height, use the make-bitmap
 ;; function.
 
@@ -3788,19 +3737,15 @@ getcol(p2, 3, 4)  #red
 ;; If we are using DrRacket, we can just print the bm as a toplevel expression
 ;; to view the final image:
 bm
-
 ```
-
-
-
 
 
 ## RapidQ
 
-
 QCanvas is an empty image on which you can draw.
 QForm is the main window of the application.
-The commands to draw on the canvas are in the procedure PaintCanvas, which is executed each time the canvas need to be (re)painted.
+The commands to draw on the canvas are in the procedure PaintCanvas,
+which is executed each time the canvas need to be (re)painted.
 
 
 ```rapidq
@@ -3831,9 +3776,7 @@ form.ShowModal
 ```
 
 
-
 ## REXX
-
 
 ### version 1
 
@@ -3884,10 +3827,9 @@ PPMwrite: parse arg oFN, width, height           /*obtain output filename, width
           call charout oFID;      return         /*close the output file just to be safe*/
 ```
 
-{{out|output}}
+Output:
 
 ```txt
-
 (10,40)  pixel in binary:  000000000000000011111111
 (10,40)  pixel in binary:  00000000 00000000 11111111
 
@@ -3895,9 +3837,7 @@ PPMwrite: parse arg oFN, width, height           /*obtain output filename, width
 (10,40)  pixel in hex:     00 00 FF
 
 The file  image.PPM  was created.
-
 ```
-
 
 
 ### version 2
@@ -4018,7 +3958,7 @@ say 'color at pixel' x'/'y'='c2x(substr(pic,i+1,3))
 Return c2x(substr(pic,i+1,3))
 ```
 
-{{out}}
+Output:
 
 ```txt
 lend: 600 -> 58020000 => 600
@@ -4032,10 +3972,10 @@ and have a look at the file pic.bmp created by this program
 ```
 
 
-
 ## Ruby
 
-I haven't been able to find any kind of package for manipulating bitmap images, so let's roll one
+I haven't been able to find any kind of package for manipulating bitmap images,
+so let's roll one.
 
 ```ruby
 class RGBColour
@@ -4065,8 +4005,8 @@ class Pixmap
   end
   attr_reader :width, :height
 
-  def fill(colour)
-    @data = Array.new(@width) {Array.new(@height, colour)}
+  def fill(color)
+    @data = Array.new(@width) {Array.new(@height, color)}
   end
 
   def validate_pixel(x,y)
@@ -4081,18 +4021,16 @@ class Pixmap
   end
   alias_method :get_pixel, :[]
 
-  def []=(x,y,colour)
+  def []=(x,y,color)
     validate_pixel(x,y)
-    @data[x][y] = colour
+    @data[x][y] = color
   end
   alias_method :set_pixel, :[]=
 end
 ```
 
 
-
 ## Rust
-
 
 ```Rust
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
@@ -4128,11 +4066,11 @@ impl Image {
             pixels: vec![Rgb::BLACK; width * height],
         }
     }
-    
+
     pub fn width(&self) -> usize {
         self.width
     }
-    
+
     pub fn height(&self) -> usize {
         self.height
     }
@@ -4180,13 +4118,11 @@ fn main() {
 ```
 
 
-
 ## Scala
-
 
 ### Java translation
 
-{{trans|Java}}
+Translated from Java
 
 ```scala
 import java.awt.image.BufferedImage
@@ -4222,9 +4158,10 @@ assert(img.height==50)
 
 ### Scala idiom
 
-A more Scalesque version could be with the use of its idiom:
-{{Out}}
-Best experienced in your browser [https://scastie.scala-lang.org/cy2uZB9DSaWVMnZjTJgQNA with Scastie (remote JVM)].
+A more Scalesque version could be with the use of its idiom.
+Best experienced in your browser
+[https://scastie.scala-lang.org/cy2uZB9DSaWVMnZjTJgQNA with Scastie
+(remote JVM)].
 
 ```scala
 import java.awt.image.BufferedImage
@@ -4272,10 +4209,7 @@ object RgbBitmap extends App {
 ```
 
 
-
 ## Scheme
-
-{{Works with|Scheme|R<math>^5</math>RS}}
 
 Definitions of list procedures:
 
@@ -4308,18 +4242,18 @@ Definitions of image procedures:
       (list)
       (cons (make-list columns (list)) (make-image columns (- rows 1)))))
 
-(define (image-fill! image colour)
+(define (image-fill! image color)
   (if (not (null? image))
-      (begin (list-fill! (car image) colour) (image-fill! (cdr image) colour))))
+      (begin (list-fill! (car image) color) (image-fill! (cdr image) color))))
 
-(define (image-set! image column row colour)
-  (list-set! (list-get image row) column colour))
+(define (image-set! image column row color)
+  (list-set! (list-get image row) column color))
 
 (define (image-get image column row)
   (list-get (list-get image row) column))
 ```
 
-Definitions of some colours:
+Definitions of some colors:
 
 ```scheme
 (define *black* (list   0   0   0))
@@ -4339,22 +4273,27 @@ This creates a small image with a black background and a single blue pixel:
 (newline)
 ```
 
-{{out}}
-<lang>(((0 0 0) (0 0 255) (0 0 0)) ((0 0 0) (0 0 0) (0 0 0)))
+Output:
+```txt
+(((0 0 0) (0 0 255) (0 0 0)) ((0 0 0) (0 0 0) (0 0 0)))
 ```
-
 
 
 ## Seed7
 
 The types and functions requested are predefined in the libraries
-[http://seed7.sourceforge.net/libraries/graph.htm graph.s7i] and
-[http://seed7.sourceforge.net/libraries/draw.htm draw.s7i]:
-*The type to handle an RGB raster graphics image is PRIMITIVE_WINDOW.
-*The function to create an image is [http://seed7.sourceforge.net/libraries/draw.htm#newPixmap%28in_integer,in_integer%29 newPixmap].
-*An imaged can be filled with a color with [http://seed7.sourceforge.net/libraries/draw.htm#clear%28inout_PRIMITIVE_WINDOW,in_color%29 clear].
-*A given pixel can be set with [http://seed7.sourceforge.net/libraries/draw.htm#point(inout_PRIMITIVE_WINDOW,in_integer,in_integer,in_color) point].
-*The color of a pixel can be retrieved with [http://seed7.sourceforge.net/libraries/draw.htm#getPixelColor(in_PRIMITIVE_WINDOW,in_integer,in_integer) getPixelColor].
+[graph.s7i](http://seed7.sourceforge.net/libraries/graph.htm) and
+[draw.s7i](http://seed7.sourceforge.net/libraries/draw.htm):
+
+- The type to handle an RGB raster graphics image is PRIMITIVE_WINDOW.
+- The function to create an image is
+  [newPixmap](http://seed7.sourceforge.net/libraries/draw.htm#newPixmap%28in_integer,in_integer%29).
+- An imaged can be filled with a color with
+  [clear](http://seed7.sourceforge.net/libraries/draw.htm#clear%28inout_PRIMITIVE_WINDOW,in_color%29).
+- A given pixel can be set with
+  [point](http://seed7.sourceforge.net/libraries/draw.htm#point(inout_PRIMITIVE_WINDOW,in_integer,in_integer,in_color).
+- The color of a pixel can be retrieved with
+  [getPixelColor](http://seed7.sourceforge.net/libraries/draw.htm#getPixelColor(in_PRIMITIVE_WINDOW,in_integer,in_integer).
 
 
 ```seed7
@@ -4375,9 +4314,7 @@ const proc: main is func
 ```
 
 
-
 ## SequenceL
-
 
 ```seed7
 RGB ::= (R: int(0), G: int(0), B: int(0));
@@ -4385,7 +4322,7 @@ RGB ::= (R: int(0), G: int(0), B: int(0));
 newBitmap: int * int -> RGB(2);
 newBitmap(width, height)[y, x] :=
 	 (R: 0, G: 0, B: 0)
-	 foreach y within 1 ... height, 
+	 foreach y within 1 ... height,
 	 		 x within 1 ... width;
 
 fill: RGB(2) * RGB -> RGB(2);
@@ -4399,9 +4336,9 @@ setColorAt(bitmap(2), x, y, color)[Y, X] :=
 		color when Y = y and X = x
 	else
 		bitmap[Y, X];
-	
-getColorAt: RGB(2) * int * int -> RGB;	
-getColorAt(bitmap(2), x, y) := bitmap[y, x]; 
+
+getColorAt: RGB(2) * int * int -> RGB;
+getColorAt(bitmap(2), x, y) := bitmap[y, x];
 
 lightGreen := (R: 51, G: 255, B: 51);
 lightRed := (R: 255, G: 51, B: 51);
@@ -4410,18 +4347,17 @@ main(args(2)) :=
 	let
 		width := 1920;
 		height := 1200;
-		
+
 		cleanImage := newBitmap(width, height);
-		
+
 		filledGreen := fill(cleanImage, lightGreen);
-		
+
 		redCenter := setColorAt(filledGreen, width / 2, height / 2, lightRed);
 	in
 		getColorAt(redCenter, width / 2, height / 2);
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 cmd:> main.exe
@@ -4429,10 +4365,7 @@ cmd:> main.exe
 ```
 
 
-
 ## Tcl
-
-{{libheader|Tk}}
 
 ```tcl
 package require Tcl 8.5
@@ -4442,16 +4375,16 @@ namespace path ::tcl::mathfunc ;# for [max] function
 proc newImage {width height} {
     return [image create photo -width $width -height $height]
 }
-proc fill {image colour} {
-    $image put $colour -to 0 0 [$image cget -width] [$image cget -height]
+proc fill {image color} {
+    $image put $color -to 0 0 [$image cget -width] [$image cget -height]
 }
-proc setPixel {image colour point} {
+proc setPixel {image color point} {
     lassign $point x y
-    $image put $colour -to [max 0 $x] [max 0 $y]
+    $image put $color -to [max 0 $x] [max 0 $y]
 }
 proc getPixel {image point} {
     lassign $point x y
-    # [$img get] returns a list: {r g b}; this proc should return a colour value
+    # [$img get] returns a list: {r g b}; this proc should return a color value
     format {#%02x%02x%02x} {*}[$image get $x $y]
 }
 
@@ -4468,14 +4401,16 @@ set rbg [getPixel $img {40 40}]
 ```
 
 
-=={{header|TI-89 BASIC}}==
+## TI-89 BASIC
 
-TI-89 BASIC does not have user-defined data structures. The Rosetta Code tasks which use this image type have instead been implemented using the TI-89's graph screen.
+TI-89 BASIC does not have user-defined data structures.
+Tasks which use this image type
+have instead been implemented using the TI-89's graph screen.
 
 
 ## UNIX Shell
 
-{{works with|ksh93}}
+Works with ksh93.
 
 ```bash
 typeset -T RGBColor_t=(
@@ -4513,13 +4448,13 @@ typeset -T Bitmap_t=(
     }
 
     function setpixel {
-        integer x=$1 y=$2 
+        integer x=$1 y=$2
         typeset color=$3
         _.data[y][x]=$color
     }
 
     function getpixel {
-        integer x=$1 y=$2 
+        integer x=$1 y=$2
         print "${_.data[y][x]}"
     }
 
@@ -4554,8 +4489,7 @@ echo "$(b.getpixel 0 0)"
 b.to_s
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 255 0 0
@@ -4567,10 +4501,7 @@ P3
 ```
 
 
-
 ## Visual Basic .NET
-
-
 
 ```vbnet
 ' The StructLayout attribute allows fields to overlap in memory.
@@ -4597,7 +4528,6 @@ Public Structure Rgb
 
 End Structure
 ```
-
 
 
 ```vbnet
@@ -4643,11 +4573,15 @@ End Class
 ```
 
 
-
 ## Vedit macro language
 
-
-An edit buffer is used to store pixel data. In order to allow unlimited image size, a temporary file (here pixel.data) can be assosicated to the buffer. You could directly open the image file you are creating (as in the task [[Dragon_curve#Vedit_macro_language|Dragon_curve]], but here we first create just the plain pixel data so that the required image file format can be decided later.
+An edit buffer is used to store pixel data.
+In order to allow unlimited image size,
+a temporary file (here pixel.data) can be assosicated to the buffer.
+You could directly open the image file you are creating
+(as in the task [[Dragon_curve#Vedit_macro_language|Dragon_curve]],
+but here we first create just the plain pixel data
+so that the required image file format can be decided later.
 
 ```vedit
 #11 = 400		// Width of the image
@@ -4720,10 +4654,7 @@ Return
 ```
 
 
-
 ## Xojo
-
-
 
 ```vb
 Function CreatePicture(width As Integer, height As Integer) As Picture
@@ -4746,7 +4677,6 @@ End Sub
 ```
 
 
-
 ## XPL0
 
 [[File:BitmapXPL0.png|right]]
@@ -4766,7 +4696,6 @@ SetVid(3);              \restore display to normal text mode
 ```
 
 
-
 ## zkl
 
 This solution creates a PPM image. No error checking or clipping.
@@ -4775,7 +4704,7 @@ This solution creates a PPM image. No error checking or clipping.
 class PPM{	// (0,0) is logically bottom left
    fcn init(width,height){
       sz:=width*height*3;
-      var [const] 
+      var [const]
          data=sz.pump(Data(sz),0),  // initialize to Black (RGB=000)
 	 w=width, h=height;
    }
@@ -4793,7 +4722,6 @@ class PPM{	// (0,0) is logically bottom left
 }
 ```
 
-
 ```zkl
 ppm:=PPM(256,256);
 ppm.fill(0x00FF88);
@@ -4802,18 +4730,16 @@ foreach x in ([50..200]){ ppm[x,50]=0xff|00|00; } // horizontal red line
 ppm.write(File("foo.ppm","wb"));
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 $ zkl hexDump foo.ppm | less
-   0: 50 36 0a 23 72 6f 73 65 | 74 74 61 63 6f 64 65 20   P6.#rosettacode 
+   0: 50 36 0a 23 72 6f 73 65 | 74 74 61 63 6f 64 65 20   P6.#rosettacode
   16: 50 50 4d 0a 32 35 36 20 | 32 35 36 0a 32 35 35 0a   PPM.256 256.255.
   32: 00 ff 88 00 ff 88 00 ff | 88 00 ff 88 00 ff 88 00   ................
   48: ff 88 00 ff 88 00 ff 88 | 00 ff 88 00 ff 88 00 ff   ................
   64: 88 00 ff 88 00 ff 88 00 | ff 88 00 ff 88 00 ff 88   ................
   80: 00 ff 88 00 ff 88 00 ff | 88 00 ff 88 00 ff 88 00   ................
 ...
-
 ```
 
