@@ -1,36 +1,34 @@
 +++
 title = "Nim Game"
-description = ""
 date = 2019-08-14T00:27:16Z
 aliases = []
 [extra]
 id = 22264
+task = """
+  Design a simple Nim game where the human player goes first,
+  and the computer always wins.
+  The game should enforce the rules.
+"""
 [taxonomies]
 categories = []
-tags = []
+tags = ["game", "puzzle"]
 +++
 
-[[Category:Puzzles]]
-[[Category:Games]]
+Nim is a simple game where the second player -
+if they know the trick - will always win.
 
-{{task}}
-Nim is a simple game where the second player - if they know the trick - will always win.
+The game has only 3 rules:
 
-The game has only 3 rules.
+- start with 12 tokens
+- each player takes 1, 2, or 3 tokens in turn
+- the player who takes the last token wins.
 
-* start with 12 tokens
-* each player takes 1, 2, or 3 tokens in turn
-* the player who takes the last token wins.
-
-
-To win every time, the second player simply takes 4 minus the number the first player took. So if the first player takes 1, the second takes 3 - if the first player takes 2, the second should take 2 - and if the first player takes 3, the second player will take 1. 
-
-
-;Task:
-Design a simple Nim game where the human player goes first, and the computer always wins. The game should enforce the rules.
-
-
-
+To win every time, the second player simply takes 4 minus the number
+the first player took.
+So if the first player takes 1,
+the second takes 3 - if the first player takes 2,
+the second should take 2 - and if the first player takes 3,
+the second player will take 1.
 
 
 ## AsciiDots
@@ -52,8 +50,8 @@ Design a simple Nim game where the human player goes first, and the computer alw
            [-]--\ R                               |
             |   *-$_"Computer takes "-$_#-$" dots"/
           M-*#4[%]
-            \---/ 
-            
+            \---/
+
                   /----------------$"computer wins!"-&
               /---~--
               *#0[=]
@@ -62,11 +60,9 @@ L-------------*---*>$_#-$" dots remaining."-$""
 
 ```
 
-
-{{out}}
+out:
 
 ```txt
-
 Nim Dots
 
 How many dots would you like to take?: 3
@@ -91,17 +87,19 @@ Computer takes 2 dots
 0 dots remaining.
 
 computer wins!
-
 ```
-
 
 
 ## BlooP
 
-Bloop has no input capabilites, so the game is defined as a procedure, called with 3 numbers (since the game will last only 3 rounds anyhow). The procedure can be called with more numbers - extra parameters are ignored in most implementations I have found. Since there is no easy way to get more inputs, any incorrect values are converted to correct ones.
+Bloop has no input capabilites, so the game is defined as a procedure,
+called with 3 numbers (since the game will last only 3 rounds anyhow).
+The procedure can be called with more numbers -
+extra parameters are ignored in most implementations I have found.
+Since there is no easy way to get more inputs,
+any incorrect values are converted to correct ones.
 
 ```BlooP
-
 DEFINE PROCEDURE ''DIVIDE'' [A,B]:
 BLOCK 0: BEGIN
   IF A < B, THEN:
@@ -193,46 +191,38 @@ BLOCK 0: BEGIN
 BLOCK 0: END.
 
 PLAY_GAME [1,4,3];
-
 ```
 
-
-{{out}}
 Sample game:
 
 ```txt
-
  > PLAYER TAKES 1 TOKENS.
  > TOKENS REMAINING: 11
- > 
+ >
  > COMPUTER TAKES 3 TOKENS.
  > TOKENS REMAINING: 8
- > 
+ >
  > TAKE MUST BE BETWEEN 1 AND 3. SETTING TAKE TO 2.
  > PLAYER TAKES 2 TOKENS.
  > TOKENS REMAINING: 6
- > 
+ >
  > COMPUTER TAKES 2 TOKENS.
  > TOKENS REMAINING: 4
- > 
+ >
  > PLAYER TAKES 3 TOKENS.
  > TOKENS REMAINING: 1
- > 
+ >
  > COMPUTER TAKES 1 TOKENS.
  > TOKENS REMAINING: 0
- > 
+ >
  > COMPUTER WINS!
 => 0
-
 ```
-
 
 
 ## C
 
-
 ```c
-
 #include  <stdio.h>
 
 int playerTurn(int numTokens, int take);
@@ -241,29 +231,29 @@ int computerTurn(int numTokens);
 int main(void)
 {
 	printf("Nim Game\n\n");
-	
+
 	int Tokens = 12;
-	
+
 	while(Tokens > 0)
 	{
 		printf("How many tokens would you like to take?: ");
-		
+
 		int uin;
 		scanf("%i", &uin);
-		
+
 		int nextTokens = playerTurn(Tokens, uin);
-		
+
 		if (nextTokens == Tokens)
 		{
 			continue;
 		}
-		
+
 		Tokens = nextTokens;
-		
+
 		Tokens = computerTurn(Tokens);
 	}
 	printf("Computer wins.");
-	
+
 	return 0;
 }
 
@@ -275,10 +265,10 @@ int playerTurn(int numTokens, int take)
 		return numTokens;
 	}
 	int remainingTokens = numTokens - take;
-	
+
 	printf("\nPlayer takes %i tokens.\n", take);
 	printf("%i tokens remaining.\n\n", remainingTokens);
-	
+
 	return remainingTokens;
 }
 
@@ -286,21 +276,17 @@ int computerTurn(int numTokens)
 {
 	int take = numTokens % 4;
 	int remainingTokens = numTokens - take;
-	
+
 	printf("Computer takes %u tokens.\n", take);
 	printf("%i tokens remaining.\n\n", remainingTokens);
-	
+
 	return remainingTokens;
 }
-
 ```
 
-
-{{Out}}
 Sample game:
 
 ```txt
-
 Nim Game
 
 How many tokens would you like to take?: 4
@@ -328,16 +314,15 @@ Computer takes 1 tokens.
 0 tokens remaining.
 
 Computer wins.
-
 ```
-
 
 
 ## C++
 
-{{trans|Go}}
+Translation from Go.
 
-```cpp>#include <iostream
+```c++
+#include <iostream
 
 #include <limits>
 
@@ -375,12 +360,9 @@ int main() {
 }
 ```
 
-
-{{out}}
 Sample game:
 
 ```txt
-
 Tokens remaining 12
 
   How many tokens 1, 2 or 3? nim
@@ -411,16 +393,12 @@ Tokens remaining 4
 Tokens remaining 0
 
   Computer wins!
-
 ```
-
 
 
 ## Common Lisp
 
-
 ```lisp
-
 (defun pturn (curTokens)
 	(write-string "How many tokens would you like to take?: ")
 	(setq ans (read))
@@ -448,14 +426,12 @@ Tokens remaining 0
 	(if (<= tok 0)
 		(return)))
 (write-string "Computer wins!")
-
 ```
 
+Sample game:
 
-{{out}}
 
 ```txt
-
 LISP Nim
 
 How many tokens would you like to take?: 2
@@ -480,15 +456,12 @@ Computer takes 1 tokens
 0 tokens remaining
 
 Computer wins!
-
 ```
-
 
 
 ## Crystal
 
-
-```Ruby
+```crystal
 tokens = 12
 
 until tokens <= 0
@@ -504,9 +477,7 @@ puts "Computer wins."
 ```
 
 
-
 ## Factor
-
 
 ```factor
 USING: interpolate io kernel math math.parser sequences ;
@@ -534,11 +505,10 @@ IN: rosetta-code.nim-game
 MAIN: nim-game
 ```
 
-{{out}}
+out:
+
 
 ```txt
-
-
 -~~==[ 12 tokens remaining ]==~~-
 
 Number of tokens to take (1, 2, or 3): 1
@@ -562,13 +532,10 @@ Computer took 2 tokens
 -~~==[ 0 tokens remaining ]==~~-
 
 Computer wins!
-
 ```
 
 
-
 ## Go
-
 
 ```go
 package main
@@ -581,7 +548,7 @@ import (
 )
 
 func showTokens(tokens int) {
-    fmt.Println("Tokens remaining", tokens, "\n")    
+    fmt.Println("Tokens remaining", tokens, "\n")
 }
 
 func main() {
@@ -616,50 +583,46 @@ func main() {
 }
 ```
 
-
-{{out}}
 Sample game:
 
 ```txt
-
-Tokens remaining 12 
+Tokens remaining 12
 
   How many tokens 1, 2 or 3? 2
   Computer takes 2 tokens
 
-Tokens remaining 8 
+Tokens remaining 8
 
   How many tokens 1, 2 or 3? 4
 
 Must be a number between 1 and 3, try again.
 
-Tokens remaining 8 
+Tokens remaining 8
 
   How many tokens 1, 2 or 3? 1
   Computer takes 3 tokens
 
-Tokens remaining 4 
+Tokens remaining 4
 
   How many tokens 1, 2 or 3? 3
   Computer takes 1 token
 
-Tokens remaining 0 
+Tokens remaining 0
 
   Computer wins!
-
 ```
-
 
 
 ## Javascript
 
+###  Browser Version
 
-###  Browser Version 
+This is the easy but dirty way - with prompt for input,
+and `console.log` for output.
+The Nim class was structured so that input and output could be customized,
+for example to use HTML DOM elements for in and out, instead of the terminal.
 
-This is the easy but dirty way - with prompt for input, and console.log for output. The Nim class was structured so that input and output could be customized, for example to use HTML DOM elements for in and out, instead of the terminal.
-
-```Javascript
-
+```JavaScript
 class Nim {
 	constructor(tokens, printFun) {
 		this.startTokens = tokens;
@@ -711,15 +674,11 @@ while (true) {
 		break;
 	}
 }
-
 ```
 
-
-{{out}}
 Sample game:
 
 ```txt
-
 (prompt) How many tokens would you like to take? 2
 Player takes 2 tokens.
 10 tokens remaining.
@@ -748,14 +707,12 @@ Computer takes 3 tokens.
 0 tokens remaining.
 
 Computer wins.
-
 ```
-
 
 
 ## Julia
 
-{{trans|Perl 6}}
+Translated from Perl 6.
 
 ```julia
 function nimgame()
@@ -780,12 +737,11 @@ function nimgame()
 end
 
 nimgame()
-
 ```
-{{out}}
+
+out:
 
 ```txt
-
 12 tokens remain.
 How many do you take ([1, 2, 3])?
 3
@@ -799,14 +755,12 @@ How many do you take ([1, 2, 3])?
 1
 Computer takes 3. There are 0 tokens left.
 Computer wins as expected.
-
 ```
-
 
 
 ## Kotlin
 
-{{trans|Go}}
+Translated from Go.
 
 ```scala
 // Version 1.3.21
@@ -838,12 +792,9 @@ fun main() {
 }
 ```
 
-
-{{output}}
 Sample game:
 
 ```txt
-
 Tokens remaining 12
 
   How many tokens 1, 2 or 3? 3
@@ -868,16 +819,12 @@ Tokens remaining 4
 Tokens remaining 0
 
   Computer wins!
-
 ```
-
 
 
 ## Lua
 
-
 ```Lua
-
 tokens = 12
 
 print("Nim Game\n")
@@ -893,9 +840,9 @@ function playerTurn(take)
 		print ("\nTake must be between 1 and 3.\n")
 		return false
 	end
-	
+
 	tokens = tokens - take
-	
+
 	print ("\nPlayer takes " .. take .. " tokens.")
 	printRemaining()
 	return true
@@ -904,7 +851,7 @@ end
 function computerTurn()
 	take = tokens % 4
 	tokens = tokens - take
-	
+
 	print("Computer takes " .. take .. " tokens.")
 	printRemaining()
 end
@@ -917,15 +864,11 @@ while (tokens > 0) do
 end
 
 print ("Computer wins.")
-
 ```
 
-
-{{out}}
-Sample game output:
+Sample game:
 
 ```txt
-
 Nim Game
 
 Starting with 12 tokens.
@@ -956,14 +899,10 @@ Computer takes 2 tokens.
 0 tokens remaining.
 
 Computer wins.
-
 ```
 
 
-
 ## Nim
-
-
 
 ```nim
 import strutils
@@ -1007,8 +946,7 @@ while tokens > 0:
 styledEcho(styleBright, "Computer wins!")
 ```
 
-
-{{out}}
+out:
 
 ```txt
 - Your turn -
@@ -1042,10 +980,9 @@ Computer wins!
 ```
 
 
-
 ## Perl
 
-{{trans|Perl 6}}
+Translated from Perl 6.
 
 ```perl
 use strict;
@@ -1058,16 +995,16 @@ say "$tokens tokens remaining.\n";
 while (1) {
     print "How many tokens do you want to remove; 1, 2 or 3? : ";
     (my $player = <>) =~ s/\s//g;
-    say "Nice try. $tokens tokens remaining.\n" and next 
+    say "Nice try. $tokens tokens remaining.\n" and next
         unless $player =~ /^[123]$/;
     $tokens -= 4;
     say "Computer takes @{[4 - $player]}.\n$tokens tokens remaining.\n";
-    say "Computer wins." and last 
+    say "Computer wins." and last
         if $tokens <= 0;
 }
 ```
 
-{{out}}
+out:
 
 ```txt
 12 tokens remaining.
@@ -1091,11 +1028,9 @@ Computer wins.
 ```
 
 
-
 ## Perl 6
 
-{{works with|Rakudo|2019.03}}
-
+Works with Rakudo 2019.03.
 
 ```perl6
 say my $tokens = 12, " tokens remaining.\n";
@@ -1110,7 +1045,7 @@ loop {
 }
 ```
 
-{{out|Sample output}}
+Sample game:
 
 ```txt
 12 tokens remaining.
@@ -1137,14 +1072,13 @@ Computer wins.
 ```
 
 
-
 ## Phix
 
-{{trans|Perl_6}}
+Translated from Perl 6.
 
 ```Phix
 integer tokens = 12, player = 0
- 
+
 while true do
     printf(1,"%2d tokens remaining. ",tokens)
     if tokens=0 then printf(1,"Computer wins.\n") exit end if
@@ -1155,50 +1089,46 @@ while true do
 end while
 ```
 
-{{out}}
+out:
 
 ```txt
-
 12 tokens remaining. How many tokens do you want to remove; 1, 2, or 3?:1. Computer takes 3.
  8 tokens remaining. How many tokens do you want to remove; 1, 2, or 3?:2. Computer takes 2.
  4 tokens remaining. How many tokens do you want to remove; 1, 2, or 3?:3. Computer takes 1.
  0 tokens remaining. Computer wins.
-
 ```
-
 
 
 ## Python
 
-Works on Python 3
+Works with Python 3.
 
 ```Python
-
 print("Py Nim\n")
 
 def getTokens(curTokens):
 	global tokens
-	
+
 	print("How many tokens would you like to take? ", end='')
 	take = int(input())
-	
+
 	if (take < 1 or take > 3):
 		print("Number must be between 1 and 3.\n")
 		getTokens(curTokens)
 		return
-	
+
 	tokens = curTokens - take
 	print(f'You take {take} tokens.')
 	print(f'{tokens} tokens remaining.\n')
 
 def compTurn(curTokens):
 	global tokens
-	
+
 	take = curTokens % 4
 	tokens = curTokens - take
 	print (f'Computer takes {take} tokens.')
 	print (f'{tokens} tokens remaining.\n')
-	
+
 
 tokens = 12
 while (tokens > 0):
@@ -1206,14 +1136,12 @@ while (tokens > 0):
 	compTurn(tokens)
 
 print("Computer wins!")
-
 ```
 
+out:
 
-{{out}}
 
 ```txt
-
 Py Nim
 
 How many tokens would you like to take? 2
@@ -1238,16 +1166,12 @@ Computer takes 1 tokens.
 0 tokens remaining.
 
 Computer wins!
-
 ```
-
 
 
 ## Racket
 
-
 ```racket
-
 #lang racket
 
 (define (print-remaining tokens-remaining)
@@ -1269,26 +1193,28 @@ Computer wins!
         (define n (read-tokens))
         (cturn (- tokens-remaining n) n)]
     [else (display "Computer wins!")]))
-    
+
 
 (define (cturn tokens-remaining p-took)
   (cond
     [(not (zero? tokens-remaining))
       (print-remaining tokens-remaining)
-      (define c-take (- 4 p-took)) 
+      (define c-take (- 4 p-took))
       (printf "Computer takes ~a tokens\n" c-take)
       (pturn (- tokens-remaining c-take))]
   [else (display "You win!")]))
 
 (pturn 12)
-
 ```
-
 
 
 ## REXX
 
-Programming notes:   extra error checking was done with specific informative error messages.   Also included was a method of quitting the game.   The number of (starting) tokens   (the ''pot'')   can be specified on the command line,   the default is   '''12'''.
+Programming notes:
+Extra error checking was done with specific informative error messages.
+Also included was a method of quitting the game.
+The number of (starting) tokens (the ''pot'')
+can be specified on the command line, the default is '''12'''.
 
 ```rexx
 /*REXX program plays the NIM game with a human opponent; the pot size can be specified. */
@@ -1332,15 +1258,14 @@ s:     if arg(1)==1  then return arg(3);                         return word(arg
 ser:   if ok  then say pad '***error***' arg(1);       ok= 0;    return
 ```
 
-{{out|output|text=  when using the default input:}}
+Sample game:
 
 ```txt
-
 ──────── Tokens remaining:  12  ────────
 
 
 ──────── How many tokens do you want to take away  (1, 2, or 3)    (or QUIT)?
-2                                            ◄■■■■■■■■■■■ user input                                             
+2                                            ◄■■■■■■■■■■■ user input
 
 ──────── The computer takes  2  tokens.
 
@@ -1356,7 +1281,7 @@ ser:   if ok  then say pad '***error***' arg(1);       ok= 0;    return
 
 
 ──────── How many tokens do you want to take away  (1, 2, or 3)    (or QUIT)?
-1                                            ◄■■■■■■■■■■■ user input 
+1                                            ◄■■■■■■■■■■■ user input
 
 ──────── The computer takes  3  tokens.
 ──────── No tokens left.
@@ -1365,10 +1290,7 @@ ser:   if ok  then say pad '***error***' arg(1);       ok= 0;    return
 ```
 
 
-
-
 ## Ruby
-
 
 ```ruby
 [12, 8, 4].each do |remaining|
@@ -1381,42 +1303,38 @@ ser:   if ok  then say pad '***error***' arg(1);       ok= 0;    return
 end
 
 puts "Computer took the last and wins."
-
 ```
 
-{{out}}
+out:
 
 ```txt
 There are 12 dots.
-How many dots would you like to take? 
+How many dots would you like to take?
 foo
 Please enter one of 1, 2 or 3
 There are 12 dots.
-How many dots would you like to take? 
+How many dots would you like to take?
 1
 You took 1 dots, leaving 11.
 Computer takes 3.
 
 There are 8 dots.
-How many dots would you like to take? 
+How many dots would you like to take?
 3
 You took 3 dots, leaving 5.
 Computer takes 1.
 
 There are 4 dots.
-How many dots would you like to take? 
+How many dots would you like to take?
 2
 You took 2 dots, leaving 2.
 Computer takes 2.
 
 Computer took the last and wins.
-
 ```
 
 
-
 ## Rust
-
 
 ```rust
 use std::io;
@@ -1426,13 +1344,13 @@ fn main() {
     println!("Nim game");
     println!("Starting with {} tokens.", tokens);
     println!("");
-    
+
     loop {
         tokens = p_turn(&tokens);
         print_remaining(&tokens);
         tokens = c_turn(&tokens);
         print_remaining(&tokens);
-        
+
         if tokens == 0 {
             println!("Computer wins!");
             break;
@@ -1443,11 +1361,11 @@ fn main() {
 fn p_turn(tokens: &i32) -> i32 {
     loop {  //try until we get a good number
         println!("How many tokens would you like to take?");
-        
+
         let mut take = String::new();
         io::stdin().read_line(&mut take)
             .expect("Sorry, I didn't understand that.");
-        
+
         let take: i32 = match take.trim().parse() {
             Ok(num) => num,
             Err(_) => {
@@ -1456,22 +1374,22 @@ fn p_turn(tokens: &i32) -> i32 {
                 continue;
             }
         };
-        
+
         if take > 3 || take < 1 {
             println!("Take must be between 1 and 3.");
             println!("");
             continue;
         }
-        
+
         return tokens - take;
     }
 }
 
 fn c_turn(tokens: &i32) -> i32 {
     let take = tokens % 4;
-    
+
     println!("Computer takes {} tokens.", take);
-    
+
     return tokens - take;
 }
 
@@ -1479,11 +1397,9 @@ fn print_remaining(tokens: &i32) {
     println!("{} tokens remaining.", tokens);
     println!("");
 }
-
 ```
 
-{{out}}
-sample game:
+Sample game:
 
 ```txt
 
@@ -1520,17 +1436,14 @@ Computer takes 3 tokens.
 0 tokens remaining.
 
 Computer wins!
-
 ```
-
 
 
 ## Smalltalk
 
-{{works with|GNU Smalltalk}}
+Works with GNU Smalltalk.
 
 ```smalltalk
-
 Object subclass: Nim [
     | tokens |
     <comment: 'I am a game of nim'>
@@ -1538,14 +1451,14 @@ Object subclass: Nim [
         <category: 'instance creation'>
         ^(super new) init: 12
     ]
-    
+
     init: t [
         <category: 'instance creation'>
         tokens := t.
         ^self
     ]
-    
-    
+
+
     pTurn [
         | take |
         <category: 'gameplay'>
@@ -1555,7 +1468,7 @@ Object subclass: Nim [
             ifTrue: [Transcript nextPutAll: 'Invalid input';nl;nl. self pTurn]
             ifFalse: [tokens := tokens - take]
     ]
-    
+
     cTurn [
         | take |
         <category: 'gameplay'>
@@ -1565,7 +1478,7 @@ Object subclass: Nim [
         Transcript nextPutAll: ' tokens';nl.
         tokens := tokens - take
     ]
-    
+
     mainLoop [
         <category: 'main loop'>
         Transcript nextPutAll: 'Nim game';nl.
@@ -1581,7 +1494,7 @@ Object subclass: Nim [
                 ifTrue:[Transcript nextPutAll: 'Computer wins!';nl. ^0]
         ]
     ]
-    
+
     printRemaining [
         <category: 'information'>
         tokens printOn: Transcript.
@@ -1591,11 +1504,9 @@ Object subclass: Nim [
 
 g := Nim new.
 g mainLoop.
-
 ```
 
-{{out}}
-sample game:
+Sample game:
 
 ```txt
 
@@ -1627,6 +1538,4 @@ Computer takes 3 tokens
 0 tokens remaining
 
 Computer wins!
-
 ```
-
