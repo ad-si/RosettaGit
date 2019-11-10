@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Assembly"
+title = "Assembly"
 description = ""
 date = 2017-11-05T17:30:09Z
 aliases = []
@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-<!-- 
-=Assembly= 
+<!--
+=Assembly=
 -->
 {{collection|99 Bottles of Beer}} [[implementation of task::99 Bottles of Beer| ]]
 [[99 Bottles of Beer]] done in any of the assembler-languages.
@@ -39,7 +39,7 @@ BOTTLES  CSECT
 BEGIN    LA     R2,99              r2=99 number of bottles
          LR     R3,R2
 LOOP     BCTR   R3,0               r3=r2-1
-         CVD    R2,DW              binary to pack decimal 
+         CVD    R2,DW              binary to pack decimal
          MVC    ZN,EDMASKN         load mask
          ED     ZN,DW+6            pack decimal (PL2) to char (CL4)
          CH     R2,=H'1'           if r2<>1
@@ -48,7 +48,7 @@ LOOP     BCTR   R3,0               r3=r2-1
          MVI    PG2+13,C' '        1 bottle
 NOTONE1  MVC    PG1+4(2),ZN+2      insert bottles
          MVC    PG2+4(2),ZN+2      insert bottles
-         CVD    R3,DW              binary to pack decimal 
+         CVD    R3,DW              binary to pack decimal
          MVC    ZN,EDMASKN         load mask
          ED     ZN,DW+6            pack decimal (PL2) to char (CL4)
          MVC    PG4+4(2),ZN+2      insert bottles
@@ -91,22 +91,22 @@ WTOMSG   CNOP   0,4
  5 bottles of beer
 Take one down, pass it around
  4 bottles of beer on the wall
- 
+
  4 bottles of beer on the wall
  4 bottles of beer
 Take one down, pass it around
  3 bottles of beer on the wall
- 
+
  3 bottles of beer on the wall
  3 bottles of beer
 Take one down, pass it around
  2 bottles of beer on the wall
- 
+
  2 bottles of beer on the wall
  2 bottles of beer
 Take one down, pass it around
  1 bottle  of beer on the wall
- 
+
  1 bottle  of beer on the wall
  1 bottle  of beer
 Take one down, pass it around
@@ -118,14 +118,14 @@ No more bottles of beer on the wall
 
 ## 6502 Assembly
 
-IMPORTANT NOTE:  This assembly language solution is targeted at the Apple 1. 
+IMPORTANT NOTE:  This assembly language solution is targeted at the Apple 1.
 
-The Apple 1 was an innovative device for its time, 
-but it's quite primitive by modern standards, 
-and it had NO support for lower-case letters.  
+The Apple 1 was an innovative device for its time,
+but it's quite primitive by modern standards,
+and it had NO support for lower-case letters.
 
-Therefore, the UPPER-CASE output of this example accurately represents 
-the only reasonable one for this device, 
+Therefore, the UPPER-CASE output of this example accurately represents
+the only reasonable one for this device,
 and cannot be "fixed" due to non-compliance, only deleted.
 
 
@@ -175,7 +175,7 @@ BEERME:
    LDY #TAKE1-TXT  ;? "TAKE ... AROUND,"
    JSR PRBOB       ;? X;" BOT ... WALL."
 PRSONG: ;          ;?
-   LDY #CR-TXT     ;? X;" BOT ... WALL," 
+   LDY #CR-TXT     ;? X;" BOT ... WALL,"
    JSR PRBOB       ;? X;" BOT ... BEER."
    DEX             ;X=X-1
    BPL BEERME      ;IF X>=0 THEN BEERME
@@ -494,7 +494,7 @@ loop:
     ldr r0, =lyric
     bl printf
     pop {r0}
-    
+
     sub r0, r0, #1
     cmp r0, #0
     bgt loop
@@ -504,7 +504,7 @@ loop:
 
     mov r7, #1
     swi 0
-    
+
 lyric:
     .ascii "%d bottles of beer on the wall\n"
     .ascii "%d bottles of beer\n"
@@ -550,7 +550,7 @@ declare i32 @printf(i8*, ...)
 ; Prints a verse, with %numberOfBottles being the initial number of bottles
 ; in that verse.
 define fastcc void @printVerse(i32 %numberOfBottles) {
-    switch i32 %numberOfBottles, 
+    switch i32 %numberOfBottles,
         label %pluralVerse
         [ i32 1, label %singularVerse
           i32 0, label %finalVerse ]
@@ -577,12 +577,12 @@ finalVerse:
     ret void
 }
 
-define i32 @main() { 
+define i32 @main() {
 loopHeader:
     %initialVerseNumberL = load i32* @initialVerseNumber
     br label %loop ; This br terminates the first basic block.
 loop:
-    %verseNumber = 
+    %verseNumber =
         phi i32 [%initialVerseNumberL, %loopHeader], [%nextVerseNumber, %do]
     %cond = icmp eq i32 -1, %verseNumber
     br i1 %cond, label %break, label %do
@@ -713,7 +713,7 @@ DrinkBeer:
 	pop si
 	pop ds
 	ret
-	
+
 	.printString:
 		push ax
 		push si
@@ -728,7 +728,7 @@ DrinkBeer:
 		pop si
 		pop ax
 		ret
-		
+
 	.printHexNumber:
 			pusha
 			push ds
@@ -763,7 +763,7 @@ DrinkBeer:
 			pop ds
 			popa
 			ret
-		
+
 	.dataHelloWorld: db "Hello World!", 0
 	.dataBeerSong1: db " bottles of beer on the wall ", 0
 	.dataBeerSong2: db " bottles of beer", 13, 10, "Take one down, pass it around "
@@ -780,9 +780,9 @@ DrinkBeer:
 ```asm
 bits 32
 
-section .data 
+section .data
 str:
-%assign bottles 99 
+%assign bottles 99
 %rep 99
   %defstr bottles_str bottles
   %if bottles == 1
@@ -793,13 +793,13 @@ str:
   db bottles_str, bottle_plur, " of beer on the wall", 10
   db bottles_str, bottle_plur, " of beer", 10
   db "Take one down, pass it around", 10, 10
-%assign bottles bottles-1 
+%assign bottles bottles-1
 %endrep
 db "0 bottles of beer on the wall", 10
 str_len: equ $ - str
 
 section .text
-global _start 
+global _start
 _start:
     mov edx, str_len
     mov ecx, str
@@ -843,7 +843,7 @@ Could maybe have done it all with macros, but I wanted to write my own itoa func
     WRITE
 .endm
 
-/* void* itoa(long, char *) 
+/* void* itoa(long, char *)
              0q     8q
    - char * points to the *back* of the string. itoa writes from ls digit.
    - clobbers rdi, rax, rdx
@@ -852,10 +852,10 @@ Could maybe have done it all with macros, but I wanted to write my own itoa func
 itoa:
     pushq   %rbp
     movq    %rsp, %rbp
-    
+
     movq    16(%rsp), %rdi
     movq    24(%rsp), %rax
-    
+
     cycledigits:
         xorq    %rdx, %rdx
         divq    decimal
@@ -864,7 +864,7 @@ itoa:
         decq    %rdi            // Next digit
         cmpq    $0, %rax
         jg      cycledigits     // No more digits?
-    
+
     leaq    1(%rdi), %rax       // return value
 
     popq    %rbp
@@ -873,7 +873,7 @@ itoa:
 _start:
     // Set up stack
     movq    %rsp, %rbp
-    /*  
+    /*
         bptr = itoa(counter, numstring)
         do
         {
@@ -894,34 +894,34 @@ _start:
     call    itoa
     addq    $16, %rsp       // clean args
     movq    %rax, (%rsp)      // bptr = itoa(counter, numstring)
-    
+
     subq    $numstring, %rax
     negq    %rax
     leaq    1(%rax), %rdx
     movq    %rdx, 8(%rsp)   // Save the calculation
-    
+
     printloop:
         WRITENUM       // write(stdout, bptr, bptr-numstring+1)
-        
+
         writeline1:
         movq    WRL1_LEN, %rdx
         movq    $regstring, %rsi
         WRITE               // write(stdout, regstring, 30)
-        
+
         WRITENUM       // write(stdout, bptr, bptr-numstring+1)
-        
+
         writeline2:
         movq    WRL2_LEN, %rdx
         movq    $regstring2, %rsi
         WRITE               // write(stdout, regstring2, 52)
         decq    counter     // counter--
-        
+
         pluralcheck:
         cmpq    $1, counter
         jg      norm
         cmpq    $0, counter
         je      zeroconfirm
-        
+
         oneconfirm:
         movq    $regstring, %rdx
         movb    $0x20 , 7(%rdx)
@@ -930,7 +930,7 @@ _start:
         movq    $regstring3, %rdx
         movb    $0x20 , 7(%rdx)
         jg      norm
-        
+
         zeroconfirm:
         movq    $regstring, %rdx
         movb    $'s, 7(%rdx)
@@ -938,14 +938,14 @@ _start:
         movb    $'s , 7(%rdx)
         movq    $regstring3, %rdx
         movb    $'s , 7(%rdx)
-        
+
         norm:
         pushq   counter
         pushq   $numstring
         call    itoa
         addq    $16, %rsp
         movq    %rax, (%rsp)    // bptr = itoa(counter, numstring)
-        
+
         write3:
         subq    $numstring, %rax
         negq    %rax
@@ -953,12 +953,12 @@ _start:
         movq    %rdx, 8(%rsp)
         movq    (%rsp), %rsi
         WRITE               // write(stdout, bptr, bptr-numstring+1)
-        
+
         writeline3:
         movq    WRL3_LEN, %rdx
         movq    $regstring3, %rsi
         WRITE               // write(stdout, regstring, 30)
-        
+
         cmpq    $0, counter
         jg      printloop
 
@@ -972,7 +972,7 @@ exit:
     decimal:  // base 10
         .quad 10
     counter:
-        .quad   START_BOTTLES    
+        .quad   START_BOTTLES
     buffer:
         .ascii "xxx"     /* Separated out because want back of string */
     numstring:
@@ -1046,7 +1046,7 @@ printend:
  ret
 
 dtoa2d:                        ; Decimal to ASCII (2 digits only), in: A, out: DE
- ld d,'0'                      ; Starting from ASCII '0' 
+ ld d,'0'                      ; Starting from ASCII '0'
  dec d                         ; Because we are inc'ing in the loop
  ld e,10                       ; Want base 10 please
  and a                         ; Clear carry flag

@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Prolog"
+title = "Prolog"
 description = ""
 date = 2014-11-21T12:00:48Z
 aliases = []
@@ -10,12 +10,12 @@ categories = []
 tags = []
 +++
 
-<!-- 
-=Prolog= 
+<!--
+=Prolog=
 -->
 {{collection|99 Bottles of Beer}}
 [[99 Bottles of Beer]] done in Prolog-languages
-<!-- 
+<!--
 See [[99 Bottles of Beer/Prolog]]
 -->
 
@@ -44,16 +44,16 @@ An other version that handles plural/not plural conditions.
 
 
 ```prolog
-line1(X):- line2(X),write(' on the wall'). 
+line1(X):- line2(X),write(' on the wall').
 line2(0):- write('no more bottles of beer').
 line2(1):- write('1 bottle of beer').
 line2(X):- writef('%t bottles of beer',[X]).
 line3(1):- write('Take it down, pass it around').
 line3(X):- write('Take one down, pass it around').
 line4(X):- line1(X).
- 
+
 bottles(0):-!.
-bottles(X):-	
+bottles(X):-
     succ(XN,X),
     line1(X),nl,
     line2(X),nl,
@@ -61,7 +61,7 @@ bottles(X):-
     line4(XN),nl,nl,
     !,
     bottles(XN).
- 
+
 :- bottles(99).
 ```
 
@@ -91,7 +91,7 @@ clauses
             write(B-1," ",bottles(B-1)," of beer on the wall.\n\n")
         end foreach,
 
-        succeed(). 
+        succeed().
 end implement main
 
 goal

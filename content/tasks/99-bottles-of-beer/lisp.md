@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Lisp"
+title = "Lisp"
 description = ""
 date = 2018-08-23T12:04:42Z
 aliases = []
@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-<!-- 
-=Lisp= 
+<!--
+=Lisp=
 -->
 {{collection|99 Bottles of Beer}}
 [[99 Bottles of Beer]] done in Lisp-languages
@@ -80,9 +80,9 @@ and then just call
           (loop :for n :from 99 :downto 0 :collect n))
 ```
 
-The [http://www.lispworks.com/documentation/HyperSpec/Body/22_c.htm FORMAT function] is probably the most baroque (i.e. featureful almost to a fault) function in Common Lisp. 
-To really drive this point home, try replacing each instance of <tt>~D</tt> 
-with <tt>~R</tt>, and then with <tt>~@R</tt>. 
+The [http://www.lispworks.com/documentation/HyperSpec/Body/22_c.htm FORMAT function] is probably the most baroque (i.e. featureful almost to a fault) function in Common Lisp.
+To really drive this point home, try replacing each instance of <tt>~D</tt>
+with <tt>~R</tt>, and then with <tt>~@R</tt>.
 Yes, this is all standard and dependable (dys?)functionality.
 
 Explanation of the format string for the uninitiated:
@@ -96,7 +96,7 @@ Note, by the way, how the emoticons <tt>:*~D</tt> and <tt>:P</tt> have shown up 
 
 ### Alternate solution
 
-Bit of a beginner in Lisp, but this seems to work: 
+Bit of a beginner in Lisp, but this seems to work:
 
 ```lisp
 
@@ -129,15 +129,15 @@ Bit of a beginner in Lisp, but this seems to work:
 
 
 ```newlisp
-(for (n 99 1) 
+(for (n 99 1)
 (println n " bottles of beer on the wall," n " bottles of beer. Take one down, pass it around. ")
 (println (- n 1) "bottles of beer on the wall!"))
 
 ;;recursive
 ;;also shows list afterword
 (define (rec bottles)
-	(if (!= 0 bottles) (print "/n" bottles " bottles of beer on the wall" bottles " bottles of beer. 
-\nTake one down, pass it around, " (- bottles 1) 
+	(if (!= 0 bottles) (print "/n" bottles " bottles of beer on the wall" bottles " bottles of beer.
+\nTake one down, pass it around, " (- bottles 1)
 " bottles of beer on the wall" (rec ( - bottles 1))))(list bottles))
 
 (rec 99)

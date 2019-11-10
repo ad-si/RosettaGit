@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Shell"
+title = "Shell"
 description = ""
 date = 2016-08-15T00:28:46Z
 aliases = []
@@ -11,7 +11,7 @@ tags = []
 +++
 
 <!-- =Task in Shell(s)= -->
-{{collection|99 Bottles of Beer}} 
+{{collection|99 Bottles of Beer}}
 [[implementation of task::99 Bottles of Beer| ]]
 
 [[99 Bottles of Beer]] done in any of the Shell-languages.
@@ -99,15 +99,15 @@ Recursive with slight grammatical variation:
 ```AutoHotkey
 99bottles()
 esc::exitapp
- 
-99bottles(x=99) { 
+
+99bottles(x=99) {
   ToolTip, % Format("{1:} {2:} of beer on the wall, {1:L} {2:} of beer.{4:}{3:} {2:} of beer on the wall!"
   ,(x?x:"No more")
   ,(x=1?"bottle":"bottles")
   ,(x=1?"no more":x=0?99:x-1)
   ,(x?"`nYou take one down pass it around, ":"`nGo to the store and buy some more, ")),500,300
   sleep 99
-  x?99bottles(x-1):return       
+  x?99bottles(x-1):return
 }
 ```
 
@@ -171,7 +171,7 @@ $lyrics2 = " bottles of beer. Take one down and pass it around. "
 
 ```dos
 @echo off
-setlocal 
+setlocal
 :main
 for /L %%i in (99,-1,1) do (
 	call :verse %%i
@@ -188,7 +188,7 @@ goto :eof
 
 :verse
 call :plural %1 res
-echo %res% of beer on the wall 
+echo %res% of beer on the wall
 echo %res% of beer
 call :oneit %1 res
 echo take %res% down and pass it round
@@ -323,7 +323,7 @@ do { $s -f $n, --$n } while ($n -gt 0)
 
 
 ```Powershell
-99..1 | ForEach-Object { 
+99..1 | ForEach-Object {
     $s=$( if( $_ -ne 1 ) { 's' } else { '' } )
     $s2=$( if( $_ -ne 2 ) { 's' } else { '' } )
     "$_ bottle$s of beer on the wall`n$_ bottle$s of beer`nTake one down`npass it around`n$( $_ - 1 ) bottle$s2 of beer on the wall`n"}
@@ -345,7 +345,7 @@ editvar /newvar /value=a=-a-1
 if -a- /hasvalue 1 goto :1
 printline -a- bottles of beer on the wall.
 goto :a
-:1 
+:1
 printline 1 bottle of beer on the wall
 printline 1 bottle of beer
 printline take it down, pass it round
@@ -435,7 +435,7 @@ end
 =
 ## es
 =
-es - extensible shell 
+es - extensible shell
 
 
 ```es

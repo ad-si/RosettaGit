@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Pascal"
+title = "Pascal"
 description = ""
 date = 2015-09-05T01:18:18Z
 aliases = []
@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-<!-- 
-=Pascal= 
+<!--
+=Pascal=
 -->
 {{collection|99 Bottles of Beer}}
 [[99 Bottles of Beer]] done in Pascal-languages
@@ -94,31 +94,31 @@ Take one down, pass it around
 
 
 ```Delphi
-program Hundred_Bottles; 
+program Hundred_Bottles;
 
-{$APPTYPE CONSOLE} 
+{$APPTYPE CONSOLE}
 
-uses SysUtils; 
+uses SysUtils;
 
-const C_1_Down = 'Take one down, pass it around' ; 
+const C_1_Down = 'Take one down, pass it around' ;
 
-Var i : Integer ; 
+Var i : Integer ;
 
-// As requested, some fun : examples of Delphi basic techniques. Just to make it a bit complex 
+// As requested, some fun : examples of Delphi basic techniques. Just to make it a bit complex
 
-procedure WriteABottle( BottleNr : Integer ) ; 
-begin 
-  Writeln(BottleNr, ' bottles of beer on the wall' ) ; 
-end ; 
+procedure WriteABottle( BottleNr : Integer ) ;
+begin
+  Writeln(BottleNr, ' bottles of beer on the wall' ) ;
+end ;
 
-begin 
-  for i := 99 Downto 1 do begin 
-  WriteABottle(i); 
-  Writeln( Format('%d bottles of beer' , [i] ) ) ; 
-  Writeln( C_1_Down ) ; 
-  WriteABottle(i-1); 
-  Writeln ; 
-End ; 
+begin
+  for i := 99 Downto 1 do begin
+  WriteABottle(i);
+  Writeln( Format('%d bottles of beer' , [i] ) ) ;
+  Writeln( C_1_Down ) ;
+  WriteABottle(i-1);
+  Writeln ;
+End ;
 
 end.
 ```

@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Basic"
+title = "Basic"
 description = ""
 date = 2019-10-01T22:14:14Z
 aliases = []
@@ -65,7 +65,7 @@ NEXT x
 =
 
 ```Applesoft BASIC
-H$ = "HELLO, WORLD!":B$ = " BOTTLES OF BEER":N$ =  CHR$ (13):W$ = " ON THE WALL" + N$: FOR B = 99 TO 1 STEP  - 1: PRINT B;B$W$B" "B$N$"TAKE ONE DOWN, PASS IT AROUND"N$B - 1;B$W$: NEXT 
+H$ = "HELLO, WORLD!":B$ = " BOTTLES OF BEER":N$ =  CHR$ (13):W$ = " ON THE WALL" + N$: FOR B = 99 TO 1 STEP  - 1: PRINT B;B$W$B" "B$N$"TAKE ONE DOWN, PASS IT AROUND"N$B - 1;B$W$: NEXT
 ```
 
 
@@ -87,7 +87,7 @@ SUB howmany(b)
     bottle$ = "bottle" & plural$
     counter$ = IIF$(b >= 1, STR$(b), "no more")
 END SUB
-    
+
 FOR bottles = 99 DOWNTO 0
     howmany(bottles)
     IF counter$ = "no more" THEN counter$ = "No more"
@@ -157,13 +157,13 @@ next x
 ```bbcbasic
 
       N_Bottles = 99
-      
+
       beer$ = " of beer"
       wall$ = " on the wall"
       unit$ = "99 bottles"
-      
+
       WHILE N_Bottles >= 0
-        
+
         IF N_Bottles=0 THEN
           PRINT '"No more bottles" beer$ wall$ ", " unit$ beer$ "."
           PRINT "Go to the store and buy some more, ";
@@ -171,9 +171,9 @@ next x
           PRINT 'unit$ beer$ wall$ ", " unit$ beer$ "."
           PRINT "Take one down and pass it around, ";
         ENDIF
-        
+
         N_Bottles -= 1
-        
+
         CASE N_Bottles OF
           WHEN 0:
             unit$ = "no more bottles"
@@ -182,11 +182,11 @@ next x
           OTHERWISE:
             unit$ = STR$((N_Bottles + 100) MOD 100) + " bottles"
         ENDCASE
-        
+
         PRINT unit$ beer$ wall$ "."
-        
+
       ENDWHILE
-      
+
       END
 
 ```
@@ -263,7 +263,7 @@ PRINT Win,"Let's sing a song."
 VSpace(2)
 
 '1.2 seconds.
-STARTTIMER Win,1200 
+STARTTIMER Win,1200
 
 GOSUB Sing
 
@@ -304,38 +304,38 @@ SUB Sing
           Number$="No more"
 	  TheLine$[0]="bottles"
 	  TheLine$[3]="Go to the store and buy some more."
-	
+
      ENDIF
-				
-     IF BottlesOfBeer=1 
+
+     IF BottlesOfBeer=1
 
 	  TheLine$[0]="bottle"
 	  TheLine$[3]="Take it down, pass it around."
-	
+
      ENDIF
 
      IF TheLine=4 THEN Sing=1
-	
+
      IF (TheLine=1)|(TheLine=2)|(TheLine=4)
 
 	  IF BottlesOfBeer>-1 THEN PRINT Win,Number$+" "+TheLine$[0]+" "+TheLine$[Sing] ELSE GOSUB TheEnd
-				
+
      ELSE
-		
+
 	  PRINT Win,TheLine$[3]
 
-	  BottlesOfBeer=BottlesOfBeer-1 
+	  BottlesOfBeer=BottlesOfBeer-1
 
-     ENDIF	
+     ENDIF
 
      TheLine=TheLine+1
-		
+
      VSpace(1)
 
      IF TheLine>4
-			
+
            TheLine=1
-						 
+
 	   VSpace(1)
 
      ENDIF
@@ -351,7 +351,7 @@ SUB TheEnd
      VSpace(2)
 
      MOVE Win,TextX,TextY:PRINT Win,"That's all."
-		
+
 RETURN
 
 SUB VSpace(Number:UINT)
@@ -360,7 +360,7 @@ SUB VSpace(Number:UINT)
 
      IF TextY+(TextHeight*8)>ScreenSizeY THEN CLR()
 
-RETURN 
+RETURN
 
 SUB CLR()
 
@@ -404,7 +404,7 @@ LABEL StartSong
 
 Bottles=99
 
-DO 	
+DO
      Quit()
 
      SingWallLn():Delay1()
@@ -414,7 +414,7 @@ DO
      IF Bottles>0 THEN PRINT"Take one down, pass it around." ELSE PRINT"Take it down, pass it around.":Delay1()
 
      Bottles=Bottles-1
-	
+
      SingWallLn()
 
      Delay2()
@@ -450,7 +450,7 @@ SELECT Again$
 	TheEnd()
 
 ENDSELECT
-	
+
 PRINT"Sorry, I didn't understand.":PRINT
 
 GOTO Question
@@ -519,15 +519,15 @@ Class Wall
 			return "it"
 		end if
 	End Method
-	
-	Method StockUp( %n = 99 ) 
+
+	Method StockUp( %n = 99 )
 		bottles = n
 	End Method
-	
+
 	Method TakeOneDown()
 		bottles = bottles - 1
 	end Method
-	
+
 	Method Pluraliser()
 		if bottles > 1 then
 			return "s"
@@ -535,7 +535,7 @@ Class Wall
 			return ""
 		end if
 	end method
-	
+
 	Method Sing()
 		print bottles, " bottle", Pluraliser(), " of beer on the wall"
 		print bottles, " bottle", Pluraliser(), " of beer"
@@ -546,7 +546,7 @@ Class Wall
 			print
 		else
 			print "no more bottles of beer on the wall"
-			print 
+			print
 			print "no more bottles of beer on the wall"
 			print "no more bottles of beer on the wall"
 			print "go to the store and buy some more"
@@ -556,7 +556,7 @@ Class Wall
 		end if
 		return bottles
 	End Method
-	
+
 End Class
 
 Dim BeerSong as new Wall(99)
@@ -578,18 +578,18 @@ Dim As Integer bottles = 99
 Dim As String b = " bottles "
 
 Do
-  Print Str(bottles); b; "of beer hanging on the wall"  
-  Print Str(bottles); b; "of beer hanging on the wall" 
+  Print Str(bottles); b; "of beer hanging on the wall"
+  Print Str(bottles); b; "of beer hanging on the wall"
   Print "And if one bottle of beer should accidently be drunk"
   bottles -= 1
-  If bottles = 1 Then 
+  If bottles = 1 Then
     b = " bottle "
   ElseIf bottles = 0 Then
     b = " bottles "
   End If
   Print "There'll be"; bottles; b; "of beer hanging on the wall"
   Print
-Loop Until bottles = 0 
+Loop Until bottles = 0
 
 Print "Press any key to sleep it off"
 Sleep
@@ -620,10 +620,10 @@ END
 ## Integer BASIC
 =
 
-IMPORTANT NOTE: Integer BASIC was written (and hand-assembled by Woz himself) 
-for the Apple 1 and original Apple 2.  
-The Apple 1 has NO support for lower-case letters, and it was an expensive (and later) option on the Apple 2.  
-The UPPER-CASE output of this example accurately represents the only reasonable solution for those target devices, and therefore cannot be "fixed" for mixed case, only deleted. 
+IMPORTANT NOTE: Integer BASIC was written (and hand-assembled by Woz himself)
+for the Apple 1 and original Apple 2.
+The Apple 1 has NO support for lower-case letters, and it was an expensive (and later) option on the Apple 2.
+The UPPER-CASE output of this example accurately represents the only reasonable solution for those target devices, and therefore cannot be "fixed" for mixed case, only deleted.
 
 
 ```Integer BASIC
@@ -653,7 +653,7 @@ E000R (APPLE I)
 60 IF B+1 THEN 70:B=99: PRINT "GO TO THE STORE AND BUY SOME MORE";
 70 IF W THEN PRINT ",": IF B THEN PRINT B;: IF B=0 THEN PRINT "NO MORE";
 80 PRINT " BOTTLE";: IF B#1 THEN PRINT "S";: PRINT " OF BEER";
-90 IF W#1 THEN PRINT " ON THE WALL";: IF W THEN PRINT ".": NEXT W,B: END 
+90 IF W#1 THEN PRINT " ON THE WALL";: IF W THEN PRINT ".": NEXT W,B: END
 RUN
 ```
 
@@ -695,7 +695,7 @@ For n = 99 To 1 Step -1
     bottleText2 = "1 bottle"
   Else
     bottleText1 = n + " bottles"
-    bottleText2 = n - 1 + " bottles"   
+    bottleText2 = n - 1 + " bottles"
   EndIf
   TextWindow.WriteLine(bottleText1 + " of beer on the wall")
   TextWindow.WriteLine(bottleText1 + " of beer")
@@ -733,14 +733,14 @@ for x=99 to 1 step -1
     remain=x-1
   end if
   pr+=
-  x bottles      "of beer on the wall" cr + 
+  x bottles      "of beer on the wall" cr +
   x bottles      "of beer" cr +
                  "Take one down, pass it around" cr +
   remain bottlem "of beer on the wall" cr +
   cr
 next
 '
-putfile "t.txt",pr 
+putfile "t.txt",pr
 
 ```
 
@@ -800,7 +800,7 @@ If OpenConsole()
     Bottles-1
     PrintN(Str(Bottles)+" bottles of beer on the wall"+#CRLF$)
   Wend
-  
+
   PrintN(#CRLF$+#CRLF$+"Press ENTER to exit"):Input()
   CloseConsole()
 EndIf
@@ -900,7 +900,7 @@ for bottles = 99 To 1 Step -1
    print  bottles;b$;" of beer on the wall, "
    print bottles ;b$;" of beer"
    print "Take one down, pass it around, "
-   if bottles = 1 then 
+   if bottles = 1 then
       print "No bottles of beer on the wall"
    else
       print bottles - 1;b$;" of beer on the wall.";chr$(10)
@@ -1788,7 +1788,7 @@ END PROGRAM
 
 ## VBA
 
-This version uses tail recursion and inline if-statements, 
+This version uses tail recursion and inline if-statements,
 plus a Static variable to count the number of bottles emptied.
 
 
@@ -1799,7 +1799,7 @@ End Function
 
 Public Sub drink(fullbottles As Integer, Optional liquid As String = "beer")
 Static emptybottles As Integer
- 
+
   Debug.Print countbottles(fullbottles, liquid) & " on the wall"
   Debug.Print countbottles(fullbottles, liquid)
 
@@ -1813,7 +1813,7 @@ Static emptybottles As Integer
     Debug.Print "go to the store and buy some more"
     Debug.Print countbottles(emptybottles, liquid) & " on the wall"
   End If
- 
+
 End Sub
 ```
 
@@ -1867,7 +1867,7 @@ sub song( numBottles )
 				wscript.echo "take it down"
 			else
 				wscript.echo "take one down"
-			end if 
+			end if
 			wscript.echo "and pass it round"
 			wscript.echo pluralBottles(i-1) & " of beer on the wall"
 			wscript.echo
@@ -1881,14 +1881,14 @@ sub song( numBottles )
 		end if
 	next
 end sub
-	
+
 function pluralBottles( n )
 	select case n
 	case 1
 		pluralBottles = "one bottle"
 	case 0
 		pluralBottles = "no more bottles"
-	case else 
+	case else
 		pluralBottles = n & " bottles"
 	end select
 end function
@@ -1928,8 +1928,8 @@ and buy some more
 
 ### Regular Expressions and Embedded Scripting
 
-Another way of doing it, using Regular Expressions 
-to locate executable code inside {} 
+Another way of doing it, using Regular Expressions
+to locate executable code inside {}
 and replacing the code with the result of its evaluation.
 
 
@@ -1940,7 +1940,7 @@ function pluralBottles( n )
 		pluralBottles = "one bottle"
 	case 0
 		pluralBottles = "no more bottles"
-	case else 
+	case else
 		pluralBottles = n & " bottles"
 	end select
 end function
@@ -1967,7 +1967,7 @@ Function evalEmbedded(sInput, sP1)
 			'~ wscript.echo oMatch.Value
 			for j = 0 to omatch.submatches.count - 1
 				sExpr = omatch.submatches(j)
-				sResult  = Replace( sResult, "{" & sExpr & "}", eval(sExpr) ) 
+				sResult  = Replace( sResult, "{" & sExpr & "}", eval(sExpr) )
 			next
 		next
 	loop

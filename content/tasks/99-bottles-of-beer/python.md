@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Python"
+title = "Python"
 description = ""
 date = 2015-02-21T13:54:50Z
 aliases = []
@@ -46,7 +46,7 @@ Take one down, pass it around
 '''
 
 for bottles in range(99,0,-1):
-    print verse % (bottles, bottles, bottles-1) 
+    print verse % (bottles, bottles, bottles-1)
 ```
 
 
@@ -61,7 +61,7 @@ Take one down, pass it around
 '''
 
 for bottles in range(99,0,-1):
-    print verse.format(some=bottles, less=bottles-1) 
+    print verse.format(some=bottles, less=bottles-1)
 ```
 
 
@@ -117,7 +117,7 @@ for prefix in prefixes:
     teens.append(prefix +'teen')
 tens[4] = 'forty'
 
-def number(num): 
+def number(num):
     "get the wordy version of a number"
     ten, one = divmod(num, 10)
     if ten == 0 and one == 0:
@@ -133,13 +133,13 @@ def number(num):
 
 def bottles(beer):
     "our rephrase"
-    return "%s bottle%s of beer" % ( 
+    return "%s bottle%s of beer" % (
             number(beer).capitalize(), 's' if beer > 1 else ''
     )
 
 onthewall = 'on the wall'
 takeonedown = 'Take one down, pass it around'
-for beer in range(99, 0, -1): 
+for beer in range(99, 0, -1):
     print bottles(beer), onthewall
     print bottles(beer)
     print takeonedown

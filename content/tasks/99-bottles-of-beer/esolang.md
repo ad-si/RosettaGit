@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/EsoLang"
+title = "EsoLang"
 description = ""
 date = 2015-10-12T07:54:37Z
 aliases = []
@@ -10,14 +10,14 @@ categories = []
 tags = []
 +++
 
-<!-- 
-=Esotheric= 
+<!--
+=Esotheric=
 -->
 {{collection|99 Bottles of Beer}}
-The task [[99 Bottles of Beer]] 
+The task [[99 Bottles of Beer]]
 done in [[:Category:Esoteric Languages|esoteric languages]].
 
-<!-- 
+<!--
 See [[99 Bottles of Beer/EsoLang]]
 -->
 
@@ -34,9 +34,9 @@ __toc__
 
 ## 0815
 
-ATTENTION: Since 0815 output is in Hexadecimals only, 
-the bottles count is obviously in Hexadecimals too. 
-So if you see something like: "1E Bottles of beer..." 
+ATTENTION: Since 0815 output is in Hexadecimals only,
+the bottles count is obviously in Hexadecimals too.
+So if you see something like: "1E Bottles of beer..."
 don’t panic, everything is OK.
 
 
@@ -103,7 +103,7 @@ v,<.g10" bottles of beer on the wall"+550<
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```bf>>+++++++++[<+++++++++++
 -]<[>[-]>[-]<<[>+>+<<-]>>[<<+>>-]>>>
@@ -166,13 +166,13 @@ Ingredients.
 Method.
 Loop the bottles.
 	Put bottles into 1st mixing bowl.
-	Serve with bottles of beer on the wall.	
+	Serve with bottles of beer on the wall.
 	Clean 1st mixing bowl.
 	Put bottles into 1st mixing bowl.
 	Serve with bottles of beer.
 	Clean 1st mixing bowl.
 	Serve with Take one down and pass it around.
-	Clean 1st mixing bowl.			
+	Clean 1st mixing bowl.
 Loop the bottles until looped.
 Serve with No more bottles of beer.
 Clean 1st mixing bowl.
@@ -386,7 +386,7 @@ Refrigerate for 1 hour.
 ```
 
 
-=={{header|Extended BrainF***}}==
+=={{header|Extended Brainfuck}}==
 [http://sylwester.no/ebf/ More Info About EBF]
 
 ```ebf
@@ -555,7 +555,7 @@ KTHXBYE
 !/==+++++++++#   +9
    |  |  /=!/=====@/==@@@+@+++++# +48 (itoa)
    |  |  |  |  /==!/==@@@@=++++#  +32 (space)
-   |  |  |  |  |   \==@@++\!+++++++++++++\!+++++\ 
+   |  |  |  |  |   \==@@++\!+++++++++++++\!+++++\
    9  9 '9  9' space     'b'            'o'    't'
  $@/>@/>@/>@/>@/>
 ### =====@/>============@/>=
@@ -570,9 +570,9 @@ KTHXBYE
   /=|=====|
 ### ==========================
 /
-  | |     \<++t.<<----a.>----k.<++++e.<_.>>++++o.-n.< e.<_.>-d.>+o.>+++w.<-n.<<_.\ 
+  | |     \<++t.<<----a.>----k.<++++e.<_.>>++++o.-n.< e.<_.>-d.>+o.>+++w.<-n.<<_.\
   | |     /                                                                      /
-  | |     \>---a.>n.<+++d.<_.>>++p.<---a.>>----s.s.<<<_.>>-------i.>+t.<<<_.\ 
+  | |     \>---a.>n.<+++d.<_.>>++p.<---a.>>----s.s.<<<_.>>-------i.>+t.<<<_.\
   | |     /                                                                 /
   | |     \>a.>>--r.<++++++o.>+++u.<-n.<+++d.>>>cr.<-T<+O<--B<<<#
   | !
@@ -588,30 +588,30 @@ KTHXBYE
 
 ```xEec
 
-h#99 >0000 o# jn000_ >0000_ p o# jn0_00 >000_0 p jn00_0 >00_00 p h#1 r ms t h#1 ms p h? 
-jz00100 p o# jn001_0 >01000 p jn0000 >00100 p o# jn00_10 >_0000 p o# jn0_100 >0_000 p o# 
-jn01110_ >1 p jn0200_0 >10_010 jz~0 >00_0 h#0 h#32 h$, h$d h$n h$u h$o h$r h$a h#32 h$t 
-h$i h#32 h$s h$s h$a h$p h#32 h$d h$n h$a h#32 h$n h$w h$o h$d h#32 h$e h$n h$o h#32 h$e 
-h$k h$a h$T >lt o$ p jnlt jz00_00 >0200_0 h#0 h#10 h$. h$l h$l h$a h$w h#32 h$e h$h h$t 
-h#32 h$n h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o h$b h#32 h$e 
-h$r h$o h$m h#32 h$o h$n h#32 h$, h$d h$n h$u h$o h$r h$a h#32 h$t h$i h#32 h$s h$s h$a 
-h$p h#32 h$d h$n h$a h#32 h$n h$w h$o h$d h#32 h$e h$n h$o h#32 h$e h$k h$a h$T >10_01 
-o$ p jn10_01 jz10_010 >0_00 h#0 h#10 h$. h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l 
-h$t h$t h$o h$b h#32 >2211 o$ p jn2211 jz000_0 >000_ h#0 h#32 h$, h$l h$l h$a h$w h#32 
-h$e h$h h$t h#32 h$n h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o 
-h$b h#32 >1122 o$ p jn1122 jz0000_ >001_0 h#0 h#10 h$. h$l h$l h$a h$w h#32 h$e h$h h$t 
-h#32 h$n h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o h$b h#32 
->1111 o$ p jn1111 jz01000 >00_10 h#0 h#10 h$. h$l h$l h$a h$w h#32 h$e h$h h$t h#32 h$n 
-h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$e h$l h$t h$t h$o h$b h#32 >2121 o$ p jn2121 
-jz_0000 >0_100 h#0 h#32 h$, h$l h$l h$a h$w h#32 h$e h$h h$t h#32 h$n h$o h#32 h$r h$e 
-h$e h$b h#32 h$f h$o h#32 h$e h$l h$t h$t h$o h$b h#32 >1331 o$ p jn1331 jz0_000 >01110_ 
-h#0 h#10 h$. h$r h$e h$e h$b h#32 h$f h$o h#32 h$e h$l h$t h$t h$o h$b h#32 >1551 o$ p 
-jn1551 jz1 >~0 h$. h$l h$l h$a h$w h#32 h$e h$h h$t h#32 h$n h$o h#32 h$r h$e h$e h$b 
-h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o h$b h#32 h$9 h$9 h#32 h$, h$e h$r h$o h$m h#32 
-h$e h$m h$o h$s h#32 h$y h$u h$b h#32 h$d h$n h$a h#32 h$e h$r h$o h$t h$s h#32 h$e h$h 
-h$t h#32 h$o h$t h#32 h$o h$G h#10 h$. h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t 
-h$t h$o h$b h#32 h$e h$r h$o h$m h#32 h$o h$n h#32 h$, h$l h$l h$a h$w h#32 h$e h$h h$t 
-h#32 h$n h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o h$b h#32 h$e 
+h#99 >0000 o# jn000_ >0000_ p o# jn0_00 >000_0 p jn00_0 >00_00 p h#1 r ms t h#1 ms p h?
+jz00100 p o# jn001_0 >01000 p jn0000 >00100 p o# jn00_10 >_0000 p o# jn0_100 >0_000 p o#
+jn01110_ >1 p jn0200_0 >10_010 jz~0 >00_0 h#0 h#32 h$, h$d h$n h$u h$o h$r h$a h#32 h$t
+h$i h#32 h$s h$s h$a h$p h#32 h$d h$n h$a h#32 h$n h$w h$o h$d h#32 h$e h$n h$o h#32 h$e
+h$k h$a h$T >lt o$ p jnlt jz00_00 >0200_0 h#0 h#10 h$. h$l h$l h$a h$w h#32 h$e h$h h$t
+h#32 h$n h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o h$b h#32 h$e
+h$r h$o h$m h#32 h$o h$n h#32 h$, h$d h$n h$u h$o h$r h$a h#32 h$t h$i h#32 h$s h$s h$a
+h$p h#32 h$d h$n h$a h#32 h$n h$w h$o h$d h#32 h$e h$n h$o h#32 h$e h$k h$a h$T >10_01
+o$ p jn10_01 jz10_010 >0_00 h#0 h#10 h$. h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l
+h$t h$t h$o h$b h#32 >2211 o$ p jn2211 jz000_0 >000_ h#0 h#32 h$, h$l h$l h$a h$w h#32
+h$e h$h h$t h#32 h$n h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o
+h$b h#32 >1122 o$ p jn1122 jz0000_ >001_0 h#0 h#10 h$. h$l h$l h$a h$w h#32 h$e h$h h$t
+h#32 h$n h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o h$b h#32
+>1111 o$ p jn1111 jz01000 >00_10 h#0 h#10 h$. h$l h$l h$a h$w h#32 h$e h$h h$t h#32 h$n
+h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$e h$l h$t h$t h$o h$b h#32 >2121 o$ p jn2121
+jz_0000 >0_100 h#0 h#32 h$, h$l h$l h$a h$w h#32 h$e h$h h$t h#32 h$n h$o h#32 h$r h$e
+h$e h$b h#32 h$f h$o h#32 h$e h$l h$t h$t h$o h$b h#32 >1331 o$ p jn1331 jz0_000 >01110_
+h#0 h#10 h$. h$r h$e h$e h$b h#32 h$f h$o h#32 h$e h$l h$t h$t h$o h$b h#32 >1551 o$ p
+jn1551 jz1 >~0 h$. h$l h$l h$a h$w h#32 h$e h$h h$t h#32 h$n h$o h#32 h$r h$e h$e h$b
+h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o h$b h#32 h$9 h$9 h#32 h$, h$e h$r h$o h$m h#32
+h$e h$m h$o h$s h#32 h$y h$u h$b h#32 h$d h$n h$a h#32 h$e h$r h$o h$t h$s h#32 h$e h$h
+h$t h#32 h$o h$t h#32 h$o h$G h#10 h$. h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t
+h$t h$o h$b h#32 h$e h$r h$o h$m h#32 h$o h$n h#32 h$, h$l h$l h$a h$w h#32 h$e h$h h$t
+h#32 h$n h$o h#32 h$r h$e h$e h$b h#32 h$f h$o h#32 h$s h$e h$l h$t h$t h$o h$b h#32 h$e
 h$r h$o h$m h#32 h$o h$N >5115 o$ p jn5115
 
 ```

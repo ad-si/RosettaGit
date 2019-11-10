@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Tcl"
+title = "Tcl"
 description = ""
 date = 2014-11-21T02:39:05Z
 aliases = []
@@ -15,7 +15,7 @@ tags = []
 
 ### using variable traces
 
-Here's a version that uses Tcl's variable traces 
+Here's a version that uses Tcl's variable traces
 to set a global "bottle string" whenever the counter variable is set.
 
 ```tcl
@@ -45,7 +45,7 @@ for {set i 99} {$i > 0} {} {
 set s "s"; set ob "of beer"; set otw "on the wall"; set more "Take one down and pass it around"
 for {set n 100} {$n ne "No more"} {} {
 	switch -- [incr n -1] {
-		1 {set s ""} 
+		1 {set s ""}
 		0 {set s "s"; set n "No more"; set more "Go to the store and buy some more"}
 	}
 	lappend verse ". $n bottle$s $ob $otw.\n"
@@ -118,12 +118,12 @@ for {set i 99} {$i>0} {} {
 
 ### The Boozy Version
 
-A [http://99-bottles-of-beer.net/language-expect-249.html 
-particularly entertaining version] is [[wp:Don Libes|Don Libes]]’s coding 
-from the mid-'90s in [[Expect]], 
+A [http://99-bottles-of-beer.net/language-expect-249.html
+particularly entertaining version] is [[wp:Don Libes|Don Libes]]’s coding
+from the mid-'90s in [[Expect]],
 which "... SIMULATES a human typing the beer song."
 
-This is a version of that code, adapted to use modern coding styles, 
+This is a version of that code, adapted to use modern coding styles,
 and not require any extensions.
 
 {{works with|Tcl|8.4}}

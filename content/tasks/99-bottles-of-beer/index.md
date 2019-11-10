@@ -5,81 +5,73 @@ date = 2019-10-01T22:11:28Z
 aliases = []
 [extra]
 id = 2663
+task = """
+  Display the complete lyrics for the song
+  "99 Bottles of Beer on the Wall".
+"""
 [taxonomies]
 categories = []
 tags = []
 +++
 
-{{task}}
-
-;Task:
-Display the complete lyrics for the song:     '''99 Bottles of Beer on the Wall'''. 
-
-
-;The beer song:
 The lyrics follow this form:
 
-<blockquote>
-   99 bottles of beer on the wall<br/>
-   99 bottles of beer<br/>
-   Take one down, pass it around<br/>
-   98 bottles of beer on the wall<br/><br/>
-   
-   98 bottles of beer on the wall<br/>
-   98 bottles of beer<br/>
-   Take one down, pass it around<br/>
-   97 bottles of beer on the wall
-</blockquote>
+> 99 bottles of beer on the wall \
+> 99 bottles of beer \
+> Take one down, pass it around \
+> 98 bottles of beer on the wall \
+> \
+> 98 bottles of beer on the wall \
+> 98 bottles of beer \
+> Take one down, pass it around \
+> 97 bottles of beer on the wall
 
-... and so on, until reaching 0.
 
-Grammatical support for "1 bottle of beer" is optional. 
+… and so on, until reaching 0.
 
-As with any puzzle, try to do it in as creative/concise/comical a way 
+Grammatical support for "1 bottle of beer" is optional.
+
+As with any puzzle, try to do it in as creative/concise/comical a way
 as possible (simple, obvious solutions allowed, too).
 
 
-;Related tasks:
-*   [[The Twelve Days of Christmas]]
-*   [[Old_lady_swallowed_a_fly]]
-*   [[Mad Libs]]
+**Related tasks:**
+
+*   [The Twelve Days of Christmas](/tasks/the-twelfe-days-of-christmas)
+*   [Old Lady Swallowed a Fly](/tasks/old-lady-swallowed-a-fly)
+*   [Mad Libs](/tasks/mad-libs)
 
 
-;See also: 
-*   http://99-bottles-of-beer.net/
-*   [[:Category:99_Bottles_of_Beer]]
-*   [[:Category:Programming language families]]
-*   [https://en.wikipedia.org/wiki/99_Bottles_of_Beer Wikipedia 99 bottles of beer]
+**See also:**
 
-
-
+*   <http://99-bottles-of-beer.net>
+*   <https://en.wikipedia.org/wiki/99_Bottles_of_Beer>
 
 
 ## 0815
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## 360 Assembly
 
-See [[99 Bottles of Beer/Assembly]]
+See [99 Bottles of Beer/Assembly](assembly)
 
 
 ## 6502 Assembly
 
-See [[99 Bottles of Beer/Assembly]]
+See [99 Bottles of Beer/Assembly](assembly)
 
 
 ## 6800 Assembly
 
-See [[99 Bottles of Beer/Assembly]]
+See [99 Bottles of Beer/Assembly](assembly)
 
 
 ## 8th
 
 
 ```forth
-
 \ 99 bottles of beer on the wall:
 : allout "no more bottles" ;
 : just-one "1 bottle"  ;
@@ -96,17 +88,14 @@ See [[99 Bottles of Beer/Assembly]]
 : .wall     .beer " on the wall" . ;
 : .take     "  Take one down and pass it around" . ;
 : beers     .wall ", " . .beer '; putc cr
-			n:1- 0 max .take ", " . 
+			n:1- 0 max .take ", " .
 			.wall '. putc cr drop ;
 
 ' beers 1 99 loop- bye
-
 ```
 
 
-
 ## ABAP
-
 
 ```ABAP
 REPORT z99bottles.
@@ -152,18 +141,15 @@ it_99_bottles = VALUE #(
                          ).
 cl_demo_output=>write( it_99_bottles ).
 cl_demo_output=>display( ).
-
 ```
-
 
 
 ## ACL2
 
-See [[99 Bottles of Beer/Lisp]]
+See [99 Bottles of Beer/Lisp](lisp)
 
 
 ## ActionScript
-
 
 ```ActionScript
 for(var numBottles:uint = 99; numBottles > 0; numBottles--)
@@ -171,21 +157,18 @@ for(var numBottles:uint = 99; numBottles > 0; numBottles--)
 	trace(numBottles, " bottles of beer on the wall");
 	trace(numBottles, " bottles of beer");
 	trace("Take one down, pass it around");
-	trace(numBottles - 1, " bottles of beer on the wall\n");		  
+	trace(numBottles - 1, " bottles of beer on the wall\n");
 }
 ```
 
 
-
 ## Ada
 
-
-### Simple version
-
+### Simple Version
 
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
- 
+
  procedure Bottles is
  begin
     for X in reverse 1..99 loop
@@ -199,9 +182,10 @@ with Ada.Text_Io; use Ada.Text_Io;
 ```
 
 
-### Concurrent version
+### Concurrent Version
 
-with 1 task to print out the information and 99 tasks to specify the number of bottles
+with 1 task to print out the information
+and 99 tasks to specify the number of bottles.
 
 ```Ada
 with Ada.Text_Io; use Ada.Text_Io;
@@ -216,7 +200,7 @@ procedure Tasking_99_Bottles is
    begin
       for I in reverse Num_Bottles'range loop
          select
-         accept 
+         accept
             Set(I) do -- Rendezvous with Counter task I
                Num := I;
             end Set;
@@ -235,9 +219,9 @@ procedure Tasking_99_Bottles is
       Print.Set(I);
    end Counter;
    type Task_Access is access Counter;
-   
+
    Task_List : array(Num_Bottles) of Task_Access;
- 
+
 begin
    for I in Task_List'range loop -- Create 99 Counter tasks
       Task_List(I) := new Counter(I);
@@ -246,9 +230,7 @@ end Tasking_99_Bottles;
 ```
 
 
-
 ## Aime
-
 
 ```aime
 integer bottles;
@@ -264,15 +246,13 @@ do {
 ```
 
 
-
 ## Algae
-
 
 ```algae
 
-# 99 Bottles of Beer on the Wall 
-# in Algae 
-# bottles.A 
+# 99 Bottles of Beer on the Wall
+# in Algae
+# bottles.A
 for (i in 99:1:1) {
     if (i != 1) {
         printf("%d bottles of beer on the wall\n";i);
@@ -294,12 +274,12 @@ for (i in 99:1:1) {
 ```
 
 
-
 ## ALGOL 68
 
-{{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
-<!-- {{not works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386 - printf has been removed}} -->
+Works with ALGOL 68|Standard - no extensions to language used.
+Works with ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386.
+<!-- {{not works with|ELLA ALGOL 68|Any (with appropriate job cards) -
+  tested with release 1.8.8d.fc9.i386 - printf has been removed}} -->
 
 ```algol68
 main:(
@@ -313,7 +293,8 @@ main:(
 ```
 
 
-=={{header|ALGOL-M}}==
+## ALGOL-M
+
 
 ```algol
 
@@ -425,9 +406,7 @@ Implementation in Apache Ant, due to the limitations of Ant, this requires ant-c
 ```
 
 
-
 ## Apex
-
 
 ```apex
 
@@ -442,36 +421,42 @@ Implementation in Apache Ant, due to the limitations of Ant, this requires ant-c
 ```
 
 
-
-
 ## APL
 
-{{works with|Dyalog APL}}
+Works with Dyalog APL.
 
-{{trans|J}}
-      bob  ←  { (⍕⍵), ' bottle', (1=⍵)↓'s of beer'}
-      bobw ←  {(bob ⍵) , ' on the wall'}
-      beer ←  { (bobw ⍵) , ', ', (bob ⍵) , '; take one down and pass it around, ', bobw ⍵-1}
-      ↑beer¨ ⌽(1-⎕IO)+⍳99
+Translated from J.
+
+```apl
+  bob  ←  { (⍕⍵), ' bottle', (1=⍵)↓'s of beer'}
+  bobw ←  {(bob ⍵) , ' on the wall'}
+  beer ←  { (bobw ⍵) , ', ', (bob ⍵) , '; take one down and pass it around, ', bobw ⍵-1}
+  ↑beer¨ ⌽(1-⎕IO)+⍳99
+```
 
 
 ## App Inventor
 
-===Using a 'for each <number>' block (simplest)===
-Note that the output label text is not displayed until the entire lyrics text has been built and there is some delay between button press and display.
-[https://lh5.googleusercontent.com/-XI9ceTOo3FY/UusvjAgBVoI/AAAAAAAAJ84/MdA5ASM5WvM/s1600/NinetyNineForEach.PNG <CLICK HERE TO VIEW THE BLOCKS AND OUTPUT>]
-===Using a Clock Timer block (preferrred)===
-Output can be sent directly to a label with this preferred method as there is no noticeable delay between button press and output.
-[https://lh6.googleusercontent.com/-Lc6_lK9-jb8/UusvpcbtLQI/AAAAAAAAJ9A/nSy5FDrwEg0/s1600/NinetyNineTimer.PNG <CLICK HERE TO VIEW THE BLOCKS AND OUTPUT>]
+### Using a 'for each <number>' block (simplest)
+
+Note that the output label text is not displayed
+until the entire lyrics text has been built
+and there is some delay between button press and display.
+
+![App inventor screenshot](app_inventor.png)
+
+
+### Using a Clock Timer block (preferrred)
+
+Output can be sent directly to a label with this preferred method
+as there is no noticeable delay between button press and output.
+
+![App inventor screenshot](app_inventor_clock.png)
 
 
 ## AppleScript
 
-
-
 ### Iteration
-
-
 
 ```Applescript
 repeat with beerCount from 99 to 1 by -1
@@ -503,7 +488,7 @@ on run
         {"on the wall", ¬
             "Take one down, pass it around", ¬
             "Better go to the store to buy some more", "bottle"}
-    
+
     intercalate("\n\n", ¬
         (map(curry(incantation)'s |λ|(localisations), enumFromTo(99, 0))))
 end run
@@ -518,13 +503,13 @@ on incantation(xs, n)
             unwords({(n as string), item -1 of xs & cond(n ≠ 1, "s", "")})
         end |λ|
     end script
-    
+
     script store
         on |λ|(n)
             unwords({asset's |λ|(n), item 1 of xs})
         end |λ|
     end script
-    
+
     set {distribute, solve} to items 2 thru 3 of xs
     if n > 0 then
         unlines({store's |λ|(n), asset's |λ|(n), distribute, store's |λ|(n - 1)})
@@ -592,7 +577,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -680,7 +665,7 @@ for each X from 99 down to 1
 
 ## ARM Assembly
 
-See [[99 Bottles of Beer/Assembly]]
+See [99 Bottles of Beer/Assembly](assembly)
 
 
 ## ArnoldC
@@ -774,12 +759,12 @@ implement main0 () = bottles (99)
 
 ## AutoHotkey
 
-See [[99 Bottles of Beer/Shell]]
+See [99 Bottles of Beer/Shell](shell)
 
 
 ## AutoIt
 
-See [[99 Bottles of Beer/Shell]]
+See [99 Bottles of Beer/Shell](shell)
 
 
 ## AWK
@@ -788,7 +773,7 @@ See [[99 Bottles of Beer/Shell]]
 
 ### Regular version
 
-If you don't want so many beers, here you can specify the starting amount. 
+If you don't want so many beers, here you can specify the starting amount.
 
 For example, just a sixpack:
 
@@ -809,7 +794,7 @@ BEGIN {
 	td = "Take one down, pass it around."
 	print "The beersong:\n"
 	while (i > 0) {
-		printf( "%s %s,\n%s.\n%s\n%s %s.\n\n", 
+		printf( "%s %s,\n%s.\n%s\n%s %s.\n\n",
 			bb(i), ow, bb(i), td, bb(--i), ow )
 		if( i==1 ) sub( "one","it", td )
 	}
@@ -817,8 +802,7 @@ BEGIN {
 }
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 
@@ -854,7 +838,7 @@ Go to the store and buy some more!
 
 ### Bottled version
 
-See [http://www.99-bottles-of-beer.net/language-awk-1910.html 99-bottles-of-beer.net]
+See <http://www.99-bottles-of-beer.net/language-awk-1910.html>
 
 
 ## Axe
@@ -889,12 +873,12 @@ End
  w  " on the wall"             <
  beer
     {<-
-        { iter 1 + dup 
-          <- bb ! -> 
+        { iter 1 + dup
+          <- bb ! ->
           bi ! b << "\n" <<
           "Take one down, pass it around\n" <<
           iter bb ! "\n" << }
-    -> 
+    ->
     times}
     < }
 
@@ -905,111 +889,115 @@ End
 
 ## BASIC
 
-=
+
 ## Applesoft BASIC
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## BaCon
-=
-See [[99 Bottles of Beer/Basic#BaCon]]
 
-=
+See [99 Bottles of Beer/Basic](basic#BaCon)
+
+
 ## Commodore BASIC
-=
-See [[99 Bottles of Beer/Basic#Commodore_BASIC]]
 
-=
+See [99 Bottles of Beer/Basic](basic#Commodore_BASIC)
+
+
 ## FBSL
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## FreeBASIC
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## FUZE BASIC
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## Integer BASIC
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## Liberty BASIC
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## Microsoft Small Basic
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## OxygenBasic
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## PowerBASIC
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## PureBasic
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## REALbasic
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## Run BASIC
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
-## smart BASIC
-=
-See [[99 Bottles of Beer/Basic]]
+See [99 Bottles of Beer/Basic](basic)
 
-==={{header|TI-83 BASIC}}===
-See [[99 Bottles of Beer/Basic]]
 
-==={{header|TI-89 BASIC}}===
-See [[99 Bottles of Beer/Basic]]
+## Smart BASIC
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
+## TI-83 BASIC
+
+See [99 Bottles of Beer/Basic](basic)
+
+
+## TI-89 BASIC
+
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## True BASIC
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## Visual Basic
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## Visual Basic .NET
-=
-See [[99 Bottles of Beer/Basic]]
 
-=
+See [99 Bottles of Beer/Basic](basic)
+
+
 ## ZX Spectrum Basic
-=
-See [[99 Bottles of Beer/Basic]]
+
+See [99 Bottles of Beer/Basic](basic)
 
 
 ## Batch File
 
-See [[99 Bottles of Beer/Shell]]
+See [99 Bottles of Beer/Shell](shell)
 
 
 ## Battlestar
@@ -1166,12 +1154,9 @@ end
 ```
 
 
-
 ## Bc
 
-
-{{works with|GNU bc|1.06}}
-
+Works with GNU bc 1.06.
 
 ```Bc
 i = 99;
@@ -1191,12 +1176,10 @@ quit
 ```
 
 
+## Beeswax
 
-## beeswax
-
-
-Straightforward implementation, displaying the full lyrics given on [ http://99-bottles-of-beer.net/ ] 
-
+Straight forward implementation,
+displaying the full lyrics given on <http://99-bottles-of-beer.net>
 
 ```Beeswax
 
@@ -1211,10 +1194,10 @@ pN `.llaw eht no reeb fo selttob erom on ,dnuora ti ssap dna nwod eno ekaT`<
 
 ```
 
-
-A much more “economic” version that tries to avoid repetition at the price of complicated conditional jumps and self-modifying code that takes up more place than the actual strings themselves.
+A much more “economic” version that tries to avoid repetition
+at the price of complicated conditional jumps and self-modifying code
+that takes up more place than the actual strings themselves.
 Output is the same as in the straightforward version.
-
 
 ```Beeswax
 
@@ -1232,18 +1215,18 @@ d^^^^^^^^^^^^^^^^X~3~P(~2~8` ,erom emos yub dna erots eht ot`` oG`<
 ```
 
 
-
 ## Befunge
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## BlooP
 
-Output is always in caps in the interpreter I use, but I typed the input in correct case to spare those whose interpreter might do lowercase and don't want to have this song shouted at them ;D.
+Output is always in caps in the interpreter I use,
+but I typed the input in correct case to spare those whose interpreter
+might do lowercase and don't want to have this song shouted at them ;D.
 
 ```bloop
-
 DEFINE PROCEDURE ''MINUS'' [A,B]:
 BLOCK 0: BEGIN
   IF A < B, THEN:
@@ -1260,36 +1243,34 @@ DEFINE PROCEDURE ''BOTTLES'' [COUNT]:
 BLOCK 0: BEGIN
 	CELL(0) <= COUNT;
 	LOOP COUNT + 1 TIMES:
-	
+
 	BLOCK 1: BEGIN
-		
+
 		IF CELL(0) > 1, THEN:
 			PRINT[CELL(0), ' bottles of beer on the wall, ', CELL(0), ' bottles of beer. Take one down, pass it around, ', MINUS[CELL(0), 1], ' bottles of beer on the wall.'];
-		
+
 		IF CELL(0) = 1, THEN:
       PRINT['1 botle of beer on the wall, 1 bottle of beer. Take one down, pass it around, No more bottles of beer on the wall.'];
-    
+
     IF CELL(0) = 0, THEN:
       PRINT['No more bottles of beer on the wall, no more bottles of beer. Go to the store, buy 99 more, 99 bottles of beer on the wall!'];
 
     CELL(0) <= MINUS[CELL(0), 1];
-		
+
 	BLOCK 1: END;
 BLOCK 0: END.
 
 BOTTLES[99];
-
 ```
-
 
 
 ## Bracmat
 
-
-Copy the code to a file called BottlesOfBeer.bra. 
-Start Bracmat and after the <code>{?}</code> prompt write <code>get$"BottlesOfBeer.bra"</code> &lt;Enter&gt;. 
+Copy the code to a file called BottlesOfBeer.bra.
+Start Bracmat and after the <code>{?}</code>
+prompt write <code>get$"BottlesOfBeer.bra"</code> &lt;Enter&gt;.
 Then, after the next prompt, write
-<code>!r</code> &lt;Enter&gt;. 
+<code>!r</code> &lt;Enter&gt;.
 Notice that the lyrics has two more lines at the end:
 
 
@@ -1314,7 +1295,7 @@ X=
       = .@(!arg:%@?a ?z)&str$(upp$!a !z)
       )
     & ( nbottles
-      =   
+      =
         .   str
           $ ( (   !arg:>0
                 &   !arg
@@ -1365,8 +1346,9 @@ new'X;
 ```
 
 
-=={{header|Brainf***}}==
-See [[99 Bottles of Beer/EsoLang]]
+## Brainfuck
+
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Brat
@@ -1386,9 +1368,9 @@ p "Take one down, pass it around, no more bottles of beer on the wall."
 
 ## C
 
-{{trans|C++}}
+Translated from C++.
 
-###  The simple solution 
+###  The simple solution
 
 
 ```c
@@ -1405,17 +1387,17 @@ int main(void)
   for( n = 99; n > 2; n-- )
     printf(
       "%d bottles of beer on the wall, %d bottles of beer.\n"
-      "Take one down and pass it around, %d bottles of beer on the wall.\n\n", 
+      "Take one down and pass it around, %d bottles of beer on the wall.\n\n",
        n, n, n - 1);
 
-  printf(  
+  printf(
       "2 bottles of beer on the wall, 2 bottles of beer.\n"
-      "Take one down and pass it around, 1 bottle of beer on the wall.\n\n"                  
+      "Take one down and pass it around, 1 bottle of beer on the wall.\n\n"
 
       "1 bottle of beer on the wall, 1 bottle of beer.\n"
-      "Take one down and pass it around, no more bottles of beer on the wall.\n\n"                  
+      "Take one down and pass it around, no more bottles of beer on the wall.\n\n"
 
-      "No more bottles of beer on the wall, no more bottles of beer.\n" 
+      "No more bottles of beer on the wall, no more bottles of beer.\n"
       "Go to the store and buy some more, 99 bottles of beer on the wall.\n");
 
       return 0;
@@ -1424,7 +1406,7 @@ int main(void)
 
 
 
-###  A recursive solution 
+###  A recursive solution
 
 
 ```c>#include <stdio.h
@@ -1441,7 +1423,7 @@ int main(int argc, char *argv[])
         argc = main(argc + 1, argv);
         printf("%d bottle%c of beer on the wall\n", argc, argc == 1?'\0': 's');
         printf("%d bottle%c of beer\n", argc, argc == 1?'\0': 's');
-        printf("Take one down, pass it around\n"); 
+        printf("Take one down, pass it around\n");
         printf("%d bottle%c of beer on the wall\n\n", argc - 1, (argc - 1) == 1?'\0': 's');
         return argc - 1;
 }
@@ -1449,7 +1431,7 @@ int main(int argc, char *argv[])
 
 
 
-###  Code golf 
+###  Code golf
 
 
 ```c>#include <stdio.h
@@ -1462,11 +1444,11 @@ main(){_=100;while(--_)printf("%i bottle%s of beer in the wall,\n%i bottle%"
 
 
 
-###  A preprocessor solution 
+###  A preprocessor solution
 
-Of course, with the template metaprogramming solution, the program has still do the conversion of numbers to strings at runtime, and those function calls also cost unnecessary time. 
-Couldn't we just compose the complete text at compile time, 
-and just output it at run time? 
+Of course, with the template metaprogramming solution, the program has still do the conversion of numbers to strings at runtime, and those function calls also cost unnecessary time.
+Couldn't we just compose the complete text at compile time,
+and just output it at run time?
 Well, with the preprocessor, that's indeed possible:
 
 
@@ -1553,15 +1535,16 @@ p("So6" + --b):!printf("%d"
 ## C++
 
 
-###  The simple solution 
+###  The simple solution
 
-{{works with|g++|4.8.1}}
+Works with g++ 4.8.1.
 
-```cpp>#include <iostream
+```c++
+#include <iostream
 
 using std::cout;
 
-int main() 
+int main()
 {
   for(int bottles(99); bottles > 0; bottles -= 1){
     cout << bottles << " bottles of beer on the wall\n"
@@ -1573,18 +1556,25 @@ int main()
 ```
 
 
-=== An object-oriented solution ===
-See: [[99 Bottles of Beer/C++/Object Oriented]]
+### An object-oriented solution
+
+See: [99 Bottles of Beer/C++/Object Oriented](c++#object-oriented)
 
 
-###  A template metaprogramming solution 
+###  A template metaprogramming solution
 
-Of course, the output of the program always looks the same. One may therefore question why the program has to do all that tedious subtracting during runtime. Couldn't the compiler just generate the code to output the text, with ready-calculated constants? Indeed, it can, and the technique is called template metaprogramming. The following short code gives the text without containing a single variable, let alone a loop:
+Of course, the output of the program always looks the same.
+One may therefore question why the program
+has to do all that tedious subtracting during runtime.
+Couldn't the compiler just generate the code to output the text,
+with ready-calculated constants?
+Indeed, it can, and the technique is called template metaprogramming.
+The following short code gives the text without containing a single variable,
+let alone a loop:
 
 
-```cpp>#include <iostream
-
-
+```c++
+#include <iostream
 template<int max, int min> struct bottle_countdown
 {
   static const int middle = (min + max)/2;
@@ -1614,41 +1604,46 @@ int main()
 ```
 
 
-###  A Recursive solution 
+###  A Recursive solution
 
-
-```cpp>#include <iostream
+```c++
+#include <iostream
 
 using namespace std;
 void rec(int bottles)
 {
-if ( bottles!=0)    
- {    
-     cout << bottles << " bottles of beer on the wall" << endl; 
+if ( bottles!=0)
+ {
+     cout << bottles << " bottles of beer on the wall" << endl;
         cout << bottles << " bottles of beer" << endl;
-        cout << "Take one down, pass it around" << endl; 
-        cout << --bottles << " bottles of beer on the wall\n" << endl;    
+        cout << "Take one down, pass it around" << endl;
+        cout << --bottles << " bottles of beer on the wall\n" << endl;
     rec(bottles);
- }  
+ }
 }
 
-int main() 
- {   
+int main()
+ {
 rec(99);
 system("pause");
 return 0;
 }
-
 ```
 
 
 
-###  A preprocessor solution 
+###  A preprocessor solution
 
-Of course, with the template metaprogramming solution, the program has still do the conversion of numbers to strings at runtime, and those function calls also cost unnecessary time. Couldn't we just compose the complete text at compile time, and just output it at run time? Well, with the preprocessor, that's indeed possible:
+Of course, with the template metaprogramming solution,
+the program has still do the conversion of numbers to strings at runtime,
+and those function calls also cost unnecessary time.
+Couldn't we just compose the complete text at compile time,
+and just output it at run time? Well,
+with the preprocessor, that's indeed possible:
 
 
-```cpp>#include <iostream
+```c++
+#include <iostream
 
 #include <ostream>
 
@@ -1682,20 +1677,17 @@ int main()
 ```
 
 
+###  Bottled Version
 
-###  Bottled Version 
-
-
-
-```cpp>                          //
-,_
+```cpp
+                         //>,_
                         //Beer Song>,_
                        #include <iostream>
                       using namespace std;
                      int main(){ for( int
                     b=-1; b<99;  cout <<
                    '\n') for ( int w=0;
-                  w<3; cout << ".\n"){ 
+                  w<3; cout << ".\n"){
                  if (w==2) cout << ((
                 b--) ?"Take one dow"
                "n and pass it arou"
@@ -1728,7 +1720,7 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+### C\#
 
 ```csharp
 using System;
@@ -1764,9 +1756,9 @@ class Program
 
 
 
-###  C#6 Implementation 
+###  C#6 Implementation
 
-{{works with|C sharp|C#|6+}}
+Works with C# 6+.
 
 ```csharp
 using System;
@@ -1783,10 +1775,9 @@ class Program
 ```
 
 
+###  Linq Implementation
 
-###  Linq Implementation 
-
-{{works with|C sharp|C#|3+}}
+Works with C# 3+.
 
 
 ```csharp
@@ -1801,7 +1792,7 @@ class Program
                     select (total > 0)
                         ? string.Format("{0} bottles of beer on the wall\n{0} bottles of beer\nTake one down, pass it around", total)
                         : string.Format("{0} bottles left", total);
-            
+
         foreach (var item in query)
         {
             Console.WriteLine(item);
@@ -1811,9 +1802,7 @@ class Program
 ```
 
 
-
-###  Flexible Version 
-
+###  Flexible Version
 
 ```csharp
 using System;
@@ -1861,9 +1850,9 @@ class Program
 
 
 
-###  Using Formatting 
+###  Using Formatting
 
-{{works with|C sharp|C#|3+}}
+Works with C# 3+.
 
 
 ```csharp
@@ -1897,11 +1886,9 @@ class songs
 }
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
 3 bottles of beer on the wall
 3 bottles of beer
 Take one down, pass it around
@@ -1916,15 +1903,12 @@ Take one down, pass it around
 1 bottle of beer
 Take one down, pass it around
 0 bottles of beer on the wall....
-
 ```
 
 
+###  Using iterator blocks
 
-###  Using iterator blocks 
-
-{{works with|C sharp|C#|3+}}
-
+Works with C# 3+.
 
 ```csharp
 using System;
@@ -1934,29 +1918,28 @@ class Program
 {
     static void Main()
     {
-        BeerBottles().Take(99).ToList().ForEach(Console.WriteLine);	
+        BeerBottles().Take(99).ToList().ForEach(Console.WriteLine);
     }
 
     static IEnumerable<String> BeerBottles()
     {
         int i = 100;
         String f = "{0}, {1}. Take one down, pass it around, {2}";
-        Func<int, bool, String> booze = (c , b) => 
+        Func<int, bool, String> booze = (c , b) =>
             String.Format("{0} bottle{1} of beer{2}", c>0 ? c.ToString() : "no more", (c==1 ? "" : "s"), b ? " on the wall" : "");
-	
-        while (--i >= 1) 
+
+        while (--i >= 1)
             yield return String.Format(f, booze(i, true), booze(i, false), booze(i - 1, true));
     }
 }
 ```
 
 
-
-###  A Fun One 
-
+###  A Fun One
 
 ```csharp
-string[] bottles = { 	"80 Shilling",
+string[] bottles = {
+      "80 Shilling",
 			"Abita Amber",
 			"Adams Broadside Ale",
 			"Altenmünster Premium",
@@ -2090,9 +2073,7 @@ for (int i = 0; i < 99; i++)
 ```
 
 
-
-###  Using recursion 
-
+###  Using recursion
 
 ```csharp
 public static void BottlesSong(int numberOfBottles)
@@ -2110,9 +2091,7 @@ public static void BottlesSong(int numberOfBottles)
 ```
 
 
-
-###  Using a While Loop 
-
+###  Using a While Loop
 
 ```csharp
 static void Main(string[] args)
@@ -2139,17 +2118,15 @@ static void Main(string[] args)
 ```
 
 
-
 ## Ceylon
-
 
 ```ceylon
 shared void ninetyNineBottles() {
-	
-	String bottles(Integer count) => 
-			"``count == 0 then "No" else count`` 
+
+	String bottles(Integer count) =>
+			"``count == 0 then "No" else count``
 			 bottle``count == 1 then "" else "s"``".normalized;
-	
+
 	for(i in 99..1) {
 		print("``bottles(i)`` of beer on the wall
 		       ``bottles(i)`` of beer!
@@ -2160,9 +2137,7 @@ shared void ninetyNineBottles() {
 ```
 
 
-
 ## Clay
-
 
 
 ```Clay
@@ -2173,13 +2148,13 @@ shared void ninetyNineBottles() {
 getRound(n) {
     var s      = String();
     var bottle = if (n == 1) " bottle " else " bottles ";
-    
-    printTo(s, 
+
+    printTo(s,
             n, bottle, "of beer on the wall\n",
             n, bottle, "of beer\n",
             "take one down, pass it around\n",
             n, bottle, "of beer on the wall!\n");
-    
+
     return s;
 }
 
@@ -2190,9 +2165,7 @@ main() {
 ```
 
 
-
 ## Clio
-
 
 ```clio
 fn bottle n:
@@ -2209,14 +2182,14 @@ fn bottle n:
 ```
 
 
-
 ## Chapel
 
-copied from http://99-bottles-of-beer.net/language-chapel-1215.html, with minor modifications for chapel 1.7
-{{works with|Chapel|1.7.0}}
+Copied from <http://99-bottles-of-beer.net/language-chapel-1215.html>,
+with minor modifications for chapel 1.7
+
+Works with Chapel 1.7.0.
 
 ```Chapel
-
 /***********************************************************************
  * Chapel implementation of "99 bottles of beer"
  *
@@ -2225,9 +2198,9 @@ copied from http://99-bottles-of-beer.net/language-chapel-1215.html, with minor 
  *            HPLS workshop
  * compiles and runs with chpl compiler version 1.7.0
  * for more information, contact: chapel_info@cray.com
- * 
  *
- * Notes: 
+ *
+ * Notes:
  * o as in all good parallel computations, boundary conditions
  *   constitute the vast bulk of complexity in this code (invite Brad to
  *   tell you about his zany boundary condition simplification scheme)
@@ -2236,7 +2209,7 @@ copied from http://99-bottles-of-beer.net/language-chapel-1215.html, with minor 
  * o uses named argument passing (for documentation purposes only)
  ***********************************************************************/
 
-// allow executable command-line specification of number of bottles 
+// allow executable command-line specification of number of bottles
 // (e.g., ./a.out -snumBottles=999999)
 config const numBottles = 99;
 const numVerses = numBottles+1;
@@ -2271,12 +2244,12 @@ proc computeLyric(verseNum) {
 
 proc describeBottles(bottleNum, startOfVerse:bool = false) {
 // NOTE: bool should not be necessary here (^^^^); working around bug
-  var bottleDescription = if (bottleNum) then bottleNum:string 
-                                         else (if startOfVerse then "N" 
-                                                               else "n") 
+  var bottleDescription = if (bottleNum) then bottleNum:string
+                                         else (if startOfVerse then "N"
+                                                               else "n")
                                               + "o more";
-  return bottleDescription 
-       + " bottle" + (if (bottleNum == 1) then "" else "s") 
+  return bottleDescription
+       + " bottle" + (if (bottleNum == 1) then "" else "s")
        + " of beer";
 }
 
@@ -2285,39 +2258,33 @@ proc computeAction(bottleNum) {
   return if (bottleNum == 0) then "Go to the store and buy some more, "
                              else "Take one down and pass it around, ";
 }
-
 ```
-
 
 
 ## Chef
 
-See [[99 Bottles of Beer/EsoLang]]
-
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Cind
 
-
-
 ```cind
-
 execute() {
 
     // this class provides synchronization
     // to get unique number of the bottle
 
-    class monitor giver {      
-        int number = 100;    
+    class monitor giver {
+        int number = 100;
         .get() { return --number; }
     }
-    var g = new giver(); 
+    var g = new giver();
 
     // start 99 concurrently worked threads
     // each thread gets own number of the bottle and prints out his own verse
     // (notice that the output lines from the threads will be mixed together)
 
-    {#[99] 
+    {#[99]
         int nr = g.get(); // get own number
         host.println(nr," bottles of beer on the wall, "+nr+" bottles of beer");
         host.print("Take one down, pass it around,");
@@ -2332,14 +2299,10 @@ execute() {
     host.println("Go to the store and buy some more, 99 bottles of beer on the wall.");
     return 0;
 }
-
 ```
 
 
-
 ## CLIPS
-
-
 
 ```clips
 (deffacts beer-bottles
@@ -2364,18 +2327,16 @@ execute() {
 ```
 
 
-
 ## Clojure
-
 
 ```Clojure
 (defn paragraph [num]
-  (str num " bottles of beer on the wall\n" 
+  (str num " bottles of beer on the wall\n"
        num " bottles of beer\n"
        "Take one down, pass it around\n"
        (dec num) " bottles of beer on the wall.\n"))
 
-(defn lyrics [] 
+(defn lyrics []
   (let [numbers (range 99 0 -1)
         paragraphs (map paragraph numbers)]
     (clojure.string/join "\n" paragraphs)))
@@ -2384,24 +2345,23 @@ execute() {
 (print (lyrics))
 ```
 
-
 Or, using cl-format:
-{{trans|Common Lisp}}
+Translated from Common Lisp.
 
 ```Clojure
-(clojure.pprint/cl-format 
-  true 
+(clojure.pprint/cl-format
+  true
   "~{~[~^~]~:*~D bottle~:P of beer on the wall~%~:*~D bottle~:P of beer
 Take one down, pass it around,~%~D bottle~:P~:* of beer on the wall.~2%~}"
   (range 99 0 -1))
 ```
 
 
-
 ## COBOL
 
-{{works with|OpenCOBOL|1.1}}
-Free form version.
+Works with OpenCOBOL 1.1.
+
+### Free form version.
 
 ```cobol
 identification division.
@@ -2453,10 +2413,10 @@ working-storage section.
 	05	filler	pic x(9) value "Eighteen".
 	05	filler	pic x(9) value "Nineteen".
 	05	filler	pic x(9) value spaces.
-	
+
 01	digit-array redefines digit-words.
 	05	adigits occurs 20 times 	pic x(9).
-	
+
 01	number-name pic x(15).
 
 procedure division.
@@ -2468,7 +2428,7 @@ procedure division.
 		perform 100-show-number
 		display " of beer"
 		display "Take " with no advancing
-		if one-bottle-left 
+		if one-bottle-left
 			display "it " with no advancing
 		else
 			display "one " with no advancing
@@ -2485,14 +2445,14 @@ procedure division.
 	display "Go to the store and buy some more"
 	display "Ninety Nine bottles of beer on the wall"
 	stop run.
-	
+
 100-show-number.
-	if no-bottles-left 
+	if no-bottles-left
 		display "No more" with no advancing
-	else 
+	else
 		if counter < 20
 			display function trim( adigits( counter ) ) with no advancing
-		else 
+		else
 			if counter < 100
 				move spaces to number-name
 				string atens( tens ) delimited by space, space delimited by size, adigits( digits ) delimited by space into number-name
@@ -2522,11 +2482,11 @@ working-storage section.
 01	counter	pic 99.
 	88 no-bottles-left value 0.
 	88 one-bottle-left value 1.
- 
+
 01	parts-of-counter redefines counter.
 	05	tens		pic 9.
 	05	digits		pic 9.
- 
+
 01	after-ten-words.
 	05	filler	pic x(7) value spaces.
 	05	filler	pic x(7) value "Twenty".
@@ -2538,10 +2498,10 @@ working-storage section.
 	05	filler	pic x(7) value "Eighty".
 	05	filler	pic x(7) value "Ninety".
 	05	filler	pic x(7) value spaces.
- 
+
 01	after-ten-array redefines after-ten-words.
 	05	atens occurs 10 times pic x(7).
- 
+
 01	digit-words.
 	05	filler	pic x(9) value "One".
 	05	filler	pic x(9) value "Two".
@@ -2563,10 +2523,10 @@ working-storage section.
 	05	filler	pic x(9) value "Eighteen".
 	05	filler	pic x(9) value "Nineteen".
 	05	filler	pic x(9) value spaces.
- 
+
 01	digit-array redefines digit-words.
 	05	adigits occurs 20 times 	pic x(9).
- 
+
 01	number-name pic x(15).
 
 01	stringified pic x(30).
@@ -2574,7 +2534,7 @@ working-storage section.
 01  other-numbers.
 	03	n	pic 999.
 	03	r	pic 999.
-	
+
 procedure division.
 100-main section.
 100-setup.
@@ -2608,23 +2568,23 @@ procedure division.
 	display "Go to the store and buy some more"
 	display "Ninety-Nine bottles of beer on the wall"
 	stop run.
- 
+
 100-show-number.
-	if no-bottles-left 
+	if no-bottles-left
 		move "No more|" to stringified
-	else 
+	else
 		if counter < 20
 			string function trim( adigits( counter ) ), "|" into stringified
-		else 
+		else
 			if counter < 100
 				move spaces to number-name
 				string atens( tens ) delimited by space, space delimited by size, adigits( digits ) delimited by space into number-name end-string
 				move function trim( number-name) to stringified
 				divide counter by 10 giving n remainder r end-divide
 				if r not = zero
-					inspect stringified replacing first space by "-" 
+					inspect stringified replacing first space by "-"
 				end-if
-				inspect stringified replacing first space by "|" 
+				inspect stringified replacing first space by "|"
 			end-if
 		end-if
 	end-if.
@@ -2633,7 +2593,7 @@ procedure division.
 	else
 		string stringified delimited by "|", space, "bottles|" delimited by size into stringified end-string
 	end-if.
- 
+
 100-end.
 end-program.
 ```
@@ -2653,7 +2613,7 @@ procedure division.
     display cnt " bottles of beer on the wall"
     display cnt " bottles of beer"
     display "Take one down, pass it around"
-    subtract 1 from cnt 
+    subtract 1 from cnt
     display cnt " bottles of beer on the wall"
     add 1 to cnt
     display space
@@ -2667,7 +2627,7 @@ procedure division.
 
 ```coffeescript
 
-bottlesOfBeer = (n) -> 
+bottlesOfBeer = (n) ->
   "#{n} bottle#{if n is 1 then '' else 's'} of beer"
 
 console.log """
@@ -2712,7 +2672,7 @@ or another completely different one liner
 ## ColdFusion
 
 
-###  Classic tag based CFML 
+###  Classic tag based CFML
 
 
 ```cfm><cfoutput
@@ -2735,7 +2695,7 @@ or another completely different one liner
 or if you prefer:  (identical output, grammatically correct to the last stanza)
 
 
-###  CFScript 
+###  CFScript
 
 
 ```cfm><cfscript
@@ -2779,8 +2739,7 @@ drinking
   'No more bottles of beer on the wall'
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 
@@ -2800,24 +2759,24 @@ No more bottles of beer on the wall
 
 ## Common Lisp
 
-See [[99 Bottles of Beer/Lisp]]
+See [99 Bottles of Beer/Lisp](lisp)
 
 
 ## Component Pascal
 
-See [[99 Bottles of Beer/Pascal]]
+See [99 Bottles of Beer/Pascal](pascal)
 
 
 ## Crystal
 
 
 ```crystal
-99.downto(1) do |n|                                                             
-  puts "#{n} bottle#{n > 1 ? "s" : ""} of beer on the wall"                     
-  puts "#{n} bottle#{n > 1 ? "s" : ""} of beer"                                 
-  puts "Take one down, pass it around"                                          
-  puts "#{n-1} bottle#{n > 2 ? "s" : ""} of beer on the wall\n\n" if n > 1      
-end                                                                             
+99.downto(1) do |n|
+  puts "#{n} bottle#{n > 1 ? "s" : ""} of beer on the wall"
+  puts "#{n} bottle#{n > 1 ? "s" : ""} of beer"
+  puts "Take one down, pass it around"
+  puts "#{n-1} bottle#{n > 2 ? "s" : ""} of beer on the wall\n\n" if n > 1
+end
 puts "No more bottles of beer on the wall"
 
 ```
@@ -2828,12 +2787,12 @@ puts "No more bottles of beer on the wall"
 
 
 
-###  Simple Solution 
+###  Simple Solution
 
 
-{{works with|D|2}}
+Works with D|2.
 
-Based on Steward Gordon's code at: [http://99-bottles-of-beer.net/language-d-721.html 99-bottles-of-beer.net].
+Based on Steward Gordon's code at: <http://99-bottles-of-beer.net/language-d-721.html>.
 
 ```d
 import std.stdio;
@@ -2847,20 +2806,20 @@ void main() {
         writeln("Take one down, pass it around,");
         if (--bottles > 1) {
             writeln(bottles, " bottles of beer on the wall.\n");
-        }        
+        }
     }
     writeln("1 bottle of beer on the wall.\n");
 
     writeln("No more bottles of beer on the wall,");
     writeln("no more bottles of beer.");
     writeln("Go to the store and buy some more,");
-    writeln("99 bottles of beer on the wall."); 
+    writeln("99 bottles of beer on the wall.");
 }
 ```
 
 
 
-###  CTFE Solution 
+###  CTFE Solution
 
 
 CTFE (Compile-Time Function Execution) is a feature of D that allows for pure functions of arbitrary complexity to be completely evaluated at compile time when every parameter is known. Note that this is distinct from the template meta-programming tricks used by some other languages, and this bottles() function could just as easily be executed during run-time. The compiled result of this program simply prints the pre-generated lyrics to the song, using a standard compiler pragma directive.
@@ -2907,14 +2866,14 @@ template BeerSong(int Bottles)
 {
 	static if (Bottles == 1)
 	{
-		enum BeerSong = "1 bottle of beer on the wall\n" ~ 
+		enum BeerSong = "1 bottle of beer on the wall\n" ~
 		"1 bottle of beer\ntake it down, pass it around\n" ~ "
 		no more bottles of beer on the wall\n";
 	}
 	else
 	{
-		enum BeerSong = Bottles.stringof ~ " bottles of beer on the wall\n" ~ 
-		Bottles.stringof ~ " bottles of beer\ntake it down, pass it around\n" ~ 
+		enum BeerSong = Bottles.stringof ~ " bottles of beer on the wall\n" ~
+		Bottles.stringof ~ " bottles of beer\ntake it down, pass it around\n" ~
 		BeerSong!(Bottles-1);
 	}
 }
@@ -2947,8 +2906,8 @@ main() {
 ## Dc
 
 
-{{works with|GNU dc}}
-{{works with|OpenBSD dc}}
+Works with GNU dc.
+Works with OpenBSD dc.
 
 ```Dc
 [
@@ -2985,7 +2944,7 @@ n[ bottle of beer
 
 Similar to the program above, but without 'n' and 'r' commands. It prints the numbers on separate lines than the strings.
 
-{{works with|AT&T dc}}
+Works with AT&T dc.
 
 ```Dc
 [
@@ -3026,9 +2985,10 @@ p
 
 ## Delphi
 
-See [[99 Bottles of Beer/Pascal]]
+See [99 Bottles of Beer/Pascal](pascal)
 
-=={{header|Déjà Vu}}==
+## Déjà Vu
+
 
 ```dejavu
 plural i:
@@ -3054,7 +3014,7 @@ bottles 99
 
 ## Dyalect
 
-{{trans|Swift}}
+Translated from Swift.
 
 ```dyalect
 for i in 99..1 {
@@ -3119,7 +3079,7 @@ Layout := RECORD
   UNSIGNED1 RecID1;
   UNSIGNED1 RecID2;
   STRING30  txt;
-END;	
+END;
 Beers := DATASET(99,TRANSFORM(Layout,
                               SELF.RecID1 := COUNTER,SELF.RecID2 := 0,SELF.txt := ''));
 
@@ -3136,7 +3096,7 @@ Layout XF(Layout L,INTEGER C) := TRANSFORM
 END;
 
 Rev := NORMALIZE(Beers,5,XF(LEFT,COUNTER));
-OUTPUT(SORT(Rev,-Recid1,-RecID2),{txt},ALL);														
+OUTPUT(SORT(Rev,-Recid1,-RecID2),{txt},ALL);
 
 ```
 
@@ -3173,7 +3133,7 @@ def main = print_rhyme 99
 
 ```EGL
 program TestProgram type BasicProgram {}
-	
+
     function main()
         for (count int from 99 to 1 decrement by 1)
             SysLib.writeStdout( bottleStr( count ) :: " of beer on the wall." );
@@ -3182,7 +3142,7 @@ program TestProgram type BasicProgram {}
             SysLib.writeStdout( bottleStr( count - 1) :: " of beer on the wall.\n");
         end
     end
-    
+
     private function bottleStr( count int in) returns( string )
         case ( count )
             when ( 1 )
@@ -3192,7 +3152,7 @@ program TestProgram type BasicProgram {}
             otherwise
                 return( count :: " bottles" );
         end
-    end	
+    end
 end
 ```
 
@@ -3285,20 +3245,20 @@ An alternative version written using the across-loop construct.
 
 ```Ela
 open list
- 
+
 beer 1 = "1 bottle of beer on the wall\n1 bottle of beer\nTake one down, pass it around"
 beer 0 = "better go to the store and buy some more."
-beer v = show v ++ " bottles of beer on the wall\n"                 
-         ++ show v                 
+beer v = show v ++ " bottles of beer on the wall\n"
+         ++ show v
          ++" bottles of beer\nTake one down, pass it around\n"
- 
+
 map beer [99,98..0]
 ```
 
 
 
 ## Elena
- 
+
 ELENA 4.1 :
 
 ```elena
@@ -3311,21 +3271,21 @@ extension bottleOp
 {
     bottleDescription()
         = self.Printable + (self != 1).iif(" bottles"," bottle");
-        
+
     bottleEnumerator() = new Variable(self).doWith:(n)
     {
         ^ new Enumerator::
         {
             bool next() = n > 0;
-            
+
             get() = new StringWriter()
                     .printLine(n.bottleDescription()," of beer on the wall")
                     .printLine(n.bottleDescription()," of beer")
                     .printLine("Take one down, pass it around")
                     .printLine((n.reduce:1).bottleDescription()," of beer on the wall");
-                    
+
             reset() {}
-            
+
             enumerable() = __target;
         }
     };
@@ -3334,12 +3294,11 @@ extension bottleOp
 public program()
 {
     var bottles := 99;
-    
+
     bottles.bottleEnumerator().forEach:printingLn
 }
 ```
-
-{{out}}
+Output:
 
 ```txt
 
@@ -3376,9 +3335,9 @@ Take one down, pass it around
 
 
 ```Lisp
- (let ((i 99)) 
+ (let ((i 99))
 	      (while (> i 0)
-		(princ-list i " bottles of beer on the wall" "\n Take one down, pass it around") 
+		(princ-list i " bottles of beer on the wall" "\n Take one down, pass it around")
 		(setq i (1- i))))
 ```
 
@@ -3435,7 +3394,7 @@ sing() ->
     sing_verse(99).
 
 spawn_singer(Bottle) ->
-    Pid = self(), 
+    Pid = self(),
     spawn(fun() -> Pid ! create_verse(Bottle) end).
 
 sing_verse(Bottle) ->
@@ -3445,7 +3404,7 @@ sing_verse(Bottle) ->
         {N, Verse} when Bottle == N ->
             io:format(Verse),
             sing_verse(Bottle-1)
-    after 
+    after
         3000 ->
             io:format("Verse not received - re-starting singer~n"),
             spawn_singer(Bottle),
@@ -3457,7 +3416,7 @@ sing_verse(Bottle) ->
 
 ## Euphoria
 
-{{works with|Euphoria|4.0.0}}
+Works with Euphoria|4.0.0.
 
 ```Euphoria
 
@@ -3493,10 +3452,12 @@ end for
 ```
 
 
-=={{header|Extended BrainF***}}==
-See [[99 Bottles of Beer/EsoLang]]
+## Extended Brainfuck
 
-=={{header|F_Sharp|F#}}==
+See [99 Bottles of Beer/EsoLang](esolang)
+
+## F_Sharp|F#
+
 
 ```fsharp
 #light
@@ -3534,7 +3495,7 @@ USING: io kernel make math math.parser math.ranges sequences ;
     ] ; inline
 
 : last-verse ( -- )
-    "Go to the store and buy some more," 
+    "Go to the store and buy some more,"
     "no more bottles of beer on the wall!" [ print ] bi@ ;
 
 : bottles ( n -- )
@@ -3574,12 +3535,12 @@ end
 
 ## FALSE
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## ferite
 
-copied from [http://99-bottles-of-beer.net/language-ferite-1281.html?PHPSESSID=b563ec9a2791f6c3cc917c22b17dc542 99-bottles-of-beer.net].
+copied from <http://99-bottles-of-beer.net/language-ferite-1281.html?PHPSESSID=b563ec9a2791f6c3cc917c22b17dc542>.
 
 
 ```ferite
@@ -3599,9 +3560,9 @@ while (looping) {
 	Console.println("${bottles} bottles of beer on the wall,");
 	Console.println("${bottles} bottles of beer,");
 	Console.println("Take one down, pass it around,");
-	
+
 	looping = counter.invoke();
-	
+
 	Console.println("${bottles} bottles of beer on the wall.");
 ```
 
@@ -3631,8 +3592,7 @@ sing 3
 
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 
@@ -3713,7 +3673,7 @@ DECIMAL
          HOWMANY BOTTLES OF BEER ,
          TAKE ONE DOWN PASS IT AROUND ,
          ONELESS BOTTLES OF BEER ON THE WALL .
-      ANOTHER 
+      ANOTHER
       HANGOVER ;
 ```
 
@@ -3749,7 +3709,7 @@ program bottlestest
   implicit none
 
   integer :: i
-  
+
   character(len=*), parameter   :: bwall = " on the wall", &
                                    bottles = "bottles of beer", &
                                    bottle  = "bottle of beer", &
@@ -3781,7 +3741,7 @@ program bottlesMPI
   implicit none
 
   integer :: ierr,rank,nproc
-  
+
   character(len=*), parameter   :: bwall = " on the wall", &
                                    bottles = "bottles of beer", &
                                    bottle  = "bottle of beer", &
@@ -3962,8 +3922,8 @@ end program bottles_song
 ## Frege
 
 
-{{trans|Haskell}} (''identical'' to the Haskell, apart from adding the module declaration)
-{{Works with|Frege|3.21.586-g026e8d7}}
+Translated from Haskell}} (''identical'' to the Haskell, apart from adding the module declaratio.
+Works with Frege|3.21.586-g026e8d7.
 
 
 ```frege
@@ -3982,7 +3942,7 @@ beer v = show v ++ " bottles of beer on the wall\n"
 
 ## friendly interactive shell
 
-See [[99 Bottles of Beer/Shell]]
+See [99 Bottles of Beer/Shell](shell)
 
 
 ## Frink
@@ -3998,7 +3958,7 @@ for n = 99 to 0 step -1
 {
    unit = units.removeRandom[]
    str = getBottleString[n, unit]
-   
+
    println["$str of beer on the wall, $str."]
 
    if (n == 0)
@@ -4106,7 +4066,7 @@ for i = 99 to 1 step -1
    print
    print "Take one down, pass it around,"
    print i-1; " bottles of beer on the wall."
-   print 
+   print
 next
 
 ```
@@ -4164,8 +4124,7 @@ init
     while bottles != 0
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 prompt$ valac 99bottles.gs
@@ -4201,9 +4160,7 @@ if (bottles > 0) reread
 
 ## Go
 
-
 ### No sense of humor
-
 
 ```go
 package main
@@ -4230,7 +4187,6 @@ func main() {
 	}
 }
 ```
-
 
 
 ### Typoglycemic
@@ -4320,11 +4276,9 @@ func slur(p string, d int) string {
 }
 ```
 
-{{out}}
-Things start out pretty well...
+Output:
 
 ```txt
-
 ninety nine bottles of beer on the wall
 ninety nine bottles of beer
 take one down pass it around
@@ -4337,13 +4291,11 @@ ninety seven boetlts of beer on the wall
 ninety seven bottles of beer
 take one down pass it around
 ninety six botelts of beer on the wall
-
 ```
 
 Soon,
 
 ```txt
-
 eighty four bottles of bere wn the oall
 ehigty four bottles of beer
 tkae one down pnssti arouad
@@ -4352,13 +4304,11 @@ eighty three blottes of beet on rhe wall
 eighty three bottles of beer
 taen oke down pass it around
 eiwyth tgo bttoles of beew on lhr eatl
-
 ```
 
 It ends very well, if you're drinking along.
 
 ```txt
-
 two btloots ef bre enehta wo ll
 two bs tleootf beer
 tnoeka e dwon pts ou nsaaird
@@ -4367,22 +4317,25 @@ one beoo ttlf blwtenr ehoa el
 one bltooe tf beer
 tne okae down pasaostiu rnd
 no bletts oof beloethw r ea nl
-
 ```
 
 
-=={{header|Go!}}==
-Copied from [http://99-bottles-of-beer.net/language-go!-289.html The 99 Bottles of Beer web site] with a minor bug fix.
-<lang go!>-- 
+## Go!
+
+Copied from <http://99-bottles-of-beer.net/language-go!-289.html>
+with a minor bug fix.
+
+```go!
+--
 -- 99 Bottles of Beer in Go!
 -- John Knottenbelt
--- 
+--
 -- Go! is a multi-paradigm programming language that is oriented
 -- to the needs of programming secure, production quality, agent
 -- based applications.
--- 
---    http://www.doc.ic.ac.uk/~klc/dalt03.html 
--- 
+--
+--    http://www.doc.ic.ac.uk/~klc/dalt03.html
+--
 
 main .. {
   include "sys:go/io.gof".
@@ -4407,9 +4360,7 @@ main .. {
 ```
 
 
-
 ## Golo
-
 
 ```golo
 module Bottles
@@ -4487,7 +4438,7 @@ ${bottles(i-1)} of beer on the wall
 
 
 
-###  Single Print Version 
+###  Single Print Version
 
 Uses a single print algorithm for all four lines. Handles cardinality on bottles, uses 'No more' instead of 0.
 
@@ -4557,7 +4508,8 @@ Button:[hyphen],Button:1,Button:[equals],Button:[hyphen],Button:1,Button:[equals
 
 We haven't drank all of the bottles at this point, but we can keep going, if we want.
 
-=={{header|GW-BASIC}}==
+## GW-BASIC
+
 
 Just a basic loop counting down to one. No big deal. Note that at BOTTLES=1, it is not
 grammatically correct.
@@ -4596,30 +4548,26 @@ while ($x > 0) {
 ```
 
 
-
 ## Haskell
 
-
-### =Brevity=
+### Brevity
 
 A relatively concise solution:
-
 
 ```haskell
 main = mapM_ (putStrLn . beer) [99, 98 .. 0]
 beer 1 = "1 bottle of beer on the wall\n1 bottle of beer\nTake one down, pass it around"
 beer 0 = "better go to the store and buy some more."
-beer v = show v ++ " bottles of beer on the wall\n" 
-                ++ show v 
-                ++" bottles of beer\nTake one down, pass it around\n" 
+beer v = show v ++ " bottles of beer on the wall\n"
+                ++ show v
+                ++" bottles of beer\nTake one down, pass it around\n"
                 ++ head (lines $ beer $ v-1) ++ "\n"
 ```
 
 
-### =List comprehension=
+### List comprehension
 
 As a list comprehension:
-
 
 ```haskell
 import qualified Char
@@ -4641,11 +4589,10 @@ main = putStr $ concat
 ```
 
 
+### Writer monad and Template Haskell
 
-### =Writer monad and Template Haskell=
-
-Another version, which uses a Writer monad to collect each part of the song. It also uses Template Haskell to generate the song at compile time.
-
+Another version, which uses a Writer monad to collect each part of the song.
+It also uses Template Haskell to generate the song at compile time.
 
 ```haskell
 {-# LANGUAGE TemplateHaskell #-}
@@ -4656,14 +4603,14 @@ import Control.Monad.Writer
 
 -- This is calculated at compile time, and is equivalent to
 -- songString = "99 bottles of beer on the wall\n99 bottles..."
-songString = 
+songString =
     $(let
          sing = tell -- we can't sing very well...
 
          someBottles 1 = "1 bottle of beer "
          someBottles n = show n ++ " bottles of beer "
 
-         bottlesOfBeer n = (someBottles n ++) 
+         bottlesOfBeer n = (someBottles n ++)
 
          verse n = do
            sing $ n `bottlesOfBeer` "on the wall\n"
@@ -4679,8 +4626,7 @@ main = putStr songString
 ```
 
 
-
-### =Avoiding append by spelling bottle backwards=
+### Avoiding append by spelling bottle backwards
 
 Is there something just a little prickly and displeasing about (++) ?
 Monoid (<>) is less spiky, but neither is needed when 'bottle' is written backwards.
@@ -4712,12 +4658,9 @@ main = putStrLn $ unlines (incantation <$> [99,98 .. 0])
 ```
 
 
-
 ## Haxe
 
-
-###  Simple solution 
-
+###  Simple Solution
 
 ```haxe
 class RosettaDemo
@@ -4757,7 +4700,7 @@ class RosettaDemo
 
 
 
-###  Macro solution 
+###  Macro solution
 
 All those counters, loops and conditinal blocks are pretty expensive in runtime compared to single print of fully inlined text of the song.
 Let's generate that print with macro.
@@ -4854,7 +4797,7 @@ ENDDO
 
 ## HQ9+
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Huginn
@@ -4888,7 +4831,8 @@ main() {
 ```
 
 
-=={{Header|HolyC}}==
+## HolyC
+
 The default is 99 bottles, but it can be modified by the parameter.
 
 
@@ -4926,7 +4870,8 @@ BottlesOfBeer;
 ```
 
 
-=={{header|Icon}} and {{header|Unicon}}==
+## Icon}} and {{header|Unicon
+
 The default is 99 bottles, but you can change this on the command line for
 really long trips...
 
@@ -5024,9 +4969,9 @@ beerSong x = verses x where
     bottlesOfBeer (fS fZ) = "1 bottle of beer"
     bottlesOfBeer k       = (show (finToInteger k)) ++ " bottles of beer"
 
-    verse : Fin n -> String 
+    verse : Fin n -> String
     verse fZ     = ""
-    verse (fS n) = 
+    verse (fS n) =
         (bottlesOfBeer (fS n)) ++ " on the wall,\n" ++
         (bottlesOfBeer (fS n)) ++ "\n" ++
         "Take one down, pass it around\n" ++
@@ -5071,7 +5016,7 @@ beerSong x = verses x where
 ## Inform 7
 
 
-###  Programmatic solution 
+###  Programmatic solution
 
 
 ```inform7
@@ -5089,7 +5034,7 @@ When play begins:
 
 
 
-###  World model solution 
+###  World model solution
 
 This solution uses in-game objects to represent the wall and the bottles.
 
@@ -5119,7 +5064,7 @@ To say what's on the wall:
 
 ## Intercal
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Io
@@ -5133,7 +5078,7 @@ bottles := method(i,
 )
 for(i, 99, 1, -1,
     write(
-        bottles(i), " on the wall, ", 
+        bottles(i), " on the wall, ",
         bottles(i), ",\n",
         "take one down, pass it around,\n",
         bottles(i - 1), " on the wall.\n\n"
@@ -5164,7 +5109,7 @@ bottle = method(i,
 
 ## J
 
-As posted at the [http://www.jsoftware.com/jwiki/Essays/99_Bottles_of_Beer J wiki]
+As posted at the <http://www.jsoftware.com/jwiki/Essays/99_Bottles_of_Beer>
 
 ```j
 bob =: ": , ' bottle' , (1 = ]) }. 's of beer'"_
@@ -5173,16 +5118,15 @@ beer=: bobw , ', ' , bob , '; take one down and pass it around, ' , bobw@<:
 beer"0 >:i.-99
 ```
 
-
-{{Out}}
+Output:
 
 ```txt
 99 bottles of beer on the wall, 99 bottles of beer; take one down and pass it around, 98 bottles of beer on the wall
 98 bottles of beer on the wall, 98 bottles of beer; take one down and pass it around, 97 bottles of beer on the wall
 ...
-3 bottles of beer on the wall, 3 bottles of beer; take one down and pass it around, 2 bottles of beer on the wall   
-2 bottles of beer on the wall, 2 bottles of beer; take one down and pass it around, 1 bottle of beer on the wall    
-1 bottle of beer on the wall, 1 bottle of beer; take one down and pass it around, 0 bottles of beer on the wall 
+3 bottles of beer on the wall, 3 bottles of beer; take one down and pass it around, 2 bottles of beer on the wall
+2 bottles of beer on the wall, 2 bottles of beer; take one down and pass it around, 1 bottle of beer on the wall
+1 bottle of beer on the wall, 1 bottle of beer; take one down and pass it around, 0 bottles of beer on the wall
 ```
 
 
@@ -5261,7 +5205,7 @@ public class Beer {
 
 
 === An object-oriented solution ===
-{{trans|C++}}
+Translated from C++.
 
 See: [[99 Bottles of Beer/Java/Object Oriented]]
 
@@ -5290,14 +5234,14 @@ public class Beer extends JFrame {
 
     public Beer() {
         x = 99;
-        
+
         JButton take = new JButton("Take one down, pass it around");
         take.addActionListener(this::onTakeClick);
-        
+
         text = new JTextArea(4, 30);
         text.setText(x + " bottles of beer on the wall\n" + x + " bottles of beer");
         text.setEditable(false);
-        
+
         setLayout(new BorderLayout());
         add(text, BorderLayout.CENTER);
         add(take, BorderLayout.PAGE_END);
@@ -5328,7 +5272,7 @@ while (beer > 0) {
   var verse = [
     beer + " bottles of beer on the wall,",
     beer + " bottles of beer!",
-    "Take one down, pass it around",  
+    "Take one down, pass it around",
     (beer - 1) + " bottles of beer on the wall!"
   ].join("\n");
 
@@ -5414,7 +5358,7 @@ Bottles.prototype.take = function() {
   var verse = [
     this.count + " bottles of beer on the wall,",
     this.count + " bottles of beer!",
-    "Take one down, pass it around",  
+    "Take one down, pass it around",
     (this.count - 1) + " bottles of beer on the wall!"
   ].join("\n");
 
@@ -5424,8 +5368,8 @@ Bottles.prototype.take = function() {
 };
 
 Bottles.prototype.sing = function() {
-  while (this.count) { 
-    this.take(); 
+  while (this.count) {
+    this.take();
   }
 };
 
@@ -5448,7 +5392,7 @@ function bottleSong(n) {
       p  = document.createElement('p'),
       s  = [],
       re = /%%/g;
-  
+
   while(n) {
     s.push((a+b+r+a+r+c+r).replace(re, n) + (a+b).replace(re, --n));
   }
@@ -5476,14 +5420,14 @@ HIDE
 	dup3 == dup dup dup ;
 	comma == ", " putchars ;
 	period == '. putch ;
-	bottles == [dup small] 
-		[ [null] [pop "no more bottles " putchars] [put "bottle " putchars] ifte] 
+	bottles == [dup small]
+		[ [null] [pop "no more bottles " putchars] [put "bottle " putchars] ifte]
 		[put "bottles " putchars] ifte ;
-	sing-verse == dup3 bottles beer wall comma 
+	sing-verse == dup3 bottles beer wall comma
 		bottles beer ".\n" putchars
 		take1 1 - bottles beer wall period newline newline ;
 	sing-verse-0 == "No more bottles of beer on the wall, no more bottles of beer\n" putchars
-			"Go to the store and buy some more, " putchars 
+			"Go to the store and buy some more, " putchars
 			99 bottles pop beer wall period newline ;
 
 IN
@@ -5508,8 +5452,7 @@ IN
 Take one down, pass it around
 \(.) bottles of beer on the wall"
 ```
-
-{{out}}
+Output:
 
 ```sh
 $ jq -n -r -f 99_bottles.jq
@@ -5550,8 +5493,7 @@ Take one down, pass it around
 
 $bottles | tonumber | sing
 ```
-
-{{out}}
+Output:
 
 ```sh
 $ jq -r --arg bottles 99 -f 99_bottles_variant.jq
@@ -5804,7 +5746,7 @@ Then we produce the desired output by setting the system to solve for this goal:
 
 
 
-###  Simple loop 
+###  Simple loop
 
 
 
@@ -5816,9 +5758,9 @@ local(
 while(#beer > 0) => {
     #song->append(
         #beer + ' bottles of beer on the wall\n' +
-        #beer + ' bottles of beer\n' + 
+        #beer + ' bottles of beer\n' +
         'Take one down, pass it around\n' +
-        (#beer-1) + ' bottles of beer on the wall\n\n'  
+        (#beer-1) + ' bottles of beer on the wall\n\n'
     )
     #beer--
 }
@@ -5828,14 +5770,14 @@ while(#beer > 0) => {
 
 
 
-###  Query Expression 
+###  Query Expression
 
 
 
 ```Lasso
 (with beer in 99 to 1 by -1 select
     #beer + ' bottles of beer on the wall' +
-    #beer + ' bottles of beer\n' + 
+    #beer + ' bottles of beer\n' +
     'Take one down, pass it around\n' +
     --#beer + ' bottles of beer on the wall\n'
 )->join('\n')
@@ -5844,7 +5786,7 @@ while(#beer > 0) => {
 
 
 
-###  Query Expression with Autocollect 
+###  Query Expression with Autocollect
 
 
 
@@ -5888,7 +5830,7 @@ with n in 99 to 1 by -1 do {^
   Take one down, pass it around---\\
   \addtocounter{beer}{-1}
   \arabic{beer} bottles of beer on the wall!\\
-  \ifnum#1>0 
+  \ifnum#1>0
     \verses{\value{beer}}
   \fi
 }
@@ -5923,7 +5865,7 @@ Just for fun, this version uses Roman numerals.
 % Romans didn't know how to write zero ;-)
     \ifnum\value{beer}=0 ZERO \else\Roman{beer} \fi
       bottles of beer on the wall!\\
-    \ifnum\value{beer}>0 
+    \ifnum\value{beer}>0
   \repeat
 }
 
@@ -6007,7 +5949,7 @@ end
 
 to it_one :n
     if :n = 1 [output "it][output "one]
-end 
+end
 
 to verse :i
     (print bottle :i "| on the wall,|)
@@ -6018,10 +5960,10 @@ to verse :i
 end
 
 to sing :i
-    if :i = 0 
+    if :i = 0
     [
     print "|No more bottles of beer on the wall,
-No more bottles of beer.        
+No more bottles of beer.
 Go to the store and buy some more.
 99 bottles of beer on the wall.|
     stop
@@ -6083,7 +6025,7 @@ repeat with i = 99 down to 2
     put (i-1) & " bottles of beer on the wall"
     put
 end repeat
-    
+
 put "1 bottle of beer on the wall"
 put "1 bottle of beer"
 put "Take one down, pass it around"
@@ -6118,12 +6060,12 @@ end beerMe
 
 ## Lisp
 
-See [[99 Bottles of Beer/Lisp]]
+See [99 Bottles of Beer/Lisp](lisp)
 
 
 ## LLVM
 
-See [[99 Bottles of Beer/Assembly]]
+See [99 Bottles of Beer/Assembly](assembly)
 
 
 ## Logo
@@ -6179,7 +6121,7 @@ for [n 99 1] [verse :n  (print)]
 
 ## LOLCODE
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Lua
@@ -6223,7 +6165,7 @@ Using Lua relational operators and multiple return values:
 ```lua
 function bottles(i)
   local s = i == 1 and "1 bottle of beer" or
-            i == 0 and "no more bottles of beer" or 
+            i == 0 and "no more bottles of beer" or
             tostring(i) .. " bottles of beer"
   return s, s
 end
@@ -6278,10 +6220,10 @@ NINETEEN(99)
 ## make
 
 
-###  BSD make 
+###  BSD make
 
 {{libheader|jot}}
-{{works with|BSD make}}
+Works with BSD make.
 
 ```make
 START = 99
@@ -6317,9 +6259,9 @@ $(START)-bottles-of-beer:
 Usage: <tt>make</tt> or <tt>make START=99</tt>
 
 
-###  GNU make 
+###  GNU make
 
-{{works with|GNU make|3.81}}
+Works with GNU make 3.81.
 
 ```make
 PRED=`expr $* - 1`
@@ -6342,17 +6284,15 @@ pass:
 ```
 
 
-Usage: <tt>make 99-bottles</tt>
+Usage: `make 99-bottles`
 
-This will fork 99 make processes. You might need to raise your process limit (<tt>ulimit -p</tt>).
-
-
-###  GNU make 
+This will fork 99 make processes.
+You might need to raise your process limit (`ulimit -p`).
 
 
-### == Without using a shell command to decrement the counter ==
+#### Without using a shell command to decrement the counter
 
-{{works with|GNU make|3.81}}
+Works with GNU make 3.81.
 
 ```make
 digits:=9 8 7 6 5 4 3 2 1 0
@@ -6411,14 +6351,10 @@ prelude/:
 
 ```
 
-
 Usage: <tt>make</tt> or <tt>make N-bottles</tt> or <tt>make N</tt>
-
-A version of this script with more comments and an automated test can be found on github.com.
 
 
 ## Malbolge
-
 
 '''Long version''' (a real loop version made by Hisashi Iizawa)''':'''
 
@@ -6776,20 +6712,18 @@ h.ledcba'_^$o
 ```
 
 
-
 ## Maple
 
-
 ```Maple
-seq( printf( "%d %s of beer on the wall,\n%d %s of beer.\nTake one down, pass it around,\n%d %s of beer on the wall.\n\n", 
-             i, `if`( i<>1, "bottles", "bottle" ), 
-             i, `if`( i<>1, "bottles", "bottle" ), 
-             i-1, `if`( i-1<>1, "bottles", "bottle") ), 
+seq( printf( "%d %s of beer on the wall,\n%d %s of beer.\nTake one down, pass it around,\n%d %s of beer on the wall.\n\n",
+             i, `if`( i<>1, "bottles", "bottle" ),
+             i, `if`( i<>1, "bottles", "bottle" ),
+             i-1, `if`( i-1<>1, "bottles", "bottle") ),
 i = 99..1, -1 );
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}==
+## Mathematica / Wolfram Language
 
 ```Mathematica
 Bottle[n_] := ToString[n] <> If[n==1," bottle"," bottles"] <> " of beer"
@@ -6800,10 +6734,9 @@ BottleSong[n_] := Speak[
   ", take one down, pass it around," <>
   Bottle[n-1] <> " on the wall."
 ]
- 
+
 BottleSong /@ Range[99,1,-1]
 ```
-
 
 
 ## MATLAB
@@ -6816,17 +6749,15 @@ function ninetyNineBottlesOfBeer()
         'Take one down, pass it around...\n'],[(99:-1:2);(99:-1:2)])...
         sprintf(['1 bottle of beer on the wall, 1 bottle of beer.\nTake'...
         'one down, pass it around;\nNo more bottles of beer on the wall.']) ] );
-    
+
     %The end of this song makes me sad. The shelf should always have more
     %beer...like college.
-    
+
 end
 ```
 
 
-
 ## Maxima
-
 
 ```maxima
 bottles(n) := for i from n thru 1 step -1 do (
@@ -6863,7 +6794,7 @@ Take one down, pass it around
 
 
 ```maxscript
-escapeEnable  = true 
+escapeEnable  = true
 resetMaxFile #noPrompt
 viewport.setType #view_top
 max tool maximize
@@ -6878,16 +6809,16 @@ for i in 99 to 1 by -1 do -- this will iterate through 99 times use the escape k
 (
     a.text = (i as string + " bottles of beer on the wall")
     redrawViews()
-    sleep delay 
+    sleep delay
     a.text = (i as string + " bottles of beer")
     redrawViews()
-    sleep delay 
+    sleep delay
     a.text = "Take one down, pass it around"
     redrawViews()
-    sleep delay 
+    sleep delay
     a.text = ((i-1) as string + " bottles of beer on the wall")
     redrawViews()
-    sleep delay 
+    sleep delay
 )
 ```
 
@@ -6897,8 +6828,8 @@ Since MAXscript is an expression based language (everything returns a value), it
 
 
 ```maxscript
-for i = 99 to 1 by -1 do (print (i as string + (if i == 1 then " bottle" else " bottles") + " of beer on the wall\n" + i as string +\ 
-(if i == 1 then " bottle" else " bottles") + " of beer\nTake one down, pass it around\n" + (i - 1) as string + (if i - 1 == 1 then "\ 
+for i = 99 to 1 by -1 do (print (i as string + (if i == 1 then " bottle" else " bottles") + " of beer on the wall\n" + i as string +\
+(if i == 1 then " bottle" else " bottles") + " of beer\nTake one down, pass it around\n" + (i - 1) as string + (if i - 1 == 1 then "\
 bottle" else " bottles") + " of beer on the wall\n" + (if i - 1 == 0 then "\nno more beer" else "")))
 ```
 
@@ -6976,7 +6907,7 @@ bottles_line(N) =
 
 ## min
 
-{{works with|min|0.19.3}}
+Works with min|0.19.3.
 
 ```min
 (swap quote interpolate puts!) :line
@@ -7018,8 +6949,7 @@ for i in range(99, 1)
     verse i
 end for
 ```
-
-{{out}}
+Output:
 
 ```txt
 99 bottles of beer on the wall
@@ -7077,47 +7007,47 @@ no bottles of beer on the wall
 	lyrica: .asciiz " bottles of beer on the wall, "
 	lyricb: " bottles of beer.\nTake one down and pass it around, "
 	lyricc: " bottles of beer on the wall. \n\n"
-	
+
 	#normally, I don't like going past 80 columns, but that was done here.
-	# there's an argument to be had for breaking this up. I chose not to 
+	# there's an argument to be had for breaking this up. I chose not to
 	# for simpler instructions.
 	final_lyrics: "1 bottle of beer on the wall, 1 bottle of beer.\nTake one down and pass it around, no more bottles of beer on the wall.\n\nNo more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall."
 
-.text	
+.text
 	#lw $a0,accumulator #load address of accumulator into $a0 (or is it getting val?)
 	li $a1,99 #set the inital value of the counter to 99
-	
-loop:	
+
+loop:
 	###99
 	li $v0, 1 #specify print integer system service
 	move $a0,$a1
 	syscall #print that integer
-	
+
 	### bottles of beer on the wall,
 	la $a0,lyrica
 	li $v0,4
 	syscall
-	
-	###99
-	li $v0, 1 #specify print integer system service
-	move $a0,$a1
-	syscall #print that integer	
-	
-	### bottles of beer.\n Take one down and pass it around,
-	la $a0,lyricb
-	li $v0,4
-	syscall
-	
+
 	###99
 	li $v0, 1 #specify print integer system service
 	move $a0,$a1
 	syscall #print that integer
-	
+
+	### bottles of beer.\n Take one down and pass it around,
+	la $a0,lyricb
+	li $v0,4
+	syscall
+
+	###99
+	li $v0, 1 #specify print integer system service
+	move $a0,$a1
+	syscall #print that integer
+
 	### "bottles of beer on the wall. \n\n"
 	la $a0,lyricc
 	li $v0,4
 	syscall
-	
+
 	#decrement counter, if at 1, print the final and exit.
 	subi $a1,$a1,1
 	bne $a1,1,loop
@@ -7177,20 +7107,20 @@ while (%x) {
 ```sml
 val NL = implode [#"newline"]
 
-fun itone 1 = "it" 
+fun itone 1 = "it"
         | n = "one"
 
-fun plural (s, 0) = ("no " @ s @ "s") 
-         | (s, 1) = ("1 " @ s) 
+fun plural (s, 0) = ("no " @ s @ "s")
+         | (s, 1) = ("1 " @ s)
          | (s, n) = (ntos n @ " " @ s @ "s")
 
-fun verse 0 = "no bottles of beer on the wall" @ NL @ 
-	      "no bottles of beer" @ NL @ 
-	      "go to the store and buy some more" @ NL @ 
-	      "99 bottles of beer on the wall" @ NL @ NL 
-        | x = plural ("bottle",x) @ " of beer on the wall" @ NL @ 
-	      plural ("bottle",x) @ " of beer" @ NL @ 
-	      "take " @ (itone x) @ " down and pass it round" @ NL @ 
+fun verse 0 = "no bottles of beer on the wall" @ NL @
+	      "no bottles of beer" @ NL @
+	      "go to the store and buy some more" @ NL @
+	      "99 bottles of beer on the wall" @ NL @ NL
+        | x = plural ("bottle",x) @ " of beer on the wall" @ NL @
+	      plural ("bottle",x) @ " of beer" @ NL @
+	      "take " @ (itone x) @ " down and pass it round" @ NL @
 	      plural ("bottle", (x-1)) @ " of beer on the wall" @ NL @ NL
 
 fun bottles x = map (print o verse) (rev (0 :: iota (1, x)))
@@ -7231,7 +7161,7 @@ go to the store and buy some more
 ## ML/I
 
 
-###  Simple iterative version 
+###  Simple iterative version
 
 
 ```ML/I
@@ -7259,7 +7189,7 @@ BOTTLES 99
 
 
 
-###  Recursive version 
+###  Recursive version
 
 
 ```ML/I
@@ -7286,18 +7216,15 @@ BOTTLES 99
 ```
 
 
+###  Macro Processing generalized version
 
+This version demonstrates the macro text replacement capabilities central to ML/I.
 
-###  Macro Processing generalized version in 99 lines 
-
-
-This version demonstrates the macro text replacement capabilities central to ML/I. 
-
-The code defines a macro 
+The code defines a macro
 
 '''Sing''' ''n'' ''containers'' '''of''' ''contents'' ''somewhere'' ''':''' ''deed'' '''!''' ''replenish'' '''.'''
 
-where the text (macro call) 
+where the text (macro call)
 
 '''Sing''' ''99'' ''bottles'' '''of''' ''beer'' '''on''' ''the wall''''':''' ''Take one down, pass it around'' '''!''' ''Go to the store and buy some more'' '''.'''
 
@@ -7345,7 +7272,7 @@ DO THE DEED:
     n of CONTENTS SOMEWHERE.
 
 MCGO L1
-?L2.REPLENISH: 
+?L2.REPLENISH:
     N of CONTENTS SOMEWHERE!}
 --
 -- (n): Wordify 0 to 99 CONTAINERS
@@ -7382,7 +7309,7 @@ MCDEF "6Unit" AS {"Six"}
 MCDEF "7Unit" AS {"Seven"}
 MCDEF "8Unit" AS {"Eight"}
 MCDEF "9Unit" AS {"Nine"}
-MCDEF "0unit" AS 
+MCDEF "0unit" AS
 MCDEF "1unit" AS {" one"}
 MCDEF "2unit" AS {" two"}
 MCDEF "3unit" AS {" three"}
@@ -7407,22 +7334,14 @@ Sing 99 bottles of beer on the wall: Take one down, pass it around! --
 Go to the store and buy some more.
 --
 --
--- Try uncommenting the next two lines: 
--- Sing 7 flasks of Armagnac on the table: Take a swig, throw it down! 
+-- Try uncommenting the next two lines:
+-- Sing 7 flasks of Armagnac on the table: Take a swig, throw it down!
 -- Emilie vists, she brings some more.
-
 ```
 
+Usage: <tt>ml1 "Bottles of Beer.ml1"</tt>
 
-
-###  Usage: 
-
- ml1 "Bottles of Beer.ml1"
-
-
-
-###  Output: 
-
+Output:
 
 ```ML/I
 
@@ -7453,7 +7372,7 @@ Go to the store and buy some more:
 ```
 
 
-=={{header|Modula-2}}==
+## Modula-2
 
 ```modula2
 MODULE b99;
@@ -7482,7 +7401,8 @@ END b99.
 ```
 
 
-=={{header|Modula-3}}==
+## Modula-3
+
 
 ```modula3
 MODULE Bottles EXPORTS Main;
@@ -7531,8 +7451,8 @@ Class NintyNineBottles Extends App
 			Self.tic=Millisecs()
 			If Self.lyric= 4 Then Self._bottles-=1
 			Self.lyric+=1
-			
-			
+
+
 		End If
 	End
 
@@ -7540,7 +7460,7 @@ Class NintyNineBottles Extends App
 
 	Method OnRender ()
 		Cls
-				
+
 		Select Self.lyric
 			Case 1
 				DrawText(_bottles+" bottles of beer on the wall",10,10)
@@ -7565,30 +7485,27 @@ Class NintyNineBottles Extends App
 					Self.lyric=1'DrawText(Self._bottles+" bottles of beer on the wall",10,10)
 				Else
 					DrawText("no more bottles of beer",10,10)
-				End if				
+				End if
 			Case 7
 				DrawText("go to the store",10,10)
-				
+
 			Case 8
 				DrawText("and buy some more",10,10)
 			Case 9
 				Self._bottles=99
-				DrawText(_bottles+" more bottles of beer on the wall",10,10)			
+				DrawText(_bottles+" more bottles of beer on the wall",10,10)
 			Case 10
-				Self.lyric=1			
+				Self.lyric=1
 		End Select
 
 	End
 
-	
+
 End
 
 
 
 ```
-
-
-
 ## MOO
 
 
@@ -7605,9 +7522,7 @@ player:tell("0 bottles of beer on the wall.");
 ```
 
 
-
 ## MoonScript
-
 
 ```moonscript
 p = (i) ->
@@ -7626,12 +7541,9 @@ for b = 99,1,-1
 ```
 
 
-
 ## MUMPS
 
-
 ### Recursive
-
 
 ```MUMPS
 beer(n)	If n<1 Write "No bottles of beer on the wall... " Quit
@@ -7777,10 +7689,13 @@ $(for:i in 99-1)
 ## N/t/roff
 
 
-===Classical version (compatible with classical Bell Lab's TROFF)===
-Subroutine <code>L1</code> calls upon itself recursively.
+### Classical version
 
-{{works with|All TROFF}}
+Compatible with classical Bell Lab's TROFF.
+
+Subroutine `L1` calls upon itself recursively.
+
+Works with All TROFF.
 
 ```N/t/roff
 .nr BS 99 1
@@ -7804,10 +7719,15 @@ Take one down, pass it around,
 ```
 
 
-===New version (compatible only with GNU TROFF)===
-Instead of recursion, a <code>while</code> construct can be used instead, to achieve the same results.  Technically, the program runs differently.
+### New version
 
-{{works with|GNU TROFF|1.22.2}}
+Compatible only with GNU TROFF.
+
+Instead of recursion, a `while` construct can be used instead,
+to achieve the same results.
+Technically, the program runs differently.
+
+Works with GNU TROFF 1.22.2.
 
 ```N/t/roff
 .nr beers 99 1
@@ -7828,10 +7748,9 @@ Take one down, pass it around,
 ```
 
 
-
 ## Nanoquery
 
-{{trans|Ursa}}
+Translated from Ursa.
 
 ```nanoquery
 //
@@ -7840,7 +7759,7 @@ Take one down, pass it around,
 
 for ($bottles = 99) ($bottles > 0) ($bottles = $bottles-1)
 	$bottlestr = ""
-	
+
 	if $bottles = 1
 		$bottlestr = "bottle"
 	else
@@ -7882,19 +7801,15 @@ repeat {
 
 ```ActionScript
 /**
- <doc>
- <h3>Rosetta Code, 99 bottles of beer on the wall, in Neko</h3>
+  <doc>
+    <h3>Rosetta Code, 99 bottles of beer on the wall, in Neko</h3>
 
- 
-```txt
-
- Tectonics:
-   nekoc 99bottles.neko
-   neko 99bottles
- 
-```
-
- </doc>
+    <pre>
+    Tectonics:
+      nekoc 99bottles.neko
+      neko 99bottles
+    </pre>
+  </doc>
 **/
 
 var message = " of beer on the wall\n";
@@ -7918,8 +7833,7 @@ while (beers > 0) {
 }
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 
@@ -7937,9 +7851,7 @@ No more bottles of beer on the wall
 ```
 
 
-
 ## Nemerle
-
 
 ```Nemerle
 using System;
@@ -7959,8 +7871,8 @@ module Bottles
                   WriteLine($"Take one down and pass it around, $(x-1) bottles of $bev on the $surface")
         }
     }
-    
-    Main() : void 
+
+    Main() : void
     {
         foreach (i in [99, 98 .. 0])
             Sing(i)
@@ -7969,12 +7881,9 @@ module Bottles
 ```
 
 
-
 ## NetRexx
 
-
 ```netrexx
-
 beer = "bottles of beer on the wall"
 removeOne = "Take one down, pass it arround,"
 say 99 beer","
@@ -7994,23 +7903,20 @@ say i lastCall","
 say i lastCall.subword(1,3)","
 say removeOne
 say "No more" beer
-
 ```
-
 
 
 ## NewLISP
 
-See [[99 Bottles of Beer/Lisp]]
+See [99 Bottles of Beer/Lisp](lisp)
 
 
 ## Nial
 
-
 ```nial
 line is fork [
   0=, 'No more bottles of beer' first,
-  1=, 'One bottle of beer' first, 
+  1=, 'One bottle of beer' first,
   link [string,' bottles of beer' first]
 ]
 
@@ -8054,7 +7960,7 @@ other:
 
 ```nim
 from strutils import format
- 
+
 for i in countdown(99, 1):
   case i
   of 3..99:
@@ -8115,9 +8021,12 @@ for i in countdown(99, 1):
 ```
 
 
-=={{header|NS-HUBASIC}}==
-With grammatical support for "1 bottle of beer"
-<lang NS-HUBASIC>10 WALL$=" ON THE WALL"
+## NS-HUBASIC
+
+With grammatical support for "1 bottle of beer":
+
+```NS-HUBASIC
+10 WALL$=" ON THE WALL"
 20 FOR BOTTLES=99 TO 1 STEP -1
 30 BOTTLES$=" BOTTLES OF BEER"
 40 IF BOTTLES=1 THEN BOTTLE$=" BOTTLE OF BEER"
@@ -8130,9 +8039,10 @@ With grammatical support for "1 bottle of beer"
 110 NEXT
 ```
 
+Without grammatical support for "1 bottle of beer":
 
-Without grammatical support for "1 bottle of beer"
-<lang NS-HUBASIC>10 BOTTLES$=" BOTTLES OF BEER"
+```NS-HUBASIS
+10 BOTTLES$=" BOTTLES OF BEER"
 20 WALL$=" ON THE WALL"
 30 FOR BOTTLES=99 TO 1 STEP -1
 40 PRINT BOTTLES BOTTLES$ WALL$
@@ -8143,10 +8053,9 @@ Without grammatical support for "1 bottle of beer"
 ```
 
 
-
 ## OASYS
 
-<lang oasys_oac>
+```oasys_oac
 class player {}
 
 int count
@@ -8184,7 +8093,7 @@ method init {
 
 ## OASYS Assembler
 
-See [[99 Bottles of Beer/Assembly]]
+See [99 Bottles of Beer/Assembly](assembly)
 
 
 ## Objeck
@@ -8207,7 +8116,8 @@ class Bottles {
 ```
 
 
-=={{header|Objective-C}}==
+## Objective-C
+
 
 ```objc>#import <Foundation/Foundation.h
 
@@ -8223,14 +8133,15 @@ int main()
             NSLog(@"Take one down, pass it around\n");
             NSLog(@"%i bottles of beer on the wall\n\n", --bottles);
         } while (bottles > 0);
-	
+
     }
     return 0;
 }
 ```
 
 
-=={{header|Oberon-2}}==
+## Oberon-2
+
 
 ```oberon2
 MODULE b99;
@@ -8282,22 +8193,22 @@ Recursive version that handles plurals.
 
 
 ```ocaml
-let verse n = 
-    let 
+let verse n =
+    let
         line2 = function
             | 0 -> "No more bottles of beer"
             | 1 -> "1 bottle of beer"
-            | n -> string_of_int n ^ " bottles of beer" 
+            | n -> string_of_int n ^ " bottles of beer"
     in
-        let 
-            line1or4 y = line2 y ^ " on the wall" 
+        let
+            line1or4 y = line2 y ^ " on the wall"
         in
-            let 
+            let
                 line3 = function
                 | 1 -> "Take it down, pass it around"
-                | _ -> "Take one down, pass it around" 
+                | _ -> "Take one down, pass it around"
             in
-                line1or4 n ^ "\n" ^ 
+                line1or4 n ^ "\n" ^
                 line2 n ^ "\n" ^
                 line3 n ^ "\n" ^
                 line1or4 (n-1) ^ "\n";;
@@ -8385,7 +8296,7 @@ function bottles(n)
 	w = "";
       endif
       printf("%d %s%s %s %s\n",\
-	     i, bottle, s, ofbeer, w); 
+	     i, bottle, s, ofbeer, w);
     endfor
     printf("Take one down, pass it around\n");
   endfor
@@ -8403,15 +8314,15 @@ bottles(99);
 ```Oforth
 "bottles of beer on the wall\n" const: B
 "bottles of beer\nTake one down, pass it around\n" const: T
- 
-#[ 100 swap - dup . B print dup . T print 1- . B .cr ] 99 each 
+
+#[ 100 swap - dup . B print dup . T print 1- . B .cr ] 99 each
 ```
 
 
 
 ## Ol
 
-See [[99 Bottles of Beer/Lisp]]
+See [99 Bottles of Beer/Lisp](lisp)
 
 
 ## Onyx
@@ -8476,13 +8387,13 @@ sing_verse: func (b: Int) {
     "Take one down, pass it around" println()
   } else {
     "Go to the store and buy some more" println()
-    b += 100 
+    b += 100
   }
   sing_line(b-1, true)
 }
 
 main: func {
-  b := 100 
+  b := 100
   while (b > 0) {
     sing_verse(--b)
   }
@@ -8499,7 +8410,8 @@ The rexx example below runs unchanged on ooRexx
 
 ## OpenEdge/Progress
 
-<lang Progress (Openedge ABL)>DEFINE VARIABLE amountofbottles AS INTEGER NO-UNDO INITIAL 99.
+```Progress (Openedge ABL)
+DEFINE VARIABLE amountofbottles AS INTEGER NO-UNDO INITIAL 99.
 &GLOBAL-DEFINE bbm bottles of beer
 &GLOBAL-DEFINE bbs bottle of beer
 &GLOBAL-DEFINE otw on the wall
@@ -8515,22 +8427,22 @@ FUNCTION drinkBottle RETURNS INTEGER.
     IF bc >= 0 THEN DO:
         CASE bc:
         WHEN 2 THEN
-            PUT UNFORMATTED bc " {&bbm} {&otw}, " bc " {&bbm}" SKIP 
+            PUT UNFORMATTED bc " {&bbm} {&otw}, " bc " {&bbm}" SKIP
                             "{&tow} " bc - 1 " {&bbs} {&otw}" SKIP.
         WHEN 1 THEN
-            PUT UNFORMATTED bc " {&bbs} {&otw}, " bc " {&bbs}" SKIP 
+            PUT UNFORMATTED bc " {&bbs} {&otw}, " bc " {&bbs}" SKIP
                             "{&tow} no more {&bbm} {&otw}" SKIP.
         WHEN 0 THEN
-            PUT UNFORMATTED "no more" " {&bbm} {&otw}, no more {&bbm}" SKIP 
+            PUT UNFORMATTED "no more" " {&bbm} {&otw}, no more {&bbm}" SKIP
                             "{&gts} " amountofbottles " {&bbm} {&otw}" SKIP.
         OTHERWISE
-            PUT UNFORMATTED bc " {&bbm} {&otw}, " bc " {&bbm}" SKIP 
+            PUT UNFORMATTED bc " {&bbm} {&otw}, " bc " {&bbm}" SKIP
                             "{&tow} " bc - 1 " {&bbm} {&otw}" SKIP.
-        END CASE.        
+        END CASE.
         drinkBottle(bc - 1).
         RETURN bc.
     END.
-    RETURN 0. 
+    RETURN 0.
 END FUNCTION.
 ```
 
@@ -8540,7 +8452,9 @@ END FUNCTION.
 
 These examples are taken directly from a much longer tutorial in the Order documentation, which explains the construction of the solution to this problem in great detail.
 
-==="Pure" Order===
+
+### "Pure" Order
+
 This solution uses only Order language constructs to generate and manipulate tokens:
 
 ```c
@@ -8619,7 +8533,7 @@ implementation
 
 method bottles(number: Integer): String;
 begin
-    if (number = 1) then 
+    if (number = 1) then
         Result := "bottle"
     else
         Result := "bottles";
@@ -8648,7 +8562,7 @@ end.
 ## Oz
 
 
-###  Constraint Programming 
+###  Constraint Programming
 
 Note: In real life, you would never solve a simple iterative task like this with constraint programming. This is just for fun.
 
@@ -8682,7 +8596,7 @@ in
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```oz
@@ -8722,7 +8636,7 @@ print("1 bottle of beer on the wall\n1 bottle of beer\nTake one down, pass it ar
 
 ## Pascal
 
-See [[99 Bottles of Beer/Pascal]]
+See [99 Bottles of Beer/Pascal](pascal)
 
 
 ## Perl
@@ -8756,7 +8670,7 @@ Alternatively:
 for $n (reverse(0..99))
 {
     $bottles = sprintf("%s bottle%s of beer on the wall\n",(($n==0)?"No":$n), (($n==1)?"":"s"));
-    print( (($n==99)?"":"$bottles\n") . 
+    print( (($n==99)?"":"$bottles\n") .
 	   (($n==0)?"":(substr(${bottles}x2,0,-12) . "\nTake one down, pass it around\n")) );
 }
 ```
@@ -8765,14 +8679,14 @@ for $n (reverse(0..99))
 Correct grammar and nice spacing in modern perl:
 
 ```perl
-use 5.10.0;                                                                        
+use 5.10.0;
 
 $num = 99;
 while ($num > 0) {
     my $s = "s" unless ($num == 1);
     say "$num bottle$s of beer on the wall, $num bottle$s of beer";
     $num--;
-    my $s = "s" unless ($num == 1); 
+    my $s = "s" unless ($num == 1);
     $num = "No more" if ($num == 0);
     say "Take one down, pass it around, $num bottle$s of beer on the wall\n"
 }
@@ -8781,8 +8695,7 @@ say "No more bottles of beer on the wall, no more bottles of beer.";
 say "Go to the store and buy some more, 99 bottles of beer on the wall.";
 ```
 
-
-Using perl5 as a DSL factory leveraging $_'s global nature:
+Using Perl 5 as a DSL factory leveraging $\_'s global nature:
 
 ```perl
 
@@ -8805,14 +8718,9 @@ do { print bottles, wall
 ```
 
 
-
 ## Perl 6
 
-
-
-###  A Simple Way 
-
-
+###  A Simple Way
 
 ```perl6
 my $b = 99;
@@ -8831,12 +8739,11 @@ sub b($b) {
 ```
 
 
+###  A Clearer Way
 
-###  A Clearer Way 
-
-
-Similar to "A Simple Way", but with proper variable and subroutine naming, declarator documentation, strongly-typed function definition, better code reuse, and external ternary logic.
-
+Similar to "A Simple Way", but with proper variable and subroutine naming,
+declarator documentation, strongly-typed function definition,
+better code reuse, and external ternary logic.
 
 ```perl6
 for 99...1 -> $bottles {
@@ -8860,11 +8767,10 @@ sub sing(
 ```
 
 
+###  A More Extravagant Way
 
-###  A More Extravagant Way 
 
-
-{{works with|Rakudo|2015.09}}
+Works with Rakudo 2015.09.
 
 ```perl6
 my @quantities = flat (99 ... 1), 'No more', 99;
@@ -8883,9 +8789,7 @@ for @quantities Z @bottles Z @actions Z
 ```
 
 
-
 ## Phix
-
 
 ```phix
 constant ninetynine = 99 -- (set this to 9 for testing)
@@ -8922,11 +8826,9 @@ string that = "Take one down, pass it around,\n"
 ```
 
 
-
 ## PHL
 
-
-{{trans|C}}
+Translated from C.
 
 
 ```phl
@@ -8951,7 +8853,6 @@ extern printf;
 
 ## PHP
 
-
 ```php
 <?php
 $plural = 's';
@@ -8961,7 +8862,7 @@ foreach (range(99, 1) as $i) {
     echo "Take one down, pass it around!\n";
     if ($i - 1 == 1)
         $plural = '';
-    
+
     if ($i > 1)
         echo ($i - 1) . " bottle$plural of beer on the wall!\n\n";
     else
@@ -8970,9 +8871,7 @@ foreach (range(99, 1) as $i) {
 ?>
 ```
 
-
-
-### shorter way
+### Shorter way
 
 
 ```php
@@ -8991,9 +8890,7 @@ echo "No more Bottles of beer on the wall";
 ?>
 ```
 
-
-
-### modifing way:
+### Modifing way
 
 
 ```php
@@ -9017,9 +8914,7 @@ foreach (range(1,99) as $i) { // loop 99 times
 ?>
 ```
 
-
-
-### ultra compact alternative
+### Ultra compact alternative
 
 supports grammar and has no leading and trailing new lines or spaces.
 Also one does not have to close the <?php tag, it is even recommended not to close it, if closing it is not necessary
@@ -9034,11 +8929,9 @@ Also one does not have to close the <?php tag, it is even recommended not to clo
   }
 ```
 
+### Gettext alternative
 
-
-### gettext alternative
-
-supports grammar and translations.
+Supports grammar and translations.
 
 
 ```php
@@ -9083,12 +8976,11 @@ $x = 99;
 while ( $x > 0 ) {
    printf( $lyrics, $x != 1 ? 's' : '', $x--, $x != 1 ? 's' : '', $x > 0 ? $x : 'No more' );
 }
-
 ```
 
-{{Out}}
+Output:
 
-<pre style="font-size:84%;height:55ex">
+```txt
 99 bottles of beer on the wall
 99 bottles of beer
 Take one down, pass it around
@@ -9135,17 +9027,14 @@ Take one down, pass it around
 1 bottle of beer
 Take one down, pass it around
 No more bottles of beer on the wall
-
 ```
-
 
 
 ## Picat
 
-
 ```Picat
 
-beer1(N) => 
+beer1(N) =>
    Beer = N,
    while (Beer > 0)
        printf("%d bottles of beer on the wall,\n", Beer),
@@ -9177,7 +9066,7 @@ beer2(B) = S =>
 
 ## Piet
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Pike
@@ -9202,19 +9091,19 @@ alternate version:
 
 void main()
 {
-  array numbers = ({ "no more", "one", "two", "three", "four", "five", "six", "seven", 
-                     "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", 
+  array numbers = ({ "no more", "one", "two", "three", "four", "five", "six", "seven",
+                     "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
                      "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" });
   array decades = ({ "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty",
                      "ninety" });
 
   foreach (decades;; string decade)
-  { 
+  {
     numbers += decade+(({ "" }) + numbers[1..9])[*];
   }
   numbers = reverse(numbers);
 
-  array bottles = ((numbers[*]+" bottles of ale on the wall, ")[*] + 
+  array bottles = ((numbers[*]+" bottles of ale on the wall, ")[*] +
                    (numbers[*]+" bottles of ale.\n")[*]);
 
   bottles[-2] = replace(bottles[-2], "one bottles", "one bottle");
@@ -9229,7 +9118,7 @@ void main()
 ## PIR
 
 
-{{works with|Parrot|Tested with 2.4.0}}
+Works with Parrot|Tested with 2.4.0.
 
 
 ```pir
@@ -9330,7 +9219,7 @@ bootles(99);
     20 string cvs show
     ( bottle) show
     1 ne
-    { (s) show } if 
+    { (s) show } if
     ( of beer) show
 } def
 
@@ -9339,13 +9228,13 @@ bootles(99);
     dup
     dup
     7 mul
-    50 add 
+    50 add
     /yPos exch def
     15 yPos moveto
     printBeer
     ( on the wall, ) show
     printBeer
-    (. ) show 
+    (. ) show
     (Take one down, pass it around, ) show
     1 sub
     printBeer
@@ -9365,7 +9254,7 @@ showpage
 
 ## PowerShell
 
-See [[99 Bottles of Beer/Shell]]
+See [99 Bottles of Beer/Shell](shell)
 
 
 ## Processing
@@ -9384,12 +9273,12 @@ for (int i = 99; i > 0; i--) {
 
 ## ProDOS
 
-See [[99 Bottles of Beer/Shell]]
+See [99 Bottles of Beer/Shell](shell)
 
 
 ## Prolog
 
-See [[99 Bottles of Beer/Prolog]]
+See [99 Bottles of Beer/Prolog](prolog)
 
 
 ## Python
@@ -9465,8 +9354,8 @@ print(last)
 
 
 ===Python 3 (dys)Functional===
-{{Trans|Haskell}}
-{{Works with|Python|3.7}}
+Translated from Haskell.
+Works with Python|3.7.
 
 ```python
 '''99 Units of Disposable Asset'''
@@ -9669,7 +9558,7 @@ def get_asset(count: int,
               liquid: str) -> str:
     """
     Quantified asset
-    
+
     >>> get_asset(0, container="jar", plurifier=regular_plural, liquid='milk')
     "No more jars of milk"
     """
@@ -9682,8 +9571,7 @@ if __name__ == '__main__':
     beer_song()
 
 ```
-
-{{Out}}
+Output:
 
 ```txt
 
@@ -9708,7 +9596,7 @@ Better go to the store to buy some more!
 
 
 
-###  Other solutions 
+###  Other solutions
 
 See  [[99 Bottles of Beer/Python]]
 
@@ -9871,18 +9759,18 @@ for (my $i = 99; $i > 0; $i--) {
 
 
 ```qore
-#!/usr/bin/env qore                                                                        
-                                                                                           
-%enable-all-warnings                                                                       
-%require-types                                                                             
-                                                                                  
+#!/usr/bin/env qore
+
+%enable-all-warnings
+%require-types
+
 # global variables (truly shared among threads) must be declared with "our" keyword
 %require-our
 
 our Counter $count();
 
 sub t() {
-  on_exit { 
+  on_exit {
         $count.dec();
   }
   my int $i = gettid()-1;
@@ -9937,16 +9825,16 @@ bottles := void(int count) {
 #a naive function to sing for N bottles of beer...
 
 song = function(bottles){
-  
+
   for(i in bottles:1){ #for every integer bottles, bottles-1 ... 1
-      
+
     cat(bottles," bottles of beer on the wall \n",bottles," bottles of beer \nTake one down, pass it around \n",
         bottles-1, " bottles of beer on the wall \n"," \n" ,sep="")       #join and print the text (\n means new line)
-    
+
         bottles = bottles - 1 #take one down...
-    
+
   }
-  
+
 }
 
 song(99)#play the song by calling the function
@@ -9974,50 +9862,50 @@ cat(paste(lapply(99:1,function(i){paste(paste(rep(paste(i,' bottle',if(i!=1)'s',
 
 class BottlesOfBeer
 	**Prints the "99 Bottles of Beer" song"**
-	
+
 	on start
-		
+
 		args := program arguments
-		
+
 		# If no arguments given, print the song once
 		if args empty
 			.printSong
-		
+
 		# Otherwise, print the song the given number of times
 		else
 			.printSong(integer.parse(args[0]))
-	
+
 	shared
-		
+
 		define printSong(times := 1)
 			**Print the song the given number of times**
-			
+
 			for times, _printSong
-		
+
 		define _printSong
 			**Print the song**
-			
+
 			# Print for bottles 99 to 1
 			for bottle in 99 to 0 by -1
-			
+
 				print "[_bottles(bottle)] of beer on the wall
 				[_bottles(bottle)] of beer
 				Take one down, pass it around
 				[_bottles(bottle - 1)] of beer on the wall
 				"
-			
+
 			print "No more bottles of beer on the wall
 			No more bottles of beer
 			Go to the store, buy some more
 			99 bottles of beer on the wall"
-		
+
 		define _bottles(bottle as integer) as String
 			**
 			If bottle is 0, returns "No more bottles"
 			If bottle is 1, returns "1 bottle"
 			Otherwise, returns "[bottle] bottles"
 			**
-			
+
 			if bottle = 0, return "No more bottles"
 			if bottle = 1, return "1 bottle"
 			return "[bottle] bottles"
@@ -10076,15 +9964,15 @@ module demo::basic::Bottles
 
 import IO;
 
-str bottles(0)     = "no more bottles"; 
+str bottles(0)     = "no more bottles";
 str bottles(1)     = "1 bottle";
-default str bottles(int n) = "<n> bottles"; 
+default str bottles(int n) = "<n> bottles";
 
-public void sing(){ 
+public void sing(){
   for(n <- [99 .. 1]){
        println("<bottles(n)> of beer on the wall, <bottles(n)> of beer.");
        println("Take one down, pass it around, <bottles(n-1)> of beer on the wall.\n");
-  }  
+  }
   println("No more bottles of beer on the wall, no more bottles of beer.");
   println("Go to the store and buy some more, 99 bottles of beer on the wall.");
 }
@@ -10107,12 +9995,11 @@ public void sing(){
     "Take one down, pass it around,\n" print
     $i 2 = if
         "1 bottle"
-    else 
+    else
          $i 1 - "%d bottles" format
     "%s of beer on the wall.\n\n" print
 ```
-
-{{out}}
+Output:
 Last couple of stanzas are:
 
 ```txt
@@ -10165,38 +10052,38 @@ Output ''(selected highlights)'':
 
 ```txt
 
-99 bottles of beer on the wall    2 bottles of beer on the wall 
-99 bottles of beer                2 bottles of beer             
-Take one down, pass it around     Take one down, pass it around 
-98 bottles of beer on the wall    1 bottle of beer on the wall  
-                                                                
-...Continues...                   1 bottle of beer on the wall  
-                                  1 bottle of beer              
-                                  Take one down, pass it around 
+99 bottles of beer on the wall    2 bottles of beer on the wall
+99 bottles of beer                2 bottles of beer
+Take one down, pass it around     Take one down, pass it around
+98 bottles of beer on the wall    1 bottle of beer on the wall
+
+...Continues...                   1 bottle of beer on the wall
+                                  1 bottle of beer
+                                  Take one down, pass it around
                                   no bottles of beer on the wall
 
 
 ```
 
 
-This one prints with proper grammar.  "Bottles" changed to "bottle" at the end of the 2 line, and throughout the 1 line.  0 changed to "No" in the last line: 
+This one prints with proper grammar.  "Bottles" changed to "bottle" at the end of the 2 line, and throughout the 1 line.  0 changed to "No" in the last line:
 
 
 ```REBOL
-for i 99 1 -1 [ 
-     x: rejoin [ 
-         i b: " bottles of beer" o: " on the wall. " i b 
-         ". Take one down, pass it around. " (i - 1) b o "^/" 
-     ] 
-     r: :replace j: "bottles" k: "bottle" 
-     switch i [1 [r x j k r at x 10 j k r x "0" "No"] 2 [r at x 40 j k]] 
-     print x 
+for i 99 1 -1 [
+     x: rejoin [
+         i b: " bottles of beer" o: " on the wall. " i b
+         ". Take one down, pass it around. " (i - 1) b o "^/"
+     ]
+     r: :replace j: "bottles" k: "bottle"
+     switch i [1 [r x j k r at x 10 j k r x "0" "No"] 2 [r at x 40 j k]]
+     print x
 ] halt
 ```
 
-    
-Here's a simple 1 line console version: 
-    
+
+Here's a simple 1 line console version:
+
 
 ```REBOL
 for i 99 1 -1[print rejoin[i b:" bottles of beer"o:" on the wall. "i b". Take one down, pass it around. "(i - 1)b o"^/"]]
@@ -10244,28 +10131,28 @@ This is based on the [[Forth]] example.
 Display the text for the *99 Bottles of Beer* song.
 
 ~~~
-{ 'bottle 'bottles 'of 'beer 'on 'the 'wall 'no 'more 
-  'Take 'one 'down, 'pass 'it 'around } 
-[ dup ':%s_'%s_s:put_sp_; s:format s:evaluate ] a:for-each 
- 
-{ [ no more bottles      ] 
-  [ #1 n:put sp bottle   ] 
-  [ dup n:put sp bottles ] 
-} 'BOTTLES const 
- 
-:number-bottles 
-  dup #2 n:min BOTTLES swap a:fetch call ; 
- 
-:display-verse 
-  number-bottles of beer on the wall  nl 
-  number-bottles of beer              nl 
-  n:dec Take one down, pass it around nl 
-  number-bottles of beer on the wall  nl ; 
- 
-:verses (n-) 
-  repeat 0; nl display-verse again ; 
- 
-#99 verses  
+{ 'bottle 'bottles 'of 'beer 'on 'the 'wall 'no 'more
+  'Take 'one 'down, 'pass 'it 'around }
+[ dup ':%s_'%s_s:put_sp_; s:format s:evaluate ] a:for-each
+
+{ [ no more bottles      ]
+  [ #1 n:put sp bottle   ]
+  [ dup n:put sp bottles ]
+} 'BOTTLES const
+
+:number-bottles
+  dup #2 n:min BOTTLES swap a:fetch call ;
+
+:display-verse
+  number-bottles of beer on the wall  nl
+  number-bottles of beer              nl
+  n:dec Take one down, pass it around nl
+  number-bottles of beer on the wall  nl ;
+
+:verses (n-)
+  repeat 0; nl display-verse again ;
+
+#99 verses
 ~~~
 ```
 
@@ -10316,11 +10203,11 @@ Take one down, pass it around,
 97 bottles of beer.
 Take one down, pass it around,
 96 bottles of beer on the wall.
-  
+
   ∙
   ∙
   ∙
-  
+
 2 bottles of beer on the wall,
 2 bottles of beer.
 Take one down, pass it around,
@@ -10348,28 +10235,27 @@ This is a simple solution
 for i = 99 to 0 step -1
 switch i
 on 0
-see "No more bottles of beer on the wall, 
+see "No more bottles of beer on the wall,
 no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall."
 on 1
-see "1 bottle of beer on the wall, 
+see "1 bottle of beer on the wall,
 1 bottle of beer.
-Take one down and pass it around, 
+Take one down and pass it around,
 No more bottles of beer on the wall.
 
 "
 other
-see string(i) + " bottles of beer on the wall, 
+see string(i) + " bottles of beer on the wall,
 " + string(i) + " bottles of beer.
-Take one down and pass it around, 
+Take one down and pass it around,
 " + string(i-1) + " bottles of beer on the wall.
 
 "
 off
 next
 ```
-
-{{out}}
+Output:
 
 ```txt
 
@@ -10381,7 +10267,7 @@ Take one down, pass it around,
   ∙
   ∙
   ∙
-  
+
 1 bottle of beer on the wall,
 1 bottle of beer.
 Take one down, pass it around,
@@ -10420,7 +10306,7 @@ Say it with Love
 ## RPG
 
 
-{{works with|RPGIII|}}
+Works with RPGIII|.
 
 
 ```RPG
@@ -10785,7 +10671,8 @@ end;
 ```
 
 
-=={{header|S-BASIC}}==
+## S-BASIC
+
 
 ```basic
 
@@ -10810,7 +10697,7 @@ end
 
 rem - begin main program
 
-var n = integer    
+var n = integer
 n = maxbottles
 while n > 0 do
    begin
@@ -10845,7 +10732,7 @@ See [[99 Bottles of Beer/Scala]]
 
 ## Scheme
 
-{{works with|Chicken Scheme}}
+Works with Chicken Scheme.
 
 ```scheme
 (define (bottles x)
@@ -10868,7 +10755,7 @@ See [[99 Bottles of Beer/Scala]]
 (define (sing)
  (define (sing-to-x n)
   (if (> n -1)
-    (begin 
+    (begin
         (display n)
         (display "bottles of beer on the wall")
         (newline)
@@ -10942,7 +10829,7 @@ const proc: main is func
     writeln("Take one down and pass it around, no more bottles of beer on the wall.");
     writeln;
     writeln("No more bottles of beer on the wall, no more bottles of beer.");
-    writeln("Go to the store and buy some more, 99 bottles of beer on the wall.")    
+    writeln("Go to the store and buy some more, 99 bottles of beer on the wall.")
   end func;
 ```
 
@@ -10958,27 +10845,27 @@ import <Utilities/Sequence.sl>;
 main(args(2)) :=
 	join(phrase(reverse(0 ... 99)));
 
-phrase(num) := 
+phrase(num) :=
 	let
-		action := 
+		action :=
 				"Take one down and pass it around" when num > 0
 			else
 				"Go to the store and buy some more";
-	in		
-		describeCount(num, true) ++ " on the wall, " ++ 
-		describeCount(num, false) ++ ".\n" ++ 
+	in
+		describeCount(num, true) ++ " on the wall, " ++
+		describeCount(num, false) ++ ".\n" ++
 		action ++ ", " ++
 		describeCount(num - 1, false)  ++ " on the wall.\n\n";
 
-describeCount(num, capitalize) := 
+describeCount(num, capitalize) :=
 	let
-		count := 
-				intToString(num) when num > 0 
-			else 
-				intToString(99) when num < 0 
-			else 
+		count :=
+				intToString(num) when num > 0
+			else
+				intToString(99) when num < 0
+			else
 				("N" when capitalize else "n") ++ "o more";
-				
+
 		plural := "s" when num /= 1 else "";
 	in
 		count ++ " bottle" ++ plural ++ " of beer";
@@ -11133,7 +11020,7 @@ for n in (100 ^.. 2) {
   say "#{n} bottles of beer on the wall, #{n} bottles of beer!"
   say "Take one down, pass it around, #{n - 1} bottle#{n > 2 ? 's' : ''} of beer on the wall.\n"
 }
- 
+
 say "One bottle of beer on the wall, one bottle of beer!"
 say "Take one down, pass it around, no more bottles of beer on the wall."
 ```
@@ -11275,7 +11162,7 @@ sr at: 0 put: ' bottle' ;
    at: 3 put: ' on the wall' ;
    at: 4 put: 'Take one down, pass it around' !
 99 to: 0 by: -1 do: [:v | v print.
-         ( v == 1 ) ifTrue: [ s := 0. ] 
+         ( v == 1 ) ifTrue: [ s := 0. ]
 	            ifFalse: [ s := 1. ].
 	 Transcript show: (sr at:s) ; show: (sr at:2) ; show: (sr at:3) ; cr.
 	            v print.
@@ -11362,8 +11249,8 @@ end
 
 ### Function
 
-{{works with|Macro Spitbol}}
-{{works with|CSnobol}}
+Works with Macro Spitbol.
+Works with CSnobol.
 Function version with string composition. Function returns one verse for x bottles. Correctly handles bottle/bottles.
 
 ```SNOBOL4
@@ -11410,7 +11297,7 @@ Go to the store, get some more
 
 ## SNUSP
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Sparkling
@@ -11461,16 +11348,16 @@ DROP PROCEDURE IF EXISTS bottles_$$
 CREATE pROCEDURE `bottles_`(inout bottle_count int, inout song  text)
 BEGIN
 declare bottles_text varchar(30);
- 
- 
+
+
 IF bottle_count > 0   THEN
- 
-  
+
+
     if bottle_count != 1 then
     set bottles_text :=  ' bottles of beer ';
     else set bottles_text = ' bottle of beer ';
     end if;
-   
+
     SELECT concat(song, bottle_count, bottles_text, ' \n') INTO song;
     SELECT concat(song, bottle_count, bottles_text,  'on the wall\n') INTO song;
     SELECT concat(song, 'Take one down, pass it around\n') into song;
@@ -11502,33 +11389,33 @@ AS
 BEGIN
 
 declare @bottles_text VARCHAR(MAX);
- 
- 
-IF @bottle_count > 0   
+
+
+IF @bottle_count > 0
  BEGIN
     IF @bottle_count != 1
 		BEGIN
 		SET @bottles_text =  ' bottles of beer ';
     END
-    ELSE 
+    ELSE
     BEGIN
 		SET @bottles_text = ' bottle of beer ';
-	END 
-    
+	END
 
-    
+
+
     SET @song = @song + CAST(@bottle_count AS VARCHAR) + @bottles_text + '\n';
-    
+
     SET @song = @song + CAST(@bottle_count AS VARCHAR) + @bottles_text +  'on the wall\n'
     SET @song = @song + 'Take one down, pass it around\n'
     SET @song = @song + CAST((@bottle_count - 1) AS VARCHAR) + @bottles_text +  'on the wall\n'
-    
-    
+
+
     SET @bottle_count = (@bottle_count - 1);
-    
 
 
-    
+
+
    EXEC bottles @bottle_count, @song
 
 END
@@ -11555,7 +11442,7 @@ SELECT generate_series || ' bottles of beer on the wall' || chr(10) ||
 generate_series || ' bottles of beer' || chr(10) ||
 'Take one down, pass it around' || chr(10) ||
 coalesce(lead(generate_series) OVER (ORDER BY generate_series DESC),0) || ' bottles of beer on the wall' AS song
-FROM generate_series(1,99) 
+FROM generate_series(1,99)
 ORDER BY generate_series DESC;
 
 /*The next statement takes also into account the grammatical support for "1 bottle of beer".*/
@@ -11563,9 +11450,9 @@ ORDER BY generate_series DESC;
 SELECT generate_series || ' bottle' || CASE WHEN generate_series>1 THEN 's' ELSE '' END || ' of beer on the wall' || chr(10) ||
 generate_series || ' bottle' || CASE WHEN generate_series>1 THEN 's' ELSE '' END || ' of beer' || chr(10) ||
 'Take one down, pass it around' || chr(10) ||
-coalesce(lead(generate_series) OVER (ORDER BY generate_series DESC),0) || ' bottle' || CASE WHEN coalesce(lead(generate_series) OVER (ORDER BY 
+coalesce(lead(generate_series) OVER (ORDER BY generate_series DESC),0) || ' bottle' || CASE WHEN coalesce(lead(generate_series) OVER (ORDER BY
 generate_series DESC),0) <>1 THEN 's' ELSE '' END || ' of beer on the wall' AS song
-FROM generate_series(1,99) 
+FROM generate_series(1,99)
 ORDER BY generate_series DESC;
 
 /*The next statement uses recursive query.*/
@@ -11578,9 +11465,9 @@ WITH RECURSIVE t(n) AS (
 SELECT n || ' bottle' || CASE WHEN n>1 THEN 's' ELSE '' END || ' of beer on the wall' || chr(10) ||
 n || ' bottle' || CASE WHEN n>1 THEN 's' ELSE '' END || ' of beer' || chr(10) ||
 'Take one down, pass it around' || chr(10) ||
-coalesce(lead(n) OVER (ORDER BY n DESC),0) || ' bottle' || 
+coalesce(lead(n) OVER (ORDER BY n DESC),0) || ' bottle' ||
 CASE WHEN coalesce(lead(n) OVER (ORDER BY n DESC),0) <>1 THEN 's' ELSE '' END || ' of beer on the wall' AS song
-FROM t 
+FROM t
 ORDER BY n DESC;
 
 
@@ -11648,7 +11535,7 @@ program drink
 			else {
 				display "No more bottles of beer on the wall"
 			}
-			display 
+			display
 		}
 		else {
 			display "No more bottles of beer on the wall"
@@ -11719,15 +11606,15 @@ for i in (1...99).reversed() {
 ```SuperCollider
 // post to the REPL directly
 (
-(99..0).do { |n| 
-	"% bottles of beer on the wall\n% bottles of beer\nTake one down, pass it around\n% bottles of beer on the wall\n".postf(n, n, n) 
+(99..0).do { |n|
+	"% bottles of beer on the wall\n% bottles of beer\nTake one down, pass it around\n% bottles of beer on the wall\n".postf(n, n, n)
 };
 )
 
 // post over time
 (
 fork {
-	100.reverseDo { |n| 
+	100.reverseDo { |n|
 		n.post; " bottles of beer on the wall".postln; 0.5.wait;
 		n.post; " bottles of beer".postln; 0.5.wait;
 		"Take one down, pass it around".postln; 0.5.wait;
@@ -11747,9 +11634,9 @@ fork {
 
 ```symsyn
 
-BBW : ' Bottles of beer on the wall ' 
-TOD : 'Take one down and pass it around ' 
- 
+BBW : ' Bottles of beer on the wall '
+TOD : 'Take one down and pass it around '
+
  if 99 GT 0       | numbers are variables initialized to value
     ~ 99 $S       | convert to string
     + BBW $S      | add phrase to end of string
@@ -11764,8 +11651,8 @@ TOD : 'Take one down and pass it around '
     + $R $S       | add to end of string $S
     + BBW $S      | add phrase to end of $S
     $S []         | output string
-    goif          | go back to if 
- endif   
+    goif          | go back to if
+ endif
 
 ```
 
@@ -11784,18 +11671,17 @@ templates sayBottleCount
   <>
     '$; bottles' !
 end sayBottleCount
- 
+
 99..1:-1 ->
 '$->sayBottleCount; of beer on the wall,
 $->sayBottleCount; of beer.
 Take one down, pass it around,
 $:$ - 1 -> sayBottleCount; of beer on the wall.
- 
+
 ' -> !OUT::write
 
 ```
-
-{{out}}
+Output:
 
 ```txt
 
@@ -11890,11 +11776,9 @@ ENDLOOP
 ```
 
 
-
 ## TypeScript
 
-
-```javascript
+```typescript
 function beerSong(){
     function nbottles(howMany:number){
         return `${howMany?howMany:'no'} bottle${howMany!=1?'s':''}`;
@@ -11916,11 +11800,16 @@ console.log(beerSong());
 ```
 
 
-
 ## TXR
 
-
-The <code>(range 99 -1 -1)</code> expression produces a lazy list of integers from 99 down to -1. The <code>mapcar*</code> function lazily maps these numbers to strings, and the rest of the code treats this lazy list as text stream to process, extracting the numbers with some pattern matching cases and interpolating them into the song's text. Functional programming with lazy semantics meets text processing, pattern matching and here documents.
+The `(range 99 -1 -1)` expression produces a lazy list of integers
+from 99 down to -1.
+The `mapcar*` function lazily maps these numbers to strings,
+and the rest of the code treats this lazy list as text stream to process,
+extracting the numbers with some pattern matching cases
+and interpolating them into the song's text.
+Functional programming with lazy semantics meets text processing,
+pattern matching and here documents.
 
 
 ```txr
@@ -11974,7 +11863,9 @@ repetitions of the integer sequences 99 98 ... 0.
 ## uBasic/4tH
 
 A very vanilla BASIC implementation.
-<lang>0005 LET I=99
+
+```basic
+0005 LET I=99
 0006 PRINT "Lyrics of the song 99 Bottles of Beer"
 
 0010 REM main
@@ -12007,23 +11898,22 @@ A very vanilla BASIC implementation.
 0050 REM if equals zero then exit
 0051 PRINT "No more bottles of beer on the wall.  No more bottles of beer..."
 0052 PRINT "Go to the store and buy some more...99 bottles of beer."
-
 ```
 
 
 ## UNIX Shell
 
-See [[99 Bottles of Beer/Shell]]
+See [99 Bottles of Beer/Shell](shell)
 
 
 ## UnixPipes
 
-See [[99 Bottles of Beer/Shell]]
+See [99 Bottles of Beer/Shell](shell)
 
 
 ## Ursa
 
-<lang>
+```ursa
 #
 # 99 bottles of beer
 #
@@ -12048,13 +11938,10 @@ for (set bottles 99) (> bottles 0) (dec bottles)
                 out (int (- bottles 1)) " bottle of beer on the wall." endl endl console
         end if
 end for
-
 ```
 
 
-
 ## Ursala
-
 
 ```Ursala
 #import nat
@@ -12092,10 +11979,9 @@ main = whole_song 99
 
 
 ```UTFool
-
 ···
 http://rosettacode.org/wiki/99_Bottles_of_Beer
-··· 
+···
 ■ BottlesOfBeer
   § static
     ▶ main
@@ -12111,13 +11997,10 @@ http://rosettacode.org/wiki/99_Bottles_of_Beer
     • many⦂ int
       s⦂ String: many > 1 ? "s" ! ""
       return "⸨many⸩ bottle⸨s⸩ of beer"
-
 ```
 
 
-
 ## V
-
 
 ```v
 [bottles
@@ -12162,26 +12045,25 @@ void main() {
 ```
 
 
-
 ## VBA
 
-See [[99 Bottles of Beer/Basic]]
+See [99 Bottles of Beer/Basic](basic)
 
 
 ## VBScript
 
-See [[99 Bottles of Beer/Basic]]
+See [99 Bottles of Beer/Basic](basic)
 
 
 ## Verbexx
 
 
 ```Verbexx
-fb @FN [x] { @IF (x == 1) then:{ 'bottle } else:{ 'bottles } };   
+fb @FN [x] { @IF (x == 1) then:{ 'bottle } else:{ 'bottles } };
 
 @LOOP init:{@VAR n = 99} until:(n == 0)
-{                                                           
-    @SAY n (@fb n) "of beer on the wall"   ; 
+{
+    @SAY n (@fb n) "of beer on the wall"   ;
     @SAY n (@fb n) "of beer."              ;
     n--                                    ;
     @SAY "Take one down, pass it around"   ;
@@ -12193,12 +12075,10 @@ fb @FN [x] { @IF (x == 1) then:{ 'bottle } else:{ 'bottles } };
 
 ## Visual Prolog
 
-See [[99 Bottles of Beer/Prolog]]
+See [99 Bottles of Beer/Prolog](prolog)
 
 
 ## Viua VM assembly
-
-
 
 ```asm
 
@@ -12340,12 +12220,12 @@ while((beer = typeof beer == "null" ? 99 : beer) > 0)
 
 ## Wart
 
-See [[99 Bottles of Beer/Lisp]]
+See [99 Bottles of Beer/Lisp](lisp)
 
 
 ## Whenever
 
-See [[99 Bottles of Beer/EsoLang]]
+See [99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Wortel
@@ -12402,12 +12282,12 @@ for (i in 99...0) {
 
 ## X86 Assembly
 
-See [[99 Bottles of Beer/Assembly]]
+See [99 Bottles of Beer/Assembly](assembly)
 
 
 ## xEec
 
-[[99 Bottles of Beer/EsoLang]]
+[99 Bottles of Beer/EsoLang](esolang)
 
 
 ## Xojo
@@ -12497,14 +12377,14 @@ To run, transform any document with this stylesheet (the input document is ignor
         <!-- Default parameters: From 99 through 1 -->
         <xsl:param name="first" select="99"/>
         <xsl:param name="final" select="1"/>
- 
+
         <!-- Simulate a loop with tail recursion. -->
         <xsl:if test="$first &gt;= $final">
             <!-- Process $first -->
             <xsl:call-template name="sing-verse-starting-with-number">
                 <xsl:with-param name="n" select="$first"/>
             </xsl:call-template>
- 
+
             <!-- Process $first - 1 through $final -->
             <xsl:call-template name="sing-all-verses-in-range">
                 <xsl:with-param name="first" select="$first - 1"/>
@@ -12554,7 +12434,7 @@ To run, transform any document with this stylesheet (the input document is ignor
         <xsl:value-of select="$suffix"/>
         <xsl:text>&#10;</xsl:text>
     </xsl:template>
- 
+
 </xsl:stylesheet>
 ```
 
@@ -12577,11 +12457,11 @@ produce output identical to that for the XSLT 1 code provided.
 <?xml version="1.0" ?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="3.0">
-  
+
   <xsl:output method="text"/>
-  
+
   <xsl:variable name="startingNumberOfBottles" select="99"/>
-  
+
   <!-- Main procedure.  -->
   <xsl:template match="/" expand-text="true">
     <xsl:iterate select="reverse(1 to $startingNumberOfBottles)">
@@ -12590,7 +12470,7 @@ produce output identical to that for the XSLT 1 code provided.
       <xsl:text>{$currentBottles} bottle{if ($currentBottles ne 1) then 's' else ()} of beer on the wall&#10;</xsl:text>
       <xsl:text>{$currentBottles} bottle{if ($currentBottles ne 1) then 's' else ()} of beer&#10;</xsl:text>
       <xsl:text>Take one down, pass it around&#10;</xsl:text>
-      <xsl:text>{$newBottles} bottle{if ($newBottles ne 1) then 's' else ()} of beer on the wall&#10;&#10;</xsl:text>       
+      <xsl:text>{$newBottles} bottle{if ($newBottles ne 1) then 's' else ()} of beer on the wall&#10;&#10;</xsl:text>
     </xsl:iterate>
   </xsl:template>
 </xsl:stylesheet>
@@ -12619,7 +12499,7 @@ next
 
 
 
-###  Looped version 
+###  Looped version
 
 
 ```yorick
@@ -12634,7 +12514,7 @@ while(bottles) {
 
 
 
-###  Vectorized version 
+###  Vectorized version
 
 
 ```yorick
@@ -12651,7 +12531,7 @@ write, format=song, beer, beer, beer-1;
 
 ## Z80 Assembly
 
-See [[99 Bottles of Beer/Assembly]]
+See [99 Bottles of Beer/Assembly](assembly)
 
 
 ## zkl
@@ -12669,8 +12549,7 @@ fcn beers(n){
     + " of beer"
 }
 ```
-
-{{out}}
+Output:
 
 ```txt
 

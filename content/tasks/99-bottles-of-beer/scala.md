@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Scala"
+title = "Scala"
 description = ""
 date = 2019-05-04T20:31:05Z
 aliases = []
@@ -49,16 +49,16 @@ object NinetyNineBottlesOfBeer {
                  |99 bottles of beer
                  |Take one down, pass it around
                  |98 bottles of beer on the wall""".stripMargin
-  
+
   val song = new scala.collection.mutable.Queue() ++= verse.lines += ""
   val Bottles = "(\\d+) bottles of beer.*".r
-  
+
   def changeLine(line: String) = line match {
       case Bottles("0") => song clear ()
       case Bottles(n) => song enqueue line.replace(n, n.toInt - 1 toString)
       case _ => song enqueue line
     }
-  
+
   def sing = while(!song.isEmpty) {
     val line = song dequeue ()
     println(line)
@@ -74,10 +74,10 @@ object NinetyNineBottlesOfBeer {
 object Song {
   import scala.actors._
   import scala.actors.Actor._
-  
+
   abstract class Beverage { def name = this.toString.toLowerCase }
   case object Beer extends Beverage
-  
+
   object Wall {
     private var contents: List[Beverage] = Nil
 
@@ -103,13 +103,13 @@ object Song {
   case class Gimme(what: Beverage) extends Messages
   case class HereIs(what: Beverage) extends Messages
   case object ClosingTime extends Messages
-  
+
   def plural(count: Int, noun: String, nouns: String) = if (count == 1) noun else nouns
-  def countIt(n: Int, what: Beverage) = "%d %s of %s" format (n, plural(n, "bottle", "bottles"), what.name) 
-  
+  def countIt(n: Int, what: Beverage) = "%d %s of %s" format (n, plural(n, "bottle", "bottles"), what.name)
+
   object Waitress extends Actor {
     def tellThem(what: String) = println("%s on the wall" format what)
-    
+
     def act = loop {
       react {
         case HowManyMore(it) =>
@@ -133,7 +133,7 @@ object Song {
       }
     }
   }
-  
+
   object Patrons extends Actor {
     def act = loop {
       react {
@@ -155,12 +155,12 @@ object Song {
       }
     }
   }
-  
+
   def Sing99Beers = {
     Wall stock (99, Beer)
     Waitress.start
     Patrons.start
-    
+
     Patrons ! SingSong(Beer)
   }
 }

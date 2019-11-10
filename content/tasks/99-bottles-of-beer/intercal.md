@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Intercal"
+title = "Intercal"
 description = ""
 date = 2010-05-18T17:49:02Z
 aliases = []
@@ -256,64 +256,64 @@ PLEASE DO ,22 SUB #9 <- #24
        DO .11 <- #9
 PLEASE DO ,10 <- #1
 PLEASE DO ,10SUB#1 <- #176
-       DO READ OUT ,10		
-       DO COME FROM (999)	
-       DO (500) NEXT		
-PLEASE DO ,11SUB#1 <- .5	
+       DO READ OUT ,10
+       DO COME FROM (999)
+       DO (500) NEXT
+PLEASE DO ,11SUB#1 <- .5
        DO READ OUT ,11
-       DO (500) NEXT		
-       DO ,12SUB#1 <- .5	
+       DO (500) NEXT
+       DO ,12SUB#1 <- .5
 PLEASE DO READ OUT ,12
 PLEASE DO .6 <- '?"!10~.10'~#1"$#1'~#3
        DO (50) NEXT
-PLEASE DO .7 <- '?"!11~.11'~#1"$#1'~#3		
+PLEASE DO .7 <- '?"!11~.11'~#1"$#1'~#3
        DO (70) NEXT
        DO .2 <- #1
        DO .1 <- .11
-PLEASE DO (1010) NEXT		
+PLEASE DO (1010) NEXT
        DO .11 <- .3
-       DO (600) NEXT		
-       DO (101) NEXT		
+       DO (600) NEXT
+       DO (101) NEXT
 (70)   DO (71) NEXT
-       DO .11 <- #9		
+       DO .11 <- #9
        DO .2 <- #1
 PLEASE DO .1 <- .10
-       DO (1010) NEXT		
+       DO (1010) NEXT
        DO .10 <- .3
-       DO (600) NEXT		
-       DO (101) NEXT		
-(71)   DO RESUME .7		
+       DO (600) NEXT
+       DO (101) NEXT
+(71)   DO RESUME .7
 (50)   DO (51) NEXT
 PLEASE DO FORGET #1
        DO .2 <- #1
        DO .1 <- .11
-PLEASE DO (1010) NEXT		
+PLEASE DO (1010) NEXT
        DO .11 <- .3
-       DO (600) NEXT		
-PLEASE DO .7 <- '?"!11~.11'~#1"$#1'~#3		
+       DO (600) NEXT
+PLEASE DO .7 <- '?"!11~.11'~#1"$#1'~#3
        DO (80) NEXT
        DO (101) NEXT
 (80)   DO (81) NEXT
        DO GIVE UP
 (81)   DO RESUME .7
-(51)   DO RESUME .6		
+(51)   DO RESUME .6
 (101) DO FORGET #1
-(999) DO FORGET #1		
-(600)  DO (500) NEXT		
-       DO ,13SUB#1 <- .5	
-       DO READ OUT ,13	
+(999) DO FORGET #1
+(600)  DO (500) NEXT
+       DO ,13SUB#1 <- .5
+       DO READ OUT ,13
        DO RESUME #1
-(500)  DO ,30 <- #1		
-       DO .1 <- .10		
-       DO (1020) NEXT		
-PLEASE DO ,30SUB#1 <- ,20SUB.1  
-       DO READ OUT ,30		
-       DO .3 <- .1		
-       DO .1 <- .11		
-       DO (1020) NEXT		
-PLEASE DO ,30SUB#1 <- ,21SUB .3 .1  
-       DO READ OUT ,30		
-       DO .5 <- ,22SUB.1	
+(500)  DO ,30 <- #1
+       DO .1 <- .10
+       DO (1020) NEXT
+PLEASE DO ,30SUB#1 <- ,20SUB.1
+       DO READ OUT ,30
+       DO .3 <- .1
+       DO .1 <- .11
+       DO (1020) NEXT
+PLEASE DO ,30SUB#1 <- ,21SUB .3 .1
+       DO READ OUT ,30
+       DO .5 <- ,22SUB.1
 PLEASE DO RESUME #1
 
 ```

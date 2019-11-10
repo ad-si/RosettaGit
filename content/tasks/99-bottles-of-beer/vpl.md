@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/VPL"
+title = "VPL"
 description = ""
 date = 2014-11-21T11:52:14Z
 aliases = []
@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-<!-- 
-=VPL= 
+<!--
+=VPL=
 -->
 {{collection|99 Bottles of Beer}}
 [[99 Bottles of Beer]] done in [[wp:Visual programming language]]s.

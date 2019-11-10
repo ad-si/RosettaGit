@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/C++/Object Oriented"
+title = "C++ - Object Oriented"
 description = ""
 date = 2009-08-06T20:57:13Z
 aliases = []
@@ -22,7 +22,7 @@ Another solution, which in addition correctly handles the grammar. This solution
 
 namespace bottle_song
 {
-  // 
+  //
 ### ===========================================================
 
 
@@ -43,7 +43,7 @@ namespace bottle_song
     virtual ~thing() {}
   };
 
-  // 
+  //
 ### ===========================================================
 
 
@@ -107,7 +107,7 @@ namespace bottle_song
     if (pos != std::string::npos)
       str.replace(pos, from.length(), to);
   }
-  // 
+  //
 ### ===========================================================
 
 
@@ -188,7 +188,7 @@ namespace bottle_song
     --count_of_things;
   }
 
-  // 
+  //
 ### ===========================================================
 
 
@@ -203,7 +203,7 @@ namespace bottle_song
     std::string plural() const { return "beers"; }
   };
 
-  // 
+  //
 ### ===========================================================
 
 
@@ -218,7 +218,7 @@ namespace bottle_song
     std::string plural() const { return "bottles"; }
   };
 
-  // 
+  //
 ### ===========================================================
 
 
@@ -233,7 +233,7 @@ namespace bottle_song
     std::string plural() const { return "walls"; }
   };
 
-  // 
+  //
 ### ===========================================================
 
 

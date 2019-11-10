@@ -1,5 +1,5 @@
 +++
-title = "99 Bottles of Beer/Java/Object Oriented"
+title = "Java - Object Oriented"
 description = ""
 date = 2009-08-06T20:54:51Z
 aliases = []
