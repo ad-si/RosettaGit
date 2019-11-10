@@ -5,24 +5,17 @@ date = 2019-10-21T17:09:00Z
 aliases = []
 [extra]
 id = 2422
+task = "Find the greatest common divisor of two integers."
 [taxonomies]
 categories = []
-tags = []
+tags = ["math", "recursion"]
 +++
-
-{{task|Arithmetic operations}}[[Category:Recursion]]
-
-;Task:
-Find the greatest common divisor of two integers.
-
-
-
-
 
 ## 360 Assembly
 
-{{trans|FORTRAN}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
+Translated from FORTRAN.
+
+For maximum compatibility, this program uses only the basic instruction set (S/360)
 with 2 ASSIST macros (XDECO,XPRNT).
 
 ```360asm
@@ -31,7 +24,7 @@ GCD      CSECT
          USING  GCD,R15            use calling register
          L      R6,A               u=a
          L      R7,B               v=b
-LOOPW    LTR    R7,R7              while v<>0 
+LOOPW    LTR    R7,R7              while v<>0
          BZ     ELOOPW               leave while
          LR     R8,R6                t=u
          LR     R6,R7                u=v
@@ -41,7 +34,7 @@ LOOPW    LTR    R7,R7              while v<>0
          LR     R7,R4                v=mod(t,v)
          B      LOOPW              end while
 ELOOPW   LPR    R9,R6              c=abs(u)
-         L      R1,A               a	
+         L      R1,A               a
          XDECO  R1,XDEC            edit a
          MVC    PG+4(5),XDEC+7     move a to buffer
          L      R1,B               b
@@ -60,7 +53,7 @@ XDEC     DS     CL12               temp for edit
          END    GCD
 ```
 
-{{out}}
+Output:
 
 ```txt
 
@@ -69,17 +62,15 @@ gcd( 1071, 1029)=   21
 ```
 
 
-
 ## 8th
-
 
 ```forth
 : gcd \ a b -- gcd
 	dup 0 n:= if drop ;; then
 	tuck \ b a b
 	n:mod \ b a-mod-b
-	recurse ; 
-	
+	recurse ;
+
 : demo \ a b --
 	2dup "GCD of " . . " and " . . " = " . gcd . ;
 
@@ -88,22 +79,18 @@ gcd( 1071, 1029)=   21
   7   23 demo cr
 
 bye
-
 ```
 
-{{out}}
+Output:
 
 ```txt
 GCD of 5 and 100 = 5
 GCD of 100 and 5 = 5
 GCD of 23 and 7 = 1
-
 ```
 
 
-
 ## ACL2
-
 
 ```Lisp
 (include-book "arithmetic-3/floor-mod/floor-mod" :dir :system)
@@ -117,9 +104,7 @@ GCD of 23 and 7 = 1
 ```
 
 
-
 ## ActionScript
-
 
 ```ActionScript
 //Euclidean algorithm
@@ -147,7 +132,6 @@ function gcd(a:int,b:int):int
 
 ## Ada
 
-
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
 
@@ -164,7 +148,7 @@ procedure Gcd_Test is
       end loop;
       return M;
    end Gcd;
-   
+
 begin
    Put_Line("GCD of 100, 5 is" & Integer'Image(Gcd(100, 5)));
    Put_Line("GCD of 5, 100 is" & Integer'Image(Gcd(5, 100)));
@@ -172,21 +156,16 @@ begin
 end Gcd_Test;
 ```
 
-
 Output:
 
 ```txt
-
 GCD of 100, 5 is 5
 GCD of 5, 100 is 5
 GCD of 7, 23 is 1
-
 ```
 
 
-
 ## Aime
-
 
 ```aime
 o_integer(gcd(33, 77));
@@ -196,12 +175,11 @@ o_byte('\n');
 ```
 
 
-
 ## ALGOL 68
 
-{{works with|ALGOL 68|Revision 1 - no extensions to language used}}
+Works with ALGOL 68|Revision 1 - no extensions to language used
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
+Works with ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of FORMATted transput}}
 
 ```algol68
@@ -214,7 +192,7 @@ PROC gcd = (INT a, b) INT: (
     gcd(b, a MOD b)
   ELSE
     gcd(a, b MOD a)
-  FI     
+  FI
 );
 test:(
   INT a = 33, b = 77;
@@ -227,16 +205,12 @@ test:(
 Output:
 
 ```txt
-
- The gcd of        +33 and         +77 is         +11
- The gcd of     +49865 and      +69811 is       +9973
-
+The gcd of        +33 and         +77 is         +11
+The gcd of     +49865 and      +69811 is       +9973
 ```
 
 
-
 ## ALGOL W
-
 
 ```algolw
 begin
@@ -264,10 +238,7 @@ end.
 ```
 
 
-
 ## Alore
-
-
 
 ```Alore
 def gcd(a as Int, b as Int) as Int
@@ -279,7 +250,6 @@ end
 ```
 
 
-
 ## AntLang
 
 AntLang has a built-in gcd function.
@@ -288,7 +258,6 @@ AntLang has a built-in gcd function.
 gcd[33; 77]
 ```
 
-
 It is not recommended, but possible to implement it on your own.
 
 ```AntLang
@@ -296,24 +265,31 @@ It is not recommended, but possible to implement it on your own.
 gcd':{a:x;b:y;last[{(0 eq a mod x) min (0 eq b mod x)} hfilter {1 + x} map range[a max b]]}
 ```
 
+## APL
 
-== {{header|APL}} ==
-{{works with|Dyalog APL}}
-        33 49865 ∨ 77 69811 
+Works with Dyalog APL
+
+```apl
+        33 49865 ∨ 77 69811
  11 9973
+```
 
-If you're interested in how you'd write GCD in Dyalog, if Dyalog didn't have a primitive for it, (i.e. using other algorithms mentioned on this page: iterative, recursive, binary recursive), see [http://www.dyalog.com/dfnsdws/n_gcd.htm different ways to write GCD in Dyalog].
+If you're interested in how you'd write GCD in Dyalog,
+if Dyalog didn't have a primitive for it,
+(i.e. using other algorithms mentioned on this page: iterative, recursive, binary recursive),
+see [http://www.dyalog.com/dfnsdws/n_gcd.htm different ways to write GCD in Dyalog].
 
-{{works with|APL2}}
-        ⌈/(^/0=A∘.|X)/A←⍳⌊/X←49865 69811 
+Works with APL2
+
+```apl
+        ⌈/(^/0=A∘.|X)/A←⍳⌊/X←49865 69811
  9973
+```
 
 
-== {{header|AppleScript}} ==
-
+## AppleScript
 
 By recursion:
-
 
 ```AppleScript
 -- gcd :: Int -> Int -> Int
@@ -332,7 +308,7 @@ end gcd
 ```
 
 
-== {{header|Applesoft BASIC}} ==
+## Applesoft BASIC
 
 ```ApplesoftBasic
 0 A = ABS(INT(A))
@@ -345,9 +321,10 @@ end gcd
 7 NEXT B
 ```
 
-== {{header|Arendelle}} ==
 
-```txt
+## Arendelle
+
+```arendelle
 &lt; a , b &gt;
 
 ( r , @a )
@@ -368,25 +345,23 @@ end gcd
 ```
 
 
-
 ## Arturo
-
 
 ```arturo
 print $(gcd #(10 15))
 ```
 
-{{out}}
+Output:
 
 ```txt
 5
 ```
 
 
-
 ## AutoHotkey
 
-Contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276379.html#276379 forum]
+Contributed by Laszlo on the ahk
+[forum](http://www.autohotkey.com/forum/post-276379.html#276379)
 
 ```AutoHotkey
 GCD(a,b) {
@@ -405,10 +380,9 @@ GCD(a, b) {
 ```
 
 
-== {{header|AutoIt}} ==
+## AutoIt
 
 ```autoit
-
 _GCD(18, 12)
 _GCD(1071, 1029)
 _GCD(3528, 3780)
@@ -423,11 +397,10 @@ Func _GCD($ia, $ib)
 		$ib = $imod
 	WEnd
 EndFunc   ;==>_GCD
-
 ```
 
+Output:
 
-Output: 
 ```txt
 GCD of 18 : 12 = 6
 GCD of 1071 : 1029 = 21
@@ -435,10 +408,10 @@ GCD of 3528 : 3780 = 252
 ```
 
 
-
 ## AWK
 
-The following scriptlet defines the gcd() function, then reads pairs of numbers from stdin, and reports their gcd on stdout.
+The following scriptlet defines the gcd() function,
+then reads pairs of numbers from stdin, and reports their gcd on stdout.
 
 ```awk
 $ awk 'function gcd(p,q){return(q?gcd(q,(p%q)):p)}{print gcd($1,$2)}'
@@ -451,9 +424,7 @@ $ awk 'function gcd(p,q){return(q?gcd(q,(p%q)):p)}{print gcd($1,$2)}'
 ```
 
 
-
 ## Axe
-
 
 ```axe
 Lbl GCD
@@ -465,7 +436,6 @@ r₂→B
 End
 GCD(B,A^B)
 ```
-
 
 
 ## Batch File
@@ -498,10 +468,10 @@ echo.
 ```
 
 
-
 ## BASIC
 
-{{works with|QuickBasic|4.5}}
+Works with QuickBasic 4.5
+
 
 ### Iterative
 
@@ -536,22 +506,22 @@ end function
 ```
 
 
-==={{header|IS-BASIC}}===
-<lang IS-BASIC>100 DEF GCD(A,B)
+## IS-BASIC
+
+```IS-BASIC
+100 DEF GCD(A,B)
 110   DO WHILE B>0
 120     LET T=B
 130     LET B=MOD(A,B)
 140     LET A=T
-150   LOOP 
+150   LOOP
 160   LET GCD=A
-170 END DEF 
+170 END DEF
 180 PRINT GCD(12,16)
 ```
 
 
-=
 ## Sinclair ZX81 BASIC
-=
 
 ```basic
  10 LET M=119
@@ -564,16 +534,14 @@ end function
  80 PRINT N
 ```
 
-{{out}}
+Output:
 
 ```txt
 17
 ```
 
 
-
 ## BBC BASIC
-
 
 ```bbcbasic
       DEF FN_GCD_Iterative_Euclid(A%, B%)
@@ -587,11 +555,10 @@ end function
 ```
 
 
-
 ## Bc
 
-{{works with|GNU bc}}
-{{trans|C}}
+Works with GNU bc.
+Translated from C.
 
 Utility functions:
 
@@ -606,7 +573,7 @@ define even(a)
 }
 
 define abs(a)
-{ 
+{
   if (a<0) {
     return(-a);
   } else {
@@ -614,7 +581,6 @@ define abs(a)
   }
 }
 ```
-
 
 '''Iterative (Euclid)'''
 
@@ -630,9 +596,7 @@ define gcd_iter(u, v)
 }
 ```
 
-
 '''Recursive'''
-
 
 ```bc
 define gcd(u, v)
@@ -645,9 +609,7 @@ define gcd(u, v)
 }
 ```
 
-
 '''Iterative (Binary)'''
-
 
 ```bc
 define gcd_bin(u, v)
@@ -669,10 +631,10 @@ define gcd_bin(u, v)
     t = u;
   }
   while (t) {
-    while (even(t)) { 
+    while (even(t)) {
       t = t / 2;
     }
- 
+
     if (t > 0) {
       u = t;
     } else {
@@ -680,14 +642,12 @@ define gcd_bin(u, v)
     }
     t = u - v;
   }
-  return (u * k);    
+  return (u * k);
 }
 ```
 
 
-
 ## Befunge
-
 
 ```befunge
 #v&<     @.$<
@@ -695,10 +655,10 @@ define gcd_bin(u, v)
 ```
 
 
-
 ## Bracmat
 
-Bracmat uses the Euclidean algorithm to simplify fractions. The <code>den</code> function extracts the denominator from a fraction.
+Bracmat uses the Euclidean algorithm to simplify fractions.
+The `den` function extracts the denominator from a fraction.
 
 ```bracmat
 (gcd=a b.!arg:(?a.?b)&!b*den$(!a*!b^-1)^-1);
@@ -712,12 +672,9 @@ Example:
 ```
 
 
-
 ## C
 
-
 ### Iterative Euclid algorithm
-
 
 ```c
 int
@@ -730,9 +687,7 @@ gcd_iter(int u, int v) {
 ```
 
 
-
 ### Recursive Euclid algorithm
-
 
 ```c
 int gcd(int u, int v) {
@@ -741,9 +696,7 @@ return (v != 0)?gcd(v, u%v):u;
 ```
 
 
-
 ### Iterative binary algorithm
-
 
 ```c
 int
@@ -751,7 +704,7 @@ gcd_bin(int u, int v) {
   int t, k;
 
   u = u < 0 ? -u : u; /* abs(u) */
-  v = v < 0 ? -v : v; 
+  v = v < 0 ? -v : v;
   if (u < v) {
     t = u;
     u = v;
@@ -768,7 +721,7 @@ gcd_bin(int u, int v) {
 
   t = (u & 1) ? -v : u;
   while (t) {
-    while (t & 1 == 0) 
+    while (t & 1 == 0)
       t >>= 1;
 
     if (t > 0)
@@ -778,16 +731,15 @@ gcd_bin(int u, int v) {
 
     t = u - v;
   }
-  return u * k;        
+  return u * k;
 }
 ```
 
 
-
 ## C++
 
-
-```cpp>#include <iostream
+```c++
+#include <iostream
 
 #include <numeric>
 
@@ -796,10 +748,7 @@ int main() {
 }
 ```
 
-
-{{libheader|Boost}}
-
-```cpp
+```c++
 #include <boost/math/common_factor.hpp>
 #include <iostream>
 
@@ -809,20 +758,19 @@ int main() {
 ```
 
 
-{{out}}
+Output:
 
 ```txt
 The greatest common divisor of 12 and 18 is 6!
 ```
 
 
-=={{header|c sharp|C#}}==
+## C\#
 
 ### Iterative
 
 
 ```csharp
-
 static void Main()
 {
 	Console.WriteLine("GCD of {0} and {1} is {2}", 1, 1, gcd(1, 1));
@@ -839,7 +787,7 @@ static void Main()
 	}
 	Console.Read();
 }
- 
+
 /// <summary>
 /// Greatest Common Denominator using Euclidian Algorithm
 /// </summary>
@@ -848,14 +796,12 @@ static int gcd(int a, int b)
     while (b != 0) b = a % (a = b);
     return a;
 }
-
 ```
 
 
 Example output:
 
 ```txt
-
 GCD of 1 and 1 is 1
 GCD of 1 and 10 is 1
 GCD of 10 and 100 is 10
@@ -872,15 +818,12 @@ GCD of 36 and 18 is 18
 GCD of 36 and 33 is 3
 GCD of 36 and 34 is 2
 GCD of 36 and 35 is 1
-
 ```
 
 
 ### Recursive
 
-
 ```csharp
-
 static void Main(string[] args)
 {
 	Console.WriteLine("GCD of {0} and {1} is {2}", 1, 1, gcd(1, 1));
@@ -897,21 +840,18 @@ static void Main(string[] args)
 	}
 	Console.Read();
 }
- 
+
 // Greatest Common Denominator using Euclidian Algorithm
 // Gist: https://gist.github.com/SecretDeveloper/6c426f8993873f1a05f7
 static int gcd(int a, int b)
-{	
+{
 	return b==0 ? a : gcd(b, a % b);
 }
-
 ```
-
 
 Example output:
 
 ```txt
-
 GCD of 1 and 1 is 1
 GCD of 1 and 10 is 1
 GCD of 10 and 100 is 10
@@ -928,19 +868,15 @@ GCD of 36 and 18 is 18
 GCD of 36 and 33 is 3
 GCD of 36 and 34 is 2
 GCD of 36 and 35 is 1
-
 ```
-
 
 
 ## Clojure
 
-
-===Euclid's Algorithm===
-
+### Euclid's Algorithm
 
 ```lisp
-(defn gcd 
+(defn gcd
   "(gcd a b) computes the greatest common divisor of a and b."
   [a b]
   (if (zero? b)
@@ -949,10 +885,10 @@ GCD of 36 and 35 is 1
 ```
 
 
-That <code>recur</code> call is the same as <code>(gcd b (mod a b))</code>, but makes use of Clojure's explicit tail call optimization.
+That <code>recur</code> call is the same as <code>(gcd b (mod a b))</code>,
+but makes use of Clojure's explicit tail call optimization.
 
 This can be easily extended to work with variadic arguments:
-
 
 ```lisp
 (defn gcd*
@@ -963,8 +899,7 @@ This can be easily extended to work with variadic arguments:
 ```
 
 
-=== Stein's Algorithm (Binary GCD) ===
-
+### Stein's Algorithm (Binary GCD)
 
 ```lisp
 (defn stein-gcd [a b]
@@ -978,9 +913,7 @@ This can be easily extended to work with variadic arguments:
 ```
 
 
-
 ## COBOL
-
 
 ```cobol
        IDENTIFICATION DIVISION.
@@ -1014,10 +947,7 @@ This can be easily extended to work with variadic arguments:
 ```
 
 
-
 ## Cobra
-
-
 
 ```cobra
 
@@ -1036,7 +966,6 @@ class Rosetta
 
 ```
 
-
 Output:
 
 ```txt
@@ -1049,9 +978,7 @@ gcd of 51 and 34 is 17
 ```
 
 
-
 ## CoffeeScript
-
 
 Simple recursion
 
@@ -1061,7 +988,6 @@ gcd = (x, y) ->
   if y == 0 then x else gcd y, x % y
 
 ```
-
 
 Since JS has no TCO, here's a version with no recursion
 
@@ -1074,19 +1000,17 @@ gcd = (x, y) ->
 ```
 
 
-
 ## Common Lisp
 
 Common Lisp provides a ''gcd'' function.
-
 
 ```lisp
 CL-USER> (gcd 2345 5432)
 7
 ```
 
-
-Here is an implementation using the do macro. We call the function <code>gcd*</code> so as not to conflict with <code>common-lisp:gcd</code>.
+Here is an implementation using the do macro.
+We call the function `gcd*` so as not to conflict with `common-lisp:gcd`.
 
 
 ```lisp
@@ -1095,20 +1019,17 @@ Here is an implementation using the do macro. We call the function <code>gcd*</c
     (shiftf a b (mod a b))))
 ```
 
-
 Here is a tail-recursive implementation.
 
 
 ```lisp
 (defun gcd* (a b)
   (if (zerop b)
-       a 
+       a
       (gcd2 b (mod a b))))
 ```
 
-
 The last implementation is based on the loop macro.
-
 
 ```lisp
 (defun gcd* (a b)
@@ -1119,13 +1040,11 @@ The last implementation is based on the loop macro.
 ```
 
 
-
 ## Component Pascal
 
 BlackBox Component Builder
 
 ```oberon2
-
 MODULE Operations;
 IMPORT StdLog,Args,Strings;
 
@@ -1146,36 +1065,36 @@ VAR
 	p: Args.Params;
 BEGIN
 	Args.Get(p);
-	IF p.argc >= 2 THEN 
+	IF p.argc >= 2 THEN
 		Strings.StringToInt(p.args[0],x,done);
 		Strings.StringToInt(p.args[1],y,done);
 		StdLog.String("gcd("+p.args[0]+","+p.args[1]+")=");StdLog.Int(Gcd(x,y));StdLog.Ln
-	END		
+	END
 END DoGcd;
 
 END Operations.
-
 ```
 
-Execute:<br/>
-^Q Operations.DoGcd 12 8 ~<br/>
-^Q Operations.DoGcd 100 5 ~<br/>
-^Q Operations.DoGcd 7 23 ~<br/>
-^Q Operations.DoGcd 24 -112 ~<br/>
+Execute:
+
+```txt
+^Q Operations.DoGcd 12 8 ~
+^Q Operations.DoGcd 100 5 ~
+^Q Operations.DoGcd 7 23 ~
+^Q Operations.DoGcd 24 -112 ~
+```
+
 Output:
 
 ```txt
-
 gcd(12 ,8 )= 4
 gcd(100 ,5 )= 5
 gcd(7 ,23 )= 1
 gcd(24 ,-112 )= -8
-
 ```
 
 
 ## D
-
 
 ```d
 import std.stdio, std.numeric;
@@ -1192,7 +1111,7 @@ void main() {
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
 5
@@ -1200,9 +1119,7 @@ void main() {
 ```
 
 
-
 ## Dc
-
 
 ```dc
 [dSa%Lard0<G]dsGx+
@@ -1215,14 +1132,12 @@ dc -e'28 24 [dSa%Lard0<G]dsGx+ p'
 ```
 
 
-
 ## Delphi
 
 See [[#Pascal / Delphi / Free Pascal]].
 
 
 ## DWScript
-
 
 ```delphi
 PrintLn(Gcd(231, 210));
@@ -1235,12 +1150,9 @@ Output:
 ```
 
 
-
 ## Dyalect
 
-
-{{trans|Go}}
-
+Translated from Go.
 
 ```dyalect
 func gcd(a, b) {
@@ -1272,9 +1184,7 @@ for v in testdata {
 }
 ```
 
-
-{{out}}
-
+Output:
 
 ```txt
 gcd(33, 77) = 11
@@ -1282,11 +1192,9 @@ gcd(49865, 69811) = 9973
 ```
 
 
-
 ## E
 
-{{trans|Python}}
-
+Translated from Python.
 
 ```e
 def gcd(var u :int, var v :int) {
@@ -1300,11 +1208,10 @@ def gcd(var u :int, var v :int) {
 ```
 
 
-
 ## EasyLang
 
-
-<lang>func gcd a b . res .
+```easylang
+func gcd a b . res .
   while b <> 0
     h = b
     b = a mod b
@@ -1317,7 +1224,6 @@ print r
 ```
 
 
-
 ## EDSAC order code
 
 The EDSAC had no built-in division.
@@ -1326,7 +1232,6 @@ where A and B are positive 35-bit integers.
 The rest of the program is fairly straightforward.
 
 ```edsac
-
  [Greatest common divisor for Rosetta Code.
   Program for EDSAC, Initial Orders 2]
 
@@ -1489,7 +1394,7 @@ The rest of the program is fairly straightforward.
 
 ```
 
-{{out}}
+Output:
 
 ```txt
 
@@ -1501,11 +1406,9 @@ The rest of the program is fairly straightforward.
 ```
 
 
-
 ## Eiffel
 
-{{trans|D}}
-
+Translated from D.
 
 ```eiffel
 
@@ -1542,13 +1445,14 @@ end
 
 ## Elena
 
-{{trans|C#}}
+Translated from C#.
+
 ELENA 4.x :
 
 ```elena
 import system'math;
 import extensions;
- 
+
 gcd(a,b)
 {
     var i := a;
@@ -1559,15 +1463,15 @@ gcd(a,b)
         i := j;
         j := tmp.mod(j)
     };
- 
+
     ^ i
 }
- 
+
 printGCD(a,b)
 {
     console.printLineFormatted("GCD of {0} and {1} is {2}", a, b, gcd(a,b))
 }
- 
+
 public program()
 {
     printGCD(1,1);
@@ -1582,10 +1486,9 @@ public program()
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 GCD of 1 and 1 is 1
 GCD of 1 and 10 is 1
 GCD of 10 and 100 is 10
@@ -1595,13 +1498,10 @@ GCD of 36 and 17 is 1
 GCD of 36 and 18 is 18
 GCD of 36 and 19 is 1
 GCD of 36 and 33 is 3
-
 ```
 
 
-
 ## Elixir
-
 
 ```elixir
 defmodule RC do
@@ -1613,24 +1513,17 @@ IO.puts RC.gcd(1071, 1029)
 IO.puts RC.gcd(3528, 3780)
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
 21
 252
-
 ```
-
 
 
 ## Emacs Lisp
 
-
-
 ```lisp
-
 (defun gcd (a b)
     (cond
      ((< a b) (gcd a (- b a)))
@@ -1640,10 +1533,7 @@ IO.puts RC.gcd(3528, 3780)
 ```
 
 
-
 ## Erlang
-
-
 
 ```erlang
 % Implemented by Arjun Sunel
@@ -1651,20 +1541,17 @@ IO.puts RC.gcd(3528, 3780)
 -export([main/0]).
 
 main() ->gcd(-36,4).
-	
+
 gcd(A, 0) -> A;
 
 gcd(A, B) -> gcd(B, A rem B).
 ```
 
-{{out}}
+Output:
 
 ```txt
 4
-
 ```
-
-
 
 
 ## ERRE
@@ -1672,7 +1559,6 @@ gcd(A, B) -> gcd(B, A rem B).
 This is a iterative version.
 
 ```ERRE
-
 PROGRAM EUCLIDE
 ! calculate G.C.D. between two integer numbers
 ! using Euclidean algorithm
@@ -1694,20 +1580,19 @@ BEGIN
   MCD%=A%
   PRINT("G.C.D. between";J%;"and";K%;"is";MCD%)
 END PROGRAM
-
 ```
 
-{{out}}
+Output:
  Input two numbers : ? 112,44
  G.C.D. between 112 and 44 is 4
 
 
 ## Euler Math Toolbox
 
+Non-recursive version in Euler Math Toolbox.
+Note, that there is a built-in command.
 
-Non-recursive version in Euler Math Toolbox. Note, that there is a built-in command.
-
-<lang>
+```txt
 >ggt(123456795,1234567851)
  33
 >function myggt (n:index, m:index) ...
@@ -1721,14 +1606,13 @@ $  end;
 $  endfunction
 >myggt(123456795,1234567851)
  33
-
 ```
-
 
 
 ## Euphoria
 
-{{trans|C/C++}}
+Translated from C/C++.
+
 
 ### Iterative Euclid algorithm
 
@@ -1750,9 +1634,7 @@ end function
 ```
 
 
-
 ### Recursive Euclid algorithm
-
 
 ```euphoria
 function gcd(integer u, integer v)
@@ -1767,9 +1649,7 @@ end function
 ```
 
 
-
 ### Iterative binary algorithm
-
 
 ```euphoria
 function gcd_bin(integer u, integer v)
@@ -1815,27 +1695,24 @@ end function
 ```
 
 
-
 ## Excel
 
-Excel's GCD can handle multiple values. Type in a cell:
+Excel's GCD can handle multiple values.
+Type in a cell:
 
 ```excel
 =GCD(A1:E1)
 ```
 
-{{Out|Sample Output}}
 This will get the GCD of the first 5 cells of the first row.
 
 ```txt
 30	10	500	25	1000
-5				
+5
 ```
 
 
-
 ## Ezhil
-
 
 ```Ezhil
 
@@ -1850,7 +1727,7 @@ This will get the GCD of the first 5 cells of the first row.
 		பின்கொடு எண்1
 
 	@(எண்1 > எண்2) இல்லைஆனால்
-	
+
 		சிறியது = எண்2
 		பெரியது = எண்1
 
@@ -1886,7 +1763,7 @@ This will get the GCD of the first 5 cells of the first row.
 			@((மீதம்1 == 0) && (மீதம்2 == 0)) ஆனால்
 
 				பின்கொடு எண்
-			
+
 			முடி
 
 		முடி
@@ -1899,9 +1776,7 @@ This will get the GCD of the first 5 cells of the first row.
 ஆ = int(உள்ளீடு("இன்னோர் எண்ணைத் தாருங்கள் "))
 
 பதிப்பி "நீங்கள் தந்த இரு எண்களின் மீபொவ (மீப்பெரு பொது வகுத்தி, GCD) = ", மீபொவ(அ, ஆ)
-
 ```
-
 
 
 ## Free Pascal
@@ -1910,7 +1785,6 @@ See [[#Pascal / Delphi / Free Pascal]].
 
 
 ## Frege
-
 
 ```fsharp
 module gcd.GCD where
@@ -1927,23 +1801,21 @@ main args = do
 ```
 
 
-=={{header|F_Sharp|F#}}==
+## F\#
 
 ```fsharp
 
 let rec gcd a b =
-  if b = 0 
+  if b = 0
     then abs a
   else gcd b (a % b)
- 
+
 >gcd 400 600
 val it : int = 200
 ```
 
 
-
 ## Factor
-
 
 ```factor
 : gcd ( a b -- c )
@@ -1953,19 +1825,14 @@ val it : int = 200
 ```
 
 
-
 ## FALSE
-
 
 ```false
 10 15$ [0=~][$@$@$@\/*-$]#%. { gcd(10,15)=5 }
 ```
 
 
-
 ## Fantom
-
-
 
 ```fantom
 
@@ -1993,9 +1860,7 @@ class Main
 ```
 
 
-
 ## Forth
-
 
 ```forth
 : gcd ( a b -- n )
@@ -2003,19 +1868,18 @@ class Main
 ```
 
 
-
 ## Fortran
 
-{{works with|Fortran|95 and later}}
+Works with Fortran 95 and later
+
 
 ### Recursive Euclid algorithm
-
 
 ```fortran
 recursive function gcd_rec(u, v) result(gcd)
     integer             :: gcd
     integer, intent(in) :: u, v
-    
+
     if (mod(u, v) /= 0) then
         gcd = gcd_rec(v, mod(u, v))
     else
@@ -2025,9 +1889,7 @@ end function gcd_rec
 ```
 
 
-
 ### Iterative Euclid algorithm
-
 
 ```fortran
 subroutine gcd_iter(value, u, v)
@@ -2044,9 +1906,7 @@ subroutine gcd_iter(value, u, v)
 end subroutine gcd_iter
 ```
 
-
 A different version, and implemented as function
-
 
 ```fortran
 function gcd(v, t)
@@ -2067,9 +1927,7 @@ end function gcd
 ```
 
 
-
 ### Iterative binary algorithm
-
 
 ```fortran
 subroutine gcd_bin(value, u, v)
@@ -2115,7 +1973,6 @@ end subroutine gcd_bin
 ```
 
 
-
 ### Notes on performance
 
 <tt>gcd_iter(40902, 24140)</tt> takes us about '''2.8''' µsec
@@ -2124,7 +1981,6 @@ end subroutine gcd_bin
 
 
 ## FreeBASIC
-
 
 ```FreeBASIC
 ' version 17-06-2015
@@ -2159,7 +2015,7 @@ Sleep
 End
 ```
 
-{{out}}
+Output:
 
 ```txt
 GCD(111111111111111, 11111) = 11111
@@ -2167,23 +2023,19 @@ GCD(111111111111111, 111) = 111
 ```
 
 
-
 ## Frink
 
-Frink has a builtin <CODE>gcd[x,y]</CODE> function that returns the GCD of two integers (which can be arbitrarily large.)
+Frink has a builtin `gcd[x,y]` function
+that returns the GCD of two integers (which can be arbitrarily large.)
 
 ```frink
-
 println[gcd[12345,98765]]
-
 ```
-
 
 
 ## FunL
 
-FunL has pre-defined function <code>gcd</code> in module <code>integers</code> defined as:
-
+FunL has pre-defined function `gcd` in module `integers` defined as:
 
 ```funl
 def
@@ -2197,11 +2049,9 @@ def
 ```
 
 
-
-== {{header|FutureBasic}} ==
+## FutureBasic
 
 ```futurebasic
-
 local fn gcd( a as long, b as long )
 dim as long result
 
@@ -2211,12 +2061,11 @@ else
    result = abs(a)
 end if
 end fn = result
-
 ```
 
 
 
-== {{header|GAP}} ==
+## GAP
 
 ```gap
 # Built-in
@@ -2241,12 +2090,9 @@ GcdInteger(35, 42);
 ```
 
 
-
 ## Genyris
 
-
 ### Recursive
-
 
 ```genyris
 def gcd (u v)
@@ -2258,9 +2104,7 @@ def gcd (u v)
 ```
 
 
-
 ### Iterative
-
 
 ```genyris
 def gcd (u v)
@@ -2274,13 +2118,9 @@ def gcd (u v)
 ```
 
 
-
 ## GFA Basic
 
-
-
 ```basic
-
 '
 ' Greatest Common Divisor
 '
@@ -2301,34 +2141,26 @@ FUNCTION gcd(a%,b%)
   '
   RETURN ABS(a%)
 ENDFUNC
-
 ```
-
 
 
 ## GML
 
-
-
 ```GML
-
- var n,m,r;
- n = max(argument0,argument1);
- m = min(argument0,argument1);
- while (m != 0) 
- {
+var n,m,r;
+n = max(argument0,argument1);
+m = min(argument0,argument1);
+while (m != 0)
+{
   r = n mod m;
   n = m;
   m = r;
- }
- return a;
-
+}
+return a;
 ```
 
 
-
-## gnuplot
-
+## Gnuplot
 
 ```gnuplot
 gcd (a, b) = b == 0 ? a : gcd (b, a % b)
@@ -2341,16 +2173,15 @@ print gcd (111111, 1111)
 ```
 
 Output:
-<lang>11
-```
 
+```txt
+11
+```
 
 
 ## Go
 
-
 ### Binary Euclidian
-
 
 ```go
 package main
@@ -2395,21 +2226,17 @@ func main() {
 	fmt.Printf("gcd(%d, %d) = %d\n", v.a, v.b, gcd(v.a, v.b))
     }
 }
-
 ```
 
-{{out|Output for Binary Euclidian algorithm}}
+Output for Binary Euclidian algorithm:
 
 ```txt
-
 gcd(33, 77) = 11
 gcd(49865, 69811) = 9973
-
 ```
 
 
 ### Iterative
-
 
 ```go
 package main
@@ -2427,7 +2254,6 @@ func main() {
     fmt.Println(gcd(33, 77))
     fmt.Println(gcd(49865, 69811))
 }
-
 ```
 
 
@@ -2453,38 +2279,37 @@ func main() {
 }
 ```
 
-{{out|Output in either case}}
+Output in either case
 
 ```txt
-
 11
 9973
-
 ```
-
 
 
 ## Groovy
 
-
-
 ### Recursive
-
 
 ```groovy
 def gcdR
-gcdR = { m, n -> m = m.abs(); n = n.abs(); n == 0 ? m : m%n == 0 ? n : gcdR(n, m%n) }
+gcdR = {
+  m, n -> m = m.abs();
+  n = n.abs();
+  n == 0 ? m : m%n == 0 ? n : gcdR(n, m%n)
+}
 ```
-
 
 
 ### Iterative
 
-
 ```groovy
-def gcdI = { m, n -> m = m.abs(); n = n.abs(); n == 0 ? m : { while(m%n != 0) { t=n; n=m%n; m=t }; n }() }
+def gcdI = {
+  m, n -> m = m.abs();
+  n = n.abs();
+  n == 0 ? m : { while(m%n != 0) { t=n; n=m%n; m=t }; n }()
+}
 ```
-
 
 Test program:
 
@@ -2499,7 +2324,6 @@ println "gcd(28, 70)  = ${gcdR(28, 70)} == ${gcdI(28, 70)}"
 println "gcd(800, 70) = ${gcdR(800, 70)} == ${gcdI(800, 70)}"
 println "gcd(27, -70) =  ${gcdR(27, -70)} ==  ${gcdI(27, -70)}"
 ```
-
 
 Output:
 
@@ -2516,12 +2340,10 @@ gcd(27, -70) =  1 ==  1
 ```
 
 
-
 ## Haskell
 
-
-That is already available as the function ''gcd'' in the Prelude. Here's the implementation, with one name adjusted to avoid a Wiki formatting glitch:
-
+That is already available as the function `gcd` in the Prelude.
+Here's the implementation:
 
 ```haskell
 gcd :: (Integral a) => a -> a -> a
@@ -2532,9 +2354,7 @@ gcd x y = gcd_ (abs x) (abs y)
 ```
 
 
-
 ## HicEst
-
 
 ```hicest
 FUNCTION gcd(a, b)
@@ -2554,7 +2374,7 @@ FUNCTION gcd(a, b)
 ```
 
 
-=={{header|Icon}} and {{header|Unicon}}==
+## Icon and Unicon
 
 ```Icon
 link numbers   # gcd is part of the Icon Programming Library
@@ -2563,9 +2383,8 @@ procedure main(args)
 end
 ```
 
-
-{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/procs/numbers.htm numbers] implements this as:
-
+[numbers](http://www.cs.arizona.edu/icon/library/procs/numbers.htm)
+implements this as:
 
 ```Icon
 procedure gcd(i,j)		#: greatest common divisor
@@ -2583,38 +2402,44 @@ end
 ```
 
 
-
 ## J
 
-
-```J>x+.y</lang
-
+```J
+x+.y
+```
 
 For example:
-
 
 ```J
    12 +. 30
 6
 ```
 
+Note that `+.` is a single, two character token.
+GCD is a primitive in J (and anyone that has studied
+the right kind of mathematics should instantly recognize
+why the same operation is used for both GCD and OR -- among other things,
+GCD and boolean OR both have the same identity element:
+0, and of course they produce the same numeric results on the same arguments
+(when we are allowed to use the usual 1 bit implementation
+of 0 and 1 for false and true) -
+more than that, though,
+GCD corresponds to George Boole's original "Boolean Algebra"
+(as it was later called).
+The redefinition of "Boolean algebra" to include logical negation
+came much later, in the 20th century).
 
-Note that <code>+.</code> is a single, two character token.  GCD is a primitive in J (and anyone that has studied the right kind of mathematics should instantly recognize why the same operation is used for both GCD and OR -- among other things, GCD and boolean OR both have the same identity element: 0, and of course they produce the same numeric results on the same arguments (when we are allowed to use the usual 1 bit implementation of 0 and 1 for false and true) - more than that, though, GCD corresponds to George Boole's original "Boolean Algebra" (as it was later called). The redefinition of "Boolean algebra" to include logical negation came much later, in the 20th century).
-
-gcd could also be defined recursively, if you do not mind a little inefficiency:
-
+gcd could also be defined recursively,
+if you do not mind a little inefficiency:
 
 ```J
 gcd=: (| gcd [)^:(0<[)&|
 ```
 
 
-
 ## Java
 
-
 ### Iterative
-
 
 ```java
 public static long gcd(long a, long b){
@@ -2629,74 +2454,67 @@ public static long gcd(long a, long b){
 ```
 
 
-===Iterative Euclid's Algorithm===
+### Iterative Euclid's Algorithm
 
 ```java
-
 public static int gcd(int a, int b) //valid for positive integers.
 {
-	while(b > 0)
-	{
-		int c = a % b;
-		a = b;
-		b = c;
-	}
-	return a;
+  while(b > 0)
+  {
+    int c = a % b;
+    a = b;
+    b = c;
+  }
+  return a;
 }
-
 ```
-
 
 
 ### Optimized Iterative
 
-
 ```java
-
 static int gcd(int a,int b)
-	{
-		int min=a>b?b:a,max=a+b-min, div=min;
-		for(int i=1;i<min;div=min/++i)
-			if(min%div==0&&max%div==0)
-				return div;
-		return 1;
-	}
-
+{
+  int min=a>b?b:a,max=a+b-min, div=min;
+  for(int i=1;i<min;div=min/++i)
+    if(min%div==0&&max%div==0)
+      return div;
+  return 1;
+}
 ```
-
 
 
 ### Iterative binary algorithm
 
-{{trans|C/C++}}
+Translated from C/C++.
 
 ```java
 public static long gcd(long u, long v){
   long t, k;
- 
+
   if (v == 0) return u;
-  
+
   u = Math.abs(u);
-  v = Math.abs(v); 
+  v = Math.abs(v);
   if (u < v){
     t = u;
     u = v;
     v = t;
   }
- 
+
   for(k = 1; (u & 1) == 0 && (v & 1) == 0; k <<= 1){
     u >>= 1; v >>= 1;
   }
- 
+
   t = (u & 1) != 0 ? -v : u;
   while (t != 0){
     while ((t & 1) == 0) t >>= 1;
- 
+
     if (t > 0)
       u = t;
     else
       v = -t;
- 
+
     t = u - v;
   }
   return u * k;
@@ -2705,7 +2523,6 @@ public static long gcd(long u, long v){
 
 
 ### Recursive
-
 
 ```java
 public static long gcd(long a, long b){
@@ -2716,7 +2533,7 @@ public static long gcd(long a, long b){
 }
 ```
 
-===Built-in===
+### Built-in
 
 ```java
 import java.math.BigInteger;
@@ -2727,10 +2544,9 @@ public static long gcd(long a, long b){
 ```
 
 
-
 ## JavaScript
 
-Iterative implementation
+Iterative implementation:
 
 ```javascript
 function gcd(a,b) {
@@ -2740,7 +2556,7 @@ function gcd(a,b) {
   if (b > a) {
     var temp = a;
     a = b;
-    b = temp; 
+    b = temp;
   }
 
   while (true) {
@@ -2752,8 +2568,7 @@ function gcd(a,b) {
 }
 ```
 
-
-Recursive.
+Recursive:
 
 ```javascript
 function gcd_rec(a, b) {
@@ -2761,8 +2576,7 @@ function gcd_rec(a, b) {
 }
 ```
 
-
-Implementation that works on an array of integers.
+Implementation that works on an array of integers:
 
 ```javascript
 function GCD(arr) {
@@ -2787,26 +2601,30 @@ GCD([57,0,-45,-18,90,447]); //=> 3
 ```
 
 
-
 ## Joy
 
-
-```joy>DEFINE gcd == [0 
+```joy
+DEFINE gcd == [0
 ] [dup rollup rem] while pop.
 ```
 
 
-
 ## jq
-
 
 ```jq
 def recursive_gcd(a; b):
-  if b == 0 then a 
+  if b == 0 then a
   else recursive_gcd(b; a % b)
   end ;
 ```
-Recent versions of jq include support for tail recursion optimization for arity-0 filters (which can be thought of as arity-1 functions), so here is an implementation that takes advantage of that optimization. Notice that the subfunction, rgcd, can be easily derived from recursive_gcd above by moving the arguments to the input:
+
+Recent versions of jq include support for tail recursion optimization
+for arity-0 filters
+(which can be thought of as arity-1 functions),
+so here is an implementation that takes advantage of that optimization.
+Notice that the subfunction, rgcd, can be easily derived
+from recursive_gcd above by moving the arguments to the input:
+
 ```jq
 def gcd(a; b):
   # The subfunction expects [a,b] as input
@@ -2820,7 +2638,7 @@ def gcd(a; b):
 
 ## Julia
 
-Julia includes a built-in <code>gcd</code> function:
+Julia includes a built-in `gcd` function:
 
 ```txt
 julia> gcd(4,12)
@@ -2831,7 +2649,8 @@ julia> gcd(7,12)
 1
 ```
 
-The actual implementation of this function in Julia 0.2's standard library is reproduced here:
+The actual implementation of this function in Julia 0.2's standard library
+is reproduced here:
 
 ```julia
 function gcd{T<:Integer}(a::T, b::T)
@@ -2846,25 +2665,22 @@ function gcd{T<:Integer}(a::T, b::T)
 end
 ```
 
-(For arbitrary-precision integers, Julia calls a different implementation from the GMP library.)
+For arbitrary-precision integers,
+Julia calls a different implementation from the GMP library.
 
 
 ## K
-
 
 ```K
 gcd:{:[~x;y;_f[y;x!y]]}
 ```
 
 
-
 ## Klong
-
 
 ```K
 gcd::{:[~x;y:|~y;x:|x>y;.f(y;x!y);.f(x;y!x)]}
 ```
-
 
 
 ## Kotlin
@@ -2876,35 +2692,30 @@ fun gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
 ```
 
 
-
 ## LabVIEW
 
-{{trans|AutoHotkey}}
-It may be helpful to read about [http://digital.ni.com/public.nsf/allkb/7140920082C3AC15862572840015A81E Recursion in LabVIEW].<br/>
-{{VI snippet}}<br/>
+Translated from AutoHotkey.
+
+It may be helpful to read about
+[Recursion in LabVIEW](http://digital.ni.com/public.nsf/allkb/7140920082C3AC15862572840015A81E).
+
 [[File:LabVIEW Greatest common divisor.png]]
 
 
 ## LFE
 
-
-{{trans|Clojure}}
-
+Translated from Clojure.
 
 ```lisp
-
 > (defun gcd
   "Get the greatest common divisor."
   ((a 0) a)
   ((a b) (gcd b (rem a b))))
-
 ```
-
 
 Usage:
 
 ```txt
-
 > (gcd 12 8)
 4
 > (gcd 12 -8)
@@ -2913,14 +2724,10 @@ Usage:
 3
 > (gcd 51 34)
 17
-
 ```
 
 
-
-
 ## Liberty BASIC
-
 
 ```lb
 'iterative Euclid algorithm
@@ -2934,15 +2741,12 @@ function GCD(a,b)
         b = c mod b
     wend
     GCD = abs(a)
-    end function 
- 
+    end function
+
 ```
 
 
-
 ## Limbo
-
-
 
 ```Limbo
 gcd(x: int, y: int): int
@@ -2955,9 +2759,7 @@ gcd(x: int, y: int): int
 ```
 
 
-
 ## LiveCode
-
 
 ```LiveCode
 function gcd x,y
@@ -2971,10 +2773,7 @@ end gcd
 ```
 
 
-
-
 ## Logo
-
 
 ```logo
 to gcd :a :b
@@ -2984,10 +2783,9 @@ end
 ```
 
 
-
 ## Lua
 
-{{trans|C}}
+Translated from C.
 
 ```lua
 function gcd(a,b)
@@ -3007,37 +2805,29 @@ demo(5, 100)
 demo(7, 23)
 ```
 
-
 Output:
 
 ```txt
-
 GCD of 100 and 5 is 5
 GCD of 5 and 100 is 5
 GCD of 7 and 23 is 1
-
 ```
-
 
 Faster iterative solution of Euclid:
 
 ```lua
 function gcd(a,b)
-    while b~=0 do 
+    while b~=0 do
         a,b=b,a%b
     end
     return math.abs(a)
 end
-
 ```
-
 
 
 ## Lucid
 
-
 ### dataflow algorithm
-
 
 ```lucid
 gcd(n,m) where
@@ -3049,9 +2839,7 @@ end
 ```
 
 
-
 ## Luck
-
 
 ```luck
 function gcd(a: int, b: int): int = (
@@ -3063,13 +2851,9 @@ function gcd(a: int, b: int): int = (
 ```
 
 
-
-
 ## M2000 Interpreter
 
-
 ```M2000 Interpreter
-
 gcd=lambda (u as long, v as long) -> {
            =if(v=0&->abs(u), lambda(v, u mod v))
 }
@@ -3088,42 +2872,34 @@ Module CheckGCD (f){
 }
 CheckGCD gcd
 CheckGCD gcd_Iterative
-
 ```
-
 
 
 ## Maple
 
-To compute the greatest common divisor of two integers in Maple, use the procedure igcd.
-
+To compute the greatest common divisor of two integers in Maple,
+use the procedure igcd.
 
 ```Maple
 igcd( a, b )
 ```
 
-
 For example,
 
 ```Maple
-
 > igcd( 24, 15 );
                 3
-
 ```
 
 
-
-=={{header|Mathematica}} / {{header|Wolfram Language}}==
+## Mathematica / Wolfram Language
 
 ```mathematica
 GCD[a, b]
 ```
 
 
-
 ## MATLAB
-
 
 ```Matlab
 function [gcdValue] = greatestcommondivisor(integer1, integer2)
@@ -3131,9 +2907,7 @@ function [gcdValue] = greatestcommondivisor(integer1, integer2)
 ```
 
 
-
 ## Maxima
-
 
 ```maxima
 /* There is a function gcd(a, b) in Maxima, but one can rewrite it */
@@ -3145,12 +2919,9 @@ gcd2(100!, 6^100), factor;
 ```
 
 
-
 ## MAXScript
 
-
 ### Iterative Euclid algorithm
-
 
 ```maxscript
 fn gcdIter a b =
@@ -3166,9 +2937,7 @@ fn gcdIter a b =
 ```
 
 
-
 ### Recursive Euclid algorithm
-
 
 ```maxscript
 fn gcdRec a b =
@@ -3178,12 +2947,9 @@ fn gcdRec a b =
 ```
 
 
-
 ## Mercury
 
-
 ### Recursive Euclid algorithm
-
 
 ```Mercury
 :- module gcd.
@@ -3198,7 +2964,6 @@ fn gcdRec a b =
 :- pragma memo(gcd/2).
 gcd(A, B) = (if B = integer(0) then A else gcd(B, A mod B)).
 ```
-
 
 An example console program to demonstrate the gcd module:
 
@@ -3233,7 +2998,6 @@ main(!IO) :-
     io.format("gcd(%s, %s) = %s\n", [s(Fmt(A)), s(Fmt(B)), s(Fmt(GCD))], !IO).
 ```
 
-
 Example output:
 
 ```Bash
@@ -3241,9 +3005,7 @@ gcd(70000000000000000000000, 60000000000000000000000000) = 100000000000000000000
 ```
 
 
-
 ## MINIL
-
 
 ```minil
 // Greatest common divisor
@@ -3263,9 +3025,7 @@ gcd(70000000000000000000000, 60000000000000000000000000) = 100000000000000000000
 ```
 
 
-
 ## MIPS Assembly
-
 
 ```mips
 gcd:
@@ -3284,25 +3044,19 @@ done:
   jr $ra
 ```
 
+## МК-61/52
 
-=={{header|МК-61/52}}==
-
-```txt
-
+```mk-61/52
 ИПA	ИПB	/	П9	КИП9	ИПA	ИПB	ПA	ИП9	*
 -	ПB	x=0	00	ИПA	С/П
-
 ```
 
-
-Enter: n = РA, m = РB (n > m).
+Enter: `n = РA, m = РB (n > m)`.
 
 
 ## ML
 
-=
-## mLite
-=
+### mLite
 
 ```ocaml
 fun gcd (a, 0) = a
@@ -3310,14 +3064,10 @@ fun gcd (a, 0) = a
       | (a, b) where (a < b)
                = gcd (a, b rem a)
       | (a, b) = gcd (b, a rem b)
-
-
 ```
 
 
-=
-## Standard ML
-=
+### Standard ML
 
 ```sml
 fun gcd a 0 = a
@@ -3325,7 +3075,7 @@ fun gcd a 0 = a
 ```
 
 
-=={{header|Modula-2}}==
+## Modula-2
 
 ```modula2
 MODULE ggTkgV;
@@ -3356,8 +3106,10 @@ BEGIN
 END ggTkgV.
 ```
 
-Producing the output
-<lang Modula-2>jan@Beryllium:~/modula/Wirth/PIM$ ggtkgv
+Producing the output:
+
+```txt
+jan@Beryllium:~/modula/Wirth/PIM$ ggtkgv
 x = 12
 y = 20
 ggT =     4
@@ -3374,7 +3126,7 @@ v =  7137
 ```
 
 
-=={{header|Modula-3}}==
+## Modula-3
 
 ```modula3
 MODULE GCD EXPORTS Main;
@@ -3401,24 +3153,18 @@ BEGIN
 END GCD.
 ```
 
-
 Output:
 
 ```txt
-
 GCD of 100, 5 is 5
 GCD of 5, 100 is 5
 GCD of 7, 23 is 1
-
 ```
-
 
 
 ## MUMPS
 
-
 ```MUMPS
-
 GCD(A,B)
  QUIT:((A/1)'=(A\1))!((B/1)'=(B\1)) 0
  SET:A<0 A=-A
@@ -3428,28 +3174,21 @@ GCD(A,B)
  QUIT A
 ```
 
-
 Ouput:
 
 ```txt
-
 CACHE>S X=$$GCD^ROSETTA(12,24) W X
 12
 CACHE>S X=$$GCD^ROSETTA(24,-112) W X
 8
 CACHE>S X=$$GCD^ROSETTA(24,-112.2) W X
 0
-
 ```
-
 
 
 ## MySQL
 
-
-
 ```mysql
-
 DROP FUNCTION IF EXISTS gcd;
 DELIMITER |
 
@@ -3474,20 +3213,19 @@ END;|
 DELIMITER ;
 
 SELECT gcd(12345, 9876);
+```
 
+```txt
++------------------+
+| gcd(12345, 9876) |
++------------------+
+|             2469 |
++------------------+
+1 row in set (0.00 sec)
 ```
 
 
- +------------------+
- | gcd(12345, 9876) |
- +------------------+
- |             2469 |
- +------------------+
- 1 row in set (0.00 sec)
-
-
 ## NetRexx
-
 
 ```NetRexx
 /* NetRexx */
@@ -3586,10 +3324,9 @@ method verifyResults(stem1, stem2) public static returns boolean
 
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 Euclid's algorithm - iterative
            0,                   0 :      0
            6,                   4 :      2
@@ -3623,18 +3360,15 @@ Euclid's algorithm - recursive
 137438691328, 2305843008139952128 : 262144
 
 Success: Results of iterative and recursive methods match
-
 ```
 
 
 ## NewLISP
 
-
 ```NewLISP
-(gcd 12 36)  
+(gcd 12 36)
   → 12
 ```
-
 
 
 ## Nial
@@ -3647,7 +3381,6 @@ Nial provides gcd in the standard lib.
 =2
 ```
 
-
 defining it for arrays
 
 ```nial
@@ -3658,7 +3391,6 @@ one is or [= [1 first, tally], > [2 first,  first]]
 gcd is fork [one, first, gcd red] sort <=
 ```
 
-
 Using it
 
 ```nial
@@ -3667,13 +3399,12 @@ Using it
 ```
 
 
-
 ## Nim
 
 Ported from Pascal example
 
-### Recursive Euclid algorithm
 
+### Recursive Euclid algorithm
 
 ```nim
 proc gcd_recursive(u, v: int64): int64 =
@@ -3685,7 +3416,6 @@ proc gcd_recursive(u, v: int64): int64 =
 
 
 ### Iterative Euclid algorithm
- 
 
 ```nim
 proc gcd_iterative(u1, v1: int64): int64 =
@@ -3701,7 +3431,6 @@ proc gcd_iterative(u1, v1: int64): int64 =
 
 
 ### Iterative binary algorithm
- 
 
 ```nim
 proc gcd_binary(u1, v1: int64): int64 =
@@ -3741,7 +3470,7 @@ echo ("GCD(", 49865, ", ", 69811, "): ", gcd_recursive(49865, 69811), " (recursi
 echo ("GCD(", 49865, ", ", 69811, "): ", gcd_binary   (49865, 69811), " (binary)")
 ```
 
-{{out}}
+Output:
 
 ```txt
 GCD(49865, 69811): 9973 (iterative)
@@ -3750,16 +3479,16 @@ GCD(49865, 69811): 9973 (binary)
 ```
 
 
-=={{header|Oberon-2}}==
+## Oberon-2
+
 Works with oo2c version 2
 
 ```oberon2
-
 MODULE GCD;
 (* Greatest Common Divisor *)
-IMPORT 
+IMPORT
   Out;
-  
+
   PROCEDURE Gcd(a,b: LONGINT):LONGINT;
   VAR
     r: LONGINT;
@@ -3777,27 +3506,22 @@ BEGIN
   Out.String("GCD of    24 and  -112 : ");Out.LongInt(Gcd(12,8),4);Out.Ln;
   Out.String("GCD of 40902 and 24140 : ");Out.LongInt(Gcd(40902,24140),4);Out.Ln
 END GCD.
-
 ```
 
-Output:<br/>
+Output:
 
 ```txt
-
 GCD of    12 and     8 :    4
 GCD of   100 and     5 :    5
 GCD of     7 and    23 :    1
 GCD of    24 and  -112 :    4
 GCD of 40902 and 24140 :   34
-
 ```
 
 
 ## Objeck
 
-
 ```objeck
-
 bundle Default {
   class GDC {
     function : Main(args : String[]), Nil {
@@ -3805,29 +3529,26 @@ bundle Default {
         IO.Console->GetInstance()->Print("GCD of ")->Print(36)->Print(" and ")->Print(x)->Print(" is ")->PrintLine(GDC(36, x));
       };
     }
-    
+
     function : native : GDC(a : Int, b : Int), Int {
       t : Int;
-      
+
       if(a > b) {
         t := b;  b := a;  a := t;
       };
-     
+
       while (b <> 0) {
         t := a % b;  a := b;  b := t;
       };
-      
+
       return a;
     }
   }
 }
-
 ```
 
 
-
 ## OCaml
-
 
 ```ocaml
 let rec gcd a b =
@@ -3836,7 +3557,6 @@ let rec gcd a b =
   else if a > b then gcd b (a mod b)
   else               gcd a (b mod a)
 ```
-
 
 A little more idiomatic version:
 
@@ -3848,7 +3568,7 @@ let rec gcd1 a b =
 ```
 
 
-=== Built-in ===
+### Built-in
 
 ```ocaml
 #load "nums.cma";;
@@ -3858,51 +3578,42 @@ let gcd a b =
 ```
 
 
-
 ## Octave
-
-
 
 ```octave
 r = gcd(a, b)
 ```
 
 
-
 ## Oforth
 
+gcd is already defined into Integer class :
 
-gcd is already defined into Integer class : 
+```Oforth
+128 96 gcd
+```
 
-```Oforth>128 96 gcd</lang
-
-
-Source of this method is (see Integer.of file) : 
+Source of this method is (see Integer.of file) :
 
 ```Oforth
 Integer method: gcd  self while ( dup ) [ tuck mod ] drop ;
 ```
 
 
-
 ## Ol
 
-
 ```scheme
-
 (print (gcd 1071 1029))
 ; ==> 21
-
 ```
-
 
 
 ## Order
 
-{{trans|bc}}
+Translated from bc.
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8gcd ORDER_PP_FN( \
 8fn(8U, 8V,                            \
@@ -3911,9 +3622,7 @@ Integer method: gcd  self while ( dup ) [ tuck mod ] drop ;
 ```
 
 
-
 ## Oz
-
 
 ```oz
 declare
@@ -3937,16 +3646,13 @@ in
 ```
 
 
-
 ## PARI/GP
-
 
 ```parigp
 gcd(a,b)
 ```
 
-
-[[PASCAL]]
+```pascal
 program GCF (INPUT, OUTPUT);
   var
     a,b,c:integer;
@@ -3964,13 +3670,11 @@ program GCF (INPUT, OUTPUT);
       end;
     writeln('GCF :=', a+b );
   end.
+```
 
-By: NG
-
-=={{header|Pascal}} / {{header|Delphi}} / {{header|Free Pascal}}==
+## Pascal / Delphi / Free Pascal
 
 ### Recursive Euclid algorithm
-
 
 ```pascal
 function gcd_recursive(u, v: longint): longint;
@@ -3983,9 +3687,7 @@ function gcd_recursive(u, v: longint): longint;
 ```
 
 
-
 ### Iterative Euclid algorithm
-
 
 ```fortran
 function gcd_iterative(u, v: longint): longint;
@@ -4003,9 +3705,7 @@ function gcd_iterative(u, v: longint): longint;
 ```
 
 
-
 ### Iterative binary algorithm
-
 
 ```Pascal
 function gcd_binary(u, v: longint): longint;
@@ -4013,7 +3713,7 @@ function gcd_binary(u, v: longint): longint;
     t, k: longint;
   begin
     u := abs(u);
-    v := abs(v); 
+    v := abs(v);
     if u < v then
     begin
       t := u;
@@ -4050,9 +3750,7 @@ function gcd_binary(u, v: longint): longint;
   end;
 ```
 
-
 Demo program:
-
 
 ```pascal
 Program GreatestCommonDivisorDemo(output);
@@ -4069,16 +3767,12 @@ Output:
 GCD(49865, 69811): 9973 (iterative)
 GCD(49865, 69811): 9973 (recursive)
 GCD(49865, 69811): 9973 (binary)
-
 ```
-
 
 
 ## Perl
 
-
 ### Iterative Euclid algorithm
-
 
 ```perl
 sub gcd_iter($$) {
@@ -4091,9 +3785,7 @@ sub gcd_iter($$) {
 ```
 
 
-
 ### Recursive Euclid algorithm
-
 
 ```perl
 sub gcd($$) {
@@ -4107,9 +3799,7 @@ sub gcd($$) {
 ```
 
 
-
 ### Iterative binary algorithm
-
 
 ```perl
 sub gcd_bin($$) {
@@ -4145,31 +3835,29 @@ sub gcd_bin($$) {
 ```
 
 
-
 ### Modules
 
 All three modules will take large integers as input, e.g.
-<tt>gcd("68095260063025322303723429387", "51306142182612010300800963053")</tt>.  Other possibilities are Math::Cephes euclid, Math::GMPz gcd and gcd_ui.
+<tt>gcd("68095260063025322303723429387", "51306142182612010300800963053")</tt>.
+Other possibilities are Math::Cephes euclid, Math::GMPz gcd and gcd_ui.
 
 ```perl
 # Fastest, takes multiple inputs
 use Math::Prime::Util "gcd";
 $gcd = gcd(49865, 69811);
 
-# In CORE.  Slowest, takes multiple inputs, result is a Math::BigInt unless converted
+# In CORE.  Slowest, takes multiple inputs,
+result is a Math::BigInt unless converted
 use Math::BigInt;
 $gcd = Math::BigInt::bgcd(49865, 69811)->numify;
 
 # Result is a Math::Pari object unless converted
 use Math::Pari "gcd";
 $gcd = gcd(49865, 69811)->pari2iv
-
 ```
 
 
-
 ### Notes on performance
-
 
 ```perl
 use Benchmark qw(cmpthese);
@@ -4189,11 +3877,9 @@ cmpthese(-5, {
 });
 ```
 
-
 Output on 'Intel i3930k 4.2GHz' / Linux / Perl 5.20:
 
 ```txt
-
                 Rate gcd_bigint   gcd_bin   gcd_rec  gcd_iter gcd_pari   gcd_mpu
 gcd_bigint   39939/s         --      -83%      -94%      -95%     -98%      -99%
 gcd_bin     234790/s       488%        --      -62%      -70%     -88%      -97%
@@ -4201,17 +3887,12 @@ gcd_rec     614750/s      1439%      162%        --      -23%     -68%      -91%
 gcd_iter    793422/s      1887%      238%       29%        --     -58%      -89%
 gcd_pari   1896544/s      4649%      708%      209%      139%       --      -73%
 gcd_mpu    7114798/s     17714%     2930%     1057%      797%     275%        --
-
 ```
-
 
 
 ## Perl 6
 
-
-
 ### Iterative
-
 
 ```perl6
 sub gcd (Int $a is copy, Int $b is copy) {
@@ -4222,9 +3903,7 @@ sub gcd (Int $a is copy, Int $b is copy) {
 ```
 
 
-
 ### Recursive
-
 
 ```perl6
 multi gcd (0,      0)      { fail }
@@ -4233,16 +3912,14 @@ multi gcd (Int $a, Int $b) { gcd $b, $a % $b }
 ```
 
 
-
 ### Concise
-
 
 ```perl6
 my &gcd = { ($^a.abs, $^b.abs, * % * ... 0)[*-2] }
 ```
 
 
-===Actually, it's a built-in infix===
+### Built-in infix
 
 ```perl6
 my $gcd = $a gcd $b;
@@ -4258,14 +3935,16 @@ Because it's an infix, you can use it with various meta-operators:
 ```
 
 
-
 ## Phix
 
 result is always positive, except for gcd(0,0) which is 0
 
-atom parameters allow greater precision, but any fractional parts are immediately and deliberately discarded.
+atom parameters allow greater precision,
+but any fractional parts are immediately and deliberately discarded.
 
-Actually, it is an autoinclude, reproduced below. The first parameter can be a sequence, in which case the second parameter (if provided) is ignored.
+Actually, it is an autoinclude, reproduced below.
+The first parameter can be a sequence,
+in which case the second parameter (if provided) is ignored.
 
 ```Phix
 function gcd(object u, atom v=0)
@@ -4290,10 +3969,9 @@ atom t
 end function
 ```
 
-Sample results
+Sample results:
 
 ```txt
-
 gcd(0,0)            -- 0
 gcd(24,-112)        -- 8
 gcd(0, 10)          -- 10
@@ -4306,18 +3984,15 @@ gcd(-6, 9)          -- 3
 gcd(9, -6)          -- 3
 gcd(6, -9)          -- 3
 gcd(-9, 6)          -- 3
-gcd(40902, 24140)   -- 34   
-gcd(70000000000000000000, 
+gcd(40902, 24140)   -- 34
+gcd(70000000000000000000,
     60000000000000000000000)
  -- 10000000000000000000
 gcd({57,0,-45,-18,90,447}) -- 3
-
 ```
 
 
-
 ## PicoLisp
-
 
 ```PicoLisp
 (de gcd (A B)
@@ -4328,16 +4003,11 @@ gcd({57,0,-45,-18,90,447}) -- 3
 ```
 
 
-
 ## PHP
-
-
 
 ### Iterative
 
-
 ```php
-
 function gcdIter($n, $m) {
     while(true) {
         if($n == $m) {
@@ -4350,16 +4020,12 @@ function gcdIter($n, $m) {
         }
     }
 }
-
 ```
-
 
 
 ### Recursive
 
-
 ```php
-
 function gcdRec($n, $m)
 {
     if($m > 0)
@@ -4367,16 +4033,12 @@ function gcdRec($n, $m)
     else
         return abs($n);
 }
-
 ```
-
 
 
 ## PL/I
 
-
 ```PL/I
-
 GCD: procedure (a, b) returns (fixed binary (31)) recursive;
    declare (a, b) fixed binary (31);
 
@@ -4385,25 +4047,22 @@ GCD: procedure (a, b) returns (fixed binary (31)) recursive;
    return (GCD (b, mod(a, b)) );
 
 end GCD;
-
 ```
-
 
 
 ## Pop11
 
-===Built-in gcd===
+### Built-in gcd
 
 ```pop11
 gcd_n(15, 12, 2) =>
 ```
 
+Note: the last argument gives the number of other arguments
+(in this case 2).
 
-Note: the last argument gives the number of other arguments (in
-this case 2).
 
 ### Iterative Euclid algorithm
-
 
 ```pop11
 define gcd(k, l) -> r;
@@ -4419,39 +4078,30 @@ enddefine;
 ```
 
 
-
 ## PostScript
 
-{{libheader|initlib}}
-
 ```postscript
-
 /gcd {
-{   
+{
     {0 gt} {dup rup mod} {pop exit} ifte
 } loop
 }.
-
 ```
 
 With no external lib, recursive
 
 ```postscript
-
 /gcd {
    dup 0 ne {
       dup 3 1 roll mod gcd
    } { pop } ifelse
 } def
-
 ```
 
 
 ## PowerShell
 
-
 ### Recursive Euclid Algorithm
-
 
 ```powershell
 function Get-GCD ($x, $y)
@@ -4474,7 +4124,6 @@ function Get-GCD ($x, $y)
 }
 ```
 
-
 or shorter (taken from Python implementation)
 
 ```powershell
@@ -4484,30 +4133,23 @@ function Get-GCD ($x, $y) {
 ```
 
 
-
 ### Iterative Euclid Algorithm
 
-
-based on Python implementation
+Based on Python implementation
 
 ```powershell
-
 Function Get-GCD( $x, $y ) {
     while ($y -ne 0) {
         $x, $y = $y, ($x % $y)
     }
     [Math]::abs($x)
 }
-
 ```
-
 
 
 ## Prolog
 
-
 ### Recursive Euclid Algorithm
-
 
 ```prolog
 gcd(X, 0, X):- !.
@@ -4517,9 +4159,7 @@ gcd(X, Y, D):- Z is Y mod X, gcd(X, Z, D).
 ```
 
 
-
 ### Repeated Subtraction
-
 
 ```prolog
 gcd(X, 0, X):- !.
@@ -4527,8 +4167,6 @@ gcd(0, X, X):- !.
 gcd(X, Y, D):- X =< Y, !, Z is Y - X, gcd(X, Z, D).
 gcd(X, Y, D):- gcd(Y, X, D).
 ```
-
-
 
 
 ## PureBasic
@@ -4547,7 +4185,6 @@ Procedure GCD(x, y)
 EndProcedure
 ```
 
-
 '''Recursive'''
 
 ```PureBasic
@@ -4562,55 +4199,52 @@ EndProcedure
 ```
 
 
-
 ## Purity
 
-
 ```Purity
-
 data Iterate = f => FoldNat <const id, g => $g . $f>
 
 data Sub = Iterate Pred
 data IsZero = <const True, const False> . UnNat
 
-data Eq = FoldNat 
+data Eq = FoldNat
           <
-              const IsZero, 
-              eq => n => IfThenElse (IsZero $n) 
-                         False 
+              const IsZero,
+              eq => n => IfThenElse (IsZero $n)
+                         False
                          ($eq (Pred $n))
           >
 
-data step = gcd => n => m => 
-                    IfThenElse (Eq $m $n) 
-                        (Pair $m $n) 
-                        (IfThenElse (Compare Leq $n $m) 
-                            ($gcd (Sub $m $n) $m) 
+data step = gcd => n => m =>
+                    IfThenElse (Eq $m $n)
+                        (Pair $m $n)
+                        (IfThenElse (Compare Leq $n $m)
+                            ($gcd (Sub $m $n) $m)
                             ($gcd (Sub $n $m) $n))
 
 data gcd = Iterate (gcd => uncurry (step (curry $gcd)))
-
 ```
-
 
 
 ## Python
 
-===Built-in===
-{{works with|Python|2.6+}}
+### Built-in
 
-```python>from fractions import gcd</lang
+Works with Python 2.6+
 
+```python
+from fractions import gcd
+```
 
-{{Works with|Python|3.7}}
-(Note that '''fractions.gcd''' is now deprecated in Python 3)
+Works with Python 3.7
+(Note that `fractions.gcd` is now deprecated in Python 3)
 
-```python>from math import gcd</lang
-
+```python
+from math import gcd
+```
 
 
 ### Iterative Euclid algorithm
-
 
 ```python
 def gcd_iter(u, v):
@@ -4620,10 +4254,9 @@ def gcd_iter(u, v):
 ```
 
 
-
 ### Recursive Euclid algorithm
 
-'''Interpreter:''' [[Python]] 2.5
+Interpreter: Python 2.5
 
 ```python
 def gcd(u, v):
@@ -4631,19 +4264,20 @@ def gcd(u, v):
 ```
 
 
-
 ### Tests
 
- >>> gcd(0,0)
- 0
- >>> gcd(0, 10) == gcd(10, 0) == gcd(-10, 0) == gcd(0, -10) == 10
- True
- >>> gcd(9, 6) == gcd(6, 9) == gcd(-6, 9) == gcd(9, -6) == gcd(6, -9) == gcd(-9, 6) == 3
- True
- >>> gcd(8, 45) == gcd(45, 8) == gcd(-45, 8) == gcd(8, -45) == gcd(-8, 45) == gcd(45, -8) == 1
- True
- >>> gcd(40902, 24140) # check Knuth :)
- 34
+```txt
+>>> gcd(0,0)
+0
+>>> gcd(0, 10) == gcd(10, 0) == gcd(-10, 0) == gcd(0, -10) == 10
+True
+>>> gcd(9, 6) == gcd(6, 9) == gcd(-6, 9) == gcd(9, -6) == gcd(6, -9) == gcd(-9, 6) == 3
+True
+>>> gcd(8, 45) == gcd(45, 8) == gcd(-45, 8) == gcd(8, -45) == gcd(-8, 45) == gcd(45, -8) == 1
+True
+>>> gcd(40902, 24140) # check Knuth :)
+34
+```
 
 
 ### Iterative binary algorithm
@@ -4657,13 +4291,13 @@ def gcd_bin(u, v):
         u, v = v, u # u >= v >= 0
     if v == 0:
         return u
-   
+
     # u >= v > 0
     k = 1
     while u & 1 == 0 and v & 1 == 0: # u, v - even
         u >>= 1; v >>= 1
         k <<= 1
-       
+
     t = -v if u & 1 else u
     while t:
         while t & 1 == 0:
@@ -4677,27 +4311,22 @@ def gcd_bin(u, v):
 ```
 
 
-
 ### Notes on performance
 
-<tt>gcd(40902, 24140)</tt>      takes us about '''17''' µsec (Euclid, not built-in)
+<tt>gcd(40902, 24140)</tt> takes about '''17''' µsec (Euclid, not built-in)
 
-<tt>gcd_iter(40902, 24140)</tt> takes us about '''11''' µsec
+<tt>gcd_iter(40902, 24140)</tt> takes about '''11''' µsec
 
-<tt>gcd_bin(40902, 24140)</tt>  takes us about '''41''' µsec
+<tt>gcd_bin(40902, 24140)</tt>  takes about '''41''' µsec
 
 
 ## Qi
 
-
 ```Qi
-
 (define gcd
   A 0 -> A
   A B -> (gcd B (MOD A B)))
-
 ```
-
 
 
 ## R
@@ -4722,23 +4351,18 @@ Iterative:
 }
 ```
 
-{{out}}
-Same either way.
+Output:
 
 ```txt
-
 > print(50 %gcd% 75)
 [1] 25
-
 ```
-
 
 
 ## Racket
 
-
-Racket provides a built-in gcd function. Here's a program that computes the gcd of 14 and 63:
-
+Racket provides a built-in gcd function.
+Here's a program that computes the gcd of 14 and 63:
 
 ```racket
 #lang racket
@@ -4746,14 +4370,17 @@ Racket provides a built-in gcd function. Here's a program that computes the gcd 
 (gcd 14 63)
 ```
 
-
-Here's an explicit implementation. Note that since Racket is tail-calling, the memory behavior of this program is "loop-like", in the sense that this program will consume no more memory than a loop-based implementation.
+Here's an explicit implementation.
+Note that since Racket is tail-calling,
+the memory behavior of this program is "loop-like",
+in the sense that this program will consume no more memory
+than a loop-based implementation.
 
 
 ```racket
 #lang racket
 
-;; given two nonnegative integers, produces their greatest 
+;; given two nonnegative integers, produces their greatest
 ;; common divisor using Euclid's algorithm
 (define (gcd a b)
   (if (= b 0)
@@ -4771,16 +4398,11 @@ Here's an explicit implementation. Note that since Racket is tail-calling, the m
 ```
 
 
-
 ## Rascal
-
-
 
 ### Iterative Euclidean algorithm
 
-
 ```rascal
-
 public int gcd_iterative(int a, b){
 	if(a == 0) return b;
 	while(b != 0){
@@ -4788,47 +4410,35 @@ public int gcd_iterative(int a, b){
 		else b -= a;}
 	return a;
 }
-
 ```
 
 An example:
 
 ```rascal
-
 rascal>gcd_iterative(1989, 867)
 int: 51
-
 ```
-
 
 
 ### Recursive Euclidean algorithm
 
-
 ```rascal
-
 public int gcd_recursive(int a, b){
 	return (b == 0) ? a : gcd_recursive(b, a%b);
 }
-
 ```
 
 An example:
 
 ```rascal
-
 rascal>gcd_recursive(1989, 867)
 int: 51
-
 ```
-
 
 
 ## Raven
 
-
 ### Recursive Euclidean algorithm
-
 
 ```Raven
 define gcd use $u, $v
@@ -4840,14 +4450,14 @@ define gcd use $u, $v
 24140 40902 gcd
 ```
 
-{{out}}
+Output:
+
 ```txt
 34
 ```
 
 
 ## REBOL
-
 
 ```rebol
 gcd: func [
@@ -4867,28 +4477,24 @@ gcd: func [
 ```
 
 
-
 ## Retro
 
 This is from the math extensions library.
-
 
 ```Retro
 : gcd ( ab-n ) [ tuck mod dup ] while drop ;
 ```
 
 
-
 ## REXX
-
 
 ### version 1
 
-The GCD subroutine can handle any number of arguments,   it can also handle any number of integers within any
+The GCD subroutine can handle any number of arguments,
+it can also handle any number of integers within any
 
-argument(s),   making it easier to use when computing Frobenius numbers   (also known as   ''postage stamp''   or  
-
-''coin''   numbers).
+argument(s), making it easier to use when computing Frobenius numbers
+(also known as ''postage stamp'' or ''coin'' numbers).
 
 ```rexx
 /*REXX program calculates the  GCD (Greatest Common Divisor)  of any number of integers.*/
@@ -4911,10 +4517,9 @@ gcd: procedure;  $=;              do i=1 for  arg();  $=$ arg(i);  end       /*a
      return x
 ```
 
-'''output'''
+Output:
 
 ```txt
-
 GCD (Greatest Common Divisor) of  0,0   is   0
 GCD (Greatest Common Divisor) of  55,0   is   55
 GCD (Greatest Common Divisor) of  0,66   is   66
@@ -4929,9 +4534,7 @@ GCD (Greatest Common Divisor) of  14,7,0   is   7
 GCD (Greatest Common Divisor) of  0,14,7   is   7
 GCD (Greatest Common Divisor) of  15,10,20,30,55   is   5
 GCD (Greatest Common Divisor) of  137438691328,2305843008139952128   is   262144
-
 ```
-
 
 
 ### version 2
@@ -4939,7 +4542,6 @@ GCD (Greatest Common Divisor) of  137438691328,2305843008139952128   is   262144
 Recursive function (as in PL/I):
 
 ```REXX
-
 /* REXX ***************************************************************
 * using PL/I code extended to many arguments
 * 17.08.2012 Walter Pachl
@@ -4965,7 +4567,7 @@ n=arg()                             /* Number of arguments           */
 gcde=arg(n)                         /* Expected result               */
 gcdx=gcd(arg(1),arg(2))             /* gcd of the first 2 numbers    */
 Do i=2 To n-2                       /* proceed with all the others   */
-  If arg(i+1)<>0 Then   
+  If arg(i+1)<>0 Then
     gcdx=gcd(gcdx,arg(i+1))
   End
 If gcdx=arg(arg()) Then             /* result is as expected         */
@@ -4991,28 +4593,26 @@ return GCD(b,a//b)
 Output:
 
 ```txt
-
-the GCD of 7 and 21 is                          7 as expected              
-the GCD of 4 and 7 is                           1 as expected              
-the GCD of 24 and -8 is                         8 as expected              
-the GCD of 55 and 0 is                         55 as expected              
-the GCD of 99 and 15 is                         3 as expected              
-the GCD of 15 and 10 and 20 and 30 and 55 is    5 as expected              
-the GCD of 496 and 8128 is                     16 as expected              
-the GCD of 496 and 8128 is                     16 *** wrong. expected: 8  
-the GCD of 0 and 0 is                           0 as expected   
-
+the GCD of 7 and 21 is                          7 as expected
+the GCD of 4 and 7 is                           1 as expected
+the GCD of 24 and -8 is                         8 as expected
+the GCD of 55 and 0 is                         55 as expected
+the GCD of 99 and 15 is                         3 as expected
+the GCD of 15 and 10 and 20 and 30 and 55 is    5 as expected
+the GCD of 496 and 8128 is                     16 as expected
+the GCD of 496 and 8128 is                     16 *** wrong. expected: 8
+the GCD of 0 and 0 is                           0 as expected
 ```
-
 
 
 ### version 3
 
-{{trans|REXX}} using different argument handling-
-Use as gcd(a,b,c,---)
+Translated from REXX}} using different argument handlin.
+
+Use as `gcd(a,b,c,---)`
 Considerably faster than version 1 (and version 2)
 
-See http://rosettacode.org/wiki/Least_common_multiple#REXX for reasoning.
+See <http://rosettacode.org/wiki/Least_common_multiple#REXX> for reasoning.
 
 ```rexx
 gcd: procedure
@@ -5031,10 +4631,9 @@ return x
 ```
 
 
-
 ## Ring
 
-<lang>
+```ring
 see gcd (24, 32)
 func gcd gcd, b
      while b
@@ -5047,18 +4646,13 @@ func gcd gcd, b
 ```
 
 
-
 ## Ruby
 
-
-That is already available as the ''gcd'' method of integers:
-
+That is already available as the `gcd` method of integers:
 
 ```ruby
-
 40902.gcd(24140)  # => 34
 ```
-
 
 Here's an implementation:
 
@@ -5073,9 +4667,7 @@ end
 ```
 
 
-
 ## Run BASIC
-
 
 ```Runbasic
 print abs(gcd(-220,160))
@@ -5085,17 +4677,13 @@ function gcd(gcd,b)
         gcd = b
         b   = c mod b
     wend
-end function 
+end function
 ```
-
-
 
 
 ## Rust
 
-
 ### num crate
-
 
 ```rust
 extern crate num;
@@ -5103,9 +4691,7 @@ use num::integer::gcd;
 ```
 
 
-
 ### Iterative Euclid algorithm
-
 
 ```rust
 fn gcd(mut m: i32, mut n: i32) -> i32 {
@@ -5119,9 +4705,7 @@ fn gcd(mut m: i32, mut n: i32) -> i32 {
 ```
 
 
-
 ### Recursive Euclid algorithm
-
 
 ```rust
 fn gcd(m: i32, n: i32) -> i32 {
@@ -5133,10 +4717,14 @@ fn gcd(m: i32, n: i32) -> i32 {
 }
 ```
 
+### Stein's Algorithm
 
-===Stein's Algorithm===
-Stein's algorithm is very much like Euclid's except that it uses bitwise operators (and consequently slightly more performant) and the integers must be unsigned. The following is a recursive implementation that leverages Rust's pattern matching.
-
+Stein's algorithm is very much like Euclid's
+except that it uses bitwise operators
+(and consequently slightly more performant)
+and the integers must be unsigned.
+The following is a recursive implementation
+that leverages Rust's pattern matching.
 
 ```rust
 use std::cmp::{min, max};
@@ -5146,8 +4734,8 @@ fn gcd(a: usize, b: usize) -> usize {
         ((0, x), _) | ((x, 0), _)           => x,
         ((x, y), (0, 1)) | ((y, x), (1, 0)) => gcd(x >> 1, y),
         ((x, y), (0, 0))                    => gcd(x >> 1, y >> 1) << 1,
-        ((x, y), (1, 1))                    => { let (x, y) = (min(x, y), max(x, y)); 
-                                                 gcd((y - x) >> 1, x) 
+        ((x, y), (1, 1))                    => { let (x, y) = (min(x, y), max(x, y));
+                                                 gcd((y - x) >> 1, x)
                                                }
         _                                   => unreachable!(),
     }
@@ -5155,12 +4743,9 @@ fn gcd(a: usize, b: usize) -> usize {
 ```
 
 
-
 ### Tests
 
-
 ```rust
-
    println!("{}",gcd(399,-3999));
    println!("{}",gcd(0,3999));
    println!("{}",gcd(13*13,13*29));
@@ -5171,10 +4756,9 @@ fn gcd(a: usize, b: usize) -> usize {
 ```
 
 
-
 ## Sather
 
-{{trans|bc}}
+Translated from bc.
 
 ```sather
 class MATH is
@@ -5218,7 +4802,7 @@ class MATH is
       loop while!( t.is_even );
         t := t / 2;
       end;
-      if t > 0 then 
+      if t > 0 then
         u := t;
       else
         v := -t;
@@ -5230,8 +4814,6 @@ class MATH is
 
 end;
 ```
-
-
 
 ```sather
 class MAIN is
@@ -5248,15 +4830,11 @@ end;
 ```
 
 
-
 ## Sass/SCSS
-
 
 Iterative Euclid's Algorithm
 
-
 ```coffeescript
-
 @function gcd($a,$b) {
 	@while $b > 0 {
 		$c: $a % $b;
@@ -5265,21 +4843,16 @@ Iterative Euclid's Algorithm
 	}
 	@return $a;
 }
-
 ```
 
 
-
 ## Scala
-
 
 ```scala
 def gcd(a: Int, b: Int): Int = if (b == 0) a.abs else gcd(b, a % b)
 ```
 
-
 Using pattern matching
-
 
 ```scala
 @tailrec
@@ -5292,9 +4865,7 @@ def gcd(a: Int, b: Int): Int = {
 ```
 
 
-
 ## Scheme
-
 
 ```scheme
 (define (gcd a b)
@@ -5303,7 +4874,6 @@ def gcd(a: Int, b: Int): Int = {
       (gcd b (modulo a b))))
 ```
 
-
 or using the standard function included with Scheme (takes any number of arguments):
 
 ```scheme
@@ -5311,10 +4881,7 @@ or using the standard function included with Scheme (takes any number of argumen
 ```
 
 
-
 ## Sed
-
-
 
 ```sed
 #! /bin/sed -nf
@@ -5630,9 +5197,7 @@ b next
 ```
 
 
-
 ## Seed7
-
 
 ```seed7
 const func integer: gcd (in var integer: a, in var integer: b) is func
@@ -5650,7 +5215,7 @@ const func integer: gcd (in var integer: a, in var integer: b) is func
   end func;
 ```
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#gcd]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#gcd>
 
 
 ## SequenceL
@@ -5665,9 +5230,7 @@ gcd(a, b) :=
 ```
 
 
-
 ## SETL
-
 
 ```setl
 a := 33; b := 77;
@@ -5681,7 +5244,6 @@ proc gcd (u, v);
 end;
 ```
 
-
 Output:
 
 ```setl
@@ -5690,11 +5252,9 @@ the gcd of 49865  and  69811  is  9973
 ```
 
 
-
 ## Sidef
 
-===Built-in===
-
+### Built-in
 
 ```ruby
 var arr = [100, 1_000, 10_000, 20];
@@ -5702,10 +5262,7 @@ say Math.gcd(arr...);
 ```
 
 
-
 ### Recursive Euclid algorithm
-
-
 
 ```ruby
 func gcd(a, b) {
@@ -5716,7 +5273,8 @@ func gcd(a, b) {
 
 ## Simula
 
-For a recursive variant, see [[Sum multiples of 3 and 5#Simula|Sum multiples of 3 and 5]].
+For a recursive variant,
+see [[Sum multiples of 3 and 5#Simula|Sum multiples of 3 and 5]].
 
 ```algolw
 BEGIN
@@ -5744,7 +5302,7 @@ BEGIN
 END
 ```
 
-{{out}}
+Output:
 
 ```txt
 (0, 1)  1  (2, 1)  1  (4, 1)  1  (6, 1)  1  (8, 1)  1  (10, 1)  1  (12, 1)  1  (14, 1)  1  (16, 1)  1  (18, 1)  1  (20, 1)  1
@@ -5759,20 +5317,16 @@ END
 ```
 
 
-
 ## Slate
-
 
 Slate's Integer type has gcd defined:
 
-
-```slate>40902 gcd: 24140</lang
-
+```slate
+40902 gcd: 24140
+```
 
 
 ### Iterative Euclid algorithm
-
-
 
 ```slate
 x@(Integer traits) gcd: y@(Integer traits)
@@ -5786,9 +5340,7 @@ x@(Integer traits) gcd: y@(Integer traits)
 ```
 
 
-
 ### Recursive Euclid algorithm
-
 
 ```slate
 x@(Integer traits) gcd: y@(Integer traits)
@@ -5800,25 +5352,21 @@ x@(Integer traits) gcd: y@(Integer traits)
 ```
 
 
-
 ## Smalltalk
 
 The <tt>Integer</tt> class has its <tt>gcd</tt> method.
-
 
 ```smalltalk
 (40902 gcd: 24140) displayNl
 ```
 
-
 An reimplementation of the Iterative Euclid's algorithm would be:
-
 
 ```smalltalk
 |gcd_iter|
 
-gcd_iter := [ :a :b | 
-  |u v| 
+gcd_iter := [ :a :b |
+  |u v|
    u := a. v := b.
    [ v > 0 ]
      whileTrue: [ |t|
@@ -5833,9 +5381,7 @@ gcd_iter := [ :a :b |
 ```
 
 
-
 ## SNOBOL4
-
 
 ```snobol
 	define('gcd(i,j)')	:(gcd_end)
@@ -5853,9 +5399,7 @@ end
 ```
 
 
-
 ## Sparkling
-
 
 ```sparkling
 function factors(n) {
@@ -5936,33 +5480,24 @@ with
 
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 Table dropped.
-
 
 Table created.
 
+1 row created.
 
 1 row created.
 
+1 row created.
 
 1 row created.
 
-
 1 row created.
-
-
-1 row created.
-
-
-1 row created.
-
 
 Commit complete.
-
 
          U          V   GCD(U,V)
 ---------- ---------- ----------
@@ -5971,9 +5506,7 @@ Commit complete.
         21         51          3
         22         50          2
         22         55         11
-
 ```
-
 
 Demonstration of SQL Server 2008
 
@@ -5989,7 +5522,7 @@ BEGIN
     DECLARE @t INT
     DECLARE @u INT
     DECLARE @v INT
-	
+
     SET @u = @ui
     SET @v = @vi
 
@@ -6008,7 +5541,7 @@ CREATE TABLE tbl (
   u INT,
   v INT
 );
- 
+
 INSERT INTO tbl ( u, v ) VALUES ( 20, 50 );
 INSERT INTO tbl ( u, v ) VALUES ( 21, 50 );
 INSERT INTO tbl ( u, v ) VALUES ( 21, 51 );
@@ -6021,9 +5554,7 @@ SELECT u, v, dbo.gcd ( u, v )
 DROP TABLE tbl;
 
 DROP FUNCTION gcd;
-
 ```
-
 
 PostgreSQL function using a recursive common table expression
 
@@ -6039,28 +5570,21 @@ WITH RECURSIVE x (u, v) AS (
 )
 SELECT min(u) FROM x;
 $function$
-
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
 postgres> select gcd(40902, 24140);
 gcd
 -----
 34
 SELECT 1
 Time: 0.012s
-
 ```
 
 
-
 ## Stata
-
-
 
 ```stata
 function gcd(a_,b_) {
@@ -6075,53 +5599,50 @@ function gcd(a_,b_) {
 ```
 
 
-
 ## Swift
-
 
 ```Swift
 // Iterative
 
 func gcd(var a: Int, var b: Int) -> Int {
-    
+
     a = abs(a); b = abs(b)
-    
+
     if (b > a) { swap(&a, &b) }
 
     while (b > 0) { (a, b) = (b, a % b) }
-    
+
     return a
 }
 
 // Recursive
 
 func gcdr (var a: Int, var b: Int) -> Int {
-    
+
     a = abs(a); b = abs(b)
 
     if (b > a) { swap(&a, &b) }
-    
+
     return gcd_rec(a,b)
 }
 
 
 private func gcd_rec(a: Int, b: Int) -> Int {
-    
+
     return b == 0 ? a : gcd_rec(b, a % b)
 }
 
 
 for (a,b) in [(1,1), (100, -10), (10, -100), (-36, -17), (27, 18), (30, -42)] {
-    
+
     println("Iterative: GCD of \(a) and \(b) is \(gcd(a, b))")
     println("Recursive: GCD of \(a) and \(b) is \(gcdr(a, b))")
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 Iterative: GCD of 1 and 1 is 1
 Recursive: GCD of 1 and 1 is 1
 Iterative: GCD of 100 and -10 is 10
@@ -6134,16 +5655,12 @@ Iterative: GCD of 27 and 18 is 9
 Recursive: GCD of 27 and 18 is 9
 Iterative: GCD of 30 and -42 is 6
 Recursive: GCD of 30 and -42 is 6
-
 ```
-
 
 
 ## Tcl
 
-
 ### Iterative Euclid algorithm
-
 
 ```tcl
 package require Tcl 8.5
@@ -6157,9 +5674,7 @@ proc gcd_iter {p q} {
 ```
 
 
-
 ### Recursive Euclid algorithm
-
 
 ```tcl
 proc gcd {p q} {
@@ -6181,11 +5696,11 @@ proc gcd {p q} {
 }
 ```
 
-(Tcl does not perform automatic tail-call optimization introduction because that makes any potential error traces less informative.)
+(Tcl does not perform automatic tail-call optimization introduction
+because that makes any potential error traces less informative.)
 
 
 ### Iterative binary algorithm
-
 
 ```tcl
 package require Tcl 8.5
@@ -6213,9 +5728,7 @@ proc gcd_bin {p q} {
 ```
 
 
-
 ### Notes on performance
-
 
 ```tcl
 foreach proc {gcd_iter gcd gcd_bin} {
@@ -6232,18 +5745,18 @@ gcd_bin  - 9.25613 microseconds per iteration
 ```
 
 
-=={{header|TI-83 BASIC}}, {{header|TI-89 BASIC}}==
+## TI-83 BASIC, TI-89 BASIC
+
+```basic
  gcd(A,B)
-The ) can be omitted in TI-83 basic
+```
+
+The `)` can be omitted in TI-83 basic
 
 
 ## TSE SAL
 
-
 ```TSE SAL
-
-
-// library: math: get: greatest: common: divisor <description>greatest common divisor whole numbers. Euclid's algorithm. Recursive version</description> <version control></version control> <version>1.0.0.0.3</version> <version control></version control> (filenamemacro=getmacdi.s) [<Program>] [<Research>] [kn, ri, su, 20-01-2013 14:22:41]
 INTEGER PROC FNMathGetGreatestCommonDivisorI( INTEGER x1I, INTEGER x2I )
  //
  IF ( x2I == 0 )
@@ -6265,22 +5778,15 @@ PROC Main()
   Warn( FNMathGetGreatestCommonDivisorI( Val( s1 ), Val( s2 ) ) ) // gives e.g. 1
  UNTIL FALSE
 END
-
-
 ```
 
 
-
-
 ## TXR
-
-
 
 ```bash
 $ txr -p '(gcd (expt 2 123) (expt 6 49))'
 562949953421312
 ```
-
 
 
 ## TypeScript
@@ -6295,7 +5801,7 @@ function gcd(a: number, b: number) {
   if (b > a) {
     let temp = a;
     a = b;
-    b = temp; 
+    b = temp;
   }
 
   while (true) {
@@ -6307,8 +5813,7 @@ function gcd(a: number, b: number) {
 }
 ```
 
-
-Recursive.
+Recursive:
 
 ```javascript
 function gcd_rec(a: number, b: number) {
@@ -6317,12 +5822,12 @@ function gcd_rec(a: number, b: number) {
 ```
 
 
-
-
 ## uBasic/4tH
 
-{{trans|BBC BASIC}}
-<lang>Print "GCD of 18 : 12 = "; FUNC(_GCD_Iterative_Euclid(18,12))
+Translated from BBC BASIC.
+
+```basic
+Print "GCD of 18 : 12 = "; FUNC(_GCD_Iterative_Euclid(18,12))
 Print "GCD of 1071 : 1029 = "; FUNC(_GCD_Iterative_Euclid(1071,1029))
 Print "GCD of 3528 : 3780 = "; FUNC(_GCD_Iterative_Euclid(3528,3780))
 
@@ -6338,7 +5843,7 @@ _GCD_Iterative_Euclid Param(2)
 Return (Abs(a@))
 ```
 
-{{out}}
+Output:
 
 ```txt
 GCD of 18 : 12 = 6
@@ -6351,7 +5856,7 @@ GCD of 3528 : 3780 = 252
 
 ## UNIX Shell
 
-{{works with|Bourne Shell}}
+Works with Bourne Shell
 
 ```bash
 gcd() {
@@ -6371,9 +5876,7 @@ gcd -47376 87843
 ```
 
 
-=
 ## C Shell
-=
 
 ```csh
 alias gcd eval \''set gcd_args=( \!*:q )	\\
@@ -6394,21 +5897,18 @@ echo $result
 ```
 
 
-
 ## Ursa
-
 
 ```ursa
 import "math"
 out (gcd 40902 24140) endl console
 ```
 
-{{out}}
+Output:
 
 ```txt
 34
 ```
-
 
 
 ## Ursala
@@ -6433,7 +5933,7 @@ test program:
 test = ^(~&,gcd)* <(25,15),(36,16),(120,45),(30,100)>
 ```
 
-output:
+Output:
 
 ```txt
 <
@@ -6441,47 +5941,53 @@ output:
    (36,16): 4,
    (120,45): 15,
    (30,100): 10>
-
 ```
-
 
 
 ## V
 
-like joy
+Like joy
+
 
 ### iterative
 
+```v
  [gcd
     [0 >] [dup rollup %]
     while
     pop
  ].
-
+```
 
 ### recursive
 
 like python
 
+```v
  [gcd
     [zero?] [pop]
        [swap [dup] dip swap %]
     tailrec].
+```
 
 same with view: (swap [dup] dip swap % is replaced with a destructuring view)
 
+```v
  [gcd
     [zero?] [pop]
       [[a b : [b a b %]] view i]
     tailrec].
+```
 
-running it
+Running it:
+
+```txt
  |1071 1029 gcd
  =21
+```
 
 
 ## VBA
-
 
 ```vb
 Function gcd(u As Long, v As Long) As Long
@@ -6495,7 +6001,8 @@ Function gcd(u As Long, v As Long) As Long
 End Function
 ```
 
-This function uses repeated subtractions. Simple but not very efficient.
+This function uses repeated subtractions.
+Simple but not very efficient.
 
 ```VBA
 Public Function GCD(a As Long, b As Long) As Long
@@ -6505,26 +6012,30 @@ Wend
 GCD = a
 End Function
 ```
-{{out}}
-Example:
+
+Output:
 
 ```txt
 print GCD(1280, 240)
- 80 
+ 80
 print GCD(3475689, 23566319)
  7
 a=123456789
 b=234736437
 print GCD((a),(b))
- 3 
+ 3
 ```
 
-
-A note on the last example: using brackets forces a and b to be evaluated before GCD is called. Not doing this will cause a compile error because a and b are not the same type as in the function declaration (they are Variant, not Long). Alternatively you can use the conversion function CLng as in print GCD(CLng(a),CLng(b))
+A note on the last example: using brackets forces a and b
+to be evaluated before GCD is called.
+Not doing this will cause a compile error,
+because a and b are not the same type as in the function declaration
+(they are Variant, not Long).
+Alternatively you can use the conversion function CLng
+as in print GCD(CLng(a),CLng(b))
 
 
 ## VBScript
-
 
 ```VBScript
 Function GCD(a,b)
@@ -6546,8 +6057,7 @@ WScript.Echo "The GCD of 1280 and 240 is " & GCD(3475689,23566319) & "."
 WScript.Echo "The GCD of 1280 and 240 is " & GCD(123456789,234736437) & "."
 ```
 
-
-{{Output}}
+Output:
 
 ```txt
 The GCD of 48 and 18 is 6.
@@ -6557,9 +6067,7 @@ The GCD of 1280 and 240 is 3.
 ```
 
 
-
 ## Verilog
-
 
 ```Verilog
 module gcd
@@ -6607,17 +6115,15 @@ always @(posedge clk or negedge reset_l)
     end
 
 endmodule
-
 ```
-
 
 
 ## Visual Basic
 
-{{works with|Visual Basic|5}}
-{{works with|Visual Basic|6}}
-{{works with|VBA|6.5}}
-{{works with|VBA|7.1}}
+Works with Visual Basic 5.
+Works with Visual Basic 6.
+Works with VBA 6.5.
+Works with VBA 7.1.
 
 ```vb
 Function GCD(ByVal a As Long, ByVal b As Long) As Long
@@ -6635,7 +6141,7 @@ Dim h As Long
     Else
         GCD = Abs(b)
     End If
-    
+
 End Function
 
 Sub Main()
@@ -6652,17 +6158,18 @@ Sub Main()
   Debug.Assert GCD(3475689, 23566319) = 7
   Debug.Assert GCD(123456789, 234736437) = 3
   Debug.Assert GCD(3780, 3528) = 252
-  
+
 End Sub
 ```
-
 
 
 ## Wortel
 
 Operator
 
-```wortel>@gcd a b</lang
+```wortel
+@gcd a b
+```
 
 Number expression
 
@@ -6681,7 +6188,6 @@ Recursive
 ```wortel
 &{gcd a b} ?{b !!gcd b %a b @abs a}
 ```
-
 
 
 ## x86 Assembly
@@ -6716,10 +6222,11 @@ pgcd:
 ```
 
 
-
 ## XLISP
 
-<code>GCD</code> is a built-in function. If we wanted to reimplement it, one (tail-recursive) way would be like this:
+`GCD` is a built-in function.
+If we wanted to reimplement it,
+one (tail-recursive) way would be like this:
 
 ```lisp
 (defun greatest-common-divisor (x y)
@@ -6729,9 +6236,7 @@ pgcd:
 ```
 
 
-
 ## XPL0
-
 
 ```XPL0
 include c:\cxpl\codes;
@@ -6749,14 +6254,12 @@ IntOut(0, GCD(IntIn(8), IntIn(8)))
 ```
 
 
-
 ## Yabasic
-
 
 ```Yabasic
 sub gcd(u, v)
     local t
-	
+
     u = int(abs(u))
     v = int(abs(v))
     while(v)
@@ -6771,10 +6274,10 @@ print "Greatest common divisor: ", gcd(12345, 9876)
 ```
 
 
-
 ## Z80 Assembly
 
-Uses the iterative subtraction implementation of Euclid's algorithm because the Z80 does not implement modulus or division opcodes.
+Uses the iterative subtraction implementation of Euclid's algorithm,
+because the Z80 does not implement modulus or division opcodes.
 
 ```z80
 ; Inputs: a, b
@@ -6802,8 +6305,6 @@ else:
 ```
 
 
-
-
 ## zkl
 
 This is a method on integers:
@@ -6826,9 +6327,7 @@ fcn gcd(a,b){ while(b){ t:=a; a=b; b=t%b } a.abs() }
 ```
 
 
-
 ## ZX Spectrum Basic
-
 
 ```zxbasic
 10 FOR n=1 TO 3
@@ -6836,10 +6335,9 @@ fcn gcd(a,b){ while(b){ t:=a; a=b; b=t%b } a.abs() }
 30 PRINT "GCD of ";a;" and ";b;" = ";
 40 GO SUB 70
 50 NEXT n
-60 STOP 
-70 IF b=0 THEN PRINT ABS (a): RETURN 
+60 STOP
+70 IF b=0 THEN PRINT ABS (a): RETURN
 80 LET c=a: LET a=b: LET b=FN m(c,b): GO TO 70
 90 DEF FN m(a,b)=a-INT (a/b)*b
 100 DATA 12,16,22,33,45,67
 ```
-
