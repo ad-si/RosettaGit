@@ -47,14 +47,16 @@ fb_app_id = "???" # OPTIONAL, Facebook App Id to help in metrics
 twitter_username = "@AdrianSieber" # OPTIONAL, Twitter User to help with metrics
 
 [[extra.sidebar]]
-name = "Links"
+name = "Contributing"
 urls = [
   { name = "Github", url = "https://github.com/ad-si/rosettagit" },
+  { name = "Issues", url = "https://github.com/ad-si/rosettagit/issues" },
+  { name = "Changelog", url = "https://github.com/ad-si/rosettagit/blob/changelog.md" },
 ]
 
 [[extra.sidebar]]
-name = "Contributing"
+name = "Special Pages"
 urls = [
-  { name = "Issues", url = "https://github.com/ad-si/rosettagit/issues" },
-  { name = "Changelog", url = "https://github.com/ad-si/rosettagit/blob/changelog.md" },
+  { name = "Similar Sites", url = "/similar-sites" },
+  { name = "Online Execution", url = "/online-execution" },
 ]

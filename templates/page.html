@@ -17,10 +17,12 @@
 
 {% block content %}
   <article
+    id="page-{{page.slug}}"
     itemscope
     itemtype="http://schema.org/BlogPosting"
     class="post post-page"
   >
+
     {% if page.extra.image %}
       <meta itemprop="image" content="{{page.extra.image}}">
     {% else %}
@@ -30,6 +32,10 @@
     {% endif %}
 
     <div itemprop="articleBody">
+      {% if page.extra.task %}
+        <p class="task">{{page.extra.task}}</p>
+      {% endif %}
+
       {{ page.content | safe }}
     </div>
   </article>
@@ -98,7 +104,7 @@
 
   <p>
     <small>
-      Search for this page on
+      Search for this page on <br>
       <a href="https://rosettacode.org/mw/index.php?search={{page.title}}">
         Rosetta Code
       </a>
