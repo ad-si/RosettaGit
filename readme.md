@@ -6,8 +6,6 @@
 brew install zola
 ```
 
-## Usage
+## Development
 
-```sh
-zola serve
-```
+Check out the [makefile] for all relevant tasks.
