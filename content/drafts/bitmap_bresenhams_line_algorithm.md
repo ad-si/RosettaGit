@@ -1,23 +1,20 @@
 +++
-title = "Bitmap/Bresenham's line algorithm"
+title = "Bresenham's Line Algorithm"
 description = ""
 date = 2019-05-18T10:31:53Z
 aliases = []
 [extra]
 id = 3214
+task = """
+  Using the data storage type defined on the [[Bitmap]] page
+  for raster graphics images,
+  draw a line given two points with
+  Bresenham's line algorithm.
+"""
 [taxonomies]
 categories = []
-tags = []
+tags = ["graphics", "raster-graphics"]
 +++
-
-{{task|Raster graphics operations}}
-[[Category:Graphics algorithms]]
-
-;Task:
-Using the data storage type defined on the [[Bitmap]] page for raster graphics images, draw a line given two points with [[wp:Bresenham's line algorithm|Bresenham's line algorithm]].
-
-
-
 
 
 ## 360 Assembly
@@ -58,7 +55,7 @@ BRESENH  CSECT
          ST     R7,MAXY                maxy=y
        ENDIF    ,                    endif
          LA     R10,8(R10)           @dataxy+=8
-         LA     R8,1(R8)             p++ 
+         LA     R8,1(R8)             p++
      ENDDO      ,                  enddo p
          L      R1,MINX            minx
          S      R1,=A(BORDER*2)    -border*2
@@ -91,37 +88,37 @@ BRESENH  CSECT
          ST     R1,MAXY              maxy=wy
        ENDIF    ,                  endif
          L      R6,MINX            x=minx
-       DO WHILE=(C,R6,LE,MAXX)     do x=minx to maxx 
+       DO WHILE=(C,R6,LE,MAXX)     do x=minx to maxx
          L      R1,OY                oy
          BCTR   R1,0                 1
          MH     R1,=AL2(HMAPX)       dim(x)
          AR     R1,R6                x
          A      R1,OX                ox
          LA     R1,MAP-1(R1)         map(0+oy,x+ox)
-         MVC    0(1,R1),=C'-'        map(0+oy,x+ox)='-'     
-         A      R6,=F'1'             x++ 
+         MVC    0(1,R1),=C'-'        map(0+oy,x+ox)='-'
+         A      R6,=F'1'             x++
        ENDDO    ,                  enddo x
          L      R7,MINY            y=miny
-       DO WHILE=(C,R7,LE,MAXY)     do y=miny to maxy     
+       DO WHILE=(C,R7,LE,MAXY)     do y=miny to maxy
          LR     R1,R7                y
          A      R1,OY                +oy
          BCTR   R1,0                 -1
          MH     R1,=AL2(HMAPX)       *dim(x)
          A      R1,OX                +ox
          LA     R1,MAP-1(R1)         @map(y+oy,0+ox)
-         MVC    0(1,R1),=C'|'        map(y+oy,0+ox)='|'     
-         A      R7,=F'1'             y++ 
+         MVC    0(1,R1),=C'|'        map(y+oy,0+ox)='|'
+         A      R7,=F'1'             y++
        ENDDO    ,                  enddo y
          L      R1,OY              +oy
          BCTR   R1,0               -1
          MH     R1,=AL2(HMAPX)     *dim(x)
          A      R1,OX              +ox
          LA     R1,MAP-1(R1)       @map(0+oy,0+ox)
-         MVC    0(1,R1),=C'+'      map(0+oy,0+ox)='+' 
+         MVC    0(1,R1),=C'+'      map(0+oy,0+ox)='+'
          LA     R10,POINTS         points
          BCTR   R10,0              pn=points-1
          LA     R9,DATAXY          @dataxy
-         LA     R8,1               p=1 
+         LA     R8,1               p=1
        DO WHILE=(CR,R8,LE,R10)     do p=1 to points-1
          L      R6,0(R9)             x=dataxy((p-1)*2+1)
          L      R7,4(R9)             y=dataxy((p-1)*2+2)
@@ -180,15 +177,15 @@ STAYDO   L      R0,ERR                 err
        ENDIF    ,                      endif
          B      LOOP                 endloop
 EXITLOOP LA     R9,8(R9)             @dataxy+=2
-         LA     R8,1(R8)             p++ 
+         LA     R8,1(R8)             p++
        ENDDO    ,                  enddo p
          LA     R9,MAP+(HMAPX*HMAPY)-HMAPX  @map
-         L      R7,MAXY            y=maxy 
+         L      R7,MAXY            y=maxy
        DO WHILE=(C,R7,GE,MINY)     do y=maxy to miny by -1
          MVC    PG(HMAPX),0(R9)      output map(x,*)
          XPRNT  PG,L'PG              print buffer
          S      R9,=A(HMAPX)         @pg
-         S      R7,=F'1'             y-- 
+         S      R7,=F'1'             y--
        ENDDO    ,                  enddo y
          L      R13,4(0,R13)       restore previous savearea pointer
          RETURN (14,12),RC=0       restore registers from calling sav
@@ -212,7 +209,7 @@ ERR      DS     F
 ERR2     DS     F
 PG       DC     CL80' '            buffer
          REGEQU
-         END    BRESENH 
+         END    BRESENH
 ```
 
 {{out}}
@@ -384,7 +381,7 @@ SKIP
 ```algol68
 #!/usr/bin/a68g --script #
 # -*- coding: utf-8 -*- #
- 
+
 PR READ "prelude/Bitmap.a68" PR; # c.f. [[rc:Bitmap]] #
 PR READ "prelude/Bitmap/Bresenhams_line_algorithm.a68" PR;
 
@@ -434,11 +431,11 @@ To run this code you will need to use Dos emulator.
 .486
 IDEAL
 ;---------------------------------------------
-; case: DeltaY is bigger than DeltaX		  
-; input: p1X p1Y,		            		  
-; 		 p2X p2Y,		           		      
-;		 Color -> variable   
-; output: line on the screen                  
+; case: DeltaY is bigger than DeltaX
+; input: p1X p1Y,
+; 		 p2X p2Y,
+;		 Color -> variable
+; output: line on the screen
 ;---------------------------------------------
 Macro DrawLine2DDY p1X, p1Y, p2X, p2Y
 	local l1, lp, nxt
@@ -478,11 +475,11 @@ nxt:
 	call PIXEL
 ENDM DrawLine2DDY
 ;---------------------------------------------
-; case: DeltaX is bigger than DeltaY		  
-; input: p1X p1Y,		            		  
-; 		 p2X p2Y,		           		      
-;		 Color -> variable                    
-; output: line on the screen                  
+; case: DeltaX is bigger than DeltaY
+; input: p1X p1Y,
+; 		 p2X p2Y,
+;		 Color -> variable
+; output: line on the screen
 ;---------------------------------------------
 Macro DrawLine2DDX p1X, p1Y, p2X, p2Y
 	local l1, lp, nxt
@@ -532,28 +529,28 @@ Endm
     STACK 256
     DATASEG
     TempW dw ?
-    pointX dw ? 
+    pointX dw ?
     pointY dw ?
-    point1X dw ? 
+    point1X dw ?
     point1Y dw ?
-    point2X dw ? 
+    point2X dw ?
     point2Y dw ?
     Color db ?
     CODESEG
 start:
         mov ax, @data
         mov ds, ax
-	
+
 	mov ax, 13h
 	int 10h ; set graphic mode
-	
+
 	mov [Color], 61
 	mov [point1X], 300
 	mov [point2X], 6
 	mov [point1Y], 122
 	mov [point2Y], 88
 	call DrawLine2D
-	
+
 	mov ah, 00h
 	int 16h
 exit:
@@ -564,10 +561,10 @@ exit:
         int 21h
 ; procedures
 ;---------------------------------------------
-; input: point1X point1Y,         
-; 		 point2X point2Y,         
-;		 Color                        
-; output: line on the screen                  
+; input: point1X point1Y,
+; 		 point2X point2Y,
+;		 Color
+; output: line on the screen
 ;---------------------------------------------
 PROC DrawLine2D
 	mov cx, [point1X]
@@ -611,9 +608,9 @@ DrawLine2DpNxt2:
 	ret
 ENDP DrawLine2D
 ;-----------------------------------------------
-; input: pointX pointY,      			
-;           Color				
-; output: point on the screen			
+; input: pointX pointY,
+;           Color
+; output: point on the screen
 ;-----------------------------------------------
 PROC PIXEL
 	mov bh,0h
@@ -701,7 +698,7 @@ function line {
   y0=$2
   x1=$3
   y1=$4
- 
+
   if (( x0 > x1 ))
   then
     (( dx = x0 - x1 ))
@@ -710,7 +707,7 @@ function line {
     (( dx = x1 - x0 ))
     (( sx = 1 ))
   fi
- 
+
   if (( y0 > y1 ))
   then
     (( dy = y0 - y1 ))
@@ -719,7 +716,7 @@ function line {
     (( dy = y1 - y0 ))
     (( sy = 1 ))
   fi
- 
+
   if (( dx > dy ))
   then
     (( err = dx ))
@@ -728,7 +725,7 @@ function line {
   fi
   (( err /= 2 ))
   (( e2 = 0 ))
- 
+
   while :
   do
     echo -en "\e[${y0};${x0}H#\e[K"
@@ -788,17 +785,17 @@ echo -e "\e[${LINS}H"
 ```bbcbasic
       Width% = 200
       Height% = 200
-      
+
       REM Set window size:
       VDU 23,22,Width%;Height%;8,16,16,128
-      
+
       REM Draw lines:
       PROCbresenham(50,100,100,190,0,0,0)
       PROCbresenham(100,190,150,100,0,0,0)
       PROCbresenham(150,100,100,10,0,0,0)
       PROCbresenham(100,10,50,100,0,0,0)
       END
-      
+
       DEF PROCbresenham(x1%,y1%,x2%,y2%,r%,g%,b%)
       LOCAL dx%, dy%, sx%, sy%, e
       dx% = ABS(x2% - x1%) : sx% = SGN(x2% - x1%)
@@ -814,7 +811,7 @@ echo -e "\e[${LINS}H"
         ENDIF
       UNTIL FALSE
       ENDPROC
-      
+
       DEF PROCsetpixel(x%,y%,r%,g%,b%)
       COLOUR 1,r%,g%,b%
       GCOL 1
@@ -970,7 +967,7 @@ Instead of swaps in the initialisation use error calculation for both directions
 void line(int x0, int y0, int x1, int y1) {
 
   int dx = abs(x1-x0), sx = x0<x1 ? 1 : -1;
-  int dy = abs(y1-y0), sy = y0<y1 ? 1 : -1; 
+  int dy = abs(y1-y0), sy = y0<y1 ? 1 : -1;
   int err = (dx>dy ? dx : -dy)/2, e2;
 
   for(;;){
@@ -1042,7 +1039,7 @@ void Line( const float x1, const float y1, const float x2, const float y2, const
 
   const float dx = x2 - x1;
   const float dy = fabs(y2 - y1);
-  
+
   float error = dx / 2.0f;
   const int ystep = (y1 < y2) ? 1 : -1;
   int y = (int)y1;
@@ -1059,7 +1056,7 @@ void Line( const float x1, const float y1, const float x2, const float y2, const
     {
         SetPixel(x,y, color);
     }
-              
+
     error -= dy;
     if(error < 0)
     {
@@ -1081,7 +1078,7 @@ void Line( const float x1, const float y1, const float x2, const float y2, const
 
 
 (defn draw-line
-  "Draw a line from x1,y1 to x2,y2 using Bresenham's, to a java BufferedImage in the colour of pixel." 
+  "Draw a line from x1,y1 to x2,y2 using Bresenham's, to a java BufferedImage in the colour of pixel."
   [buffer x1 y1 x2 y2 pixel]
   (let [dist-x (Math/abs (- x1 x2))
    dist-y (Math/abs (- y1 y2))
@@ -1092,15 +1089,15 @@ void Line( const float x1, const float y1, const float x2, const float y2, const
      delta-y (Math/abs (- y1 y2))
      y-step (if (< y1 y2) 1 -1)]
 
-    (let [plot (if steep 
-       #(.setRGB buffer (int %1) (int %2) pixel) 
+    (let [plot (if steep
+       #(.setRGB buffer (int %1) (int %2) pixel)
        #(.setRGB buffer (int %2) (int %1) pixel))]
-          
+
       (loop [x x1 y y1 error (Math/floor (/ delta-x 2)) ]
         (plot x y)
         (if (< x x2)
     ; Rather then rebind error, test that it is less than delta-y rather than zero
-    (if (< error delta-y) 
+    (if (< error delta-y)
       (recur (inc x) (+ y y-step) (+ error (- delta-x delta-y)))
       (recur (inc x) y            (- error delta-y)))))))))))
 
@@ -1160,9 +1157,9 @@ drawBresenhamLine = (x0, y0, x1, y1) ->
            (error (floor delta-x 2))
            (y-step (if (< y1 y2) 1 -1))
            (y y1))
-      (loop 
+      (loop
         :for x :upfrom x1 :to x2
-        :do (if steep 
+        :do (if steep
                 (setf (rgb-pixel buffer x y) pixel)
                 (setf (rgb-pixel buffer y x) pixel))
             (setf error (- error delta-y))
@@ -1357,15 +1354,15 @@ end;
 
 -- Brensenham Line Algorithm
 
-type alias Position = 
+type alias Position =
   {x: Int, y: Int}
 
-type alias BresenhamStatics = 
+type alias BresenhamStatics =
   { finish : Position
   , sx : Int
   , sy : Int
   , dx : Float
-  , dy : Float 
+  , dy : Float
   }
 
 
@@ -1381,19 +1378,19 @@ line p q =
     error =
       (if dx > dy then dx else -dy) / 2
 
-    statics = 
-      BresenhamStatics q sx sy dx dy 
+    statics =
+      BresenhamStatics q sx sy dx dy
   in
   bresenhamLineLoop statics error p []
 
 
 bresenhamLineLoop : BresenhamStatics -> Float -> Position -> List Position -> List Position
 bresenhamLineLoop statics error p positions =
-  let 
-    positions_ = p :: positions 
+  let
+    positions_ = p :: positions
     {sx, sy, dx, dy, finish} = statics
   in
-  if (p.x == finish.x) && (p.y == finish.y) then 
+  if (p.x == finish.x) && (p.y == finish.y) then
     positions_
   else
     let
@@ -1469,7 +1466,7 @@ i.writePPM(<import:java.io.makeFileOutputStream>(<file:~/Desktop/Bresenham.ppm>)
 ```erlang
 
 build_path({Sx, Sy}, {Tx, Ty}) ->
-  if 
+  if
     Tx < Sx -> StepX = -1;
     true -> StepX = 1
   end,
@@ -1477,15 +1474,15 @@ build_path({Sx, Sy}, {Tx, Ty}) ->
     Ty < Sy -> StepY = -1;
     true -> StepY = 1
   end,
-  
+
   Dx = abs((Tx-Sx)*2),
   Dy = abs((Ty-Sy)*2),
-  
+
   if
     Dy > Dx -> Path = through_y({Sx, Sy}, {Tx, Ty}, {StepX, StepY}, {Dx, Dy}, Dx*2-Dy, []);
     true -> Path = through_x({Sx, Sy}, {Tx, Ty}, {StepX, StepY}, {Dx, Dy}, Dy*2-Dx, [])
   end,
-  
+
   lists:reverse(Path).
 
 through_x({Tx, _}, {Tx, _}, _, _, _, P) -> P;
@@ -1527,7 +1524,7 @@ line({X0, Y0}, {X1, Y1}) ->
   DY = abs(Y1 - Y0),
   Err = DX - DY,
   line({X0, Y0}, {X1, Y1}, {SX, SY}, {DX, DY}, Err, []).
-  
+
 line({X1, Y1}, {X1, Y1}, _, _, _, Acc) ->
   lists:reverse([{X1, Y1} | Acc]);
 line({X, Y}, {X1, Y1}, {SX, SY}, {DX, DY}, Err, Acc) ->
@@ -1535,12 +1532,12 @@ line({X, Y}, {X1, Y1}, {SX, SY}, {DX, DY}, Err, Acc) ->
   {X0, Err0} = next_x(X, SX, DY, Err, DE),
   {Y0, Err1} = next_y(Y, SY, DX, Err0, DE),
   line({X0, Y0}, {X1, Y1}, {SX, SY}, {DX, DY}, Err1, [{X, Y} | Acc]).
-  
+
 step(P0, P1) when P0 < P1 ->
   1;
 step(_, _) ->
   -1.
-  
+
 next_x(X, SX, DY, E, DE) when DE > -DY ->
   {X + SX, E - DY};
 next_x(X, _SX, _DY, E, _DE) ->
@@ -1618,51 +1615,51 @@ constant
     red =   #FF0000,
     green = #00FF00,
     blue =  #0000FF
- 
+
 -- Create new image filled with some color
 function new_image(integer width, integer height, atom fill_color)
     return repeat(repeat(fill_color,height),width)
 end function
- 
+
 --grid used for drawing lines in this program
 sequence screenData = new_image(16,16,black)
 
 --the line algorithm
 function bresLine(sequence screenData, integer x0, integer y0, integer x1, integer y1, integer color)
-    
+
     integer deltaX = abs(x1 - x0), deltaY = abs(y1 - y0)
     integer stepX, stepY, lineError, error2
-    
+
     if x0 < x1 then
         stepX = 1
         else
-        stepX = -1  
+        stepX = -1
     end if
 
     if y0 < y1 then
         stepY = 1
         else
-        stepY = -1  
-    end if  
-    
+        stepY = -1
+    end if
+
     if deltaX > deltaY then
         lineError = deltaX
         else
         lineError = -deltaY
     end if
-    
+
     lineError = round(lineError / 2, 1)
-        
+
     while 1 do
-        
+
         screenData[x0][y0] = color
-        
+
         if (x0 = x1 and y0 = y1) then
             exit
         end if
-        
+
         error2 = lineError
-        
+
         if error2 > -deltaX then
             lineError -= deltaY
             x0 += stepX
@@ -1713,7 +1710,7 @@ any_key()
 --to output all the hex digits, use printf(1,"%06x", screenData[j][i])
 --to output 'shortened' hex digits, use :
 --printf(1, "%x", ( abs( ( (screenData[j][i] / #FFFFF) - 1 ) ) - 1 ) )
---and 
+--and
 --printf(1,"%x", abs( ( (screenData[j][i] / #FFFFF) - 1 ) ) )
 --
 --,respectively in the last if check.
@@ -1822,12 +1819,12 @@ END EVENTS
 
 SUB Rhombus()
   Bresenham(50, 100, 100, 190)(100, 190, 150, 100)(150, 100, 100, 10)(100, 10, 50, 100)
-  
+
   SUB Bresenham(x0, y0, x1, y1)
     DIM dx = ABS(x0 - x1), sx = SGN(x0 - x1)
     DIM dy = ABS(y0 - y1), sy = SGN(y0 - y1)
     DIM tmp, er = IIF(dx > dy, dx, -dy) / 2
-    
+
     WHILE NOT (x0 = x1 ANDALSO y0 = y1)
       PSET(FBSL.GETDC, x0, y0, &HFF) ' Red: Windows stores colors in BGR order
       tmp = er
@@ -1855,9 +1852,9 @@ IN: rosettacode.raster.line
     pt1 first2 :> y0! :> x0!
     pt2 first2 :> y1! :> x1!
     y1 y0 - abs x1 x0 - abs > :> steep
-    steep [ 
-        y0 x0 y0! x0! 
-        y1 x1 y1! x1! 
+    steep [
+        y0 x0 y0! x0!
+        y1 x1 y1! x1!
     ] when
     x0 x1 > [
         x0 x1 x0! x1!
@@ -1871,8 +1868,8 @@ IN: rosettacode.raster.line
     y0 :> y!
     y0 y1 < [ 1 ystep! ] [ -1 ystep! ] if
     x0 x1 1 <range> [
-        y steep [ swap ] when 2array  
-        current-error deltaerr + current-error! 
+        y steep [ swap ] when 2array
+        current-error deltaerr + current-error!
         current-error 0.5 >= [
             ystep y + y!
             current-error 1 - current-error!
@@ -1933,11 +1930,11 @@ defer ystep         \ 1+ or 1-
 3 4 0 3 red test line
 0 3 1 0 red test line
 test bshow cr
- **  
+ **
  * **
 *   *
-** * 
-  ** 
+** *
+  **
 ok
 ```
 
@@ -2006,7 +2003,7 @@ contains
     do x = rfrom%x, rto%x
        if ( steep ) then
           call put_pixel(img, y, x, color)
-       else 
+       else
           call put_pixel(img, x, y, color)
        end if
        error = error - dy
@@ -2261,7 +2258,7 @@ drawLines=: (1&{:: ;~ [: ; [: <@getBresenhamLine"2 (0&{::))@[ setPixels ]
 NB. Works for lists of 2 by 2 arrays each defining a line's start and end point.
    Diamond=: _2]\ _2]\ 9 5 5 15 , 5 15 9 25 , 9 25 13 15 , 13 15 9 5
    Square =: _2]\ _2]\ 5 5 5 25 , 5 25 13 25 , 13 25 13 5 , 13 5 5 5
-   viewRGB myimg=: (Diamond;255 0 0) drawLines myimg   NB. draw 4 red lines to form a diamond   
+   viewRGB myimg=: (Diamond;255 0 0) drawLines myimg   NB. draw 4 red lines to form a diamond
    viewRGB myimg=: (Square;0 0 255) drawLines myimg    NB. draw 4 blue lines to form a square
    viewRGB (Diamond;255 0 0) drawLines (Square;0 0 255) drawLines myimg
 ```
@@ -2399,7 +2396,7 @@ Instead of swaps in the initialisation use error calculation for both directions
 function bline(x0, y0, x1, y1) {
 
   var dx = Math.abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
-  var dy = Math.abs(y1 - y0), sy = y0 < y1 ? 1 : -1; 
+  var dy = Math.abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
   var err = (dx>dy ? dx : -dy)/2;
 
   while (true) {
@@ -2467,7 +2464,7 @@ Modified image:
  Gray{Float64}(255.0)  Gray{Float64}(0.0)    Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(255.0)
  Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(0.0)    Gray{Float64}(255.0)  Gray{Float64}(255.0)
  Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(0.0)    Gray{Float64}(255.0)
- Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(0.0)  
+ Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(255.0)  Gray{Float64}(0.0)
 ```
 
 
@@ -2620,40 +2617,40 @@ fun main(args: Array<String>) {
 
 
 ```maple
-SegmentBresenham := proc (img, x0, y0, x1, y1) 
-    local deltax, deltay, x, y, ystep, steep, err, img2, x02, y02, x12, y12; 
-    x02, x12, y02, y12 := y0, y1, x0, x1; 
-    steep := abs(x12 - x02) < abs(y12 - y02); 
-    img2 := copy(img); 
-    if steep then 
-        x02, y02 := y02, x02; 
-        x12, y12 := y12, x12; 
-    end if; 
-    if x12 < x02 then 
+SegmentBresenham := proc (img, x0, y0, x1, y1)
+    local deltax, deltay, x, y, ystep, steep, err, img2, x02, y02, x12, y12;
+    x02, x12, y02, y12 := y0, y1, x0, x1;
+    steep := abs(x12 - x02) < abs(y12 - y02);
+    img2 := copy(img);
+    if steep then
+        x02, y02 := y02, x02;
+        x12, y12 := y12, x12;
+    end if;
+    if x12 < x02 then
         x02, x12 := x12, x02;
         y02, y12 := y12, y02;
-    end if; 
-    deltax := x12 - x02; 
-    deltay := abs(y12 - y02); 
-    err := deltax / 2; 
-    y := y02; 
+    end if;
+    deltax := x12 - x02;
+    deltay := abs(y12 - y02);
+    err := deltax / 2;
+    y := y02;
     if y02 < y12 then
         ystep := 1
     else
         ystep := -1
-    end if; 
-    for x from x02 to x12 do 
+    end if;
+    for x from x02 to x12 do
         if steep then
             img2[y, x] := 0
         else
             img2[x, y] := 0
-        end if; 
-        err := err - deltay; 
-        if err < 0 then 
-            y := y + ystep; 
+        end if;
+        err := err - deltay;
+        if err < 0 then
+            y := y + ystep;
             err := err + deltax
-        end if; 
-    end do; 
+        end if;
+    end do;
     return img2;
 end proc:
 ```
@@ -2678,7 +2675,7 @@ Note: Store this function in a file named "bresenhamLine.m" in the @Bitmap folde
 
 %screen     = Bitmap object
 %startPoint = [x0,y0]
-%endPoint   = [x1,y1] 
+%endPoint   = [x1,y1]
 %color      = [red,green,blue]
 
 function bresenhamLine(screen,startPoint,endPoint,color)
@@ -2698,44 +2695,44 @@ function bresenhamLine(screen,startPoint,endPoint,color)
   %Simplified Bresenham algorithm
   dx = abs(endPoint(1) - startPoint(1));
   dy = abs(endPoint(2) - startPoint(2));
-  
+
   if(startPoint(1) < endPoint(1))
       sx = 1;
   else
       sx = -1;
   end
-  
+
   if(startPoint(2) < endPoint(2))
       sy = 1;
   else
       sy = -1;
   end
-  
+
   err = dx - dy;
   pixel = startPoint;
-  
+
   while(true)
-      
+
       screen.setPixel(pixel,color); %setPixel(x0,y0)
-      
+
       if( pixel == endPoint )
           break;
       end
-      
+
       e2 = 2*err;
-      
+
       if( e2 > -dy )
           err = err - dy;
           pixel(1) = pixel(1) + sx;
       end
-      
+
       if( e2 < dx )
           err = err + dx;
           pixel(2) = pixel(2) + sy;
       end
   end
-  
-  assignin('caller',inputname(1),screen); %saves the changes to the object   
+
+  assignin('caller',inputname(1),screen); %saves the changes to the object
 end
 
 ```
@@ -2775,30 +2772,30 @@ fn plot img coord steep col =
 fn drawLine img start end col =
 (
     local steep = (abs (end.y - start.y)) > (abs (end.x - start.x))
-  
+
     if steep then
     (
         swap start.x start.y
         swap end.x end.y
     )
-  
+
     if start.x > end.x then
     (
         swap start.x end.x
         swap start.y end.y
     )
-  
+
     local deltaX = end.x - start.x
     local deltaY = abs (end.y - start.y)
     local error = deltaX / 2.0
     local yStep = -1
     local y = start.y
-  
+
     if start.y < end.y then
     (
         yStep = 1
     )
-  
+
     for x in start.x to end.x do
     (
         plot img [x, y] steep col
@@ -2832,32 +2829,32 @@ void drawLine(texture2d<float, access::write> targetTexture, uint2 start, uint2 
 {
     int x = int(start.x);
     int y = int(start.y);
-    
+
     int dx = abs(x - int(end.x));
     int dy = abs(y - int(end.y));
-    
+
     int sx = start.x < end.x ? 1 : -1;
     int sy = start.y < end.y ? 1 : -1;
-    
+
     int err = (dx > dy ? dx : -dy) / 2;
-    
+
     while (true)
     {
         targetTexture.write(float4(1.0), uint2(x, y));
-        
+
         if (x == int(end.x) && y == int(end.y))
         {
             break;
         }
-        
+
         int e2 = err;
-        
+
         if (e2 > -dx)
         {
             err -= dy;
             x += sx;
         }
-        
+
         if (e2 < dy)
         {
             err += dx;
@@ -2972,7 +2969,7 @@ use Image::Imlib2;
 sub my_draw_line
 {
     my ( $img, $x0, $y0, $x1, $y1) = @_;
-    
+
     my $steep = (abs($y1 - $y0) > abs($x1 - $x0));
     if ( $steep ) {
   ( $y0, $x0 ) = ( $x0, $y0);
@@ -3044,7 +3041,7 @@ class Pixel { has UInt ($.R, $.G, $.B) }
 class Bitmap {
     has UInt ($.width, $.height);
     has Pixel @!data;
- 
+
     method fill(Pixel $p) {
         @!data = $p.clone xx ($!width*$!height)
     }
@@ -3053,7 +3050,7 @@ class Bitmap {
 	$j where ^$!height
 	--> Pixel
     ) is rw { @!data[$i + $j * $!width] }
- 
+
     method set-pixel ($i, $j, Pixel $p) {
 	self.pixel($i, $j) = $p.clone;
     }
@@ -3061,13 +3058,13 @@ class Bitmap {
 	self.pixel($i, $j);
     }
 }
- 
+
 sub line(Bitmap $bitmap, $x0 is copy, $x1 is copy, $y0 is copy, $y1 is copy) {
     my $steep = abs($y1 - $y0) > abs($x1 - $x0);
     if $steep {
         ($x0, $y0) = ($y0, $x0);
         ($x1, $y1) = ($y1, $x1);
-    } 
+    }
     if $x0 > $x1 {
         ($x0, $x1) = ($x1, $x0);
         ($y0, $y1) = ($y1, $y0);
@@ -3079,18 +3076,18 @@ sub line(Bitmap $bitmap, $x0 is copy, $x1 is copy, $y0 is copy, $y1 is copy) {
     my $y-step = $y0 < $y1 ?? 1 !! -1;
     my $y = $y0;
     for $x0 .. $x1 -> $x {
-        my $pix = Pixel.new(R => 100, G => 200, B => 0); 
+        my $pix = Pixel.new(R => 100, G => 200, B => 0);
         if $steep {
             $bitmap.set-pixel($y, $x, $pix);
         } else {
             $bitmap.set-pixel($x, $y, $pix);
-        } 
+        }
         $error += $Δerror;
         if $error >= 0.5 {
             $y += $y-step;
             $error -= 1.0;
-        } 
-    } 
+        }
+    }
 }
 ```
 
@@ -3099,7 +3096,7 @@ sub line(Bitmap $bitmap, $x0 is copy, $x1 is copy, $y0 is copy, $y1 is copy) {
 ## Phix
 
 Modified copy of [[Bitmap/Bresenham%27s_line_algorithm#Euphoria|Euphoria]], with a bigger bitmap and a simpler pattern.
-Requires new_image() from [[Bitmap#Phix|Bitmap]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]]. 
+Requires new_image() from [[Bitmap#Phix|Bitmap]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]].
 Included as demo\rosetta\Bresenham_line.exw, results may be verified with demo\rosetta\viewppm.exw
 
 ```Phix
@@ -3194,7 +3191,7 @@ sequence screenData = new_image(400,300,black)
 
 ### version 1
 
-{{incorrect|PL/I|The sample output does not start at -1/-3!?! Pls show the complete program producing this output.}}      
+{{incorrect|PL/I|The sample output does not start at -1/-3!?! Pls show the complete program producing this output.}}
 
 ```PL/I
 
@@ -3403,35 +3400,35 @@ draw_line(Pict,X1,Y1,X2,Y2):-
 ```PureBasic
 Procedure BresenhamLine(x0 ,y0 ,x1 ,y1)
      If Abs(y1 - y0) > Abs(x1 - x0);
-        steep =#True 
+        steep =#True
         Swap x0, y0
         Swap x1, y1
-     EndIf    
-     If x0 > x1 
+     EndIf
+     If x0 > x1
          Swap x0, x1
          Swap y0, y1
-     EndIf 
+     EndIf
      deltax = x1 - x0
      deltay = Abs(y1 - y0)
      error = deltax / 2
      y = y0
-     If y0 < y1  
+     If y0 < y1
         ystep = 1
      Else
-        ystep = -1 
-     EndIf 
+        ystep = -1
+     EndIf
      For x = x0 To x1
-         If steep 
+         If steep
            Plot(y,x)
-         Else 
+         Else
            Plot(x,y)
          EndIf
          error - deltay
-         If error < 0 
+         If error < 0
              y + ystep
              error + deltax
          EndIf
-     Next        
+     Next
 EndProcedure
 
 #Window1   = 0
@@ -3450,9 +3447,9 @@ If OpenWindow(#Window1, 0, 0, #width, #height, "Bresenham's Line PureBasic Examp
       FillArea(0,0,-1,$FFFFFF) :FrontColor(0)
       While Angle < 2*#PI
         BresenhamLine(150,150,150+Cos(Angle)*120,150+Sin(Angle)*120)
-        Angle + #PI/60     
-      Wend 
-      
+        Angle + #PI/60
+      Wend
+
       StopDrawing()
       SetGadgetState(#ImgGadget, ImageID(#Image1))
       Repeat
@@ -3496,7 +3493,7 @@ def line(self, x0, y0, x1, y1):
             if err < 0:
                 x += sx
                 err += dy
-            y += sy        
+            y += sy
     self.set(x, y)
 Bitmap.line = line
 
@@ -3622,7 +3619,7 @@ SUB draw_line(x1, y1, x2, y2, colour)
     END IF
     IF x1 < x2 THEN x_step = 1 ELSE x_step = -1
     IF y1 < y2 THEN y_step = 1 ELSE y_step = -1
-    
+
     IF y_dist > x_dist THEN     ' steep angle, step by y
   error = y_dist/2
   x = x1
@@ -3646,7 +3643,7 @@ SUB draw_line(x1, y1, x2, y2, colour)
       END IF
   NEXT y
     END IF
-    
+
 END SUB
 ```
 
@@ -3670,7 +3667,7 @@ END SUB
 
 ### version 1
 
-This REXX version has automatic scaling (for displaying the plot),   includes a border,   accepts lines segments from the 
+This REXX version has automatic scaling (for displaying the plot),   includes a border,   accepts lines segments from the
 
 command line,   displays a (background) plot field,   and it also handles multiple line segments.
 
@@ -3795,7 +3792,7 @@ Do Forever
 Return
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 11 ..|.......
@@ -3827,7 +3824,7 @@ Return
 load "guilib.ring"
 load "stdlib.ring"
 
-new qapp 
+new qapp
        {
        win1 = new qwidget() {
               setwindowtitle("drawing using qpainter")
@@ -3870,7 +3867,7 @@ func draw
             while true
                   drawline (x1*2,y1*2,x2*2,y2*2)
                   if x1 = x2 if y1 = y2 exit ok ok
-                  if dx > dy 
+                  if dx > dy
                      x1 += sx  e -= dy if e < 0 e += dx  y1 += sy ok
                   else
                      y1 += sy e -= dx if e < 0 e += dy x1 += sx ok ok
@@ -3894,21 +3891,21 @@ Output :
 Pixel = Struct.new(:x, :y)
 
 class Pixmap
-  
+
   def draw_line(p1, p2, colour)
     validate_pixel(p1.x, p2.y)
     validate_pixel(p2.x, p2.y)
 
     x1, y1 = p1.x, p1.y
     x2, y2 = p2.x, p2.y
- 
+
     steep = (y2 - y1).abs > (x2 - x1).abs
-    
+
     if steep
       x1, y1 = y1, x1
       x2, y2 = y2, x2
     end
-    
+
     if x1 > x2
       x1, x2 = x2, x1
       y1, y2 = y2, y1
@@ -3918,7 +3915,7 @@ class Pixmap
     deltay = (y2 - y1).abs
     error = deltax / 2
     ystep = y1 < y2 ? 1 : -1
- 
+
     y = y1
     x1.upto(x2) do |x|
       pixel = steep ? [y,x] : [x,y]
@@ -4081,7 +4078,7 @@ object BitmapOps {
       }
 
       for((x,y) <- it)
-         bm.setPixel(x, y, c)   
+         bm.setPixel(x, y, c)
    }
 }
 ```
@@ -4162,7 +4159,7 @@ package require Tk
 proc drawLine {image colour point0 point1} {
     lassign $point0 x0 y0
     lassign $point1 x1 y1
-    
+
     set steep [expr {abs($y1 - $y0) > abs($x1 - $x0)}]
     if {$steep} {
         lassign [list $x0 $y0] y0 x0
@@ -4176,7 +4173,7 @@ proc drawLine {image colour point0 point1} {
     set deltay [expr {abs($y1 - $y0)}]
     set error [expr {$deltax / 2}]
     set ystep [expr {$y0 < $y1 ? 1 : -1}]
-    
+
     for {set x $x0; set y $y0} {$x <= $x1} {incr x} {
         setPixel $image $colour [expr {$steep ? [list $y $x] : [list $x $y]}]
         incr error -$deltay
@@ -4186,12 +4183,12 @@ proc drawLine {image colour point0 point1} {
         }
     }
 }
- 
+
 # create the image and display it
 set img [newImage 200 100]
 label .l -image $img
 pack .l
- 
+
 fill $img black
 drawLine $img yellow {20 20} {180 80}
 drawLine $img yellow {180 20} {20 80}
@@ -4256,7 +4253,7 @@ EndPrgm
 		map(i,j)="."
 	Next: Next 'j, i
 	points=(UBound(data)+1)/2
-	For p=1 To points 
+	For p=1 To points
 		x=data((p-1)*2)
 		y=data((p-1)*2+1)
 		list(p)=Array(x,y)
@@ -4301,7 +4298,7 @@ Sub draw_line(p1, p2)
 		If err2>-dy Then err=err-dy: x=x+sx
 		If err2< dx Then err=err+dx: y=y+sy
 	Loop
-End Sub 'draw_line 
+End Sub 'draw_line
 ```
 
 {{out}}
@@ -4449,7 +4446,7 @@ ppm.writeJPGFile("line.jpg");
 class PPM{  // (0,0) is logically bottom left
    fcn init(width,height,rgb=0){
       sz:=width*height;
-      var [const] 
+      var [const]
          data=Data(sz*3).fill(rgb.toBigEndian(3).toData()),  // initialize to 24bit Black (RGB=000)
 	 w=width, h=height;
    }
@@ -4501,9 +4498,9 @@ class PPM{  // (0,0) is logically bottom left
 	 y+=1;
 	 if (radiusError<0) radiusError+=2*y + 1;
 	 else{ x-=1; radiusError+=2*(y - x + 1); }
-      }      
+      }
    }
-   fcn cross(x,y,rgb=0xff|00,len=10){ 
+   fcn cross(x,y,rgb=0xff|00,len=10){
       a:=len/2; b:=len-a;
       line(x-a,y, x+b,y,rgb); line(x,y-a, x,y+b,rgb);
    }

@@ -14,7 +14,7 @@ tags = []
 [[Category:Networking and Web Interaction]]
 
 ;Task:
-Print an HTTPS URL's content to the console. Checking the host certificate for validity is recommended. 
+Print an HTTPS URL's content to the console. Checking the host certificate for validity is recommended.
 
 The client should not authenticate itself to the server — the webpage https://sourceforge.net/ supports that access policy — as that is the subject of other [[HTTPS request with authentication|tasks]].
 
@@ -186,7 +186,7 @@ The usual Java mechanisms can be used to manage acceptance of SSL certificates i
 
 {{libheader|DRAKMA}}
 
-First grabbing the entire body as a string, and then by pulling from a stream.  This is the same code as in [[HTTP Request]]; <code>drakma:http-request</code> supports SSL. 
+First grabbing the entire body as a string, and then by pulling from a stream.  This is the same code as in [[HTTP Request]]; <code>drakma:http-request</code> supports SSL.
 
 
 ```lisp
@@ -194,7 +194,7 @@ First grabbing the entire body as a string, and then by pulling from a stream.  
 (defun wget-drakma-string (url &optional (out *standard-output*))
   "Grab the body as a string, and write it to out."
   (write-string (drakma:http-request url) out))
- 
+
 (defun wget-drakma-stream (url &optional (out *standard-output*))
   "Grab the body as a stream, and write it to out."
   (loop with body = (drakma:http-request url :want-stream t)
@@ -248,7 +248,7 @@ end.
 
 ;; asynchronous call back definition
 (define (success name text) (writeln 'Loaded name) (writeln text))
-;; 
+;;
 (file->string success "https:/sourceforge.net")
 
 ```
@@ -498,7 +498,7 @@ while (scanner.hasNext()) {
 ## JavaScript
 
 
-###  Modern Browsers 
+###  Modern Browsers
 
 
 ```JavaScript
@@ -518,7 +518,7 @@ fetch("https://sourceforge.net")
 
 
 
-###  Node.js 
+###  Node.js
 
 
 ```JavaScript
@@ -611,7 +611,7 @@ FAILURE: 60 Peer certificate cannot be authenticated with given CA certificates
 ch = xtra("Curl").new()
 CURLOPT_URL = 10002
 ch.setOption(CURLOPT_URL, "https://sourceforge.net")
-res = ch.exec(1) 
+res = ch.exec(1)
 if integerP(res) then
   put "Error:" && curl_error(res)
 else
@@ -700,7 +700,7 @@ llList2String(lBody, 5)=<!--[if IE 9 ]>    <html lang="en" class="no-js ie9" > <
 llList2String(lBody, 6)=<!--[if (gt IE 9)|!(IE)]>--> <html lang="en" class="no-js"> <!--<![endif]-->
 llList2String(lBody, 7)=    <head>
 llList2String(lBody, 8)=        <meta charset="utf-8">
-llList2String(lBody, 9)=        
+llList2String(lBody, 9)=
 llList2String(lBody, 10)=        <meta id="webtracker" name="webtracker" content='{"event_id": "ea71f064-ca28-11e1-98cc-0019b9f0e8fc"}'>
 llList2String(lBody, 11)=        <meta name="description" content="Free, secure and fast downloads from the largest Open Source applications and software directory - SourceForge.net">
 llList2String(lBody, 12)=        <meta name="keywords" content="Open Source, Open Source Software, Development, Community, Source Code, Secure,  Downloads, Free Software">
@@ -776,7 +776,7 @@ module HTTP
         def wc = WebClient();
         def myStream = wc.OpenRead(https://sourceforge.com);
         def sr = StreamReader(myStream);
-        
+
         WriteLine(sr.ReadToEnd());
         myStream.Close()
     }
@@ -908,7 +908,7 @@ curl_easy_setopt(curl, CURLOPT_URL, "https://sourceforge.net/")
 object res = curl_easy_perform_ex(curl)
 curl_easy_cleanup(curl)
 curl_global_cleanup()
- 
+
 puts(1,res)
 ```
 
@@ -1009,7 +1009,7 @@ print(requests.get("https://sourceforge.net").text)
 {{libheader|RCurl}}
 {{libheader|XML}}
 
-The basic idea is to use getURL (as with [[HTTP_Request]]), but with some extra parameters. 
+The basic idea is to use getURL (as with [[HTTP_Request]]), but with some extra parameters.
 
 ```R
 library(RCurl)
@@ -1150,7 +1150,7 @@ import scala.io.Source
 
 object HttpsTest extends App {
   System.setProperty("http.agent", "*")
-   
+
   Source.fromURL("https://sourceforge.net").getLines.foreach(println)
 }
 ```
@@ -1206,7 +1206,7 @@ import Foundation
 let request = NSURLRequest(URL: NSURL(string: "https://sourceforge.net")!)
 
 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {res, data, err in // callback
-    
+
     // data is binary
     if (data != nil) {
         let string = NSString(data: data!, encoding: NSUTF8StringEncoding)
@@ -1234,11 +1234,11 @@ package require tls
 # First argument is the protocol name, second the default port, and
 # third the connection builder command
 http::register "https" 443 ::tls::socket
- 
+
 # Make a secure connection, which is almost identical to normal
 # connections except for the different protocol in the URL.
 set token [http::geturl "https://sourceforge.net/"]
- 
+
 # Now as for conventional use of the “http” package
 puts [http::data $token]
 http::cleanup $token
@@ -1376,14 +1376,14 @@ zkl: data[0][data[1],200).text
 
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>   
+<!--[if IE 8 ]>
 ```
 
 
 
 
 {{omit from|Applesoft BASIC|No TCP/IP network support on Apple II}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Commodore BASIC|Does not have network access}}
 {{omit from|Inform 7|Does not have network access.}}
 {{omit from|Integer BASIC|No TCP/IP network support on Apple II}}

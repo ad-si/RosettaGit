@@ -15,7 +15,7 @@ tags = []
 [[Category:Iteration]]
 
 ;Task:
-Produce a sequential count in octal,   starting at zero,   and using an increment of a one for each consecutive number. 
+Produce a sequential count in octal,   starting at zero,   and using an increment of a one for each consecutive number.
 
 Each number should appear on a single line,   and the program should count until terminated,   or until the maximum value of the numeric type in use is reached.
 
@@ -54,7 +54,7 @@ Each number should appear on a single line,   and the program should count until
 
 ## 360 Assembly
 
-The program uses one ASSIST macro (XPRNT) to keep the code as short as possible. 
+The program uses one ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Octal                     04/07/2016
@@ -64,7 +64,7 @@ OCTAL    CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          LA     R6,0               i=0
 LOOPI    LR     R2,R6              x=i
@@ -73,17 +73,17 @@ LOOPI    LR     R2,R6              x=i
 LOOP     LR     R3,R2              save x
          SLL    R2,29              shift left  32-3
          SRL    R2,29              shift right 32-3
-         CVD    R2,DW              convert octal(j) to pack decimal 
+         CVD    R2,DW              convert octal(j) to pack decimal
          OI     DW+7,X'0F'         prepare unpack
          UNPK   0(1,R4),DW         packed decimal to zoned printable
          LR     R2,R3              restore x
          SRL    R2,3               shift right 3
          BCTR   R4,0               @pg=@pg-1
          BCT    R9,LOOP            j=j-1
-         CVD    R2,DW              binary to pack decimal 
+         CVD    R2,DW              binary to pack decimal
          OI     DW+7,X'0F'         prepare unpack
          UNPK   0(1,R4),DW         packed decimal to zoned printable
-         CVD    R6,DW              convert i to pack decimal 
+         CVD    R6,DW              convert i to pack decimal
          MVC    ZN12,EM12          load mask
          ED     ZN12,DW+2          packed decimal (PL6) to char (CL12)
          MVC    PG(12),ZN12        output i
@@ -92,11 +92,11 @@ LOOP     LR     R3,R2              save x
          BE     ELOOPI             then exit loop on i
          LA     R6,1(R6)           i=i+1
          B      LOOPI              loop on i
-ELOOPI   L      R13,4(0,R13)       epilog 
+ELOOPI   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
-         LTORG  
+         LTORG
 PG       DC     CL80' '            buffer
 DW       DS     0D,PL8             15num
 ZN12     DS     CL12
@@ -180,8 +180,8 @@ First few lines of Output:
 ```aime
 integer o;
 
-o = 0;    
-do {     
+o = 0;
+do {
     o_xinteger(8, o);
     o_byte('\n');
     o += 1;
@@ -256,7 +256,7 @@ begin
             r( cPos // 1 ) := octDigits( v rem 8 // 1 );
             v :=  v div 8;
             ( v > 0 )
-        end do begin            
+        end do begin
             cPos := cPos + 1
         end while_v_gt_0;
         % show most significant digit on a newline %
@@ -296,7 +296,7 @@ end.
 
 /* ARM assembly Raspberry PI  */
 /*  program countoctal.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -316,13 +316,13 @@ szCarriageReturn:   .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
     mov r4,#0                                     @ loop indice
 1:                                                @ begin loop
     mov r0,r4
@@ -335,53 +335,53 @@ main:                                             @ entry of program
     ble 1b
 
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to octal                             */ 
+/*     Converting a register to octal                             */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion8:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:                                                  @ start loop
     mov r1,r0
     lsr r0,#3                                       @ / by 8
     sub r1,r0,lsl #3                                @ compute remainder r1 - (r0 * 8)
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -394,18 +394,18 @@ conversion8:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 
 ```
 
@@ -593,7 +593,7 @@ Terminate by pressing ESCape.
         N% += 1
       UNTIL FALSE
       END
-      
+
       REM Convert N% to string in base B% with minimum M% digits:
       DEF FN_tobase(N%, B%, M%)
       LOCAL D%, A$
@@ -639,7 +639,7 @@ Stops when the user presses Ctrl-C or when the stack overflows. The solution is 
 ```bracmat
 
   ( oct
-  =   
+  =
     .     !arg:<8
         & (!arg:~<0|ERROR)
       | str$(oct$(div$(!arg.8)) mod$(!arg.8))
@@ -650,7 +650,7 @@ Stops when the user presses Ctrl-C or when the stack overflows. The solution is 
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 
 ```bf
@@ -864,7 +864,7 @@ Output:
         17%8
         20%8
         21%8
-        22%8 
+        22%8
 
 ```
 
@@ -876,7 +876,7 @@ Output:
 ```ruby
 # version 0.21.1
 # using unsigned 8 bit integer, range 0 to 255
- 
+
 (0_u8..255_u8).each { |i| puts i.to_s(8) }
 ```
 
@@ -924,7 +924,7 @@ void main() {
 ## Dc
 
 
-###  Named Macro 
+###  Named Macro
 
 A simple infinite loop and octal output will do.
 
@@ -934,7 +934,7 @@ A simple infinite loop and octal output will do.
 
 
 
-###  Anonymous Macro 
+###  Anonymous Macro
 
 Needs <code>r</code> (swap TOS and NOS):
 
@@ -1141,10 +1141,10 @@ octal ints
 ```fortran
 program Octal
   implicit none
-  
+
   integer, parameter :: i64 = selected_int_kind(18)
   integer(i64) :: n = 0
-  
+
 ! Will stop when n overflows from
 ! 9223372036854775807 to -92233720368547758078 (1000000000000000000000 octal)
   do while(n >= 0)
@@ -1691,7 +1691,7 @@ end
 ```
 
 Or use a recursive listing of permutations with the exception that the first digit is not 0 (unless listing single-digit numbers). For each digit-place, list numbers with 0-7 in the next digit-place.
- 
+
 ```lb
 
  i = 0
@@ -1827,32 +1827,32 @@ While[True,Print[BaseForm[x,8];x++]
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
-    n = 0; 
+    n = 0;
     while (1)
         dec2base(n,8)
-        n = n+1; 
-    end; 
+        n = n+1;
+    end;
 ```
 
 Or use printf:
 
 ```Matlab
-    n = 0; 
+    n = 0;
     while (1)
         printf('%o\n',n);
-        n = n+1; 
-    end; 
+        n = n+1;
+    end;
 ```
 
 
-If a predefined sequence should be displayed, one can use  
+If a predefined sequence should be displayed, one can use
 
 ```Matlab
     seq = 1:100;
     dec2base(seq,8)
 ```
 
-or 
+or
 
 ```Matlab
     printf('%o\n',seq);
@@ -2445,21 +2445,21 @@ While ( $True )
 
 ## Prolog
 
-Rather than just printing out a list of octal numbers, this code will generate a sequence. 
-octal/1 can also be used to tell if a number is a valid octal number or not. 
-octalize will keep producing and printing octal number, there is no limit. 
+Rather than just printing out a list of octal numbers, this code will generate a sequence.
+octal/1 can also be used to tell if a number is a valid octal number or not.
+octalize will keep producing and printing octal number, there is no limit.
 
 
 ```Prolog
 o(O) :- member(O, [0,1,2,3,4,5,6,7]).
 
 octal([O]) :- o(O).
-octal([A|B]) :- 
-	octal(O), 
-	o(T), 
+octal([A|B]) :-
+	octal(O),
+	o(T),
 	append(O, [T], [A|B]),
 	dif(A, 0).
-	
+
 octalize :-
 	forall(
 		octal(X),
@@ -2482,12 +2482,12 @@ Procedure.s octal(n.q)
     If n < 1
       For j = i To 0 Step -1
         result + Str(digits(j))
-      Next 
+      Next
       Break
     EndIf
-  Next 
-  
-  ProcedureReturn result  
+  Next
+
+  ProcedureReturn result
 EndProcedure
 
 Define n.q
@@ -2495,8 +2495,8 @@ If OpenConsole()
   While n >= 0
     PrintN(octal(n))
     n + 1
-  Wend 
-  
+  Wend
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2605,7 +2605,7 @@ w=length(sourceline())                 /*used for formatting width of #s*/
                                        /*stick a fork in it, we're done.*/
 ```
 
-'''output''' 
+'''output'''
 <pre style="height:30ex">
            number in base ten =   0            number in octal =     0
            number in base ten =   1            number in octal =     1
@@ -2657,7 +2657,7 @@ next
 func octal m
      output = ""
      w = m
-     while fabs(w) > 0    
+     while fabs(w) > 0
            oct = w & 7
            w = floor(w / 8)
            output = string(oct) + output
@@ -2704,12 +2704,12 @@ end
 ```runbasic
 input "Begin number:";b
 input "  End number:";e
- 
+
 for i = b to e
   print i;" ";toBase$(8,i)
-next i 
+next i
 end
- 
+
 function toBase$(base,base10)
 for i = 10 to 1 step -1
   toBase$   = str$(base10 mod base) +toBase$
@@ -2799,7 +2799,7 @@ This example uses the [http://seed7.sourceforge.net/libraries/integer.htm#%28in_
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   local
     var integer: i is 0;
@@ -2938,7 +2938,7 @@ done
 
 
 
-### Using printf 
+### Using printf
 
 Increment a decimal counter and use <code>printf(1)</code> to print it in octal. Our loop stops when the counter overflows to negative.
 
@@ -3025,46 +3025,46 @@ This program prints octal numbers until the internal representation of the curre
 
 
 ```Whitespace
-    
-
-    
-  		
- 	  	
-
- 	 	
-   	 	 
-	
-     	
-	   
- 
-  
-
-   	
- 
-    	   
-	 		 
-	   	   
-	 	     
- 	  	
-	  	
-		 	
- 
 
 
-   	 
- 
- 
-		 		
-	
- 	
- 
- 	 
-
-   		
- 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 
@@ -3221,7 +3221,7 @@ foreach n in ([0..]){println("%.8B".fmt(n))}
 60 IF n>0 THEN GO TO 40
 70 PRINT i;TAB 3;" = ";o$
 80 NEXT i
-90 STOP 
+90 STOP
 100 DEF FN m(a,b)=a-INT (a/b)*b
 ```
 

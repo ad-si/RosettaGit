@@ -11,11 +11,11 @@ tags = []
 +++
 
 {{Task|Control Structures}}
-{{Control Structures}} 
+{{Control Structures}}
 [[Category:Simple]]
 
 ;Task:
-List the   ''conditional structures''   offered by a programming language. 
+List the   ''conditional structures''   offered by a programming language.
 
 Common conditional structures are     '''if-then-else'''     and     '''switch'''.
 
@@ -108,21 +108,21 @@ Here are the branch mnemonic opcodes:
         BNZR   Rx          "
 ```
 
-The ASM (Assembler Structured Macros) toolkit brings structures to IBM assembler 360. 
+The ASM (Assembler Structured Macros) toolkit brings structures to IBM assembler 360.
 
 ```360asm
       expression:
-         opcode,op1,rel,op2    
-         opcode,op1,rel,op2,OR,opcode,op1,rel,op2  
-         opcode,op1,rel,op2,AND,opcode,op1,rel,op2 
+         opcode,op1,rel,op2
+         opcode,op1,rel,op2,OR,opcode,op1,rel,op2
+         opcode,op1,rel,op2,AND,opcode,op1,rel,op2
            opcode::=C,CH,CR,CLC,CLI,CLCL, LTR, CP,CE,CD,...
            rel::=EQ,NE,LT,LE,GT,GE,  (fortran style)
                  E,L,H,NE,NL,NH      (assembler style)
                  P (plus), M (minus) ,Z (zero) ,O (overflow)
            opcode::=CLM,TM
            rel::=O (ones),M (mixed) ,Z (zeros)
-           
-* IF 
+
+* IF
          IF     expression [THEN]
            ...
          ELSEIF expression [THEN]
@@ -141,7 +141,7 @@ The ASM (Assembler Structured Macros) toolkit brings structures to IBM assembler
            MV   PG,C'?'                   pg='?'
          ENDIF                          end if
 
-* SELECT 
+* SELECT
          SELECT expressionpart1
            WHEN expressionpart2a
              ...
@@ -150,8 +150,8 @@ The ASM (Assembler Structured Macros) toolkit brings structures to IBM assembler
           OTHRWISE
              ...
          ENDSEL
-		 
-* example SELECT type 1 
+
+* example SELECT type 1
          SELECT CLI,HEXAFLAG,EQ         select hexaflag=
            WHEN X'20'                     when x'20'
              MVI  PG,C'<'                   pg='<'
@@ -175,13 +175,13 @@ The ASM (Assembler Structured Macros) toolkit brings structures to IBM assembler
 
 * CASE
          CASENTRY R4                    select case r4
-           CASE 1                         case 1                      
+           CASE 1                         case 1
              LA     R5,1                    r5=1
-           CASE 3                         case 3     
+           CASE 3                         case 3
              LA     R5,2                    r5=2
-           CASE 5                         case 5     
+           CASE 5                         case 5
              LA     R5,3                    r5=1
-           CASE 7                         case 7     
+           CASE 7                         case 7
              LA     R5,4                    r5=4
          ENDCASE                        end select
 ```
@@ -190,7 +190,7 @@ The ASM (Assembler Structured Macros) toolkit brings structures to IBM assembler
 
 ## 6502 Assembly
 
-6502 Assembly has 8 conditional branch instructions; each instruction will test the appropriate flag and condition and jump between -128 and 127 bytes.  
+6502 Assembly has 8 conditional branch instructions; each instruction will test the appropriate flag and condition and jump between -128 and 127 bytes.
 To understand these conditional instructions, it is helpful to remember that the comparison instructions (CMP, CPX, CPY) set the flags as if a subtraction had occurred:
 
 ```6502asm
@@ -198,7 +198,7 @@ To understand these conditional instructions, it is helpful to remember that the
 		CMP #11
 ```
 
-Following these instructions, the accumulator will still hold 10 but the flags are set as if you had instructed the processor to perform 10 - 11.  
+Following these instructions, the accumulator will still hold 10 but the flags are set as if you had instructed the processor to perform 10 - 11.
 The result is -1, so the sign flag will be set, the zero flag will be cleared, the overflow flag will be cleared, and the carry flag will be set.
 
 ```6502asm
@@ -244,7 +244,7 @@ Loop:		...do something
 		BNE Loop
 ```
 
-This code will loop until X is zero.  
+This code will loop until X is zero.
 Most assemblers will figure out the correct offset for you if you use a label in place of the offset after a branch instruction, as in the above example.
 
 
@@ -294,7 +294,7 @@ end case;
 
 ### case without a default
 
-When there is no '''when others''' clause, the compiler will complain about any uncovered alternative. This defends against a common reason for bugs in other languages. 
+When there is no '''when others''' clause, the compiler will complain about any uncovered alternative. This defends against a common reason for bugs in other languages.
 I.e., the following code is syntactically incorrect:
 
 
@@ -331,7 +331,7 @@ end case;
 
 ### select
 
-Select provides conditional acceptance of entry calls. 
+Select provides conditional acceptance of entry calls.
 Select can also be used to conditionally call an entry
 
 
@@ -352,7 +352,7 @@ end select;
 
 ### =Conditional entry call=
 
-A selective entry call provides a way to time-out an entry call. 
+A selective entry call provides a way to time-out an entry call.
 Without the time-out the calling task will suspend until the entry call is accepted.
 
 ```ada
@@ -363,7 +363,7 @@ or
 end select;
 ```
 
-The entry Start on the task My_Task will be called. 
+The entry Start on the task My_Task will be called.
 If My_Task accepts the entry call before the timer expires the timer is canceled. If the timeout expires before the entry call is accepted the entry call is canceled.
 
 
@@ -459,10 +459,10 @@ if (c1) {
 
 Algol 60 has invented the famous '''if then else block''' structure.
 Algol 60 has conditional expressions of the form:
-  expression::=  '''if''' conditional_expression '''then''' expression '''else''' expression 
+  expression::=  '''if''' conditional_expression '''then''' expression '''else''' expression
     K:='''if''' X=Y '''then''' I '''else''' J
 Algol 60 has conditional statements of the form:
-  statement::=  '''if''' conditional_expression '''then''' statement '''else''' statement 
+  statement::=  '''if''' conditional_expression '''then''' statement '''else''' statement
     '''if''' X=Y '''then''' K:=I '''else''' K:=J
   statement::=  '''if''' conditional_expression '''then''' statement
     '''if''' X=Y '''then''' K:=I
@@ -548,7 +548,7 @@ end.
 
 ```txt
 
-a is              1  
+a is              1
 lt 4
 a + b is three
 two
@@ -563,7 +563,7 @@ two
 ===If-then-else===
 
 In AmbientTalk, if:then:else: is a keyworded message (as in Smalltalk).
-The first argument should be a boolean expression. 
+The first argument should be a boolean expression.
 The second and third arguments should be blocks (aka anonymous functions or thunks).
 
 
@@ -758,29 +758,29 @@ szMessTest8: .asciz "Test 8 : then.\n"
 szMessTest8N: .asciz "Test 8 : else.\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
-    @ test equal zero, not equal zero 
+    @ test equal zero, not equal zero
     @movs r1,#0      @ comments
     movs r1,#1          @  @ s --> flags   and uncomments
     ldreq r0,iAdrszMessTest1
     ldrne r0,iAdrszMessTest1N
     bl affichageMess
-	
-    @ test equal 5, not equal 5 
+
+    @ test equal 5, not equal 5
     @mov r1,#5
     mov r1,#10
     cmp r1,#5
     ldreq r0,iAdrszMessTest2
     ldrne r0,iAdrszMessTest2N
     bl affichageMess
-	
+
     @ test < 5,  > 5  SIGNED
     mov r1,#-10
     @mov r1,#10
@@ -788,7 +788,7 @@ main:                /* entry of program  */
     ldrlt r0,iAdrszMessTest3
     ldrgt r0,iAdrszMessTest3N
     bl affichageMess
-	
+
     @ test < 5,  > 5  UNSIGNED
     @mov r1,#-10
     mov r1,#2
@@ -796,14 +796,14 @@ main:                /* entry of program  */
     ldrls r0,iAdrszMessTest4
     ldrhi r0,iAdrszMessTest4N
     bl affichageMess
-	
-    @ test < 0,  > 0 
+
+    @ test < 0,  > 0
     @movs r1,#-10
     movs r1,#2     @ s --> flags
     ldrmi r0,iAdrszMessTest5
     ldrpl r0,iAdrszMessTest5N
     bl affichageMess
-	
+
     @ carry off carry on
     @mov r1,#-10     @ for carry set
     @mov r1,#10  @ for carry off
@@ -814,9 +814,9 @@ main:                /* entry of program  */
     bl affichageMess
 
     @ overflow off overflow on
-    @mov r1,#-10     @ for not overflow 
+    @mov r1,#-10     @ for not overflow
     @mov r1,#10  @ for not overflow
-    mov r1,#(2<<30) - 1  @ for overflow 
+    mov r1,#(2<<30) - 1  @ for overflow
     adds r1,#20    @ s --> flags
     ldrvc r0,iAdrszMessTest7    @ overflow off
     ldrvs r0,iAdrszMessTest7N   @ overflow on
@@ -825,8 +825,8 @@ main:                /* entry of program  */
     @ other if then else
     mov r1,#5  @ for then
     @mov r1,#20  @ for else
-    cmp r1,#10   
-    ble 1f         @ less or equal 
+    cmp r1,#10
+    ble 1f         @ less or equal
     @bge 1f      @ greather or equal
     @else
     ldr r0,iAdrszMessTest8N    @ overflow off
@@ -836,7 +836,7 @@ main:                /* entry of program  */
    ldr r0,iAdrszMessTest8    @ overflow off
     bl affichageMess
 2:
- 
+
 100:   /* standard end of the program */
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
@@ -859,11 +859,11 @@ iAdrszMessTest7N:		.int szMessTest7N
 iAdrszMessTest8:		.int szMessTest8
 iAdrszMessTest8N:		.int szMessTest8N
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -877,7 +877,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
 
@@ -1010,7 +1010,7 @@ Select
     Case <expression>
         statement1
         ...
-    [Case 
+    [Case
         statement2
         ...]
     [Case Else
@@ -1224,7 +1224,7 @@ IF x < 0 THEN doSomething ELSE doOtherThing
 Multi-line IF:
 
 
-```qbasic>IF x 
+```qbasic>IF x
  0 AND x < 10 THEN
    'do stuff
 ELSE IF x = 0 THEN
@@ -1321,7 +1321,7 @@ Of these, we'll need to see how nested if statements parse.
 
 ```txt
 
-# Begin Case / Case / End Case, Do / Until, If Then, While / End While 
+# Begin Case / Case / End Case, Do / Until, If Then, While / End While
 
 
 begin case
@@ -1331,7 +1331,7 @@ begin case
       statement(s)
    else
       statement(s)
-end case 
+end case
 
 
 
@@ -1343,19 +1343,19 @@ until boolean_expr
 
 if booleanexpr then
    statement(s)
-end if 
+end if
 
 if booleanexpr then
    statement(s)
 else
    statement(s)
-end if 
+end if
 
 
 
 while boolean_expr
    statement(s)
-end while 
+end while
 
 ```
 
@@ -1374,7 +1374,7 @@ for i = 0 to 1
         print "i is true j is false"
       end if
     else
-      if (j) then 
+      if (j) then
         print "i is false j is true"
       else
         print "i is false j is false"
@@ -1434,12 +1434,12 @@ IF CMDEXTVERSION number             command
 IF DEFINED variable                 command
 IF [/I] string1 compare-op string2  command
    where compare-op is:
-   EQU - equal 
-   NEQ - not equal 
-   LSS - less than 
-   LEQ - less than or equal 
-   GTR - greater than 
-   GEQ - greater than or equal 
+   EQU - equal
+   NEQ - not equal
+   LSS - less than
+   LEQ - less than or equal
+   GTR - greater than
+   GEQ - greater than or equal
    /I    case insensitive string compares
 
 ```
@@ -1452,7 +1452,7 @@ For example:
 IF EXIST %filename% (
   del %filename%
 ) ELSE (
-  echo %filename% not found 
+  echo %filename% not found
 )
 
 ```
@@ -1499,19 +1499,19 @@ m = 0 and m < n
 
 ## Befunge
 
-Befunge only has one conditional structure, which comes in two flavors: ''vertical IF'' ( | ) and ''horizontal IF'' ( _ ). 
-Befunge only has two boolean commands, ''greater-than'' ( ` ) and ''not'' ( ! ). 
+Befunge only has one conditional structure, which comes in two flavors: ''vertical IF'' ( | ) and ''horizontal IF'' ( _ ).
+Befunge only has two boolean commands, ''greater-than'' ( ` ) and ''not'' ( ! ).
 These snippets input a number and use the conditional operators to print a "0" if it is zero and an "X" otherwise.
 
 
-```befunge>v   
+```befunge>v
  "X",@ non-zero
 > & |
     > "0",@ zero
 ```
 
 
-'''#''' is the skip command. 
+'''#''' is the skip command.
 It unconditionally skips one character, allowing a little flexibility in flow control.
 
 
@@ -1558,12 +1558,12 @@ else
 ## Bracmat
 
 === "if .. then .. else .." type of branching ===
-Bracmat uses & and | for branching. 
-These binary operators are like && and || in C-like languages. 
-Bracmat does not have the notion of Boolean variables, but marks all evaluated expressions as either succeeded or failed. 
-If the left hand side of the & operator has succeeded, Bracmat goes on evaluating the right hand side. 
-Only if both of left and right hand sides succeed, the expression tree headed by the & operator as a whole succeeds. Likewise, only if both of left and right hand sides of an expression tree headed by | fail, the expression tree as a whole fails. 
-Evaluated expressions are just that: expressions. 
+Bracmat uses & and | for branching.
+These binary operators are like && and || in C-like languages.
+Bracmat does not have the notion of Boolean variables, but marks all evaluated expressions as either succeeded or failed.
+If the left hand side of the & operator has succeeded, Bracmat goes on evaluating the right hand side.
+Only if both of left and right hand sides succeed, the expression tree headed by the & operator as a whole succeeds. Likewise, only if both of left and right hand sides of an expression tree headed by | fail, the expression tree as a whole fails.
+Evaluated expressions are just that: expressions.
 The following expression writes "That's what I thought." to your screen and evaluates to the expression "Right".
 
 
@@ -1577,7 +1577,7 @@ The following expression writes "That's what I thought." to your screen and eval
 
 
 === switch-like branching ===
-Use a patterns with alternations. Note that the match-expression (the tree headed by the : operator) evaluates to the left hand side of the : operator. 
+Use a patterns with alternations. Note that the match-expression (the tree headed by the : operator) evaluates to the left hand side of the : operator.
 In the following example, the resulting expression is a single node containing "4".
 
 
@@ -1590,13 +1590,13 @@ In the following example, the resulting expression is a single node containing "
   |   ?
     & put$"That's what I thought."
   )
-  
+
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
-Brainf*** has two conditional jump instructions, [ and ]. the [ instruction jumps forward to the corresponding ] instruction if the value at the current memory cell is zero, while the ] instruction jumps back if the current memory cell is nonzero. 
+Brainfuck has two conditional jump instructions, [ and ]. the [ instruction jumps forward to the corresponding ] instruction if the value at the current memory cell is zero, while the ] instruction jumps back if the current memory cell is nonzero.
 Thus in the following sequence:
 
 
@@ -1729,7 +1729,7 @@ ifthenelse<INT_MAX == 32767, // 16 bit int?
 
 ### if
 
-There are no ''then'' or ''else'' keyword in Clean. 
+There are no ''then'' or ''else'' keyword in Clean.
 The second argument of <tt>if</tt> is the then-part, the third argument is the else-part.
 
 ```clean>bool2int b = if b 1 0</lang
@@ -1817,7 +1817,7 @@ ENDCASE
 
 ### when
 
-Similar to if, but body in an implicit do block allowing multiple statements. 
+Similar to if, but body in an implicit do block allowing multiple statements.
 No facility for providing an else. <code>when</code> is defined as a macro.
 
 ```clojure
@@ -1831,7 +1831,7 @@ No facility for providing an else. <code>when</code> is defined as a macro.
 
 ### cond
 
-The cond macro takes a series of test/result pairs, evaluating each test until one resolves to logical true, then evaluates its result.  
+The cond macro takes a series of test/result pairs, evaluating each test until one resolves to logical true, then evaluates its result.
 Returns nil if none of the tests yield true.
 
 ```clojure
@@ -1906,7 +1906,7 @@ endif()
 ```
 
 
-The if() and elseif() commands evaluate boolean expressions like ''num GREATER 100''; refer to [http://www.cmake.org/cmake/help/cmake-2-8-docs.html#command:if cmake --help-command if]. 
+The if() and elseif() commands evaluate boolean expressions like ''num GREATER 100''; refer to [http://www.cmake.org/cmake/help/cmake-2-8-docs.html#command:if cmake --help-command if].
 The elseif() and else() sections are optional.
 
 
@@ -2136,7 +2136,7 @@ There are 2 main conditional operators in common lisp, (if ...) and (cond ...).
 
 ===(if cond then [else])===
 
-The (if ...) construct takes a predicate as its first argument and evaluates it. 
+The (if ...) construct takes a predicate as its first argument and evaluates it.
 Should the result be non-nil, it goes on to evaluate and returnm the results of the 'then' part, otherwise, when present, it evaluates and returns the result of the 'else' part. Should there be no 'else' part, it returns nil.
 
 
@@ -2694,11 +2694,11 @@ force lst = match lst with
 ## Erlang
 
 
-Erlang's conditionals are based on pattern matching and guards. 
-There are several mechanisms for this: case-of, if, function clauses. 
-Pattern matching allows destructuring a term and matches a clause based on the structure. 
-In the case example the term is X and the pattern is {N,M} or _. _ will match anything, while {N,M} will only match tuples of two terms. 
-Though N and M could be any other type (in this case an error will occur if they're non-numeric). 
+Erlang's conditionals are based on pattern matching and guards.
+There are several mechanisms for this: case-of, if, function clauses.
+Pattern matching allows destructuring a term and matches a clause based on the structure.
+In the case example the term is X and the pattern is {N,M} or _. _ will match anything, while {N,M} will only match tuples of two terms.
+Though N and M could be any other type (in this case an error will occur if they're non-numeric).
 Guards allow more specification on the terms from the matched pattern. In the case example comparing N and M are guards.
 
 
@@ -2721,7 +2721,7 @@ end.
 ### if
 
 
-if expressions match against guards only, without pattern matching. 
+if expressions match against guards only, without pattern matching.
 Guards must evaluate to true or false so true is the catch-all clause.
 
 
@@ -2752,9 +2752,9 @@ test(_) -> equal.
 
 ## Factor
 
-There are many conditional structures in Factor. 
-Here I'll demonstrate the most common ones. 
-A few of these have other variations that abstract common stack shuffle patterns. 
+There are many conditional structures in Factor.
+Here I'll demonstrate the most common ones.
+A few of these have other variations that abstract common stack shuffle patterns.
 I will not be demonstrating them.
 
 
@@ -3004,8 +3004,8 @@ This method was used by the late Jim Kalihan and Dr. Julian Nobel
 ```Forth
 : CASE:  ( <name>)   CREATE   ;
 
-\ lookup execution token and compile 
-: |      ( <name> )  '  compile,  ; 
+\ lookup execution token and compile
+: |      ( <name> )  '  compile,  ;
 
 : ;CASE   ( n -- )  DOES>  OVER + + @ EXECUTE ;
 
@@ -3184,7 +3184,7 @@ On a Gosub label1, label2
 
 ```freebasic
 #IFNDEF _DEBUG
-  #DEFINE _DEBUG 
+  #DEFINE _DEBUG
 #ENDIF
 ```
 
@@ -3512,7 +3512,7 @@ ENDIF
 ## HPPPL
 
 
-###  IF 
+###  IF
 
 Note that X has to be a number; else a runtime error occurs.
 
@@ -3525,7 +3525,7 @@ END;
 ```
 
 
-###  CASE 
+###  CASE
 
 
 ```HPPPL
@@ -3553,7 +3553,7 @@ END;
 //'i' supports if, else, and else if
 software {
 	a = 3
- 
+
 	if a = 3
 		print("a = three")
 	else if a = 2
@@ -3991,8 +3991,8 @@ Step return code values are traditionnaly ordered this way:
 The syntax of COND parameter of the EXEC statement is :
 
 ```jcl
-  COND=(rcval,relop,step) 
-    relop is a relational opeator : EQ NE GT LT GE LE   (= ¬= < > <= >=) 
+  COND=(rcval,relop,step)
+    relop is a relational opeator : EQ NE GT LT GE LE   (= ¬= < > <= >=)
 ```
 
 It is a condition to bypass a job step, and it can be translateted into :
@@ -4008,36 +4008,36 @@ Example:
 
 ```txt
 
-if 0 ne STEP3.rc  then skip    step STEP6 
-if 0 ^= STEP3.rc  then skip    step STEP6 
-if STEP3.rc ^= 0  then skip    step STEP6 
-if STEP3.rc = 0   then execute step STEP6 
+if 0 ne STEP3.rc  then skip    step STEP6
+if 0 ^= STEP3.rc  then skip    step STEP6
+if STEP3.rc ^= 0  then skip    step STEP6
+if STEP3.rc = 0   then execute step STEP6
 
 ```
 
 The conditions can be multiple :
 
 ```jcl
-  COND=((rcval1,relop1,step1),(rcval2,relop2,step2),...) 
+  COND=((rcval1,relop1,step1),(rcval2,relop2,step2),...)
 ```
 
 Means:
 
 ```jcl>  if rcval1 relop1 step1.rc or rcval2 relop2 step2.rc or ... then not execute the current step </lang
 
-Example: 
+Example:
 
 ```jcl
-//STEP6  EXEC PGM=MYPROG,COND=((4,LE,STEP1),(8,LE,STEP3)) 
+//STEP6  EXEC PGM=MYPROG,COND=((4,LE,STEP1),(8,LE,STEP3))
 ```
 
 
 ```txt
 
-if  4 le STEP1.rc   or  8 le STEP3.rc  then skip step STEP6 
-if  4 <= STEP1.rc   or  8 <= STEP3.rc  then skip step STEP6 
-if  STEP1.rc >= 4   or  STEP3.rc >= 8  then skip step STEP6 
-if  STEP1 is ok    and  STEP3 has only warnings then execute STEP6 
+if  4 le STEP1.rc   or  8 le STEP3.rc  then skip step STEP6
+if  4 <= STEP1.rc   or  8 <= STEP3.rc  then skip step STEP6
+if  STEP1.rc >= 4   or  STEP3.rc >= 8  then skip step STEP6
+if  STEP1 is ok    and  STEP3 has only warnings then execute STEP6
 
 ```
 
@@ -4127,7 +4127,7 @@ a ? b : c
 ```
 
 <p>
-The expression a, before the ?, is a condition expression, and the ternary operation evaluates the expression b, before the :, if the condition a is true or the expression c, after the :, if it is false. To facilitate chaining, the operator associates from right to left. 
+The expression a, before the ?, is a condition expression, and the ternary operation evaluates the expression b, before the :, if the condition a is true or the expression c, after the :, if it is false. To facilitate chaining, the operator associates from right to left.
 </p><h3>
 Short-Circuit Evaluation
 </h3><p>
@@ -4495,7 +4495,7 @@ int a = 3;
 
 // if-then-else
 if (a == 2) {
-    puts ("a is 2"); 
+    puts ("a is 2");
 } else if (a == 3) {
     puts ("a is 3");
 } else {
@@ -4503,18 +4503,18 @@ if (a == 2) {
 }
 
 // unless
-unless (a == 2) { // equivalent to if (a != 2) 
+unless (a == 2) { // equivalent to if (a != 2)
     puts ("a is 2");  // It will print this line
 } else if (a == 3) {
     puts ("a is 3");
 } else {
     puts("a is 4");
-}   
+}
 
 // switch
 switch (a) {
     case 2:
-        puts ("a is 2"); 
+        puts ("a is 2");
         break;
     case 3:
         puts ("a is 3");
@@ -4522,7 +4522,7 @@ switch (a) {
     case 4:
         puts ("a is 4");
         break;
-    default: 
+    default:
         puts("is neither");
 }
 ```
@@ -4798,9 +4798,9 @@ Module CheckIt {
             Else  Case    \\ need ELSE CASE if Select Case is inside a IF END IF (WITHOUT BLOCK)
                   Print "Bottom"
             End Select
-      Else 
-            Print "Out of range"      
-    End if  
+      Else
+            Print "Out of range"
+    End if
 }
 CheckIt 100
 CheckIt 0
@@ -4859,7 +4859,7 @@ Module CheckIt {
                         Exit
             }
             Print "End One"
-            
+
             x=Random(1,2)
             {
                   On x Gosub alfa1, beta1
@@ -4872,7 +4872,7 @@ Module CheckIt {
                         Return
             }
             Print "End"
-      }     
+      }
 }
 CheckIt
 
@@ -4911,7 +4911,7 @@ Module Checkit {
       'beta()
       sub beta()
             local i
-            for i=1 to 10 
+            for i=1 to 10
                   alfa(i)
             next i
       end sub
@@ -4919,7 +4919,7 @@ Module Checkit {
       goto 100
       Print "no print"
       End Sub
-      
+
       100 Print "ok this printed", x
               Return
 }
@@ -5026,11 +5026,11 @@ Using it
 Maple offers both conditional statements and conditional functions.
 
 
-###  Conditional statements 
+###  Conditional statements
 
 Example syntax for conditional statements:
 
-```Maple>if x 
+```Maple>if x
  0 then
    res := x;
 else
@@ -5053,7 +5053,7 @@ end if;
 
 
 
-###  Conditional functions 
+###  Conditional functions
 
 The Maple function <code>`if`(cond,a,b)</code> (note the backtick <code>`</code> delimiters) returns ''a'' when ''cond'' is true and ''b'' otherwise.
 
@@ -5241,7 +5241,7 @@ fi;
 The particularity of <tt>if</tt> construct in Metafont is that it can be part of an expression, and the "do something" <cite>does not need to fit into the syntactic structure</cite>. E.g. we can write something like
 
 
-```metafont>b := if a 
+```metafont>b := if a
  5: 3 + else: 2 - fi c;
 ```
 
@@ -5472,13 +5472,13 @@ There is no fallthrough, <tt>break</tt> statement does not have any special mean
 
 switch (num)
     {
-        case (0) 
+        case (0)
             { /* empty case requires braces */ }
-        case (1) 
+        case (1)
             { var one = "one"; result = one; }
         case (2,3) // case may contain a nonempty list of values
-            result = "a few"; 
-        default  
+            result = "a few";
+        default
             result = "a lot";
     }
 
@@ -5940,7 +5940,7 @@ endswitch
 ## Oforth
 
 
-Conditional structures are : 
+Conditional structures are :
 
 
 ```Oforth
@@ -5953,7 +5953,7 @@ aObject  ifZero: [ ... ]
 
 
 Each conditional structure consume the object on the top of the stack.
- 
+
 Each conditional structure can be followed by a else block
 
 ```Oforth
@@ -5961,7 +5961,7 @@ else: [ ... ]
 ```
 
 
-Example : 
+Example :
 
 
 ```Oforth
@@ -6304,7 +6304,7 @@ ELSE
 
 
 
-###  case 
+###  case
 
 {{works with|Turbo Pascal|7.0}}
 
@@ -6534,9 +6534,9 @@ var = iff(flag?true_expr:false_expr)
 
 In an iff() expression, only one of true_expr or false_expr will be evaluated, not both.
 
-Phix has some rudimentary support of preprocessor ifdef statements, but their use is discouraged since 
-they are quite unnecessary in Phix, for example in the following no code whatsoever is emitted for the 
-first if statement, and in the second the conditions are evaluated at compile-time and code is only 
+Phix has some rudimentary support of preprocessor ifdef statements, but their use is discouraged since
+they are quite unnecessary in Phix, for example in the following no code whatsoever is emitted for the
+first if statement, and in the second the conditions are evaluated at compile-time and code is only
 emitted for one of the branches.
 
 ```Phix
@@ -6575,17 +6575,17 @@ end switch
 By default there is no fallthough on switch clauses, however you can add a directive, and you can
 override individual clauses with explicit fallthough or break statements. There is no need to have
 break between cases when it is the default. You can use either : or then on case clauses. The else
-keyword can be used instead of "default", and behaves identically. It can also be placed anywhere, 
+keyword can be used instead of "default", and behaves identically. It can also be placed anywhere,
 even first, or completely omitted.
 
 The compiler will automatically construct either a jump table or daisy-chained cmp/jmp chains from
-either if-constructs or switch-statements, leaving the programmer free to choose whichever shows 
+either if-constructs or switch-statements, leaving the programmer free to choose whichever shows
 the intent clearest, without having to worry about performance implications.
 
 
 ### ilASM
 
-Inline assembly, in the form of #ilASM{} constructs, should you be brave or desperate enough to 
+Inline assembly, in the form of #ilASM{} constructs, should you be brave or desperate enough to
 use them, also have some conditional guards for cross-platform support
 
 
@@ -6805,7 +6805,7 @@ if condition_exp then
 else
     unique_statement;
 
-if condition_exp 
+if condition_exp
 then do;
     list_of_statements;
 end;
@@ -6843,7 +6843,7 @@ end;
 
 
 
-###  case 
+###  case
 
 The PL/I 'case' statement has two possible formats:
 
@@ -6994,7 +6994,7 @@ middle one can mix elseif with elseunless.
 Pop11 conditional is an expression:
 
 
-```pop11>if x 
+```pop11>if x
  0 then 1 elseif x < 0 then -1 else 0 endif -> sign_x ;
 ```
 
@@ -7433,7 +7433,7 @@ Racket has macros, which means that you can define whatever new conditional you 
 ===If-Either-Case-Switch===
 If the result is true, the block! will be evaluated. If false nothing happens.
 
-```Red>>> if 10 
+```Red>>> if 10
  2 [print "ten is bigger"]
 ten is bigger
 ```
@@ -7441,10 +7441,10 @@ ten is bigger
 
 ### EITHER
 
-If the result is true the first block! will be evaluated. 
+If the result is true the first block! will be evaluated.
 If false the second block! will be evaluated.
 
-```Red>>> either 3 
+```Red>>> either 3
  2 [print "Three larger"][print "Nope!"]
 Three larger
 ```
@@ -7460,7 +7460,7 @@ case [
   n < 10   [print "small number"]
   n < 100  [print "medium number"]
   n < 1000 [print "large number"]
-  true     [print "none of these"]      
+  true     [print "none of these"]
 ]
 
 medium number
@@ -7471,7 +7471,7 @@ case/all [
   n < 10   [print "small number"]
   n < 100  [print "medium number"]
   n < 1000 [print "large number"]
-  true     [print "none of these"]      
+  true     [print "none of these"]
 ]
 
 medium number
@@ -7493,7 +7493,7 @@ switch "india" [
 
 The country India
 
-switch/default "U.S." [ 
+switch/default "U.S." [
    "a"       [print "string"]
    23        [print "integer"]
    "India"  [print "The country India"]
@@ -7630,7 +7630,7 @@ If[cond]
 
 
 
-###  if 
+###  if
 
 Block of instructions following the ''if'' command has to be always enclosed in curly brackets.
 
@@ -7990,7 +7990,7 @@ EXPRL is a single expression or a comma-separated list of exressions. The expres
 
 ```Scala
   if (n == 12) "twelve" else "not twelve"
-  
+
   today match {
     case Monday =>
       Compute_Starting_Balance;
@@ -8125,7 +8125,7 @@ consonant
 ## Seed7
 
 ===if-then-else===
-There can be single or multiple statements. 
+There can be single or multiple statements.
 An if-statement can have multiple elsif parts.
 
 ```seed7
@@ -8156,7 +8156,7 @@ end if;
 
 
 
-###  case 
+###  case
 
 
 ```seed7
@@ -8203,20 +8203,20 @@ end if
 
 {{works with|SIMULA-67}}
 Simula 67 has conditional statements of the form:
-  statement::=  '''if''' conditional_expression '''then''' statement '''else''' statement 
+  statement::=  '''if''' conditional_expression '''then''' statement '''else''' statement
     '''if''' X=Y '''then''' K:=I '''else''' K:=J
   statement::=  '''if''' conditional_expression '''then''' statement
     '''if''' X=Y '''then''' K:=I
 An example:
 
 ```simula
-BEGIN  
+BEGIN
   INTEGER i,j;
   i:=1; j:=2;
   OutText("i ");
-  IF i=1 THEN OutInt(i,1); 
+  IF i=1 THEN OutInt(i,1);
   OutImage;
-  OutInt(i,2); OutInt(j,2); 
+  OutInt(i,2); OutInt(j,2);
   IF i<j THEN OutText(" : i<j") ELSE OutText(" : i>=j");
   OutImage;
   IF i>=j THEN BEGIN
@@ -8237,7 +8237,7 @@ Simula 67 has also a switch structure:
 An example:
 
 ```simula
-BEGIN  
+BEGIN
   INTEGER i,j;
   SWITCH target:=L1,L2,L3;
   i:=1; j:=2;
@@ -8321,7 +8321,7 @@ The pattern for handling a multi-option switch is to create classes for the vari
 You can also use them as the ternary operator
 
 
-```smalltalk>abs := x 
+```smalltalk>abs := x
  0 ifTrue: [ x ] ifFalse: [ x negated ]
 ```
 
@@ -8466,7 +8466,7 @@ The SSEM's only conditional operation is <tt>011 Test</tt>, which causes the com
 ## Stata
 
 
-###  cond function 
+###  cond function
 
 This is an equivalent of a ternary ?: in C, useful for instance when creating a variable with '''[https://www.stata.com/help.cgi?generate gen]'''. See '''[https://www.stata.com/help.cgi?cond cond]''' in Stata help.
 
@@ -8487,7 +8487,7 @@ list, noobs noheader
 
 
 
-###  if command 
+###  if command
 
 This one is mainly useful in programs. See '''[https://www.stata.com/help.cgi?ifcmd ifcmd]''' in Stata help. To illustrate the command, here is a program that checks if a number is prime.
 
@@ -8516,7 +8516,7 @@ program isprime
 			}
 		}
 	}
-	
+
 	if p {
 		di "`n' is prime."
 	}
@@ -8531,7 +8531,7 @@ isprime `=10^12-11'
 
 
 
-###  if expression 
+###  if expression
 
 When used in a command, '''[https://www.stata.com/help.cgi?if if]''' means the command is to be applied to the data subset for which the if expression is true.
 
@@ -8547,7 +8547,7 @@ count if mod(_n, 3)==0
 
 
 
-###  if statement in Mata 
+###  if statement in Mata
 
 See [https://www.stata.com/help.cgi?%5bM-2%5d%20if Stata help]. Here is an equivalent of the above program to check if a number is prime.
 
@@ -8570,7 +8570,7 @@ isprime(10^12-11)
 
 
 
-###  ternary operator in Mata 
+###  ternary operator in Mata
 
 
 See [https://www.stata.com/help.cgi?m2_op_conditional Stata help]. Here is a recursive implementation of the Fibonacci sequence, to illustrate.
@@ -8672,7 +8672,7 @@ unless(a > b) {
 ```tern
 switch(a) {
    case 10:
-   case 11: 
+   case 11:
       println(a);
       break;
    default:
@@ -8972,7 +8972,7 @@ y="xyzzy"
 ```
 
 
-The <code>cases</code>, <code>all</code> and <code>none</code> directives most resemble control structures because they have short-circuiting behavior. 
+The <code>cases</code>, <code>all</code> and <code>none</code> directives most resemble control structures because they have short-circuiting behavior.
 For instance:
 
 
@@ -8988,7 +8988,7 @@ We have a match: (x, y, z, w) = (@x, @y, @z, @w).
 ```
 
 
-If any subclause fails to match, then <code>all</code> stops processing subsequent clauses. There are subtleties though, because an earlier clause can produce variable bindings which are visible to later clauses. 
+If any subclause fails to match, then <code>all</code> stops processing subsequent clauses. There are subtleties though, because an earlier clause can produce variable bindings which are visible to later clauses.
 If previously bound variable is bound again, it must be to an identical piece of text:
 
 
@@ -9222,7 +9222,7 @@ Dim A$, B$
     End If
     'other syntax
     If A = B Then Debug.Print A & " = " & B _
-    Else Debug.Print A & " and " & B & " are differents."    
+    Else Debug.Print A & " and " & B & " are differents."
     'other syntax
     If A = B Then Debug.Print A & " = " & B Else Debug.Print A & " and " & B & " are differents."
     If A = B Then Debug.Print A & " = " & B Else: Debug.Print A & " and " & B & " are differents."
@@ -9359,7 +9359,7 @@ ElseIf condition2 Then
 ...
 ElseIf conditionN Then
     statement
-Else  
+Else
     statement
 End If
 
@@ -9386,14 +9386,14 @@ End Select
 
 Select Case Expression
     Case Value1
-        statements 
-    Case Value2 
-        statements 
+        statements
+    Case Value2
+        statements
     ...
-    Case ValueN 
-        statements 
-    Case Else 
-        statements 
+    Case ValueN
+        statements
+    Case Else
+        statements
 End Select
 ```
 
@@ -9403,15 +9403,15 @@ End Select
 
 
 ```verbexx
-@VAR a b = 1 2;                   
+@VAR a b = 1 2;
 
 // -------------------------------------------------------------------------------------
-//  @IF verb  (returns 0u0 = UNIT, if no then: or else: block is executed) 
-//  
+//  @IF verb  (returns 0u0 = UNIT, if no then: or else: block is executed)
+//
 ### ==
   (note: both then: and else: keywords are optional)
 
-@SAY "@IF 1   " ( @IF (a > b) then:{"then:"} else:{"else:"} ); 
+@SAY "@IF 1   " ( @IF (a > b) then:{"then:"} else:{"else:"} );
 @SAY "@IF 2   " ( @IF (b > a) else:{"else:"} then:{"then:"} );
 @SAY "@IF 3   " ( @IF (a > b) then:{"then:"}                );
 @SAY "@IF 4   " ( @IF (b > a) then:{"then:"}                );
@@ -9423,37 +9423,37 @@ End Select
 //  ? verb (conditional operator)
 //  ====== ( 1st block (TRUE) is required, 2nd block (FALSE) is optional)
 
-@SAY "? 1     " ( (a < b) ? {"1st"} {"2nd"} ); 
-@SAY "? 2     " ( (a > b) ? {"1st"} {"2nd"} ); 
-@SAY "? 3     " ( (a < b) ? {"1st"}         ); 
-@SAY "? 4     " ( (a > b) ? {"1st"}         ); 
+@SAY "? 1     " ( (a < b) ? {"1st"} {"2nd"} );
+@SAY "? 2     " ( (a > b) ? {"1st"} {"2nd"} );
+@SAY "? 3     " ( (a < b) ? {"1st"}         );
+@SAY "? 4     " ( (a > b) ? {"1st"}         );
 
 // -----------------------------------------------------------------------------------
 // @CASE verb
-// 
+//
 ### ====
 
 //
 //  - executes code block for first when: condition that evaluates to TRUE
 //
-//  - normally, ends after running that code block 
+//  - normally, ends after running that code block
 //
 //  - if no when: conditions are true, executes else: code block (if present)
 //
-//  - can exit a when: block with @CONTINUE case: verb -- causes @CASE to continue 
+//  - can exit a when: block with @CONTINUE case: verb -- causes @CASE to continue
 //    looking for more true when: blocks or the else: block
 
-@VAR n = 0; 
+@VAR n = 0;
 @LOOP times:3
 {
   @SAY ( "n =" n "        @CASE results:"
          ( @CASE
-             when:(n == 0) { "n == 0(1)"                   } 
-             when:(n == 0) { "n == 0(2)"                   } 
+             when:(n == 0) { "n == 0(1)"                   }
+             when:(n == 0) { "n == 0(2)"                   }
              when:(n == 1) { "n == 1(1)"; @CONTINUE case:  }
              when:(n == 1) { "n == 1(2c)"                  }
              else:         { "else"                        }
-         ) 
+         )
        )
   ;
   n++;
@@ -9461,7 +9461,7 @@ End Select
 
 /] -----------------------------------------------------------------------
 
-Output: 
+Output:
 
 @IF 1    else:
 @IF 2    then:
@@ -9495,7 +9495,7 @@ End If
 
 If condition Then
     statement
-Else  
+Else
     statement
 End If
 
@@ -9506,7 +9506,7 @@ ElseIf condition2 Then
 ...
 ElseIf conditionN Then
     statement
-Else  
+Else
     statement
 End If
 ```
@@ -9536,14 +9536,14 @@ End Select
 
 Select Case Expression
     Case Value1
-        statements 
-    Case Value2 
-        statements 
+        statements
+    Case Value2
+        statements
     ...
-    Case ValueN 
-        statements 
-    Case Else 
-        statements 
+    Case ValueN
+        statements
+    Case Else
+        statements
 End Select
 
 ```
@@ -9815,7 +9815,7 @@ FailedSoContinueExecution
 
 ```
 
-The je/jne jump instructions are again like jg/jle opposites of each other and again like je/jne rely on how the zero flag is set in the previous comparison. 
+The je/jne jump instructions are again like jg/jle opposites of each other and again like je/jne rely on how the zero flag is set in the previous comparison.
 
 There are many different conditional jumps in assembly and many ways to set them, test, and, or to name a few. The ones covered are just some commonly used ones in order to show how assembly deals with conditional statements.
 

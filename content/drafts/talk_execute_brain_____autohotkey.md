@@ -1,5 +1,5 @@
 +++
-title = "Talk:Execute Brain****/AutoHotkey"
+title = "Talk:Execute Brainfuck/AutoHotkey"
 description = ""
 date = 2011-02-20T20:15:13Z
 aliases = []

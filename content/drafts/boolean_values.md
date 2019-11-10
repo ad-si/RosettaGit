@@ -14,9 +14,9 @@ tags = []
 [[Category:Simple]]
 
 ;Task:
-Show how to represent the boolean states "'''true'''" and "'''false'''" in a language. 
+Show how to represent the boolean states "'''true'''" and "'''false'''" in a language.
 
-If other objects represent "'''true'''" or "'''false'''" in conditionals, note it. 
+If other objects represent "'''true'''" or "'''false'''" in conditionals, note it.
 
 
 ;Related tasks:
@@ -93,24 +93,24 @@ FOR key TO UPB ft DO
   BOOL val = ft[key];
   UNION(VOID, INT) void = (val|666|EMPTY);
   REF STRING ref = (val|HEAP STRING|NIL);
-  INT int = ABS val; 
-  REAL real = ABS val; 
+  INT int = ABS val;
+  REAL real = ABS val;
   COMPL compl = ABS val;
   BITS bits = BIN ABS val; # or bitspack(val); #
   BYTES bytes = bytes pack((val|"?"|null char)*bytes width);
   CHAR char = (val|"?"|null char);
-  STRING string = (val|"?"|""); 
- 
+  STRING string = (val|"?"|"");
+
   print((((val | "TRUE" | "FALSE" ), ": ", val, or, (val|flip|flop), new line)));
   print(("  void: ", " => ", (void|(VOID):FALSE|TRUE), new line));
   print(("   ref: ", " => ", ref ISNT REF STRING(NIL), new line));
   print(("   int: ", int     , " => ", int /= 0, new line));
   print(("  real: ", real    , " => ", real /= 0, new line));
   print((" compl: ", compl   , " => ", compl /= 0, new line));
-  print(("  bits: ", bits    , " => ", ABS bits /= 0, or, bits /= 2r0, or, 
+  print(("  bits: ", bits    , " => ", ABS bits /= 0, or, bits /= 2r0, or,
                      bits width ELEM bits, or, []BOOL(bits)[bits width], new line));
-  print((" bytes: """, STRING(bytes)    , """ => ", 1 ELEM bytes /= null char, or, 
-                       STRING(bytes) /= null char*bytes width, or, 
+  print((" bytes: """, STRING(bytes)    , """ => ", 1 ELEM bytes /= null char, or,
+                       STRING(bytes) /= null char*bytes width, or,
                        STRING(bytes)[1] /= null char, new line));
   print(("  char: """, char  , """ => ", ABS char /= 0 , or, char /= null char, new line));
   print(("string: """, string  , """ => ", string /= "", or, UPB string /= 0, new line));
@@ -176,8 +176,8 @@ The boolean type is called logical in Algol W - the values are represented by th
 AppleScript has built-in boolean keywords <code>true</code> and <code>false</code>. Numbers do not work in place of boolean expressions, but they do coerce to and from.
 
 
-```AppleScript>1 
- 2     --> false 
+```AppleScript>1
+ 2     --> false
 not false --> true
 
 {true as integer, false as integer, 1 as boolean, 0 as boolean}
@@ -260,14 +260,14 @@ szMessTrue: .asciz "The value is true.\n"
 szMessFalse: .asciz "The value is false.\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
- 
+
     mov r0,#0
     //mov r0,#1   @uncomment pour other test
     cmp r0,#TRUE
@@ -279,7 +279,7 @@ main:                /* entry of program  */
 1:   @ value False
     ldr r0,iAdrszMessFalse
     bl affichageMess
- 
+
 100:   /* standard end of the program */
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
@@ -288,11 +288,11 @@ main:                /* entry of program  */
 iAdrszMessTrue:		.int szMessTrue
 iAdrszMessFalse:		.int szMessFalse
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -306,7 +306,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
 
@@ -348,7 +348,7 @@ When an expression is required to evaluate to true or false (such as an <code>IF
 ## AWK
 
 
-There is no keyword for true or false in awk. In awk, any nonzero numeric value or any nonempty string value is true. Any other value (zero or the null string "") is false. Values containing only zeros may produce true or false depending on whether they are obtained from the datasource or by assignment, and different results may be obtained according to which version of awk is being used. 
+There is no keyword for true or false in awk. In awk, any nonzero numeric value or any nonempty string value is true. Any other value (zero or the null string "") is false. Values containing only zeros may produce true or false depending on whether they are obtained from the datasource or by assignment, and different results may be obtained according to which version of awk is being used.
 
 * Reference: [http://awk.freeshell.org/truth AWK Truth values]
 
@@ -503,7 +503,7 @@ b is false
 ```bbcbasic
       REM BBC BASIC uses integers to represent Booleans; the keywords
       REM FALSE and TRUE equate to 0 and -1 (&FFFFFFFF) respectively:
-      
+
       PRINT FALSE
       PRINT TRUE
 ```
@@ -526,7 +526,7 @@ Zero is false, non-zero is true. This is only used by the horizontal and vertica
 
 Bracmat operates with success and failure instead of true and false. Success and failure play the same role as true and false in conditional tests, but they are not values like true and false. Instead, success and failure are properties of expressions in addition to values. The simplest failing expression is the atomic expression <code>~</code>. The simplest succeeding atomic expression is the empty string <code>""</code> (or <code>()</code>). A slightly more complex failing expression is <code>1+1:3</code>, which postulates that <code>3</code> matches the result of adding <code>1</code> and <code>1</code>, while <code>1+1:2</code> of course succeeds.
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 Zero is false, non-zero is true. This is only used by the loop brackets (<code>[</code> and <code>]</code>).
 
 
@@ -901,7 +901,7 @@ myInt: true
 
 ## Elena
 
-ELENA uses the system'BaseBoolValue class, which has two singleton sub-classes: system'true and system'false. E.g. an expression like 5 == 5 returns system'true. 
+ELENA uses the system'BaseBoolValue class, which has two singleton sub-classes: system'true and system'false. E.g. an expression like 5 == 5 returns system'true.
 There is a Boolean variable : system'Boolean.
 
 
@@ -1070,7 +1070,7 @@ Fortran started off in 1957 with only floating-point and fixed-point variables, 
 
 Fortran 66 introduced a '''logical''' data type which can be set to either '''.true.''' or '''.false.''' or be generated via logical expressions such as <=, etc. Such variables cannot be used in normal arithmetic with operators such as +-*/ but only with logical operators such as .OR. and so on. If via the EQUIVALENCE statement their numerical values (or, bit patterns) are inspected as say an integer, the values may well not be as anticipated and differ between computers and compilers. For instance, on the Burroughs 6700 an '''integer''' variable equivalenced to a '''logical''' variable would appear as '''.true.''' if odd, '''.false.''' if even.
 
-The default storage size of a LOGICAL variable is the same as the default storage size of an INTEGER variable, which for many systems is 32 bits. This is done to simplify calculations of record sizes, or the alignment of variables in COMMON storage areas. It is usually possible to declare variables with certain byte sizes (normally only powers of two) so that LOGICAL*1 or similar declarations may be available. If used however there may arise alignment issues with adjacent variables of other types (such as REAL) that may require padding to even word boundaries for best access. Consider 
+The default storage size of a LOGICAL variable is the same as the default storage size of an INTEGER variable, which for many systems is 32 bits. This is done to simplify calculations of record sizes, or the alignment of variables in COMMON storage areas. It is usually possible to declare variables with certain byte sizes (normally only powers of two) so that LOGICAL*1 or similar declarations may be available. If used however there may arise alignment issues with adjacent variables of other types (such as REAL) that may require padding to even word boundaries for best access. Consider
 ```Fortran
       TYPE MIXED
        LOGICAL*1 LIVE
@@ -1079,7 +1079,7 @@ The default storage size of a LOGICAL variable is the same as the default storag
       TYPE(MIXED) STUFF(100)
 ```
 
-The array STUFF might occupy 900 bytes, or, 1600 bytes if each double-precision value has to be aligned to an eight-byte boundary. In the latter case, it may be better to declare LIVE and VALUE to be separate hundred-element arrays as in 
+The array STUFF might occupy 900 bytes, or, 1600 bytes if each double-precision value has to be aligned to an eight-byte boundary. In the latter case, it may be better to declare LIVE and VALUE to be separate hundred-element arrays as in
 ```Fortran
       TYPE MIXED
        LOGICAL*1 LIVE(100)
@@ -1087,7 +1087,7 @@ The array STUFF might occupy 900 bytes, or, 1600 bytes if each double-precision 
       END TYPE MIXED
       TYPE(MIXED) STUFF
 ```
- 
+
 Except that now only hundred-element variables of type MIXED can be declared. Either way, the record size needed for a disc file holding such items will need careful thought.
 
 
@@ -1101,7 +1101,7 @@ FreeBASIC has a built-in Boolean type (equivalent to a signed one byte integer) 
 
 * String expressions such as "false" and "true" (regardless of case) can also be converted to Boolean using CBool.
 
-* It is possible to overload CBool for user-defined types to yield a Boolean value. 
+* It is possible to overload CBool for user-defined types to yield a Boolean value.
 
 
 Sample code:
@@ -1179,7 +1179,7 @@ True
 
 ```gap
 1 < 2;
-# true 
+# true
 
 2 < 1;
 # false
@@ -1255,7 +1255,7 @@ main
 
 	b $= false
 	print(b)
-	
+
 	//Non-zero values are true.
 	b $= bit(1)
 	print(b)
@@ -1368,7 +1368,7 @@ The following table shows the result of type conversions to boolean:
 </tt>
 
 The above shows the jq command invocation, followed by alternating lines of input and output.
-    
+
 jq's logical operators, however, do not require boolean inputs.  In brief, <tt>false</tt> and <tt>null</tt> are both regarded as false, and all other JSON entities are regarded as <tt>true</tt>.  That is, all values except for <tt>false</tt> and <tt>null</tt> are truthy.
 
 
@@ -1425,7 +1425,7 @@ Comparisons are evaluated in Lasso as either true of false, so "1 == 2" will eva
 A variable can also be assigned a boolean type, and as such then holds either true of false states.
 
 
-```Lasso 
+```Lasso
 !true
 // => false
 
@@ -1444,7 +1444,7 @@ In a conditional, if the result is the integer 0, it is also evaluated as boolea
 If the conditional results in an integer greater than zero, it is evaluated as boolean true.
 
 
-```Lasso 
+```Lasso
 local(x = string)
 // size is 0
 #x->size ? 'yes' | 'no'
@@ -1557,7 +1557,7 @@ if "true [print "yes]    ; yes
 if not "false [print "no]  ; no
 ```
 
-Unlike other lispy languages, there are no other implicit conversions. 
+Unlike other lispy languages, there are no other implicit conversions.
 You must test explicitly for zero or empty collections.
 
 ```logo
@@ -1638,23 +1638,23 @@ Print str$(2, "\t\r\u\e;\t\r\u\e;\f\a\l\s\e")="true"
 
 ## Maple
 
-The keywords "true" and "false" are the default boolean values. 
-Expressions involving relational operators are evaluated logically using the <code>evalb</code> command. 
-Expressions under assumptions may be evaluated logically using the <code>is</code> command. 
+The keywords "true" and "false" are the default boolean values.
+Expressions involving relational operators are evaluated logically using the <code>evalb</code> command.
+Expressions under assumptions may be evaluated logically using the <code>is</code> command.
 Types may be tested, resulting in boolean values, using the <code>type</code> command.
 
 
 ## Mathematica
 
-True and False are the default boolean values. 
-To make any expression a boolean use the Boole[] function.  
- 
+True and False are the default boolean values.
+To make any expression a boolean use the Boole[] function.
+
 
 ## MATLAB
 
-The keywords "true" and "false" are the default boolean values. 
-But, many functions prefer to return boolean "1" or "0" instead of "true" or "false". 
-It is very important to note that having a function return a numerical 1 or 0 is not the same as a boolean "1" or "0". 
+The keywords "true" and "false" are the default boolean values.
+But, many functions prefer to return boolean "1" or "0" instead of "true" or "false".
+It is very important to note that having a function return a numerical 1 or 0 is not the same as a boolean "1" or "0".
 To make a number or array of numbers a boolean use the logical() function. logical() will convert any non-zero number to a boolean "1" and any zero entries a boolean "0".
 
 Sample Usage: (islogical() is a function that returns a boolean "1" if the input is a boolean, "0" otherwise)
@@ -1721,7 +1721,7 @@ not false;
 
 ## Metafont
 
-Metafont has the type <tt>boolean</tt>; a boolean variable can be <tt>true</tt> or <tt>false</tt>. 
+Metafont has the type <tt>boolean</tt>; a boolean variable can be <tt>true</tt> or <tt>false</tt>.
 Using non boolean values (or expressions that do not evaluate to a boolean value) results in a recoverable error; by default, any non-boolean value is interpreted as false.
 
 
@@ -1775,7 +1775,7 @@ mostlyTrue OR kindaTrue: 0.88
 import java.util.ArrayList
 import java.util.HashMap
 
-# booleans 
+# booleans
 puts 'true is true' if true
 puts 'false is false' if (!false)
 
@@ -1840,7 +1840,7 @@ TYPE BOOLEAN = {FALSE, TRUE}
 ## Monte
 
 
-Much like [[E]], Monte has built-in objects <tt>true</tt> and <tt>false</tt>, and a boolean [http://wiki.erights.org/wiki/Guard guard]. 
+Much like [[E]], Monte has built-in objects <tt>true</tt> and <tt>false</tt>, and a boolean [http://wiki.erights.org/wiki/Guard guard].
 
 
 ```Monte
@@ -1881,7 +1881,7 @@ There is one unary boolean operator: ' (not).</p>
 
 Neko includes a bool boolean data type, true and false.  Conditional execution flow only reacts to bool, numeric values test as false as are string literals.
 
-Neko also includes two low level builtins: $not(value) and $istrue(value).  These return bool results.  $not returning true if value 
+Neko also includes two low level builtins: $not(value) and $istrue(value).  These return bool results.  $not returning true if value
 is false, 0 or null.  $istrue returning true if value is not false, not 0 and not null.
 
 
@@ -2148,10 +2148,10 @@ else {
 }
 ```
 
-The values in Perl that are false are: <tt>0</tt> (as a number (including <tt>0.0</tt>), or as the string <tt>'0'</tt>, but '''not''' the string <tt>'0.0'</tt>), the empty string <tt><nowiki>''</nowiki></tt>, the empty list <tt>()</tt>, and <tt>undef</tt>. Everything else is true. See [http://perldoc.perl.org/perlsyn.html#Truth-and-Falsehood perlsyn]. 
+The values in Perl that are false are: <tt>0</tt> (as a number (including <tt>0.0</tt>), or as the string <tt>'0'</tt>, but '''not''' the string <tt>'0.0'</tt>), the empty string <tt><nowiki>''</nowiki></tt>, the empty list <tt>()</tt>, and <tt>undef</tt>. Everything else is true. See [http://perldoc.perl.org/perlsyn.html#Truth-and-Falsehood perlsyn].
 
 
-###  Short circuit evaluations 
+###  Short circuit evaluations
 
 
 Boolean comparison of zero against itself gives a value of one, but Perl uses short circuit evaluations, so any true or false value may be returned from a boolean expression:
@@ -2167,13 +2167,13 @@ print ('apples' xor 'pears'); # empty string, rather than 0(false)
 
 
 
-###  Objects 
+###  Objects
 
 
 Objects may break these rules at will via [http://perldoc.perl.org/overload.html#*-_Boolean%2c-string-and-numeric-conversion_ overloading].
 
 
-###  There are no keywords for true and false 
+###  There are no keywords for true and false
 
 
 Perl has no builtin "true" or "false" keywords. This is a caveat, because true and false are bareword strings and evaluate to true:
@@ -2189,7 +2189,7 @@ if (spongebob) { print "spongebob is true\n" };  # A bareword string
 
 
 
-###  Special cases 
+###  Special cases
 
 
 As a special case, literal <tt>1</tt>s and <tt>0</tt>s will never cause a "Useless use of a constant in void context" warning. Another special case worth pointing out here is that the string <tt>'0 but true'</tt> won't provoke a warning if it's used as a number.
@@ -2215,7 +2215,7 @@ For a discussion of Boolean context (i.e. how Perl decides whether something is 
 
 Zero is false, any other number is true. Attempting to use a string or sequence as a boolean is assumed to be a programming logic blunder and causes a fatal run-time error.
 
-Conditions such as <code>if length(s) then</code> are permitted, but the more explicit <code>if length(s)!=0 then</code> is preferred. Comparison operators evaluate to 1(true) or 0(false). 
+Conditions such as <code>if length(s) then</code> are permitted, but the more explicit <code>if length(s)!=0 then</code> is preferred. Comparison operators evaluate to 1(true) or 0(false).
 A boolean test is inverted by preceding it with the keyword <code>not</code>. The null character ('\0') is considered false, all other characters are deemed true.
 The builtin constants TRUE/FALSE and their aliases True/true/False/false may also be used.
 
@@ -2254,7 +2254,7 @@ uppercase letters (PicoLisp is case-sensitive).
 (8) Result: 1
 > 1;
 (9) Result: 1
-> 
+>
 
 ```
 
@@ -2353,11 +2353,11 @@ PureBasic does not have a Boolean variable type.  An integer type is typically u
 
 ## Python
 
-Python has a boolean data type with the only two possible values denoted by <code>True</code> and <code>False</code>. 
+Python has a boolean data type with the only two possible values denoted by <code>True</code> and <code>False</code>.
 
 The boolean type is a member of the numeric family of types (specifically a subclass of <code>int</code>), and when used in a numeric, but not boolean context, <code>True</code> has the value one and <code>False</code> the value zero. Also <code>hash(True) == hash(1)</code> and same goes for <code>False</code> and <code>0</code>. Conversely, when numbers are used in a boolean context, zero is false and anything other than zero is true. (Note however, that <code>True</code> is equal to <code>1</code>, so for example <code>True + True != True</code>.)
 
-In a boolean context, Python extends what is meant by true and false by accepting empty collection types, such as an empty dict or an empty list as being False, and non-empty collection types as being True, so in an if statement one might branch on a list which would be the same as testing if the list had any contents. 
+In a boolean context, Python extends what is meant by true and false by accepting empty collection types, such as an empty dict or an empty list as being False, and non-empty collection types as being True, so in an if statement one might branch on a list which would be the same as testing if the list had any contents.
 
 In Python 2, a user-created class that defines a <tt>__nonzero__</tt> method to return False or 0, or whose <tt>__len__</tt> method returns 0, will be treated as <code>False</code>, otherwise the instance is treated as <code>True</code>. In Python 3, the magic method <tt>__nonzero__</tt> has been changed to <tt>__bool__</tt>, which can only return values of type <tt>bool</tt> (not even <tt>int</tt> or <tt>None</tt>).
 
@@ -2587,7 +2587,7 @@ Basically 0 is false and 1 is true
 
 ```runbasic
 if 1          then print "1 is true"
-if not(0)     then print "0 is false" 
+if not(0)     then print "0 is false"
 if 1 < 2      then print "1 < 2 TRUE"
 if 2 > 1      then print "2 > 1 TRUE"
 if not(2 < 1) then print "2 not < 1"
@@ -2611,7 +2611,7 @@ The BOOL type can be <code>true</code> or <code>false</code>. Sather never impli
 ```sather
 v:BOOL := true; -- ok
 i:INT := 1;
-v := 1; -- wrong 
+v := 1; -- wrong
 if i then ... end; -- wrong: if requires a bool!
 -- BUT
 v := 1.bool; -- ok
@@ -2642,7 +2642,7 @@ Seed7 defines the type <tt>boolean</tt>. The only values of <tt>boolean</tt> are
 ## Self
 
 
-Self has two objects, ''true'' and ''false''. 
+Self has two objects, ''true'' and ''false''.
 
 
 ## Sidef
@@ -2753,7 +2753,7 @@ expected boolean value but got ""
 ```
 
 
-Test for the boolean value of a string can be stuff like 
+Test for the boolean value of a string can be stuff like
 
 ```tcl
 if {[string is false -strict $string]} ...
@@ -2808,10 +2808,10 @@ In the following example, after running the test command, the then syntactical c
 ```sh
 if
   echo 'Looking for file'  # This is the evaluation block
-  test -e foobar.fil       # The exit code from this statement determines whether the branch runs                            
+  test -e foobar.fil       # The exit code from this statement determines whether the branch runs
 then
   echo 'The file exists'   # This is the optional branch
-  echo 'I am going to delete it' 
+  echo 'I am going to delete it'
   rm foobar.fil
 fi
 ```
@@ -2913,7 +2913,7 @@ True False True False
 
 VB has the <code>Boolean</code> data type and the constants <code>True</code> and <code>False</code>, in addition to what's listed under [[#BASIC|BASIC]], above. When used outside of a boolean context, <code>True</code> and <code>False</code> return values depending on their context -- <code>-1</code> and <code>0</code> in a numeric context, <code>"True"</code> and <code>"False"</code> if used as strings.
 
-When converting an integer to a boolean, <code>0</code> is <code>False</code> and anything not equal to <code>0</code> is 
+When converting an integer to a boolean, <code>0</code> is <code>False</code> and anything not equal to <code>0</code> is
 
 
 ```vb
@@ -2931,7 +2931,7 @@ A non-zero <code>Number</code> is true, 0 is false.
 Since a <code>String</code> is converted automatically to a <code>Number</code> when necessary, the following will print "false" because "foo" is converted to 0:
 
 ```vim
-if "foo" 
+if "foo"
     echo "true"
 else
     echo "false"
@@ -3004,11 +3004,11 @@ True.dir();
 
 True : Bool
 Methods:
-   -- BaseClass Method Property __sGet __sSet copy create dir fp fp1 fp2 
-   fpM fpN isChildOf isInstanceOf isType len method noop print println 
-   property resolve toBool toData toFloat toInt toList toString toType 
+   -- BaseClass Method Property __sGet __sSet copy create dir fp fp1 fp2
+   fpM fpN isChildOf isInstanceOf isType len method noop print println
+   property resolve toBool toData toFloat toInt toList toString toType
 Properties:
-   -- createReturnsSelf fullName id isContainer isThreadSafe itype methods 
+   -- createReturnsSelf fullName id isContainer isThreadSafe itype methods
    name numObjects oID otype properties size type typeID vaultPath
 
 ```

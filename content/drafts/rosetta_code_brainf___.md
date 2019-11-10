@@ -1,5 +1,5 @@
 +++
-title = "Rosetta Code:Brainf***"
+title = "Rosetta Code:Brainfuck"
 description = ""
 date = 2012-02-01T15:10:23Z
 aliases = []
@@ -19,4 +19,4 @@ Common cases include:
 
 Rosetta Code seeks to avoid these systemic sanctions where pragmatic. Rosetta Code is not a political entity, and it's not within our mission to be part of a cultural resistance.
 
-This is why we use the string "Brainf***" to refer to the programming language BrainFuck. --[[User:Short Circuit|Michael Mol]] 15:06, 1 February 2012 (UTC)
+This is why we use the string "Brainfuck" to refer to the programming language BrainFuck. --[[User:Short Circuit|Michael Mol]] 15:06, 1 February 2012 (UTC)

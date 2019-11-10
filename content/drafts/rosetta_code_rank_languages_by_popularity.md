@@ -39,10 +39,10 @@ Rank: 10   (964 entries) Zkl
 
 
 
-;Notes: 
-*   Each language typically demonstrates one or two methods of accessing the data: 
+;Notes:
+*   Each language typically demonstrates one or two methods of accessing the data:
 :::*   with web scraping   (via http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
-:::*   with the API method   (examples below for [[Rosetta Code/Rank languages by popularity#AWK|Awk]], [[Rosetta Code/Rank languages by popularity#Perl|Perl]], [[Rosetta Code/Rank languages by popularity#Ruby|Ruby]], [[Rosetta Code/Rank languages by popularity#Tcl|Tcl]], etc). 
+:::*   with the API method   (examples below for [[Rosetta Code/Rank languages by popularity#AWK|Awk]], [[Rosetta Code/Rank languages by popularity#Perl|Perl]], [[Rosetta Code/Rank languages by popularity#Ruby|Ruby]], [[Rosetta Code/Rank languages by popularity#Tcl|Tcl]], etc).
 *   The scraping and API solutions can be separate subsections, see the [[Rosetta Code/Rank languages by popularity#Tcl|Tcl example]].
 *   Filtering wrong results is optional.   You can check against [[Special:MostLinkedCategories]] (if using web scraping)
 ::If you use the API, and do elect to filter, you may check your results against [[Rosetta_Code/Rank_languages_by_popularity/Full_list|this  complete, accurate, sortable, wikitable listing]] of all '''{{PAGESINCAT:Programming Languages}}''' [[:Category:Programming Languages|programming languages]], updated periodically, ''typically weekly''.
@@ -139,7 +139,7 @@ procedure Test is
       Put_Line (To_String (Element (C).Language));
       Place := Place + 1;
    end Display;
- 
+
    Http_Source : constant AWS.Response.Data :=
      AWS.Client.Get ("http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000");
 begin
@@ -162,9 +162,9 @@ end Test;
 <!-- # the ''good page'' routine was extracted from ALGOL 68G's manual (GPL code) # -->
 Note: the routine ''http content'' is currently not available on Win32 systems.
 
-{{incorrect|ALGOL 68| 
- ---among others, Tcl (the top dog) is missing. 
-}} 
+{{incorrect|ALGOL 68|
+ ---among others, Tcl (the top dog) is missing.
+}}
 
 
 ```algol68
@@ -336,9 +336,9 @@ OP + = ([]STRING a, b) []STRING:
 PROC count = (STRING sub, str) INT :
    BEGIN
       INT count := 0;
-      IF UPB str ≥ UPB sub AND UPB str ≥ 1 THEN 
+      IF UPB str ≥ UPB sub AND UPB str ≥ 1 THEN
 	 INT p := 1; INT p0;
-	 WHILE p + UPB sub - 1 <= UPB str ANDF (p0 := p; string in string (sub, p, str[p0:])) DO 
+	 WHILE p + UPB sub - 1 <= UPB str ANDF (p0 := p; string in string (sub, p, str[p0:])) DO
             count +:= 1;
 	    p +:= p0 + UPB sub - 1
 	 OD
@@ -378,7 +378,7 @@ OP REVERSE = ([]STRING org) []STRING :
 
 # convert unsigned number to INT #
 OP TOINT = (STRING str) INT:
-   BEGIN 
+   BEGIN
       INT p := 1, len := UPB str;
       WHILE p ≤ len ANDF is space (str[p]) DO p +:= 1 OD;
       IF str[1] = "-" OR str[1] = "+" THEN
@@ -386,7 +386,7 @@ OP TOINT = (STRING str) INT:
       FI;
       INT n := 0;
       WHILE p ≤ len ANDF is space (str[p]) DO p +:= 1 OD;
-      FOR i FROM p TO len WHILE is digit (str[i]) DO 
+      FOR i FROM p TO len WHILE is digit (str[i]) DO
 	 n := n × 10 + ABS str[i] - ABS "0"
       OD;
       n
@@ -404,14 +404,14 @@ PROC get web page = (STRING host, path) STRING:
       STRING reply;
       INT rc;
       # 'http content' sometimes fails with interrupted system call, so we loop until succeeding #
-      WHILE  
+      WHILE
 	 # 'http content' makes requests that are not accepted by rosettacode.org, so therefore the hack #
 	 STRING hack = " HTTP/1.0" + crlf +
 	               "Host: rosettacode.org" + crlf +
                        "User-Agent: rank_languages_by_popularity";
          rc := http content (reply, host, path + hack, 0);
 	 rc = 4
-         DO SKIP 
+         DO SKIP
       OD;
       IF rc = 0 AND grep in string ("^HTTP/[0-9.]+ 200", reply, NIL, NIL) = 0 THEN
 	 INT p;
@@ -421,8 +421,8 @@ PROC get web page = (STRING host, path) STRING:
 	    body
 	 ELSE
 	    ""
-	 FI 
-      ELSE 
+	 FI
+      ELSE
 	 print (strerror (rc)); ""
       FI
    END;
@@ -432,13 +432,13 @@ STRING gcmcontinue;
 FLEX[0]STRING lines;
 
 # get through API in chunks of 500 #
-WHILE  
+WHILE
    STRING body = get web page (domain, page + (gcmcontinue /= "" | "&gcmcontinue=" + gcmcontinue));
    INT b, e;
    gcmcontinue := (grep in string ("gcmcontinue=""([^""]+)", body, b, e) = 0 | body[b+13:e-1] | "");
    # split the XML into lines on </page> #
    lines := lines + split (body, "</page>");
-   gcmcontinue /= "" DO SKIP 
+   gcmcontinue /= "" DO SKIP
 OD;
 
 # Each line is one language,
@@ -466,14 +466,14 @@ print ((new line, whole (UPB lines, 0), " languages", new line, new line));
 FOR i TO UPB lines DO
    INT entries = TOINT lines[i][:6];
    STRING lang = lines[i][8:];
-   IF entries > 0 THEN 
+   IF entries > 0 THEN
       tied := i < UPB lines ANDF lines[i][:6] = lines[i+1][:6];
       print (("rank: ", field (rank,3), "  ", (tied OR lasttied | "[tied]" | " "*6),
               field ("(" + whole (entries,0) + " " + (entries = 1 | "entry)" | "entries)"), 20),
               "  ", lang, new line));
       IF NOT tied THEN rank +:= 1 FI;
       lasttied := tied
-   FI 
+   FI
 OD
 ```
 
@@ -535,10 +535,10 @@ While FoundPos := RegExMatch(MembsPage, MembsREx, Match, FoundPos+1)
 	; If it isn't a valid language or is a duplicate, skip it
 	if !ValidLangs.HasKey(Match1) || Dupes.HasKey(Match1)
 		continue
-	
+
 	Dupes.Insert(Match1, true)
 	Detected++
-	
+
 	; Initialize this member count
 	if !IsObject(MembsLangs[Match2])
 		MembsLangs[Match2] := [Match1]
@@ -720,20 +720,20 @@ Note that language names differing only in their case are merged.
       INSTALL @lib$+"SORTLIB"
       SortUp% = FN_sortinit(0,0)   : REM Ascending
       SortDown% = FN_sortinit(1,0) : REM Descending
-      
+
       VDU 23,22,640;512;8,16,16,128+8 : REM Enable UTF-8 support
       DIM lang$(1000), tasks%(1000)
       NORM_IGNORECASE = 1
-      
+
       SYS "LoadLibrary", "URLMON.DLL" TO urlmon%
       SYS "GetProcAddress", urlmon%, "URLDownloadToFileA" TO UDTF
-      
+
       PRINT "Downloading languages list..."
       url$ = "http://rosettacode.org/wiki/Category:Programming_Languages"
       file$ = @tmp$ + "languages.htm"
       SYS UDTF, 0, url$, file$, 0, 0 TO fail%
       IF fail% ERROR 100, "File download failed (languages)"
-      
+
       file% = OPENIN(file$)
       index% = 0
       WHILE NOT EOF#file%
@@ -750,17 +750,17 @@ Note that language names differing only in their case are merged.
         UNTIL TRUE
       ENDWHILE
       CLOSE #file%
-      
+
       C% = index%
       CALL SortUp%, lang$(0)
-      
+
       PRINT "Downloading categories list..."
       url$ = "http://www.rosettacode.org/w/index.php"
       url$ += "?title=Special:Categories&limit=5000"
       file$ = @tmp$ + "categories.htm"
       SYS UDTF, 0, url$, file$, 0, 0 TO fail%
       IF fail% ERROR 100, "File download failed (categories)"
-      
+
       file% = OPENIN(file$)
       WHILE NOT EOF#file%
         REPEAT
@@ -781,9 +781,9 @@ Note that language names differing only in their case are merged.
         UNTIL TRUE
       ENDWHILE
       CLOSE #file%
-      
+
       CALL SortDown%, tasks%(0), lang$(0)
-      
+
       VDU 14
       @% = 3 : REM Column width
       PRINT "List of languages as of " TIME$
@@ -792,7 +792,7 @@ Note that language names differing only in their case are merged.
         PRINT  i%+1 ". " tasks%(i%) " - " lang$(i%)
       NEXT
       END
-      
+
       DEF FNwhere(a$(), S$, T%)
       LOCAL B%, C%, H%
       H% = 2
@@ -903,7 +903,7 @@ List of languages as of Sat.17 Nov 2012,00:21:11
                       & !A !Z:?page     { Remove found item from page. (Not necessary at all.)}
                       & !count
                     | 0                                       { The language has no examples. }
-                  . 
+                  .
                   )
                 \L !lang             { Bracmat normalizes a\Lx+b\Ly+a\Lz to a\L(x*z)+b\Ly, so }
               + !list                { it's easy to collect categories with the same count.   }
@@ -1107,7 +1107,7 @@ int main()
 {{libheader|libcurl}}
 Using cJSON.
 
-Compiled with gcc -lcurl -lm cJSON.c lang_rank.c 
+Compiled with gcc -lcurl -lm cJSON.c lang_rank.c
 
 Usage: rank [number]
 
@@ -1151,14 +1151,14 @@ int main(int argc, char *argv[]) {
 	*npag = 0;
 	if (argc>1) till = atoi(argv[1]);
 	do {
-		mem *response = calloc(1, sizeof(mem));	
+		mem *response = calloc(1, sizeof(mem));
 		char *url = build_url(cont);
 		if (cont) free(cont);
 		curl_request(curl, url, response);
 		cJSON *json = cJSON_Parse(response->text);
 		cont = get_cont(json);
 		cJSON *json_pages = parse_json(json);
-		pages = fill_arrays(pages, npag, json_pages);			
+		pages = fill_arrays(pages, npag, json_pages);
 		cJSON_Delete(json);
 		free(url);
 		free(response->text);
@@ -1199,7 +1199,7 @@ char *build_url(char *cont) {
 		int size = strlen(URL_BASE_CONT)+strlen(cont)+1;
 		url = calloc(1, size);
 		strncpy(url, URL_BASE_CONT, strlen(URL_BASE_CONT));
-		strcat(url, cont);		
+		strcat(url, cont);
 	} else {
 		url = malloc(strlen(URL_BASE)+1);
 		strcpy(url, URL_BASE);
@@ -1210,7 +1210,7 @@ cJSON *parse_json(cJSON *json) {
 	cJSON *pages;
 	if (json) {
 		pages = cJSON_GetObjectItem(json, "query");
-		pages = cJSON_GetObjectItem(pages, "pages");	
+		pages = cJSON_GetObjectItem(pages, "pages");
 		pages = pages->child;
 	}
 	return pages;
@@ -1422,7 +1422,7 @@ using g++ under Linux with <tt>g++ -lboost_thread -lboost_system -lboost_regex</
 #include <iomanip>
 
 struct Sort { //sorting programming languages according to frequency
-   bool operator( ) ( const std::pair<std::string,int> & a , const std::pair<std::string,int> & b ) 
+   bool operator( ) ( const std::pair<std::string,int> & a , const std::pair<std::string,int> & b )
       const {
 	 return a.second > b.second ;
       }
@@ -1431,7 +1431,7 @@ struct Sort { //sorting programming languages according to frequency
 int main( ) {
    try {
       //setting up an io service , with templated subelements for resolver and query
-      boost::asio::io_service io_service ; 
+      boost::asio::io_service io_service ;
       boost::asio::ip::tcp::resolver resolver ( io_service ) ;
       boost::asio::ip::tcp::resolver::query query ( "rosettacode.org" , "http" ) ;
       boost::asio::ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve( query ) ;
@@ -1443,7 +1443,7 @@ int main( ) {
 	 socket.close( ) ;
 	 socket.connect( *endpoint_iterator++ , error ) ;
       }
-      if ( error ) 
+      if ( error )
 	 throw boost::system::system_error ( error ) ;
       //we send a request
       boost::asio::streambuf request ;
@@ -1454,7 +1454,7 @@ int main( ) {
       request_stream << "Connection: close\r\n\r\n" ;
       //send the request
       boost::asio::write( socket , request ) ;
-      //we receive the response analyzing every line and storing the programming language 
+      //we receive the response analyzing every line and storing the programming language
       boost::asio::streambuf response ;
       std::istream response_stream ( &response ) ;
       boost::asio::read_until( socket , response , "\r\n\r\n" ) ;
@@ -1472,14 +1472,14 @@ int main( ) {
 	 }
 	 line.str( "") ;//we have to erase the string buffer for the next read
       }
-      if ( error != boost::asio::error::eof ) 
+      if ( error != boost::asio::error::eof )
 	 throw boost::system::system_error( error ) ;
       //we sort the vector entries , see the struct above
       std::sort( languages.begin( ) , languages.end( ) , Sort( ) ) ;
       int n = 1 ;
       for ( std::vector<std::pair<std::string , int> >::const_iterator spi = languages.begin( ) ;
 	    spi != languages.end( ) ; ++spi ) {
-	 std::cout << std::setw( 3 ) << std::right << n << '.' << std::setw( 4 ) << std::right <<  
+	 std::cout << std::setw( 3 ) << std::right << n << '.' << std::setw( 4 ) << std::right <<
 	 spi->second   << " - " << spi->first << '\n' ;
 	 n++ ;
       }
@@ -1515,19 +1515,19 @@ ClassMethod GetTopLanguages(pHost As %String = "", pPath As %String = "", pTop A
 	If $Match(pHost, "^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$")=0 {
 		Quit $$$ERROR($$$GeneralError, "Invalid host name.")
 	}
-	
+
 	// create http request and get page
 	Set req=##class(%Net.HttpRequest).%New()
 	Set req.Server=pHost
 	Do req.Get(pPath)
-	
+
 	// create xml stream with doc type
 	Set xml=##class(%Stream.GlobalCharacter).%New()
 	Set sc=xml.WriteLine("<!DOCTYPE doc_type [")
 	Set sc=xml.WriteLine($Char(9)_"<!ENTITY nbsp '&#160;'>")
 	Set sc=xml.WriteLine($Char(9)_"<!ENTITY amp '&#38;'>")
 	Set sc=xml.WriteLine("]>")
-	
+
 	// copy xhtml stream to xml stream
 	Set xhtml=req.HttpResponse.Data
 	Set xhtml.LineTerminator=$Char(10)
@@ -1540,11 +1540,11 @@ ClassMethod GetTopLanguages(pHost As %String = "", pPath As %String = "", pTop A
 		}
 		Set sc=xml.WriteLine(line)
 	}
-	
+
 	// create an instance of an %XML.XPATH.Document
 	Set sc=##class(%XML.XPATH.Document).CreateFromStream(xml, .xdoc)
 	If $$$ISERR(sc) Quit sc
-	
+
 	// evaluate following 'XPath' expression
 	Set sc=xdoc.EvaluateExpression("//div[@id='bodyContent']//li", "a[contains(@href, '/Category:')]/ancestor::li", .res)
 
@@ -1553,7 +1553,7 @@ ClassMethod GetTopLanguages(pHost As %String = "", pPath As %String = "", pTop A
 	Do {
 		Set dom=res.GetNext(.key)
 		If '$IsObject(dom) Quit
-		
+
 		// get language name and members
 		Set lang=""
 		While dom.Read() {
@@ -1765,7 +1765,7 @@ place_count_category_write( Count, #print_fold{place=Place, place_step=Place_ste
 ```fsharp
 open System
 open System.Text.RegularExpressions
-    
+
 [<EntryPoint>]
 let main argv =
     let rosettacodeSpecialCategoriesAddress =
@@ -1810,7 +1810,7 @@ let main argv =
             (m.Groups.Item("Name").Value, parse (m.Groups.Item("Number").Value)))
         |> Seq.filter (fun p -> (snd p) > 0 &&  Map.containsKey (fst p) languages)
         |> Seq.sortBy (fun x -> -(snd x))
-        
+
 
     Seq.iter2 (fun i x -> printfn "%4d. %s" i x)
         (seq { 1 .. 20 })
@@ -2029,16 +2029,16 @@ Output:
 ```haskell
 {-# LANGUAGE OverloadedStrings #-}
 
-import Data.Aeson 
+import Data.Aeson
 import Network.HTTP.Base (urlEncode)
 import Network.HTTP.Conduit (simpleHttp)
 import Data.List (sortBy, groupBy)
 import Data.Function (on)
 import Data.Map (Map, toList)
 
--- Record representing a single language.  
+-- Record representing a single language.
 data Language =
-    Language { 
+    Language {
         name      :: String,
         quantity  :: Int
     } deriving (Show)
@@ -2046,7 +2046,7 @@ data Language =
 -- Make Language an instance of FromJSON for parsing of query response.
 instance FromJSON Language where
     parseJSON (Object p) = do
-        categoryInfo <- p .:? "categoryinfo" 
+        categoryInfo <- p .:? "categoryinfo"
 
         let quantity = case categoryInfo of
                            Just ob -> ob .: "size"
@@ -2056,10 +2056,10 @@ instance FromJSON Language where
 
         Language <$> name <*> quantity
 
--- Record representing entire response to query.  
+-- Record representing entire response to query.
 -- Contains collection of languages and optional continuation string.
 data Report =
-    Report { 
+    Report {
         continue    :: Maybe String,
         languages   :: Map String Language
     } deriving (Show)
@@ -2069,22 +2069,22 @@ instance FromJSON Report where
     parseJSON (Object p) = do
         querycontinue <- p .:? "query-continue"
 
-        let continue 
+        let continue
                 = case querycontinue of
-                      Just ob -> fmap Just $ 
-                                     (ob .: "categorymembers") >>= 
+                      Just ob -> fmap Just $
+                                     (ob .: "categorymembers") >>=
                                      (   .: "gcmcontinue")
                       Nothing -> return Nothing
 
-            languages = (p .: "query") >>= (.: "pages") 
+            languages = (p .: "query") >>= (.: "pages")
 
         Report <$> continue <*> languages
 
 -- Pretty print a single language
 showLanguage :: Int -> Bool -> Language -> IO ()
-showLanguage rank tie (Language languageName languageQuantity) = 
+showLanguage rank tie (Language languageName languageQuantity) =
     let rankStr = show rank
-    in putStrLn $ rankStr ++ "." ++ 
+    in putStrLn $ rankStr ++ "." ++
                       replicate (4 - length rankStr) ' ' ++
                       (if tie then " (tie)" else "      ") ++
                       " " ++ drop 9 languageName ++
@@ -2092,30 +2092,30 @@ showLanguage rank tie (Language languageName languageQuantity) =
 
 -- Pretty print languages with common rank
 showRanking :: (Int,  [Language]) -> IO ()
-showRanking (ranking, languages) = 
+showRanking (ranking, languages) =
     mapM_ (showLanguage ranking $ length languages > 1) languages
 
 -- Sort and group languages by rank, then pretty print them.
 showLanguages :: [Language] -> IO ()
 showLanguages allLanguages =
-    mapM_ showRanking $ 
-          zip [1..] $ 
+    mapM_ showRanking $
+          zip [1..] $
           groupBy ((==) `on` quantity) $
           sortBy (flip compare `on` quantity) allLanguages
 
 -- Mediawiki api style query to send to rosettacode.org
-queryStr = "http://rosettacode.org/mw/api.php?" ++ 
-           "format=json" ++ 
-           "&action=query" ++ 
-           "&generator=categorymembers" ++ 
-           "&gcmtitle=Category:Programming%20Languages" ++ 
-           "&gcmlimit=100" ++ 
-           "&prop=categoryinfo" 
+queryStr = "http://rosettacode.org/mw/api.php?" ++
+           "format=json" ++
+           "&action=query" ++
+           "&generator=categorymembers" ++
+           "&gcmtitle=Category:Programming%20Languages" ++
+           "&gcmlimit=100" ++
+           "&prop=categoryinfo"
 
 -- Issue query to get a list of Language descriptions
 runQuery :: [Language] -> String -> IO ()
 runQuery ls query = do
-    Just (Report continue langs) <- decode <$> simpleHttp query 
+    Just (Report continue langs) <- decode <$> simpleHttp query
     let accLanguages = ls ++ map snd (toList langs)
 
     case continue of
@@ -2173,7 +2173,7 @@ main = runQuery [] queryStr
 ### Haskell: Using web scraping
 
 
-Scraping the languages and categories pages.  
+Scraping the languages and categories pages.
 
 ```haskell
 import Network.Browser
@@ -2192,23 +2192,23 @@ getRespons url = do
       request $ getRequest url
     return $ rspBody $ snd rsp
 
-  
+
 mostPopLang = do
-  rsp <-getRespons $ "http://www.rosettacode.org/w/api.php?action=query&list=" ++ 
+  rsp <-getRespons $ "http://www.rosettacode.org/w/api.php?action=query&list=" ++
 		    "categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500&format=xml"
-  mbrs <- getRespons "http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000" 
+  mbrs <- getRespons "http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000"
   let xmls = onlyElems $ parseXML rsp
       langs = concatMap (map ((\\"Category:"). fromJust.findAttr (unqual "title")). filterElementsName (== unqual "cm")) xmls
 
   let catMbr = second (read.takeWhile(/=' '). drop 6). break (=='<'). drop 1. dropWhile(/='>') . drop 5
       catNmbs :: [(String, Int)]
       catNmbs = map catMbr $ filter (isPrefixOf "<li>") $ lines mbrs
-      printFmt (n,(l,m)) = putStrLn $ take 6 (show n ++ ".     ") ++ (show m) ++ "  " ++ l 
+      printFmt (n,(l,m)) = putStrLn $ take 6 (show n ++ ".     ") ++ (show m) ++ "  " ++ l
       toMaybe (a,b) =
 	case b of
 	  Just x -> Just (a,x)
 	  _ -> Nothing
-  
+
   mapM_ printFmt $  zip [1..] $ sortBy (flip (comparing snd))
     $ mapMaybe (toMaybe. (id &&& flip lookup catNmbs)) langs
 ```
@@ -2420,15 +2420,15 @@ rcPopLangs =:  formatTab@:process_rcPopLang_@:gethttp
 '''Example''':
 ```j
    10 {. rcPopLangs 'http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=2000'
-   1. 687 - Tcl                                                           
-   2. 646 - Python                                                        
-   3. 637 - C                                                             
-   4. 626 - PicoLisp                                                      
-   5. 612 - J                                                             
-   6. 587 - Go                                                            
-   7. 556 - Ada                                                           
-   8. 550 - D                                                             
-   9. 549 - Mathematica                                                   
+   1. 687 - Tcl
+   2. 646 - Python
+   3. 637 - C
+   4. 626 - PicoLisp
+   5. 612 - J
+   6. 587 - Go
+   7. 556 - Ada
+   8. 550 - D
+   9. 549 - Mathematica
   10. 526 - Perl
 ```
 
@@ -2490,7 +2490,7 @@ public class GetRCLanguages
             // Rosetta Code objects to the default Java user agant so use a blank one
             rc.setRequestProperty( "User-Agent", "" );
             BufferedReader bfr = new BufferedReader( new InputStreamReader( rc.getInputStream() ) );
-    
+
             gcmcontinue[0]      = "";
             String languageName = "?";
             String line         = bfr.readLine();
@@ -2636,9 +2636,9 @@ categories |\
 
     # Every language page has three category pages that should be excluded
     (reduce .[] as $pair
-      ({}; 
+      ({};
        ($pair[1] as $n | if $n > 3 then . + {($pair[0]): ($n - 3)} else . end ))) as $freq
-  | [ $languages[] | select($freq[.] != null) |  [$freq[.], .]] 
+  | [ $languages[] | select($freq[.] != null) |  [$freq[.], .]]
   | sort
   | reverse
   | ranking[]
@@ -2898,7 +2898,7 @@ fun main(args: Array<String>) {
 sys_listtraits !>> 'xml_tree_trait' ? include('xml_tree.lasso')
 local(lang = array)
 local(f = curl('http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000')->result->asString)
-local(ff) = xml_tree(#f)  
+local(ff) = xml_tree(#f)
 local(lis = #ff->body->div(3)->div(3)->div(3)->div->ul->getnodes)
 with li in #lis do => {
 	local(title = #li->a->attribute('title'))
@@ -2922,7 +2922,7 @@ do => {^
 ```
 
 ```
- 
+
 
 {{out}}
 
@@ -2957,7 +2957,7 @@ Module RankLanguages {
       Const categoriesHttp$="http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
       Def long m, i,j, tasks, counter, limit, T, t1
       Def string LastLang$, job$
- 
+
       Document final$, languages$, categories$
       httpGet$=lambda$  (url$, timeout=1000)->{
             Declare htmldoc "Msxml2.ServerXMLHTTP"
@@ -2975,13 +2975,13 @@ Module RankLanguages {
             Declare htmldoc Nothing
             print
       }
- 
+
       languages$=httpGet$(langHttp$, 30000)
       If Doc.Len(languages$)=0 then  Error "File download failed (languages)"
- 
+
       Inventory Lang
- 
-      m=Paragraph(languages$, 0) 
+
+      m=Paragraph(languages$, 0)
       If Forward(languages$,m) then {
             While m {
                   job$=Paragraph$(languages$,(m))
@@ -3002,15 +3002,15 @@ Module RankLanguages {
       If limit<Len(Lang) then Error "Invalid data"
       Refresh
       set slow
-      m=Paragraph(categories$, 0) 
+      m=Paragraph(categories$, 0)
       counter=0
       If Forward(categories$,m) then {
             While m {
                   job$=Paragraph$(categories$,(m))
                   counter++
                   Print Over format$("{0:2:-6}%", counter/limit*100)
-                  i=Instr(job$, part2$) 
-                  If  i Else Continue          
+                  i=Instr(job$, part2$)
+                  If  i Else Continue
                   i=Rinstr(job$, "(", -i)
                   If  i Else Continue
                   tasks=Val(Filter$(Mid$(job$, i+1),","))
@@ -3043,7 +3043,7 @@ Module RankLanguages {
       Report "Make List"
       T=Each(ByTask)
       final$="Sample output on "+Date$(Today, 1033, "long date")+{:
- 
+
       }
       While T {
             final$=format$("rank:{0::-4}. {1:-5} entries - {2}", T^+1, Eval$(T!), Eval$(T))+{
@@ -3052,7 +3052,7 @@ Module RankLanguages {
       Report "Copy to Clipboard"
       clipboard final$
       \\ present to console with 3/4 fill lines then stop for space bar or mouse click to continue
-      Report final$     
+      Report final$
 }
 RankLanguages
 
@@ -3062,7 +3062,7 @@ RankLanguages
 {{out}}
 <pre style="height:30ex;overflow:scroll">
 Sample output on Saturday, June 22, 2019:
- 
+
 rank:   1.  1149 entries - Go
 rank:   2.  1084 entries - Perl 6
 rank:   3.  1061 entries - Python
@@ -3195,7 +3195,7 @@ count_sizes := proc(arr_name,arr_pop,i,lst)
 	local index := i;
 	local language;
 	for language in lst do
-		language := language[1]:	
+		language := language[1]:
 		arr_name(index) := txt["query"]["pages"][language]["title"][10..]:
 		if(assigned(txt["query"]["pages"][language]["categoryinfo"]["size"])) then
 			arr_pop(index) := txt["query"]["pages"][language]["categoryinfo"]["size"]:
@@ -3210,7 +3210,7 @@ end proc:
 txt := JSON:-ParseFile("http://rosettacode.org/mw/api.php?action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=350&prop=categoryinfo&format=json"):
 arr_name := Array():
 arr_pop := Array():
-i := count_sizes(arr_name, arr_pop, 1, [indices(txt["query"]["pages"])]):	
+i := count_sizes(arr_name, arr_pop, 1, [indices(txt["query"]["pages"])]):
 while (assigned(txt["continue"]["gcmcontinue"])) do
 	continue := txt["continue"]["gcmcontinue"]:
 	txt := JSON:-ParseFile(cat("http://rosettacode.org/mw/api.php?action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=350&prop=categoryinfo&format=json", "&continue=", txt["continue"]["continue"], "&gcmcontinue=", txt["continue"]["gcmcontinue"])):
@@ -3341,7 +3341,7 @@ class RosettaRank {
     each(i : in) {
       langs_xml += in->Get(i)->As(String);
     };
-    
+
     langs := StringSet->New();
     parser := XmlParser->New(langs_xml);
     if(parser->Parse()) {
@@ -3354,10 +3354,10 @@ class RosettaRank {
         if(offset > -1) {
           lang := name->SubString(offset + 1, name->Size() - offset - 1);
           langs->Insert(lang->ReplaceAll("&#x20;", " "));
-        };  
+        };
       };
     };
-    
+
     langs_counts := IntMap->New();
     client := HttpClient->New();
     html := client->Get("http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000");
@@ -3365,7 +3365,7 @@ class RosettaRank {
       lines := html->Get(i)->As(String);
       html_elements := lines->Split("\n");
       each(j : html_elements) {
-        element := html_elements[j];          
+        element := html_elements[j];
         name : String; count : String;
         regex := RegEx->New("<li><a href=\"(\\w|\\s|/|\\?|\\&|;|:|#)+\"\\stitle=\"Category:(\\w|\\s|#)+\">");
         found := regex->FindFirst(element);
@@ -3375,7 +3375,7 @@ class RosettaRank {
           found := regex->Match(element, group1);
           if(found <> Nil & found->Size() > 0) {
             name := found;
-            # skip over some junk characters 
+            # skip over some junk characters
             group2 := group1 + found->Size() + 10;
             regex := RegEx->New("\\s\\(");
             found := regex->Match(element, group2);
@@ -3389,16 +3389,16 @@ class RosettaRank {
             };
           };
         };
-        
+
         if(name <> Nil & count <> Nil) {
           if(langs->Has(name)) {
             langs_counts->Insert(count->ToInt(), name);
           };
           name := Nil; count := Nil;
-        };  
+        };
       };
     };
-    
+
     keys := langs_counts->GetKeys();
     count := 1;
     for(i := keys->Size() - 1; i >= 0; i -=1;) {
@@ -3616,7 +3616,7 @@ read_cat:
     _=translate(dd)
     If \l._ Then                       /* not a known language       */
       Iterate                          /* ignore                     */
-    if pos(',', mems)\==0  then 
+    if pos(',', mems)\==0  then
       mems=changestr(",", mems, '')    /* remove commas.             */
     If\datatype(mems,'W') Then         /* not a number of members    */
       Iterate                          /* ignore                     */
@@ -3752,7 +3752,7 @@ no_member: Procedure Expose lang_list lang_listr tid x00 test
     Otherwise        res=-1
     End
   Return res
-  
+
 
 ::CLASS alpha MIXINCLASS Comparator
 ::METHOD compare
@@ -3798,7 +3798,7 @@ Using web scraping. Does not filter non-language categories.
 declare
   [HTTPClient] = {Module.link ['x-ozlib://mesaros/net/HTTPClient.ozf']}
   [Regex] = {Module.link ['x-oz://contrib/regex']}
- 
+
   fun {GetPage RawUrl}
      Client = {New HTTPClient.urlGET init(inPrms(toFile:false toStrm:true) _)}
      Url = {VirtualString.toString RawUrl}
@@ -3809,7 +3809,7 @@ declare
      {Client closeAll(true)}
      OutParams.sOut
   end
- 
+
   fun {GetCategories Doc}
      {Map {Regex.allMatches "<li><a[^>]+>([^<]+)</a> \\(([0-9]+) member" Doc}
       fun {$ Match}
@@ -3820,7 +3820,7 @@ declare
       end
      }
   end
- 
+
   Url = "http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
 
   {System.showInfo "Retrieving..."}
@@ -4040,7 +4040,7 @@ sub uri-query-string (*%fields) {
 ```
 
 
-{{out|Abridged output}} See [[Rosetta_Code/Rank_languages_by_popularity/Full_list|full output here]]. 
+{{out|Abridged output}} See [[Rosetta_Code/Rank_languages_by_popularity/Full_list|full output here]].
 {|class="wikitable sortable"
 |+ As of 2019-02-10 :: 715 Languages
 !Rank!!Language!!Task
@@ -4200,7 +4200,7 @@ Scraping the languages and categories pages.  Perl 6 automatically handles Unico
 ```perl6
 my $languages =  qx{wget -O - 'http://rosettacode.org/wiki/Category:Programming_Languages'};
 my $categories = qx{wget -O - 'http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000'};
- 
+
 my @lines = $languages.lines;
 shift @lines until @lines[0] ~~ / '<h2>Subcategories</h2>' /;
 my \languages = set gather for @lines {
@@ -4208,7 +4208,7 @@ my \languages = set gather for @lines {
     take ~$0 if
         / '<li><a href="/wiki/Category:' .*? '" title="Category:' .*? '">' (.*?) '</a></li>' /;
 }
- 
+
 @lines = $categories.lines;
 my @results = sort -*.[0], gather for @lines {
     take [+$1.subst(',', ''), ~$0] if
@@ -4216,7 +4216,7 @@ my @results = sort -*.[0], gather for @lines {
         (.*?) <?{ ~$0 ∈ languages }>
         '</a>' .*? '(' (<[, 0..9]>+) ' member' /;
 }
- 
+
 for @results.kv -> $i, @l {
     printf "%d:\t%4d - %s\n", $i+1, |@l;
 }
@@ -4274,7 +4274,7 @@ function open_download(string filename, url)
             printf(1, "Error %s downloading file\n", error)
             {} = wait_key()
             abort(0)
-        end if  
+        end if
     end if
     return get_text(filename)
 end function
@@ -4312,7 +4312,7 @@ sequence results = {} -- {rank,count,name}
         language_name = cats[k..start-1]
         start = match("</a>",cats,start)+4
         if output_users then
-            if length(language_name)>5 
+            if length(language_name)>5
             and language_name[-5..-1] = " User" then
                 language_name = language_name[1..-6]
             else
@@ -4326,7 +4326,7 @@ sequence results = {} -- {rank,count,name}
             members = substitute(members,",","")
             sequence res = scanf(members,"(%d member%s)<")
             results = append(results,{0,res[1][1],language_name})
-        end if      
+        end if
     end while
     results = sort_columns(results,{-2,3}) -- (descending 2nd column, then asc 3rd)
 
@@ -4439,12 +4439,12 @@ $res = $match2 | sort -Descending {[Int]$($_.Groups[2].Value)} | foreach {
         [pscustomobject]@{
             Rank = "$r"
             Members =  "$($_.Groups[2].Value)"
-            Language = "$($_.Groups[1].Value)"           
+            Language = "$($_.Groups[1].Value)"
         }
         $r++
     }
-} 
-1..30 | foreach{ 
+}
+1..30 | foreach{
     [pscustomobject]@{
         "Rank 1..30" = "$($_)"
         "Members 1..30" =  "$($res[$_-1].Members)"
@@ -4452,7 +4452,7 @@ $res = $match2 | sort -Descending {[Int]$($_.Groups[2].Value)} | foreach {
         "Rank 31..60" = "$($_+30)"
         "Members 31..60" =  "$($res[$_+30].Members)"
         "Language 31..60" = "$($res[$_+30].Language)"
-    } 
+    }
 }| Format-Table -AutoSize
 
 ```
@@ -4463,36 +4463,36 @@ $res = $match2 | sort -Descending {[Int]$($_.Groups[2].Value)} | foreach {
 
 Rank 1..30 Members 1..30 Language 1..30 Rank 31..60 Members 31..60 Language 31..60
 ---------- ------------- -------------- ----------- -------------- ---------------
-1          887           Tcl            31          405            Seed7          
-2          877           Racket         32          397            Julia          
-3          853           Python         33          389            PL/I           
-4          798           J              34          387            Fortran        
-5          775           Ruby           35          386            ALGOL 68       
-6          766           Perl 6         36          376            Lua            
-7          758           C              37          369            Pascal         
-8          746           Go             38          367            R              
-9          740           D              39          364            Groovy         
-10         710           Perl           40          363            F Sharp        
-11         701           REXX           41          363            Forth          
-12         692           PicoLisp       42          358            PHP            
-13         682           Haskell        43          342            AWK            
-14         675           Mathematica    44          340            Sidef          
-15         652           Java           45          335            MATLAB         
-16         623           Ada            46          325            Liberty BASIC  
-17         591           AutoHotkey     47          297            Octave         
-18         562           C++            48          287            Factor         
-19         551           Common Lisp    49          286            Scheme         
-20         548           Scala          50          285            NetRexx        
-21         532           BBC BASIC      51          284            Oforth         
-22         523           Icon           52          280            Oz             
-23         516           C sharp        53          274            Run BASIC      
-24         508           OCaml          54          272            E              
-25         502           Nim            55          271            Bracmat        
-26         488           PureBasic      56          268            PowerShell     
-27         487           Clojure        57          263            Prolog         
-28         455           Erlang         58          260            Lasso          
-29         441           PARI/GP        59          249            Delphi         
-30         434           JavaScript     60          239            Smalltalk  
+1          887           Tcl            31          405            Seed7
+2          877           Racket         32          397            Julia
+3          853           Python         33          389            PL/I
+4          798           J              34          387            Fortran
+5          775           Ruby           35          386            ALGOL 68
+6          766           Perl 6         36          376            Lua
+7          758           C              37          369            Pascal
+8          746           Go             38          367            R
+9          740           D              39          364            Groovy
+10         710           Perl           40          363            F Sharp
+11         701           REXX           41          363            Forth
+12         692           PicoLisp       42          358            PHP
+13         682           Haskell        43          342            AWK
+14         675           Mathematica    44          340            Sidef
+15         652           Java           45          335            MATLAB
+16         623           Ada            46          325            Liberty BASIC
+17         591           AutoHotkey     47          297            Octave
+18         562           C++            48          287            Factor
+19         551           Common Lisp    49          286            Scheme
+20         548           Scala          50          285            NetRexx
+21         532           BBC BASIC      51          284            Oforth
+22         523           Icon           52          280            Oz
+23         516           C sharp        53          274            Run BASIC
+24         508           OCaml          54          272            E
+25         502           Nim            55          271            Bracmat
+26         488           PureBasic      56          268            PowerShell
+27         487           Clojure        57          263            Prolog
+28         455           Erlang         58          260            Lasso
+29         441           PARI/GP        59          249            Delphi
+30         434           JavaScript     60          239            Smalltalk
 
 ```
 
@@ -4507,11 +4507,11 @@ $response = (New-Object Net.WebClient).DownloadString("http://rosettacode.org/wi
 $languages = [regex]::matches($response,'title="Category:(.*?)">') | foreach {$_.Groups[1].Value}
 
 $response = [Net.WebClient]::new().DownloadString("http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
-$response = [regex]::Replace($response,'(\d+),(\d+)','$1$2') 
+$response = [regex]::Replace($response,'(\d+),(\d+)','$1$2')
 
 $members  = [regex]::matches($response,'<li><a[^>]+>([^<]+)</a>[^(]*[(](\d+) member[s]?[)]</li>') | foreach { [pscustomobject]@{
             Members =  [Int]($_.Groups[2].Value)
-            Language = [String]($_.Groups[1].Value)          
+            Language = [String]($_.Groups[1].Value)
         }} | where {$languages.Contains($_.Language)} | sort -Descending Members
 
 Get-Date -UFormat "Sample output on %d %B %Y at %R %Z"
@@ -4579,7 +4579,7 @@ Repeat
          "&generator=categorymembers&gcmtitle=Category:Programming%20Languages" +
          "&gcmlimit=500" + "&gcmcontinue=" + gcmcontinue$ +
          "&prop=categoryinfo&format=json"
-  
+
   *bufferPtr = ReceiveHTTPMemory(url$)
   handleError(*bufferPtr, "Unable to receive web page data.")
   If CatchJSON(#JSON_web_data, *bufferPtr, MemorySize(*bufferPtr)) = 0
@@ -4606,7 +4606,7 @@ Repeat
           Else
             langPageCount = 0
           EndIf
-          
+
           AddElement(languages())
           languages()\name = language$
           languages()\pageCount = langPageCount
@@ -4622,7 +4622,7 @@ Repeat
   Else
     gcmcontinue$ = ""
   EndIf
-  
+
   FreeJSON(#JSON_web_data)
 Until gcmcontinue$ = ""
 
@@ -4630,11 +4630,11 @@ Until gcmcontinue$ = ""
 SortStructuredList(languages(), #PB_Sort_Descending, OffsetOf(languageInfo\pageCount), #PB_Integer)
 
 If OpenConsole()
-  
+
   If ListSize(languages())
     Define i, *startOfGroupPtr.languageInfo, *lastElementPtr, groupSize, rank
     Define outputSize = 100, outputLine
-    
+
     PrintN(Str(ListSize(languages())) + " languages." + #CRLF$)
     LastElement(languages())
     *lastElementPtr = @languages() ;pointer to last element
@@ -4642,7 +4642,7 @@ If OpenConsole()
     *startOfGroupPtr = @languages() ;pointer to first element
     groupSize = 1
     rank = 1
-    
+
     While NextElement(languages())
       If languages()\pageCount <> *startOfGroupPtr\pageCount Or *lastElementPtr = @languages()
         ;display a group of languages at the same rank
@@ -4653,20 +4653,20 @@ If OpenConsole()
             PrintN(" Rank   Tasks  Language")
             PrintN(" ------ -----  --------")
           EndIf
-          
+
           PrintN(RSet(Str(rank), 6) + ".  " +
                  RSet(Str(languages()\pageCount), 4) + "  " +
                  languages()\name)
-          
+
           outputLine + 1
           If outputLine >= outputSize
             Print(#CRLF$ + #CRLF$ + "Press ENTER to continue" + #CRLF$): Input()
             outputLine = 0
           EndIf
-          
+
           NextElement(languages())
         Next
-        
+
         rank + groupSize
         groupSize = 1
         *startOfGroupPtr = @languages()
@@ -4677,7 +4677,7 @@ If OpenConsole()
   Else
     PrintN("No language categories found.")
   EndIf
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -4766,7 +4766,7 @@ Sample output:
 
 Structure Language
   count.i
-  Name.s     
+  Name.s
 EndStructure
 
 Dim Row.Language(5000)
@@ -4792,13 +4792,13 @@ url$ = "http://www.rosettacode.org/mw/index.php?" +
      "title=Special:Categories&limit=5000"
 
 ReceiveHTTPFile(url$, "special.htm")
-ReadFile(0, "special.htm", #PB_UTF8) 
+ReadFile(0, "special.htm", #PB_UTF8)
 While Not Eof(0)
-  i + 1 
+  i + 1
   x1$ =  ReadString(0)
   x2$ = Mid(x1$, FindString(x1$, "member", 1) - 4 , 3)
   Row(i)\count = Val(Trim(RemoveString(x2$, "(")))
-  
+
   x3$ = Mid(x1$, FindString(x1$, Chr(34) + ">", 1) + 2, 30)
   Row(i)\Name = Left(x3$, FindString(x3$, "<", 1) - 1)
   If FindString(ignore$, Row(i)\Name, 1) Or Row(i)\Name = ""
@@ -4807,7 +4807,7 @@ While Not Eof(0)
 Wend
 
 
-  
+
 offset=OffsetOf(Language\count)
 SortStructuredArray(Row(), #PB_Sort_Descending, offset, #PB_Integer)
 OpenConsole()
@@ -4938,7 +4938,7 @@ while(True):
     else:
         break
 
-# report top 15 languages                        
+# report top 15 languages
 for i, (language, size) in enumerate(sorted(languages.items(), key=operator.itemgetter(1), reverse=True)[:15]):
     print("{:4d} {:4d} - {}".format(i+1, size, re.sub('Category:','',language))) # strip Category: from language
 
@@ -4989,7 +4989,7 @@ ff <- function(xml_node) {
 tbl <- ldply(sapply(langs, ff), rbind)
 names(tbl) <- c("language", "n")
 tbl %>%
-  mutate(n=as.integer(n)) %>% 
+  mutate(n=as.integer(n)) %>%
   arrange(desc(n)) %>%
   head
 
@@ -5019,16 +5019,16 @@ tbl %>%
 
 ```racket
 #lang racket
- 
+
 (require racket/hash
          net/url
          json)
- 
+
 (define limit 15)
 (define (replacer cat) (regexp-replace #rx"^Category:(.*?)$" cat "\\1"))
 (define category "Category:Programming Languages")
 (define entries "entries")
- 
+
 (define api-url (string->url "http://rosettacode.org/mw/api.php"))
 (define (make-complete-url gcmcontinue)
   (struct-copy url api-url
@@ -5044,14 +5044,14 @@ tbl %>%
 (define @ hash-ref)
 
 (define table (make-hash))
- 
+
 (let loop ([gcmcontinue ""])
   (define resp (read-json (get-pure-port (make-complete-url gcmcontinue))))
   (hash-union! table
                (for/hash ([(k v) (in-hash (@ (@ resp 'query) 'pages))])
                  (values (@ v 'title #f) (@ (@ v 'categoryinfo (hash)) 'size 0))))
   (cond [(@ resp 'continue #f) => (λ (c) (loop (@ c 'gcmcontinue)))]))
- 
+
 (for/fold ([prev #f] [rank #f] #:result (void))
           ([item (in-list (sort (hash->list table) > #:key cdr))] [i (in-range limit)])
   (match-define (cons cat size) item)
@@ -5101,13 +5101,13 @@ Red []
 
 data: read http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000
 lb: make block! 500
-;;data: read %data.html ;; for testing save html and use flat file 
+;;data: read %data.html ;; for testing save html and use flat file
 arr: split data newline
 
 k: "Category:"
 ;; exclude list:
-exrule: [thru ["programming" 
-                | "users" 
+exrule: [thru ["programming"
+                | "users"
                 | "Implementations"
                 | "Solutions by "
                 | "Members"
@@ -5117,7 +5117,7 @@ exrule: [thru ["programming"
                 ]
             to end
           ]
-          
+
 foreach line arr [
   unless find line k [continue]
   parse line [ thru k thru ">" copy lang to "<" to end ] ;; extract/parse language
@@ -5131,7 +5131,7 @@ foreach line arr [
 
 lb:  sort/skip/compare lb 2 2   ;; sort series by entries
 
-print reduce [ "Rank Entries Language" ]    ;; header 
+print reduce [ "Rank Entries Language" ]    ;; header
 
 last: 0
 rank: 0
@@ -5142,7 +5142,7 @@ until [
   lb: skip lb -2
   cnt: second lb
   if cnt <> last [
-    rank: rank + 1 
+    rank: rank + 1
   ]
   print rejoin [ pad/left rank 4 "." pad/left cnt 5 " - " first lb  ]
   last: cnt
@@ -5187,31 +5187,31 @@ Rank Entries Language
 
 ## REXX
 
-(Native) REXX doesn't support web-page reading, so the mentioned   ''Rosetta Code categories''   and 
+(Native) REXX doesn't support web-page reading, so the mentioned   ''Rosetta Code categories''   and
 
-''Rosetta Code Languages''   were downloaded to local files. 
+''Rosetta Code Languages''   were downloaded to local files.
 
 
 This program reads the   ''Languages''   file and uses the contents of that file for a validation of
 
 the   ''categories''   file.   This essentially is a perfect filter for the   ''Rosetta Code categories''   file.
 
-The   '''catHeap'''   variable in the REXX program is just a long string of all the records in the web-file of the 
+The   '''catHeap'''   variable in the REXX program is just a long string of all the records in the web-file of the
 
 Rosetta Code categories, with a special character ('''sep''') that separates each language entry (name).
 
-The mechanism is to use a (sparse) stemmed array which holds only the names of languages which 
+The mechanism is to use a (sparse) stemmed array which holds only the names of languages which
 
 (for most REXXes) uses a hashing algorithm to locate the entry   (which is very fast).
 
 Programming note:   (REXX doesn't handle Unicode characters)   some special cases that are translated:
-:::*   '''╬£C++'''                                   translated into   '''µC++'''          [Greek micro] 
+:::*   '''╬£C++'''                                   translated into   '''µC++'''          [Greek micro]
 :::*   '''╨£╨Ü-61/52'''                                                       translated into   '''MK-61/52'''   [Cyrillic   '''МК-61/52'''])
 :::*   '''??-61/52'''                                          translated into   '''MK-61/52'''   [Cyrillic   '''МК-61/52'''])
 :::*   '''D├⌐j├á Vu'''                                                   translated into   '''Déjà Vu'''
 :::*   '''Cach├⌐'''                                            translated into   '''Caché'''
-:::*   '''F┼ìrmul├ª'''                                                   translated into   '''Fôrmulæ''' 
-:::*   '''α«ëα«»α«┐α«░α»ì/Uyir'''                                                                                               translated into   '''Uyir''' 
+:::*   '''F┼ìrmul├ª'''                                                   translated into   '''Fôrmulæ'''
+:::*   '''α«ëα«»α«┐α«░α»ì/Uyir'''                                                                                               translated into   '''Uyir'''
 :::*   '''╨£iniZinc'''                                              translated into   '''MiniZinc'''
 (The 3<sup>rd</sup> entry is most likely caused by the inability to render unsupported glyphs when it was first used to add that language.)
 
@@ -5339,7 +5339,7 @@ tell:             do '0'arg(2);   call lineout outFID," "     ; if term then say
 The '''output'''   for this REXX (RC_POP.REX) program is included here   ──►   [[RC_POP.OUT]].
 
 
-[See the talk page about some programming languages using different cases (lower/upper/mixed) for the language names,   as well as those that use Unicode characters in the name.] 
+[See the talk page about some programming languages using different cases (lower/upper/mixed) for the language names,   as well as those that use Unicode characters in the name.]
 
 
 
@@ -5351,9 +5351,9 @@ The '''output'''   for this REXX (RC_POP.REX) program is included here   ──�
 ```ring
 
 # Project: Rosetta Code/Rank languages by popularity
- 
+
 load "stdlib.ring"
-ros= download("http://rosettacode.org/wiki/Category:Programming_Languages") 
+ros= download("http://rosettacode.org/wiki/Category:Programming_Languages")
 pos = 1
 totalros = 0
 rosname = ""
@@ -5367,8 +5367,8 @@ for n = 1 to len(ros)
         else
            pos = nr + 1
         ok
-        nr = searchname(nr)  
-        nr = searchtitle(nr) 
+        nr = searchname(nr)
+        nr = searchtitle(nr)
 next
 roslist = sortfirst(roslist)
 roslist = reverse(roslist)
@@ -5386,7 +5386,7 @@ func searchstring(str,substr,n)
        else
           return n + nr -1
        ok
- 
+
 func count(cstring,dstring)
        sum = 0
        while substr(cstring,dstring) > 0
@@ -5403,7 +5403,7 @@ func searchname(sn)
        rosname = substr(ros,nr2+15,nr3-nr2-17)
        rosnameold = substr(ros,nr4+2,nr5-nr4-2)
        return sn
- 
+
 func searchtitle(sn)
         rostitle = "rosettacode.org/wiki/Category:" + rosname
         rostitle = download(rostitle)
@@ -5423,7 +5423,7 @@ func searchtitle(sn)
            add(roslist,[rosnr,rosnameold])
         ok
         return sn
- 
+
 func sortfirst(alist)
         for n = 1 to len(alist) - 1
              for m = n + 1 to len(alist)
@@ -5565,7 +5565,7 @@ while i > 0 and lang$ <> "Languages"
 	if ii = 0 then cnt = 0 else cnt = val(mid$(aa$,jj+1,kk-jj))
 	k	= instr(lang$,"%")     ' convert hex values to characters
 	while k > 0
-		lang$	= left$(lang$,k-1) + chr$(hexdec(mid$(lang$,k+1,2))) + mid$(lang$,k+3) 
+		lang$	= left$(lang$,k-1) + chr$(hexdec(mid$(lang$,k+1,2))) + mid$(lang$,k+3)
 		k	= instr(lang$,"%")
 	wend
 	#mem execute("insert into stats values ('";lang$;"',";cnt;")")
@@ -6046,14 +6046,14 @@ sorted_languages.each_kv { |i, lang|
 read    line = line fin                             :f(done)
 get     line languagepat =                          :f(read)
         langtable<lang> = langtable<lang> + count   :(get)
-        
+
 done    langarray = rsort(langtable,2)              :s(write)
         output = "No languages found."              :(end)
 
-write   n = n + 1 
+write   n = n + 1
         output = lpad(n ". ", 5) lpad(langarray<n, 2>, 4)
 +          " - " langarray<n,1>                     :s(write)
-       
+
         url.close(.fin)
 end
 ```
@@ -6190,9 +6190,9 @@ list in 1/10, noobs
 ```tcl
 package require Tcl 8.5
 package require http
- 
+
 set response [http::geturl http://rosettacode.org/mw/index.php?title=Special:Categories&limit=8000]
- 
+
 array set ignore {
     "Basic language learning"           1
     "Encyclopedia"                      1
@@ -6209,7 +6209,7 @@ array set ignore {
     "Unimplemented tasks by language"   1
     "WikiStubs"                         1
     "Examples needing attention"	1
-    "Impl needed"			1	
+    "Impl needed"			1
 }
 # need substring filter
 proc filterLang {n} {
@@ -6221,9 +6221,9 @@ foreach line [split [http::data $response] \n] {
         if {![info exists ignore($lang)] && ![filterLang $lang]} {
             lappend langs [list $num $lang]
         }
-    } 
+    }
 }
-  
+
 foreach entry [lsort -integer -index 0 -decreasing $langs] {
     lassign $entry num lang
     puts [format "%d. %d - %s" [incr i] $num $lang]
@@ -6269,7 +6269,7 @@ foreach entry [lsort -integer -index 0 -decreasing $langs] {
 package require Tcl 8.5
 package require http
 package require tdom
- 
+
 namespace eval rc {
     ### Utility function that handles the low-level querying ###
     proc rcq {q xp vn b} {
@@ -6282,19 +6282,19 @@ namespace eval rc {
 	    set token [http::geturl $url]
 	    set doc [dom parse [http::data $token]]
 	    http::cleanup $token
- 
+
 	    # Spoon out the DOM nodes that the caller wanted
 	    foreach v [$doc selectNodes $xp] {
 		uplevel 1 $b
 	    }
- 
+
 	    # See if we want to go round the loop again
 	    set next [$doc selectNodes "//query-continue/categorymembers"]
 	    if {![llength $next]} break
 	    dict set q cmcontinue [[lindex $next 0] getAttribute "cmcontinue"]
 	}
     }
- 
+
     ### API function: Iterate over the members of a category ###
     proc members {page varName script} {
 	upvar 1 $varName var
@@ -6309,7 +6309,7 @@ namespace eval rc {
 	    uplevel 1 $script
 	}
     }
- 
+
     ### API function: Count the members of a list of categories ###
     proc count {cats catVar countVar script} {
 	upvar 1 $catVar cat $countVar count
@@ -6330,12 +6330,12 @@ namespace eval rc {
 	    }
 	}
     }
- 
+
     ### Assemble the bits into a whole API ###
     namespace export members count
     namespace ensemble create
 }
- 
+
 # Get the list of programming languages
 rc members "Programming Languages" lang {
     lappend langs $lang
@@ -6500,7 +6500,7 @@ ENDCOMPILE
 33. Scala --- 197 member
 34. PL/I --- 193 member
 34. Go --- 193 member
-36. Scheme --- 186 member 
+36. Scheme --- 186 member
 
 ```
 
@@ -6753,7 +6753,7 @@ Most popular Rosetta Code languages as of Saturday, the 23rd of September 2017
 
 
 {{omit from|Batch File}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Lilypond}}
 {{omit from|Maxima}}
 {{omit from|PARI/GP}}

@@ -12,7 +12,7 @@ tags = []
 
 {{task|Basic language learning}}
 
-Some languages automatically insert a newline after outputting a string, unless measures are taken to prevent its output. 
+Some languages automatically insert a newline after outputting a string, unless measures are taken to prevent its output.
 
 
 ;Task:
@@ -153,7 +153,7 @@ Disp "Goodbye, World!"
 
 ## B
 
-{{works with|The Amsterdam Compiler Kit - B|V6.1pre1}}                                                
+{{works with|The Amsterdam Compiler Kit - B|V6.1pre1}}
 
 ```B
 main()
@@ -201,7 +201,7 @@ PRINT "GOODBYE, WORLD!";
 ```basic
 10 print chr$(14) : rem Switch to lower+uppercase character set
 20 print "Goodbye, World!";
-30 rem * If we end this program here, we will not see the effect because 
+30 rem * If we end this program here, we will not see the effect because
 40 rem   BASIC will print 'READY' at a new line anyway.
 50 rem * So, we just print additional message...
 60 print "(End of the world)"
@@ -265,7 +265,7 @@ setlocal enableDelayedExpansion
 ```bbcbasic
       REM BBC BASIC accepts the standard trailing semicolon:
       PRINT "Goodbye World!";
-      
+
       REM One could also output the characters individually:
       GW$ = "Goodbye World!"
       FOR i% = 1 TO LEN(GW$)
@@ -315,8 +315,8 @@ put$"Goodbye, World!"
 ```
 
 
-=={{header|Brainf***}}==
-One option was to copy the code from the regular Hello World version and omit the last period, but one of the nicer things about the language is that no matter how simple your program is, if it's more than a few characters long, it's probably unique. So here's yet another version of Goodbye, World in Brainf***.
+=={{header|Brainfuck}}==
+One option was to copy the code from the regular Hello World version and omit the last period, but one of the nicer things about the language is that no matter how simple your program is, if it's more than a few characters long, it's probably unique. So here's yet another version of Goodbye, World in Brainfuck.
 
 ```bf>>+++++[>++++>+>+>++++>>+++<<<+<+<++[>++>+++>+++>++++>+
 +[<]>>-]<-]>>
@@ -440,28 +440,28 @@ process.stdout.write "Goodbye, World!"
 DEF Win:WINDOW
 DEF Close:CHAR
 DEF ScreenSizeX,ScreenSizeY:INT
- 
+
 GETSCREENSIZE(ScreenSizeX,ScreenSizeY)
- 
+
 WINDOW Win,0,0,ScreenSizeX,ScreenSizeY,0,0,"Goodbye program",MainHandler
- 
+
 PRINT Win,"Goodbye, World!"
 'Prints in the upper left corner of the window (position 0,0).
 PRINT"Win," I ride off into the sunset."
 
 'There does not appear to be a means of starting a new line when printing in a window, other than by using the MOVE command.
 'Therefore, both sentences here will print on the same line, i.e., in the same vertical position.
- 
+
 WAITUNTIL Close=1
- 
+
 CLOSEWINDOW Win
- 
+
 END
- 
+
 SUB MainHandler
- 
-    IF @CLASS=@IDCLOSEWINDOW THEN Close=1   
- 
+
+    IF @CLASS=@IDCLOSEWINDOW THEN Close=1
+
 RETURN
 
 'In the console
@@ -479,7 +479,7 @@ DO:UNTIL INKEY$<>""
 CLOSECONSOLE
 
 'Since this a Cbasic console program.
-END 
+END
 
 ```
 
@@ -595,7 +595,7 @@ end class
 
 ```lisp
 
-(begin 
+(begin
     (write "GoodBye, World")
     (write "Next on same line"))
 
@@ -634,14 +634,14 @@ IO.write "Goodbye, World!"
 ```Emacs Lisp
 
 (insert "Goodbye, World!")
- 
+
 ```
 
 <b>Output:</b>
 
 ```txt
 
-Goodbye, World!                                                                 
+Goodbye, World!
 
 ```
 
@@ -690,7 +690,7 @@ printf "Goodbye, World!";;
 [<EntryPoint>]
 let main args =
     printf "Goodbye, World!"
-    0 
+    0
 
 ```
 
@@ -776,7 +776,7 @@ The "advance" facility was introduced with F90, as was the ability to specify fo
       END
 ```
 
-In this, the FORMAT instruction is to accept alphabetic text (the A) from the WRITE statement, followed by the special $ item (of no mnemonic form) which signified that there was not to be any new line action at the end of the output. This sort of thing is useful when writing a prompt to the screen so that the input of the response appears on the same screen line. The text could also have been incorporated into the FORMAT statement, which would be useful if there were many WRITE statements scattered about that were to send forth the same text. 
+In this, the FORMAT instruction is to accept alphabetic text (the A) from the WRITE statement, followed by the special $ item (of no mnemonic form) which signified that there was not to be any new line action at the end of the output. This sort of thing is useful when writing a prompt to the screen so that the input of the response appears on the same screen line. The text could also have been incorporated into the FORMAT statement, which would be useful if there were many WRITE statements scattered about that were to send forth the same text.
 
 These facilities only became of interest when, instead of card decks and lineprinters, I/O involved a keyboard and screen with both input and output appearing on the same screen. Thus, in earlier Fortran usage, the issue would not arise for output to a lineprinter, because it was already the case: a line written to the lineprinter was ''not'' followed by a end-of-line/start-new-line sort of action by the lineprinter. It stayed put on the line just written. It was the ''following'' output to the lineprinter that would state "advance one" (or two, or, no) lines at the ''start'' of its output. This was the "carriage control character", and a 1 signified "skip to top-of-form" which is to say, start a new page.
 
@@ -945,7 +945,7 @@ Native output in Icon and Unicon is performed via the ''write'' and ''writes'' p
 
 ```Icon
 procedure main()
-   writes("Goodbye, World!")    
+   writes("Goodbye, World!")
 end
 ```
 
@@ -979,28 +979,28 @@ write("Goodbye, World!")
 DEF Win:WINDOW
 DEF Close:CHAR
 DEF ScreenSizeX,ScreenSizeY:UINT
- 
+
 GETSCREENSIZE(ScreenSizeX,ScreenSizeY)
- 
+
 OPENWINDOW Win,0,0,ScreenSizeX,ScreenSizeY,NULL,NULL,"Goodbye program",&MainHandler
- 
+
 PRINT Win,"Goodbye, World!"
 'Prints in upper left corner of the window (position 0,0).
 PRINT Win," You won't have this program to kick around anymore."
 
 'There does not appear to be a means of starting a new line when printing in a window, other than by using the MOVE command.
 'Therefore, both sentences here will print on the same line, i.e., in the same vertical position.
- 
+
 WAITUNTIL Close=1
- 
+
 CLOSEWINDOW Win
- 
+
 END
- 
+
 SUB MainHandler
- 
+
     IF @MESSAGE=@IDCLOSEWINDOW THEN Close=1
- 
+
 RETURN
 ENDSUB
 
@@ -1015,11 +1015,11 @@ PRINT" You won't have this program to kick around anymore."
 PRINT:PRINT
 
 'A press any key to continue message is automatic in a program compiled as console only.
-'I presume the compiler adds the code.  
+'I presume the compiler adds the code.
 CLOSECONSOLE
 
 'Since this an IWBASIC console program.
-END 
+END
 
 ```
 
@@ -1031,7 +1031,7 @@ On a linux system, you can use 1!:3 because stdout is a file:
 
 ```j
    'Goodbye, World!' 1!:3 <'/proc/self/fd/1'
-Goodbye, World!   
+Goodbye, World!
 ```
 
 However, J works in environments other than Linux, so...
@@ -1043,11 +1043,11 @@ However, J works in environments other than Linux, so...
 Goodbye, World!
 ```
 
-'''Notes''':  J programs are normally run from a REPL, or session manager, which comes in several flavors.  The traditional commandline-based terminal (jconsole), one of several desktop applications (jqt for the current version of J, jgtk and jwd for older but still supported versions), a web-based frontend (jhs), and various mobile apps (J for iOS, Android).  
+'''Notes''':  J programs are normally run from a REPL, or session manager, which comes in several flavors.  The traditional commandline-based terminal (jconsole), one of several desktop applications (jqt for the current version of J, jgtk and jwd for older but still supported versions), a web-based frontend (jhs), and various mobile apps (J for iOS, Android).
 
 The specific session manager being used changes the context and therefore answer to this task.  For example, when using J from a browser (including mobile browsers) newlines are omitted by default.  Further, J provides strong tools for coalescing results and manipulating them prior to output, so newline elimination would typically happen before output rather than after.
 
-With that said, <code>prompt</code> handles the most common cases (using binary output for jconsole, so no newline is appended; adjusting the REPL prompt in the desktop apps to to elide the newline which is normally included by default, etc).  
+With that said, <code>prompt</code> handles the most common cases (using binary output for jconsole, so no newline is appended; adjusting the REPL prompt in the desktop apps to to elide the newline which is normally included by default, etc).
 
 For truly automated processes, you'd almost always want this kind of functionality (omitting the newline when printing) in a file- or stream-oriented application.  For those cases, the simple <code>text 1!:3 file</code> will append the text to the referenced file verbatim, without inserting any extra newlines.
 
@@ -1099,7 +1099,7 @@ The "-j" command-line option suppresses the newline that would otherwise be prin
 
 ```sh
 $ jq -n -j '"Goodbye, World!"'
-Goodbye, World!$ 
+Goodbye, World!$
 ```
 
 The trailing "$" is the command-line prompt.
@@ -1107,8 +1107,8 @@ The trailing "$" is the command-line prompt.
 Similarly:
 
 ```sh
-$ echo '"Goodbye, World!"' | jq -j 
-Goodbye, World!$ 
+$ echo '"Goodbye, World!"' | jq -j
+Goodbye, World!$
 ```
 
 
@@ -1555,24 +1555,24 @@ main: func {
 ```oxygene
 
 namespace HelloWorld;
- 
+
 interface
- 
+
 type
   HelloWorld = class
   public
-    class method Main; 
+    class method Main;
   end;
- 
+
 implementation
- 
+
 class method HelloWorld.Main;
 begin
   Console.Write('Farewell, ');
   Console.Write('cruel ');
   Console.WriteLine('world!');
 end;
- 
+
 end.
 
 ```
@@ -1613,7 +1613,7 @@ print1("Goodbye, World!")
 
 ```pascal
 program NewLineOmission(output);
- 
+
 begin
   write('Goodbye, World!');
 end.
@@ -1622,8 +1622,8 @@ end.
 Output:
 
 ```txt
-% ./NewLineOmission 
-Goodbye, World!% 
+% ./NewLineOmission
+Goodbye, World!%
 ```
 
 
@@ -1827,7 +1827,7 @@ It should be noted that upon a REXX program completion, any text left pending wi
 
 blank line so as to not leave the state of the terminal with malformed "text lines" (which can be followed by other text
 
-(lines) from a calling program(s), or the operating system (shell) which is usually some sort of a "prompt" text string. 
+(lines) from a calling program(s), or the operating system (shell) which is usually some sort of a "prompt" text string.
 
 ```rexx
 /*REXX pgm displays a   "Goodbye, World!"   without a trailing newline. */
@@ -1922,7 +1922,7 @@ print("Goodbye, World!")
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   begin
     write("Goodbye, World!");

@@ -13,19 +13,19 @@ tags = []
 {{task|Basic language learning}} [[Category:Simple]]
 
 This task is about arrays.
- 
-For hashes or associative arrays, please see [[Creating an Associative Array]]. 
+
+For hashes or associative arrays, please see [[Creating an Associative Array]].
 
 For a definition and in-depth discussion of what an array is, see [[Array]].
 
 
 ;Task:
-Show basic array syntax in your language. 
+Show basic array syntax in your language.
 
 Basically, create an array, assign a value to it, and retrieve an element   (if available, show both fixed-length arrays and
 dynamic arrays, pushing a value into it).
 
-Please discuss at Village Pump:   {{vp|Arrays}}.  
+Please discuss at Village Pump:   {{vp|Arrays}}.
 
 Please merge code in from these obsolete tasks:
 :::*   [[Creating an Array]]
@@ -238,10 +238,10 @@ cl_demo_output=>display( itab[ 2 ] ).
 
 ```txt
 
-2 
-3 
-4 
-5 
+2
+3
+4
+5
 
 3
 
@@ -306,7 +306,7 @@ procedure Array_Test is
    -- Ada array indices may begin at any value, not just 0 or 1
    C : array (-37..20) of integer
 
-   -- Ada arrays may be indexed by enumerated types, which are 
+   -- Ada arrays may be indexed by enumerated types, which are
    -- discrete non-numeric types
    type Days is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);
    type Activities is (Work, Fish);
@@ -331,13 +331,13 @@ procedure Array_Test is
 begin
 
    A := (others => 0);     -- Assign whole array
-   B := (1 => 1, 2 => 1, 3 => 2, others => 0); 
-                           -- Assign whole array, different values 
+   B := (1 => 1, 2 => 1, 3 => 2, others => 0);
+                           -- Assign whole array, different values
    A (1) := -1;            -- Assign individual element
    A (2..4) := B (1..3);   -- Assign a slice
    A (3..5) := (2, 4, -1); -- Assign a constant slice
    A (3..5) := A (4..6);   -- It is OK to overlap slices when assigned
-   
+
    Fingers_Extended'First := False; -- Set first element of array
    Fingers_Extended'Last := False;  -- Set last element of array
 
@@ -525,9 +525,9 @@ Arrays in APL are one dimensional matrices, defined by seperating variables with
 
 ```apl>+/ 1 2 3</lang
 
-Is equivalent to 
+Is equivalent to
 ```apl>1 + 2 + 3</lang
-We're folding function 
+We're folding function
 ```apl>+
 ```
  over the array <lang apl>1 2 3</lang
@@ -584,7 +584,7 @@ Lists can contain any objects including other lists:
 
 
 ```txt
-// Creating an array as [ 23, 12, 2, 5345, 23 ] 
+// Creating an array as [ 23, 12, 2, 5345, 23 ]
 // with name "space"
 
    ( space , 23; 12; 2; 5345; 23 )
@@ -625,7 +625,7 @@ Lists can contain any objects including other lists:
 
 ```Argile
 use std, array
- 
+
 (:::::::::::::::::
  : Static arrays :
  :::::::::::::::::)
@@ -636,7 +636,7 @@ let (raw array of (array of 3 real)) foobar = Cdata {
   {1.0; 2.0; 0.0}
   {5.0; 1.0; 3.0}
 }
- 
+
 (: macro to get size of static arrays :)
 =: <array>.length := -> nat {size of array / (size of array[0])}
 printf "%lu, %lu\n" foobar.length (another_array.length) (: 2, 256 :)
@@ -644,8 +644,8 @@ printf "%lu, %lu\n" foobar.length (another_array.length) (: 2, 256 :)
 (: access :)
 another_array[255] = '&'
 printf "`%c'\n" another_array[255]
- 
- 
+
+
 (::::::::::::::::::
  : Dynamic arrays :
  ::::::::::::::::::)
@@ -712,14 +712,14 @@ szStringSch:	.asciz "Raisins"
 szStringSch1:	.asciz "Ananas"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
-	
+
     @@@@@@@@@@@@@@@@@@@@@@@@
     @ add string 5 to area
    @@@@@@@@@@@@@@@@@@@@@@@@
@@ -730,29 +730,29 @@ main:                /* entry of program  */
     cmp r2,#0                @ is null ?
     addne r0,#1             @ no increment counter
     bne 1b                  @ and loop
- 
+
     @ store pointer string 5 in area  at position r0
     ldr r2,iAdrszString5  @ address string 5
-    str r2,[r1,r0,lsl #2]    @ store address 
-	
+    str r2,[r1,r0,lsl #2]    @ store address
+
     @@@@@@@@@@@@@@@@@@@@@@@@
     @ display string at item 3
     @@@@@@@@@@@@@@@@@@@@@@@@
-    mov r2,#2        @ pointers begin in position 0 
+    mov r2,#2        @ pointers begin in position 0
     ldr r1,iAdrtablesPoi1  @ begin pointer area 1
     ldr r0,[r1,r2,lsl #2]
     bl affichageMess
     ldr r0,iAdrszCarriageReturn
     bl affichageMess
-	
+
     @@@@@@@@@@@@@@@@@@@@@@@@
-    @ search string in area 
+    @ search string in area
     @@@@@@@@@@@@@@@@@@@@@@@@
     ldr r1,iAdrszStringSch
     //ldr r1,iAdrszStringSch1  @ uncomment for other search : not found !!
     ldr r2,iAdrtablesPoi1  @ begin pointer area 1
-    mov r3,#0  
-2:   @ search 
+    mov r3,#0
+2:   @ search
     ldr r0,[r2,r3,lsl #2]    @ read string pointer address item r0 (4 bytes by pointer)
     cmp r0,#0                @ is null ?
     beq 3f        @ end search
@@ -769,7 +769,7 @@ main:                /* entry of program  */
 3:   @ end search  string not found
     ldr r0,iAdrszMessStringNfound
     bl affichageMess
-	
+
 100:   /* standard end of the program */
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
@@ -784,11 +784,11 @@ iAdrsZoneconv:       .int sZoneconv
 iAdrszMessStringNfound:  .int szMessStringNfound
 iAdrszCarriageReturn:  .int  szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -802,7 +802,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 /***************************************************/
 /*   conversion register signed décimal     */
@@ -820,36 +820,36 @@ conversion10S:
     mov r4,#10   /* longueur de la zone */
 1: /* debut de boucle de conversion */
     bl divisionpar10 /* division  */
-    add r1,#48        /* ajout de 48 au reste pour conversion ascii */	
+    add r1,#48        /* ajout de 48 au reste pour conversion ascii */
     strb r1,[r2,r4]  /* stockage du byte en début de zone r5 + la position r4 */
     sub r4,r4,#1      /* position précedente */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* boucle si quotient different de zéro */
     strb r5,[r2,r4]  /* stockage du signe à la position courante */
     subs r4,r4,#1   /* position précedente */
     blt  100f         /* si r4 < 0  fin  */
     /* sinon il faut completer le debut de la zone avec des blancs */
-    mov r3,#' '   /* caractere espace */	
+    mov r3,#' '   /* caractere espace */
 2:
     strb r3,[r2,r4]  /* stockage du byte  */
     subs r4,r4,#1   /* position précedente */
     bge 2b        /* boucle si r4 plus grand ou egal a zero */
 100:  /* fin standard de la fonction  */
     pop {r0-r5,lr}   /*restaur desregistres */
-    bx lr   
+    bx lr
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save registers  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -919,7 +919,7 @@ MsgBox % myArray[2]
 myArray.Insert("baz")
 ```
 
-AutoHotkey Basic (deprecated) did not have typical arrays. 
+AutoHotkey Basic (deprecated) did not have typical arrays.
 However, variable names could be concatenated, simulating associative arrays.
 By convention, based on built-in function stringsplit, indexes are 1-based and "0" index is the length.
 
@@ -932,7 +932,7 @@ arrayX4 = bar
 Loop, %arrayX0%
   Msgbox % arrayX%A_Index%
 source = apple bear cat dog egg fish
-StringSplit arrayX, source, %A_Space%  
+StringSplit arrayX, source, %A_Space%
 Loop, %arrayX0%
   Msgbox % arrayX%A_Index%
 ```
@@ -1238,14 +1238,14 @@ The default array base (lower bound) can be set with OPTION BASE. If OPTION BASE
 
 ```qbasic
  OPTION BASE 1
- DIM myArray(100) AS INTEGER 
+ DIM myArray(100) AS INTEGER
 ```
 
 
 Alternatively, the lower and upper bounds can be given while defining the array:
 
 ```qbasic
- DIM myArray(-10 TO 10) AS INTEGER 
+ DIM myArray(-10 TO 10) AS INTEGER
 ```
 
 
@@ -1257,7 +1257,7 @@ Dynamic arrays:
  DIM SHARED myArray(-10 TO 10, 10 TO 30) AS STRING
  REDIM SHARED myArray(20, 20) AS STRING
  myArray(1,1) = "Item1"
- myArray(1,2) = "Item2" 
+ myArray(1,2) = "Item2"
 ```
 
 
@@ -1273,7 +1273,7 @@ DATA and READ statements are often used for this purpose:
  DATA August, September, October, November, December
  FOR m=1 TO 12
     READ month$(m)
- NEXT m 
+ NEXT m
 ```
 
 
@@ -1282,7 +1282,7 @@ DATA and READ statements are often used for this purpose:
 FreeBASIC has an option to initialize array while declaring it.
 
 ```freebasic
- Dim myArray(1 To 2, 1 To 5) As Integer => {{1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}} 
+ Dim myArray(1 To 2, 1 To 5) As Integer => {{1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}}
 ```
 
 
@@ -1445,17 +1445,17 @@ array.4 = 4
 ```bbcbasic
       REM Declare arrays, dimension is maximum index:
       DIM array(6), array%(6), array$(6)
-      
+
       REM Entire arrays may be assigned in one statement:
       array() = 0.1, 1.2, 2.3, 3.4, 4.5, 5.6, 6.7
       array%() = 0, 1, 2, 3, 4, 5, 6
       array$() = "Zero", "One", "Two", "Three", "Four", "Five", "Six"
-      
+
       REM Or individual elements may be assigned:
       array(2) = PI
       array%(3) = RND
       array$(4) = "Hello world!"
-      
+
       REM Print out sample array elements:
       PRINT array(2)  TAB(16) array(3)  TAB(32) array(4)
       PRINT array%(2) TAB(16) array%(3) TAB(32) array%(4)
@@ -1466,7 +1466,7 @@ array.4 = 4
 
 ## bc
 
-There are 26 arrays available (named 'a' to 'z') with all elements initialized to zero and an installation-specific maximum size (in [[GNU bc]] you can find out the limits of your installation (<code>BC_DIM_MAX</code>) by invoking the <code>limits</code> command). 
+There are 26 arrays available (named 'a' to 'z') with all elements initialized to zero and an installation-specific maximum size (in [[GNU bc]] you can find out the limits of your installation (<code>BC_DIM_MAX</code>) by invoking the <code>limits</code> command).
 Array identifiers are always followed by square brackets ('[', ']') and need not be declared/defined before usage. Indexing starts at zero.
 
 The following is a transcript of an interactive session:
@@ -1520,13 +1520,13 @@ delete $arr
 ## Bracmat
 
 In Bracmat, an array is not a variable, but a stack of variables. In fact, local variables in functions are elements in arrays. Global variables are the zeroth element in such arrays.
-You can explicitly create an array of a specific size using the <code>tbl</code> function. Indexing is done by using the syntax <code><i>integer</i>$<i>name</i></code>. 
-Indexing is modulo the size of the array. 
-A negative integer counts from the end of the array and backwards. 
-The last used index is remembered by the array. 
-Arrays can grow and shrink by calling <code>tbl</code> with other values. 
-When shrinking, the values of the upper elements are lost. 
-When growing, the current values are kept and the new elements are initialised with <code>0</code>. 
+You can explicitly create an array of a specific size using the <code>tbl</code> function. Indexing is done by using the syntax <code><i>integer</i>$<i>name</i></code>.
+Indexing is modulo the size of the array.
+A negative integer counts from the end of the array and backwards.
+The last used index is remembered by the array.
+Arrays can grow and shrink by calling <code>tbl</code> with other values.
+When shrinking, the values of the upper elements are lost.
+When growing, the current values are kept and the new elements are initialised with <code>0</code>.
 To delete and array (and therefore the variable with the array's name), call <code>tbl</code> with a size <code>0</code>.
 
 
@@ -1572,8 +1572,8 @@ print myArray[0]
 ```
 
 
-=={{header|Brainf***}}==
-Note that Brainf*** does not natively support arrays, this example creates something that's pretty close, with access of elements at each index, altering elements, and changing size of list at runtime.
+=={{header|Brainfuck}}==
+Note that Brainfuck does not natively support arrays, this example creates something that's pretty close, with access of elements at each index, altering elements, and changing size of list at runtime.
 
 
 ```bf
@@ -1586,7 +1586,7 @@ ARRAY DATA STRUCTURE
 AUTHOR: Keith Stellyes
 WRITTEN: June 2016
 
-This is a zero-based indexing array data structure, it assumes the following 
+This is a zero-based indexing array data structure, it assumes the following
 precondition:
 
 >INDEX<|NULL|VALUE|NULL|VALUE|NULL|VALUE|NULL
@@ -1598,7 +1598,7 @@ finding the next left/right null
 
 HOW INDEXING WORKS:
 It runs a loop _index_ number of times, setting that many nulls
-to a positive, so it can be skipped by the mentioned idioms. 
+to a positive, so it can be skipped by the mentioned idioms.
 Basically, it places that many "milestones".
 
 EXAMPLE:
@@ -1663,17 +1663,17 @@ STILL NEED TO ADJUST UNIT TESTS
 NEWVALUE|>INDEX<|NULL|VALUE etc
 
 [>>[>]+[<]<-] Like above logic except it empties the value and doesn't reset
->>[>]<[-] 
+>>[>]<[-]
 
 [<]<          Move pointer to desired value note that where the index was stored
               is null because of the above loop
-			  
-[->>[>]+[<]<] If NEWVALUE is GREATER than 0 then decrement it & then find the 
+
+[->>[>]+[<]<] If NEWVALUE is GREATER than 0 then decrement it & then find the
               newly emptied cell and increment it
 
-[>>[>]<+[<]<<-] Move pointer to first value find right null move pointer left 
-                then increment where we want our NEWVALUE to be stored then 
-                return back by finding leftmost null then decrementing pointer 
+[>>[>]<+[<]<<-] Move pointer to first value find right null move pointer left
+                then increment where we want our NEWVALUE to be stored then
+                return back by finding leftmost null then decrementing pointer
                 twice then decrement our NEWVALUE cell
 
 ```
@@ -1701,12 +1701,12 @@ When defining autosized multidimensional arrays, all the dimensions except the f
 
 ```c
 long a2D_Array[3][5];    /* 3 rows, 5 columns. */
-float my2Dfloats[][3] = { 
+float my2Dfloats[][3] = {
    1.0, 2.0, 0.0,
    5.0, 1.0, 3.0 };
 #define FLOAT_ROWS (sizeof(my2Dfloats)/sizeof(my2dFloats[0]))
 ```
-   
+
 
 When the size of the array is not known at compile time, arrays may be dynamically
 allocated to the proper size. The <code>malloc()</code>, <code>calloc()</code> and <code>free()</code> functions require the header <code>stdlib.h</code>.
@@ -1721,7 +1721,7 @@ if ( myArray != NULL )   /* check to ensure allocation succeeded. */
   free(myArray);
 }
                     /* calloc() additionally pre-initializes to all zeros */
-short *myShorts = calloc( numElements, sizeof(short)); /* array of 10 */ 
+short *myShorts = calloc( numElements, sizeof(short)); /* array of 10 */
 if (myShorts != NULL)....
 ```
 
@@ -1771,7 +1771,7 @@ if (kernel) {
 
 In C99, it is possible to declare arrays with a size that is only known at runtime (e.g. a number input by the user).
 
-Typically dynamic allocation is used and the allocated array is sized to the maximum that might be needed.  A additional variable is 
+Typically dynamic allocation is used and the allocated array is sized to the maximum that might be needed.  A additional variable is
 declared and used to maintain the current number of elements used.  In C, arrays may be dynamically resized if they were allocated:
 
 ```c
@@ -1902,7 +1902,7 @@ void demonstrate(Array& array)
                        // get undefined behaviour
   array.at(1) = "Two"; // *Slightly* less fast, but safe - if the index is out
                        // of bounds, an exception is thrown
-  
+
   // Arrays can be used with standard algorithms
   std::reverse(begin(array), end(array));
   std::for_each(begin(array), end(array),
@@ -1910,7 +1910,7 @@ void demonstrate(Array& array)
     {
       std::cout << element << ' ';
     });
-  
+
   std::cout << '\n';
 }
 
@@ -1919,11 +1919,11 @@ int main()
   // Compile-time sized fixed-size array
   auto fixed_size_array = std::array<std::string, 3>{ "One", "Four", "Eight" };
   // If you do not supply enough elements, the remainder are default-initialized
-  
+
   // Dynamic array
   auto dynamic_array = std::vector<std::string>{ "One", "Four" };
   dynamic_array.push_back("Eight"); // Dynamically grows to accept new element
-  
+
   // All types of arrays can be used more or less interchangeably
   demonstrate(fixed_size_array);
   demonstrate(dynamic_array);
@@ -2026,14 +2026,14 @@ import ceylon.collection {
 }
 
 shared void run() {
-	
+
 	// you can get an array from the Array.ofSize named constructor
 	value array = Array.ofSize(10, "hello");
 	value a = array[3];
 	print(a);
 	array[4] = "goodbye";
 	print(array);
-	
+
 	// for a dynamic list import ceylon.collection in your module.ceylon file
 	value list = ArrayList<String>();
 	list.push("hello");
@@ -2050,7 +2050,7 @@ Array denotations are overloaded in Clean, therefore we explicitly specify the t
 
 ### Lazy array
 
-Create a lazy array of strings using an array denotation. 
+Create a lazy array of strings using an array denotation.
 
 ```clean
 array :: {String}
@@ -2148,7 +2148,7 @@ There is a set of functions to manage arrays in Clipper, including the following
 
 
 ```Clojure
-;clojure is a language built with immutable/persistent data structures. there is no concept of changing what a vector/list 
+;clojure is a language built with immutable/persistent data structures. there is no concept of changing what a vector/list
 ;is, instead clojure creates a new array with an added value using (conj...)
 ;in the example below the my-list does not change.
 
@@ -2219,7 +2219,7 @@ In COBOL, arrays are called ''tables''. Also, indexes begin from 1.
        PROCEDURE DIVISION.
            *> Assigning the contents of an entire table.
            MOVE "12345" TO fixed-length-table
-           
+
            *>  Indexing an array (using an index)
            MOVE 1 TO table-index
            MOVE "1" TO indexed-elt (table-index)
@@ -2310,7 +2310,7 @@ Creates a two-dimensional array with dimensions 10x20.
 
 ```lisp
 ; Makes an array of 20 objects initialized to nil
-(make-array 20 :initial-element nil) 
+(make-array 20 :initial-element nil)
 ; Makes an integer array of 4 elements containing 1 2 3 and 4 initially which can be resized
 (make-array 4 :element-type 'integer :initial-contents '(1 2 3 4) :adjustable t)
 ```
@@ -2330,9 +2330,9 @@ MODULE TestArray;
 (* Implemented in BlackBox Component Builder *)
 
 	IMPORT Out;
-	
+
 	(* Static array *)
-	
+
 	PROCEDURE DoOneDim*;
 		CONST M = 5;
 		VAR a: ARRAY M OF INTEGER;
@@ -2620,7 +2620,7 @@ end;
 ```dragon
 array = newarray(3) //optionally, replace "newarray(5)" with a brackets list of values like "[1, 2, 3]"
 array[0] = 42
-showln array[2] 
+showln array[2]
 ```
 
 
@@ -2930,7 +2930,7 @@ Tuple.insert_at(ret, 1, "new stuff") # => {:ok, "new stuff", "fun", "pie"}
 ```
 
 
-Elixir also has structures called ''lists'', which can contain values of any type, and are implemented as linked lists.  Lists are represented with square brackets: 
+Elixir also has structures called ''lists'', which can contain values of any type, and are implemented as linked lists.  Lists are represented with square brackets:
 
 
 ```elixir
@@ -2979,29 +2979,29 @@ true
   %% Create a fixed-size array with entries 0-9 set to 'undefined'
   A0 = array:new(10).
   10 = array:size(A0).
- 
+
   %% Create an extendible array and set entry 17 to 'true',
   %% causing the array to grow automatically
   A1 = array:set(17, true, array:new()).
   18 = array:size(A1).
- 
+
   %% Read back a stored value
   true = array:get(17, A1).
- 
+
   %% Accessing an unset entry returns the default value
   undefined = array:get(3, A1).
- 
+
   %% Accessing an entry beyond the last set entry also returns the
   %% default value, if the array does not have fixed size
   undefined = array:get(18, A1).
- 
+
   %% "sparse" functions ignore default-valued entries
   A2 = array:set(4, false, A1).
   [{4, false}, {17, true}] = array:sparse_to_orddict(A2).
- 
+
   %% An extendible array can be made fixed-size later
   A3 = array:fix(A2).
- 
+
   %% A fixed-size array does not grow automatically and does not
   %% allow accesses beyond the last set entry
   {'EXIT',{badarg,_}} = (catch array:set(18, true, A3)).
@@ -3022,11 +3022,11 @@ To declare array variables (with their associated type):
 
 Index starts from 0: you can start from 1 by using a pragma directive
 
-  !$BASE=1 
+  !$BASE=1
 
 Subscripts can be a constant like:
 
-  CONST MX=100 
+  CONST MX=100
   .......
   DIM A%[MX]
 
@@ -3047,7 +3047,7 @@ You can also redimensioning arrays with ERASE clause:
      !$DIM A%[NUM2]
 
 Unfortunately there is no PRESERVE clause, so after an ERASE all array values are lost.
-   
+
 Values can be assigned to an array by a DATA..READ statements, by an INPUT or by normal assignment:
 
     DATA(0,1,2,3,4,5,6,7,8,9,10)
@@ -3088,10 +3088,10 @@ dummy = xyarray[3][6]
 
 --dynamic array use (all sequences can be modified at any time)
 sequence dynarray = {}
-for x = 1 to 10 do  
+for x = 1 to 10 do
         dynarray = append(dynarray, x * x)
 end for
-? dynarray  
+? dynarray
 
 for x = 1 to 10 do
         dynarray = prepend(dynarray, x)
@@ -3164,7 +3164,7 @@ Directly in the listener :
 
 ```factor
 { 1 2 3 }
-{ 
+{
   [ "The initial array: " write . ]
   [ [ 42 1 ] dip set-nth ]
   [ "Modified array: " write . ]
@@ -3175,7 +3175,7 @@ Directly in the listener :
     The initial array: { 1 2 3 }
     Modified array: { 1 42 3 }
     The element we modified: 42
-Arrays of arbitrary length can be created with the <array> word : 
+Arrays of arbitrary length can be created with the <array> word :
     ( scratchpad - auto ) 10 42 <array> .
     { 42 42 42 42 42 42 42 42 42 42 }
 Arrays can contain different types :
@@ -3184,7 +3184,7 @@ Arrays of growable length are called Vectors.
 
 ```factor
 V{ 1 2 3 }
-{ 
+{
   [ "The initial vector: " write . ]
   [ [ 42 ] dip push ]
   [ "Modified vector: " write . ]
@@ -3309,25 +3309,25 @@ MyArray 7 cells + @ .    \ 30
 ```forth
 
 : array ( n -- )
-  create 
+  create
      dup ,                           \ remember size at offset 0
      dup cells here swap 0 fill      \ fill cells with zero
      cells allot                     \ allocate memory
-  does> ( i addr -- ) 
+  does> ( i addr -- )
      swap 1+ cells + ;               \ hide offset=0 to index [0..n-1]
-: [size] -1 ; 
+: [size] -1 ;
 
-10 array MyArray 
+10 array MyArray
 
-30 7 MyArray ! 
+30 7 MyArray !
 7 MyArray @ .                        \ 30
 
 : 5fillMyArray  5  0 do  I  I MyArray  !  loop ;
 : .MyArray     [size] MyArray @  0 do  I MyArray  @ .  loop ;
 
-.MyArray                             \ 0 0 0 0 0 0 30 0 0 0 
-5fillMyArray 
-.MyArray                             \ 1 2 3 4 5 0 30 0 0 0 
+.MyArray                             \ 0 0 0 0 0 0 30 0 0 0
+5fillMyArray
+.MyArray                             \ 1 2 3 4 5 0 30 0 0 0
 
 ```
 
@@ -3338,17 +3338,17 @@ MyArray 7 cells + @ .    \ 30
 : [size] @ ;
 : [cell] 1+ cells  + ;               \ hide offset=0 to index [0..n-1]
 
-10 array MyArray  
+10 array MyArray
 
-30 MyArray 7 [cell] ! 
+30 MyArray 7 [cell] !
 MyArray 7 [cell] @ .                 \ 30
 
 : 5fillMyArray  5  0 do  I  MyArray I [cell]  !  loop ;
 : .MyArray      MyArray [size]  0 do  MyArray I [cell]  @ .  loop ;
 
-.MyArray                             \ 0 0 0 0 0 0 30 0 0 0 
-5fillMyArray 
-.MyArray                             \ 1 2 3 4 5 0 30 0 0 0 
+.MyArray                             \ 0 0 0 0 0 0 30 0 0 0
+5fillMyArray
+.MyArray                             \ 1 2 3 4 5 0 30 0 0 0
 
 ```
 
@@ -3619,7 +3619,7 @@ By default the bounds check is off, you can add the checks by adding the command
 '''The default lower bound is always 0'''
 
 ```FreeBASIC
-' compile with: FBC -s console. 
+' compile with: FBC -s console.
 ' compile with: FBC -s console -exx to have boundary checks.
 
 Dim As Integer a(5)  ' from s(0) to s(5)
@@ -3681,7 +3681,7 @@ Print : Print
 Print " Display the contents of the array d"
 For i As Integer = 1 To 2 : For j As Integer = 1 To 5
     Print d(i,j);" ";
-Next : Next : Print : Print 
+Next : Next : Print : Print
 
 Erase d
 Print " We have erased array d"
@@ -3696,7 +3696,7 @@ Next : Next
 Print
 Print " The elements self are left untouched but there content is set to 0"
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -3716,7 +3716,7 @@ End
 
 0             1             4             9             16
 25            36            49            64            81
-100           
+100
 
  The lower bound is now 3 and the upper bound is 7
  Pow now has 5 elements
@@ -3728,13 +3728,13 @@ End
  that the array has no elements, it completely removed
 
  Display the contents of the array d
- 1  2  3  4  5  1  2  3  4  5 
+ 1  2  3  4  5  1  2  3  4  5
 
  We have erased array d
   The first dimension has a lower bound of 1 and a upper bound of 2
  The second dimension has a lower bound of 1 and a upper bound of 5
 
- 0  0  0  0  0  0  0  0  0  0 
+ 0  0  0  0  0  0  0  0  0  0
  The elements self are left untouched but there content is set to 0
 ```
 
@@ -3913,11 +3913,11 @@ v;
 
 ```genie
 [indent=4]
-/* 
+/*
    Arrays, in Genie
 
    valac --pkg=gee-0.8 arrays.gs
-   ./arrays 
+   ./arrays
 */
 
 uses
@@ -4325,12 +4325,12 @@ Start,Programs,Lotus 123,Type:Bob[downarrow],Kat[downarrow],Sarah[downarrow]
 
 ```halon
 $array = [];
- 
+
 $array[] = 1;
 $array["key"] = 3;
- 
+
 $array[0] = 2;
- 
+
 echo $array[0];
 echo $array["key"];
 ```
@@ -4398,7 +4398,7 @@ import Data.Array.IO
 main = do arr <- newArray (1,10) 37 :: IO (IOArray Int Int)
           a <- readArray arr 1
           writeArray arr 1 64
-          b <- readArray arr 1 
+          b <- readArray arr 1
           print (a,b)
 ```
 
@@ -4431,7 +4431,7 @@ Bdyn(n-1, n) = -123
 WRITE(Row=27) Bdyn(n-1, n)
 
 ALIAS(Astat, n-1,   last2ofAstat, 2)
-WRITE(ClipBoard) last2ofAstat      ! 2.22222222 0 
+WRITE(ClipBoard) last2ofAstat      ! 2.22222222 0
 ```
 
 
@@ -4618,7 +4618,7 @@ list(foo, bar, baz, Foobarbaz)
 ==> list(foo, bar, baz, Foobarbaz)
 Io> foo atPut(2, "barbaz") // baz becomes barbaz
 ==> list(foo, bar, barbaz, Foobarbaz)
-Io> 
+Io>
 
 ```
 
@@ -4626,7 +4626,7 @@ Io>
 
 ## J
 
-In J, all data occurs in the form of rectangular (or generally [[wp:Hyperrectangle|orthotopic]]) arrays. This is true for both named and anonymous data. 
+In J, all data occurs in the form of rectangular (or generally [[wp:Hyperrectangle|orthotopic]]) arrays. This is true for both named and anonymous data.
 
 ```j
    1                          NB. a stand-alone scalar value is an array without any axis
@@ -4658,7 +4658,7 @@ Xbcde
 fXhij
 klXno
 ```
-   
+
 Because arrays are so important in J, a large portion of the language applies to this topic.
 
 
@@ -4696,7 +4696,7 @@ var myArray = new Array();
 // Create a new array with length 5
 var myArray1 = new Array(5);
 
-// Create an array with 2 members (length is 2) 
+// Create an array with 2 members (length is 2)
 var myArray2 = new Array("Item1","Item2");
 
 // Create an array with 2 members using an array literal
@@ -4711,7 +4711,7 @@ var x = myArray[2] + myArray.length;   // 8
 myArray3.push('Test');
 
 // Elisions are supported, but are buggy in some implementations
-var y = [0,1,,];  // length 3, or 4 in buggy implementations 
+var y = [0,1,,];  // length 3, or 4 in buggy implementations
 
 ```
 
@@ -4729,7 +4729,7 @@ There are, however, some interesting extensions, e.g. <tt>[][4] = null</tt> crea
 # Create a new array of 5 nulls
 [][4] = null   # setting the element at offset 4 expands the array
 
-# Create an array having the elements 1 and 2 in that order 
+# Create an array having the elements 1 and 2 in that order
 [1,2]
 
 # Create an array of integers from 0 to 10 inclusive
@@ -4775,28 +4775,28 @@ var myArray = new Array();
 
 // In Jsi, typeof [] is "array".  In ECMAScript, typeof [] is "object"
 ;typeof [];
- 
+
 // Create a new array with length 5
 var myArray1 = new Array(5);
 ;myArray1;
- 
-// Create an array with 2 members (length is 2) 
+
+// Create an array with 2 members (length is 2)
 var myArray2 = new Array("Item1","Item2");
 ;myArray2;
 ;myArray2.length;
- 
+
 // Create an array with 2 members using an array literal
 var myArray3 = ["Item1", "Item2"];
 ;myArray3;
- 
+
 // Assign a value to member [2] (length is now 3)
 myArray3[2] = 5;
 ;myArray3;
 ;myArray3.length;
- 
+
 var x = myArray3[2] + myArray3.length;   // 8
 ;x;
- 
+
 // You can also add a member to an array with the push function (length is now 4)
 myArray3.push('Test');
 ;myArray3;
@@ -4888,7 +4888,7 @@ function main() {
   Var:Number length;
   Array:GetLength(array, length)  //retrieve length of array
   Konsol:Log(length)
-  
+
   array[0] = 5;                   //assign value
   Konsol:Log(array[0])            //retrieve value and display
 }
@@ -4946,11 +4946,11 @@ Lasso Array [http://lassoguide.com/operations/containers.html?#array] objects st
 ```Lasso
 // Create a new empty array
 local(array1) = array
- 
-// Create an array with 2 members (#myarray->size is 2) 
+
+// Create an array with 2 members (#myarray->size is 2)
 local(array1) = array('ItemA','ItemB')
-  
-// Assign a value to member [2] 
+
+// Assign a value to member [2]
 #array1->get(2) = 5
 
 // Retrieve a value from an array
@@ -4981,7 +4981,7 @@ local(
 
 
 
-###  Static Arrays 
+###  Static Arrays
 
 Lasso also supports Static Arrays[http://lassoguide.com/operations/containers.html#staticarray]. A Lasso staticarray is a container object that is not resizable. Staticarrays are created with a fixed size. Objects can be reassigned within the staticarray, but new positions cannot be added or removed.
 
@@ -5050,7 +5050,7 @@ Using the LFE REPL, you can explore arrays in the following manner:
 #(array 10 0 undefined 10)
 > (: array size a0)
 10
- 
+
 ; Create an extendible array and set entry 17 to 'true',
 ; causing the array to grow automatically
 > (set a1 (: array set 17 'true (: array new)))
@@ -5059,20 +5059,20 @@ Using the LFE REPL, you can explore arrays in the following manner:
   ...
 (: array size a1)
 18
- 
+
 ; Read back a stored value
 > (: array get 17 a1)
 true
- 
+
 ; Accessing an unset entry returns the default value
 > (: array get 3 a1)
 undefined
- 
+
 ; Accessing an entry beyond the last set entry also returns the
 ; default value, if the array does not have fixed size
 > (: array get 18 a1)
 undefined
- 
+
 ; "sparse" functions ignore default-valued entries
 > (set a2 (: array set 4 'false a1))
 #(array
@@ -5080,13 +5080,13 @@ undefined
   ...
 > (: array sparse_to_orddict a2)
 (#(4 false) #(17 true))
- 
+
 ; An extendible array can be made fixed-size later
 > (set a3 (: array fix a2))
 #(array
   18
   ...
- 
+
 ; A fixed-size array does not grow automatically and does not
 ; allow accesses beyond the last set entry
 > (: array set 18 'true a3)
@@ -5394,18 +5394,18 @@ Module CheckArray {
             Print A(4)=5
       }
       Print A(4)=1
-      
+
       \\ Auto Array
       M=(1,2,3,4,5)
       Link M to M()
       Print M(2)=3
       Return M, 0:=100, 5-4:=300
-      
+
       \\ Retrieve an Element of an Array
       k=Each(M, 1, 2)
       \\ print 100 300
       While k { Print Array(k),}
-      Print 
+      Print
       Print Array(M, 2)=3
       Print Array("M", 2)=3
       Print Array(B(), 1)=1
@@ -5433,7 +5433,7 @@ Module CheckArray {
       Link BB() to BB$()
       Print BB$(0), BB(1), BB$(2), BB(3)
       \\ Arrays of structures in Buffers
-      
+
       Structure TwoByte {
             {
                   ab as integer
@@ -5462,7 +5462,7 @@ Module CheckArray {
       Print Len(Mem)
       \\ old Mem is in A(3)
       Hex Eval(A(3),20!ab)   ' print 0xF2AA
-      \\ we can change 
+      \\ we can change
       Buffer Clear Mem as Integer * 200
       Print Len(Mem)=400
       Return Mem, 0:=Eval$(A(3), 0, 80)
@@ -5717,16 +5717,16 @@ plusminus(N, I, !A) :-
 ```mips
 
 	.data
-array:	.word	1, 2, 3, 4, 5, 6, 7, 8, 9 # creates an array of 9 32 Bit words. 
+array:	.word	1, 2, 3, 4, 5, 6, 7, 8, 9 # creates an array of 9 32 Bit words.
 
 	.text
 main:	la 	$s0, array
 	li	$s1, 25
 	sw	$s1, 4($s0)	# writes $s1 (25) in the second array element
-# the four counts thi bytes after the beginning of the address. 1 word = 4 bytes, so 4 acesses the second element 
-	
-	lw	$s2, 20($s0)	# $s2 now contains 6	
-	
+# the four counts thi bytes after the beginning of the address. 1 word = 4 bytes, so 4 acesses the second element
+
+	lw	$s2, 20($s0)	# $s2 now contains 6
+
 	li	$v0, 10		# end program
 	syscall
 
@@ -5790,7 +5790,7 @@ VAR a: ARRAY [1..10] OF INTEGER;
 
 Defines an array of 10 elements, indexed 1 through 10.
 
-Arrays can also be given initial values: 
+Arrays can also be given initial values:
 
 ```modula3
 VAR a := ARRAY [1..10] OF INTEGER {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -5823,7 +5823,7 @@ var myArray := ['a', 'b', 'c','d']
 ```
 
 
-To retrieve a value: 
+To retrieve a value:
 
 
 ```Monte
@@ -5872,7 +5872,7 @@ module ArrayOps
         foreach (i in [1 .. 10]) fives[i - 1] = i * 5;
         def ten = fives[1];
         WriteLine($"Ten: $ten");
-        
+
         def dynamic = ArrayList();
         dynamic.Add(1);
         dynamic.Add(3);
@@ -6030,9 +6030,9 @@ FunctionEnd
 ```oberon2
 
 MODULE Arrays;
-IMPORT 
+IMPORT
   Out;
-  
+
   PROCEDURE Static;
   VAR
     x: ARRAY 5 OF LONGINT;
@@ -6042,25 +6042,25 @@ IMPORT
     x[2] := 12;
     x[3] := 13;
     x[4] := x[0];
-    
+
     Out.String("Static at 4: ");Out.LongInt(x[4],0);Out.Ln;
   END Static;
-  
+
   PROCEDURE Dynamic;
   VAR
     x: POINTER TO ARRAY OF LONGINT;
   BEGIN
     NEW(x,5);
-    
+
     x[0] := 10;
     x[1] := 11;
     x[2] := 12;
     x[3] := 13;
     x[4] := x[0];
-    
+
     Out.String("Dynamic at 4: ");Out.LongInt(x[4],0);Out.Ln;
   END Dynamic;
-  
+
 BEGIN
   Static;
   Dynamic
@@ -6150,7 +6150,7 @@ val arr : int array = [|0; 1; 2; 3; 4; 5; 6|]
 
 
 Array created with [ ... ] are immutable array.
-To create a mutable array, #new is used. 
+To create a mutable array, #new is used.
 
 
 ```Oforth
@@ -6205,14 +6205,14 @@ The length of a vector is the number of elements that it contains. This number i
 
 ## ooRexx
 
-ooRexx arrays hold object references.  Arrays will automatically increase in size if needed. 
+ooRexx arrays hold object references.  Arrays will automatically increase in size if needed.
 
 ```ooRexx
-   a = .array~new       -- create a zero element array 
-   b = .array~new(10)   -- create an array with initial size of 10 
+   a = .array~new       -- create a zero element array
+   b = .array~new(10)   -- create an array with initial size of 10
    c = .array~of(1, 2, 3)  -- creates a 3 element array holding objects 1, 2, and 3
-   a[3] = "Fred"        -- assign an item 
-   b[2] = a[3]          -- retrieve an item from the array 
+   a[3] = "Fred"        -- assign an item
+   b[2] = a[3]          -- retrieve an item from the array
    c~append(4)          -- adds to end.  c[4] == 4 now
 ```
 
@@ -6336,10 +6336,10 @@ In-line
 ```perl
  my @empty;
  my @empty_too = ();
- 
+
  my @populated   = ('This', 'That', 'And', 'The', 'Other');
  print $populated[2];  # And
- 
+
  my $aref = ['This', 'That', 'And', 'The', 'Other'];
  print $aref->[2];  # And
 
@@ -6377,17 +6377,17 @@ Two-dimensional
 
 ## Perl 6
 
-At its most basic, an array in Perl 6 is quite similar to an array in Perl 5. 
+At its most basic, an array in Perl 6 is quite similar to an array in Perl 5.
 
 
 ```perl6
 my @arr;
- 
+
 push @arr, 1;
 push @arr, 3;
- 
+
 @arr[0] = 2;
- 
+
 say @arr[0];
 ```
 
@@ -6396,7 +6396,7 @@ say @arr[0];
 ### Some further exposition:
 
 
-In Perl 6, arrays have a very specific definition: "A collection of Scalar containers that do the Positional Role." Scalar container means it is mutable and may contain any object; an Integer, a Rational number, a String, another Array, whatever... literally any other object that can be instantiated in Perl 6. The Positional Role means that it uses integer indexing for access. The index must be a positive integer, an expression that evaluates to a positive integer, or something that can be coerced to a positive integer. Arrays are always indexed from 0. The starting index can not be changed. 
+In Perl 6, arrays have a very specific definition: "A collection of Scalar containers that do the Positional Role." Scalar container means it is mutable and may contain any object; an Integer, a Rational number, a String, another Array, whatever... literally any other object that can be instantiated in Perl 6. The Positional Role means that it uses integer indexing for access. The index must be a positive integer, an expression that evaluates to a positive integer, or something that can be coerced to a positive integer. Arrays are always indexed from 0. The starting index can not be changed.
 
 Arrays are unconstrained by default. They may hold any number of any type of object up to available memory. They do not need to be pre-allocated. Simply assigning (or even referring in some cases) to an index slot is enough to autovivify the container and allocate enough memory to hold the assigned object. Memory will automatically be allocated and will grow and shrink as necessary to hold the values assigned.
 
@@ -6409,7 +6409,7 @@ Values may be pushed onto the end of an array, popped off of the end, shifted of
 
 Arrays may be constrained to only accept a certain number of objects or only a certain type of object.
     my Int @array; # can only hold Integer objects. Assigning any other type will cause an exception.
-    my @array[9];  # can only 10 objects (zero indexed). Trying to assign to an index greater than 9 with cause an exception. 
+    my @array[9];  # can only 10 objects (zero indexed). Trying to assign to an index greater than 9 with cause an exception.
 
 Arrays are constructed with square brackets, an explicit constructor, or by coercing some other object either explicitly using a coercer or implicitly by simply assigning to an array variable. These are all arrays:
     [1, 2, 3, 4]
@@ -6418,7 +6418,7 @@ Arrays are constructed with square brackets, an explicit constructor, or by coer
     ('as', 'is', 'this').Array
     my @implicit = <yep, this too>
 
-Array variables in Perl 6 are variables whose names bear the @ sigil, and are expected to contain some sort of list-like object. Of course, other variables may also contain these objects, but @-sigiled variables always do, and are expected to act the part. Array storage slots are accessed through postcircumfix square bracket notation. Unlike Perl 5, @-sigiled variables are invariant on access, whether you are accessing one slot, many slots, or all of the slots. The first slot in @array is @array[0] not $array[0]. @array and $array are two different unconnected variables. 
+Array variables in Perl 6 are variables whose names bear the @ sigil, and are expected to contain some sort of list-like object. Of course, other variables may also contain these objects, but @-sigiled variables always do, and are expected to act the part. Array storage slots are accessed through postcircumfix square bracket notation. Unlike Perl 5, @-sigiled variables are invariant on access, whether you are accessing one slot, many slots, or all of the slots. The first slot in @array is @array[0] not $array[0]. @array and $array are two different unconnected variables.
     @array[1]      # a single value in the 2nd slot
     @array[*-1]    # a single value in the last slot
     @array[1..5]   # an array slice, 2nd through 6th slots
@@ -6444,7 +6444,7 @@ There are several objects that have an Iterable Role and a PositionalBindFailove
     my @not-a-list = (<oops, this isn't>)
     my @implicit := (<but this is>) # note the values are bound := not assigned =
 
-'''Range''': Iterable list of consecutive numbers or strings with a lower and an upper boundary. (That boundary may be infinite.) Reified on demand. 
+'''Range''': Iterable list of consecutive numbers or strings with a lower and an upper boundary. (That boundary may be infinite.) Reified on demand.
     2..20    # integers two through twenty
     1..Inf   # natural numbers
     'a'..'z' # lowercase latin letters
@@ -6468,8 +6468,8 @@ Postcircumfix indexing works for any object that has a Positional (or Positional
 
 In Phix, sequences are '''it''' - there are no other data structures to learn.
 
-Arrays, multidimensional arrays, lists, stacks, queues, trees, etc. and even character 
-strings can all be easily represented in Phix with sequences. They can grow or shrink 
+Arrays, multidimensional arrays, lists, stacks, queues, trees, etc. and even character
+strings can all be easily represented in Phix with sequences. They can grow or shrink
 without any need to worry about memory management issues.
 
 
@@ -6526,7 +6526,7 @@ sequence tree = {{"b",3,2},
                  {"c",0,0},
                  {"a",0,0}}
 
--- ie assuming 
+-- ie assuming
 constant ROOT=1, VALUE=1, LEFT=2, RIGHT=3 -- then
 --  tree[ROOT][VALUE] is "b"
 --  tree[ROOT][LEFT] is 3, and tree[3] is the "a"
@@ -6953,33 +6953,33 @@ retrieve and set elements.
 
 ```prolog
 
-singleassignment:-                   
+singleassignment:-
     functor(Array,array,100), % create a term with 100 free Variables as arguments
                               % index of arguments start at 1
-    arg(1 ,Array,a),          % put an a at position 1 
+    arg(1 ,Array,a),          % put an a at position 1
     arg(12,Array,b),          % put an b at position 12
     arg(1 ,Array,Value1),     % get the value at position 1
-    print(Value1),nl,         % will print Value1 and therefore a followed by a newline 
+    print(Value1),nl,         % will print Value1 and therefore a followed by a newline
     arg(4 ,Array,Value2),     % get the value at position 4 which is a free Variable
     print(Value2),nl.         % will print that it is a free Variable followed by a newline
 
 ```
 
 
-To destructively set an array element, which is the "normal" way to set an element in most other 
+To destructively set an array element, which is the "normal" way to set an element in most other
 programming languages, setarg/3 can be used.
 
 
 ```prolog
 
-destructive:-                   
+destructive:-
     functor(Array,array,100), % create a term with 100 free Variables as arguments
                               % index of arguments start at 1
-    setarg(1 ,Array,a),       % put an a at position 1 
+    setarg(1 ,Array,a),       % put an a at position 1
     setarg(12,Array,b),       % put an b at position 12
     setarg(1, Array,c),       % overwrite value at position 1 with c
     arg(1 ,Array,Value1),     % get the value at position 1
-    print(Value1),nl.         % will print Value1 and therefore c followed by a newline 
+    print(Value1),nl.         % will print Value1 and therefore c followed by a newline
 
 ```
 
@@ -7006,24 +7006,24 @@ listvariant:-
 ## PureBasic
 
 
-'''Dim''' is used to create new arrays and initiate each element will be zero. An array in PureBasic can be of any types, including structured, and user defined types. Once an array is defined it can be resized with '''ReDim'''. Arrays are dynamically allocated which means than a variable or an expression can be used to size them. 
+'''Dim''' is used to create new arrays and initiate each element will be zero. An array in PureBasic can be of any types, including structured, and user defined types. Once an array is defined it can be resized with '''ReDim'''. Arrays are dynamically allocated which means than a variable or an expression can be used to size them.
 
 
 ```PureBasic
   ;Set up an Array of 23 cells, e.g. 0-22
 Dim MyArray.i(22)
   MyArray(0) = 7
-  MyArray(1) = 11 
+  MyArray(1) = 11
   MyArray(7) = 23
 ```
 
-'''ReDim''' is used to 'resize' an already declared array while preserving its content. The new size can be both larger or smaller, but the number of dimension of the array can not be changed after initial creation. 
+'''ReDim''' is used to 'resize' an already declared array while preserving its content. The new size can be both larger or smaller, but the number of dimension of the array can not be changed after initial creation.
 
 ```PureBasic
   ;Extend the Array above to 56 items without affecting the already stored data
 ReDim MyArray(55)
   MyArray(22) = 7
-  MyArray(33) = 11 
+  MyArray(33) = 11
   MyArray(44) = 23
 ```
 
@@ -7039,7 +7039,7 @@ Next
 
 
 ```PureBasic
-  ; Now, set up a multi dimensional Array 
+  ; Now, set up a multi dimensional Array
 Dim MultiArray.i(800, 600)
   MultiArray(100, 200) = 640
   MultiArray(130,  40) = 120
@@ -7131,7 +7131,7 @@ try:
     # This will cause an exception, which will then be caught.
     print array[len(array)]
 except IndexError as e:
-    # Print the exception. 
+    # Print the exception.
     print e
 
 ```
@@ -7228,7 +7228,7 @@ head a    ; -> [left right "up" "down"]
 
 copy a                 ; -> [left right "up" "down"]
 copy/part a 2          ; -> [left right]
-copy/part  skip a 2  2 ; -> ["up" "down"] 
+copy/part  skip a 2  2 ; -> ["up" "down"]
 
 ```
 
@@ -7254,7 +7254,7 @@ append append arr1 "black" "green"
 == "black"
 ```
 
-A vector! is a high-performance series! of items.  
+A vector! is a high-performance series! of items.
 The items in a vector! must all have the same type.
 The allowable item types are: integer! float! char! percent!
 Vectors of string! are not allowed.
@@ -7271,7 +7271,7 @@ Vectors of string! are not allowed.
 >> append vec1 "string"
 *** Script Error: invalid argument: "string"
 *** Where: append
-*** Stack: 
+*** Stack:
 >> append vec1 3.0
 *** Script Error: invalid argument: 3.0
 *** Where: append
@@ -7328,7 +7328,7 @@ d ^array'toQuote
 
 ## REXX
 
-Strictly speaking, REXX doesn't have arrays, but it does have something that looks, feels, and tastes like arrays; 
+Strictly speaking, REXX doesn't have arrays, but it does have something that looks, feels, and tastes like arrays;
 
 they're called ''stemmed arrays''.
 
@@ -7510,7 +7510,7 @@ a.stuff=44
 // 1-D (row- or column-vectors)
 // Static:
 // row-vector
-x = [1:3];  
+x = [1:3];
 x = zeros(1,3); x[1]=1; x[2]=2; x[3]=3;
 // column-vector
 x = [1:3]';  // or
@@ -7553,22 +7553,22 @@ x[i;j]
 
       //-Static array
       //--def of 10 el array of integers, initialised to zeros
-     D array... 
+     D array...
      D                 s             10i 0 dim(10)
      D                                     inz
       //--def an el
-     D el_1... 
+     D el_1...
      D                 s             10i 0 inz
-     
+
       /free
-      
+
        //-assign first el
        //--first element of RPG array is indexed with 1
        array(1) = 111;
-      
+
        //-get first el of array
        el_1 = array(1);
-      
+
        //--display it
        dsply ('First el of array='+%char(el_1));
        //--displays: First el of array=111
@@ -7576,7 +7576,7 @@ x[i;j]
        //---or shorter, without "el_1"
        dsply ('First el of array='+%char(array(1)));
        //--displays: First el of array=111
-      
+
       /end-free
 
 ```
@@ -7686,7 +7686,7 @@ puts a[0]
 ```runbasic
 print "Enter array 1 greater than 0"; : input a1
 print "Enter array 2 greater than 0"; : input a2
- 
+
 dim chrArray$(max(a1,1),max(a2,1))
 dim numArray(max(a1,1),max(a2,1))
 
@@ -7793,7 +7793,7 @@ val c = b(2)
 Dynamic arrays can be made using <code>ArrayBuffer</code>s:
 
 ```scala
-val a = new collection.mutable.ArrayBuffer[Int] 
+val a = new collection.mutable.ArrayBuffer[Int]
 a += 5   // Append value 5 to the end of the list
 a(0) = 6 // Assign value 6 to element 0
 ```
@@ -7873,8 +7873,8 @@ const proc: main is func
 
 
 The vector protorype represents a fixed size array with polymorphic contents. Vector indexing is zero based.
-Fixed size means that once created it is expensive (although not strictly impossible) to resize it. If resizable sequenced collections are wanted, the 'sequence' prototype can be used. 
- 
+Fixed size means that once created it is expensive (although not strictly impossible) to resize it. If resizable sequenced collections are wanted, the 'sequence' prototype can be used.
+
 Creating simple vectors:
 
 ```self>vector copySize: 100</lang
@@ -7973,7 +7973,7 @@ say arr[-1];             #=> 'baz'
 
 ```simula
 BEGIN
- 
+
   PROCEDURE STATIC;
   BEGIN
     INTEGER ARRAY X(0:4);
@@ -7988,22 +7988,22 @@ BEGIN
     OUTINT(X(4), 0);
     OUTIMAGE
   END STATIC;
- 
+
   PROCEDURE DYNAMIC(N); INTEGER N;
   BEGIN
     INTEGER ARRAY X(0:N-1);
- 
+
     X(0) := 10;
     X(1) := 11;
     X(2) := 12;
     X(3) := 13;
     X(4) := X(0);
- 
+
     OUTTEXT("DYNAMIC AT 4: ");
     OUTINT(X(4),0);
     OUTIMAGE
   END DYNAMIC;
- 
+
   STATIC;
   DYNAMIC(5)
 END ARRAYS.
@@ -8265,7 +8265,7 @@ SIZE IS 10
 
 
 ```slate
-slate[1]> #x := ##(1 2 3). 
+slate[1]> #x := ##(1 2 3).
 {1. 2. 3}
 slate[2]> x
 {1. 2. 3}
@@ -8291,7 +8291,7 @@ Fixed size means, that once created it is expensive (although not strictly impos
 Most Smalltalks also provide element type restricted arrays, which are tuned (usually space-wise) for particular elements. For example: ByteArray, IntegerArray, LongIntegerArray, FloatArray or DoubleArray. Instances of them are also used to pass bulk data in and out of FFI calls (for example, for OpenGL). Also Strings can be seen as arrays of characters. All collection classes share a rich common protocol, which includes enumeration, stream converting, concatenation, copying, replacing, searching etc.
 
 Finally, there is OrderedCollection, which behaves similar to Array, but allows for the number of elements to be changed (i.e. elements can be added and removed later). Usually, adding/removing at either end is cheap, so they can be used to implement stacks and queues.
- 
+
 Literal Arrays (Array constants):
 
 ```smalltalk
@@ -8308,7 +8308,7 @@ Programatic use:
 array := Array new: 20 .
 "access the first element: array base is 1"
 (array at: 1) displayNl.
-"put 100 as second value; you can put any object, 
+"put 100 as second value; you can put any object,
  in particular SmallInteger"
 array at: 2 put: 100.
 "initialize an array from a 'constant' given array"
@@ -8323,7 +8323,7 @@ array at: 2 put: 'orange'.
 "assigning values to an array"
 "suppose array is bound to an array of 20 values"
 array at: 5 put: 'substitute fifth element'.
- 
+
 [ array at: 21 put: 'error' ]
    on: SystemExceptions.IndexOutOfRange
    do: [ :sig | 'Out of range!' displayNl ].
@@ -8517,7 +8517,7 @@ There are ways to exchange data between Stata datasets, Stata matrices, and Mata
 Both Stata matrices and Mata matrices have either one or two dimensions. For both, functions are provided for the usual linear algebra functions (Cholesky and SVD decompositions, for instance). Stata matrices must contain real numbers (or missing values), while Mata matrices may contain complex numbers, or strings (but either a matrix contains only numeric values, either it contains only string values).
 
 
-###  Matrix command 
+###  Matrix command
 
 
 ```stata
@@ -8533,7 +8533,7 @@ svmat v
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -8600,7 +8600,7 @@ puts $ary; # Print the whole array
 
 ## Tern
 
-Arrays and lists are synonymous in Tern. 
+Arrays and lists are synonymous in Tern.
 
 ```tern
 let list = [1, 22, 3, 24, 35, 6];
@@ -8637,9 +8637,9 @@ One dimensional arrays are lists, they can be set as a whole with the syntax:
 
 using only numerical values separated by commas and enclosed by curly braces.
 
-Lists can be accessed as a whole using L1-L6 or a custom list name 
-using the L command in the "OPS" section of the "LIST" menu (2nd STAT (Right Arrow) B). 
-You can also retrieve a single value from a list using the name of the list and 
+Lists can be accessed as a whole using L1-L6 or a custom list name
+using the L command in the "OPS" section of the "LIST" menu (2nd STAT (Right Arrow) B).
+You can also retrieve a single value from a list using the name of the list and
 the position of the value, which starts at 1 on the left.
 
 ```ti83b
@@ -8718,7 +8718,7 @@ for(%i=0;%i<2;%i++)
 ## TXR
 
 
-TXR has two kinds of aggregate objects for sequences: lists and arrays. There is some syntactic sugar to manipulate them in the same way. 
+TXR has two kinds of aggregate objects for sequences: lists and arrays. There is some syntactic sugar to manipulate them in the same way.
 
 
 ### =Literals=
@@ -8801,7 +8801,7 @@ right-adjusted in a 20 character field:
 ```
 
 
-A complete program which turns comma-separated into tab-separated, 
+A complete program which turns comma-separated into tab-separated,
 where the first and last field from each line are exchanged:
 
 ```txr
@@ -9075,7 +9075,7 @@ End Sub
 {{out}}
 
 ```txt
- 1  4  9  1  4  9  1  4  9  16 
+ 1  4  9  1  4  9  1  4  9  16
 ```
 
 
@@ -9083,19 +9083,19 @@ End Sub
 
 
 ```vbnet
-'Example of array of 10 int types: 
+'Example of array of 10 int types:
 Dim numbers As Integer() = New Integer(0) {}
-'Example of array of 4 string types: 
+'Example of array of 4 string types:
 Dim words As String() = {"hello", "world", "from", "mars"}
-'You can also declare the size of the array and initialize the values at the same time: 
+'You can also declare the size of the array and initialize the values at the same time:
 Dim more_numbers As Integer() = New Integer(2) {21, 14, 63}
 
-'For Multi-Dimensional arrays you declare them the same except for a comma in the type declaration. 
-'The following creates a 3x2 int matrix 
+'For Multi-Dimensional arrays you declare them the same except for a comma in the type declaration.
+'The following creates a 3x2 int matrix
 Dim number_matrix As Integer(,) = New Integer(2, 1) {}
 
 
-'As with the previous examples you can also initialize the values of the array, the only difference being each row in the matrix must be enclosed in its own braces. 
+'As with the previous examples you can also initialize the values of the array, the only difference being each row in the matrix must be enclosed in its own braces.
 Dim string_matrix As String(,) = {{"I", "swam"}, {"in", "the"}, {"freezing", "water"}}
 'or
 Dim funny_matrix As String(,) = New String(1, 1) {{"clowns", "are"}, {"not", "funny"}}
@@ -9227,13 +9227,13 @@ arr.removeAt(2)   // [0, 0, 0, 0]
 
 section .text
 	global _start
-	
+
 	_print:
 		mov ebx, 1
 		mov eax, 4
 		int 0x80
 		ret
-		
+
 	_start:
 		;print out our byte array. ergo, String.
 		mov edx, sLen
@@ -9247,7 +9247,7 @@ section .text
 		mov ecx, 4
 		;turnicate through the array and print all it's members.
 		;At an offset of *4, each array member is referenced
-		;at 1,2,3 and so on. 
+		;at 1,2,3 and so on.
 		_out_loops:
 			push ecx
 			mov ecx, [fArray+esi*4]
@@ -9262,7 +9262,7 @@ section .text
 		;mov edi, uArray
 		mov ecx, 4
 		xor esi, esi
-		_read_loops:	
+		_read_loops:
 			push dword [fArray+esi*4]
 			pop dword [uArray+esi*4]
 			inc esi
@@ -9280,7 +9280,7 @@ section .text
 		mov eax, 1
 		push eax
 		int 0x80
-		
+
 section .data
 sArray	db 'a','r','r','a','y','s',' ','a','r','e',' ','f','u','n',0xa
 sLen		equ $-sArray
@@ -9367,7 +9367,7 @@ dim a(10)		// create a numeric array with 11 elements, from 0 to 10
 				// Indexed at your preference (0 to 9 or 1 to 10)
 print arraysize(a(), 1)	// this function return the element's higher number of an array
 
-a(7) = 12.3		// access to an element of the array				
+a(7) = 12.3		// access to an element of the array
 redim a(20)		// alias of 'dim'. Grouth size of array
 
 // Yabasic not allow direct downsize an array, but ...

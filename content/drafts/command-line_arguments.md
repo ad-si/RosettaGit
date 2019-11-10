@@ -57,7 +57,7 @@ end Print_Commands;
 
 
 
-###  Alternative version using Matreshka 
+###  Alternative version using Matreshka
 
 
 Uses [http://forge.ada-ru.org/matreshka Matreshka]
@@ -175,17 +175,17 @@ end run
 szCarriageReturn:  .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 .align 4
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                                   @ entry of program
     push {fp,lr}                        @ saves registers
     add fp,sp,#8                        @  fp <- start address
     ldr r4,[fp]                         @ number of Command line arguments
-    add r5,fp,#4                        @ first parameter address 
+    add r5,fp,#4                        @ first parameter address
     mov r2,#0                           @ init loop counter
 loop:
     ldr r0,[r5,r2,lsl #2]               @ string address parameter
@@ -206,24 +206,24 @@ iAdrszCarriageReturn:    .int szCarriageReturn
 
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
     pop {r0,r1,r2,r7,lr}                           @ restaur 2 registres
-    bx lr                                          @ return  
+    bx lr                                          @ return
 
 
 ```
@@ -253,7 +253,7 @@ loop args [arg]{
 
 ## AutoHotkey
 
-From the AutoHotkey [http://www.autohotkey.com/docs/Scripts.htm documentation]: 
+From the AutoHotkey [http://www.autohotkey.com/docs/Scripts.htm documentation]:
 "The script sees incoming parameters as the variables %1%, %2%, and so on. In addition, %0% contains the number of parameters passed (0 if none). "
 
 ```autohotkey
@@ -531,7 +531,7 @@ next arg='d;'
 next arg=out$("13+7=" 13+7)
 ```
 
-If given an argument index, <code>arg$&lt;<i>arg index</i>&gt;</code> returns the indexed argument without consuming any argument. 
+If given an argument index, <code>arg$&lt;<i>arg index</i>&gt;</code> returns the indexed argument without consuming any argument.
 
 ```txt
 bracmat "0:?n&whl'(arg$!n:?a&out$str$(arg[ !n \"]=\" !a)&1+!n:?n)" "a" /b -c 2+3 'd;' "out$(\"13+7=\" 13+7)"
@@ -674,16 +674,16 @@ Getting the arguments in one go, exactly as they were passed in:
 ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. accept-all-args.
-       
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  args                   PIC X(50).
-       
+
        PROCEDURE DIVISION.
        main-line.
            ACCEPT args FROM COMMAND-LINE
            DISPLAY args
-           
+
            GOBACK
            .
 ```
@@ -694,11 +694,11 @@ Getting the arguments one at a time, with arguments being split by whitespace if
 ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. accept-args-one-at-a-time.
-       
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  arg                 PIC X(50) VALUE SPACES.
-       
+
        PROCEDURE DIVISION.
            ACCEPT arg FROM ARGUMENT-VALUE
            PERFORM UNTIL arg = SPACES
@@ -706,7 +706,7 @@ Getting the arguments one at a time, with arguments being split by whitespace if
                MOVE SPACES TO arg
                ACCEPT arg FROM ARGUMENT-VALUE
            END-PERFORM
-           
+
            GOBACK
            .
 ```
@@ -736,7 +736,7 @@ Passing arguments from UNIX/Linux Systems to COBOL.
 
 
         PROCEDURE DIVISION.
-       
+
         PERFORM GET-ARGS.
 
         *> Display Usage for Failed Checks
@@ -765,7 +765,7 @@ Passing arguments from UNIX/Linux Systems to COBOL.
         PERFORM ARGUSAGE
         ELSE
                 INSPECT command3 REPLACING ALL SPACES BY LOW-VALUES
-        
+
 
 
         *> Display Final Output
@@ -794,7 +794,7 @@ console.log arg for arg in process.argv
 ## Common Lisp
 
 
-The Common Lisp standard does not specify anything relating to external invocation of a Common Lisp system. The method for getting command-line arguments varies by implementation. 
+The Common Lisp standard does not specify anything relating to external invocation of a Common Lisp system. The method for getting command-line arguments varies by implementation.
 
 The following function could be used to create a uniform way to access the arguments:
 
@@ -849,9 +849,9 @@ the value of P1 is -C
 the value of P2 is alpha beta
 the value of P3 is -H
 the value of P4 is gamma
-the value of P5 is 
-the value of P6 is 
-the value of P7 is 
+the value of P5 is
+the value of P6 is
+the value of P7 is
 the value of P8 is
 ```
 
@@ -924,10 +924,10 @@ interp.getArgs()
 ## Eiffel
 
 
-This class inherits functionality for dealing with command line arguments from class <code lang="eiffel">ARGUMENTS</code>. It uses the feature <code lang="eiffel">separate_character_option_value</code> to return the values by option name for each of the two arguments. 
+This class inherits functionality for dealing with command line arguments from class <code lang="eiffel">ARGUMENTS</code>. It uses the feature <code lang="eiffel">separate_character_option_value</code> to return the values by option name for each of the two arguments.
 
 
-```eiffel 
+```eiffel
 class
     APPLICATION
 inherit
@@ -966,7 +966,7 @@ ELENA 4.x :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     program_arguments.forEvery:(int i)
@@ -1064,7 +1064,7 @@ printf(1,"Program file name: %s\n",{cmd[2]})
 if length(cmd)>2 then
   puts(1,"Command line arguments:\n")
   for i = 3 to length(cmd) do
-    printf(1,"#%d : %s\n",{i,cmd[i]}) 
+    printf(1,"#%d : %s\n",{i,cmd[i]})
   end for
 end if
 ```
@@ -1107,7 +1107,7 @@ ARGV each: |a| {
 
 class Main
 {
-  public static Void main (Str[] args) 
+  public static Void main (Str[] args)
   {
     echo ("command-line args are: " + args)
   }
@@ -1156,7 +1156,7 @@ program command_line_arguments
   integer, parameter :: len_max = 256
   integer :: i , nargs
   character (len_max) :: arg
-  
+
   nargs = command_argument_count()
   !nargs = iargc()
   do i = 0, nargs
@@ -1242,7 +1242,7 @@ PUBLIC SUB main()
   FOR l = 0 TO numparms - 1
     parm = Application.Args[l]
     PRINT l; " : "; parm
-  NEXT 
+  NEXT
 END
 ```
 
@@ -1278,7 +1278,7 @@ init
 {{out}}
 
 ```txt
-prompt$ valac commandLine.gs 
+prompt$ valac commandLine.gs
 prompt$ ./commandLine -c "alpha beta" -h "gamma"
 5 command line argument(s):
 ./commandLine
@@ -1447,7 +1447,7 @@ The global <code>ARGV</code> holds the command line arguments.  Thus, a program 
 public class Arguments {
   public static void main(String[] args) {
      System.out.println("There are " + args.length + " arguments given.");
-     for(int i = 0; i < args.length; i++) 
+     for(int i = 0; i < args.length; i++)
         System.out.println("The argument #" + (i+1) + " is " + args[i] + " and is at index " + i);
   }
 }
@@ -1510,7 +1510,7 @@ global constant '''$ARGS''', a JSON object, as follows:
 
 For example, the invocation:
 
-    $ jq -n '$ARGS' --args a b 
+    $ jq -n '$ARGS' --args a b
 
 yields:
 ```json
@@ -1529,7 +1529,7 @@ are interpreted as JSON, as illustrated here:
 
 ```txt
 
-$ jq -n '$ARGS' --argjson x 0 --jsonargs 0 '{"a":1}' 
+$ jq -n '$ARGS' --argjson x 0 --jsonargs 0 '{"a":1}'
 {
   "positional": [
     0,
@@ -1732,7 +1732,7 @@ Then the arguments after the "-" are found in a list in variable :COMMAND.LINE
 show :COMMAND.LINE
 [arg1 arg2 arg3]
 ```
- 
+
 Alternatively, make the first line of an executable logo script:
  #! /usr/bin/logo -
 to be able to invoke the script with arguments.
@@ -1784,7 +1784,7 @@ Module Checkit {
             Read a$="nothing", x=0
             Print a$, x
             A$=Key$
-      } 
+      }
       A: End
       }
       Dir temporary$
@@ -1802,7 +1802,7 @@ Module Checkit {
       \\ open directory
       Rem : Win temporary$
 }
-Checkit        
+Checkit
 
 ```
 
@@ -2009,7 +2009,7 @@ module CLArgs
     {
         foreach (arg in args) Write($"$arg "); // using the array passed to Main(), everything after the program name
         Write("\n");
-        
+
         def cl_args = Environment.GetCommandLineArgs(); // also gets program name
         foreach (cl_arg in cl_args) Write($"$cl_arg ");
     }
@@ -2169,10 +2169,10 @@ let () =
    -s : what follows -s sets some string
    -d : some int parameter
    --help  Display this list of options
- 
+
  % ocaml arg.ml -d 4 -b -s blabla
   true 4 'blabla'
- 
+
  % ocaml arg.ml
   false 0 <nowiki>''</nowiki>
 
@@ -2221,7 +2221,7 @@ define
    record(
       c(type:string single      %% option "--c" expects a string, may only occur once,
 	optional:false char:&c) %% is not optional and has a shortcut "-c"
-	  
+
       h(type:string single      %% option "--h" expects a string, may only occur once,
 	default:"default h"     %% is optional and has a default value if not given
 	char:&h)                %% and has a shortcut "-h"
@@ -2248,7 +2248,7 @@ Depends on implementation.
 
 ```perl
 my @params = @ARGV;
-my $params_size = @ARGV; 
+my $params_size = @ARGV;
 my $second = $ARGV[1];
 my $fifth = $ARGV[4];
 ```
@@ -2259,7 +2259,7 @@ If you don't mind importing a module:
 
 ```perl
 use Getopt::Long;
-GetOptions ( 
+GetOptions (
     'help|h'     => \my $help,
     'verbose|v'  => \my $verbose,
 );
@@ -2278,7 +2278,7 @@ $ perl6 -e 'sub MAIN($x, $y) { say $x + $y }' 3 5
 8
 
 # missing argument:
-$ perl6 -e 'sub MAIN($x, $y) { say $x + $y }' 3 
+$ perl6 -e 'sub MAIN($x, $y) { say $x + $y }' 3
 Usage:
 -e '...' x y
 ```
@@ -2301,7 +2301,7 @@ end if
 if length(cmd)>2 then
   puts(1,"Command line arguments:\n")
   for i = 3 to length(cmd) do
-    printf(1,"#%d : %s\n",{i,cmd[i]}) 
+    printf(1,"#%d : %s\n",{i,cmd[i]})
   end for
 end if
 ```
@@ -2470,7 +2470,7 @@ foreach ($s in $args) {
 
 ## Pure
 
-Arguments are in global variables, argc and argv. 
+Arguments are in global variables, argc and argv.
 
 
 ```pure
@@ -2589,8 +2589,8 @@ print(b*3)
 [1] 2
 [1]  6 15 18
 > proc.time()
-   user  system elapsed 
-  0.168   0.026   0.178 
+   user  system elapsed
+  0.168   0.026   0.178
 
 ```
 
@@ -2904,7 +2904,7 @@ array of strings, and returns unit. That array contains the command line argumen
 
 
 ```scala
-object CommandLineArguments extends App { 
+object CommandLineArguments extends App {
     println(s"Received the following arguments: + ${args.mkString("", ", ", ".")}")
 }
 ```
@@ -3084,12 +3084,12 @@ if { $argc > 1 } {
 
 Arguments are stored into an array. The first element in the array
 is the name of the program, the rest are the arguments in order. The
-number of arguments is provided by #args. 
+number of arguments is provided by #args.
 
 
 ```toka
 [ arglist array.get type cr ] is show-arg
-[ dup . char: = emit space ] is #= 
+[ dup . char: = emit space ] is #=
 1 #args [ i #= show-arg ] countedLoop
 ```
 
@@ -3326,7 +3326,7 @@ L("-c","alpha beta","-h","gamma")
 
 
 {{omit from|Axe}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|bc}}
 {{omit from|Commodore BASIC}}
 {{omit from|dc}}

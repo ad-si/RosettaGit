@@ -12,7 +12,7 @@ tags = []
 
 {{task|String manipulation}}
 
-Take a string and repeat it some number of times.  
+Take a string and repeat it some number of times.
 
 Example: repeat("ha", 5)   =>   "hahahahaha"
 
@@ -229,9 +229,9 @@ See the technique of 'Egyptian Multiplication' described in the Rhind Mathematic
 ```AppleScript
 replicate(5000, "ha")
 
--- Repetition by 'Egyptian multiplication' - 
+-- Repetition by 'Egyptian multiplication' -
 -- progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for 
+-- stages of doubling to an accumulator where needed for
 -- binary assembly of a target length.
 
 -- replicate :: Int -> String -> String
@@ -239,7 +239,7 @@ on replicate(n, s)
     set out to ""
     if n < 1 then return out
     set dbl to s
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -344,7 +344,7 @@ ConsoleWrite(_StringRepeat("ha", 5) & @CRLF)
 function repeat( str, n,    rep, i )
 {
     for( ; i<n; i++ )
-        rep = rep str   
+        rep = rep str
     return rep
 }
 
@@ -364,7 +364,7 @@ main: { "ha" 5 print_repeat }
 print_repeat!: { <- { dup << } -> times }
 ```
 
-Outputs: 
+Outputs:
 
 ```babel>hahahahaha</lang
 
@@ -403,7 +403,7 @@ goto :a
 ```
 
 
-'Function' version 2 
+'Function' version 2
 
 ```dos
 @echo off
@@ -544,7 +544,7 @@ The code almost explains itself. The repetions are accumulated in a list <code>r
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 Prints "ha" 10 times.  Note that this method only works for a number of repetitions that fit into the cell size.
 
 ```bf
@@ -624,7 +624,7 @@ char *string_repeat(const char *str, int n)
 
    pa = dest + (n-1)*slen;
    strcpy(pa, str);
-   pb = --pa + slen; 
+   pb = --pa + slen;
    while (pa>=dest) *pa-- = *pb--;
    return dest;
 }
@@ -707,7 +707,7 @@ string s = new String('*', 5);
 std::string repeat( const std::string &word, int times ) {
    std::string result ;
    result.reserve(times*word.length()); // avoid repeated reallocation
-   for ( int a = 0 ; a < times ; a++ ) 
+   for ( int a = 0 ; a < times ; a++ )
       result += word ;
    return result ;
 }
@@ -1029,7 +1029,7 @@ String(values: Array.empty(5, '*'))
 
 After version 4.2.2
 <lang>IMPORT STD; //Imports the Standard Library
- 
+
 STRING MyBaseString := 'abc';
 RepeatedString := STD.Str.Repeat(MyBaseString,3);
 RepeatedString;  //returns 'abcabcabc'
@@ -1084,7 +1084,7 @@ ELENA 4.x :
 import system'routines;
 import extensions;
 import extensions'text;
- 
+
 public program()
 {
     var s := new Range(0, 5).selectBy:(x => "ha").summarize(new StringWriter())
@@ -1253,7 +1253,7 @@ pad count type    \ hahahahaha
 The same code without the use of locals:
 
 ```forth
-                                       
+
 : place-n ( src len dest n -- )
   swap >r 0 r@ c!
   begin dup while -rot 2dup r@ +place rot 1- repeat
@@ -1305,7 +1305,7 @@ Function repeat(s As String, n As Integer) As String
   If n = 1 Then Return s
   Var size = Len(s)
   If size = 0 Then Return s  ' empty string
-  If size = 1 Then Return String(n, s[0])  ' repeated single character  
+  If size = 1 Then Return String(n, s[0])  ' repeated single character
   Var buffer = Space(size * n)  'create buffer for size > 1
   For i As Integer = 0 To n - 1
     For j As Integer = 0 To size - 1
@@ -1313,7 +1313,7 @@ Function repeat(s As String, n As Integer) As String
     Next j
   Next i
   Return buffer
-End Function 
+End Function
 
 Print repeat("rosetta", 1)
 Print repeat("ha", 5)
@@ -1682,7 +1682,7 @@ console.log("ha".repeat(5));  // hahahahaha
 ```
 
 
-As of ES6, `repeat` is built in, so this can be written as: 
+As of ES6, `repeat` is built in, so this can be written as:
 
 
 ```javascript
@@ -1694,7 +1694,7 @@ console.log("ha".repeat(5));  // hahahahaha
 
 ### =Repetition by Egyptian multiplication=
 
-For larger numbers of repetitions, however, it proves significantly faster to progressively double a copy of the original string (concatenating it with itself). Intermediate stages of doubling are appended to an accumulator wherever required for binary composition of the target number. 
+For larger numbers of repetitions, however, it proves significantly faster to progressively double a copy of the original string (concatenating it with itself). Intermediate stages of doubling are appended to an accumulator wherever required for binary composition of the target number.
 
 See the technique of 'Egyptian Multiplication' described in the Rhind Mathematical Papyrus at the British Museum.
 
@@ -1732,9 +1732,9 @@ Or, more generically, we could derive '''repeat''' as the composition of '''conc
     'use strict';
 
     // repeat :: Int -> String -> String
-    const repeat = (n, s) => 
+    const repeat = (n, s) =>
         concat(replicate(n, s));
-        
+
 
     // GENERIC FUNCTIONS ------------------------------------------------------
 
@@ -1795,7 +1795,7 @@ Note that if the integer multiplicand is 0, then the result is null.
 
 
 ```k
- 
+
   ,/5#,"ha"
 "hahahahaha"
 
@@ -1914,7 +1914,7 @@ on mouseUp
     put repeatString("ha", 5)
 end mouseUp
 
-function repeatString str n 
+function repeatString str n
     repeat n times
         put str after t
     end repeat
@@ -2135,7 +2135,7 @@ LolLolLolLolLol
 ```mirah
 x = StringBuilder.new
 
-5.times do 
+5.times do
     x.append "ha"
 end
 
@@ -2253,7 +2253,7 @@ module StrRep
     {
         String('x', n).Replace("x", s)
     }
-    
+
     Main() : void
     {
         WriteLine("ha".Repeat(5));
@@ -2329,13 +2329,13 @@ bundle Default {
     function : Main(args : String[]) ~ Nil {
       Repeat("ha", 5)->PrintLine();
     }
-    
+
     function : Repeat(string : String, max : Int) ~ String {
       repeat : String := String->New();
       for(i := 0; i < max; i += 1;) {
         repeat->Append(string);
       };
-      
+
       return repeat;
     }
   }
@@ -2536,8 +2536,8 @@ repeat(s,n)={
 
 {{Works with|PARI/GP|2.7.4 and above}}
 
-Basic set of string functions is very handy for presentation purposes. At the same time, it is true that PARI/GP is not an appropriate tool 
-for the heavy text processing. 
+Basic set of string functions is very handy for presentation purposes. At the same time, it is true that PARI/GP is not an appropriate tool
+for the heavy text processing.
 
 
 ```parigp
@@ -2546,8 +2546,8 @@ for the heavy text processing.
 \\ 3/3/2016 aev
 srepeat(str,ntimes)={
 my(srez=str,nt=ntimes-1);
-if(ntimes<1||#str==0,return("")); 
-if(ntimes==1,return(str)); 
+if(ntimes<1||#str==0,return(""));
+if(ntimes==1,return(str));
 for(i=1,nt, srez=concat(srez,str));
 return(srez);
 }
@@ -2564,7 +2564,7 @@ print1("6."); for(i=1,10000000, srepeat("e",10));
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -2707,7 +2707,7 @@ s = (5)'h';     /* asigns 'hhhhh' to s. */
   4 3 roll          % ostring olength olength rcount
   mul dup string    % ostring olength flength fstring
   4 1 roll          % fstring ostring olength flength
-  1 sub 0 3 1 roll  % fstring ostring 0 olength flength_minus_one 
+  1 sub 0 3 1 roll  % fstring ostring 0 olength flength_minus_one
   {                 % fstring ostring iter
     1 index 3 index % fstring ostring iter ostring fstring
     3 1 roll        % fstring ostring fstring iter ostring
@@ -3336,15 +3336,15 @@ Output:
 db2 -t
 db2 => VALUES REPEAT('ha', 5);
 
-1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+1
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-hahahahaha                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+hahahahaha
 
   1 record(s) selected.
 
 db2 => VALUES RPAD('', 10, 'ha');
 
-1         
+1
 ----------
 hahahahaha
 
@@ -3415,7 +3415,7 @@ extension String {
   func repeatString(n: Int) -> String {
     return Array(count: n, repeatedValue: self).joinWithSeparator("")
   }
-  
+
   // Faster version
   // benchmarked with a 1000 characters and 100 repeats the fast version is approx 500 000 times faster :-)
   func repeatString2(n:Int) -> String {
@@ -3452,7 +3452,7 @@ String(count:5, repeatedValue:"*" as Character)
 Note that using the String version on a string of 1 Character, or the repeat single Character version is timewise close to the same. No point in using the Character version for efficiency (tested with repeating up to 100 000 times).
 
 
-###  Bitwise Iterative Version 
+###  Bitwise Iterative Version
 
 The following version is an enhanced version of the [http://rosettacode.org/mw/index.php?title=Repeat_a_string#Recursive_version recursive ActionScript], where we're using bit operation along with iterative doubling of the string to get to the correctly repeated version of the text in the most effective manner without recursion.  When benchmarked against the plain iterative version in previous section, this version is marginally better, but only my a very small percentage. The critical factor for making the repeat function effective when using larger strings (1000 characters) and multiple repeats (1000 repeats :-) ) was to to exchange the '+=' with 'String.extend' method.
 
@@ -3474,7 +3474,7 @@ extension String {
         }
         return result
     }
-} 
+}
 
 "He".repeatBiterative(5)
 ```
@@ -3604,7 +3604,7 @@ reprint '%  ha  \' 5
 
 
 
-###  Using repeat 
+###  Using repeat
 
 {{works with|zsh}}
 {{works with|csh}}
@@ -3750,7 +3750,7 @@ WScript.Echo Replace(String(10, "X"), "X", "Ha")
 
 
 ```vedit
-Ins_Text("ha", COUNT, 5) 
+Ins_Text("ha", COUNT, 5)
 ```
 
 
@@ -3771,7 +3771,7 @@ Public Function StrRepeat(s As String, n As Integer) As String
 	Next i
 	StrRepeat = r
 End Function
- 
+
 Debug.Print StrRepeat("ha", 5)
 ```
 
@@ -3782,7 +3782,7 @@ hahahahaha
 ```
 
 
-An alternative method: 
+An alternative method:
 
 ```vb
 Public Function StrRepeat(sText As String, n As Integer) As String

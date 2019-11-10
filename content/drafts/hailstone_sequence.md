@@ -69,7 +69,7 @@ LOOPED   L      R2,TAB(R3)         tab(i)
          LA     R4,7(R4)
          C      R5,=F'4'
          BNE    BCT
-         LA     R4,7(R4) 
+         LA     R4,7(R4)
 BCT      BCT    R5,LOOPED
          XPRNT  BUF1,80            print hailstone(n)=p,tab(*)
          MVC    LONGEST,=F'0'      longest=0
@@ -131,7 +131,7 @@ NEXTP    LA     R6,1(R6)           p=p+1
          B      LOOPP
 ELOOPP   LR     R1,R6              end p; return(p)
          BR     R14                end collatz
-*                
+*
 RETURN   L      R14,SAVER14        restore caller address
          XR     R15,R15            set return code
          BR     R14                return to caller
@@ -261,7 +261,7 @@ START-OF-SELECTION.
 
 ```txt
 
-Hailstone sequence of 27 is: 
+Hailstone sequence of 27 is:
 
 27 82 41 124 62 31 94 47 142 71 214 107 322 161 484 242 121 364 182 91 274 137 412 206 103 310 155 466 233 700 350 175 526 263 790 395 1186 593 1780 890 445 1336 668 334 167 502 251 754 377 1132 566 283 850 425 1276 638 319 958 479 1438 719 2158 1079 3238 1619 4858 2429 7288 3644 1822 911 2734 1367 4102 2051 6154 3077 9232 4616 2308 1154 577 1732 866 433 1300 650 325 976 488 244 122 61 184 92 46 23 70 35 106 53 160 80 40 20 10 5 16 8 4 2 1
 
@@ -269,9 +269,9 @@ With length: 112
 
 Longest hailstone sequence upto 100k
 
-Structure 
-START LEN 
-77031 351 
+Structure
+START LEN
+77031 351
 
 
 ```
@@ -283,10 +283,10 @@ START LEN
 
 ```Lisp
 (defun hailstone (len)
-    (loop for x = len 
-             then (if (evenp x) 
-                         (/ x 2) 
-                         (+ 1 (* 3 x))) 
+    (loop for x = len
+             then (if (evenp x)
+                         (/ x 2)
+                         (+ 1 (* 3 x)))
         collect x until (= x 1)))
 
 ;; Must be tail recursive
@@ -340,7 +340,7 @@ procedure hailstone is
 		end loop;
 		return stones;
 	end hailstones;
-	
+
 	nmax,stonemax,stones : Integer := 0;
 	list : int_arr_pt;
 begin
@@ -542,7 +542,7 @@ hailstone sequence length for 77031 is 351
 
 ## ALGOL 68
 
-{{trans|C}} - note: This specimen retains the original C coding style. 
+{{trans|C}} - note: This specimen retains the original C coding style.
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - using the ''print'' routine rather than ''printf''}}
@@ -555,7 +555,7 @@ PROC hailstone = (INT in n, REF[]LINT array)INT:
     INT hs := 1;
     INT index := 0;
     LINT n := in n;
- 
+
     WHILE n /= 1 DO
         hs +:= 1;
         IF array ISNT REF[]LINT(NIL) THEN array[index +:= 1] := n FI;
@@ -564,28 +564,28 @@ PROC hailstone = (INT in n, REF[]LINT array)INT:
     IF array ISNT REF[]LINT(NIL) THEN array[index +:= 1] := n FI;
     hs
 );
- 
+
 main:
 (
     INT j, hmax := 0;
     INT jatmax, n;
     INT border = 4;
- 
-    FOR j TO 100000-1 DO 
+
+    FOR j TO 100000-1 DO
        n := hailstone(j, NIL);
        IF hmax < n THEN
            hmax := n;
            jatmax := j
        FI
     OD;
- 
+
     [2]INT test := (27, jatmax);
     FOR key TO UPB test DO
         INT val = test[key];
         n := hailstone(val, NIL);
         [n]LINT array;
         n := hailstone(val, array);
- 
+
         printf(($"[ "n(border)(g(0)", ")" ..."n(border)(", "g(0))"] len="g(0)l$,
             array[:border], array[n-border+1:], n))
         #;free(array) #
@@ -840,27 +840,27 @@ Longest Sequence : 351 from number 77031
 #!/usr/bin/awk -f
 function hailstone(v, verbose) {
 	n = 1;
-	u = v; 
-	while (1) { 
+	u = v;
+	while (1) {
 		if (verbose) printf " "u;
-		if (u==1) return(n); 
+		if (u==1) return(n);
 		n++;
 		if (u%2 > 0 )
 			u = 3*u+1;
 		else
 			u = u/2;
-	} 
+	}
 }
 
 BEGIN {
 	i = 27;
 	printf("hailstone(%i) has %i elements\n",i,hailstone(i,1));
-	ix=0; 
-	m=0; 
+	ix=0;
+	m=0;
 	for (i=1; i<100000; i++) {
 		n = hailstone(i,0);
 		if (m<n) {
-			m=n; 
+			m=n;
 			ix=i;
 		}
 	}
@@ -941,7 +941,7 @@ longest hailstone sequence is 77031 and has 351 elements
       PRINT "The number with the longest hailstone sequence is " ; maxnum%
       PRINT "Its sequence length is " ; maxlen%
       END
-      
+
       DEF FNhailstone(N%, S%)
       LOCAL L%
       IF S% THEN PRINT N%;
@@ -1274,14 +1274,14 @@ If OpenConsole()
     If i=6
       Print(#CRLF$)
       i=0
-    EndIf    
+    EndIf
     i+1
     Print(RSet(Str(Hailstones()),5))
     If Hailstones()<>1
       Print(", ")
     EndIf
   Next
-  
+
   i=1
   Repeat
     l=FillHailstones(i)
@@ -1292,7 +1292,7 @@ If OpenConsole()
     i+1
   Until i>=100000
   Print(#CRLF$+#CRLF$+"The longest sequence below 100000 is #"+Str(maxi)+", and it has "+Str(maxl)+" elements.")
- 
+
   Print(#CRLF$+#CRLF$+"Press ENTER to exit."): Input()
   CloseConsole()
 EndIf
@@ -1323,9 +1323,9 @@ EndIf
     23,    70,    35,   106,    53,   160,
     80,    40,    20,    10,     5,    16,
      8,     4,     2,     1
- 
+
  The longest sequence found up to 100000 is #77031 which has 351 elements.
- 
+
  Press ENTER to exit.
 
 ```
@@ -1338,15 +1338,15 @@ EndIf
 ```runbasic
 print "Part 1: Create a routine to generate the hailstone sequence for a number."
 print ""
- 
+
 while hailstone < 1 or hailstone <> int(hailstone)
     input "Please enter a positive integer: "; hailstone
 wend
 count = doHailstone(hailstone,"Y")
- 
+
 print: print "Part 2: Use the routine to show that the hailstone sequence for the number 27 has 112 elements starting with 27, 82, 41, 124 and ending with 8, 4, 2, 1."
 count = doHailstone(27,"Y")
- 
+
 print: print "Part 3: Show the number less than 100,000 which has the longest hailstone sequence together with that sequence's length.(But don't show the actual sequence)!"
 print "Calculating result... Please wait... This could take a little while..."
 print "Stone Percent Count"
@@ -1359,7 +1359,7 @@ for i = 1 to 99999
      end if
 next i
 end
- 
+
 '---------------------------------------------
 ' pass number and print (Y/N)
 FUNCTION doHailstone(hailstone,prnt$)
@@ -1370,7 +1370,7 @@ end if
 while hailstone <> 1
    if (hailstone and 1) then hailstone = (hailstone * 3) + 1 else hailstone = hailstone / 2
    doHailstone = doHailstone + 1
-   if prnt$ = "Y" then 
+   if prnt$ = "Y" then
     print hailstone;chr$(9);
     if (doHailstone mod 10) = 0 then print
    end if
@@ -1492,7 +1492,7 @@ This approach reuses the main hailstone sequence function for all three tasks.
 '''The pure hailstone sequence function''', returning the sequence for any number entered in the console:
 
 
-```beeswax>   
+```beeswax>
 @:N  q
 >%"d3~@.PNp
 d~2~pL~1F{<T_
@@ -1502,7 +1502,7 @@ d~2~pL~1F{<T_
 '''Returning the sequence for the starting value <code>27</code>'''
 
 
-```beeswax>   
+```beeswax>
 @:N  q
 >%"d3~@.PNq
 d~2~qL~1Ff{<BF3_
@@ -1549,7 +1549,7 @@ Output of the sequence, followed by the length of the sequence:
 '''Number below 100,000 with the longest hailstone sequence, and the length of that sequence:'''
 
 
-```beeswax>   
+```beeswax>
 @:  q pf1_#
 >%"d3~@.Pqf#{g?` `{gpK@~BP9~5@P@q'M<
 d~2~pL~1Ff<         <            >?d
@@ -1569,12 +1569,12 @@ Output:
 
 
 ```befunge
-93*:.    v   
+93*:.    v
 > :2%v  >
 v+1*3_2/
 >" ",:.v   v<
 <v v-1:< <
-+1\_$1+v^ \  
++1\_$1+v^ \
 v .,+94<>^>::v
 >" "03pv  :* p
 v67:" "<  0: 1
@@ -1652,10 +1652,10 @@ vg01g00  ,+49<
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 {{incomplete}}
 Prints the number of terms required to map the input to 1. Does not count the first term of the sequence.
-<lang Brainf***>>,[
+<lang Brainfuck>>,[
     [
         ----------[
             >>>[>>>>]+[[-]+<[->>>>++>>>>+[>>>>]++[->+<<<<<]]<<<]
@@ -1669,7 +1669,7 @@ Prints the number of terms required to map the input to 1. Does not count the fi
 ]
 ```
 
-<lang Brainf***>27
+<lang Brainfuck>27
 111
 ```
 
@@ -1859,7 +1859,7 @@ namespace Hailstone
             }else{
                 int newn = (n % 2 == 0) ? n / 2 : (3 * n) + 1;
                 return hs(newn, sequence);
-            }                        
+            }
         }
 
         static void Main(string[] args)
@@ -1869,8 +1869,8 @@ namespace Hailstone
             Console.WriteLine(sequence.Count + " Elements");
             List<int> start = sequence.GetRange(0, 4);
             List<int> end = sequence.GetRange(sequence.Count - 4, 4);
-            Console.WriteLine("Starting with : " + string.Join(",", start) + " and ending with : " + string.Join(",", end));            
-            int number = 0, longest = 0;            
+            Console.WriteLine("Starting with : " + string.Join(",", start) + " and ending with : " + string.Join(",", end));
+            int number = 0, longest = 0;
             for (int i = 1; i < 100000; i++)
             {
                 int count = (hs(i, new List<int>())).Count;
@@ -1920,7 +1920,7 @@ namespace ConsoleApplication1
             for (var i = 1; i <= maxNumber; i++)
             {
                 var chainLength = Hailstone(i, recursiveLengths);
-                if (longestChain >= chainLength) 
+                if (longestChain >= chainLength)
                     continue;
 
                 longestChain = chainLength;
@@ -1931,7 +1931,7 @@ namespace ConsoleApplication1
 
         private static int Hailstone(int num, Dictionary<int, int> lengths)
         {
-            if (num == 1) 
+            if (num == 1)
                 return 1;
 
             while (true)
@@ -1966,9 +1966,9 @@ max below 100000: 77031 (351 steps)
 std::vector<int> hailstone(int i)
 {
     std::vector<int> v;
-    while(true){ 
+    while(true){
         v.push_back(i);
-        if (1 == i) break; 
+        if (1 == i) break;
         i = (i % 2) ? (3 * i + 1) : (i / 2);
     }
     return v;
@@ -1977,35 +1977,35 @@ std::vector<int> hailstone(int i)
 std::pair<int,int> find_longest_hailstone_seq(int n)
 {
     std::pair<int, int> maxseq(0, 0);
-    int l; 
+    int l;
     for(int i = 1; i < n; ++i){
-        l = hailstone(i).size(); 
+        l = hailstone(i).size();
         if (l > maxseq.second) maxseq = std::make_pair(i, l);
-    }   
+    }
     return maxseq;
 }
 
 int main () {
 
-// Use the routine to show that the hailstone sequence for the number 27 
+// Use the routine to show that the hailstone sequence for the number 27
     std::vector<int> h27;
-    h27 = hailstone(27); 
-// has 112 elements 
+    h27 = hailstone(27);
+// has 112 elements
     int l = h27.size();
     std::cout << "length of hailstone(27) is " << l;
-// starting with 27, 82, 41, 124 and 
+// starting with 27, 82, 41, 124 and
     std::cout << " first four elements of hailstone(27) are ";
-    std::cout << h27[0] << " " << h27[1] << " " 
+    std::cout << h27[0] << " " << h27[1] << " "
               << h27[2] << " " << h27[3] << std::endl;
 // ending with 8, 4, 2, 1
     std::cout << " last four elements of hailstone(27) are "
-              << h27[l-4] << " " << h27[l-3] << " " 
+              << h27[l-4] << " " << h27[l-3] << " "
               << h27[l-2] << " " << h27[l-1] << std::endl;
 
-    std::pair<int,int> m = find_longest_hailstone_seq(100000); 
+    std::pair<int,int> m = find_longest_hailstone_seq(100000);
 
-    std::cout << "the longest hailstone sequence under 100,000 is " << m.first 
-              << " with " << m.second << " elements." <<std::endl;  
+    std::cout << "the longest hailstone sequence under 100,000 is " << m.first
+              << " with " << m.second << " elements." <<std::endl;
 
     return 0;
 }
@@ -2091,7 +2091,7 @@ longest sequence with starting element under 100000:
 
 ```ceylon
 shared void run() {
-	
+
 	{Integer*} hailstone(variable Integer n) {
 		variable [Integer*] stones = [n];
 		while(n != 1) {
@@ -2100,10 +2100,10 @@ shared void run() {
 		}
 		return stones;
 	}
-	
+
 	value hs27 = hailstone(27);
 	print("hailstone sequence for 27 is ``hs27.take(3)``...``hs27.skip(hs27.size - 3).take(3)`` with length ``hs27.size``");
-	
+
 	variable value longest = hailstone(1);
 	for(i in 2..100k - 1) {
 		value current = hailstone(i);
@@ -2220,7 +2220,7 @@ Hailstone sequence starting with 27:
 ```clojure
 (defn hailstone-seq [n]
   {:pre [(pos? n)]}
-  (lazy-seq 
+  (lazy-seq
    (cond (= n 1)   '(1)
          (even? n) (cons n (hailstone-seq (/ n 2)))
          :else     (cons n (hailstone-seq (+ (* n 3) 1))))))
@@ -2251,7 +2251,7 @@ Testing with GnuCOBOL
        data division.
        working-storage section.
        01 most                 constant as 1000000.
-       01 coverage             constant as 100000.       
+       01 coverage             constant as 100000.
        01 stones               usage binary-long.
        01 n                    usage binary-long.
        01 storm                usage binary-long.
@@ -2268,7 +2268,7 @@ Testing with GnuCOBOL
        01 low-range            usage binary-long.
        01 high-range           usage binary-long.
        01 range                usage binary-long.
-        
+
 
        01 remain               usage binary-long.
        01 unused               usage binary-long.
@@ -2361,28 +2361,28 @@ Recursive version:
 hailstone = (n) ->
   if n is 1
     [n]
- 
+
   else if n % 2 is 0
     [n].concat hailstone n/2
- 
+
   else
     [n].concat hailstone (3*n) + 1
- 
+
 h27 = hailstone 27
 console.log "hailstone(27) = #{h27[0..3]} ... #{h27[-4..]} (length: #{h27.length})"
- 
+
 maxlength = 0
 maxnums = []
- 
+
 for i in [1..100000]
   seq = hailstone i
- 
+
   if seq.length is maxlength
     maxnums.push i
   else if seq.length > maxlength
     maxlength = seq.length
     maxnums = [i]
- 
+
 console.log "Max length: #{maxlength}; numbers generating sequences of this length: #{maxnums}"
 ```
 
@@ -2866,7 +2866,7 @@ local hailstone:
 			/ swap 2
 		swap push-through rot dup
 	drop
- 
+
 if = (name) :(main):
 	local :h27 hailstone 27
 	!. = 112 len h27
@@ -2878,7 +2878,7 @@ if = (name) :(main):
 	!. = 4 h27! 109
 	!. = 2 h27! 110
 	!. = 1 h27! 111
- 
+
 	local :max 0
 	local :maxlen 0
 	for i range 1 99999:
@@ -2995,7 +2995,7 @@ Longest sequence under 100,000: 77031 with 351 elements
 (define (hailstone n)
 (when (> n 1)
 	(if (even? n) (/ n 2) (1+ (* n 3)))))
-	
+
 (define H (make-hash))
 
 ;; (iterator/f seed f) returns seed, (f seed) (f(f seed)) ...
@@ -3005,11 +3005,11 @@ Longest sequence under 100,000: 77031 with 351 elements
 	(or
 	   (hash-ref H seed) ;; known ?
 	   (hash-set H seed
-	      (for ((i (in-naturals)) (h collatz)) 
+	      (for ((i (in-naturals)) (h collatz))
               ;; add length of subsequence if already known
 	      #:break (hash-ref H h) => (+ i (hash-ref H h))
 	      (1+ i)))))
-	
+
 (define (task (nmax 100000))
 	(for ((n [1 .. nmax])) (hlength n)) ;; fill hash table
 
@@ -3033,29 +3033,29 @@ Longest sequence under 100,000: 77031 with 351 elements
    → (5 16 8 4 2 1)
 
 (task)
-maxlength=     351     for     77031 
+maxlength=     351     for     77031
 
 ;; more ...
 (lib 'bigint)
-   
+
 (task 200000)
-    maxlength=     383     for     156159    
+    maxlength=     383     for     156159
 (task 300000)
-    maxlength=     443     for     230631    
+    maxlength=     443     for     230631
 (task 400000)
-    maxlength=     443     for     230631    
+    maxlength=     443     for     230631
 (task 500000)
-    maxlength=     449     for     410011    
+    maxlength=     449     for     410011
 (task 600000)
-    maxlength=     470     for     511935    
+    maxlength=     470     for     511935
 (task 700000)
-    maxlength=     509     for     626331    
+    maxlength=     509     for     626331
 (task 800000)
-    maxlength=     509     for     626331    
+    maxlength=     509     for     626331
 (task 900000)
-    maxlength=     525     for     837799    
+    maxlength=     525     for     837799
 (task 1000000)
-    maxlength=     525     for     837799  
+    maxlength=     525     for     837799
 
 
 ```
@@ -3101,7 +3101,7 @@ using Hailstone
 
 def task0 = let H27 = hailstone 27 in length H27
 
-def task1 = 
+def task1 =
     let H27 = hailstone 27 in
     let L   = length H27 in
         (take 4 H27, drop (L - 4) H27)
@@ -3208,16 +3208,16 @@ ELENA 4.x :
 ```elena
 import system'collections;
 import extensions;
- 
+
 const int maxNumber = 100000;
- 
+
 Hailstone(int n,Map<int,int> lengths)
 {
     if (n == 1)
     {
         ^ 1
     };
- 
+
     while (true)
     {
         if (lengths.containsKey(n))
@@ -3237,13 +3237,13 @@ Hailstone(int n,Map<int,int> lengths)
         }
     }
 }
- 
+
 public program()
 {
     int longestChain := 0;
     int longestNumber := 0;
     auto recursiveLengths := new Map<int,int>(4096,4096);
- 
+
     for(int i := 1, i < maxNumber, i+=1)
     {
         var chainLength := Hailstone(i, recursiveLengths);
@@ -3253,7 +3253,7 @@ public program()
                longestNumber := i
         }
     };
- 
+
     console.printFormatted("max below {0}: {1} ({2} steps)", maxNumber, longestNumber, longestChain)
 }
 ```
@@ -3274,21 +3274,21 @@ max bellow 100000: 77031 (351 steps)
 ```elixir
 defmodule Hailstone do
   require Integer
-  
+
   def step(1)                        , do: 0
   def step(n) when Integer.is_even(n), do: div(n,2)
   def step(n)                        , do: n*3 + 1
-  
+
   def sequence(n) do
     Stream.iterate(n, &step/1) |> Stream.take_while(&(&1 > 0)) |> Enum.to_list
   end
-  
+
   def run do
     seq27 = sequence(27)
     len27 = length(seq27)
     repr = String.replace(inspect(seq27, limit: 4) <> inspect(Enum.drop(seq27,len27-4)), "][", ", ")
     IO.puts "Hailstone(27) has #{len27} elements: #{repr}"
-    
+
     {len, start} = Enum.map(1..100_000, fn(n) -> {length(sequence(n)), n} end) |> Enum.max
     IO.puts "Longest sequence starting under 100000 begins with #{start} and has #{len} elements."
   end
@@ -3364,34 +3364,34 @@ This version has one collatz function for just calculating totals (just for fun)
 
 ```erlang
 
--module(collatz).                                                            
--export([main/0,collatz/1,coll/1,max_atz_under/1]).                          
-                                                                             
-collatz(1) -> 1;                                                             
-collatz(N) when N rem 2 == 0 -> 1 + collatz(N div 2);                        
-collatz(N) when N rem 2 > 0 -> 1 + collatz(3 * N +1).                        
-                                                                             
-max_atz_under(N) ->                                                          
-  F = fun (X) -> {collatz(X), X} end,                                        
-  {_, Index} = lists:max(lists:map(F, lists:seq(1, N))),                     
-  Index.                                                                     
-                                                                             
-coll(1) -> [1];                                                              
-coll(N) when N rem 2 == 0 -> [N|coll(N div 2)];                              
-coll(N) -> [N|coll(3 * N + 1)].                                              
-                                                                             
-main() ->                                                                    
-    io:format("collatz(4) non-list total: ~w~n", [collatz(4)]),              
-    io:format("coll(4) with lists ~w~n",  [coll(4)] ),                       
-    Seq27 = coll(27),                                                        
-    Seq1000 = coll(max_atz_under(100000)),                                   
-    io:format("coll(27) length: ~B~n", [length(Seq27)]),                     
-    io:format("coll(27) first 4: ~w~n", [lists:sublist(Seq27, 4)]),          
-    io:format("collatz(27) last 4: ~w~n",                                    
-              [lists:nthtail(length(Seq27) - 4, Seq27)]),                    
-    io:format("maximum  N <= 100000..."),                             
-    io:format("Max: ~w~n", [max_atz_under(100000)]),                   
-    io:format("Total: ~w~n", [ length( Seq1000 ) ] ).                  
+-module(collatz).
+-export([main/0,collatz/1,coll/1,max_atz_under/1]).
+
+collatz(1) -> 1;
+collatz(N) when N rem 2 == 0 -> 1 + collatz(N div 2);
+collatz(N) when N rem 2 > 0 -> 1 + collatz(3 * N +1).
+
+max_atz_under(N) ->
+  F = fun (X) -> {collatz(X), X} end,
+  {_, Index} = lists:max(lists:map(F, lists:seq(1, N))),
+  Index.
+
+coll(1) -> [1];
+coll(N) when N rem 2 == 0 -> [N|coll(N div 2)];
+coll(N) -> [N|coll(3 * N + 1)].
+
+main() ->
+    io:format("collatz(4) non-list total: ~w~n", [collatz(4)]),
+    io:format("coll(4) with lists ~w~n",  [coll(4)] ),
+    Seq27 = coll(27),
+    Seq1000 = coll(max_atz_under(100000)),
+    io:format("coll(27) length: ~B~n", [length(Seq27)]),
+    io:format("coll(27) first 4: ~w~n", [lists:sublist(Seq27, 4)]),
+    io:format("collatz(27) last 4: ~w~n",
+              [lists:nthtail(length(Seq27) - 4, Seq27)]),
+    io:format("maximum  N <= 100000..."),
+    io:format("Max: ~w~n", [max_atz_under(100000)]),
+    io:format("Total: ~w~n", [ length( Seq1000 ) ] ).
 
 ```
 
@@ -3523,11 +3523,11 @@ $    repeat
 $      if mod(n,2) then n=3*n+1;
 $      else n=n/2;
 $      endif;
-$      if n<=cols(v) and v[n] then 
+$      if n<=cols(v) and v[n] then
 $        v[#]=v[n]+count;
 $        break;
 $      endif;
-$      count=count+1;    
+$      count=count+1;
 $    end;
 $  end;
 $  return v;
@@ -3627,7 +3627,7 @@ Ezhil is a Tamil programming language, see [http://en.wikipedia.org/wiki/Ezhil_%
 <lang src="Python">
 நிரல்பாகம்  hailstone ( எண் )
            பதிப்பி "=> ",எண் #hailstone seq
-	    @( எண் == 1 )   ஆனால் 	        
+	    @( எண் == 1 )   ஆனால்
 	        பின்கொடு எண்
 	    முடி
 
@@ -3687,7 +3687,7 @@ PRIVATE>
 MAIN: main
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 $ ./factor -run=rosetta.hailstone
@@ -3769,8 +3769,8 @@ program Hailstone
   call hs(27, seqlen, seq)
   write(*,"(a,i0,a)") "Hailstone sequence for 27 has ", seqlen, " elements"
   write(*,"(a,4(i0,a),3(i0,a),i0)") "Sequence = ", seq(1), ", ", seq(2), ", ", seq(3), ", ", seq(4), " ...., ",  &
-                                     seq(seqlen-3), ", ", seq(seqlen-2), ", ", seq(seqlen-1), ", ", seq(seqlen) 
-  
+                                     seq(seqlen-3), ", ", seq(seqlen-2), ", ", seq(seqlen-1), ", ", seq(seqlen)
+
   do i = 1, 99999
     call hs(i, seqlen)
     if (seqlen > maxseqlen) then
@@ -3782,12 +3782,12 @@ program Hailstone
   write(*,"(a,i0,a,i0,a)") "Longest sequence under 100000 is for ", maxn, " with ", maxseqlen, " elements"
 
   deallocate(seq)
-  
+
 contains
 
 subroutine hs(number, length, seqArray)
   integer, intent(in)  :: number
-  integer, intent(out) :: length  
+  integer, intent(out) :: length
   integer, optional, intent(inout) :: seqArray(:)
   integer :: n
 
@@ -4049,12 +4049,12 @@ CollatzMax := function(a, b)
 end;
 
 CollatzSequence(27);
-# [ 27, 82, 41, 124, 62, 31, 94, 47, 142, 71, 214, 107, 322, 161, 484, 242, 121, 364, 182, 91, 274, 137, 412, 206, 
-#   103, 310, 155, 466, 233, 700, 350, 175, 526, 263, 790, 395, 1186, 593, 1780, 890, 445, 1336, 668, 334, 167, 502, 
-#   251, 754, 377, 1132, 566, 283, 850, 425, 1276, 638, 319, 958, 479, 1438, 719, 2158, 1079, 3238, 1619, 4858, 2429, 
-#   7288, 3644, 1822, 911, 2734, 1367, 4102, 2051, 6154, 3077, 9232, 4616, 2308, 1154, 577, 1732, 866, 433, 1300, 
+# [ 27, 82, 41, 124, 62, 31, 94, 47, 142, 71, 214, 107, 322, 161, 484, 242, 121, 364, 182, 91, 274, 137, 412, 206,
+#   103, 310, 155, 466, 233, 700, 350, 175, 526, 263, 790, 395, 1186, 593, 1780, 890, 445, 1336, 668, 334, 167, 502,
+#   251, 754, 377, 1132, 566, 283, 850, 425, 1276, 638, 319, 958, 479, 1438, 719, 2158, 1079, 3238, 1619, 4858, 2429,
+#   7288, 3644, 1822, 911, 2734, 1367, 4102, 2051, 6154, 3077, 9232, 4616, 2308, 1154, 577, 1732, 866, 433, 1300,
 #   650, 325, 976, 488, 244, 122, 61, 184, 92, 46, 23, 70, 35, 106, 53, 160, 80, 40, 20, 10, 5, 16, 8, 4, 2, 1 ]
-CollatzLength(27);  
+CollatzLength(27);
 # 112
 
 CollatzMax(1, 100);
@@ -4123,9 +4123,9 @@ hs(77031): 351 elements
 
 Alternate solution (inspired both by recent news of a new proof submitted for publication and by recent chat on #rosettacode about generators.)
 
-This solution interprets the wording of the task differently, and takes the word "generate" to mean use a [[generator]].  
-This has the advantage of not storing the whole sequence in memory at once.  
-Elements are generated one at a time, counted and discarded.  
+This solution interprets the wording of the task differently, and takes the word "generate" to mean use a [[generator]].
+This has the advantage of not storing the whole sequence in memory at once.
+Elements are generated one at a time, counted and discarded.
 A time optimization added for task 3 is to store the sequence lengths computed so far.
 
 Output is the same as version above.
@@ -4273,10 +4273,10 @@ main =
 {{out}}
 
 ```txt
-Collatz sequence for 27: 
+Collatz sequence for 27:
 [27,82,41,124,62,31,94,47,142,71,214,107,322,161,484,242,121,364,182,91,274,137,412,206,103,310,155,466,233,700,350,175,526,263,790,395,1186,593,1780,890,445,1336,668,334,167,502,251,754,377,1132,566,283,850,425,1276,638,319,958,479,1438,719,2158,1079,3238,1619,4858,2429,7288,3644,1822,911,2734,1367,4102,2051,6154,3077,9232,4616,2308,1154,577,1732,866,433,1300,650,325,976,488,244,122,61,184,92,46,23,70,35,106,53,160,80,40,20,10,5,16,8,4,2]
 The number 77031
-has the longest hailstone sequence for any number less then 100000. 
+has the longest hailstone sequence for any number less then 100000.
 The sequence has length: 350
 ```
 
@@ -4729,11 +4729,11 @@ class Hailstone {
     }
     return list;
   }
-  
+
   public static void main(String[] args) {
     List<Long> sequence27 = getHailstoneSequence(27);
     System.out.println("Sequence for 27 has " + sequence27.size() + " elements: " + sequence27);
-    
+
     long MAX = 100000;
     // Simple way
     {
@@ -4748,7 +4748,7 @@ class Hailstone {
       }
       System.out.println("Method 1, number " + highestNumber + " has the longest sequence, with a length of " + highestCount);
     }
-    
+
     // More memory efficient way
     {
       long highestNumber = 1;
@@ -4770,14 +4770,14 @@ class Hailstone {
       }
       System.out.println("Method 2, number " + highestNumber + " has the longest sequence, with a length of " + highestCount);
     }
-    
+
     // Efficient for analyzing all sequences
     {
       long highestNumber = 1;
       long highestCount = 1;
       Map<Long, Integer> sequenceMap = new HashMap<Long, Integer>();
       sequenceMap.put(Long.valueOf(1), Integer.valueOf(1));
-      
+
       List<Long> currentList = new ArrayList<Long>();
       for (long i = 2; i < MAX; i++) {
         currentList.clear();
@@ -4868,7 +4868,7 @@ longest sequence: 351 numbers for starting point 77031
 This simple problem turns out to be a good test of the constraints on composing
 (ES5) JavaScript code in a functional style.
 
-The first sub-problem falls easily within reach of a basic recursive definition 
+The first sub-problem falls easily within reach of a basic recursive definition
 (translating one of the Haskell solutions).
 
 
@@ -4908,10 +4908,10 @@ The first sub-problem falls easily within reach of a basic recursive definition
 1732,866,433,1300,650,325,976,488,244,122,61,184,92,46,23,70,35,106,53,160,80,
 40,20,10,5,16,8,4,2,1]}
 ```
- 
 
-Attempting to fold that recursive function over an array of 100,000 elements, 
-however, (to solve the second part of the problem) soon runs out of stack 
+
+Attempting to fold that recursive function over an array of 100,000 elements,
+however, (to solve the second part of the problem) soon runs out of stack
 space, at least on the system used here.
 
 The stack problem can be quickly fixed, as often, by simply applying a memoized function,
@@ -4947,7 +4947,7 @@ which reuses previously calculated paths.
     while (i--) a[i - 1] = i;
     return a;
   }
-  
+
   // Fold/reduce over an array to find the maximum length
   function longestBelow(n) {
     return range(1, n).reduce(
@@ -4979,11 +4979,11 @@ which reuses previously calculated paths.
 // Number, length of sequence
 {"n":77031, "l":351}
 ```
- 
+
 
 For better time (as well as space) we can continue to memoize while falling back to a function which returns the
-sequence length alone, and is iteratively implemented. This also proves more scaleable, 
-and we can still use a fold/reduce pattern over a list to find the longest collatz sequences 
+sequence length alone, and is iteratively implemented. This also proves more scaleable,
+and we can still use a fold/reduce pattern over a list to find the longest collatz sequences
 for integers below one million, or ten million and beyond, without hitting the limits of system resources.
 
 
@@ -5023,7 +5023,7 @@ for integers below one million, or ten million and beyond, without hitting the l
 
     return range(1, n).reduce(
       function (a, x) {
-        
+
         var lng = dctMemo[x] || (dctMemo[x] = collatzLength(x));
 
         return lng > a.l ? {
@@ -5178,7 +5178,7 @@ longestBelow(100000000)
 (Run in the Atom editor, through the Script package)
 
 ```txt
-Collatz sequence for 27: 
+Collatz sequence for 27:
 27,82,41,124,62,31,94,47,142,71,214,107,322,161,484,242,121,364,182,91,
 274,137,412,206,103,310,155,466,233,700,350,175,526,263,790,395,1186,593,
 1780,890,445,1336,668,334,167,502,251,754,377,1132,566,283,850,425,1276,
@@ -5216,7 +5216,7 @@ def count(g): reduce g as $i (0; .+1);
 def max_hailstone(n):
   # state: [i, length]
   reduce range(1; n+1) as $i
-    ([0,0]; 
+    ([0,0];
      ($i | count(hailstone)) as $l
      | if $l > .[1] then [$i, $l] else . end);
 ```
@@ -5324,7 +5324,7 @@ println("Collection of the Hailstone sequence from 27: $hs")
 cl = collect(hs)
 println("First 5 elements: ", join(cl[1:5], ", "))
 println("Last 5 elements: ", join(cl[end-4:end], ", "))
- 
+
 Base.isless(h::HailstoneSeq, s::HailstoneSeq) = length(h) < length(s)
 println("The number with the longest sequence under 100,000 is: ", maximum(HailstoneSeq.(1:100_000)))
 ```
@@ -5557,7 +5557,7 @@ init(nil: ref Draw->Context, nil: list of string)
 		seq = tl seq;
 	}
 	sys->print("⋯");
-	
+
 	while(len seq > 4)
 		seq = tl seq;
 
@@ -5684,7 +5684,7 @@ put n, maxLen
 		sequence(Start, Sequence).
 
 	sequence(1, [1]) :-
-		!. 
+		!.
 	sequence(N, [N| Sequence]) :-
 		(	N mod 2 =:= 0 ->
 			M is N // 2
@@ -5699,7 +5699,7 @@ put n, maxLen
 
 	sequence(1) :-
 		!,
-		write(1), nl. 
+		write(1), nl.
 	sequence(N) :-
 		write(N), write(' '),
 		(	N mod 2 =:= 0 ->
@@ -5836,16 +5836,16 @@ function hailstone( n, print_numbers )
 
     while n ~= 1 do
         if print_numbers then print( n ) end
-        if n % 2 == 0 then 
+        if n % 2 == 0 then
             n = n / 2
         else
             n = 3 * n + 1
-        end    
-        
+        end
+
         n_iter = n_iter + 1
     end
     if print_numbers then print( n ) end
-    
+
     return n_iter;
 end
 
@@ -5890,7 +5890,7 @@ Module hailstone.Task {
             c=1
             While m() {c++}
             =c
-            
+
       }
       k=Hailstone(27)
       counter=1
@@ -5998,7 +5998,7 @@ The longest Hailstone sequence in the first 100k is n=77031, with 351 terms
 Here are four ways to generate the sequence.
 
 
-###  Nested function call formulation 
+###  Nested function call formulation
 
 
 ```Mathematica
@@ -6016,34 +6016,34 @@ HailstoneFP[n_] := Most@FixedPointList[Switch[#, 1, 1, _?OddQ , 3# + 1, _, #/2] 
 
 
 
-###  Recursive formulation 
+###  Recursive formulation
 
 
 ```Mathematica
 HailstoneR[1] = {1}
 HailstoneR[n_?OddQ] := Prepend[HailstoneR[3 n + 1], n]
-HailstoneR[n_] := Prepend[HailstoneR[n/2], n] 
+HailstoneR[n_] := Prepend[HailstoneR[n/2], n]
 ```
 
 
 
-###  Procedural implementation 
+###  Procedural implementation
 
 
 ```Mathematica
-HailstoneP[n_] := Module[{x = {n}, s = n}, 
- While[s > 1, x = {x, s = If[OddQ@s, 3 s + 1, s/2]}]; Flatten@x] 
+HailstoneP[n_] := Module[{x = {n}, s = n},
+ While[s > 1, x = {x, s = If[OddQ@s, 3 s + 1, s/2]}]; Flatten@x]
 ```
 
 
 
-###  Validation 
+###  Validation
 
 
 I use this version to do the validation:
 
 ```Mathematica
-Hailstone[n_] := 
+Hailstone[n_] :=
  NestWhileList[Which[Mod[#, 2] == 0, #/2, True, ( 3*# + 1) ] &, n, # != 1 &];
 
 
@@ -6056,7 +6056,7 @@ Do[temp = Length@Hailstone@i;
  If[comp < temp, comp = temp; longest = i],
  {i, 100000}
  ]
-Print["Longest Hailstone sequence at n = ", longest, "\nwith length = ", comp]; 
+Print["Longest Hailstone sequence at n = ", longest, "\nwith length = ", comp];
 ```
 
 {{out}}
@@ -6087,7 +6087,7 @@ With[{seq = HailstoneFP[27]}, { Length[seq], Take[seq, 4], Take[seq, -4]}]
 ```
 
 
-Alternatively, 
+Alternatively,
 
 ```Mathematica
 Short[HailstoneFP[27],0.45]
@@ -6119,7 +6119,7 @@ MaximalBy[Table[{i, Length[HailstoneFP[i]]}, {i, 100000}], Last]
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ### Hailstone Sequence For N
- 
+
 
 ```Matlab
 function x = hailstone(n)
@@ -6271,7 +6271,7 @@ collatz_max(100000);   /* [77031, 351] */
 
 ## Mercury
 
-The actual calculation (including module ceremony) 
+The actual calculation (including module ceremony)
 providing both a function and a predicate implementation:
 
 ```mercury
@@ -6350,13 +6350,13 @@ For those unused to logic programming languages it seems that nothing has been p
 ```
 
 
-… you see that the second and third parameters are '''output''' parameters.  
-This by calling <code>longest(100000, 77031, 351)</code> you prove, 
-through unification, that the longest sequence is with the 
+… you see that the second and third parameters are '''output''' parameters.
+This by calling <code>longest(100000, 77031, 351)</code> you prove,
+through unification, that the longest sequence is with the
 number 77031 and that it is 351 cycles long.
 
-Similarly, using <code>list.append([27, 82, 41, 124], _, S)</code> automatically proves that the generated sequence begins with the provided sequence, etc.  
-Thus we know that the correct sequences and values were generated 
+Similarly, using <code>list.append([27, 82, 41, 124], _, S)</code> automatically proves that the generated sequence begins with the provided sequence, etc.
+Thus we know that the correct sequences and values were generated
 without bothering to print them out.
 
 
@@ -6374,16 +6374,16 @@ fun hail (x = 1) = [1]
 fun hailstorm
 		([], i, largest, largest_at) = (largest_at, largest)
 	| 	(x :: xs, i, largest, largest_at) =
-		let 
+		let
 			val k = len (hail x)
-		in 
+		in
 			if k > largest then
 				hailstorm (xs, i + 1, k, i)
 			else
 				hailstorm (xs, i + 1, largest, largest_at)
 			end
 	| 	(x :: xs) = hailstorm (x :: xs, 1, 0, 0)
- 
+
  ;
 
 val h27 = hail 27;
@@ -6792,7 +6792,7 @@ let haillen n =
 let hailmax =
   let rec g idx len = function
   | 0 -> (idx, len)
-  | i -> 
+  | i ->
       let a = haillen i in
       if a > len
       then g i a (i-1)
@@ -7068,7 +7068,7 @@ and
 
 {{Works with|PARI/GP|2.7.4 and above}}
 
-Different kind of PARI scripts for Collatz sequences you can find in OEIS, e.g.: 
+Different kind of PARI scripts for Collatz sequences you can find in OEIS, e.g.:
 [http://oeis.org/A070165 A070165]
 
 
@@ -7078,15 +7078,15 @@ Different kind of PARI scripts for Collatz sequences you can find in OEIS, e.g.:
 \\ Limit vector to the lim length, or less, if 1 (one) term is reached (when lim=0).
 \\ 3/26/2016 aev
 Collatz(n,lim=0)={
-my(c=n,e=0,L=List(n)); if(lim==0, e=1; lim=n*10^6); 
+my(c=n,e=0,L=List(n)); if(lim==0, e=1; lim=n*10^6);
 for(i=1,lim, if(c%2==0, c=c/2, c=3*c+1); listput(L,c); if(e&&c==1, break));
-return(Vec(L)); } 
+return(Vec(L)); }
 Collatzmax(ns,nf)={
 my(V,vn,mxn=1,mx,im=1);
 print("Search range: ",ns,"..",nf);
-for(i=ns,nf, V=Collatz(i); vn=#V; if(vn>mxn, mxn=vn; im=i); kill(V)); 
+for(i=ns,nf, V=Collatz(i); vn=#V; if(vn>mxn, mxn=vn; im=i); kill(V));
 print("Hailstone/Collatz(",im,") has the longest length = ",mxn);
-} 
+}
 
 {
 \\ Required tests:
@@ -7259,7 +7259,7 @@ real  3m56.573s // 64-bit compiled
 ## Perl
 
 
-###  Straightforward 
+###  Straightforward
 
 
 ```Perl
@@ -7315,7 +7315,7 @@ Max length 351 was found for hailstone(77031) for numbers < 100_000
 
 
 
-###  Compact 
+###  Compact
 
 A more compact version:
 
@@ -7618,120 +7618,120 @@ end test;
 
 {{out}}
 <pre style="height:30ex;overflow:scroll">
-The sequence for 27 is 
-                27 
-                82 
-                41 
-               124 
-                62 
-                31 
-                94 
-                47 
-               142 
-                71 
-               214 
-               107 
-               322 
-               161 
-               484 
-               242 
-               121 
-               364 
-               182 
-                91 
-               274 
-               137 
-               412 
-               206 
-               103 
-               310 
-               155 
-               466 
-               233 
-               700 
-               350 
-               175 
-               526 
-               263 
-               790 
-               395 
-              1186 
-               593 
-              1780 
-               890 
-               445 
-              1336 
-               668 
-               334 
-               167 
-               502 
-               251 
-               754 
-               377 
-              1132 
-               566 
-               283 
-               850 
-               425 
-              1276 
-               638 
-               319 
-               958 
-               479 
-              1438 
-               719 
-              2158 
-              1079 
-              3238 
-              1619 
-              4858 
-              2429 
-              7288 
-              3644 
-              1822 
-               911 
-              2734 
-              1367 
-              4102 
-              2051 
-              6154 
-              3077 
-              9232 
-              4616 
-              2308 
-              1154 
-               577 
-              1732 
-               866 
-               433 
-              1300 
-               650 
-               325 
-               976 
-               488 
-               244 
-               122 
-                61 
-               184 
-                92 
-                46 
-                23 
-                70 
-                35 
-               106 
-                53 
-               160 
-                80 
-                40 
-                20 
-                10 
-                 5 
-                16 
-                 8 
-                 4 
-                 2 
-                 1 
-The hailstone sequence has length               112 
+The sequence for 27 is
+                27
+                82
+                41
+               124
+                62
+                31
+                94
+                47
+               142
+                71
+               214
+               107
+               322
+               161
+               484
+               242
+               121
+               364
+               182
+                91
+               274
+               137
+               412
+               206
+               103
+               310
+               155
+               466
+               233
+               700
+               350
+               175
+               526
+               263
+               790
+               395
+              1186
+               593
+              1780
+               890
+               445
+              1336
+               668
+               334
+               167
+               502
+               251
+               754
+               377
+              1132
+               566
+               283
+               850
+               425
+              1276
+               638
+               319
+               958
+               479
+              1438
+               719
+              2158
+              1079
+              3238
+              1619
+              4858
+              2429
+              7288
+              3644
+              1822
+               911
+              2734
+              1367
+              4102
+              2051
+              6154
+              3077
+              9232
+              4616
+              2308
+              1154
+               577
+              1732
+               866
+               433
+              1300
+               650
+               325
+               976
+               488
+               244
+               122
+                61
+               184
+                92
+                46
+                23
+                70
+                35
+               106
+                53
+               160
+                80
+                40
+                20
+                10
+                 5
+                16
+                 8
+                 4
+                 2
+                 1
+The hailstone sequence has length               112
              77031 has the longest sequence of                351
 
 ```
@@ -7808,22 +7808,22 @@ Seed max = 77031, length = 351
 
 function Get-HailStone {
     param($n)
-           
+
     switch($n) {
         1              {$n;return}
         {$n % 2 -eq 0} {$n; return Get-Hailstone ($n = $n / 2)}
-        {$n % 2 -ne 0} {$n; return Get-Hailstone ($n = ($n * 3) +1)}      
+        {$n % 2 -ne 0} {$n; return Get-Hailstone ($n = ($n * 3) +1)}
     }
 }
 
 function Get-HailStoneBelowLimit {
     param($UpperLimit)
 
-    for ($i = 1; $i -lt $UpperLimit; $i++) { 
+    for ($i = 1; $i -lt $UpperLimit; $i++) {
         [pscustomobject]@{
             'Number' = $i
             'Count' = (Get-HailStone $i).count
-        } 
+        }
     }
 }
 ```
@@ -7902,7 +7902,7 @@ to get the following result
 ```txt
 
 Seq = 77031,
-Len = 351 
+Len = 351
 
 ```
 
@@ -7912,7 +7912,7 @@ Len = 351
 
 CHR is a programming language created by '''Professor Thom Frühwirth'''.
 
-Works with SWI-Prolog and module '''chr''' written by '''Tom Schrijvers''' and '''Jan Wielemaker''' 
+Works with SWI-Prolog and module '''chr''' written by '''Tom Schrijvers''' and '''Jan Wielemaker'''
 
 
 
@@ -7987,7 +7987,7 @@ len_seq(N, Len - N) :-
 
 ```txt
  ?- longest_sequence.
-For [77031] sequence has 351 len ! 
+For [77031] sequence has 351 len !
 true.
 
 ```
@@ -7998,7 +7998,7 @@ true.
 
 
 ```pure
-// 1. Create a routine to generate the hailstone sequence for a number. 
+// 1. Create a routine to generate the hailstone sequence for a number.
 type odd x::int = x mod 2;
 type even x::int = ~odd x;
 odd x = typep odd x;
@@ -8008,24 +8008,24 @@ hailstone 1       = [1];
 hailstone n::even = n:hailstone (n div 2);
 hailstone n::odd  = n:hailstone (3*n + 1);
 
-// 2. Use the routine to show that the hailstone sequence for the number 27 
+// 2. Use the routine to show that the hailstone sequence for the number 27
 //    has 112 elements starting with 27, 82, 41, 124 and ending with 8, 4, 2, 1
 n = 27;
 hs = hailstone n;
 l = # hs;
 using system;
 
-printf 
-    ("the hailstone sequence for the number %d has %d elements " + 
-     "starting with %s and ending with %s\n") 
+printf
+    ("the hailstone sequence for the number %d has %d elements " +
+     "starting with %s and ending with %s\n")
     (n, l, __str__ (hs!!(0..3)), __str__ ( hs!!((l-4)..l)));
 
-// 3. Show the number less than 100,000 which has the longest hailstone 
+// 3. Show the number less than 100,000 which has the longest hailstone
 //    sequence together with that sequences length.
-printf ("the number under 100,000 with the longest sequence is %d " + 
+printf ("the number under 100,000 with the longest sequence is %d " +
         "with a sequence length of %d\n")
-       (foldr (\ (a,b) (c,d) -> if (b > d) then (a,b) else (c,d)) 
-             (0,0) 
+       (foldr (\ (a,b) (c,d) -> if (b > d) then (a,b) else (c,d))
+             (0,0)
              (map (\ x -> (x, # hailstone x)) (1..100000)));
 ```
 
@@ -8208,7 +8208,7 @@ generating a hailstone sequence of 351 integers.
 ```r
 ### PART 1:
 makeHailstone <- function(n){
-  hseq <- n  
+  hseq <- n
   while (hseq[length(hseq)] > 1){
     current.value <- hseq[length(hseq)]
     if (current.value %% 2 == 0){
@@ -8230,20 +8230,20 @@ twenty.seven$seq.length
 max.length <- 0;  lower.bound <- 1;  upper.bound <- 100000
 
 for (index in lower.bound:upper.bound){
-  current.hseq <- makeHailstone(index)  
+  current.hseq <- makeHailstone(index)
   if (current.hseq$seq.length > max.length){
     max.length <- current.hseq$seq.length
     max.index  <- index
   }
 }
 
-cat("Between ", lower.bound, " and ", upper.bound, ", the input of ", 
-    max.index, " gives the longest hailstone sequence, which has length ", 
+cat("Between ", lower.bound, " and ", upper.bound, ", the input of ",
+    max.index, " gives the longest hailstone sequence, which has length ",
     max.length, ". \n", sep="")
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 > twenty.seven$hseq
@@ -8259,7 +8259,7 @@ cat("Between ", lower.bound, " and ", upper.bound, ", the input of ",
 > twenty.seven$seq.length
 [1] 112
 
-Between 1 and 1e+05, the input of 77031 gives the longest hailstone sequence, 
+Between 1 and 1e+05, the input of 77031 gives the longest hailstone sequence,
 which has length 351.
 ```
 
@@ -8386,7 +8386,7 @@ hailstone: procedure expose #hs; parse arg n 1 s /*N and S: are set to the 1st a
            return s                              /*return the  S  string to the invoker.*/
 ```
 
-'''output'''   when using the default inputs: 
+'''output'''   when using the default inputs:
 
 ```txt
 
@@ -8406,7 +8406,7 @@ This version is over fifteen times faster than the previous (unoptimized) versio
 
 It makes use of:
 ::::*   previously calculated Collatz sequences (memoization)
-::::*   a faster method of determining if an integer is even 
+::::*   a faster method of determining if an integer is even
 
 ```REXX
 /*REXX program tests a  number  and also a  range for  hailstone  (Collatz)  sequences. */
@@ -8483,14 +8483,14 @@ size = 27
 aList = []
 hailstone(size)
 
-func hailstone n 
+func hailstone n
      add(aList,n)
-     while n != 1 
+     while n != 1
            if n % 2 = 0  n = n / 2
-           else n = 3 * n + 1 ok  
-           add(aList, n)              
-     end   
-     see "first 4 elements : "     
+           else n = 3 * n + 1 ok
+           add(aList, n)
+     end
+     see "first 4 elements : "
      for i = 1 to 4
          see "" + aList[i]  + " "
      next
@@ -8542,10 +8542,10 @@ the largest number in that sequence is 21933016
 
 
 
-###  With shared structure 
+###  With shared structure
 
-This version builds some linked lists with shared structure. ''Hailstone::ListNode'' is an adaptation of ListNode from [[Singly-linked list/Element definition#Ruby]]. 
-When two sequences contain the same value, those two lists share a tail. 
+This version builds some linked lists with shared structure. ''Hailstone::ListNode'' is an adaptation of ListNode from [[Singly-linked list/Element definition#Ruby]].
+When two sequences contain the same value, those two lists share a tail.
 This avoids recomputing the end of the sequence.
 {{works with|Ruby|1.8.7}}
 
@@ -8560,11 +8560,11 @@ module Hailstone
       end
     end
   end
-  
+
   @@sequence = {1 => ListNode[1,1]}
-  
+
   module_function
-  
+
   def sequence(n)
     unless @@sequence[n]
       m, ary = n, []
@@ -8610,7 +8610,7 @@ fn hailstone(start : u32) -> Vec<u32> {
     res
 }
 
- 
+
 fn main() {
     let test_num = 27;
     let test_hailseq = hailstone(test_num);
@@ -8621,7 +8621,7 @@ fn main() {
                         .fold("".to_owned(), |acc, i| { acc + &*(i.to_string()).to_owned() + ", " });
     let last_slice = test_hailseq[test_hailseq.len()-4..].iter()
                         .fold("".to_owned(), |acc, i| { acc + &*(i.to_string()).to_owned() + ", " });
-    
+
     println!("  hailstone starting with {} ending with {} ", fst_slice, last_slice);
 
     let max_range = 100000;
@@ -8642,8 +8642,8 @@ fn main() {
 {{out}}
 
 ```txt
-For 27 number of elements is 112 
-  hailstone starting with 27, 82, 41, 124,  ending with 8, 4, 2, 1,  
+For 27 number of elements is 112
+  hailstone starting with 27, 82, 41, 124,  ending with 8, 4, 2, 1,
 Longest sequence is 351 element long for seed 77031
 ```
 
@@ -8723,7 +8723,7 @@ longest sequence started w/77031 and had 351 elements
          seq_size + 1;
          hs_seq(seq_size) = n;
          if mod(n,2)=0 then n=n/2;
-         else n=(3*n)+1; 
+         else n=(3*n)+1;
       end;
 	  seq_size + 1;
       hs_seq(seq_size)=n;
@@ -8735,7 +8735,7 @@ longest sequence started w/77031 and had 351 elements
 	  select seq_size as sequence_length, hs_seq1, hs_seq2, hs_seq3, hs_seq4
 			%do i=&seq_length-3 %to &seq_length;
 				, hs_seq&i
-			%end; 
+			%end;
 		from hailstone;
 	quit;
 %mend;
@@ -8871,7 +8871,7 @@ Longest hailstone sequence length= 351 occurring with number 77031.
     // usage: global verbose; verbose=%T; hailstone(27)
     global verbose
     x=0; loop=%T
-    while(loop) 
+    while(loop)
         x=x+1
         if verbose then
             printf('%i ',n)
@@ -8880,7 +8880,7 @@ Longest hailstone sequence length= 351 occurring with number 77031.
             loop=%F
         elseif modulo(n,2)==1 then
             n=3*n+1
-        else 
+        else
             n=n/2
         end
     end
@@ -8890,7 +8890,7 @@ global verbose;
 verbose=1;
 N=hailstone(27);
 printf('\n\n%i\n',N);
-  
+
 global verbose;
 verbose=0;
 N=100000;
@@ -8904,10 +8904,10 @@ end;
 {{out}}
 
 ```txt
-27 82 41 124 62 31 94 47 142 71 214 107 322 161 484 242 121 364 182 91 274 137 412 206 103 310 155 466 233 700 350 175 526 263 790 395 1186 593 1780 890 445 1336 668 334 167 502 251 754 377 1132 566 283 850 425 1276 638 319 958 479 1438 719 2158 1079 3238 1619 4858 2429 7288 3644 1822 911 2734 1367 4102 2051 6154 3077 9232 4616 2308 1154 577 1732 866 433 1300 650 325 976 488 244 122 61 184 92 46 23 70 35 106 53 160 80 40 20 10 5 16 8 4 2 1 
+27 82 41 124 62 31 94 47 142 71 214 107 322 161 484 242 121 364 182 91 274 137 412 206 103 310 155 466 233 700 350 175 526 263 790 395 1186 593 1780 890 445 1336 668 334 167 502 251 754 377 1132 566 283 850 425 1276 638 319 958 479 1438 719 2158 1079 3238 1619 4858 2429 7288 3644 1822 911 2734 1367 4102 2051 6154 3077 9232 4616 2308 1154 577 1732 866 433 1300 650 325 976 488 244 122 61 184 92 46 23 70 35 106 53 160 80 40 20 10 5 16 8 4 2 1
 112
- n  =      77031.  
- maxLength  =      351.  
+ n  =      77031.
+ maxLength  =      351.
 ```
 
 
@@ -9028,7 +9028,7 @@ printf("%d: (%d)\n", h...)
 ```smalltalk
 Object subclass: Sequences [
   Sequences class >> hailstone: n [
-      |seq| 
+      |seq|
       seq := OrderedCollection new.
       seq add: n.
       (n = 1) ifTrue: [ ^seq ].
@@ -9105,18 +9105,18 @@ $>@/===!/===-?\==>?!/-<+++\    \!/=!\@\>?!\@/<@\.!\-/
 func hailstone(var n:Int) -> [Int] {
 
     var arr = [n]
-    
+
     while n != 1 {
 
         if n % 2 == 0 {
             n /= 2
         } else {
             n = (3 * n) + 1
-        }    
+        }
 
         arr.append(n)
     }
-    
+
     return arr
 }
 
@@ -9129,7 +9129,7 @@ var longest = (n: 1, len: 1)
 for i in 1...100_000 {
 
     let new = hailstone(i)
-    
+
     if new.count > longest.len {
         longest = (i, new.count)
     }
@@ -9199,7 +9199,7 @@ N→M: 0→X: 1→L
 While L=1
 X+1→X
 Disp M
-If M=1 
+If M=1
 Then: 0→L
 Else
 If remainder(M,2)=1
@@ -9266,7 +9266,7 @@ End
 
 ```txr
 @(do (defun hailstone (n)
-       (cons n 
+       (cons n
              (gen (not (eq n 1))
                   (set n (if (evenp n)
                            (trunc n 2)
@@ -9355,7 +9355,7 @@ _hailstone_print Param (1)
 
     Print
 Return
- 
+
 _hailstone Param (1)
     ' normal version
     ' only counts the sequence
@@ -9461,8 +9461,8 @@ echo "${max} has a hailstone sequence length of ${maxlen}"
 
 ### Bourne Shell
 
-This script follows tradition for the Bourne Shell; its hailstone() function writes the sequence to standard output, so the shell can capture or pipe this output. 
-This script is '''very slow''' because it forks many processes. 
+This script follows tradition for the Bourne Shell; its hailstone() function writes the sequence to standard output, so the shell can capture or pipe this output.
+This script is '''very slow''' because it forks many processes.
 Each `command substitution` forks a subshell, and each expr(1) command forks a process.
 
 * Therefore, this script only examines sequences '''from 1 to 1000''', not 100000. A fast computer might run this script in 45 to 120 seconds, using most time to run system calls in kernel mode. If the script went to 100000, it would need several hours.
@@ -9506,7 +9506,7 @@ echo "Hailstone sequence from $max has $maxlen elements."
 =
 ## C Shell
 =
-This script is several times faster than the previous Bourne Shell script, because it uses C Shell expressions, not the expr(1) command. 
+This script is several times faster than the previous Bourne Shell script, because it uses C Shell expressions, not the expr(1) command.
 This script is '''slow''', but it can reach 100000, and a fast computer might run it in less than 15 minutes.
 
 
@@ -9614,7 +9614,7 @@ class java.lang.Integer<27, 82, 41, 124, 62, 31, 94, 47, 142, 71, 214, 107, 322,
 > out (size (hailstone 27)) endl console
 112
 > decl int i max maxLoc
-> for (set i 1) (< i 100000) (inc i) 
+> for (set i 1) (< i 100000) (inc i)
 ..	decl int result
 ..	set result (size (hailstone i))
 ..
@@ -9692,7 +9692,7 @@ Private Function hailstone(ByVal n As Long) As Collection
     Loop
     Set hailstone = s
 End Function
- 
+
 Private Function hailstone_count(ByVal n As Long)
     Dim count As Long: count = 1
     Do While n <> 1
@@ -9705,7 +9705,7 @@ Private Function hailstone_count(ByVal n As Long)
     Loop
     hailstone_count = count
 End Function
- 
+
 Public Sub rosetta()
     Dim s As Collection, i As Long
     Set s = hailstone(27)
@@ -9736,7 +9736,7 @@ End Sub
 {{out}}
 ```txt
 hailstone(27) = 27, 82, 41, 124, ... 16, 8, 4, 2, 1
-length = 112 
+length = 112
 The longest hailstone sequence under 100,000 is 77031 with 351 elements.
 ```
 
@@ -9746,7 +9746,7 @@ The longest hailstone sequence under 100,000 is 77031 with 351 elements.
 
 ```vb
 
-'function arguments: "num" is the number to sequence and "return" is the value to return - "s" for the sequence or 
+'function arguments: "num" is the number to sequence and "return" is the value to return - "s" for the sequence or
 '"e" for the number elements.
 Function hailstone_sequence(num,return)
     n = num
@@ -9759,7 +9759,7 @@ Function hailstone_sequence(num,return)
 			n = (3 * n) + 1
 		End If
 		sequence = sequence & " " & n
-		elements = elements + 1	
+		elements = elements + 1
 	Loop
 	Select Case return
 		Case "s"
@@ -9799,7 +9799,7 @@ WScript.StdOut.WriteLine n_longest
 Sequence for 27: 27 82 41 124 62 31 94 47 142 71 214 107 322 161 484 242 121 364 182 91 274 137 412 206 103 310 155 466 233 700 350 175 526 263 790 395 1186 593 1780 890 445 1336 668 334 167 502 251 754 377 1132 566 283 850 425 1276 638 319 958 479 1438 719 2158 1079 3238 1619 4858 2429 7288 3644 1822 911 2734 1367 4102 2051 6154 3077 9232 4616 2308 1154 577 1732 866 433 1300 650 325 976 488 244 122 61 184 92 46 23 70 35 106 53 160 80 40 20 10 5 16 8 4 2 1
 Number of Elements: 112
 
-Number less than 100k with the longest sequence: 
+Number less than 100k with the longest sequence:
 Number: 77031 Length: 351
 
 ```
@@ -9874,9 +9874,9 @@ End Function 'hailstones
 {{Out}}
 
 ```txt
-The sequence for 27 is:  27  82  41  124 ... 8  4  2  1 
-The hailstone sequence has length of  27  is  112 
- 77031  has the longest sequence of  351 
+The sequence for 27 is:  27  82  41  124 ... 8  4  2  1
+The hailstone sequence has length of  27  is  112
+ 77031  has the longest sequence of  351
 ```
 
 
@@ -9984,7 +9984,7 @@ IntOut(0, SN);  Text(0, "'s Hailstone length = ");  IntOut(0, MaxLen);
 ```txt
 
 27's Hailstone length = 112
-Sequence = 27 82 41 124 ... 8 4 2 1 
+Sequence = 27 82 41 124 ... 8 4 2 1
 77031's Hailstone length = 351
 
 ```
@@ -10049,11 +10049,11 @@ L(351,77031)  // length, hailstone
 90 NEXT m
 100 PRINT "The number with the longest hailstone sequence is ";maxnum
 110 PRINT "Its sequence length is ";maxlen
-120 STOP 
+120 STOP
 1000 REM Hailstone
 1010 LET l=0
 1020 IF s THEN PRINT n;"  ";
-1030 IF n=1 THEN LET seqlen=l+1: RETURN 
+1030 IF n=1 THEN LET seqlen=l+1: RETURN
 1040 IF FN m(n,2)=0 THEN LET n=INT (n/2): GO TO 1060
 1050 LET n=3*n+1
 1060 LET l=l+1

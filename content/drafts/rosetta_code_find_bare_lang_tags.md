@@ -13,7 +13,7 @@ tags = []
 {{task|Rosetta Code related}}
 
 ;Task:
-Find all   <big><big> <nowiki><lang></nowiki> </big></big>   tags without a language specified in the text of a page.  
+Find all   <big><big> <nowiki><lang></nowiki> </big></big>   tags without a language specified in the text of a page.
 
 Display counts by language section:
 
@@ -234,7 +234,7 @@ func check(err error) {
 
 func main() {
     expr := `==\s*{{\s*header\s*\|\s*([^\s\}]+)\s*}}\s*==`
-    expr2 := fmt.Sprintf("<%s>.*?</%s>", "lang", "lang")  
+    expr2 := fmt.Sprintf("<%s>.*?</%s>", "lang", "lang")
     r := regexp.MustCompile(expr)
     r2 := regexp.MustCompile(expr2)
     fileNames := []string{"example.txt", "example2.txt", "example3.txt"}
@@ -430,7 +430,7 @@ main = do
     printBareTags combinedFiles
         where addFileToTags file  =  Map.map (flip (,) [file])
               combine cur next  =  (fst cur + fst next, snd cur ++ snd next)
-        
+
 printBareTags :: Map.Map String (Int,[String]) -> IO ()
 printBareTags tags  =  do
     let numBare  =  Map.foldr ((+).fst) 0 tags
@@ -840,7 +840,7 @@ add_lan := proc(language, n, existence, languages, pos)
 	if (assigned(existence[language])) then
 		existence[language] += n:
 		return pos;
-	else 
+	else
 		existence[language] := n:
 		languages(pos) := language:
 		return pos+1;
@@ -852,8 +852,8 @@ count_tags := proc(tasks, pos)
 	for task in tasks do
 		url := cat("http://www.rosettacode.org/mw/index.php?title=", StringTools:-Encode(StringTools:-SubstituteAll(task["title"], " ", "_"), 'percent'), "&action=raw"):
 		txt := URL:-Get(url):
-		header_tags := [StringTools:-SearchAll("=={{header|", txt)]:	
-		close_tags := [StringTools:-SearchAll("}}==",txt)]: 
+		header_tags := [StringTools:-SearchAll("=={{header|", txt)]:
+		close_tags := [StringTools:-SearchAll("}}==",txt)]:
 		close_len := numelems(close_tags):
 		header_len := numelems(header_tags):
 		if header_len = 0 then
@@ -864,18 +864,18 @@ count_tags := proc(tasks, pos)
 			break;
 		end if;
 		occurence := numelems([StringTools:-SearchAll("<lang>", txt[1..header_tags[1]])]):
-		if occurence > 0 then 
+		if occurence > 0 then
 			pos_copy := add_lan("no languages", occurence, existence, languages, pos_copy):
 		end if:
 		if close_len > 1 then
 			for i from 2 to close_len do
 				occurence := numelems([StringTools:-SearchAll("<lang>", txt[header_tags[i-1]..header_tags[i]])]):
-				if occurence > 0 then 			
+				if occurence > 0 then
 					pos_copy := add_lan(txt[header_tags[i-1]+11..close_tags[i-1]-1], occurence, existence, languages, pos_copy):
 				end if:
 			end do:
 			occurence := numelems([StringTools:-SearchAll("<lang>", txt[header_tags[-1]..])]):
-			if occurence > 0 then	
+			if occurence > 0 then
 				pos_copy := add_lan(txt[header_tags[-1]+11..close_tags[-1]-1], occurence, existence, languages, pos_copy):
 			end if:
 		end if:
@@ -896,7 +896,7 @@ while(assigned(x["continue"]["cmcontinue"])) do
 	pos := count_tags(x["query"]["categorymembers"], pos):
 end do:
 #Prints out the table
-total := 0:		
+total := 0:
 for lan in languages do
 	total += existence[lan]:
 	printf("There are %d bare lang tags in %s\n", existence[lan], lan);
@@ -1022,36 +1022,36 @@ Total number 416
 
 
 ```Mathematica
-tasks[page_: ""] := 
-  Module[{res = 
+tasks[page_: ""] :=
+  Module[{res =
      Import["http://rosettacode.org/mw/api.php?format=xml&action=\
 query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=\
-500" <> page, "XML"]}, 
-   If[MemberQ[res[[2, 3]], XMLElement["query-continue", __]], 
-    Join[res[[2, 3, 1, 3, 1, 3, All, 2, 3, 2]], 
-     tasks["&cmcontinue=" <> res[[2, 3, 2, 3, 1, 2, 1, 2]]]], 
+500" <> page, "XML"]},
+   If[MemberQ[res[[2, 3]], XMLElement["query-continue", __]],
+    Join[res[[2, 3, 1, 3, 1, 3, All, 2, 3, 2]],
+     tasks["&cmcontinue=" <> res[[2, 3, 2, 3, 1, 2, 1, 2]]]],
     res[[2, 3, 1, 3, 1, 3, All, 2, 3, 2]]]];
-bareTags = # -> (# -> StringCount[#2, "<lang>"] &) @@@ 
+bareTags = # -> (# -> StringCount[#2, "<lang>"] &) @@@
       Partition[
        Prepend[StringSplit[
-          Import["http://rosettacode.org/wiki?action=raw&title=" <> 
-            URLEncode[#], "Text"], 
-          Shortest["=={{header|" ~~ x__ ~~ "}}=="] :> x], 
-         "no language"] //. {a___, 
-          multi_String?StringContainsQ["}}" ~~ ___ ~~ "{{header|"], 
-          bare_Integer, b___} :> {a, StringSplit[multi, "}"][[1]], 
-          bare, StringSplit[multi, "|"][[-1]], bare, b}, 2] & /@ 
+          Import["http://rosettacode.org/wiki?action=raw&title=" <>
+            URLEncode[#], "Text"],
+          Shortest["=={{header|" ~~ x__ ~~ "}}=="] :> x],
+         "no language"] //. {a___,
+          multi_String?StringContainsQ["}}" ~~ ___ ~~ "{{header|"],
+          bare_Integer, b___} :> {a, StringSplit[multi, "}"][[1]],
+          bare, StringSplit[multi, "|"][[-1]], bare, b}, 2] & /@
    tasks[];
-Print[IntegerString[Total[Flatten[bareTags[[All, 2, All, 2]]]]] <> 
+Print[IntegerString[Total[Flatten[bareTags[[All, 2, All, 2]]]]] <>
    " bare language tags.\n"];
-langCounts = 
-  Normal[Total /@ 
+langCounts =
+  Normal[Total /@
     GroupBy[Flatten[bareTags[[All, 2]]], Keys -> Values]];
-Print[IntegerString[#2] <> " in " <> # <> " ([[" <> 
+Print[IntegerString[#2] <> " in " <> # <> " ([[" <>
      StringRiffle[
-      Keys[Select[bareTags, 
-        Function[task, MemberQ[task[[2]], # -> _Integer?Positive]]]], 
-      "]], [["] <> "]])"] & @@@ 
+      Keys[Select[bareTags,
+        Function[task, MemberQ[task[[2]], # -> _Integer?Positive]]]],
+      "]], [["] <> "]])"] & @@@
   Select[SortBy[langCounts, Keys], #[[2]] > 0 &];
 ```
 
@@ -1125,7 +1125,7 @@ This the output on May 21, 2015.
 2 in Lua ([[First-class functions]], [[Guess the number/With feedback (player)]])
 1 in M4 ([[Dragon curve]])
 1 in Maple ([[Case-sensitivity of identifiers]])
-31 in Mathematica ([[Check Machin-like formulas]], [[Compile-time calculation]], [[Execute Brain****]], [[Execute HQ9+]], [[Find largest left truncatable prime in a given base]], [[Find limit of recursion]], [[Four bit adder]], [[Guess the number/With feedback (player)]], [[GUI component interaction]], [[Introspection]], [[K-means++ clustering]], [[LZW compression]], [[Number names]], [[Number reversal game]], [[Permutations by swapping]], [[Pig the dice game]], [[Rate counter]], [[Rep-string]], [[RSA code]], [[Send an unknown method call]], [[SHA-256]], [[Sudoku]], [[Take notes on the command line]], [[Tic-tac-toe]], [[Word wrap]], [[Yahoo! search interface]])
+31 in Mathematica ([[Check Machin-like formulas]], [[Compile-time calculation]], [[Execute Brainfuck]], [[Execute HQ9+]], [[Find largest left truncatable prime in a given base]], [[Find limit of recursion]], [[Four bit adder]], [[Guess the number/With feedback (player)]], [[GUI component interaction]], [[Introspection]], [[K-means++ clustering]], [[LZW compression]], [[Number names]], [[Number reversal game]], [[Permutations by swapping]], [[Pig the dice game]], [[Rate counter]], [[Rep-string]], [[RSA code]], [[Send an unknown method call]], [[SHA-256]], [[Sudoku]], [[Take notes on the command line]], [[Tic-tac-toe]], [[Word wrap]], [[Yahoo! search interface]])
 9 in Mathprog ([[Averages/Arithmetic mean]], [[Greatest subsequential sum]], [[Knapsack problem/Continuous]], [[Knight's tour]])
 5 in Maxima ([[A+B]], [[Array concatenation]], [[Circles of given radius through two points]], [[Execute a system command]], [[Set]])
 1 in MAXScript ([[Bulls and cows]])
@@ -1628,7 +1628,7 @@ Quoting from the FAQ: "If you just want the raw wikitext without any other infor
 
 ```Ruby
 require "open-uri"
-require "cgi" 
+require "cgi"
 
 tasks  = ["Greatest_common_divisor", "Greatest_element_of_a_list", "Greatest_subsequential_sum"]
 part_uri  = "http://rosettacode.org/wiki?action=raw&title="
@@ -1639,7 +1639,7 @@ tasks.each do |task|
   puts "processing #{task}"
   current_lang = "no language"
   open(part_uri + CGI.escape(task)).each_line do |line|
-    current_lang = Regexp.last_match["lang"] if /==\{\{header\|(?<lang>.+)\}\}==/ =~ line 
+    current_lang = Regexp.last_match["lang"] if /==\{\{header\|(?<lang>.+)\}\}==/ =~ line
     num_no_langs = line.scan(/<lang\s*>/).size
     if num_no_langs > 0 then
       result[current_lang].count += num_no_langs
@@ -1807,20 +1807,20 @@ proc get_tasks {category} {
     }
     set query [dict create cmtitle Category:$category]
     set tasks [list]
- 
+
     while {1} {
 	set response [getUrlWithRedirect http://rosettacode.org/mw/api.php \
 		action query list categorymembers format json cmlimit 500 {*}$query]
- 
+
 	# Get the data out of the message
         set data [json::json2dict [http::data $response]]
         http::cleanup $response
- 
+
         # add tasks to list
         foreach task [dict get $data query categorymembers] {
             lappend tasks [dict get [dict create {*}$task] title]
         }
- 
+
         if {[catch {
 	    dict get $data query-continue categorymembers cmcontinue
 	} continue_task]} then {
@@ -1918,7 +1918,7 @@ fcn findEmptyTags(a,b,c,etc){  // -->[lang:(task,task...)]
 
 
 ```zkl
-results:=findEmptyTags("Greatest_common_divisor", "Greatest_element_of_a_list", 
+results:=findEmptyTags("Greatest_common_divisor", "Greatest_element_of_a_list",
 		      "Greatest_subsequential_sum");
 println("\n%d bare language tags:".fmt(results.values.apply("len").sum(0)));
 foreach lang in (results.keys.sort()){

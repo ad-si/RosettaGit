@@ -12,7 +12,7 @@ tags = []
 
 {{task|Basic language learning}}
 
-Special characters are symbols (single characters or sequences of characters) that have a "special" built-in meaning in the language and typically cannot be used in identifiers. 
+Special characters are symbols (single characters or sequences of characters) that have a "special" built-in meaning in the language and typically cannot be used in identifiers.
 
 Escape sequences are methods that the language uses to remove the special meaning from the symbol, enabling it to be used as a normal character, or sequence of characters when this can be done.
 
@@ -57,7 +57,7 @@ Assembler 360 has for writting macros the following special characters:
 * // comment prefix
 
 
-###  Enclosures 
+###  Enclosures
 
 
 * " "   literal string enclosures
@@ -136,7 +136,7 @@ null character:
 
 ```
 
-To handle the output movement to (and input movement from) a device 
+To handle the output movement to (and input movement from) a device
 ALGOL 68 has the following four positioning procedures:
 
 ```algol68
@@ -147,16 +147,16 @@ print(("backspace:",backspace))
 ```
 These procedures may not all be supported on a particular device.
 
-If a particular device (CHANNEL) is '''set possible''', then there 
+If a particular device (CHANNEL) is '''set possible''', then there
 are three built-in procedures that allow movement about this device.
 * set char number - set the position in the current line.
 * reset - move to the first character of the first line of the first page.  For example a home or tape rewind.
-* set - allows the movement to selected page, line and character. 
+* set - allows the movement to selected page, line and character.
 
-ALGOL 68 pre-dates the current ASCII standard, and hence supports many 
-non ASCII characters.  Moreover ALGOL 68 had to work on 6-bits per byte 
+ALGOL 68 pre-dates the current ASCII standard, and hence supports many
+non ASCII characters.  Moreover ALGOL 68 had to work on 6-bits per byte
 hardware, hence it was necessary to be able to write the same ALGOL 68 code
-in strictly upper-case.  Here are the special characters together with their 
+in strictly upper-case.  Here are the special characters together with their
 upper-case alternatives (referred to as "worthy characters").
 {|border="1" style="border-collapse: collapse;"
 !bgcolor=#C0FFEE|Character
@@ -204,8 +204,8 @@ upper-case alternatives (referred to as "worthy characters").
 |-
 | ⎧ || || UPS || '''ups'''
 |}
-Most of these characters made their way into European standard 
-characters sets (eg ALCOR and GOST). Ironically the &cent; character 
+Most of these characters made their way into European standard
+characters sets (eg ALCOR and GOST). Ironically the &cent; character
 was dropped from later versions of America's own ASCII character set.
 
 The character "⏨" is one ALGOL 68 byte (not two bytes).
@@ -258,18 +258,18 @@ Certain combinations of letters form reserved words in Algol W and cannot be use
 ## AutoHotkey
 
 The escape character defaults to accent/backtick (`).
-* `, = , (literal comma). Note: Commas that appear within the last parameter of a command do not need to be escaped because the program knows to treat them literally. The same is true for all parameters of MsgBox because it has smart comma handling. 
-* `% = % (literal percent) 
-* `` = ` (literal accent; i.e. two consecutive escape characters result in a single literal character) 
-* `; = ; (literal semicolon). Note: This is necessary only if a semicolon has a space or tab to its left. If it does not, it will be recognized correctly without being escaped. 
-* `n = newline (linefeed/LF) 
-* `r = carriage return (CR) 
-* `b = backspace 
-* `t = tab (the more typical horizontal variety) 
-* `v = vertical tab -- corresponds to Ascii value 11. It can also be manifest in some applications by typing Control+K. 
-* `a = alert (bell) -- corresponds to Ascii value 7. It can also be manifest in some applications by typing Control+G. 
-* `f = formfeed -- corresponds to Ascii value 12. It can also be manifest in some applications by typing Control+L. 
-* Send = When the Send command or Hotstrings are used in their default (non-raw) mode, characters such as {}^!+# have special meaning. Therefore, to use them literally in these cases, enclose them in braces. For example: Send {^}{!}{{} 
+* `, = , (literal comma). Note: Commas that appear within the last parameter of a command do not need to be escaped because the program knows to treat them literally. The same is true for all parameters of MsgBox because it has smart comma handling.
+* `% = % (literal percent)
+* `` = ` (literal accent; i.e. two consecutive escape characters result in a single literal character)
+* `; = ; (literal semicolon). Note: This is necessary only if a semicolon has a space or tab to its left. If it does not, it will be recognized correctly without being escaped.
+* `n = newline (linefeed/LF)
+* `r = carriage return (CR)
+* `b = backspace
+* `t = tab (the more typical horizontal variety)
+* `v = vertical tab -- corresponds to Ascii value 11. It can also be manifest in some applications by typing Control+K.
+* `a = alert (bell) -- corresponds to Ascii value 7. It can also be manifest in some applications by typing Control+G.
+* `f = formfeed -- corresponds to Ascii value 12. It can also be manifest in some applications by typing Control+L.
+* Send = When the Send command or Hotstrings are used in their default (non-raw) mode, characters such as {}^!+# have special meaning. Therefore, to use them literally in these cases, enclose them in braces. For example: Send {^}{!}{{}
 * "" = Within an expression, two consecutive quotes enclosed inside a literal string resolve to a single literal quote. For example: Var := "The color ""red"" was found."
 
 
@@ -337,13 +337,13 @@ Note that the ampersand, snail, underscore, backtick and apostrophe symbols have
 
 
 
-###  Assignment operator symbols 
+###  Assignment operator symbols
 
 
-* = assignment operator 
+* = assignment operator
 
 
-###  Arithmetic operator symbols 
+###  Arithmetic operator symbols
 
 
 * + addition
@@ -353,14 +353,14 @@ Note that the ampersand, snail, underscore, backtick and apostrophe symbols have
 * \ integer division
 
 
-###  Data type indicators 
+###  Data type indicators
 
 
 * % suffix sigil following integer variable names
 * $ suffix sigil following string variable names
 
 
-###  Comparative operator symbols 
+###  Comparative operator symbols
 
 
 * = equality
@@ -371,28 +371,28 @@ Note that the ampersand, snail, underscore, backtick and apostrophe symbols have
 * <> inequality
 
 
-###  Enclosures 
+###  Enclosures
 
 
 * " " used as enclosures for strings
 * ( ) function argument enclosures, array element reference, and used to dictate mathematical precedence
 
 
-###  Output separators 
+###  Output separators
 
 
 * ; move cursor to next column instead of newline and separates redirection stream from data
 * , move cursor to next tabstop instead of newline and alternative to semicolon for separation of stream from data
 
 
-###  Statement and argument separators 
+###  Statement and argument separators
 
 
 * : separates multiple statements on a line
 * , separates multiple arguments to functions
 
 
-###  Redirection operator 
+###  Redirection operator
 
 
 * # prefixes a stream number for input or output redirection
@@ -422,27 +422,27 @@ These are the principal special characters, in addition to the regular symbols u
 
 ```txt
 
-?     A unary or dyadic operator giving 8 bit indirection. 
-!     A unary or dyadic operator giving 32 bit indirection. 
+?     A unary or dyadic operator giving 8 bit indirection.
+!     A unary or dyadic operator giving 32 bit indirection.
 #     As a prefix indicates a file channel number.
-      As a suffix indicates a 64-bit numeric variable or constant. 
+      As a suffix indicates a 64-bit numeric variable or constant.
 $     As a prefix indicates a 'fixed string' (string indirection).
-      As a suffix indicates a string variable.  
+      As a suffix indicates a string variable.
 %     As a prefix indicates a binary constant e.g. %11101111.
-      As a suffix indicates an integer (signed 32-bit) variable. 
+      As a suffix indicates an integer (signed 32-bit) variable.
 &     As a prefix indicates a hexadecimal constant e.g. &EF.
-      As a suffix indicates a byte (unsigned 8-bit) variable. 
+      As a suffix indicates a byte (unsigned 8-bit) variable.
 '     Causes an additional new-line in PRINT or INPUT.
-;     Suppresses a forthcoming action, e.g. the new-line in PRINT. 
-@     A prefix character for 'system' variables. 
+;     Suppresses a forthcoming action, e.g. the new-line in PRINT.
+@     A prefix character for 'system' variables.
 ^     A unary operator returning a pointer (address of an object).
       The dyadic exponentiation (raise to the power) operator.
-\     The line continuation character, to split code across lines. 
+\     The line continuation character, to split code across lines.
 [ ]   Delimiters for assembler statements.
-{ }   Indicates a structure.  
-~     Causes conversion to hexadecimal, in PRINT and STR$. 
+{ }   Indicates a structure.
+~     Causes conversion to hexadecimal, in PRINT and STR$.
 |     A unary operator giving floating-point indirection.
-      A delimiter in the VDU statement.  
+      A delimiter in the VDU statement.
 
 ```
 
@@ -528,8 +528,8 @@ Also <code>\"</code> and <code>\\</code> can occur in unquoted identifiers.
 
 If in doubt whether an identifier needs quotes, use them in your code and see whether Bracmat needs them by inspecting the result of a program listing produced by the built-in function <code>lst$</code>. If the quotes have disappeared, they were not necessary. It is never wrong to enclose an identifier in quotes.
 
-=={{header|Brainf***}}==
-The only characters that mean anything in BF are its commands: 
+=={{header|Brainfuck}}==
+The only characters that mean anything in BF are its commands:
 
 * > move the pointer one to the right
 * < move the pointer one to the left
@@ -570,7 +570,7 @@ As in C++, <tt>?</tt>, <tt>#</tt>, <tt>\</tt>, <tt>'</tt> and <tt>"</tt> have sp
 * < less than comparative operator
 
 
-###  Digraphs 
+###  Digraphs
 
 
 * == equality operator
@@ -598,7 +598,7 @@ As in C++, <tt>?</tt>, <tt>#</tt>, <tt>\</tt>, <tt>'</tt> and <tt>"</tt> have sp
 * #@ preprocessor charizing operator
 
 
-###  Trigraphs 
+###  Trigraphs
 
 
 * .>* pointer to pointer member
@@ -607,7 +607,7 @@ As in C++, <tt>?</tt>, <tt>#</tt>, <tt>\</tt>, <tt>'</tt> and <tt>"</tt> have sp
 * ... used in variadic function declaration
 
 
-###  Enclosures 
+###  Enclosures
 
 
 * " " literal string enclosures
@@ -617,13 +617,13 @@ As in C++, <tt>?</tt>, <tt>#</tt>, <tt>\</tt>, <tt>'</tt> and <tt>"</tt> have sp
 * /* */ Comment enclosures
 
 
-###  Ternary operators 
+###  Ternary operators
 
 
 * ? , : The hook and colon are used together to produce ternary operation syntax
 
 
-###  C99 Extensions 
+###  C99 Extensions
 
 
 * // Comment prefix
@@ -638,7 +638,7 @@ C99 standard (but not previous standards) recognizes also '''universal character
 C++ has several types of escape sequences, which are interpreted in various contexts. The main characters with special properties are the question mark (<tt>?</tt>), the pound sign (<tt>#</tt>), the backslash (<tt>\</tt>), the single quote (<tt>'</tt>) and the double quote (<tt>"</tt>).
 
 
-###  Digraphs 
+###  Digraphs
 
 
 * // comment prefix
@@ -647,7 +647,7 @@ C++ has several types of escape sequences, which are interpreted in various cont
 * :: scope modifier
 
 
-###  Trigraphs 
+###  Trigraphs
 
 Trigraphs are certain character sequences starting with two question marks, which can be used instead of certain characters, and which are always and in all contexts interpreted as the replacement character. They can be used anywhere in the source, including, but not limited to string constants. The complete list is:
  Trigraph  Replacement letter
@@ -666,7 +666,7 @@ Note that interpretation of those trigraphs is the very first step in C++ compil
 Also note that some compilers don't interpret trigraphs by default, since today's character sets all contain the replacement characters, and therefore trigraphs are practically not used. However, accidentally using them (e.g. in a string constant) may change the code semantics on some compilers, so one should still be aware of them.
 
 
-###  Universal character names and escaping newlines 
+###  Universal character names and escaping newlines
 
 Moreover, C++ allows to use arbitrary Unicode letters to be represented in the basic execution character set (which is a subset of ASCII), by using a so-called universal character name. Those have one of the forms
  \uXXXX
@@ -700,7 +700,7 @@ ant; // defines a variable of type int named constant, not a variable of type in
 
 
 
-###  String and character literal 
+###  String and character literal
 
 A string literal is surrounded by double quotes(<tt>"</tt>). A character literal is surrounded by single quotes (<tt>'</tt>). Example:
 
@@ -732,7 +732,7 @@ Note that C++ doesn't guarantee ASCII. On non-ASCII platforms (e.g. EBCDIC), the
 Also note that some compilers add the non-standard escape sequence <tt>\e</tt> for Escape (that is, the ASCII escape character).
 
 
-###  The # character 
+###  The # character
 
 The <tt>#</tt> character in C++ is special as it is interpreted only in the preprocessing phase, and shouldn't occur (outside of character/string constants) after preprocessing.
 *If <tt>#</tt> appears as first non-whitespace character in the line, it introduces a preprocessor directive. For example
@@ -794,7 +794,7 @@ E uses typical C-style backslash escapes within literals. The defined escapes ar
 | \u''XXXX'' || U+XXXX || ([[wp:Basic Multilingual Plane|BMP]] Unicode character, 4 hex digits)
 |}
 
-Consensus has not been reached on handling non-BMP characters. All other backslash-followed-by-character sequences are syntax errors. 
+Consensus has not been reached on handling non-BMP characters. All other backslash-followed-by-character sequences are syntax errors.
 
 Within E ''quasiliterals'', backslash is not special and <code>$\</code> plays the same role;
 
@@ -855,11 +855,11 @@ Fortran source code started off in a fixed format using decks of punched cards. 
  0  in column six does ''not'' indicate a continuation line, even though not a blank.
     Space: ignored within source outside text literals, even between parts of a word. Allows <code>G O  TO</code>
  '  Delimits a text literal. Also has been used in READ(F'N) to [[Read_a_specific_line_from_a_file#Random_access|read record N of the file attached to F]].
- "  Delimits a text literal. Doubling required for each contained in the literal.    
+ "  Delimits a text literal. Doubling required for each contained in the literal.
  !  Outside a text literal marks an "escape comment" - only text before it on the line will be compiled. The B6700 used % for this.
  &  Outside a text literal indicated that further source is continued on the next line.
 F90 standardised on ! as a comment marker, in any column (except six, for fixed-format source) and the & is used for free-format source, wherein spaces become significant. With the move from source files via decks of punched cards to text files in ASCII, there has always been confusion over the meaning of the ASCII control characters such as HT, CR, LF, etc. so that, for example, a tab in column one might space to column seven. Likewise within text literals, and the once pure notion of a text ''literal'' may now be adulterated by the notion of included "backslash escape sequences", as in C.
- 
+
 Text literals were first defined within FORMAT statements via the H-code process involving counting so that 3H! ! meant three characters following the H, any characters, and don't miscount! Later, apostrophes were used to delimit a text literal with any contained apostrophe being doubled, as in 'Isn' 't' [a space between the two apostrophes to prevent misinterpretation here!] then either an apostrophe or a double quote could be used to mark the start of a text literal with the same used to mark its end and doubling for contained markers, while the other sort may be used freely, as in "Isn't".
 
 The names of variables (and functions and subroutines) in Fortran must start with a letter and can continue with letters or digits. Early Fortran did not recognise lower-case letters; later compilers do but do not distinguish upper-case from lower-case. Additional symbols such as _ and $ may be accepted in names. With F90 came the ability to define data aggregates, whose parts might be referenced via LIST%LINK and LIST%DATUM where the % is ''not'' a part of a long name but marks the parts of a compound name. A common alternative to % is a full stop, which is usual in many other languages. Spaces are ignored outside text literals so LIST % LINK would also be valid.
@@ -873,8 +873,8 @@ Basic special symbols:
  +  Plus sign, also for addition.
  -  Minus sign, also for subtraction.
  /  For division. Also as a syntax mark as in <code>DATA PI /3.14159/</code>
- *  For multiplication. 
-       Also for an unspecified array bound as in A(*), sizes as in <code>REAL*8 X</code>, 
+ *  For multiplication.
+       Also for an unspecified array bound as in A(*), sizes as in <code>REAL*8 X</code>,
        part of an [[Flow-control_structures#Deviant_RETURN|alternate return]] specification.
        indicates "standard output" or input as in <code>WRITE(*,26)</code> where 26 labels a FORMAT statement
        indicates "free format" when in place of a FORMAT indicator, as in <code>WRITE(6,*) "Hello!"</code>
@@ -900,7 +900,7 @@ F90 added more, standardising variants on .EQ. and .GT. ''etc.''
  ;  Ends a statement. Another may follow on the same line, as in Algol, etc.
  %  Used to separate the parts of a compound name; a full stop may be accepted for this as well.
  \  Within a text literal (!) may introduce a "backslash escape sequence" as in C to be interpreted non-literally.
- (/ Starts a list of values that are to be treated as an array. 
+ (/ Starts a list of values that are to be treated as an array.
  /) As in (/1,2,3,4/) Possibly recognised is [1,2,3,4].
  => For messing with pointers...
 
@@ -933,7 +933,7 @@ Those are the commonly available codes. Still more codes can be used as a prefix
  1P    Shifts a value by one power, as in 1PE9.3, which shows one as <code>1.000E+00</code> Not a repeat count.
  $F9.2 For output: floats a dollar sign against the leading digit, so 12·45 appears as <code>   $12.45</code>
  SP    Writes a + sign, instead of only writing - for negative numbers. Produces +0, which may not be wanted.
- 
+
 There are further special symbols and some recondite usages:
  () For bracketing. In <code>FORMAT ("List",6(I3,","))</code> a seventh integer written out will start on a new line, ''not'' prefixed by List...
   , for separating items.
@@ -944,12 +944,12 @@ There are further special symbols and some recondite usages:
   \ May be recognised as the same as $, if $ is recognised.
   < Introduces an arithmetic expression, whose value stands for the constant normally in that place.
   > Ends it. Thus F<NDIGITS + 3>.3 instead of F12.3 say (if NDIGITS had the value 9)
-  
+
 The text of a FORMAT statement is normally inspected by the compiler, also if it is supplied as a text literal instead of via the label of a FORMAT statement in a READ or WRITE statement. A special internal representation that can be more speedily followed at run time may be produced. However, instead of a text literal, an expression may be used, and it is quite possible to use a FORMAT statement to prepare the desired format code sequence in a CHARACTER variable. See for example [[Multiplication_tables#Traditional_approach]]
 
 
 ### In input and output
-  
+
 
 ### =Unformatted=
 
@@ -1007,7 +1007,7 @@ Other output devices may or may not follow this scheme. A teletype attached to a
 
 * # prefixes stream numbers for input / output redirection
 * ' comment prefix
-* ; output separator moves cursor to next column instead of newline, separates redirection stream from data 
+* ; output separator moves cursor to next column instead of newline, separates redirection stream from data
 * : statement separator
 * . object element separator
 * , separates arguments to functions
@@ -1021,7 +1021,7 @@ Other output devices may or may not follow this scheme. A teletype attached to a
 
 
 ### Digraphs
- 
+
 
 * <= less than or equal to
 * >= greater than or equal to
@@ -1157,7 +1157,7 @@ String constants can be delimited by most non-standard characters, usually ' or 
 * / prefixes tag closures (within tag enclosures)
 
 
-###  Enclosures 
+###  Enclosures
 
 
 * " " string value enclosures (within a tag)
@@ -1355,7 +1355,7 @@ jq severely restricts the characters that can be used as "identifiers" in a jq p
 
 That is, identifiers are alphanumeric except that _ may also be used.
 
-jq variables take the form of an identifier preceded by "$", e.g. "$a". 
+jq variables take the form of an identifier preceded by "$", e.g. "$a".
 
 Almost all the ASCII printing characters that are invalid in jq identifiers have special significance in jq programs. There are currently just five exceptions -- ~`^&' -- but "^" has its usual significance in connection with regular expression specifications.
 
@@ -1372,18 +1372,18 @@ jq also supports "string interpolation". To interpolate the string value of any 
 
 ## Julia
 
-Operators are just a special kind of function in Julia. Thus, the same syntax 
+Operators are just a special kind of function in Julia. Thus, the same syntax
 used for function identifiers can be used for operators. The converse is not true.
 There are many characters, such '+', that are valid for use as operators, but that
 cannot be used as characters in identifiers.
 
-To quote the documentation: "Variable names must begin with a letter (A-Z or a-z), 
-underscore, or a subset of Unicode code points greater than 00A0; in particular, 
-Unicode character categories Lu/Ll/Lt/Lm/Lo/Nl (letters), Sc/So (currency and 
-other symbols), and a few other letter-like characters (e.g. a subset of the Sm 
-math symbols) are allowed. Subsequent characters may also include ! and digits 
-(0-9 and other characters in categories Nd/No), as well as other Unicode code 
-points: diacritics and other modifying marks (categories Mn/Mc/Me/Sk), some 
+To quote the documentation: "Variable names must begin with a letter (A-Z or a-z),
+underscore, or a subset of Unicode code points greater than 00A0; in particular,
+Unicode character categories Lu/Ll/Lt/Lm/Lo/Nl (letters), Sc/So (currency and
+other symbols), and a few other letter-like characters (e.g. a subset of the Sm
+math symbols) are allowed. Subsequent characters may also include ! and digits
+(0-9 and other characters in categories Nd/No), as well as other Unicode code
+points: diacritics and other modifying marks (categories Mn/Mc/Me/Sk), some
 punctuation connectors (category Pc), primes, and a few other characters."
 
 
@@ -1412,12 +1412,12 @@ $	defined variable ie. $myvar will fail if not defined
 !	negative operator
 {	open capture
 }	close capture
-=>	specify givenblock / capture 
+=>	specify givenblock / capture
 ->	invoke method: mytype->mymethod
 &  	retarget: mytype->mymethod&  // returns mytype
 ^	autocollect from capture: {^ 'this will be outputted' ^}
 ::	tag prefix, ie. ::mytype->gettype // returns myype
-::	type constraint, ie. define mymethod(p::integer) => #i * 2 
+::	type constraint, ie. define mymethod(p::integer) => #i * 2
 \	escape method: ie. \mymethod->invoke(2)
 // comment
 /* open comment
@@ -1460,7 +1460,7 @@ Note that the set of special characters in LaTeX isn't really fixed, but can be 
 * \\ combined voice fragment separator
 
 
-###  Enclosures 
+###  Enclosures
 
 
 * " " title enclosure, voice name enclosure
@@ -1502,13 +1502,13 @@ The special characters listed above are not allowed in variable or function name
 
 
 
-###  Assignment 
+###  Assignment
 
 
 * = Assignment
 
 
-###  Arithmetic Operators 
+###  Arithmetic Operators
 
 
 * + Addition, Optional unary positive
@@ -1519,7 +1519,7 @@ The special characters listed above are not allowed in variable or function name
 * ^ Exponent
 
 
-###  Comparative Operators 
+###  Comparative Operators
 
 
 * == equality
@@ -1530,26 +1530,26 @@ The special characters listed above are not allowed in variable or function name
 * ~=
 
 
-###  Concatenation Operators 
+###  Concatenation Operators
 
 
 * .. concatenation operator
 
 
-###  Length Counter 
+###  Length Counter
 
 
 * # Length operator (also used as a directive prefix)
 
 
-###  Logical Operators 
+###  Logical Operators
 
 
 * && logical and
 * || logical or
 
 
-###  Markup Components 
+###  Markup Components
 
 
 * ;
@@ -1561,7 +1561,7 @@ The special characters listed above are not allowed in variable or function name
 * ::=
 
 
-###  Prefixes 
+###  Prefixes
 
 
 * \ Literal character representation prefix
@@ -1569,7 +1569,7 @@ The special characters listed above are not allowed in variable or function name
 * __ metamethod prefix
 
 
-###  Regular expression components 
+###  Regular expression components
 
 
 * * regular expression repetition operator
@@ -1577,7 +1577,7 @@ The special characters listed above are not allowed in variable or function name
 * - regular expression range operator
 
 
-###  Enclosures 
+###  Enclosures
 
 
 * ' ' Literal string enclosures (interpolated)
@@ -1594,13 +1594,13 @@ The special characters listed above are not allowed in variable or function name
 
 
 ```Mathematica
-Markup : 
+Markup :
 ()   Sequence
 {}   List
 "    String
 \    Escape for following character
 (* *) Comment block
-base^^number`s 
+base^^number`s
 `    Context
 [[]] Indexed reference
 
@@ -1633,7 +1633,7 @@ MUMPS doesn't have any special characters among the printable ASCII set. The dou
 USER>Set S1="Hello, World!"  Write S1
 Hello, World!
 USER>Set S2=""Hello, World!"" Write S2
- 
+
 SET S2=""Hello, World!"" Write S2
 ^
 <SYNTAX>
@@ -1880,13 +1880,13 @@ iss qua re(9)
 Note that in perl quotation operator designations may temporarily change a symbol into an enclosure and the meaning of symbols may vary according to context.
 
 
-###  Assignment operator symbols 
+###  Assignment operator symbols
 
 
-* = assignment operator 
+* = assignment operator
 
 
-###  Arithmetic operator symbols 
+###  Arithmetic operator symbols
 
 
 * + addition (also optional unary positive number designator)
@@ -1899,7 +1899,7 @@ Note that in perl quotation operator designations may temporarily change a symbo
 Note that perl does not provide an integer division operator, but does support modulus
 
 
-###  Bitwise operator symbols 
+###  Bitwise operator symbols
 
 
 * & bitwise AND operator
@@ -1908,7 +1908,7 @@ Note that perl does not provide an integer division operator, but does support m
 * ~ bitwise NOT operator
 
 
-###  Comparative operator symbols 
+###  Comparative operator symbols
 
 
 * == numeric equality
@@ -1921,13 +1921,13 @@ Note that perl does not provide an integer division operator, but does support m
 * ~~ smartmatch operator
 
 
-###  Comment markers 
+###  Comment markers
 
 
 * # prefixes comments
 
 
-###  Context switching operators 
+###  Context switching operators
 
 
 * =()= Array context operator
@@ -1936,7 +1936,7 @@ Note that perl does not provide an integer division operator, but does support m
 * 0+ Numerical context prefix
 
 
-###  Data type indicators 
+###  Data type indicators
 
 
 * $ prefix sigil and prototyping placeholder for scalar variables (also used as a placeholder modifier for element reordering)
@@ -1946,7 +1946,7 @@ Note that perl does not provide an integer division operator, but does support m
 * * prefix sigil and prototyping placeholder for typeglob variables
 
 
-###  Enclosures 
+###  Enclosures
 
 
 * ' Literal string enclosures
@@ -1960,24 +1960,24 @@ Note that perl does not provide an integer division operator, but does support m
 * @{[ ]} Interpolates enclosed array inside a string
 
 
-###  Escape sequences 
+###  Escape sequences
 
 
 These escape sequences can be used in any construct with interpolation. See [http://perldoc.perl.org/perlop.html#Quote-and-Quote-like-Operators Quote-and-Quote-like-Operators] for more info.
 {|border="1" style="border-collapse: collapse;"
-| \t || tab (HT,TAB) || 
+| \t || tab (HT,TAB) ||
 |-
-| \n || newline (NL) || 
+| \n || newline (NL) ||
 |-
-| \r || carriage return (CR) || 
+| \r || carriage return (CR) ||
 |-
-| \f || form feed (FF) || 
+| \f || form feed (FF) ||
 |-
-| \b || backspace (BS) || 
+| \b || backspace (BS) ||
 |-
-| \a ||	alarm (BEL) || 
+| \a ||	alarm (BEL) ||
 |-
-| \e || escape (ESC) || 
+| \e || escape (ESC) ||
 |-
 | \0?? || octal char || example: \033 (ESC)
 |-
@@ -1993,13 +1993,13 @@ These escape sequences can be used in any construct with interpolation. See [htt
 |}
 
 
-###  Here document allocation 
+###  Here document allocation
 
 
 * << The double open chevron symbol may be used to allocate [[Here_document|here documents]]
 
 
-###  Nudge operators 
+###  Nudge operators
 
 
 * ++ incremental nudge operator
@@ -2007,14 +2007,14 @@ These escape sequences can be used in any construct with interpolation. See [htt
 * ~- decremental nudge (positive numbers only)
 
 
-###  Shift operators 
+###  Shift operators
 
 
 * << bitshift left (dyadic) (also here document allocation)
 * >> bitshift right (dyadic)
 
 
-###  Combination assignment operators 
+###  Combination assignment operators
 
 
 
@@ -2065,7 +2065,7 @@ These escape sequences can be used in any construct with interpolation. See [htt
 * ... ellipsis operator
 
 
-###  Quoting Operators 
+###  Quoting Operators
 
 
 * q literal string enclosure designator
@@ -2075,7 +2075,7 @@ These escape sequences can be used in any construct with interpolation. See [htt
 * qx external command enclosure designator
 
 
-###  Referencing and dereferencing operators 
+###  Referencing and dereferencing operators
 
 
 * \ referencing operator (also escape sequencing prefix, and regular expression symbol grouping)
@@ -2083,7 +2083,7 @@ These escape sequences can be used in any construct with interpolation. See [htt
 * -> dereferencing and associative container lookup
 
 
-###  Regular expression symbols 
+###  Regular expression symbols
 
 
 * / modifier and delimiter
@@ -2107,7 +2107,7 @@ These escape sequences can be used in any construct with interpolation. See [htt
 * $ anchor
 
 
-###  Special variables 
+###  Special variables
 
 
 * $. sequence number
@@ -2140,13 +2140,13 @@ These escape sequences can be used in any construct with interpolation. See [htt
 * , function argument separator, list element separator
 
 
-###  Ternary operators 
+###  Ternary operators
 
 
 * ? , : The hook and colon are used together to produce ternary operation syntax
 
 
-###  Miscellaneous symbols 
+###  Miscellaneous symbols
 
 
 * <BR />
@@ -2276,7 +2276,7 @@ Any lowercase backslash escape in a regex may be uppercased to negate it, hence 
 
 In terms of special characters, Phix is pretty much the polar opposite of languages like Perl, APL, and J, and needs a touch fewer brackets than C-based languages (and obviously far fewer than lisp-based languages).
 
-The following are taken directly from the Phix.syn (syntax colouring) file, which can be edited as needed (for errors or new compiler features): 
+The following are taken directly from the Phix.syn (syntax colouring) file, which can be edited as needed (for errors or new compiler features):
 
  Delimiters #$:.%\^
  Operators , = := == != < <= > >= @= @== @!= @< @<= @> @>= + - * / += -= *= /= @+= @-= @*= @/= .. & &= ? ; : |
@@ -2293,7 +2293,7 @@ The last line means that escapes in string literals start with a backslash, and 
 Taking the others in order:
 
  # hex literal, or #iXXX compiler directive (see [[[[Pragmatic_directives#Phix|Pragmatic_directives]]]])
- $ roughly means "end". For instance s[2..$] is equivalent to s[2..length(s)]. 
+ $ roughly means "end". For instance s[2..$] is equivalent to s[2..length(s)].
  Can also optionally terminate declarations, eg integer a,b,c and integer a,b,c,$ are equivalent.
  : namespace qualification, for example arwen:hiWord() means the one in arwen, not some other hiWord(). See also :=
  . decimal separator, or part of .. Note there is no dot notation in Phix, such as this.that.theother.
@@ -2401,7 +2401,7 @@ PowerShell is unusual in that it retains many of the escape sequences of languag
 
 ## PureBasic
 
-There is no escape sequences in character literals. Any character supported by the source encoding is allowed and to insert the quote (“) sign either the constant #DOUBLEQUOTE$ or the its Ascii-code can be used. 
+There is no escape sequences in character literals. Any character supported by the source encoding is allowed and to insert the quote (“) sign either the constant #DOUBLEQUOTE$ or the its Ascii-code can be used.
 
 The code is based on readable words and only a semicolon (;) as start-of-comment & a normal colon (:) as command separator are used.
 
@@ -2556,7 +2556,7 @@ Digraphs and trigraphs can have imbedded blanks (or whitespace) between the char
          = = b  then say 'not equal'
 ```
 
-are equivalent   (assuming the   '''¬'''   symbol is supported by the REXX interpreter). 
+are equivalent   (assuming the   '''¬'''   symbol is supported by the REXX interpreter).
 
 ### assignment operator symbol
 
@@ -2565,11 +2565,11 @@ are equivalent   (assuming the   '''¬'''   symbol is supported by the REXX inte
 
 ### =compound assignment operators=
 
-REXX doesn't support compound assignment operators, so the 
+REXX doesn't support compound assignment operators, so the
 * ''' += '''
 * ''' -= '''
 * ''' *= '''
-* ''' /= ''' 
+* ''' /= '''
 digraphs (above) aren't legal for assignments in classic REXX.
 
 Note that /= is a valid infix operator in some Rexx implementations meaning 'not equal' as in
@@ -2608,7 +2608,7 @@ Note: the above is not an infix operator for an '''assignment''' as this section
 * '''\=''' not equal to
 * '''¬=''' not equal to (some REXXes)
 * '''/=''' not equal to (some REXXes)
-* '''~=''' not equal to (some REXXes) 
+* '''~=''' not equal to (some REXXes)
 * '''\==''' strictly not equal to
 * '''/==''' strictly not equal to
 * '''¬==''' strictly not equal to (some REXXes)
@@ -2620,18 +2620,18 @@ Note: the above is not an infix operator for an '''assignment''' as this section
 * '''\<''' not less than
 * '''¬<''' not less than (some REXXes)
 * '''~<''' not less than (some REXXes)
-* '''\>''' not greater than 
+* '''\>''' not greater than
 * '''¬>''' not greater than (some REXXes)
 * '''~>''' not greater than (some REXXes)
 * '''<>''' not equal to
-* '''><''' not equal to 
+* '''><''' not equal to
 * '''<<''' strictly less than
 * '''>>''' strictly greater than
 * '''<<=''' strictly less than or equal to
 * '''>>=''' strictly greater than or equal to
 * '''\<<''' strictly not less than
 * '''¬<<''' strictly not less than (some REXXes)
-* '''~<<''' strictly not less than (some REXXes) 
+* '''~<<''' strictly not less than (some REXXes)
 * '''\>>''' strictly not greater than
 * '''¬>>''' strictly not greater than (some REXXes)
 * '''~>>''' strictly not greater than (some REXXes)
@@ -2665,14 +2665,14 @@ The   '''('''   and   ''')'''   symbols are used as enclosures for expressions t
   z = ((y-2)/(y+2)) / ((a**2 * b**2)* abs(j))
   p = 2**(2**3)
 ```
- 
+
 
 ===function/subroutine argument enclosures, separators===
 The   '''('''   and   ''')'''   symbols are used as enclosures for function arguments in REXX.
 * ''' ( '''     is the '''start''' of a list of arguments.
 * ''' ) '''     is the  '''end'''  of a list of arguments.
 * ''' , '''     are used to separate arguments (if any) or to indicate omitted arguments for functions/subroutines.
-Arguments may be omitted. 
+Arguments may be omitted.
 
 ```rexx
   tn = time()
@@ -2713,7 +2713,7 @@ or
 ```rexx
   a = "ready, set, go!"
 ```
- 
+
 To assign a null, two formats that can be used are:
 
 ```rexx
@@ -2729,7 +2729,7 @@ In string constants (enclosed in ''single'' apostrophes), a literal apostrophe i
   yyy = 'John''s pen'
 ```
 
-which is stored as 
+which is stored as
 
 ```txt
 John's pen
@@ -2776,13 +2776,13 @@ character strings by using binary (bit) representation of character codes:
 
 ### =hexadecimal literals=
 
-The lowercase   '''x'''   or uppercase   '''X'''   (letter) acts as a literal character notation marker, enabling hexadecimal literals to be stored as 
+The lowercase   '''x'''   or uppercase   '''X'''   (letter) acts as a literal character notation marker, enabling hexadecimal literals to be stored as
 
 character strings by using hexadecimal representation of character codes (which can be in lower or uppercase):
 
 ```rexx
   lf = '0A'x                  /* (ASCII)       */
-  lf = 'a'x                   /*same as above. */  
+  lf = 'a'x                   /*same as above. */
   lf = "a"X                   /*same as above. */
   cr = '0D'x                  /* (ASCII)       */
   greeting = '48656C6C6F'x    /* (ASCII) Hello */
@@ -2828,7 +2828,7 @@ parse pull x
 interpret 'expression=' x
 say 'expression=' expression
 ```
- 
+
 can do completely different assignments [or evaluation(s)], depending what version of (classic) REXX is being used.
 
 The following REXX interpreters (for the 1<sup>st</sup> example assign a   '''12'''   to the variable   '''something''':
@@ -2851,7 +2851,7 @@ The following REXX interpreters (for the 1<sup>st</sup> example assign a   '''12
 -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:57, 17 February 2013 (UTC)
 
 ===end-of-statement symbol===
-Normally, the ''end-of-line'' (or ''end-of-program'') is assumed the end of a REXX statement, 
+Normally, the ''end-of-line'' (or ''end-of-program'') is assumed the end of a REXX statement,
 
 but multiple REXX statements can be used (on one line) by separating them with a semicolon   [''';'''].
 
@@ -2863,7 +2863,7 @@ but multiple REXX statements can be used (on one line) by separating them with a
 
 ### continuation symbol
 
-A REXX statement can be continued on the next line by appending a comma [''','''] as the 
+A REXX statement can be continued on the next line by appending a comma [''','''] as the
 
 last significant symbol on the line to be continued.
 
@@ -2891,7 +2891,7 @@ A REXX label is any valid REXX symbol followed by a colon [''':'''] with or with
 
 ### argument separator
 
-To separate the arguments of a ''subroutine'', ''function'', or '''BIF''' (built-in function) calls/invocations, 
+To separate the arguments of a ''subroutine'', ''function'', or '''BIF''' (built-in function) calls/invocations,
 
 the comma   [''',''']   is used.
 
@@ -2903,7 +2903,7 @@ the comma   [''',''']   is used.
 
 Note that a comma is also used for continuation if it is the last significant character on a REXX statement   (see ''continuation character'' above).
 
-Also note that REXX only examines the 1<sup>st</sup> character of the (''trailing'') option, and that the ''case'' of the letter is irrelevant.    
+Also note that REXX only examines the 1<sup>st</sup> character of the (''trailing'') option, and that the ''case'' of the letter is irrelevant.
 
 
 
@@ -2914,7 +2914,7 @@ A period   '''[.]'''   can be used for:
 * as part of a label   (a label can start and/or end with one or more periods)
 * as part of a variable name   (a variable can't start with a period, but it can end with one or more periods)
 * as a placeholder in a ''parsing'' template to indicate that one ''token'' is to be ignored (skipped)
-* as a generic stemmed array element;   to assign '''all''' elements:   '''K.=2'''   assigns   '''2'''   to all elements in   '''K'''.  
+* as a generic stemmed array element;   to assign '''all''' elements:   '''K.=2'''   assigns   '''2'''   to all elements in   '''K'''.
 * as a stemmed array index delimiter   (to indicate multiple indexes):   ''' G.2.x = "tuna" '''
 * (in Regina) a variable starting with a period can be one of several global scope variables that can't be modified by the programmer.
 
@@ -2922,7 +2922,7 @@ A period   '''[.]'''   can be used for:
 ## Ruby
 
 
-### Scope and Variable Naming 
+### Scope and Variable Naming
 
 * '''@''' Instance variables - when first character in a variable name is "@" the variable is an Instance variable
 * '''@@''' Class variables - when first two characters in a variable name are "@@" the variable is an Class variable
@@ -2961,7 +2961,7 @@ Also Search for the alternate names given below.
 
 ## Scala
 
-The most of Java special characters are available in Scala. The big difference is they are not built in the compiler but defined in the appropriate library of classes. Because operators works on classes they are actual methods of that classes. Example: 
+The most of Java special characters are available in Scala. The big difference is they are not built in the compiler but defined in the appropriate library of classes. Because operators works on classes they are actual methods of that classes. Example:
 ```Scala>val n = 1 + 2</lang
 This is interpreted as "1" is of class Int and use the method "+" with parameter "2". (Donn't worry, later this will be unboxed to e.g. native JVM primitives.)
 
@@ -2974,7 +2974,7 @@ Within character literals and string literals, the backslash is a special charac
 
 ```txt
     audible alert    BEL      \a    backslash    (\)   \\
-    backspace        BS       \b    apostrophe   (')   \'   
+    backspace        BS       \b    apostrophe   (')   \'
     escape           ESC      \e    double quote (")   \"
     formfeed         FF       \f
     newline          NL (LF)  \n    control-A          \A
@@ -3070,7 +3070,7 @@ The sequence <code>@@</code> encodes a single literal <code>@</code>.
 All other special syntax is introduced by @:
 
 * <code>@</code># comment
-* <code>@\n</code> # escaped character, embedded into surrounding text. Similar to C escapes, with <code>\e</code> for ASCII ESC. 
+* <code>@\n</code> # escaped character, embedded into surrounding text. Similar to C escapes, with <code>\e</code> for ASCII ESC.
 * <code>@\x1234 @\1234</code> Hex or octal escapes: Unicode width, not byte.
 * <code>@symbol</code> variable ref
 * <code>@*symbol</code> variable ref with longest match semantics
@@ -3202,7 +3202,7 @@ Any Unicode character may also be represented via its decimal code point (&amp;#
 
 *In a string: The C ones: \r \n \t \f \e \b \ (the escape)
 *//, #, /* */ comments, no escaping
-*C-like math & logic: == != > < <= => + - * / += -= /= */ and or 
+*C-like math & logic: == != > < <= => + - * / += -= /= */ and or
 *Block scope: { }
 *Brackets([]): Subscripting, range([0..10]), attributes(class [static] foo {})
 *Function/method call: name(...)

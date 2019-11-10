@@ -44,22 +44,22 @@ This for sure will result in a severe WTO buffer shortage.
 
 ```360 Assembly
 
-INFINITE CSECT ,                       this PGM control section 
-INFINITE AMODE 31                      addressing mode 31 bit 
-INFINITE RMODE ANY                     loader can load either 24 or 31 
+INFINITE CSECT ,                       this PGM control section
+INFINITE AMODE 31                      addressing mode 31 bit
+INFINITE RMODE ANY                     loader can load either 24 or 31
          BAKR  14,0                    stack caller's register contents
-         LR    12,15                   establish base 
-         LA    13,0                    no savearea 
-         USING INFINITE,12             base to assembler 
-         LA    10,1                    1 in reg 10 
-         LA    11,2                    2 in reg 11 
-LOOP     EQU   * 
-         CR    10,11                   1==2? 
-         BE    RETURN                  Yes, exit. 
-        WTO    'SPAM',ROUTCDE=11       print SPAM to syslog 
-         B     LOOP                    No, check again. 
+         LR    12,15                   establish base
+         LA    13,0                    no savearea
+         USING INFINITE,12             base to assembler
+         LA    10,1                    1 in reg 10
+         LA    11,2                    2 in reg 11
+LOOP     EQU   *
+         CR    10,11                   1==2?
+         BE    RETURN                  Yes, exit.
+        WTO    'SPAM',ROUTCDE=11       print SPAM to syslog
+         B     LOOP                    No, check again.
 RETURN   PR    ,                       return to caller
-         END   INFINITE 
+         END   INFINITE
 
 ```
 
@@ -71,7 +71,7 @@ RETURN   PR    ,                       return to caller
 
 ```4dos
 @echo off
-do forever 
+do forever
   echo SPAM
 enddo
 ```
@@ -79,7 +79,7 @@ enddo
 
 
 ## 6502 Assembly
- 
+
 Specific OS/hardware routines for printing are left unimplemented.
 
 ```6502asm
@@ -223,7 +223,7 @@ while (1) {
 '''Based on the 1962 Revised Repport on ALGOL''':
   '''begin'''
     '''integer''' i;
-    '''for''' i:=1 '''step''' 0 '''until''' 2 '''do''' 
+    '''for''' i:=1 '''step''' 0 '''until''' 2 '''do'''
       outtext("spam")
   '''end'''
 {{works with|ALGOL 60|OS/360}}
@@ -231,7 +231,7 @@ while (1) {
 ```algol60
 'BEGIN' 'COMMENT' Loops/Infinite - Algol60 - 23/06/2018;
   'INTEGER' I;
-  'FOR' I := 1 'STEP' 0 'UNTIL' 2 'DO' 
+  'FOR' I := 1 'STEP' 0 'UNTIL' 2 'DO'
     OUTSTRING(1,'('SPAM')')
 'END'
 ```
@@ -494,7 +494,7 @@ _>`SPA`p
 
 ## Befunge
 
-Because the 2-D code space is toroidal, all loops are infinite 
+Because the 2-D code space is toroidal, all loops are infinite
 unless explicitly stopped with '''@'''.
 
 ```befunge
@@ -513,7 +513,7 @@ end
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 Optimized for code size:
 
 ```bf
@@ -799,9 +799,9 @@ main() {
 ```
 
 
-This loop is a tail-recursive function. 
-The program pushes the function on the stack, 
-the outer ''dx'' makes the first call, 
+This loop is a tail-recursive function.
+The program pushes the function on the stack,
+the outer ''dx'' makes the first call,
 and the inner ''dx'' makes each recursive call.
 
 ## DCL
@@ -886,8 +886,8 @@ f <- ()
 ```
 
 
-The difference between these is that in the second, 
-other activities can be interleaved with the loop; 
+The difference between these is that in the second,
+other activities can be interleaved with the loop;
 in the first, no other processing will occur in this vat.
 
 
@@ -897,7 +897,7 @@ The EDSAC instruction set does not include an unconditional jump: it is necessar
 
 ```edsac
 [ Infinite loop
-  
+
 ### =======
 
 
@@ -1125,7 +1125,7 @@ class Main
 {
   public static Void main ()
   {
-    while (true) 
+    while (true)
     {
       echo ("SPAM")
     }
@@ -1159,7 +1159,7 @@ a"MAPS"ooooo
 FORTRAN 77
 
 ```fortran
-      
+
    10 WRITE(*,*) 'SPAM'
       GO TO 10
       END
@@ -1344,7 +1344,7 @@ or
 
 ```haskell
 import Control.Monad.Fix (fix)
-fix (putStrLn "SPAM" >>) 
+fix (putStrLn "SPAM" >>)
 ```
 
 
@@ -1392,9 +1392,9 @@ Alternately one could use one of these:
 ```icon
 until &fail do write("SPAM")   # always fails, needs succeed to break
 ...
-while write("SPAM")            # always succeeds, needs failure to break 
+while write("SPAM")            # always succeeds, needs failure to break
 ...
-every write(|"SPAM")           # generator always succeeds, needs failure to break 
+every write(|"SPAM")           # generator always succeeds, needs failure to break
 ...
 while write(|"SPAM")           # this is a common mistake that results in an endless loop
 ...
@@ -1459,8 +1459,8 @@ smoutput bind 'SPAM'^:1e99 ''
 ```
 
 
-This second implementation relies on numeric inaccuracies in IEEE floating point notation.  
-For example, 1+1e98 is exactly equal to 1e98.  
+This second implementation relies on numeric inaccuracies in IEEE floating point notation.
+For example, 1+1e98 is exactly equal to 1e98.
 That said, 1e98 iterations would still be significantly longer than the practical life of any machine anyone would care to dedicate to this task.
 
 
@@ -1680,7 +1680,7 @@ forever [print "SPAM]
 ```lolcode
 HAI
   CAN HAS STDIO?
-  IM IN YR LOOP 
+  IM IN YR LOOP
     VISIBLE "SPAM"
   IM OUTTA YR LOOP
 KTHXBYE
@@ -1788,7 +1788,7 @@ spam:
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
 While[True,
@@ -1840,7 +1840,7 @@ With <code>While</code>.
 
 ```microsoftsmallbasic
 
-While "True" 
+While "True"
   TextWindow.WriteLine("SPAM")
 EndWhile
 
@@ -2020,7 +2020,7 @@ Using <code>RUN</code>:
 ```oberon2
 
 MODULE InfiniteLoop;
-IMPORT 
+IMPORT
   Out;
 BEGIN
   LOOP
@@ -2059,7 +2059,7 @@ or
 
 
 ```ocaml
-let rec inf_loop() =    
+let rec inf_loop() =
   print_endline "SPAM";
   inf_loop()
 in
@@ -2153,8 +2153,8 @@ while(1,
 ```
 
 
-For a shorter version, note that <code>print</code> returns <code>gnil</code> which is evaluated as <code>false</code>. 
-A 'cheating' solution might use <code>print(SPAM)</code> on the hope that the variable SPAM is uninitialized and hence prints as the monomial in itself. 
+For a shorter version, note that <code>print</code> returns <code>gnil</code> which is evaluated as <code>false</code>.
+A 'cheating' solution might use <code>print(SPAM)</code> on the hope that the variable SPAM is uninitialized and hence prints as the monomial in itself.
 But with the <code>'</code> operator that evaluation can be forced, regardless of the current value (if any) of that variable:
 
 ```parigp
@@ -2322,8 +2322,8 @@ A bit more complex infinite loop:
 
 ```postscript
 /go {
-  /spam 
-     { (SPAM\n) print flush } 
+  /spam
+     { (SPAM\n) print flush }
   bind def % bind and define spam
 
   { spam } % procedure that will be executed by loop and will call spam to print
@@ -2384,7 +2384,7 @@ Notes: the loop is started by clicking the |1(, a [loadbang] could additionally 
 
 
 ```PureBasic
-Repeat 
+Repeat
   PrintN("SPAM")
 ForEver
 ```
@@ -2420,15 +2420,15 @@ while 1:
 ```
 
 
-Note: one can also use: "True" or any other non-false value.  
-In Python the following values are false: 0, "" (empty string), (,) and {} and [] (empty tuples, dictionaries or lists), ''None'' (the special object), and the ''False'' object. 
-Any non-empty collection or string or non-zero numeric value is considered "True". 
+Note: one can also use: "True" or any other non-false value.
+In Python the following values are false: 0, "" (empty string), (,) and {} and [] (empty tuples, dictionaries or lists), ''None'' (the special object), and the ''False'' object.
+Any non-empty collection or string or non-zero numeric value is considered "True".
 However, according to [http://wiki.python.org/moin/PythonSpeed#Takeadvantageofinterpreteroptimizations Python Wiki], for Python versions 2.3+ this variant is optimized by the interpreter and thus is the fastest.
 
 
 ## R
 
-Note that the default R Gui buffers outputs before pushing them to the screen.  
+Note that the default R Gui buffers outputs before pushing them to the screen.
 To see this run either run in terminal mode, right click on the GUI window and deselect "Buffered Output" prior to execution, or add a call to flush.console() in the loop.
 
 
@@ -2637,8 +2637,8 @@ while (true)
 ```sather
 class MAIN is
   main is
-    loop 
-      #OUT + "Spam\n"; 
+    loop
+      #OUT + "Spam\n";
     end;
   end;
 end;
@@ -2873,7 +2873,7 @@ or
 
 
 ```sml
-let 
+let
   fun inf_loop () = (
     print "SPAM\n";
     inf_loop ()
@@ -2899,7 +2899,7 @@ while 1 {
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -3067,7 +3067,7 @@ While(1)
 
 ## TUSCRIPT
 
-TUSCRIPT has no infinite loop. 999999999 loops are the limit. 
+TUSCRIPT has no infinite loop. 999999999 loops are the limit.
 
 ```tuscript
 
@@ -3201,7 +3201,7 @@ do stdout.printf("SPAM\n"); while(true);
                             5E   DD  000C     6 	pushl	sp			;descriptor by reference
               00000000'GF   01   FB  000E     7 	calls	#1, g^lib$put_output	;show message
                             F5   11  0015     8 	brb	loop			;forever
-                                     0017     9 
+                                     0017     9
                                      0017    10 .end	main
 ```
 
@@ -3297,7 +3297,7 @@ end
 
 section .text
 	global _start
-	
+
 	_start:
 		mov edx, len
 		mov ecx, msg
@@ -3305,7 +3305,7 @@ section .text
 		mov eax, 4
 		int 0x80
 		jmp _start
-		
+
 section .data
 msg		db "SPAM",0xa
 len		equ $-msg

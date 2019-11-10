@@ -27,22 +27,22 @@ This is the output file from the   '''REXX'''   example/solution   which is used
 
 The output file  (which is shown below)  contains the complete ranking   (current as of the timestamp
 
-shown below)   of all   '''727'''   computer programming languages used on   ''Rosetta Code''   as per the   
+shown below)   of all   '''727'''   computer programming languages used on   ''Rosetta Code''   as per the
 
 [https://www.rosettacode.org/wiki/Category:Programming_Languages <u>Category:Programming Languages</u>]   page,
-and only computer programming languages that have at 
+and only computer programming languages that have at
 
-least one     ''member''     mentioned for the programming language entry in the   [http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000 <u>Special:Categories</u>]   
+least one     ''member''     mentioned for the programming language entry in the   [http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000 <u>Special:Categories</u>]
 
 page are included here.
- 
-
-Tied rankings are handled correctly;   tied computer programming languages are sorted alphabetically.  
 
 
-[Note:   the timestamp reflects the local time   (where the computer program is executed)   which is in 
+Tied rankings are handled correctly;   tied computer programming languages are sorted alphabetically.
 
-the U.S.A.   within the   '''CST''' or '''CDT'''   time zone   ('''C'''entral '''S'''tandard '''T'''ime   or   '''C'''entral '''D'''aylight '''T'''ime). 
+
+[Note:   the timestamp reflects the local time   (where the computer program is executed)   which is in
+
+the U.S.A.   within the   '''CST''' or '''CDT'''   time zone   ('''C'''entral '''S'''tandard '''T'''ime   or   '''C'''entral '''D'''aylight '''T'''ime).
 
 
 
@@ -285,7 +285,7 @@ the U.S.A.   within the   '''CST''' or '''CDT'''   time zone   ('''C'''entral ''
           rank: 220  [tied]        (40 entries)  V
           rank: 225  [tied]        (39 entries)  GW-BASIC
           rank: 225  [tied]        (39 entries)  SETL
-          rank: 227  [tied]        (38 entries)  Brainf***
+          rank: 227  [tied]        (38 entries)  Brainfuck
           rank: 227  [tied]        (38 entries)  Falcon
           rank: 227  [tied]        (38 entries)  Lisaac
           rank: 227  [tied]        (38 entries)  Sed
@@ -657,7 +657,7 @@ the U.S.A.   within the   '''CST''' or '''CDT'''   time zone   ('''C'''entral ''
           rank: 570  [tied]         (3 entries)  Diesel
           rank: 570  [tied]         (3 entries)  Elan
           rank: 570  [tied]         (3 entries)  Euler
-          rank: 570  [tied]         (3 entries)  Extended BrainF***
+          rank: 570  [tied]         (3 entries)  Extended Brainfuck
           rank: 570  [tied]         (3 entries)  FAUST
           rank: 570  [tied]         (3 entries)  FPI
           rank: 570  [tied]         (3 entries)  FeatureC++
@@ -904,7 +904,7 @@ the U.S.A.   within the   '''CST''' or '''CDT'''   time zone   ('''C'''entral ''
           rank: 520  [tied]         (4 entries)  Bori
           rank: 489  [tied]         (5 entries)  Brace
           rank:  73               (291 entries)  Bracmat
-          rank: 227  [tied]        (38 entries)  Brainf***
+          rank: 227  [tied]        (38 entries)  Brainfuck
           rank: 178                (68 entries)  Brat
           rank: 355  [tied]        (12 entries)  Brlcad
           rank: 181  [tied]        (65 entries)  Burlesque
@@ -1007,7 +1007,7 @@ the U.S.A.   within the   '''CST''' or '''CDT'''   time zone   ('''C'''entral ''
           rank: 520  [tied]         (4 entries)  ESQL
           rank: 570  [tied]         (3 entries)  Euler
           rank:  85               (232 entries)  Euphoria
-          rank: 570  [tied]         (3 entries)  Extended BrainF***
+          rank: 570  [tied]         (3 entries)  Extended Brainfuck
           rank: 338  [tied]        (14 entries)  Ezhil
           rank: 520  [tied]         (4 entries)  F
           rank:  37               (564 entries)  F Sharp

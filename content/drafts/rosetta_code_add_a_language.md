@@ -120,7 +120,7 @@ In your user page (not your user talk page), try adding a user box. That general
 {{mylangbegin}}
 {{mylang|Visual Basic|Active}}
 {{mylang|BASIC|Very Very Rusty}}
-{{mylang|Brainf***|Rusty}}
+{{mylang|Brainfuck|Rusty}}
 {{mylang|C++|Very Active}}
 {{mylang|Perl|Very Active}}
 {{mylang|PHP|Semi-Active}}

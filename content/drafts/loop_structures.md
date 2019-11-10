@@ -27,7 +27,7 @@ Additionally, there is the overly simple repetitive loop: [[repeat|repetition]].
 An [[:Category:Iteration|iterative loop]] repeatedly executes a set of instructions as the iterator steps through a series of values. Types of iterative loops include [[for loop]]s and [[foreach]] loops. An iterative loop is a repetition but with a variable dependent on the current iteration. This allows the looped procedure to vary slightly between iterations. For example, the same operation can be carried out on each iteration, but each time on a different object.
 
 ;Conditional loops:
-A [[conditional loop]] tests for a condition around the loop, and repeatedly executes a block of [[instruction]]s whilst the [[condition]] is true. Types of [[conditional loop]]s include [[while loop]]s and [[do-while loop]]s. 
+A [[conditional loop]] tests for a condition around the loop, and repeatedly executes a block of [[instruction]]s whilst the [[condition]] is true. Types of [[conditional loop]]s include [[while loop]]s and [[do-while loop]]s.
 
 '''Examples here should be migrated to an appropriate [[:Category:Iteration|Iteration]] page and removed from here. If a page does not exist demonstrating a particular loop structure, discuss it [[:Category talk:Iteration|here]].'''
 
@@ -51,7 +51,7 @@ A [[conditional loop]] tests for a condition around the loop, and repeatedly exe
 
 
 
-###  each 
+###  each
 
 
 Iterate over a collection:
@@ -108,7 +108,7 @@ Iterate over a collection:
     i += i;
   }
 
-==[[Brainf***]]==
+==[[Brainfuck]]==
 '''NOT EXPLAINED THIS MUCH IN LOOP PAGES'''
 BF's only control flow construct of any kind is a loop. Two of the eight commands define the start and end of a conditional loop.
 * '''[''' - branch forward past matching ']' if the current cell is zero
@@ -128,7 +128,7 @@ A compile-time for loop can be generated with template metaprogramming. Example:
  {
    typedef typename X<start, typename loop<start+1, finish, X>::type>::type type;
  };
- 
+
  // the termination of the loop
  template<int finish, template<int n, typename T> class X> struct loop<finish, finish, X>
  {
@@ -136,18 +136,18 @@ A compile-time for loop can be generated with template metaprogramming. Example:
  };
 
  // example usage: This implements just a very complicated way of building a multi-dimensional array
- 
+
  // the loop body
  template<int n, typename T> struct build_array
  {
    typedef T type[n];
  };
- 
+
  template<int n> struct build_array<n, void>
  {
    typedef double type;
  };
- 
+
  // the loop execution: This is equivalent to
  // typedef double array_type[2][3][4][5];
  typedef loop<2,6,build_array>::type array_type;
@@ -180,7 +180,7 @@ A compile-time for loop can be generated with template metaprogramming. Example:
 
 ```crack
 
-for( i=0; i<9; i++) 
+for( i=0; i<9; i++)
   cout ` $i\n`;
 
 ```
@@ -378,7 +378,7 @@ A <CODE>for</CODE> loop is really a <CODE>foreach</CODE> loop that can work with
 for i = 1 to 1000000
 {
    println[i]
-} 
+}
 
 ```
 
@@ -413,7 +413,7 @@ i=0
 do
 {
    i = i+1
-} while i<1000 
+} while i<1000
 
 ```
 
@@ -491,7 +491,7 @@ do
  // Sa == Saturday
  // Th == Thursday
  // Tu == Tuesday
- // Fr == Friday  
+ // Fr == Friday
 
  stringList.eachWithIndex() { obj, i -> println " ${i}: ${obj}" };
  // 0: java
@@ -520,13 +520,13 @@ Here are a few examples:
 ===Pre-checked loop (while)===
 
  whileM :: Monad m => m Bool -> m a -> m ()
- whileM cond body = 
+ whileM cond body =
    cond >>= \b -> if b then body >> untilM cond body else return ()
 
 ===Post-checked loop (repeat-until)===
 
  untilM :: Monad m => m Bool -> m a -> m ()
- untilM cond body = 
+ untilM cond body =
    body >> cond >>= \b -> if b then return () else untilM cond body
 
 ===For-style loop===
@@ -547,7 +547,7 @@ It should be noted that IDL programmers tend to avoid loops -- most of the time 
 
   for i=0,50,2 do print,i
 
-prints out every second number starting at 0 stopping at 50. Wherever a single command can go in IDL, there can always go a <tt>begin...end</tt> pair with arbitrary amount of code in between. Thus the above can also read 
+prints out every second number starting at 0 stopping at 50. Wherever a single command can go in IDL, there can always go a <tt>begin...end</tt> pair with arbitrary amount of code in between. Thus the above can also read
 
   for variable = start, stop [,increment] do begin
     ;some code here
@@ -565,7 +565,7 @@ It is allowed but not required to use the appropriate "type of end" - i.e. it wo
 Same extensions as above:
 
   while running do begin
-    ; various snippets of code that might change the variable 
+    ; various snippets of code that might change the variable
     ; "running" from something true to something false
   end[while]
 
@@ -583,7 +583,7 @@ etc
 
 '<tt>Goto</tt>' exists and can in principle be forced to make a loop:
 
-  label: 
+  label:
     ;some code
   [if condition then $]
   goto label
@@ -636,8 +636,8 @@ LSE's loop words all work via tail recursion, like [[Scheme]], by re-executing t
 
 Counted loops execute a specified word ''n'' times. Within that word, "count" accesses a loop counter, counted down to zero.
  body : count , sp
- 10 body iterate    # 10 9 8 7 6 5 4 3 2 1 
- 
+ 10 body iterate    # 10 9 8 7 6 5 4 3 2 1
+
  body? : count , sp  count 5 >
  10 body? &iterate   # 10 9 8 7 6 5
 
@@ -645,15 +645,15 @@ Counted loops execute a specified word ''n'' times. Within that word, "count" ac
  Make does looping through recursion.
  SUCC=`expr $* + 1`
  MAX=10
- 
+
  all: 0-n;
- 
+
  %-n: %-echo
     @-make -f loop.mk $(SUCC)-n MAX=$(MAX)
- 
+
  %-echo:
     @echo $*
- 
+
  $(MAX)-n: $(MAX)-echo;
 
 Invoking it
@@ -783,7 +783,7 @@ forall(A, B) :- \+ (call(A), \+ call(B)).
 
 
 
-###  until 
+###  until
 
 Variant of while is until loop:
 
@@ -794,7 +794,7 @@ is equivalent to:
  while not(condition) do /* Action */ endwhile;
 
 
-###  for 
+###  for
 
 One can process all elements of a list:
 
@@ -833,7 +833,7 @@ is equivalent to
 There are more specialized kinds of loops, but we skip them here.
 
 
-###  quitloop quitif quitunless 
+###  quitloop quitif quitunless
 
 Inside loops one can use control transfers to prematurely exit the loop or end current iteration and start the next one:
 
@@ -843,7 +843,7 @@ quits loop when n=0.  quitloop unconditionally quits loop,
 quitunless(x) is equivalent to quitif(not(x)).
 
 
-###  nextloop nextif nextunless 
+###  nextloop nextif nextunless
 
 Similarely to quitloop nextloop unconditionally ends current iteration and starts the new one, nextif(x) ends current iteration when x is true, nextunless(x) is equivalent to nextif(not(x)). The loop control transfers can be also used inside for (and until) loops.
 
@@ -853,9 +853,9 @@ Finally, it is frequently possible to avoid explicit iteration using higher orde
 
 The "<tt>for</tt>" operator expects three numbers and a procedure on the stack. It will consume all four arguments then it will push the first number on the stack, execute the procedure, increase the first number by the second number, push it on the stack, execute the procedure etc until the third number is reached. For example
 
- 10 12 200 
-   {dup moveto 100 0 lineto} 
-   for 
+ 10 12 200
+   {dup moveto 100 0 lineto}
+   for
  stroke
 
 will add lines to the <tt>currentpath</tt> that start at coordinates {10,10}; {22,22}; {34,34} ... and all end at {100,0}. The "stroke" operator then renders these lines on the current output device (usually a screen or a piece of paper).
@@ -890,7 +890,7 @@ Iterating over more than one list + incrementing a counter:
 
 
 
-###  list comprehension expressions 
+###  list comprehension expressions
 
 
 Typically used when you want to create a list and there is little logic involved. Faster than for loop:
@@ -957,17 +957,17 @@ Since Python has no "bottom-tested" loop construct (such as "do ... until") ... 
 
  10 each as i                                     # counted loop
      "index is %(i)d\n" print
- 
+
  'hello world' each as c                          # string characters
      "%(c)c" print
- 
+
  [ 'a' 'b' 'c' ] each as item                     # list items
      "%(item)s" print
- 
+
  { 'a' 1 'b' 2 } each pair as k, v                # hash key/val pairs
      "%(k)s => %(v)d\n" print
- 
- 'SELECT * FROM table' mysql query each as row    # iterable resource 
+
+ 'SELECT * FROM table' mysql query each as row    # iterable resource
      row print
 
 
@@ -976,7 +976,7 @@ Since Python has no "bottom-tested" loop construct (such as "do ... until") ... 
 
  repeat <some_condition> while
      <some_process>
- 
+
  repeat <come_condition> until
      <some_process>
 
@@ -997,7 +997,7 @@ z=       0
               z=someFunction(z, x, y)
               end   /*n*/
 ```
- 
+
 
 
 
@@ -1065,7 +1065,7 @@ primes
     loop(iter)
 
 primes.loop
-   
+
     this = next(iter)                           :f(return)
     prime(this) add(primes,this)                :(primes.loop)
 
@@ -1194,7 +1194,7 @@ do {
 ==[[Toka]]==
 
 
-###  countedLoop 
+###  countedLoop
 
 Counts up or down until the boundaries are met.
 
@@ -1202,14 +1202,14 @@ Counts up or down until the boundaries are met.
  0 10 [ i . ] countedLoop
 
 
-###  whileTrue 
+###  whileTrue
 
 Repeatedly executes a quote until the quote returns true.
 
  100 [ dup . 1 - dup 0 <> ] whileTrue
 
 
-###  whileFalse 
+###  whileFalse
 
 Repeatedly executes a quote until the quote returns true.
 

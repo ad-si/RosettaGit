@@ -37,7 +37,7 @@ return
 #Include COM.ahk
 #Include COMinvokeDeep.ahk
 ```
- 
+
 
 ## C
 
@@ -103,7 +103,7 @@ class Program
 
 
 ```clojure
-(clj-http.client/get "https://somedomain.com" 
+(clj-http.client/get "https://somedomain.com"
                      {:basic-auth ["user" "pass"]})
 ```
 
@@ -486,7 +486,7 @@ curl_easy_setopt(curl, CURLOPT_URL, "https://user:password@example.com/")
 object res = curl_easy_perform_ex(curl)
 curl_easy_cleanup(curl)
 curl_global_cleanup()
- 
+
 puts(1,res)
 ```
 
@@ -610,10 +610,10 @@ end
 html "
 <CENTER><TABLE CELLPADDING=0 CELLSPACING=0 border=1 bgcolor=wheat>
 <TR><TD colspan=2 bgcolor=tan align=center>LOGIN</TD></TR>
-<TR><TD align=right>UserName</TD><TD>" 
- TEXTBOX #userName, "" 
+<TR><TD align=right>UserName</TD><TD>"
+ TEXTBOX #userName, ""
 html "</TR></TD><TR><TD align=right>Password:</TD><TD>"
-PasswordBox  #passWord, "" 
+PasswordBox  #passWord, ""
 
 html "</TD></TR><TD align=center colspan=2>"
 button #si, "Signin", [doSignin]
@@ -661,7 +661,7 @@ object Authenticated extends App {
     new URL("https://somehost.com").openConnection().asInstanceOf[HttpsURLConnection]
 
   object PasswordAuthenticator extends Authenticator {
-    override def getPasswordAuthentication = 
+    override def getPasswordAuthentication =
       new PasswordAuthentication("username", "password".toCharArray)
   }
 
@@ -778,7 +778,7 @@ zkl: data[0][121,*].text
 
 
 {{omit from|Batch File|Does not have network access.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Commodore BASIC|Does not have network access}}
 {{omit from|Inform 7|Does not have network access.}}
 {{omit from|Locomotive Basic|Does not have network access.}}

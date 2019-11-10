@@ -14,7 +14,7 @@ tags = []
 {{omit from|ACL2}}
 {{omit from|AWK|Does not have an active window concept}}
 {{omit from|Befunge|No mouse support}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|GolfScript}}
 {{omit from|GUISS}}
 {{omit from|Logtalk}}
@@ -31,51 +31,51 @@ tags = []
 {{omit from|UNIX Shell}}
 {{omit from|ZX Spectrum Basic|Does not have a pointing device interface or windowing engine}}
 
-Get the current location of the mouse cursor relative to the active window. 
+Get the current location of the mouse cursor relative to the active window.
 Please specify if the window may be externally created.
 
 
 ## ActionScript
 
-This shows the mouse position in a text field at the bottom-right corner 
+This shows the mouse position in a text field at the bottom-right corner
 and updates when the mouse is moved.
 
 ```ActionScript3
 
 package  {
-	
+
     import flash.display.Sprite;
     import flash.events.Event;
     import flash.text.TextField;
     import flash.text.TextFieldAutoSize;
     import flash.text.TextFormat;
-	
+
     public class MousePosition extends Sprite {
-        
+
         private var _textField:TextField = new TextField();
-        
+
         public function MousePosition() {
             if ( stage ) init();
             else addEventListener(Event.ADDED_TO_STAGE, init);
         }
-        
+
         private function init(e:Event = null):void {
             removeEventListener(Event.ADDED_TO_STAGE, init);
-            
+
             _textField.autoSize = TextFieldAutoSize.RIGHT;
             _textField.x = stage.stageWidth - 10;
             _textField.defaultTextFormat = new TextFormat(null, 15);
             _textField.text = "Mouse position: X = 0, Y = 0";
             _textField.y = stage.stageHeight - _textField.textHeight - 14;
             addChild(_textField);
-            
+
             addEventListener(Event.ENTER_FRAME, _onEnterFrame);
         }
-        
+
         private function _onEnterFrame(e:Event):void {
             _textField.text = "Mouse position: X = " + stage.mouseX + ", Y = " + stage.mouseY;
         }
-        
+
     }
 
 }
@@ -92,8 +92,8 @@ package  {
 
 {{libheader|GLib}}
 
-The [[GTK]] procedure is Get_Pointer. 
-It returns mouse coordinates relatively to a window (internally created). 
+The [[GTK]] procedure is Get_Pointer.
+It returns mouse coordinates relatively to a window (internally created).
 The following program shows a button, which when pressed indicates coordinates of the mouse pointer relatively to the main window:
 
 ```Ada
@@ -103,38 +103,38 @@ with Gtk.Label;   use Gtk.Label;
 with Gtk.Window;  use Gtk.Window;
 with Gtk.Widget;  use Gtk.Widget;
 with Gtk.Table;   use Gtk.Table;
- 
+
 with Gtk.Handlers;
 with Gtk.Main;
- 
+
 procedure Tell_Mouse is
    Window : Gtk_Window;
    Grid   : Gtk_Table;
    Button : Gtk_Button;
    Label  : Gtk_Label;
- 
+
    package Handlers is new Gtk.Handlers.Callback (Gtk_Widget_Record);
    package Return_Handlers is
       new Gtk.Handlers.Return_Callback (Gtk_Widget_Record, Boolean);
- 
+
    function Delete_Event (Widget : access Gtk_Widget_Record'Class)
       return Boolean is
    begin
       return False;
    end Delete_Event;
- 
+
    procedure Destroy (Widget : access Gtk_Widget_Record'Class) is
    begin
       Gtk.Main.Main_Quit;
    end Destroy;
- 
+
    procedure Clicked (Widget : access Gtk_Widget_Record'Class) is
       X, Y : GInt;
    begin
       Get_Pointer (Window, X, Y);
       Set_Text (Label, "At" & GInt'Image (X) & GInt'Image (Y));
    end Clicked;
- 
+
 begin
    Gtk.Main.Init;
    Gtk.Window.Gtk_New (Window);
@@ -161,7 +161,7 @@ begin
    );
    Show_All (Grid);
    Show (Window);
- 
+
    Gtk.Main.Main;
 end Tell_Mouse;
 ```
@@ -186,21 +186,21 @@ set [Cx, Cy] to {x, y} of the mouse's coordinates()
 
 script mouse
 	use framework "Foundation"
-	
+
 	property this : a reference to current application
 	property NSEvent : a reference to NSEvent of this
 	property NSScreen : a reference to NSScreen of this
-	
+
 	on coordinates()
 		-- Screen dimensions
 		set display to NSDeviceSize of deviceDescription() ¬
 			of item 1 of NSScreen's screens() as record
-		
+
 		-- Mouse position relative to bottom-left of screen
 		set mouseLoc to (NSEvent's mouseLocation as record)
 		-- Flip mouse y-coordinate so it's relative to top of screen
 		set mouseLoc's y to (display's height) - (mouseLoc's y)
-		
+
 		mouseLoc
 	end coordinates
 end script
@@ -274,7 +274,7 @@ MsgBox, % "GetPhysicalCursorPos function`n"
 
 ## BBC BASIC
 
-The mouse coordinates are relative to the bottom-left corner 
+The mouse coordinates are relative to the bottom-left corner
 of the BBC BASIC main output window:
 
 ```bbcbasic
@@ -308,7 +308,7 @@ int main()
 		    a Window id */
 
   /* default DISPLAY */
-  d = XOpenDisplay(NULL); 
+  d = XOpenDisplay(NULL);
 
   /* ask for active window (no error check); the client must be freedesktop
      compliant */
@@ -317,7 +317,7 @@ int main()
 			   0, 1, False, AnyPropertyType,
 			   &atom_type_prop, &actual_format,
 			   &n_items, &bytes_after_ret, (unsigned char**)&props);
-			  
+
   XQueryPointer(d, props[0], &inwin,  &inchildwin,
 		&rootx, &rooty, &childx, &childy, &mask);
   printf("relative to active window: %d,%d\n", childx, childy);
@@ -411,7 +411,7 @@ end;
 
 '''Delphi Console Program'''
 
-The following program will help capture the mouse position 
+The following program will help capture the mouse position
 with the help of Windows and classes units.
 
 
@@ -487,7 +487,7 @@ main =
 
 ## Emacs Lisp
 
-For Emacs' own frames (which is what Emacs calls its window system windows), 
+For Emacs' own frames (which is what Emacs calls its window system windows),
 the frame the mouse is over and where the mouse is within that frame can be obtained with
 
 
@@ -498,10 +498,10 @@ the frame the mouse is over and where the mouse is within that frame can be obta
 ```
 
 
-Or <code>mouse-position</code> for characters instead of pixels.  
+Or <code>mouse-position</code> for characters instead of pixels.
 Works when the mouse is over any Emacs frame, not just when that frame is the active focused window.
 
-There's no particularly easy way to inquire about a non-Emacs focused window, 
+There's no particularly easy way to inquire about a non-Emacs focused window,
 only generic X11 or similar approaches run externally.
 
 
@@ -597,31 +597,31 @@ END PROGRAM
 
 ## Factor
 
-Works only in the graphical listener. 
+Works only in the graphical listener.
 Replaces the text in the button with the relative and absolute coordinates of the mouse
 
 ```factor
 : replace-text ( button text -- )
     [ drop children>> pop drop ] [ >label add-gadget drop ] 2bi ;
 : present-locations ( loc1 loc2 -- string )
-    [ 
-      first2 [ number>string ] bi@ "," glue 
+    [
+      first2 [ number>string ] bi@ "," glue
     ] bi@ ";" glue ;
-: example ( -- ) "click me" 
-[ 
+: example ( -- ) "click me"
+[
   dup hand-rel ! location relative to the button
   hand-loc get ! location relative to the window
   present-locations replace-text
-] 
+]
 <border-button> gadget. ;
 
 ```
 
 
 =={{header|F_Sharp|F#}}==
-Have to do a lot of interop here.  
-Primarily because the active window may not be a .NET form/control.  
-If the question was for the point relative to the current window, 
+Have to do a lot of interop here.
+Primarily because the active window may not be a .NET form/control.
+If the question was for the point relative to the current window,
 life would be much simpler.
 
 ```fsharp
@@ -654,17 +654,17 @@ let GetMousePosition() =
 ## Gambas
 
 
-In gambas, the position of the pointer can only be determined 
-when the click button is held down. 
-A window with a drawing area is required, because 
+In gambas, the position of the pointer can only be determined
+when the click button is held down.
+A window with a drawing area is required, because
 this is the only widget that can track pointer movement within gambas.
 
 
 ```gambas
 
 PUBLIC SUB Form1_MouseMove()
-PRINT mouse.X 
-PRINT Mouse.Y 
+PRINT mouse.X
+PRINT Mouse.Y
 END
 
 ```
@@ -769,12 +769,12 @@ Sample output:
 
 ## HicEst
 
-Mouse click positions for windows created internally. 
+Mouse click positions for windows created internally.
 X and Y are in units of current xy axes (optional: invisible).
 
 ```hicest
    WINDOW(WINdowhandle=handle)
-   AXIS(WINdowhandle=handle, MouSeCall=Mouse_Callback, MouSeX=X, MouSeY=Y) 
+   AXIS(WINdowhandle=handle, MouSeCall=Mouse_Callback, MouSeX=X, MouSeY=Y)
  END
 
 SUBROUTINE Mouse_Callback()
@@ -784,8 +784,8 @@ SUBROUTINE Mouse_Callback()
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-In Icon/Unicon the mouse position may be tracked between button presses for any window created by the program.  
-The following code snippet taken from the Icon Graphics Book on page 197-198 shows how to track the mouse.  
+In Icon/Unicon the mouse position may be tracked between button presses for any window created by the program.
+The following code snippet taken from the Icon Graphics Book on page 197-198 shows how to track the mouse.
 
 ```Icon
 until *Pending() > 0 & Event() == "q" do { # loop until there is something to do
@@ -814,9 +814,9 @@ This returns a point on the entire screen, rather than relative to a particular 
 ## JavaScript
 
 
-In a browser environment, it's impossible to actually get the cursor position 
-at the specific moment. 
-You must wait for user input (movement, click, etc). 
+In a browser environment, it's impossible to actually get the cursor position
+at the specific moment.
+You must wait for user input (movement, click, etc).
 One of many ways to add an event listener:
 
 
@@ -827,7 +827,7 @@ document.addEventListener('mousemove', function(e){
 ```
 
 
-In the above example, the window may not be external. 
+In the above example, the window may not be external.
 It must in fact be a web browser window, which runs the script.
 
 
@@ -891,7 +891,7 @@ Sample output:
 
 ## Liberty BASIC
 
-This example gets the mouse position based on the active window.  
+This example gets the mouse position based on the active window.
 Click on other windows to get relative mouse position based on those windows.
 
 ```lb
@@ -1022,18 +1022,18 @@ rollout mousePos "Mouse position" width:200
 	label mousePosX "" pos:[130,0]
 	label mousePosSep "x" pos:[143,0]
 	label mousePosY "" pos:[160,0]
-	
+
 	timer updateTimer interval:50 active:true
-	
+
 	on updateTimer tick do
 	(
 		mousePosX.text = (mouse.screenpos.x as integer) as string
 		mousePosY.text = (mouse.screenpos.y as integer) as string
 	)
-	
+
 )
 
-createdialog mousepos 
+createdialog mousepos
 
 ```
 
@@ -1104,14 +1104,14 @@ let () =
 
 ## Octave
 
-To get the X,Y coordinates of N mouse clicks in the current figure, 
-one can use this: 
+To get the X,Y coordinates of N mouse clicks in the current figure,
+one can use this:
 
 ```Octave
 [X, Y, BUTTONS] = ginput(N);
 ```
 
-Example: 
+Example:
 
 ```txt
 >>  [X, Y, BUTTONS] = ginput(4)
@@ -1158,8 +1158,8 @@ in
   for while:{Not @WindowClosed} do
      TopmostWindow = {List.last {String.tokens {Tk.return wm(stackorder '.')} & }}
      Winfo = {Record.mapInd winfo(rootx:_ rooty:_ pointerx:_ pointery:_)
-	      fun {$ I _}  
-		 {Tk.returnInt winfo(I TopmostWindow)}  
+	      fun {$ I _}
+		 {Tk.returnInt winfo(I TopmostWindow)}
 	      end}
   in
      {Label set(text:"x: "#(Winfo.pointerx - Winfo.rootx)
@@ -1173,8 +1173,8 @@ in
 ## Perl
 
 ==={{libheader|Perl/SDL}}===
-The following code will use the SDL module, a wrapper for the libSDL C-library. 
-When you move the mouse over the created window, 
+The following code will use the SDL module, a wrapper for the libSDL C-library.
+When you move the mouse over the created window,
 the mouse position get printed and the program terminates.
 
 ```Perl
@@ -1215,7 +1215,7 @@ given MouseInfo.getPointerInfo.getLocation {
 ```
 
 
-An implementation that will work on any X11 windowing system. Reports mouse position, window ID# and window name for whichever window the mouse pointer is over. Automatically moves mouse for hands-off testing purposes. 
+An implementation that will work on any X11 windowing system. Reports mouse position, window ID# and window name for whichever window the mouse pointer is over. Automatically moves mouse for hands-off testing purposes.
 
 {{works with|Rakudo|2018.11}}
 
@@ -1288,8 +1288,8 @@ function esc_close(Ihandle /*ih*/, atom c)
 end function
 
 procedure main()
-Ihandle separator1, separator2, 
-        canvas, frame_1, frame_2, 
+Ihandle separator1, separator2,
+        canvas, frame_1, frame_2,
         dialog
 
     IupOpen()
@@ -1332,9 +1332,9 @@ main()
 
 ## PicoLisp
 
-The following works in an XTerm window. 
+The following works in an XTerm window.
 After calling (mousePosition), click
-into the current terminal window. 
+into the current terminal window.
 The returned value is (X . Y), where X is the
 column and Y the line number.
 
@@ -1371,7 +1371,7 @@ x = WindowMouseX(#MyWindow)
 y = WindowMouseY(#MyWindow)
 ```
 
-This example repeatedly shows the mouse coordinates 
+This example repeatedly shows the mouse coordinates
 relative to the window created in the application.
 
 ```PureBasic
@@ -1381,15 +1381,15 @@ relative to the window created in the application.
 If OpenWindow(#MyWindow,0,0,200,200,"Test",#PB_Window_SystemMenu)
   TextGadget(#Label_txt,0,0,100,20,"Mouse Position (x,y):",#PB_Text_Right)
   TextGadget(#MousePos_txt,120,0,60,20,"()")
-  
-  Repeat 
+
+  Repeat
     Repeat
       event = WaitWindowEvent(10)
       If event = #PB_Event_CloseWindow
         Break 2 ;exit program
-      EndIf 
+      EndIf
     Until event = 0
-    
+
     x = WindowMouseX(#MyWindow)
     y = WindowMouseY(#MyWindow)
     SetGadgetText(#MousePos_txt,"(" + Str(x) + "," + Str(y) + ")")
@@ -1404,10 +1404,10 @@ EndIf
 
 {{libheader|Python Tkinter module (Tk  8.5)}}
 
-Mouse position using Tkinter graphics library nearly universally included in installations of Python. 
-There are other alternatives but they are platform specific. 
+Mouse position using Tkinter graphics library nearly universally included in installations of Python.
+There are other alternatives but they are platform specific.
 
-Shows position of mouse while it is over the program windows and 
+Shows position of mouse while it is over the program windows and
 changes color of window when mouse is near (<10) hot spot 100,100.
 
 Code is based on post in Daniweb: http://www.daniweb.com/forums/post616327.html#post616327 by ZZucker
@@ -1585,7 +1585,7 @@ Func pMove
 ```Ruby
 Shoes.app(:title => "Mouse Position", :width => 400, :height => 400) do
   @position = para "Position : ?, ?", :size => 12, :margin => 10
-  
+
   motion do |x, y|
     @position.text = "Position : #{x}, #{y}"
   end
@@ -1696,12 +1696,12 @@ tk_messageBox -message "the mouse is at ($x,$y) in window $curWindow"
 
 ## Visual Basic
 
-There are two methods for determining where the mouse pointer is. 
-The first only works when the pointer is actually over the window containing the code. 
-This actually works for any control that has a MouseMove event, 
-but it doesn't work if the pointer is over ''anything else'', 
-including controls on the form 
-(so if the pointer is over a button on the current form, 
+There are two methods for determining where the mouse pointer is.
+The first only works when the pointer is actually over the window containing the code.
+This actually works for any control that has a MouseMove event,
+but it doesn't work if the pointer is over ''anything else'',
+including controls on the form
+(so if the pointer is over a button on the current form,
 the event will only fire for the button, ''not'' the form).
 
 ```vb
@@ -1713,8 +1713,8 @@ End Sub
 ```
 
 
-The second method uses the [[wp:Windows API|Windows API]], 
-and can be easily translated to any language that can make API calls. 
+The second method uses the [[wp:Windows API|Windows API]],
+and can be easily translated to any language that can make API calls.
 This example uses a <code>Timer</code> control to check the mouse position.
 
 ```vb
@@ -1740,15 +1740,15 @@ End Sub
 
 ## XPL0
 
-GetMousePosition(0) = X coordinate; 1 = Y coordinate. 
-For video modes $0..$E and $13 the maximum coordinates are 639x199, 
-minus the size of the pointer. 
+GetMousePosition(0) = X coordinate; 1 = Y coordinate.
+For video modes $0..$E and $13 the maximum coordinates are 639x199,
+minus the size of the pointer.
 For modes $F..$12 the coordinates are the same as the pixels.
 VESA graphic modes are (usually) 639x479 regardless of the resolution.
 For 80-column text modes divide the mouse coordinates by 8 to get the
 character cursor position.
 
-The mouse cursor location is always relative to the upper-left corner of the screen. 
+The mouse cursor location is always relative to the upper-left corner of the screen.
 A window may be externally created ... using a fair amount of
 code because the version of XPL0 used with these Rosetta Code examples
 does not make Windows applications (however see "Simple windowed application").

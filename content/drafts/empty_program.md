@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Basic language learning}} 
+{{task|Basic language learning}}
 [[Category:Initialization]]
 [[Category:Simple]]
 
@@ -31,7 +31,7 @@ An empty text file is a correct 11l program that does nothing.
 Return to caller
 
 ```360 Assembly
-         BR    14           
+         BR    14
          END
 ```
 
@@ -42,7 +42,7 @@ Return to caller
 Continuously loops.
 
 ```asm
-ORG RESET 
+ORG RESET
 jmp $
 ```
 
@@ -102,9 +102,9 @@ report z_empty_program.
 {{works with|GCC|4.1.2}}
 
 ```ada
-procedure Empty is 
-begin 
-   null; 
+procedure Empty is
+begin
+   null;
 end;
 ```
 
@@ -138,7 +138,7 @@ The nil input is a valid program.
 ## ALGOL 68
 
 
-###  Brief form 
+###  Brief form
 
 
 ```algol68
@@ -146,7 +146,7 @@ The nil input is a valid program.
 ```
 
 
-###  BOLD form 
+###  BOLD form
 
 
 ```algol68>SKIP</lang
@@ -197,7 +197,7 @@ GNU/Linux RaspberryPi example.
 _start:
     mov r0, #0
     mov r7, #1
-    svc #0 
+    svc #0
 ```
 
 
@@ -232,7 +232,7 @@ A single comment can be considered a valid program that does nothing.
 
 The empty string (or file) is recognised as valid program that does nothing.
 
-The program 
+The program
 
 ```awk>    1</lang
 
@@ -242,9 +242,9 @@ is the simplest useful program, equivalent to
 // {print}
 ```
 
-I.e. match every input-line, and print it. 
+I.e. match every input-line, and print it.
 
-Like the UNIX command 'cat', it prints every line of the files given as arguments, 
+Like the UNIX command 'cat', it prints every line of the files given as arguments,
 or (if no arguments are given) the standard input.
 
 
@@ -387,7 +387,7 @@ The dot is a binary operator. So the input consists of three nodes: the operator
 
 You also can start Bracmat without arguments, in which case it will run in interactive mode. Now press the Enter key. You have just run the shortest valid Bracmat program.
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```txt
 Empty program
@@ -401,7 +401,7 @@ Empty program
 Pressing enter from the mged prompt, just returns another prompt, so I suppose that is the smallest possible program. However, before we can draw anything we at least need to open a database:
 
 ```mged>opendb empty.g y</lang
- 
+
 
 
 ## C
@@ -462,7 +462,7 @@ Compile the project with ''No Console'' or ''No Return Type'' to suppress printi
 
 ## Clojure
 
-An empty file is the simplest valid Clojure program. 
+An empty file is the simplest valid Clojure program.
 
 
 ## COBOL
@@ -663,9 +663,9 @@ import com.ibm.egl.rui.widgets.Div;
 
 handler Empty_program type RUIhandler {initialUI = [ ui ], onConstructionFunction = start}
 	ui Div{};
-	
+
 	function start()
-	end	
+	end
 end
 
 ```
@@ -686,7 +686,7 @@ create
 feature
     make
         do
-           
+
         end
 end
 ```
@@ -1281,7 +1281,7 @@ $
 
 ```KonsolScript
 function main() {
-  
+
 }
 ```
 
@@ -1354,7 +1354,7 @@ According to the manual, all lilypond programs should contain a version statemen
 ```
 
 
-An input file should really have a basic structure as follows. The compiler automatically adds some of the structure components if they are not present in the source code. However, explicit definition should be used to prevent the compiler from creating unwanted contexts (which can cause side effects): 
+An input file should really have a basic structure as follows. The compiler automatically adds some of the structure components if they are not present in the source code. However, explicit definition should be used to prevent the compiler from creating unwanted contexts (which can cause side effects):
 
 
 ```lilypond
@@ -1509,7 +1509,7 @@ We can save it scrabbled text using Save "empty" @, A (not readable, but environ
 
 
 ```Matlab
- function [varargout] = emptyprogram(varargin) 
+ function [varargout] = emptyprogram(varargin)
 ```
 
 
@@ -1774,7 +1774,7 @@ An empty file is a valid oforth file
 ```Oforth>oforth empty.of</lang
 
 
-Without file, interpreter can just evaluate bye : 
+Without file, interpreter can just evaluate bye :
 
 ```Oforth
 oforth --P"bye"
@@ -1812,7 +1812,7 @@ The smallest possible program is a single space character:
 
 ```oxygenbasic
 
- 
+
 
 ```
 
@@ -1821,7 +1821,7 @@ The smallest possible program is a single space character:
 ## Oz
 
 
-###  Accepted by compiler 
+###  Accepted by compiler
 
 The simplest 'program' that can be compiled is a file which contains a single expression.
 
@@ -1829,7 +1829,7 @@ The simplest 'program' that can be compiled is a file which contains a single ex
 
 Such a 'program' cannot be executed, though.
 
-###  Standalone 
+###  Standalone
 
 The simplest standalone program is a root functor that does not define anything. ("Functors" are first-class modules.)
 
@@ -1868,7 +1868,7 @@ The first line is not necessary in modern Pascal dialects. With today's most com
 ## Perl
 
 
-The empty program is valid and does nothing but return a successful exit code: 
+The empty program is valid and does nothing but return a successful exit code:
 
 
 ```perl></lang
@@ -2126,7 +2126,7 @@ An empty file is the smallest valid program.
 
 ## REXX
 
-An empty (or blank) file is a valid REXX program. 
+An empty (or blank) file is a valid REXX program.
 
 Some REXX implementations require a special comment   [(1<sup>st</sup> word in the comment
 
@@ -2134,11 +2134,11 @@ must be   REXX   (in upper/lower/mixed) case]   to distinguish from other types 
 
 scripting languages, but a null program (or a program with only blanks in it)   in those
 
-other scripting languages are also considered an empty program. 
+other scripting languages are also considered an empty program.
 
 ### version 1
 
-This program can be empty (no characters),   or a program with (only) one or more blanks. 
+This program can be empty (no characters),   or a program with (only) one or more blanks.
 
 ```rexx></lang
 
@@ -2231,7 +2231,7 @@ object emptyProgram extends App {}
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is noop;
 ```
 
@@ -2317,7 +2317,7 @@ Output:
 db2 -t
 db2 => SELECT 1 FROM sysibm.sysdummy1;
 
-1        
+1
 ------------
            1
 
@@ -2573,7 +2573,7 @@ An empty .vbs file is considered the smallest runnable code, but the following (
 
 ## Verbexx
 
-An empty file is the smallest valid script, but running it does nothing.  
+An empty file is the smallest valid script, but running it does nothing.
 
 ```verbexx></lang
 
@@ -2663,7 +2663,7 @@ An empty 'file' is a valid WDTE script. That being said, WDTE has no inherent co
 ```asm
 section .text
 	global _start
-	
+
 	_start:
 		mov eax, 1
 		int 0x80
@@ -2737,7 +2737,7 @@ This stylesheet echoes the text content of an XML file. The shortest stylesheet 
 
 {{works with|HyperCard}}
  on startup
-   
+
  end startup
 
 

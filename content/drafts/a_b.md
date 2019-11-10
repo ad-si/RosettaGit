@@ -15,7 +15,7 @@ tags = []
 
 
 ;Task:
-Given two integers,   '''A''' and '''B'''. 
+Given two integers,   '''A''' and '''B'''.
 
 Their sum needs to be calculated.
 
@@ -31,8 +31,8 @@ The required output is one integer:   the sum of '''A''' and '''B'''.
 
 ;Example:
 ::{|class="standard"
- ! input  
- ! output  
+ ! input
+ ! output
  |-
  |<tt> 2 2 </tt>
  |<tt> 4 </tt>
@@ -79,7 +79,7 @@ LOOP     GET    MYDATA,PG          read a single record
          AR     R4,R5              A+B
          XDECO  R4,PG+24           edit A+B
          XPRNT  PG,36              print A+B
-         B      LOOP               repeat     
+         B      LOOP               repeat
 ATEND    CLOSE  MYDATA
 RETURN   XR     R15,R15
          BR     R14
@@ -318,7 +318,7 @@ A = 50 and B = -25: 25
 
 
 ```APL
- ⎕+⎕ 
+ ⎕+⎕
 ```
 
 
@@ -981,12 +981,12 @@ read:
 ```ATS
 
 (* ****** ****** *)
-//                                                                                                                                                     
+//
 #include
 "share/atspre_staload.hats"
-//                                                                                                                                                     
+//
 staload UN = $UNSAFE
-//                                                                                                                                                     
+//
 (* ****** ****** *)
 
 staload "libc/SATS/stdio.sats"
@@ -1000,10 +1000,10 @@ main0() = let
   val () =
   $extfcall
     (void, "scanf", "%d%d", addr@A, addr@B)
-  // end of [val]                                                                                                                                      
+  // end of [val]
 in
    println! ($UN.cast2int(A) + $UN.cast2int(B))
-end // end of [main0]                                                                                                                                  
+end // end of [main0]
 
 (* ****** ****** *)
 
@@ -1027,7 +1027,7 @@ msgbox, % output1 . "+" . output2 "=" output1+output2
 
 ```AutoIt
 ;AutoIt Version: 3.2.10.0
-$num = "45  54" 
+$num = "45  54"
 consolewrite ("Sum of " & $num & " is: " & sum($num))
 Func sum($numbers)
    $numm = StringSplit($numbers," ")
@@ -1320,7 +1320,7 @@ END
 <lang IS-BASIC>100 DO
 110   INPUT PROMPT "Ener two integers separated by a comma: ":A,B
 120   IF ABS(A)>1000 OR ABS(B)>1000 OR IP(A)<>A OR IP(B)<>B THEN
-130     PRINT "Both integers must be in the interval [-1000..1000] - try again.":PRINT 
+130     PRINT "Both integers must be in the interval [-1000..1000] - try again.":PRINT
 140   ELSE
 150     PRINT "Their sum is";A+B
 160     EXIT DO
@@ -1401,7 +1401,7 @@ BLOCK 0: END.
 
 ## Bracmat
 
-<code>filter</code> is a pattern that checks that input is a non-fractional number not less than -1000 and not greater than 1000. The filter is applied to each input. 
+<code>filter</code> is a pattern that checks that input is a non-fractional number not less than -1000 and not greater than 1000. The filter is applied to each input.
 
 ```bracmat
 ( out
@@ -1415,8 +1415,8 @@ $ (   put$"Enter two integer numbers between -1000 and 1000:"
 ```
 
 
-=={{header|Brainf***}}==
-<lang brainf***>INPUT AND SUMMATION
+=={{header|Brainfuck}}==
+<lang Brainfuck>INPUT AND SUMMATION
 TODO if first symbol is a minus sign print Qgo awayQ
 +>                                                  initialize sum to one
 ++[                                                 loop for each input ie twice
@@ -1640,7 +1640,7 @@ Translation of Common Lisp version:
 Safely and without reader tricks:
 
 ```clojure
-(let [ints (map #(Integer/parseInt %) (clojure.string/split (read-line) #"\s") )] 
+(let [ints (map #(Integer/parseInt %) (clojure.string/split (read-line) #"\s") )]
   (println (reduce + ints)))
 3 4
 =>7
@@ -1898,14 +1898,14 @@ void main() {
   while(true) {
     String input = stdin.readLineSync();
     var chunks = input.split(new RegExp(r'[ ]+')); // split on 1 or more spaces
-    if(!chunks.every(isAnInteger)) { 
+    if(!chunks.every(isAnInteger)) {
       print("not an integer!");
     } else if(chunks.length > 2) {
       print("too many numbers!");
     } else if(chunks.length < 2) {
       print('not enough numbers!');
     } else {
-      // parse the strings into integers 
+      // parse the strings into integers
       var nums = chunks.map((String s) => int.parse(s));
       if(nums.any((num) => num < -1000 || num > 1000)) {
         print("between -1000 and 1000 please!");
@@ -2061,12 +2061,12 @@ The EDSAC does not support input of data while a program is running, so A and B 
 
 ```edsac
 [ A plus B
-  
+
 ### ==
 
-  
+
   A program for the EDSAC
-  
+
   Adds two integers & displays
   the sum at the top of storage
   tank 3
@@ -2186,12 +2186,12 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var A := new Integer();
     var B := new Integer();
- 
+
     console.loadLine(A,B).printLine(A + B)
 }
 ```
@@ -2218,7 +2218,7 @@ public program()
 
 
 ```Elixir
-IO.gets("Enter two numbers seperated by a space: ") 
+IO.gets("Enter two numbers seperated by a space: ")
   |> String.split
   |> Enum.map(&String.to_integer(&1))
   |> Enum.sum
@@ -2237,7 +2237,7 @@ IO.gets("Enter two numbers seperated by a space: ")
 --Next enter this code
 sum x y=x+y
 
---This creates a sum function 
+--This creates a sum function
 --When you enter sum A B
 --You get output as A+B : number
 --Task done!
@@ -2358,7 +2358,7 @@ printf(1," %d\n",a+b)
 package programs;
 
 // basic program
-// 
+//
 program AplusB type BasicProgram {}
 	function main()
 		try
@@ -2406,7 +2406,7 @@ let SumOf(str : string) =
     str.Split() |> Array.sumBy(int)
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     Console.WriteLine(SumOf(Console.ReadLine()))
     0
 ```
@@ -2451,7 +2451,7 @@ n;!n;!+.
 ```fantom
 class APlusB
 {
-  public static Void main () 
+  public static Void main ()
   {
     echo ("Enter two numbers: ")
     Str input := Env.cur.in.readLine
@@ -2585,10 +2585,10 @@ Using Graphical interface
          , bSum, eRes
 
 #listix#
-   
+
    <-- bSum>
       MSG, eRes data!,, @<suma>
-      
+
    <suma> =, eA + eB
 
 ```
@@ -2715,13 +2715,13 @@ function main = |args| {
   require(numbers: size() == 2, "we need two numbers")
 
   try {
-    
+
     let a, b = numbers: map(|i| -> i: toInt())
 
     require(a >= -1000 and a <= 1000 and b >= -1000 and b <= 1000, "both numbers need to be between -1000 and 1000")
 
     println(a + b)
-    
+
   } catch (e) {
     println("they both need to be numbers for this to work")
   }
@@ -2833,7 +2833,7 @@ Congratulations, the program worked on my first attempt.
 ```txt
 
 $ cd lib
-$ ../src/hope 
+$ ../src/hope
 >: dec add : num # num -> num;
 >: --- add(a,b) <= a + b;
 >: add(3,99)
@@ -3064,7 +3064,7 @@ Produces:
 ## JavaScript
 
 
-###  ES5 
+###  ES5
 
 Client side:
 
@@ -3112,9 +3112,9 @@ process.openStdin().on (
  usage: <integer> <integer>
 
 
-###  ES6 
+###  ES6
 
-Node.js in a terminal: 
+Node.js in a terminal:
 
 ```javascript
 process.stdin.on("data", buffer => {
@@ -3136,7 +3136,7 @@ process.stdin.on("data", buffer => {
 
 
 
-###  JScript Windows Script Host Version 5.8 
+###  JScript Windows Script Host Version 5.8
 
 
 ```javascript
@@ -3175,7 +3175,7 @@ Since the given task is simply to add two numbers, the simplest approach in jq i
 ```jq
 $ jq -s add
 3 2
-5 
+5
 ```
 
 This will work provided the numbers are neither too small nor too large.  However, the above program will add **all** the numbers presented on the stream (assuming only numbers are presented).  If the task were to add consecutive pairs of numbers, then the approach illustrated in the following transcript can be used, in conjunction with the jq "-s" option:
@@ -3264,7 +3264,7 @@ In the next solution, an error is returned if the entry is not constituted from 
 
 ```Julia>julia
  println(parse(Int, readuntil(stdin, ' ')) + parse(Int, readuntil(stdin, '\n')))
-1 2  
+1 2
 3
 ```
 
@@ -3323,7 +3323,7 @@ fun main(args: Array<String>) {
         else {
             println("Their sum is ${a + b}\n")
         }
-    }       
+    }
 }
 ```
 
@@ -3435,7 +3435,7 @@ Section Public
 ```c
 void main() {
     string a, b;
-    scan(gets(stdin), "%d %d", &a, &b); 
+    scan(gets(stdin), "%d %d", &a, &b);
     puts(((int)a + (int)b));
 }
 ```
@@ -3577,7 +3577,7 @@ function sumOfInputs = APlusB()
     if any(numbers < -1000 | numbers > 1000)
         warning('APlusB:OutOfRange', 'Some numbers are outside the range');
     end
-    sumOfInputs = sum(numbers);    
+    sumOfInputs = sum(numbers);
 end
 ```
 
@@ -3602,14 +3602,14 @@ red 3 + 4 .
 fmod ADD is
 
 	protecting INT .
-	
+
 	op undefined : -> Int .
 	op _add_ : Int Int -> Int [assoc comm] .
-	
+
 	vars A B : Int .
-	
+
 	eq A add B = if (A < -1000 or B < -1000) or (A > 1000 or B > 1000) then undefined else A + B fi .
-	
+
 endfm
 
 ```
@@ -3770,7 +3770,7 @@ ANB
  NEW A,B,T,S
  READ !,"Input two integers between -1000 and 1000, separated by a space: ",S
  SET A=$PIECE(S," ",1),B=$PIECE(S," ",2)
- SET T=(A>=-1000)&(A<=1000)&(B>=-1000)&(B<=1000)&(A\1=A)&(B\1=B) 
+ SET T=(A>=-1000)&(A<=1000)&(B>=-1000)&(B<=1000)&(A\1=A)&(B\1=B)
  IF T WRITE !,(A+B)
  IF 'T WRITE !,"Bad input"
  QUIT
@@ -3877,7 +3877,7 @@ module AplusB
     Main() : void
     {
         WriteLine(ReadLine().Split().Select(int.Parse).Sum());
-    }    
+    }
 }
 ```
 
@@ -3990,12 +3990,12 @@ print words[0].to_i + words[1].to_i
 ;type tool
 ;name "A+B"
 ;debugflags trace
- 
+
 define variable a = 1
 define variable b = 9
- 
+
 print a + b
- 
+
 return ""
 ```
 
@@ -4027,7 +4027,7 @@ bundle Default {
    class Vander {
       function : Main(args : String[]) ~ Nil {
          values := IO.Console->ReadString()->Split(" ");
-         if(values->Size() = 2) { 
+         if(values->Size() = 2) {
             (values[0]->Trim()->ToInt() + values[1]->Trim()->ToInt())->PrintLine();
          };
       }
@@ -4254,20 +4254,20 @@ echo (a);
 // Nigel Galloway - April 16th., 2012
 //
 namespace aplusb;
- 
+
 interface
   uses System.Text.RegularExpressions.*;
- 
+
 type
   aplusb = class
   public
-    class method Main; 
+    class method Main;
   end;
- 
+
 implementation
- 
+
 class method aplusb.Main;
-var 
+var
   gc: GroupCollection;
   m : Match;
 begin
@@ -4279,7 +4279,7 @@ begin
     end
   else Console.WriteLine("Invalid Input");
 end;
- 
+
 end.
 
 ```
@@ -4394,7 +4394,7 @@ print "$a $b " . ($a + $b) . "\n";
 
 
 
-###  using the List::Util module 
+###  using the List::Util module
 
 
 ```Perl
@@ -4478,7 +4478,7 @@ fclose($out);
 
 ```PicoLisp
 (+ (read) (read))
-3 4               
+3 4
 -> 7
 ```
 
@@ -4608,7 +4608,7 @@ $a,$b = -split (Read-Host)
 I think this works better and doesn't require string input (following the task closer):
 
 ```powershell
-filter add { 
+filter add {
     return [int]$args[0] + [int]$args[1]
 }
 ```
@@ -4666,9 +4666,9 @@ With the math module:
 ```ProDOS
 editvar /newvar /value=a /title=Enter an integer:
 editvar /newvar /value=b /title=Enter another integer:
-editvar /newvar /value=c 
+editvar /newvar /value=c
 do add -a-,-b-=-c-
-printline -c- 
+printline -c-
 ```
 
 Without the math module:
@@ -4677,7 +4677,7 @@ Without the math module:
 editvar /newvar /value=a /title=Enter an integer:
 editvar /newvar /value=b /title=Enter another integer:
 editvar /newvar /value=c=-a-+-b-
-printline -c- 
+printline -c-
 ```
 
 
@@ -4744,7 +4744,7 @@ If ReadFile(0,"in.txt")
     CloseFile(1)
   EndIf
   CloseFile(0)
-EndIf 
+EndIf
 ```
 
 
@@ -4793,7 +4793,7 @@ INPUT "Enter A: ", a
 INPUT "Enter B: ", b
 c = a + b
 PRINT ""
-PRINT "A + B = " + LTRIM$(STR$(c)) 
+PRINT "A + B = " + LTRIM$(STR$(c))
 
 ```
 
@@ -4815,26 +4815,26 @@ sum(scan("", numeric(0), 2))
 
 class Sum
 	**Adds two given integers**
-	
+
 	on start
-		
+
 		args := program arguments
-		
+
 		if args empty
 			print to Console.error made !, "No arguments given"
 			exit program with error code
-		
+
 		if args.count = 1
 			print to Console.error made !, "Only one argument given"
 			exit program with error code
-		
+
 		try
 			print integer.parse(args[0]) + integer.parse(args[1])
-		
+
 		catch FormatException
 			print to Console.error made !, "Arguments must be integers"
 			exit program with error code
-		
+
 		catch OverflowException
 			print to Console.error made !, "Numbers too large"
 			exit program with error code
@@ -5117,7 +5117,7 @@ fn main() {
 ```
 
 
-or 
+or
 
 
 ```rust
@@ -5129,7 +5129,7 @@ fn main() {
 
     let sum: i64 = line.split_whitespace()
                        .map(|x| x.parse::<i64>().expect("Not an integer"))
-                       .sum(); 
+                       .sum();
     println!("{}", sum);
 }
 ```
@@ -5227,7 +5227,7 @@ s/0//g; s/1/|/g; s/2/||/g; s/3/|||/g; s/4/||||/g; s/5/|||||/g
 s/6/||||||/g; s/7/|||||||/g; s/8/||||||||/g; s/9/|||||||||/g
 
 # Multiply by ten for each digit from the back they were.
-:tens 
+:tens
 s/|</<||||||||||/g
 t tens
 
@@ -5238,7 +5238,7 @@ s/<//g
 s/^-\(|*\) *-/-\1/
 # Negative plus positive equals positive plus negative, and we want the negative at the back.
 s/^-\(|*\) \+\(|*\)$/\2-\1/
-# Get rid of any space between the numbers 
+# Get rid of any space between the numbers
 s/ //g
 
 # A tally on each side can be canceled.
@@ -5394,7 +5394,7 @@ PRINT A+B
 Simple-minded solution (literally "two somethings separated by space")
 
 ```snobol
-	input break(" ") . a " " rem . b 
+	input break(" ") . a " " rem . b
 	output = a + b
 end
 ```
@@ -5428,11 +5428,11 @@ ABTask class
 	instanceVariableNames: ''!
 
 !ABTask class methodsFor: 'demo'!
-parseInteger: inputStream 
+parseInteger: inputStream
 	^ Integer readFrom: inputStream skipSeparators! !
 
 !ABTask class methodsFor: 'demo'!
-sum: inputStream 
+sum: inputStream
 	^ (self parseInteger: inputStream)
 		+ (self parseInteger: inputStream)! !
 
@@ -5457,7 +5457,7 @@ but all have a stream hierarchy, so the task could be restated to pass input and
 task := [:inStream :outStream |
     |processLine|
 
-    processLine := 
+    processLine :=
         [
             |a b|
             a := Integer readFrom: inStream.
@@ -5544,30 +5544,30 @@ is
    A, B       : Integer;
    A_OK, B_OK : Boolean;
 begin
-   SPARK_IO.Get_Integer 
+   SPARK_IO.Get_Integer
      (File  => SPARK_IO.Standard_Input,
       Item  => A,
       Width => 0,
       Read  => A_OK);
-   
+
    A_OK := A_OK and A in Small_Integers;
-   
-   SPARK_IO.Get_Integer 
+
+   SPARK_IO.Get_Integer
      (File  => SPARK_IO.Standard_Input,
       Item  => B,
       Width => 0,
       Read  => B_OK);
-   
+
    B_OK := B_OK and B in Small_Integers;
-   
+
    if A_OK and B_OK then
-      SPARK_IO.Put_Integer 
+      SPARK_IO.Put_Integer
         (File  => SPARK_IO.Standard_Output,
          Item  => A + B,
          Width => 4,
          Base  => 10);
    else
-      SPARK_IO.Put_Line 
+      SPARK_IO.Put_Line
         (File => SPARK_IO.Standard_Output,
          Item => "Input data does not match specification.",
          Stop => 0);
@@ -5639,28 +5639,28 @@ Output:
 
 db2 -t
 db2 => values 2 + 2;
-1          
+1
 -----------
           4
 
   1 record(s) selected.
 
 db2 => values 3 + 2;
-1          
+1
 -----------
           5
 
   1 record(s) selected.
 
 db2 => select 2 + 2 from sysibm.sysdummy1;
-1          
+1
 -----------
           4
 
   1 record(s) selected.
 
 db2 => select 3 + 2 from sysibm.sysdummy1;
-1          
+1
 -----------
           5
 
@@ -5864,7 +5864,7 @@ Store the inputs in the 'A' and 'B' OS variables. Run it with Asm(prgmAPLUSB) an
 ## TorqueScript
 
 Since torque is not compatible with standard input, I will show the closest to that.
-It's a function that takes a single string input, that will contain the 2 numbers. 
+It's a function that takes a single string input, that will contain the 2 numbers.
 
 ```Torque
 Function aPlusB(%input)
@@ -6010,7 +6010,7 @@ Creating a new file named after the input file with suffix <code>.out</code>:
 
 #executable -[parameterized]-
 
-main = 
+main =
 
 ~command.files.&h; ~&iNC+ file$[
    contents: %zP+ sum:-0+ %zp*FiNCS+ sep` @L+ ~contents,
@@ -6113,7 +6113,7 @@ module TEST;
     y= sum(3, 2);
     y= sum(-3, 2);
   end
-  
+
   function signed [11:0] sum;
     input signed [10:0] a, b;
     begin
@@ -6121,7 +6121,7 @@ module TEST;
       $display("%d + %d = %d",a,b,sum);
     end
   endfunction
-  
+
 endmodule
 ```
 
@@ -6148,7 +6148,7 @@ begin
     readline(INPUT, line_in);
     read(line_in, a);
     read(line_in, b);
-    
+
     write(line_out, a+b);
     writeline(OUTPUT, line_out);
     wait; -- needed to stop the execution
@@ -6195,16 +6195,16 @@ end
 
 
 ```whitespace
-    
- 
- 	
-					    
- 
- 	
-						   	
- 	   	 	 
-	
-  
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6232,20 +6232,20 @@ System.print(a + b)
 ```asm
 section .text
 	global _start
-		
+
 	_print:
 		mov ebx, 1
 		mov eax, 4
 		int 0x80
 		ret
-			
+
 	_get_input:
 		mov edx, 4
 		mov ebx, 0
 		mov eax, 3
 		int 0x80
 		ret
-		
+
 	_start:
 		mov edx, in_val_len
 		mov ecx, in_val_msg
@@ -6279,7 +6279,7 @@ section .text
 		push eax
 		int 0x80
 		ret
-		
+
 section .data
 in_val_msg	db "Please input an integer:",0
 in_val_len	equ $-in_val_msg
@@ -6349,8 +6349,8 @@ int A, B;
 
 ```xquery
 
-(: 
-  Using the EXPath File Module, which is built into most XQuery processors 
+(:
+  Using the EXPath File Module, which is built into most XQuery processors
   by default and thus does not need to get imported. Some processors bind the
   namespace automatically, others require explicit declaration.
 :)
@@ -6450,7 +6450,7 @@ This actually works for any number of integers
 40 FOR i=1 TO LEN a$
 50 IF a$(i)=" " THEN LET a=VAL a$( TO i): LET b=VAL a$(i TO ): PRINT a;" + ";b;" = ";a+b: GO TO 70
 60 NEXT i
-70 STOP 
+70 STOP
 80 REM LTrim operation
 90 IF a$(1)=" " THEN LET a$=a$(2 TO ): GO TO 90
 100 RETURN

@@ -1,5 +1,5 @@
 +++
-title = "Category talk:Brainf***"
+title = "Category talk:Brainfuck"
 description = ""
 date = 2014-01-14T00:38:51Z
 aliases = []
@@ -26,7 +26,7 @@ If in doubt, be polite! nothing of value is lost with the censoring. --[[User:Pa
 
 How about Pa**al, FOR****, **BOL? These names are quite offensive too! (Posted by [[User:178.140.240.108]] at 23:43, 8 January 2012 UTC )
 : Do you really think I ''like'' censorship? Those languages don't get blocked by censoring proxy filters. Also, I've blocked you for one day; you may still create an account. Furthermore, please sign your "Talk" namespace posts with <nowiki>--~~~~</nowiki> --[[User:Short Circuit|Michael Mol]] 15:01, 9 January 2012 (UTC)
-:: > Do you really think I ''like'' censorship? ... 
+:: > Do you really think I ''like'' censorship? ...
 :: > ... Also, I've blocked you for one day;
 :: Answer becomes quite obvious, certainly, you do :-)
 :: > you may still create an account

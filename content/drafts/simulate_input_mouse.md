@@ -21,7 +21,7 @@ WinActivate, ahk_class MozillaUIWindowClass
 Click 200, 200 right  ; relative to external window (firefox)
 sleep, 2000
 WinMinimize
-CoordMode, Mouse, Screen 
+CoordMode, Mouse, Screen
 Click 400, 400 right  ; relative to top left corner of the screen.
 ```
 
@@ -44,32 +44,32 @@ int main()
 	int maxX = GetSystemMetrics(SM_CXSCREEN), maxY = GetSystemMetrics(SM_CYSCREEN);
 	int x = maxX/2, y = maxY/2;
 	double factorX = 65536.0 / maxX,factorY = 65536.0 / maxY;
-	
+
 	INPUT ip;
-	
+
 	ZeroMemory(&ip,sizeof(ip));
-	
+
 	ip.type = INPUT_MOUSE;
-	
+
 	while(x > 5 || y < maxY-5){
 
 	ip.mi.mouseData = 0;
 	ip.mi.dx = x * factorX;
 	ip.mi.dy = y * factorY;
 	ip.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-		
+
 	SendInput(1,&ip,sizeof(ip));
 	sleep(1);
-	if(x>3)	
+	if(x>3)
 		x-=1;
 	if(y<maxY-3)
 		y+=1;
 	}
-	
+
 	ip.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP;
-	
+
 	SendInput(1,&ip,sizeof(ip));
-	
+
 	return 0;
 }
 
@@ -112,16 +112,16 @@ class Main
 {
   public static Void main ()
   {
-    button1 := Button 
-    { 
+    button1 := Button
+    {
       text = "don't click!"
       onAction.add |Event e|
       {
         echo ("clicked by code")
       }
     }
-    button2 := Button 
-    { 
+    button2 := Button
+    {
       text = "click"
       onAction.add |Event e|
       {
@@ -156,8 +156,8 @@ class Main
 {
   public static Void main ()
   {
-    button := Button 
-    { 
+    button := Button
+    {
       text = "click for robot"
       onAction.add |Event e|
       {
@@ -419,7 +419,7 @@ SetCursorPos_(50, 50)
 Click()
 ```
 
-	
+
 {{libheader|AutoWin}}
 
 ```PureBasic
@@ -460,7 +460,7 @@ TWO_PI = math.pi * 2.0
 
 def sine_mouse_wave():
     """
-    Moves the mouse in a sine wave from the left edge of the screen to 
+    Moves the mouse in a sine wave from the left edge of the screen to
     the right.
     """
     width, height = autopy.screen.get_size()
@@ -542,7 +542,7 @@ load "stdlib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("")
@@ -656,7 +656,7 @@ Note that many of Tk's windows also need appropriate <Enter> and <Leave> events 
 {{omit from|AWK}}
 {{omit from|Batch File}}
 {{omit from|Befunge}} <!-- No mouse support -->
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Logtalk}}
 {{omit from|Lotus 123 Macro Scripting}}
 {{omit from|Maxima}}

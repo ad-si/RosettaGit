@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Basic language learning}}[[Category:Iteration]][[Category:Data Structures]]
-Show how to iterate over the key-value pairs of an associative array, and print each pair out. 
+Show how to iterate over the key-value pairs of an associative array, and print each pair out.
 
 Also show how to iterate just over the keys, or the values, if there is a separate way to do that in your language.
 
@@ -582,7 +582,7 @@ LOOKUP creates a numerically indexed array of the keys of the associative array,
       PROCputdict(mydict$, "FF0000", "red")
       PROCputdict(mydict$, "00FF00", "green")
       PROCputdict(mydict$, "0000FF", "blue")
-      
+
       REM Iterate through the dictionary:
       i% = 1
       REPEAT
@@ -590,12 +590,12 @@ LOOKUP creates a numerically indexed array of the keys of the associative array,
         PRINT v$, k$
       UNTIL i% = 0
       END
-      
+
       DEF PROCputdict(RETURN dict$, value$, key$)
       IF dict$ = "" dict$ = CHR$(0)
       dict$ += key$ + CHR$(1) + value$ + CHR$(0)
       ENDPROC
-      
+
       DEF FNdict(dict$, I%, RETURN value$, RETURN key$)
       LOCAL J%, K%
       J% = INSTR(dict$, CHR$(1), I%)
@@ -621,7 +621,7 @@ LOOKUP creates a numerically indexed array of the keys of the associative array,
 & (myhash..remove)$formula
 & (myhash..insert)$(formula.x^2+y^2)
 &   (myhash..forall)
-  $ ( 
+  $ (
     =   key value
       .     whl
           ' ( !arg:(?key.?value) ?arg
@@ -784,19 +784,19 @@ shared void run() {
 		"bar" -> 10,
 		"baz" -> 15
 	};
-	
+
 	for(key in myMap.keys) {
 		print(key);
 	}
-	
+
 	for(item in myMap.items) {
 		print(item);
 	}
-	
+
 	for(key->item in myMap) {
 		print("``key`` maps to ``item``");
 	}
-	
+
 }
 ```
 
@@ -860,7 +860,7 @@ hash =
 
 for key, value of hash
   console.log key, value
-  
+
 for key of hash
   console.log key
 
@@ -945,14 +945,14 @@ I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
 
 ;; Project : Associative array/Iteration
 
-(setf x (make-array '(3 2)           
+(setf x (make-array '(3 2)
            :initial-contents '(("hello" 13 ) ("world" 31) ("!" 71))))
 (setf xlen (array-dimensions x))
 (setf len (car xlen))
-(dotimes (n len)  
+(dotimes (n len)
                (terpri)
                (format t "~a" (aref x n 0))
-               (format t "~a" " : ") 
+               (format t "~a" " : ")
                (format t "~a" (aref x n 1)))
 
 ```
@@ -1145,21 +1145,21 @@ for key in map.domain() {     # iterate over the set whose values are the keys
 
 ;; iterate over (key . value ) pairs
 (for ([kv H]) (writeln kv))
-(Simon . 42)    
-(Albert . 666)    
-(Antoinette . 33)    
+(Simon . 42)
+(Albert . 666)
+(Antoinette . 33)
 
 ;; iterate over keys
 (for ([k (hash-keys H)]) (writeln 'key-> k))
-key->     Simon    
-key->     Albert    
-key->     Antoinette    
+key->     Simon
+key->     Albert
+key->     Antoinette
 
 ;; iterate over values
 (for ([v (hash-values H)]) (writeln 'value-> v))
-value->     42    
-value->     666    
-value->     33    
+value->     42
+value->     666
+value->     33
 
 ```
 
@@ -1173,7 +1173,7 @@ ELENA 4.x :
 import system'collections;
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     // 1. Create
@@ -1183,7 +1183,7 @@ public program()
     map["key2"]:= "foo2";
     map["key3"]:= "foo3";
     map["key4"]:= "foo4";
- 
+
     // Enumerate
     map.forEach:
         (keyValue){ console.printLine(keyValue.Key," : ",keyValue.Value) }
@@ -1192,7 +1192,7 @@ public program()
 
 
 
-###  Strong typed dictionary 
+###  Strong typed dictionary
 
 
 ```elena
@@ -1260,7 +1260,7 @@ Enum.each(Map.values(d), fn value -> IO.inspect value end)
 -module(assoc).
 -compile([export_all]).
 
-test_create() ->   
+test_create() ->
     D = dict:new(),
     D1 = dict:store(foo,1,D),
     D2 = dict:store(bar,2,D1),
@@ -1407,61 +1407,61 @@ marker AssociationIteration.4th
 element
     w field .inventor
 constant language           \ describes a programming language
-    
+
 : init-language ( inventor name node -- node )
     init-element >r
     hstr r@ .inventor !
     r> ;
-    
-: new-language ( inventor name -- node )    
+
+: new-language ( inventor name -- node )
     language alloc
     init-language ;
-    
-: show-language ( count node -- )    
+
+: show-language ( count node -- )
     >r
     1+                      \ -- count+1
     cr  r@ .key @ count colorless type  ." invented by: "  r@ .inventor @ count type
     rdrop ;
-    
+
 : show-languages-forward ( handle -- )
     0                       \ -- handle count
-    swap .root @  ['] show-language  walk> 
-    cr ." count: " . 
+    swap .root @  ['] show-language  walk>
+    cr ." count: " .
     cr ;
-        
+
 : show-languages-backward ( handle -- )
     0                       \ -- handle count
     swap .root @  ['] show-language  <walk
-    cr ." count: " . 
+    cr ." count: " .
     cr ;
-        
-: kill-language-attachments ( node -- )    
+
+: kill-language-attachments ( node -- )
     dup .inventor @  dealloc
     kill-key ;
-    
-: copy-language-attachments ( src dst -- )    
+
+: copy-language-attachments ( src dst -- )
     over .inventor @  hstr
     over .inventor !
     copy-key ;
 
-        
+
 \ ******
 \ ****** The following defines the association itself (the handle).
 \ ******
 
 association
-constant languages          \ describes a set of programming languages    
+constant languages          \ describes a set of programming languages
 
 : init-languages ( record -- record )
     >r
     ['] compare  ['] kill-language-attachments  ['] copy-language-attachments
     r> init-association ;
-    
-: new-languages ( -- record )    
+
+: new-languages ( -- record )
     languages alloc
     init-languages ;
 
-        
+
 \ ******
 \ ****** The following filters one association into another, including everything that matches a particular inventor.
 \ ******
@@ -1470,9 +1470,9 @@ constant languages          \ describes a set of programming languages
     inventor count  node .inventor @ count  compare  A=B = if
         node handle dup-element  new-handle insert  then
     inventor handle new-handle ;
-    
-: filter-inventor ( inventor handle -- new-handle )    
-    dup similar-association                             \ -- inventor handle new-handle 
+
+: filter-inventor ( inventor handle -- new-handle )
+    dup similar-association                             \ -- inventor handle new-handle
     over .root @  ['] <filter-inventor>  walk>          \ -- inventor handle new-handle
     nip nip ;
 
@@ -1480,8 +1480,8 @@ constant languages          \ describes a set of programming languages
 \ ****** The following is a demonstration with some sample data.
 \ ******
 
-    
-new-languages 
+
+new-languages
     c" Moore, Chuck"                c" Forth     "      new-language  over insert
     c" Ichiah, Jean"                c" Ada       "      new-language  over insert
     c" Wirth, Niklaus"              c" Pascal    "      new-language  over insert
@@ -1496,16 +1496,16 @@ new-languages
     c" Wirth, Niklaus"              c" Modula-2  "      new-language  over insert
     c" Ritchie, Dennis"             c" C         "      new-language  over insert
     c" Stroustrup, Bjarne"          c" C++       "      new-language  over insert
-constant some-languages    
+constant some-languages
 
-    
+
 cr .( everything in SOME-LANGUAGES ordered forward: )
-    
+
 some-languages show-languages-forward
 
 
 cr .( everything in SOME-LANGUAGES ordered backward: )
-    
+
 some-languages show-languages-backward
 
 
@@ -1518,19 +1518,19 @@ cr .( everything in SOME-LANGUAGES within 'F' and 'L': )
 
 c" F"  c" L"  some-languages  filter within                 dup show-languages-forward  kill-association
 
-    
+
 cr .( everything in SOME-LANGUAGES not within 'F' and 'L': )
 
 c" F"  c" L"  some-languages  filter without                dup show-languages-forward  kill-association
 
 
-some-languages kill-association    
+some-languages kill-association
 
 ```
 
 {{out}}
 <pre style="height:30ex;overflow:scroll">
-everything in SOME-LANGUAGES ordered forward: 
+everything in SOME-LANGUAGES ordered forward:
 Ada       invented by: Ichiah, Jean
 C         invented by: Ritchie, Dennis
 C++       invented by: Stroustrup, Bjarne
@@ -1544,9 +1544,9 @@ Oberon    invented by: Wirth, Niklaus
 Pascal    invented by: Wirth, Niklaus
 Python    invented by: van Rossum, Guido
 Ruby      invented by: Matsumoto, Yukihiro
-count: 13 
+count: 13
 
-everything in SOME-LANGUAGES ordered backward: 
+everything in SOME-LANGUAGES ordered backward:
 Ruby      invented by: Matsumoto, Yukihiro
 Python    invented by: van Rossum, Guido
 Pascal    invented by: Wirth, Niklaus
@@ -1560,21 +1560,21 @@ Factor    invented by: Pestov, Slava
 C++       invented by: Stroustrup, Bjarne
 C         invented by: Ritchie, Dennis
 Ada       invented by: Ichiah, Jean
-count: 13 
+count: 13
 
-everything in SOME-LANGUAGES invented by Wirth: 
+everything in SOME-LANGUAGES invented by Wirth:
 Modula-2  invented by: Wirth, Niklaus
 Oberon    invented by: Wirth, Niklaus
 Pascal    invented by: Wirth, Niklaus
-count: 3 
+count: 3
 
-everything in SOME-LANGUAGES within 'F' and 'L': 
+everything in SOME-LANGUAGES within 'F' and 'L':
 Factor    invented by: Pestov, Slava
 Forth     invented by: Moore, Chuck
 Java      invented by: Gosling, James
-count: 3 
+count: 3
 
-everything in SOME-LANGUAGES not within 'F' and 'L': 
+everything in SOME-LANGUAGES not within 'F' and 'L':
 Ada       invented by: Ichiah, Jean
 C         invented by: Ritchie, Dennis
 C++       invented by: Stroustrup, Bjarne
@@ -1585,7 +1585,7 @@ Oberon    invented by: Wirth, Niklaus
 Pascal    invented by: Wirth, Niklaus
 Python    invented by: van Rossum, Guido
 Ruby      invented by: Matsumoto, Yukihiro
-count: 10 
+count: 10
 
 ```
 
@@ -1599,7 +1599,7 @@ program AssociativeArrayIteration;
 {$mode delphi}{$ifdef windows}{$apptype console}{$endif}
 uses Generics.Collections;
 
-type 
+type
   TlDictionary =  TDictionary<string, Integer>;
   TlPair = TPair<string,integer>;
 
@@ -1651,7 +1651,7 @@ Value: 15
 Public Sub Main()
 Dim cList As Collection = ["2": "quick", "4": "fox", "1": "The", "9": "dog", "7": "the", "5": "jumped", "3": "brown", "6": "over", "8": "lazy"]
 Dim siCount As Short
-Dim sTemp As String 
+Dim sTemp As String
 
 For Each sTemp In cList
   Print cList.key & "=" & sTemp;;
@@ -1670,7 +1670,7 @@ Output:
 
 ```txt
 
-2=quick 4=fox 1=The 9=dog 7=the 5=jumped 3=brown 6=over 8=lazy 
+2=quick 4=fox 1=The 9=dog 7=the 5=jumped 3=brown 6=over 8=lazy
 The quick brown fox jumped over the lazy dog
 
 ```
@@ -1773,7 +1773,7 @@ value = 31
 Solution:
 
 ```groovy
-def map = [lastName: "Anderson", firstName: "Thomas", nickname: "Neo", age: 24, address: "everywhere"] 
+def map = [lastName: "Anderson", firstName: "Thomas", nickname: "Neo", age: 24, address: "everywhere"]
 
 println "Entries:"
 map.each { println it }
@@ -1914,7 +1914,7 @@ myDict := Map with(
 myDict foreach( key, value,
     writeln("key = ", key, ", value = ", value)
 )
- 
+
 // iterating over keys:
 myDict keys foreach( key,
     writeln("key = ", key)
@@ -1939,19 +1939,19 @@ Note that all J operations either iterate over the items of an array or can be m
 
 Using the J example from [[Creating an Associative Array]]...
 
-Keys  
+Keys
 ```J
 nl__example 0
 ```
 
 
-Values 
+Values
 ```J
 get__example each nl__example 0
 ```
 
 
-Both keys and values 
+Both keys and values
 ```J
 (,&< get__example) each nl__example 0
 ```
@@ -2063,7 +2063,7 @@ In jq, there are several ways to iterate over compound structures:
 For the sake of brevity, therefore, in the following we will only illustrate the enumerative approach.
 
 With respect to associative arrays (i.e. JSON objects), the fundamental functions are:
- - keys -- for producing an array of the keys (sorted) 
+ - keys -- for producing an array of the keys (sorted)
  - .[]  -- for producing a stream of the values
 
 In jq > 1.4, keys_unsorted, for producing an array of the keys (in the order of creation), is also available.
@@ -2072,7 +2072,7 @@ In jq > 1.4, keys_unsorted, for producing an array of the keys (in the order of 
 def mydict: {"hello":13, "world": 31, "!": 71};
 
 # Iterating over the keys
-mydict | keys[] 
+mydict | keys[]
 # "!"
 # "hello"
 # "world"
@@ -2245,7 +2245,7 @@ value = 3
 
 //iterate over associative array
 //Lasso maps
-	local('aMap' = map('weight' = 112, 
+	local('aMap' = map('weight' = 112,
 					'height' = 45,
 					'name' = 'jason'))
 	' Map output: \n  '
@@ -2258,19 +2258,19 @@ value = 3
 	'\n'
 	' Map Keys: '+#aMap->keys->join(',')+'\n'
 	' Map values: '+#aMap->values->join(',')+'\n'
-	
+
 	//display using forEach
 	'\n'
 	' Use ForEach to iterate Map keys: \n'
 	#aMap->keys->forEach => {^
-		#1+'\n'	
+		#1+'\n'
 	^}
 	'\n'
 	' Use ForEach to iterate Map values: \n'
 	#aMap->values->forEach => {^
-		#1+'\n'	
+		#1+'\n'
 	^}
-	//the {^ ^} indicates that output should be printed (AutoCollect) , 
+	//the {^ ^} indicates that output should be printed (AutoCollect) ,
 	// if output is not desired, just { } is used
 
 ```
@@ -2288,8 +2288,8 @@ value = 3
 
 (let ((data '(#(key1 "foo") #(key2 "bar")))
       (hash (: dict from_list data)))
-  (: dict fold 
-    (lambda (key val accum) 
+  (: dict fold
+    (lambda (key val accum)
       (: io format '"~s: ~s~n" (list key val)))
     0
     hash))
@@ -2305,9 +2305,9 @@ value = 3
 
 (let ((data '(#(key1 "foo") #(key2 "bar")))
       (hash (: dict from_list data)))
-  (: lists map 
-    (lambda (key) 
-      (: io format '"~s~n" (list key))) 
+  (: lists map
+    (lambda (key)
+      (: io format '"~s~n" (list key)))
     (: dict fetch_keys hash)))
 
 ```
@@ -2498,9 +2498,9 @@ Module checkit {
             }
       }
       \\ sort results from lower product to greater product (3+2+1, 6 prints only)
-      N=Each(M, 1, -1)  
+      N=Each(M, 1, -1)
       While N {
-            N1=Each(M, N^+1, -1) 
+            N1=Each(M, N^+1, -1)
             While N1 {
                   Print format$("{0}*{1}={2}", Eval(N1), Eval(N), Eval(N1)*Eval(N))
             }
@@ -2510,7 +2510,7 @@ Module checkit {
       \\ print only 2 values. While block ends when one iterator finish
       While N, N1 {
             Print Eval(N1)*Eval(N)
-      }         
+      }
 }
 Checkit
 
@@ -2587,7 +2587,7 @@ Iterate through indices when indices are all simple expressions:
 ```Maple
 
 > T := table( [ "A" = 1, "B" = 2, "C" = 3, "D" = 4 ] );
-> for i in indices( T, nolist ) do print(i ) end:  
+> for i in indices( T, nolist ) do print(i ) end:
                                   "A"
 
                                   "B"
@@ -2603,8 +2603,8 @@ Iterate through indices when indices may be expression sequences:
 
 ```Maple
 
-> T := table( [ "a" = 1, "b" = 2, ("c","d") = 3 ] ):        
-> for i in indices( T ) do print( i, T[ op( i ) ] ) end:    
+> T := table( [ "a" = 1, "b" = 2, ("c","d") = 3 ] ):
+> for i in indices( T ) do print( i, T[ op( i ) ] ) end:
                                 ["a"], 1
 
                                 ["b"], 2
@@ -2618,7 +2618,7 @@ Return all index / entry pairs as equations:
 
 ```Maple
 
-> for i in indices( T, pairs ) do print( i) end:       
+> for i in indices( T, pairs ) do print( i) end:
                                 "a" = 1
 
                                 "b" = 2
@@ -2631,7 +2631,7 @@ Return all index / entry pairs as equations:
 
 ```Maple
 
-> for i in entries( T ) do print( i) end:       
+> for i in entries( T ) do print( i) end:
                                   [1]
 
                                   [3]
@@ -2657,29 +2657,29 @@ hashes[a]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-Associative arrays can be defined as structs in Matlab and Octave. 
+Associative arrays can be defined as structs in Matlab and Octave.
 
 
 ```Matlab
    keys = fieldnames(hash);
-   for k=1:length(keys), 
+   for k=1:length(keys),
         key = keys{k};
 	value = getfield(hash,key);        % get value of key
 	hash = setfield(hash,key,-value);  % set value of key
-   end; 
+   end;
 ```
 
 
-or 
+or
 
 
 ```Matlab
    keys = fieldnames(hash);
-   for k=1:length(keys), 
+   for k=1:length(keys),
         key = keys{k};
         value = hash.(key);     % get value of key
         hash.(key) = -value;    % set value of key
-   end; 
+   end;
 ```
 
 
@@ -2782,7 +2782,7 @@ t.add(4,"four")
 
 echo "t has " & $t.len & " elements"
 
-echo "has t key 4? " & $t.hasKey(4) 
+echo "has t key 4? " & $t.hasKey(4)
 echo "has t key 5? " & $t.hasKey(5)
 
 #iterate keys
@@ -2831,38 +2831,38 @@ IMPORT
 TYPE
   Key = STRING;
   Value = Boxed.LongInt;
-  
+
 VAR
   assocArray: Dictionary.Dictionary(Key,Value);
   iterK: Dictionary.IterKeys(Key,Value);
   iterV: Dictionary.IterValues(Key,Value);
   aux: Value;
   k: Key;
-  
+
 BEGIN
   assocArray := NEW(Dictionary.Dictionary(Key,Value));
   assocArray.Set("ten",NEW(Value,10));
   assocArray.Set("eleven",NEW(Value,11));
-  
+
   aux := assocArray.Get("ten");
   Out.LongInt(aux.value,0);Out.Ln;
   aux := assocArray.Get("eleven");
   Out.LongInt(aux.value,0);Out.Ln;Out.Ln;
-  
+
   (* Iterate keys *)
   iterK := assocArray.IterKeys();
   WHILE (iterK.Next(k)) DO
     Out.Object(k);Out.Ln
   END;
-  
+
   Out.Ln;
-  
+
   (* Iterate values *)
   iterV := assocArray.IterValues();
   WHILE (iterV.Next(aux)) DO
     Out.LongInt(aux.value,0);Out.Ln
   END
-  
+
 END AssociativeArray.
 
 ```
@@ -3214,7 +3214,7 @@ foreach my $val ( values %pairs ) {
 
 ```perl6
 my %pairs = hello => 13, world => 31, '!' => 71;
- 
+
 for %pairs.kv -> $k, $v {
     say "(k,v) = ($k, $v)";
 }
@@ -3569,7 +3569,7 @@ for value in myDict.values():
 R lacks a native representation of key-value pairs, but different structures allow named elements, which provide similar functionality.
 
 
-###  environment example 
+###  environment example
 
 
 
@@ -3601,7 +3601,7 @@ index=x, value=123
 
 
 
-###  vector example 
+###  vector example
 
 
 
@@ -3612,7 +3612,7 @@ index=x, value=123
 
 
 ```txt
-! 
+!
 3
 ```
 
@@ -3628,7 +3628,7 @@ index=x, value=123
 
 
 
-###  list example 
+###  list example
 
 
 
@@ -3819,17 +3819,17 @@ x.["!"] = 3;
 // to iterate over identifiers of a list one needs to use the function ''members''
 // the identifiers are returned as a lexicographically ordered string row-vector
 // here    ["!", "hello", "world"]
-for(i in members(x)) 
+for(i in members(x))
 { printf("%s %g\n", i,  x.[i]); }
 
 // occasionally one needs to check if there exists member of a list
 y = members(x);  // y contains ["!", "hello", "world"]
 clear(x.["!"]);  // remove member with identifier "!" from the list "x"
-for(i in y) 
+for(i in y)
 { printf("%s %g\n", i,  x.[i]); }  // this produces error because x.["!"] does not exist
 
-for(i in y) 
-{ 
+for(i in y)
+{
   if (exist(x.[i]))
   { printf("%s %g\n", i,  x.[i]); }  // we print a member of the list "x" only if it exists
 }
@@ -3908,9 +3908,9 @@ fn main() {
     olympic_medals.insert("Great Britain", (246, 276, 284));
     olympic_medals.insert("Germany", (252, 260, 270));
     for (country, medals) in olympic_medals {
-        println!("{} has had {} gold medals, {} silver medals, and {} bronze medals", 
+        println!("{} has had {} gold medals, {} silver medals, and {} bronze medals",
                country, medals.0, medals.1, medals.2);
-            
+
     }
 }
 ```
@@ -3938,7 +3938,7 @@ val m = Map("Amsterdam" -> "Netherlands", "New York" -> "USA", "Heemstede" -> "N
 println(f"Key->Value: ${m.mkString(", ")}%s")
 println(f"Pairs: ${m.toList.mkString(", ")}%s")
 println(f"Keys: ${m.keys.mkString(", ")}%s")
-println(f"Values: ${m.values.mkString(", ")}%s")   
+println(f"Values: ${m.values.mkString(", ")}%s")
 println(f"Unique values: ${m.values.toSet.mkString(", ")}%s")
 ```
 {{out}}
@@ -4140,7 +4140,7 @@ pairs do: [| :value |
 
 ```smalltalk
 |pairs|
-pairs := Dictionary 
+pairs := Dictionary
 	    from: { 'hello' -> 1. 'world' -> 2. '!' -> 3. 'another!' -> 3 }.
 
 "iterate over keys and values"
@@ -4308,7 +4308,7 @@ foreach value [dict values $myDict] {
 
 
 ```txt
-$ txr hash.tl 
+$ txr hash.tl
 c -> 3
 b -> 2
 a -> 1
@@ -4365,15 +4365,15 @@ printf '%s => %s\n' ${(kv)a}
 using Gee;
 
 void main(){
-    // declare HashMap                                                          
+    // declare HashMap
     var map = new HashMap<string, double?>();
 
-    // set 3 entries                                                            
+    // set 3 entries
     map["pi"] = 3.14;
     map["e"] = 2.72;
     map["golden"] = 1.62;
 
-    // iterate over (key,value) pair                                            
+    // iterate over (key,value) pair
     foreach (var elem in map.entries){
         string name = elem.key;
         double num = elem.value;
@@ -4381,12 +4381,12 @@ void main(){
 	stdout.printf("%s,%f\n", name, num);
     }
 
-    // iterate over keys                                                        
+    // iterate over keys
     foreach (string key in map.keys){
 	stdout.printf("%s\n", key);
     }
 
-    // iterate over values                                                      
+    // iterate over values
     foreach (double num in map.values){
 	stdout.printf("%f\n", num);
     }
@@ -4518,19 +4518,19 @@ endfor
 {{Out}}
 
 ```txt
-Iterating over key-value pairs                                                  
-oranges  =>  25                                                                 
-pears  =>  4                                                                    
-apples  =>  11                                                                  
-                                                                                
-Iterating over keys                                                             
-oranges                                                                         
-pears                                                                           
-apples                                                                          
-                                                                                
-Iterating over values                                                           
-25                                                                              
-4                                                                               
+Iterating over key-value pairs
+oranges  =>  25
+pears  =>  4
+apples  =>  11
+
+Iterating over keys
+oranges
+pears
+apples
+
+Iterating over values
+25
+4
 11
 ```
 
@@ -4618,7 +4618,7 @@ A:alpha; B:beta; C:gamma; D:delta;
 
 
 {{omit from|Applesoft BASIC}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Commodore BASIC}}
 {{omit from|Integer BASIC}}
 {{omit from|TI-89 BASIC}} <!-- No builtin assoc arrays, would not be enlightening to show a defn -->

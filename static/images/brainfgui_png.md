@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{image-program-output}}Screenshot of [[output of task::Execute Brain****|Brainf*** interpreter]] (GUI)
+{{image-program-output}}Screenshot of [[output of task::Execute Brainfuck|Brainfuck interpreter]] (GUI)

@@ -12,14 +12,14 @@ tags = []
 
 {{task}}
 
-A [[wp:Quine_%28computing%29|Quine]] is a self-referential program that can, 
-without any external access, output its own source. 
+A [[wp:Quine_%28computing%29|Quine]] is a self-referential program that can,
+without any external access, output its own source.
 
-It is named after the [[wp:Willard_Van_Orman_Quine|philosopher and logician]] 
-who studied self-reference and quoting in natural language, 
+It is named after the [[wp:Willard_Van_Orman_Quine|philosopher and logician]]
+who studied self-reference and quoting in natural language,
 as for example in the paradox "'Yields falsehood when preceded by its quotation' yields falsehood when preceded by its quotation."
 
-"Source" has one of two meanings. It can refer to the text-based program source.  
+"Source" has one of two meanings. It can refer to the text-based program source.
 For languages in which program source is represented as a data structure, "source" may refer to the data structure: quines in these languages fall into two categories: programs which print a textual representation of themselves, or expressions which evaluate to a data structure which is equivalent to that expression.
 
 The usual way to code a Quine works similarly to this paradox: The program consists of two identical parts, once as plain code and once ''quoted'' in some way (for example, as a character string, or a literal data structure). The plain code then accesses the quoted code and prints it out twice, once unquoted and once with the proper quotation marks added. Often, the plain code and the quoted code have to be nested.
@@ -271,37 +271,37 @@ MsgBox % quine
 Another:
 
 ```AutoHotkey
-D(n, s) 
-{ 
-   global 
-   Loop %n% 
-   { 
-      l := %s%%A_Index% 
-      If l = # 
-         l := "script =" . nl . "( %" . nl . script . nl . ")" 
-      FileAppend %l%%nl%, %A_ScriptDir%\Q.txt 
-   } 
-} 
-nl := Chr(13) . Chr(10) 
-script = 
-( % 
-D(n, s) 
-{ 
-   global 
-   Loop %n% 
-   { 
-      l := %s%%A_Index% 
-      If l = # 
-         l := "script =" . nl . "( %" . nl . script . nl . ")" 
-      FileAppend %l%%nl%, %A_ScriptDir%\Q.txt 
-   } 
-} 
-nl := Chr(13) . Chr(10) 
-# 
-StringSplit q, script, %nl% 
-D(q0, "q") 
-) 
-StringSplit q, script, %nl% 
+D(n, s)
+{
+   global
+   Loop %n%
+   {
+      l := %s%%A_Index%
+      If l = #
+         l := "script =" . nl . "( %" . nl . script . nl . ")"
+      FileAppend %l%%nl%, %A_ScriptDir%\Q.txt
+   }
+}
+nl := Chr(13) . Chr(10)
+script =
+( %
+D(n, s)
+{
+   global
+   Loop %n%
+   {
+      l := %s%%A_Index%
+      If l = #
+         l := "script =" . nl . "( %" . nl . script . nl . ")"
+      FileAppend %l%%nl%, %A_ScriptDir%\Q.txt
+   }
+}
+nl := Chr(13) . Chr(10)
+#
+StringSplit q, script, %nl%
+D(q0, "q")
+)
+StringSplit q, script, %nl%
 D(q0, "q")
 ```
 
@@ -309,13 +309,13 @@ Another:
 <div style="width:100%;overflow:scroll">
 
 ```AutoHotkey
-quote := Chr(34) 
-sep := Chr(36) 
-nl := Chr(13) . Chr(10) 
-script := "quote := Chr(34)$sep := Chr(36)$nl := Chr(13) . Chr(10)$script := #$s := script$StringReplace script, script, %sep%, %nl%, All$StringReplace script, script, #, %quote%%s%%quote%$FileAppend %script%, %A_ScriptDir%\Q.txt" 
-s := script 
-StringReplace script, script, %sep%, %nl%, All 
-StringReplace script, script, #, %quote%%s%%quote% 
+quote := Chr(34)
+sep := Chr(36)
+nl := Chr(13) . Chr(10)
+script := "quote := Chr(34)$sep := Chr(36)$nl := Chr(13) . Chr(10)$script := #$s := script$StringReplace script, script, %sep%, %nl%, All$StringReplace script, script, #, %quote%%s%%quote%$FileAppend %script%, %A_ScriptDir%\Q.txt"
+s := script
+StringReplace script, script, %sep%, %nl%, All
+StringReplace script, script, #, %quote%%s%%quote%
 FileAppend %script%, %A_ScriptDir%\Q.txt
 ```
 </div>
@@ -428,7 +428,7 @@ DATA ""
 ```qbasic
 ?SOURCE$;
 ```
- or more in line with the task description 
+ or more in line with the task description
 ```freebasic
 a$=SOURCE$:?a$;
 ```
@@ -650,7 +650,7 @@ quine$
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```bf
 ->+>+++>>+>++>+>+++>>+>++>>>+>+>+>++>+>>>>+++>+>>++>+>+++>>++>++>>+>>+>++>++>+>>>>+++>+>>>>++>++>>>>+>>++>+>+++>>>++>>++++++>>+>>++>
@@ -1243,7 +1243,7 @@ A rather long and unwieldy (although nicely formatted) BASIC quine that doesn't 
 180 FOR I=0 TO N
 190 : READ A(I)
 200 NEXT I
-210 FOR I=0 TO 14 
+210 FOR I=0 TO 14
 220 : PRINT MID$(STR$((I+1)*10),2);" DATA ";MID$(STR$(A(I*23)),2);
 230 : FOR J=1 TO 22
 240 :   K=I*23+J
@@ -1524,11 +1524,11 @@ In ASCII, character 39 is an apostrophe. When run, the last "print" is preceded 
 
 ### Older Fortran
 
-This reverts to fixed-format source form, relying on the format code / to signify a new line so that ASCII control characters need not be represented. Code T''n'' means "tab" to column ''n'' - no ASCII tab characters are involved. And difficulty with quoted strings is avoided by using the Hollerith form, ''n''H, signifying that ''n'' characters follow the H as a text literal. 
+This reverts to fixed-format source form, relying on the format code / to signify a new line so that ASCII control characters need not be represented. Code T''n'' means "tab" to column ''n'' - no ASCII tab characters are involved. And difficulty with quoted strings is avoided by using the Hollerith form, ''n''H, signifying that ''n'' characters follow the H as a text literal.
 ```Fortran
-      WRITE(6,100)                                    
-      STOP                                            
-  100 FORMAT(6X,12HWRITE(6,100)/6X,4HSTOP/            
+      WRITE(6,100)
+      STOP
+  100 FORMAT(6X,12HWRITE(6,100)/6X,4HSTOP/
      .42H  100 FORMAT(6X,12HWRITE(6,100)/6X,4HSTOP/          ,2(/5X,67H.
      .42H  100 FORMAT(6X,12HWRITE(6,100)/6X,4HSTOP/          ,2(/5X,67H.
      .)/T48,2H)/T1,5X2(21H.)/T48,2H)/T1,5X2(21H)/
@@ -1540,14 +1540,14 @@ And indeed, exactly that opaque gibberish is written, with leading spaces to col
 
 
 ### Nostalgia note
- 
+
 I remember when this challenge came up, way back in 1966 --- FORTRAN was the game in town, and there existed a feature (well, really, a bug) that allowed an IBM FORTRAN program under IBM's OS/PCP/MFT/MVT [no HASP] to '''REWIND''' the default input stream (which were punched cards, and ''REWIND'' of course, was only intended for reel-to-reel tapes), which essentially then allowed the program to read it's own source, and then it was a simple matter to PRINT it.
 
 The current CONTROL DATA FORTRAN had a feature that allowed the FORTRAN programmer to WRITE and then re-read I/O (the feature could've been called the REREAD statement, the WRITE may have been to device 0). If one didn't WRITE, just REREAD, the file stream then pointed to the source just read, thus allowing access to the FORTRAN program's source.
 
 This challenge was extended to other languages, the concept was to print the actual source of the program, not use a recursive (or some derivative) method. There were some very clever (and obtuse and/or obscure) methods presented. A lot of operating systems, being in their infancy, had loopholes that allowed programmers to access files in their own job stream.
 
-Another challenge at that time was to write a multi-language program (with NO changes) that would compile (or assemble) in various languages (without errors, of course) and produce the identical output. 
+Another challenge at that time was to write a multi-language program (with NO changes) that would compile (or assemble) in various languages (without errors, of course) and produce the identical output.
 There were some very creative uses of "comments". --- Gerard Schildberger.
 
 
@@ -1844,7 +1844,7 @@ Technically, the empty program in J is a quine, as it has an empty result. For e
 
 
 ```J
-   
+
 
 ```
 
@@ -1892,7 +1892,7 @@ class S{public static void main(String[]a){String p="class S{public static void 
 
 
 
-###  Using eval 
+###  Using eval
 
 {{works with|SpiderMonkey}} 1.7.0
 This version doesn't use arguments.callee.toString() to return the string representation of itself. Instead, it relies on eval().
@@ -1903,7 +1903,7 @@ var code='var q=String.fromCharCode(39);print("var code="+q+code+q+";eval(code)"
 
 
 
-###  Replacing String 
+###  Replacing String
 
 
 ```JavaScript
@@ -1936,9 +1936,9 @@ var a=function () {var b="var a="+a.toString()+"\;a()";alert(b)};a()
 
 ```javascript
 (function f() {
- 
+
     return '(' + f.toString() + ')();';
-    
+
 })();
 ```
 
@@ -1950,7 +1950,7 @@ var a=function () {var b="var a="+a.toString()+"\;a()";alert(b)};a()
 (function f() {
 
     return '(' + f.toString() + ')();';
-    
+
 })();
 ```
 
@@ -3006,7 +3006,7 @@ or
  :)
 
 =={{header|MATLAB}} / {{header|Octave}}==
-This script runs either from an m-file or directly from workspace (author: J. C. Lucero): 
+This script runs either from an m-file or directly from workspace (author: J. C. Lucero):
 
 ```Matlab
 x='{>\(y>(((-y-(((<(^<ejtq)\{-y.2^*<';z=['x=''',x,''';'];disp([z,x-1]);
@@ -3015,15 +3015,15 @@ x='{>\(y>(((-y-(((<(^<ejtq)\{-y.2^*<';z=['x=''',x,''';'];disp([z,x-1]);
 
 ----
 
-The example works for functions and scripts stored as m-files. It does not work for functions defined only in the workspace.  
+The example works for functions and scripts stored as m-files. It does not work for functions defined only in the workspace.
 
 ```Matlab
   function quine()
     fid = fopen([mfilename,'.m']);
     while ~feof(fid)
       printf('%s\n',fgetl(fid));
-    end; 
-    fclose(fid); 	
+    end;
+    fclose(fid);
   end;
 ```
 
@@ -3091,7 +3091,7 @@ Both of the routines will work, but the second has the minor advantage of only u
 
 ## NASM
 
-Compiles to the source code when -f raw 
+Compiles to the source code when -f raw
 
 ```ASM
 %define a "%define "
@@ -3343,9 +3343,9 @@ r=";say'r=.'r'.'r~changestr(.,'22'x,2)";say'r="'r'"'r~changestr(.,'22'x,2)
 
 
 ===Non-Cheating, without INTERPRET, with unprintable characters===
-Note:   This version will not work correctly on an ASCII machine   (where   '07'x   is the   '''bell'''   control code), 
+Note:   This version will not work correctly on an ASCII machine   (where   '07'x   is the   '''bell'''   control code),
 
-:: it will only work correctly on an EBCDIC machine   (where '07'x is the   '''del'''   control code). 
+:: it will only work correctly on an EBCDIC machine   (where '07'x is the   '''del'''   control code).
 
 
 The two unprintable characters are '07'x.  Somewhat difficult to enter, but still a perfectly valid ooRexx program (and Quine).
@@ -3595,7 +3595,7 @@ constant c="constant c=%sprintf(1,c,{34&c&34})"printf(1,c,{34&c&34})
 <?php $p = '<?php $p = %c%s%c; printf($p,39,$p,39); ?>
 '; printf($p,39,$p,39); ?>
 ```
- 
+
 Note the terminating newline.
 
 Technically, anything outside of <code><?php </code>, <code>&lt;script language="php"></code>, <code><?</code> (deprecated) or <code><%</code> (deprecated) tags is automatically echoed by PHP allowing for easier inclusion of HTML in PHP documents. So the following is a quine:
@@ -3642,7 +3642,7 @@ This assumes the filename of the source file to be ‘q.tex’, and the banner f
 
 ```plainTeX
 This is TeX, Version 3.1415926 (no format preloaded)
-(q.tex \output {\message {\output \the \output \end }\batchmode }\end 
+(q.tex \output {\message {\output \the \output \end }\batchmode }\end
 ```
 
 
@@ -3803,7 +3803,7 @@ function Quine { $MyInvocation.MyCommand.Definition }
 One method to produce a quine is to read the data structures that hold the source code:
 
 ```Prolog
-quine :- 
+quine :-
 	listing(quine).
 ```
 
@@ -3894,12 +3894,12 @@ maskCode(10, 35).
 maskCode(X, X).
 
 % Encodes dangerous characters in a string
-encode(D, S) :- 
+encode(D, S) :-
   string_codes(D, DC),
   maplist(maskCode, DC, SC),
   string_codes(S, SC).
 
-decode(S, D) :- 
+decode(S, D) :-
   string_codes(S, SC),
   maplist(maskCode, DC, SC),
   string_codes(D, DC).
@@ -3915,7 +3915,7 @@ mkStringList([H|T], Res) :-
   mkStringList(T, TailRes),
   atomics_to_string(["  \"", H, "\",\n", TailRes], Res).
 
-quine(Q) :- 
+quine(Q) :-
   before(BeforeEncoded),
   after(AfterEncoded),
   maplist(decode, BeforeEncoded, BeforeDecoded),
@@ -3926,8 +3926,8 @@ quine(Q) :-
   mkStringList(AfterEncoded, AfterData),
   Center = "\n].\n\nafter(Lines) :- Lines = [\n",
   atomic_list_concat([
-     B, "\n", BeforeData, 
-     Center, 
+     B, "\n", BeforeData,
+     Center,
      AfterData, "\n", A, "\n"
   ], Q).
 
@@ -3953,12 +3953,12 @@ s$="s$= : Debug Mid(s$,1,3)+Chr(34)+s$+Chr(34)+Mid(s$,4,100)" : Debug Mid(s$,1,3
 
 {{works with|Python|2.x and 3.x}}
 A simple and straightforward quine. Character chr(34) is a double quote, and chr(10) is a new line (Author: J. C. Lucero).
- 
+
 
 ```python
 
 w = "print('w = ' + chr(34) + w + chr(34) + chr(10) + w)"
-print('w = ' + chr(34) + w + chr(34) + chr(10) + w) 
+print('w = ' + chr(34) + w + chr(34) + chr(10) + w)
 
 ```
 
@@ -4021,7 +4021,7 @@ and run the file!''
 bash example command:
 
 ```bash
-$ python print\(__file__\[\:-3\]\).py 
+$ python print\(__file__\[\:-3\]\).py
 print(__file__[:-3])
 
 ```
@@ -4031,21 +4031,21 @@ Python 3, from same thread at same forum, created by wewhgyih, tested by Lambert
 
 ```bash
 
-$ cat print\(__file__\) 
+$ cat print\(__file__\)
 print(__file__)
-$ python print\(__file__\) 
+$ python print\(__file__\)
 print(__file__)
 
 ```
 
 I saw this clever solution somewhere some time ago (dont' remember the source.)  Assuming the input does not have to be a correct program...
-<lang>$ cat reproducing.py 
+<lang>$ cat reproducing.py
   File "reproducing.py", line 1
     File "reproducing.py", line 1
     ^
 IndentationError: unexpected indent
 
-$ python reproducing.py 
+$ python reproducing.py
   File "reproducing.py", line 1
     File "reproducing.py", line 1
     ^
@@ -4219,7 +4219,7 @@ rebol [] q: [print ["rebol [] q:" mold q "do q"]] do q
 
 A version that doesn't use <code>sourceline()</code> which is kind of a cheat.
 
----But it   ''is''   allowed (see the 2<sup>nd</sup> bullet point in the task's preamble).  
+---But it   ''is''   allowed (see the 2<sup>nd</sup> bullet point in the task's preamble).
 
 
 
@@ -4343,7 +4343,7 @@ f.close
 ```
 
 
-or 
+or
 
 ```ruby
 
@@ -4640,7 +4640,7 @@ PRINT FORMAT$(Q$,CHR$(34)+Q$+CHR$(34)+CHR$(10))
 
 ## SPL
 
-There is a [https://bitbucket.org/FlorianPommerening/splquine bootstrapper for a Quine in SPL]. The actual Quine is 
+There is a [https://bitbucket.org/FlorianPommerening/splquine bootstrapper for a Quine in SPL]. The actual Quine is
 quite large (3.1 million to 180 thousand lines in this case).
 
 
@@ -4681,7 +4681,7 @@ quite large (3.1 million to 180 thousand lines in this case).
 
 ## Tcl
 
-There are a number of excellent quines in the Tcl wiki[http://wiki.tcl.tk/730], the most useful for real-world programming probably the one that uses <tt>[info]</tt> to read the source of the currently running script. But that would be like opening its own source file. 
+There are a number of excellent quines in the Tcl wiki[http://wiki.tcl.tk/730], the most useful for real-world programming probably the one that uses <tt>[info]</tt> to read the source of the currently running script. But that would be like opening its own source file.
 
 The most straightforward one in the spirit of Quine is probably the one that uses <tt>[join]</tt>, which appends the elements in the list given in its first argument with a "joining string" which is given in the second element of the list. For example the three-element list <tt>{} A B</tt> (the first element of which is an empty list):
 
@@ -4912,8 +4912,8 @@ End Sub
 
 ## Verbexx
 
-Note: The input source code would normally include a Byte Order Mark (BOM) at the start.  The output written to the  
-console does not contain a BOM -- visually, the output looks the same as the input. 
+Note: The input source code would normally include a Byte Order Mark (BOM) at the start.  The output written to the
+console does not contain a BOM -- visually, the output looks the same as the input.
 
 ```Verbexx
 @VAR s = «@SAY (@FORMAT fmt:"@VAR s = %c%s%c;" 0x00AB s 0x00BB) s no_nl:;»; @SAY (@FORMAT fmt:"@VAR s = %c%s%c;" 0x00AB s 0x00BB) s no_nl:;
@@ -4925,11 +4925,11 @@ console does not contain a BOM -- visually, the output looks the same as the inp
 
 
 ```VHDL
-LIBRARY ieee; USE std.TEXTIO.all;                                               
-entity quine is end entity quine;                                               
-architecture beh of quine is                                                    
-  type str_array is array(1 to 20) of string(1 to 80);                          
-  constant src : str_array := (                                                 
+LIBRARY ieee; USE std.TEXTIO.all;
+entity quine is end entity quine;
+architecture beh of quine is
+  type str_array is array(1 to 20) of string(1 to 80);
+  constant src : str_array := (
     "LIBRARY ieee; USE std.TEXTIO.all;                                               ",
     "entity quine is end entity quine;                                               ",
     "architecture beh of quine is                                                    ",
@@ -4950,20 +4950,20 @@ architecture beh of quine is
     "    wait;                                                                       ",
     "  end process;                                                                  ",
     "end architecture beh;                                                           ");
-begin                                                                           
-  process variable l : line; begin                                              
-    for i in 1 to 5 loop write(l, src(i)); writeline(OUTPUT, l); end loop;      
-    for i in 1 to 20 loop                                                       
-      write(l, character'val(32)&character'val(32));                            
-      write(l, character'val(32)&character'val(32));                            
+begin
+  process variable l : line; begin
+    for i in 1 to 5 loop write(l, src(i)); writeline(OUTPUT, l); end loop;
+    for i in 1 to 20 loop
+      write(l, character'val(32)&character'val(32));
+      write(l, character'val(32)&character'val(32));
       write(l, character'val(34)); write(l, src(i)); write(l,character'val(34));
-      if i /= 20 then write(l, character'val(44));                              
-      else            write(l, character'val(41)&character'val(59)); end if;    
-      writeline(OUTPUT, l);                                                     
-    end loop;                                                                   
-    for i in 6 to 20 loop write(l, src(i)); writeline(OUTPUT, l); end loop;     
-    wait;                                                                       
-  end process;                                                                  
+      if i /= 20 then write(l, character'val(44));
+      else            write(l, character'val(41)&character'val(59)); end if;
+      writeline(OUTPUT, l);
+    end loop;
+    for i in 6 to 20 loop write(l, src(i)); writeline(OUTPUT, l); end loop;
+    wait;
+  end process;
 end architecture beh;
 ```
 

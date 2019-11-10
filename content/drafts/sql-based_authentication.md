@@ -83,12 +83,12 @@ bool create_user(const char *username, const char *password)
   char pass_md5[MD5_DIGEST_LENGTH*2 + 1];
   char user[USERNAMELIMIT*2 + 1];
   char *q = NULL;
-  static const char query[] = 
+  static const char query[] =
     "INSERT INTO users "
     "(username,pass_salt,pass_md5) "
     "VALUES ('%s', X'%s', X'%s')";
   static const size_t qlen = sizeof query;
-  
+
 
   for(i=0; username[i] != '\0' && i < USERNAMELIMIT; i++) ;
   if ( username[i] != '\0' ) return false;
@@ -100,11 +100,11 @@ bool create_user(const char *username, const char *password)
   for(i=0; i < SALTBYTE; i++)
   {
     // this skews the distribution but it is lazyness-compliant;)
-    binarysalt[i] = rand()%256; 
+    binarysalt[i] = rand()%256;
   }
 
   (void)mysql_hex_string(salt, binarysalt, SALTBYTE);
-  
+
   for(i=0; i < SALTBYTE; i++) saltpass[i] = binarysalt[i];
   strcpy(saltpass+SALTBYTE, password);
   (void)MD5(saltpass, SALTBYTE + strlen(password), md5hash);
@@ -138,7 +138,7 @@ bool authenticate_user(const char *username, const char *password)
   bool authok = false;
   char *q = NULL;
   int i;
-  static const char query[] = 
+  static const char query[] =
     "SELECT * FROM users WHERE username='%s'";
   static const size_t qlen = sizeof query;
 
@@ -148,7 +148,7 @@ bool authenticate_user(const char *username, const char *password)
   for(i=0; password[i] != '\0' && i < PASSWORDLIMIT; i++) ;
   if ( password[i] != '\0' ) return false;
 
-  (void)mysql_real_escape_string(mysql, user, username, strlen(username));  
+  (void)mysql_real_escape_string(mysql, user, username, strlen(username));
 
   q = malloc(qlen + strlen(user) + 1);
   if (q == NULL) return false;
@@ -199,7 +199,7 @@ int main(int argc, char **argv)
   {
     if ( strcmp(argv[1], "add") == 0 )
     {
-      if (create_user(argv[2], argv[3])) 
+      if (create_user(argv[2], argv[3]))
 	printf("created\n");
     } else if ( strcmp(argv[1], "auth") == 0 ) {
       if (authenticate_user(argv[2], argv[3]))
@@ -264,7 +264,7 @@ namespace rosettaMySQL
 }
 ```
 
-Class for creating and authenticating users. 
+Class for creating and authenticating users.
 
 ```csharp
 using MySql.Data.MySqlClient;
@@ -286,7 +286,7 @@ namespace rosettaMySQL
             {
                 var salt = Hasher.GenSalt();
                 var hash = Hasher.Hash(salt, password);
-                var sql = $"INSERT INTO users " + 
+                var sql = $"INSERT INTO users " +
                           $"(username, pass_salt, pass_md5) " +
                           $"VALUES ('{username}','{salt}','{hash}')";
                 using (var command = new MySqlCommand(sql, _connection))
@@ -334,7 +334,7 @@ namespace rosettaMySQL
 }
 ```
 
-Class with main method and database connection method. 
+Class with main method and database connection method.
 
 ```csharp
 using System;
@@ -696,7 +696,7 @@ Note this returns true if password provided authenticates as correct, false othe
 """
 function authenticate_user(dbh, username, pw)
     mysql_stmt_prepare(dbh, "SELECT pass_salt, pass_md5 FROM users WHERE username = ?;")
-    pass_salt, pass_md5 = mysql_execute(dbh, [MYSQL_TYPE_VARCHAR], [username], opformat=MYSQL_TUPLES)[1]   
+    pass_salt, pass_md5 = mysql_execute(dbh, [MYSQL_TYPE_VARCHAR], [username], opformat=MYSQL_TUPLES)[1]
     pass_md5 == digest("md5", pass_salt * username)
 end
 
@@ -828,28 +828,28 @@ fun main(args: Array<String>) {
 
 ```Mathematica
 Needs["DatabaseLink`"];
-connectDb[dbUser_, dbPass_, dbUrl_] := 
-  OpenSQLConnection[JDBC["mysql", dbUrl], "Username" -> dbUser, 
+connectDb[dbUser_, dbPass_, dbUrl_] :=
+  OpenSQLConnection[JDBC["mysql", dbUrl], "Username" -> dbUser,
    "Password" -> dbPass];
 createUser::nameTaken = "The username '`1`' is already taken.";
-createUser[dbUser_, dbPass_, dbUrl_, user_, pass_] := 
-  Module[{db = connectDb[dbUser, dbPass, dbUrl], 
-    salt = RandomChoice[Range[32, 127], 16]}, 
-   If[MemberQ[SQLSelect[db, "users", {"username"}], {user}], 
-    Message[createUser::nameTaken, user]; Return[]]; 
-   SQLInsert[db, 
-    "users", {"username", "pass_salt", "pass_md5"}, {user, 
-     SQLBinary[salt], 
+createUser[dbUser_, dbPass_, dbUrl_, user_, pass_] :=
+  Module[{db = connectDb[dbUser, dbPass, dbUrl],
+    salt = RandomChoice[Range[32, 127], 16]},
+   If[MemberQ[SQLSelect[db, "users", {"username"}], {user}],
+    Message[createUser::nameTaken, user]; Return[]];
+   SQLInsert[db,
+    "users", {"username", "pass_salt", "pass_md5"}, {user,
+     SQLBinary[salt],
      SQLBinary[
       IntegerDigits[Hash[FromCharacterCode[salt] <> pass, "MD5"], 256,
         16]]}]; CloseSQLConnection[db];];
-authenticateUser[dbUser_, dbPass_, dbUrl_, user_, pass_] := 
-  Module[{db = connectDb[dbUser, dbPass, dbUrl], rtn}, 
-   rtn = MemberQ[SQLSelect[db, "users", {"username"}], {user}] && 
-     Module[{data = 
-        SQLSelect[db, "users", {"username", "pass_salt", "pass_md5"}, 
-          SQLColumn["username"] == user][[1]]}, 
-      Hash[FromCharacterCode[data[[2, 1]]] <> pass, "MD5"] == 
+authenticateUser[dbUser_, dbPass_, dbUrl_, user_, pass_] :=
+  Module[{db = connectDb[dbUser, dbPass, dbUrl], rtn},
+   rtn = MemberQ[SQLSelect[db, "users", {"username"}], {user}] &&
+     Module[{data =
+        SQLSelect[db, "users", {"username", "pass_salt", "pass_md5"},
+          SQLColumn["username"] == user][[1]]},
+      Hash[FromCharacterCode[data[[2, 1]]] <> pass, "MD5"] ==
        FromDigits[data[[3, 1]], 256]]; CloseSQLConnection[db]; rtn];
 ```
 
@@ -864,15 +864,15 @@ use Encryption;
 
 class SqlTest {
   @conn : Connection;
-  
+
   function : Main(args : String[]) ~ Nil {
     SqlTest->New()->Run();
   }
 
-  New() {  
+  New() {
     @conn := Connection->New("test", "root", "helloworld");
   }
-  
+
   method : Run() ~ Nil {
     CreateUser("objeck", "beer");
     AuthenticateUser("objeck", "beer");
@@ -889,7 +889,7 @@ class SqlTest {
       sql := "SELECT pass_salt, pass_md5 FROM users WHERE username = ?";
       ps := @conn->CreateParameterStatement(sql);
       ps->SetVarchar(1, username);
-      
+
       result := ps->Select();
       if(result <> Nil & result->Next()) {
         salt_buffer := Byte->New[16];
@@ -904,62 +904,62 @@ class SqlTest {
 
         password->Append(salt);
         user_password_buffer := Hash->MD5(password->ToByteArray());
-    
+
         IO.Console->Print("user: authenticated=")->PrintLine(IsEqual(db_password_buffer, user_password_buffer));
       };
-      
+
     };
-    
+
     leaving {
       if(ps <> Nil) {
         ps->Close();
       };
-      
+
       if(ps <> Nil) {
         ps->Close();
       };
     };
   }
-  
+
   method : CreateUser(username : String, password : String) ~ Nil {
     salt := "";
     for(i := 0; i < 16; i+=1;) { salt->Append((Float->Random() * 100)->As(Int)); };
     salt := salt->SubString(16);
-    
+
     password->Append(salt);
     md5_password := Hash->MD5(password->ToByteArray());
 
     ps : ParameterStatement;
     if(@conn->IsOpen()) {
-      sql := "INSERT INTO users(username, pass_salt, pass_md5) VALUES (?, ?, ?)";      
+      sql := "INSERT INTO users(username, pass_salt, pass_md5) VALUES (?, ?, ?)";
       ps := @conn->CreateParameterStatement(sql);
       ps->SetVarchar(1, username);
       ps->SetBytes(2, salt->ToByteArray());
       ps->SetBytes(3, md5_password);
-      
+
       IO.Console->Print("adding user: username=")->Print(username)
         ->Print(", salt=")->Print(salt)
-        ->Print(", status=")->PrintLine(ps->Update());      
+        ->Print(", status=")->PrintLine(ps->Update());
     };
-    
+
     leaving {
       if(ps <> Nil) {
         ps->Close();
       };
     };
   }
-  
+
   method : IsEqual(left : Byte[], right : Byte[]) ~ Bool {
     if(left->Size() <> right->Size()) {
       return false;
     };
-    
-    each(i : left) {        
+
+    each(i : left) {
       if(left[i] <> right[i]) {
         return false;
       };
     };
-    
+
     return true;
   }
 }
@@ -1019,7 +1019,7 @@ use v6;
 use DBIish;
 
 multi connect_db(:$dbname, :$host, :$user, :$pass) {
-   my $db = DBIish.connect("mysql",host => $host, database =>$dbname, user =>$user, password =>$pass, :RaiseError) 
+   my $db = DBIish.connect("mysql",host => $host, database =>$dbname, user =>$user, password =>$pass, :RaiseError)
       or die "ERROR: {DBIish.errstr}.";
    $db;
 }
@@ -1080,24 +1080,24 @@ function create_user($username, $password, $db_handle) {
 	// Username limit is 32 characters (part of spec)
 	if(strlen($username) > 32)
 		return false;
-	
+
 	// Salt limited to ASCII 32 thru 254 (not part of spec)
 	$salt = '';
 	do {
 		$salt .= chr(mt_rand(32, 254));
 	} while(strlen($salt) < 16);
-	
+
 	// Create pass_md5
 	$pass_md5 = md5($salt.$password);
-	
+
 	// Make it all binary safe
 	$username = mysql_real_escape_string($username);
 	$salt = mysql_real_escape_string($salt);
-	
+
 	// Try to insert it into the table - Return false on failure
 	if(!@mysql_query("INSERT INTO users (username,pass_salt,pass_md5) VALUES('$username','$salt','$pass_md5')", $db_handle))
 		return false;
-	
+
 	// Return the record ID
 	return mysql_insert_id($db_handle);
 }
@@ -1108,18 +1108,18 @@ function authenticate_user($username, $password, $db_handle) {
 
 	// Make the username parmeter binary-safe
 	$safe_username = mysql_real_escape_string($username);
-	
+
 	// Grab the record (if it exists) - Return false on failure
 	if(!$result = @mysql_query("SELECT * FROM users WHERE username='$safe_username'", $db_handle))
 		return false;
 
 	// Grab the row
 	$row = @mysql_fetch_assoc($result);
-	
+
 	// Check the password and return false if incorrect
 	if(md5($row['pass_salt'].$password) != $row['pass_md5'])
 		return false;
-	
+
 	// Return the record ID
 	return $row['userid'];
 }
@@ -1134,57 +1134,57 @@ function authenticate_user($username, $password, $db_handle) {
 Uses the [http://dev.mysql.com/downloads/connector/python/ official Python MySQL connector]
 
 ```python
-import mysql.connector 
+import mysql.connector
 import hashlib
- 
-import sys	 
-import random	 
- 
-DB_HOST = "localhost"	 
-DB_USER = "devel" 
-DB_PASS = "devel"	 
-DB_NAME = "test"	 
- 
-def connect_db():	 
-    ''' Try to connect DB and return DB instance, if not, return False '''	 
-    try:	 
-        return mysql.connector.connect(host=DB_HOST, user=DB_USER, passwd=DB_PASS, db=DB_NAME)	 
-    except:	 
-        return False	 
- 
-def create_user(username, passwd):	 
-    ''' if user was successfully created, returns its ID; returns None on error '''	 
-    db = connect_db()	 
-    if not db:	 
+
+import sys
+import random
+
+DB_HOST = "localhost"
+DB_USER = "devel"
+DB_PASS = "devel"
+DB_NAME = "test"
+
+def connect_db():
+    ''' Try to connect DB and return DB instance, if not, return False '''
+    try:
+        return mysql.connector.connect(host=DB_HOST, user=DB_USER, passwd=DB_PASS, db=DB_NAME)
+    except:
+        return False
+
+def create_user(username, passwd):
+    ''' if user was successfully created, returns its ID; returns None on error '''
+    db = connect_db()
+    if not db:
         print "Can't connect MySQL!"
         return None
- 
-    cursor = db.cursor()	 
- 
-    salt = randomValue(16)	 	 
-    passwd_md5 = hashlib.md5(salt+passwd).hexdigest()	 
- 
-    # If username already taken, inform it	 
-    try:	 
-        cursor.execute("INSERT INTO users (`username`, `pass_salt`, `pass_md5`) VALUES (%s, %s, %s)", (username, salt, passwd_md5)) 
-        cursor.execute("SELECT userid FROM users WHERE username=%s", (username,) ) 
+
+    cursor = db.cursor()
+
+    salt = randomValue(16)
+    passwd_md5 = hashlib.md5(salt+passwd).hexdigest()
+
+    # If username already taken, inform it
+    try:
+        cursor.execute("INSERT INTO users (`username`, `pass_salt`, `pass_md5`) VALUES (%s, %s, %s)", (username, salt, passwd_md5))
+        cursor.execute("SELECT userid FROM users WHERE username=%s", (username,) )
         id = cursor.fetchone()
         db.commit()
         cursor.close()
         db.close()
-        return id[0]	 
-    except:	 
-        print 'Username was already taken. Please select another'	 
+        return id[0]
+    except:
+        print 'Username was already taken. Please select another'
         return None
- 
-def authenticate_user(username, passwd):	 
-    db = connect_db()	 
-    if not db:	 
+
+def authenticate_user(username, passwd):
+    db = connect_db()
+    if not db:
         print "Can't connect MySQL!"
         return False
- 
-    cursor = db.cursor()	 
- 
+
+    cursor = db.cursor()
+
     cursor.execute("SELECT pass_salt, pass_md5 FROM users WHERE username=%s", (username,))
 
     row = cursor.fetchone()
@@ -1196,25 +1196,25 @@ def authenticate_user(username, passwd):
     correct_md5 = row[1]
     tried_md5 = hashlib.md5(salt+passwd).hexdigest()
     return correct_md5 == tried_md5
- 
-def randomValue(length):	 
-    ''' Creates random value with given length'''	 
+
+def randomValue(length):
+    ''' Creates random value with given length'''
     salt_chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
 
     return ''.join(random.choice(salt_chars) for x in range(length))
- 
-if __name__ == '__main__':	 
+
+if __name__ == '__main__':
     user = randomValue(10)
-    passwd = randomValue(16)	 
- 
+    passwd = randomValue(16)
+
     new_user_id = create_user(user, passwd)
     if new_user_id is None:
         print 'Failed to create user %s' % user
         sys.exit(1)
-    auth = authenticate_user(user, passwd)	 
-    if auth:	 
-        print 'User %s authenticated successfully' % user	 
-    else:	 
+    auth = authenticate_user(user, passwd)
+    if auth:
+        print 'User %s authenticated successfully' % user
+    else:
         print 'User %s failed' % user
 
 ```
@@ -1233,8 +1233,8 @@ if __name__ == '__main__':
 
 (define DB-HOST "localhost")
 (define DB-USER "devel")
-(define DB-PASS "devel")	 
-(define DB-NAME "test")	 
+(define DB-PASS "devel")
+(define DB-NAME "test")
 
 (define (connect-db)
   (mysql-connect
@@ -1252,7 +1252,7 @@ if __name__ == '__main__':
 (define (create-user db username passwd)
   ; if user was successfully created, returns its ID else #f
   (define salt (list->bytes (for/list ((i (in-range 16))) (random 256))))
-  (define hash (salt+password->hash salt passwd))  
+  (define hash (salt+password->hash salt passwd))
   (with-handlers ((exn:fail:sql? report-sql-error))
     (query db "INSERT INTO users (username, pass_salt, pass_md5) VALUES (?, ?, ?)"
            username salt hash)))
@@ -1267,11 +1267,11 @@ if __name__ == '__main__':
 
 (module+ test
   (require rackunit)
-  (define test-DB (connect-db))  
+  (define test-DB (connect-db))
   ; typically, you only do this the once (or risk upsetting your users bigtime!)
   ; call this just the once!
-  (define (create-users-table db)  
-    (query-exec db "DROP TABLE IF EXISTS users")  
+  (define (create-users-table db)
+    (query-exec db "DROP TABLE IF EXISTS users")
     (query-exec db #<<EOS
 CREATE TABLE users (
     userid INT PRIMARY KEY AUTO_INCREMENT,
@@ -1282,13 +1282,13 @@ CREATE TABLE users (
             -- binary MD5 hash of pass_salt concatenated with the password
 );
 EOS
-                ))  
-  (create-users-table test-DB)    
-  (create-user test-DB #"tim" #"shh! it's a secret!")  
+                ))
+  (create-users-table test-DB)
+  (create-user test-DB #"tim" #"shh! it's a secret!")
   ; ensure the user exists (for testing purposes)
   (check-match (query-list test-DB "SELECT userid FROM users WHERE username = 'tim'") (list _))
   ; (ah... but tim exists!!!)
-  (check-false (create-user test-DB #"tim" #"tim's password"))  
+  (check-false (create-user test-DB #"tim" #"tim's password"))
   (check-exn exn:fail? (λ () (authenticate-user test-DB #"tim" #"password")))
   (check-true (authenticate-user test-DB #"tim" #"shh! it's a secret!")))
 ```
@@ -1457,7 +1457,7 @@ proc authenticate_user {handle user pass} {
 
 
 {{omit from|Batch File|Does not have network access.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Lotus 123 Macro Scripting}}
 {{omit from|M4}}
 {{omit from|Maxima}}

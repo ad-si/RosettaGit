@@ -16,7 +16,7 @@ tags = []
 {{omit from|AWK|no concept of a GUI}}
 {{omit from|Batch File}}
 {{omit from|Blast}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Commodore BASIC}}
 {{omit from|GUISS|Can only do what the installed applications can do}}
 {{omit from|Integer BASIC|no concept of a GUI}}
@@ -36,27 +36,27 @@ of the application.
 
 
 ;Task:
-Similar to the task [[GUI component interaction]], write a program 
-that presents a form with three components to the user: 
-::#   a numeric input field ("Value") 
+Similar to the task [[GUI component interaction]], write a program
+that presents a form with three components to the user:
+::#   a numeric input field ("Value")
 ::#   a button   ("increment")
 ::#   a button   ("decrement")
 
 
 
-The field is initialized to zero. 
-The user may manually enter a new value into the field, 
-increment its value with the "increment" button, 
+The field is initialized to zero.
+The user may manually enter a new value into the field,
+increment its value with the "increment" button,
 or decrement the value with the "decrement" button.
 
-The input field should be enabled only when its value is zero. 
-The "increment" button only as long as the field's value is less then 10: 
-When the value 10 is reached, the button should go into a disabled state. 
-Analogously, the "decrement" button should be enabled only as long as 
+The input field should be enabled only when its value is zero.
+The "increment" button only as long as the field's value is less then 10:
+When the value 10 is reached, the button should go into a disabled state.
+Analogously, the "decrement" button should be enabled only as long as
 the value is greater than zero.
 
 Effectively, the user can now either increment up to 10, or down to zero.
-Manually entering values outside that range is still legal, 
+Manually entering values outside that range is still legal,
 but the buttons should reflect that and enable/disable accordingly.
 
 
@@ -304,17 +304,17 @@ GuiClose:
       INSTALL @lib$+"WINLIB2"
       INSTALL @lib$+"WINLIB5"
       ES_NUMBER = 8192
-      
+
       form% = FN_newdialog("Rosetta Code", 100, 100, 100, 52, 8, 1000)
       idInc% = FN_setproc(PROCinc)
       idDec% = FN_setproc(PROCdec)
-      
+
       PROC_static(form%, "Value:", 100, 10, 10, 24, 14, 0)
       PROC_editbox(form%, "0", 101, 40, 8, 52, 14, ES_NUMBER)
       PROC_pushbutton(form%, "Increment", idInc%, 7, 30, 40, 16, 0)
       PROC_pushbutton(form%, "Decrement", idDec%, 52, 30, 40, 16, 0)
       PROC_showdialog(form%)
-      
+
       REPEAT
         WAIT 1
         SYS "GetDlgItemInt", !form%, 101, 0, 1 TO number%
@@ -326,13 +326,13 @@ GuiClose:
         SYS "EnableWindow", hdec%, number% > 0
       UNTIL !form% = 0
       QUIT
-      
+
       DEF PROCinc
       LOCAL number%
       SYS "GetDlgItemInt", !form%, 101, 0, 1 TO number%
       SYS "SetDlgItemInt", !form%, 101, number% + 1, 1
       ENDPROC
-      
+
       DEF PROCdec
       LOCAL number%
       SYS "GetDlgItemInt", !form%, 101, 0, 1 TO number%
@@ -505,7 +505,7 @@ class QVBoxLayout ;
 class QHBoxLayout ;
 
 class MyWidget : public QWidget {
-    
+
     Q_OBJECT
 public:
    MyWidget( QWidget *parent = 0 ) ;
@@ -534,9 +534,9 @@ file task.cpp
 ```cpp>#include <QtGui
 
 #include <QString>
-#include "task.h" 
+#include "task.h"
 
-MyWidget::MyWidget ( QWidget *parent ) 
+MyWidget::MyWidget ( QWidget *parent )
    : QWidget( parent ) {
    thisWidgetLayout = new QVBoxLayout ( this )  ;
    instruction = new QLabel ;
@@ -547,9 +547,9 @@ MyWidget::MyWidget ( QWidget *parent )
    increment = new QPushButton( "Increment" ) ;
    decrement = new QPushButton( "Decrement" ) ;
    increment->setDefault( true ) ;
-   connect( entryField , SIGNAL ( textChanged ( const QString &  ) ) , 
+   connect( entryField , SIGNAL ( textChanged ( const QString &  ) ) ,
 	    this , SLOT ( buttonChange( const QString & )) ) ;
-   connect( entryField , SIGNAL ( textEdited ( const QString &  ) ) , 
+   connect( entryField , SIGNAL ( textEdited ( const QString &  ) ) ,
 	    this , SLOT ( buttonChange( const QString & )) ) ;
    connect( increment , SIGNAL ( clicked( ) ) , this ,
 	 SLOT ( addField( ) )) ;
@@ -569,11 +569,11 @@ void MyWidget::buttonChange( const QString & text ) {
    increment->setDisabled( text.toInt( &ok, 10 ) > 9 ) ;
    decrement->setEnabled( text.toInt( &ok, 10 ) > 0 ) ;
    decrement->setDisabled( text.toInt( &ok, 10 ) <= 0 ) ;
-   if ( ! ( text == "0" ) ) 
+   if ( ! ( text == "0" ) )
       entryField->setReadOnly( true ) ;
 }
 
-void MyWidget::addField( ) { 
+void MyWidget::addField( ) {
    bool ok ;
    int number = entryField->text( ).toInt( &ok , 10 ) ;
    number++ ;
@@ -614,12 +614,12 @@ int main( int argc, char *argv[ ] ) {
 Using Windows Forms; compile with csc -t:winexe Program.cs (on MS.NET) or gmcs -t:winexe Program.cs (on Mono)
 
 ```csharp
-using System; 
-using System.ComponentModel; 
-using System.Windows.Forms; 
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 class RosettaInteractionForm : Form
-{    
+{
 
     // Model used for DataBinding.
     // Notifies bound controls about Value changes.
@@ -632,8 +632,8 @@ class RosettaInteractionForm : Form
         public int Value
         {
             get { return _value; }
-            set 
-            { 
+            set
+            {
                 _value = value;
                 // Notify bound control about value change
                 PropertyChanged(this, new PropertyChangedEventArgs("Value"));
@@ -642,12 +642,12 @@ class RosettaInteractionForm : Form
     }
 
     NumberModel model = new NumberModel{ Value = 0};
-    
-    RosettaInteractionForm()    
+
+    RosettaInteractionForm()
     {
         //MaskedTextBox is a TextBox variety with built-in input validation
         var tbNumber = new MaskedTextBox
-                        { 
+                        {
                             Mask="0000",            // allow 4 decimal digits only
                             ResetOnSpace = false,   // don't enter spaces
                             Dock = DockStyle.Top    // place at the top of form
@@ -715,7 +715,7 @@ type
   end;
 
 var
-  Form1: TForm1; 
+  Form1: TForm1;
 
 implementation
 
@@ -763,7 +763,7 @@ class Main
         {
           if (textField.text != "")
           {
-            try 
+            try
             {
               Int value := textField.text.toInt
               if (value < 10) value += 1
@@ -780,7 +780,7 @@ class Main
         {
           if (textField.text != "")
           {
-            try 
+            try
             {
               Int value := textField.text.toInt
               if (value > 0) value -= 1
@@ -794,9 +794,9 @@ class Main
       // which updates the button visibilities
       textField.onModify.add |Event e|
       {
-        try 
+        try
         {
-          Int value := textField.text.toInt 
+          Int value := textField.text.toInt
           incButton.enabled = (value < 10) // update whether button can be used
           decButton.enabled = (value > 0)  // update whether button can be used
         }
@@ -841,7 +841,7 @@ While GetMessage(@msg, Window_Main, 0, 0)
   n = Val(text)
   If n <> 0 Then EnableWindow(Edit_Number, False) Else EnableWindow(Edit_Number, True)
   If n > 9 Then EnableWindow(Button_Inc, False) Else EnableWindow(Button_Inc, True)
-  If n > 0 Then EnableWindow(Button_Dec, True) Else EnableWindow(Button_Dec, False) 
+  If n > 0 Then EnableWindow(Button_Dec, True) Else EnableWindow(Button_Dec, False)
   TranslateMessage(@msg)
   DispatchMessage(@msg)
   Select Case msg.hwnd
@@ -850,7 +850,7 @@ While GetMessage(@msg, Window_Main, 0, 0)
       If msg.message = WM_LBUTTONDOWN Then SetWindowText(Edit_Number, Str(n + 1))
    Case Button_Dec
      'Decrement value:
-     If msg.message = WM_LBUTTONDOWN Then SetWindowText(Edit_Number, Str(n - 1)) 
+     If msg.message = WM_LBUTTONDOWN Then SetWindowText(Edit_Number, Str(n - 1))
    Case Window_Main
     If msg.message = WM_COMMAND Then End
   End Select
@@ -877,7 +877,7 @@ With Me                                                           'Set the Form'
   .Width = 350                                                    'Set the Width
   .Arrangement = Arrange.Vertical                                 'Arrange items vertically
   .Padding = 5                                                    'Border area
-  .Title = "GUI enable/disable"                                   'Title displayed on the Form 
+  .Title = "GUI enable/disable"                                   'Title displayed on the Form
 End With
 
 hValueBox = New ValueBox(Me) As "ValBox"                          'Add a ValueBox to the Form as Event 'ValBox'
@@ -940,7 +940,7 @@ End If
 
 End
 
-Public Sub ValBox_Leave()                                         'When the mouse leaves the ValueBox.. 
+Public Sub ValBox_Leave()                                         'When the mouse leaves the ValueBox..
 
 Checks                                                            'Rune the Checks routine
 
@@ -1099,7 +1099,7 @@ class MessageDialog : Dialog (message)
     add (button)
 
     connect (self, "dispose", CLOSE_BUTTON_EVENT)
-    attrib ("size=200,100", "bg=light gray") 
+    attrib ("size=200,100", "bg=light gray")
   end
 
   initially (message)
@@ -1138,7 +1138,7 @@ class WindowApp : Dialog (button1, button2, field, value)
         warning := MessageDialog ("Not a number")
         warning.show_modal ()
         field.set_contents (string(value))
-      } 
+      }
       else {
         n := integer (field.get_contents ())
         if not (0 <= n <= 10)
@@ -1193,16 +1193,16 @@ task_run=: wd bind (noun define)
   pas 6 6;pcenter;
   pshow;
 )
- 
+
 task_cancel=: task_close=: wd bind 'pclose'
- 
+
 task_Value_button=: update=: verb define
   wd 'set Value text ', ": n=. {. 0 ". Value
   wd 'set Value enable ', ": n=0
   wd 'set increment enable ', ": n<10
   wd 'set decrement enable ', ": n>0
 )
- 
+
 task_increment_button=:verb define
   update Value=: ": 1 + 0 ". Value
 )
@@ -1271,18 +1271,18 @@ import javax.swing.SwingUtilities;
 public class Interact extends JFrame{
 	final JTextField numberField;
 	final JButton incButton, decButton;
-	
+
 	public Interact(){
 		//stop the GUI threads when the user hits the X button
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		numberField = new JTextField();
 		incButton = new JButton("Increment");
 		decButton = new JButton("Decrement");
-		
+
 		numberField.setText("0");//start at 0
 		decButton.setEnabled(false);//we're already at 0
-		
+
 		//listen for button presses in the text field
 		numberField.addKeyListener(new KeyListener(){
 			@Override
@@ -1352,7 +1352,7 @@ public class Interact extends JFrame{
 				}
 			}
 		});
-		
+
 		//listen for button clicks on the increment button
 		incButton.addActionListener(new ActionListener(){
 			@Override
@@ -1362,13 +1362,13 @@ public class Interact extends JFrame{
 				if(Long.valueOf(text) + 1 >= 10){
 					incButton.setEnabled(false);
 				}
-				
+
 				if(Long.valueOf(text) + 1 > 0){
 					decButton.setEnabled(true);
 				}
 			}
 		});
-		
+
 		//listen for button clicks on the random button
 		decButton.addActionListener(new ActionListener(){
 			@Override
@@ -1378,31 +1378,31 @@ public class Interact extends JFrame{
 				if(Long.valueOf(text) - 1 <= 0){
 					decButton.setEnabled(false);
 				}
-				
+
 				if(Long.valueOf(text) - 1 < 10){
 					incButton.setEnabled(true);
 				}
 			}
 		});
-		
+
 		//arrange the components in a grid with 2 rows and 1 column
 		setLayout(new GridLayout(2, 1));
-		
+
 		//a secondary panel for arranging both buttons in one grid space in the window
 		JPanel buttonPanel = new JPanel();
-		
+
 		//the buttons are in a grid with 1 row and 2 columns
 		buttonPanel.setLayout(new GridLayout(1, 2));
 		//add the buttons
 		buttonPanel.add(incButton);
 		buttonPanel.add(decButton);
-		
+
 		//put the number field on top of the buttons
 		add(numberField);
 		add(buttonPanel);
 		//size the window appropriately
 		pack();
-		
+
 	}
 
 	public static void main(String[] args){
@@ -1476,7 +1476,7 @@ public class InteractFX extends Application {
         // incr-button is disabled when input is >= 10
         increment.disableProperty().bind(inputValue.greaterThanOrEqualTo(10));
 
-        
+
         Button decrement = new Button("Decrement");
         decrement.setOnAction(event-> inputValue.set(inputValue.get() - 1));
 
@@ -1535,8 +1535,8 @@ crement = function(step)
   set_value(value, string(get(value) + step))
   update()
 end
-tk_bind(increment, "command", path -> crement(1))  
-tk_bind(decrement, "command", path -> crement(-1)) 
+tk_bind(increment, "command", path -> crement(1))
+tk_bind(decrement, "command", path -> crement(-1))
 update()
 
 function validate_command(path, P)
@@ -1551,7 +1551,7 @@ function invalid_command(path, W)
     println("Invalid value")
     tcl(W, "delete", "@0", "end")
 end
-    
+
 tk_configure(value, {:validate=>"focusout", :validatecommand=>validate_command, :invalidcommand=>invalid_command })
 
 
@@ -1616,7 +1616,7 @@ class InteractFX : Application() {
 
         val decrement = Button("Decrement")
         decrement.addEventHandler(ActionEvent.ACTION) { inputValue.set(inputValue.get() - 1) }
-        
+
         // decrement button is disabled when input is <= 0
         decrement.disableProperty().bind(inputValue.lessThanOrEqualTo(0))
 
@@ -1749,17 +1749,17 @@ command enableButtons v
     switch
         case v <= 0
             put 0 into fld "Field1"
-            set the enabled of btn "Button1" to true            
+            set the enabled of btn "Button1" to true
             set the enabled of btn "Button2" to false
             break
         case v >= 10
             put 10 into fld "Field1"
-            set the enabled of btn "Button1" to false            
-            set the enabled of btn "Button2" to true            
+            set the enabled of btn "Button1" to false
+            set the enabled of btn "Button2" to true
             break
         default
-            set the enabled of btn "Button1" to true            
-            set the enabled of btn "Button2" to true            
+            set the enabled of btn "Button1" to true
+            set the enabled of btn "Button2" to true
             put v into fld "Field1"
     end switch
 end enableButtons
@@ -1793,14 +1793,14 @@ on rawKeyDown k
         if (numToChar(k) + the text of me) <= 10 then
             enableButtons (numToChar(k) + the text of me)
         end if
-    else if k = 65288 then 
+    else if k = 65288 then
         pass rawKeyDown
     end if
 end rawKeyDown
 ```
 
 
-Switch back to the form, and enter run mode to execute. 
+Switch back to the form, and enter run mode to execute.
 
 n.b. Open stack handlers would be prudent to initialise the default value and button states if this were to be saved for standalone execution.
 
@@ -1816,7 +1816,7 @@ Normally a function can't call other except something global or something define
 \\ so thispos and this$ has to exist in caller 's context
 
 Function Global Local1(new Feed$) {
-            \\ this function can be used from other Integer 
+            \\ this function can be used from other Integer
             \\ this$ and thispos, exist just before the call of this function
             local sgn$
             if feed$="" and this$="-" then thispos-- :  exit
@@ -1826,7 +1826,7 @@ Function Global Local1(new Feed$) {
             if instr(this$,"+")>0 and sgn$="-" then this$=filter$(this$, "+") : sgn$=""
             if instr(this$,"-")>0  and sgn$="" then this$=filter$(this$, "-") : sgn$="-"
             if filter$(this$,"0123456789")<>"" then this$=Feed$ :  thispos-- : exit
-            if len(this$)>1 then While  left$(this$,1)="0" {this$=mid$(this$, 2)} 
+            if len(this$)>1 then While  left$(this$,1)="0" {this$=mid$(this$, 2)}
             this$=sgn$+this$
             if this$="-0" then this$="-" : thispos=2
         }
@@ -1839,15 +1839,15 @@ Module CheckIt {
       Method buttonInc, "move", 2000,3000,2000,600
       Method buttonDec, "move", 4000,3000,2000,600
       With textbox1,"vartext" as textbox1.value$, "Prompt", "Value:" ', "ShowAlways", True
-      With buttonInc,"Caption","Increment" 
+      With buttonInc,"Caption","Increment"
       With buttonDec,"Caption","Decrement","Locked", True
       textbox1.value$="0"
-      
+
       Function controlIncDec(what$){
             With buttonInc, "locked",  not val(what$)<10
             With buttonDec, "locked", not val(what$)>0
       }
-      finishEnter=false      
+      finishEnter=false
       Function TextBox1.ValidString {
                   \\ this function called direct from textbox
                   Read  New &this$, &thispos
@@ -1872,7 +1872,7 @@ Module CheckIt {
       }
       function buttonDec.Click {
                 if  not finishEnter then Call Local TextBox1.Disable()
-                textbox1.value$=str$(val(textbox1.value$)-1, "")     
+                textbox1.value$=str$(val(textbox1.value$)-1, "")
                 if val(textbox1.value$)=0 then Call Local TextBox1.Enable()
       }
       Call Local controlIncDec(textBox1.Value$)
@@ -1914,7 +1914,7 @@ Then, by clicking the 2 gears and opening up the start-up commands, enter this:
 
 macro(SP=DocumentTools:-SetProperty, GP=DocumentTools:-GetProperty);
 with(Maplets[Elements]):
-SP("Text",value,0); 
+SP("Text",value,0);
 Increase:=proc()
 	SP("Text",value,parse(GP("Text",value))+1);
 	if parse(GP("Text",value))>=10 then
@@ -1950,10 +1950,10 @@ end proc;
 
 
 ```mathematica
-Manipulate[Null, {{value, 0}, 
-  InputField[Dynamic[value], Number, 
-    Enabled -> Dynamic[value == 0]] &}, 
- Row@{Button["increment", value++, Enabled -> Dynamic[value < 10]], 
+Manipulate[Null, {{value, 0},
+  InputField[Dynamic[value], Number,
+    Enabled -> Dynamic[value == 0]] &},
+ Row@{Button["increment", value++, Enabled -> Dynamic[value < 10]],
    Button["decrement", value--, Enabled -> Dynamic[value > 0]]}]
 ```
 
@@ -2025,7 +2025,7 @@ Screenshot:
 
 ```nim
 import
-  gtk2, strutils, glib2 
+  gtk2, strutils, glib2
 
 var valu: int = 0
 var chngd_txt_hndler: gulong = 0
@@ -2056,7 +2056,7 @@ proc thisInc(widget: pWidget, data: pgpointer){.cdecl.} =
   inc(valu)
   entry_fld.set_text($valu)
   thisCheckBtns()
-  
+
 proc thisDec(widget: pWidget, data: pgpointer){.cdecl.} =
   dec(valu)
   entry_fld.set_text($valu)
@@ -2073,7 +2073,7 @@ proc thisTextChanged(widget: pWidget, data: pgpointer) {.cdecl.} =
   #signal_emit_stop(entry_fld, signal_lookup("changed",TYPE_EDITABLE()),0)
   thisCheckBtns()
 
-proc thisCheckBtns = 
+proc thisCheckBtns =
    set_sensitive(btn_inc, valu < 10)
    set_sensitive(btn_dec, valu > 0)
    set_sensitive(entry_fld, valu == 0)
@@ -2102,7 +2102,7 @@ import
 
 # assumes you have the iup  .dll or .so installed
 
-randomize()  
+randomize()
 discard iup.open(nil,nil)
 
 
@@ -2126,13 +2126,13 @@ SetAttribute(btnBox, "MARGIN", "5x5")
 proc toCB(fp: proc): ICallback =
    return cast[ICallback](fp)
 
-proc setValuState(value: int) = 
+proc setValuState(value: int) =
     if value == 0:
         SetAttribute(valu, "ACTIVE", $(true))
     else:
         SetAttribute(valu, "ACTIVE", $(false))
 
-proc setBtnsState(value: int) = 
+proc setBtnsState(value: int) =
    if value <= 0:
       SetAttribute(decBtn,"ACTIVE", $(false))
       SetAtt(nil, incBtn,"ACTIVE", $(true), "FOCUS", $(true), nil)
@@ -2142,7 +2142,7 @@ proc setBtnsState(value: int) =
    else:
       SetAttribute(decBtn,"ACTIVE", $(true))
       SetAttribute(incBtn,"ACTIVE", $(true))
-   
+
 
 # Click handler for Click button
 proc incClick(ih:PIhandle): cint {.cdecl.} =
@@ -2182,7 +2182,7 @@ SetAttribute(contents, "MARGIN", "5x5")
 
 discard setCallback(incBtn,"ACTION", toCB(incClick))
 discard setCallback(decBtn,"ACTION", toCB(decClick))
-discard setCallback(contents,"K_ANY", toCB(key_cb))       
+discard setCallback(contents,"K_ANY", toCB(key_cb))
 
 var dlg = Dialog(contents)
 SetAtt(nil, dlg, "TITLE","GUI Interaction", "SIZE","200x75", nil)
@@ -2420,7 +2420,7 @@ test(V, Incr, Decr, Input) :-
 
 
 ```PureBasic
-Enumeration 
+Enumeration
   #TextGadget
   #AddButton
   #SubButton
@@ -2445,7 +2445,7 @@ If OpenWindow(0,#PB_Ignore,#PB_Ignore,110,70,"PB-GUI",#PB_Window_SystemMenu)
   ButtonGadget(#AddButton,10,40,30,20,"+")
   ButtonGadget(#SubButton,70,40,30,20,"-")
   UpdateGadgets(Value,1)
-  Repeat 
+  Repeat
     Event=WaitWindowEvent()
     If Event=#PB_Event_Gadget
       Gadget=EventGadget()
@@ -2600,7 +2600,7 @@ Result: [https://ibb.co/cEmqy5]
 ```racket
 
 #lang racket/gui
- 
+
 (define frame (new frame% [label "Interaction Demo"]))
 
 (define (changed . _)
@@ -2663,13 +2663,13 @@ func Increment
      lineedit1{ num = text()}
      num = string(number(num)+1)
      lineedit1.settext(num)
-     if number(num)>9 btn1.setDisabled(True) ok 
+     if number(num)>9 btn1.setDisabled(True) ok
 
 func Decrement
      lineedit1{ num = text()}
      num = string(number(num)-1)
      lineedit1.settext(num)
-     if number(num)<0 btn2.setDisabled(True) ok 
+     if number(num)<0 btn2.setDisabled(True) ok
 
 ```
 
@@ -2781,7 +2781,7 @@ top add:((decButton := Button label:'Dec') origin: 110 @ 50 corner: 210 @ 80).
 incButton action:[ vh value: (vh value + 1) ].
 incButton enableChannel:(BlockValue with:[:v | v < 10] argument:vh).
 decButton action:[ vh value: (vh value - 1) ].
-decButton enableChannel:(BlockValue with:[:v | v > 0] argument:vh). 
+decButton enableChannel:(BlockValue with:[:v | v > 0] argument:vh).
 
 top open
 ```
@@ -2951,17 +2951,17 @@ int main (string[] args) {
 
 ## Visual Basic
 
-In VB, windows are usually created in the IDE. 
-The generated code is hidden from the user unless viewed outside of VB. 
+In VB, windows are usually created in the IDE.
+The generated code is hidden from the user unless viewed outside of VB.
 For the sake of this task, I have included that code.
 
-(Also, this sort of task would typically be performed 
+(Also, this sort of task would typically be performed
 by a "spinner" or "up-down" control, not by buttons.)
 
 
 ```vb
 VERSION 5.00
-Begin VB.Form Form1 
+Begin VB.Form Form1
    Caption         =   "Form1"
    ClientHeight    =   2265
    ClientLeft      =   60
@@ -2971,7 +2971,7 @@ Begin VB.Form Form1
    ScaleHeight     =   2265
    ScaleWidth      =   2175
    StartUpPosition =   3  'Windows Default
-   Begin VB.CommandButton cmdDec 
+   Begin VB.CommandButton cmdDec
       Caption         =   "Decrement"
       Enabled         =   0   'False
       Height          =   495
@@ -2980,7 +2980,7 @@ Begin VB.Form Form1
       Top             =   1680
       Width           =   1215
    End
-   Begin VB.CommandButton cmdInc 
+   Begin VB.CommandButton cmdInc
       Caption         =   "Increment"
       Height          =   495
       Left            =   120
@@ -2988,7 +2988,7 @@ Begin VB.Form Form1
       Top             =   1080
       Width           =   1215
    End
-   Begin VB.TextBox txtValue 
+   Begin VB.TextBox txtValue
       Height          =   495
       Left            =   120
       TabIndex        =   0

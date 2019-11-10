@@ -16,7 +16,7 @@ tags = []
 {{omit from|AWK|no concept of a GUI}}
 {{omit from|Batch File}}
 {{omit from|Blast}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Commodore BASIC}}
 {{omit from|GUISS|Only makes use of installed applications}}
 {{omit from|Integer BASIC|no concept of a GUI}}
@@ -31,8 +31,8 @@ tags = []
 
 
 Almost every application needs to communicate with the user in some way.
-Therefore, a substantial part of the code deals with the interaction 
-of program logic with GUI components. 
+Therefore, a substantial part of the code deals with the interaction
+of program logic with GUI components.
 
 Typically, the following is needed:
 
@@ -43,20 +43,20 @@ Typically, the following is needed:
 
 ;Task:
 For a minimal "application", write a program that presents a form with three components to the user:
-::* a numeric input field ("Value") 
+::* a numeric input field ("Value")
 ::* a button ("increment")
 ::* a button ("random")
 
 
-The field is initialized to zero. 
+The field is initialized to zero.
 
-The user may manually enter a new value into the field, 
-or increment its value with the "increment" button. 
+The user may manually enter a new value into the field,
+or increment its value with the "increment" button.
 
-Entering a non-numeric value should be either impossible, 
+Entering a non-numeric value should be either impossible,
 or issue an error message.
 
-Pressing the "random" button presents a confirmation dialog, 
+Pressing the "random" button presents a confirmation dialog,
 and resets the field's value to a random value if the answer is "Yes".
 
 (This task may be regarded as an extension of the task [[Simple windowed application]]).
@@ -69,61 +69,61 @@ and resets the field's value to a random value if the answer is "Yes".
 <lang>
 &НаСервере
 Процедура ДобавитьЭлементы()
-	
+
 	КЧ = Новый КвалификаторыЧисла(12,2);
-	
+
 	Массив = Новый Массив;
 	Массив.Добавить(Тип("Число"));
 	ОписаниеТиповЧ = Новый ОписаниеТипов(Массив, , ,КЧ);
-	
+
 	НовыйРеквизит = Новый РеквизитФормы("ВводимоеЧисло", Новый ОписаниеТипов(Массив, , ,КЧ));;
 
 	МассивР = Новый Массив;
 	МассивР.Добавить(НовыйРеквизит);
 	ИзменитьРеквизиты(МассивР);
-	
+
 	ПолеВвода = Элементы.Добавить("ПолеВвода", Тип("ПолеФормы"));
 	ПолеВвода.ПутьКДанным = "ВводимоеЧисло";
 	ПолеВвода.вид = ВидПоляФормы.ПолеВвода;
-	
+
 	КомандаИнкримент = Команды.Добавить("Инкримент");
 	КомандаРандом 	 = КОманды.Добавить("Рандом");
-	
+
 	КнопкаИнкримент = Элементы.Добавить("КнопкаИнкримент", Тип("КнопкаФормы"));
 	КнопкаИнкримент.ИмяКоманды = "Инкримент";
 	КнопкаРандом = Элементы.Добавить("КнопкаРандом", Тип("КнопкаФормы"));
 	КнопкаРандом.ИмяКоманды = "Рандом";
 
-	
+
 	КомандаИнкримент.Действие = "Инкримент";
 	КомандаРандом.Действие = "Рандом";
-	
+
 КонецПроцедуры
 
 &НаКлиенте
 Процедура Инкримент(Команда)
-	
+
 	ЭтотОбъект.ВводимоеЧисло = ЭтотОбъект.ВводимоеЧисло + 1;
-	
+
 КонецПроцедуры
 
 &НаКлиенте
 Процедура Рандом(Команда)
-	
-	ОписаниеОповещения = Новый ОписаниеОповещения("РандомПослеВыбора", ЭтотОбъект); 
-	
+
+	ОписаниеОповещения = Новый ОписаниеОповещения("РандомПослеВыбора", ЭтотОбъект);
+
 	ПоказатьВопрос(ОписаниеОповещения, "Установить случайное число?", РежимДиалогаВопрос.ДаНет);
-	
+
 КонецПроцедуры
 
 &НаКлиенте
 Процедура РандомПослеВыбора(РезультатВопроса, ДополнительныеПараметры) Экспорт
-	
+
 	Если РезультатВопроса = КодВозвратаДиалога.Да Тогда
 		ГСЧ = Новый ГенераторСлучайныхЧисел();
-		ЭтотОбъект.ВводимоеЧисло = ГСЧ.СлучайноеЧисло(0, 999999);	
+		ЭтотОбъект.ВводимоеЧисло = ГСЧ.СлучайноеЧисло(0, 999999);
 	КонецЕсли;
-	
+
 КонецПроцедуры
 
 ```
@@ -306,7 +306,7 @@ GUI, add, Edit,Number w50 vUserInput gMakeSure, 0          ; Number Specifies Nu
 						 ; Making our own check necessary. (MakeSure)
 
 GUI, add, Button, gIncrement, Increment 	 ; Instead of an increment button, the UpDown control could be used, but this was not specified.
-GUI, add, Button, gRando, Random		 
+GUI, add, Button, gRando, Random
 Gui, Show, W200 y200, Title			 ; Shows the GUI with a width and height of 200px
 return 						 ; End Auto-Execute Section
 
@@ -368,29 +368,29 @@ ExitApp  ; Makes sure the script exits when the window is closed,
 ```bbcbasic
       INSTALL @lib$+"WINLIB2"
       INSTALL @lib$+"WINLIB5"
-      
+
       IDYES = 6
       ES_NUMBER = 8192
       MB_YESNO = 4
-      
+
       form% = FN_newdialog("Rosetta Code", 100, 100, 100, 52, 8, 1000)
       PROC_static(form%, "Value:", 100, 10, 10, 24, 14, 0)
       PROC_editbox(form%, "0", 101, 40, 8, 52, 14, ES_NUMBER)
       PROC_pushbutton(form%, "Increment", FN_setproc(PROCinc), 7, 30, 40, 16, 0)
       PROC_pushbutton(form%, "Random", FN_setproc(PROCrandom), 52, 30, 40, 16, 0)
       PROC_showdialog(form%)
-      
+
       REPEAT
         WAIT 1
       UNTIL !form% = 0
       QUIT
-      
+
       DEF PROCinc
       LOCAL number%
       SYS "GetDlgItemInt", !form%, 101, 0, 1 TO number%
       SYS "SetDlgItemInt", !form%, 101, number% + 1, 1
       ENDPROC
-      
+
       DEF PROCrandom
       LOCAL reply%
       SYS "MessageBox", !form%, "Set to a random value?", "Confirm", MB_YESNO TO reply%
@@ -525,7 +525,7 @@ class QPushButton ;
 class QLineEdit ;
 class QVBoxLayout ;
 class MyWidget : public QWidget {
-   Q_OBJECT 
+   Q_OBJECT
 
 public :
    MyWidget( QWidget *parent = 0 ) ;
@@ -557,7 +557,7 @@ file interaction.cpp
 #include <QRegExp>
 #include <ctime> //for the srand initialization
 #include <cstdlib> //for the random number
-#include "interaction.h" 
+#include "interaction.h"
 
 MyWidget::MyWidget (QWidget *parent ) : QWidget( parent ) {
    myLayout = new QVBoxLayout( ) ;
@@ -600,7 +600,7 @@ void MyWidget::findRandomNumber( ) {
 
 
 ```txt
-file main.cpp 
+file main.cpp
 ```
 
 
@@ -648,12 +648,12 @@ int main(int argc, char **argv) {
     edit->setValidator(new QIntValidator());
 
     auto *incButton = new QPushButton("&Increment");
-    QObject::connect(incButton, &QPushButton::clicked, 
+    QObject::connect(incButton, &QPushButton::clicked,
             [edit]() { edit->setText( QString::number(edit->text().toInt() + 1)); } );
 
     auto *rndButton = new QPushButton("&Random");
-    QObject::connect(rndButton, &QPushButton::clicked, 
-            [edit]() { 
+    QObject::connect(rndButton, &QPushButton::clicked,
+            [edit]() {
                 auto result = QMessageBox(
                     QMessageBox::Warning,
                     "Random",
@@ -662,7 +662,7 @@ int main(int argc, char **argv) {
                 ).exec();
 
                 if (result == QMessageBox::Ok)
-                    edit->setText( QString::number(qrand())); 
+                    edit->setText( QString::number(qrand()));
             } );
 
     auto *vbox = new QVBoxLayout;
@@ -683,12 +683,12 @@ int main(int argc, char **argv) {
 C# 3.0 with Windows Forms; compile as csc -t:winexe Program.cs on MS.NET or as gmcs -t:winexe Program.cs on Mono.
 
 ```csharp
-using System; 
-using System.ComponentModel; 
-using System.Windows.Forms; 
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 class RosettaInteractionForm : Form
-{    
+{
     // Model used for DataBinding.
     // Notifies bound controls about Value changes.
     class NumberModel: INotifyPropertyChanged
@@ -703,8 +703,8 @@ class RosettaInteractionForm : Form
         public int Value
         {
             get { return _value; }
-            set 
-            { 
+            set
+            {
                 _value = value;
                 // Notify bound control about value change
                 PropertyChanged(this, new PropertyChangedEventArgs("Value"));
@@ -717,12 +717,12 @@ class RosettaInteractionForm : Form
     }
 
     NumberModel model = new NumberModel{ Value = 0};
-    
-    RosettaInteractionForm()    
+
+    RosettaInteractionForm()
     {
         //MaskedTextBox is a TextBox variety with built-in input validation
         var tbNumber = new MaskedTextBox
-                        { 
+                        {
                             Mask="0000",            // allow 4 decimal digits only
                             ResetOnSpace = false,   // don't enter spaces
                             Dock = DockStyle.Top    // place at the top of form
@@ -953,7 +953,7 @@ end
     (ui-set-value f-input 0)
     (ui-add f-input)
     (ui-on-focus  f-input (lambda(e) (info-text "")))
-   
+
 ;; Increment button
     (define btn-inc (ui-add-button "Increment"))
     (define (increment elem)
@@ -962,7 +962,7 @@ end
                 (ui-set-value f-input (1+ val))
                 (info-text  "Need a number" "red")))
     (ui-on-click btn-inc increment)
-    (ui-add btn-inc) 
+    (ui-add btn-inc)
 
     (define btn-random (ui-add-button "Random"))
     (define (set-random elem)
@@ -987,20 +987,20 @@ ELENA 4.x :
 ```elena
 import forms;
 import extensions;
- 
+
 public class MainWindow : SDIDialog
 {
     Button btmIncrement;
     Button btmRandom;
     Edit   txtNumber;
- 
+
     constructor new()
         <= new()
     {
         btmIncrement := new Button();
         btmRandom    := new Button();
         txtNumber    := new Edit();
- 
+
         self
             .appendControl:btmIncrement
             .appendControl:btmRandom
@@ -1008,27 +1008,27 @@ public class MainWindow : SDIDialog
 
         self.Caption := "Rosseta Code";
         self.setRegion(100, 100, 160, 120);
- 
+
         txtNumber.setRegion(7, 7, 140, 25);
         txtNumber.Caption := "0";
- 
+
         btmIncrement.setRegion(7, 35, 140, 25);
         btmIncrement.Caption := "Increment";
         btmIncrement.onClick := (args){ self.onButtonIncrementClick() };
- 
+
         btmRandom.setRegion(7, 65, 140, 25);
         btmRandom.Caption := "Random";
         btmRandom.onClick := (args){ self.onButtonRandomClick() };
     }
- 
+
     private onButtonIncrementClick()
     {
         var number := txtNumber.Value.toInt();
- 
+
         number := number + 1;
         self.changeTextBoxValue(number)
     }
- 
+
     private onButtonRandomClick()
     {
         if(messageDialog.showQuestion("Inf", "Really reset to random value?"))
@@ -1036,7 +1036,7 @@ public class MainWindow : SDIDialog
             self.changeTextBoxValue(randomGenerator.eval(99999999))
         }
     }
- 
+
     private changeTextBoxValue(number)
     {
         txtNumber.Caption := number.toString()
@@ -1056,7 +1056,7 @@ using gfx
 
 class GuiComponent
 {
-  public static Void main () 
+  public static Void main ()
   {
     Window
     {
@@ -1089,11 +1089,11 @@ class GuiComponent
             }
             else
             {
-              try 
+              try
               {
                 Int x := textField.text.toInt
                 textField.text = (x+1).toStr
-              } 
+              }
               catch
               {
                 textField.text = "0"
@@ -1105,7 +1105,7 @@ class GuiComponent
         {
           text = "random"
           onAction.add |Event e|
-          { 
+          {
             if (Dialog.openQuestion(e.window, "Make number random?", null, Dialog.yesNo) == Dialog.yes)
             {
               textField.text = Int.random(1..10000).toStr
@@ -1139,7 +1139,7 @@ Var Static_Number = CreateWindow("STATIC", "Value:", WS_VISIBLE Or WS_CHILD, 10,
 Edit_Number = CreateWindow("EDIT", "0", WS_BORDER Or WS_VISIBLE Or WS_CHILD Or ES_AUTOHSCROLL Or ES_Number, 110, 10, 100, 20, Window_Main, 0, 0, 0)
 Button_Inc = CreateWindow("BUTTON", "Increment", WS_VISIBLE Or WS_CHILD, 110, 40, 100, 20, Window_Main, 0, 0, 0)
 Button_Rnd = CreateWindow("BUTTON", "Random", WS_VISIBLE Or WS_CHILD, 110, 70, 100, 20, Window_Main, 0, 0, 0)
-													
+
 'Windows message loop:
 While GetMessage(@msg, Window_Main, 0, 0)
   TranslateMessage(@msg)
@@ -1186,7 +1186,7 @@ With Me                                                           'Set the Form'
   .Width = 350                                                    'Set the Width
   .Arrangement = Arrange.Vertical                                 'Arrange items vertically
   .Padding = 5                                                    'Border area
-  .Title = "GUI component interaction"                            'Title displayed on the Form 
+  .Title = "GUI component interaction"                            'Title displayed on the Form
 End With
 
 hValueBox = New ValueBox(Me)                                      'Add a ValueBox to the Form
@@ -1399,7 +1399,7 @@ class MessageDialog : Dialog (message)
     add (button)
 
     connect (self, "dispose", CLOSE_BUTTON_EVENT)
-    attrib ("size=200,100", "bg=light gray") 
+    attrib ("size=200,100", "bg=light gray")
   end
 
   initially (message)
@@ -1409,7 +1409,7 @@ end
 
 # Provides a basic yes/no question dialog
 class QuestionDialog : Dialog (answer, message)
-  method answered_yes () 
+  method answered_yes ()
     return answer == "yes"
   end
 
@@ -1434,7 +1434,7 @@ class QuestionDialog : Dialog (answer, message)
     add (buttonNo)
 
     connect (self, "dispose", CLOSE_BUTTON_EVENT)
-    attrib ("size=200,100", "bg=light gray") 
+    attrib ("size=200,100", "bg=light gray")
   end
 
   initially (message)
@@ -1465,7 +1465,7 @@ class WindowApp : Dialog (field, value)
         warning := MessageDialog ("Not a number")
         warning.show_modal ()
         field.set_contents (string(value))
-      } 
+      }
       else {
         value := integer(field.get_contents ())
       }
@@ -1510,25 +1510,25 @@ cc increment button;cn "Increment";
 cc random button;cn "Random";
 pas 6 6;pcenter;
 )
- 
+
 interact_run=: verb define
  wd INTERACT
  wd 'set Value text 0;'
  wd 'pshow;'
 )
- 
+
 interact_cancel=: interact_close=: verb define
  wd'pclose'
 )
- 
+
 interact_Value_button=: verb define
  wd 'set Value text ' , ": {. 0 ". Value
 )
- 
+
 interact_increment_button=: verb define
  wd 'set Value text ' , ": 1 + {. 0 ". Value
 )
- 
+
 interact_random_button=: verb define
  if. 2 = 2 3 wdquery 'Confirm';'Reset to random number?' do.
   wd 'set Value text ' , ": ?100
@@ -1607,17 +1607,17 @@ import javax.swing.JTextField;
 public class Interact extends JFrame{
 	final JTextField numberField;
 	final JButton incButton, randButton;
-	
+
 	public Interact(){
 		//stop the GUI threads when the user hits the X button
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		numberField = new JTextField();
 		incButton = new JButton("Increment");
 		randButton = new JButton("Random");
-		
+
 		numberField.setText("0");//start at 0
-		
+
 		//listen for button presses in the text field
 		numberField.addKeyListener(new KeyListener(){
 			@Override
@@ -1633,7 +1633,7 @@ public class Interact extends JFrame{
 			@Override
 			public void keyPressed(KeyEvent e){}
 		});
-		
+
 		//listen for button clicks on the increment button
 		incButton.addActionListener(new ActionListener(){
 			@Override
@@ -1646,7 +1646,7 @@ public class Interact extends JFrame{
 				}
 			}
 		});
-		
+
 		//listen for button clicks on the random button
 		randButton.addActionListener(new ActionListener(){
 			@Override
@@ -1655,30 +1655,30 @@ public class Interact extends JFrame{
 				if(JOptionPane.showConfirmDialog(null, "Are you sure?") ==
 					JOptionPane.YES_OPTION){
 					//set the text field text to a random positive long
-					numberField.setText(Long.toString((long)(Math.random() 
+					numberField.setText(Long.toString((long)(Math.random()
 							* Long.MAX_VALUE)));
 				}
 			}
 		});
-		
+
 		//arrange the components in a grid with 2 rows and 1 column
 		setLayout(new GridLayout(2, 1));
-		
+
 		//a secondary panel for arranging both buttons in one grid space in the window
 		JPanel buttonPanel = new JPanel();
-		
+
 		//the buttons are in a grid with 1 row and 2 columns
 		buttonPanel.setLayout(new GridLayout(1, 2));
 		//add the buttons
 		buttonPanel.add(incButton);
 		buttonPanel.add(randButton);
-		
+
 		//put the number field on top of the buttons
 		add(numberField);
 		add(buttonPanel);
 		//size the window appropriately
 		pack();
-		
+
 	}
 
 	public static void main(String[] args){
@@ -1739,7 +1739,7 @@ public interface Interact {
   public static final JFrame FRAME = new JFrame();
   public static final JTextField FIELD = new JTextField();
   public static final JPanel PANEL = new JPanel();
-  
+
   public static void setDefaultCloseOperation(JFrame frame) {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
@@ -1905,7 +1905,7 @@ public interface Interact {
       .forEach(Interact::acceptFrame)
     ;
   }
-  
+
   public static void main(String... arguments) {
     Stream.of(FRAME)
       .parallel()
@@ -1959,7 +1959,7 @@ function invalid_command(path, W)
     println("Invalid value")
     tcl(W, "delete", "@0", "end")
 end
-    
+
 tk_configure(value, {:validate=>"key", :validatecommand=>validate_command, :invalidcommand=>invalid_command })
 
 ## Pressing the "random" button presents a confirmation dialog, and resets the field's value to a random value if the answer is "Yes".
@@ -2158,7 +2158,7 @@ Module CheckIt {
       With buttonRND,"Caption","Random"
       textbox1.value$="0"
       Function Local1(new Feed$) {
-            \\ this Function can be used from other Integer 
+            \\ this Function can be used from other Integer
             \\ this$ and thispos, exist just before the call of this Function
             local sgn$
             if feed$="" and this$="-" then thispos-- :  exit
@@ -2168,7 +2168,7 @@ Module CheckIt {
             if instr(this$,"+")>0 and sgn$="-" then this$=filter$(this$, "+") : sgn$=""
             if instr(this$,"-")>0  and sgn$="" then this$=filter$(this$, "-") : sgn$="-"
             if filter$(this$,"0123456789")<>"" then this$=Feed$ :  thispos-- : exit
-            if len(this$)>1 then While  left$(this$,1)="0" {this$=mid$(this$, 2)} 
+            if len(this$)>1 then While  left$(this$,1)="0" {this$=mid$(this$, 2)}
             this$=sgn$+this$
             if this$="-0" then this$="-" : thispos=2
         }
@@ -2224,7 +2224,7 @@ Then, by clicking the 2 gears and opening up the start-up commands, enter this:
 
 macro(SP=DocumentTools:-SetProperty, GP=DocumentTools:-GetProperty);
 with(Maplets[Elements]):
-SP("Text",value,0); 
+SP("Text",value,0);
 Increase:=proc()
 	SP("Text",value,parse(GP("Text",value))+1);
 end proc;
@@ -2241,13 +2241,13 @@ end proc;
 
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-<lang>Manipulate[Null, {{value, 0}, InputField[Dynamic[value], Number] &}, 
- Row@{Button["increment", value++], 
-   Button["random", 
+<lang>Manipulate[Null, {{value, 0}, InputField[Dynamic[value], Number] &},
+ Row@{Button["increment", value++],
+   Button["random",
     If[DialogInput[
-      Column@{"Are you sure?", 
-        Row@{Button["Yes", DialogReturn[True]], 
-          Button["No", DialogReturn[False]]}}], 
+      Column@{"Are you sure?",
+        Row@{Button["Yes", DialogReturn[True]],
+          Button["No", DialogReturn[False]]}}],
      value = RandomInteger@10000], Method -> "Queued"]}]
 ```
 
@@ -2266,13 +2266,13 @@ import
 
 import
   gtk2, gdk2, glib2, strutils, math
- 
+
 var valu: int = 0
 var chngd_txt_hndler: gulong = 0
- 
+
 proc thisDestroy(widget: PWidget, data: Pgpointer) {.cdecl.} =
   main_quit()
- 
+
 randomize()
 nim_init()
 var win = window_new(gtk2.WINDOW_TOPLEVEL)
@@ -2294,7 +2294,7 @@ pack_start(content, hbox1, true, true, 0)
 pack_start(content, btn_quit, true, true, 0)
 set_border_width(win, 5)
 add(win, content)
- 
+
 proc on_question_clicked: bool =
     var dialog = win.message_dialog_new(0, MESSAGE_QUESTION,
       BUTTONS_YES_NO, "Use a Random number?")
@@ -2304,16 +2304,16 @@ proc on_question_clicked: bool =
     elif response == RESPONSE_NO:
        result = false
     dialog.destroy()
- 
+
 proc thisInc(widget: PWidget, data: Pgpointer){.cdecl.} =
   inc(valu)
   entry_fld.set_text($valu)
- 
+
 proc thisRnd(widget: PWidget, data: Pgpointer){.cdecl.} =
   if on_question_clicked():
       valu = random(20)
       entry_fld.set_text($valu)
- 
+
 proc thisTextChanged(widget: PWidget, data: Pgpointer) {.cdecl.} =
   #signal_handler_block(entry_fld, chngd_txt_hndler)
   try:
@@ -2323,13 +2323,13 @@ proc thisTextChanged(widget: PWidget, data: Pgpointer) {.cdecl.} =
   entry_fld.set_text($valu)
   #signal_handler_unblock(entry_fld, chngd_txt_hndler)
   #signal_emit_stop(entry_fld, signal_lookup("changed",TYPE_EDITABLE()),0)
- 
+
 discard signal_connect(win, "destroy", SIGNAL_FUNC(thisDestroy), nil)
 discard signal_connect(btn_quit, "clicked", SIGNAL_FUNC(thisDestroy), nil)
 discard signal_connect(btn_inc, "clicked", SIGNAL_FUNC(thisInc), nil)
 discard signal_connect(btn_rnd, "clicked", SIGNAL_FUNC(thisRnd), nil)
 chngd_txt_hndler = signal_connect(entry_fld, "changed", SIGNAL_FUNC(thisTextChanged), nil)
- 
+
 win.show_all()
 main()
 ```
@@ -2346,7 +2346,7 @@ import
 
 # assumes you have the iup  .dll or .so installed
 
-randomize()  
+randomize()
 discard iup.open(nil,nil)
 
 
@@ -2398,7 +2398,7 @@ SetAttribute(contents, "MARGIN", "2x2")
 
 discard setCallback(incBtn,"ACTION", toCB(incClick))
 discard setCallback(randBtn,"ACTION", toCB(randClick))
-discard setCallback(contents,"K_ANY", toCB(key_cb))       
+discard setCallback(contents,"K_ANY", toCB(key_cb))
 
 var dlg = Dialog(contents)
 discard dlg.show()
@@ -2458,7 +2458,7 @@ in
 ```
 
 
-As a web application, using the "Roads" web programming library. Connect your browser to http://localhost:8080/start after starting the program. 
+As a web application, using the "Roads" web programming library. Connect your browser to http://localhost:8080/start after starting the program.
 
 ```oz
 declare
@@ -2644,7 +2644,7 @@ input(Gui, Btn, Input, Selection) :-
 
 
 ```PureBasic
-Enumeration 
+Enumeration
   #StringGadget
   #Increment
   #Random
@@ -2788,7 +2788,7 @@ def rand():
         s.set(random.randrange(0,5000))
 def update(e):
     if not e.char.isdigit():
-        tkMessageBox.showerror('Error', 'Invalid input !') 
+        tkMessageBox.showerror('Error', 'Invalid input !')
         return "break"
 e = Entry(text=s)
 e.grid(column=0, row=0, **options)
@@ -2890,7 +2890,7 @@ addHandlerChanged(e, handler=function(h,...) {
 
 addHandlerChanged(inc_btn, handler=function(h,...) {
   val <- svalue(e)
-  if(is.na(val)) 
+  if(is.na(val))
     galert("Can't increment if not a number", parent=w)
   else
     svalue(e) <- val + 1
@@ -2911,7 +2911,7 @@ addHandlerChanged(rdm_btn, handler=function(h,...) {
 ```racket
 
 #lang racket/gui
- 
+
 (define frame (new frame% [label "Interaction Demo"]))
 
 (define inp
@@ -2993,16 +2993,16 @@ Output:
 Shoes.app(title: "GUI component interaction") do
   stack do
     textbox = edit_line
-    
+
     textbox.change do
       textbox.text = textbox.text.gsub(/[^\d]/, '') and alert "Input must be a number!" if textbox.text !~ /^\d*$/
     end
-    
+
     flow do
       button "Increment" do
         textbox.text = textbox.text.to_i + 1
       end
-      
+
       button "Random" do
         textbox.text = rand 5000 if confirm "Do you want a random number?"
       end
@@ -3048,7 +3048,7 @@ html "</TD></TR><TR bgcolor=tan><TD colspan=2 ALIGN=CENTER>"
 html "</TD></TR></TABLE>"
 wait
 
-[incr] 
+[incr]
 value	= val(#val contents$())
 value$  = str$(value + 1)
 goto [screen]
@@ -3200,7 +3200,7 @@ proc random {} {
 bool validate_input(Gtk.Window window, string str){
     int64 val;
     bool ret = int64.try_parse(str,out val);;
-    
+
     if(!ret){
         var dialog = new Gtk.MessageDialog(window,
        	                                   Gtk.DialogFlags.MODAL,
@@ -3209,7 +3209,7 @@ bool validate_input(Gtk.Window window, string str){
        	                                   "Invalid value");
         dialog.run();
         dialog.destroy();
-    }        
+    }
     return ret;
 }
 
@@ -3244,8 +3244,8 @@ int main (string[] args) {
         // read and validate the entered value
         var str = entry.get_text();
         if(validate_input(window, str)){
-            entry.set_text((int.parse(str)+1).to_string());	
-        }        
+            entry.set_text((int.parse(str)+1).to_string());
+        }
     });
 
 
@@ -3271,7 +3271,7 @@ int main (string[] args) {
     box.pack_start(rb, false, false, 2);
 
     window.add(box);
-    
+
     window.show_all();
 
     Gtk.main ();
@@ -3292,7 +3292,7 @@ Note that there are other methods of validating the entered value. The method us
 
 ```vb
 VERSION 5.00
-Begin VB.Form Form1 
+Begin VB.Form Form1
    Caption         =   "Form1"
    ClientHeight    =   2265
    ClientLeft      =   60
@@ -3302,7 +3302,7 @@ Begin VB.Form Form1
    ScaleHeight     =   2265
    ScaleWidth      =   2175
    StartUpPosition =   3  'Windows Default
-   Begin VB.CommandButton cmdRnd 
+   Begin VB.CommandButton cmdRnd
       Caption         =   "Random"
       Height          =   495
       Left            =   120
@@ -3310,7 +3310,7 @@ Begin VB.Form Form1
       Top             =   1680
       Width           =   1215
    End
-   Begin VB.CommandButton cmdInc 
+   Begin VB.CommandButton cmdInc
       Caption         =   "Increment"
       Height          =   495
       Left            =   120
@@ -3318,7 +3318,7 @@ Begin VB.Form Form1
       Top             =   1080
       Width           =   1215
    End
-   Begin VB.TextBox txtValue 
+   Begin VB.TextBox txtValue
       Height          =   495
       Left            =   120
       TabIndex        =   0

@@ -208,7 +208,7 @@ Last updated:  --[[User:Aspectcl|Aspectcl]] ([[User talk:Aspectcl|talk]]) 10:34,
            rank: 187  [tied]       (30 entries)  REALbasic
            rank: 187  [tied]       (30 entries)  Sed
            rank: 192               (29 entries)  GML
-           rank: 193  [tied]       (28 entries)  Brainf***
+           rank: 193  [tied]       (28 entries)  Brainfuck
            rank: 193  [tied]       (28 entries)  ECL
            rank: 193  [tied]       (28 entries)  Wolfram Language
            rank: 196  [tied]       (27 entries)  GUISS

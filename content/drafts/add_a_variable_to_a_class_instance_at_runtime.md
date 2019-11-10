@@ -66,7 +66,7 @@ procedure Dynamic is
       type Base is new Class with null record;
       overriding function Boo (X : Base) return String;
    end Base_Class;
-   
+
    package body Base_Class is
       function Boo (X : Base) return String is
       begin
@@ -76,7 +76,7 @@ procedure Dynamic is
    use Base_Class;
 
    E : aliased Base;  -- An instance of Base
-   
+
 begin
    -- Gone run-time
    declare
@@ -111,7 +111,7 @@ I am Class with 1
 
 ```AutoHotkey
 e := {}
-e.foo := 1 
+e.foo := 1
 ```
 
 
@@ -123,23 +123,23 @@ It's not really intended that you should do this, but if you must you can:
 
 ```bbcbasic
       INSTALL @lib$+"CLASSLIB"
-      
+
       REM Create a base class with no members:
       DIM class{method}
       PROC_class(class{})
-      
+
       REM Instantiate the class:
       PROC_new(myobject{}, class{})
-      
+
       REM Add a member at run-time:
       member$ = "mymember#"
       PROCaddmember(myobject{}, member$, 8)
-      
+
       REM Test that the member can be accessed:
       PROCassign("myobject." + member$, "PI")
       PRINT EVAL("myobject." + member$)
       END
-      
+
       DEF PROCaddmember(RETURN obj{}, mem$, size%)
       LOCAL D%, F%, P%
       DIM D% DIM(obj{}) + size% - 1, F% LEN(mem$) + 8
@@ -148,7 +148,7 @@ It's not really intended that you should do this, but if you must you can:
       $$(F%+4) = mem$ : F%!(LEN(mem$) + 5) = DIM(obj{})
       !(^obj{} + 4) = D%
       ENDPROC
-      
+
       DEF PROCassign(v$, n$)
       IF EVAL("FNassign(" + v$ + "," + n$ + ")")
       ENDPROC
@@ -171,7 +171,7 @@ This solution saves the original members and methods in a variable, using patter
 & A value:?(object..aMember)
 & !object:(=?originalMembersAndMethods)
 &     new
-    $ ( 
+    $ (
       ' ( (anotherMember=)
           (anotherMethod=.!(its.anotherMember))
           ()$originalMembersAndMethods
@@ -216,11 +216,11 @@ anotherMember contains: some other value
 
 ```csharp
 // ----------------------------------------------------------------------------------------------
-//  
+//
 //  Program.cs - DynamicClassVariable
-//  
+//
 //     Mikko Puonti, 2013
-// 
+//
 // ----------------------------------------------------------------------------------------------
 
 using System;
@@ -235,16 +235,16 @@ namespace DynamicClassVariable
         private static void Main()
         {
             // To enable late binding, we must use dynamic keyword
-            // ExpandoObject readily implements IDynamicMetaObjectProvider which allows us to do some dynamic magic 
+            // ExpandoObject readily implements IDynamicMetaObjectProvider which allows us to do some dynamic magic
             dynamic sampleObj = new ExpandoObject();
             // Adding a new property
             sampleObj.bar = 1;
             Console.WriteLine( "sampleObj.bar = {0}", sampleObj.bar );
 
-            // We can also add dynamically methods and events to expando object 
+            // We can also add dynamically methods and events to expando object
             // More information: http://msdn.microsoft.com/en-us/library/system.dynamic.expandoobject.aspx
             // This sample only show very small part of dynamic language features - there is lot's more
-            
+
             Console.WriteLine( "< Press any key >" );
             Console.ReadKey();
         }
@@ -282,7 +282,7 @@ console.log e.foo, e.yo()
 # aren't shown here.  The mechanism to add members is the same, though.
 class Empty
   # empty class
-  
+
 e = new Empty()
 e.foo = "bar"
 e.yo = -> "baz"
@@ -441,7 +441,7 @@ import extensions;
 class Extender : BaseExtender
 {
     prop object foo;
-    
+
     constructor(object)
     {
         theObject := object
@@ -451,7 +451,7 @@ class Extender : BaseExtender
 public program()
 {
     var object := 234;
-  
+
     // extending an object with a field
     object := new Extender(object);
 
@@ -501,7 +501,7 @@ Output from the above:
 ```
 
 '''Dictionary:'''
-In this example we will add a variable through the use of an object from a bless'ed dictionary.  We create a new variable called 'newVar' at runtime and assign a string to it.  Additionally we assign an external, to the object, function (sub_func) to the variable 'sub'. 
+In this example we will add a variable through the use of an object from a bless'ed dictionary.  We create a new variable called 'newVar' at runtime and assign a string to it.  Additionally we assign an external, to the object, function (sub_func) to the variable 'sub'.
 
 ```falcon
 function sub_func( value )
@@ -531,24 +531,24 @@ FBSL class instances aren't expandable with additional, directly accessible publ
 #APPTYPE CONSOLE
 
 CLASS Growable
-	
+
 	PRIVATE:
-	
+
 	DIM instructions AS STRING = "Sleep(1)"
 	:ExecCode
 	DIM dummy AS INTEGER = EXECLINE(instructions, 1)
-	
+
 	PUBLIC:
-	
+
 	METHOD Absorb(code AS STRING)
 		instructions = code
 		GOTO ExecCode
 	END METHOD
-	
+
 	METHOD Yield() AS VARIANT
 		RETURN result
 	END METHOD
-	
+
 END CLASS
 
 DIM Sponge AS NEW Growable()
@@ -592,7 +592,7 @@ include FMS-SILib.f
   :m at: ( idx -- obj ) inst-objects at: ;m
 ;class
 
-foo foo1 
+foo foo1
 
 : main
   heap> string foo1 add:
@@ -680,7 +680,7 @@ Sample input/output:
 
 ```txt
 
-Create two fields at runtime: 
+Create two fields at runtime:
   Field #1:
        Enter name  : a
        Enter value : rosetta
@@ -755,9 +755,9 @@ e foo := 1
 
 =={{header|Icon}} and {{header|Unicon}}==
 {{omit from|Icon}}
-Unicon implements object environments with records and supporting procedures for creation, initialization, and methods. To modify an instance you must create a new record then copy, amend, and replace it.  Strictly speaking we can't guarantee the replace as there is no way to modify the existing object and we are creating a new instance with extensions.  The procedures ''constructor'' and ''fieldnames'' are needed.  This example doesn't do error checking. Here ''extend'' takes three arguments, the class instance, a list of new variable names as strings, and an optional list of new values to be assigned.  The new instance is returned and the object is replaced by assignment.  The caveat here is that if the object was assigned to anything else we will now have two objects floating around with possible side effects.  As written this isn't safe from name collisions - aside from local declarations the use of a fixed constructor name uses the global name space.  There is a final caveat that needs to be observed - if future implementations of objects change then this could easily stop working.  
+Unicon implements object environments with records and supporting procedures for creation, initialization, and methods. To modify an instance you must create a new record then copy, amend, and replace it.  Strictly speaking we can't guarantee the replace as there is no way to modify the existing object and we are creating a new instance with extensions.  The procedures ''constructor'' and ''fieldnames'' are needed.  This example doesn't do error checking. Here ''extend'' takes three arguments, the class instance, a list of new variable names as strings, and an optional list of new values to be assigned.  The new instance is returned and the object is replaced by assignment.  The caveat here is that if the object was assigned to anything else we will now have two objects floating around with possible side effects.  As written this isn't safe from name collisions - aside from local declarations the use of a fixed constructor name uses the global name space.  There is a final caveat that needs to be observed - if future implementations of objects change then this could easily stop working.
 
-''Note:'' Unicon can be translated via a command line switch into icon which allows for classes to be shared with Icon code (assuming no other incompatibilities exist). 
+''Note:'' Unicon can be translated via a command line switch into icon which allows for classes to be shared with Icon code (assuming no other incompatibilities exist).
 
 ```unicon
 
@@ -769,30 +769,30 @@ procedure main()
    c1 := extend(c1,["c","d"],[8,9])          # 2 new fields
    write("new c1:\n",ximage(c1))
    c1 := extend(c1,["e"],[7])                # 1 more
-   write("newest c1:\n",ximage(c1))   
+   write("newest c1:\n",ximage(c1))
 end
 
 class foo(a,b)                               # dummy class
 end
 
-procedure extend(instance,newvars,newvals)   #: extend a class instance 
+procedure extend(instance,newvars,newvals)   #: extend a class instance
    every put(f := [],fieldnames(instance))   # copy existing fieldnames
-   c := ["tempconstructor"] ||| f            # new constructor    
+   c := ["tempconstructor"] ||| f            # new constructor
    every put(c,!newvars)                     # append new vars
    t := constructor!c                        # new constructor
    x := t()                                  # new instance
-   every x[v := !f] := instance[v]           # same as old instance  
-   x.__s := x                                # new self 
-   if \newvals then 
-      every i := 1 to min(*newvars,*newvals) do 
-         x[newvars[i]] := newvals[i]         # add new vars = values   
+   every x[v := !f] := instance[v]           # same as old instance
+   x.__s := x                                # new self
+   if \newvals then
+      every i := 1 to min(*newvars,*newvals) do
+         x[newvars[i]] := newvals[i]         # add new vars = values
    return x
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn provides ximage to dump variable contents] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn provides ximage to dump variable contents]
 
 Output:
 ```txt
@@ -878,11 +878,11 @@ $a|.["c"] = 3
 
 ## Julia
 
-Julia does not allow direct modification of the data member variables of a type, 
-though class methods (just Julia functions) can be added without difficulty. 
-For special situations, such as when parsing an input file, where new data type names 
-may be appropriate, this can be accommodated using a Dict as one of the class variables. 
-For example, consider the below JSON input data for a program processing phone numbers, 
+Julia does not allow direct modification of the data member variables of a type,
+though class methods (just Julia functions) can be added without difficulty.
+For special situations, such as when parsing an input file, where new data type names
+may be appropriate, this can be accommodated using a Dict as one of the class variables.
+For example, consider the below JSON input data for a program processing phone numbers,
 where the type of phone numbers for the person is unknown until run-time:
 
 ```xml
@@ -1143,8 +1143,8 @@ Module checkit {
       Print n=>y=10
       n=>y+=20
       Print a(3).y=30
-     \\ now n points to a(2) 
-     n->a(2)   
+     \\ now n points to a(2)
+     n->a(2)
      Print Valid(n=>y)=false  ' y not exist in a(2)
      Print n is a(2)  ' true
      \\ we don't have types for groups
@@ -1179,7 +1179,7 @@ Here, the two 'variables' can be seen under the single heading 'f'. And of cours
 
 ## Morfa
 
-To emulate adding a variable to a class instance, Morfa uses user-defined operators <tt>`</tt> and <tt>&lt;-</tt>. 
+To emulate adding a variable to a class instance, Morfa uses user-defined operators <tt>`</tt> and <tt>&lt;-</tt>.
 
 ```morfa
 
@@ -1224,11 +1224,11 @@ public func <-(access: DynamicElementAccess<T>, newEl: T): void
 func main(): void
 {
     var test = dynamic<int>;
-    
+
     test`a <- 10;
     test`b <- 20;
     test`a <- 30;
-    
+
     println(test`a, test`b);
 }
 
@@ -1238,7 +1238,7 @@ struct DynamicElementAccess
 {
     var holder: Dynamic<T>;
     var name: text;
-    
+
     import morfa.io.format.Formatter;
     public func format(formatt: text, formatter: Formatter): text
     {
@@ -1329,11 +1329,11 @@ test = setfield (test, "c", 3);
 
 ## ooRexx
 
-ooRexx does not directly expose instance variables to callers.  Encapsulated access to instance variables is done via accesser methods for assignment and retrieval.  In general, it is not possible to just dynamically add support, but it is possible to construct a class that allows for this to happen. 
+ooRexx does not directly expose instance variables to callers.  Encapsulated access to instance variables is done via accesser methods for assignment and retrieval.  In general, it is not possible to just dynamically add support, but it is possible to construct a class that allows for this to happen.
 
 ### Unknown Method Access
 
-This example traps unknown method calls, then sets or retrieves the values in an encapsulated directory object. 
+This example traps unknown method calls, then sets or retrieves the values in an encapsulated directory object.
 
 ```ooRexx
 
@@ -1893,7 +1893,7 @@ starfighter: make object! [
 x-wing: make starfighter [
 	model: "Incom T-65 X-wing"
 ]
-	
+
 squadron: reduce [
 	make x-wing [pilot: "Luke Skywalker"]
 	make x-wing [pilot: "Wedge Antilles"]
@@ -2066,14 +2066,14 @@ This preserves object identity. (by the way: if we remember and reuse these temp
 ```smalltalk
 |addSlot p|
 
-addSlot := 
+addSlot :=
   [:obj :slotName |
     |anonCls newObj|
-    anonCls := obj class 
-            subclass:(obj class name,'+') asSymbol 
-            instanceVariableNames:slotName 
-            classVariableNames:'' 
-            poolDictionaries:'' category:nil 
+    anonCls := obj class
+            subclass:(obj class name,'+') asSymbol
+            instanceVariableNames:slotName
+            classVariableNames:''
+            poolDictionaries:'' category:nil
             inEnvironment:nil.
     anonCls compile:('%1 ^  %1' bindWith:slotName).
     anonCls compile:('%1:v %1 := v' bindWith:slotName).
@@ -2102,11 +2102,11 @@ The above used a block to perform this operation in privacy. In a real world app
 addSlot: slotName
     |anonCls newObj|
 
-    anonCls := self class 
-            subclass:(self class name,'+') asSymbol 
-            instanceVariableNames:slotName 
-            classVariableNames:'' 
-            poolDictionaries:'' category:nil 
+    anonCls := self class
+            subclass:(self class name,'+') asSymbol
+            instanceVariableNames:slotName
+            classVariableNames:''
+            poolDictionaries:'' category:nil
             inEnvironment:nil.
     anonCls compile:('%1 ^  %1' bindWith:slotName).
     anonCls compile:('%1:v %1 := v' bindWith:slotName).
@@ -2114,7 +2114,7 @@ addSlot: slotName
     self become:newObj.
 ```
 
- 
+
 then, again create a 2D Point object, add a z slot, change and retrieve the z-value, finally inspect it (and see the slots).
 
 ```smalltalk
@@ -2218,15 +2218,15 @@ We can use the same associated object mechanism as in Objective-C:
 
 ```swift
 import Foundation
- 
+
 let fooKey = UnsafeMutablePointer<UInt8>.alloc(1)
- 
+
 class MyClass { }
 let e = MyClass()
- 
+
 // set
 objc_setAssociatedObject(e, fooKey, 1, .OBJC_ASSOCIATION_RETAIN)
- 
+
 // get
 if let associatedObject = objc_getAssociatedObject(e, fooKey) {
   print("associated object: \(associatedObject)")
@@ -2316,7 +2316,7 @@ Once created, class structure is fixed. However, using reflection, you can blow 
 {{omit from|Applesoft BASIC}}
 {{omit from|ALGOL 68}}
 {{omit from|AWK}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|C}}
 {{omit from|C++}}
 {{omit from|Clojure}}

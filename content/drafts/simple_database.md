@@ -19,7 +19,7 @@ The tool should have a command-line interface to enter at least two different va
 
 The entered data should be stored in a structured format and saved to disk.
 
-It does not matter what kind of data is being tracked.   It could be a collection (CDs, coins, baseball cards, books), a diary, an electronic organizer (birthdays/anniversaries/phone numbers/addresses), etc. 
+It does not matter what kind of data is being tracked.   It could be a collection (CDs, coins, baseball cards, books), a diary, an electronic organizer (birthdays/anniversaries/phone numbers/addresses), etc.
 
 
 You should track the following details:
@@ -48,7 +48,7 @@ The file format on disk should be human readable, but it need not be standardize
 
 
 ;Related task:
-*   [[Take notes on the command line]] 
+*   [[Take notes on the command line]]
 
 
 
@@ -56,7 +56,7 @@ The file format on disk should be human readable, but it need not be standardize
 
 ## Bracmat
 
-This is a rather minimal solution. The program is run from the command line of the operating system, in this example the Windows command prompt. The program is stored in a file called 'sdb': 
+This is a rather minimal solution. The program is run from the command line of the operating system, in this example the Windows command prompt. The program is stored in a file called 'sdb':
 
 ```bracmat
   whl
@@ -194,18 +194,18 @@ db= "BULK CARRIER"
 ```
 
 
-Use is made of Bracmat's automatic normalization of algebraic formula to turn the data into a hierarchical structure, with the tag as the top level and the date/time immediately below that level. 
+Use is made of Bracmat's automatic normalization of algebraic formula to turn the data into a hierarchical structure, with the tag as the top level and the date/time immediately below that level.
 
 
 ## C
 
 A simple database in C with some error checking, even. A quick test with Valgrind revealed no obvious memory leaks. The following data was used for testing. -> database.csv
 
- "Soon Rising","Dee","Lesace","10-12-2000","New Hat Press" 
- "Brave Chicken","Tang","Owe","04-01-2008","Nowhere Press" 
- "Aardvark Point","Dee","Lesace","5-24-2001","New Hat Press" 
- "Bat Whisperer, The","Tang","Owe","01-03-2004","Nowhere Press" 
- "Treasure Beach","Argus","Jemky","09-22-1999","Lancast" 
+ "Soon Rising","Dee","Lesace","10-12-2000","New Hat Press"
+ "Brave Chicken","Tang","Owe","04-01-2008","Nowhere Press"
+ "Aardvark Point","Dee","Lesace","5-24-2001","New Hat Press"
+ "Bat Whisperer, The","Tang","Owe","01-03-2004","Nowhere Press"
+ "Treasure Beach","Argus","Jemky","09-22-1999","Lancast"
 
 
 ```C>#include <stdio.h
@@ -429,13 +429,13 @@ namespace Simple_database
 			// file path will be automatically set to cmd console.
 			//
 			// Start notepad, write only cmd.exe and save file as cmd.bat
-			// 
+			//
 			// To start cmd just double click at cmd.bat file.
 			//
 			//
 			//
 			// Console application command line start command
-			// 
+			//
 			// application name.exe [argument] [argument parameters]
 			//
 			//
@@ -466,7 +466,7 @@ namespace Simple_database
 			//
 			//
 			//
-			
+
 			//
 			// Command line example
 			//
@@ -487,11 +487,11 @@ namespace Simple_database
 			// If not used as shown in examples, program will show error message.
 			//
 			//
-			
-			
+
+
 			//
 			// Check command line for arguments
-			// 
+			//
 			//
 			if(args.Length==0)
 			{
@@ -505,16 +505,16 @@ namespace Simple_database
 				{
 						case "[a]" : Add_New_Entry(args);
 						break;
-						
+
 						case "[p1]": Print_Document("Print the latest entry.txt");
 						break;
-						
+
 						case "[p2]": Print_Document("Print the latest entry for each category.txt");
 						break;
-						
+
 						case "[p3]": Print_Document("Print all entries sorted by a date.txt");
 						break;
-						
+
 						default :
 						{
 							Console.WriteLine();
@@ -525,10 +525,10 @@ namespace Simple_database
 				}
 			}
 		}
-		
+
 		static void Add_New_Entry(string [] args)
 		{
-			
+
 			//
 			// Check parameters
 			//
@@ -577,7 +577,7 @@ namespace Simple_database
 					args[0] = "[" + DateTime.Now.ToString() + "]";
 					//
 					// Write entry to Data base
-					// 
+					//
 					StreamWriter w = new StreamWriter("Data base.txt",true);
 					w.WriteLine(line);
 					//
@@ -592,7 +592,7 @@ namespace Simple_database
 					Console.WriteLine(" New entry is written to database. ");
 
 					Create_Print_Documents(args);
-					
+
 					//
 					//
 					//
@@ -612,7 +612,7 @@ namespace Simple_database
 				}
 			}
 		}
-		
+
 		static void Create_Print_Documents(string [] args)
 		{
 			//
@@ -660,7 +660,7 @@ namespace Simple_database
 			{
 				latest_entry+=a;
 			}
-			
+
 			if(!File.Exists("Print the latest entry for each category.txt"))
 			{
 				File.WriteAllText("Print the latest entry for each category.txt",latest_entry);
@@ -708,7 +708,7 @@ namespace Simple_database
 				Console.WriteLine();
 			}
 		}
-		
+
 		static void Print_Document(string file_name)
 		{
 			//
@@ -907,7 +907,7 @@ This is a souped-up version of the task from [[Take notes on the command line]].
                WHEN OTHER
                    DISPLAY action " is not a valid option."
            END-EVALUATE
-           
+
            GOBACK
            .
        write-entry.
@@ -1065,32 +1065,32 @@ Sample session:
 
 $ ./database -c "Reminder" "Bob's Birthday" "Buy birthday present for Bob."
 $ ./database -c "Wishlist" "Beethoven" "Beethoven's Ode to Joy"
-$ ./database -c "Reminder" "Add to Simple Database" "Add brainf*** example for Simple Database on Rosetta Code."
+$ ./database -c "Reminder" "Add to Simple Database" "Add Brainfuck example for Simple Database on Rosetta Code."
 ...
 $ ./database -f "Mozart"
 An entry with that title was not found.
 $ ./database -t
-Date added: 2013/08/13 Tag: Reminder            
-Title: Bob's Birthday                                    
+Date added: 2013/08/13 Tag: Reminder
+Title: Bob's Birthday
 Contents:
   Buy birthday present for Bob.
- 
-Date added: 2013/08/13 Tag: Reminder            
-Title: Add to Simple Database                            
+
+Date added: 2013/08/13 Tag: Reminder
+Title: Add to Simple Database
 Contents:
-  Add brainf*** example for Simple Database on Rosetta Code.
- 
-Date added: 2013/08/13 Tag: Wishlist            
-Title: Beethoven                                         
+  Add Brainfuck example for Simple Database on Rosetta Code.
+
+Date added: 2013/08/13 Tag: Wishlist
+Title: Beethoven
 Contents:
   Beethoven's Ode to Joy
 
 $ ./database -r "Beethoven"
 $ ./database -l
-Date added: 2013/08/13 Tag: Reminder            
-Title: Add to Simple Database                            
+Date added: 2013/08/13 Tag: Reminder
+Title: Add to Simple Database
 Contents:
-  Add brainf*** example for Simple Database on Rosetta Code.
+  Add Brainfuck example for Simple Database on Rosetta Code.
 $
 
 ```
@@ -1104,7 +1104,7 @@ Tested with [[Common Lisp]]. ''(Save the code below as db.lisp)''
 
 
 ```lisp
-(defvar *db* nil)        
+(defvar *db* nil)
 
 (defvar *db-cat* (make-hash-table :test 'equal))
 
@@ -1155,7 +1155,7 @@ Tested with [[Common Lisp]]. ''(Save the code below as db.lisp)''
 (defun pr-all-categories (&optional (stream t))
   (loop for k being the hash-keys in *db-cat*
        do (format stream "(~a) " k)))
-  
+
 (defun insert-item (item)
   "insert item into database in a time sorted list. okay for a small list, as per spec."
   (let ((first-item (car *db*)) (new-itm item))
@@ -1196,14 +1196,14 @@ Tested with [[Common Lisp]]. ''(Save the code below as db.lisp)''
 	    "delete-all ---------------------------  delete the database"
             "insert <item-name> <item-category> ---  insert an item with its category"
 	    "show ---------------------------------  shows the latest inserted item"
-	    "show-categories ----------------------  show all categories"	    
+	    "show-categories ----------------------  show all categories"
 	    "show-all -----------------------------  show all items"
 	    "show-per-category --------------------  show the latest item per category")))
 
 (defun db-cmd-run (args)
   (cond ((and (> (length args) 1) (equal (first args) "delete"))
 	 (del-item (second args)))
-	((equal (first args) "delete-all") (del-db))	
+	((equal (first args) "delete-all") (del-db))
 	((and (> (length args) 2) (equal (first args) "insert"))
 	 (add-item-to-db (rest args)))
 	((equal (first args) "show") (read-db-from-file) (pr))
@@ -1264,7 +1264,7 @@ Here is the latest entry for each category:
 
 Here is the list of all categories:
  $ clisp db.lisp show-categories
- (vinyl) (cd) (dvd) (tape) 
+ (vinyl) (cd) (dvd) (tape)
 
 To delete an entry:
  $ clisp db.lisp delete "title-tape-2"
@@ -1448,12 +1448,12 @@ add( Date, Tag, Descriptions ) ->
 
 date() ->
 	{{Date, _Time}} = calendar:local_time(),
-	Date.	
+	Date.
 
 date_external( {Year, Month, Day} ) -> string:join( [erlang:integer_to_list(Year), erlang:integer_to_list(Month), erlang:integer_to_list(Day)], "-" );
 date_external( _Error ) -> usage().
 
-date_internal( [Year, Month, Day] ) -> {erlang:list_to_integer(Year), erlang:list_to_integer(Month), erlang:list_to_integer(Day)}; 
+date_internal( [Year, Month, Day] ) -> {erlang:list_to_integer(Year), erlang:list_to_integer(Month), erlang:list_to_integer(Day)};
 date_internal( _Error ) -> usage().
 
 file() -> "simple_database_contents".
@@ -1522,7 +1522,7 @@ Command line session:
 Simple in-memory database. Load/dump database from/to a file.
 
 {{works with|GNU Forth|Gforth|0.7}}
-Example file 'test.sdb': 
+Example file 'test.sdb':
 
 ```txt
 
@@ -1534,7 +1534,7 @@ Example file 'test.sdb':
 
 +: alice 1987.09.01;coworker;classical music;
 
-+: gammaQ3.14 3045.09.09;friend;watch movies, star walking; 
++: gammaQ3.14 3045.09.09;friend;watch movies, star walking;
 
 ```
 
@@ -1542,28 +1542,28 @@ Example file 'test.sdb':
 Example usage:
 
 ```txt
- 
-$ gforth sdb.fs 
 
-help 
+$ gforth sdb.fs
 
-[ -erased help message- ] 
+help
+
+[ -erased help message- ]
 
 load test.sdb  ok
 
-.keys 
+.keys
 
-gammaQ3.14 alice tom geea betty  ok 
+gammaQ3.14 alice tom geea betty  ok
 
-betty .record betty 1974.03.03;coworker;reading; ok 
+betty .record betty 1974.03.03;coworker;reading; ok
 
-newline geea .record 
+newline geea .record
 
 geea 1980.01.01;friend;sketch writer; ok
 
-+: theea 1979.04.05;coworker;astronomy;  ok 
++: theea 1979.04.05;coworker;astronomy;  ok
 
-newline .bydate 
+newline .bydate
 
 gammaQ3.14 3045.09.09;friend;watch movies, star walking;
 
@@ -1579,9 +1579,9 @@ betty 1974.03.03;coworker;reading;
 
 dump t2.sdb  ok
 
-bye 
+bye
 
-$ 
+$
 
 $ cat t2.sdb
 
@@ -1852,13 +1852,13 @@ sdb add Bookends rock my favorite       // tag: rock, notes: my favorite
 sdb add Bookends [rock folk]            // two tags
 sdb add Bookends [] "Simon & Garfunkel" // notes, no tags
 sdb add "Simon&Garfunkel [artist]"      // name: Simon&Garfunkel, tag: artist
-    
+
 As shown in the last example, if you use features of your shell to pass
 all data as a single string, the item name and tags will still be identified
 by separating whitespace.
-    
+
 The database is stored in JSON format in the file "sdb.json"
-`)  
+`)
 }
 
 // load data for read only purposes.
@@ -1964,9 +1964,9 @@ func tags() {
     }
     fmt.Println("-----------------------------------")
 }
-    
+
 // handle add command
-func add() { 
+func add() {
     if len(os.Args) < 3 {
         usage("add command requires data")
         return
@@ -1975,7 +1975,7 @@ func add() {
     } else {
         add4()
     }
-}   
+}
 
 // add command with one data string.  look for ws as separators.
 func add1() {
@@ -1983,7 +1983,7 @@ func add1() {
     if data == "" {
         // data must have at least some non-whitespace
         usage("invalid name")
-        return 
+        return
     }
     sep := strings.IndexFunc(data, unicode.IsSpace)
     if sep < 0 {
@@ -2140,7 +2140,7 @@ filterByCategory c = liftM (filter (\i -> c `elem` category i)) get
 -- get the newest of all items
 lastOfAll :: ItemList [Item]
 lastOfAll = liftM latest get
-    
+
 -- get the newest item in each category
 latestByCategory :: ItemList [Item]
 latestByCategory = do
@@ -2191,7 +2191,7 @@ parseItem (_:desc:cat:year:month:day:opt) =
     Item {description = desc, category = words cat,
         date = Date (read year) (read month) (read day),
         optional = opt}
-                
+
 usage :: IO ()
 usage = do
     progName <- getProgName
@@ -2349,7 +2349,7 @@ Assume the j code is stored in file s .  These bash commands, stored in file inp
 
 ```sh
 D='jconsole s dataflow'
- 
+
 $D add name expression algebraic  rank     valence example explanation
 $D add insert 'f/ y' 'insert f within y' infinite dyad 'sum=: +/' 'continued_fraction=:+`%/'
 $D add fork '(f g h)y' 'g(f(y),h(y))' infinite monad 'average=: +/ % #' 'sum divided by tally'
@@ -2443,7 +2443,7 @@ $ cat dataflow
 '2012-02-08:23:45:06.493';'atop';'f@g y';'f(g(y))';'rank of g';'monad';'*:@(+/)';'square the sum'
 '2012-02-08:23:45:06.515';'atop';'x f@g y';'f(g(x,y))';'rank of g';'dyad';'>@{.';'(lisp) open the car'
 '2012-02-08:23:45:06.539';'many more!'
-$ 
+$
 ```
 
 
@@ -2689,7 +2689,7 @@ for (k, v) in commands
         df2 = deepcopy(df)
         df2 = insert!(df, 1, age, :Age)
         println(sort(df2, (:Age)))
-    end    
+    end
 end
 
 if changeflag[1]
@@ -2717,14 +2717,14 @@ import java.io.IOException
 val file = File("simdb.csv")
 
 class Item(
-    val name: String, 
+    val name: String,
     val date: String,
     val category: String
 ) : Comparable<Item> {
 
     override fun compareTo(other: Item) = date.compareTo(other.date)
 
-    override fun toString() = "$name, $date, $category" 
+    override fun toString() = "$name, $date, $category"
 }
 
 fun addItem(input: Array<String>) {
@@ -2770,7 +2770,7 @@ fun printAll() {
 }
 
 fun load(): MutableList<Item> {
-    val db = mutableListOf<Item>()    
+    val db = mutableListOf<Item>()
     try {
         file.forEachLine { line ->
             val item = line.split(", ")
@@ -2994,7 +2994,7 @@ Donald Trump
 
 ## Perl 6
 
-A generic client/server JSON database. 
+A generic client/server JSON database.
 server.p6:
 
 ```perl6
@@ -3013,14 +3013,14 @@ sub MAIN( :$server='0.0.0.0', :$port=3333, :$dbfile='db' ) {
             my %response = 'status' => '' ;
             my $msg = from-json $line ;
             say $msg.perl ;
-            given $msg<function> { 
+            given $msg<function> {
                 when 'set' {
                     %db{ $msg<topic> } = $msg<message> ;
                     %response<status> = 'ok' ;
                     %index<last_> = $msg<topic> ;
                     for %index<keys_>.keys -> $key {
                         if $msg<message>{$key} {
-                            %index<lastkey_>{ $key }{ $msg<message>{$key} } = $msg<topic> ;    
+                            %index<lastkey_>{ $key }{ $msg<message>{$key} } = $msg<topic> ;
                             %index<idx_>{ $key }{ $msg<message>{$key} }{ $msg<topic> } = 1 ;
                         }
                     }
@@ -3190,7 +3190,7 @@ Example:
 ```Phix
 --
 -- demo\rosetta\Simple_db.exw
--- 
+--
 ### ====================
 
 --
@@ -3199,7 +3199,7 @@ include timedate.e
 constant filename = getenv(iff(platform()=WINDOWS?"APPDATA":"HOME"))&"/simple_db.csv"
 
 procedure add(sequence cmd)
-    if length(cmd)=0 
+    if length(cmd)=0
     or length(cmd)>2 then
         printf(1,"usage: add name [cat]\n")
     else
@@ -3408,7 +3408,7 @@ mapping make_episode(string series, string title, string episode, array date)
 
 void print_episode(mapping episode)
 {
-    write("  %-30s %10s %-30s (%{%d.%})\n", 
+    write("  %-30s %10s %-30s (%{%d.%})\n",
           episode->series, episode->episode, episode->title, episode->date);
 }
 
@@ -3452,7 +3452,7 @@ int(0..1) compare_by_date(mapping a, mapping b)
 
 void watch_list(mapping database)
 {
-    map(Array.sort_array(get_latest(database), compare_by_date), 
+    map(Array.sort_array(get_latest(database), compare_by_date),
         print_episode);
 }
 
@@ -3469,18 +3469,18 @@ array parse_date(string date)
 
 mapping prompt_for_episode()
 {
-    return make_episode(prompt_read("Series"), 
-                        prompt_read("Title"), 
-                        prompt_read("Episode"), 
+    return make_episode(prompt_read("Series"),
+                        prompt_read("Title"),
+                        prompt_read("Episode"),
                         parse_date(prompt_read("Date watched")));
 }
 
-// pike offers encode_value() and decode_value() as standard ways 
+// pike offers encode_value() and decode_value() as standard ways
 // to save and read data, but that is not a human readable format.
-// therefore we are instead printing the structure as debug-output 
-// which is a readable form as long as it only contains integers, 
+// therefore we are instead printing the structure as debug-output
+// which is a readable form as long as it only contains integers,
 // strings, mappings, arrays and multisets this format can be read by pike.
-// to read it we are creating a class that contains the data as a value, 
+// to read it we are creating a class that contains the data as a value,
 // which is then compiled and instantiated to allow us to pull the data out.
 void save_db(string filename, mapping database)
 {
@@ -3495,7 +3495,7 @@ void watch_save()
 mapping load_db(string filename)
 {
     if (file_stat(filename))
-        return compile_string("mixed data = " + 
+        return compile_string("mixed data = " +
                               Stdio.read_file(filename) + ";")()->data;
     else return ([]);
 }
@@ -3658,9 +3658,9 @@ db
 
 ```txt
 
-Name  Category Birthday             
-----  -------- --------             
-Bev   friend   3/3/1983 12:00:00 AM 
+Name  Category Birthday
+----  -------- --------
+Bev   friend   3/3/1983 12:00:00 AM
 Bob   family   7/19/1987 12:00:00 AM
 Gill  friend   12/9/1986 12:00:00 AM
 Gail  family   2/11/1986 12:00:00 AM
@@ -3681,8 +3681,8 @@ db -Latest
 
 ```txt
 
-Name  Category Birthday             
-----  -------- --------             
+Name  Category Birthday
+----  -------- --------
 Wayne coworker 5/29/1962 12:00:00 AM
 
 ```
@@ -3699,8 +3699,8 @@ db -LatestByCategory
 
 ```txt
 
-Name  Category Birthday             
-----  -------- --------             
+Name  Category Birthday
+----  -------- --------
 Gill  friend   12/9/1986 12:00:00 AM
 Vince family   3/10/1960 12:00:00 AM
 Wayne coworker 5/29/1962 12:00:00 AM
@@ -3719,11 +3719,11 @@ db -SortedByDate
 
 ```txt
 
-Name  Category Birthday             
-----  -------- --------             
+Name  Category Birthday
+----  -------- --------
 Vince family   3/10/1960 12:00:00 AM
 Wayne coworker 5/29/1962 12:00:00 AM
-Bev   friend   3/3/1983 12:00:00 AM 
+Bev   friend   3/3/1983 12:00:00 AM
 Gail  family   2/11/1986 12:00:00 AM
 Gill  friend   12/9/1986 12:00:00 AM
 Bob   family   7/19/1987 12:00:00 AM
@@ -3751,7 +3751,7 @@ import shlex
 
 def parse_args():
     'Set up, parse, and return arguments'
-    
+
     parser = argparse.ArgumentParser(epilog=globals()['__doc__'])
 
     parser.add_argument('command', choices='add pl plc pa'.split(),
@@ -3765,7 +3765,7 @@ pa:  Print all entries sorted by a date''')
     parser.add_argument('-t', '--tag',
                         help=('''A category or tag (genre, topic, relationship '''
                               '''such as “friend” or “family”)'''))
-    parser.add_argument('-f', '--field', nargs=2, action='append', 
+    parser.add_argument('-f', '--field', nargs=2, action='append',
                         help='Other optional fields with value (can be repeated)')
 
     return parser
@@ -3780,7 +3780,7 @@ def do_add(args, dbname):
     print('Writing record to %s' % dbname)
     with open(dbname, 'a') as db:
         db.write('%r\n' % args)
-    
+
 def do_pl(args, dbname):
     'Print the latest entry'
     print('Getting last record from %s' % dbname)
@@ -3789,7 +3789,7 @@ def do_pl(args, dbname):
     record = eval(line)
     del record._date
     print(str(record))
-    
+
 def do_plc(args, dbname):
     'Print the latest entry for each category/tag'
     print('Getting latest record for each tag from %s' % dbname)
@@ -3830,7 +3830,7 @@ def test():
         time.sleep(0.5)
 
 
-    
+
 do_command = dict(add=do_add, pl=do_pl, plc=do_plc, pa=do_pa)
 dbname = '_simple_db_db.py'
 
@@ -3887,12 +3887,12 @@ Getting all records by date from _simple_db_db.py
 Namespace(description='Book', field=[['title', 'Windy places'], ['type', 'hardback']], tag='DISCOUNT')
 Namespace(description='Book', field=[['title', 'RC spammers'], ['type', 'paperback']], tag='DISCOUNT')
 Namespace(description='Book', field=[['title', 'Splat it'], ['type', 'hardback'], ['special', 'first edition']], tag='PREMIUM')
-paddy3118:~$ 
-paddy3118:~$ cat _simple_db_db.py 
+paddy3118:~$
+paddy3118:~$ cat _simple_db_db.py
 Namespace(_date='2012-08-18T06:02:44.947091', description='Book', field=[['title', 'Windy places'], ['type', 'hardback']], tag='DISCOUNT')
 Namespace(_date='2012-08-18T06:03:11.477429', description='Book', field=[['title', 'RC spammers'], ['type', 'paperback']], tag='DISCOUNT')
 Namespace(_date='2012-08-18T06:03:34.319799', description='Book', field=[['title', 'Splat it'], ['type', 'hardback'], ['special', 'first edition']], tag='PREMIUM')
-paddy3118:~$ 
+paddy3118:~$
 ```
 
 
@@ -4193,7 +4193,7 @@ class SimpleDatabase
   end
 
   def tags_for_id(id)
-    @data['tags'].keys.inject([]) do |tags, tag| 
+    @data['tags'].keys.inject([]) do |tags, tag|
       tags << tag if @data['tags'][tag].include?(id)
       tags
     end
@@ -4223,7 +4223,7 @@ def usage()
 usage: #{$0} command args ...
 
 commands:
-  help 
+  help
   create dbname field ...
   fields dbname
   add dbname value ...
@@ -4272,7 +4272,7 @@ def process_command_line(command, *args)
     db.tag(id, *args)
     db.write
     db.display(id)
-    
+
   when 'tags'
     db = open_database(args)
     puts "Database #{db.dbname} tags:"
@@ -4283,7 +4283,7 @@ def process_command_line(command, *args)
     if args.empty?
       db.each {|id| db.display(id)}
     else
-      args.each do |tag| 
+      args.each do |tag|
         puts "Items tagged #{tag}"
         db.each_item_with_tag(tag) {|id| db.display(id)}
       end
@@ -4457,8 +4457,8 @@ goto [shoQuery]
 ' Select by category (Last date only)
 ' ------------------------------------
 [lastCat]
-sql$ = "SELECT * FROM client 
-WHERE client.clientDate = (SELECT max(c.clientDate) 
+sql$ = "SELECT * FROM client
+WHERE client.clientDate = (SELECT max(c.clientDate)
 FROM client as c WHERE c.category = client.category)
 ORDER BY category"
 what$ = "---- Last Category Sequence ----"
@@ -4698,7 +4698,7 @@ namespace eval udb {
     }
 
     namespace export add latest latestpercategory bydate
-    namespace ensemble create 
+    namespace ensemble create
 }
 
 if {$argc < 2} {
@@ -4732,15 +4732,15 @@ udb::Store [lindex $argv 0]
 Sample session:
 
 ```bash
-bash$ udb.tcl db 
+bash$ udb.tcl db
 wrong # args: should be "udb.tcl dbfile subcommand ?args...?"
 bash$ udb.tcl db ?
 unknown or ambiguous subcommand "?": must be add, bydate, latest, or latestpercategory
 bash$ udb.tcl db add
 wrong # args: should be "udb.tcl dbfile add title category ?date? ?arg ...?"
-bash$ udb.tcl db add "Title 1" foo 
-bash$ udb.tcl db add "Title 2" foo 
-bash$ udb.tcl db add "Title 3" bar 
+bash$ udb.tcl db add "Title 1" foo
+bash$ udb.tcl db add "Title 2" foo
+bash$ udb.tcl db add "Title 3" bar
 bash$ udb.tcl db bydate
 Title: Title 1
 Category: foo

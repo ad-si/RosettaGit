@@ -118,7 +118,7 @@ The 'mod' method also works, but the bit method is fastest.
 ```forth
 : odd? \ n -- boolean
     dup 1 n:band 1 n:= ;
-: even? \ n -- boolean 
+: even? \ n -- boolean
     odd? not ;
 ```
 
@@ -160,18 +160,18 @@ cl_demo_output=>display(
 
 ```txt
 
-Table 
--5 is odd 
--4 is even 
--3 is odd 
--2 is even 
--1 is odd 
-0 is even 
-1 is odd 
-2 is even 
-3 is odd 
-4 is even 
-5 is odd 
+Table
+-5 is odd
+-4 is even
+-3 is odd
+-2 is even
+-1 is odd
+0 is even
+1 is odd
+2 is even
+3 is odd
+4 is even
+5 is odd
 
 ```
 
@@ -354,7 +354,7 @@ on filter(f, xs)
     end tell
 end filter
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -370,7 +370,7 @@ end mReturn
 -- TEST ---------------------------------------------------------
 on run
     set xs to [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6]
-    
+
     {filter(even, xs), filter(odd, xs)}
 end run
 ```
@@ -407,9 +407,9 @@ end run
 
 ```arturo
 loop $(range 0-5 5) {
-	if $(even &) { 
+	if $(even &) {
 		print $(padLeft $(toString &) 4) + ": even"
-	} { 
+	} {
 		print $(padLeft $(toString &) 4) + ": odd"
 	}
 }
@@ -455,11 +455,11 @@ if ( int & 1 ){
 
 ```AWK
 function isodd(x) {
-	return (x%2)!=0; 
+	return (x%2)!=0;
 }
 
 function iseven(x) {
-	return (x%2)==0; 
+	return (x%2)==0;
 }
 ```
 
@@ -540,7 +540,7 @@ Uses bitwise AND as suggested.
 ```dos
 
 @echo off
-set /p i=Insert number: 
+set /p i=Insert number:
 
 ::bitwise and
 set /a "test1=%i%&1"
@@ -569,10 +569,10 @@ Solutions using AND or MOD are restricted to 32-bit integers, so an alternative 
       IF FNisodd#(9876543210#) PRINT "9876543210 is odd" ELSE PRINT "9876543210 is even"
       IF FNisodd#(9876543211#) PRINT "9876543211 is odd" ELSE PRINT "9876543211 is even"
       END
-      
+
       REM Works for -2^31 <= n% < 2^31
       DEF FNisodd%(n%) = (n% AND 1) <> 0
-      
+
       REM Works for -2^53 <= n# <= 2^53
       DEF FNisodd#(n#) = n# <> 2 * INT(n# / 2)
 ```
@@ -664,8 +664,8 @@ Not the simplest solution, but the cheapest if the number that must be tested ha
 ```
 
 
-=={{header|Brainf***}}==
-Assumes that input characters are an ASCII representation of a valid integer. 
+=={{header|Brainfuck}}==
+Assumes that input characters are an ASCII representation of a valid integer.
 Output is input <tt>mod</tt> 2.
 
 ```bf
@@ -680,7 +680,7 @@ Output is input <tt>mod</tt> 2.
 ```
 
 
-If one need only determine rather than act on the parity of the input, 
+If one need only determine rather than act on the parity of the input,
 the following is sufficient; it terminates either quickly or never.
 
 ```bf
@@ -774,7 +774,7 @@ namespace RosettaCode
 Test using the modulo operator, or use the C example from above.
 
 ```cpp
-bool isOdd(int x) 
+bool isOdd(int x)
 {
     return x % 2;
 }
@@ -791,19 +791,19 @@ A slightly more type-generic version, for C++11 and later.  This should theoreti
 
 ```cpp
 
-template < typename T > 
+template < typename T >
 constexpr inline bool isEven( const T& v )
 {
     return isEven( int( v ) );
 }
 
-template <> 
+template <>
 constexpr inline bool isEven< int >( const int& v )
 {
     return (v & 1) == 0;
 }
 
-template < typename T > 
+template < typename T >
 constexpr inline bool isOdd( const T& v )
 {
     return !isEven(v);
@@ -881,7 +881,7 @@ I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
 (defun evenodd (nr)
           (cond ((evenp nr) "even")
           ((oddp nr) "odd")))
-(dotimes (n 10) 
+(dotimes (n 10)
 (if (< n 1) (terpri))
 (if (< n 9) (format t "~a" " "))
 (write(+ n 1)) (format t "~a" ": ")
@@ -941,28 +941,28 @@ BEGIN
 	StdLog.String("Builtin function: ");StdLog.Ln;i := 0;
 	WHILE i < p.argc DO
 		Strings.StringToInt(p.args[i],x,done);
-		StdLog.String(p.args[i] + " is:> "); 
+		StdLog.String(p.args[i] + " is:> ");
 		IF ODD(x) THEN StdLog.String("odd") ELSE StdLog.String("even") END;
 		StdLog.Ln;INC(i)
 	END;
 	StdLog.String("Bitwise: ");StdLog.Ln;i:= 0;
 	WHILE i < p.argc DO
 		Strings.StringToInt(p.args[i],x,done);
-		StdLog.String(p.args[i] + " is:> "); 
+		StdLog.String(p.args[i] + " is:> ");
 		IF BitwiseOdd(x) THEN StdLog.String("odd") ELSE StdLog.String("even") END;
 		StdLog.Ln;INC(i)
 	END;
 	StdLog.String("Module: ");StdLog.Ln;i := 0;
 	WHILE i < p.argc DO
 		Strings.StringToInt(p.args[i],x,done);
-		StdLog.String(p.args[i] + " is:> "); 
+		StdLog.String(p.args[i] + " is:> ");
 		IF Odd(x) THEN StdLog.String("odd") ELSE StdLog.String("even") END;
 		StdLog.Ln;INC(i)
 	END;
 	StdLog.String("Congruences: ");StdLog.Ln;i := 0;
 	WHILE i < p.argc DO
 		Strings.StringToInt(p.args[i],x,done);
-		StdLog.String(p.args[i] + " is:> "); 
+		StdLog.String(p.args[i] + " is:> ");
 		IF CongruenceOdd(x) THEN StdLog.String("odd") ELSE StdLog.String("even") END;
 		StdLog.Ln;INC(i)
 	END;
@@ -975,7 +975,7 @@ Execute: ^Q EvenOdd.Do 10 11 0 57 34 -23 -42~<br/>
 
 ```txt
 
-Builtin function: 
+Builtin function:
 10  is:> even
 11  is:> odd
 0  is:> even
@@ -983,7 +983,7 @@ Builtin function:
 34  is:> even
 -23  is:> odd
 -42 is:> even
-Bitwise: 
+Bitwise:
 10  is:> even
 11  is:> odd
 0  is:> even
@@ -991,7 +991,7 @@ Bitwise:
 34  is:> even
 -23  is:> odd
 -42 is:> even
-Module: 
+Module:
 10  is:> even
 11  is:> odd
 0  is:> even
@@ -999,7 +999,7 @@ Module:
 34  is:> even
 -23  is:> odd
 -42 is:> even
-Congruences: 
+Congruences:
 10  is:> even
 11  is:> odd
 0  is:> even
@@ -1181,7 +1181,7 @@ This implementation uses the <code>C</code> (logical AND multiplier register wit
 
 ```edsac
 [ Even or odd
-  
+
 ### =====
 
 
@@ -1253,11 +1253,11 @@ end
 ```elixir
 defmodule RC do
   import Integer
-  
+
   def even_or_odd(n) when is_even(n), do: "#{n} is even"
   def even_or_odd(n)                , do: "#{n} is odd"
       # In second "def", the guard clauses of "is_odd(n)" is unnecessary.
-  
+
   # Another definition way
   def even_or_odd2(n) do
     if is_even(n), do: "#{n} is even", else: "#{n} is odd"
@@ -1281,7 +1281,7 @@ Enum.each(-2..3, fn n -> IO.puts RC.even_or_odd(n) end)
 
 ```
 
-Other ways to test even-ness: 
+Other ways to test even-ness:
 
 ```elixir
 rem(n,2) == 0
@@ -1335,7 +1335,7 @@ rem(n,2) == 0
 <b>Output:</b>
 
 ```txt
- 
+
 3 is odd
 2 is even
 
@@ -1362,7 +1362,7 @@ test(N) ->
 		io:format("odd\n");
 	true ->
 		io:format("even\n")
-	end.			
+	end.
 
 ```
 
@@ -1381,7 +1381,7 @@ test(N) ->
 		io:format("odd\n");
 	true ->
 		io:format("even\n")
-	end.				
+	end.
 
 ```
 
@@ -2484,7 +2484,7 @@ Function F {
       code here
 }
 </pre >
- 
+
 The same hold for Def Odd(a)=binary.and(Abs(a), 1)=1
 Interpreter execute this:
 <pre >
@@ -2506,7 +2506,7 @@ Module CheckOdd {
             Print Odd(21212121212122122122121@)
       }
       Print Error$    ' overflow
-      
+
       def Odd(a)= Int(Abs(a)) mod 2 =1
       Print Odd(21212121212122122122121@)
       Print Odd(-5), Odd(6), Odd(11)
@@ -2562,25 +2562,25 @@ EvenQ[8]
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Bitwise And: 
+Bitwise And:
 
 ```Matlab
    isOdd  =  logical(bitand(N,1));
-   isEven = ~logical(bitand(N,1)); 
+   isEven = ~logical(bitand(N,1));
 ```
 
-Remainder of division by two 
+Remainder of division by two
 
 ```Matlab
    isOdd  =  logical(rem(N,2));
-   isEven = ~logical(rem(N,2)); 
+   isEven = ~logical(rem(N,2));
 ```
 
 Modulo: 2
 
 ```Matlab
    isOdd  =  logical(mod(N,2));
-   isEven = ~logical(mod(N,2)); 
+   isEven = ~logical(mod(N,2));
 ```
 
 
@@ -2689,29 +2689,29 @@ This uses bitwise AND
 	#set syscall to get integer from user
 	li $v0,5
 	syscall
-	
+
 	#perform bitwise AND and store in $a0
 	and $a0,$v0,1
-	
+
 	#set syscall to print dytomh
 	li $v0,4
-	
+
 	#jump to odd if the result of the AND operation
 	beq $a0,1,odd
-even:	
-	#load even_str message, and print	
+even:
+	#load even_str message, and print
 	la $a0,even_str
 	syscall
-	
+
 	#exit program
 	li $v0,10
 	syscall
-	
+
 odd:
 	#load odd_str message, and print
 	la $a0,odd_str
 	syscall
-	
+
 	#exit program
 	li $v0,10
 	syscall
@@ -2734,15 +2734,15 @@ odd:
 =
 
 ```ocaml
-fun odd 
-		(x rem 2 = 1) = true 
+fun odd
+		(x rem 2 = 1) = true
 	| 	_ 	      = false
 ;
 
-fun even 
-		(x rem 2 = 0) = true 
+fun even
+		(x rem 2 = 0) = true
 	| 	_ 	      = false
-;	
+;
 
 
 ```
@@ -2867,15 +2867,15 @@ method eo(state = boolean) public static
 
   Val: mod  - ver  - pos  - bits
   ---: ---- + ---- + ---- + ----
-  -15: Odd  - Odd  - Odd  - Odd 
+  -15: Odd  - Odd  - Odd  - Odd
   -12: Even - Even - Even - Even
-   -9: Odd  - Odd  - Odd  - Odd 
+   -9: Odd  - Odd  - Odd  - Odd
    -6: Even - Even - Even - Even
-   -3: Odd  - Odd  - Odd  - Odd 
+   -3: Odd  - Odd  - Odd  - Odd
     0: Even - Even - Even - Even
-    3: Odd  - Odd  - Odd  - Odd 
+    3: Odd  - Odd  - Odd  - Odd
     6: Even - Even - Even - Even
-    9: Odd  - Odd  - Odd  - Odd 
+    9: Odd  - Odd  - Odd  - Odd
    12: Even - Even - Even - Even
    15: Odd  - Odd  - Odd  - Odd
 
@@ -2937,7 +2937,7 @@ echo isOdd2(5)
 ```oberon2
 
 MODULE EvenOrOdd;
-IMPORT 
+IMPORT
   S := SYSTEM,
   Out;
 VAR
@@ -2946,12 +2946,12 @@ VAR
 
 BEGIN
   x := 10;Out.Int(x,0);
-  IF ODD(x) THEN Out.String(" odd") ELSE Out.String(" even") END; 
+  IF ODD(x) THEN Out.String(" odd") ELSE Out.String(" even") END;
   Out.Ln;
 
   x := 11;s := S.VAL(SET,LONG(x));Out.Int(x,0);
   IF 0 IN s THEN Out.String(" odd") ELSE Out.String(" even") END;
-  Out.Ln;  
+  Out.Ln;
 
   x := 12;Out.Int(x,0);
   IF x MOD 2 # 0 THEN Out.String(" odd") ELSE Out.String(" even") END;
@@ -3014,7 +3014,7 @@ An instructive view on functional programming and recursion:
 
 ```ocaml
 (* hmm, only valid for N0 *)
-let rec myeven = function 
+let rec myeven = function
   | 0 -> true
   | 1 -> false
   | n -> myeven (n - 2)
@@ -3347,7 +3347,7 @@ isEven = i % 2 ! 1    ;isEven is non-zero if i is even
 [(0, False), (1, True), (2, False), (3, True), (4, False), (5, True), (6, False), (7, True), (8, False), (9, True)]
 >>> [(j, is_even(j)) for j in range(10)]
 [(0, True), (1, False), (2, True), (3, False), (4, True), (5, False), (6, True), (7, False), (8, True), (9, False)]
->>> 
+>>>
 ```
 
 
@@ -3389,7 +3389,7 @@ With built in predicates:
 (even? 6) ; -> true
 (even? 5) ; -> false
 (odd? 6) ; -> false
-(odd? 5) ; -> true 
+(odd? 5) ; -> true
 ```
 
 
@@ -3397,7 +3397,7 @@ With modular arithmetic:
 
 ```Racket
 (define (my-even? x)
-  (= (modulo x 2) 0)) 
+  (= (modulo x 2) 0))
 
 (define (my-odd? x)
   (= (modulo x 2) 1))
@@ -3427,23 +3427,23 @@ public bool isOdd(int n){return (n % 2) == 1;}
 Programming note:   division by   <big> '''1''' </big>   (one)   in REXX is a way to normalize a number:
 :::* by removing a superfluous leading   '''+'''   sign
 :::* by removing superfluous leading  zeroes
-:::* by removing superfluous trailing zeroes 
+:::* by removing superfluous trailing zeroes
 :::* by removing a trailing decimal point
 :::* possible converting an exponentiated number
 :::* possible rounding the number to the current ''digits''
 
-'''Programming note''':   the last method is the fastest method in REXX to determine oddness/evenness. 
+'''Programming note''':   the last method is the fastest method in REXX to determine oddness/evenness.
 
 It requires a sparse stemmed array     '''!.'''     be defined in the program's prologue (or elsewhere).
 
-This method gets its speed from   ''not''   using any BIF and   ''not''   performing any (remainder) division. 
+This method gets its speed from   ''not''   using any BIF and   ''not''   performing any (remainder) division.
 
-'''Some notes on programming styles''':   
-If (execution) speed isn't an issue, then the 1<sup>st</sup> test method 
+'''Some notes on programming styles''':
+If (execution) speed isn't an issue, then the 1<sup>st</sup> test method
 
 shown would be the simplest   (in terms of coding the concisest/tightest/smallest code).   The other test
 
-methods differ mostly in programming techniques, mostly depending on the REXX programmer's style.   
+methods differ mostly in programming techniques, mostly depending on the REXX programmer's style.
 
 The last method shown is the fastest algorithm, albeit it might be a bit obtuse (without comments) to a
 
@@ -4011,20 +4011,20 @@ For larger positive or smaller negative values of <math>n</math>, you should be 
 
 
 ```sml
-fun even n = 
+fun even n =
   n mod 2 = 0;
 
-fun odd n = 
+fun odd n =
   n mod 2 <> 0;
 
 (* bitwise and *)
 
 type werd = Word.word;
 
-fun evenbitw(w: werd) = 
+fun evenbitw(w: werd) =
   Word.andb(w, 0w2) = 0w0;
 
-fun oddbitw(w: werd) = 
+fun oddbitw(w: werd) =
   Word.andb(w, 0w2) <> 0w0;
 ```
 
@@ -4052,12 +4052,12 @@ end
 
 ```Swift
 func isEven(n:Int) -> Bool {
-    
+
     // Bitwise check
     if (n & 1 != 0) {
         return false
     }
-    
+
     // Mod check
     if (n % 2 != 0) {
         return false
@@ -4156,7 +4156,7 @@ ENDLOOP
 2 is even
 3 is odd
 4 is even
-5 is odd 
+5 is odd
 
 ```
 
@@ -4409,9 +4409,9 @@ ret
 
 ```xEec
 
->100 p i# jz-1 o# t h#1 ms jz2003 p >0110 h#2 r ms t h#1 ms p 
-jz1002 h? jz2003 p jn0110 h#10 o$ p jn100 >2003 p p h#0 h#10 
-h$d h$d h$o h#32 h$s h$i h#32 jn0000 >1002 p p h#0 h#10 
+>100 p i# jz-1 o# t h#1 ms jz2003 p >0110 h#2 r ms t h#1 ms p
+jz1002 h? jz2003 p jn0110 h#10 o$ p jn100 >2003 p p h#0 h#10
+h$d h$d h$o h#32 h$s h$i h#32 jn0000 >1002 p p h#0 h#10
 h$n h$e h$v h$e h#32 h$s h$i h#32 >0000 o$ p jn0000 jz100
 
 ```
@@ -4470,7 +4470,7 @@ include c:\cxpl\codes;
 int I;
 [for I:= -4 to +3 do
         [IntOut(0, I);
-        Text(0, if I&1 then " is odd   " else " is even  "); 
+        Text(0, if I&1 then " is odd   " else " is even  ");
         Text(0, if rem(I/2)#0 then "odd" else "even");
         CrLf(0);
         ];
@@ -4579,10 +4579,10 @@ end Main.
 
 ```zxbasic
 10 FOR n=-3 TO 4: GO SUB 30: NEXT n
-20 STOP 
+20 STOP
 30 LET odd=FN m(n,2)
 40 PRINT n;" is ";("Even" AND odd=0)+("Odd" AND odd=1)
-50 RETURN 
+50 RETURN
 60 DEF FN m(a,b)=a-INT (a/b)*b
 ```
 

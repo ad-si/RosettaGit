@@ -1,5 +1,5 @@
 +++
-title = "Talk:Execute Brain****/Common Lisp"
+title = "Talk:Execute Brainfuck/Common Lisp"
 description = ""
 date = 2010-02-06T14:18:02Z
 aliases = []

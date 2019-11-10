@@ -49,13 +49,13 @@ Using native SVC (Supervisor Call) to write to system console:
 
 ```360 Assembly
 
-HELLO    CSECT 
+HELLO    CSECT
          USING HELLO,15
          LA    1,MSGAREA     Point Register 1 to message area
-         SVC   35            Invoke SVC 35 (Write to Operator) 
+         SVC   35            Invoke SVC 35 (Write to Operator)
          BR    14            Return
 MSGAREA  EQU   *             Message Area
-         DC    AL2(19)       Total area length = 19 (Prefix length:4 + Data Length:15) 
+         DC    AL2(19)       Total area length = 19 (Prefix length:4 + Data Length:15)
          DC    XL2'00'       2 bytes binary of zeros
          DC    C'Hello world!'  Text to be written to system console
          END
@@ -97,7 +97,7 @@ bsout	= $ffd2		; C64 KERNEL ROM, output a character to current device.
 printnext:
 	lda text,x	; Get character from string.
 	beq done	; If we read a 0 we're done.
-	jsr bsout	; Output character. 
+	jsr bsout	; Output character.
 	inx		; Increment index to next character.
 	bne printnext	; Repeat if index doesn't overflow to 0.
 done:
@@ -165,11 +165,11 @@ TXT DB "Hello world!$"
 START:
 	MOV ax, @DATA
 	MOV ds, ax
-	
+
 	MOV ah, 09h		; prepare output function
 	MOV dx, OFFSET TXT	; set offset
 	INT 21h			; output string TXT
-	
+
 	MOV AX, 4C00h 		; go back to DOS
 	INT 21h
 END START
@@ -581,7 +581,7 @@ FileAppend, Goodbye`, World!, CONOUT$
 FileReadLine, _, CONIN$, 1
 ```
 
-scripts run from shell 
+scripts run from shell
 [requires Windows XP or higher; older Versions of Windows don´t have the "AttachConsole" function]
 
 ```AutoHotkey
@@ -638,8 +638,8 @@ For a file containing data, the work can be done in the "body". The "//" is "mat
 
 ```awk
 
-//  { 
-    print "Hello world!" 
+//  {
+    print "Hello world!"
     exit
     }
 
@@ -651,8 +651,8 @@ For a "single record" file.
 
 ```awk
 
-//  { 
-    print "Hello world!" 
+//  {
+    print "Hello world!"
     }
 
 ```
@@ -662,7 +662,7 @@ For a "single record" file containing - Hello world! -. The "default" action for
 
 ```awk
 
-// 
+//
 
 ```
 
@@ -943,7 +943,7 @@ put$"Hello world!"
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 To print text, we need the ascii-value of each character to output.
 
 So, we wanna make a series of round numbers going like:
@@ -1034,8 +1034,8 @@ Uncommented:
 <+++++++.--------.<<<<<+.<+++.---.
 ```
 
-It can most likely be optimized, but this is a nice way to show 
-how character printing works in Brainf*** :)
+It can most likely be optimized, but this is a nice way to show
+how character printing works in Brainfuck :)
 
 
 ## Brat
@@ -1219,7 +1219,7 @@ print "Hello world!";;
 
 ```Chef
 Goodbye World Souffle.
- 
+
 Ingredients.
 71 g green beans
 111 cups oil
@@ -1233,7 +1233,7 @@ Ingredients.
 108 g lard
 100 g dijon mustard
 33 potatoes
- 
+
 Method.
 Put potatoes into the mixing bowl.
 Put dijon mustard into the mixing bowl.
@@ -1252,7 +1252,7 @@ Put oil into the mixing bowl.
 Put green beans into the mixing bowl.
 Liquefy contents of the mixing bowl.
 Pour contents of the mixing bowl into the baking dish.
- 
+
 Serves 1.
 ```
 
@@ -1518,7 +1518,7 @@ Hello world!
 
 MODULE Hello;
 	IMPORT Out;
-	
+
 	PROCEDURE Do*;
 	BEGIN
 		Out.String("Hello world!"); Out.Ln
@@ -1924,7 +1924,7 @@ O17@  [ the character to print is ]
 O18@  [ stored ]
 O19@
 O20@
-O21@  
+O21@
 O22@
 O23@
 O24@
@@ -1967,7 +1967,7 @@ complete version (put this in a file and compile it)
 
 
 ```efene
-@public 
+@public
 run = fn () {
     io.format("Hello world!~n")
 }
@@ -2091,7 +2091,7 @@ public program()
 
 
 ```elisa
- "Hello world!"? 
+ "Hello world!"?
 ```
 
 
@@ -2171,7 +2171,7 @@ END PROGRAM
 ```
 
 
-=={{header|Extended BrainF***}}==
+=={{header|Extended Brainfuck}}==
 
 
 ```bf>[.
@@ -2354,8 +2354,8 @@ uses the format given at label 100 to output to unit 89. If output unit with thi
 
 
 ```fortress
-export Executable                                                                                                                       
-                                                                                                                                        
+export Executable
+
 run() = println("Hello world!")
 ```
 
@@ -2431,7 +2431,7 @@ PRINT "Hello world!"
 Public Sub Main()
 
 PRINT "Hello world!"
- 
+
 End
 ```
 
@@ -2922,7 +2922,7 @@ Hello World !
 
    verb_with_infinite_rank i. 2 3
 Hello world!
-   
+
 
    verb_with_atomic_rank =: 'Hello world!'"0
 
@@ -3190,7 +3190,7 @@ return = "Hello world!";
 
 ```kaya
 program hello;
- 
+
 Void main() {
     // My first program!
     putStrLn("Hello world!");
@@ -3204,7 +3204,7 @@ Void main() {
 {{incorrect|Kdf9|output isn't consistent with the task's requirements: wording, punctuation.}}
 
 ```joy
- 
+
 
 V2; W0;
 RESTART; J999; J999;
@@ -3459,14 +3459,14 @@ global = {
 
 ```limbo
 implement Command;
- 
+
  include "sys.m";
      sys: Sys;
- 
+
  include "draw.m";
- 
+
  include "sh.m";
- 
+
  init(nil: ref Draw->Context, nil: list of string)
  {
      sys = load Sys Sys->PATH;
@@ -3530,7 +3530,7 @@ puts("Hello world!");
 ```
 
 
-Without the newline terminator: 
+Without the newline terminator:
 
 
 ```c
@@ -3557,7 +3557,7 @@ put "Hello world!" & return
 ```
 
 
-Livecode also supports stdout as a device to write to 
+Livecode also supports stdout as a device to write to
 ```LiveCode
 write "Hello world!" & return to stdout
 ```
@@ -3673,7 +3673,7 @@ print "Hello world!"
 Harder way with a table:
 
 ```lua
- 
+
 local chars = {"G","o","o","d","b","y","e",","," ","W","o","r","l","d","!"}
 for i = 1, #chars do
 write(chars[i])
@@ -3769,7 +3769,7 @@ make: Nothing to be done for `all'.
 ```
 
 
-{{Out}} 
+{{Out}}
 
 ```txt
 HELLO WORLD!
@@ -3848,11 +3848,11 @@ Print["Hello world!"]
 fmod BYE-WORLD is
 
 	protecting STRING .
-	
+
 	op sayBye : -> String .
-	
+
 	eq sayBye = "Hello world!" .
-	
+
 endfm
 
 red sayBye .
@@ -4049,7 +4049,7 @@ Write "Hello world!",!
 
 ## MyDef
 
-Run with: 
+Run with:
 ```txt
 mydef_run hello.def
 ```
@@ -4534,22 +4534,22 @@ From [[wp:Oxygene (programming language)]]
 ```oxygene
 
 namespace HelloWorld;
- 
+
 interface
- 
+
 type
   HelloClass = class
   public
-    class method Main; 
+    class method Main;
   end;
- 
+
 implementation
- 
+
 class method HelloClass.Main;
 begin
   System.Console.WriteLine('Hello world!');
 end;
- 
+
 end.
 
 ```
@@ -4610,7 +4610,7 @@ This can be assembled with macro1.c distributed with SIMH and then run on the SI
 
 ```assembly
 
-hello   
+hello
 / above: title line - was punched in human readable letters on paper tape
 / below: location specifier - told assembler what address to assemble to
 100/
@@ -4841,7 +4841,7 @@ end goodbye;
 
 ## PL/M
 
-Assuming the existence of a WRITE$STRING library routine. 
+Assuming the existence of a WRITE$STRING library routine.
 
 ```plm
 HELLO_WORLD: DO;
@@ -4877,12 +4877,12 @@ END;
 ```txt
 
 SQL> set serveroutput on
-SQL> 
+SQL>
 SQL> BEGIN
   2    DBMS_OUTPUT.PUT_LINE('Hello world!');
   3  END;
   4  /
-Hello world!                                                                    
+Hello world!
 
 PL/SQL procedure successfully completed.
 
@@ -5437,9 +5437,9 @@ Note that a string starts with a single and ends with a double quote
 
 ```sather
 class GOODBYE_WORLD is
- main is 
-  #OUT+"Hello world!\n"; 
- end; 
+ main is
+  #OUT+"Hello world!\n";
+ end;
 end;
 ```
 
@@ -5525,7 +5525,7 @@ or just:
 (should work on any scheme)
 
 
-###  R7RS Scheme 
+###  R7RS Scheme
 
 
 ```scheme
@@ -5691,7 +5691,7 @@ end function
 print("Hello world!")
 ```
 
-Alternatively if just typing in the SkookumIDE [http://skookumscript.com/docs/v3.0/ide/console/workspace/ REPL]: 
+Alternatively if just typing in the SkookumIDE [http://skookumscript.com/docs/v3.0/ide/console/workspace/ REPL]:
 
 ```javascript
 "Hello world!"
@@ -5886,7 +5886,7 @@ Output:
 db2 -t
 db2 => SELECT 'Hello world!' AS text FROM sysibm.sysdummy1;
 
-TEXT        
+TEXT
 ------------
 Hello world!
 
@@ -6523,11 +6523,11 @@ _start:
     movq    STDOUT, %rdi
     movq    MSGLEN, %rdx
     syscall                         // sys_write(message, stdout, 0x14);
-    
+
     movq    SYS_EXIT, %rax
     xorq    %rdi, %rdi              // The exit code.
     syscall                         // exit(0)
-    
+
 .data
 message:    .ascii "Hello, world!\n"
 ```
@@ -6559,7 +6559,7 @@ END PROGRAM
 
 ```xEec
 
-h#10 h$! h$d h$l h$r h$o h$w h#32  
+h#10 h$! h$d h$l h$r h$o h$w h#32
 h$o h$l h$l h$e h$H >o o$ p jno
 
 ```

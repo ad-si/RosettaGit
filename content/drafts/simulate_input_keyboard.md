@@ -13,7 +13,7 @@ tags = []
 {{task|GUI}}[[Category:Testing]]
 {{omit from|ACL2}}
 {{omit from|Batch File}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Maxima}}
 {{Omit From|Modula-3}}
 {{omit from|PARI/GP}}
@@ -25,9 +25,9 @@ tags = []
 {{omit from|TI-83 BASIC}} {{omit from|TI-89 BASIC}}
 {{omit from|zkl}}
 
-Send simulated keystrokes to a GUI window, or terminal. 
-You should specify whether the target may be externally created 
-(i.e., if the keystrokes are going to an application 
+Send simulated keystrokes to a GUI window, or terminal.
+You should specify whether the target may be externally created
+(i.e., if the keystrokes are going to an application
 other than the application that is creating them).
 
 
@@ -36,7 +36,7 @@ other than the application that is creating them).
 Target may be externally created.
 
 ```AutoHotkey
-run, cmd /k   
+run, cmd /k
 WinWait, ahk_class ConsoleWindowClass
 controlsend, ,hello console, ahk_class ConsoleWindowClass
 ```
@@ -45,16 +45,16 @@ controlsend, ,hello console, ahk_class ConsoleWindowClass
 
 ## AutoIt
 
-Code assumes you're working on a windows box. Run() can use any program, and WinWaitActive() requires the title of the program as it will be when it opens. 
+Code assumes you're working on a windows box. Run() can use any program, and WinWaitActive() requires the title of the program as it will be when it opens.
 
 ```AutoIt
-Run("notepad") 
+Run("notepad")
 WinWaitActive("Untitled - Notepad")
 Send("The answer is 42")
 ```
 
 
-It takes user input in variable using "input box" 
+It takes user input in variable using "input box"
 and displays that in "message box"
 
 ```AutoIt
@@ -156,13 +156,13 @@ int main(int argc, char *argv[])
         ev2.xkey.same_screen = True;
         XSendEvent(dpy, win, True/*propagate*/, KeyPressMask, &ev2);
         break;
-   
+
       case ClientMessage:
         /* delete window event */
         if (ev.xclient.data.l[0] == WM_DELETE_WINDOW)
           loop = 0;
         break;
-   
+
       case KeyPress:
         /* handle key press */
         puts("KeyPress event received");
@@ -204,7 +204,7 @@ int main(int argc, char *argv[])
 (import java.awt.KeyEvent)
 (defn keytype [str]
   (let [robot (new Robot)]
-       (doseq [ch str] 
+       (doseq [ch str]
 	      (if (Character/isUpperCase ch)
 		  (doto robot
 			(.keyPress (. KeyEvent VK_SHIFT))
@@ -212,7 +212,7 @@ int main(int argc, char *argv[])
 			(.keyRelease (int ch))
 			(.keyRelease (. KeyEvent VK_SHIFT)))
 		  (let [upCh (Character/toUpperCase ch)]
-		       (doto robot 
+		       (doto robot
 			     (.keyPress (int upCh))
 			     (.keyRelease (int upCh))))))))
 ```
@@ -325,7 +325,7 @@ fun sendChars(s: String, pressReturn: Boolean = true) {
 }
 
 fun main(args: Array<String>) {
-    sendChars("dir")  // runs 'dir' command 
+    sendChars("dir")  // runs 'dir' command
 }
 ```
 
@@ -493,21 +493,21 @@ Target may be externally created, but process must be able to open tty/pty for w
 
 
 ```perl
-$target = "/dev/pts/51"; 
+$target = "/dev/pts/51";
 ### How to get the correct value for $TIOCSTI is discussed here : http://www.perlmonks.org/?node_id=10920
-$TIOCSTI = 0x5412 ; 
-open(TTY,">$target") or die "cannot open $target" ; 
-$b="sleep 99334 &\015"; 
-@c=split("",$b); 
-sleep(2); 
-foreach $a ( @c ) { ioctl(TTY,$TIOCSTI,$a); select(undef,undef,undef,0.1);} ; 
+$TIOCSTI = 0x5412 ;
+open(TTY,">$target") or die "cannot open $target" ;
+$b="sleep 99334 &\015";
+@c=split("",$b);
+sleep(2);
+foreach $a ( @c ) { ioctl(TTY,$TIOCSTI,$a); select(undef,undef,undef,0.1);} ;
 print "DONE\n";
 ```
 
 
 
 
-Perl on X11 can do this using the SendKeys function from [http://search.cpan.org/%7ectrondlp/X11-GUITest/GUITest.pm X11::GUITest] 
+Perl on X11 can do this using the SendKeys function from [http://search.cpan.org/%7ectrondlp/X11-GUITest/GUITest.pm X11::GUITest]
 
 Perl on Windows can do this using the SendKeys function from [http://search.cpan.org/%7ekarasik/Win32-GuiTest/lib/Win32/GuiTest.pm  Win32::GUITest]
 
@@ -653,7 +653,7 @@ autopy.key.tap(autopy.key.Code.LEFT_ARROW)
 {{works with|Python|3.1+}}
 {{libheader|PyAutoGUI}}
 
-Target may be externally created. 
+Target may be externally created.
 
 
 ```Python>>>
@@ -687,10 +687,10 @@ Target may be externally created.
   (class canvas%
     (define/public (simulate-key key)
       (send this on-char key))              ; Creates a class that inherits from the standard canvas class, that can receive simulated key presses
-    
+
     (define/override (on-char key)
       (displayln (send key get-key-code)))  ; Changes the method that receives key presses to show some output
-    
+
     (super-new)))
 
 (define canvas
@@ -777,7 +777,7 @@ object Keystrokes extends App {
 
 {{libheader|Tk}}
 
-This only works with windows created by Tk; 
+This only works with windows created by Tk;
 it sends a single key "x" to the given window.
 
 ```tcl
@@ -797,7 +797,7 @@ foreach c [split "hello world" ""] {
 }
 ```
 
-Note also that the task on [[Keyboard macros#Tcl|keyboard macros]] 
+Note also that the task on [[Keyboard macros#Tcl|keyboard macros]]
 illustrates a very closely related method.
 
 

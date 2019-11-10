@@ -18,7 +18,7 @@ tags = []
 
 2.) I have recently uploaded a screenshot, which had unfortunately its name changed to GUI.png in the process. I can not find an option to delete that file, and turn here for help, please.
 
-3.) Since I recently uploaded the code for a Brainf*** interpreter, I have tried to put it on a separate page on its own, like Ada, but now there are two entries on [[:Category:AutoHotkey]] for Execute Brain****, (like BASIC) what do I do to fix this again?
+3.) Since I recently uploaded the code for a Brainfuck interpreter, I have tried to put it on a separate page on its own, like Ada, but now there are two entries on [[:Category:AutoHotkey]] for Execute Brainfuck, (like BASIC) what do I do to fix this again?
 
 --[[User:Wolf|Wolf]] 14:21, 16 May 2010 (UTC)
 :I fixed #3, it looks like #2 is already fixed, and #1 has discussion on the talk page of the task. I think they're all handled for now. --[[User:Mwn3d|Mwn3d]] 15:23, 16 May 2010 (UTC)

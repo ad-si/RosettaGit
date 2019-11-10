@@ -41,7 +41,7 @@ private function anotherSoapFunc_Result(event:ResultEvent):void {
 
 ## AutoHotkey
 
-using embedded vb scripting.  
+using embedded vb scripting.
 {{libheader|ws4ahk}}
 
 ```AutoHotkey
@@ -50,7 +50,7 @@ WS_Initialize()
     WS_Exec("client.MSSoapInit ""http://example.com/soap/wsdl""")
     callhello = client.soapFunc("hello")
     callanother = client.anotherSoapFunc(34234)
-    
+
     WS_Eval(result, callhello)
     WS_Eval(result2, callanother)
     Msgbox % result . "`n" . result2
@@ -82,7 +82,7 @@ size_t read_data(void *ptr, size_t size, size_t nmeb, void *stream){
 void callSOAP(char* URL, char * inFile, char * outFile) {
 
     FILE * rfp = fopen(inFile, "r");
-    if(!rfp) 
+    if(!rfp)
         perror("Read File Open:");
 
     FILE * wfp = fopen(outFile, "w+");
@@ -101,12 +101,12 @@ void callSOAP(char* URL, char * inFile, char * outFile) {
         curl_easy_setopt(curl, CURLOPT_URL, URL);
         curl_easy_setopt(curl, CURLOPT_POST, 1L);
         curl_easy_setopt(curl, CURLOPT_READFUNCTION, read_data);
-        curl_easy_setopt(curl, CURLOPT_READDATA, rfp); 
+        curl_easy_setopt(curl, CURLOPT_READDATA, rfp);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, wfp);
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE_LARGE, (curl_off_t)-1);
-        curl_easy_setopt(curl, CURLOPT_VERBOSE,1L);            
+        curl_easy_setopt(curl, CURLOPT_VERBOSE,1L);
         curl_easy_perform(curl);
 
         curl_easy_cleanup(curl);
@@ -129,9 +129,9 @@ Input XML for soapFunc()
 ```XML
 
 <?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
 xmlns:dom="http://example.com/soap/wsdl">
    <soapenv:Header/>
    <soapenv:Body>
@@ -146,9 +146,9 @@ Input XML for anotherSoapFunc()
 ```XML
 
 <?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
 xmlns:dom="http://example.com/soap/wsdl">
    <soapenv:Header/>
    <soapenv:Body>
@@ -383,7 +383,7 @@ fun callSOAP(url: String, inFile: String, outFile: String) {
         curl_easy_cleanup(curl)
     }
 
-    curl_slist_free_all(header) 
+    curl_slist_free_all(header)
     fclose(rfp)
     fclose(wfp)
 }
@@ -505,7 +505,7 @@ result2 = soapObject\Invoke("anotherSoapFunc(34234)")
 {{works with|Python|2.4 and 2.5}}
 
 ```python
-from SOAPpy import WSDL 
+from SOAPpy import WSDL
 proxy = WSDL.Proxy("http://example.com/soap/wsdl")
 result = proxy.soapFunc("hello")
 result = proxy.anotherSoapFunc(34234)
@@ -623,7 +623,7 @@ ENDIF
 
 
 {{omit from|Batch File|Does not have network access.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|GUISS}}
 {{omit from|M4}}
 {{omit from|Maxima}}

@@ -10,17 +10,17 @@ categories = []
 tags = []
 +++
 
-{{task|Iteration}} 
+{{task|Iteration}}
 [[Category:Simple]]
 {{omit from|GUISS}}
 
-“'''For'''”   loops are used to make some block of code be iterated a number of times, setting a variable or parameter to a monotonically increasing integer value for each execution of the block of code. 
+“'''For'''”   loops are used to make some block of code be iterated a number of times, setting a variable or parameter to a monotonically increasing integer value for each execution of the block of code.
 
 Common extensions of this allow other counting patterns or iterating over abstract structures other than the integers.
 
 
 ;Task:
-Show how two loops may be nested within each other, with the number of iterations performed by the inner for loop being controlled by the outer for loop. 
+Show how two loops may be nested within each other, with the number of iterations performed by the inner for loop being controlled by the outer for loop.
 
 Specifically print out the following pattern by using one for loop nested in another:
 
@@ -89,7 +89,7 @@ ELOOPJ   XPRNT  BUFFER,L'BUFFER      print buffer
          B      LOOPI              next i
 ELOOPI   BR     R14                return to caller
 BUFFER   DC     CL80' '            buffer
-         YREGS  
+         YREGS
          END    LOOPFOR
 
 ```
@@ -131,7 +131,7 @@ LOOPFOR  CSECT
 BUFFER   DC     CL80' '            buffer
          YREGS
          END    LOOPFOR
-         
+
 ```
 
 {{out}}
@@ -145,7 +145,7 @@ This illustrates two kinds of 'for' loop.  The first kind is "loop", which itera
 
 ```forth
 
-( ( '* putc ) swap times cr ) 1 5 loop 
+( ( '* putc ) swap times cr ) 1 5 loop
 
 ```
 
@@ -201,7 +201,7 @@ od
 ```algol60
 INTEGER I,J;
 FOR I:=1 STEP 1 UNTIL 5 DO
-BEGIN 
+BEGIN
    FOR J:=1 STEP 1 UNTIL I DO
       OUTTEXT("*");
    OUTLINE
@@ -368,7 +368,7 @@ return x
 ***
 ****
 *****
-" 
+"
 ```
 
 
@@ -392,11 +392,11 @@ szMessX: .asciz "X"
 szCarriageReturn:  .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
@@ -409,7 +409,7 @@ main:                /* entry of program  */
     add r1,#1       @ r1 + 1
     cmp r1,r2       @ compare r1 r2
     ble 2b        @ loop label 2 before
-    ldr r0,iAdrszCarriageReturn   
+    ldr r0,iAdrszCarriageReturn
     bl affichageMess
     add r2,#1       @ r2 + 1
     cmp r2,#5       @ for five loop
@@ -425,11 +425,11 @@ main:                /* entry of program  */
 iAdrszMessX:  .int szMessX
 iAdrszCarriageReturn:  .int  szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -443,7 +443,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
 
@@ -523,14 +523,14 @@ End
 ```babel
 ((main { 10 star_triangle ! })
 
-(star_triangle { 
+(star_triangle {
     dup
-    <- 
-    { dup { "*" << } <-> 
-            iter - 1 + 
-        times 
-        "\n" << } 
-    -> 
+    <-
+    { dup { "*" << } <->
+            iter - 1 +
+        times
+        "\n" << }
+    ->
     times }))
 ```
 
@@ -638,7 +638,7 @@ OPENCONSOLE
 FOR X=1 TO 5
 
 	FOR Y=1 TO X
-		
+
             PRINT"*",:'No line feed or carriage return after printing.
 
 	NEXT Y
@@ -680,8 +680,8 @@ END
 #APPTYPE CONSOLE
 FOR dim i = 1 TO 5
     FOR dim j = 1 TO i
-        PRINT "*"; 
-    NEXT j   
+        PRINT "*";
+    NEXT j
     PRINT
 NEXT i
 Pause
@@ -777,7 +777,7 @@ next
 
 ```microsoftsmallbasic
 
-For i = 1 TO 5 
+For i = 1 TO 5
   For j = 1 To i
     TextWindow.Write("*")
   EndFor
@@ -849,7 +849,7 @@ Public OutConsole As Scripting.TextStream
 For i = 0 To 4
     For j = 0 To i
         OutConsole.Write "*"
-    Next j 
+    Next j
     OutConsole.WriteLine
 Next i
 ```
@@ -965,7 +965,7 @@ end
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```bf>>>+++++++[>++++++[
 +<-]<-]       place * in cell 3
@@ -1049,7 +1049,7 @@ class Program {
 
 ```ceylon
 shared void run() {
-	
+
 	for(i in 1..5) {
 		for(j in 1..i) {
 			process.write("*");
@@ -1133,7 +1133,7 @@ Serves 1.
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  Outer-Counter PIC 9.
-       01  Inner-Counter PIC 9. 
+       01  Inner-Counter PIC 9.
 
        PROCEDURE DIVISION.
        PERFORM VARYING Outer-Counter FROM 1 BY 1 UNTIL 5 < Outer-Counter
@@ -1155,7 +1155,7 @@ Serves 1.
 
 ## ColdFusion
 
-Remove the leading space from the line break tag. 
+Remove the leading space from the line break tag.
 
 With tags:
 
@@ -1397,7 +1397,7 @@ end.
 
 ```DMS
 number i, j
-for (i = 1; i <= 5; i++) 
+for (i = 1; i <= 5; i++)
 {
     for (j = 1; j <= i; j++)
     {
@@ -1550,31 +1550,31 @@ Characters are encoded in five-bit form, with each code point producing a differ
 ```edsac
 [ Loops
   =====
-  
+
   A program for the EDSAC
-  
+
   Demonstrates nested loops
   and printer output
-  
+
   Works with Initial Orders 2 ]
 
 
 
         T56K  [ set load point  ]
         GK    [ set theta       ]
-        
+
         O21@  [ figure shift    ]
-        
+
 [  1 ]  T24@  [ a = 0           ]
         A19@  [ a = i           ]
-        
+
 [  3 ]  T20@  [ j = a; a = 0    ]
         O22@  [ write character ]
         A20@  [ a = j           ]
         S17@  [ a -= 1          ]
         U20@  [ j = a           ]
         E3@   [ if a>=0 go to 3 ]
-        
+
         O23@  [ write line feed ]
         T24@  [ a = 0           ]
         A19@  [ a = i           ]
@@ -1584,19 +1584,19 @@ Characters are encoded in five-bit form, with each code point producing a differ
         G1@   [ if a<0 go to 1  ]
 
         ZF    [ halt            ]
-        
+
 [ 17 ]  P0D   [ const: 1        ]
 [ 18 ]  P2D   [ const: 5        ]
-        
+
 [ 19 ]  P0F   [ var: i          ]
 [ 20 ]  P0F   [ var: j          ]
-        
+
 [ 21 ]  #F    [ figure shift    ]
 [ 22 ]  ZF    [ '+' character   ]
 [ 23 ]  &F    [ line feed       ]
-        
+
 [ 24 ]  P0F   [ used to clear a ]
-        
+
         EZPF  [ begin execution ]
 ```
 
@@ -1673,14 +1673,14 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     for(int i := 0, i < 5, i += 1)
     {
         for(int j := 0, j <= i, j += 1)
             { console.write:"*" };
- 
+
         console.writeLine()
     }
 }
@@ -1732,23 +1732,23 @@ for i <- 1..5, do: IO.puts (for j <- 1..i, do: "*")
 %% Implemented by Arjun Sunel
 -module(nested_loops).
 -export([main/0, inner_loop/0]).
- 
+
 main() ->
 	outer_loop(1).
-	 
+
 inner_loop()->
 	inner_loop(1).
- 
+
 inner_loop(N) when N rem 5 =:= 0 ->
 	io:format("* ");
- 
+
 inner_loop(N) ->
 	io:fwrite("* "),
 	inner_loop(N+1).
- 
+
 outer_loop(N) when N rem 5 =:= 0 ->
 	io:format("*");
- 
+
 outer_loop(N) ->
 	outer_loop(N+1),
 	io:format("~n"),
@@ -2237,7 +2237,7 @@ for($i = 0; $i < 5; $i++) {
     for($j = 0; $j <= $i; $j++) {
         echo '*';
     }
-  
+
     echo '\n';
 }
 ```
@@ -2278,7 +2278,7 @@ for (i in 1...6) {
 	for(j in 0...i) {
 		Sys.print('*');
 	}
-	Sys.println(''); 
+	Sys.println('');
 }
 ```
 
@@ -2364,7 +2364,7 @@ J is array-oriented, so there is very little need for loops.  For example, excep
 
    ]\ '*****'
 
-J does support loops for those times they can't be avoided (just like many languages support gotos for those time they can't be avoided).  
+J does support loops for those times they can't be avoided (just like many languages support gotos for those time they can't be avoided).
 
 ```j
 3 : 0
@@ -2373,9 +2373,9 @@ J does support loops for those times they can't be avoided (just like many langu
 
              for. 1 + i. i do.
                   z=. z,'*'
-             end. 
+             end.
 
-             z 1!:2 ] 2 
+             z 1!:2 ] 2
          end.
 
         i.0 0
@@ -2416,7 +2416,7 @@ for (i = 1; i <= 5; i += 1) {
 
 
 
-Alternatively, using JavaScript's '''Array.forEach()''', and given an array of indices, 
+Alternatively, using JavaScript's '''Array.forEach()''', and given an array of indices,
 or a simple range function which generates a range:
 
 
@@ -2739,7 +2739,7 @@ prompt$ lil loopsFor.lil
 ```
 
 
-The '''for''' statement in LIL, like Tcl, is pretty flexible and is not limited to simple ''incremented variable'' style loops. 
+The '''for''' statement in LIL, like Tcl, is pretty flexible and is not limited to simple ''incremented variable'' style loops.
 
 
 ## Lingo
@@ -2776,7 +2776,7 @@ end repeat
 
 ```LiveCode
 put 0 into n
-repeat for 5 times                                                                                                   
+repeat for 5 times
   add 1 to n
   repeat for n times
     put "*"
@@ -2933,7 +2933,7 @@ end
 ```
 
 
-Vectorized version: 
+Vectorized version:
 
 
 ```MATLAB
@@ -3102,9 +3102,9 @@ endfor
 
 import morfa.base;
 
-for (i in 0..5) 
+for (i in 0..5)
 {
-    for (j in 0..i+1) 
+    for (j in 0..i+1)
     {
         print("*");
     }
@@ -3118,7 +3118,7 @@ for (i in 0..5)
 ## MUMPS
 
 
-###  Routine 
+###  Routine
 
 
 ```MUMPS
@@ -3146,7 +3146,7 @@ USER>D FORLOOP^ROSETTA
 
 
 
-###  One line 
+###  One line
 
 The if statement has to follow the write, or else the if statement would control the write (5 lines with one asterisk each).
 
@@ -3248,11 +3248,11 @@ Works with oo2c Version 2
 ```oberon2
 
 MODULE LoopFor;
-IMPORT 
+IMPORT
   Out;
 VAR
   i, j: INTEGER;
- 
+
 BEGIN
   FOR i := 1 TO 5 DO
     FOR j := 1 TO i DO
@@ -3276,13 +3276,13 @@ bundle Default {
     function : Main(args : String[]) ~ Nil {
       DoFor();
     }
-	
+
     function : native : DoFor() ~ Nil {
     	for (i := 0; i < 5; i += 1;) {
           for (j := 0; j <= i; j += 1;) {
             "*"->Print();
           };
-          ""->PrintLine();	
+          ""->PrintLine();
        };
     }
   }
@@ -3386,11 +3386,11 @@ dim x,y
 for x=1 to 5
 
     for y=1 to x
-    
+
     print "*";
-    
+
     next y
-    
+
 print
 
 next x
@@ -3436,7 +3436,7 @@ end.
 for(my $x = 1; $x <= 5; $x++) {
   for(my $y = 1; $y <= $x; $y++) {
     print "*";
-  } 
+  }
   print "\n";
 }
 ```
@@ -3480,7 +3480,7 @@ for ^5 {
 	for 0..$_ {
 		print "*";
 	}
-	
+
 	print "\n";
 
 }
@@ -3600,7 +3600,7 @@ END:
 
 ## PL/I
 
-Basic version: 
+Basic version:
 
 ```PL/I
 do i = 1 to 5;
@@ -3611,7 +3611,7 @@ do i = 1 to 5;
 end;
 ```
 
-Advanced version: 
+Advanced version:
 
 ```PL/I
 do i = 1 to 5;
@@ -3685,7 +3685,7 @@ for ( int i=20; i<=100; i+=20 )
 Prolog has a built in iterator, between(Lo,Hi,I) which binds the value of I to successive values from Lo to Hi.  This is the closest thing Prolog has to a 'for' loop.
 
 ```prolog
-example :- 
+example :-
     between(1,5,I), nl, between(1,I,_J),
     write('*'), fail.
 example.
@@ -3762,7 +3762,7 @@ for(i in 0:4) {
 ; Use 'repeat' when an index required, 'loop' when repetition suffices:
 
 repeat i 5 [
-	loop i [prin "*"] 
+	loop i [prin "*"]
 	print ""
 ]
 
@@ -3832,7 +3832,7 @@ for i 1 5 1 [
        end          /*j*/                        /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -3847,15 +3847,15 @@ for i = 1 to 5 for x = 1 to i see "*" next see nl next
 
 ```
 
-or multiple line 
+or multiple line
 
 ```ring
 
 for i = 1 to 5
      for x = 1 to i
-         see "*" 
+         see "*"
      next
-     see nl 
+     see nl
 next
 
 ```
@@ -4188,9 +4188,9 @@ Idiomatic:
 ```simula
 begin
    integer i,j;
-   for i:=1 step 1 until 5 do 
-   begin 
-      for j:=1 step 1 until i do 
+   for i:=1 step 1 until 5 do
+   begin
+      for j:=1 step 1 until i do
          outtext("*");
       outimage
    end
@@ -4268,7 +4268,7 @@ end
 one "loop" only:
 
 ```snobol
-	a = "*****"; 
+	a = "*****";
 a	a len(x = x + 1) . output	:s(a)
 end
 ```
@@ -4287,24 +4287,24 @@ end
 
 
 
-        / \         
+        / \
           <
-        < < 
+        < <
         < /<<<<<.\
-        . ?    
+        . ?
         > \->>>>>/
         > !
-        > > 
-        ! > 
-     />-\ />+>+\  
-        ? ?  
-     \+</ \ -<</ 
+        > >
+        ! >
+     />-\ />+>+\
+        ? ?
+     \+</ \ -<</
         < !
-        < +                                                                 
+        < +
         - >
-   /   !\?/#     
-   \+++++>+++++++++++++>\                                                                         
- /++++++++++++++++++++++/                     
+   /   !\?/#
+   \+++++>+++++++++++++>\
+ /++++++++++++++++++++++/
  \++++++++++++++++++++\
                      $/
 
@@ -4407,7 +4407,7 @@ forvalues n=1/5 {
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -4571,7 +4571,7 @@ ENDLOOP
 **
 ***
 ****
-***** 
+*****
 
 ```
 
@@ -4619,7 +4619,7 @@ done
 ```
 
 
-The [[Bourne Shell]] has a for loop, but it requires a list of words to iterate. 
+The [[Bourne Shell]] has a for loop, but it requires a list of words to iterate.
 The [http://www.openbsd.org/cgi-bin/man.cgi?query=jot&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html <tt>jot(1)</tt>] command from [[BSD]] can output an appropriate list of numbers.
 
 {{works with|Bourne Shell}}
@@ -4640,8 +4640,8 @@ Bash has <tt>for</tt> loops that act like C. These loops are very good for this 
 {{works with|Bourne Again SHell|3}}
 
 ```bash
-for (( x=1; $x<=5; x=$x+1 )); do 
-  for (( y=1; y<=$x; y=$y+1 )); do 
+for (( x=1; $x<=5; x=$x+1 )); do
+  for (( y=1; y<=$x; y=$y+1 )); do
     echo -n '*'
   done
   echo ""

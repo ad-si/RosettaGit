@@ -115,7 +115,7 @@ package
             loader.addEventListener(Event.COMPLETE, loadComplete);
             loader.load(new URLRequest("http://www.rosettacode.org"));
         }
-		
+
         private function loadComplete(evt:Event):void
         {
             trace(evt.target.data);
@@ -299,12 +299,12 @@ curl.exe -s -L http://rosettacode.org/
 ```bbcbasic
       SYS "LoadLibrary", "URLMON.DLL" TO urlmon%
       SYS "GetProcAddress", urlmon%, "URLDownloadToFileA" TO URLDownloadToFile
-      
+
       url$ = "http://www.bbcbasic.co.uk/aboutus.html"
       file$ = @tmp$ + "rosetta.tmp"
       SYS URLDownloadToFile, 0, url$, file$, 0, 0 TO fail%
       IF fail% ERROR 100, "File download failed"
-      
+
       OSCLI "TYPE """ + file$ + """"
 ```
 
@@ -463,7 +463,7 @@ Using the Java API:
 ```clojure
 
 (defn get-http [url]
-  (let [sc (java.util.Scanner. 
+  (let [sc (java.util.Scanner.
 	    (.openStream (java.net.URL. url)))]
     (while (.hasNext sc)
       (println (.nextLine sc)))))
@@ -521,8 +521,8 @@ SOURCE FORMAT IS FIXED
 
        01 cli                  pic x(7) external.
           88 helping           values "-h", "-help", "help", spaces.
-          88 displaying        value "display".            
-          88 summarizing       value "summary". 
+          88 displaying        value "display".
+          88 summarizing       value "summary".
 
       *> ***************************************************************
        procedure division.
@@ -586,7 +586,7 @@ SOURCE FORMAT IS FIXED
 
        hard-exception.
            perform soft-exception
-           stop run returning 127 
+           stop run returning 127
        .
        ==.
 
@@ -628,8 +628,8 @@ SOURCE FORMAT IS FIXED
 
        01 cli                  pic x(7) external.
           88 helping           values "-h", "-help", "help", spaces.
-          88 displaying        value "display".            
-          88 summarizing       value "summary". 
+          88 displaying        value "display".
+          88 summarizing       value "summary".
 
        linkage section.
        01 url                  pic x any length.
@@ -638,7 +638,7 @@ SOURCE FORMAT IS FIXED
 
       *> ***************************************************************
        procedure division using url buffer returning curl-status.
-       if displaying or summarizing then 
+       if displaying or summarizing then
            display "Read: " url upon syserr
        end-if
 
@@ -1125,7 +1125,7 @@ void main() {
 
 ## Dart
 
-Using the stand-alone VM: 
+Using the stand-alone VM:
 
 ```d
 import 'dart:io';
@@ -1229,10 +1229,10 @@ end.
 
 ```dragon
 select "http"
-select "std" 
+select "std"
 
 http("http://www.rosettacode.org", ::echo)
-    
+
 
 ```
 
@@ -1260,7 +1260,7 @@ when (def t := <http://www.rosettacode.org> <- getText()) -> {
 
 ;; asynchronous call back definition
 (define (success name text) (writeln 'Loaded name) (writeln text))
-;; 
+;;
 (file->string success "http://www.google.com")
 
 ```
@@ -1570,8 +1570,8 @@ Using {{libheader|HTTP}} from [http://hackage.haskell.org/packages/hackage.html 
 import Network.Browser
 import Network.HTTP
 import Network.URI
- 
-main = do 
+
+main = do
     rsp <- Network.Browser.browse $ do
         setAllowRedirects True
         setOutHandler $ const (return ())
@@ -1627,7 +1627,7 @@ Unicon provides improved socket and messaging support without the need for the e
 
 ```unicon
 
-procedure main(arglist) 
+procedure main(arglist)
 m := open(arglist[1],"m")
 while write(read(m))
 end
@@ -1654,13 +1654,13 @@ gethttp 'http://www.rosettacode.org'
 
 ```java5
 import java.util.Scanner;
-import java.net.URL;  
+import java.net.URL;
 
 public class Main {
-    public static void main(String[] args) throws Exception {         
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(new URL("http://www.rosettacode.org").openStream());
         while (sc.hasNext())
-            System.out.println(sc.nextLine());         
+            System.out.println(sc.nextLine());
     }
 }
 
@@ -1675,9 +1675,9 @@ public class Main {
 import org.apache.commons.io.IOUtils;
 import java.net.URL;
 
-public class Main {	
+public class Main {
     public static void main(String[] args) throws Exception {
-        IOUtils.copy(new URL("http://rosettacode.org").openStream(),System.out);    	    	    		    
+        IOUtils.copy(new URL("http://rosettacode.org").openStream(),System.out);
     }
 }
 ```
@@ -1726,7 +1726,7 @@ As a repeatable function:
  * @param {string} method The HTTP method to invoke- GET, POST, etc
  * @param {function} callback Once the HTTP request has completed, responseText is passed into this function for execution
  * @param {object} params Query Parameters in a JavaScript Object (Optional)
- * 
+ *
  */
 function _http(url, method, callback, params) {
     var xhr,
@@ -1773,7 +1773,7 @@ function _http(url, method, callback, params) {
      * @name procQueryParams
      * @description Return function that converts Query Parameters from a JavaScript Object to a proper URL encoded string
      * @param {object} params Query Parameters in a JavaScript Object
-     * 
+     *
      */
     function procQueryParams(params) {
         return "?" + Object
@@ -1806,21 +1806,21 @@ With Node.js, using only the included http module.
 
 ```javascript
 const http = require('http');
- 
+
 http.get('http://rosettacode.org', (resp) => {
 
   let data = '';
- 
+
   // A chunk of data has been recieved.
   resp.on('data', (chunk) => {
     data += chunk;
   });
- 
+
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
     console.log("Data:", data);
   });
- 
+
 }).on("error", (err) => {
   console.log("Error: " + err.message);
 });
@@ -1836,14 +1836,14 @@ Based on Jsi_Wget that ships with Jsish.
 ```javascript
 #!/usr/bin/env jsish
 function httpGet(fileargs:array|string, conf:object=void) {
-    
+
     var options = { // Web client for downloading files from url
         headers     : [],           // Header fields to send.
         nowait      : false,        // Just return object: caller will call update.
         onDone      : null,         // Callback when done.
         wsdebug     : 0             // WebSockets debug level.
     };
-    
+
     var self = {
         address     : '',
         done        : false,
@@ -1857,23 +1857,23 @@ function httpGet(fileargs:array|string, conf:object=void) {
     };
 
     parseOpts(self, options, conf);
-    
+
     if (self.port === -1)
         self.port = 80;
-        
+
     function WsRecv(ws:userobj, id:number, str:string) {
         LogDebug("LEN: "+str.length);
         LogTrace("DATA", str);
         self.response += str;
     }
-    
+
     function WsClose(ws:userobj|null, id:number) {
         LogDebug("CLOSE");
         self.done = true;
         if (self.onDone)
             self.onDone(id);
     }
-    
+
     function main() {
         if (self.Debug)
             debugger;
@@ -1898,7 +1898,7 @@ function httpGet(fileargs:array|string, conf:object=void) {
             self.path = '/index.html';
         if (self.post.length)
             self.protocol = 'post';
-        
+
         var wsopts = {
             client:true,
             onRecv:WsRecv,
@@ -2002,7 +2002,7 @@ fun main(args: Array<String>) {
 
 ## Lasso
 
-incude_url is a wrapper for Lasso's curl datatype, however it can be achieved in several ways. 
+incude_url is a wrapper for Lasso's curl datatype, however it can be achieved in several ways.
 
 ```Lasso
 // using include_url wrapper:
@@ -2028,10 +2028,10 @@ local(y = #x->result)
 
 ```lisp
 (: inets start)
-(case (: httpc request '"http://lfe.github.io") 
+(case (: httpc request '"http://lfe.github.io")
   ((tuple 'ok result)
-    (: io format '"Result: ~p" (list result))) 
-  ((tuple 'error reason) 
+    (: io format '"Result: ~p" (list result)))
+  ((tuple 'error reason)
     (: io format '"Error: ~p~n" (list reason))))
 
 ```
@@ -2135,7 +2135,7 @@ In some movie script:
 
 ```lingo
 ----------------------------------------
--- 
+--
 ----------------------------------------
 on getAdobeHomePage ()
   script("SimpleHttpGet").new("http://www.adobe.com/", #printResult)
@@ -2334,7 +2334,7 @@ Print[Import["http://www.google.com/webhp?complete=1&hl=en", "Source"]]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 [http://www.mathworks.com/help/matlab/ref/urlread.html urlread] is MATLAB's function for making URL requests.
-The documentation for Octave is available here [http://octave.sourceforge.net/octave/function/urlread.html urlread]. 
+The documentation for Octave is available here [http://octave.sourceforge.net/octave/function/urlread.html urlread].
 
 In this example we initiate an HTTP request for a single random number from [http://www.random.org random.org]:
 
@@ -2373,7 +2373,7 @@ module HTTP
         def wc = WebClient();
         def myStream = wc.OpenRead("http://rosettacode.org");
         def sr = StreamReader(myStream);
-        
+
         WriteLine(sr.ReadToEnd());
         myStream.Close()
     }
@@ -2515,8 +2515,8 @@ massaged to avoid problems.
 ..
 -/html-
 ```
-     
-  
+
+
 
 ## Oz
 
@@ -2769,7 +2769,7 @@ curl_easy_setopt(curl, CURLOPT_URL, "http://rosettacode.org/robots.txt")
 object res = curl_easy_perform_ex(curl)
 curl_easy_cleanup(curl)
 curl_global_cleanup()
- 
+
 puts(1,res)
 ```
 
@@ -2921,17 +2921,17 @@ print(urllib.request.urlopen("http://rosettacode.org").read())
 ```
 
 
-Using a more low-level [https://docs.python.org/3/library/http.client.html http.client] library.  
+Using a more low-level [https://docs.python.org/3/library/http.client.html http.client] library.
 
 ```python
 
 from http.client import HTTPConnection
 conn = HTTPConnection("example.com")
 # If you need to use set_tunnel, do so here.
-conn.request("GET", "/")  
+conn.request("GET", "/")
 # Alternatively, you can use connect(), followed by the putrequest, putheader and endheaders functions.
 result = conn.getresponse()
-r1 = result.read() # This retrieves the entire contents.  
+r1 = result.read() # This retrieves the entire contents.
 
 ```
 
@@ -2987,7 +2987,7 @@ webpage <- getURL("http://rosettacode.org")
 webpage <- getURL("http://www.rosettacode.org", .opts=list(followlocation=TRUE))
 
 #If you are behind a proxy server, you will need to use something like:
-webpage <- getURL("http://rosettacode.org", 
+webpage <- getURL("http://rosettacode.org",
    .opts=list(proxy="123.123.123.123", proxyusername="domain\\username", proxypassword="mypassword", proxyport=8080))
 #Don't forget that backslashes in your username or password need to be escaped!
 
@@ -3024,7 +3024,7 @@ pagetree$children$html
 
 ## REALbasic
 
-REALBasic provides an HTTPSocket class for handling HTTP connections. The 'Get' method of the HTTPSocket is overloaded and can download data to a file or return data as a string, in both cases a timeout argument can be passed. 
+REALBasic provides an HTTPSocket class for handling HTTP connections. The 'Get' method of the HTTPSocket is overloaded and can download data to a file or return data as a string, in both cases a timeout argument can be passed.
 
 ```REALbasic
 
@@ -3093,10 +3093,10 @@ address system 'more' with input fifo ''
 ## RLaB
 
 RLaB supports HTTP/FTP through its Read/Write facilities, which are organized around the concept
-of Universal Resource Locator (URL), 
+of Universal Resource Locator (URL),
 :''protocol://address''
 
-RLaB accepts the following values for ''protocol'': 
+RLaB accepts the following values for ''protocol'':
 :1. ''file'' or omitted, for generic text files or files in native binary format (partially compatible with ''matlab'' binary format);
 
 :2. ''h5'' or ''hdf5'' for files that use Hierarhical Data Format 5 (HDF5) version 1.8.0, and later. Here ''protocol'' can be omitted while ''address'' has to end with ''.h5'' (file extension);
@@ -3113,7 +3113,7 @@ resources it allocated for managing them.
 
 For accessing URLs on world wide web RLaB implements the library cURL (libcurl) [http://curl.haxx.se] and its "easy" interface.
 
-This said, this is how one would download financial data for Pfeizer from 
+This said, this is how one would download financial data for Pfeizer from
 Yahoo [http://ichart.finance.yahoo.com/table.csv?s=PFE&a=00&b=4&c=1982&d=00&e=10&f=2010&g=d&ignore=.csv].
 
 
@@ -3139,7 +3139,7 @@ close (url);
 
 ```ring
 
-See download("http://rosettacode.org") 
+See download("http://rosettacode.org")
 
 ```
 
@@ -3361,7 +3361,7 @@ let request = NSURLRequest(URL: NSURL(string: "http://rosettacode.org/")!)
 
 // Using trailing closure
 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {res, data, err in
-    
+
     // data is binary
     if (data != nil) {
         let string = NSString(data: data!, encoding: NSUTF8StringEncoding)
@@ -3620,7 +3620,7 @@ ztcp -c $fd
 
 
 {{omit from|Applesoft BASIC|No TCP/IP network support on Apple II}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Commodore BASIC|Does not have network access}}
 {{omit from|Inform 7|Does not have network access.}}
 {{omit from|Integer BASIC|No TCP/IP network support on Apple II}}

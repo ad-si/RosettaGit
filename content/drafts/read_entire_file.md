@@ -12,7 +12,7 @@ tags = []
 
 {{task|File handling}}
 {{omit from|Batch File|No way of reading entire files or putting line breaks into variables.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|TI-83 BASIC|No filesystem.}}
 {{omit from|TI-89 BASIC|No filesystem.}}
 {{omit from|Unlambda|Does not know files.}}
@@ -22,9 +22,9 @@ Load the entire contents of some text file as a single string variable.
 
 If applicable, discuss: encoding selection, the possibility of memory-mapping.
 
-Of course, in practice one should avoid reading an entire file at once 
-if the file is large and the task can be accomplished incrementally instead 
-(in which case check [[File IO]]); 
+Of course, in practice one should avoid reading an entire file at once
+if the file is large and the task can be accomplished incrementally instead
+(in which case check [[File IO]]);
 this is for those cases where having the entire file is actually what is wanted.
 
 
@@ -49,7 +49,7 @@ The "slurp" word will read the entire contents of the file into memory, as-is, a
 
 {{works with|Ada 2005}}
 
-Using Ada.Directories to first ask for the file size 
+Using Ada.Directories to first ask for the file size
 and then Ada.Direct_IO to read the whole file in one chunk:
 
 
@@ -162,12 +162,12 @@ FileClose($fileOpen)
 ## ALGOL 68
 
 In official ALGOL 68 a '''file''' is composed of pages, lines and characters, however
-for [[ALGOL 68 Genie]] and [[ELLA ALGOL 68RS]] this concept is not supported as they 
+for [[ALGOL 68 Genie]] and [[ELLA ALGOL 68RS]] this concept is not supported as they
 adopt the [[wp:Unix|Unix]] concept of files being "flat", and hence contain only characters.
 
-The book can contain ''new page''s and ''new line''s, are not of any particular 
-character set, hence are system independent.  The character set is set by a call 
-to ''make conv'', eg ''make conv(tape, ebcdic conv);'' - 
+The book can contain ''new page''s and ''new line''s, are not of any particular
+character set, hence are system independent.  The character set is set by a call
+to ''make conv'', eg ''make conv(tape, ebcdic conv);'' -
 c.f. [[Character_codes#ALGOL_68|Character_codes]] for more details.
 
 '''In official/standard ALGOL 68 only:'''
@@ -183,10 +183,10 @@ get(book file, book)
 ```
 
 
-Once a "book" has been read into a '''book''' array it can still be associated 
-with a virtual '''file''' and again be accessed with standard '''file''' routines (such 
+Once a "book" has been read into a '''book''' array it can still be associated
+with a virtual '''file''' and again be accessed with standard '''file''' routines (such
 as ''readf'', ''printf'', ''putf'', ''getf'', ''new line'' etc). This means data
-can be directly manipulated from a array cached in "core" using ''transput'' 
+can be directly manipulated from a array cached in "core" using ''transput''
 (stdio) routines.
 
 '''In official/standard ALGOL 68 only:'''
@@ -230,17 +230,17 @@ contents $(file:read "input.txt")
 
 ```awk
 #!/usr/bin/awk -f
-BEGIN { 
-   ## empty record separate, 
+BEGIN {
+   ## empty record separate,
    RS="";
-   ## read line (i.e. whole file) into $0	
-   getline; 	
-   ## print line number and content of line 
-   print "=== line "NR,":",$0; 
+   ## read line (i.e. whole file) into $0
+   getline;
+   ## print line number and content of line
+   print "=== line "NR,":",$0;
 }
 {
-   ## no further line is read printed 
-   print "=== line "NR,":",$0; 
+   ## no further line is read printed
+   print "=== line "NR,":",$0;
 }
 ```
 
@@ -309,7 +309,7 @@ CLOSE 1
 ```basic
 10 rem load the entire contents of some text file as a single string variable.
 20 rem should avoid reading an entire file at once if the file is large
-30 rem 
+30 rem
 ### ==========================
 
 40 print chr$(14) : rem switch to upper+lowercase character set
@@ -356,7 +356,7 @@ API version:
 
 <code>get'(<i>filename</i>,STR):?myString</code>
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 While the language certainly doesn't support strings in the traditional sense, relaxing the definition to mean any contiguous sequence of null-terminated bytes permits a reasonable facsimile. This <tt>cat</tt> program eschews the simpler byte-by-byte approach (<tt>,[.,]</tt>) to demonstrate the technique.
 
 ```bf>
@@ -412,7 +412,7 @@ int main()
       fread(buffer, s, 1, fh);
       // we can now close the file
       fclose(fh); fh = NULL;
-      
+
       // do something, e.g.
       fwrite(buffer, s, 1, stdout);
 
@@ -426,7 +426,7 @@ int main()
 
 
 
-###  Memory map 
+###  Memory map
 
 {{works with|POSIX}}
 
@@ -479,14 +479,14 @@ int main() {
     HANDLE hFile, hMap;
     DWORD filesize;
     char *p;
-    
+
     hFile = CreateFile("mmap_win.c", GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
     filesize = GetFileSize(hFile, NULL);
     hMap = CreateFileMapping(hFile, NULL, PAGE_READONLY, 0, 0, NULL);
     p = MapViewOfFile(hMap, FILE_MAP_READ, 0, 0, 0);
 
     fwrite(p, filesize, 1, stdout);
-    
+
     CloseHandle(hMap);
     CloseHandle(hFile);
     return 0;
@@ -504,7 +504,7 @@ int main() {
 #include <string>
 #include <iterator>
 
-int main( ) 
+int main( )
 {
     if (std::ifstream infile("sample.txt"))
     {
@@ -516,7 +516,7 @@ int main( )
         // don't need to manually close the ifstream; it will release the file when it goes out of scope
         return 0;
    }
-   else 
+   else
    {
       std::cout << "file not found!\n";
       return 1;
@@ -539,7 +539,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var fileContents = File.ReadAllText("c:\\autoexec.bat");  
+        var fileContents = File.ReadAllText("c:\\autoexec.bat");
         // Can optionally take a second parameter to specify the encoding, e.g. File.ReadAllText("c:\\autoexec.bat", Encoding.UTF8)
     }
 }
@@ -688,7 +688,7 @@ The file is assumed to be in the default encoding.
 
 ## Elixir
 
-Two solutions in the FileReader namespace. 
+Two solutions in the FileReader namespace.
 File returns a tuple: {:ok, file} is successful or {:error, reason} if unsuccessful. Errors can be caught and turned into error strings via Erlang's :file.format_error function.
 
 
@@ -843,21 +843,21 @@ program read_file
     implicit none
     integer :: n
     character(:), allocatable :: s
-    
+
     open(unit=10, file="read_file.f90", action="read", &
          form="unformatted", access="stream")
     inquire(unit=10, size=n)
     allocate(character(n) :: s)
     read(10) s
     close(10)
-    
+
     print "(A)", s
 end program
 ```
 
 
 
-###  Intel Fortran on Windows 
+###  Intel Fortran on Windows
 
 Here is a solution using the Windows API to create a memory map of a file. It is used to print the source code of the program on the console.
 
@@ -867,19 +867,19 @@ program file_win
     use kernel32
     use iso_c_binding
     implicit none
-    
+
     integer(HANDLE) :: hFile, hMap, hOutput
     integer(DWORD) :: fileSize
     integer(LPVOID) :: ptr
     integer(LPDWORD) :: charsWritten
     integer(BOOL) :: s
-    
+
     hFile = CreateFile("file_win.f90" // c_null_char, GENERIC_READ, &
                        0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL)
     filesize = GetFileSize(hFile, NULL)
     hMap = CreateFileMapping(hFile, NULL, PAGE_READONLY, 0, 0, NULL)
     ptr = MapViewOfFile(hMap, FILE_MAP_READ, 0, 0, 0)
-    
+
     hOutput = GetStdHandle(STD_OUTPUT_HANDLE)
     s = WriteConsole(hOutput, ptr, fileSize, transfer(c_loc(charsWritten), 0_c_intptr_t), NULL)
     s = CloseHandle(hMap)
@@ -977,7 +977,7 @@ else
 // User canceled
 end if
 end fn
-  
+
 fn ReadTextFile
 
 ```
@@ -1144,7 +1144,7 @@ eagerReadFile filepath = do
 
 =={{header|Icon}} and {{header|Unicon}}==
 The first code snippet below reads from stdin directly into the string fs,
-preserving line separators (if any) and reading in large chunks. 
+preserving line separators (if any) and reading in large chunks.
 
 ```Icon
 every (fs := "") ||:= |reads(1000000)
@@ -1246,10 +1246,10 @@ public class MMapReadFile {
 		MappedByteBuffer buff = getBufferFor(new File(args[0]));
                 String results = new String(buff.asCharBuffer());
 	}
-	
-	public static MappedByteBuffer getBufferFor(File f) throws IOException {  
+
+	public static MappedByteBuffer getBufferFor(File f) throws IOException {
 		RandomAccessFile file = new RandomAccessFile(f, "r");
-	
+
 		MappedByteBuffer buffer = file.getChannel().map(MapMode.READ_ONLY, 0, f.length());
 		file.close();
 		return buffer;
@@ -1279,7 +1279,7 @@ public class ReadAll {
 		Path file = Paths.get(filename);
 		return Files.readAllLines(file, Charset.defaultCharset());
 	}
-	
+
 	public static byte[] readAllBytes(String filename){
 		Path file = Paths.get(filename);
 		return Files.readAllBytes(file);
@@ -1332,7 +1332,7 @@ The . filter will read in a file of raw text, e.g. if the file is named input.tx
 jq -R -s . input.txt
 ```
 
-In practice, this is probably not very useful.  It would be more typical to collect the raw lines into an array of JSON strings. 
+In practice, this is probably not very useful.  It would be more typical to collect the raw lines into an array of JSON strings.
 
 If it is known that the lines are delimited by a single "newline" character, then one could simply pipe from one jq command to another:
 ```sh
@@ -1341,7 +1341,7 @@ jq -R . input.txt | jq -s .
 
 Equivalently:
 ```sh
-jq -R -s 'split("\n")' input.txt 
+jq -R -s 'split("\n")' input.txt
 ```
 
 
@@ -1425,7 +1425,7 @@ fun main(args: Array<String>) {
 By default, string objects, which are always Unicode, are created with the assumption that the file contains UTF-8 encoded data. This assumption can be changed by settings the file objects’s character encoding value. When reading the data as a bytes object, the unaltered file data is returned.
 
 
-```Lasso 
+```Lasso
 local(f) = file('foo.txt')
 #f->readString</lang >
 
@@ -1551,7 +1551,7 @@ Module checkit {
             Ελληνικά Greek Letters
             }
       Save.Doc a$, "checkthis.txt", 2  ' 2 for UTF-8
-      
+
       Buffer1=Buffer("checkthis.txt")
       Print Len(Buffer1)=Filelen("checkthis.txt")
       b$=String$(Eval$(Buffer1, 0) as UTF8Dec)
@@ -1624,7 +1624,7 @@ Import["filename","String"]
 ```MATLAB
   fid = fopen('filename','r');
   [str,count] = fread(fid, [1,inf], 'uint8=>char');  % s will be a character array, count has the number of bytes
-  fclose(fid); 
+  fclose(fid);
 ```
 
 
@@ -1654,7 +1654,7 @@ main(!IO) :-
            ReadResult = error(_, IO_Error),
            io.stderr_stream(Stderr, !IO),
            io.write_string(Stderr, io.error_message(IO_Error) ++ "\n", !IO)
-      )        
+      )
    ;
       OpenResult = error(IO_Error),
       io.stderr_stream(Stderr, !IO),
@@ -1763,7 +1763,7 @@ method slurp(inFileName) public static returns Rexx
 
 
 ```smallbasic
-  v=File.ReadContents(filename) 
+  v=File.ReadContents(filename)
 ```
 
 
@@ -1802,14 +1802,14 @@ string := FileReader->ReadFile("in.txt");
     // Instantiate an NSString which describes the filesystem location of
     // the file we will be reading.
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"HelloRosetta"];
-    
+
     // The selector we're going to use to complete this task,
     // stringWithContentsOfFile:encoding:error, has an optional `error'
     // parameter which can be used to return information about any
     // errors it might run into. It's optional, but we'll create an NSError
     // anyways to demonstrate best practice.
     NSError *anError;
-    
+
     // And finally, the task: read and store the contents of a file as an
     // NSString.
     NSString *aString = [NSString stringWithContentsOfFile:filePath
@@ -1951,7 +1951,7 @@ Do i=1 To in.0
   v=v||in.i
   End
 say 'v='v
-::requires "hostemu" LIBRARY 
+::requires "hostemu" LIBRARY
 ```
 
 {{out}}
@@ -2043,19 +2043,19 @@ See TStrignList example of [[Read_entire_file#Delphi | Delphi]]
 
 The modern recommended way, is using one of these CPAN modules:
 
-* 
+*
 ```perl
 use File::Slurper 'read_text';
 my $text = read_text($filename, $data);
 ```
 
-* 
+*
 ```perl
 use Path::Tiny;
 my $text = path($filename)->slurp_utf8;
 ```
 
-* 
+*
 ```perl
 use IO::All;
 $text = io($filename)->utf8->all;
@@ -2064,7 +2064,7 @@ $text = io($filename)->utf8->all;
 
 Traditional ways, without CPAN modules:
 
-* 
+*
 ```perl
 open my $fh, '<:encoding(UTF-8)', $filename or die "Could not open '$filename':  $!";
 my $text;
@@ -2083,7 +2083,7 @@ my $text;
 }
 ```
 
-* 
+*
 ```perl
 my $text = do { local( @ARGV, $/ ) = ( $filename ); <> };
 ```
@@ -2266,9 +2266,9 @@ Number.w = ReadWord(#File)
 If the file is s pure text file (no CR/LF etc.), this will work and will read each line untill EOL is found.
 
 ```PureBasic
-If ReadFile(0, "RC.txt")       
-  Variable$=ReadString(0)     
-  CloseFile(0) 
+If ReadFile(0, "RC.txt")
+  Variable$=ReadString(0)
+  CloseFile(0)
 EndIf
 ```
 
@@ -2280,8 +2280,8 @@ Pattern$="Text (.txt)|*.txt|All files (*.*)|*.*"
 fileName$ = OpenFileRequester(Title$,"",Pattern$,0)
 If fileName$
   If ReadFile(0, fileName$)
-    length = Lof(0)     
-    *MemoryID = AllocateMemory(length)  
+    length = Lof(0)
+    *MemoryID = AllocateMemory(length)
     If *MemoryID
       bytes = ReadData(0, *MemoryID, length)
       MessageRequester("Info",Str(bytes)+" was read")
@@ -2388,7 +2388,7 @@ Function readFile(theFile As FolderItem, txtEncode As TextEncoding = Nil) As Str
   fileContents = tis.ReadAll(txtEncode)
   tis.Close
   Return fileContents
-  
+
 Exception err As NilObjectException
   MsgBox("File Not Found.")
 End Function
@@ -2456,7 +2456,7 @@ say 'v='v
 say 'length(v)='length(v)
 
 ```
-   
+
 {{out}}
 
 ```txt
@@ -2478,7 +2478,7 @@ length(v)=39
 # Read the file
 cStr = read("myfile.txt")
 # print the file content
-See cStr 
+See cStr
 
 ```
 
@@ -2488,7 +2488,7 @@ Also in one line we can read and print the file content.
 
 ```ring
 
-cStr = read("myfile.txt")   See cStr 
+cStr = read("myfile.txt")   See cStr
 
 ```
 
@@ -2793,19 +2793,19 @@ var=FILE ("rosetta.txt")
 ```
 
 
-The freeform directive in TXR causes the remaining lines of the text stream 
-to be treated as one big line, catenated together. 
-The default line terminator is the newline "\n". 
-This lets the entire input be captured into a single variable 
+The freeform directive in TXR causes the remaining lines of the text stream
+to be treated as one big line, catenated together.
+The default line terminator is the newline "\n".
+This lets the entire input be captured into a single variable
 as a whole-line match.
 
 
 ## UNIX Shell
 
 
-We start a 'cat' process to read the entire file, and use '$(...)' to grab 
-the output of 'cat'. We use 'printf' which might be more portable than 'echo'. 
-Because '$(...)' can chop off a newline at the end of the file, 
+We start a 'cat' process to read the entire file, and use '$(...)' to grab
+the output of 'cat'. We use 'printf' which might be more portable than 'echo'.
+Because '$(...)' can chop off a newline at the end of the file,
 we tell 'printf' to add an extra newline.
 
 
@@ -2942,7 +2942,7 @@ Dim s As String
   Open "c:\test.txt" For Binary Access Read As #fn
   ReDim b(0 To (LOF(fn) - 1))
   Get #fn, 1, b()
-  
+
   If b(0) = &HFF And b(1) = &HFE Then
   'UTF-16, little-endian
     ReDim b(0 To (LOF(fn) - 3))
@@ -3067,8 +3067,8 @@ class ReadFile {
 
 ## Yorick
 
-This loads foo.txt into ''lines'' as an array of strings. 
-Each array element is one line. 
+This loads foo.txt into ''lines'' as an array of strings.
+Each array element is one line.
 Each line's trailing newline is removed.
 
 ```yorick

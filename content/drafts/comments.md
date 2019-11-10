@@ -14,7 +14,7 @@ tags = []
 [[Category:Initialization]]
 
 ;Task:
-Show all ways to include text in a language source file 
+Show all ways to include text in a language source file
 that's completely ignored by the compiler or interpreter.
 
 
@@ -60,8 +60,8 @@ this ’
 ```360 Assembly
 
 * An asterisk in column one denotes a comment line
-* Comments may also follow any syntactically complete instruction: 
-         LA    1,0           Comment 
+* Comments may also follow any syntactically complete instruction:
+         LA    1,0           Comment
          NOP                 Comment (after a NOP instruction)
 * Comments after instructions with omitted operands require a comma ","
          END   ,             Comment (without comma, "Comment" assumed an operand of "END")
@@ -148,7 +148,7 @@ Agena has single line comments and two styles of multi-line comments.
 A comment in ALGOL 60 takes the place of a single instruction.
 <lang algol_60>
 'COMMENT' this is a first comment;
-'COMMENT' 
+'COMMENT'
 ****** this is a second comment ******
 ;
 
@@ -162,7 +162,7 @@ A comment in ALGOL 60 takes the place of a single instruction.
 ### With Standard
 
 Comments can be inserted in variety of ways:
-{|border="1" style="border-collapse: collapse; border: 5px double grey;" 
+{|border="1" style="border-collapse: collapse; border: 5px double grey;"
 |align=center|Algol68 as typically published,
 includes '''bold''' typeface.
 |align=center|''Quote'' stropping,
@@ -176,9 +176,9 @@ detecting reserved words.
 |-
 |colspan=4 align=center|¢ The original way of adding your 2 cents worth to a program with the "cent" character ¢||¢ TEXT ¢
 |-
-|'''co''' Style i comment '''co''' 
+|'''co''' Style i comment '''co'''
 '''comment''' text '''comment'''
-||'co' text 'co' 
+||'co' text 'co'
 'comment' text 'comment'
 ||CO text CO
 COMMENT text COMMENT
@@ -189,8 +189,8 @@ comment text comment
 |-
 |colspan=4 align=center|# Style ii comment with the hash character #||# TEXT #
 |}
-Notes: 
-* The <tt># test #</tt> and <tt>¢ text ¢</tt> comment tends to be used for inline comments.  And the <tt>COMMENT text COMMENT</tt> style tends to be used to comment out entire blocks. 
+Notes:
+* The <tt># test #</tt> and <tt>¢ text ¢</tt> comment tends to be used for inline comments.  And the <tt>COMMENT text COMMENT</tt> style tends to be used to comment out entire blocks.
 * The script [http://www.vim.org/scripts//script.php?script_id=1927 '''algol68.vim'''] can be used to highlight commented blocks while editing source code.
 
 
@@ -298,7 +298,7 @@ display dialog "ok" #Starting in version 2.0, end-line comments can begin with a
 /* ARM assembly Raspberry PI comment one line */
 /*  comment line 1
     comment line 2
-*/ 
+*/
 
 	mov r0,#0    @ this comment on end of line
 	mov r1,#0    //  authorized comment
@@ -469,16 +469,16 @@ The only truly standard method of marking a comment in BASIC is using the <code>
 {{works with|Applesoft BASIC}}
 This may not be well known, but you may include text after the line number of GOTO and GOSUB statements.  This is kind of a comment in absence of labels.
 
- 100  GOTO 200HERE                      
- 110  GOSUB 300THERE                    
- 120  GOTO 400THEOTHERPLACE             
- 130  GOTO 500MOM AND  POP              
+ 100  GOTO 200HERE
+ 110  GOSUB 300THERE
+ 120  GOTO 400THEOTHERPLACE
+ 130  GOTO 500MOM AND  POP
 
-Spaces are removed from non-keyword text.  BASIC keywords can be used.  
+Spaces are removed from non-keyword text.  BASIC keywords can be used.
 List outputs spaces around keywords.
 
 {{works with|QuickBASIC|4.5}}
-Most BASICs also support alternate comment characters, 
+Most BASICs also support alternate comment characters,
 commonly an apostrophe (single quote):
 
 
@@ -502,7 +502,7 @@ In addition to single-line comments, a few BASICs support block comments. FreeBA
  /' This is a multi line comment.
  Requires FreeBASIC 0.16 or later.
  Last line of the comment block. '/
- 
+
  DIM a AS /' Comment in the middle of statement '/ Integer
 
 =
@@ -592,9 +592,9 @@ b = 2  # So this line is a different statement.
 
 ## Befunge
 
-Like Brainf***, all characters and whitespace which are not commands are ignored. 
+Like Brainfuck, all characters and whitespace which are not commands are ignored.
 Also, since the code/data-space is two-dimensional, comments can be placed anywhere that will be untouched by the instruction pointer and data access commands.
-Finally, in Funge-98, the ; instruction immediately skips to the next ; instruction, which allows to isolate comments from code. 
+Finally, in Funge-98, the ; instruction immediately skips to the next ; instruction, which allows to isolate comments from code.
 
 {{works with|Befunge|93}}
 
@@ -622,7 +622,7 @@ Finally, in Funge-98, the ; instruction immediately skips to the next ; instruct
 
 
 ```blast
-# A hash symbol at the beginning of a line marks the line as a comment 
+# A hash symbol at the beginning of a line marks the line as a comment
 
 ```
 
@@ -630,14 +630,14 @@ Finally, in Funge-98, the ; instruction immediately skips to the next ; instruct
 
 ## Bracmat
 
-Bracmat uses curly braces as comment delimiters. Curly braces inside comments must be balanced. Comments are so much ignored when source code is read, that they do not reappear in listings created by the built-in <code>lst$</code> function, an otherwise very useful function to autoindent your code. 
+Bracmat uses curly braces as comment delimiters. Curly braces inside comments must be balanced. Comments are so much ignored when source code is read, that they do not reappear in listings created by the built-in <code>lst$</code> function, an otherwise very useful function to autoindent your code.
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```bf>This is a comment</lang
 
 
-Most ASCII characters may be used for comments; only the eight characters "+-<>[],." are Brainf*** commands. Extra care must be used when using punctuation, particularly the comma or period. These are I/O operators and are actually commands rather than comments, and are instead compiled into the program if used and may have to be "debugged" and removed if you forget this issue.
+Most ASCII characters may be used for comments; only the eight characters "+-<>[],." are Brainfuck commands. Extra care must be used when using punctuation, particularly the comma or period. These are I/O operators and are actually commands rather than comments, and are instead compiled into the program if used and may have to be "debugged" and removed if you forget this issue.
 
 
 ## Brat
@@ -669,7 +669,7 @@ Most ASCII characters may be used for comments; only the eight characters "+-<>[
 ## Burlesque
 
 
-Burlesque does NOT have comments. However, you can comment code by pushing a string and popping it immediately. 
+Burlesque does NOT have comments. However, you can comment code by pushing a string and popping it immediately.
 
 
 ```burlesque
@@ -747,8 +747,8 @@ And this still is not compiled.
 Even though the compiler doesn't see '''#if 0''' text, the preprocessor does. Therefore some minimal rules still have to be followed. For example, the following code is ''not'' valid:
 
 ```c
-#if 0	 
-This isn't valid.	 
+#if 0
+This isn't valid.
 #endif
 ```
 
@@ -769,7 +769,7 @@ Note that the problem mentioned above cannot occur if there's valid code between
 
 ```ChucK
 
-<-- Not common 
+<-- Not common
 // Usual comment
 
 ```
@@ -809,7 +809,7 @@ the line <tt>(no more macro text)</tt> is ''not'' part of the macro definition. 
 
 /* This is a comment too. */
 
-/* This is a 
+/* This is a
 multi-line
 comment */
 ```
@@ -903,7 +903,7 @@ Finally, the <code>#_</code> reader macro will cause a form to be ignored by the
 ## COBOL
 
 
-###  Fixed format 
+###  Fixed format
 
 
 ```cobol
@@ -918,7 +918,7 @@ A D in the 7th column indicates a debugging line which is treated like a comment
 
 
 
-###  Free format 
+###  Free format
 
 
 ```cobol
@@ -935,7 +935,7 @@ D DISPLAY "Debug"
 
 
 
-###  <code>NOTE</code> statement 
+###  <code>NOTE</code> statement
 
 {{works with|OS/VS COBOL}}
 This statement causes everything following it up to the next separator period to be treated as a comment. This statement was deleted in COBOL-74.
@@ -948,7 +948,7 @@ This statement causes everything following it up to the next separator period to
 
 
 
-###  <code>REMARKS</code> and other statements 
+###  <code>REMARKS</code> and other statements
 
 {{works with|GnuCOBOL}}
 There are quite a few <code>IDENTIFICATION DIVISION</code> obsolete and extension reserved words that will work in GnuCOBOL 2.
@@ -1052,7 +1052,7 @@ However, comments should not be used for inline documentation, as most defining 
 
 ```oberon2
 
-(* Comments (* can nest *) 
+(* Comments (* can nest *)
    and they can span multiple lines.
  *)
 
@@ -1104,7 +1104,7 @@ void main() {
 */
 
 /// These are doc comments. You can use dartdoc to generate doc pages for your classes with these.
-/// 
+///
 /// Formatting [variable] and [function] names like so allows dartdoc to link to the documentation for those entities.
 
 ```
@@ -1190,7 +1190,7 @@ showln "Hello " /* This is an inline comment */ "world"
 { Alternatively curly braces
   can be used. }
 
-/* C-style multi-line comments 
+/* C-style multi-line comments
    are supported  */
 
 // and single-line C++ style comments too
@@ -1217,10 +1217,10 @@ multi-line comment */
 ```Dylan
 // This is a comment
 
-/* 
+/*
    This is a comment
    that spans multiple
-   lines 
+   lines
 */
 ```
 
@@ -1259,7 +1259,7 @@ In Updoc, “<code>?</code>” indicates the beginning of a program fragment, �
 
 666 ; this is an end-of-line comment
 
-#| 
+#|
  This is a multi-line comment
  Nesting is not allowed
 |#
@@ -1282,7 +1282,7 @@ In Updoc, “<code>?</code>” indicates the beginning of a program fragment, �
 Single-line comments must begin with //
 
 ```ECL
-// this is a one-line comment 
+// this is a one-line comment
 ```
 
 
@@ -1461,13 +1461,13 @@ This is a comment
 
 REM This is another way of writing a single line comment
 
-/' 
+/'
   This is a
   multi-line
   comment
 '/
 
-/' 
+/'
   Multi-line comments
   /'
     can also be nested
@@ -1540,7 +1540,7 @@ bank_account_total = 1000000 // Wish this was the case
 ## Fish
 
 Since ><> is a funge-like language, all characters not touched by the command pointer or modified by the <tt>p</tt> and <tt>g</tt> commands can be comments.
-Unlike Brainf***, unknown commands are not ignored by the compiler, they just raise an error.
+Unlike Brainfuck, unknown commands are not ignored by the compiler, they just raise an error.
 
 ```Fish
 v This is the Fish version of the Integer sequence task
@@ -1581,7 +1581,7 @@ Some Forth systems implement other commenting words, such as these words from Wi
 
 ```forth
 \s skips all remaining text in the file
-(( skips until the next double-paren, 
+(( skips until the next double-paren,
    stretching across multiple lines ))
 comment:
    Ignore all text in this section
@@ -1780,7 +1780,7 @@ The way backslash continues a comment means that comments can't usefully be put 
 # this doesn't work
 foo(n) = (n                \
           + 2    # no good \
-          + 3)          
+          + 3)
 
 # behaves as if you wrote merely
 foo(n) = (n+2
@@ -1874,7 +1874,7 @@ i code = True
 ```haxe
 // Single line commment.
 
-/* 
+/*
    Multiple
    line
    comment.
@@ -1917,7 +1917,7 @@ The [[:Category:Icon_Programming_Library|The Icon Programming Library]] establis
 
 
 The comment character in IDL is the semicolon - everything starting with it and to the end of the line is a comment. Like this:
- 
+
 
 ```idl
 ; The following computes the factorial of a number "n"
@@ -2199,7 +2199,7 @@ comment
 
 /* This is a comment too. */
 
-/* This is a 
+/* This is a
 multi-line
 comment */
 ```
@@ -2213,7 +2213,7 @@ comment */
 // This is a single line comment
 
 /*
-    This is a 
+    This is a
     multi-line
     comment
 */
@@ -2261,7 +2261,7 @@ fun main(args: Array<String>) {
 
 
 
-```Lasso 
+```Lasso
 //This is a comment.
 
 /* This is also a comment. */
@@ -2269,11 +2269,11 @@ fun main(args: Array<String>) {
 /* A multi-line
 comment */
 
-/* 
+/*
 ### ====================
 
 A multi-line
-comment 
+comment
 
 ### =====================
  */
@@ -2374,7 +2374,7 @@ In Lingo any line starting with "--" is a comment and ignored by the interpreter
 -- comment may appear anywhere on line
 // comment may appear anywhere on line
 # comment may appear anywhere on line
-/*  this is a 
+/*  this is a
 block comment that
 may span any number of lines */
 ```
@@ -2417,7 +2417,7 @@ Wherever the single quote (<tt>'</tt>) is used, the rest of the line is treated 
 
 ```lotusscript
 %REM
-This is a multi- 
+This is a multi-
 line comment.
 %END REM
 ```
@@ -2447,7 +2447,7 @@ The author of LSE comments the stack effect of words with header comments as fol
 ```lua
 -- A single line comment
 
---[[A multi-line 
+--[[A multi-line
     comment --]]
 ```
 
@@ -2471,7 +2471,7 @@ There are three types of remarks. After statement with a dark color, in a line, 
 
 Module Comments {
       Print "ok" ' comment at the end of line
-      Print "ok"  \ comment at the end of line 
+      Print "ok"  \ comment at the end of line
       \ comment  in one line - different color with previous two
       'comment in one line
       Rem : Print "ok"   ' statements after Rem skipped, but stay with syntax highlight
@@ -2507,7 +2507,7 @@ divert
 ```
 
 
-<code>dnl</code> must be a separate word.  
+<code>dnl</code> must be a separate word.
 An empty pair of quotes
 can separate it from preceding text if necessary
 
@@ -2630,7 +2630,7 @@ If[a < b, True, False]
 
 INT   n:=5   ! Comments can appear at the end of a line
 
-/* A comment block can also be defined using climbstar and starclimb symbols. 
+/* A comment block can also be defined using climbstar and starclimb symbols.
   This allows comments to be stretched across several lines */
 ```
 
@@ -2695,7 +2695,7 @@ Comment
 
 
 =={{header|Modula-2}}==
-<lang Modula-2>(* Comments (* can nest *) 
+<lang Modula-2>(* Comments (* can nest *)
    and they can span multiple lines.
  *)
 ```
@@ -2704,7 +2704,7 @@ Comment
 =={{header|Modula-3}}==
 
 ```modula3
-(* Comments (* can nest *) 
+(* Comments (* can nest *)
    and they can span multiple lines.
  *)
 ```
@@ -2734,8 +2734,8 @@ Comment
 ```MontiLang
 
 /# This is a comment #/
-/# 
-comments can span multiple lines 
+/#
+comments can span multiple lines
 nested comments are not supported #/
 
 ```
@@ -2851,9 +2851,9 @@ This is multi-line"""
 ```nsis
 
 # This is a comment that goes from the # to the end of the line.
-; This is a comment that goes from the ; to the end of the 
- 
-/* This is a 
+; This is a comment that goes from the ; to the end of the
+
+/* This is a
 multi-line
 comment */
 
@@ -2865,7 +2865,7 @@ comment */
 ```oberon2
 
 (* this is a comment *)
-(* 
+(*
    and this is a
    multiline comment
    (* with a nested comment *)
@@ -2882,10 +2882,10 @@ comment */
 
 #This is a comment.
 # This is other comment.
- 
+
 #~ This is a comment too. ~#
- 
-#~ This is a 
+
+#~ This is a
 multi-line
 comment ~#
 
@@ -2898,7 +2898,7 @@ comment ~#
 
 ## OCaml
 
-  
+
 
 ```ocaml
 (* This a comment
@@ -3125,7 +3125,7 @@ A multi-line comment starts with #` and followed by the commented text enclosed 
 
 
 ```perl6
-#`( 
+#`(
     Comments beginning with a backtick and one or more opening bracketing characters are embedded comments.
     They can span more than one line…
 )
@@ -3174,9 +3174,9 @@ Pod also provides declarator blocks which are special comments that attach to so
 #| Compute the distance between two points in the plane.
 sub distance(
     Rat \x1, #= First point's abscissa,
-    Rat \y1, #= First point's ordinate, 
-    Rat \x2, #= Second point's abscissa, 
-    Rat \y2, #= Second point's ordinate, 
+    Rat \y1, #= First point's ordinate,
+    Rat \x2, #= Second point's abscissa,
+    Rat \y2, #= Second point's ordinate,
 ){
     return sqrt((x2 - x1)**2 + (y2 - y1)**2)
 }
@@ -3287,7 +3287,7 @@ so that this text is only read if in debugging mode.
 
 ```pike
 // This is a comment.
-/* This is a 
+/* This is a
    multi
    line
    comment */
@@ -3337,8 +3337,8 @@ Outputs <tt>understandable</tt>; without % it would output <tt>understand able</
 
 
 ```pli
-/* 
-This is a multiline comment. 
+/*
+This is a multiline comment.
 */
 ```
 
@@ -3407,7 +3407,7 @@ One can also use conditional compilation to comment out sections of code
 
 ```pop11
 #_IF false
-some code 
+some code
 #_ENDIF
 ```
 
@@ -3519,7 +3519,7 @@ Certain 'do nothing' expressions resemble comments
 
 
 ```python
-"""Un-assigned strings in triple-quotes might be used 
+"""Un-assigned strings in triple-quotes might be used
    as multi-line comments
 """
 
@@ -3543,15 +3543,15 @@ Python makes pervasive use of strings which immediately follow class and functio
 #!/usr/bin/env python
 # Example of using doc strings
 """My Doc-string example"""
- 
+
 class Foo:
      '''Some documentation for the Foo class'''
      def __init__(self):
         "Foo's initialization method's documentation"
- 
+
 def bar():
     """documentation for the bar function"""
- 
+
 if __name__ == "__main__":
     print (__doc__)
     print (Foo.__doc__)
@@ -3611,7 +3611,7 @@ Python "docstrings" are used by a number of tools to automatically generate docu
 ; This is a line comment.
 
 { Multi-line strings can
-  be used as comments 
+  be used as comments
   if you like }
 
 ```
@@ -3636,11 +3636,11 @@ If you say "help plus2" at REBOL's REPL, you'll get this help information:
 
     USAGE:
         PLUS2 n
-    
+
     DESCRIPTION:
          Adds two to a number.
          PLUS2 is a function value.
-    
+
     ARGUMENTS:
          n -- The number to increase. (Type: number)
 
@@ -3656,13 +3656,13 @@ If you say "help plus2" at REBOL's REPL, you'll get this help information:
 
 ## REXX
 
-It should be noted that comments in the REXX language support '''nested''' comments, so comments aren't totally ignored by the REXX interpreter (and compiler). 
+It should be noted that comments in the REXX language support '''nested''' comments, so comments aren't totally ignored by the REXX interpreter (and compiler).
 
 REXX comments are scanned and preserved for use by the   '''sourceline'''   BIF.   [The   '''sourceline'''   BIF allows the retrieval of any or all lines of source (of the REXX program).]
 
-Also, redundant blanks are removed and processed/shown for various   '''trace'''   options   ('''trace'''   is a REXX statement that may show various interpretation/execution stages of REXX statements (clauses, values, etc.),   including comments and also blank lines).   The   '''trace'''   statement is also used for interactive debugging. 
+Also, redundant blanks are removed and processed/shown for various   '''trace'''   options   ('''trace'''   is a REXX statement that may show various interpretation/execution stages of REXX statements (clauses, values, etc.),   including comments and also blank lines).   The   '''trace'''   statement is also used for interactive debugging.
 
-Nested comments must have matching delimiters, so the contents of the comments can't just be willy-nilly characters. 
+Nested comments must have matching delimiters, so the contents of the comments can't just be willy-nilly characters.
 
 
 Also, some REXX interpreters show the comment (if part of a REXX statement) as part of the information displayed when (if) a   '''syntax'''   error occurs and an informative error message is generated.   For instance, in the program   (named c:\COMMENTD.REX):
@@ -3706,7 +3706,7 @@ Error 42 on line 3 of C:\COMMENTD.REX: Arithmetic overflow/underflow
 
 
 
-The REXX language was heavily modeled after PL/I, both languages have the same comment construct, but PL/I doesn't support nested comments. 
+The REXX language was heavily modeled after PL/I, both languages have the same comment construct, but PL/I doesn't support nested comments.
 
 
 Nested comments allow an easy way to comment large chunks of code where the commented-out code has its own comments.
@@ -3715,8 +3715,8 @@ Nested comments allow an easy way to comment large chunks of code where the comm
 /*REXX program to demonstrate various uses and types of comments. */
 
 /* everything between a "climbstar" and a "starclimb" (exclusive of literals) is
-   a comment. 
-                         climbstar =  /*   [slash-asterisk]      
+   a comment.
+                         climbstar =  /*   [slash-asterisk]
                          starclimb =  */   [asterisk-slash]
 
             /* this is a nested comment, by gum! */
@@ -3741,18 +3741,18 @@ via a continued line, as in the manner of:
 
     hour = 12       /*high noon                   */
 midnight = 00       /*first hour of the day       */
-   suits = 1234     /*card suits:   ♥  ♦  ♣  ♠    */ 
+   suits = 1234     /*card suits:   ♥  ♦  ♣  ♠    */
 
-hutchHdr = '/*'  
+hutchHdr = '/*'
 hutchEnd = "*/"
 
-    /* the previous two "hutch" assignments aren't 
+    /* the previous two "hutch" assignments aren't
        the start  nor  the end of a REXX comment. */
 
   x=1000000 **   /*¡big power!*/   1000
 
-/*not a real good place for a comment (above), 
-  but essentially, a REXX comment can be 
+/*not a real good place for a comment (above),
+  but essentially, a REXX comment can be
   anywhere whitespace is allowed.            */
 ```
 
@@ -3874,7 +3874,7 @@ Comments have a ' (single quote) or REM for remarks
 ```runbasic
 'This is a comment
 REM This is a comment
- 
+
 print "Notice comment at  the end of the line."          'This is a comment
 print "Also notice this comment at the end of the line." : REM This is a comment
 
@@ -3961,7 +3961,7 @@ fn example() {
 ```scala
 // A single line comment
 
-/* A multi-line 
+/* A multi-line
    comment */
 ```
 
@@ -4008,10 +4008,10 @@ i=i+1 // this is a comment
 ```seed7
 # A single line comment
 
-(* A multi-line 
+(* A multi-line
     comment *)
 
-(* In Seed7, 
+(* In Seed7,
 (* comments can be nested. *) *)
 ```
 
@@ -4120,7 +4120,7 @@ PRINT "Hello" REM You can also use the command REM following code
 Multi-line comments
 are surrounded by
 mirrored slash
-and asterisk 
+and asterisk
 */
 
 /*Multi-line comments do not have to actually have multiple lines*/
@@ -4147,7 +4147,7 @@ Some programmers like to do this to allow for /* Procedural comments */ followed
 *               Comments may begin at
 *               any position on the line.
 
-- A hyphen in column 1 begins a control statement. 
+- A hyphen in column 1 begins a control statement.
 - Unrecognized control statements are ignored and
 - may also mark comment lines. Not recommended.
 
@@ -4165,7 +4165,7 @@ Any text after the required END label is ignored.
 
 ## SNUSP
 
-As with [[Brainf***]] and [[Befunge]], any character that is not part of the language is ignored and can be used as commentary, and you can add comments anywhere the instruction pointer is not expected to traverse.  Reserved characters are:
+As with [[Brainfuck]] and [[Befunge]], any character that is not part of the language is ignored and can be used as commentary, and you can add comments anywhere the instruction pointer is not expected to traverse.  Reserved characters are:
 * Core: + - &gt; &lt; , . ? ! / \ $ #
 * Modular: @ #
 * Bloated: : ; & %
@@ -4187,9 +4187,9 @@ multiline comment''
 
 ## SQL
 
-The double hyphen ( -- ) is used to include a comment on an SQL statement. 
+The double hyphen ( -- ) is used to include a comment on an SQL statement.
 
-The comment appears on the same line as the statement: 
+The comment appears on the same line as the statement:
 
 ```sql
 SELECT * FROM mytable -- Selects all columns and rows
@@ -4199,13 +4199,13 @@ or before:
 
 ```sql
 -- Selects all columns and rows
-SELECT * FROM mytable 
+SELECT * FROM mytable
 ```
 
 or after:
 
 ```sql
-SELECT * FROM mytable 
+SELECT * FROM mytable
 -- Selects all columns and rows
 ```
 
@@ -4292,7 +4292,7 @@ More realistically, you can include comments when you are drafting your program 
 
 ## Standard ML
 
-  
+
 
 ```sml
 (* This a comment
@@ -4439,12 +4439,12 @@ In addition, Toka also accepts parenthetical comments. These are enclosed in par
 
 
 ```toka
-[ ( a b -- c ) 
+[ ( a b -- c )
   ... ] is myword
 ```
 
 
-In addition, parenthetical comments can span multiple lines. 
+In addition, parenthetical comments can span multiple lines.
 
 
 ```toka
@@ -4609,7 +4609,7 @@ continued comment
 (# this is a
 multi-line comment #)
 
-(# comments in (# this form #) can (# 
+(# comments in (# this form #) can (#
 be (# arbitrarily #) #) nested #)
 
 ---- this is also a comment\
@@ -4622,7 +4622,7 @@ is a comment.
 
 
 
-###  Commenting out code 
+###  Commenting out code
 
 
 There are also ways to comment out sections of code during testing.
@@ -4665,7 +4665,7 @@ As far as the compiler is concerned, bar is not defined, but foo and baz are.
 It wouldn't matter if bar took multiple lines.
 
 
-###  Comments in compiled files 
+###  Comments in compiled files
 
 The compiler can be directed
 to embed comments in executable files and libraries it generates without
@@ -4682,7 +4682,7 @@ the output library or executable file.]-
 The latter comment puts the standard GPL license notification in the output file.
 
 
-###  Comments as diagnostics 
+###  Comments as diagnostics
 
 
 A function f annotated with a crash dump wrapper expressed like this
@@ -4700,7 +4700,7 @@ my_input_type%Ck f
 
 
 
-###  Comments as hooks 
+###  Comments as hooks
 
 
 Compiling with the --depend command line option makes the compiler only scan for the #depend'ed
@@ -4746,12 +4746,12 @@ A comment starts with a quote (') and it ends at end of line
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Line Comments: 
-// 
+// Line Comments:
+//
 ### =======
 
 //
-@VAR v1 = 10; // Line comments start from the "//" and continue to end of the line. 
+@VAR v1 = 10; // Line comments start from the "//" and continue to end of the line.
 //               (normal code can appear on the same line, before the //)
 //
 //   Line comments can span a complete line, or start in the middle of a line.
@@ -4768,69 +4768,69 @@ A comment starts with a quote (') and it ends at end of line
 /********************************************************************************************
  *
  *  Block Comments:
- *  
+ *
 ### ========
 
  *
  ********************************************************************************************/
-//* 
-//*  These start with /* and end with the next */ .  They cannot be nested, since the first */  
-//*  will end the block comment.  For example, the comment, /* /* */ */ would end after the     
+//*
+//*  These start with /* and end with the next */ .  They cannot be nested, since the first */
+//*  will end the block comment.  For example, the comment, /* /* */ */ would end after the
 //*  first */. Note that /* is ignored inside a block comment, as are   //   /[   /] and  /].
-//* 
+//*
 //*  Also note that something like the following will cause trouble in a block comment:
-//* 
+//*
 //*    /* comments                          //
-//*     * more comments                     //   */  (the // does not prevent the */ from ending    
+//*     * more comments                     //   */  (the // does not prevent the */ from ending
 //*     * (no longer part of the comment)   //        block comment)
 //*     */
-//* 
+//*
 //*    Note: /* can appear in strings without triggering the start of a block comment
 //*          /* cannot appear inside an operator (or verbname), since a line comment will
 //*             start, although */ is allowed inside an operator (verbname).  Commenting
 //*             out such a verbname may cause problems.
-//* 
+//*
 //*    Note: Since string literals are not recognized in block comments, */ appearing
 //*          in a string literal inside a block comment (perhaps commented-out code)
-//*          will cause the block comment to end.  
-//* 
+//*          will cause the block comment to end.
+//*
 //*    Note: It is an error to start a block comment and not end it, so that it is still
 //*          in progresss when the end-of-file is reached.
-//* 
-//*    Block comments can appear inside lines of code:  
-//* 
-/*1*/@VAR/*2*/v2/*3*/=/*4*/20/*5*/;/*6*/  // a line comment can follow block comments on the 
+//*
+//*    Block comments can appear inside lines of code:
+//*
+/*1*/@VAR/*2*/v2/*3*/=/*4*/20/*5*/;/*6*/  // a line comment can follow block comments on the
                                            // same line
 
-/[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
-/[]                                                                                          [] 
+/[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+/[]                                                                                          []
 /[]     Nestable Block Comments:                                                             []
- []     
+ []
 ### ==================
                                                              []/
  []                                                                                          []/
- [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]/ 
+ [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]/
 
-//[] 
+//[]
 //[]  These start with /[ and end with the next matching ]/ .  Additional occurrences
-//[]  of /[ ... ]/ can appear inside a nestable block comment.  The nestable block comment    
-//[]  will end only when the nest level reaches 0.  Note that /* is ignored inside a nestable     
+//[]  of /[ ... ]/ can appear inside a nestable block comment.  The nestable block comment
+//[]  will end only when the nest level reaches 0.  Note that /* is ignored inside a nestable
 //[]  block comment, as are  */   //  and  /].
 //[]
-//[]  Nestable block comments can be used to comment out blocks of code containing line 
+//[]  Nestable block comments can be used to comment out blocks of code containing line
 //[]  comments or regular comments, and even balanced and well-formed nestable block comments.
-//[] 
-//[]    Note: /[ can appear in strings without triggering the start of a block comment.  
+//[]
+//[]    Note: /[ can appear in strings without triggering the start of a block comment.
 //[]          However, strings literals are not recognized inside a nestable block comment, so
-//[]          any appearances of /[ and /] inside a string literal in a nestable block commment 
+//[]          any appearances of /[ and /] inside a string literal in a nestable block commment
 //[]          will affect the nest level, and may cause problems.
-//[] 
+//[]
 //[]    Note: It is an error to start a nestable block comment and not end it, so that it is
 //[]          still in progresss when the end of file is reached.
-//[] 
-//[]    Nestable block comments can appear inside lines of code:  
-//[] 
-/[1]/@VAR/[2]/v3/[3]/=/[4]/30/[5]/;/[6]/  // a line comment can follow nestable block comments 
+//[]
+//[]    Nestable block comments can appear inside lines of code:
+//[]
+/[1]/@VAR/[2]/v3/[3]/=/[4]/30/[5]/;/[6]/  // a line comment can follow nestable block comments
                                           // on the same line
 
 @SAY v1 v2 v3;                            // should see:   10 20 30
@@ -4856,8 +4856,8 @@ A comment starts with a quote (') and it ends at end of line
 
 ```Verilog
 // Single line commment.
- 
-/* 
+
+/*
    Multiple
    line
    comment.
@@ -5050,7 +5050,7 @@ cond true;
 ```zonnon
 
 (* this is a comment *)
-(* 
+(*
    and this is a
    multiline comment
    (* with a nested comment *)

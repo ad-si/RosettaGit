@@ -86,12 +86,12 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Text_IO;
 
 procedure Associative_Array is
-   
+
    -- Instantiate the generic package Ada.Containers.Ordered_Maps
 
    package Associative_Int is new Ada.Containers.Ordered_Maps(Unbounded_String, Integer);
    use Associative_Int;
-  
+
    Color_Map : Map;
    Color_Cursor : Cursor;
    Success : Boolean;
@@ -186,7 +186,7 @@ main:(
     REF COLOR out;
 # linear search! #
     FOR index FROM LWB key OF color map items TO UPB key OF color map items DO
-      IF color = key OF color map items[index] THEN 
+      IF color = key OF color map items[index] THEN
         out := value OF color map items[index]; GO TO found
       FI
     OD;
@@ -206,17 +206,17 @@ main:(
       out
     FI
   );
-  
+
   # First, populate it with some values #
   color map("red") := 16rff0000;
   color map("green") := 16r00ff00;
   color map("blue") := 16r0000ff;
   color map("my favourite color") := 16r00ffff;
-  
+
   # then, get some values out #
-  COLOR color := color map("green"); # color gets 16r00ff00 # 
+  COLOR color := color map("green"); # color gets 16r00ff00 #
   color := color map("black"); # accessing unassigned values assigns them to 16r0 #
-  
+
   # get some value out without accidentally inserting new ones #
   REF COLOR value = color map find("green");
   IF value :=: REF COLOR(NIL) THEN
@@ -224,10 +224,10 @@ main:(
   ELSE
     printf(($"green: "f(color repr)l$, value))
   FI;
-  
+
   # Now I changed my mind about my favourite color, so change it #
   color map("my favourite color") := 16r337733;
-  
+
   # print out all defined colors #
   FOR index FROM LWB color map items TO UPB color map items DO
     ITEM item = color map items[index];
@@ -302,19 +302,19 @@ System.assertEquals( 'bval', strMap.get('b') );
 ```apl
 ⍝  Create a namespace ("hash")
       X←⎕NS ⍬
-      
+
       ⍝ Assign some names
       X.this←'that'
       X.foo←88
-      
+
       ⍝  Access the names
       X.this
 that
-      
+
       ⍝  Or do it the array way
       X.(foo this)
-88  that 
-      
+88  that
+
       ⍝  Namespaces are first class objects
       sales ← ⎕NS ⍬
       sales.(prices quantities) ← (100 98.4 103.4 110.16) (10  12 8  10)
@@ -362,7 +362,7 @@ print dict
 ## AutoHotkey
 
 
-###  True arrays 
+###  True arrays
 
 [[AutoHotkey_L]] has [http://ahkscript.org/docs/Objects.htm Objects] which function as associative arrays.
 
@@ -373,9 +373,9 @@ MsgBox % associative_array.key1
 ```
 
 
-###  Legacy versions 
+###  Legacy versions
 
-[[AutoHotkey_Basic]] does not have typical arrays. 
+[[AutoHotkey_Basic]] does not have typical arrays.
 However, variable names can be concatenated, simulating associative arrays.
 
 ```AutoHotkey
@@ -495,7 +495,7 @@ endfunc
 
 ; Returns the total number of keys in the array..
 func AACount(ByRef $dict_obj)
-	return $dict_obj.Count 
+	return $dict_obj.Count
 endfunc
 
 ; List all the "Key" > "Item" pairs in the array..
@@ -536,7 +536,7 @@ BEGIN {
   a["green"] = 0x00ff00
   a["blue"] = 0x0000ff
   for (i in a) {
-    printf "%8s %06x\n", i, a[i] 
+    printf "%8s %06x\n", i, a[i]
   }
   # deleting a key/value
   delete a["red"]
@@ -556,7 +556,7 @@ BEGIN {
 
 
 ```babel
- 
+
     (("foo" 13)
     ("bar" 42)
     ("baz" 77)) ls2map !
@@ -773,17 +773,17 @@ array.cow = 4
       PROCputdict(mydict$, "FF0000", "red")
       PROCputdict(mydict$, "00FF00", "green")
       PROCputdict(mydict$, "0000FF", "blue")
-      
+
       REM Retrieve some values using their keys:
       PRINT FNgetdict(mydict$, "green")
       PRINT FNgetdict(mydict$, "red")
       END
-      
+
       DEF PROCputdict(RETURN dict$, value$, key$)
       IF dict$ = "" dict$ = CHR$(0)
       dict$ += key$ + CHR$(1) + value$ + CHR$(0)
       ENDPROC
-      
+
       DEF FNgetdict(dict$, key$)
       LOCAL I%, J%
       I% = INSTR(dict$, CHR$(0) + key$ + CHR$(1))
@@ -1006,7 +1006,7 @@ import ceylon.collection {
 }
 
 shared void run() {
-	
+
 	// the easiest way is to use the map function to create
 	// an immutable map
 	value myMap = map {
@@ -1015,14 +1015,14 @@ shared void run() {
 		"baz" -> 15,
 		"foo" -> 6 // by default the first "foo" will remain
 	};
-	
+
 	// or you can use the HashMap constructor to create
 	// a mutable one
 	value myOtherMap = HashMap {
 		"foo"->"bar"
 	};
 	myOtherMap.put("baz", "baxx");
-	
+
 	// there's also a sorted red/black tree map
 	value myTreeMap = naturalOrderTreeMap {
 		1 -> "won",
@@ -1032,7 +1032,7 @@ shared void run() {
 	for(num->homophone in myTreeMap) {
 		print("``num`` is ``homophone``");
 	}
-	
+
 }
 ```
 
@@ -1145,7 +1145,7 @@ DEFINITION Collections;
 		notFound = -1;
 
 	TYPE
-		Hash = POINTER TO RECORD 
+		Hash = POINTER TO RECORD
 			cap-, size-: INTEGER;
 			(h: Hash) ContainsKey (k: Boxes.Object): BOOLEAN, NEW;
 			(h: Hash) Get (k: Boxes.Object): Boxes.Object, NEW;
@@ -1155,7 +1155,7 @@ DEFINITION Collections;
 			(h: Hash) Reset, NEW
 		END;
 
-		HashMap = POINTER TO RECORD 
+		HashMap = POINTER TO RECORD
 			cap-, size-: INTEGER;
 			(hm: HashMap) ContainsKey (k: Boxes.Object): BOOLEAN, NEW;
 			(hm: HashMap) ContainsValue (v: Boxes.Object): BOOLEAN, NEW;
@@ -1168,7 +1168,7 @@ DEFINITION Collections;
 			(hm: HashMap) Values (): POINTER TO ARRAY OF Boxes.Object, NEW
 		END;
 
-		LinkedList = POINTER TO RECORD 
+		LinkedList = POINTER TO RECORD
 			first-, last-: Node;
 			size-: INTEGER;
 			(ll: LinkedList) Add (item: Boxes.Object), NEW;
@@ -1185,7 +1185,7 @@ DEFINITION Collections;
 			(ll: LinkedList) Set (at: INTEGER; item: Boxes.Object), NEW
 		END;
 
-		Vector = POINTER TO RECORD 
+		Vector = POINTER TO RECORD
 			size-, cap-: LONGINT;
 			(v: Vector) Add (item: Boxes.Object), NEW;
 			(v: Vector) AddAt (item: Boxes.Object; i: INTEGER), NEW;
@@ -1220,16 +1220,16 @@ VAR
 	o : Boxes.Object;
 	keys, values: POINTER TO ARRAY OF Boxes.Object;
 	i: INTEGER;
-	
+
 BEGIN
 	hm := Collections.NewHashMap(1009);
 	o := hm.Put(Boxes.NewString("first"),Boxes.NewInteger(1));
 	o := hm.Put(Boxes.NewString("second"),Boxes.NewInteger(2));
 	o := hm.Put(Boxes.NewString("third"),Boxes.NewInteger(3));
 	o := hm.Put(Boxes.NewString("one"),Boxes.NewInteger(1));
-	
+
 	StdLog.String("size: ");StdLog.Int(hm.size);StdLog.Ln;
-	
+
 END Do;
 
 END BbtAssociativeArrays.
@@ -1367,7 +1367,7 @@ ELENA 4.0:
 
 ```elena
 import system'collections;
- 
+
 public program()
 {
     // 1. Create
@@ -1382,7 +1382,7 @@ public program()
 
 
 
-###  Strong typed dictionary 
+###  Strong typed dictionary
 
 
 ```elena
@@ -1416,7 +1416,7 @@ defmodule RC do
     print_vals(m2)
     print_vals(%{m2 | foo: 3})
   end
-  
+
   defp print_vals(m) do
     IO.inspect m
     Enum.each(m, fn {k,v} -> IO.puts "#{inspect k} => #{v}" end)
@@ -1473,7 +1473,7 @@ Erlang offers several associative array type data structures, this example uses 
 -module(assoc).
 -compile([export_all]).
 
-test_create() ->   
+test_create() ->
     D = dict:new(),
     D1 = dict:store(foo,1,D),
     D2 = dict:store(bar,2,D1),
@@ -1514,10 +1514,10 @@ Functional dictionary (immutable)
 let d = [("key","val");("other key","other val")] |> Map.ofList
 let newd = d.Add("new key","new val")
 
-let takeVal (d:Map<string,string>) = 
+let takeVal (d:Map<string,string>) =
     match d.TryFind("key") with
         | Some(v) -> printfn "%s" v
-        | None -> printfn "not found"  
+        | None -> printfn "not found"
 
 ```
 
@@ -1557,9 +1557,9 @@ class Main
     // create an empty map
     Map map2 := [:]
     // now add some numbers mapped to their doubles
-    10.times |Int i| 
-    { 
-      map2[i] = 2*i 
+    10.times |Int i|
+    {
+      map2[i] = 2*i
     }
 
   }
@@ -1638,9 +1638,9 @@ FPC 3.2.0.+. Similar to Delphi.
 
 ```pascal
 program AssociativeArrayCreation;
-{$IFDEF FPC}{$MODE DELPHI}{$ENDIF} 
+{$IFDEF FPC}{$MODE DELPHI}{$ENDIF}
 {$IFDEF WINDOWS}{$APPTYPE CONSOLE}{$ENDIF}
-uses Generics.Collections; 
+uses Generics.Collections;
 var
   lDictionary: TDictionary<string, Integer>;
 begin
@@ -1661,9 +1661,9 @@ FPC 2.4+. Using FGL instead of rtl-generics:
 ```pascal
 program AssociativeArrayCreation;
 {$IFDEF WINDOWS}{$APPTYPE CONSOLE}{$ENDIF}
-{$MODE DELPHI} 
+{$MODE DELPHI}
 uses fgl;
- 
+
 var
   lDictionary: TFPGMap<string, Integer>;
 begin
@@ -1741,13 +1741,13 @@ map["Scott"] = 51
 
 // get a value
 var x = map["Scott"]
- 
+
 // remove an entry
 map.remove("Scott")
- 
+
 // loop and maps
 for(entry in map.entrySet()) {
-  print("Key: ${entry.Key}, Value: ${entry.Value}") 
+  print("Key: ${entry.Key}, Value: ${entry.Value}")
 }
 
 // functional iteration
@@ -1759,7 +1759,7 @@ var filtered = map.filterByValues(\ v ->v < 50)
 // any object can be treated as an associative array
 class Person {
   var name: String
-  var age: int 
+  var age: int
 }
 // access properties on Person dynamically via associative array syntax
 var scott = new Person()
@@ -1845,7 +1845,7 @@ ans = lookup "key2" dict  -- evaluates to Just "val2"
 ```
 
 
-GHC also had an imperative hash table implementation in the <code>Data.HashTable</code> module, but was removed in <code>GHC 7.8</code>. 
+GHC also had an imperative hash table implementation in the <code>Data.HashTable</code> module, but was removed in <code>GHC 7.8</code>.
 
 Other standard associatives arrays libraries are : <code>Data.IntMap</code> and <code>Data.HasMap</code>
 
@@ -1868,9 +1868,9 @@ Icon and Unicon associative arrays are called tables.  Any value may be used as 
 
 
 ```icon
-procedure main() 
+procedure main()
    local t
-   t := table() 
+   t := table()
    t["foo"] := "bar"
    write(t["foo"])
 end
@@ -2020,7 +2020,7 @@ Note that it is possible to put <code>null</code> as a value, so <code>null</cod
 Iterate over keys:
 
 ```java5
-for (String key: map.keySet()) 
+for (String key: map.keySet())
    System.out.println(key);
 ```
 
@@ -2031,7 +2031,7 @@ for (int value: map.values())
    System.out.println(value);
 ```
 
-Iterate over key, value pairs:    
+Iterate over key, value pairs:
 
 ```java5
 for (Map.Entry<String, Integer> entry: map.entrySet())
@@ -2174,15 +2174,15 @@ From Javascript.  jsish warns of duplicate ''var'', in this case the ''assoc'' v
 
 ```javascript
 var assoc = {};
- 
+
 assoc['foo'] = 'bar';
 assoc['another-key'] = 3;
- 
+
 // dot notation can be used if the property name is a valid identifier
 assoc.thirdKey = 'we can also do this!';
 assoc[2] = "the index here is the string '2'";
 ;assoc;
- 
+
 //using JavaScript's object literal notation
 var assoc = {
   foo: 'bar',
@@ -2268,7 +2268,7 @@ Keys in a dictionary must be symbols (`symbol).
 2
 ```
 
- 
+
 Another approach.
 
 ```K
@@ -2470,7 +2470,7 @@ command assocArray
     put "value 1" into tArray["key 1"]
     put 123 into tArray["key numbers"]
     put "a,b,c" into tArray["abc"]
-    
+
     put "number of elements:" && the number of elements of tArray & return & \
           "length of item 3:" && the length of tArray["abc"] & return & \
           "keys:" && the keys of tArray
@@ -2574,7 +2574,7 @@ New entries are added by assignment.
  T[ "bar" ] := 2;
                              T["bar"] := 2
 
-> T[ "bar" ];     
+> T[ "bar" ];
                                    2
 ```
 
@@ -2602,36 +2602,36 @@ a[2] = "string"; a["sometext"] = 23;
 
 ### MATLAB/Octave: structs
 
-Associative arrays are called structs. The following methods of creating hash are equivalent. 
+Associative arrays are called structs. The following methods of creating hash are equivalent.
 
 
 ```MATLAB
    hash.a = 1;
    hash.b = 2;
-   hash.C = [3,4,5];   
+   hash.C = [3,4,5];
 ```
 
-alternatively 
+alternatively
 
 ```MATLAB
-   hash = []; 
-   hash = setfield(hash,'a',1); 	
-   hash = setfield(hash,'b',2); 	
-   hash = setfield(hash,'C',[3,4,5]);  
+   hash = [];
+   hash = setfield(hash,'a',1);
+   hash = setfield(hash,'b',2);
+   hash = setfield(hash,'C',[3,4,5]);
 ```
 
-or 
+or
 
 ```MATLAB
-   hash.('a') = 1; 	
-   hash.('b') = 2; 	
-   hash.('C') = [3,4,5];   
+   hash.('a') = 1;
+   hash.('b') = 2;
+   hash.('C') = [3,4,5];
 ```
 
 
 
 ```txt
->>    disp(hash) 
+>>    disp(hash)
   scalar structure containing the fields:
     a =  1
     b =  2
@@ -2682,13 +2682,13 @@ Usage:
 >> m = containers.Map([51 72 37], {'fiftyone' 'seventytwo' 'thirtyseven'});
 >> keys(m)
 
-ans = 
+ans =
 
     [37]    [51]    [72]
 
 >> values(m)
 
-ans = 
+ans =
 
     'thirtyseven'    'fiftyone'    'seventytwo'
 ```
@@ -2851,38 +2851,38 @@ IMPORT
 TYPE
   Key = STRING;
   Value = Boxed.LongInt;
-  
+
 VAR
   assocArray: Dictionary.Dictionary(Key,Value);
   iterK: Dictionary.IterKeys(Key,Value);
   iterV: Dictionary.IterValues(Key,Value);
   aux: Value;
   k: Key;
-  
+
 BEGIN
   assocArray := NEW(Dictionary.Dictionary(Key,Value));
   assocArray.Set("ten",NEW(Value,10));
   assocArray.Set("eleven",NEW(Value,11));
-  
+
   aux := assocArray.Get("ten");
   Out.LongInt(aux.value,0);Out.Ln;
   aux := assocArray.Get("eleven");
   Out.LongInt(aux.value,0);Out.Ln;Out.Ln;
-  
+
   (* Iterate keys *)
   iterK := assocArray.IterKeys();
   WHILE (iterK.Next(k)) DO
     Out.Object(k);Out.Ln
   END;
-  
+
   Out.Ln;
-  
+
   (* Iterate values *)
   iterV := assocArray.IterValues();
   WHILE (iterV.Next(aux)) DO
     Out.LongInt(aux.value,0);Out.Ln
   END
-  
+
 END AssociativeArray.
 
 
@@ -3100,12 +3100,12 @@ You can use only values as keys (atomic numbers, constants) and, as exception, s
 
 ## ooRexx
 
-ooRexx has multiple classes that create index-to-item associative relationships. 
+ooRexx has multiple classes that create index-to-item associative relationships.
 * Directory -- a mapping for a string index to an object instance
-* Table -- a mapping for an object index (of any class) to an object instance.  Index equality is determined by the "==" method. 
-* Relation -- a one-to-many mapping for an object index (of any class) to object instances.  Index equality is determined by the "==" method. 
-* IdentityTable -- a mapping for an object index (of any class) to an object instance.  Index equality is determined by unique object identity rather than equality. 
-* Stem -- The class backing ooRexx stem variables, which is also a first-class collection class. 
+* Table -- a mapping for an object index (of any class) to an object instance.  Index equality is determined by the "==" method.
+* Relation -- a one-to-many mapping for an object index (of any class) to object instances.  Index equality is determined by the "==" method.
+* IdentityTable -- a mapping for an object index (of any class) to an object instance.  Index equality is determined by unique object identity rather than equality.
+* Stem -- The class backing ooRexx stem variables, which is also a first-class collection class.
 
 All of the MapCollections are very similar in usage.  We'll use Directory for the examples here.
 
@@ -3114,9 +3114,9 @@ Defining the map:
 ```ooRexx
 map = .directory~new
 map["foo"] = 5
-map["bar"] = 10 
-map["baz"] = 15 
-map["foo"] = 6 
+map["bar"] = 10
+map["baz"] = 15
+map["foo"] = 6
 
 ```
 
@@ -3136,7 +3136,7 @@ Iterate over keys:
 ```ooRexx
 loop key over map
    say key
-end 
+end
 
 ```
 
@@ -3149,7 +3149,7 @@ end
 
 ```
 
-Iterate over key, value pairs:    
+Iterate over key, value pairs:
 
 ```ooRexx
 
@@ -3198,7 +3198,7 @@ Class AssociativeArray
   if i=0 then
     if max>=n
       print "Array overflow" : return 0
-    end if 
+    end if
     max+=1
     i=max*2-1
     s[i]=k
@@ -3401,9 +3401,9 @@ The setd(key,val) procedure is self-explanatory, except for an optional third pa
 
 The getd(key) function returns the associated data or 0 for non-existent keys: if that might be a valid value see getd_index().
 
-By default, all keys and values are entered into one central dictionary. You can create multiple dictionaries by calling 
+By default, all keys and values are entered into one central dictionary. You can create multiple dictionaries by calling
 integer tid=new_dict(), and pass that as an additional (final) parameter to the other routines (taking care not to miss
-any). When you have no further use for it, an entire dictionary can be removed by invoking destroy_dict(tid). 
+any). When you have no further use for it, an entire dictionary can be removed by invoking destroy_dict(tid).
 
 ```Phix
 setd("one",1)
@@ -3555,7 +3555,7 @@ Iterate over keys
 >1< => >spam<
 >2< => >eggs<
 >3< => >foo<
->4< => >spam<  
+>4< => >spam<
 ```
 
 
@@ -3607,7 +3607,7 @@ ht({1 2 3}) =>
 ;;; print it
 ht(42) =>
 
-;;; Iterate over keys printing keys and values.  
+;;; Iterate over keys printing keys and values.
  appproperty(ht,
     procedure (key, value);
       printf(value, '%p\t');
@@ -3680,9 +3680,9 @@ $h['a'] = 1
 $h['A'] = 2
 $h
 
-Name                           Value                                                                                              
-----                           -----                                                                                              
-a                              2     
+Name                           Value
+----                           -----
+a                              2
 
 # Case sensitive keys:
 $h = New-Object -TypeName System.Collections.Hashtable
@@ -3690,10 +3690,10 @@ $h['a'] = 1
 $h['A'] = 2
 $h
 
-Name                           Value                                                                                              
-----                           -----                                                                                              
-A                              2                                                                                                  
-a                              1                                                                                                  
+Name                           Value
+----                           -----
+A                              2
+a                              1
 ```
 
 Similarly, values can be retrieved using either syntax:
@@ -3708,7 +3708,7 @@ It is common to see a hashtable literal used to create an object, by casting it 
 ```powershell
 $obj = [PSCustomObject]@{
     "key1" = "value 1"
-    key2 = 5            
+    key2 = 5
 }
 ```
 
@@ -3746,7 +3746,7 @@ Debug dict("country")
 
 ## Python
 
-Hashes are a built-in type called dictionaries (or mappings) in Python.  
+Hashes are a built-in type called dictionaries (or mappings) in Python.
 
 
 ```python
@@ -3764,7 +3764,7 @@ Numerous methods exist for the mapping type https://docs.python.org/3/library/st
 # empty dictionary
 d = {}
 d['spam'] = 1
-d['eggs'] = 2  
+d['eggs'] = 2
 
 # dictionaries with two keys
 d1 = {'spam': 1, 'eggs': 2}
@@ -3804,7 +3804,7 @@ User defined classes which implement the ''__hash__()'' special method can also 
 R lacks a native representation of key-value pairs, but different structures allow named elements, which provide similar functionality.
 
 
-###  environment example 
+###  environment example
 
 
 
@@ -3861,7 +3861,7 @@ R lacks a native representation of key-value pairs, but different structures all
 
 
 
-###  vector example 
+###  vector example
 
 
 
@@ -3872,7 +3872,7 @@ R lacks a native representation of key-value pairs, but different structures all
 
 
 ```txt
-hello world     ! 
+hello world     !
     1     2     3
 ```
 
@@ -3898,7 +3898,7 @@ print(unname(x))
 
 
 
-###  list example 
+###  list example
 
 
 
@@ -4102,7 +4102,7 @@ capital of Rhode Island and Providence Plantations is Providence
 myarray = [["one",1],
                  ["two",2],
                  ["three",3]]
-see find(myarray,"two",1) + nl           
+see find(myarray,"two",1) + nl
 see find(myarray,2,2) + nl
 
 ```
@@ -4132,7 +4132,7 @@ x.blue  = strtod("0x0000ff");
 // print content of a list
 for (i in members(x))
 { printf("%8s %06x\n", i, int(x.[i])); }  // we have to use ''int'' function to convert reals to integers so "%x" format works
-  
+
 // deleting a key/value
 clear (x.red);
 
@@ -4426,24 +4426,24 @@ print( m{'bar'} );
 * Iterate over key-value pairs of a map
 
     map = new('map 1:one 2:two 3:three')
-    
+
 visit(domain(map),'expr to evaluate for each member')
-    
+
 visit(range(map),'expr to evaluate for each member')
-    
-    next 
+
+    next
         this = next(map)             :f(done)
         out(show(this) ':' show(get(map,this)) :next)
     done
-    
+
     loop(d = domain(map)
-    
+
     next
         out('next domain entry',next(d))    :s(next)
     done
-    
+
     loop(d = range(map)
-    
+
     next
         out('next domain entry',next(d))    :s(next)
     done
@@ -4469,7 +4469,7 @@ hash{:key3} = 'value3';
 
 ## Slate
 
- 
+
 
 ```slate
 Dictionary new*, 'MI' -> 'Michigan', 'MN' -> 'Minnesota'
@@ -4498,7 +4498,7 @@ states at: 'MN' put: 'Minnesota'.
 	t<"blue"> = "#0000ff"
 
 	output = t<"red">
-	output = t<"blue"> 
+	output = t<"blue">
 	output = t<"green">
 end
 ```
@@ -4559,9 +4559,9 @@ db2 => BEGIN
 ...
 db2 (cont.) => END @
 END
-DB21034E  The command was processed as an SQL statement because it was not a 
+DB21034E  The command was processed as an SQL statement because it was not a
 valid Command Line Processor command.  During SQL processing it returned:
-SQL20439N  Array index with value "5" is out of range or does not exist.  
+SQL20439N  Array index with value "5" is out of range or does not exist.
 SQLSTATE=2202E
 
 val1
@@ -4783,7 +4783,7 @@ dump
 using Gee;
 
 void main(){
-    var	map = new HashMap<string, int>(); // creates a HashMap with keys of type string, and values of type int                                                
+    var	map = new HashMap<string, int>(); // creates a HashMap with keys of type string, and values of type int
 
     // two methods to set key,value pair
     map["one"] = 1;
@@ -4801,9 +4801,9 @@ void main(){
 ```
 
 
-Compile with flag: 
+Compile with flag:
 ```txt
- --pkg gee-1.0 
+ --pkg gee-1.0
 ```
 
 
@@ -4870,7 +4870,7 @@ Visual FoxPro has a collection class which can be used for this.
 ```vfp
 
 LOCAL loCol As Collection, k, n, o
-CLEAR 
+CLEAR
 *!* Example using strings
 loCol = NEWOBJECT("Collection")
 loCol.Add("Apples", "A")
@@ -4882,8 +4882,8 @@ n = loCol.Count
 k = 1
 FOR EACH o IN loCol FOXOBJECT
     ? o, loCol.GetKey(k)
-    k = k + 1 
-ENDFOR	
+    k = k + 1
+ENDFOR
 *!* Get an item by its key
 ? loCol("O")
 ?
@@ -4897,7 +4897,7 @@ loFruits.Add(CREATEOBJECT("fruit", "Pears"), "P")
 k = 1
 FOR EACH o IN loFruits FOXOBJECT
     ? o.Name, loFruits.GetKey(k)
-    k = k + 1 
+    k = k + 1
 ENDFOR
 *!* Get an item name by its key
 ? loFruits("P").Name
@@ -4961,8 +4961,8 @@ Other functions provided for tables include <tt>MAP-OVER-TABLE-ENTRIES</tt>, whi
 Output in a REPL:
 
 ```txt
-"Abbott's starling (Linnaean name Poeoptera femoralis)" 
-"Common starling (Linnaean name Sturnus vulgaris)" 
+"Abbott's starling (Linnaean name Poeoptera femoralis)"
+"Common starling (Linnaean name Sturnus vulgaris)"
 "Cape starling (Linnaean name Lamprotornis nitens)"
 ```
 
@@ -5031,7 +5031,7 @@ D(two:2,three:3,one:1)
 
 {{omit from|Applesoft BASIC}}
 {{omit from|bc|No associative arrays. No string operations.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|dc|No associative arrays. No string operations.}}
 {{omit from|GUISS}}
 {{omit from|Integer BASIC}}

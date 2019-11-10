@@ -52,7 +52,7 @@ end SleepSort;
 
 
 ```APL
- 
+
 sleepsort←{{r}⎕TSYNC{r,←⊃⍵,⎕DL ⍵}&¨⍵,r←⍬}
 
 ```
@@ -116,19 +116,19 @@ This does not explicitly 'sleep', but uses timers to implement the different del
 
 ```bbcbasic
       INSTALL @lib$+"TIMERLIB"
-      
+
       DIM test%(9)
       test%() = 4, 65, 2, 31, 0, 99, 2, 83, 782, 1
-      
+
       FOR i% = 0 TO DIM(test%(),1)
         p% = EVAL("!^PROCtask" + STR$(i%))
         tid% = FN_ontimer(100 + test%(i%), p%, 0)
       NEXT
-      
+
       REPEAT
         WAIT 0
       UNTIL FALSE
-      
+
       DEF PROCtask0 : PRINT test%(0) : ENDPROC
       DEF PROCtask1 : PRINT test%(1) : ENDPROC
       DEF PROCtask2 : PRINT test%(2) : ENDPROC
@@ -159,7 +159,7 @@ This does not explicitly 'sleep', but uses timers to implement the different del
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```C
 
@@ -245,7 +245,7 @@ int main(int argc, char* argv[]) {
 
 ```txt
 
-./a.out 8 15 14 9 17 20 16 24 6 24 21 23 19 23 19 
+./a.out 8 15 14 9 17 20 16 24 6 24 21 23 19 23 19
 6
 8
 9
@@ -260,7 +260,7 @@ int main(int argc, char* argv[]) {
 23
 23
 24
-24 
+24
 
 ```
 
@@ -365,7 +365,7 @@ after = (s, f) -> setTimeout f, s*1000
 sleep_sort = (arr) ->
   for n in arr
     do (n) -> after n, -> console.log n
-    
+
 do ->
   input = (parseInt(arg) for arg in process.argv[2...])
   sleep_sort input
@@ -566,9 +566,9 @@ import extensions;
 import system'routines;
 import extensions'threading;
 import system'threading;
-  
+
 static sync = new object();
- 
+
 extension op
 {
     sleepSort()
@@ -578,7 +578,7 @@ extension op
             threadControl.start(()
             {
                 threadControl.sleep(1000 * n);
-                    
+
                 lock(sync)
                 {
                     console.printLine(n)
@@ -587,11 +587,11 @@ extension op
         }
     }
 }
- 
+
 public program()
 {
     program_arguments.skipping:1.selectBy(mssgconst toInt<convertorOp>[0]).toArray().sleepSort();
- 
+
     console.readChar()
 }
 ```
@@ -608,7 +608,7 @@ defmodule Sort do
     Enum.each(args, fn(arg) -> Process.send_after(self, arg, 5 * arg) end)
     loop(length(args))
   end
-  
+
   defp loop(0), do: :ok
   defp loop(n) do
     receive do
@@ -709,7 +709,7 @@ else
             count += 1
         end if
     end for
-    
+
     while count do
         task_yield()
     end while
@@ -752,7 +752,7 @@ Instead it uses a second array filled with times based on the value of number, t
 ' compile with: fbc -s console
 ' compile with: fbc -s console -exx (for bondry check on the array's)
 ' not very well suited for large numbers and large array's
-' positive numbers only 
+' positive numbers only
 
 Sub sandman(sleepy() As ULong)
     Dim As Long lb = LBound(sleepy)
@@ -842,7 +842,7 @@ program sleepSort
     end do
     call omp_set_num_threads(nArgs)
     !$omp end master
- 
+
 
     !$omp parallel private(myid)
     myid =omp_get_thread_num()
@@ -1150,7 +1150,7 @@ Array.prototype.sleepSort = function(callback) {
 
 ## jq
 
-{{trans|Brainf***}}
+{{trans|Brainfuck}}
 
 Doesn't actually sleep. Instead, iterates reducing the values by one until each is zero.
 
@@ -1249,9 +1249,9 @@ Sample output:
 
 ```txt
 
-$ java -jar sleepsort.jar 5 7 -1 2 4 1 8 0 3 9 6 
+$ java -jar sleepsort.jar 5 7 -1 2 4 1 8 0 3 9 6
 Unsorted: 5 7 2 4 1 8 0 3 9 6
-Sorted  : 0 1 2 3 4 5 6 7 8 9 
+Sorted  : 0 1 2 3 4 5 6 7 8 9
 
 ```
 
@@ -1309,7 +1309,7 @@ function sleeprint(n)
 end
 
 coroutines = {}
-for i=1, #arg do 
+for i=1, #arg do
   wrapped = coroutine.wrap(sleeprint)
   table.insert(coroutines, wrapped)
   wrapped(tonumber(arg[i]))
@@ -1318,7 +1318,7 @@ end
 done = false
 while not done do
   done = true
-  for i=#coroutines,1,-1 do 
+  for i=#coroutines,1,-1 do
     if coroutines[i]() then
       table.remove(coroutines, i)
     else
@@ -1389,7 +1389,7 @@ As implemented this sample goes beyond the scope of the task as defined; it will
 options replace format comments java crossref symbols nobinary
 import java.util.concurrent.CountDownLatch
 
--- 
+--
 ### =======================================================================
 
 class RSortingSleepsort
@@ -1423,7 +1423,7 @@ class RSortingSleepsort
     end
     return getSorted()
 
--- 
+--
 ### =======================================================================
 
 class RSortingSleepsort.SortThread dependent implements Runnable
@@ -1508,7 +1508,7 @@ use Collection;
 bundle Default {
   class Item from Thread {
     @value : Int;
-    
+
     New(value : Int) {
       Parent();
       @value := value;
@@ -1526,7 +1526,7 @@ bundle Default {
       each(i : args) {
         items->AddBack(Item->New(args[i]->ToInt()));
       };
-    
+
       each(i : items) {
         items->Get(i)->As(Item)->Execute(Nil);
       };
@@ -1677,15 +1677,15 @@ Copy of [[Sorting_algorithms/Sleep_sort#Euphoria|Euphoria]]
 
 ```Phix
 integer count
- 
+
 procedure sleeper(integer key)
     ? key
     count -= 1
 end procedure
- 
+
 sequence s, val
 atom task
- 
+
 s = command_line()
 s = s[3..$]
 if length(s)=0 then
@@ -1700,7 +1700,7 @@ else
             count += 1
         end if
     end for
- 
+
     while count do
         task_yield()
     end while
@@ -1762,7 +1762,7 @@ Basically the C code.
 Output:
 
 ```txt
-1              
+1
 1
 2
 3
@@ -1782,7 +1782,7 @@ Output:
 ```Pike
 
 #!/usr/bin/env pike
-  
+
 int main(int argc, array(string) argv)
 {
         foreach(argv[1..], string value)
@@ -1872,7 +1872,7 @@ If OpenConsole()
   For i=1 To CountProgramParameters()
     threads(Str(i)) = CreateThread(@Foo(), Val(ProgramParameter()))
   Next
-  
+
   ForEach threads()
     WaitThread(threads())
   Next
@@ -1933,7 +1933,7 @@ sleep sort worked for: [3, 2, 4, 7, 3, 6, 9, 1]
 
 
 
-### Python v3.5+: Using asyncio 
+### Python v3.5+: Using asyncio
 
 
 Since the introduction of async/await syntax, the implementation
@@ -1949,7 +1949,7 @@ async def f(n):
     await sleep(n)
     print(n)
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     run(wait(list(map(f, map(int, argv[1:])))))
 ```
 
@@ -1984,8 +1984,8 @@ $ ./sleepsort.py 5 3 6 3 6 3 1 4 7
 (define (sleep-sort lst)
   (define done (make-channel))
   (for ([elem lst])
-    (thread 
-     (λ () 
+    (thread
+     (λ ()
        (sleep elem)
        (channel-put done elem))))
   (for/list ([_ (length lst)])
@@ -2004,8 +2004,8 @@ This sort will accept any manner of numbers, or for that matter, any character s
 
 REXX isn't particular what is being sorted.
 
-This REXX version '''only''' works with Regina REXX   (as the program uses the   '''fork'''   
-function. 
+This REXX version '''only''' works with Regina REXX   (as the program uses the   '''fork'''
+function.
 
 ```rexx
 /*REXX program implements a sleep sort (with numbers entered from C.L.).*/
@@ -2179,7 +2179,7 @@ object SleepSort {
 
 ```bash
 $ scala SleepSort 1 3 6 0 9 7 4 2 5 8
-0 1 2 3 4 5 5 6 7 8 9 
+0 1 2 3 4 5 5 6 7 8 9
 ```
 
 
@@ -2193,7 +2193,7 @@ import Foundation
 for i in [5, 2, 4, 6, 1, 7, 20, 14] {
     let time = dispatch_time(DISPATCH_TIME_NOW,
         Int64(i * Int(NSEC_PER_SEC)))
-    
+
     dispatch_after(time, dispatch_get_main_queue()) {
         print(i)
     }
@@ -2349,9 +2349,9 @@ bash$ sleepsort.tcl 3 1 4 5 2 3 1 6 1 3 2 5 4 6
 
 ```tcl
 #! /usr/bin/env tclsh
- 
+
 package require Tcl 8.6
- 
+
 # By aspect (https://wiki.tcl-lang.org/page/aspect).  Modified slightly.
 # 1. Schedule N delayed calls to our own coroutine.
 # 2. Yield N times to grab the scheduled values.  Print each.
@@ -2360,7 +2360,7 @@ proc sleep-sort {ls varName} {
     foreach x $ls {
         after $x [info coroutine] $x
     }
- 
+
     set $varName [lmap x $ls {
         set newX [yield]
         puts $newX
@@ -2373,16 +2373,16 @@ proc validate ls {
     if {[llength $ls] == 0} {
         error {list is empty}
     }
- 
+
     foreach x $ls {
         if {![string is integer -strict $x] || $x < 0} {
             error [list invalid value: $x]
-        }        
+        }
     }
- 
+
     return $ls
 }
- 
+
 coroutine c sleep-sort [validate $argv] ::sorted
 vwait sorted
 ```

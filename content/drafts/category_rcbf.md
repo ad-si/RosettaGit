@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-[[Category:Compilers and Interpreters]]RCBF is a set of [[Brainf***]] compilers and interpreters written for Rosetta Code in a variety of languages. Below are links to each of the versions of RCBF.  For a full description, see [[RCBF]].
+[[Category:Compilers and Interpreters]]RCBF is a set of [[Brainfuck]] compilers and interpreters written for Rosetta Code in a variety of languages. Below are links to each of the versions of RCBF.  For a full description, see [[RCBF]].

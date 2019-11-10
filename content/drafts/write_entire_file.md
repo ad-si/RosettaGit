@@ -12,7 +12,7 @@ tags = []
 
 {{task|File handling}}
 {{omit from|Batch File|No way of reading entire files or putting line breaks into variables.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|TI-83 BASIC|No filesystem.}}
 {{omit from|TI-89 BASIC|No filesystem.}}
 {{omit from|Unlambda|Does not know files.}}
@@ -61,13 +61,13 @@ end Write_Whole_File;
 ```algol68
 IF  FILE   output;
     STRING output file name = "output.txt";
-    open( output, output file name, stand out channel ) = 0   
+    open( output, output file name, stand out channel ) = 0
 THEN
     # file opened OK #
     put( output, ( "line 1", newline, "line 2", newline ) );
     close( output )
 ELSE
-    # unable to open the output file #    
+    # unable to open the output file #
     print( ( "Cannot open ", output file name, newline ) )
 FI
 ```
@@ -153,7 +153,7 @@ put$("(Over)write a file so that it contains a string.",file,NEW)
 
 
 
-###  Dirty solution 
+###  Dirty solution
 
 
 ```C
@@ -165,7 +165,7 @@ put$("(Over)write a file so that it contains a string.",file,NEW)
 
 int main(void)
 {
-    return 0 >= fputs("ANY STRING TO WRITE TO A FILE AT ONCE.", 
+    return 0 >= fputs("ANY STRING TO WRITE TO A FILE AT ONCE.",
         freopen("sample.txt","wb",stdout));
 }
 
@@ -199,13 +199,13 @@ int writeEntireFile(char* fileName, const void* data, size_t size)
 
     // Notice: assertions can be turned off by #define NDEBUG
     //
-    assert( fileName != NULL ); 
+    assert( fileName != NULL );
     assert( data != NULL );
     assert( size >  0 );
 
     // Check for a null pointer or an empty file name.
     //
-    // BTW, should we write  if ( ptr != NULL)  or simply  if ( ptr )  ? 
+    // BTW, should we write  if ( ptr != NULL)  or simply  if ( ptr )  ?
     // Both of these forms are correct. At issue is which is more readable.
     //
     if ( fileName != NULL && *fileName != '\0' )
@@ -243,19 +243,19 @@ int writeEntireFile(char* fileName, const void* data, size_t size)
             fclose( file );
         }
     }
-    return numberBytesWritten; 
+    return numberBytesWritten;
 }
 
 #define DATA_LENGTH 8192 /* 8KiB */
 
 int main(void)
 {
-    // Large arrays can exhaust memory on the stack. This is why the static 
+    // Large arrays can exhaust memory on the stack. This is why the static
     // keyword is used.Static variables are allocated outside the stack.
     //
     static char data[DATA_LENGTH];
-    
-    // Filling data array with 'A' character. 
+
+    // Filling data array with 'A' character.
     // Of course, you can use any other data here.
     //
     int i;
@@ -268,7 +268,7 @@ int main(void)
     //
     if ( writeEntireFile("sample.txt", data, DATA_LENGTH ) == DATA_LENGTH )
         return EXIT_SUCCESS;
-    else 
+    else
         return EXIT_FAILURE;
 }
 
@@ -302,32 +302,32 @@ int writeEntireFile(char* fileName, const void* data, size_t size)
     size_t numberBytesWritten = 0; // will be updated
     int file; // file handle is an integer (see Fortran ;)
 
-    // Notice: we can not trust in assertions to work. 
+    // Notice: we can not trust in assertions to work.
     // Assertions can be turned off by #define NDEBUG.
     //
-    assert( fileName ); 
+    assert( fileName );
     assert( data );
     assert( size >  0 );
 
     if(fileName && fileName[0] && (file=open(fileName,O_CREAT|O_BINARY|O_WRONLY))!=(-1))
     {
-        if ( data ) 
+        if ( data )
             numberBytesWritten = write( file, data, size );
         close( file );
     }
-    return numberBytesWritten; 
+    return numberBytesWritten;
 }
 
 #define DATA_LENGTH 8192 /* 8KiB */
 
 int main(void)
 {
-    // Large arrays can exhaust memory on the stack. This is why the static 
+    // Large arrays can exhaust memory on the stack. This is why the static
     // keyword is used.Static variables are allocated outside the stack.
     //
     static char data[DATA_LENGTH];
-    
-    // Filling data array with 'Z' character. 
+
+    // Filling data array with 'Z' character.
     // Of course, you can use any other data here.
     //
     int i;
@@ -340,7 +340,7 @@ int main(void)
     //
     if ( writeEntireFile("sample.txt", data, DATA_LENGTH ) == DATA_LENGTH )
         return 0;
-    else 
+    else
         return 1;
 }
 
@@ -416,7 +416,7 @@ ELENA 4.x :
 
 ```elena
 import system'io;
- 
+
 public program()
 {
     File.assign("filename.txt").saveContent("This file contains a string.")
@@ -461,7 +461,7 @@ Where F is an integer with a value such as 10 (these days not being 5, standard 
       WRITE (F) BIGARRAY
 ```
 
-Earlier Fortran might have other predefined unit numbers, for a card punch, paper tape, lineprinter, and so on, according to the installation. For a disc file, there may be no facility to name the file within Fortran itself as in the example OPEN statement because there may be no OPEN statement. Fortran IV used a DEFINE FILE statement, for example, which specified the record length and number of records in the file. As constants. File naming would instead be done by commands to the operating system when the prog. is started, as with the DD statement of JCL (Job Control Language) of IBM mainframes, and this would have its own jargon for NEW, OLD, REPLACE and what to do when the step finishes: DISP=KEEP, perhaps. 
+Earlier Fortran might have other predefined unit numbers, for a card punch, paper tape, lineprinter, and so on, according to the installation. For a disc file, there may be no facility to name the file within Fortran itself as in the example OPEN statement because there may be no OPEN statement. Fortran IV used a DEFINE FILE statement, for example, which specified the record length and number of records in the file. As constants. File naming would instead be done by commands to the operating system when the prog. is started, as with the DD statement of JCL (Job Control Language) of IBM mainframes, and this would have its own jargon for NEW, OLD, REPLACE and what to do when the step finishes: DISP=KEEP, perhaps.
 
 The OPEN statement started becoming standard with F77, but a READ or WRITE statement for a file could mix FORMAT style I/O with unformatted I/O - or indeed do both at once. This could be achieved via the A''n'' format code, which essentially states "unformatted" because it takes the variable's bit pattern "as is". Thus, a typical 32-bit floating-point variable occupies four bytes so it could be read or written with format code <code>A4</code> and so on for other sizes. With declarations like <code>REAL*8 X</code>, Fortran programmers are usually well aware of storage sizes.
 
@@ -547,7 +547,7 @@ func main() {
 
 ```Groovy
  new File("myFile.txt").text = """a big string
-that can be 
+that can be
 splitted over lines
 """
 
@@ -576,7 +576,7 @@ main = do
 ```J>   characters fwrite filename</lang
 
 
-or, 
+or,
 
 
 ```J
@@ -776,7 +776,7 @@ end.
 In some environments, it is the caller’s sole responsibility to invoke the program properly.
 I. e., the program above could be invoked on a Bourne-again shell in this fashion:
 
-```bash>./overwriteFile 
+```bash>./overwriteFile
 &- <&- 0>/tmp/foo # open file descriptor with index 0 for writing
 ```
 
@@ -895,8 +895,8 @@ Define str$ = "This string is to be written to the file"
 
 If OpenConsole()
   If CreateFile(0, fOutput$)
-    WriteString(0, str$) 
-    CloseFile(0)   
+    WriteString(0, str$)
+    CloseFile(0)
   Else
     PrintN("Error creating or opening output file")
   EndIf
@@ -954,7 +954,7 @@ of='file.txt'
 s=copies('1234567890',10000)
 Call charout of,s
 Call lineout of
-Say chars(of) length(s) 
+Say chars(of) length(s)
 ```
 
 {{out}}
@@ -1149,7 +1149,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 SourceFile = objFSO.GetParentFolderName(WScript.ScriptFullName) & "\out.txt"
 Content = "(Over)write a file so that it contains a string." & vbCrLf &_
 		"The reverse of Read entire file—for when you want to update or create a file which you would read in its entirety all at once."
-		
+
 With objFSO.OpenTextFile(SourceFile,2,True,0)
 	.Write Content
 	.Close

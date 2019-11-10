@@ -34,7 +34,7 @@ INTSEQED CSECT
          USING  INTSEQED,12
          LR    12,15
          LA    6,1             i=1
-LOOP     CVD   6,DW            binary to pack decimal 
+LOOP     CVD   6,DW            binary to pack decimal
          MVC   WTOMSG+4(12),EM12 load mask
          ED    WTOMSG+4(12),DW+2 packed dec to char
          WTO   MF=(E,WTOMSG)   write to console
@@ -229,24 +229,24 @@ Last screen of scrolled output:
 2657, 32658, 32659, 32660, 32661, 32662,
  32663, 32664, 32665, 32666, 32667, 3266
 8, 32669, 32670, 32671, 32672, 32673, 32
-674, 32675, 32676, 32677, 32678, 32679, 
+674, 32675, 32676, 32677, 32678, 32679,
 32680, 32681, 32682, 32683, 32684, 32685
 , 32686, 32687, 32688, 32689, 32690, 326
 91, 32692, 32693, 32694, 32695, 32696, 3
 2697, 32698, 32699, 32700, 32701, 32702,
  32703, 32704, 32705, 32706, 32707, 3270
 8, 32709, 32710, 32711, 32712, 32713, 32
-714, 32715, 32716, 32717, 32718, 32719, 
+714, 32715, 32716, 32717, 32718, 32719,
 32720, 32721, 32722, 32723, 32724, 32725
 , 32726, 32727, 32728, 32729, 32730, 327
 31, 32732, 32733, 32734, 32735, 32736, 3
 2737, 32738, 32739, 32740, 32741, 32742,
  32743, 32744, 32745, 32746, 32747, 3274
 8, 32749, 32750, 32751, 32752, 32753, 32
-754, 32755, 32756, 32757, 32758, 32759, 
+754, 32755, 32756, 32757, 32758, 32759,
 32760, 32761, 32762, 32763, 32764, 32765
-, 32766, 32767                          
-?ILLEGAL QUANTITY ERROR IN 30           
+, 32766, 32767
+?ILLEGAL QUANTITY ERROR IN 30
 ]
 ```
 
@@ -266,7 +266,7 @@ Last screen of scrolled output:
 
 main:
         mov   r0,   #0          @ start with R0 = 0
-        
+
 repeat:
         @ call to 'PRINT' routine
         add   r0,   r0,   #1    @ increment R0
@@ -392,7 +392,7 @@ Version using Huge Integer Math and Encryption library (up to 2^31 bits, but thi
       INSTALL @lib$+"HIMELIB"
       PROC_himeinit("")
       reg% = 1
-      
+
       PROC_hiputdec(reg%, "0")
       REPEAT
         SYS `hi_Incr`, ^reg%, ^reg%
@@ -447,14 +447,14 @@ Also note that the range of values written to the code page or 'playfield' is of
 ## Bracmat
 
 {{trans|Ruby}}
-Bracmat uses big numbers. Numbers are stored with a radix 10, each decimal digit occupying one byte. When multiplying or dividing, numbers are temporarily converted to radix 10000 (32-bit systems: 1 digit occupies two bytes) or radix 100000000 (64-bit systems: 1 digit occupies four bytes) to speed up the computation. 
+Bracmat uses big numbers. Numbers are stored with a radix 10, each decimal digit occupying one byte. When multiplying or dividing, numbers are temporarily converted to radix 10000 (32-bit systems: 1 digit occupies two bytes) or radix 100000000 (64-bit systems: 1 digit occupies four bytes) to speed up the computation.
 <lang>0:?n&whl'out$(1+!n:?n)
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 This program assumes that decrementing past zero wraps around, but it doesn't rely on cell size, other than that a cell can hold at least six bits. It also assumes the ASCII character set. This is an arbitrarily large number implementation.
-<lang brainf***>++++++++++>>>+[[->>+<[+>->+<<---------------------------------------
+<lang Brainfuck>++++++++++>>>+[[->>+<[+>->+<<---------------------------------------
 -------------------[>>-<++++++++++<[+>-<]]>[-<+>]<++++++++++++++++++
 ++++++++++++++++++++++++++++++>]<[<]>>[-<+++++++++++++++++++++++++++
 ++++++++++++++++++++++>]>]>[>>>]<<<[.<<<]<.>>>+]
@@ -462,7 +462,7 @@ This program assumes that decrementing past zero wraps around, but it doesn't re
 
 
 This modification of the previous program will print out 1 to the maximum cell value, still assuming wrapping. On many implementations, this will print out 1-255.
-<lang brainf***>++++++++++>>-[>+[->>+<[+>->+<<--------------------------------------
+<lang Brainfuck>++++++++++>>-[>+[->>+<[+>->+<<--------------------------------------
 --------------------[>>-<++++++++++<[+>-<]]>[-<+>]<+++++++++++++++++
 +++++++++++++++++++++++++++++++>]<[<]>>[-<++++++++++++++++++++++++++
 +++++++++++++++++++++++>]>]>[>>>]<<<[.<<<]<.>>-]
@@ -470,7 +470,7 @@ This modification of the previous program will print out 1 to the maximum cell v
 
 
 This program can count in any base counting system under 256. '''Note:''' Change the characters in quotes equal to the base counting system you want to use.
-<lang brainf***>+[<<+>>[[<<"-----------"["+++++++++++"<]>]>[<<<<+>>+>>[>>]<]<]>>[>>]<<]
+<lang Brainfuck>+[<<+>>[[<<"-----------"["+++++++++++"<]>]>[<<<<+>>+>>[>>]<]<]>>[>>]<<]
 ```
 
 
@@ -519,7 +519,7 @@ int main()
 
 
 ==={{libheader|GMP}}===
-This one never stops.  It's not even likely that you'll run out of memory before you run out of patience. 
+This one never stops.  It's not even likely that you'll run out of memory before you run out of patience.
 ```c>#include <gmp.h
 
 
@@ -619,7 +619,7 @@ for(1 => int i; i < Math.INT_MAX; i ++)
 int main()
 {
   auto i = std::uintmax_t{};
-  
+
   while (i < std::numeric_limits<decltype(i)>::max())
     std::cout << ++i << '\n';
 }
@@ -638,7 +638,7 @@ int main()
   try
   {
     auto i = std::experimental::seminumeric::integer{};
-    
+
     while (true)
       std::cout << ++i << '\n';
   }
@@ -718,7 +718,7 @@ Like with most languages, counting is straightforward in CoffeeScript, so the pr
 # start off with the ones columns in position zero.
 # Using arrays of decimal-based digits to model integers
 # doesn't make much sense for most tasks, but if you
-# want to keep counting forever, this does the trick. 
+# want to keep counting forever, this does the trick.
 
 BcdInteger =
   from_string: (s) ->
@@ -732,7 +732,7 @@ BcdInteger =
     for elem in arr
       s = elem.toString() + s
     s
-    
+
   succ: (arr) ->
     arr = (elem for elem in arr)
     i = 0
@@ -742,7 +742,7 @@ BcdInteger =
     arr[i] ||= 0
     arr[i] += 1
     arr
-    
+
 # To start counting from 1, change the next line!
 big_int = BcdInteger.from_string "199999999999999999999999999999999999999999999999999999"
 while true
@@ -993,7 +993,7 @@ while true {
 
 
 
-```e>for i in int 
+```e>for i in int
  0 { println(i) }
 ```
 
@@ -1016,28 +1016,28 @@ while true {
 
 ```edsac
 [ Integer sequence
-  
+
 ### ==========
 
-  
+
   A program for the EDSAC
-  
+
   Displays integers 1,2,3...
   in binary form in the first
   word of storage tank 2
   until stopped
-  
+
   Works with Initial Orders 2  ]
 
 T56K  [ set load point         ]
 GK    [ set base address       ]
-        
+
 A3@   [ increment accumulator  ]
 U64F  [ copy accumulator to 64 ]
 E@    [ jump to base address   ]
-        
+
 P0D   [ constant: 1            ]
-        
+
 EZPF  [ begin at load point    ]
 ```
 
@@ -1080,14 +1080,14 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var i := 0u;
     while (true)
     {
         console.printLine(i);
- 
+
         i += 1u
     }
 }
@@ -1121,7 +1121,7 @@ Displays in the message area interactively, or to standard output under <code>-b
 
 
 ```erlang
- F = fun(FF, I) -> io:format("~p~n", [I]), FF(FF, I + 1) end, F(F,0). 
+ F = fun(FF, I) -> io:format("~p~n", [I]), FF(FF, I + 1) end, F(F,0).
 ```
 
 
@@ -1284,12 +1284,12 @@ Since there aren't really libraries in Fish and I wouldn't know how to program a
 ```fortran
 program Intseq
   implicit none
-  
+
   integer, parameter :: i64 = selected_int_kind(18)
   integer(i64) :: n = 1
-  
+
 ! n is declared as a 64 bit signed integer so the program will display up to
-! 9223372036854775807 before overflowing to -9223372036854775808  
+! 9223372036854775807 before overflowing to -9223372036854775808
   do
     print*, n
     n = n + 1
@@ -1699,7 +1699,7 @@ Liberty BASIC handles extremely large integers. The following code was halted by
     print i
     scan
 wend
- 
+
 ```
 
 
@@ -1767,7 +1767,7 @@ put the maxInteger+2
 -- -2147483647
 ```
 
- 
+
 Up to the (quite high) number where floats (double-precission) start rounding, floats can be used to exceed the integer limit:
 
 ```lingo
@@ -1867,7 +1867,7 @@ a=1@
 Rem : Def Decimal a=1
 Rem : Def a as decimal=1
 \\ Global shadow any global with same name, but not local
-\\ globals can change type, local can't change 
+\\ globals can change type, local can't change
 \\ to assign value to global need <=
 \\ Symbol = always make local variables (and shadows globals)
 Rem : Global a as decimal =1
@@ -1891,7 +1891,7 @@ a%=1@
 
 ## Maple
 
-Maple has arbitrary-precision integers so there are no built-in limits on the size of the integers represented.  
+Maple has arbitrary-precision integers so there are no built-in limits on the size of the integers represented.
 
 
 ```Maple
@@ -1916,7 +1916,7 @@ Monitor[While[True, x++], x]
 
 
 ```Matlab
- a = 1; while (1) printf('%i\n',a); a=a+1; end; 
+ a = 1; while (1) printf('%i\n',a); a=a+1; end;
 ```
 
 
@@ -1924,16 +1924,16 @@ Typically, numbers are stored as double precision floating point numbers, giving
 
 
 ```Matlab
- a = uint64(1); while (1) printf('%i\n',a); a=a+1; end; 
+ a = uint64(1); while (1) printf('%i\n',a); a=a+1; end;
 ```
 
 
-This will run up to 2^64 and then stop increasing, there will be no overflow. 
+This will run up to 2^64 and then stop increasing, there will be no overflow.
 
 
 ```txt
 
->> a=uint64(10e16+1)    % 10e16 is first converted into a double precision number causing some round-off error. 
+>> a=uint64(10e16+1)    % 10e16 is first converted into a double precision number causing some round-off error.
 a = 100000000000000000
 >> a=uint64(10e16)+1
 a = 100000000000000001
@@ -1941,17 +1941,17 @@ a = 100000000000000001
 ```
 
 
-The above limitations can be overcome with additional toolboxes for symbolic computation or multiprecision computing. 
+The above limitations can be overcome with additional toolboxes for symbolic computation or multiprecision computing.
 
-Matlab and Octave recommend vectorizing the code, one might pre-allocate the sequence up to a specific N. 
+Matlab and Octave recommend vectorizing the code, one might pre-allocate the sequence up to a specific N.
 
 
 ```Matlab
-  N = 2^30; printf('%d\n', 1:N);    
+  N = 2^30; printf('%d\n', 1:N);
 ```
 
 
-The main limitation is the available memory on your machine. The standard version of Octave has a limit that a single data structure can hold at most 2^31 elements. In order to overcome this limit, Octave must be compiled with "./configure --enable-64", but this is currently not well supported. 
+The main limitation is the available memory on your machine. The standard version of Octave has a limit that a single data structure can hold at most 2^31 elements. In order to overcome this limit, Octave must be compiled with "./configure --enable-64", but this is currently not well supported.
 
 
 ## Maxima
@@ -2119,7 +2119,7 @@ IMPORT
     END;
     Out.Ln
   END IntegerSequence;
-  
+
   PROCEDURE BigIntSequence*;
   VAR
     i: BigInt.BigInt;
@@ -2192,7 +2192,7 @@ let () =
 
 Oforth handles arbitrary integer precision.
 
-The loop will stop when out of memory 
+The loop will stop when out of memory
 
 
 ```Oforth
@@ -2269,7 +2269,7 @@ DO WHILE TRUE:
 END.
 ```
 
-When a 64-bit integer overflows no error is raised and the signed integer becomes negative. 
+When a 64-bit integer overflows no error is raised and the signed integer becomes negative.
 </li>
 <li>DECIMAL (50 digits)
 
@@ -2424,15 +2424,15 @@ end while
 ```
 
 {{libheader|mpfr}}
-This will probably carry on until the number has over 300 million digits (32-bit, you can 
-square that on 64-bit) which would probably take zillions of times longer than the 
+This will probably carry on until the number has over 300 million digits (32-bit, you can
+square that on 64-bit) which would probably take zillions of times longer than the
 universe has already existed, if your hardware/OS/power grid kept going that long.
 
 ```Phix
 include mpfr.e
 mpz b = mpz_init(0)
 while true do
-    mpz_add_ui(b,b,1) 
+    mpz_add_ui(b,b,1)
     mpfr_printf(1,"%Zd\n",b)
 end while
 ```
@@ -2599,7 +2599,7 @@ Or, alternatively:
 ```python
 from itertools import count
 
-for i in count(): 
+for i in count():
     print(i)
 ```
 
@@ -2748,7 +2748,7 @@ for n in [1:size]
     see n + nl
 next
 see nl
-    
+
 i = n
 while n <= size
       see n + nl
@@ -2986,8 +2986,8 @@ IntInf.int (arbitrary precision).
 
 ```sml
 let
-  fun printInts(n) = 
-    (		
+  fun printInts(n) =
+    (
       print(Int.toString(n) ^ "\n");
       printInts(n+1)
     )
@@ -3085,7 +3085,7 @@ while (++i < uint.MAX)
 
 ## Visual Basic .NET
 
-Visual Basic .NET supports an unsigned, 64 bit Integer (maxing out at a <i>whopping</i> 9 223 372 036 854 775 807), however, this is not an intrinsic type, it is a structure that is <i><b>not</b></i> supported by the CLS (Common Language Specification). 
+Visual Basic .NET supports an unsigned, 64 bit Integer (maxing out at a <i>whopping</i> 9 223 372 036 854 775 807), however, this is not an intrinsic type, it is a structure that is <i><b>not</b></i> supported by the CLS (Common Language Specification).
 
 The CLS supported type (also a structure) is <i>Decimal</i> (an even more impressive range from positive 79 228 162 514 264 337 593 543 950 335 to negative 79 228 162 514 264 337 593 543 950 335), I have used a standard CLS <i>Integer</i> intrinsic type (from -2 147 483 648 through 2 147 483 647).
 

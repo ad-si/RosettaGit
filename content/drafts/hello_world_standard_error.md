@@ -10,12 +10,12 @@ categories = []
 tags = []
 +++
 
-{{task|Basic language learning}} 
+{{task|Basic language learning}}
 {{selection|Short Circuit|Console Program Basics}}
 [[Category:Streams]]
 {{omit from|Applesoft BASIC}}
 {{omit from|bc|Always prints to standard output.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|dc|Always prints to standard output.}}
 {{omit from|GUISS|Cannot customize error messages}}
 {{omit from|Integer BASIC}}
@@ -25,12 +25,12 @@ tags = []
 {{omit from|TI-89 BASIC|no analogue to stderr, unless you count graph display vs. program IO}}
 {{omit from|Unlambda|No concept of standard error (or alternate output streams in general).}}
 
-A common practice in computing is to send error messages 
-to a different output stream than [[User Output - text|normal text console messages]]. 
+A common practice in computing is to send error messages
+to a different output stream than [[User Output - text|normal text console messages]].
 
-The normal messages print to what is called "standard output" or "standard out". 
+The normal messages print to what is called "standard output" or "standard out".
 
-The error messages print to "standard error". 
+The error messages print to "standard error".
 
 This separation can be used to redirect error messages to a different place than normal messages.
 
@@ -112,7 +112,7 @@ v_text("Goodbye, World!\n");
 
 ## ALGOL 68
 
-The procedures <tt>print</tt> and <tt>printf</tt> output to ''stand out'', 
+The procedures <tt>print</tt> and <tt>printf</tt> output to ''stand out'',
 whereas <tt>put</tt> and <tt>putf</tt> can output to any open '''file''', including ''stand error''.
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
@@ -174,14 +174,14 @@ szMessage: .asciz "Goodbye world. \n "       @ error message
 .equ LGMESSAGE, . -  szMessage  @ compute length of message
 
 .text
-.global main 
-main:	
+.global main
+main:
     mov r0, #2                  @ output error linux
     ldr r1, iAdrMessage         @ adresse of message
-    mov r2, #LGMESSAGE          @ sizeof(message) 
-    mov r7, #4                  @ select system call 'write' 
-    swi #0                      @ perform the system call 
- 
+    mov r2, #LGMESSAGE          @ sizeof(message)
+    mov r7, #4                  @ select system call 'write'
+    swi #0                      @ perform the system call
+
     mov r0, #0                  @ return code
     mov r7, #1                  @ request to exit program
     swi #0                       @ perform the system call
@@ -213,7 +213,7 @@ implement main0 () = fprint (stderr_ref, "Goodbye, World!\n")
 ## AutoHotkey
 
 requires [http://github.com/tinku99/ahkdll/tree/master AutoHotkey_N]
-implementation. 
+implementation.
 
 ```autohotkey>; c:\>  autohotkey.exe stderr.ahk 2
  error.txt
@@ -266,15 +266,15 @@ BEGIN {
 ```
 
 
-With ''gawk'', ''mawk'' and ''nawk'': a special feature 
-associates "/dev/stderr" with standard error. 
-The manuals of ''gawk'' and ''mawk'' describe this feature; 
+With ''gawk'', ''mawk'' and ''nawk'': a special feature
+associates "/dev/stderr" with standard error.
+The manuals of ''gawk'' and ''mawk'' describe this feature;
 ''nawk'' also has this feature.
 
-Other implementations might try to open /dev/stderr as a file. 
-Some Unix clones, like [[BSD]], have a /dev/stderr device node 
-that duplicates standard error, so this code would still work. 
-Some systems have no such device node, so this code would fail. 
+Other implementations might try to open /dev/stderr as a file.
+Some Unix clones, like [[BSD]], have a /dev/stderr device node
+that duplicates standard error, so this code would still work.
+Some systems have no such device node, so this code would fail.
 We recommend "cat 1>&2", which is more portable, and works with any Unix clone.
 
 
@@ -313,7 +313,7 @@ On the ZX Spectrum, standard error is on stream 1:
 &2 echo Goodbye, World!
 ```
 
-The redirection operator <code>1>&2</code> causes all output on stream 1 (standard out) to be redirected to stream 2 (standard error). 
+The redirection operator <code>1>&2</code> causes all output on stream 1 (standard out) to be redirected to stream 2 (standard error).
 The redirection can be moved to the end of the line, too.
 
 
@@ -547,14 +547,14 @@ IO.puts :stderr, "Goodbye, World!"
 ```Emacs Lisp
 
 (error "Goodbye, World!")
- 
+
 ```
 
 <b>Output:</b>
 
 ```txt
 
-Goodbye, World!                                                                              
+Goodbye, World!
 
 ```
 
@@ -635,9 +635,9 @@ to outfile-id
 ## Fortran
 
 
-Normally standard error is associated with the unit 0 
-but this could be different for different vendors. 
-Therefore since Fortran 2003 there's an intrinsic module 
+Normally standard error is associated with the unit 0
+but this could be different for different vendors.
+Therefore since Fortran 2003 there's an intrinsic module
 which defines the parameter ERROR_UNIT.
 
 
@@ -648,7 +648,7 @@ program StdErr
 
   ! in case there's no module iso_fortran_env ...
   !integer, parameter :: ERROR_UNIT = 0
-  
+
   write (ERROR_UNIT, *) "Goodbye, World!"
 end program StdErr
 ```
@@ -1187,7 +1187,7 @@ Goodbye, World!
 {{Works with|GNUstep}}
 {{Works with|Cocoa}}
 
-In Objective-C one can use the standard C library and the stderr as in the C language; nonetheless a common way to output to stderr for logging purpose and/or error notification is the <tt>NSLog</tt> function, that works almost like <tt>fprintf(stderr, "...")</tt>, save for the fact that the format string 
+In Objective-C one can use the standard C library and the stderr as in the C language; nonetheless a common way to output to stderr for logging purpose and/or error notification is the <tt>NSLog</tt> function, that works almost like <tt>fprintf(stderr, "...")</tt>, save for the fact that the format string
 is an NSString object, and it also prepends a timestamp.
 
 
@@ -1264,14 +1264,14 @@ System.Err "Goodbye, World!" << cr
 
 ## ooRexx
 
-ooRexx provides a .error object that writes output to the standard error stream. 
+ooRexx provides a .error object that writes output to the standard error stream.
 
 ```ooRexx
 .error~lineout("Goodbye, World!")
 ```
 
-The .error object is a proxy that delegates to a backing stream, so this might be redirected.  
-By default, this delegates to the .stderr object, which can also be used directly. 
+The .error object is a proxy that delegates to a backing stream, so this might be redirected.
+By default, this delegates to the .stderr object, which can also be used directly.
 
 ```ooRexx
 .stderr~lineout("Goodbye, World!")
@@ -1288,7 +1288,7 @@ Say 'rexx serr 2>err.txt directs the stderr output to the file err.txt'
 Call lineout 'stderr','Good bye, world!'
 Call lineout ,'Hello, world!'
 Say 'and this is the error output:'
-'type err.txt'            
+'type err.txt'
 ```
 
 
@@ -1322,7 +1322,7 @@ error("Goodbye, World!")
 
 ```pascal
 program byeworld;
- 
+
 begin
   writeln(StdErr, 'Goodbye, World!');
 end.
@@ -1423,16 +1423,16 @@ STDERR "Goodbye, World!"
 
 ## PowerShell
 
-Since PowerShell has a slightly different system of pipes and streams 
-(to facilitate easy usage from a host application) the 
-standard Write-Error cmdlet is mainly for sending annotated error messages 
+Since PowerShell has a slightly different system of pipes and streams
+(to facilitate easy usage from a host application) the
+standard Write-Error cmdlet is mainly for sending annotated error messages
 to the host:
 
 ```powershell
 Write-Error "Goodbye, World!"
 ```
 
-Note that this outputs more than just the message, 
+Note that this outputs more than just the message,
 because behind the scenes it is an uncaught exception:
 
 ```txt
@@ -1452,9 +1452,9 @@ To accurately reproduce the behavior of other languages one has to resort to .NE
 ## PureBasic
 
 
-[http://www.purebasic.com/documentation/console/consoleerror.html ConsoleError()] writes the message string (plus a newline) to the standard error output of current program. 
+[http://www.purebasic.com/documentation/console/consoleerror.html ConsoleError()] writes the message string (plus a newline) to the standard error output of current program.
 
-Standard error output can be used in conjunction with [http://www.purebasic.com/documentation/process/readprogramerror.html ReadProgramError()] to reads a line from an other programs error output (stderr). 
+Standard error output can be used in conjunction with [http://www.purebasic.com/documentation/process/readprogramerror.html ReadProgramError()] to reads a line from an other programs error output (stderr).
 
 
 ```PureBasic
@@ -1543,8 +1543,8 @@ class HelloWorld
 
 ### version 1
 
-This version will work with those operating systems (hosts) 
-that support stream output and a STDERR output 
+This version will work with those operating systems (hosts)
+that support stream output and a STDERR output
 
 stream (by name).
 
@@ -1578,8 +1578,8 @@ this works on Windows 7 and ooRexx and REGINA
 * 07.07.2014 Walter Pachl
 * enter the appropriate command shown in a command prompt.
 *    "rexx serr.rex 2>err.txt"
-* or "regina serr.rex 2>err.txt" 
-* 2>file will redirect the stderr stream to the specified file. 
+* or "regina serr.rex 2>err.txt"
+* 2>file will redirect the stderr stream to the specified file.
 * I don't know any other way to catch this stream
 *--------------------------------------------------------------------*/
 Parse Version v
@@ -1626,8 +1626,8 @@ document.write('Goodbye, World!');
 </script>""
 ```
 
-Run Basic runs in a browser. 
-This opens a new browser window, 
+Run Basic runs in a browser.
+This opens a new browser window,
 or a tab in the case of Chrome and some others.
 
 
@@ -1647,7 +1647,7 @@ fn main() {
     use ::std::io::Write;
     let (stderr, errmsg) = (&mut ::std::io::stderr(), "Error writing to stderr");
     writeln!(stderr, "Bye, world!").expect(errmsg);
-    
+
     let (goodbye, world) = ("Goodbye", "world");
     writeln!(stderr, "{}, {}!", goodbye, world).expect(errmsg);
 }
@@ -1819,9 +1819,9 @@ Requires <tt>/dev/stderr</tt>
 ```
 
 
-This program requires at least 1 line of input. 
-It changes the first line to "Goodbye, World!" 
-and then prints the first line to standard error. 
+This program requires at least 1 line of input.
+It changes the first line to "Goodbye, World!"
+and then prints the first line to standard error.
 It reads and ignores the remaining lines.
 
 {{out|Test output}}
@@ -1944,7 +1944,7 @@ puts stderr "Goodbye, World!"
 
 
 =={{header|Transact-SQL}}==
-<lang Transact-SQL> RAISERROR 'Goodbye, World!', 16, 1 
+<lang Transact-SQL> RAISERROR 'Goodbye, World!', 16, 1
 ```
 
 
@@ -1990,8 +1990,8 @@ echo "Goodbye, World!" >/dev/stderr
 ```
 
 
-This requires <code>/dev/stderr</code>, a device node from [[BSD]] 
-and some other Unix clones. 
+This requires <code>/dev/stderr</code>, a device node from [[BSD]]
+and some other Unix clones.
 This command works with both Bourne Shell and C Shell.
 
 
@@ -2101,10 +2101,10 @@ _start: mov     edx, len
 
 ## XPL0
 
-The terms "standard output" and "standard error" are not used, 
-but it's trivial to send messages to a variety of devices 
-by specifying their numbers. 
-Normally messages are displayed on the text console, which is device 0. 
+The terms "standard output" and "standard error" are not used,
+but it's trivial to send messages to a variety of devices
+by specifying their numbers.
+Normally messages are displayed on the text console, which is device 0.
 Instead, this example sends the message to the (first) printer,
 which is device 2.
 

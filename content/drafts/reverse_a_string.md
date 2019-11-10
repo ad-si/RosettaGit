@@ -18,7 +18,7 @@ For example, "asdf" becomes "fdsa".
 
 
 ;Extra credit:
-Preserve Unicode combining characters. 
+Preserve Unicode combining characters.
 
 For example, "as⃝df̅" becomes "f̅ds⃝a", not "̅fd⃝sa".
 
@@ -60,8 +60,8 @@ rab
 
 ## 360 Assembly
 
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-and an ASSIST macro (XPRNT) to keep the code as short as possible. 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+and an ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Reverse a string          21/05/2016
@@ -78,7 +78,7 @@ REVERSE  CSECT
          LA     R9,TMP+L'C-1       @tmp[n-1]
          LA     R6,1               i=1
          LA     R7,L'C             n=length(c)
-LOOPI    CR     R6,R7              do i=1 to n 
+LOOPI    CR     R6,R7              do i=1 to n
          BH     ELOOPI             leave i
          MVC    0(1,R8),0(R9)        substr(c,i,1)=substr(tmp,n-i+1,1)
          LA     R8,1(R8)             @c=@c+1
@@ -156,7 +156,7 @@ function reverseStringCQAlternative(string:String):String
 
 ```ada
 with Ada.Text_IO; use Ada.Text_IO;
- 
+
 procedure Reverse_String is
    function Reverse_It (Item : String) return String is
       Result : String (Item'Range);
@@ -212,7 +212,7 @@ PROC reverse = (REF STRING s)VOID:
     s[i] := s[UPB s - i + 1];
     s[UPB s - i + 1] := c
   OD;
- 
+
 main:
 (
   STRING text := "Was it a cat I saw";
@@ -279,7 +279,7 @@ on reverse1(xs)
             a & x
         end |λ|
     end script
-    
+
     if class of xs is text then
         foldr(rev, {}, xs) as text
     else
@@ -306,7 +306,7 @@ on run
             map(f, ["Hello there !", {1, 2, 3, 4, 5}])
         end |λ|
     end script
-    
+
     map(test, [reverse1, reverse2])
 end run
 
@@ -337,7 +337,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -354,7 +354,7 @@ end mReturn
 {{Out}}
 
 ```AppleScript
-{{"! ereht olleH", {5, 4, 3, 2, 1}}, 
+{{"! ereht olleH", {5, 4, 3, 2, 1}},
  {"! ereht olleH", {5, 4, 3, 2, 1}}}
 ```
 
@@ -469,19 +469,19 @@ Reverse(String){ ; credit to Rseding91
    If (A_IsUnicode){
       SLen := StrLen(String) * 2
       VarSetCapacity(RString,SLen)
-      
+
       Loop,Parse,String
          NumPut(Asc(A_LoopField),RString,SLen-(A_Index * 2),"UShort")
    } Else {
       SLen := StrLen(String)
       VarSetCapacity(RString,SLen)
-      
+
       Loop,Parse,String
          NumPut(Asc(A_LoopField),RString,SLen-A_Index,"UChar")
    }
-   
+
    VarSetCapacity(RString,-1)
-   
+
    Return RString
 }
 ```
@@ -500,7 +500,7 @@ $string_length = StringLen($mystring)
 For $i = 1 to $string_length
    $last_n_chrs = StringRight($mystring, $i)
    $nth_chr = StringTrimRight($last_n_chrs, $i-1)
-   $reverse_string= $reverse_string & $nth_chr 
+   $reverse_string= $reverse_string & $nth_chr
 Next
 
 MsgBox(0, "Reversed string is:", $reverse_string)
@@ -551,8 +551,8 @@ function rev(s,   i,len,a,r) {
    for (i=1; i<=len; i++) r = a[i] r
    return r
 }
-BEGIN { 
-   if(!s) s = "Hello, world!" 
+BEGIN {
+   if(!s) s = "Hello, world!"
    print s, "<-->", rev(s)
 }
 
@@ -610,7 +610,7 @@ end function
 120 LET REV$=""
 130 FOR I=LEN(TX$) TO 1 STEP-1
 140   LET REV$=REV$&TX$(I)
-150 NEXT 
+150 NEXT
 160 PRINT REV$
 ```
 
@@ -649,7 +649,7 @@ if "%str%" equ "" (
 	)
 set chr=!str:~0,1!
 set str=%str:~1%
-set %2=%chr%!%2! 
+set %2=%chr%!%2!
 goto loop
 ```
 
@@ -661,7 +661,7 @@ goto loop
 ```bbcbasic
       PRINT FNreverse("The five boxing wizards jump quickly")
       END
-      
+
       DEF FNreverse(A$)
       LOCAL B$, C%
       FOR C% = LEN(A$) TO 1 STEP -1
@@ -711,7 +711,7 @@ Reads a line from stdin and write the reverse to stdout. Can be made to repeat i
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```bf
 [-]>,+[->,+]<[.<]
@@ -974,7 +974,7 @@ RETURN sOut
 ## Clojure
 
 
-###  Basic reverse 
+###  Basic reverse
 
 For normal strings, the reverse function can be used to do the bulk of the work. However, it returns a character sequence, which has to be converted back to a string.
 
@@ -983,7 +983,7 @@ For normal strings, the reverse function can be used to do the bulk of the work.
 ```
 
 
-###  Reverse words in a string 
+###  Reverse words in a string
 
 
 ```lisp
@@ -991,7 +991,7 @@ For normal strings, the reverse function can be used to do the bulk of the work.
 ```
 
 
-###  Supporting combining characters 
+###  Supporting combining characters
 
 Handling combining characters present a trickier task. We need to protect the relative ordering of the combining character and the character to its left. Thus, before reversing, the characters need to be grouped.
 
@@ -1296,7 +1296,7 @@ def reverse(string) {
 
 ```lisp
 
-(define (string-reverse string) 
+(define (string-reverse string)
     (list->string (reverse (string->list string))))
 
 (string-reverse "ghij")
@@ -1374,7 +1374,7 @@ end
 
 
 ```ela
-reverse_string str = rev len str 
+reverse_string str = rev len str
   where len = length str
         rev 0 str = ""
         rev n str = toString (str : nn) +> rev nn str
@@ -1408,15 +1408,15 @@ ELENA 4.x:
 import system'routines;
 import extensions;
 import extensions'text;
- 
+
 extension extension
 {
     reversedLiteral()
         = self.toArray().sequenceReverse().summarize(new StringWriter());
 }
- 
+
 public program()
-{    
+{
     console.printLine("Hello World".reversedLiteral())
 }
 ```
@@ -1456,9 +1456,9 @@ f̅ds⃝a
 
 
 ```elm
--- The import on the next line provides the reverse string 
+-- The import on the next line provides the reverse string
 -- functionality satisfying the rosettacode.org task description.
-import String exposing (reverse) 
+import String exposing (reverse)
 
 -- The rest is fairly boilerplate code demonstrating
 -- interactively that the reverse function works.
@@ -1477,13 +1477,13 @@ view forward =
     ([ input
         [ placeholder "Enter a string to be reversed."
         , value forward
-        , on "input" targetValue 
+        , on "input" targetValue
         , myStyle
         ]
         []
-     ] ++ 
-     [ let backward = reverse forward 
-       in div [ myStyle] [text backward] 
+     ] ++
+     [ let backward = reverse forward
+       in div [ myStyle] [text backward]
      ])
 
 myStyle : Attribute msg
@@ -1608,9 +1608,9 @@ printf(1, "%s\n", {reverse("abcdef") })
 நிரல்பாகம் மீண்டும்திருப்புக (சரம்1)
 
     ## இரண்டாம் வகை
-    
+
     சரநீளம் = len(சரம்1)
-    
+
     சரம்2 = ""
 
     @(எண் = 0, எண் < சரநீளம், எண் = எண் + 1) ஆக
@@ -1721,40 +1721,40 @@ DYNASM RevStr(BYVAL s AS STRING) AS STRING
 
    ENTER 0, 0 // = PUSH EBP: MOV EBP, ESP
    PUSH EBX // by Windows convention EBX, EDI, ESI must be saved before modification
-   
+
    MOV EAX, s // get string pointer
    MOV ECX, EAX // duplicate it
-   
+
    .WHILE BYTE PTR [ECX] <> 0
 
-	INC ECX // propagate to tail 
+	INC ECX // propagate to tail
 
    .WEND
-   
+
    MOV EDX, ECX // duplicate tail pointer
    DEC EDX // set it to last byte before trailing zero
-   
+
    SUB ECX, EAX // get length in ECX in 1 CPU cycle
    SHR ECX, 1 // get length \ 2 in 1 CPU cycle; that's the beauty of power-of-two division
 
    .WHILE ECX > 0
-      
+
       MOV BL, [EDX] // no need to XOR; just overwrite BL and BH contents
       MOV BH, [EAX] // DynAsm deduces data size from destination register sizes
-      
+
       MOV [EDX], BH // ditto, source register sizes
       MOV [EAX], BL
-      
+
       INC EAX // propagate pointers
       DEC EDX
-      
+
       DEC ECX // decrement counter
-      
+
    .WEND
-   
+
    // point to start of string again
    MOV EAX, s // MOV = 1 CPU cycle, PUSH + POP = 2 CPU cycles
-   
+
    POP EBX // by Windows convention ESI, EDI, EBX must be restored if modified
    LEAVE // = POP EBP
    RET
@@ -1853,7 +1853,7 @@ This solution does take into account combination characters (except for half-mar
 
 
 
-###  Method 1 
+###  Method 1
 
 
 ```forth
@@ -1870,7 +1870,7 @@ s" testing" 2dup reverse type   \ gnitset
 
 
 
-###  Method 2 Using the stack 
+###  Method 2 Using the stack
 
 
 ```forth
@@ -2015,7 +2015,7 @@ end program reverse_string
 ```txt
 
 abcdefgh
-hgfedcba 
+hgfedcba
 ```
 
 
@@ -2055,7 +2055,7 @@ Print "'"; s; "' reversed is '"; ReverseString(s); "'"
 
 The built-in <CODE>reverse</CODE> function reverses a string or the elements of a list.
 
-Frink's built-in <CODE>reverse[''string'']</CODE> is quite smart and uses a grapheme-based algorithm to handle Unicode correctly.  That is, it preserves "user-perceived characters" that may consist of characters, combining accents, high-plane Unicode characters (that is, above U+FFFF,) surrogate pairs, ''etc.'' correctly.   
+Frink's built-in <CODE>reverse[''string'']</CODE> is quite smart and uses a grapheme-based algorithm to handle Unicode correctly.  That is, it preserves "user-perceived characters" that may consist of characters, combining accents, high-plane Unicode characters (that is, above U+FFFF,) surrogate pairs, ''etc.'' correctly.
 
 Many languages will not work correctly with upper-plane Unicode characters because they are represented as Unicode "surrogate pairs" which are represented as two characters in a UTF-16 stream.
 
@@ -2128,9 +2128,9 @@ Dim siCount As Short
 For siCount = Len(sString) DownTo 1
   sOutput &= Mid(sString, siCount, 1)
 Next
- 
+
 Print sOutput
- 
+
 End
 ```
 
@@ -2198,8 +2198,8 @@ init
 
 ```txt
 
-prompt$ valac reverse.gs     
-prompt$ ./reverse        
+prompt$ valac reverse.gs
+prompt$ ./reverse
 asdf
 fdsa
 as?df?
@@ -2441,7 +2441,7 @@ DO i = 1, L/2
   string(L-i+1) = tmp
 ENDDO
 
-WRITE(Messagebox, Name) string 
+WRITE(Messagebox, Name) string
 ```
 
 
@@ -2700,12 +2700,12 @@ local(input) = 'asdf'
 
 
 ===Using Query Expression & Array===
-More verbose than the string->reverse method, but this example illustrates different techniques to achieve the same result: 
+More verbose than the string->reverse method, but this example illustrates different techniques to achieve the same result:
 using string->values to iterate over a string in order, inserting at position 1, and joining the resulting array as a string.
 
 ```Lasso
 local(input = 'asdf', output = array)
-with i in #input->values 
+with i in #input->values
 do #output->insertFirst(#i)
 #output->join
 ```
@@ -3010,13 +3010,13 @@ Module ReverseString {
             if i<len(a$) then {
                   while len.disp(k$+mid$(a$, i+1,1)) =len.disp(k$)  {
                         k$+=mid$(a$, i+1,1)
-                        i++ 
+                        i++
                         if i>len(a$) then exit
                         j--
                   }
                   j--
                   insert j, len(k$) Z$=K$
-            } else j-- :Insert j,1 z$=k$ 
+            } else j-- :Insert j,1 z$=k$
             if i>=len(a$) then exit
             i++
       } Always
@@ -3179,30 +3179,30 @@ This is heavily based off of the [http://rosettacode.org/wiki/Copy_a_string#MIPS
 #     decrement source pointer
 #     increment target pointer
 
-.data 
+.data
 	ex_msg_og: .asciiz "Original string:\n"
 	ex_msg_cpy: .asciiz "\nCopied string:\n"
 	string: .asciiz "Wow, what a string!"
 
-.text 
+.text
 	main:
 		la $v1,string #load addr of string into $v0
 		la $t1,($v1)  #copy addr into $t0 for later access
 		lb $a1,($v1)  #load byte from string addr
-	strlen_loop:	
+	strlen_loop:
 		beqz $a1,alloc_mem
 		addi $a0,$a0,1 #increment strlen_counter
 		addi $v1,$v1,1 #increment ptr
-		lb $a1,($v1)   #load the byte 
+		lb $a1,($v1)   #load the byte
 		j strlen_loop
-		
+
 	alloc_mem:
 		li $v0,9 #alloc memory, $a0 is arg for how many bytes to allocate
 		         #result is stored in $v0
 		syscall
 		la $t0,($v0) #$v0 is static, $t0 is the moving ptr
 		la $v1,($t1) #get a copy we can increment
-		
+
 		add $t1,$t1,$a0 #add strlen to our original, static addr to equal last char
 		subi $t1,$t1,1  #previous operation is on NULL byte, i.e. off-by-one error.
 		                #this corrects.
@@ -3210,30 +3210,30 @@ This is heavily based off of the [http://rosettacode.org/wiki/Copy_a_string#MIPS
 		lb $a1,($t1) #copy first byte from source
 
 	strcopy_loop:
-		beq $a0,0,exit_procedure 
+		beq $a0,0,exit_procedure
 		sb $a1,($t0)            #store the byte at the target pointer
 		addi $t0,$t0,1          #increment target ptr
 		subi $t1,$t1,1
 		subi $a0,$a0,1
 		lb $a1,($t1)            #load next byte from source ptr
 		j strcopy_loop
-		
+
 	exit_procedure:
 		la $a1,($v0) #store our string at $v0 so it doesn't get overwritten
 		li $v0,4 #set syscall to PRINT
-		
+
 		la $a0,ex_msg_og  #PRINT("original string:")
 		syscall
-		
+
 		la $a0,($v1)      #PRINT(original string)
 		syscall
-		
+
 		la $a0,ex_msg_cpy #PRINT("copied string:")
 		syscall
-		
+
 		la $a0,($a1)      #PRINT(strcopy)
 		syscall
-		
+
 		li $v0,10         #EXIT(0)
 		syscall
 
@@ -3245,7 +3245,7 @@ This is heavily based off of the [http://rosettacode.org/wiki/Copy_a_string#MIPS
 
 
 ```mirah
-def reverse(s:string) 
+def reverse(s:string)
     StringBuilder.new(s).reverse
 end
 
@@ -3441,7 +3441,7 @@ module StrReverse
             output ::= elements.GetTextElement().ToString();
         Concat("", output.Reverse());
     }
-    
+
     Main() : void
     {
         def test = "as⃝df̅";
@@ -3573,7 +3573,7 @@ UniReversedPreserving: f̅ds⃝a
 ```
 
 
-Since Nim 0.11.0, the ''unicode'' module provides a ''reversed'' proc... 
+Since Nim 0.11.0, the ''unicode'' module provides a ''reversed'' proc...
 Hence:
 
 
@@ -3604,13 +3604,13 @@ Tested with [https://miasap.se/obnc OBNC].
 MODULE reverse;
 
    IMPORT Out, Strings;
-   
-   VAR s: ARRAY 12 + 1 OF CHAR;   
-   
+
+   VAR s: ARRAY 12 + 1 OF CHAR;
+
    PROCEDURE Swap(VAR c, d: CHAR);
       VAR oldC: CHAR;
    BEGIN
-      oldC := c; c := d; d := oldC         
+      oldC := c; c := d; d := oldC
    END Swap;
 
 
@@ -3622,7 +3622,7 @@ MODULE reverse;
          Swap(s[i], s[len - 1 - i])
       END
    END Reverse;
-   
+
 BEGIN
    s := "hello, world";
    Reverse(s);
@@ -3659,9 +3659,9 @@ This extends the <code>NSString</code> object adding a <code>reverseString</code
     NSUInteger len = [self length];
     NSMutableString *rtr=[NSMutableString stringWithCapacity:len];
     //        unichar buf[1];
-    
-    while (len > (NSUInteger)0) { 
-        unichar uch = [self characterAtIndex:--len]; 
+
+    while (len > (NSUInteger)0) {
+        unichar uch = [self characterAtIndex:--len];
         [rtr appendString:[NSString stringWithCharacters:&uch length:1]];
     }
     return rtr;
@@ -3675,11 +3675,11 @@ Usage example:
 int main()
 {
     @autoreleasepool {
-        
+
         NSString *test = [@"!A string to be reverted!" reverseString];
-    
+
         NSLog(@"%@", test);
-    
+
     }
     return 0;
 }
@@ -3719,11 +3719,11 @@ Usage example:
 int main()
 {
     @autoreleasepool {
-        
+
         NSString *test = [@"as⃝df̅" reverseString];
-    
+
         NSLog(@"%@", test);
-    
+
     }
     return 0;
 }
@@ -3979,7 +3979,7 @@ reverse(s)=concat(Vecrev(s))
 sreverse(str)={return(Strchr(Vecrev(Vecsmall(str))))}
 
 {
-\\ TEST1 
+\\ TEST1
 print(" *** Testing sreverse from Version #2:");
 print(sreverse("ABCDEF"));
 my(s,sr,n=10000000);
@@ -3988,7 +3988,7 @@ for(i=1,n, sr=sreverse(s));
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -4009,7 +4009,7 @@ FEDCBA
 reverse(str)={return(concat(Vecrev(str)))}
 
 {
-\\ TEST2 
+\\ TEST2
 print(" *** Testing reverse from Version #1:");
 print(reverse("ABCDEF"));
 my(s,sr,n=10000000);
@@ -4018,7 +4018,7 @@ for(i=1,n, sr=reverse(s));
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -4037,7 +4037,7 @@ FEDCBA
 
 The following examples handle correctly only single-byte encodings.
 
-###  Standard Pascal 
+###  Standard Pascal
 
 The following only works on implementations which implement Level 1 of standard Pascal (many popular compilers don't).
 
@@ -4117,29 +4117,29 @@ Padded out, variable length Chinese dialect
 <# 显示 指定 变量 反转顺序 字串>集装箱|猫坐在垫子</#>
 ```
 
-This assigns the reverse of 'the cat sat on the mat' to the variable 'container' and displays the result which is 
+This assigns the reverse of 'the cat sat on the mat' to the variable 'container' and displays the result which is
 ```txt
 子垫在坐猫
 ```
- which Google Translate renders as 
+ which Google Translate renders as
 ```txt
 Sub-pad sitting cat
 ```
 .
 
-The same again but with everything in Korean. 
+The same again but with everything in Korean.
 
 ```sgml
 <# 보이십 할당하 변물건 열거꾸 문자그>컨테이너|고양이가 매트 위에 앉아</#>
 ```
 
-Reversing the Korean makes an untranslatable-by-Google mess of the sentence, viz 
+Reversing the Korean makes an untranslatable-by-Google mess of the sentence, viz
 ```txt
 아앉 에위 트매 가이양고
 ```
 .
 
-The short-opcode version in English dialect is 
+The short-opcode version in English dialect is
 
 ```sgml><@ SAYLETVARREVLIT
 集装箱|猫坐在垫子</@>
@@ -4178,7 +4178,7 @@ rosiv
 ## Perl 6
 
 {{Works with|rakudo|2018.08}}
-Perl 6 handles graphemes, multi-byte characters and emoji correctly by default. 
+Perl 6 handles graphemes, multi-byte characters and emoji correctly by default.
 
 ```perl6
 say "hello world".flip;
@@ -4435,11 +4435,11 @@ reverse("abcd", L), string_to_list(S,L).
 ```txt
 
 L = [100,99,98,97],
-S = "dcba". 
+S = "dcba".
 ```
 
 
-The main workings are hidden inside the reverse/2 predicate, 
+The main workings are hidden inside the reverse/2 predicate,
 so lets write one to see how it works:
 
 ```prolog
@@ -4491,7 +4491,7 @@ or
 
 (See [http://paddy3118.blogspot.com/2009/07/case-of-disappearing-over-bar.html this article] for more information from which this is improved)
 
-'''Note:''' How this looks may be subject to how the tool you are using to view this page can render Unicode. 
+'''Note:''' How this looks may be subject to how the tool you are using to view this page can render Unicode.
 
 ```python
 import unicodedata
@@ -4507,7 +4507,7 @@ def ureverse(ustring):
             groupedchars.append(uchar.pop(0))
     # Grouped reversal
     groupedchars = groupedchars[::-1]
- 
+
     return ''.join(groupedchars)
 
 def say_string(s):
@@ -4518,9 +4518,9 @@ def say_rev(s):
     print(f"Character reversed: {say_string(s[::-1])}")
     print(f"Unicode reversed:   {say_string(ureverse(s))}")
     print(f"Unicode reverse²:   {say_string(ureverse(ureverse(s)))}")
-        
+
 if __name__ == '__main__':
-    ucode = ''.join(chr(int(n[2:], 16)) for n in 
+    ucode = ''.join(chr(int(n[2:], 16)) for n in
                      'U+0041 U+030A U+0073 U+0074 U+0072 U+006F U+0308 U+006D'.split())
     say_rev(ucode)
 ```
@@ -4540,7 +4540,7 @@ Unicode reverse²:   Åström = LATIN CAPITAL LETTER A | COMBINING RING ABOVE | 
 If this code is then used:
 
 ```python
-ucode = ''.join(chr(int(n[2:], 16)) for n in 
+ucode = ''.join(chr(int(n[2:], 16)) for n in
                  'U+006B U+0301 U+0075 U+032D U+006F U+0304 U+0301 U+006E'.split())
 say_rev(ucode)
 ```
@@ -4664,7 +4664,7 @@ As in Scheme:
 Welcome to DrRacket, version 5.3.3.5--2013-02-20(5eddac74/d) [3m].
 Language: racket; memory limit: 512 MB.
 "ueoa"
-> 
+>
 ```
 
 
@@ -4930,7 +4930,7 @@ array_reverse(aa);
 % Unfortunately, strjoin() only joins strings, so we map char()
 % [sadly named: actually converts char into single-length string]
 % onto the array:
-  
+
 print( strjoin(array_map(String_Type, &char, aa), "") );
 ```
 
@@ -4988,7 +4988,7 @@ run;
 class MAIN is
   main is
     s ::= "asdf";
-    reversed ::= s.reverse; 
+    reversed ::= s.reverse;
     -- current implementation does not handle multibyte encodings correctly
   end;
 end;
@@ -5042,7 +5042,7 @@ Unicode-aware, method 2: I can't guarantee it get all the cases, but it does wor
 ```scala
 def reverseString(s: String) = {
   import java.lang.Character._
-  
+
   val combiningTypes = List(NON_SPACING_MARK, ENCLOSING_MARK, COMBINING_SPACING_MARK)
   def isCombiningCharacter(c: Char) = combiningTypes contains c.getType
   def isCombiningSurrogate(high: Char, low: Char) = combiningTypes contains getType(toCodePoint(high, low))
@@ -5052,14 +5052,14 @@ def reverseString(s: String) = {
     case Nil => true
     case _ => throw new IllegalArgumentException("isCombining expects a list of up to two characters")
   }
-  
+
   def cleanSurrogate(l: List[Char]) = l match {
     case List(a, b) if a.isHighSurrogate && b.isLowSurrogate => l
     case List(a, b) if a.isLowSurrogate => Nil
     case List(a, b) => List(a)
     case _ => throw new IllegalArgumentException("cleanSurrogate expects lists of two characters, exactly")
   }
-  
+
   def splitString(string: String) = (string+" ").iterator sliding 2 map (_.toList) map cleanSurrogate toList
 
   def recurse(fwd: List[List[Char]], rev: List[Char]): String = fwd match {
@@ -5182,7 +5182,7 @@ main(args(2)) := Sequence::reverse(args[1]);
 The following is the library implementation of the reverse function.
 
 ```sequencel>reverse<T
- : T(1) -> T(1);	
+ : T(1) -> T(1);
 reverse(list(1))[i] :=
 	let
 		range := - ((1 ... size(list)) - (size(list) + 1));
@@ -5377,12 +5377,12 @@ f̅ds⃝a
 templates reverse
   '$:[ $... ] -> $(-1..1:-1)...;' !
 end reverse
- 
+
 'asdf' -> reverse -> !OUT::write
- 
+
 '
 ' -> !OUT::write
- 
+
 'as⃝df̅' -> reverse -> !OUT::write
 
 ```
@@ -5462,7 +5462,7 @@ PRINT "after:  ",reversetext
 ```txt
 
 before: was it really a big fat cat i saw
-after:  was i tac taf gib a yllaer ti saw   
+after:  was i tac taf gib a yllaer ti saw
 
 ```
 

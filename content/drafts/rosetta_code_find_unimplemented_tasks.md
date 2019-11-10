@@ -167,7 +167,7 @@ The GUI overkill version with comments.
 #SingleInstance force ; allow only one instance
 SetBatchLines, -1 ; set to highest script speed
 SetControlDelay, 0 ; set delay between control commands to lowest
- 
+
 ; additional label, for clarity only
 AutoExec:
   Gui, Add, DDL, x10 y10 w270 r20 vlngStr ; add drop-down list
@@ -224,7 +224,7 @@ OnLV:
     Run % "http://rosettacode.org/wiki/" . rowTxt ; run the resulting link in the default browser
   }
 Return
- 
+
 ; generic function to gather list
 getList(category)
 {
@@ -245,14 +245,14 @@ getList(category)
   }
   If (category = "tsk") ; if the category received is tsk
     category = Programming_Tasks ; set the category
- 
+
   getFile: ; function-internal subroutine for getting a file and parsing it
     ; construct the url
     url := "http://www.rosettacode.org/w/api.php?action=query&list="
           . "categorymembers&cmtitle=Category:" . category
           . "&cmlimit=500&format=xml" . doContinue
     UrlDownloadToFile, %url%, %fileName% ; download the url
- 
+
   getFileNoDL: ; function-internal subroutine for parsing a file
     FileRead, data, %fileName% ; read file into variable
     pos = 1 ; set while-loop counter
@@ -275,72 +275,72 @@ getList(category)
     StringTrimRight, allTitles, allTitles, 1 ; remove last delimiter from result
   Return allTitles ; return result
 }
- 
+
 ; function to convert html entities to ansi equivalents
-Dec_XML(str) 
+Dec_XML(str)
 {
-   Loop 
+   Loop
       If RegexMatch(str, "S)(&#(\d+);)", dec)
-         StringReplace, str, str, %dec1%, % Chr(dec2), All 
+         StringReplace, str, str, %dec1%, % Chr(dec2), All
       Else If   RegexMatch(str, "Si)(&#x([\da-f]+);)", hex)
-         StringReplace, str, str, %hex1%, % Chr("0x" . hex2), All 
-      Else 
-         Break 
-   StringReplace, str, str,  , %A_Space%, All 
+         StringReplace, str, str, %hex1%, % Chr("0x" . hex2), All
+      Else
+         Break
+   StringReplace, str, str,  , %A_Space%, All
    StringReplace, str, str, &quot;, ", All
-   StringReplace, str, str, &apos;, ', All 
-   StringReplace, str, str, &lt;,   <, All 
-   StringReplace, str, str, &gt;,   >, All 
+   StringReplace, str, str, &apos;, ', All
+   StringReplace, str, str, &lt;,   <, All
+   StringReplace, str, str, &gt;,   >, All
    StringReplace, str, str, &amp;,  &, All
-   return, str 
-} 
+   return, str
+}
 
 ; function to uri-encode input string
-Enc_Uri(str) 
-{ 
-   f = %A_FormatInteger% 
-   SetFormat, Integer, Hex 
-   If RegExMatch(str, "^\w+:/{0,2}", pr) 
-      StringTrimLeft, str, str, StrLen(pr) 
-   StringReplace, str, str, `%, `%25, All 
-   Loop 
-      If RegExMatch(str, "i)[^\w\.~%/:]", char) 
-         StringReplace, str, str, %char%, % "%" . SubStr(Asc(char),3), All 
-      Else Break 
-   SetFormat, Integer, %f% 
-   Return, pr . str 
+Enc_Uri(str)
+{
+   f = %A_FormatInteger%
+   SetFormat, Integer, Hex
+   If RegExMatch(str, "^\w+:/{0,2}", pr)
+      StringTrimLeft, str, str, StrLen(pr)
+   StringReplace, str, str, `%, `%25, All
+   Loop
+      If RegExMatch(str, "i)[^\w\.~%/:]", char)
+         StringReplace, str, str, %char%, % "%" . SubStr(Asc(char),3), All
+      Else Break
+   SetFormat, Integer, %f%
+   Return, pr . str
 }
 
 ; function to convert unicode to ansi text
-UTF82Ansi(zString) 
-{ 
-  Ansi2Unicode(zString, wString, 65001) 
-  Unicode2Ansi(wString, sString, 0) 
-  Return sString 
-} 
+UTF82Ansi(zString)
+{
+  Ansi2Unicode(zString, wString, 65001)
+  Unicode2Ansi(wString, sString, 0)
+  Return sString
+}
 
 ; helper function for unicode to ansi function
-Ansi2Unicode(ByRef sString, ByRef wString, CP = 0) 
-{ 
-  nSize := DllCall("MultiByteToWideChar", "Uint", CP 
-    , "Uint", 0, "Uint", &sString, "int", -1 
+Ansi2Unicode(ByRef sString, ByRef wString, CP = 0)
+{
+  nSize := DllCall("MultiByteToWideChar", "Uint", CP
+    , "Uint", 0, "Uint", &sString, "int", -1
     , "Uint", 0, "int", 0)
   VarSetCapacity(wString, nSize * 2)
-  DllCall("MultiByteToWideChar" 
-    , "Uint", CP, "Uint", 0, "Uint", &sString, "int", -1 
-    , "Uint", &wString, "int", nSize) 
-} 
+  DllCall("MultiByteToWideChar"
+    , "Uint", CP, "Uint", 0, "Uint", &sString, "int", -1
+    , "Uint", &wString, "int", nSize)
+}
 
 ; helper function for unicode to ansi function
-Unicode2Ansi(ByRef wString, ByRef sString, CP = 0) 
-{ 
-  nSize := DllCall("WideCharToMultiByte" 
-    , "Uint", CP, "Uint", 0, "Uint", &wString, "int", -1 
-    , "Uint", 0, "int", 0, "Uint", 0, "Uint", 0) 
-  VarSetCapacity(sString, nSize) 
-  DllCall("WideCharToMultiByte" 
-    , "Uint", CP, "Uint", 0, "Uint", &wString, "int", -1 
-    , "str", sString, "int", nSize, "Uint", 0, "Uint", 0) 
+Unicode2Ansi(ByRef wString, ByRef sString, CP = 0)
+{
+  nSize := DllCall("WideCharToMultiByte"
+    , "Uint", CP, "Uint", 0, "Uint", &wString, "int", -1
+    , "Uint", 0, "int", 0, "Uint", 0, "Uint", 0)
+  VarSetCapacity(sString, nSize)
+  DllCall("WideCharToMultiByte"
+    , "Uint", CP, "Uint", 0, "Uint", &wString, "int", -1
+    , "str", sString, "int", nSize, "Uint", 0, "Uint", 0)
 }
 
 ; subroutine called when user closes the gui
@@ -392,7 +392,7 @@ class Program {
             results.AddRange(new Regex("\"title\":\"(.+?)\"").Matches(content).Cast<Match>().Select(x => x.Groups[1].Value));
 
             //detect if more results are available
-            cmcontinue = Regex.Match(content, @"{""cmcontinue"":""([^""]+)""}", RegexOptions.IgnoreCase).Groups["1"].Value;                
+            cmcontinue = Regex.Match(content, @"{""cmcontinue"":""([^""]+)""}", RegexOptions.IgnoreCase).Groups["1"].Value;
         } while (cmcontinue.Length > 0);
 
         return results;
@@ -487,7 +487,7 @@ Using JSON.
 ```e
 #!/usr/bin/env rune
 
-# NOTE: This program will not work in released E, because TermL is an 
+# NOTE: This program will not work in released E, because TermL is an
 # imperfect superset of JSON in that version: it does not accept "\/".
 # If you build E from the latest source in SVN then it will work.
 #
@@ -523,23 +523,23 @@ def jsonTermToData(term) {
         match term`[@elements*]` {
             return accum [] for elem in elements { _.with(jsonTermToData(elem)) }
         }
-        
+
         # Literals just need to be coerced
         match lit :any[String, int, float64] {
             return lit
         }
-        
+
         # Doesn't support true/false/null, but we don't need that for this application.
     }
 }
 
 def fetchCategoryAccum(name, membersSoFar :Set, extraArgs) {
     stderr.println(`Fetching Category:$name $extraArgs...`)
-    
+
     def categoryAPIResource := <http>[`//rosettacode.org/w/api.php?` +
         `action=query&list=categorymembers&cmtitle=Category:${urlEncode(name)}&` +
         `format=json&cmlimit=500&cmprop=title$extraArgs`]
-    
+
     def members :=
       when (def responseJSON := categoryAPIResource <- getTwine()) -> {
         # stderr.println(`Fetched Category:$name $extraArgs, parsing...`)
@@ -551,9 +551,9 @@ def fetchCategoryAccum(name, membersSoFar :Set, extraArgs) {
           "query-continue" => continueData := null
         ] := response
         def members := accum membersSoFar for record in records { _.with(record["title"]) }
-        
+
         switch (continueData) {
-          match ==null { 
+          match ==null {
             stderr.println(`Got all ${members.size()} for Category:$name.`)
             members
           }
@@ -563,7 +563,7 @@ def fetchCategoryAccum(name, membersSoFar :Set, extraArgs) {
           }
         }
     } catch p { throw(p) }
-    
+
     return members
 }
 
@@ -582,7 +582,7 @@ when (def allTasks := fetchCategory("Programming_Tasks"),
       def doneTasks := fetchCategory(lang),
       def omitTasks := fetchCategory(lang + "/Omit")
      ) -> {
-    
+
     # Compute difference and report
     def notDoneTasks := allTasks &! (doneTasks | omitTasks)
     println()
@@ -603,7 +603,7 @@ init_http/0 is used by many tasks. rosetta_code_list_of/1 is used by [[Rosetta_C
 
 -module( find_unimplemented_tasks ).
 -include_lib( "xmerl/include/xmerl.hrl" ).
- 
+
 -export( [init_http/0, per_language/1, rosetta_code_list_of/1] ).
 
 init_http() ->
@@ -768,7 +768,7 @@ import Data.Maybe
 import Text.XML.Light
 import Control.Arrow
 import Data.Char
-  
+
 getRespons url = do
   rsp <- Network.Browser.browse $ do
     setAllowRedirects True
@@ -776,7 +776,7 @@ getRespons url = do
     request $ getRequest url
   return $ rspBody $ snd rsp
 
-replaceWithSpace c = (\x -> if c==x then ' ' else x)  
+replaceWithSpace c = (\x -> if c==x then ' ' else x)
 
 encl = chr 34
 
@@ -823,10 +823,10 @@ $define RCUA    "User-Agent: Unicon Rosetta 0.1"
 $define RCXUA   "X-Unicon: http://unicon.org/"
 $define TASKTOT "* Total Tasks *"
 $define TOTTOT  "* Total Headers*"
- 
-link strings     
-link hexcvt     
- 
+
+link strings
+link hexcvt
+
 procedure main(A)   # simple single threaded read all at once implementation
     lang := \A[1] | "Unicon"
     write("Unimplemented tasks for ",lang," as of ",&date)
@@ -865,26 +865,26 @@ procedure languages(task)
                    }
                }
 end
- 
+
 procedure CleanURI(u)                  #: clean up a URI
     static tr,dxml                     # xml & http translation
     initial {
        tr := table()
-       every c := !string(~(&digits++&letters++'-_.!~*()/\'`')) do 
+       every c := !string(~(&digits++&letters++'-_.!~*()/\'`')) do
           tr[c] := "%"||hexstring(ord(c),2)
        every /tr[c := !string(&cset)] := c
        tr[" "] := "_"                                      # wiki convention
        every push(dxml := [],"&#"||right(ord(c := !"&<>'\""),3,"0")||";",c)
        }
- 
+
     dxml[1] := u                       # insert URI as 1st arg
     u := replacem!dxml                 # de-xml it
     every (c := "") ||:= tr[!u]        # reencode everything
     c := replace(c,"%3E","'")          # Hack to put single quotes back in
     c := replace(c,"%26quot%3B","\"")  # Hack to put double quotes back in
-    return c   
+    return c
 end
- 
+
 procedure ReadURL(url)                 #: read URL into string
     page := open(url,"m",RCUA,RCXUA) | stop("Unable to open ",url)
     text := ""
@@ -1242,7 +1242,7 @@ local function get_task_list(category)
     local resp = assert(requests.get({ url, params = query }).json())
 
     categories = merge_tables(categories, resp.query.categorymembers)
-    
+
     if resp.continue then
       query.cmcontinue = resp.continue.cmcontinue
     else
@@ -1252,19 +1252,19 @@ local function get_task_list(category)
 
   return categories
 end
-    
+
 local function get_open_tasks(lang)
   if not lang then error('Language missing!') end
   local all_tasks = get_task_list('Programming_Tasks')
   local lang_tasks = get_task_list(lang)
   local task_list = {}
-  
+
   for t, _ in pairs(all_tasks) do
     if not lang_tasks[t] then
       table.insert(task_list, t)
     end
   end
-  
+
   table.sort(task_list)
   return task_list
 end
@@ -1336,7 +1336,7 @@ Two implementations are considered, the first will use the API to get all the pr
 
 ```Mathematica
 ClearAll[ImportAll]
-ImportAll[lang_String] := 
+ImportAll[lang_String] :=
  Module[{data, continue, cmcontinue, extra, xml, next},
   data = {};
   continue = True;
@@ -1408,22 +1408,22 @@ proc findrc(category: string): seq[string] =
     name = "http://www.rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:$#&cmlimit=500&format=xml" % encodeUrl(category)
     cmcontinue = @[""]
     titles = newSeq[string]()
-  
+
   while true:
     var x = getContent(name&cmcontinue[0]).loadXML()
     for i in x.getElementsByTagName("cm"):
       titles.add PElement(i).getAttribute("title")
-      
+
     cmcontinue = @[]
     for i in x.getElementsByTagName("categorymembers"):
       let u = PElement(i).getAttribute("cmcontinue")
       if u != nil: cmcontinue.add encodeUrl(u)
- 
+
     if cmcontinue.len > 0:
       cmcontinue[0] = "&cmcontinue=" & cmcontinue[0]
     else:
       break
- 
+
   return titles
 
 proc chooselang(): string =
@@ -1432,7 +1432,7 @@ proc chooselang(): string =
   else:
     return paramStr(1)
 
-  
+
 let alltasks = findrc("Programming_Tasks")
 let lang = chooselang().findrc()
 
@@ -1476,7 +1476,7 @@ declare
   in
      {ListDiff AllTasks LangTasks}
   end
-  
+
   fun {FindCategory Cat}
      CatUrl = "http://www.rosettacode.org/mw/api.php?action=query"
      #"&list=categorymembers"
@@ -1502,7 +1502,7 @@ declare
      {Loop nil}
   end
 
-  
+
   %% XPath emulation
   fun {XPath Doc Path}
      P|Pr = Path
@@ -1513,7 +1513,7 @@ declare
 
   Nothing = {NewName}
   fun {NotNothing X} X \= Nothing end
-  
+
   fun {XPathStep Elements P}
      if {Atom.is P} then
         {FilteredChildren Elements P}
@@ -1521,7 +1521,7 @@ declare
         {Filter {Map Elements P} NotNothing}
      end
   end
- 
+
   %% A flat list of all Type-children of all Elements.
   fun {FilteredChildren Elements Type}
      {Flatten
@@ -1535,7 +1535,7 @@ declare
            end}
        end}}
   end
- 
+
   fun {Attribute Attr}
      fun {$ Element}
         case {Filter Element.attributes fun {$ A} A.name == Attr end}
@@ -1545,7 +1545,7 @@ declare
      end
   end
 
-  
+
   %% GetPage
   Client = {New HTTPClient.urlGET init(inPrms(toFile:false toStrm:true) _)}
   fun {GetPage RawUrl}
@@ -1555,7 +1555,7 @@ declare
      {Client getService(Url ?OutParams ?_)}
      OutParams.sOut
   end
- 
+
   fun {PercentEncode Xs}
      case Xs of nil then nil
      [] X|Xr then
@@ -1568,21 +1568,21 @@ declare
         end
      end
   end
-  
+
   fun {ToHex2 X}
      [{ToHex1 X div 16} {ToHex1 X mod 16}]
   end
-  
+
   fun {ToHex1 X}
      if X >= 0 andthen X =< 9 then &0 + X
      elseif X >= 10 andthen X =< 15 then &A + X - 10
      end
   end
 
-  
+
   %% Parse
   local
-     Parser = {New XMLParser.parser init} 
+     Parser = {New XMLParser.parser init}
   in
      fun {Parse Xs} {Parser parseVS(Xs $)} end
   end
@@ -1686,7 +1686,7 @@ sub uri-query-string (*%fields) { %fields.map({ "{.key}={uri-escape .value}" }).
 
 ## Phix
 
-Note that [[Rosetta_Code/Tasks_without_examples#Phix]] with summary=true and output_html=false 
+Note that [[Rosetta_Code/Tasks_without_examples#Phix]] with summary=true and output_html=false
 does much that same via web scraping, whereas this uses the web api.
 {{trans|Go}}
 
@@ -1749,13 +1749,13 @@ procedure main()
     while continue_at!="" do
         continue_at = req(lang_query&"&cmcontinue="&continue_at, r_store_lang)
     end while
- 
+
     -- a quick check to avoid long output
     if length(languages)==0 then
         printf(1,"no tasks implemented for %s\n", {language})
         return
     end if
- 
+
     -- get tasks, print as we go along
     string task_query := base_query & "&cmtitle=Category:Programming_Tasks"
     continue_at = req(task_query, r_print)
@@ -1858,19 +1858,19 @@ Write-Host "`nTotal unimplemented Tasks: $($tasks.Count)"
 ```txt
 
 15 Puzzle Game
-2048 
+2048
 24 game/Solve
 4-rings or 4-squares puzzle
 9 billion names of God the integer
-AKS test for primes 
+AKS test for primes
 .
 .
 .
 Xiaolin Wu's line algorithm
-Yahoo! search interface 
+Yahoo! search interface
 Yin and yang
-Zebra puzzle 
-Zeckendorf arithmetic 
+Zebra puzzle
+Zeckendorf arithmetic
 Zhang-Suen thinning algorithm
 
 Total unimplemented Tasks: 388
@@ -1989,7 +1989,7 @@ if __name__ == '__main__':
 ```python
 import xml.dom.minidom
 import urllib, sys
- 
+
 def findrc(category):
     name = "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:%s&cmlimit=500&format=xml" % urllib.quote(category)
     cmcontinue, titles = '', []
@@ -2007,10 +2007,10 @@ def findrc(category):
         else:
             break
     return titles
- 
+
 alltasks = findrc("Programming_Tasks")
 lang = findrc(sys.argv[1])
- 
+
 for i in [i for i in alltasks if i not in lang]:
     print i
 ```
@@ -2027,7 +2027,7 @@ find.unimplemented.tasks <- function(lang="R"){
 	PT <- xmlInternalTreeParse( paste("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml",sep="") )
 	PT.nodes <- getNodeSet(PT,"//cm")
 	PT.titles = as.character( sapply(PT.nodes, xmlGetAttr, "title") )
-	language <- xmlInternalTreeParse( paste("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:", 
+	language <- xmlInternalTreeParse( paste("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:",
 	lang, "&cmlimit=500&format=xml",sep="") )
 	lang.nodes <- getNodeSet(language,"//cm")
 	lang.titles = as.character( sapply(lang.nodes, xmlGetAttr, "title") )
@@ -2085,9 +2085,9 @@ sapply(langs, find.unimplemented.tasks) # fetching data for multiple languages
 ```ring
 
 # Project: Rosetta Code/Find unimplemented tasks
- 
+
 load "stdlib.ring"
-ros= download("http://rosettacode.org/wiki/Category:Programming_Tasks") 
+ros= download("http://rosettacode.org/wiki/Category:Programming_Tasks")
 lang = "Ring"
 pos = 1
 num = 0
@@ -2100,14 +2100,14 @@ for n = 1 to len(ros)
         if nr = 0
            exit
         else
-           pos = nr + 1    
+           pos = nr + 1
         ok
-        nr = searchname(nr)  
-        nr = searchtitle(nr) 
+        nr = searchname(nr)
+        nr = searchtitle(nr)
 next
 see nl
 see "Total: " + totalros + " examples." + nl
- 
+
 func searchstring(str,substr,n)
        newstr=right(str,len(str)-n+1)
        nr = substr(newstr, substr)
@@ -2116,13 +2116,13 @@ func searchstring(str,substr,n)
        else
           return n + nr -1
        ok
- 
+
 func searchname(sn)
        nr2 = searchstring(ros,'">',sn)
        nr3 = searchstring(ros,"</a></li>",sn)
        rosname = substr(ros,nr2+2,nr3-nr2-2)
        return sn
- 
+
 func searchtitle(sn)
         st = searchstring(ros,"title=",sn)
         rostitle = substr(ros,sn+19,st-sn-21)
@@ -2135,7 +2135,7 @@ func searchtitle(sn)
            see "" + num + ". " + rosname + nl
         ok
         return sn
- 
+
 func count(cstring,dstring)
        sum = 0
        while substr(cstring,dstring) > 0
@@ -2173,7 +2173,7 @@ Tasks not implemented in Ring language:
 351. Zeckendorf arithmetic
 352. Zhang-Suen thinning algorithm
 
-Total: 352 examples.  
+Total: 352 examples.
 
 ```
 
@@ -2213,9 +2213,9 @@ module RosettaCode
       "rvprop" => "timestamp"
     })
     doc = REXML::Document.new open(url)
-    REXML::XPath.each(doc, "//rev").collect do |node| 
+    REXML::XPath.each(doc, "//rev").collect do |node|
       Time.parse( node.attribute("timestamp").value )
-    end.min 
+    end.min
   end
 
 end
@@ -2227,7 +2227,7 @@ unimplemented.collect {|title| [title, RosettaCode.created_time(title)]} .
               sort_by {|e| e[1]} .
               each do |title, date|
                 puts "%s %6s %s" % [
-                  date.strftime("%Y-%m-%d"), 
+                  date.strftime("%Y-%m-%d"),
                   omitted.include?(title) ? "[omit]" : "" ,
                   title
                 ]
@@ -2330,7 +2330,7 @@ a$	= httpGet$(h$)
 a$	= word$(a$,3,"mw-content-ltr")
 html "<table border=1><tr>"
 i	= instr(a$,"<a href=""/wiki/")
-while i > 0 
+while i > 0
   i	= instr(a$,"title=""",i)
   j	= instr(a$,""">",i+7)
   if c mod 4	= 0 then html "</tr><tr ";WordWrap$;">"
@@ -2360,7 +2360,7 @@ Total unImplemented Tasks:177<br />
 ## Scala
 
 
-Add to `build.sbt`       
+Add to `build.sbt`
 
       libraryDependencies ++= Seq(
       "org.json4s"%%"json4s-native"%"3.6.0",
@@ -2403,8 +2403,8 @@ List("Programming Tasks", "Scala")
 
 ## Tcl
 
-First, find all members of the Programming_Tasks category, 
-then find all members of the <code>$lang</code> category.  
+First, find all members of the Programming_Tasks category,
+then find all members of the <code>$lang</code> category.
 The difference is the list of unimplemented tasks.
 
 {{tcllib|json}}{{tcllib|struct::set}}
@@ -2414,7 +2414,7 @@ package require Tcl 8.5
 package require http
 package require json
 package require struct::set
- 
+
 fconfigure stdout -buffering none
 
 # Initialize a cache of lookups
@@ -2422,7 +2422,7 @@ array set cache {}
 proc log msg {
     #puts -nonewline $msg
 }
- 
+
 proc get_tasks {category} {
     global cache
     if {[info exists cache($category)]} {
@@ -2439,7 +2439,7 @@ proc get_tasks {category} {
     set query [list {*}$query]; # remove excess whitespace
     set this_query [dict create {*}[split [format $query $category]]]
     set tasks [list]
- 
+
     while {1} {
         set url [join [list $base_url [http::formatQuery {*}$this_query]] ?]
         while 1 {
@@ -2468,12 +2468,12 @@ proc get_tasks {category} {
 	# Get the data out of the message
         set data [json::json2dict [http::data $response]]
         http::cleanup $response
- 
+
         # add tasks to list
         foreach task [dict get $data query categorymembers] {
             lappend tasks [dict get [dict create {*}$task] title]
         }
- 
+
         if {[catch {
 	    dict get $data query-continue categorymembers cmcontinue
 	} continue_task]} then {
@@ -2484,7 +2484,7 @@ proc get_tasks {category} {
     }
     return [set cache($category) $tasks]
 }
- 
+
 proc get_unimplemented {lang} {
     set tasks [get_tasks Programming_Tasks]
     set collected [get_tasks Collection_Members]
@@ -2503,7 +2503,7 @@ proc get_unimplemented {lang} {
 	puts "  [join [lsort $unimplemented] "\n  "]"
     }
 }
- 
+
 catch {console show}
 catch {wm withdraw .}
 foreach lang {Perl Python Ruby Tcl} {
@@ -2570,7 +2570,7 @@ Zhang-Suen thinning algorithm
 
 
 {{omit from|Batch File}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Lilypond}}
 {{omit from|Lotus 123 Macro Scripting}}
 {{omit from|Maxima}}

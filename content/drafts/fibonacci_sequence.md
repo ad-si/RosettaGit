@@ -15,7 +15,7 @@ tags = []
 [[Category:Memoization]]
 [[Category:Classic CS problems and programs]]
 
-The '''Fibonacci sequence''' is a sequence   <big> F<sub>n</sub> </big>    of natural numbers defined recursively: 
+The '''Fibonacci sequence''' is a sequence   <big> F<sub>n</sub> </big>    of natural numbers defined recursively:
 
       <big><big> F<sub>0</sub> = 0 </big></big>
       <big><big> F<sub>1</sub> = 1 </big></big>
@@ -23,7 +23,7 @@ The '''Fibonacci sequence''' is a sequence   <big> F<sub>n</sub> </big>    of na
 
 
 ;Task:
-Write a function to generate the   <big> n<sup>th</sup> </big>   Fibonacci number. 
+Write a function to generate the   <big> n<sup>th</sup> </big>   Fibonacci number.
 
 Solutions can be iterative or recursive (though recursive solutions are generally considered too slow and are mostly used as an exercise in recursion).
 
@@ -65,7 +65,7 @@ support for negative     <big> n </big>     in the solution is optional.
 
 ## 360 Assembly
 
-For maximum compatibility, programs use only the basic instruction set. 
+For maximum compatibility, programs use only the basic instruction set.
 
 ### using fullword integers
 
@@ -85,7 +85,7 @@ STM      STM   R14,R12,12(R13) save previous context
 *        ----
          LA    R1,0            f(n-2)=0
          LA    R2,1            f(n-1)=1
-         LA    R4,2            n=2 
+         LA    R4,2            n=2
          LA    R6,1            step
          LH    R7,NN           limit
 LOOP     EQU   *               for n=2 to nn
@@ -118,7 +118,7 @@ ZN       DS    CL20
 EM       DC    XL20'402020206B2020206B2020206B2020206B202120'  mask
 WTOMSG   DS    0F
          DC    H'80',XL2'0000'
-*                   fibo(46)=1836311903         
+*                   fibo(46)=1836311903
 WTOBUF   DC    CL80'fibo(12)=1234567890'
          REGEQU
          END   FIBONACC
@@ -156,13 +156,13 @@ FIBOWTOP CSECT
 *        ----
          ZAP    FNM2,=P'0'         f(0)=0
          ZAP    FNM1,=P'1'         f(1)=1
-         LA     R4,2               n=2 
+         LA     R4,2               n=2
          LA     R6,1               step
          LH     R7,NN              limit
 LOOP     EQU    *                  for n=2 to nn
          ZAP    FN,FNM1              f(n)=f(n-2)
          AP     FN,FNM2              f(n)=f(n-1)+f(n-2)
-         CVD    R4,PW                n 
+         CVD    R4,PW                n
          MVC    ZN,EM                load mask
          ED     ZN,PW                packed dec (PL8) to char (CL16)
          MVC    WTOBUF+5(2),ZN+L'ZN-2  output
@@ -189,7 +189,7 @@ WTOMSG   DS     0F
          DC     H'80',XL2'0000'
 *                    fibo(73)=806515533049393
 WTOBUF   DC     CL80'fibo(12)=123456789012345 '
-         REGEQU  
+         REGEQU
          END    FIBOWTOP
 ```
 
@@ -262,7 +262,7 @@ An iterative solution:
 ```forth
 
 : fibon \ n -- fib(n)
-  >r 0 1 
+  >r 0 1
   ( tuck n:+ ) \ fib(n-2) fib(n-1) -- fib(n-1) fib(n)
   r> n:1- times ;
 
@@ -361,7 +361,7 @@ public function fib(n:uint):uint
 {
     if (n < 2)
         return n;
-    
+
     return fib(n - 1) + fib(n - 2);
 }
 ```
@@ -502,15 +502,15 @@ Fibonacci( 777 ) = 1081213530912648191985419587942084110095342850438593857649766
 with ada.text_io;
 use  ada.text_io;
 
-procedure fast_fibo is 
-	-- We work with biggest natural integers in a 64 bits machine 
+procedure fast_fibo is
+	-- We work with biggest natural integers in a 64 bits machine
 	type Big_Int is mod 2**64;
 
-	-- We provide an index type for accessing the fibonacci sequence terms 
+	-- We provide an index type for accessing the fibonacci sequence terms
 	type Index is new Big_Int;
 
 	-- fibo is a generic function that needs a modulus type since it will return
-	-- the n'th term of the fibonacci sequence modulus this type (use Big_Int to get the	
+	-- the n'th term of the fibonacci sequence modulus this type (use Big_Int to get the
 	-- expected behaviour in this particular task)
 	generic
 		type ring_element is mod <>;
@@ -520,9 +520,9 @@ procedure fast_fibo is
 
 		type matrix is array (1 .. 2, 1 .. 2) of ring_element;
 
-		-- f is the matrix you apply to a column containing (F_n, F_{n+1}) to get 
+		-- f is the matrix you apply to a column containing (F_n, F_{n+1}) to get
 		-- the next one containing (F_{n+1},F_{n+2})
-		-- could be a more general matrix (given as a generic parameter) to deal with 
+		-- could be a more general matrix (given as a generic parameter) to deal with
 		-- other linear sequences of order 2
 		f : constant matrix := (1 => (0, 1), 2 => (1, 1));
 
@@ -536,7 +536,7 @@ procedure fast_fibo is
 		-- the number of calls is bounded up by the size (in bits) of Big_Int (e.g 64)
 		function fast_pow (m : matrix; n : Index) return matrix is
 		(if n = 0 then (1 => (1, 0), 2 => (0, 1)) -- = identity matrix
-		 elsif n mod 2 = 0 then square (fast_pow (m, n / 2)) 
+		 elsif n mod 2 = 0 then square (fast_pow (m, n / 2))
 		 else m * square (fast_pow (m, n / 2)));
 
 	begin
@@ -547,7 +547,7 @@ procedure fast_fibo is
 begin
 	-- calculate instantly F_n with n=10^15 (modulus 2^64 )
 	put_line (Big_Int_Fibo (10**15)'img);
-end fast_fibo; 
+end fast_fibo;
 ```
 
 
@@ -574,14 +574,14 @@ return(if(--n>0,fibb(b,a+b,n),a))
 ```AdvPL
 
 #include "totvs.ch"
-User Function fibb(n) 
+User Function fibb(n)
 	local fnow:=0, fnext:=1, tempf
 	while (--n>0)
 		tempf:=fnow+fnext
 		fnow:=fnext
 		fnext:=tempf
 	end while
-return(fnext)	
+return(fnext)
 
 ```
 
@@ -664,7 +664,7 @@ print(new line)
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
 
 ```algol68
-PROC iterative fibonacci = (INT n)INT: 
+PROC iterative fibonacci = (INT n)INT:
   CASE n+1 IN
     0, 1, 1, 2, 3, 5
   OUT
@@ -706,7 +706,7 @@ PROC recursive fibonacci = (INT n)INT:
 
 ### Generative
 
-{{trans|Python|Note: This specimen retains the original [[Prime decomposition#Python|Python]] coding style.}} 
+{{trans|Python|Note: This specimen retains the original [[Prime decomposition#Python|Python]] coding style.}}
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
@@ -901,9 +901,9 @@ fibn:{fib[x][x]}
  author: snugsfbay
  date: March 3, 2016
  description: Create a list of x numbers in the Fibonacci sequence.
-     - user may specify the length of the list 
+     - user may specify the length of the list
      - enforces a minimum of 2 numbers in the sequence because any fewer is not a sequence
-     - enforces a maximum of 47 because further values are too large for integer data type 
+     - enforces a maximum of 47 because further values are too large for integer data type
      - Fibonacci sequence always starts with 0 and 1 by definition
 */
 public class FibNumbers{
@@ -911,8 +911,8 @@ public class FibNumbers{
 final static Integer MIN = 2; //minimum length of sequence
 final static Integer MAX = 47; //maximum length of sequence
 
-/* 
-  description: method to create a list of numbers in the Fibonacci sequence 
+/*
+  description: method to create a list of numbers in the Fibonacci sequence
   param: user specified integer representing length of sequence should be 2-47, inclusive.
       - Sequence starts with 0 and 1 by definition so the minimum length could be as low as 2.
       - For 48th number in sequence or greater, code would require a Long data type rather than an Integer.
@@ -922,7 +922,7 @@ public static List<Integer> makeSeq(Integer len){
 
   List<Integer> fib = new List<Integer>{0,1}; // initialize list with first two values
   Integer i;
-  
+
   if(len<MIN || len==null || len>MAX) {
       if (len>MAX){
           len=MAX; //set length to maximum if user entered too high a value
@@ -930,15 +930,15 @@ public static List<Integer> makeSeq(Integer len){
           len=MIN; //set length to minimum if user entered too low a value or none
       }
   } //This could be refactored using teneray operator, but we want code coverage to be reflected for each condition
-  
+
   //start with initial list size to find previous two values in the sequence, continue incrementing until list reaches user defined length
-  for(i=fib.size(); i<len; i++){ 
+  for(i=fib.size(); i<len; i++){
     fib.add(fib[i-1]+fib[i-2]); //create new number based on previous numbers and add that to the list
   }
 
-  return fib; 
+  return fib;
   }
-  
+
 }
 
 ```
@@ -970,7 +970,7 @@ This naive solution requires Dyalog APL because GNU APL does not support this sy
 
 =
 ## GNU APL/Dyalog APL
-=  
+=
 
 ### =Array=
 
@@ -1064,23 +1064,23 @@ but we can combine '''enumFromTo(m, n)''' with the accumulator of a higher-order
 ```AppleScript
 -- fib :: Int -> Int
 on fib(n)
-    
+
     -- lastTwo : (Int, Int) -> (Int, Int)
     script lastTwo
         on |λ|([a, b])
             [b, a + b]
         end |λ|
     end script
-    
+
     item 1 of foldl(lastTwo, {0, 1}, enumFromTo(1, n))
 end fib
 
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     fib(32)
-    
+
     --> 2178309
 end run
 
@@ -1112,7 +1112,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -1162,7 +1162,7 @@ fibonacci:
         push  {r1-r3}
         mov   r1,  #0
         mov   r2,  #1
-        
+
 fibloop:
         mov   r3,  r2
         add   r2,  r1,  r2
@@ -1170,7 +1170,7 @@ fibloop:
         sub   r0,  r0,  #1
         cmp   r0,  #1
         bne   fibloop
-        
+
         mov   r0,  r2
         pop   {r1-r3}
         mov   pc,  lr
@@ -1230,7 +1230,7 @@ YOU HAVE BEEN TERMINATED
 Fib [x]{
 	if x<2 { 1 }{
 		$(Fib x-1) + $(Fib x-2)
-	} 
+	}
 }
 ```
 
@@ -1244,7 +1244,7 @@ Fib [x]{
 Fib $(memoize [x]{
 	if x<2 { 1 }{
 		$(Fib x-1) + $(Fib x-2)
-	} 
+	}
 })
 ```
 
@@ -1293,7 +1293,7 @@ fun fib_rec(n: int): int =
 ```ATS
 
 (*
-** This one is also referred to as being tail-recursive 
+** This one is also referred to as being tail-recursive
 *)
 fun
 fib_trec(n: int): int =
@@ -1446,7 +1446,7 @@ Return
 
 fib(n)
 {
-  If (n < 2) 
+  If (n < 2)
     Return n
   i := last := this := 1
   While (i <= n)
@@ -1473,16 +1473,16 @@ without a global or static array. The iterative version
 handles also negative arguments properly.
 */
 
-FibR(n) {       ; n-th Fibonacci number (n>=0, recursive with static array Fibo) 
-   Static 
-   Return n<2 ? n : Fibo%n% ? Fibo%n% : Fibo%n% := FibR(n-1)+FibR(n-2) 
-} 
+FibR(n) {       ; n-th Fibonacci number (n>=0, recursive with static array Fibo)
+   Static
+   Return n<2 ? n : Fibo%n% ? Fibo%n% : Fibo%n% := FibR(n-1)+FibR(n-2)
+}
 
-Fib(n) {        ; n-th Fibonacci number (n < 0 OK, iterative) 
-   a := 0, b := 1 
-   Loop % abs(n)-1 
-      c := b, b += a, a := c 
-   Return n=0 ? 0 : n>0 || n&1 ? b : -b 
+Fib(n) {        ; n-th Fibonacci number (n < 0 OK, iterative)
+   a := 0, b := 1
+   Loop % abs(n)-1
+      c := b, b += a, a := c
+   Return n=0 ? 0 : n>0 || n&1 ? b : -b
 }
 ```
 
@@ -1659,11 +1659,11 @@ foo x < puts x in foo. In this case, x is the code list between the curly-braces
 
 
 ```txt
-1, 1, 1 (dup)  
-1, 1, (<-)  
-2 (+)  
-2, 1 (->)  
-1, 2 (swap)  
+1, 1, 1 (dup)
+1, 1, (<-)
+2 (+)
+2, 1 (->)
+1, 2 (swap)
 ```
 
 
@@ -1712,7 +1712,7 @@ Entering a value of N > 183, produces an error message:
 input "N = ",f
 limit = 500                        # set upper limit - can be changed, removed
 f = int(f)
-if f > limit then f = limit        
+if f > limit then f = limit
 a = 0 : b = 1 : c = 0 : n = 0      # initial values
 
 
@@ -1720,9 +1720,9 @@ while n < f
     print n + chr(9) + c   # chr(9) = tab
     a = b
     b = c
-    c = a + b  
+    c = a + b
     n += 1
-        
+
 end while
 
 print " "
@@ -1978,7 +1978,7 @@ goto :eof
 
 :fib
 setlocal enabledelayedexpansion
-if %1 geq 2 goto :ge2 
+if %1 geq 2 goto :ge2
 exit /b %1
 
 :ge2
@@ -2078,11 +2078,11 @@ end
       PRINT FNfibonacci_r(13), FNfibonacci_i(13)
       PRINT FNfibonacci_r(26), FNfibonacci_i(26)
       END
-      
+
       DEF FNfibonacci_r(N)
       IF N < 2 THEN = N
       = FNfibonacci_r(N-1) + FNfibonacci_r(N-2)
-      
+
       DEF FNfibonacci_i(N)
       LOCAL F, I, P, T
       IF N < 2 THEN = N
@@ -2109,7 +2109,7 @@ end
 ## bc
 
 
-###  iterative 
+###  iterative
 
 
 ```bc
@@ -2159,7 +2159,7 @@ Program finished!
 
 julia> beeswax("n-th Fibonacci number.bswx")
 Enter n: i10
-         
+
 Fib(10)=55
 Program finished!
 
@@ -2171,14 +2171,14 @@ Program finished!
 
 julia> beeswax("n-th Fibonacci number.bswx")
 Enter n: i93
-                                                                             
-Fib(93)=12200160415121876738                                                 
-Program finished!                                                            
+
+Fib(93)=12200160415121876738
+Program finished!
 
 julia> beeswax("n-th Fibonacci number.bswx")
-Enter n: i94                                                                 
-                                                                             
-Fib(94)=1293530146158671551                                                  
+Enter n: i94
+
+Fib(94)=1293530146158671551
 Program finished!
 ```
 
@@ -2193,8 +2193,8 @@ Program finished!
 ```
 
 
-=={{header|Brainf***}}==
-{{works with|Brainf***|implementations with unbounded cell size}}
+=={{header|Brainfuck}}==
+{{works with|Brainfuck|implementations with unbounded cell size}}
 The first cell contains ''n'' (10), the second cell will contain ''fib(n)'' (55), and the third cell will contain ''fib(n-1)'' (34).
 
 ```bf
@@ -2214,7 +2214,7 @@ It does have a limit due to the cells usually being 1 byte in size.
 	-	#Decrement counter in #0
 	>>.	Notice: This doesn't print it in ascii
 		To look at results you can pipe into a file and look with a hex editor
-	
+
 		Copying sequence to save #2 in #4 using #5 as restore space
 	>>[-]	Move to #4 and clear
 	>[-]	Clear #5
@@ -2236,7 +2236,7 @@ It does have a limit due to the cells usually being 1 byte in size.
 	[	Loop to restore #1 from #3
 		- << + >>	Subtract from restore space #3 and add in #1
 	]
-	
+
 	<< [-]	Clear #1
 	>>>
 	[	Loop to move #4 to #1
@@ -2378,7 +2378,7 @@ long long int fibb(int n) {
 		fnow = fnext;
 		fnext = tempf;
 		}
-		return fnext;	
+		return fnext;
 }
 ```
 
@@ -2553,7 +2553,7 @@ int main(int argc, char **argv)
 
 ## C++
 
-Using unsigned int, this version only works up to 48 before fib overflows. 
+Using unsigned int, this version only works up to 48 before fib overflows.
 
 ```cpp>#include <iostream
 
@@ -2612,7 +2612,7 @@ Version using transform:
 #include <vector>
 #include <functional>
 #include <iostream>
- 
+
 unsigned int fibonacci(unsigned int n) {
   if (n == 0) return 0;
   std::vector<int> v(n+1);
@@ -2652,7 +2652,7 @@ template <int n> struct fibo
 {
     enum {value=fibo<n-1>::value+fibo<n-2>::value};
 };
- 
+
 template <> struct fibo<0>
 {
     enum {value=0};
@@ -2776,7 +2776,7 @@ int main()
 =={{header|C sharp|C#}}==
 
 
-###  Recursive 
+###  Recursive
 
 
 ```csharp
@@ -2804,7 +2804,7 @@ private static ulong Fib(ulong a, ulong b, uint n) {
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```csharp
@@ -2840,7 +2840,7 @@ public static IEnumerable<long> Fibs(uint x) {
      long sum = prev + next;
         prev = next;
         next = sum;
-        fibs.Add(sum); 
+        fibs.Add(sum);
     }
     return fibs;
 }
@@ -2867,9 +2867,9 @@ public static IEnumerable<ulong> Fibs(uint x) {
 
 
 
-###  Analytic 
+###  Analytic
 
-Only works to the 92<sup>th</sup> fibonacci number. 
+Only works to the 92<sup>th</sup> fibonacci number.
 
 ```csharp
 
@@ -2877,7 +2877,7 @@ private static double Phi = ((1d + Math.Sqrt(5d))/2d);
 private static double D = 1d/Math.Sqrt(5d);
 
 ulong Fib(uint n) {
-    if(n > 92) throw new ArgumentOutOfRangeException("n", n, "Needs to be smaller than 93."); 
+    if(n > 92) throw new ArgumentOutOfRangeException("n", n, "Needs to be smaller than 93.");
     return (ulong)((Phi^n) - (1d - Phi)^n))*D);
 }
 
@@ -2885,12 +2885,12 @@ ulong Fib(uint n) {
 
 
 
-###  Matrix 
+###  Matrix
 
 Algorithm is based on
-:<math>\begin{pmatrix}1&1\\1&0\end{pmatrix}^n = \begin{pmatrix}F(n+1)&F(n)\\F(n)&F(n-1)\end{pmatrix}</math>. 
+:<math>\begin{pmatrix}1&1\\1&0\end{pmatrix}^n = \begin{pmatrix}F(n+1)&F(n)\\F(n)&F(n-1)\end{pmatrix}</math>.
 
-Needs <code>System.Windows.Media.Matrix</code> or similar Matrix class. 
+Needs <code>System.Windows.Media.Matrix</code> or similar Matrix class.
 Calculates in <math>O(n)</math>.
 
 ```csharp
@@ -2904,7 +2904,7 @@ public static ulong Fib(uint n) {
 
 ```
 
-Needs <code>System.Windows.Media.Matrix</code> or similar Matrix class. 
+Needs <code>System.Windows.Media.Matrix</code> or similar Matrix class.
 Calculates in <math>O(\log{n})</math>.
 
 ```csharp
@@ -2933,13 +2933,13 @@ private static void MatrixPow(double n){
 
 ```csharp
 
-private static int[] fibs = new int[]{ -1836311903, 1134903170, 
-  -701408733, 433494437, -267914296, 165580141, -102334155, 
-  63245986, -39088169, 24157817, -14930352, 9227465, -5702887, 
-  3524578, -2178309, 1346269, -832040, 514229, -317811, 196418, 
-  -121393, 75025, -46368, 28657, -17711, 10946, -6765, 4181, 
-  -2584, 1597, -987, 610, -377, 233, -144, 89, -55, 34, -21, 13, 
-  -8, 5, -3, 2, -1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 
+private static int[] fibs = new int[]{ -1836311903, 1134903170,
+  -701408733, 433494437, -267914296, 165580141, -102334155,
+  63245986, -39088169, 24157817, -14930352, 9227465, -5702887,
+  3524578, -2178309, 1346269, -832040, 514229, -317811, 196418,
+  -121393, 75025, -46368, 28657, -17711, 10946, -6765, 4181,
+  -2584, 1597, -987, 610, -377, 233, -144, 89, -55, 34, -21, 13,
+  -8, 5, -3, 2, -1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
   144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711,
   28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040,
   1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817,
@@ -3310,7 +3310,7 @@ This can be improved to an O(n) solution, like the iterative solution, by memoiz
 
 
 
-###  Using core.async 
+###  Using core.async
 
 
 ```Clojure
@@ -3561,8 +3561,8 @@ Not a function, just printing out the entire (for some definition of "entire") s
 
 ```lisp
 (defun fibonacci-tail-recursive ( n &optional (a 0) (b 1))
-  (if (= n 0) 
-      a 
+  (if (= n 0)
+      a
       (fibonacci-tail-recursive (- n 1) b (+ a b))))
 ```
 
@@ -3572,7 +3572,7 @@ Tail recursive and squaring:
 ```lisp
 (defun fib (n &optional (a 1) (b 0) (p 0) (q 1))
     (if (= n 1) (+ (* b p) (* a q))
-     (fib (ash n -1) 
+     (fib (ash n -1)
           (if (evenp n) a (+ (* b q) (* a (+ p q))))
           (if (evenp n) b (+ (* b p) (* a q)))
           (+ (* p p) (* q q))
@@ -3582,7 +3582,7 @@ Tail recursive and squaring:
 ```
 
 
-###  Alternate solution 
+###  Alternate solution
 
 I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
 
@@ -3596,8 +3596,8 @@ I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
            ((= nr 1) 1)
            (t (+ (fibonacci (- nr 1))
            (fibonacci (- nr 2))))))
-(format t "~a" "First 10 Fibonacci numbers") 
-(dotimes (n 10) 
+(format t "~a" "First 10 Fibonacci numbers")
+(dotimes (n 10)
 (if (< n 1) (terpri))
 (if (< n 9) (format t "~a" " "))
 (write(+ n 1)) (format t "~a" ": ")
@@ -3625,7 +3625,7 @@ First 10 Fibonacci numbers
 
 
 
-###  Solution with methods and eql specializers 
+###  Solution with methods and eql specializers
 
 
 ```lisp
@@ -3726,7 +3726,7 @@ alias sgn!fibM sfibM;
 auto fibG(in int m) { // generator(?)
     immutable int sign = (m < 0) ? -1 : 1;
     long yield;
-    
+
     return new class {
         final int opApply(int delegate(ref int, ref long) dg) {
             int idx = -sign; // prepare for pre-increment
@@ -3735,7 +3735,7 @@ auto fibG(in int m) { // generator(?)
                     break;
             return 0;
         }
-        
+
         final int opApply(int delegate(ref long) dg) {
             long f0, f1 = 1;
             foreach (p; 0 .. m * sign + 1) {
@@ -3774,11 +3774,11 @@ void main(in string[] args) {
 {{out}} for n = 85:
 
 ```txt
-Fib( 85) = 
+Fib( 85) =
 D :   259695496911122586 <-   160500643816367088 +    99194853094755497
 I :   259695496911122585 <-   160500643816367088 +    99194853094755497
 O :   259695496911122585 <-   160500643816367088 +    99194853094755497
-0:0 | -1:1 | -2:-1 | -3:2 | -4:-3 | -5:5 | -6:-8 | -7:13 | -8:-21 | -9:34 | 
+0:0 | -1:1 | -2:-1 | -3:2 | -4:-3 | -5:5 | -6:-8 | -7:13 | -8:-21 | -9:34 |
 ```
 
 
@@ -3886,7 +3886,7 @@ int fib(int n) {
   for (var i=2; i<n; i++) {
     var next = prev + current;
     prev = current;
-    current = next;    
+    current = next;
   }
   return current;
 }
@@ -3940,7 +3940,7 @@ It easily can be adapted to an older Dc, but it will impact readability a lot.
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```Delphi
@@ -3968,7 +3968,7 @@ end;
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```Delphi
@@ -3985,7 +3985,7 @@ end;
 
 
 
-###  Matrix 
+###  Matrix
 
 Algorithm is based on
 :<math>\begin{pmatrix}1&1\\1&0\end{pmatrix}^n = \begin{pmatrix}F(n+1)&F(n)\\F(n)&F(n-1)\end{pmatrix}</math>.
@@ -3995,7 +3995,7 @@ Algorithm is based on
 function fib(n: Int64): Int64;
 
   type TFibMat = array[0..1] of array[0..1] of Int64;
-	
+
   function FibMatMul(a,b: TFibMat): TFibMat;
   var i,j,k: integer;
       tmp: TFibMat;
@@ -4008,7 +4008,7 @@ function fib(n: Int64): Int64;
       end;
     FibMatMul := tmp;
   end;
-	
+
   function FibMatExp(a: TFibMat; n: Int64): TFibmat;
   begin
     if n <= 1 then fibmatexp := a
@@ -4016,9 +4016,9 @@ function fib(n: Int64): Int64;
     else if (n mod 2 = 1) then FibMatExp := FibMatMul(a, FibMatExp(FibMatMul(a,a), n div 2));
   end;
 
-var 
+var
   matrix: TFibMat;
-	
+
 begin
   matrix[0,0] := 1;
   matrix[0,1] := 1;
@@ -4071,7 +4071,7 @@ print(fib(30))
 ```e
 def fib(n) {
     var s := [0, 1]
-    for _ in 0..!n { 
+    for _ in 0..!n {
         def [a, b] := s
         s := [b, a+b]
     }
@@ -4106,14 +4106,14 @@ Use '''memoization''' with the recursive version.
 
 ```scheme
 
-(define (fib n) 
-    (if (< n 2) n 
+(define (fib n)
+    (if (< n 2) n
     (+ (fib (- n 2)) (fib (1- n)))))
 
 (remember 'fib #(0 1))
 
 (for ((i 12)) (write (fib i)))
-0 1 1 2 3 5 8 13 21 34 55 89 
+0 1 1 2 3 5 8 13 21 34 55 89
 
 ```
 
@@ -4132,30 +4132,30 @@ Use '''memoization''' with the recursive version.
 
 
 FibFunction(UNSIGNED2 n) := FUNCTION
-	REAL Sqrt5 := Sqrt(5); 
+	REAL Sqrt5 := Sqrt(5);
 	REAL Phi := (1+Sqrt(5))/2;
-	REAL Phi_Inv := 1/Phi; 
-	UNSIGNED FibValue := ROUND( ( POWER(Phi,n)-POWER(Phi_Inv,n) ) /Sqrt5); 
-	RETURN FibValue; 
-	END;  
+	REAL Phi_Inv := 1/Phi;
+	UNSIGNED FibValue := ROUND( ( POWER(Phi,n)-POWER(Phi_Inv,n) ) /Sqrt5);
+	RETURN FibValue;
+	END;
 
  FibSeries(UNSIGNED2 n) := FUNCTION
- 
+
  Fib_Layout := RECORD
  UNSIGNED5 FibNum;
- UNSIGNED5 FibValue; 
- END; 
- 
+ UNSIGNED5 FibValue;
+ END;
+
  FibSeq := DATASET(n+1,
-  TRANSFORM 
- ( Fib_Layout 
+  TRANSFORM
+ ( Fib_Layout
  , SELF.FibNum := COUNTER-1
  , SELF.FibValue := IF(SELF.FibNum<2,SELF.FibNum, FibFunction(SELF.FibNum) )
- ) 
- ); 
- 
- RETURN FibSeq; 
- 
+ )
+ );
+
+ RETURN FibSeq;
+
  END; }
 ```
 
@@ -4167,28 +4167,28 @@ This program calculates the <i>n</i>th—by default the tenth—number in the Fi
 
 ```edsac
 [ Fibonacci sequence
-  
+
 ### ============
 
-  
+
   A program for the EDSAC
-  
+
   Calculates the nth Fibonacci
   number and displays it at the
   top of storage tank 3
-  
+
   The default value of n is 10
-  
+
   To calculate other Fibonacci
   numbers, set the starting value
   of the count to n-2
-  
+
   Works with Initial Orders 2 ]
 
 
         T56K  [ set load point  ]
         GK    [ set theta       ]
-        
+
 [ Orders ]
 
 [  0 ]  T20@  [ a = 0           ]
@@ -4198,20 +4198,20 @@ This program calculates the <i>n</i>th—by default the tenth—number in the Fi
         T17@  [ y = a; a = 0    ]
         A18@  [ a += temp       ]
         T16@  [ x = a; a = 0    ]
-        
+
         A19@  [ a = count       ]
         S15@  [ a -= 1          ]
         U19@  [ count = a       ]
         E@    [ if a>=0 go to θ ]
-        
+
         T20@  [ a = 0           ]
         A17@  [ a += y          ]
         T96F  [ C(96) = a; a = 0]
-        
+
         ZF    [ halt ]
-        
+
 [ Data ]
-        
+
 [ 15 ]  P0D   [ const: 1        ]
 [ 16 ]  P0F   [ var: x = 0      ]
 [ 17 ]  P0D   [ var: y = 1      ]
@@ -4295,8 +4295,8 @@ end
 Tail-recursive function:
 
 ```Ela
-fib = fib' 0 1           
-      where fib' a b 0 = a                 
+fib = fib' 0 1
+      where fib' a b 0 = a
             fib' a b n = fib' b (a + b) (n - 1)
 ```
 
@@ -4315,13 +4315,13 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 fibu(n)
 {
     int[] ac := new int[]::( 0,1 );
-    if (n < 2) 
+    if (n < 2)
     {
-        ^ ac[n] 
+        ^ ac[n]
     }
     else
     {
@@ -4335,7 +4335,7 @@ fibu(n)
         ^ ac[1]
     }
 }
- 
+
 public program()
 {
     for(int i := 0, i <= 10, i+=1)
@@ -4373,7 +4373,7 @@ defmodule Fibonacci do
     def fib(0), do: 0
     def fib(1), do: 1
     def fib(n), do: fib(0, 1, n-2)
-    
+
     def fib(_, prv, -1), do: prv
     def fib(prvprv, prv, n) do
         next = prv + prvprv
@@ -4476,7 +4476,7 @@ fibonacci n = if n < 2 then
 ## Erlang
 
 
-### Recursive 
+### Recursive
 
 
 ```Erlang
@@ -4492,7 +4492,7 @@ fib(N) -> fib(N-1) + fib(N-2).
 
 
 
-### Iterative 
+### Iterative
 
 
 ```Erlang
@@ -4526,7 +4526,7 @@ io:write([fiblin:fib(X) || X <- lists:seq(1,10) ]).
 <b> Output:</b>
 
 ```txt
-   
+
 [1,1,2,3,5,8,13,21,34,55]ok
 
 ```
@@ -4614,12 +4614,12 @@ end function
 ```Euphoria
 
 function fiboi(integer n)
-integer f0=0, f1=1, f  
+integer f0=0, f1=1, f
   if n<2 then return n end if
   for i=2 to n do
     f=f0+f1
     f0=f1
-    f1=f   
+    f1=f
   end for
   return f
 end function
@@ -4655,14 +4655,14 @@ include std/mathcons.e -- for PINF constant
 
 enum ADD, MOVE, GOTO, OUT, TEST, TRUETO
 
-global sequence tape = { 0, 
-			 1, 
-		       { ADD, 2, 1 }, 
-		       { TEST, 1, PINF }, 
-		       { TRUETO, 0 }, 
-		       { OUT, 1, "%.0f\n" }, 
-		       { MOVE, 2, 1 }, 
-		       { MOVE, 0, 2 }, 
+global sequence tape = { 0,
+			 1,
+		       { ADD, 2, 1 },
+		       { TEST, 1, PINF },
+		       { TRUETO, 0 },
+		       { OUT, 1, "%.0f\n" },
+		       { MOVE, 2, 1 },
+		       { MOVE, 0, 2 },
 		       { GOTO, 3  } }
 
 global integer ip
@@ -4678,7 +4678,7 @@ procedure eval( sequence cmd )
 				i += 2
 
 			case OUT then
-				printf( 1, cmd[ i + 2], tape[ cmd[ i + 1 ] ] ) 
+				printf( 1, cmd[ i + 2], tape[ cmd[ i + 1 ] ] )
 				i += 2
 
 			case MOVE then
@@ -4725,7 +4725,7 @@ while 1 do
 	-- atoms (assumed to be data) are ignored
 
 	if sequence( tape[ ip ] ) then
-		eval( tape[ ip ] ) 
+		eval( tape[ ip ] )
 	end if
 	ip += 1
 end while
@@ -4863,7 +4863,7 @@ end
 
 ```falcon
 function fib_tr(n)
-    return fib_aux(n,0,1)       
+    return fib_aux(n,0,1)
 end
 function fib_aux(n,a,b)
    switch n
@@ -4885,7 +4885,7 @@ Ints have a limit of 64-bits, so overflow errors occur after computing Fib(92) =
 
 class Main
 {
-  static Int fib (Int n) 
+  static Int fib (Int n)
   {
     if (n < 2) return n
     fibNums := [1, 0]
@@ -4898,7 +4898,7 @@ class Main
 
   public static Void main ()
   {
-    20.times |n| 
+    20.times |n|
     {
       echo ("Fib($n) is ${fib(n)}")
     }
@@ -5014,7 +5014,7 @@ Since there are only a fixed and small amount of Fibonacci numbers that fit in a
    create
       >r execute
       BEGIN  r@ execute not  UNTIL  rdrop
-   does> 
+   does>
        swap cells + @ ;
 
 ' F-start, ' F-next,  computed-table fibonacci 2drop
@@ -5162,7 +5162,7 @@ contains
     recursive function fibR(n) result(fib)
         integer, intent(in) :: n
         integer             :: fib
-        
+
         select case (n)
             case (:0);      fib = 0
             case (1);       fib = 1
@@ -5181,11 +5181,11 @@ In ISO Fortran 90 or later:
         integer, intent(in) :: n
         integer, parameter :: fib0 = 0, fib1 = 1
         integer            :: fibI, back1, back2, i
- 
+
         select case (n)
             case (:0);      fibI = fib0
             case (1);       fibI = fib1
-     
+
             case default
                 fibI = fib1
                 back1 = fib0
@@ -5205,10 +5205,10 @@ Test program
 ```fortran
 program fibTest
     use fibonacci
-    
+
     do i = 0, 10
         print *, fibr(i), fibi(i)
-    end do 
+    end do
 end program fibTest
 ```
 
@@ -5246,7 +5246,7 @@ Dim Shared ADDbool(0 To 19) As Ubyte
 For z As Integer=0 To 19
     ADDQmod(z)=(z Mod 10+48)
     ADDbool(z)=(-(10<=z))
-Next z 
+Next z
 
 Function plusINT(NUM1 As String,NUM2 As String) As String
     Dim As Byte flag
@@ -5259,34 +5259,34 @@ Function plusINT(NUM1 As String,NUM2 As String) As String
     #endmacro
     var lenf=Len(NUM1)
     var lens=Len(NUM2)
-    If lens>lenf Then 
+    If lens>lenf Then
         Swap NUM2,NUM1
         Swap lens,lenf
         flag=1
     End If
-    
+
     var diff=lenf-lens-Sgn(lenf-lens)
     var three="0"+NUM1
     var two=String(lenf-lens,"0")+NUM2
     Dim As Integer n2
     Dim As Ubyte addup,addcarry
-    
+
     addcarry=0
-    
-    For n2=lenf-1 To diff Step -1 
+
+    For n2=lenf-1 To diff Step -1
         addup=two[n2]+NUM1[n2]-96
         three[n2+1]=addQmod(addup+addcarry)
         addcarry=addbool(addup+addcarry)
-    Next n2 
-    If addcarry=0 Then 
+    Next n2
+    If addcarry=0 Then
         finish()
     End If
-    If n2=-1 Then 
+    If n2=-1 Then
         three[0]=addcarry+48
         finish()
     End If
-    
-    For n2=n2 To 0 Step -1 
+
+    For n2=n2 To 0 Step -1
         addup=two[n2]+NUM1[n2]-96
         three[n2+1]=addQmod(addup+addcarry)
         addcarry=addbool(addup+addcarry)
@@ -5367,7 +5367,7 @@ type
 
 {**
 	implements Fibonacci sequence iteratively
-	
+
 	\param n the index of the Fibonacci number to calculate
 	\returns the Fibonacci value at n
 }
@@ -5383,7 +5383,7 @@ var
 begin
 	f[previous] := 0;
 	f[current] := 1;
-	
+
 	// note, in Pascal for-loop-limits are inclusive
 	for i := 1 to n do
 	begin
@@ -5391,7 +5391,7 @@ begin
 		f[previous] := f[current];
 		f[current] := f[next];
 	end;
-	
+
 	// assign to previous, bc f[current] = f[next] for next iteration
 	fibonacci := f[previous];
 end;
@@ -5528,7 +5528,7 @@ let crazyFib (n : int) =
     /// Applies n+1 rule until the target value is reached.
     let rec iter2 (i, q, r, s) =
         match i with
-        | i when i < n -> 
+        | i when i < n ->
             iter2 ((i+1), (q+r), q, r)
         | _ -> q
 
@@ -5545,7 +5545,7 @@ let crazyFib (n : int) =
 ## FunL
 
 
-###  Recursive 
+###  Recursive
 
 
 ```funl
@@ -5557,7 +5557,7 @@ def
 
 
 
-###  Tail Recursive 
+###  Tail Recursive
 
 
 ```funl
@@ -5572,7 +5572,7 @@ def fib( n ) =
 
 
 
-###  Lazy List 
+###  Lazy List
 
 
 ```funl
@@ -5596,7 +5596,7 @@ println( fib(10000) )
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```funl
@@ -5622,7 +5622,7 @@ def fib( n ) =
 
 
 
-###  Matrix Exponentiation 
+###  Matrix Exponentiation
 
 
 ```funl
@@ -5673,7 +5673,7 @@ for i <- 0..10
 
 
 
-###  Iterative 
+###  Iterative
 
 
 
@@ -5691,12 +5691,12 @@ fun main(n: int): int =
 ## FutureBasic
 
 
-###  Iterative 
+###  Iterative
 
 
 ```futurebasic
 
-include "Tlbx Timer.incl" 
+include "Tlbx Timer.incl"
 include "ConsoleWindow"
 
 local fn Fibonacci( n as long ) as Long
@@ -5950,7 +5950,7 @@ return numb;
 ## Go
 
 
-###  Recursive 
+###  Recursive
 
 
 ```go
@@ -5963,7 +5963,7 @@ func fib(a int) int {
 ```
 
 
-###  Iterative 
+###  Iterative
 
 
 ```go
@@ -5985,7 +5985,7 @@ func fib(n uint64) *big.Int {
 ```
 
 
-###  Iterative using a closure 
+###  Iterative using a closure
 
 
 ```go
@@ -6008,7 +6008,7 @@ func fibSequence(n int) int {
 ```
 
 
-###  Using a goroutine and channel 
+###  Using a goroutine and channel
 
 
 ```go
@@ -6036,30 +6036,30 @@ func main() {
 
 Full "extra credit" solutions.
 
-###  Recursive 
+###  Recursive
 
 A recursive closure must be ''pre-declared''.
 
 ```groovy
 def rFib
-rFib = { 
-    it == 0   ? 0 
-    : it == 1 ? 1 
+rFib = {
+    it == 0   ? 0
+    : it == 1 ? 1
     : it > 1  ? rFib(it-1) + rFib(it-2)
     /*it < 0*/: rFib(it+2) - rFib(it+1)
-    
+
 }
 ```
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```groovy
-def iFib = { 
-    it == 0   ? 0 
-    : it == 1 ? 1 
+def iFib = {
+    it == 0   ? 0
+    : it == 1 ? 1
     : it > 1  ? (2..it).inject([0,1]){i, j -> [i[1], i[0]+i[1]]}[1]
     /*it < 0*/: (-1..it).inject([0,1]){i, j -> [i[1]-i[0], i[0]]}[0]
 }
@@ -6067,7 +6067,7 @@ def iFib = {
 
 
 
-###  Analytic 
+###  Analytic
 
 
 ```groovy
@@ -6132,14 +6132,14 @@ return(if(--n>0,fibb(b,a+b,n),a))
 ```Harbour
 
 #include "harbour.ch"
-Function fibb(n) 
+Function fibb(n)
 	local fnow:=0, fnext:=1, tempf
 	while (--n>0)
 		tempf:=fnow+fnext
 		fnow:=fnext
 		fnext:=tempf
 	end while
-return(fnext)	
+return(fnext)
 
 ```
 
@@ -6156,7 +6156,7 @@ main :: IO ()
 main =
   print
     [ floor (0.01 + (1 / p ** n + p ** n) / sqrt 5)
-    | let p = (1 + sqrt 5) / 2 
+    | let p = (1 + sqrt 5) / 2
     , n <- [0 .. 42] ]
 ```
 
@@ -6197,7 +6197,7 @@ fib x =
 
 ### Recursive with Memoization using memoized library
 
-Even faster and simpler is to use a defined memoizer (e.g. from MemoTrie package): 
+Even faster and simpler is to use a defined memoizer (e.g. from MemoTrie package):
 
 ```haskell
 import Data.MemoTrie
@@ -6218,14 +6218,14 @@ fib = memo $ \x -> case x of
    1 -> 1
    n -> fib (n-1) + fib (n-2)
 ```
-  
+
 Or using LambdaCase extension you can write it even shorter:
 
 ```haskell
 {-# Language LambdaCase #-}
 import Data.MemoTrie
 fib :: Integer -> Integer
-fib = memo $ \case 
+fib = memo $ \case
    0 -> 0
    1 -> 1
    n -> fib (n-1) + fib (n-2)
@@ -6237,7 +6237,7 @@ The version that supports negative numbers:
 {-# Language LambdaCase #-}
 import Data.MemoTrie
 fib :: Integer -> Integer
-fib = memo $ \case 
+fib = memo $ \case
    0 -> 0
    1 -> 1
    n | n>0 -> fib (n-1) + fib (n-2)
@@ -6271,11 +6271,11 @@ fib = 0 : 1 : zipWith (+) fib (tail fib)
 Or alternatively:
 
 ```haskell
-fib = 0 : 1 : (zipWith (+) <*> tail) fib 
+fib = 0 : 1 : (zipWith (+) <*> tail) fib
 ```
 
 
-The ''n''th Fibonacci number is then just <code plang="haskell">fib !! n</code>. The above is equivalent to 
+The ''n''th Fibonacci number is then just <code plang="haskell">fib !! n</code>. The above is equivalent to
 
 
 ```haskell
@@ -6311,7 +6311,7 @@ fib n =
 
 
 
-###  With matrix exponentiation 
+###  With matrix exponentiation
 
 Adapting the (rather slow) code from [[Matrix exponentiation operator]],
 we can simply write:
@@ -6374,7 +6374,7 @@ So, for example, the hundred-thousandth Fibonacci number starts with the digits:
 
 
 
-###  With recurrence relations 
+###  With recurrence relations
 
 Using <code>Fib[m=3n+r]</code> [http://en.wikipedia.org/wiki/Fibonacci_number#Other_identities recurrence identities]:
 
@@ -6430,7 +6430,7 @@ main = print $ (length &&& take 20) . show . fst $ fibN2 (10 ^ 2)
 (208988,"19532821287077577316")
 ```
 
-The above should take less than 0.1s to calculate on a modern box. 
+The above should take less than 0.1s to calculate on a modern box.
 
 Other identities that could also be used are [http://en.wikipedia.org/wiki/Fibonacci_number#Matrix_form here]. In particular, for <i>(n-1,n) ---> (2n-1,2n)</i> transition which is equivalent to the matrix exponentiation scheme, we have
 
@@ -6452,7 +6452,7 @@ g (n,(a,b)) = (2*n,(2*a*b-a*a,a*a+b*b))     -- iterate g (1,(1,1)) ; a is nth
 ## Haxe
 
 
-###  Iterative 
+###  Iterative
 
 
 
@@ -6461,7 +6461,7 @@ static function fib(steps:Int, handler:Int->Void)
 {
 	var current = 0;
 	var next = 1;
-		
+
 	for (i in 1...steps)
 	{
 		handler(current);
@@ -6476,7 +6476,7 @@ static function fib(steps:Int, handler:Int->Void)
 
 
 
-###  As Iterator 
+###  As Iterator
 
 
 ```haxe
@@ -6485,11 +6485,11 @@ class FibIter
 	private var current = 0;
 	private var nextItem = 1;
 	private var limit:Int;
-	
+
 	public function new(limit) this.limit = limit;
 
 	public function hasNext() return limit > 0;
-	
+
 	public function next() {
 		limit--;
 		var ret = current;
@@ -6536,7 +6536,7 @@ dec fib : num -> num;
 
 
 
-###  With lazy lists 
+###  With lazy lists
 
 This language, being one of Haskell's ancestors, also has lazy lists. Here's the (infinite) list of all Fibonacci numbers:
 
@@ -6594,12 +6594,12 @@ procedure fib(n)
 end
 ```
 
-{{libheader|Icon Programming Library}}  
-The above solution is similar to the one provided [http://www.cs.arizona.edu/icon/library/src/procs/memrfncs.icn fib in memrfncs] 
+{{libheader|Icon Programming Library}}
+The above solution is similar to the one provided [http://www.cs.arizona.edu/icon/library/src/procs/memrfncs.icn fib in memrfncs]
 
-Now, an O(logN) solution.  
-For large N, it takes far longer to convert the result to a string for output 
-than to do the actual computation.  
+Now, an O(logN) solution.
+For large N, it takes far longer to convert the result to a string for output
+than to do the actual computation.
 This example computes fib(1000000) if there is no integer argument.
 
 
@@ -6666,7 +6666,7 @@ Execution time O(n). Limited by size of uLong to fib(49)
 
 ```idl
 function fib,n
-  q=1/( p=(1+sqrt(5))/2 ) 
+  q=1/( p=(1+sqrt(5))/2 )
   return,round((p^n+q^n)/sqrt(5))
 end
 ```
@@ -6684,9 +6684,9 @@ Execution time O(1), only limited by the range of LongInts to fib(48).
 
 ```idris
 fibAnalytic : Nat -> Double
-fibAnalytic n = 
+fibAnalytic n =
     floor $ ((pow goldenRatio n) - (pow (-1.0/goldenRatio) n))  / sqrt(5)
-  where goldenRatio : Double 
+  where goldenRatio : Double
         goldenRatio = (1.0 + sqrt(5)) / 2.0
 ```
 
@@ -6698,7 +6698,7 @@ fibAnalytic n =
 fibRecursive : Nat -> Nat
 fibRecursive Z = Z
 fibRecursive (S Z) = (S Z)
-fibRecursive (S (S n)) = fibRecursive (S n) + fibRecursive n 
+fibRecursive (S (S n)) = fibRecursive (S n) + fibRecursive n
 ```
 
 
@@ -6710,7 +6710,7 @@ fibIterative : Nat -> Nat
 fibIterative n = fibIterative' n Z (S Z)
   where fibIterative' : Nat -> Nat -> Nat -> Nat
         fibIterative' Z a _ = a
-        fibIterative' (S n) a b = fibIterative' n b (a + b) 
+        fibIterative' (S n) a b = fibIterative' n b (a + b)
 ```
 
 
@@ -6722,7 +6722,7 @@ fibLazy : Lazy (List Nat)
 fibLazy = 0 :: 1 :: zipWith (+) fibLazy (
               case fibLazy of
                 (x::xs) => xs
-                [] => []) 
+                [] => [])
 ```
 
 
@@ -6796,7 +6796,7 @@ public static long fib(long n) {
 
         tmp1 = (long) (Math.pow(c, 2) + Math.pow(d, 2));
         tmp2 = d * (2 * c + d);
-			
+
         c = tmp1;
         d = tmp2;
 
@@ -7031,7 +7031,7 @@ var fib = fibonacciGenerator();
 ### =Memoized=
 
 
-If we want access to the whole preceding series, as well as a memoized route to a particular member, 
+If we want access to the whole preceding series, as well as a memoized route to a particular member,
 we can use an accumulating fold.
 
 
@@ -7177,7 +7177,7 @@ Example:
 
 ```
 
-yields: 
+yields:
 ```jq
 [0,0]
 [1,1]
@@ -7447,8 +7447,8 @@ writeln map .fibonacci, series 2..20
 
 ```scheme
 
-1) basic version 
-{def fib1 
+1) basic version
+{def fib1
  {lambda {:n}
   {if {< :n 3}
    then 1
@@ -7459,16 +7459,16 @@ writeln map .fibonacci, series 2..20
 
 2) tail-recursive version
 {def fib2
- {def fib2.r 
+ {def fib2.r
   {lambda {:a :b :i}
-   {if {< :i 1} 
-    then :a 
+   {if {< :i 1}
+    then :a
     else {fib2.r :b {+ :a :b} {- :i 1}} }}}
  {lambda {:n} {fib2.r 0 1 :n}}}
 
 {fib2 16} -> 987    (CPU ~ 1ms)
 {fib2 30} -> 832040 (CPU ~2ms)
-{fib2 1000} -> 4.346655768693743e+208 (CPU ~ 22ms)  
+{fib2 1000} -> 4.346655768693743e+208 (CPU ~ 22ms)
 
 3) Dijkstra Algorithm
 {def fib3
@@ -7490,7 +7490,7 @@ writeln map .fibonacci, series 2..20
 
 {fib3 16} -> 987    (CPU ~ 2ms)
 {fib3 30} -> 832040 (CPU ~ 2ms)
-{fib3 1000} -> 4.346655768693743e+208 (CPU ~ 3ms)  
+{fib3 1000} -> 4.346655768693743e+208 (CPU ~ 3ms)
 
 4) memoization
 {def fib4
@@ -7504,11 +7504,11 @@ writeln map .fibonacci, series 2..20
                            {fib4.r {- :n 2}}}} :n}   // compute it
    else {array.get {fib4.m} :n} }}}}                   // else get it
  {lambda {:n}
-  {fib4.r :n} 
+  {fib4.r :n}
   {fib4.m} }} // display the number AND all its predecessors
 -> fib4
-{fib4 90}  
--> 4660046610375530000 
+{fib4 90}
+-> 4660046610375530000
 [1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765,10946,17711,28657,46368,75025,121393,196418,
 317811,514229,832040,1346269,2178309,3524578,5702887,9227465,14930352,24157817,39088169,63245986,102334155,
 165580141,267914296,433494437,701408733,1134903170,1836311903,2971215073,4807526976,7778742049,12586269025,
@@ -7520,15 +7520,15 @@ writeln map .fibonacci, series 2..20
 679891637638612200,1100087778366101900,1779979416004714000,2880067194370816000,4660046610375530000]
 
 5) Binet's formula (non recursive)
-{def fib5 
+{def fib5
  {lambda {:n}
   {let { {:n :n} {:sqrt5 {sqrt 5}} }
-   {round {/ {- {pow {/ {+ 1 :sqrt5} 2} :n} 
+   {round {/ {- {pow {/ {+ 1 :sqrt5} 2} :n}
                 {pow {/ {- 1 :sqrt5} 2} :n}} :sqrt5}}} }}
 
-{fib5 16} -> 987    (CPU ~ 1ms) 
+{fib5 16} -> 987    (CPU ~ 1ms)
 {fib5 30} -> 832040 (CPU ~ 1ms)
-{fib5 1000} -> 4.346655768693743e+208 (CPU ~ 1ms)  
+{fib5 1000} -> 4.346655768693743e+208 (CPU ~ 1ms)
 
 
 ```
@@ -7665,7 +7665,7 @@ fibo := {
 for i = 0 to 15
     print fiboR(i),fiboI(i)
 next i
- 
+
 function fiboR(n)
     if n <= 1 then
         fiboR = n
@@ -7673,7 +7673,7 @@ function fiboR(n)
         fiboR = fiboR(n-1) + fiboR(n-2)
     end if
 end function
- 
+
 function fiboI(n)
     a = 0
     b = 1
@@ -7818,7 +7818,7 @@ end
 
 ```lingo
 on fib (n)
-  if n<2 then return n    
+  if n<2 then return n
   fibPrev = 0
   fib = 1
   repeat with i = 2 to n
@@ -8035,8 +8035,8 @@ KTHXBYE
 ```lua
 
 --calculates the nth fibonacci number. Breaks for negative or non-integer n.
-function fibs(n) 
-  return n < 2 and n or fibs(n - 1) + fibs(n - 2) 
+function fibs(n)
+  return n < 2 and n or fibs(n - 1) + fibs(n - 2)
 end
 
 ```
@@ -8260,7 +8260,7 @@ Class BigNum {
                         acc=stackitem(i)+stackitem(j)+carry
                         carry= acc div d
                         return .a, i^+1:=acc mod d
-                  } 
+                  }
                   if len(.a)<len(n.a) Then  {
                         i=each(n.a, k+1, -1)
                         while i {
@@ -8275,7 +8275,7 @@ Class BigNum {
                               carry= acc div d
                               Return .a, i^+1:=acc mod d
                               if carry else exit
-                        }     
+                        }
                   }
                   if carry then stack .a { data carry}
       }
@@ -8301,7 +8301,7 @@ Class BigNum {
                   } Until S$=""
             }
       }
-} 
+}
 
 Inventory K=0:=BigNum("0"),1:=BigNum("1")
 fib=Lambda K (x as decimal)-> {
@@ -8338,7 +8338,7 @@ loop(0,15,`fibo')
 
 
 ## Maple
- 
+
 
 ```maple
 
@@ -8351,7 +8351,7 @@ loop(0,15,`fibo')
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 The Wolfram Language already has a built-in function <tt>Fibonacci</tt>, but a simple recursive implementation would be
 
 
@@ -8433,7 +8433,7 @@ The Wolfram Language can also solve recurrence equations using the built-in func
 
 
 ```mathematica
-fib[n] /. RSolve[{fib[n] == fib[n - 1] + fib[n - 2], fib[0] == 0, 
+fib[n] /. RSolve[{fib[n] == fib[n - 1] + fib[n - 2], fib[0] == 0,
     fib[1] == 1}, fib[n], n][[1]]
 ```
 
@@ -8470,10 +8470,10 @@ and is defined for all real or complex values of n.
 
 ```MATLAB
 function f = fib(n)
-	
+
 	f = [1 1 ; 1 0]^(n-1);
 	f = f(1,1);
-	
+
 end
 ```
 
@@ -8484,19 +8484,19 @@ end
 
 ```MATLAB
 function F = fibonacci(n)
-    
-    Fn = [1 0]; %Fn(1) is F_{n-2}, Fn(2) is F_{n-1} 
+
+    Fn = [1 0]; %Fn(1) is F_{n-2}, Fn(2) is F_{n-1}
     F = 0; %F is F_{n}
-    
+
     for i = (1:abs(n))
         Fn(2) = F;
         F = sum(Fn);
         Fn(1) = Fn(2);
     end
-        
+
     if n < 0
         F = F*((-1)^(n+1));
-    end   
+    end
 
 end
 ```
@@ -8510,7 +8510,7 @@ The MATLAB help file suggests an interesting method of generating the Fibonacci 
 
 ```MATLAB
 function number = fibonacci2(n)
-    
+
     if n == 1
         number = 1;
     elseif n == 0
@@ -8539,7 +8539,7 @@ function number = fibonacci(n)
     % on top of it. That means the previous row.
         for c = 2 : r-1
             pt(r, c) = pt(r-1, c-1) + pt(r-1, c);
-        end   
+        end
     end
     number=trace(rot90(pt));
 end
@@ -8588,7 +8588,7 @@ fn fibIter n =
             fibPrev = temp
         )
         fib
-    ) 
+    )
 )
 ```
 
@@ -8627,29 +8627,29 @@ The provided code uses a very naive form of generating a Fibonacci number.  A mo
 % The following code is derived from the Mercury Tutorial by Ralph Becket.
 % http://www.mercury.csse.unimelb.edu.au/information/papers/book.pdf
 :- module fib.
- 
+
 :- interface.
 :- import_module io.
 :- pred main(io::di, io::uo) is det.
- 
+
 :- implementation.
 :- import_module int.
- 
+
 :- pred fib(int::in, int::out) is det.
 fib(N, X) :-
     ( if N =< 2
           then X = 1
           else fib(N - 1, A), fib(N - 2, B), X = A + B ).
- 
+
 :- func fib(int) = int is det.
 fib(N) = X :- fib(N, X).
- 
+
 main(!IO) :-
     fib(40, X),
     write_string("fib(40, ", !IO),
     write_int(X, !IO),
     write_string(")\n", !IO),
- 
+
     write_string("fib(40) = ", !IO),
     write_int(fib(40), !IO),
     write_string("\n", !IO).
@@ -8658,7 +8658,7 @@ main(!IO) :-
 
 
 
-###  Iterative algorithm 
+###  Iterative algorithm
 
 
 The much faster iterative algorithm can be written as:
@@ -8685,7 +8685,7 @@ fib_acc(N, Limit, Prev2, Prev1, Res) :-
 ```
 
 
-This predicate can be called as 
+This predicate can be called as
 ```mercury
 fib_acc(1, 40, 1, 1, Result)
 ```
@@ -8784,7 +8784,7 @@ fibo(139)=50095301248058391139327916261
 
 ```txt
 
-1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155 165580141 267914296 433494437 701408733 1134903170 1836311903 2971215073 4807526976 7778742049 12586269025 20365011074 32951280099 53316291173 86267571272 139583862445 225851433717 365435296162 591286729879 956722026041 1548008755920 2504730781961 4052739537881 6557470319842 10610209857723 17167680177565 27777890035288 44945570212853 72723460248141 117669030460994 
+1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155 165580141 267914296 433494437 701408733 1134903170 1836311903 2971215073 4807526976 7778742049 12586269025 20365011074 32951280099 53316291173 86267571272 139583862445 225851433717 365435296162 591286729879 956722026041 1548008755920 2504730781961 4052739537881 6557470319842 10610209857723 17167680177565 27777890035288 44945570212853 72723460248141 117669030460994
 
 ```
 
@@ -8834,7 +8834,7 @@ def fibonacci(n:int)
     return n if n < 2
     fibPrev = 1
     fib = 1
-    3.upto(Math.abs(n)) do 
+    3.upto(Math.abs(n)) do
         oldFib = fib
         fib = fib + fibPrev
         fibPrev = oldFib
@@ -8864,42 +8864,42 @@ This is the iterative approach to the Fibonacci sequence.
 	.text
 main:	li	$v0, 5		# read integer from input. The read integer will be stroed in $v0
 	syscall
-	
+
 	beq	$v0, 0, is1
-	beq	$v0, 1,	is1	
-	
-	li	$s4, 1		# the counter which has to equal to $v0	
-		
+	beq	$v0, 1,	is1
+
+	li	$s4, 1		# the counter which has to equal to $v0
+
 	li	$s0, 1
 	li	$s1, 1
 
 loop:	add	$s2, $s0, $s1
 	addi	$s4, $s4, 1
 	beq	$v0, $s4, iss2
-	
+
 	add	$s0, $s1, $s2
 	addi	$s4, $s4, 1
 	beq	$v0, $s4, iss0
-	
+
 	add	$s1, $s2, $s0
 	addi	$s4, $s4, 1
 	beq	$v0, $s4, iss1
 
 	b 	loop
 
-iss0:	move	$a0, $s0	
+iss0:	move	$a0, $s0
 	b	print
 
-iss1:	move	$a0, $s1	
+iss1:	move	$a0, $s1
 	b	print
 
-iss2:	move	$a0, $s2	
+iss2:	move	$a0, $s2
 	b	print
-	
-	
+
+
 is1:	li	$a0, 1
 	b 	print
-	
+
 print:	li	$v0, 1
 	syscall
 	li	$v0, 10
@@ -8928,7 +8928,7 @@ Instruction: ''n'' В/О С/П, where ''n'' is serial number of the number of Fi
 This version is tail recursive.
 
 ```sml
-fun fib n = 
+fun fib n =
     let
 	fun fib' (0,a,b) = a
 	  | fib' (n,a,b) = fib' (n-1,a+b,a)
@@ -8946,7 +8946,7 @@ fun fib n =
 Tail recursive.
 
 ```ocaml
-fun fib 
+fun fib
         (0, x1, x2) = x2
       | (n, x1, x2) = fib (n-1, x2, x1+x2)
       | n = fib (n, 0, 1)
@@ -9093,10 +9093,10 @@ il nonnulla come se fosse brematurata la supercazzola bonaccia con il nonnulla o
 un nonnulla a posterdati
 
 # Fibonacci function 'bonaccia'
-blinda la supercazzola Necchi bonaccia con antani Necchi o scherziamo? che cos'è l'antani? 
-minore di 3: vaffanzum 1! o tarapia tapioco: voglio unchiamo, Necchi come se fosse brematurata 
-la supercazzola bonaccia con antani meno 1 o scherziamo? voglio duechiamo, 
-Necchi come se fosse brematurata la supercazzola bonaccia con antani meno 2 o scherziamo? vaffanzum 
+blinda la supercazzola Necchi bonaccia con antani Necchi o scherziamo? che cos'è l'antani?
+minore di 3: vaffanzum 1! o tarapia tapioco: voglio unchiamo, Necchi come se fosse brematurata
+la supercazzola bonaccia con antani meno 1 o scherziamo? voglio duechiamo,
+Necchi come se fosse brematurata la supercazzola bonaccia con antani meno 2 o scherziamo? vaffanzum
 unchiamo più duechiamo! e velocità di esecuzione
 
 ```
@@ -9229,7 +9229,7 @@ module Fibonacci
         |x when x < 2 => x
         |_ => Fibonacci(x - 1) + Fibonacci(x - 2)
     }
-    
+
     Main() : void
     {
         def num = Int64.Parse(ReadLine());
@@ -9252,7 +9252,7 @@ Fibonacci(x : long, current : long, next : long) : long
         |_ => Fibonacci(x - 1, next, current + next)
     }
 }
-  
+
 Fibonacci(x : long) : long
 {
     Fibonacci(x, 0, 1)
@@ -9343,7 +9343,7 @@ method fib(arg) private static
 ```newLISP
 (define (fibonacci n)
 (if (< n 2) 1
-    (+ (fibonacci (- n 1))  
+    (+ (fibonacci (- n 1))
        (fibonacci (- n 2)))))
 
 ```
@@ -9402,11 +9402,11 @@ single iteration with n=1,000,000 takes it about 15s.
 
 ```nial
 fibi is op n {
-  if n<2 then 
+  if n<2 then
     n
-  else 
-    x1:=0; x2:=1; 
-    for i with tell (n - 1) do 
+  else
+    x1:=0; x2:=1;
+    for i with tell (n - 1) do
       x:=x1+x2;
       x1:=x2;
       x2:=x;
@@ -9465,7 +9465,7 @@ fibm is op n {floor (0 1 pick (reduce ip (n reshape [2 2 reshape 1 1 1 0])))};
 ```
 
 
-Could it look a little more like J? 
+Could it look a little more like J?
 (Maybe 5% slower than above.)
 
 
@@ -9611,7 +9611,7 @@ VAR
 BEGIN
   NEW(x,s);
   Fibs(x^);
-  Show(x^)  
+  Show(x^)
 END Gen;
 
 PROCEDURE GenR(s: LONGINT);
@@ -9619,13 +9619,13 @@ VAR
   i: LONGINT;
 BEGIN
   Out.String("First ");Out.Int(s,0);Out.String(" Fibonacci numbers (Recursive)");Out.Ln;
-  FOR i := 1 TO s DO  
+  FOR i := 1 TO s DO
     Out.LongRealFix(FibsR(i),8,0)
   END;
-  Out.Ln  
+  Out.Ln
 END GenR;
 
-BEGIN 
+BEGIN
   Gen(10);
   Gen(20);
   GenR(10);
@@ -9665,12 +9665,12 @@ bundle Default {
         Fib(i)->PrintLine();
       };
     }
-    
+
     function : native : Fib(n : Int), Int {
       if(n < 2) {
         return n;
       };
-      
+
       return Fib(n-1) + Fib(n-2);
     }
   }
@@ -9692,7 +9692,7 @@ bundle Default {
     } else {
         result = [self fibonacci:(position -1)] + [self fibonacci:(position -2)];
     }
-    return result;    
+    return result;
 }
 ```
 
@@ -9746,7 +9746,7 @@ let rec fib_rec n =
   else
     fib_rec (n - 1) + fib_rec (n - 2)
 
-let rec fib = function 
+let rec fib = function
     0 -> 0
   | 1 -> 1
   | n -> if n > 0 then fib (n-1) + fib (n-2)
@@ -9773,13 +9773,13 @@ let fib =
   fib_aux (num_of_int 0) (num_of_int 1)
 
 (* support for negatives *)
-let fib n = 
-      if n < 0 && n mod 2 = 0 then minus_num (fib (abs n))  
+let fib n =
+      if n < 0 && n mod 2 = 0 then minus_num (fib (abs n))
       else fib (abs n)
 ;;
 (* It can be called from the command line with an argument *)
 (* Result is send to standart output *)
-let n = int_of_string Sys.argv.(1) in 
+let n = int_of_string Sys.argv.(1) in
 print_endline (string_of_num (fib n))
 
 ```
@@ -9857,7 +9857,7 @@ function fibo = iterfibo(n)
     fibo = n;
   else
     f = zeros(2,1);
-    f(1) = 0; 
+    f(1) = 0;
     f(2) = 1;
     for i = 2 : n
       t = f(2);
@@ -9935,17 +9935,17 @@ Tail recursive version (example supplied with language):
 
 ```c>#include <order/interpreter.h
 
- 
+
 #define ORDER_PP_DEF_8fib                                         \
 ORDER_PP_FN(8fn(8N,                                               \
                 8fib_iter(8N, 0, 1)))
- 
+
 #define ORDER_PP_DEF_8fib_iter                                    \
 ORDER_PP_FN(8fn(8N, 8I, 8J,                                       \
                 8if(8is_0(8N),                                    \
                     8I,                                           \
                     8fib_iter(8dec(8N), 8J, 8add(8I, 8J)))))
- 
+
 ORDER_PP(8to_lit(8fib(8nat(5,0,0))))
 ```
 
@@ -9960,7 +9960,7 @@ ORDER_PP(8to_lit(8fib(8nat(5,0,0))))
 #define ORDER_PP_DEF_8fib_memo                                    \
 ORDER_PP_FN(8fn(8N,                                               \
                 8tuple_at(0, 8fib_memo_inner(8N, 8seq))))
-                
+
 
 #define ORDER_PP_DEF_8fib_memo_inner                                            \
 ORDER_PP_FN(8fn(8N, 8M,                                                         \
@@ -9973,7 +9973,7 @@ ORDER_PP_FN(8fn(8N, 8M,                                                         
                               (8U, 8add(8tuple_at(0, 8S), 8tuple_at(0, 8T))),   \
                               8pair(8U,                                         \
                                     8seq_append(8tuple_at(1, 8T), 8seq(8U))))))))
-                    
+
 
 ORDER_PP(
 8for_each_in_range(8fn(8N,
@@ -9997,7 +9997,7 @@ fun{FibI N}
   Temp = {NewCell 0}
   A = {NewCell 0}
   B = {NewCell 1}
-in    
+in
   for I in 1..N do
     Temp := @A + @B
     A := @B
@@ -10034,7 +10034,7 @@ fun{Fib N}
 	 {Loop N-1 A+B A}
       end
    end
-in    
+in
    {Loop N 1 0}
 end
 ```
@@ -10382,7 +10382,7 @@ end;
 ```pascal
 function FiboMax(n: integer):Extended;  //maXbox
 begin
-   result:= (pow((1+SQRT5)/2,n)-pow((1-SQRT5)/2,n))/SQRT5   
+   result:= (pow((1+SQRT5)/2,n)-pow((1-SQRT5)/2,n))/SQRT5
 end;
 ```
 
@@ -10392,7 +10392,7 @@ end;
 ```pascal
 function Fibo_BigInt(n: integer): string;  //maXbox
   var tbig1, tbig2, tbig3: TInteger;
-  begin 
+  begin
     result:= '0'
     tbig1:= TInteger.create(1);  //temp
     tbig2:= TInteger.create(0);  //result (a)
@@ -10402,14 +10402,14 @@ function Fibo_BigInt(n: integer): string;  //maXbox
 	   tbig2.assign(tbig3);
 	   tbig1.add(tbig3);
 	   tbig3.assign(tbig1);
-	 end; 
+	 end;
     result:= tbig2.toString(false)
     tbig3.free;
     tbig2.free;
-    tbig1.free; 
+    tbig1.free;
   end;
 ```
- 
+
 
 writeln(floattoStr(FiboMax(555)))
 >>>4.3516638122555E115
@@ -10587,7 +10587,7 @@ Using native integers/atoms, errors creep in above 78, so the same program conve
 ```Phix
 -- demo\rosetta\fibonacci.exw
 include mpfr.e
- 
+
 mpz res = NULL, prev, next
 integer lastn
 atom t0 = time()
@@ -10616,7 +10616,7 @@ integer absn = abs(n)
     lastn = n
     return res
 end function
- 
+
 for i=0 to 28 do
     if i then puts(1,", ") end if
     printf(1,"%s", {mpz_get_str(fibonampz(i))})
@@ -10780,7 +10780,7 @@ RETURNN:
   .local int counter
   .local int f
   counter=0
-LOOP: 
+LOOP:
   if counter > 20 goto DONE
   f = fib(counter)
   print f
@@ -10837,7 +10837,7 @@ DONE:
   .local int counter
   .local int f
   counter=0
-LOOP: 
+LOOP:
   if counter > 20 goto DONE
   f = fib(counter)
   print f
@@ -10859,7 +10859,7 @@ DONE:
 
 
 ```pike
-int     
+int
 fibIter(int n) {
     int fibPrev, fib, i;
     if (n < 2) {
@@ -10882,7 +10882,7 @@ fibIter(int n) {
 
 
 ```pike
-int 
+int
 fibRec(int n) {
     if (n < 2) {
         return(1);
@@ -10914,7 +10914,7 @@ end;
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```SQL
@@ -10930,7 +10930,7 @@ $$ LANGUAGE plpgsql;
 
 
 
-###  Calculated 
+###  Calculated
 
 
 ```SQL
@@ -10943,7 +10943,7 @@ $$ LANGUAGE plpgsql;
 
 
 
-###  Linear 
+###  Linear
 
 
 ```SQL
@@ -10968,7 +10968,7 @@ $$ LANGUAGE plpgsql;
 
 
 
-###  Tail recursive 
+###  Tail recursive
 
 
 ```SQL
@@ -11050,13 +11050,13 @@ Enter the desired number for "n" and run through your favorite postscript previe
 100 100 moveto
 
 %define the function recursively:
-/fib { dup 
+/fib { dup
        3 lt
          { pop 1 }
          { dup 1 sub fib exch 2 sub fib add }
        ifelse
     } def
-    
+
     (Fib\() show n (....) cvs show (\)=) show n fib (.....) cvs show
 
 showpage
@@ -11070,7 +11070,7 @@ showpage
 
 ### Recursive
 
-Starts with int and upgrades on-the-fly to doubles. 
+Starts with int and upgrades on-the-fly to doubles.
 
 ```potion
 recursive = (n):
@@ -11123,7 +11123,7 @@ matrix = (n) :
    algorithm = (n) :
       "computes (Fn, Fn+1)"
       if (n < 2): return ((0, 1), (1, 1)) at(n).
-      
+
       # n = e + {0, 1}
       q = algorithm(n / 2)  # q = (Fe/2, Fe/2+1)
       q = (q(0) * (2 * q(1) - q(0)), sqr(q(0)) + sqr(q(1)))  # q => (Fe, Fe+1)
@@ -11473,7 +11473,7 @@ All of the interim N/Value pairs have been asserted as facts for quicker future 
 
 ### Continuation passing style
 
-Works with <b>SWI-Prolog</b> and module lambda, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl 
+Works with <b>SWI-Prolog</b> and module lambda, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
 
 ```Prolog
 :- use_module(lambda).
@@ -11496,7 +11496,7 @@ cont_fib(N, FN1, FN, Pred) :-
 
 ### With lazy lists
 
-Works with <b>SWI-Prolog</b> and others that support <code>freeze/2</code>.  
+Works with <b>SWI-Prolog</b> and others that support <code>freeze/2</code>.
 
 
 ```Prolog
@@ -11536,7 +11536,7 @@ next( fib(A,B), A, fib(B,C)):- C is A+B.
 
 
 
-###  Yet another implementation 
+###  Yet another implementation
 
 One of my favorites; loosely similar to the first example, but without the performance penalty, and needs nothing special to implement.  Not even a dynamic database predicate. Attributed to M.E. for the moment, but simply because I didn't bother to search for the many people who probably did it like this long before I did.  If someone knows who came up with it first, please let us know.
 
@@ -11556,13 +11556,13 @@ Looking at performance:
 ```txt
  ?- time(fib(30,X)).
 % 86 inferences, 0.000 CPU in 0.000 seconds (?% CPU, Infinite Lips)
-X = 832040 
+X = 832040
  ?- time(fib(40,X)).
 % 116 inferences, 0.000 CPU in 0.000 seconds (?% CPU, Infinite Lips)
 X = 102334155
  ?- time(fib(100,X)).
 % 296 inferences, 0.000 CPU in 0.001 seconds (0% CPU, Infinite Lips)
-X = 354224848179261915075 
+X = 354224848179261915075
 
 ```
 
@@ -11662,18 +11662,18 @@ On my machine the speedup compares to above code is
 Procedure Fibonacci(n)
   Static NewMap Fib.i()
   Protected FirstRecursion
-  
+
   If MapSize(Fib())= 0        ; Init the hash table the first run
     Fib("0")=0: Fib("1")=1
     FirstRecursion = #True
   EndIf
- 
+
   If n >= 2
     Protected.s s=Str(n)
     If Not FindMapElement(Fib(),s)  ; Calculate only needed parts
       Fib(s)= Fibonacci(n-1)+Fibonacci(n-2)
     EndIf
-    n = Fib(s)  
+    n = Fib(s)
   EndIf
   If FirstRecursion ; Free the memory when finalizing the first call
     ClearMap(Fib())
@@ -11690,7 +11690,7 @@ EndProcedure
  Fibonacci(3)= 2
  Fibonacci(4)= 3
  Fibonacci(5)= 5
- 
+
  FibonacciReq(0)= 0
  FibonacciReq(1)= 1
  FibonacciReq(2)= 1
@@ -11706,7 +11706,7 @@ The following takes a natural number and generates an initial segment of the Fib
 
 ```Purity
 
-data Fib1 = FoldNat 
+data Fib1 = FoldNat
             <
               const (Cons One (Cons One Empty)),
               (uncurry Cons) . ((uncurry Add) . (Head, Head . Tail), id)
@@ -11733,12 +11733,12 @@ As a histomorphism:
 
 import Histo
 
-data Fib3 = Histo . Memoize 
+data Fib3 = Histo . Memoize
             <
-              const One, 
-              (p1 => 
+              const One,
+              (p1 =>
               <
-                const One, 
+                const One,
                 (p2 => Add (outl $p1) (outl $p2)). UnmakeCofree
               > (outr $p1)) . UnmakeCofree
             >
@@ -11765,8 +11765,8 @@ Output:
 
 ```txt
 
--832040 514229 -317811 196418 -121393 75025 -46368 28657 -17711 10946 -6765 4181 -2584 1597 -987 
-610 -377 233 -144 89 -55 34 -21 13 -8 5 -3 2 -1 1 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 
+-832040 514229 -317811 196418 -121393 75025 -46368 28657 -17711 10946 -6765 4181 -2584 1597 -987
+610 -377 233 -144 89 -55 34 -21 13 -8 5 -3 2 -1 1 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040
 
 ```
@@ -11774,7 +11774,7 @@ Output:
 
 ### Analytic
 
-Binet's formula: 
+Binet's formula:
 
 ```python
 from math import *
@@ -11864,10 +11864,10 @@ The recursive code as written two sections above is incredibly slow and ineffici
 ```python
 def fibFastRec(n):
     def fib(prvprv, prv, c):
-        if c < 1: 
+        if c < 1:
             return prvprv
-        else: 
-            return fib(prv, prvprv + prv, c - 1) 
+        else:
+            return fib(prv, prvprv + prv, c - 1)
     return fib(0, 1, n)
 ```
 
@@ -11921,18 +11921,18 @@ def prevPowTwo(n):
 def crazyFib(n):
     'Crazy fast fibonacci number calculation'
     powTwo = prevPowTwo(n)
-    
+
     q = r = i = 1
     s = 0
-    
+
     while(i < powTwo):
         i *= 2
         q, r, s = q*q + r*r, r * (q + s), (r*r + s*s)
-        
+
     while(i < n):
         i += 1
         q, r, s = q+r, q, r
-        
+
     return q
 
 ```
@@ -12009,13 +12009,13 @@ def fib():
     next(b)
     while True:
         yield next(a)+next(b)
- 
+
 print(tuple(islice(fib(), 10)))
 ```
 
 
 
-### As a scan or a fold 
+### As a scan or a fold
 
 
 ### =itertools.accumulate=
@@ -12147,7 +12147,7 @@ if __name__ == '__main__':
 fib=function(n,x=c(0,1)) {
    if (abs(n)>1) for (i in seq(abs(n)-1)) x=c(x[2],sum(x))
    if (n<0) return(x[2]*(-1)^(abs(n)-1)) else if (n) return(x[2]) else return(0)
-}  
+}
 
 sapply(seq(-31,31),fib)
 ```
@@ -12199,7 +12199,7 @@ print.table(lapply(0:20, iterfibo))
 
 # iterative but looping replaced by map-reduce'ing
 funcfibo <- function(n) {
-  if (n < 2) 
+  if (n < 2)
     n
   else {
     generator <- function(f, ...) {
@@ -12219,7 +12219,7 @@ Note that an idiomatic way to implement such low level, basic arithmethic operat
 All three solutions print
 
 ```txt
- [1] 0    1    1    2    3    5    8    13   21   34   55   89   144  233  377 
+ [1] 0    1    1    2    3    5    8    13   21   34   55   89   144  233  377
 [16] 610  987  1597 2584 4181 6765
 ```
 
@@ -12232,30 +12232,30 @@ All three solutions print
 
 class FibonacciSequence
 	**Prints the nth fibonacci number**
-	
+
 	on start
-		
+
 		args := program arguments
-		
+
 		if args empty
 			print .fibonacci(8)
-		
+
 		else
-			
+
 			try
 				print .fibonacci(integer.parse(args[0]))
-			
+
 			catch FormatException
 				print to Console.error made !, "Input must be an integer"
 				exit program with error code
-			
+
 			catch OverflowException
 				print to Console.error made !, "Number too large"
 				exit program with error code
-	
+
 	define fibonacci(n as integer) as integer is shared
 		**Returns the nth fibonacci number**
-		
+
 		test
 			assert fibonacci(0) = 0
 			assert fibonacci(1) = 1
@@ -12267,13 +12267,13 @@ class FibonacciSequence
 			assert fibonacci(7) = 13
 			assert fibonacci(8) = 21
 
-		
+
 		body
 			a, b := 0, 1
-		
+
 			for n
 				a, b := b, a + b
-		
+
 			return a
 
 ```
@@ -12319,10 +12319,10 @@ class FibonacciSequence
 
 (require math/matrix)
 
-(define (fibmat n) (matrix-ref 
+(define (fibmat n) (matrix-ref
                     (matrix-expt (matrix ([1 1]
-                                          [1 0])) 
-                                 n) 
+                                          [1 0]))
+                                 n)
                     1 0))
 
 (fibmat 1000)
@@ -12540,7 +12540,7 @@ x = fib(n)
 see n + " Fibonacci is : " + x
 
 func fib nr if nr = 0 return 0 ok
-            if nr = 1 return 1 ok 
+            if nr = 1 return 1 ok
             if nr > 1 return fib(nr-1) + fib(nr-2) ok
 
 ```
@@ -12630,7 +12630,7 @@ M = Matrix[[0, 1], [1,1]]
 # ((m**2)**2)... as far as possible
 # and then multiplying that by by M**(the remaining number of times).  E.g., to compute
 # M**19, compute partial = ((M**2)**2) = M**16, and then compute partial*(M**3) = M**19.
-# That's only 5 matrix multiplications of M to compute M*19. 
+# That's only 5 matrix multiplications of M to compute M*19.
 def self.fib_matrix(n)
   return 0 if n <= 0 # F(0)
   return 1 if n == 1 # F(1)
@@ -12732,7 +12732,7 @@ end
 1.9.3p125 :002?>   phi = (1 + Math.sqrt(5)) / 2
 1.9.3p125 :003?>   ((phi**self - (-1 / phi)**self) / Math.sqrt(5)).to_i
 1.9.3p125 :004?>   end
- => nil 
+ => nil
 1.9.3p125 :005 > (0..10).map(&:fib)
  => [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 
@@ -12748,11 +12748,11 @@ for i = 0 to 10
  print i;" ";fibR(i);" ";fibI(i)
 next i
 end
- 
+
  function fibR(n)
  if n < 2 then fibR = n else fibR = fibR(n-1) + fibR(n-2)
  end function
- 
+
  function fibI(n)
    b = 1
    for i = 1 to n
@@ -12840,7 +12840,7 @@ fn fib_tail_recursive(nth: usize) -> usize {
 ### Analytic
 
 This uses a feature from nightly Rust which makes it possible to (cleanly) return an iterator without the additional overhead of putting it on the heap. In stable Rust, we'd need to return a <code>Box<Iterator<Item=u64>></code> which has the cost of an additional allocation and the overhead of dynamic dispatch. The version below does not require the use of the heap and is done entirely through static dispatch.
- 
+
 
 ```rust
 #![feature(conservative_impl_trait)]
@@ -12871,7 +12871,7 @@ use std::mem;
 struct Fib {
     prev: usize,
     curr: usize,
-} 
+}
 
 impl Fib {
     fn new() -> Self {
@@ -12883,7 +12883,7 @@ impl Iterator for Fib {
     type Item = usize;
     fn next(&mut self) -> Option<Self::Item>{
         mem::swap(&mut self.curr, &mut self.prev);
-        self.curr.checked_add(self.prev).map(|n| { 
+        self.curr.checked_add(self.prev).map(|n| {
             self.curr = n;
             n
         })
@@ -12903,7 +12903,7 @@ fn main() {
 
 
 
-###  Iterative 
+###  Iterative
 
 
 This code builds a table <code>fib</code> holding the first few values of the Fibonacci sequence.
@@ -12925,7 +12925,7 @@ run;
 
 
 
-###  Naive recursive 
+###  Naive recursive
 
 
 This code provides a simple example of defining a function and using it recursively. One of the members of the sequence is written to the log.
@@ -12977,7 +12977,7 @@ class MAIN is
       n3w := last + this;
       last := this;
       this := n3w;
-    end;   
+    end;
     return this;
   end;
 
@@ -13000,7 +13000,7 @@ Note that the 23rd Fibonacci number (=28657) is the largest that can be generate
 rem - iterative function to calculate nth fibonacci number
 function fibonacci(n = integer) = integer
 var f, i, p1, p2 = integer
-p1 = 0    
+p1 = 0
 p2 = 1
 if n = 0 then
    f = 0
@@ -13073,7 +13073,7 @@ def fib(x:Int, prev: BigInt = 0, next: BigInt = 1):BigInt = x match {
 
 ```scala
 // Fibonacci using BigInt with Stream.foldLeft optimized for GC (Scala v2.9 and above)
-// Does not run out of memory for very large Fibonacci numbers 
+// Does not run out of memory for very large Fibonacci numbers
 def fib(n:Int) = {
 
   def series(i:BigInt,j:BigInt):Stream[BigInt] = i #:: series(j, i+j)
@@ -13084,7 +13084,7 @@ def fib(n:Int) = {
 // Small test
 (0 to 13) foreach {n => print(fib(n).toString + " ")}
 
-// result: 0 1 1 2 3 5 8 13 21 34 55 89 144 233 
+// result: 0 1 1 2 3 5 8 13 21 34 55 89 144 233
 
 ```
 
@@ -13232,7 +13232,7 @@ fibo(46)=1836311903
 ```sed
 #!/bin/sed -f
 
-# First we need to convert each number into the right number of ticks 
+# First we need to convert each number into the right number of ticks
 # Start by marking digits
 s/[0-9]/<&/g
 
@@ -13330,7 +13330,7 @@ Original source: [http://seed7.sourceforge.net/algorith/math.htm#iterative_fib]
 
 
 ```sequencel
-fibonacci(n) := 
+fibonacci(n) :=
 		n when n < 2
 	else
 		fibonacci(n - 1) + fibonacci(n - 2);
@@ -13344,7 +13344,7 @@ Based on: [https://www.youtube.com/watch?v=5JVC5dDtnyg]
 
 ```sequencel
 fibonacci(n) := fibonacciHelper(0, 1, n);
-		
+
 fibonacciHelper(prev, next, n) :=
 		prev when n < 1
 	else
@@ -13361,7 +13361,7 @@ fibonacciHelper(prev, next, n) :=
 ```sequencel
 fibonacci(n) := fibonacciHelper([[1,0],[0,1]], n);
 
-fibonacciHelper(M(2), n) := 
+fibonacciHelper(M(2), n) :=
 	let
 		N := [[1,1],[1,0]];
 	in
@@ -13408,7 +13408,7 @@ end proc;
 (define fib
   0 -> 0
   1 -> 1
-  N -> (+ (fib (+ N 1)) (fib (+ N 2))) 
+  N -> (+ (fib (+ N 1)) (fib (+ N 2)))
        where (< N 0)
   N -> (+ (fib (- N 1)) (fib (- N 2))))
 ```
@@ -13558,13 +13558,13 @@ Iterative method in <code>42.fibonacci</code> form.
       prev := next
       next := sum
       ]
-      
+
     next
-    ]    
+    ]
   ]
 ```
 
- 
+
 Optimized iterative method in <code>42.fibonacci</code> form.
 Though the best optimiation is to write it in C++ as with the built-in form that comes with SkookumScript.
 
@@ -13590,9 +13590,9 @@ Though the best optimiation is to write it in C++ as with the built-in form that
       prev : next
       next : sum
       ]
-      
+
     next
-    ]    
+    ]
   ]
 ```
 
@@ -13787,9 +13787,9 @@ This is modular SNUSP (which introduces @ and # for threading).
 
 
 ```snusp
- @!\+++++++++#  /<<+>+>-\       
-fib\==>>+<<?!/>!\      ?/\      
-  #<</?\!>/@>\?-<<</@>/@>/>+<-\ 
+ @!\+++++++++#  /<<+>+>-\
+fib\==>>+<<?!/>!\      ?/\
+  #<</?\!>/@>\?-<<</@>/@>/>+<-\
      \-/  \       !\ !\ !\   ?/#
 ```
 
@@ -13849,7 +13849,7 @@ End Function
 ## Spin
 
 
-###  Iterative 
+###  Iterative
 
 {{works with|BST/BSTC}}
 {{works with|FastSpin/FlexSpin}}
@@ -13860,10 +13860,10 @@ End Function
 con
   _clkmode = xtal1 + pll16x
   _clkfreq = 80_000_000
- 
+
 obj
   ser : "FullDuplexSerial.spin"
- 
+
 pub main | i
   ser.start(31, 30, 0, 115200)
 
@@ -13875,9 +13875,9 @@ pub main | i
   ser.stop
   cogstop(0)
 
-pub fib(i) : b | a 
-  b := a := 1 
-  repeat i 
+pub fib(i) : b | a
+  b := a := 1
+  repeat i
     a := b + (b := a)
 ```
 
@@ -13892,7 +13892,7 @@ pub fib(i) : b | a
 ## SPL
 
 
-###  Analytic 
+###  Analytic
 
 
 ```spl
@@ -13903,7 +13903,7 @@ fibo(n)=
 ```
 
 
-###  Iterative 
+###  Iterative
 
 
 ```spl
@@ -13921,7 +13921,7 @@ fibo(n)=
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```spl
@@ -13936,7 +13936,7 @@ fibo(n)=
 ## SQL
 
 
-###  Analytic 
+###  Analytic
 
 As a running sum:
 
@@ -14000,7 +14000,7 @@ connect by level <= 10;
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 {{works with|Oracle}}
@@ -14156,7 +14156,7 @@ list
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -14209,7 +14209,7 @@ f = { |n| if(n < 2) { n } { f.(n-1) + f.(n-2) } };
 ```
 
 
-nth fibonacci term for positive and negative n. 
+nth fibonacci term for positive and negative n.
 
 ```SuperCollider
 
@@ -14384,7 +14384,7 @@ templates nthFibonacci
   <>
     { N: $.N + 1, n1: $.n0, n0: $.n1 - $.n0} -> #
 end nthFibonacci
- 
+
 8 -> nthFibonacci -> '$;
 ' -> !OUT::write
 -5 -> nthFibonacci -> '$;
@@ -14564,7 +14564,7 @@ func fib(n) {
 func fib(n) {
    let a = 1;
    let b = 2;
-   
+
    until(n-- <= 0) {
       yield a;
       (a, b) = (b, a + b);
@@ -14723,7 +14723,7 @@ Output:
 ```txt
 
 What fibionacci number do you want? >31
-fibionacci number 31=1346269 
+fibionacci number 31=1346269
 
 ```
 
@@ -14917,17 +14917,17 @@ Using int, but could easily replace with double, long, ulong, etc.
 int fibIter(int n){
 	if (n < 2)
 		return n;
-	
+
 	int last = 0;
 	int cur = 1;
 	int next;
-	
+
 	for (int i = 1; i < n; ++i){
 		next = last + cur;
 		last = cur;
 		cur = next;
 	}
-	
+
 	return cur;
 }
 
@@ -14944,12 +14944,12 @@ int fibIter(int n){
                             5E   DD  0005     3 	pushl	sp			;pointer to buffer
                             10   DD  0007     4 	pushl	#16			;descriptor: len of buffer
                        5B   5E   D0  0009     5 	movl	sp, r11			;-> descriptor
-                                     000C     6 
+                                     000C     6
                        7E   01   7D  000C     7 	movq	#1, -(sp)		;init 0,1
                                      000F     8 loop:
                7E   6E   04 AE   C1  000F     9 	addl3	4(sp), (sp), -(sp)	;next element on stack
                             17   1D  0014    10 	bvs	ret			;vs - overflow set, exit
-                                     0016    11 
+                                     0016    11
                             5B   DD  0016    12 	pushl	r11			;-> descriptor by ref
                          04 AE   DF  0018    13 	pushal	4(sp)			;-> fib on stack by ref
               00000000'GF   02   FB  001B    14 	calls	#2, g^ots$cvt_l_ti	;convert integer to string
@@ -14994,10 +14994,10 @@ Public Function Fib(ByVal n As Integer) As Variant
         fib1 = sum
     Next i
     Fib = fib0
-End Function 
+End Function
 ```
 
-With Currency type, maximum value is fibo(73). 
+With Currency type, maximum value is fibo(73).
 
 The (slow) recursive version:
 
@@ -15017,7 +15017,7 @@ With Long type, maximum value is fibo(46).
 ## VBScript
 
 ===Non-recursive, object oriented, generator===
-Defines a generator class, with a default Get property. Uses Currency for larger-than-Long values. Tests for overflow and switches to Double. Overflow information also available from class. 
+Defines a generator class, with a default Get property. Uses Currency for larger-than-Long values. Tests for overflow and switches to Double. Overflow information also available from class.
 
 
 ### =Class Definition:=
@@ -15029,44 +15029,44 @@ class generator
 	dim t2
 	dim tn
 	dim cur_overflow
-	
+
 	Private Sub Class_Initialize
 		cur_overflow = false
 		t1 = ccur(0)
 		t2 = ccur(1)
 		tn = ccur(t1 + t2)
 	end sub
-	
+
 	public default property get generated
 		on error resume next
 
 		generated = ccur(tn)
-		if err.number <> 0 then 
+		if err.number <> 0 then
 			generated = cdbl(tn)
 			cur_overflow = true
 		end if
 		t1 = ccur(t2)
-		if err.number <> 0 then 
+		if err.number <> 0 then
 			t1 = cdbl(t2)
 			cur_overflow = true
 		end if
 		t2 = ccur(tn)
-		if err.number <> 0 then 
+		if err.number <> 0 then
 			t2 = cdbl(tn)
 			cur_overflow = true
 		end if
 		tn = ccur(t1+ t2)
-		if err.number <> 0 then 
+		if err.number <> 0 then
 			tn = cdbl(t1) + cdbl(t2)
 			cur_overflow = true
 		end if
 		on error goto 0
 	end property
-	
+
 	public property get overflow
 		overflow = cur_overflow
 	end property
-		
+
 end class
 ```
 
@@ -15080,7 +15080,7 @@ dim fib
 set fib = new generator
 dim i
 for i = 1 to 100
-	wscript.stdout.write " " & fib 
+	wscript.stdout.write " " & fib
 	if fib.overflow then
 		wscript.echo
 		exit for
@@ -15120,11 +15120,11 @@ Return(#11)
 ## Visual Basic
 
 {{works with|Visual Basic|VB6 Standard}}
-Maximum integer value (7*10^28) can be obtained by using decimal type, but decimal type is only a sub type of the variant type. 
+Maximum integer value (7*10^28) can be obtained by using decimal type, but decimal type is only a sub type of the variant type.
 
 ```vb
 Sub fibonacci()
-    Const n = 139 
+    Const n = 139
     Dim i As Integer
     Dim f1 As Variant, f2 As Variant, f3 As Variant 'for Decimal
     f1 = CDec(0): f2 = CDec(1) 'for Decimal setting
@@ -15142,13 +15142,13 @@ End Sub 'fibonacci
 {{Out}}
 
 ```txt
-fibo( 0 )= 0 
-fibo( 1 )= 1 
-fibo( 2 )= 1 
+fibo( 0 )= 0
+fibo( 1 )= 1
+fibo( 2 )= 1
 ...
-fibo( 137 )= 19134702400093278081449423917 
-fibo( 138 )= 30960598847965113057878492344 
-fibo( 139 )= 50095301248058391139327916261 
+fibo( 137 )= 19134702400093278081449423917
+fibo( 138 )= 30960598847965113057878492344
+fibo( 139 )= 50095301248058391139327916261
 ```
 
 
@@ -15380,19 +15380,19 @@ let fib n => (
 This program generates Fibonacci numbers until it is [http://ideone.com/VBDLzk forced to terminate].
 
 ```Whitespace
-    
-   	
 
-    
- 
-	 
- 	
- 	   	 	 
-	
-   	  	
-	   
- 
-  
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 
@@ -15433,35 +15433,35 @@ $ wspace fib.ws | head -n 6
 This program takes a number ''n'' on standard input and outputs the ''n''th member of the Fibonacci sequence.
 
 ```Whitespace
-    
- 
- 	
-					
- 	  
-	
- 	   	 	 
-	
-  
 
 
 
-    
- 
-    	 
-	  	
-		 	
- 
-    	
-	  	
- 	  
- 
-	   	 
-	  	
- 	  
-	   
-   	
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 
@@ -15565,10 +15565,10 @@ TITLE i hate visual studio 4			(Fibs.asm)
 ;                       |<     |              |<    |
 ;                       |      |              |     |
 ;                       |mmmmmm|              |mmmmm|
-;; Epic Win. 
+;; Epic Win.
 
 INCLUDE Irvine32.inc
-                                                                              
+
 .data
 	BEERCOUNT = 48;
 	Fibs dd 0, 1, BEERCOUNT DUP(0);
@@ -15582,7 +15582,7 @@ main PROC
 	mov ecx, BEERCOUNT; 		;;count of items (how many)
 	mov ebx, 4; 		;;size (in number of bytes)
 	call DumpMem;
-	
+
 	mov ecx, BEERCOUNT; 	;//http://www.wolframalpha.com/input/?i=F ib%5B47%5D+%3E+4294967295
 	mov esi, offset Fibs
 	NextPlease:;
@@ -15591,8 +15591,8 @@ main PROC
 		mov [esi+8], eax;	;//Move that data into the memory location after the second number
 		add esi, 4;			;//Update the pointer
 	loop NextPlease;	;//Thank you sir, may I have another?
-	
-	
+
+
 	;Here be dragons
 	mov esi, offset Fibs; offset array;  ;;were to start (start)
 	mov ecx, BEERCOUNT; 		;;count of items (how many)
@@ -15613,10 +15613,10 @@ This will display the first 93 numbers of the sequence.
 
 ```xEec
 
-h#1 h#1 h#1 o# 
-h#10 o$ p 
->f 
-  o# h#10 o$ p 
+h#1 h#1 h#1 o#
+h#10 o$ p
+>f
+  o# h#10 o$ p
   ma h? jnext p
   t
 jnf
@@ -15680,7 +15680,7 @@ Pass n to this function where n is the desired number of iterations. This exampl
 Function fibo(n As Integer) As UInt64
 
   Dim noOne As UInt64 = 1
-  Dim noTwo As UInt64 = 1	
+  Dim noTwo As UInt64 = 1
   Dim sum As UInt64
 
   For i As Integer = 3 To n

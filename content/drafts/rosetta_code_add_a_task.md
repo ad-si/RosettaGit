@@ -28,7 +28,7 @@ Examples
 
 Come up with a title for your task (look at [[:Category:Programming Tasks|the current tasks]] to see what kind of name you should choose), type it in the search bar, and click "Go". There will be a "Create page" link on the resulting page somewhere. Click that, and you can begin editing.
 ===Draft vs non-draft===
-Not all tasks are immediately ready to be thrown at the casual Rosetta Code participant. Some need a review or draft phase before they're in good shape. 
+Not all tasks are immediately ready to be thrown at the casual Rosetta Code participant. Some need a review or draft phase before they're in good shape.
 * For a non-draft task, one would use [[Template:Task]] by putting {{tmpl|task}} at the top of the page.
 * To note that a task is a draft, use [[Template:draft task]], by putting {{tmpl|draft task}} at the top, rather than {{tmpl|task}}. If this is your first task, you should probably just start with a draft.
 
@@ -98,4 +98,4 @@ It helps to '''explain jargon''', as about the only common jargon that's likely 
 
 ### Extreme Language
 
-Some schools, libraries and parental filters filter pages whose URLs match wordlists. This even occasionally impacts Rosetta Code's reCAPTCHA API key. We try to include this audience, so please [[wp:bowlderise|self-censor]] such content. (For an example, see the discussion page for language [[Category talk:Brainf***|Brainf***]]).
+Some schools, libraries and parental filters filter pages whose URLs match wordlists. This even occasionally impacts Rosetta Code's reCAPTCHA API key. We try to include this audience, so please [[wp:bowlderise|self-censor]] such content. (For an example, see the discussion page for language [[Category talk:Brainfuck|Brainfuck]]).

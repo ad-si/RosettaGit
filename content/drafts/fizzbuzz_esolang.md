@@ -76,7 +76,7 @@ Based on above, but simplified and it stops :)
 
 Simple solution:
 
-```beeswax>               
+```beeswax>
      q
         >@F5~%"d@F{  >  @F     q
 _1>F3~%'d`Fizz`@F5~%'d >`Buzz`@FNp
@@ -86,7 +86,7 @@ _1>F3~%'d`Fizz`@F5~%'d >`Buzz`@FNp
 
 More clever solution, checking n%5 only on one path:
 
-```beeswax>                            
+```beeswax>
 @?q
          >      q       >Ag'd@{?p
 _>"1F3~%'d`Fizz`f>@F5~%'d`Buzz`@p
@@ -100,19 +100,19 @@ _>"1F3~%'d`Fizz`f>@F5~%'d`Buzz`@p
 (befunge 93)
 
 ```befunge
-55*4*v    _   v                                                                 
-v   <>:1-:^                                                                     
-    |:<$      <    ,*48 <                                                       
-    @>0"zzif">:#,_$      v                                                      
->:3%!|    >0"zzub">:#,_$^                                                       
-     >:5%!|                                                                     
-v "buzz"0<>:.           ^                                                       
-         |!%5:           <                                                      
+55*4*v    _   v
+v   <>:1-:^
+    |:<$      <    ,*48 <
+    @>0"zzif">:#,_$      v
+>:3%!|    >0"zzub">:#,_$^
+     >:5%!|
+v "buzz"0<>:.           ^
+         |!%5:           <
 >:#,_   $>              ^
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```bf
 FizzBuzz
@@ -130,8 +130,8 @@ Memory:
 
   Zero
   Digit 3
-  Digit 2    
-  Digit 1    
+  Digit 2
+  Digit 1
 
   CopyPlace
   Mod 3
@@ -156,7 +156,7 @@ Number representation in ASCII
     ->->
 
     Increment Number
-    > >>+> 
+    > >>+>
         > >>+>
         <<<<
     <<<<
@@ -166,12 +166,12 @@ Number representation in ASCII
     >>> >>>>
     >++++++++++<
     [-<<< <<<<->>>> >>> >-<]
-    ++++++++++ 
+    ++++++++++
     <<< <<<<
 
     Restore the digit
     [->>>> >>>-<<< <<<<]
-    >>>> [-]+ >>>>[<<<< - >>>>[-]]<<<< <<<< 
+    >>>> [-]+ >>>>[<<<< - >>>>[-]]<<<< <<<<
 
     If there is an overflow
     >>>>[
@@ -184,12 +184,12 @@ Number representation in ASCII
         >> >>>>
         >>++++++++++<<
         [-<< <<<<->>>> >> >>-<<]
-        ++++++++++ 
+        ++++++++++
         << <<<<
 
         Restore the digit
         [->>>> >>-<< <<<<]
-        >>>> [-]+ >>>>[<<<< - >>>>[-]]<<<< <<<< 
+        >>>> [-]+ >>>>[<<<< - >>>>[-]]<<<< <<<<
 
         If there (again) is an overflow
         >>>>[
@@ -204,7 +204,7 @@ Number representation in ASCII
         [-]
     ]<<<<
 
-    >>>> >>>> 
+    >>>> >>>>
 
     Set if to print the number
     >>>[-]+<<<
@@ -226,7 +226,7 @@ Number representation in ASCII
 
         ++++++++ ++++++++ ++++++++ ++++++++
         +++.
-        
+
         ++++++++ ++++++++ +..
 
         [-]
@@ -250,7 +250,7 @@ Number representation in ASCII
 
         ++++++++ ++++++++ ++++++++ ++++++++
         ++++++++ ++++++++ +++.
-        
+
         +++++..
 
         [-]
@@ -277,9 +277,9 @@ Number representation in ASCII
 
 ## Chef
 
-This was clearly a challenge in a language 
-without a modulus operator, 
-no proper if statement (except for checking if a variable is not exactly 0), 
+This was clearly a challenge in a language
+without a modulus operator,
+no proper if statement (except for checking if a variable is not exactly 0),
 and no way to define text (except 1 character at a time on a stack).
 
 
@@ -323,70 +323,70 @@ Ingredients.
 1 g sage
 
 Method.
-Put milk into the 1st mixing bowl. 
-Put salt into the 1st mixing bowl. 
-Put flour into the 1st mixing bowl. 
-Put vinegar into the 1st mixing bowl. 
-Put milk into the 1st mixing bowl. 
-Stir the 1st mixing bowl for 5 minutes. 
-Liquify contents of the 1st mixing bowl. 
-Put fizzle into the 3rd mixing bowl. 
+Put milk into the 1st mixing bowl.
+Put salt into the 1st mixing bowl.
+Put flour into the 1st mixing bowl.
+Put vinegar into the 1st mixing bowl.
+Put milk into the 1st mixing bowl.
+Stir the 1st mixing bowl for 5 minutes.
+Liquify contents of the 1st mixing bowl.
+Put fizzle into the 3rd mixing bowl.
 Combine seltzer into the 3rd mixing bowl.
-Fold bmilk into the 6th mixing bowl. 
+Fold bmilk into the 6th mixing bowl.
 Put bmilk into the 6th mixing bowl.
-Put seltzer into the 6th mixing bowl. 
+Put seltzer into the 6th mixing bowl.
 Put bmilk into the 6th mixing bowl.
-Serve with moist cake. 
-Fold bmilk into the 1st mixing bowl. 
-Fold sage into the 6th mixing bowl. 
+Serve with moist cake.
+Fold bmilk into the 1st mixing bowl.
 Fold sage into the 6th mixing bowl.
-Put bmilk into the 4th mixing bowl. 
-Remove seltzer from the 4th mixing bowl. 
+Fold sage into the 6th mixing bowl.
+Put bmilk into the 4th mixing bowl.
+Remove seltzer from the 4th mixing bowl.
 Fold oregano into the 4th mixing bowl.
 Smell the oregano.
- Fold bmilk into the 6th mixing bowl. 
- Put bmilk into the 6th mixing bowl. 
- Put fizzle into the 6th mixing bowl. 
- Put bmilk into the 6th mixing bowl. 
- Serve with moist cake. 
- Fold bmilk into the 1st mixing bowl. 
- Fold sage into the 6th mixing bowl. 
+ Fold bmilk into the 6th mixing bowl.
+ Put bmilk into the 6th mixing bowl.
+ Put fizzle into the 6th mixing bowl.
+ Put bmilk into the 6th mixing bowl.
+ Serve with moist cake.
+ Fold bmilk into the 1st mixing bowl.
  Fold sage into the 6th mixing bowl.
- Put bmilk into the 4th mixing bowl. 
- Remove fizzle from the 4th mixing bowl. 
+ Fold sage into the 6th mixing bowl.
+ Put bmilk into the 4th mixing bowl.
+ Remove fizzle from the 4th mixing bowl.
  Fold oregano into the 4th mixing bowl.
  Crush the oregano.
-  Clean the 1st mixing bowl. 
-  Fold bmilk into the 6th mixing bowl. 
-  Put bmilk into the 1st mixing bowl. 
+  Clean the 1st mixing bowl.
+  Fold bmilk into the 6th mixing bowl.
+  Put bmilk into the 1st mixing bowl.
   Refrigerate.
  Grind until crushed.
  Refrigerate.
 Shuffle until smelled.
 Clean the 1st mixing bowl.
-Put milk into the 1st mixing bowl. 
-Put vegetable oil into the 1st mixing bowl. 
-Put sugar into the 1st mixing bowl. 
-Put vinegar into the 1st mixing bowl. 
-Put milk into the 1st mixing bowl. 
-Stir the 1st mixing bowl for 5 minutes. 
+Put milk into the 1st mixing bowl.
+Put vegetable oil into the 1st mixing bowl.
+Put sugar into the 1st mixing bowl.
+Put vinegar into the 1st mixing bowl.
+Put milk into the 1st mixing bowl.
+Stir the 1st mixing bowl for 5 minutes.
 Liquify contents of the 1st mixing bowl.
-Fold baking soda into the 3rd mixing bowl. 
-Fold bmilk into the 6th mixing bowl. 
-Put bmilk into the 6th mixing bowl. 
-Put baking soda into the 6th mixing bowl. 
-Put bmilk into the 6th mixing bowl. 
-Serve with moist cake. 
-Fold bmilk into the 1st mixing bowl. 
-Fold sage into the 6th mixing bowl. 
+Fold baking soda into the 3rd mixing bowl.
+Fold bmilk into the 6th mixing bowl.
+Put bmilk into the 6th mixing bowl.
+Put baking soda into the 6th mixing bowl.
+Put bmilk into the 6th mixing bowl.
+Serve with moist cake.
+Fold bmilk into the 1st mixing bowl.
 Fold sage into the 6th mixing bowl.
-Put bmilk into the 4th mixing bowl. 
-Remove baking soda from the 4th mixing bowl. 
+Fold sage into the 6th mixing bowl.
+Put bmilk into the 4th mixing bowl.
+Remove baking soda from the 4th mixing bowl.
 Fold oregano into the 4th mixing bowl.
 Separate the oregano.
  Refrigerate.
 Part until separated.
-Put fizzle into the 6th mixing bowl. 
+Put fizzle into the 6th mixing bowl.
 Serve with club soda.
 Stir the 1st mixing bowl for 1 minute.
 Stir the 1st mixing bowl for 7 minutes.
@@ -415,18 +415,18 @@ Ingredients.
 1 g rosemary
 
 Method.
-Fold chocolate into the 6th mixing bowl. 
-Fold syrup into the 6th mixing bowl. 
+Fold chocolate into the 6th mixing bowl.
+Fold syrup into the 6th mixing bowl.
 Clean the 1st mixing bowl.
-Put chocolate into the 5th mixing bowl. 
-Fold wheat flour into the 5th mixing bowl. 
-Put white chocolate chips into the 5th mixing bowl. 
-Remove white chocolate chips from the 5th mixing bowl. 
+Put chocolate into the 5th mixing bowl.
+Fold wheat flour into the 5th mixing bowl.
+Put white chocolate chips into the 5th mixing bowl.
+Remove white chocolate chips from the 5th mixing bowl.
 Fold baking powder into the 5th mixing bowl.
-Put baking powder into the 5th mixing bowl. 
+Put baking powder into the 5th mixing bowl.
 Fold honey into the 5th mixing bowl.
 Sift the wheat flour.
- Put honey into the 5th mixing bowl. 
+ Put honey into the 5th mixing bowl.
  Add white chocolate chips into the 5th mixing bowl.
  Fold honey into the 5th mixing bowl.
  Put honey into the 5th mixing bowl.
@@ -437,7 +437,7 @@ Sift the wheat flour.
   Remove white chocolate chips from the 5th mixing bowl.
   Fold rosemary into the 5th mixing bowl.
   Set aside.
- Move until sprinkled. 
+ Move until sprinkled.
  Recite the rosemary.
   Put white chocolate chips into the 5th mixing bowl.
   Remove white chocolate chips from the 5th mixing bowl.
@@ -450,26 +450,26 @@ Sift the wheat flour.
  Put white chocolate chips into the 5th mixing bowl.
  Fold rosemary into the 5th mixing bowl.
 Shuffle the wheat flour until sifted.
-Put the baking powder into the 5th mixing bowl. 
-Combine syrup into the 5th mixing bowl. 
-Fold honey into the 5th mixing bowl. 
-Put chocolate into the 5th mixing bowl. 
-Remove honey from the 5th mixing bowl. 
+Put the baking powder into the 5th mixing bowl.
+Combine syrup into the 5th mixing bowl.
+Fold honey into the 5th mixing bowl.
+Put chocolate into the 5th mixing bowl.
+Remove honey from the 5th mixing bowl.
 Fold chocolate into the 5th mixing bowl.
-Put white chocolate chips into the 5th mixing bowl. 
-Fold rosemary into the 5th mixing bowl. 
+Put white chocolate chips into the 5th mixing bowl.
+Fold rosemary into the 5th mixing bowl.
 Siphon chocolate.
  Put white chocolate chips into the 5th mixing bowl.
  Remove white chocolate chips from the 5th mixing bowl.
  Fold rosemary into the 5th mixing bowl.
- Set aside. 
-Gulp until siphoned. 
+ Set aside.
+Gulp until siphoned.
 Quote the rosemary.
  Put syrup into the 5th mixing bowl.
  Fold chocolate into the 5th mixing bowl.
- Set aside. 
+ Set aside.
 Repeat until quoted.
-Put chocolate into the 1st mixing bowl. 
+Put chocolate into the 1st mixing bowl.
 Refrigerate.
 ```
 
@@ -520,7 +520,7 @@ HAI 1.2
 	IM IN YR FIZZR UPPIN YR NUMZ TIL BOTH SAEM NUMZ AN 100
 		BOTH SAEM MOD OF NUMZ AN 15 AN 0
 		O RLY?
-			YA RLY 
+			YA RLY
 				VISIBLE "FizzBuzz"
 			MEBBE BOTH SAEM MOD OF NUMZ AN 3 AN 0
 				VISIBLE "Fizz"
@@ -1013,65 +1013,65 @@ $@/>@/>@/>@/>@/>@/>@/\   0
 
 
 ```Whitespace
-   	
 
-    
- 
-  
-    		
-	 		
-	  	
-   	 	
-	 		
-	  	 
- 
- 	
- 	
- 
- 	  
 
-   	
-   	   		 
-	
-     		 	  	
-	
-  
- 	 		
-   	 	
-	 		
-	  	 
 
- 
- 	  
 
-   	 
-   	    	 
-	
-     			 	 	
-	
-  
- 	 		
 
- 
- 	  
 
-   		
-   				 	 
- 
- 	
-  	
-  
-	
 
-   	  
-   	 	 
-	
-     	
-	    
-    		  	 	
-	  	
-		  
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

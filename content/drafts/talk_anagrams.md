@@ -33,7 +33,7 @@ My original idea was to include getting the data from the web, as people do use 
 
 ==error in ooRexx ?==
 
-I got a syntax error in line 12 of the ooRexx example (using ROO).  
+I got a syntax error in line 12 of the ooRexx example (using ROO).
 Is this a bug in  ROO  or is it something else?
 
 I'm not fluent in ooRexx speak, so it may be really something simple. -- [[User:Gerard Schildberger|Gerard Schildberger]] 01:17, 10 June 2012 (UTC)
@@ -71,12 +71,12 @@ What do others think? --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk
 :TheWatcher
 
 ::
-Woa. Hold your horses their TheWatcher! So are you saying that FBSL contains both a dynamic assembler and a dynamic C JIT (is that a compiler or interpreter) as subsets of the language? That was not made clear in [[FBSL|the language category page]], or in the introduction on the FBSL home page. 
+Woa. Hold your horses their TheWatcher! So are you saying that FBSL contains both a dynamic assembler and a dynamic C JIT (is that a compiler or interpreter) as subsets of the language? That was not made clear in [[FBSL|the language category page]], or in the introduction on the FBSL home page.
 
-::This is supposed to be a site for comparing language features. You should not be surprised if someone sees one languages entry copied and used for another language and questions it. 
-::Since FBSL has this capability it might be best to show it by showing the FBSL specific framework necessary and then only any differences to the C entry with the rest ellided so that language comparers can concentrate on how FBSL can use stock C - as well as maybe a second answer written in mainly that subset of features FBSL that are not shared with the C JIT. Actually what I have written may be wrong as I do not know how well integrated C is with FBSL. At the moment, the FBSL entry looks like a wrapper for a C compiler/interpreter/JIT. You could use the site to show why it is more than that with careful explanation and use of unique or near-unique features. 
+::This is supposed to be a site for comparing language features. You should not be surprised if someone sees one languages entry copied and used for another language and questions it.
+::Since FBSL has this capability it might be best to show it by showing the FBSL specific framework necessary and then only any differences to the C entry with the rest ellided so that language comparers can concentrate on how FBSL can use stock C - as well as maybe a second answer written in mainly that subset of features FBSL that are not shared with the C JIT. Actually what I have written may be wrong as I do not know how well integrated C is with FBSL. At the moment, the FBSL entry looks like a wrapper for a C compiler/interpreter/JIT. You could use the site to show why it is more than that with careful explanation and use of unique or near-unique features.
 
-::Yep its tough when you're different - just ask the [[J|J language]] guys. But this site gets better by encouraging more language entries and surely if you are different, then you should be able to show the benefits. Those J people have several times explained in depth how their unique solutions work and we could see how their language helps them to think in ways that can generate elegant solutions. 
+::Yep its tough when you're different - just ask the [[J|J language]] guys. But this site gets better by encouraging more language entries and surely if you are different, then you should be able to show the benefits. Those J people have several times explained in depth how their unique solutions work and we could see how their language helps them to think in ways that can generate elegant solutions.
 
 ::If you are that different then you may have to meet your audience half way. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 11:23, 6 May 2013 (UTC)
 
@@ -141,7 +141,7 @@ Woa. Hold your horses their TheWatcher! So are you saying that FBSL contains bot
 :: I think you also misunderstood my comment about sizes. I was not saying that your implementation had to be huge (especially since you are platform specific and relying on windows - which is "huge"), but instead was saying that the resource constraints which motivated the design of many current languages (BASIC, C, ...) are being relaxed. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 15:47, 6 May 2013 (UTC)
 
 ::Yo The Watcher.
-Try re-reading my posts with a less defensive attitude, not everyone is out to get you. 
+Try re-reading my posts with a less defensive attitude, not everyone is out to get you.
 ::I find it hard to judge how to reply to people and do try not be offensive. Well, you didn't think I was being offensive, just maybe talking down to you. OK I heard that. As for any ''verdict'', I don't think this is a ''trial''. I did however add some constructive notes on how you could make your language shine in my last post, why not try them? Or not. Whatever... --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 16:55, 6 May 2013 (UTC)
 
 ::: @Rdm:
@@ -164,7 +164,7 @@ Try re-reading my posts with a less defensive attitude, not everyone is out to g
 
 ::::: Dear Sir,
 
-::::: Am I really producing the impression of a kidster that needs to be led by the hand in the wonderland of computers? That sounds like a complement to me, regarding my age. Do I need to have Python or Perl6 or Mathematica installed on my PC to estimate or admire the efficiency of their solutions? Or do I need to have Brainf*** or LOLCODE installed to spend a couple of minutes laughing at their code out loud of sheer amusement? Are my own sight or judgement failing me when I'm looking at somebody else's code? No, they aren't. Why? Because while either admiring or laughing, I'm not really interested in using but any of them for my own work. That's why I'm taking the authenticity of their solutions for granted. And I rely on people's common sense to be able to stand sanity checks of all sorts whenever anyone asks them to demonstrate their code ''in vivo''.
+::::: Am I really producing the impression of a kidster that needs to be led by the hand in the wonderland of computers? That sounds like a complement to me, regarding my age. Do I need to have Python or Perl6 or Mathematica installed on my PC to estimate or admire the efficiency of their solutions? Or do I need to have Brainfuck or LOLCODE installed to spend a couple of minutes laughing at their code out loud of sheer amusement? Are my own sight or judgement failing me when I'm looking at somebody else's code? No, they aren't. Why? Because while either admiring or laughing, I'm not really interested in using but any of them for my own work. That's why I'm taking the authenticity of their solutions for granted. And I rely on people's common sense to be able to stand sanity checks of all sorts whenever anyone asks them to demonstrate their code ''in vivo''.
 
 ::::: Further, I've got nothing against having a couple or two moderators at a site of this size but I will not stand that sort of a-good-cop-and-a-bad-cop attitude. It wasn't I who started this discussion in the first place and it wasn't I who took the liberty of jumping to conclusions what's wrong and what's right with and for FBSL. And all that from a man who gave up all hope for a language of his own long, long ago. Neither will I stand that didactic tone and let the bearer of the voice get away with it. For all I care, Paddy may just blame me, or rather his own self, for my not being able to understand his particular sort of English humor.
 
@@ -190,7 +190,7 @@ words should be shown as they are (not uppercased) !?! --[[User:Walterpachl|Walt
 
 -----
 
-It may be noteworthy to mention that timings (see ooRexx) for various languages have been discouraged on Rosetta Code. 
+It may be noteworthy to mention that timings (see ooRexx) for various languages have been discouraged on Rosetta Code.
 
  http://rosettacode.org/wiki/User_talk:Paddy3118#Comparisons
 
@@ -207,7 +207,7 @@ acb
 bac
 bca
 cab
-cba 
+cba
 
 ```
 
@@ -229,7 +229,7 @@ whereas the ooRexx programs yield
 abc acb bac bca cab cba
 
 ```
-     
+
 which is what I have expected. --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 19:01, 5 August 2013 (UTC)
 : Maybe I introduced this error with my modifications. pls verify the original! --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 19:03, 5 August 2013 (UTC)
 
@@ -244,10 +244,10 @@ The REXX version 2 program won't find all the anagrams if some words are in mixe
 
 ```txt
 
-There are 0 set(s) of anagrams with 24819 elements each: 
+There are 0 set(s) of anagrams with 24819 elements each:
 
 ```
-  
+
 </strike>
 I suspect that many of the programming examples won't handle a mixed case dictionary   (should treat '''Live''' as an anagram of '''EVIL''').
 

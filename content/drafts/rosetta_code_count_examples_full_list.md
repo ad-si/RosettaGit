@@ -1015,7 +1015,7 @@ Top ten programming languages by number of task examples completed:
 |①||②||③||④||⑤||⑥||⑦||⑧||⑨||⑩
 |-
 | 80
-| [[Execute%20Brain%2A%2A%2A%2A|Execute Brain****]]
+| [[Execute%20Brain%2A%2A%2A%2A|Execute Brainfuck]]
 |①||②||③||④||⑤||⑥||⑦||⑧||⑨||⑩
 |-
 | 80

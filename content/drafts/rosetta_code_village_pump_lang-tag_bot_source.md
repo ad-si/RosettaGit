@@ -44,7 +44,7 @@ my %langtags = ('4d'                      => '4d',
                 'awk'                     => 'awk',
                 'bc'                      => 'bc',
                 'befunge'                 => 'befunge',
-                'brainf***'               => 'bf',
+                'Brainfuck'               => 'bf',
                 'caml'                    => 'caml',
                 'c'                       => 'c',
                 'c++'                     => 'cpp',
@@ -290,7 +290,7 @@ while (@todo) {
                 $body =~ s
                     { <pre [^>]* > \s*
                       (.+?)
-                      \s* 
+                      \s*
 ```
  }
                     {decode_entities "$tag$1\x3c/lang>"}xseg;

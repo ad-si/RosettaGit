@@ -95,7 +95,7 @@ func main() {
 }
 
 ```
- 
+
 
 
 ## Julia
@@ -189,7 +189,7 @@ local(x = curl('https://sourceforge.net'))
 #sslcert->close
 #x->result->asString
 ```
- 
+
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
@@ -283,7 +283,7 @@ close(fn)
 object res = curl_easy_perform_ex(curl)
 curl_easy_cleanup(curl)
 curl_global_cleanup()
- 
+
 puts(1,res)
 ```
 
@@ -402,11 +402,11 @@ http::register https 443 [list \
     ::tls::socket -certfile $cert -password getPass]
 proc getPass {} {
     return "myPassword";  # Just a noddy example...
-} 
+}
 
 # Make a secure authenticated connection
 set token [http::geturl https://verysecure.example.com/]
- 
+
 # Now as for conventional use of the “http” package
 set data [http::data $token]
 http::cleanup $token
@@ -426,7 +426,7 @@ c.get("http://zenkinetic.com");  // lame example to show how to read
 
 
 {{omit from|Batch File|Does not have network access.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Commodore BASIC|Does not have network access}}
 {{omit from|Inform 7|Does not have network access.}}
 {{omit from|Locomotive Basic|Does not have network access.}}

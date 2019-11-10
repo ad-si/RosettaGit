@@ -20,9 +20,9 @@ Create and display the sequence of binary digits for a given   [[wp:Natural numb
     The decimal value     '''50'''   should produce an output of            '''110010'''
     The decimal value   '''9000'''   should produce an output of    '''10001100101000'''
 
-The results can be achieved using built-in radix functions within the language   (if these are available),   or alternatively a user defined function can be used. 
+The results can be achieved using built-in radix functions within the language   (if these are available),   or alternatively a user defined function can be used.
 
-The output produced should consist just of the binary digits of each number followed by a   ''newline''. 
+The output produced should consist just of the binary digits of each number followed by a   ''newline''.
 
 There should be no other whitespace, radix or sign markers in the produced output, and [[wp:Leading zero|leading zeros]] should not appear in the results.
 
@@ -127,9 +127,9 @@ N        DC     F'0',F'5',F'50',F'9000'
 W        DS     F                  work
 FLAG     DS     X                  flag for trailing blanks
 CDEC     DS     CL12               decimal value
-         DC     C' '            
+         DC     C' '
 CBIN     DC     CL32' '            binary value
-         YREGS  
+         YREGS
          END    BINARY
 ```
 
@@ -147,7 +147,7 @@ CBIN     DC     CL32' '            binary value
 
 
 ## 6502 Assembly
- 
+
 {{works with|http://vice-emu.sourceforge.net/ VICE}}
 This example has been written for the C64 and uses some BASIC routines to read the parameter after the SYS command and to print the result.
 Compile with the [http://turbo.style64.org/ Turbo Macro Pro cross assembler]:
@@ -206,7 +206,7 @@ strout      = $ab1e
             lda #<binstr        ; load the address of the binary string - low
             ldy #>binstr        ; high byte
             jsr skiplz          ; skip leading zeros, return an address in a/y
-                                ;   that points to the first "1" 
+                                ;   that points to the first "1"
             jsr strout          ; print the result
             rts
 
@@ -343,17 +343,17 @@ SYS828,4.7
 
 ```Ada
 with ada.text_io; use ada.text_io;
-procedure binary is 
+procedure binary is
   bit : array (0..1) of character := ('0','1');
 
-  function bin_image (n : Natural) return string is 
+  function bin_image (n : Natural) return string is
   (if n < 2 then (1 => bit (n)) else bin_image (n / 2) & bit (n mod 2));
 
-  test_values : array (1..3) of Natural := (5,50,9000); 
+  test_values : array (1..3) of Natural := (5,50,9000);
 begin
-  for test of test_values loop 
-	put_line ("Output for" & test'img & " is " & bin_image (test)); 
-  end loop; 
+  for test of test_values loop
+	put_line ("Output for" & test'img & " is " & bin_image (test));
+  end loop;
 end binary;
 ```
 
@@ -498,7 +498,7 @@ on showIntAtBase(base, toChr, n, rs)
             end if
         end |λ|
     end script
-    
+
     if base ≤ 1 then
         "error: showIntAtBase applied to unsupported base: " & base as string
     else if n < 0 then
@@ -520,7 +520,7 @@ on run
             intercalate(" -> ", {n as string, showBin(n)})
         end |λ|
     end script
-    
+
     return unlines(map(result, {5, 50, 9000}))
 end run
 
@@ -547,7 +547,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -622,7 +622,7 @@ sZoneBin: .space 36,' '
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* save des  2 registres */
     mov r0,#5
@@ -649,14 +649,14 @@ main:                /* entry of program  */
     swi 0                       @ perform the system call
 iAdrsZoneDec: .int sZoneDec
 /******************************************************************/
-/*     register conversion in binary                              */ 
+/*     register conversion in binary                              */
 /******************************************************************/
 /* r0 contains the register */
 conversion2:
-    push {r0,lr}     /* save  registers */  
+    push {r0,lr}     /* save  registers */
     push {r1-r5} /* save others registers */
     ldr r1,iAdrsZoneBin   @ address reception area
-    clz r2,r0    @ number of left zeros bits 
+    clz r2,r0    @ number of left zeros bits
     rsb r2,#32   @ number of significant bits
     mov r4,#' '  @ space
     add r3,r2,#1 @ position counter in reception area
@@ -666,31 +666,31 @@ conversion2:
     cmp r3,#32         @ end of area ?
     ble 1b            @ no! loop
     mov r3,r2    @ position counter of the written character
-2:               @ loop 
+2:               @ loop
     lsrs r0,#1    @ shift right one bit with flags
     movcc r4,#48  @ carry clear  => character 0
-    movcs r4,#49  @ carry set   => character 1 
+    movcs r4,#49  @ carry set   => character 1
     strb r4,[r1,r3]  @ character in reception area at position counter
-    sub r3,r3,#1     @ 
+    sub r3,r3,#1     @
     subs r2,r2,#1   @  0 bits ?
     bgt 2b          @ no!  loop
-    
+
     ldr r0,iAdrsZoneMessBin
     bl affichageMess
-    
+
 100:
     pop {r1-r5}  /* restaur others registers */
     pop {r0,lr}
-    bx lr	
-iAdrsZoneBin: .int sZoneBin	   
+    bx lr
+iAdrsZoneBin: .int sZoneBin
 iAdrsZoneMessBin: .int sMessAffBin
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registres */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -704,8 +704,8 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registres */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
-    bx lr	        			/* return  */	
+    pop {fp,lr}    				/* restaur des  2 registres */
+    bx lr	        			/* return  */
 /***************************************************/
 /*   conversion registre en décimal   signé  */
 /***************************************************/
@@ -723,16 +723,16 @@ conversion10S:
     mov r4,#10   /* longueur de la zone */
 1: /* debut de boucle de conversion */
     bl divisionpar10 /* division  */
-    add r1,#48        /* ajout de 48 au reste pour conversion ascii */	
+    add r1,#48        /* ajout de 48 au reste pour conversion ascii */
     strb r1,[r2,r4]  /* stockage du byte en début de zone r5 + la position r4 */
     sub r4,r4,#1      /* position précedente */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* boucle si quotient different de zéro */
     strb r5,[r2,r4]  /* stockage du signe à la position courante */
     subs r4,r4,#1   /* position précedente */
     blt  100f         /* si r4 < 0  fin  */
     /* sinon il faut completer le debut de la zone avec des blancs */
-    mov r3,#' '   /* caractere espace */	
+    mov r3,#' '   /* caractere espace */
 2:
     strb r3,[r2,r4]  /* stockage du byte  */
     subs r4,r4,#1   /* position précedente */
@@ -740,20 +740,20 @@ conversion10S:
 100:  /* fin standard de la fonction  */
     pop {r0-r5}   /*restaur des autres registres */
     pop {fp,lr}   /* restaur des  2 registres frame et retour  */
-    bx lr   
+    bx lr
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}   /* save others registers  */
-    mov r4,r0 
+    mov r4,r0
     ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
     smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
     mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -911,7 +911,7 @@ exit /b
 =
 
 ```ApplesoftBasic
- 0 N = 5: GOSUB 1:N = 50: GOSUB 1:N = 9000: GOSUB 1: END 
+ 0 N = 5: GOSUB 1:N = 50: GOSUB 1:N = 9000: GOSUB 1: END
  1  LET N2 =  ABS ( INT (N))
  2  LET B$ = ""
  3  FOR N1 = N2 TO 0 STEP 0
@@ -972,7 +972,7 @@ next i
         PRINT FN_tobase(num%, 2, 0)
       NEXT
       END
-      
+
       REM Convert N% to string in base B% with minimum M% digits:
       DEF FN_tobase(N%,B%,M%)
       LOCAL D%,A$
@@ -1113,9 +1113,9 @@ Reads the number to convert from standard input.
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
-This is almost an exact duplicate of [[Count in octal#Brainf***]]. It outputs binary numbers until it is forced to terminate or the counter overflows to 0.
+This is almost an exact duplicate of [[Count in octal#Brainfuck]]. It outputs binary numbers until it is forced to terminate or the counter overflows to 0.
 
 
 ```bf
@@ -1224,15 +1224,15 @@ char *bin(uint32_t x)
 #include <iostream>
 #include <limits>
 #include <string>
- 
+
 void print_bin(unsigned int n) {
   std::string str = "0";
 
   if (n > 0) {
     str = std::bitset<std::numeric_limits<unsigned int>::digits>(n).to_string();
     str = str.substr(str.find('1')); // remove leading zeros
-  } 
-  
+  }
+
   std::cout << str << '\n';
 }
 
@@ -1241,7 +1241,7 @@ int main() {
   print_bin(5);
   print_bin(50);
   print_bin(9000);
-} 
+}
 
 ```
 
@@ -1261,9 +1261,9 @@ Shorter version using bitset
 ```cpp>#include <iostream
 
 #include <bitset>
-void printBits(int n) {                     // Use int like most programming languages. 
+void printBits(int n) {                     // Use int like most programming languages.
   int iExp = 0;                             // Bit-length
-  while (n >> iExp) ++iExp;                 // Could use template <log(x)*1.44269504088896340736>  
+  while (n >> iExp) ++iExp;                 // Could use template <log(x)*1.44269504088896340736>
   for (int at = iExp - 1; at >= 0; at--)    // Reverse iter from the bit-length to 0 - msb is at end
     std::cout << std::bitset<32>(n)[at];    // Show 1's, show lsb, hide leading zeros
   std::cout << '\n';
@@ -1365,10 +1365,10 @@ class Program
 
 ```ceylon
     shared void run() {
-    
+
         void printBinary(Integer integer) =>
             print(Integer.format(integer, 2));
-    
+
         printBinary(5);
         printBinary(50);
         printBinary(9k);
@@ -1443,7 +1443,7 @@ PROCEDURE DIVISION.
 	move length binary-number to ptr.
 	perform until n equal 0
 		divide n by 2 giving n remainder digit
-		move digit to binary-number(ptr:1) 
+		move digit to binary-number(ptr:1)
 		subtract 1 from ptr
 		if ptr < 1
 			exit perform
@@ -1461,7 +1461,7 @@ PROCEDURE DIVISION.
 ```coffeescript
 binary = (n) ->
   new Number(n).toString(2)
-  
+
 console.log binary n for n in [5, 50, 9000]
 ```
 
@@ -1676,9 +1676,9 @@ end.
 (number->string 2 2)
 → 10
 
-(for-each (compose writeln (rcurry number->string 2)) '( 5 50 9000)) → 
-101    
-110010    
+(for-each (compose writeln (rcurry number->string 2)) '( 5 50 9000)) →
+101
+110010
 10001100101000
 
 ```
@@ -1828,7 +1828,7 @@ Or, using the pipe operator:
 
 
 ```erlang
-lists:map( fun(N) -> io:fwrite("~.2B~n", [N]) end, [5, 50, 9000]). 
+lists:map( fun(N) -> io:fwrite("~.2B~n", [N]) end, [5, 50, 9000]).
 ```
 
 {{out}}
@@ -1862,11 +1862,11 @@ puts(1, toBinary(9000) & '\n')
 
 
 
-###  Functional/Recursive 
+###  Functional/Recursive
 
 
 ```euphoria
-include std/math.e 
+include std/math.e
 include std/convert.e
 
 function Bin(integer n, sequence s = "")
@@ -1900,12 +1900,12 @@ Alternatively, by creating a function <code>printBin</code> which prints in bina
 open System
 
 // define the function
-let printBin (i: int) = 
+let printBin (i: int) =
     Convert.ToString (i, 2)
-    |> printfn "%s" 
+    |> printfn "%s"
 
 // use the function
-[5; 50; 9000] 
+[5; 50; 9000]
 |> List.iter printBin
 ```
 
@@ -1918,11 +1918,11 @@ open System
 open System.IO
 
 // define a callback function for %a
-let bin (tw: TextWriter) value = 
+let bin (tw: TextWriter) value =
     tw.Write("{0}", Convert.ToString(int64 value, 2))
 
 // use it with printfn with %a
-[5; 50; 9000] 
+[5; 50; 9000]
 |> List.iter (printfn "binary: %a" bin)
 ```
 
@@ -2074,7 +2074,7 @@ end program bits
 ```freebasic
 
 ' FreeBASIC v1.05.0 win64
-Dim As String fmt = "#### -> &" 
+Dim As String fmt = "#### -> &"
 Print Using fmt; 5; Bin(5)
 Print Using fmt; 50; Bin(50)
 Print Using fmt; 9000; Bin(9000)
@@ -2195,7 +2195,7 @@ fun main(x: i32): i64 =
 
 ```gambas
 Public Sub Main()
-Dim siBin As Short[] = [5, 50, 9000] 
+Dim siBin As Short[] = [5, 50, 9000]
 Dim siCount As Short
 
 For siCount = 0 To siBin.Max
@@ -2305,7 +2305,7 @@ toBin2 = foldMap show . reverse . toBase 2
 
 toBase base = unfoldr modDiv
   where modDiv 0 = Nothing
-        modDiv n = let (q, r) = (n `divMod` base) in Just (r, q) 
+        modDiv n = let (q, r) = (n `divMod` base) in Just (r, q)
 
 
 printToBin n = putStrLn $ printf "%4d  %14s  %14s" n (toBin n) (toBin1 n)
@@ -2340,14 +2340,14 @@ procedure binary(n)                      #: return bitstring for integer n
 static CT, cm, cb
 initial {
    CT := table()                         # cache table for results
-   cm := 2 ^ (cb := 4)                   # (tunable) cache modulus & pad bits 
-   }   
+   cm := 2 ^ (cb := 4)                   # (tunable) cache modulus & pad bits
+   }
 
 b := ""                                  # build reversed bit string
 while n > 0 do {                         # use cached result ...
-   if not (b ||:= \CT[1(i := n % cm, n /:= cm) ]) then {                     
+   if not (b ||:= \CT[1(i := n % cm, n /:= cm) ]) then {
       CT[j := i] := ""                   # ...or start new cache entry
-      while j > 0 do 
+      while j > 0 do
          CT[i] ||:=  "01"[ 1(1+j % 2, j /:= 2 )]
       b ||:= CT[i] := left(CT[i],cb,"0") # finish cache with padding
       }
@@ -2385,7 +2385,7 @@ binaryString n = pack (loop n [])
         loop 0 acc = acc
         loop n acc = loop (div n 2) (binaryDigit n :: acc)
 
-main : IO () 
+main : IO ()
 main = do
   putStrLn (binaryString 0)
   putStrLn (binaryString 5)
@@ -2462,7 +2462,7 @@ function toBinary(number) {
 var demoValues = [5, 50, 9000];
 for (var i = 0; i < demoValues.length; ++i) {
     // alert() in a browser, wscript.echo in WSH, etc.
-    print(toBinary(demoValues[i])); 
+    print(toBinary(demoValues[i]));
 }
 ```
 
@@ -2634,7 +2634,7 @@ using Printf
 for n in (0, 5, 50, 9000)
     @printf("%6i → %s\n", n, string(n, base=2))
 end
- 
+
 # with pad
 println("\nwith pad")
 for n in (0, 5, 50, 9000)
@@ -2735,9 +2735,9 @@ If, however, you do need to get the results from a function, you can use <code>(
 ```lisp
 
 (: lists foreach
-  (lambda (x) 
+  (lambda (x)
     (: io format
-      '"~s~n" 
+      '"~s~n"
       (list (: erlang integer_to_list x 2))))
   (list 5 50 9000))
 
@@ -3082,12 +3082,12 @@ Module Checkit {
       Form 90, 40
       Function BinFunc${
             Dim  Base 0, One$(16)
-            One$( 0 ) = "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111"  
+            One$( 0 ) = "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111"
             =lambda$ One$() (x, oct as long=4, bypass as boolean=True) ->{
                   if oct>0 and oct<5 then {
                        oct=2*(int(4-oct) mod 4+1)-1
                   } Else oct=1
-                  hx$ = Hex$(x, 4 ) 
+                  hx$ = Hex$(x, 4 )
                   Def Ret$
                   If Bypass then {
                         For i= oct to len(hx$)
@@ -3098,7 +3098,7 @@ Module Checkit {
                         oct=instr(Ret$, "1")
                         if oct=0 then {
                                Ret$="0"
-                        } Else Ret$=mid$(Ret$, oct)       
+                        } Else Ret$=mid$(Ret$, oct)
                   } Else {
                         For i= oct to len(hx$)
                               Ret$ += One$( EVal( "0x" + Mid$(hx$, i, 1 ) ) )
@@ -3165,16 +3165,16 @@ The decimal value       9000 should produce an output of 00000000000000000010001
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-StringJoin @@ ToString /@ IntegerDigits[50, 2] 
+StringJoin @@ ToString /@ IntegerDigits[50, 2]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
   dec2bin(5)
   dec2bin(50)
-  dec2bin(9000)  
+  dec2bin(9000)
 ```
 
 The output is a string containing ascii(48) (i.e. '0') and ascii(49) (i.e. '1').
@@ -3196,15 +3196,15 @@ if b == 0 then temp = "0"
 	while b > 0 do
 	(
 	rem = b
-	b = b / 2	
-	   If ((mod rem 2) as Integer) == 0 then temp = temp + "0"	
+	b = b / 2
+	   If ((mod rem 2) as Integer) == 0 then temp = temp + "0"
 	   else temp = temp + "1"
     )
 -- Reverse the binary string
 for r = temp.count to 1 by -1 do
 (
 binString = binString + temp[r]
-)	
+)
 print binString
 )
 
@@ -3247,7 +3247,7 @@ digits([arg]) := block(
      [n, q]: divide(n, b),
      v: cons(q, v),
      if n=0 then return(v)))$
-   
+
 binary(n) := simplode(digits(n, 2))$
 binary(9000);
 /*
@@ -3314,7 +3314,7 @@ print_binary_digits(N, !IO) :-
 ## MiniScript
 
 
-###  Iterative 
+###  Iterative
 
 
 ```MiniScript
@@ -3327,7 +3327,7 @@ binary = function(n)
     if not result then return "0"
     return result
 end function
- 
+
 print binary(5)
 print binary(50)
 print binary(9000)
@@ -3336,12 +3336,12 @@ print binary(0)
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```MiniScript
 binary = function(n,result="")
-    if n == 0 then 
+    if n == 0 then
         if result == "" then return "0" else return result
     end if
     result = str(n%2) + result
@@ -3375,7 +3375,7 @@ fun binary
 		(0, b)	=	implode ` map (fn x = if int x then chr (x + 48) else x) b
 	|	(n, b)	=	binary (n div 2, n mod 2 :: b)
 	|	n	=	binary (n, [])
-;	
+;
 
 ```
 
@@ -3571,14 +3571,14 @@ for i in 0..15:
 
 MODULE BinaryDigits;
 IMPORT  Out;
- 
+
   PROCEDURE OutBin(x: INTEGER);
   BEGIN
     IF x > 1 THEN OutBin(x DIV 2) END;
     Out.Int(x MOD 2, 1);
   END OutBin;
- 
- 
+
+
 BEGIN
   OutBin(0); Out.Ln;
   OutBin(1); Out.Ln;
@@ -3641,7 +3641,7 @@ let bin_of_int d =
     aux (string_of_int (d land 1) :: acc) (d lsr 1)
   in
   String.concat "" (aux [] d)
-  
+
 let () =
   let d = read_int () in
   Printf.printf "%8s\n" (bin_of_int d)
@@ -3744,28 +3744,28 @@ bin(n:int)=concat(apply(s->Str(s),binary(n)))
 {{out}}
 
 ```txt
-0 
-1 
-10 
-11 
-100 
-101 
-110 
-111 
-1000 
-1001 
-1010 
-1011 
-1100 
-1101 
-1110 
+0
+1
+10
+11
+100
+101
+110
+111
+1000
+1001
+1010
+1011
+1100
+1101
+1110
 1111
 ```
 
 
 ## Pascal
 
-{{works with|Free Pascal}} 
+{{works with|Free Pascal}}
 FPC compiler Version 2.6 upwards.The obvious version.
 
 ```pascal
@@ -4356,7 +4356,7 @@ If OpenConsole()
   PrintN(Bin(5))    ;101
   PrintN(Bin(50))   ;110010
   PrintN(Bin(9000)) ;10001100101000
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -4781,8 +4781,8 @@ foreach number [5 50 9000] [
 '''output'''
 
 ```txt
-    5 101              
-   50 110010           
+    5 101
+   50 110010
  9000 10001100101000
 
 ```
@@ -4800,13 +4800,13 @@ foreach number [5 50 9000] [
 
 ## REXX
 
-This version handles the special case of zero simply. 
+This version handles the special case of zero simply.
 
 ### simple version
 
-Note:   some REXX interpreters have a   '''D2B'''   [Decimal to Binary]   BIF ('''b'''uilt-'''i'''n '''f'''unction). 
+Note:   some REXX interpreters have a   '''D2B'''   [Decimal to Binary]   BIF ('''b'''uilt-'''i'''n '''f'''unction).
 
-Programming note:   this REXX version depends on   '''numeric digits'''   being large enough to handle leading zeroes in this manner (by adding a zero (to the binary version) to force superfluous leading zero suppression). 
+Programming note:   this REXX version depends on   '''numeric digits'''   being large enough to handle leading zeroes in this manner (by adding a zero (to the binary version) to force superfluous leading zero suppression).
 
 ```REXX
 /*REXX program to  convert  several  decimal numbers  to  binary  (or base 2).          */
@@ -4837,7 +4837,7 @@ Programming note:   this REXX version depends on   '''numeric digits'''   being 
 
 ### elegant version
 
-This version handles the case of zero as a special case more elegantly. 
+This version handles the case of zero as a special case more elegantly.
 
 The following versions depend on the setting of   '''numeric digits'''   such that the number in decimal can be expressed as a whole number.
 
@@ -4855,7 +4855,7 @@ The following versions depend on the setting of   '''numeric digits'''   such th
   end   /*j*/                                    /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -4877,7 +4877,7 @@ This version handles the case of zero a bit more obtusely, but concisely.
   end   /*j*/                                    /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -4929,7 +4929,7 @@ n = 0
 while pow(2,n+1) < a
       n = n + 1
 end
- 
+
 for i = n to 0 step -1
     x = pow(2,i)
     if a >= x see 1 a = a - x
@@ -4978,10 +4978,10 @@ wend
 
 for i = n to 0 step -1
   x = 2^i
-  if a >= x then 
+  if a >= x then
     print 1;
     a = a - x
-   else 
+   else
     print 0;
   end if
 next
@@ -5523,7 +5523,7 @@ End Sub
 
 Function DecToBin(ByVal Number As Long) As String
 Dim strTemp As String
- 
+
     Do While Number > 1
         strTemp = Number - 2 * (Number \ 2) & strTemp
         Number = Number \ 2
@@ -5582,7 +5582,7 @@ do {
 } while (#10 > 0)
 EOL
 Ins_Newline
-Return 
+Return
 ```
 
 Example output when values 0, 1, 5, 50 and 9000 were entered:
@@ -5630,8 +5630,8 @@ echo Num2Bin(9000)
 {{Out}}
 
 ```txt
-101                                                                             
-110010                                                                          
+101
+110010
 10001100101000
 ```
 
@@ -5649,13 +5649,13 @@ Dim i As Long
     If l And &H80000000 Then 'negative number
       Bin = "1" & String$(31, "0")
       l = l And (Not &H80000000)
-      
+
       For i = 0 To 30
       If l And (2& ^ i) Then
         Mid$(Bin, Len(Bin) - i) = "1"
       End If
       Next i
-      
+
     Else                     'positive number
       Do While l
       If l Mod 2 Then
@@ -5765,46 +5765,46 @@ This program prints binary numbers until the internal representation of the curr
 
 
 ```Whitespace
-    
-
-    
-  		
- 	  	
-
- 	 	
-   	 	 
-	
-     	
-	   
- 
-  
-
-   	
- 
-    	 
-	 		 
-	   	 
-	 	     
- 	  	
-	  	
-		 	
- 
 
 
-   	 
- 
- 
-		 		
-	
- 	
- 
- 	 
-
-   		
- 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 
@@ -5865,7 +5865,7 @@ To output to the console:
 @each ^(console.log \.toString 2) [5 50 900]
 ```
 
-Outputs: 
+Outputs:
 ```txt
 
 101

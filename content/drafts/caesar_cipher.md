@@ -15,19 +15,19 @@ tags = []
 
 
 ;Task:
-Implement a [[wp:Caesar cipher|Caesar cipher]], both encoding and decoding. 
+Implement a [[wp:Caesar cipher|Caesar cipher]], both encoding and decoding.
 
-The key is an integer from 1 to 25. 
+The key is an integer from 1 to 25.
 
-This cipher rotates (either towards left or right) the letters of the alphabet (A to Z). 
+This cipher rotates (either towards left or right) the letters of the alphabet (A to Z).
 
 The encoding replaces each letter with the 1st to 25th next letter in the alphabet (wrapping Z to A).
 
-So key 2 encrypts "HI" to "JK", but key 20 encrypts "HI" to "BC". 
+So key 2 encrypts "HI" to "JK", but key 20 encrypts "HI" to "BC".
 
 This simple "mono-alphabetic substitution cipher" provides almost no security, because an attacker who has the encoded message can either use frequency analysis to guess the key, or just try all 25 keys.
 
-Caesar cipher is identical to [[Vigenère cipher]] with a key of length 1. 
+Caesar cipher is identical to [[Vigenère cipher]] with a key of length 1.
 
 Also, [[Rot-13]] is identical to Caesar cipher with key 13.
 
@@ -81,7 +81,7 @@ The quick brown fox jumped over the lazy dogs
 
 ## 360 Assembly
 
-A good example of the use of TR instruction to translate a character. 
+A good example of the use of TR instruction to translate a character.
 
 ```360asm
 *        Caesar cypher             04/01/2019
@@ -91,14 +91,14 @@ CAESARO  PROLOG
          BAL    R14,CYPHER         call cypher
          LNR    R3,R3              -offset
          BAL    R14,CYPHER         call cypher
-         EPILOG         
+         EPILOG
 CYPHER   LA     R4,REF(R3)         @ref+offset
          MVC    A,0(R4)            for A to I
          MVC    J,9(R4)            for J to R
          MVC    S,18(R4)           for S to Z
          TR     PHRASE,TABLE       translate
-         XPRNT  PHRASE,L'PHRASE    print phrase         
-         BR     R14                return         
+         XPRNT  PHRASE,L'PHRASE    print phrase
+         BR     R14                return
 OFFSET   DC     H'22'              between -25 and +25
 PHRASE   DC     CL37'THE FIVE BOXING WIZARDS JUMP QUICKLY'
          DC     CL26'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -112,7 +112,7 @@ J        DS     CL9
          ORG    TABLE+C'S'
 S        DS     CL8
          ORG
-         YREGS                        
+         YREGS
          END    CAESARO
 ```
 
@@ -138,10 +138,10 @@ THE FIVE BOXING WIZARDS JUMP QUICKLY
   tuck n:- 26 n:+ 26 n:mod n:+ ;
 
 \ Symmetric Caesar cipher.  Input is text and number of characters to advance
-\ (or retreat, if negative).  That value should be in the range 1..26 
+\ (or retreat, if negative).  That value should be in the range 1..26
 : caesar \ intext key -- outext
   >r
-  ( 
+  (
     \ Ignore anything below '.' as punctuation:
     dup '. n:> if
       \ Do the conversion
@@ -224,7 +224,7 @@ end Caesar;
 {{out}}
 
 ```txt
-> ./caesar 
+> ./caesar
 The five boxing wizards jump quickly
 Plaintext ------------>The five boxing wizards jump quickly
 Ciphertext ----------->Wkh ilyh eralqj zlcdugv mxps txlfnob
@@ -479,13 +479,13 @@ szString1:               .asciz "Why study medicine because there is internet ?"
 szCarriageReturn:       .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 szString2:                .skip  STRINGSIZE
 szString3:                .skip  STRINGSIZE
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszMessString                     @ display message
     bl affichageMess
@@ -498,7 +498,7 @@ main:
     ldr r0,iAdrszMessEncrip
     bl affichageMess
     ldr r0,iAdrszString2                        @ display string
-    bl affichageMess 
+    bl affichageMess
     ldr r0,iAdrszString2
     ldr r1,iAdrszString3
     mov r2,#20                                  @ key
@@ -506,9 +506,9 @@ main:
     ldr r0,iAdrszMessDecrip
     bl affichageMess
     ldr r0,iAdrszString3                        @ display string
-    bl affichageMess 
+    bl affichageMess
     ldr r0,iAdrszCarriageReturn
-    bl affichageMess 
+    bl affichageMess
 100:                                            @ standard end of the program
     mov r0, #0                                  @ return code
     mov r7, #EXIT                               @ request to exit program
@@ -521,13 +521,13 @@ iAdrszString2:            .int szString2
 iAdrszString3:            .int szString2
 iAdrszCarriageReturn:     .int szCarriageReturn
 /******************************************************************/
-/*     encrypt strings                         */ 
+/*     encrypt strings                         */
 /******************************************************************/
 /* r0 contains the address of the string1 */
 /* r1 contains the address of the encrypted string */
 /* r2 contains the key (1-25)                     */
 encrypt:
-    push {r3,r4,lr}           @ save  registers 
+    push {r3,r4,lr}           @ save  registers
     mov r3,#0                 @ counter byte string 1
 1:
     ldrb r4,[r0,r3]           @ load byte string 1
@@ -567,13 +567,13 @@ encrypt:
     pop {r3,r4,lr}            @ restaur registers
     bx lr                     @ return
 /******************************************************************/
-/*     decrypt strings                                           */ 
+/*     decrypt strings                                           */
 /******************************************************************/
 /* r0 contains the address of the encrypted string1 */
 /* r1 contains the address of the decrypted string */
 /* r2 contains the key (1-25)                     */
 decrypt:
-    push {r3,r4,lr}          @ save  registers 
+    push {r3,r4,lr}          @ save  registers
     mov r3,#0                @ counter byte string 1
 1:
     ldrb r4,[r0,r3]          @ load byte string 1
@@ -613,21 +613,21 @@ decrypt:
     pop {r3,r4,lr}           @ restaur registers
     bx lr                    @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -809,7 +809,7 @@ message: My hovercraft is full of eels.
 
 ```babel
 ((main
-    {"The quick brown fox jumps over the lazy dog.\n" 
+    {"The quick brown fox jumps over the lazy dog.\n"
     dup <<
 
     17 caesar_enc !
@@ -818,24 +818,24 @@ message: My hovercraft is full of eels.
     17 caesar_dec !
     <<})
 
-(caesar_enc 
-        { 2 take 
+(caesar_enc
+        { 2 take
         { caesar_enc_loop ! }
     nest })
 
 (caesar_enc_loop {
     give
     <- str2ar
-        {({ dup is_upper ! } 
-                { 0x40 - 
-                -> dup <-  
+        {({ dup is_upper ! }
+                { 0x40 -
+                -> dup <-
                 encrypt !
-                0x40 + } 
+                0x40 + }
              { dup is_lower ! }
-                { 0x60 - 
-                -> dup <-  
+                { 0x60 -
+                -> dup <-
                 encrypt !
-                0x60 + } 
+                0x60 + }
             { 1 }
                 {fnord})
         cond}
@@ -849,16 +849,16 @@ message: My hovercraft is full of eels.
 
 (caesar_dec { <- 26 -> - caesar_enc ! })
 
-(is_upper 
-    { dup 
+(is_upper
+    { dup
     <- 0x40 cugt ->
-    0x5b cult 
+    0x5b cult
     cand })
 
 (is_lower
-    { dup 
+    { dup
     <- 0x60 cugt ->
-    0x7b cult 
+    0x7b cult
     cand }))
 ```
 
@@ -907,9 +907,9 @@ PRINT "Decrypted: ", Ceasar$(en$, 26-tokey)
 user@host $ bacon ceasar
 Converting 'ceasar.bac'... done, 20 lines were processed in 0.015 seconds.
 Compiling 'ceasar.bac'... cc  -c ceasar.bac.c
-cc -o ceasar ceasar.bac.o -lbacon -lm 
+cc -o ceasar ceasar.bac.o -lbacon -lm
 Done, program 'ceasar' ready.
-user@host $ ./ceasar 
+user@host $ ./ceasar
 Encrypting text with key: 23
 Encrypted: Qeb nrfzh yoltk clu grjmp lsbo qeb ixwv ald.
 Decrypted: The quick brown fox jumps over the lazy dog.
@@ -942,14 +942,14 @@ len = length(str$)
 
 for i = 1 to len
     iTemp =  asc(mid(str$,i,1))
- 
+
     if iTemp > 64 AND iTemp < 91 then
         iTemp = ((iTemp - 65) + iOffset) % 26
         print chr(iTemp + 65);
     else
         print chr(iTemp);
-    end if  
- 
+    end if
+
 next i
 
 ```
@@ -975,16 +975,16 @@ MY HOVERCRAFT IS FULL OF EELS.
 ```bbcbasic
       plaintext$ = "Pack my box with five dozen liquor jugs"
       PRINT plaintext$
-      
+
       key% = RND(25)
       cyphertext$ = FNcaesar(plaintext$, key%)
       PRINT cyphertext$
-      
+
       decyphered$ = FNcaesar(cyphertext$, 26-key%)
       PRINT decyphered$
-      
+
       END
-      
+
       DEF FNcaesar(text$, key%)
       LOCAL I%, C%
       FOR I% = 1 TO LEN(text$)
@@ -1048,7 +1048,7 @@ THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOGS
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 ```bf
                                     Author: Ettore Forigo | Hexwell
@@ -1171,7 +1171,7 @@ THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOGS
             [                       |  |  |  |  while :cdiv
                 <                   |  |  |  |  |  :shifted
                                     |  |  |  |  |
-                [<<+>+>-]           |  |  |  |  |  duplicate  
+                [<<+>+>-]           |  |  |  |  |  duplicate
                 <                   |  |  |  |  |  |
                 [>+<-]              |  |  |  |  |  |
                 <                   |  |  |  |  |  | :csh
@@ -1313,7 +1313,7 @@ void rot(int c, char *str)
 {
 	int l = strlen(str);
 	const char *alpha[2] = { "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
-	
+
 	int i;
 	for (i = 0; i < l; i++)
 	{
@@ -1331,13 +1331,13 @@ void rot(int c, char *str)
 int main()
 {
 	char str[] = "This is a top secret text message!";
-	
+
 	printf("Original: %s\n", str);
 	caesar(str);
 	printf("Encrypted: %s\n", str);
 	decaesar(str);
 	printf("Decrypted: %s\n", str);
-	
+
 	return 0;
 }
 ```
@@ -1354,13 +1354,13 @@ int main()
 #include <cctype>
 
 class MyTransform {
-private : 
+private :
    int shift ;
 public :
-   MyTransform( int s ) : shift( s ) { } 
+   MyTransform( int s ) : shift( s ) { }
 
   char operator( )( char c ) {
-      if ( isspace( c ) ) 
+      if ( isspace( c ) )
 	 return ' ' ;
       else {
 	 static std::string letters( "abcdefghijklmnopqrstuvwxyz" ) ;
@@ -1424,7 +1424,7 @@ this is an interesting text
 #include <string>
 #include <iostream>
 #include <cctype>
- 
+
 int main( ) {
 
   using namespace std;
@@ -1432,7 +1432,7 @@ int main( ) {
   string input ;
   int key = 0;
 
-  // lambda functions 
+  // lambda functions
 
   auto encrypt = [&](char c, int key ) {
     char A  = ( islower(c) )? 'a': 'A';
@@ -1452,7 +1452,7 @@ int main( ) {
 
   cout << "Enter an integer to shift text.\n";
   cin  >> key;
-  
+
   while ( (key < 1) || (key > 25) )
     {
       cout << "must be an integer between 1 and 25 -->" << endl;
@@ -1549,12 +1549,12 @@ Decrypted: Pack my box with five dozen liquor jugs.
 
 ## Clojure
 
-Readable version: 
+Readable version:
 
 ```Clojure
 (defn encrypt-character [offset c]
   (if (Character/isLetter c)
-    (let [v (int c) 
+    (let [v (int c)
           base (if (>= v (int \a))
                  (int \a)
                  (int \A))
@@ -1582,13 +1582,13 @@ output:
 
 ```txt
 
-Original text: The Quick Brown Fox Jumps Over The Lazy Dog. 
-Encryption: Sgd Pthbj Aqnvm Enw Itlor Nudq Sgd Kzyx Cnf. 
+Original text: The Quick Brown Fox Jumps Over The Lazy Dog.
+Encryption: Sgd Pthbj Aqnvm Enw Itlor Nudq Sgd Kzyx Cnf.
 Decryption: The Quick Brown Fox Jumps Over The Lazy Dog.
 ```
 
 
-Terser version using replace: 
+Terser version using replace:
 
 ```Clojure
 (defn encode [k s]
@@ -1768,8 +1768,8 @@ END FUNCTION decrypt.
 
 Enter a message to encrypt: The quick brown fox jumps over the lazy dog.
 Enter the amount to shift by: 7
-Encrypted: Aol xbpjr iyvdu mve qbtwz vcly aol shgf kvn.      
-Decrypted: The quick brown fox jumps over the lazy dog.     
+Encrypted: Aol xbpjr iyvdu mve qbtwz vcly aol shgf kvn.
+Decrypted: The quick brown fox jumps over the lazy dog.
 
 ```
 
@@ -1783,10 +1783,10 @@ cipher = (msg, rot) ->
   msg.replace /([a-z|A-Z])/g, ($1) ->
     c = $1.charCodeAt(0)
     String.fromCharCode \
-      if c >= 97 
+      if c >= 97
       then (c + rot + 26 - 97) % 26 + 97
       else (c + rot + 26 - 65) % 26 + 65
-      
+
 console.log cipher "Hello World", 2
 console.log cipher "azAz %^&*()", 3
 ```
@@ -1795,7 +1795,7 @@ console.log cipher "azAz %^&*()", 3
 
 ```txt
 
-> coffee foo.coffee 
+> coffee foo.coffee
 Jgnnq Yqtnf
 dcDc %^&*()
 
@@ -1808,9 +1808,9 @@ dcDc %^&*()
 
 ```lisp
 (defun encipher-char (ch key)
-  (let* ((c  (char-code  ch)) (la (char-code #\a)) (ua (char-code #\A)) 
-         (base (cond ((<= la c (char-code #\z)) la) 
-                     ((<= ua c (char-code #\Z)) ua) 
+  (let* ((c  (char-code  ch)) (la (char-code #\a)) (ua (char-code #\A))
+         (base (cond ((<= la c (char-code #\z)) la)
+                     ((<= ua c (char-code #\Z)) ua)
                      (nil))))
     (if base (code-char (+ (mod (+ (- c base) key) 26) base)) ch)))
 
@@ -1831,8 +1831,8 @@ dcDc %^&*()
 {{out}}
 
 ```txt
- Original: The five boxing wizards jump quickly 
-Encrypted: Wkh ilyh eralqj zlcdugv mxps txlfnob 
+ Original: The five boxing wizards jump quickly
+Encrypted: Wkh ilyh eralqj zlcdugv mxps txlfnob
 Decrypted: The five boxing wizards jump quickly
 ```
 
@@ -1845,7 +1845,7 @@ Decrypted: The five boxing wizards jump quickly
 (defun caesar-decipher (s k) (caesar-encipher s (- k)))
 
 (defun z (h k &aux (c (char-code  h))
-                   (b (or (when (<= 97 c 122) 97) 
+                   (b (or (when (<= 97 c 122) 97)
                           (when (<= 65 c 90) 65))))
   (if b (code-char (+ (mod (+ (- c b) k) 26) b)) h))
 
@@ -2156,7 +2156,7 @@ func Char.encrypt(code) {
     var offset = (if this.isUpper() {'A'} else {'a'}).order()
     return Char((this.order() + code - offset) % 26 + offset)
 }
- 
+
 func String.encrypt(code) {
     var xs = []
     for c in this {
@@ -2164,7 +2164,7 @@ func String.encrypt(code) {
     }
     return String.concat(values: xs)
 }
- 
+
 func String.decrypt(code) {
     this.encrypt(26 - code);
 }
@@ -2329,25 +2329,25 @@ class Encrypting : Enumerator
 {
     int        theKey;
     Enumerator theEnumerator;
-    
+
     constructor(int key, string text)
     {
         theKey := key;
         theEnumerator := text.enumerator();
     }
-    
+
     bool next() => theEnumerator;
-    
+
     reset() => theEnumerator;
-    
+
     enumerable() => theEnumerator;
-    
+
     get()
     {
         var ch := theEnumerator.get();
-        
+
         var index := Letters.indexOf(0, ch);
-        
+
         if (-1 < index)
         {
             ^ Letters[(theKey+index).mod:26]
@@ -2370,16 +2370,16 @@ class Encrypting : Enumerator
 extension encryptOp
 {
     encrypt(key)
-        = new Encrypting(key, self).summarize(new StringWriter()); 
+        = new Encrypting(key, self).summarize(new StringWriter());
 
     decrypt(key)
-        = new Encrypting(26 - key, self).summarize(new StringWriter()); 
+        = new Encrypting(26 - key, self).summarize(new StringWriter());
 }
 
 public program()
 {
     console.printLine("Original text :",TestText);
-        
+
     var encryptedText := TestText.encrypt:Key;
 
     console.printLine("Encrypted text:",encryptedText);
@@ -2414,7 +2414,7 @@ defmodule Caesar_cipher do
     {a, b} = Enum.split(org, key)
     Enum.zip(org, b ++ a) |> Enum.into(map)
   end
-  
+
   def encode(text, key) do
     map = Map.new |> set_map(?a..?z, key) |> set_map(?A..?Z, key)
     String.graphemes(text) |> Enum.map_join(fn c -> Map.get(map, c, c) end)
@@ -2460,7 +2460,7 @@ rot(Char,Key) when (Char >= $A) and (Char =< $Z) or
   Offset + (N + Key) rem 26;
 rot(Char, _Key) ->
   Char.
-  
+
 %% key: normalize key.
 key(Key) when Key < 0 ->
   26 + Key rem 26;
@@ -2472,18 +2472,18 @@ key(Key) ->
 main(PlainText, Key) ->
   Encode = key(Key),
   Decode = key(-Key),
-  
+
   io:format("Plaintext ----> ~s~n", [PlainText]),
-  
+
   CypherText = lists:map(fun(Char) -> rot(Char, Encode) end, PlainText),
   io:format("Cyphertext ---> ~s~n", [CypherText]),
-  
+
   PlainText = lists:map(fun(Char) -> rot(Char, Decode) end, CypherText).
 
 
 ```
 
-Command: 
+Command:
 ```Erlang
 ceasar:main("The five boxing wizards jump quickly", 3).
 ```
@@ -2558,7 +2558,7 @@ Pack my box with five dozen liquor jugs
 --caesar cipher for Rosetta Code wiki
 --User:Lnettnay
 
---usage eui caesar ->default text, key and encode flag 
+--usage eui caesar ->default text, key and encode flag
 --usage eui caesar 'Text with spaces and punctuation!' 5 D
 --If text has imbedded spaces must use apostophes instead of quotes so all punctuation works
 --key = integer from 1 to 25, defaults to 13
@@ -2601,7 +2601,7 @@ for i = 1 to length(text) do
 	if t_alpha(text[i]) then
 		if t_lower(text[i]) then
 			offset = 'a'
-		else 
+		else
 			offset = 'A'
 		end if
 		text[i] = remainder(text[i] - offset + key, num_letters) + offset
@@ -2619,7 +2619,7 @@ printf(1,"%s\n",{text})
 
 "The Quick Brown Fox Jumps Over The Lazy Dog." encrypts to:
 "Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt." decrypts to:
-"The Quick Brown Fox Jumps Over The Lazy Dog." 
+"The Quick Brown Fox Jumps Over The Lazy Dog."
 
 ```
 
@@ -2675,7 +2675,7 @@ IN: rosetta-code.caesar-cipher
         [ c ] if
     ] :> shift
     s [ shift call ] map ;
-    
+
 : encrypt ( n s -- s' ) cipher ;
 : decrypt ( n s -- s' ) [ 26 swap - ] dip cipher ;
 
@@ -2793,7 +2793,7 @@ Decode: Encrypt - With ! Case,
 
 : ceasar-string ( n str len -- )
   over + swap do i c@ over ceasar i c! loop drop ;
-  
+
 : ceasar-inverse ( n -- 'n ) 26 swap - 26 mod ;
 
 2variable test
@@ -2816,7 +2816,7 @@ test 2@ cr type
 program Caesar_Cipher
   implicit none
 
-  integer, parameter :: key = 3     
+  integer, parameter :: key = 3
   character(43) :: message = "The five boxing wizards jump quickly"
 
   write(*, "(2a)") "Original message  = ", message
@@ -2824,13 +2824,13 @@ program Caesar_Cipher
   write(*, "(2a)") "Encrypted message = ", message
   call decrypt(message)
   write(*, "(2a)") "Decrypted message = ", message
-  
+
 contains
 
 subroutine encrypt(text)
   character(*), intent(inout) :: text
   integer :: i
-  
+
   do i = 1, len(text)
     select case(text(i:i))
       case ('A':'Z')
@@ -2844,7 +2844,7 @@ end subroutine
 subroutine decrypt(text)
   character(*), intent(inout) :: text
   integer :: i
-  
+
   do i = 1, len(text)
     select case(text(i:i))
       case ('A':'Z')
@@ -2876,9 +2876,9 @@ Decrypted message = The five boxing wizards jump quickly
 
 Sub Encrypt(s As String, key As Integer)
   Dim c As Integer
-  For i As Integer = 0 To Len(s) 
-    Select Case As Const s[i] 
-      Case 65 To 90    
+  For i As Integer = 0 To Len(s)
+    Select Case As Const s[i]
+      Case 65 To 90
         c = s[i] + key
         If c > 90 Then c -= 26
         s[i] = c
@@ -2892,9 +2892,9 @@ End Sub
 
 Sub Decrypt(s As String, key As Integer)
   Dim c As Integer
-  For i As Integer = 0 To Len(s) 
-    Select Case As Const s[i] 
-      Case 65 To 90    
+  For i As Integer = 0 To Len(s)
+    Select Case As Const s[i]
+      Case 65 To 90
         c = s[i] - key
         If c < 65 Then c += 26
         s[i] = c
@@ -2906,10 +2906,10 @@ Sub Decrypt(s As String, key As Integer)
   Next
 End Sub
 
-Dim As String s = "Bright vixens jump; dozy fowl quack." 
+Dim As String s = "Bright vixens jump; dozy fowl quack."
 Print "Plain text : "; s
 Encrypt s, 8
-Print "Encrypted  : "; s   
+Print "Encrypted  : "; s
 Decrypt s, 8
 Print "Decrypted  : "; s
 Sleep
@@ -3209,37 +3209,37 @@ def caesarEncode(​cipherKey, text) {
             case 'A'..'Z': ch = ((ch - 65 + cipherKey) % 26 + 65); break
         }
         builder << (ch as char)
-    } 
+    }
     builder as String
 }
 def caesarDecode(cipherKey, text) { caesarEncode(26 - cipherKey, text) }
 ```
 
 
-Functional style: 
+Functional style:
 
 ```groovy
-def caesarEncode(cipherKey, text) {            
-    text.chars.collect { c -> 
+def caesarEncode(cipherKey, text) {
+    text.chars.collect { c ->
         int off = c.isUpperCase() ? 'A' : 'a'
-        c.isLetter() ? (((c as int) - off + cipherKey) % 26 + off) as char : c 
-    }.join()    
-}   
+        c.isLetter() ? (((c as int) - off + cipherKey) % 26 + off) as char : c
+    }.join()
+}
 def caesarDecode(cipherKey, text) { caesarEncode(26 - cipherKey, text) }
 ```
 
 
-Ninja style: 
+Ninja style:
 
 ```groovy
-def caesarEncode(k, text) { 
+def caesarEncode(k, text) {
     (text as int[]).collect { it==' ' ? ' ' : (((it & 0x1f) + k - 1) % 26 + 1 | it & 0xe0) as char }.join()
-}   
+}
 def caesarDecode(k, text) { caesarEncode(26 - k, text) }
 ```
 
- 
-Using built in 'tr' function and a replacement alphabet: 
+
+Using built in 'tr' function and a replacement alphabet:
 
 ```groovy
 def caesarEncode(k, text) {
@@ -3258,7 +3258,7 @@ def caesarEncode(k, text) {
 def caesarDecode(cipherKey, text) { caesarEncode(26 - cipherKey, text) }
 ```
 
-Test code: 
+Test code:
 
 ```groovy
 
@@ -3266,11 +3266,11 @@ def plainText = "The Quick Brown Fox jumped over the lazy dog"
 def cipherKey = 12
 def cipherText = caesarEncode(cipherKey, plainText)
 def decodedText = caesarDecode(cipherKey, cipherText)
- 
+
 println "plainText: $plainText"
 println "cypherText($cipherKey): $cipherText"
 println "decodedText($cipherKey): $decodedText"
- 
+
 assert  plainText == decodedText
 
 ```
@@ -3290,7 +3290,7 @@ decodedText(12): The Quick Brown Fox jumped over the lazy dog
 
 
 ```haskell
-module Caesar (caesar, uncaesar) where 
+module Caesar (caesar, uncaesar) where
 
 import Data.Char
 
@@ -3366,7 +3366,7 @@ import Control.Error (tryRead, tryAt)
 import Control.Monad.Trans (liftIO)
 import Control.Monad.Trans.Except (ExceptT, runExceptT)
 
-import Data.Char 
+import Data.Char
 import System.Exit (die)
 import System.Environment (getArgs)
 
@@ -3376,10 +3376,10 @@ main = runExceptT parseKey >>= \case
            Right k  -> interact $ caesar k
 
 parseKey :: (Read a, Integral a) => ExceptT String IO a
-parseKey = liftIO getArgs >>= 
-           flip (tryAt "Not enough arguments") 0 >>= 
+parseKey = liftIO getArgs >>=
+           flip (tryAt "Not enough arguments") 0 >>=
            tryRead "Key is not a valid integer"
-    
+
 caesar :: (Integral a) => a -> String -> String
 caesar k = map f
     where f c = case generalCategory c of
@@ -3745,7 +3745,7 @@ println("# original: $msg\n  encrypted: $(rot(msg, key))\n  decrypted: $(rot(rot
 ## K
 
 
-Assumes lowercase letters, and no punctuation. 
+Assumes lowercase letters, and no punctuation.
 
 
 ```k
@@ -3770,7 +3770,7 @@ object Caesar {
         val offset = key % 26
         if (offset == 0) return s
         var d: Char
-        val chars = CharArray(s.length) 
+        val chars = CharArray(s.length)
         for ((index, c) in s.withIndex()) {
             if (c in 'A'..'Z') {
                 d = c + offset
@@ -3783,10 +3783,10 @@ object Caesar {
             else
                 d = c
             chars[index] = d
-        } 
+        }
         return chars.joinToString("")
     }
-    
+
     fun decrypt(s: String, key: Int): String {
         return encrypt(s, 26 - key)
     }
@@ -3866,7 +3866,7 @@ function caesarCipher rot phrase
         else
             put letter after rotPhrase
         end if
-    end repeat 
+    end repeat
     return rotPhrase
 end caesarCipher
 ```
@@ -4042,7 +4042,7 @@ Print Cipher$(B$,12)
 > StringTools:-Encode( "The five boxing wizards jump quickly", encoding = alpharot[3] );
                        "Wkh ilyh eralqj zlcdugv mxps txlfnob"
 
-> StringTools:-Encode( %, encoding = alpharot[ 23 ] );                                  
+> StringTools:-Encode( %, encoding = alpharot[ 23 ] );
                        "The five boxing wizards jump quickly"
 
 ```
@@ -4063,22 +4063,22 @@ cypher["The five boxing wizards jump quickly",3]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
-   function s = cipherCaesar(s, key) 
+   function s = cipherCaesar(s, key)
           s = char( mod(s - 'A' + key, 25 ) + 'A');
-   end; 	 
-   function s = decipherCaesar(s, key) 
+   end;
+   function s = decipherCaesar(s, key)
           s = char( mod(s - 'A' - key, 25 ) + 'A');
-   end; 
+   end;
 ```
 
-Here is a test: 
+Here is a test:
 
 ```Matlab
-   decipherCaesar(cipherCaesar('ABC',4),4) 
-   ans = ABC 
+   decipherCaesar(cipherCaesar('ABC',4),4)
+   ans = ABC
 ```
 
 
@@ -4088,9 +4088,9 @@ Here is a test:
 
 ```Microsoft Small Basic
 
-TextWindow.Write("Enter a 1-25 number key (-ve number to decode): ") 
+TextWindow.Write("Enter a 1-25 number key (-ve number to decode): ")
 key = TextWindow.ReadNumber()
-TextWindow.Write("Enter message: ") 
+TextWindow.Write("Enter message: ")
 message = text.ConvertToUpperCase(TextWindow.Read())
 caeser = ""
 For n = 1 To Text.GetLength(message)
@@ -4167,7 +4167,7 @@ Hello world!
 =
 ## mLite
 =
-In this implementation, the offset can be positive or negative and is wrapped around if greater than 25 or less than -25. 
+In this implementation, the offset can be positive or negative and is wrapped around if greater than 25 or less than -25.
 
 ```ocaml
 fun readfile () = readfile []
@@ -4178,34 +4178,34 @@ fun readfile () = readfile []
                       readfile ` ln :: x
                  end
 
-local	
+local
 	val lower_a = ord #"a";
 	val lower_z = ord #"z";
 	val upper_a = ord #"A";
 	val upper_z = ord #"Z";
 
-	fun which 
+	fun which
 			(c_upper c) = (upper_a, upper_z)
 		|	_	    = (lower_a, lower_z)
 		;
-	
-	fun scale 
+
+	fun scale
 			(c, az) where (c > #1 az) = scale( (#0 az + (c - #1 az - 1)), az)
 		|	(c, az) 		  = c
-			
+
 in
 	fun encipher
 			([], offset, t)                             = implode ` rev t
 		|	(x :: xs, offset, t) where (c_alphabetic x) = encipher (xs, offset, (chr ` scale (ord x + offset, which x)) :: t)
 		|	(x :: xs, offset, t)                        = encipher (xs, offset, x :: t)
-		|	(s, offset) 				    = if (offset < 0) then 
+		|	(s, offset) 				    = if (offset < 0) then
 									encipher (explode s, 26 + (offset rem 26), [])
 								      else
 									encipher (explode s, offset rem 26, [])
 end
 
-fun default 
-		(false, y) = y 
+fun default
+		(false, y) = y
 	|	(x,     _) = x
 
 ;
@@ -4394,7 +4394,7 @@ BEGIN
   TRY
     Encode("WhenCaesarSetOffToGaul", buffer);
   EXCEPT BadCharacter =>
-    (* 
+    (*
       This should never occur.
       Try adding spaces to the above to see what happens.
     *)
@@ -4642,7 +4642,7 @@ Works with oo2c version2
 ```oberon2
 
 MODULE Caesar;
-IMPORT 
+IMPORT
   Out;
 CONST
   encode* = 1;
@@ -4668,7 +4668,7 @@ VAR
     END;
     cipher[i] := 0X
   END Cipher;
-  
+
 BEGIN
   NEW(text,3);NEW(cipher,3);
   COPY("HI",text^);
@@ -4678,7 +4678,7 @@ BEGIN
 
   COPY(cipher^,text^);
   Cipher(text^,2,decode,cipher^);
-  Out.String(" =d=> ");Out.String(cipher^);Out.Ln;  
+  Out.String(" =d=> ");Out.String(cipher^);Out.Ln;
 
   COPY("ZA",text^);
   Out.String(text^);Out.String(" =e=> ");
@@ -4687,7 +4687,7 @@ BEGIN
 
   COPY(cipher^,text^);
   Cipher(text^,2,decode,cipher^);
-  Out.String(" =d=> ");Out.String(cipher^);Out.Ln; 
+  Out.String(" =d=> ");Out.String(cipher^);Out.Ln;
 
   NEW(text,37);NEW(cipher,37);
   COPY("The five boxing wizards jump quickly",text^);
@@ -4697,7 +4697,7 @@ BEGIN
 
   COPY(cipher^,text^);
   Cipher(text^,3,decode,cipher^);
-  Out.String(" =d=> ");Out.String(cipher^);Out.Ln; 
+  Out.String(" =d=> ");Out.String(cipher^);Out.Ln;
 
 END Caesar.
 
@@ -4735,14 +4735,14 @@ class Caesar {
         encoded->Append(c);
       };
     };
-    
+
     return encoded;
   }
-  
+
   function : Decode(enc : String, offset : Int) ~ String {
     return Encode(enc, offset * -1);
   }
-  
+
   function : Main(args : String[]) ~ Nil {
     enc := Encode("The quick brown fox Jumped over the lazy Dog", 12);
     enc->PrintLine();
@@ -4810,7 +4810,7 @@ let () =
 {{out}}
 
 ```txt
-$ ocaml caesar.ml 
+$ ocaml caesar.ml
 Wkh ilyh eralqj zlcdugv mxps txlfnob
 The five boxing wizards jump quickly
 equal: true
@@ -4911,7 +4911,7 @@ procedure encrypt(var message: string; key: integer);
         'a'..'z': message[i] := chr(ord('a') + (ord(message[i]) - ord('a') + key) mod 26);
       end;
   end;
- 
+
 procedure decrypt(var message: string; key: integer);
   var
     i: integer;
@@ -4945,7 +4945,7 @@ end.
 Original message: The five boxing wizards jump quickly
 Encrypted message: Wkh ilyh eralqj zlcdugv mxps txlfnob
 Decrypted message: The five boxing wizards jump quickly
->: 
+>:
 ```
 
 
@@ -4960,11 +4960,11 @@ sub caesar {
         $key = 26 - $key if $decode;
         $message =~ s/([A-Z])/chr(((ord(uc $1) - 65 + $key) % 26) + 65)/geir;
 }
- 
+
 my $msg = 'THE FIVE BOXING WIZARDS JUMP QUICKLY';
 my $enc = caesar($msg, 10);
 my $dec = caesar($enc, 10, 'decode');
- 
+
 print "msg: $msg\nenc: $enc\ndec: $dec\n";
 
 ```
@@ -5089,7 +5089,7 @@ ftq cguow ndaiz raj vgybqp ahqd ftq xmlk pas
 
 ```Picat
 
-main => 
+main =>
   S = "All human beings are born free and equal in dignity and rights.",
   println(S),
   println(caesar(S,5)),
@@ -5165,7 +5165,7 @@ caesar: procedure options (main);
       ((2)'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
    declare (text, encyphered_text) character (100) varying,
       offset fixed binary;
-   
+
    get edit (text) (L); /* Read in one line of text */
    get list (offset);
    if offset < 1 | offset > 25 then signal error;
@@ -5186,8 +5186,8 @@ end caesar;
 
 ```txt
 
-Plain text=             THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG 
-Encyphered text=        YMJVZNHPGWTBSKTCOZRUXTAJWYMJQFEDITL 
+Plain text=             THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG
+Encyphered text=        YMJVZNHPGWTBSKTCOZRUXTAJWYMJQFEDITL
 Decyphered text=        THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG
 
 ```
@@ -5217,7 +5217,7 @@ $Decode
 )
 
 begin
-{    
+{
     $LowerAlpha = [char]'a'..[char]'z'
     $UpperAlpha = [char]'A'..[char]'Z'
 }
@@ -5225,7 +5225,7 @@ begin
 process
 {
     $Chars = $Text.ToCharArray()
-    
+
     function encode
     {
         param
@@ -5237,7 +5237,7 @@ process
         $NewIndex = ($Index + $Key) - $Alpha.Length
         $Alpha[$NewIndex]
     }
-    
+
     function decode
     {
         param
@@ -5264,7 +5264,7 @@ process
             if ($Decode) {$Char = decode $Char $UpperAlpha}
             else {$Char = encode $Char $UpperAlpha}
         }
-        
+
         $Char = [char]$Char
         [string]$OutText += $Char
     }
@@ -5359,12 +5359,12 @@ The case is maintained for alphabetic characters (uppercase/lowercase input = up
 Procedure.s CC_encrypt(plainText.s, key, reverse = 0)
   ;if reverse <> 0 then reverse the encryption (decrypt)
   If reverse: reverse = 26: key = 26 - key: EndIf
-  
+
   Static alphabet$ = "ABCEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
-  
+
   Protected result.s, i, length = Len(plainText), letter.s, legal
   If key < 1 Or key > 25: ProcedureReturn: EndIf  ;keep key in range
-   
+
   For i = 1 To length
     letter = Mid(plainText, i, 1)
     legal = FindString(alphabet$, letter, 1 + reverse)
@@ -5372,8 +5372,8 @@ Procedure.s CC_encrypt(plainText.s, key, reverse = 0)
       result + Mid(alphabet$, legal + key, 1)
     Else
       result + letter
-    EndIf 
-  Next 
+    EndIf
+  Next
   ProcedureReturn result
 EndProcedure
 
@@ -5383,13 +5383,13 @@ EndProcedure
 
 If OpenConsole()
   Define key, plainText.s, encryptedText.s, decryptedText.s
-  
+
   key = Random(24) + 1 ;get a random key in the range 1 -> 25
-  
+
   plainText = "The quick brown fox jumped over the lazy dogs.": PrintN(RSet("Plain text = ", 17) + #DQUOTE$ + plainText + #DQUOTE$)
   encryptedText = CC_encrypt(plainText, key): PrintN(RSet("Encrypted text = ", 17) + #DQUOTE$ + encryptedText + #DQUOTE$)
   decryptedText = CC_decrypt(encryptedText, key): PrintN(RSet("Decrypted text = ", 17) + #DQUOTE$ + decryptedText + #DQUOTE$)
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -5412,10 +5412,10 @@ Here is an alternate and more advanced form of the encrypt procedure.  It improv
 Procedure.s CC_encrypt(text.s, key, reverse = 0)
   ;if reverse <> 0 then reverse the encryption (decrypt)
   Protected i, *letter.Character, *resultLetter.Character, result.s = Space(Len(text))
-  
+
   If reverse: key = 26 - key: EndIf
   If key < 1 Or key > 25: ProcedureReturn: EndIf  ;exit if key out of range
-   
+
   *letter = @text: *resultLetter = @result
   While *letter\c
     Select *letter\c
@@ -5547,9 +5547,9 @@ ceasar <- function(x, key)
 {
   # if key is negative, wrap to be positive
   if (key < 0) {
-    key <- 26 + key 
+    key <- 26 + key
   }
-  
+
   old <- paste(letters, LETTERS, collapse="", sep="")
   new <- paste(substr(old, key * 2 + 1, 52), substr(old, 1, key * 2), sep="")
   chartr(old, new, x)
@@ -5598,7 +5598,7 @@ print(paste("Decrypted Text: ", decrypted, sep=""))
 ```racket
 
 #lang racket
-  
+
 (define A (char->integer #\A))
 (define Z (char->integer #\Z))
 (define a (char->integer #\a))
@@ -5688,7 +5688,7 @@ Caesar: procedure; arg s,k;  @='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 err:    say;      say '***error***';       say;          say arg(1);      say;     exit 13
 ```
 
-'''output'''   when using the input of: 
+'''output'''   when using the input of:
 
 
 22 The definition of a trivial program is one that has no bugs
@@ -5734,7 +5734,7 @@ Caesar: procedure;     parse arg s,k;     @= 'abcdefghijklmnopqrstuvwxyz'
 err:    say;      say '***error***';       say;          say arg(1);      say;     exit 13
 ```
 
-'''output'''   when using the input of: 
+'''output'''   when using the input of:
 
 
 31 Batman's hood is called a "cowl" (old meaning).
@@ -5785,7 +5785,7 @@ func caesarencode(cipher, key)
                   else
                       str = str +abc[key+pos]
                   ok
-                    ok 
+                    ok
                else
                   str = str + " "
                ok
@@ -5800,13 +5800,13 @@ func caesardecode(cipher, key)
                if (pos - key) > 0 and pos != key
                    str = str + abc[pos - key]
                    loop
-               else 
+               else
                    if pos = key
                       str = str + char(122)
                    else
                      str = str + abc[len(abc)-(key-pos)]
-                   ok                     
-               ok                
+                   ok
+               ok
             else
                str = str + " "
             ok
@@ -5977,7 +5977,7 @@ Decrypted  => The five boxing wizards jump quickly
 
 ### Alternate version
 
-This version first creates non shifted and shifted character sequences 
+This version first creates non shifted and shifted character sequences
 and then encodes and decodes by indexing between those sequences.
 
 ```scala
@@ -5989,7 +5989,7 @@ class Caeser(val key: Int) {
   val lc = 'a' to 'z'
   val as = uc ++ lc
   val bs = rotate(key, uc) ++ rotate(key, lc)
-  
+
   def encode(c: Char) = if (as.contains(c)) bs(as.indexOf(c)) else c
   def decode(c: Char) = if (bs.contains(c)) as(bs.indexOf(c)) else c
 }
@@ -6111,7 +6111,7 @@ s/\n\n.*//
 
 ```txt
 
-$ ./caesar.sed 
+$ ./caesar.sed
 3
 The five boxing wizards jump quickly
 Wkh ilyh eralqj zlcdugv mxps txlfnob
@@ -6185,22 +6185,22 @@ upperAlphabet := "abcdefghijklmnopqrstuvwxyz";
 
 caesarEncrypt(ch, key) :=
 	let
-		correctAlphabet := 
+		correctAlphabet :=
 				lowerAlphabet when some(ch = lowerAlphabet)
 			else
 				upperAlphabet;
-		
+
 		index := Sequence::firstIndexOf(correctAlphabet, ch);
-		
+
 		newIndex := (index + key - 1) mod 26 + 1;
 	in
 		ch when not(some(ch = lowerAlphabet) or some(ch = upperAlphabet))
 	else
 		correctAlphabet[newIndex];
-		
+
 caesarDecrypt(ch, key) := caesarEncrypt(ch, 26 - key);
 
-main(args(2)) := 
+main(args(2)) :=
 	let
 		key := Conversion::stringToInt(args[2]);
 		encrypted := caesarEncrypt(args[1], key);
@@ -6311,7 +6311,7 @@ GALLIA EST OMNIS DIVISA IN PARTES TRES
 well, I'm lucky: the standard library already contains a rot:n method!
 
 ```Smalltalk
-'THE QUICK BROWN FOX' rot:3 -> 'WKH TXLFN EURZQ IRA' 
+'THE QUICK BROWN FOX' rot:3 -> 'WKH TXLFN EURZQ IRA'
 ```
 
 but if it wasn't, here is an implementation for other smalltalks:
@@ -6574,7 +6574,7 @@ PRINT "encoded decoded ",decoded
 
 text orginal    THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
 text encoded    WKH TXLFN EURZQ IRA MXPSV RYHU WKH ODCB GRJ
-encoded decoded THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG 
+encoded decoded THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
 
 ```
 
@@ -6629,9 +6629,9 @@ decoded: Jgnnq, yqtnf!
 
 ```javascript
 function replace(input: string, key: number) : string {
-	return input.replace(/([a-z])/g, 
+	return input.replace(/([a-z])/g,
 		($1) => String.fromCharCode(($1.charCodeAt(0) + key + 26 - 97) % 26 + 97)
-		).replace(/([A-Z])/g, 
+		).replace(/([A-Z])/g,
 		($1) => String.fromCharCode(($1.charCodeAt(0) + key + 26 - 65) % 26 + 65));
 }
 
@@ -6903,7 +6903,7 @@ Dim Tbl, strGlob As String, strTemp As String, i As Long, bytAscii As Byte
     Const NB_LETTERS As Byte = 26
       Const DIFFASCIIMAJ As Byte = 65 - NB_LETTERS
         Const DIFFASCIIMIN As Byte = 97 - NB_LETTERS
-    
+
     strTemp = sText
     If lngNumber < NB_LETTERS And lngNumber > NB_LETTERS * -1 Then
         strGlob = String(NB_LETTERS * 4, " ")
@@ -6971,7 +6971,7 @@ Decrypted text:   Quick brown Fox jumps over the lazy Dog.
 Note that a left rotation has an equivalent right rotation so all rotations are converted to the equivalent right rotation prior to translation.
 
 ```vbscript
- 
+
 	str = "IT WAS THE BEST OF TIMES, IT WAS THE WORST OF TIMES."
 
 	Wscript.Echo str
@@ -7121,7 +7121,7 @@ main:
     mov rbp, rsp
     sub rsp, 32
     mov QWORD PTR [rbp-32], rsi         # argv
-    
+
 .BODY:
     mov BYTE PTR [rbp-1], 0             # shift = 0
 
@@ -7315,13 +7315,13 @@ print criptex$(encrypted$, key$, DECIPHER)
 
 sub criptex$(text$, key$, mode)
 	local i, k, delta, longtext, longPattern, longkey, pattern$, res$
-	
+
 	pattern$ = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 .,;:()-"
-	
+
 	longPattern = len(pattern$)
 	longtext = len(text$)
 	longkey = len(key$)
-	
+
 	for i = 1 to longtext
 		k = k + 1 : if k > longkey k = 1
 		delta = instr(pattern$, mid$(text$, i, 1))
@@ -7408,9 +7408,9 @@ begin
 	for i := 0 to len(s) - 1 do
 		c := cap(s[i]);
 		if (c >= 'A') & (c <= 'Z') then
-			resp := resp + 
+			resp := resp +
 				string(char(integer('A') + ((integer(c) - integer('A') + key )) mod 26));
-		else 
+		else
 			resp := resp + string(c)
 		end;
 	end;
@@ -7472,14 +7472,14 @@ The five boxing wizards jump quickly -c-> RFC DGTC ZMVGLE UGXYPBQ HSKN OSGAIJW -
 30 LET key=RND*25+1
 40 LET k=key: GO SUB 1000: PRINT t$''
 50 LET k=26-key: GO SUB 1000: PRINT t$
-60 STOP 
+60 STOP
 1000 FOR i=1 TO LEN t$
 1010 LET c= CODE t$(i)
 1020 IF c<65 OR c>90 THEN GO TO 1050
 1030 LET c=c+k: IF c>90 THEN LET c=c-90+64
 1040 LET t$(i)=CHR$ c
 1050 NEXT i
-1060 RETURN 
+1060 RETURN
 
 ```
 
@@ -7494,7 +7494,7 @@ The five boxing wizards jump quickly -c-> RFC DGTC ZMVGLE UGXYPBQ HSKN OSGAIJW -
 60 PRINT r$''
 70 LET t$=r$: LET modo=DESCIFRA: GO SUB 1000
 80 PRINT r$''
-90 STOP 
+90 STOP
 1000 REM Criptex
 1010 LET p$="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 .,;:()-"
 1020 LET longPatron=LEN p$
@@ -7515,7 +7515,7 @@ The five boxing wizards jump quickly -c-> RFC DGTC ZMVGLE UGXYPBQ HSKN OSGAIJW -
 1160 IF delta<1 THEN LET delta=longPatron+delta
 1170 LET r$=r$+p$(delta)
 1180 NEXT i
-1190 RETURN 
+1190 RETURN
 ```
 
 {{omit from|GUISS}}

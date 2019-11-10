@@ -24,7 +24,7 @@ Can/should this be modified to support altnames like {{tmpl|mylang}} does? I hav
 ::Okay, I went ahead and changed it. It makes sense to me that mylang and notmylang should operate the same but I'm hesitant to change templates :)
 ::Of the 15 pages currently using the template, five currently have broken/red links due to this change:
 ::*[[User:Rldrenth|One]] should be fixed by them using COBOL vs Cobol (I'll drop a note on their talk page).
-::*Three are due to [[:Category:Brainfuck]] not redirecting to [[Brainfuck]] (the category is [[:Category:Brainf***]]). This could be fixed either by a new redirect or those people changing to <nowiki>{{notmylang|Brainf***|foo}}</nowiki> (or <nowiki>{{notmylang|Brainf***|foo|Brainfuck}}</nowiki> if that's what they prefer).
+::*Three are due to [[:Category:Brainfuck]] not redirecting to [[Brainfuck]] (the category is [[:Category:Brainfuck]]). This could be fixed either by a new redirect or those people changing to <nowiki>{{notmylang|Brainfuck|foo}}</nowiki> (or <nowiki>{{notmylang|Brainfuck|foo|Brainfuck}}</nowiki> if that's what they prefer).
 ::* [[User:Sandrobilbeisi]] appears to mention languages with no wiki pages so the links likely were already "red".
 ::*Finally, [[User:Eriksiers]] references specific implementations rather than langages. I don't know what the best option in that case is.
 ::&mdash;[[User:dchapes|dchapes]] ([[User talk:dchapes|talk]] | [[Special:Contributions/dchapes|contribs]]) 22:09, 14 September 2014 (UTC)

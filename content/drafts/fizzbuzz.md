@@ -10,19 +10,19 @@ categories = []
 tags = []
 +++
 
-{{task|Classic CS problems and programs}} 
-[[Category:Iteration]] 
-[[Category:Recursion]] 
+{{task|Classic CS problems and programs}}
+[[Category:Iteration]]
+[[Category:Recursion]]
 [[Category:Simple]]
 
 ;Task:
-Write a program that prints the integers from   '''1'''   to   '''100'''   (inclusive). 
+Write a program that prints the integers from   '''1'''   to   '''100'''   (inclusive).
 
 
 But:
 :*   for multiples of three,   print   '''Fizz'''     (instead of the number)
 :*   for multiples of five,   print   '''Buzz'''     (instead of the number)
-:*   for multiples of both three and five,   print   '''FizzBuzz'''     (instead of the number) 
+:*   for multiples of both three and five,   print   '''FizzBuzz'''     (instead of the number)
 
 
 The   ''FizzBuzz''   problem was presented as the lowest level of comprehension required to illustrate adequacy.
@@ -63,7 +63,7 @@ See [[FizzBuzz/Assembly]]
 
 with: n
 
-: num?  \ n f --   ) 
+: num?  \ n f --   )
 	if drop else . then ;
 
 \ is m mod n 0? leave the result twice on the stack
@@ -71,20 +71,20 @@ with: n
 	mod 0 = dup ;
 
 : fizz? \ n -- n f
-	dup 3 
+	dup 3
 	div? if "Fizz" .  then ;
 
 : buzz? \ n f -- n f
-	over 5 
+	over 5
 	div? if "Buzz" .  then or ;
 
 \ print a message as appropriate for the given number:
 : fizzbuzz  \ n --
-	fizz? buzz? num? 
+	fizz? buzz? num?
 	space ;
 
 \ iterate from 1 to 100:
-' fizzbuzz 1 100 loop 
+' fizzbuzz 1 100 loop
 cr bye
 
 ```
@@ -174,7 +174,7 @@ for (var i:int = 1; i <= 100; i++) {
 
 ```ada
 with Ada.Text_IO; use Ada.Text_IO;
- 
+
 procedure Fizzbuzz is
 begin
    for I in 1..100 loop
@@ -291,9 +291,9 @@ A[I]←1+I←(0⍷A)/⍳⍴A←('FIZZBUZZ' 'FIZZ’ 'BUZZ' 0)[2⊥¨×(⊂3 5)|�
 ```
 
 
-The idea is to first calculate the residues for all numbers 1..100 after 
+The idea is to first calculate the residues for all numbers 1..100 after
 division with both 3 and 5. This generates 100 pairs of numbers a b, where
-a is either 0,1,2 and b is either 0,1,2,3,4. 
+a is either 0,1,2 and b is either 0,1,2,3,4.
 
 These pairs are then put through the sign function which returns 0 for a 0,
 and a 1 for anything greater than 0. Now we have binary pairs.
@@ -371,10 +371,10 @@ end fizzBuzz
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     intercalate(linefeed, ¬
         map(fizzBuzz, enumFromTo(1, 100)))
-    
+
 end run
 
 
@@ -423,7 +423,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -483,9 +483,9 @@ main():
 
 
 ```lisp
-(for n 1 100 
-     (prn:check (string (when (multiple n 3) 'Fizz) 
-                        (when (multiple n 5) 'Buzz)) 
+(for n 1 100
+     (prn:check (string (when (multiple n 3) 'Fizz)
+                        (when (multiple n 5) 'Buzz))
                 ~empty n)) ; check created string not empty, else return n
 ```
 
@@ -907,19 +907,19 @@ End
 
 
 ```babel
-main: 
+main:
      { { iter 1 + dup
-        
+
         15 %
-            { "FizzBuzz" << 
+            { "FizzBuzz" <<
                 zap }
             { dup
-            3 % 
-                { "Fizz" << 
+            3 %
+                { "Fizz" <<
                     zap }
                 { dup
-                5 % 
-                    { "Buzz" << 
+                5 %
+                    { "Buzz" <<
                         zap}
                     { %d << }
                 if }
@@ -1118,7 +1118,7 @@ Also see on [[FizzBuzz/EsoLang]]
 “Ordinary” FizzBuzz solution:
 
 
-```beeswax>               
+```beeswax>
      q
         >@F5~%"d@F{  >  @F     q
 _1>F3~%'d`Fizz`@F5~%'d >`Buzz`@FNp
@@ -1130,7 +1130,7 @@ _1>F3~%'d`Fizz`@F5~%'d >`Buzz`@FNp
 Example without double mod 5 check, using a flag instead, to check if Fizz already got printed (in this case the number n must not be printed if mod 5 is > 0):
 
 
-```beeswax>                            
+```beeswax>
 @?q
          >      q       >Ag'd@{?p
 _>"1F3~%'d`Fizz`f>@F5~%'d`Buzz`@p
@@ -1210,7 +1210,7 @@ Same code, pretty printed:
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 See [[FizzBuzz/EsoLang]]
 
 
@@ -1250,7 +1250,7 @@ With 4 prime numbers:
 ```c
   int i = 0 ;  char B[88] ;
   while ( i++ < 100 )
-    !sprintf( B, "%s%s%s%s", 
+    !sprintf( B, "%s%s%s%s",
        i%3 ? "":"Fiz", i%5 ? "":"Buz", i%7 ? "":"Goz", i%11 ? "":"Kaz" )
     ? sprintf( B, "%d", i ):0, printf( ", %s", B );
 ```
@@ -1275,7 +1275,7 @@ int main() {
 This actually works (the array init part, saves 6 bytes of static data, whee):
 ```c>#include<stdio.h
 
- 
+
 int main ()
 {
   int i;
@@ -1315,7 +1315,7 @@ Implicit int main and return 0 (C99+):
 
 ```c>#include <stdio.h
 
- 
+
 main() {
   int i = 1;
   while(i <= 100) {
@@ -1341,7 +1341,7 @@ int main(int i){for(--i;i++^100;puts(""))F(3,Fi)|F(5,Bu)||printf("%i",i);return 
 ```
 
 
-With numbers theory: 
+With numbers theory:
 ```c>#include <stdio.h
 
 
@@ -1470,9 +1470,9 @@ namespace FizzBuzz
         {
             Enumerable.Range(1, 100)
                 .GroupBy(e => e % 15 == 0 ? "FizzBuzz" : e % 5 == 0 ? "Buzz" : e % 3 == 0 ? "Fizz" : string.Empty)
-                .SelectMany(item => item.Select(x => new { 
-                    Value = x, 
-                    Display = String.IsNullOrEmpty(item.Key) ? x.ToString(CultureInfo.InvariantCulture) : item.Key 
+                .SelectMany(item => item.Select(x => new {
+                    Value = x,
+                    Display = String.IsNullOrEmpty(item.Key) ? x.ToString(CultureInfo.InvariantCulture) : item.Key
                 }))
                 .OrderBy(x => x.Value)
                 .Select(x => x.Display)
@@ -1670,7 +1670,7 @@ namespace FizzBuzz
 using namespace std;
 int main ()
 {
-       for (int i = 1; i <= 100; i++) 
+       for (int i = 1; i <= 100; i++)
        {
                if ((i % 15) == 0)
                        cout << "FizzBuzz\n";
@@ -1717,7 +1717,7 @@ Alternate version that avoids using modulo.  (Modulo can be expensive on some ar
 
 int main()
 {
-    int i, f = 2, b = 4; 
+    int i, f = 2, b = 4;
 
     for ( i = 1 ; i <= 100 ; ++i, --f, --b )
     {
@@ -1737,7 +1737,7 @@ A version using std::transform:
 {{works with|C++11}}
 
 ```cpp>#include <iostream
-                                                                                                     
+
 #include <algorithm>
 #include <vector>
 
@@ -1769,38 +1769,38 @@ Version computing FizzBuzz at compile time with metaprogramming:
 ```cpp>#include <iostream
 
 
-template <int n, int m3, int m5> 
+template <int n, int m3, int m5>
 struct fizzbuzz : fizzbuzz<n-1, (n-1)%3, (n-1)%5>
 {
-  fizzbuzz() 
+  fizzbuzz()
   { std::cout << n << std::endl; }
 };
 
 template <int n>
 struct fizzbuzz<n, 0, 0> : fizzbuzz<n-1, (n-1)%3, (n-1)%5>
 {
-  fizzbuzz() 
+  fizzbuzz()
   { std::cout << "FizzBuzz" << std::endl; }
 };
 
 template <int n, int p>
 struct fizzbuzz<n, 0, p> : fizzbuzz<n-1, (n-1)%3, (n-1)%5>
 {
-  fizzbuzz() 
+  fizzbuzz()
   { std::cout << "Fizz" << std::endl; }
 };
 
 template <int n, int p>
 struct fizzbuzz<n, p, 0> : fizzbuzz<n-1, (n-1)%3, (n-1)%5>
 {
-  fizzbuzz() 
+  fizzbuzz()
   { std::cout << "Buzz" << std::endl; }
 };
 
 template <>
 struct fizzbuzz<0,0,0>
 {
-  fizzbuzz() 
+  fizzbuzz()
   { std::cout << 0 << std::endl; }
 };
 
@@ -1890,11 +1890,11 @@ template <unsigned int i, int place> // place -> [0 .. 9]
 // Convert the digit at a given offset into a number of the form '17' to a character
 
 // Template description, with specialization to generate null characters for out of range offsets
-template <unsigned int i, int offset, int numDigits, bool inRange>  
+template <unsigned int i, int offset, int numDigits, bool inRange>
     struct OFFSET_CHAR_CORE_CHECKED{};
-template <unsigned int i, int offset, int numDigits>                
+template <unsigned int i, int offset, int numDigits>
     struct OFFSET_CHAR_CORE_CHECKED<i, offset, numDigits, false> : NULL_CHAR{};
-template <unsigned int i, int offset, int numDigits>                
+template <unsigned int i, int offset, int numDigits>
     struct OFFSET_CHAR_CORE_CHECKED<i, offset, numDigits, true>  : ALT_CHAR<i, (numDigits - offset) - 1 >{};
 
 // Perform the range check and pass it on
@@ -1926,7 +1926,7 @@ struct IntToStr
 };
 
 template <unsigned int i>
-const char IntToStr<i>::str[] = 
+const char IntToStr<i>::str[] =
 {
     OFFSET_CHAR<i, 0>::val,
     OFFSET_CHAR<i, 1>::val,
@@ -2006,7 +2006,7 @@ let format (n : Int) : Latin1 =
     else if (n mod 3 = 0) then "Fizz"
     else string_of (n);;
 
-let fizz (n : Int, size : Int) : _ = 
+let fizz (n : Int, size : Int) : _ =
     print (format (n) @ "\n");
     if (n = size) then
         n = 0 (* do nothing *)
@@ -2079,7 +2079,7 @@ Also compiles with Harbour (Harbour 3.2.0dev (r1405201749))
 PROCEDURE Main()
 
    LOCAL n
-   LOCAL cFB 
+   LOCAL cFB
 
    FOR n := 1 TO 100
       cFB := ""
@@ -2146,7 +2146,7 @@ AEval( {{3,"Fizz"},{5,"Buzz"},{9,"Jazz"}}, {|x| cFB += Iif((n % x[1])==0, x[2], 
 
 ```clojure
 
-(defn fizzbuzz [start finish] 
+(defn fizzbuzz [start finish]
   (map (fn [n]
 	(cond
 		(zero? (mod n 15)) "FizzBuzz"
@@ -2161,7 +2161,7 @@ AEval( {{3,"Fizz"},{5,"Buzz"},{9,"Jazz"}}, {|x| cFB += Iif((n % x[1])==0, x[2], 
 
 
 ```lisp
-(map (fn [x] (cond (zero? (mod x 15)) "FizzBuzz" 
+(map (fn [x] (cond (zero? (mod x 15)) "FizzBuzz"
                    (zero? (mod x 5)) "Buzz"
                    (zero? (mod x 3)) "Fizz"
 		     :else x))
@@ -2175,7 +2175,7 @@ AEval( {{3,"Fizz"},{5,"Buzz"},{9,"Jazz"}}, {|x| cFB += Iif((n % x[1])==0, x[2], 
 
 
 ```lisp
-(def fizzbuzz (map 
+(def fizzbuzz (map
   #(cond (zero? (mod % 15)) "FizzBuzz"
          (zero? (mod % 5)) "Buzz"
          (zero? (mod % 3)) "Fizz"
@@ -2186,13 +2186,13 @@ AEval( {{3,"Fizz"},{5,"Buzz"},{9,"Jazz"}}, {|x| cFB += Iif((n % x[1])==0, x[2], 
 
 
 ```lisp
-(defn fizz-buzz 
+(defn fizz-buzz
   ([] (fizz-buzz (range 1 101)))
   ([lst]
      (letfn [(fizz? [n] (zero? (mod n 3)))
 	     (buzz? [n] (zero? (mod n 5)))]
-       (let [f     "Fizz" 
-	     b     "Buzz" 
+       (let [f     "Fizz"
+	     b     "Buzz"
 	     items (map (fn [n]
 			  (cond (and (fizz? n) (buzz? n)) (str f b)
 				(fizz? n) f
@@ -2203,7 +2203,7 @@ AEval( {{3,"Fizz"},{5,"Buzz"},{9,"Jazz"}}, {|x| cFB += Iif((n % x[1])==0, x[2], 
 
 
 ```clojure
-(map (fn [n] 
+(map (fn [n]
        (if-let [fb (seq (concat (when (zero? (mod n 3)) "Fizz")
                                 (when (zero? (mod n 5)) "Buzz")))]
            (apply str fb)
@@ -2452,7 +2452,7 @@ working-storage section.
 01  buzz pic 999 value 5.
 procedure division.
 start-fizzbuzz.
-    perform varying i from 1 by 1 until i > 100 
+    perform varying i from 1 by 1 until i > 100
         evaluate i also i
         when fizz also buzz
             display 'fizzbuzz'
@@ -2543,7 +2543,7 @@ for i in [1..100]
   <Cfelseif i mod 5 eq 0>Fizz
   <Cfelseif i mod 3 eq 0>Buzz
   <Cfelse><Cfoutput>#i# </Cfoutput>
-  </Cfif>      
+  </Cfif>
 </Cfloop>
 ```
 
@@ -2669,9 +2669,9 @@ Solution 7:
 
 ```lisp
 (defun core (x)
-  (mapcar 
-    #'(lambda (a b) (if (equal 0 (mod x a)) b x)) 
-    '(3 5) 
+  (mapcar
+    #'(lambda (a b) (if (equal 0 (mod x a)) b x))
+    '(3 5)
     '("fizz" "buzz")))
 
 (defun filter-core (x)
@@ -2711,7 +2711,7 @@ FizzBuzz
 
 
 
-###  Alternate solution 
+###  Alternate solution
 
 I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
 
@@ -3015,7 +3015,7 @@ void main()
         if (r.length == 0) r ~= i.to!string;
         return r;
     }
-    
+
     enum r = 1.iota(101).map!fizzbuzz;
 
     r.each!writeln;
@@ -3061,7 +3061,7 @@ main() {
  lw 0 =N      [print Number if 0 == w]sz
  lw 1 =W      [print neWline if 1 == w]sz
  li 1 + si    [i += 1]sz
- li 100 !<L   [continue Loop if 100 >= i]sz 
+ li 100 !<L   [continue Loop if 100 >= i]sz
 ]sL
 1 si          [i = 1]sz
 0 0 =L        [enter Loop]sz
@@ -3071,7 +3071,7 @@ The bc translation written in dc style.
 
 ```dc
 
-# dc is stack based, so we use the stack instead of a variable for our 
+# dc is stack based, so we use the stack instead of a variable for our
 # current number.
 
 1                       # Number = 1
@@ -3340,8 +3340,8 @@ using IO
 
 def fizzbuzz =
     [ 100 -> print "100\n"
-    | N -> 
-        if and ((N%3) == 0) ((N%5) == 0) then 
+    | N ->
+        if and ((N%3) == 0) ((N%5) == 0) then
             let _ = print "fizz buzz, " in fizzbuzz (N+1)
         else if (N%3) == 0 then
             let _ = print "fizz, " in fizzbuzz (N+1)
@@ -3478,7 +3478,7 @@ defmodule FizzBuzz do
   def fizzbuzz(n) when rem(n, 15) == 0, do: "FizzBuzz"
   def fizzbuzz(n) when rem(n,  5) == 0, do: "Buzz"
   def fizzbuzz(n) when rem(n,  3) == 0, do: "Fizz"
-  def fizzbuzz(n),                      do: n  
+  def fizzbuzz(n),                      do: n
 end
 
 Enum.each(1..100, &IO.puts FizzBuzz.fizzbuzz &1)
@@ -3529,7 +3529,7 @@ defmodule BadFizz do
     end)
 
     # ...and then a reducing function:
-    collate = (fn 
+    collate = (fn
       ({ast_ref, cycle}, {ast_refs, cycles}) ->
         {[ast_ref | ast_refs], [cycle | cycles]}
     end)
@@ -3539,7 +3539,7 @@ defmodule BadFizz do
     {ast_refs, cycles} = fizzers
     |> Code.eval_quoted([], __ENV__) |> elem(0) # Gotta unwrap this mystery code~
     |> Enum.sort(fn ({_, ap}, {_, bp}) -> ap < bp end) # Sort so that Fizz, 3 < Buzz, 5
-    |> Enum.map(build_parts) 
+    |> Enum.map(build_parts)
     |> Enum.reduce({[], []}, collate)
 
     # Setup the anonymous functions used by Enum.reduce to build our AST components.
@@ -3547,11 +3547,11 @@ defmodule BadFizz do
     # default behavior reduces repetition.
     #
     # ...I was tempted to move these into a macro themselves, and thought better of it.
-    build_zip    = fn (varname, ast) -> 
+    build_zip    = fn (varname, ast) ->
       quote do: Stream.zip(unquote(varname), unquote(ast))
     end
-    build_tuple  = fn (varname, ast) -> 
-      {:{}, [], [varname, ast]} 
+    build_tuple  = fn (varname, ast) ->
+      {:{}, [], [varname, ast]}
     end
     build_concat = fn (varname, ast) ->
         {:<>,
@@ -3575,7 +3575,7 @@ defmodule BadFizz do
       unquote(zip)
       |> Stream.with_index
       |> Enum.take(unquote(n))
-      |> Enum.each(fn 
+      |> Enum.each(fn
       {unquote(tuple), i} ->
         ccats = unquote(concat)
         IO.puts if ccats == "", do: i + 1, else: ccats
@@ -3591,15 +3591,15 @@ defmodule BadFizz do
   """
   def fizz(n \\ 100) when is_number(n) do
     # In reward for all that effort above, we now have the latest in
-    # programmer productivity: 
+    # programmer productivity:
     #
     # A DSL for building arbitrary fizzing, buzzing, bazzing, and more!
-    [{"Fizz", 3}, 
+    [{"Fizz", 3},
      {"Buzz", 5}#,
      #{"Bar", 7},
      #{"Foo", 243}, # -> Always printed last (largest number)
      #{"Qux", 34}
-    ] 
+    ]
     |> automate_fizz(n)
   end
 end
@@ -3662,12 +3662,12 @@ fizzbuzz num =
 
 ```Lisp
 
-(defun fizzbuzz (n) 
-  (cond ((and 
-	  (eq (% n 5) 0) 
-	  (eq (% n 3) 0))  "FizzBuzz") 
-	((eq (% n 3) 0)  "Fizz") 
-	((eq (% n 5) 0)  "Buzz") 
+(defun fizzbuzz (n)
+  (cond ((and
+	  (eq (% n 5) 0)
+	  (eq (% n 3) 0))  "FizzBuzz")
+	((eq (% n 3) 0)  "Fizz")
+	((eq (% n 5) 0)  "Buzz")
 	(t  n)))
 
 ;; loop & print from 0 to 100
@@ -3740,11 +3740,11 @@ function fb( atom n )
 	end if
 	return fb
 end function
- 
+
 function fb2( atom n )
-	return iif( remainder(n, 15) = 0, "FizzBuzz", 
-		iif( remainder( n, 5 ) = 0, "Fizz", 
-		iif( remainder( n, 3) = 0, "Buzz", sprintf( "%d", n ) ) ) ) 
+	return iif( remainder(n, 15) = 0, "FizzBuzz",
+		iif( remainder( n, 5 ) = 0, "Fizz",
+		iif( remainder( n, 3) = 0, "Buzz", sprintf( "%d", n ) ) ) )
 end function
 
 for i = 1 to 30 do
@@ -3777,14 +3777,14 @@ let printFizzbuzz() =
 
 
 ```fsharp
-[1..100] 
+[1..100]
 |> List.map (fun x ->
-            match x with 
+            match x with
             | _ when x % 15 = 0 ->"fizzbuzz"
             | _ when x % 5 = 0 -> "buzz"
             | _ when x % 3 = 0 -> "fizz"
             | _ ->  x.ToString())
-|> List.iter (fun x -> printfn "%s" x)    
+|> List.iter (fun x -> printfn "%s" x)
 ```
 
 Another example using (unnecessary) partial active pattern :D
@@ -3884,8 +3884,8 @@ class FizzBuzz
         echo ("FizzBuzz")
       else if (i % 3 == 0)
         echo ("Fizz")
-      else if (i % 5 == 0) 
-        echo ("Buzz") 
+      else if (i % 5 == 0)
+        echo ("Buzz")
       else
         echo (i)
     }
@@ -4030,7 +4030,7 @@ In ANSI FORTRAN 77 or later use structured IF-THEN-ELSE (example uses some ISO F
 ```fortran
 program fizzbuzz_if
    integer :: i
-   
+
    do i = 1, 100
       if     (mod(i,15) == 0) then; print *, 'FizzBuzz'
       else if (mod(i,3) == 0) then; print *, 'Fizz'
@@ -4063,7 +4063,7 @@ In ISO Fortran 90 or later use SELECT-CASE statement:
 ```fortran
 program fizzbuzz_select
     integer :: i
-    
+
     do i = 1, 100
        select case (mod(i,15))
           case 0;        print *, 'FizzBuzz'
@@ -4108,7 +4108,7 @@ for i = 1 to 100
       flag = true
       print["Fizz"]
    }
-   
+
    if i mod 5 == 0
    {
       flag = true
@@ -4423,13 +4423,13 @@ def fizzbuzz (n)
                     d!right
                 else
                     ''
-                        
+
 
 for n in (range 1 100)
     define fb (''(.join (fizzbuzz n)))
     u:format "%a\n"
-        cond 
-            (equal? fb '') 
+        cond
+            (equal? fb '')
                 n
             else
                 fb
@@ -4480,7 +4480,7 @@ func main() {
             fmt.Println("Fizz")
         case i%5==0:
             fmt.Println("Buzz")
-        default: 
+        default:
             fmt.Println(i)
         }
     }
@@ -4537,33 +4537,33 @@ function main = |args| {
 
 ```gosu
 for (i in 1..100) {
-    
+
     if (i % 3 == 0 && i % 5 == 0) {
         print("FizzBuzz")
         continue
     }
-    
+
     if (i % 3 == 0) {
         print("Fizz")
         continue
     }
-    
+
     if (i % 5 == 0) {
         print("Buzz")
         continue
     }
-    
+
     // default
     print(i)
-    
+
 }
 ```
 
-One liner version (I added new lines to better readability but when you omit them it's one liner): 
+One liner version (I added new lines to better readability but when you omit them it's one liner):
 
 ```gosu
 // note that compiler reports error (I don't know why) but still it's working
-for (i in 1..100) { 
+for (i in 1..100) {
     print(i % 5 == 0 ? i % 3 == 0 ? "FizzBuzz" : "Buzz" : i % 3 == 0 ? "Fizz" : i)
 }
 ```
@@ -4628,11 +4628,11 @@ Does not perform the mod 15 step, extesible to arbitrary addtional tests, ex: [b
 ```haskell
 main = mapM_ (putStrLn . fizzbuzz) [1..100]
 
-fizzbuzz n = 
-    show n <|> [fizz| n `mod` 3 == 0] ++ 
+fizzbuzz n =
+    show n <|> [fizz| n `mod` 3 == 0] ++
                [buzz| n `mod` 5 == 0]
 
--- A simple default choice operator. 
+-- A simple default choice operator.
 -- Defaults if both fizz and buzz fail, concats if any succeed.
 infixr 0 <|>
 d <|> [] = d
@@ -4645,7 +4645,7 @@ buzz = "Buzz"
 Alternate implementation using lazy infinite lists and avoiding use of "mod":
 
 ```haskell
-main = mapM_ putStrLn $ take 100 $ zipWith show_number_or_fizzbuzz [1..] fizz_buzz_list           
+main = mapM_ putStrLn $ take 100 $ zipWith show_number_or_fizzbuzz [1..] fizz_buzz_list
 
 show_number_or_fizzbuzz x y = if null y then show x else y
 
@@ -4895,7 +4895,7 @@ main( argv_ ) {
 
 ```i
 software {
-	for each 1 to 100		
+	for each 1 to 100
 		if i % 15 = 0
 			print("FizzBuzz")
 		else if i % 3 = 0
@@ -5067,7 +5067,7 @@ To count:
 		count;
 		end the story;
 	end if.
-		
+
 When play begins: count.  Use no scoring.
 ```
 
@@ -5110,7 +5110,7 @@ for (n, 1, 100,
     fb := list (
         if (n % 3 == 0, "Fizz"),
         if (n % 5 == 0, "Buzz")) select (isTrue)
-    
+
     if (fb isEmpty, n, fb join) println
 )
 ```
@@ -5307,8 +5307,8 @@ Alternate version with ghetto pattern matching
 ```javascript
 for (var i = 1; i <= 100; i++) {
   console.log({
-    truefalse: 'Fizz', 
-    falsetrue: 'Buzz', 
+    truefalse: 'Fizz',
+    falsetrue: 'Buzz',
     truetrue: 'FizzBuzz'
   }[(i%3==0) + '' + (i%5==0)] || i)
 }
@@ -5731,7 +5731,7 @@ fizzbuzz:{
 
 ### Solution 3
 
-For kona: 
+For kona:
 ```k
 {,/$(s;x)@~#s:`Fizz`Buzz@&~x!'3 5}'1+!30
 ```
@@ -5741,7 +5741,7 @@ For k6 and oK, change <code>x!'3 5</code> to <code>3 5!'x</code>.
 
 ## Kamailio Script
 
-To run it, send a SIP message to the server and FizzBuzz will appear in the logs. 
+To run it, send a SIP message to the server and FizzBuzz will appear in the logs.
 
 This will only work up to 100 because Kamailio terminates all while loops after 100 iterations.
 
@@ -5750,7 +5750,7 @@ This will only work up to 100 because Kamailio terminates all while loops after 
 log_stderror=yes
 loadmodule "pv"
 loadmodule "xlog"
- 
+
 route {
     $var(i) = 1;
     while ($var(i) <= 1000) {
@@ -5989,7 +5989,7 @@ repeat with i = 1 to 100
             break
         default
             put i & cr after fizzbuzz
-    end switch 
+    end switch
 end repeat
 put fizzbuzz
 ```
@@ -6014,7 +6014,7 @@ See: http://livescript.net/blog/fizzbuzzbazz.html
 ; source_filename = "fizzbuzz.c"
 ; target datalayout = "e-m:w-i64:64-f80:128-n8:16:32:64-S128"
 ; target triple = "x86_64-pc-windows-msvc19.21.27702"
- 
+
 ; This is not strictly LLVM, as it uses the C library function "printf".
 ; LLVM does not provide a way to print values, so the alternative would be
 ; to just load the string into memory, and that would be boring.
@@ -6168,9 +6168,9 @@ See [[FizzBuzz/EsoLang]]
 
 
 ```LSE
-1* FIZZBUZZ en L.S.E. 
+1* FIZZBUZZ en L.S.E.
 10 CHAINE FB
-20 FAIRE 45 POUR I_1 JUSQUA 100 
+20 FAIRE 45 POUR I_1 JUSQUA 100
 30 FB_SI &MOD(I,3)=0 ALORS SI &MOD(I,5)=0 ALORS 'FIZZBUZZ' SINON 'FIZZ' SINON SI &MOD(I,5)=0 ALORS 'BUZZ' SINON ''
 40 AFFICHER[U,/] SI FB='' ALORS I SINON FB
 45*FIN BOUCLE
@@ -6306,7 +6306,7 @@ For i=1 to 100 {
 
 \\ Far Better Code
 For i=1 to 100 {
-      Printme(if$(i mod 3=0->"Fizz","")+if$(i mod 5=0->"Buzz",""))      
+      Printme(if$(i mod 3=0->"Fizz","")+if$(i mod 5=0->"Buzz",""))
 }
 Sub Printme(a$)
       If a$<>"" Then Print a$ else Print i
@@ -6421,15 +6421,15 @@ An extendible version using Table
 
 ```Mathematica
 Table[If[# === "", i, #]&@StringJoin[
-   Table[If[Divisible[i, First@nw], Last@nw, ""], 
-         {nw, {{3, "Fizz"}, {5, "Buzz"}}}]], 
+   Table[If[Divisible[i, First@nw], Last@nw, ""],
+         {nw, {{3, "Fizz"}, {5, "Buzz"}}}]],
       {i, 1, 100}]
 ```
 
 Another one-liner using Map (the /@ operator shorthand of it) and a pure function with a very readable Which
 
 ```Mathematica
- Which[ Mod[#,15] == 0, "FizzBuzz", Mod[#, 3] == 0, "Fizz", Mod[#,5]==0, "Buzz",  True, #]& /@ Range[1,100] 
+ Which[ Mod[#,15] == 0, "FizzBuzz", Mod[#, 3] == 0, "Fizz", Mod[#,5]==0, "Buzz",  True, #]& /@ Range[1,100]
 ```
 
 
@@ -6439,7 +6439,7 @@ Another one-liner using Map (the /@ operator shorthand of it) and a pure functio
 There are more sophisticated solutions to this task, but in the spirit of "lowest level of comprehension required to illustrate adequacy" this is what one might expect from a novice programmer (with a little variation in how the strings are stored and displayed).
 
 ```MATLAB
-function fizzBuzz() 
+function fizzBuzz()
     for i = (1:100)
         if mod(i,15) == 0
            fprintf('FizzBuzz ')
@@ -6448,10 +6448,10 @@ function fizzBuzz()
         elseif mod(i,5) == 0
            fprintf('Buzz ')
         else
-           fprintf('%i ',i)) 
+           fprintf('%i ',i))
         end
     end
-    fprintf('\n');    
+    fprintf('\n');
 end
 ```
 
@@ -6468,9 +6468,9 @@ function out = fizzbuzzS()
 				tempstr = [tempstr,  words{i}];
 			end
 		end
-		if length(tempstr) == 0 
+		if length(tempstr) == 0
 			disp(n);
-		else 
+		else
 			disp(tempstr);
 		end
 	end
@@ -6515,12 +6515,12 @@ for i in 1 to 100 do
 
 ```mel
 for($i=1; $i<=100; $i++)
-{    
+{
     if($i % 15 == 0)
         print "FizzBuzz\n";
     else if ($i % 3 == 0)
         print "Fizz\n";
-    else if ($i % 5 == 0) 
+    else if ($i % 5 == 0)
         print "Buzz\n";
     else
         print ($i + "\n");
@@ -6593,15 +6593,15 @@ For n = 1 To 100
   op = ""
   If Math.Remainder(n, 3) = 0 Then
     op = "Fizz"
-  EndIf  
+  EndIf
   IF Math.Remainder(n, 5) = 0 Then
     op = text.Append(op, "Buzz")
   EndIf
-  If op = "" Then 
+  If op = "" Then
     TextWindow.WriteLine(n)
-  Else 
+  Else
     TextWindow.WriteLine(op)
-  EndIf  
+  EndIf
 EndFor
 
 ```
@@ -6649,26 +6649,26 @@ EndFor
 loop:
 	beq $a1,100,exit
 	add $a1,$a1,1
-	
+
 	#test for counter mod 15 ("FIZZBUZZ")
 	div $a2,$a1,15
 	mfhi $a2
 	bnez $a2,loop_not_fb #jump past the fizzbuzz print logic if NOT MOD 15
-	
+
 #### PRINT FIZZBUZZ: ####
 	li $v0,4 #set syscall arg to PRINT_STRING
 	la $a0,fizzbuzz #set the PRINT_STRING arg to fizzbuzz
 	syscall #call PRINT_STRING
 	j loop #return to start
 #### END PRINT FIZZBUZZ ####
-	
-loop_not_fb:	
+
+loop_not_fb:
 	div $a2,$a1,3 #divide $a1 (our counter) by 3 and store remainder in HI
 	mfhi $a2 #retrieve remainder (result of MOD)
 	bnez $a2, loop_not_f #jump past the fizz print logic if NOT MOD 3
-	
+
 #### PRINT FIZZ ####
-	li $v0,4 
+	li $v0,4
 	la $a0,fizz
 	syscall
 	j loop
@@ -6680,7 +6680,7 @@ loop_not_f:
 	bnez $a2,loop_not_b
 
 #### PRINT BUZZ ####
-	li $v0,4 
+	li $v0,4
 	la $a0,buzz
 	syscall
 	j loop
@@ -6691,12 +6691,12 @@ loop_not_b:
 	li $v0,1 #set syscall arg to PRINT_INTEGER
 	move $a0,$a1 #set PRINT_INTEGER arg to contents of $a1
 	syscall #call PRINT_INTEGER
-	
+
 	### PRINT THE NEWLINE CHAR ###
 	li $v0,4 #set syscall arg to PRINT_STRING
 	la $a0,newline
 	syscall
-	
+
 	j loop #return to beginning
 
 exit:
@@ -6713,7 +6713,7 @@ exit:
 ```mirah
 1.upto(100) do |n|
     print "Fizz" if a = ((n % 3) == 0)
-    print "Buzz" if b = ((n % 5) == 0) 
+    print "Buzz" if b = ((n % 5) == 0)
     print n unless (a || b)
     print "\n"
 end
@@ -6783,12 +6783,12 @@ end
 
 ```ocaml
 local
-	fun fizzbuzz' 
+	fun fizzbuzz'
 			(x mod 15 = 0) = "FizzBuzz"
 		|	(x mod  5 = 0) = "Buzz"
 		|	(x mod  3 = 0) = "Fizz"
 		|	x = ntos x
-in		
+in
 	fun fizzbuzz
 			([], s) = rev s
 		|	(x :: xs, s) = fizzbuzz (xs, fizzbuzz' x :: s)
@@ -6932,14 +6932,14 @@ MODULE Fizzbuzz EXPORTS Main;
 IMPORT IO;
 
 BEGIN
-   FOR i := 1 TO 100 DO 
-      IF i MOD 15 = 0 THEN 
+   FOR i := 1 TO 100 DO
+      IF i MOD 15 = 0 THEN
          IO.Put("FizzBuzz\n");
       ELSIF i MOD 5 = 0 THEN
          IO.Put("Buzz\n");
-      ELSIF i MOD 3 = 0 THEN 
+      ELSIF i MOD 3 = 0 THEN
          IO.Put("Fizz\n");
-      ELSE 
+      ELSE
          IO.PutInt(i);
          IO.Put("\n");
       END;
@@ -6982,7 +6982,7 @@ fizzBuzz(100)
 
 FOR LOOP
     || VAR ln .
-    i 5 % 0 == 
+    i 5 % 0 ==
     IF : .
         ln |Buzz| + VAR ln .
     ENDIF
@@ -7078,7 +7078,7 @@ module FizzBuzz
         |x when x %  3 == 0 => "Fizz"
         |_                  => $"$x"
     }
-    
+
     Main() : void
     {
         foreach (i in [1 .. 100])
@@ -7305,14 +7305,14 @@ MODULE FizzBuzz;
    VAR i: INTEGER;
 
 BEGIN
-   FOR i := 1 TO 100 DO 
-      IF i MOD 15 = 0 THEN 
+   FOR i := 1 TO 100 DO
+      IF i MOD 15 = 0 THEN
          Out.String("FizzBuzz")
       ELSIF i MOD 5 = 0 THEN
          Out.String("Buzz")
-      ELSIF i MOD 3 = 0 THEN 
+      ELSIF i MOD 3 = 0 THEN
          Out.String("Fizz")
-      ELSE 
+      ELSE
          Out.Int(i,0)
       END;
       Out.Ln
@@ -7335,7 +7335,7 @@ bundle Default {
         }
         else if(i % 3 = 0) {
           "Fizz"->PrintLine();
-        }  
+        }
         else if(i % 5 = 0) {
           "Buzz"->PrintLine();
         }
@@ -7385,7 +7385,7 @@ let fizzbuzz i =
   | 0, _ -> "Fizz"
   | _, 0 -> "Buzz"
   | _    -> string_of_int i
- 
+
 let _ =
   for i = 1 to 100 do print_endline (fizzbuzz i) done
 ```
@@ -7435,11 +7435,11 @@ endfor
 : fizzbuzz
 | i |
    100 loop: i [
-      null 
+      null
       i 3 mod ifZero: [ "Fizz" + ]
       i 5 mod ifZero: [ "Buzz" + ]
-      dup ifNull: [ drop i ] . 
-      ] ; 
+      dup ifNull: [ drop i ] .
+      ] ;
 ```
 
 
@@ -7943,7 +7943,7 @@ By transforming a list:
 
 
 ```perl
- 
+
 @FB1 = (1..100);
 @FB2 = map{!($_%3 or $_%5)?'FizzBuzz': $_}@FB1;
 @FB3 = map{(/\d/ and !($_%3))?'Fizz': $_}@FB2;
@@ -8046,11 +8046,11 @@ extern printf;
 		    printf("Buzz");
 		else
 		    printf("%d", i);
-	 
+
 		printf("\n");
 		i = i::inc;
 	}
-	
+
 	return 0;
 ]
 ```
@@ -8226,7 +8226,7 @@ END:
   .local int mf
   .local int skipnum
   f = 1
-LOOP: 
+LOOP:
   if f > 100 goto DONE
   skipnum = 0
   mf = f % 3
@@ -8239,7 +8239,7 @@ BUZZRET:
   print f
 SKIPNUM:
   print "\n"
-  inc f 
+  inc f
   goto LOOP
   end
 FIZZ:
@@ -8303,13 +8303,13 @@ end;
 
 ```pony
 use "collections"
- 
+
 actor Main
   new create(env: Env) =>
     for i in Range[I32](1, 100) do
       env.out.print(fizzbuzz(i))
     end
- 
+
   fun fizzbuzz(n: I32): String =>
     if (n % 15) == 0 then
       "FizzBuzz"
@@ -8349,7 +8349,7 @@ endfor;
 
 
 ```postscript
-1 1 100 { 
+1 1 100 {
 	/c false def
 	dup 3 mod 0 eq { (Fizz) print /c true def } if
 	dup 5 mod 0 eq { (Buzz) print /c true def } if
@@ -8367,8 +8367,8 @@ fizzdict begin
 /mod15 { dup 15 mod 0 eq { (FizzBuzz)def }{pop}ifelse} def
 /mod3  { dup 3 mod 0 eq {(Fizz)def}{pop}ifelse} def
 /mod5  { dup 5 mod 0 eq {(Buzz)def}{pop}ifelse} def
-1 1 100 { mod3 } for 
-1 1 100 { mod5 } for 
+1 1 100 { mod3 } for
+1 1 100 { mod5 } for
 1 1 100 { mod15} for
 1 1 100 { dup currentdict exch known { currentdict exch get}{notmod} ifelse print (\n) print} for
 end
@@ -8457,13 +8457,13 @@ $txt=$null
 
 filter fizz-buzz{
     @(
-        $_, 
-        "Fizz", 
-        "Buzz", 
+        $_,
+        "Fizz",
+        "Buzz",
         "FizzBuzz"
     )[
-        2 * 
-        ($_ -match '[05]$') + 
+        2 *
+        ($_ -match '[05]$') +
         ($_ -match '(^([369][0369]?|[258][147]|[147][258]))$')
     ]
 }
@@ -8497,7 +8497,7 @@ for (int i = 0; i < width; i++) {
   else {
     stroke(0, 0, 255);
     println(i);
-  } 
+  }
   line(i, 0, i, height);
 }
 ```
@@ -8641,11 +8641,11 @@ Buzz
 ```Processing
 for(int i = 1; i <= 100; i++){
 	String output = "";
-	
+
 	if(i % 3 == 0) output += "Fizz";
 	if(i % 5 == 0) output += "Buzz";
 	// copy & paste above line to add more tests
-	
+
 	if(output == "") output = int(i);
 	println(output);
 }
@@ -8829,7 +8829,7 @@ See [[FizzBuzz/Basic]]
 
 ```pyret
 fun fizzbuzz(n :: NumPositive) -> String:
-  doc: ```For positive input which is multiples of three return 'Fizz', for the multiples of five return 'Buzz'. 
+  doc: ```For positive input which is multiples of three return 'Fizz', for the multiples of five return 'Buzz'.
   For numbers which are multiples of both three and five return 'FizzBuzz'. Otherwise, return the number itself.```
   ask:
     | num-modulo(n, 15) == 0 then: "FizzBuzz"
@@ -8914,7 +8914,7 @@ Another list comprehension:
 
 ```python
 
-print (', '.join([(x%3<1)*'Fizz'+(x%5<1)*'Buzz' or str(x) for x in range(1,101)]))  
+print (', '.join([(x%3<1)*'Fizz'+(x%5<1)*'Buzz' or str(x) for x in range(1,101)]))
 
 ```
 
@@ -9087,12 +9087,12 @@ ifelse(x %% 15 == 0, 'FizzBuzz',
 ```racket
 #lang racket
 
-(for ([n (in-range 1 101)]) 
-  (displayln 
-   (match (gcd n 15) 
-     [15 "fizzbuzz"] 
-     [3 "fizz"] 
-     [5 "buzz"] 
+(for ([n (in-range 1 101)])
+  (displayln
+   (match (gcd n 15)
+     [15 "fizzbuzz"]
+     [3 "fizz"]
+     [5 "buzz"]
      [_ n])))
 ```
 
@@ -9216,7 +9216,7 @@ repeat i 100[j:""if i // 3 = 0[j:"fizz"]if i // 5 = 0[j: join j"buzz"]if""= j[j:
 The following is presented as a curiosity only, not as an example of good coding practice:
 
 ```REBOL
-m: func [i d] [0 = mod i d]  
+m: func [i d] [0 = mod i d]
 spick: func [t x y][either any [not t  "" = t][y][x]]
 zz: func [i] [rejoin [spick m i 3 "Fizz" ""  spick m i 5 "Buzz" ""]]
 repeat i 100 [print spick z: zz i z i]
@@ -9255,7 +9255,7 @@ needs math'
 ## REXX
 
 
-This version's program logic closely mirrors the problem statement: 
+This version's program logic closely mirrors the problem statement:
 ===three IF-THEN===
 
 ```rexx
@@ -9422,7 +9422,7 @@ This version lends itself to expansion   (such as using   '''Jazz'''   for multi
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   is identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is identical to the 1<sup>st</sup> REXX version.
 
 
 
@@ -9487,12 +9487,12 @@ The '''wait for 10''' function is not really necessary, but it helps to slow dow
  Midnight takes your heart and your soul
  While your heart is as high as your soul
  Put your heart without your soul into your heart
- 
+
  Give back your heart
- 
- 
+
+
  Desire is a lovestruck ladykiller
- My world is nothing 
+ My world is nothing
  Fire is ice
  Hate is water
  Until my world is Desire,
@@ -9500,15 +9500,15 @@ The '''wait for 10''' function is not really necessary, but it helps to slow dow
  If Midnight taking my world, Fire is nothing and Midnight taking my world, Hate is nothing
  Shout "FizzBuzz!"
  Take it to the top
- 
+
  If Midnight taking my world, Fire is nothing
  Shout "Fizz!"
  Take it to the top
- 
+
  If Midnight taking my world, Hate is nothing
  Say "Buzz!"
  Take it to the top
-   
+
  Whisper my world
 
 
@@ -9556,61 +9556,61 @@ class Enumerator::Lazy
     end
   end
 end
- 
+
 class Fizz
   def initialize(head, tail)
     @list = (head..Float::INFINITY).lazy.filter_map{|i| i if i % 3 == 0}.first(tail)
   end
- 
+
   def fizz?(num)
     search = @list
     search.include?(num)
   end
- 
+
   def drop(num)
     list = @list
     list.delete(num)
   end
- 
+
   def to_a
     @list.to_a
   end
 end
- 
+
 class Buzz
   def initialize(head, tail)
     @list = (head..Float::INFINITY).lazy.filter_map{|i| i if i % 5 == 0}.first(tail)
   end
- 
+
   def buzz?(num)
     search = @list
     search.include?(num)
   end
- 
+
   def drop(num)
     list = @list
     list.delete(num)
   end
- 
+
   def to_a
     @list.to_a
   end
 end
- 
+
 class FizzBuzz
   def initialize(head, tail)
     @list = (head..Float::INFINITY).lazy.filter_map{|i| i if i % 15 == 0}.first(tail)
   end
- 
+
   def fizzbuzz?(num)
     search = @list
     search.include?(num)
   end
- 
+
   def to_a
     @list.to_a
   end
- 
+
   def drop(num)
     list = @list
     list.delete(num)
@@ -9785,7 +9785,7 @@ describe 'FizzBuzz' do
     end
   end
 end
- 
+
 ```
 
 
@@ -9867,14 +9867,14 @@ fn main() {
 ```
 
 
-Or the ultimate optimized version with hardcoded output, no standard library or main function, and direct assembly syscalls to write to stdout. 
+Or the ultimate optimized version with hardcoded output, no standard library or main function, and direct assembly syscalls to write to stdout.
 
 ```rust
  #![no_std]
 #![feature(asm, lang_items, libc, no_std, start)]
- 
+
 extern crate libc;
- 
+
 const LEN: usize = 413;
 static OUT: [u8; LEN] = *b"\
     1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n\
@@ -9884,7 +9884,7 @@ static OUT: [u8; LEN] = *b"\
     61\n62\nFizz\n64\nBuzz\nFizz\n67\n68\nFizz\nBuzz\n71\nFizz\n73\n74\nFizzBuzz\n\
     76\n77\nFizz\n79\nBuzz\nFizz\n82\n83\nFizz\nBuzz\n86\nFizz\n88\n89\nFizzBuzz\n\
     91\n92\nFizz\n94\nBuzz\nFizz\n97\n98\nFizz\nBuzz\n";
- 
+
 #[start]
 fn start(_argc: isize, _argv: *const *const u8) -> isize {
     unsafe {
@@ -9904,7 +9904,7 @@ fn start(_argc: isize, _argv: *const *const u8) -> isize {
     }
     0
 }
- 
+
 #[lang = "eh_personality"] extern fn eh_personality() {}
 #[lang = "panic_fmt"] extern fn panic_fmt() {}
 ```
@@ -9969,7 +9969,7 @@ class MAIN is
         #OUT + s + "\n";
       else
         #OUT + i + "\n";
-      end;      
+      end;
     end;
   end;
 end;
@@ -10003,7 +10003,7 @@ object FizzBuzz extends App {
 
 ```scala
 def replaceMultiples(x: Int, rs: (Int, String)*): Either[Int, String] =
-  rs map { case (n, s) => Either cond(x % n == 0, s, x)} reduceLeft ((a, b) => 
+  rs map { case (n, s) => Either cond(x % n == 0, s, x)} reduceLeft ((a, b) =>
     a fold(_ => b, s => b fold(_ => a, t => Right(s + t))))
 
 def fizzbuzz = replaceMultiples(_: Int, 3 -> "Fizz", 5 -> "Buzz") fold(_.toString, identity)
@@ -10131,7 +10131,7 @@ seq 100 | sed '/.*[05]$/s//Buzz/;n;s//Buzz/;n;s//Buzz/;s/^[0-9]*/Fizz/'
 
 
 
-###  GNU sed 
+###  GNU sed
 
 GNU sed has ''first~step'' address expression that matches every ''step''th line. This makes following one-liners possible.
 
@@ -10199,9 +10199,9 @@ const proc: main is func
 ;
 import <Utilities/Sequence.sl>;
 
-main(args(2)) := 
+main(args(2)) :=
 	let
-		result[i] := 
+		result[i] :=
 				"FizzBuzz" when i mod 3 = 0 and i mod 5 = 0
 			else
 				"Fizz" when i mod 3 = 0
@@ -10229,7 +10229,7 @@ main(args(2)) :=
                                         (fizzbuzz (+ N 1)))
                 (divisible-by? N 5) (do (output "Buzz!~%")
                                         (fizzbuzz (+ N 1)))
-                true (do (output (str N)) 
+                true (do (output (str N))
                          (nl)
                          (fizzbuzz (+ N 1))))))
 
@@ -10238,7 +10238,7 @@ main(args(2)) :=
 
 
 
-###  Alternative showing off other features like prolog integration and guards 
+###  Alternative showing off other features like prolog integration and guards
 
 
 ```Shen
@@ -10368,8 +10368,8 @@ Answer by building up a string:
 
 ```
 
- 
-Or doing initial bind in one step:  
+
+Or doing initial bind in one step:
 
 ```javascript
 
@@ -10423,8 +10423,8 @@ A Squeak/Pharo example using the Transcript window:
 
 ```smalltalk
 (1 to: 100) do:
-	[:n | 
-		((n \\ 3)*(n \\ 5)) isZero 
+	[:n |
+		((n \\ 3)*(n \\ 5)) isZero
                         ifFalse: [Transcript show: n].
 		(n \\ 3) isZero
 			ifTrue: [Transcript show: 'Fizz'].
@@ -10436,28 +10436,28 @@ A Squeak/Pharo example using the Transcript window:
 The Squeak/Pharo examples below present possibilities using the powerful classes available. In this example, the dictionary can have as keys pairs of booleans and in the interaction the several boolean patterns select the string to be printed or if the pattern is not found the number itself is printed.
 
 ```smalltalk
-fizzbuzz := Dictionary with: #(true true)->'FizzBuzz' 
-                       with: #(true false)->'Fizz' 
+fizzbuzz := Dictionary with: #(true true)->'FizzBuzz'
+                       with: #(true false)->'Fizz'
                        with: #(false true)->'Buzz'.
 
-1 to: 100 do: 
-	[ :i | Transcript show: 
-               (fizzbuzz at: {i isDivisibleBy: 3. i isDivisibleBy: 5} 
+1 to: 100 do:
+	[ :i | Transcript show:
+               (fizzbuzz at: {i isDivisibleBy: 3. i isDivisibleBy: 5}
 		         ifAbsent: [ i ]); cr]
 ```
 
 Smalltalk does not have a case-select construct, but a similar effect can be attained using a collection and the #includes: method:
 
 ```smalltalk
-1 to: 100 do: [:n | |r| 
+1 to: 100 do: [:n | |r|
 	r := n rem: 15.
-	Transcript show: (r isZero 
-	   ifTrue:['fizzbuzz'] 
-	   ifFalse: [(#(3 6 9 12) includes: r) 
-		ifTrue:['fizz'] 
-		ifFalse:[((#(5 10) includes: r)) 
-			ifTrue:['buzz'] 
-			ifFalse:[n]]]); 
+	Transcript show: (r isZero
+	   ifTrue:['fizzbuzz']
+	   ifFalse: [(#(3 6 9 12) includes: r)
+		ifTrue:['fizz']
+		ifFalse:[((#(5 10) includes: r))
+			ifTrue:['buzz']
+			ifFalse:[n]]]);
 	cr].
 ```
 
@@ -10474,10 +10474,10 @@ fbz do: [:i | Transcript show: i; cr].
 The approach building a dynamic string can be done as well:
 
 ```smalltalk
-1 to: 100 do: [:i | |fb s| 
-	fb := {i isDivisibleBy: 3. i isDivisibleBy: 5. nil}. 
-	fb at: 3 put: (fb first | fb second) not. 
-	s := '<1?Fizz:><2?Buzz:><3?{1}:>' format: {i printString}. 
+1 to: 100 do: [:i | |fb s|
+	fb := {i isDivisibleBy: 3. i isDivisibleBy: 5. nil}.
+	fb at: 3 put: (fb first | fb second) not.
+	s := '<1?Fizz:><2?Buzz:><3?{1}:>' format: {i printString}.
 	Transcript show: (s expandMacrosWithArguments: fb); cr].
 ```
 
@@ -10493,7 +10493,7 @@ LOOP    FIZZBUZZ = ""
         EQ(REMDR(I, 3), 0)              :F(TRY_5)
         FIZZBUZZ = FIZZBUZZ "FIZZ"
 TRY_5   EQ(REMDR(I, 5), 0)              :F(DO_NUM)
-        FIZZBUZZ = FIZZBUZZ "BUZZ"      
+        FIZZBUZZ = FIZZBUZZ "BUZZ"
 DO_NUM  IDENT(FIZZBUZZ, "")             :F(SHOW)
         FIZZBUZZ = I
 SHOW    OUTPUT = FIZZBUZZ
@@ -10541,16 +10541,16 @@ CONNECT BY level<=100;
 
 
 ```sql
-SELECT i, fizzbuzz 
-  FROM 
-    (SELECT i, 
-            CASE 
-              WHEN i % 15 = 0 THEN 'FizzBuzz' 
-              WHEN i %  5 = 0 THEN 'Buzz' 
-              WHEN i %  3 = 0 THEN 'Fizz' 
-              ELSE NULL 
-            END AS fizzbuzz 
-       FROM generate_series(1,100) AS i) AS fb 
+SELECT i, fizzbuzz
+  FROM
+    (SELECT i,
+            CASE
+              WHEN i % 15 = 0 THEN 'FizzBuzz'
+              WHEN i %  5 = 0 THEN 'Buzz'
+              WHEN i %  3 = 0 THEN 'Fizz'
+              ELSE NULL
+            END AS fizzbuzz
+       FROM generate_series(1,100) AS i) AS fb
  WHERE fizzbuzz IS NOT NULL;
 ```
 
@@ -10559,8 +10559,8 @@ Using Generate_Series and tables only:
 
 ```sql
 SELECT COALESCE(FIZZ || BUZZ, FIZZ, BUZZ, OUTPUT) AS FIZZBUZZ FROM
-(SELECT GENERATE_SERIES AS FULL_SERIES, TO_CHAR(GENERATE_SERIES,'99') AS OUTPUT 
-FROM GENERATE_SERIES(1,100)) F LEFT JOIN 
+(SELECT GENERATE_SERIES AS FULL_SERIES, TO_CHAR(GENERATE_SERIES,'99') AS OUTPUT
+FROM GENERATE_SERIES(1,100)) F LEFT JOIN
 (SELECT TEXT 'Fizz' AS FIZZ, GENERATE_SERIES AS FIZZ_SERIES FROM GENERATE_SERIES(0,100,3)) FIZZ ON
 FIZZ.FIZZ_SERIES = F.FULL_SERIES LEFT JOIN
 (SELECT TEXT 'Buzz' AS BUZZ, GENERATE_SERIES AS BUZZ_SERIES FROM GENERATE_SERIES(0,100,5)) BUZZ ON
@@ -10574,7 +10574,7 @@ BUZZ.BUZZ_SERIES = F.FULL_SERIES;
 WITH nums (n, fizzbuzz ) AS (
 	SELECT 1, CONVERT(nvarchar, 1) UNION ALL
 	SELECT
-		(n + 1) as n1, 
+		(n + 1) as n1,
 		CASE
 			WHEN (n + 1) % 15 = 0 THEN 'FizzBuzz'
 			WHEN (n + 1) % 3  = 0 THEN 'Fizz'
@@ -10672,7 +10672,7 @@ end
 ## Swift
 
 
-###  using a switch statement 
+###  using a switch statement
 
 
 ```swift
@@ -10691,7 +10691,7 @@ for i in 1...100 {
 ```
 
 
-###  using two if statements and an Optional 
+###  using two if statements and an Optional
 
 
 ```swift
@@ -10719,7 +10719,7 @@ for i in 1...100{
     if X EQ 0
        'FIZZ' $S
        if Y EQ 0
-          + 'BUZZ' $S 
+          + 'BUZZ' $S
        endif
     else
        if Y EQ 0
@@ -10746,12 +10746,12 @@ templates fizz
   $ mod 3 -> #
   <0> 'Fizz' !
 end fizz
- 
+
 templates buzz
   $ mod 5 -> #
   <0> 'Buzz' !
 end buzz
- 
+
 [ 1..100 -> '$->fizz;$->buzz;' ] -> [i](<''> $i ! <> $ !)... -> '$;
 ' -> !OUT::write
 
@@ -10892,7 +10892,7 @@ done
 
 The other solutions work with fewer shells.
 
-The next solution requires <code>$(( ))</code> arithmetic expansion, 
+The next solution requires <code>$(( ))</code> arithmetic expansion,
 and it should work with every POSIX shell.
 <!--  http://ideone.com/5yZmOz -->
 
@@ -10925,7 +10925,7 @@ until ((NUM == 101)) ; do
        echo Fizz
    elif ((NUM % 5 == 0)) ; then
        echo Buzz
-   else 
+   else
        echo "$NUM"
    fi
    ((NUM = NUM + 1))
@@ -10951,10 +10951,10 @@ A version using some of the insane overkill of Bash 4:
 {{works with|bash|4}}
 
 ```bash
-command_not_found_handle () { 
+command_not_found_handle () {
   local Fizz=3 Buzz=5
   [ $(( $2 % $1 )) -eq 0 ] && echo -n $1 && [ ${!1} -eq 3 ]
-} 
+}
 
 for i in {1..100}
 do
@@ -11079,7 +11079,7 @@ And apply it
 100 seq [
         [15 [pop 'fizzbuzz' puts]]
         [5  [pop 'buzz' puts]]
-        [3  [pop 'fizz' puts]] 
+        [3  [pop 'fizz' puts]]
         [1  [puts]]] [func dup] step
         [i true] map pop
 ```
@@ -11096,8 +11096,8 @@ int main() {
         if (i % 3 == 0) stdout.printf("Fizz\n");
         if (i % 5 == 0) stdout.printf("Buzz\n");
         if (i % 15 == 0) stdout.printf("FizzBuzz\n");
-        if (i % 3 != 0 && i % 5 != 0) stdout.printf("%d\n", i);    
-          
+        if (i % 3 != 0 && i % 5 != 0) stdout.printf("%d\n", i);
+
     }
 return 0;;
 }
@@ -11114,7 +11114,7 @@ return 0;;
                            00000000' 000C     4 	.address msg			;pointer to buffer
                            00000012  0010     5 outlen:	.blkw	1
          4C 55 21 0000001A'010E0000' 0012     6 ctr:	.ascid	"!UL"
-                                     001D     7 
+                                     001D     7
                                0000  001D     8 .entry	start,0
                             52   7C  001F     9 	clrq	r2			;r2+r3 64bit
                             52   D6  0021    10 	incl	r2			;start index 1
@@ -11124,20 +11124,20 @@ return 0;;
              54   50   52   03   7B  002A    14 	ediv	#3,r2,r0,r4		;divr.rl,divd.rq,quo.wl,rem.wl
                             54   D5  002F    15 	tstl	r4			;remainder
                             0B   12  0031    16 	bneq	not_fizz		;not equal zero
-                                     0033    17 
+                                     0033    17
               85   7A7A6966 8F   D0  0033    18 	movl	#^a"fizz", (r5)+	;add to message
                     CA AF   04   A0  003A    19 	addw2	#4, desc		;and update length
                                      003E    20 not_fizz:
              54   50   52   05   7B  003E    21 	ediv	#5,r2,r0,r4
                             54   D5  0043    22 	tstl	r4
                             0B   12  0045    23 	bneq	not_buzz
-                                     0047    24 
+                                     0047    24
               85   7A7A7562 8F   D0  0047    25 	movl	#^a"buzz", (r5)+
                     B6 AF   04   A0  004E    26 	addw2	#4, desc
                                      0052    27 not_buzz:
                          B3 AF   B5  0052    28 	tstw	desc			;fizz and or buzz?
                             1B   12  0055    29 	bneq	show_buffer		;neq - yes
-                                     0057    30 
+                                     0057    30
                     AD AF   08   B0  0057    31 	movw	#len, desc		;fao length limit
                                      005B    32 	$fao_s -			;eql -no
                                      005B    33 		 ctrstr = ctr, -	;show number
@@ -11239,13 +11239,13 @@ End With
 ```Verbexx
 @LOOP init:{@VAR t3 t5; @VAR i = 1} while:(i <= 100) next:{i++}
 {
-  t3 = (i % 3 == 0); 
+  t3 = (i % 3 == 0);
   t5 = (i % 5 == 0);
 
   @SAY ( @CASE when:(t3 && t5) { 'FizzBuzz }
                when: t3        { 'Fizz     }
                when: t5        { 'Buzz     }
-               else:           { i         }           
+               else:           { i         }
        );
 };
 ```
@@ -11466,7 +11466,7 @@ printNum:          ; write proper digits into number buffer
   mov rdx, 3
   jmp print
 
-  lessThanHundred: ; get digits to write through division 
+  lessThanHundred: ; get digits to write through division
     xor rdx, rdx
     mov rbx, 10
     div rbx
@@ -11580,14 +11580,14 @@ An alternative syntax:
 
 
 ```XPath
-for $n in 1 to 100 return  
+for $n in 1 to 100 return
   concat('fizz'[not($n mod 3)], 'buzz'[not($n mod 5)], $n[$n mod 15 = (1,2,4,7,8,11,13,14)])
 ```
 
 ...or alternatively...
 
 ```XPath
-for $n in 1 to 100 return 
+for $n in 1 to 100 return
   ($n, 'Fizz', 'Buzz', 'FizzBuzz')[number(($n mod 3) = 0) + number(($n mod 5) = 0)*2 + 1]
 ```
 
@@ -11652,31 +11652,31 @@ Buzz
 	<!-- Outputs a line for a single FizzBuzz iteration. -->
 	<xsl:template name="fizzbuzz-single">
 		<xsl:param name="n"/>
-		
+
 		<!-- $s will be "", "Fizz", "Buzz", or "FizzBuzz". -->
 		<xsl:variable name="s">
 			<xsl:if test="$n mod 3 = 0">Fizz</xsl:if>
 			<xsl:if test="$n mod 5 = 0">Buzz</xsl:if>
 		</xsl:variable>
-		
+
 		<!-- Output $s. If $s is blank, also output $n. -->
 		<xsl:value-of select="$s"/>
 		<xsl:if test="$s = ''">
 			<xsl:value-of select="$n"/>
 		</xsl:if>
-		
+
 		<!-- End line. -->
 		<xsl:value-of select="'&#10;'"/>
 	</xsl:template>
-	
+
 	<!-- Calls fizzbuzz-single over each value in a range. -->
 	<xsl:template name="fizzbuzz-range">
 		<!-- Default parameters: From 1 through 100 -->
 		<xsl:param name="startAt" select="1"/>
 		<xsl:param name="endAt" select="$startAt + 99"/>
-		
+
 		<!-- Simulate a loop with tail recursion. -->
-		
+
 		<!-- Loop condition -->
 		<xsl:if test="$startAt &lt;= $endAt">
 			<!-- Loop body -->
@@ -11691,7 +11691,7 @@ Buzz
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template>
-	
+
 	<!-- Main procedure -->
 	<xsl:template match="/">
 		<!-- Default parameters are used -->
@@ -11715,28 +11715,28 @@ Buzz
   <xsl:param name="n" select="1" />
   <xsl:variable name="_">
     <_><xsl:value-of select="$n" /></_>
-  </xsl:variable>  
+  </xsl:variable>
   <xsl:apply-templates select="exsl:node-set($_)/_" />
   <xsl:if test="$n < 100">
     <xsl:call-template name="FizzBuzz">
       <xsl:with-param name="n" select="$n + 1" />
-    </xsl:call-template>  
-  </xsl:if>  
+    </xsl:call-template>
+  </xsl:if>
 </xsl:template>
-      
+
 <xsl:template match="_[. mod 3 = 0]">Fizz
 </xsl:template>
-      
+
 <xsl:template match="_[. mod 5 = 0]">Buzz
 </xsl:template>
-      
+
 <xsl:template match="_[. mod 15 = 0]" priority="1">FizzBuzz
 </xsl:template>
-      
+
 <xsl:template match="_">
   <xsl:value-of select="concat(.,'&#x0A;')" />
 </xsl:template>
-      
+
 </xsl:stylesheet>
 ```
 
@@ -11750,8 +11750,8 @@ Buzz
 <xsl:output method="text"/>
 
 <xsl:template match="/">
-  <xsl:value-of separator="&#x0A;" select="  
-    for $n in 1 to 100 return  
+  <xsl:value-of separator="&#x0A;" select="
+    for $n in 1 to 100 return
       concat('fizz'[not($n mod 3)], 'buzz'[not($n mod 5)], $n[$n mod 15 = (1,2,4,7,8,11,13,14)])"/>
 </xsl:template>
 

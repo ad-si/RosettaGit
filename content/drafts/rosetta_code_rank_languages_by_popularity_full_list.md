@@ -1624,7 +1624,7 @@ Categories
 |39
 |- style="background-color: #ccc;"
 |229
-|[[:Category:Brainf***|Brainf***]]
+|[[:Category:Brainfuck|Brainfuck]]
 |35
 |2.92 %
 |3
@@ -3570,7 +3570,7 @@ Categories
 |6
 |- style="background-color: #fff;"
 |497
-|[[:Category:Extended BrainF***|Extended BrainF***]]
+|[[:Category:Extended Brainfuck|Extended Brainfuck]]
 |3
 |0.25 %
 |0

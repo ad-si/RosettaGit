@@ -48,13 +48,13 @@ package Pkg is
 # Simple bound checking:#
    IF LWB array <= index AND UPB array >= index THEN
 #For a single index/value assignment:#
-     array[index] := value; 
+     array[index] := value;
 #To assign multiple values to multiple indices/slice:#
-     array[from:to] := (33,44,55); 
+     array[from:to] := (33,44,55);
 #Replaces the 4th, 5th and 6th elements with the 33, 44 and 55.
- 
+
 To append/grow the end of the array:#
- 
+
      PROC append int = (REF FLEX [] INT a, INT v)VOID: (
        HEAP FLEX [LWB a:UPB a + 1] INT out;
        out[:UPB a]:= a;
@@ -109,7 +109,7 @@ awk: cmd. line:1: fatal: division by zero attempted
 ```
 
 
-==[[Brainf***]]==
+==[[Brainfuck]]==
 
 To assign values 5, 6, and 7 to array elements 1,2,3:
 
@@ -180,7 +180,7 @@ To assign values 5, 6, and 7 to array elements 1,2,3:
     </cfif>
     <cfreturn arguments.array>
   </cffunction>
-  
+
   <cfset myArray = arrayNew(1)>
   <cfset myArray[1] = 1>
   <cfset myArray = writeToArray(myArray, 1, 123456)>
@@ -298,7 +298,7 @@ setIndex
     -> Int -- Index to insert at
     -> a -- Value to insert
     -> [a] -- Resulting list
-setIndex xs ii v = 
+setIndex xs ii v =
     let
         (h, (_ : ts)) = splitAt ii xs
     in
@@ -372,12 +372,12 @@ main = do -- Create the array of data with all elements intialized to 3
 ==[[J]]==
 
     array =: 5 5 5 5 5 5 5
- 
+
     99 (3}) array             NB.  Simple update
  5 5 5 99 5 5 5
- 
+
     array =:  99 (3}) array   NB.  In place
-    
+
     88 99 88 (2 3 4}) array   NB.  Multiple update
  5 5 88 99 88 5 5
 
@@ -525,17 +525,17 @@ This does not conform to the (somewhat arbitrary) specific requirements of the t
                 x(i) := i;
         end loop;
         i :=0;
-  
+
         -- print array
         loop
                 i := i + 1;
                 begin
                         dbms_output.put_line(x(i));
-                exception 
+                exception
                         when no_data_found then exit;
                 end;
         end loop;
-  
+
   end;
   /
 
@@ -580,7 +580,7 @@ It's also possible modify Python lists using "slices" which can replace, remove 
 ```
 
 
-Hint: slice notation should be read as: "from starting index '''up to''' (but '''not including''') ending index" -- a slice of [1:2] only references the single element sub-list containing the second item.  To remember that they are zero based one might even read the slice more verbosely as: "from the n items past the beginning of the list, up to (but not including) ..."  
+Hint: slice notation should be read as: "from starting index '''up to''' (but '''not including''') ending index" -- a slice of [1:2] only references the single element sub-list containing the second item.  To remember that they are zero based one might even read the slice more verbosely as: "from the n items past the beginning of the list, up to (but not including) ..."
 
 It's even possible (though obscure) to use extended slices with a "stride" to replace every ''n''th element of a list using something like:
 
@@ -642,7 +642,7 @@ print mylist
   l(2) // 2
 
 ==[[Slate]]==
- 
+
 
 ```slate
 

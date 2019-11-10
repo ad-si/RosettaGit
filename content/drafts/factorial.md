@@ -24,9 +24,9 @@ tags = []
 
 
 ;Task:
-Write a function to return the factorial of a number. 
+Write a function to return the factorial of a number.
 
-Solutions can be iterative or recursive. 
+Solutions can be iterative or recursive.
 
 Support for trapping negative   <big> ''n'' </big>   errors is optional.
 
@@ -45,7 +45,7 @@ This is an iterative solution which outputs the factorial of each number supplie
 
 ```0815
 }:r:        Start reader loop.
-  |~  	    Read n,  
+  |~  	    Read n,
   #:end:    if n is 0 terminates
   >=        enqueue it as the initial product, reposition.
   }:f:      Start factorial loop.
@@ -100,8 +100,8 @@ DUMP     EQU    *
 	 MVC    S,MASK
 	 ED     S,F
          MVC    WTOBUF+9(32),S
-         WTO    MF=(E,WTOMSG)		  
-	 AP     N,=P'1'         n=n+1  
+         WTO    MF=(E,WTOMSG)
+	 AP     N,=P'1'         n=n+1
 	 B      LOOPN
 ENDLOOPN EQU    *
 RETURN   EQU    *
@@ -118,7 +118,7 @@ FACT     EQU    *               function FACT(l)
 LOOP     CP     I,L             if i>l
          BH     ENDLOOP         then goto endloop
 	 MP     R,I             r=r*i
-	 AP     I,=P'1'         i=i+1  
+	 AP     I,=P'1'         i=i+1
 	 B      LOOP
 ENDLOOP  EQU    *
          LA     R1,R            return r
@@ -130,7 +130,7 @@ F        DS     PL16
 C        DS     CL16
 II       DS     PL16
 PARMLIST DC     A(N)
-S        DS     CL33            
+S        DS     CL33
 MASK     DC     X'40',29X'20',X'212060'  CL33
 WTOMSG   DS     0F
          DC     H'80',XL2'0000'
@@ -139,14 +139,14 @@ L        DS     PL16
 R        DS     PL16
 I        DS     PL16
          LTORG
-         YREGS  
+         YREGS
          END    FACTO
 ```
 
 {{out}}
 
 ```txt
-FACT(29)= 8841761993739701954543616000000 
+FACT(29)= 8841761993739701954543616000000
 ```
 
 
@@ -220,7 +220,7 @@ public static function factorial(n:int):int
 
    if (n == 0)
        return 1;
-   
+
    return n * factorial(n - 1);
 }
 ```
@@ -279,7 +279,7 @@ procedure Factorial_Numeric_Approximation is
    use Complex_IO;
    package Cmplx_Elem_Funcs is new Ada.Numerics.Generic_Complex_Elementary_Functions(Complex_Pck);
    use Cmplx_Elem_Funcs;
-   
+
    function Gamma(X : Complex) return Complex is
       package Elem_Funcs is new Ada.Numerics.Generic_Elementary_Functions(Real);
       use Elem_Funcs;
@@ -307,7 +307,7 @@ procedure Factorial_Numeric_Approximation is
          return Sqrt(2.0 * Pi) * Ct**(Z + 0.5) * Exp(-Ct) * Cx;
       end if;
    end Gamma;
-   
+
    function Factorial(N : Complex) return Complex is
    begin
       return Gamma(N + 1.0);
@@ -409,8 +409,8 @@ PROC factorial = (INT upb n)LONG LONG INT:(
 
 ```algol68
 INT g = 7;
-[]REAL p = []REAL(0.99999999999980993, 676.5203681218851,   -1259.1392167224028, 
-                771.32342877765313,   -176.61502916214059,     12.507343278686905, 
+[]REAL p = []REAL(0.99999999999980993, 676.5203681218851,   -1259.1392167224028,
+                771.32342877765313,   -176.61502916214059,     12.507343278686905,
                  -0.13857109526572012,   9.9843695780195716e-6, 1.5056327351493116e-7)[@0];
 
 PROC complex gamma = (COMPL in z)COMPL: (
@@ -611,7 +611,7 @@ And the resulting function can then be used instead of the (admittedly more conv
 
 
 ### Iteration
- 
+
 
 ```AppleScript
 on factorial(x)
@@ -627,9 +627,9 @@ end factorial
 
 
 ### Recursion
- 
 
-Curiously, this recursive version executes a little faster than the iterative version above. 
+
+Curiously, this recursive version executes a little faster than the iterative version above.
 (Perhaps because the iterative code is making use of list splats)
 
 
@@ -663,18 +663,18 @@ on factorial(x)
             a * b
         end |λ|
     end script
-    
+
     foldl(product, 1, enumFromTo(1, x))
 end factorial
 
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     factorial(11)
-    
+
     --> 39916800
-    
+
 end run
 
 
@@ -706,7 +706,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -731,7 +731,7 @@ end mReturn
 
 
 ### Iterative
- 
+
 
 ```ApplesoftBasic
 100 N = 4 : GOSUB 200"FACTORIAL
@@ -745,14 +745,14 @@ end mReturn
 
 
 ### Recursive
- 
+
 
 ```ApplesoftBasic
  10 A = 768:L = 7
  20  DATA 165,157,240,3
  30  DATA 32,149,217,96
  40  FOR I = A TO A + L
- 50  READ B: POKE I,B: NEXT 
+ 50  READ B: POKE I,B: NEXT
  60 H = 256: POKE 12,A / H
  70  POKE 11,A -  PEEK (12) * H
  80  DEF  FN FA(N) =  USR (N < 2) + N *  FN FA(N - 1)
@@ -769,7 +769,7 @@ http://hoop-la.ca/apple2/2013/usr-if-recursive-fn/
 
 { @n = 0 ,
    ( return , 1 )
-,  
+,
    ( return ,
        @n * !factorial( @n - ! )
    )
@@ -807,14 +807,14 @@ sMessValeur:   .fill 12, 1, ' '
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}      @ saves 2 registers 
+.global main
+main:                @ entry of program
+    push {fp,lr}      @ saves 2 registers
 
     mov r0,#-5
     bl factorial
@@ -824,7 +824,7 @@ main:                @ entry of program
     bl factorial
 
 
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -836,7 +836,7 @@ main:                @ entry of program
 /********************************************/
 /* r0 contains number N */
 factorial:
-    push {r1,r2,lr}    	@ save  registres 
+    push {r1,r2,lr}    	@ save  registres
     cmp r0,#0
     blt 99f
     beq 100f
@@ -845,7 +845,7 @@ factorial:
     bl calFactorial
     cmp r0,#-1          @ overflow ?
     beq 98f
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
@@ -860,21 +860,21 @@ factorial:
     bl affichageMess
 
 100:
-    pop {r1,r2,lr}    			@ restaur registers 
-    bx lr	        			@ return  
+    pop {r1,r2,lr}    			@ restaur registers
+    bx lr	        			@ return
 iAdrszMessNegNumber:       .int szMessNegNumber
 iAdrszMessLargeNumber:	    .int szMessLargeNumber
-iAdrsMessValeur:            .int sMessValeur	
+iAdrsMessValeur:            .int sMessValeur
 iAdrszMessResult:          .int szMessResult
 /******************************************************************/
-/*     calculation                         */ 
+/*     calculation                         */
 /******************************************************************/
 /* r0 contains the number N */
 calFactorial:
     cmp r0,#1          @ N = 1 ?
-    bxeq lr           @ yes -> return 
-    push {fp,lr}    		@ save  registers 
-    sub sp,#4           @ 4 byte on the stack 
+    bxeq lr           @ yes -> return
+    push {fp,lr}    		@ save  registers
+    sub sp,#4           @ 4 byte on the stack
     mov fp,sp           @ fp <- start address stack
     str r0,[fp]                    @ fp contains  N
     sub r0,#1          @ call function with N - 1
@@ -882,21 +882,21 @@ calFactorial:
     cmp r0,#-1         @ error overflow ?
     beq 100f         @ yes -> return
     ldr r1,[fp]       @ load N
-    umull r0,r2,r1,r0   @ multiply result by N 
+    umull r0,r2,r1,r0   @ multiply result by N
     cmp r2,#0           @ r2 is the hi rd  if <> 0 overflow
     movne r0,#-1      @ if overflow  -1 -> r0
 
 100:
     add sp,#4            @ free 4 bytes on stack
-    pop {fp,lr}    			@ restau2 registers 
-    bx lr	        		@ return  
+    pop {fp,lr}    			@ restau2 registers
+    bx lr	        		@ return
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -910,46 +910,46 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion10:
-    push {r1-r4,lr}    /* save registers */ 
+    push {r1-r4,lr}    /* save registers */
     mov r3,r1
     mov r2,#10
 
 1:	   @ start loop
     bl divisionpar10 @ r0 <- dividende. quotient ->r0 reste -> r1
-    add r1,#48        @ digit	
+    add r1,#48        @ digit
     strb r1,[r3,r2]  @ store digit on area
     sub r2,#1         @ previous position
     cmp r0,#0         @ stop if quotient = 0 */
     bne 1b	          @ else loop
     @ and move spaves in first on area
-    mov r1,#' '   @ space	
-2:	
+    mov r1,#' '   @ space
+2:
     strb r1,[r3,r2]  @ store space in area
     subs r2,#1       @ @ previous position
-    bge 2b           @ loop if r2 >= zéro 
+    bge 2b           @ loop if r2 >= zéro
 
-100:	
-    pop {r1-r4,lr}    @ restaur registres 
+100:
+    pop {r1-r4,lr}    @ restaur registres
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save registers  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -961,7 +961,7 @@ divisionpar10:
    bx lr                  /* leave function */
    .align 4
 .Ls_magic_number_10: .word 0x66666667
-	
+
 
 
 ```
@@ -976,10 +976,10 @@ divisionpar10:
 
 
 ```arturo
-Factorial [n]{ 
-	if n>0 { 
-		n * $(Factorial n-1) 
-	} { 1 } 
+Factorial [n]{
+	if n>0 {
+		n * $(Factorial n-1)
+	} { 1 }
 }
 ```
 
@@ -990,8 +990,8 @@ Factorial [n]{
 
 
 ```arturo
-factorial [n] { 
-	fold $(range 1 n) 1 { &0*&1 } 
+factorial [n] {
+	fold $(range 1 n) 1 { &0*&1 }
 }
 ```
 
@@ -1084,24 +1084,24 @@ end // end of [factorial]
 
 
 ### Iterative
- 
+
 
 ```AutoHotkey
 MsgBox % factorial(4)
 
 factorial(n)
 {
-  result := 1 
+  result := 1
   Loop, % n
     result *= A_Index
-  Return result 
+  Return result
 }
 ```
 
 
 
 ### Recursive
- 
+
 
 ```AutoHotkey
 MsgBox % factorial(4)
@@ -1217,9 +1217,9 @@ Return
 
 
 ```babel
-((main 
+((main
     {(0 1 2 3 4 5 6 7 8 9 10)
-    {fact ! %d nl <<}    
+    {fact ! %d nl <<}
     each})
 
 (fact
@@ -1235,8 +1235,8 @@ Return
 
 
 ```babel
-((main 
-    {(0 1 2 3 4 5 6 7 8 9 10) 
+((main
+    {(0 1 2 3 4 5 6 7 8 9 10)
     {fact ! %d nl <<}
     each})
 
@@ -1249,7 +1249,7 @@ Return
 ```
 
 
-When run, either code snippet generates the following 
+When run, either code snippet generates the following
 {{out}}
 
 ```txt
@@ -1515,10 +1515,10 @@ exit
 ```bbcbasic
       *FLOAT64
       @% = &1010
-      
+
       PRINT FNfactorial(18)
       END
-      
+
       DEF FNfactorial(n)
       IF n <= 1 THEN = 1 ELSE = n * FNfactorial(n-1)
 ```
@@ -1613,24 +1613,24 @@ Input of negative numbers forces the program to quit with an error message.
 Compute 10! and checking that it is 3628800, the esoteric way
 
 ```bracmat
-      ( 
-      =   
+      (
+      =
         .   !arg:0&1
           |   !arg
-            *   ( ( 
+            *   ( (
                   =   r
                     .   !arg:?r
-                      &   
-                        ' ( 
+                      &
+                        ' (
                           .   !arg:0&1
                             | !arg*(($r)$($r))$(!arg+-1)
                           )
                   )
-                $ ( 
+                $ (
                   =   r
                     .   !arg:?r
-                      &   
-                        ' ( 
+                      &
+                        ' (
                           .   !arg:0&1
                             | !arg*(($r)$($r))$(!arg+-1)
                           )
@@ -1650,7 +1650,7 @@ Recursive lambda function for computing factorial.
 
     g := λr. λn.(1, if n = 0; else n × (r r (n-1)))
     f := g g
-    
+
 or, translated to Bracmat, and computing 10!
 
 
@@ -1686,9 +1686,9 @@ Lastly, here is an iterative solution
     factorial$5000
     (16326 digits) 422857792660554352220106420023358440539078667462664674884978240218135805270810820069089904787170638753708474665730068544587848606668381273 ... 000000
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 Prints sequential factorials in an infinite loop.
-<lang brainf***>>++++++++++>>>+>+[>>>+[-[<<<<<[+<<<<<]>>[[-]>[<<+>+>-]<[>+<-]<[>+<-[>+<-[>
+<lang Brainfuck>>++++++++++>>>+>+[>>>+[-[<<<<<[+<<<<<]>>[[-]>[<<+>+>-]<[>+<-]<[>+<-[>+<-[>
 +<-[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-[>[-]>>>>+>+<<<<<<-[>+<-]]]]]]]]]]]>[<+>-
 ]+>>>>>]<<<<<[<<<<<]>>>>>>>[>>>>>]++[-<<<<<]>>>>>>-]+>>>>>]<[>++<-]<<<<[<[
 >+<-]<<<<]>>[->[-]++++++[<++++++++>-]>>>>]<<<<<[<[>+>+<<-]>.<<<<<]>.>>>>]
@@ -1749,13 +1749,13 @@ blsq ) 7ro)(.*){0 1 11}die!
 ## embedded C for AVR MCU
 
 
-###  Iterative 
+###  Iterative
 
 
 ```c
 long factorial(int n) {
     long result = 1;
-    do { 
+    do {
         result *= n;
     while(--n);
     return result;
@@ -1767,7 +1767,7 @@ long factorial(int n) {
 ## C
 
 
-###  Iterative 
+###  Iterative
 
 
 ```c
@@ -1798,7 +1798,7 @@ int factorialSafe(int n) {
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```c
@@ -1821,7 +1821,7 @@ int factorialSafe(int n) {
 
 
 
-###  Tail Recursive 
+###  Tail Recursive
 
 Safe with some compilers (for example: GCC with -O2, LLVM's clang)
 
@@ -1904,7 +1904,7 @@ class Program
 {
     static int Factorial(int number)
     {
-        if(number < 0) 
+        if(number < 0)
             throw new ArgumentOutOfRangeException(nameof(number), number, "Must be zero or a positive number.");
 
         var accumulator = 1;
@@ -1933,7 +1933,7 @@ class Program
 {
     static int Factorial(int number)
     {
-        if(number < 0) 
+        if(number < 0)
             throw new ArgumentOutOfRangeException(nameof(number), number, "Must be zero or a positive number.");
 
         return number == 0 ? 1 : number * Factorial(number - 1);
@@ -1957,7 +1957,7 @@ class Program
 {
     static int Factorial(int number)
     {
-        if(number < 0) 
+        if(number < 0)
             throw new ArgumentOutOfRangeException(nameof(number), number, "Must be zero or a positive number.");
 
         return Factorial(number, 1);
@@ -1965,9 +1965,9 @@ class Program
 
     static int Factorial(int number, int accumulator)
     {
-        if(number < 0) 
+        if(number < 0)
             throw new ArgumentOutOfRangeException(nameof(number), number, "Must be zero or a positive number.");
-        if(accumulator < 1) 
+        if(accumulator < 1)
             throw new ArgumentOutOfRangeException(nameof(accumulator), accumulator, "Must be a positive number.");
 
         return number == 0 ? accumulator : Factorial(number - 1, number * accumulator);
@@ -2011,7 +2011,7 @@ Can calculate 250000! in under a minute.
 ```csharp
 using System;
 using System.Numerics;
-using System.Linq; 
+using System.Linq;
 class Program
 {
     static BigInteger factorial(int n) // iterative
@@ -2063,9 +2063,9 @@ This version of the program is iterative, with a while loop.
 ```cpp
 //iteration with while
 long long int factorial(long long int n)
-{ 
+{
    long long int r = 1;
-   while(1<n) 
+   while(1<n)
        r *= n--;
    return r;
 }
@@ -2078,17 +2078,17 @@ long long int factorial(long long int n)
 
 ```cpp>template <int N
 
-struct Factorial 
+struct Factorial
 {
     enum { value = N * Factorial<N - 1>::value };
 };
- 
+
 template <>
-struct Factorial<0> 
+struct Factorial<0>
 {
     enum { value = 1 };
 };
- 
+
 // Factorial<4>::value == 24
 // Factorial<0>::value == 1
 void foo()
@@ -2124,19 +2124,19 @@ long long int Factorial1(long long int m_nValue)
    m_nValue = result;
    return m_nValue;
 }
- 
+
 //iteration with while
 long long int Factorial2(long long int n)
-{ 
+{
    long long int r = 1;
-   while(1<n) 
+   while(1<n)
        r *= n--;
    return r;
 }
- 
+
 //recrusive
 long long int Factorial3(long long int n)
-{ 
+{
    return n<2 ? 1 : n*Factorial3(n-1);
 }
 
@@ -2145,28 +2145,28 @@ inline long long int _fac_aux(long long int n, long long int acc) {
     return n < 1 ? acc : _fac_aux(n - 1, acc * n);
 }
 long long int Factorial4(long long int n)
-{ 
+{
    return _fac_aux(n,1);
 }
- 
+
 //accumulate with functor
 long long int Factorial5(long long int n)
 {
   // last is one-past-end
-  return std::accumulate(boost::counting_iterator<long long int>(1LL), 
-                         boost::counting_iterator<long long int>(n+1LL), 1LL, 
+  return std::accumulate(boost::counting_iterator<long long int>(1LL),
+                         boost::counting_iterator<long long int>(n+1LL), 1LL,
                          std::multiplies<long long int>() );
-} 
- 
-//accumulate with lamda 
+}
+
+//accumulate with lamda
 long long int Factorial6(long long int n)
 {
   // last is one-past-end
-  return std::accumulate(boost::counting_iterator<long long int>(1LL), 
-                         boost::counting_iterator<long long int>(n+1LL), 1LL, 
+  return std::accumulate(boost::counting_iterator<long long int>(1LL),
+                         boost::counting_iterator<long long int>(n+1LL), 1LL,
                          [](long long int a, long long int b) { return a*b; } );
-} 
- 
+}
+
 int main()
 {
     int v = 55;
@@ -2178,7 +2178,7 @@ int main()
         std::cout << std::fixed << "do-while(1)              result " << result
                   << " took " << ms.count() << " ms\n";
     }
- 
+
     {
         auto t1 = std::chrono::high_resolution_clock::now();
         auto result = Factorial2(v);
@@ -2205,7 +2205,7 @@ int main()
         std::cout << std::fixed << "tail recusive(4)         result " << result
                   << " took " << ms.count() << " ms\n";
     }
-    
+
     {
         auto t1 = std::chrono::high_resolution_clock::now();
         auto result = Factorial5(v);
@@ -2214,7 +2214,7 @@ int main()
         std::cout << std::fixed << "std::accumulate(5)       result " << result
                   << " took " << ms.count() << " ms\n";
     }
-    
+
     {
         auto t1 = std::chrono::high_resolution_clock::now();
         auto result = Factorial6(v);
@@ -2256,20 +2256,20 @@ define rec_fac
 
 ```ceylon
 shared void run() {
-	
-	Integer? recursiveFactorial(Integer n) => 
+
+	Integer? recursiveFactorial(Integer n) =>
 			switch(n <=> 0)
 			case(smaller) null
 			case(equal) 1
 			case(larger) if(exists f = recursiveFactorial(n - 1)) then n * f else null;
-	
-	
+
+
 	Integer? iterativeFactorial(Integer n) =>
 			switch(n <=> 0)
 			case(smaller) null
 			case(equal) 1
 			case(larger) (1:n).reduce(times);
-	
+
 	for(Integer i in 0..10) {
 		print("the iterative factorial of     ``i`` is ``iterativeFactorial(i) else "negative"``
 		       and the recursive factorial of ``i`` is ``recursiveFactorial(i) else "negative"``\n");
@@ -2288,7 +2288,7 @@ proc fac(n) {
 	var r = 1;
 	for i in 1..n do
 		r *= i;
- 
+
 	return r;
 }
 ```
@@ -2333,7 +2333,7 @@ fun int factorial(int i)
     else
     {
         i * factorial(i - 1) => total;
-    } 
+    }
     return total;
 }
 
@@ -2346,7 +2346,7 @@ fun int factorial(int i)
 1 => int total;
 fun int factorial(int i)
 {
-    while(i > 0) 
+    while(i > 0)
     {
         total * i => total;
         1 -=> i;
@@ -2380,7 +2380,7 @@ factorialFold(n) {
 ```
 
 
-We could also do it at compile time, because — hey — why not? 
+We could also do it at compile time, because — hey — why not?
 
 
 ```Clay
@@ -2435,14 +2435,14 @@ main() {
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```clio
 
 fn factorial n:
   if n <= 1: n
-  else: 
+  else:
     n * (n - 1 -> factorial)
 
 10 -> factorial -> print
@@ -2455,7 +2455,7 @@ fn factorial n:
 
 
 
-###  Folding 
+###  Folding
 
 
 ```lisp
@@ -2465,7 +2465,7 @@ fn factorial n:
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```lisp
@@ -2477,7 +2477,7 @@ fn factorial n:
 
 
 
-###  Tail recursive 
+###  Tail recursive
 
 
 ```lisp
@@ -2514,7 +2514,7 @@ message("12! = ${f}")
 The following functions have no need to check if their parameters are negative because they are unsigned.
 
 
-###  Intrinsic Function 
+###  Intrinsic Function
 
 COBOL includes an intrinsic function which returns the factorial of its argument.
 
@@ -2524,50 +2524,50 @@ MOVE FUNCTION FACTORIAL(num) TO result
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```cobol
        IDENTIFICATION DIVISION.
        FUNCTION-ID. factorial.
-       
+
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        01  i      PIC 9(10).
-       
+
        LINKAGE SECTION.
        01  n      PIC 9(10).
        01  ret    PIC 9(10).
-       
+
        PROCEDURE DIVISION USING BY VALUE n RETURNING ret.
            MOVE 1 TO ret
-           
+
            PERFORM VARYING i FROM 2 BY 1 UNTIL n < i
                MULTIPLY i BY ret
            END-PERFORM
-       
+
            GOBACK
            .
 ```
 
 
 
-###  Recursive 
+###  Recursive
 
 {{works with|Visual COBOL}}
 
 ```cobol
        IDENTIFICATION DIVISION.
        FUNCTION-ID. factorial.
-       
+
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        01  prev-n PIC 9(10).
-       
+
        LINKAGE SECTION.
        01  n      PIC 9(10).
        01  ret    PIC 9(10).
-       
+
        PROCEDURE DIVISION USING BY VALUE n RETURNING ret.
            IF n = 0
                MOVE 1 TO ret
@@ -2575,7 +2575,7 @@ MOVE FUNCTION FACTORIAL(num) TO result
                SUBTRACT 1 FROM n GIVING prev-n
                MULTIPLY n BY fac(prev-n) GIVING ret
            END-IF
-       
+
            GOBACK
            .
 ```
@@ -2587,7 +2587,7 @@ MOVE FUNCTION FACTORIAL(num) TO result
 Several solutions are possible in JavaScript:
 
 
-###  Recursive 
+###  Recursive
 
 
 ```coffeescript
@@ -2600,7 +2600,7 @@ fac = (n) ->
 
 
 
-###  Functional 
+###  Functional
 
 {{works with|JavaScript|1.8}} (See [https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/reduce MDC])
 
@@ -2618,7 +2618,7 @@ Recursive:
 ```Comal
   PROC Recursive(n) CLOSED
     r:=1
-    IF n>1 THEN 
+    IF n>1 THEN
       r:=n*Recursive(n-1)
     ENDIF
     RETURN r
@@ -2677,7 +2677,7 @@ Iterative:
 (defun factorial (n)
   "Calculates N!"
   (loop for result = 1 then (* result i)
-     for i from 2 to n 
+     for i from 2 to n
      finally (return result)))
 ```
 
@@ -2983,7 +2983,7 @@ int fact(int n) {
   }
   return res;
 }
- 
+
 main() {
   print(fact(10));
   print(fact(-1));
@@ -3136,7 +3136,7 @@ factorial = 1
 n = readln()
 for(i=1,i<=n,++i)
         {
-            factorial = factorial * i         
+            factorial = factorial * i
         }
            showln "factorial of " + n + " is " + factorial
 
@@ -3153,7 +3153,7 @@ Note that ''Factorial'' is part of the standard DWScript maths functions.
 
 ```delphi
 function IterativeFactorial(n : Integer) : Integer;
-var 
+var
    i : Integer;
 begin
    Result := 1;
@@ -3197,7 +3197,7 @@ func factorial(n) {
 
 
 
-###  Functional 
+###  Functional
 
 
 
@@ -3215,7 +3215,7 @@ end method;
 
 
 
-###  Iterative 
+###  Iterative
 
 
 
@@ -3237,7 +3237,7 @@ end method;
 
 
 
-###  Recursive 
+###  Recursive
 
 
 
@@ -3261,7 +3261,7 @@ end method;
 
 
 
-###  Tail recursive 
+###  Tail recursive
 
 
 
@@ -3271,8 +3271,8 @@ define method factorial (n)
   if (n < 1)
     error("invalid argument");
   end;
-  // Dylan implementations are required to perform tail call optimization so                                                                                                                                                                
-  // this is equivalent to iteration.                                                                                                                                                                                                       
+  // Dylan implementations are required to perform tail call optimization so
+  // this is equivalent to iteration.
   local method loop (n, total)
           if (n <= 2)
             total
@@ -3339,7 +3339,7 @@ print r
 ```scheme
 
 (define (fact n)
-    (if (zero? n) 1 
+    (if (zero? n) 1
     (* n (fact (1- n)))))
 (remember 'fact)
 (fact 10)
@@ -3422,7 +3422,7 @@ function fact(n int in) returns (bigint)
     end
     if (n < 2)
     	return (1);
-    else 
+    else
     	return (n * fact(n - 1));
     end
 end
@@ -3497,8 +3497,8 @@ Tail recursive version:
 
 
 ```Ela
-fact = fact' 1L             
-       where fact' acc 0 = acc                  
+fact = fact' 1L
+       where fact' acc 0 = acc
              fact' acc n = fact' (n * acc) (n - 1)
 ```
 
@@ -3512,18 +3512,18 @@ defmodule Factorial do
   # Simple recursive function
   def fac(0), do: 1
   def fac(n) when n > 0, do: n * fac(n - 1)
-  
+
   # Tail recursive function
   def fac_tail(0), do: 1
   def fac_tail(n), do: fac_tail(n, 1)
-  def fac_tail(1, acc), do: acc 
+  def fac_tail(1, acc), do: acc
   def fac_tail(n, acc) when n > 1, do: fac_tail(n - 1, acc * n)
 
   # Tail recursive function with default parameter
   def fac_default(n, acc \\ 1)
   def fac_default(0, acc), do: acc
   def fac_default(n, acc) when n > 0, do: fac_default(n - 1, acc * n)
-  
+
   # Using Enumeration features
   def fac_reduce(0), do: 1
   def fac_reduce(n) when n > 0, do: Enum.reduce(1..n, 1, &*/2)
@@ -3740,26 +3740,26 @@ Another 'Paper tape' / Virtual Machine version, with as much as possible happeni
 ```Euphoria
 include std/mathcons.e
 
-enum MUL_LLL, 
+enum MUL_LLL,
 	TESTEQ_LIL,
 	TESTLT_LIL,
-	TRUEGO_LL, 
-	MOVE_LL, 
-	INCR_L, 
-	TESTGT_LLL, 
+	TRUEGO_LL,
+	MOVE_LL,
+	INCR_L,
+	TESTGT_LLL,
 	GOTO_L,
 	OUT_LI,
 	OUT_II,
 	STOP
-	
-global sequence tape = { 
-	1, 
+
+global sequence tape = {
+	1,
 	1,
 	0,
 	0,
 	0,
 	{TESTLT_LIL, 5, 0, 4},
-	{TRUEGO_LL, 4, 22}, 
+	{TRUEGO_LL, 4, 22},
 	{TESTEQ_LIL, 5, 0, 4},
 	{TRUEGO_LL, 4, 20},
 	{MUL_LLL, 1, 2, 3},
@@ -3799,7 +3799,7 @@ procedure eval( sequence cmd )
 				end if
 				i += 2
 			case MOVE_LL then -- move value at location to location
-				tape[ cmd[ i + 2 ] ] = tape[ cmd[ i + 1 ] ] 
+				tape[ cmd[ i + 2 ] ] = tape[ cmd[ i + 1 ] ]
 				i += 2
 			case INCR_L then -- increment value at location
 				tape[ cmd[ i + 1 ] ] += 1
@@ -3811,13 +3811,13 @@ procedure eval( sequence cmd )
 				ip = cmd[ i + 1 ] - 1
 				i += 1
 			case OUT_LI then -- output location using format
-				printf( 1, cmd[ i + 2], tape[ cmd[ i + 1 ] ] ) 
+				printf( 1, cmd[ i + 2], tape[ cmd[ i + 1 ] ] )
 				i += 2
 			case OUT_II then -- output immediate using format
 				if sequence( cmd[ i + 1 ] ) then
-					printf( 1, cmd[ i + 2], { cmd[ i + 1 ] } ) 
+					printf( 1, cmd[ i + 2], { cmd[ i + 1 ] } )
 				else
-					printf( 1, cmd[ i + 2], cmd[ i + 1 ] ) 
+					printf( 1, cmd[ i + 2], cmd[ i + 1 ] )
 				end if
 				i += 2
 			case STOP then -- stop
@@ -3840,7 +3840,7 @@ end if
 
 while 1 do
 	if sequence( tape[ ip ] ) then
-		eval( tape[ ip ] ) 
+		eval( tape[ ip ] )
 	end if
 	ip += 1
 end while
@@ -3983,8 +3983,8 @@ class Main
 
   static Int factorialFunctional (Int n)
   {
-    (1..n).toList.reduce(1) |a,v| 
-    { 
+    (1..n).toList.reduce(1) |a,v|
+    {
       v->mult(a) // use a dynamic invoke
       // alternatively, cast a:  v * (Int)a
     }
@@ -4029,7 +4029,7 @@ On a 64 bit computer, can compute up to 33!  Also does error checking.  In gfort
     THEN ;
 
 33 factorial d. 8683317618811886495518194401280000000  ok
--5 factorial d. 
+-5 factorial d.
 :2: Invalid numeric argument
 
 ```
@@ -4084,13 +4084,13 @@ END FUNCTION RECURSIVE_FACTORIAL
 FP-Way
 
 ```fpr
-fact==((1&),iota)\(1*2)& 
+fact==((1&),iota)\(1*2)&
 ```
 
 Recursive
 
 ```fpr
-fact==(id<=1&)->(1&);id*fact°id-1& 
+fact==(id<=1&)->(1&);id*fact°id-1&
 ```
 
 
@@ -4119,7 +4119,7 @@ For i As Integer = 1 To 5
 Next
 
 For i As Integer = 6 To 10
-  Print Using "##"; i; 
+  Print Using "##"; i;
   Print " =>"; Factorial_Recursive(i)
 Next
 
@@ -4212,7 +4212,7 @@ factorial2[x] := product[1 to x]
 ## FunL
 
 
-###  Procedural 
+###  Procedural
 
 
 ```funl
@@ -4230,7 +4230,7 @@ def factorial( n ) =
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```funl
@@ -4257,7 +4257,7 @@ def factorial( n )
 
 
 
-###  Using a library function 
+###  Using a library function
 
 
 ```funl
@@ -4273,7 +4273,7 @@ def factorial( n )
 {{incorrect|Futhark|Futhark's syntax has changed, so this example will not compile}}
 
 
-###  Recursive 
+###  Recursive
 
 
 
@@ -4320,7 +4320,7 @@ else
   f = 1
 end if
 end fn = f
- 
+
 local fn factorialRecursive( n as long ) as double
 dim as double f
 
@@ -4400,38 +4400,38 @@ Recursive:  12 = 479001600
 Function factorial_iter(num As Integer) As Long
   Dim fact As Long
   Dim i As Integer
-  
+
   fact = 1
   If num > 1 Then
     For i = 2 To num
       fact = fact * i
-      
+
     Next
-    
+
   Endif
-  
+
   Return fact
-  
+
 End
 
 ' Function factorial recursive
 Function factorial_rec(num As Integer) As Long
-  
+
   If num <= 1 Then
     Return 1
-    
+
   Else
     Return num * factorial_rec(num - 1)
-    
+
   Endif
-  
+
 End
 
 
 Public Sub Main()
   Print factorial_iter(6)
   Print factorial_rec(7)
-  
+
 End
 
 ```
@@ -4716,7 +4716,7 @@ or
 ## Groovy
 
 
-###  Recursive 
+###  Recursive
 
 A recursive closure must be ''pre-declared''.
 
@@ -4727,7 +4727,7 @@ rFact = { (it > 1) ? it * rFact(it - 1) : 1 as BigInteger }
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```groovy
@@ -4855,7 +4855,7 @@ endfun
 fun fac n
   if n <= 0
     return 1
-  else 
+  else
     return n * fac (n - 1)
   endif
 endfun
@@ -4882,7 +4882,7 @@ END
 ## HolyC
 
 
-###  Iterative 
+###  Iterative
 
 
 ```holyc
@@ -4901,7 +4901,7 @@ Print("10: %d\n", Factorial(10));
 Note: Does not support negative numbers.
 
 
-###  Recursive 
+###  Recursive
 
 
 ```holyc
@@ -4942,7 +4942,7 @@ Print("-10: %d\n", Factorial(-10));
 concept factorial(n) {
 	return n!
 }
- 
+
 software {
 	print(factorial(-23))
 	print(factorial(0))
@@ -4950,7 +4950,7 @@ software {
 	print(factorial(2))
 	print(factorial(3))
 	print(factorial(22))
-} 
+}
 
 ```
 
@@ -4961,11 +4961,11 @@ software {
 
 
 ```Icon
-procedure factorial(n)     
+procedure factorial(n)
    n := integer(n) | runerr(101, n)
    if n < 0 then fail
    return if n = 0 then 1 else n*factorial(n-1)
-end 
+end
 ```
 
 
@@ -5022,7 +5022,7 @@ Factorials are built-in to Io:
 ## J
 
 
-###  Operator 
+###  Operator
 
 
 ```j
@@ -5031,7 +5031,7 @@ Factorials are built-in to Io:
 ```
 
 
-###  Iterative / Functional 
+###  Iterative / Functional
 
 
 ```j
@@ -5040,7 +5040,7 @@ Factorials are built-in to Io:
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```j
@@ -5050,7 +5050,7 @@ Factorials are built-in to Io:
 
 
 
-###  Generalization 
+###  Generalization
 
 Factorial, like most of J's primitives, is generalized (mathematical generalization is often something to avoid in application code while being something of a curated virtue in utility code):
 <div style="width:full;overflow:scroll">
@@ -5238,9 +5238,9 @@ function factorial(n) {
   function factorial(n) {
     return n < 2 ? 1 : memo[n] || (memo[n] = n * factorial(n - 1));
   }
-  
+
   return factorial(x);
-  
+
 })(18);
 ```
 
@@ -5293,7 +5293,7 @@ Or, assuming that we have some sort of integer range function, we can memoize us
 
 
 ### =ES6=
- 
+
 
 ```javascript>var factorial = n =
  (n < 2) ? 1 : n * factorial(n - 1);
@@ -5364,7 +5364,7 @@ PROC FACTORIAL(ARG) U;
 
 
 ```Joy
-DEFINE factorial == [0 =] [pop 1] [dup 1 - factorial *] ifte. 
+DEFINE factorial == [0 =] [pop 1] [dup 1 - factorial *] ifte.
 ```
 
 
@@ -5377,7 +5377,7 @@ def fact:
   reduce range(1; .+1) as $i (1; . * $i);
 ```
 
-Here is a rendition in jq of the standard recursive definition of the factorial function, assuming n is non-negative: 
+Here is a rendition in jq of the standard recursive definition of the factorial function, assuming n is non-negative:
 ```jq
 def fact(n):
   if n <= 1 then n
@@ -5392,7 +5392,7 @@ def fact:
     # Input: [accumulator, counter]
     if .[1] <= 1 then .
     else [.[0] * .[1], .[1] - 1]|  _fact
-    end; 
+    end;
   # Extract the accumulated value from the output of _fact:
   [1, .] | _fact | .[0] ;
 ```
@@ -5647,7 +5647,7 @@ fun main(args: Array<String>) {
 ## Langur
 
 
-###  Folding 
+###  Folding
 
 
 ```Langur
@@ -5657,7 +5657,7 @@ writeln .factorial(7)
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```Langur
@@ -5667,7 +5667,7 @@ writeln .factorial(7)
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```Langur
@@ -5960,7 +5960,7 @@ end
 ```LiveCode
 // recursive
 function factorialr n
-    if n < 2 then 
+    if n < 2 then
         return 1
     else
         return n * factorialr(n-1)
@@ -5983,7 +5983,7 @@ end factorial
 // iterative
 function factorialit n
     put 1 into f
-    if n > 1 then 
+    if n > 1 then
         repeat with i = 1 to n
             multiply f by i
         end repeat
@@ -6111,11 +6111,11 @@ NOTE: Slight code modifications may needed in order to run this as each Logo imp
 
 
 ```logo
-to factorial :n 
-	make "fact 1 
-	make "i 1 
-	repeat :n [make "fact :fact * :i make "i :i + 1] 
-	print :fact 
+to factorial :n
+	make "fact 1
+	make "i 1
+	repeat :n [make "fact :fact * :i make "i :i + 1]
+	print :fact
 end
 ```
 
@@ -6128,7 +6128,7 @@ end
 HAI 1.3
 
 HOW IZ I Faktorial YR Number
-  BOTH SAEM 1 AN BIGGR OF Number AN 1 
+  BOTH SAEM 1 AN BIGGR OF Number AN 1
   O RLY?
    YA RLY
     FOUND YR 1
@@ -6212,12 +6212,12 @@ fact = setmetatable({[0] = 1}, {
 
 ## M2000 Interpreter
 
-M2000 Interpreter running in M2000 Environment, a Visual Basic 6.0 application. So we use Decimals, for output. 
+M2000 Interpreter running in M2000 Environment, a Visual Basic 6.0 application. So we use Decimals, for output.
 
 Normal Print overwrite console screen, and at the last line scroll up on line, feeding a new clear line. Some time needed to print over and we wish to erase the line before doing that. Here we use another aspect of this variant of Print. Any special formatting function $() are kept local, so after the end of statement formatting return to whatever has before.
 
 We want here to change width of column. Normally column width for all columns are the same. For this statement (Print Over) this not hold, we can change column width as print with it. Also we can change justification, and we can choose on column the use of proportional or non proportional text rendering (console use any font as non proportional by default, and if it is proportional font then we can use it as proportional too). Because no new line append to end of this statement, we need to use a normal Print to send new line.
- 
+
 1@ is 1 in Decimal type (27 digits).
 
 
@@ -6228,14 +6228,14 @@ Module CheckIt {
       Function factorial (n){
             If n<0 then Error "Factorial Error!"
             If n>27 then Error "Overflow"
-            
+
             m=1@:While n>1 {m*=n:n--}:=m
       }
       Const Proportional=4
       Const ProportionalLeftJustification=5
       Const NonProportional=0
       Const NonProportionalLeftJustification=1
-      For i=1 to 27 
+      For i=1 to 27
       \\ we can print over (erasing line first), without new line at the end
       \\ and we can change how numbers apears, and the with of columns
       \\ numbers by default have right justification
@@ -6417,10 +6417,10 @@ end proc:
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 Note that Mathematica already comes with a factorial function, which can be used as e.g. <tt>5!</tt> (gives 120). So the following implementations are only of pedagogical value.
 
-###  Recursive 
+###  Recursive
 
 
 ```mathematica
@@ -6431,7 +6431,7 @@ factorial[0] = 1
 === Iterative (direct loop) ===
 
 ```mathematica
-factorial[n_Integer] := 
+factorial[n_Integer] :=
   Block[{i, result = 1}, For[i = 1, i <= n, ++i, result *= i]; result]
 ```
 
@@ -6446,14 +6446,14 @@ factorial[n_Integer] := Block[{i}, Times @@ Table[i, {i, n}]]
 ## MATLAB
 
 === Built-in ===
-The factorial function is built-in to MATLAB. The built-in function is only accurate for N <= 21 due to the precision limitations of floating point numbers. 
+The factorial function is built-in to MATLAB. The built-in function is only accurate for N <= 21 due to the precision limitations of floating point numbers.
 
 ```matlab
 answer = factorial(N)
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```matlab
@@ -6467,14 +6467,14 @@ function f=fac(n)
 ```
 
 
-###  Iterative 
+###  Iterative
 
 A possible iterative solution:
 
 ```matlab
   function b=factorial(a)
-	b=1;	
-	for i=1:a	
+	b=1;
+	for i=1:a
 	    b=b*i;
 	end
 ```
@@ -6489,15 +6489,15 @@ A possible iterative solution:
 fmod FACTORIAL is
 
 	protecting INT .
-	
+
 	op undefined : -> Int .
 	op _! : Int -> Int .
-	
+
 	var n : Int .
-	
+
 	eq 0 ! = 1 .
 	eq n ! = if n < 0 then undefined else n * (sd(n, 1) !) fi .
-	
+
 endfm
 
 red 11 ! .
@@ -6515,7 +6515,7 @@ n!
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```maxima
@@ -6535,7 +6535,7 @@ fact2(n) := block([r: 1], for i thru n do r: r * i, r)$
 ## MAXScript
 
 
-###  Iterative 
+###  Iterative
 
 
 ```maxscript
@@ -6552,7 +6552,7 @@ fn factorial n =
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```maxscript
@@ -6652,7 +6652,7 @@ Factorial(25)=15511210043330985984000000
 ## MiniScript
 
 
-###  Iterative 
+###  Iterative
 
 
 ```MiniScript
@@ -6669,11 +6669,11 @@ print factorial(10)
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```MiniScript
-factorial = function(n) 
+factorial = function(n)
     if n <= 0 then return 1 else return n * factorial(n-1)
 end function
 
@@ -6691,7 +6691,7 @@ print factorial(10)
 ## MIPS Assembly
 
 
-###  Iterative 
+###  Iterative
 
 
 ```mips
@@ -6731,14 +6731,14 @@ loop:	ble $a1,1,exit # If the counter is greater than 1, go back to start
 	mul $a0,$a0,$a1 #a1 = a1*a0
 
 	subi $a1,$a1,1 # Decrement counter
-	
+
 	j loop # Go back to start
-	
-exit: 
+
+exit:
 	### PRINT RESULT ###
 	li $v0,1 #set syscall arg to PRINT_INTEGER
 	#NOTE: syscall 1 (PRINT_INTEGER) takes a0 as its argument. Conveniently, that
-	#      is our result. 
+	#      is our result.
 	syscall  #make the syscall
 
 	#exit
@@ -6748,7 +6748,7 @@ exit:
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```mips
@@ -6769,23 +6769,23 @@ main:
 	la	$t0, result
 	sw	$v0, 0($t0)
 	addi	$v0, $0, 10
-	syscall	
-	
+	syscall
+
 factorialRec:
 	addi	$sp, $sp, -8	#calling convention
 	sw	$a0, 0($sp)
 	sw	$ra, 4($sp)
-	
-	addi	$t0, $0, 2	#if (n < 2) do return 1 
+
+	addi	$t0, $0, 2	#if (n < 2) do return 1
 	slt	$t0, $a0, $t0	#else return n*factorialRec(n-1)
 	beqz	$t0, anotherCall
-	
+
 	lw	$ra, 4($sp)	#recursive anchor
 	lw	$a0, 0($sp)
 	addi	$sp, $sp, 8
 	addi	$v0, $0, 1
 	jr	$ra
-	
+
 anotherCall:
 	addi	$a0, $a0, -1
 	jal	factorialRec
@@ -6806,7 +6806,7 @@ anotherCall:
 ```mirah
 def factorial_iterative(n:int)
     2.upto(n-1) do |i|
-        n *= i 
+        n *= i
     end
     n
 end
@@ -6914,7 +6914,7 @@ PROCEDURE FactIter(n: CARDINAL): CARDINAL =
   VAR
     result := n;
     counter := n - 1;
-    
+
   BEGIN
     FOR i := counter TO 1 BY -1 DO
       result := result * i;
@@ -7024,8 +7024,8 @@ $print(factorial(10));
 
 ## Nemerle
 
-Here's two functional programming ways to do this and an iterative example translated from the C# above.  
-Using '''long''', we can only use '''number <= 20''', I just don't like the scientific notation output from using a '''double'''.  
+Here's two functional programming ways to do this and an iterative example translated from the C# above.
+Using '''long''', we can only use '''number <= 20''', I just don't like the scientific notation output from using a '''double'''.
 Note that in the iterative example, variables whose values change are explicitly defined as mutable; the default in Nemerle is immutable values, encouraging a more functional approach.
 
 ```Nemerle
@@ -7042,18 +7042,18 @@ module Program
       WriteLine("Using Match: Factorial of {0} is {1}", number, FactorialMatch(number));
       WriteLine("Iterative  : Factorial of {0} is {1}", number, FactorialIter(number));
   }
-  
+
   FactorialFold(number : long) : long
   {
       $[1L..number].FoldLeft(1L, _ * _ )
   }
-  
+
   FactorialMatch(number : long) : long
   {
       |0L => 1L
       |n  => n * FactorialMatch(n - 1L)
   }
-  
+
   FactorialIter(number : long) : long
   {
       mutable accumulator = 1L;
@@ -7129,7 +7129,7 @@ method factorialRecursive(n_ = long) private static returns Rexx
 
 ```txt
 
-Input a number: 
+Input a number:
 49
 49! = 608281864034267560872252163321295376887552831379210240000000000 (using iteration)
 49! = 608281864034267560872252163321295376887552831379210240000000000 (using recursion)
@@ -7240,7 +7240,7 @@ proc factorial(x: int): int =
 ### Recursive
 
 
-```Niue>[ dup 1 
+```Niue>[ dup 1
  [ dup 1 - factorial * ] when ] 'factorial ;
 
 ( test )
@@ -7260,7 +7260,7 @@ MODULE Factorial;
 IMPORT
   Out;
 
-VAR 
+VAR
   i: INTEGER;
 
   PROCEDURE Iterative(n: LONGINT): LONGINT;
@@ -7281,7 +7281,7 @@ VAR
   BEGIN
     ASSERT(n >= 0);
     r := 1;
-    IF n > 1 THEN 
+    IF n > 1 THEN
       r := n * Recursive(n - 1)
     END;
     RETURN r
@@ -7459,13 +7459,13 @@ printf("%d\n", iter_fact(50));
 
 (Built-in is fast but use an approximation for big numbers)
 
-''Suggested correction:'' Neither of the three (two) results above is exact. 
-The exact result (computed with Haskell) should be: 
+''Suggested correction:'' Neither of the three (two) results above is exact.
+The exact result (computed with Haskell) should be:
 
 ```txt
-30414093201713378043612608166064768844377641568960512000000000000 
+30414093201713378043612608166064768844377641568960512000000000000
 ```
- 
+
 In fact, all results given by Octave are precise up to their 16th digit, the rest seems to be "random" in all cases. Apparently, this is a consequence of Octave not being capable of arbitrary precision operation.
 
 
@@ -7536,7 +7536,7 @@ ORDER_PP(8to_lit(8fac(8)))    // 40320
 ## Oz
 
 
-###  Folding 
+###  Folding
 
 
 ```oz
@@ -7546,7 +7546,7 @@ end
 ```
 
 
-###  Tail recursive 
+###  Tail recursive
 
 
 ```oz
@@ -7563,7 +7563,7 @@ end
 ```
 
 
-###  Iterative 
+###  Iterative
 
 
 ```oz
@@ -7618,7 +7618,7 @@ fact(n)=factorback([2..n])
 Even faster
 
 ```parigp
-f( a, b )={ 
+f( a, b )={
 	my(c);
 	if( b == a, return(a));
 	if( b-a > 1,
@@ -7685,7 +7685,7 @@ fun fac(n) type integer->integer
 ## Pascal
 
 
-###  Iterative 
+###  Iterative
 
 
 ```pascal
@@ -7701,7 +7701,7 @@ function factorial(n: integer): integer;
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```pascal
@@ -7735,7 +7735,7 @@ FAT|__Transformer|<@ LETSCPLIT>result|1</@><@ ITEFORPARLIT>1|<@ ACTMULSCPPOSFOR>
 ## Perl
 
 
-###  Iterative 
+###  Iterative
 
 
 ```perl
@@ -7759,7 +7759,7 @@ sub factorial {
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```perl
@@ -7771,7 +7771,7 @@ sub factorial
 ```
 
 
-###  Functional 
+###  Functional
 
 
 ```perl
@@ -7784,7 +7784,7 @@ sub factorial
 ```
 
 
-###  Modules 
+###  Modules
 
 Each of these will print 35660, the number of digits in 10,000!.
 {{libheader|ntheory}}
@@ -7833,7 +7833,7 @@ say 5!;
 
 
 
-###  via Memoized Constant Sequence 
+###  via Memoized Constant Sequence
 
 This approach is much more efficient for repeated use, since it automatically caches.  <tt>[\*]</tt> is the so-called triangular version of [*].  It returns the intermediate results as a list.  Note that Perl 6 allows you to define constants lazily, which is rather helpful when your constant is of infinite size...
 {{works with|Rakudo|2015.12}}
@@ -7866,7 +7866,7 @@ end function
 ```
 
 
-###  gmp 
+###  gmp
 
 {{libheader|mpfr}}
 For seriously big numbers, with perfect accuracy, use the mpz_fac_ui() routine. For a bit of fun, we'll see just how far we can push it.
@@ -7934,7 +7934,7 @@ factorial(16777216):113,924,438 digits, calculated in 17.7s, size in base in 4.9
 ## PHP
 
 
-###  Iterative 
+###  Iterative
 
 
 ```php
@@ -7955,7 +7955,7 @@ function factorial($n) {
 ```
 
 
-###  Recursive 
+###  Recursive
 
 
 ```php
@@ -7986,7 +7986,7 @@ function factorial($n) { return $n == 0 ? 1 : array_product(range(1, $n)); }
 
 
 
-###  Library 
+###  Library
 
 Requires the GMP library to be compiled in:
 
@@ -8029,7 +8029,7 @@ This is the text code. It is a  bit difficult to write as there are some loops a
 push 1
 not
 in(number)
-duplicate 
+duplicate
 not        // label a
 pointer    // pointer 1
 duplicate
@@ -8477,7 +8477,7 @@ def factorial(n):
 ```txt
 >>> for i in range(6):
     print(i, factorial(i))
-   
+
 0 1
 1 1
 2 2
@@ -8650,7 +8650,7 @@ END SUB
 ## R
 
 
-###  Recursive 
+###  Recursive
 
 
 ```R
@@ -8687,7 +8687,7 @@ print(factorial(50)) # 3.041409e+64
 ## Racket
 
 
-###  Recursive 
+###  Recursive
 
 The standard recursive style:
 
@@ -8705,7 +8705,7 @@ However, it is inefficient. It's more efficient to use an accumulator.
 ```Racket
 (define (factorial n)
   (define (fact n acc)
-    (if (= 0 n) 
+    (if (= 0 n)
         acc
         (fact (- n 1) (* n acc))))
   (fact n 1))
@@ -8713,7 +8713,7 @@ However, it is inefficient. It's more efficient to use an accumulator.
 
 
 
-###  Fold 
+###  Fold
 
 We can also define factorial as for/fold (product startvalue) (range) (operation))
 
@@ -8737,7 +8737,7 @@ Or quite simpler by an for/product
 ## Rapira
 
 
-###  Iterative 
+###  Iterative
 
 
 ```rapira
@@ -8752,7 +8752,7 @@ Or quite simpler by an for/product
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```rapira
@@ -8768,7 +8768,7 @@ Or quite simpler by an for/product
   n := ВводЦел('Введите число (n <= 12) :')
   печать 'n! = '
   печать Факт(n)
-Кон проц 
+Кон проц
 ```
 
 
@@ -8789,7 +8789,7 @@ public int factorial_iter(int n){
 }
 ```
 
-However, Rascal supports an even neater solution. 
+However, Rascal supports an even neater solution.
 By using a [http://tutor.rascal-mpl.org/Courses/Rascal/Libraries/lang/xml/DOM/xmlPretty/xmlPretty.html#/Courses/Rascal/Expressions/Reducer/Reducer.html reducer] we can write this code on one short line:
 
 ```rascal
@@ -8835,15 +8835,15 @@ REBOL [
     Title: "Factorial"
     URL: http://rosettacode.org/wiki/Factorial_function
 ]
- 
+
 ; Standard recursive implementation.
- 
+
 factorial: func [n][
 	either n > 1 [n * factorial n - 1] [1]
 ]
- 
+
 ; Iteration.
- 
+
 ifactorial: func [n][
 	f: 1
 	for i 2 n 1 [f: f * i]
@@ -8869,9 +8869,9 @@ memo: func [
 		][
 			m-args: []
 			if dump [return m-args]
-			
+
 			if m-r: select/only m-args reduce [(args)] [return m-r]
-			
+
 			m-r: do [(body)]
 			append m-args reduce [reduce [(args)] m-r]
 			m-r
@@ -8882,9 +8882,9 @@ memo: func [
 mfactorial: memo [n][
 	either n > 1 [n * mfactorial n - 1] [1]
 ]
- 
+
 ; Test them on numbers zero to ten.
- 
+
 for i 0 10 1 [print [i ":" factorial i  ifactorial i  mfactorial i]]
 ```
 
@@ -9040,15 +9040,15 @@ er:    say;      say '***error!***';      say;       say arg(1);      say;      
 
 
 ===rehydration (trailing zero replacement)===
-This version of the REXX program takes advantage of the fact that the decimal version of factorials (≥5) have trailing zeroes,  
+This version of the REXX program takes advantage of the fact that the decimal version of factorials (≥5) have trailing zeroes,
 
 so it simply strips them   (thereby reducing the magnitude of the factorial).
 
-When the factorial is finished computing, the trailing zeroes are simply concatenated to the (dehydrated) factorial product. 
+When the factorial is finished computing, the trailing zeroes are simply concatenated to the (dehydrated) factorial product.
 
-This technique will allow other programs to extend their range, especially those that use decimal or floating point decimal, 
+This technique will allow other programs to extend their range, especially those that use decimal or floating point decimal,
 
-but can work with binary numbers as well --- albeit you'd most probably convert the number to decimal when a multiplier   
+but can work with binary numbers as well --- albeit you'd most probably convert the number to decimal when a multiplier
 
 is a multiple of five [or some other method], strip the trailing zeroes, and then convert it back to binary -- although it
 
@@ -9085,7 +9085,7 @@ say !                                            /*display the factorial product
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-<!-- The word  ''gooder''  is a humorous use of the non-word. --> 
+<!-- The word  ''gooder''  is a humorous use of the non-word. -->
 '''output'''   when the input is:   <tt> 100 </tt>
 
 ```txt
@@ -9291,8 +9291,8 @@ Benchmark.bm(16) do |b|
 end
 ```
 
-The benchmark depends on the Ruby implementation. 
-With [[MRI]], <code>#factorial_reduce</code> seems slightly faster than others. 
+The benchmark depends on the Ruby implementation.
+With [[MRI]], <code>#factorial_reduce</code> seems slightly faster than others.
 This might happen because <code>(1..n).reduce(:*)</code> loops through fast C code, and avoids interpreted Ruby code.
 
 {{out}}
@@ -9317,7 +9317,7 @@ for i = 0 to 100
    print " fctrR(";right$("00";str$(i),2); ") = "; fctrR(i)
 next i
 end
- 
+
 function fctrI(n)
 fctrI = 1
  if n >1 then
@@ -9418,7 +9418,7 @@ An imperative style using a mutable variable:
 def factorial(n: Int)={
   var res = 1
   for(i <- 1 to n)
-    res *= i 
+    res *= i
   res
 }
 ```
@@ -9430,8 +9430,8 @@ def factorial(n: Int)={
 Using naive recursion:
 
 ```scala
-def factorial(n: Int): Int = 
-  if (n == 0) 1 
+def factorial(n: Int): Int =
+  if (n == 0) 1
   else        n * factorial(n-1)
 ```
 
@@ -9567,8 +9567,8 @@ The following is tail-recursive, so it is effectively iterative:
 ## Scilab
 
 ===Built-in===
-The factorial function is built-in to Scilab. 
-The built-in function is only accurate for <math>N \leq 21</math> due to the precision limitations of floating point numbers, but if we want to stay in integers, <math>N \leq 13</math> because <math>N! > 2^31-1</math>. 
+The factorial function is built-in to Scilab.
+The built-in function is only accurate for <math>N \leq 21</math> due to the precision limitations of floating point numbers, but if we want to stay in integers, <math>N \leq 13</math> because <math>N! > 2^31-1</math>.
 
 ```Scilab
 answer = factorial(N)
@@ -9665,7 +9665,7 @@ Built in:
 Iterative version:
 
 ```self
-factorial: n = (|r <- 1| 1 to: n + 1 Do: [|:i| r: r * i]. r) 
+factorial: n = (|r <- 1| 1 to: n + 1 Do: [|:i| r: r * i]. r)
 
 ```
 
@@ -9716,7 +9716,7 @@ Tail-recursive:
 ```sequencel
 factorial(n) :=
 	factorialHelper(1, n);
-	
+
 factorialHelper(acc, n) :=
 		acc when n <= 0
 	else
@@ -9915,9 +9915,9 @@ Smalltalk Number class already has a <tt>factorial</tt> method; however, let's s
 ```smalltalk
 Number extend [
   my_factorial [
-    (self < 2) 
+    (self < 2)
         ifTrue: [ ^1 ]
-        ifFalse: [                 
+        ifFalse: [
 	    ^ (2 to: self) fold: [ :a :b | a * b ]
         ]
   ]
@@ -9949,7 +9949,7 @@ Number extend [
 
   fac := [:n |
     n < 0 ifTrue: [ self error: 'fac is defined for natural numbers' ].
-    n <= 1 
+    n <= 1
         ifTrue: [ 1 ]
         ifFalse: [ n * (fac value:(n - 1)) ]
   ].
@@ -9962,8 +9962,8 @@ Number extend [
 
 ```smalltalk
 | fac |
-fac := [ :n | (1 to: n) inject: 1 into: [ :prod :next | prod * next ] ]. 
-fac value: 10. 
+fac := [ :n | (1 to: n) inject: 1 into: [ :prod :next | prod * next ] ].
+fac value: 10.
 "3628800"
 ```
 
@@ -9971,7 +9971,7 @@ fac value: 10.
 
 ```smalltalk
 fac := [:n | (1 to: n) product].
-fac value:40 
+fac value:40
 -> 815915283247897734345611269596115894272000000000
 ```
 
@@ -10052,10 +10052,10 @@ end
 con
   _clkmode = xtal1 + pll16x
   _clkfreq = 80_000_000
- 
+
 obj
   ser : "FullDuplexSerial.spin"
- 
+
 pub main | i
   ser.start(31, 30, 0, 115200)
 
@@ -10067,7 +10067,7 @@ pub main | i
   ser.stop
   cogstop(0)
 
-pub fac(n) : f 
+pub fac(n) : f
   f := 1
   repeat while n > 0
     f *= n
@@ -10077,7 +10077,7 @@ pub fac(n) : f
 {{out}}
 
 ```txt
-1 1 2 6 24 120 720 5040 40320 362880 3628800 
+1 1 2 6 24 120 720 5040 40320 362880 3628800
 ```
 
 
@@ -10222,8 +10222,8 @@ proc ifact n {
 
 
 ```tcl
-proc rfact n { 
-    expr {$n < 2 ? 1 : $n * [rfact [incr n -1]]} 
+proc rfact n {
+    expr {$n < 2 ? 1 : $n * [rfact [incr n -1]]}
 }
 ```
 
@@ -10304,7 +10304,7 @@ proc gfact n {
 
 
 =={{header|TI-83 BASIC}}==
-TI-83 BASIC has a built-in factorial operator: x! is the factorial of x. 
+TI-83 BASIC has a built-in factorial operator: x! is the factorial of x.
 An other way is to use a combination of prod() and seq() functions:
 
 ```ti89b
@@ -10333,7 +10333,7 @@ EndFunc
 ## TorqueScript
 
 
-###  Iterative 
+###  Iterative
 
 
 ```Torque
@@ -10349,7 +10349,7 @@ function Factorial(%num)
 
 
 
-###  Recursive 
+###  Recursive
 
 
 ```Torque
@@ -10412,7 +10412,7 @@ factorial of  8 = 40320
 factorial of  9 = 362880
 factorial of 10 = 3628800
 factorial of 11 = 39916800
-factorial of 12 = 479001600 
+factorial of 12 = 479001600
 
 ```
 
@@ -10447,7 +10447,7 @@ $ txr -p '[reduce-left * (range 1 10) 1]'
 ## UNIX Shell
 
 
-###  Iterative 
+###  Iterative
 
 {{works with|Bourne Shell}}
 
@@ -10483,7 +10483,7 @@ function factorial {
 * bash and zsh use 64-bit signed integers, overflows after <code>factorial 20</code>.
 * ksh93 uses floating-point numbers, prints <code>factorial 19</code> as an integer, prints <code>factorial 20</code> in floating-point exponential format.
 
-###  Recursive 
+###  Recursive
 
 These solutions fork many processes, because each level of recursion spawns a subshell to capture the output.
 {{works with|Almquist Shell}}
@@ -10618,48 +10618,48 @@ End Function
 // recursive method  (requires INTV_T input parm)
 // ----------------
 
-fact_r @FN [n] 
-{  
+fact_r @FN [n]
+{
     @CASE
       when:(n <  0iv) {-1iv                 }
-      when:(n == 0iv) { 1iv                 } 
-      else:           { n * (@fact_r n-1iv) } 
+      when:(n == 0iv) { 1iv                 }
+      else:           { n * (@fact_r n-1iv) }
 };
 
 
 // ----------------
-// iterative method  (requires INTV_T input parm) 
+// iterative method  (requires INTV_T input parm)
 // ----------------
 
 fact_i @FN [n]
 {
-    @CASE 
-      when:(n <  0iv) {-1iv } 
+    @CASE
+      when:(n <  0iv) {-1iv }
       when:(n == 0iv) { 1iv }
       else:           {
                         @VAR i fact = 1iv 1iv;
                         @LOOP while:(i <= n) { fact *= i++ };
                       }
 };
-            
+
 
 // ------------------
 // Display factorials
 // ------------------
 
-@VAR i = -1iv; 
+@VAR i = -1iv;
 @LOOP times:15
 {
-     @SAY «recursive  » i «! = » (@fact_r i) between:"";   
-     @SAY «iterative  » i «! = » (@fact_i i) between:"";  
+     @SAY «recursive  » i «! = » (@fact_r i) between:"";
+     @SAY «iterative  » i «! = » (@fact_i i) between:"";
 
      i = 5iv * i / 4iv + 1iv;
-}; 
+};
 
 
 /]
 ### ===================================================================================
- 
+
 
 Output:
 
@@ -10832,61 +10832,61 @@ USE ieee.numeric_std.ALL;
 
 ENTITY Factorial IS
 	GENERIC (
-			Nbin : INTEGER := 3 ; -- number of bit to input number 
+			Nbin : INTEGER := 3 ; -- number of bit to input number
 			Nbou : INTEGER := 13) ; -- number of bit to output factorial
-	
+
 	PORT (
 		clk : IN STD_LOGIC ; -- clock of circuit
-		sr  : IN STD_LOGIC_VECTOR(1 DOWNTO 0); -- set and reset  
-		N   : IN STD_LOGIC_VECTOR(Nbin-1 DOWNTO 0) ; -- max number 
+		sr  : IN STD_LOGIC_VECTOR(1 DOWNTO 0); -- set and reset
+		N   : IN STD_LOGIC_VECTOR(Nbin-1 DOWNTO 0) ; -- max number
 	    Fn  : OUT STD_LOGIC_VECTOR(Nbou-1 DOWNTO 0)); -- factorial of "n"
-		  		  
+
 END Factorial ;
 
-ARCHITECTURE Behavior OF Factorial IS 
----------------------- Program Multiplication -------------------------------- 
+ARCHITECTURE Behavior OF Factorial IS
+---------------------- Program Multiplication --------------------------------
 	FUNCTION Mult ( CONSTANT MFa : IN UNSIGNED ;
-					CONSTANT MI   : IN UNSIGNED ) RETURN UNSIGNED IS 			 
+					CONSTANT MI   : IN UNSIGNED ) RETURN UNSIGNED IS
 	VARIABLE Z : UNSIGNED(MFa'RANGE) ;
 	VARIABLE U : UNSIGNED(MI'RANGE) ;
 	BEGIN
 	Z := TO_UNSIGNED(0, MFa'LENGTH) ; -- to obtain the multiplication
-	U := MI ; -- regressive counter 
-		LOOP 
+	U := MI ; -- regressive counter
+		LOOP
 			Z := Z + MFa ; -- make multiplication
-			U := U - 1 ; 
+			U := U - 1 ;
 			EXIT WHEN U = 0 ;
-		END LOOP ; 
+		END LOOP ;
 		RETURN Z ;
-	END Mult ; 
+	END Mult ;
 -------------------Program Factorial ---------------------------------------
-	FUNCTION Fact (CONSTANT Nx : IN NATURAL ) RETURN UNSIGNED IS 
+	FUNCTION Fact (CONSTANT Nx : IN NATURAL ) RETURN UNSIGNED IS
 	VARIABLE C  : NATURAL RANGE 0 TO 2**Nbin-1 ;
 	VARIABLE I  : UNSIGNED(Nbin-1 DOWNTO 0) ;
 	VARIABLE Fa : UNSIGNED(Nbou-1 DOWNTO 0) ;
-	BEGIN 
-		C := 0 ; -- counter 
+	BEGIN
+		C := 0 ; -- counter
 		I :=  TO_UNSIGNED(1, Nbin) ;
-		Fa := TO_UNSIGNED(1, Nbou) ;	
+		Fa := TO_UNSIGNED(1, Nbou) ;
 		LOOP
-			EXIT WHEN C = Nx ; -- end loop 
-			C := C + 1 ;  -- progressive couter 
-			Fa := Mult (Fa , I ); -- call function to make a multiplication 
-			I := I + 1 ; -- 
+			EXIT WHEN C = Nx ; -- end loop
+			C := C + 1 ;  -- progressive couter
+			Fa := Mult (Fa , I ); -- call function to make a multiplication
+			I := I + 1 ; --
 		END LOOP ;
 		RETURN Fa ;
 	END Fact ;
 --------------------- Program TO Call Factorial Function ------------------------------------------------------
 	TYPE Table IS ARRAY (0 TO 2**Nbin-1) OF UNSIGNED(Nbou-1 DOWNTO 0) ;
 	FUNCTION Call_Fact RETURN Table IS
-	VARIABLE Fc : Table ; 
-	BEGIN 
+	VARIABLE Fc : Table ;
+	BEGIN
 		FOR c IN 0 TO 2**Nbin-1 LOOP
-			Fc(c) := Fact(c) ;		
+			Fc(c) := Fact(c) ;
 		END LOOP ;
-		RETURN Fc ; 
+		RETURN Fc ;
 	END FUNCTION Call_Fact;
-	
+
 	CONSTANT Result : Table := Call_Fact ;
  ------------------------------------------------------------------------------------------------------------
 SIGNAL Nin : STD_LOGIC_VECTOR(N'RANGE) ;
@@ -10911,14 +10911,14 @@ END Behavior ;
 ```vb
 
 Option Explicit
- 
+
 Sub Main()
     Dim i As Variant
     For i = 1 To 27
         Debug.Print "Factorial(" & i & ")= , recursive : " & Format$(FactRec(i), "#,###") & " - iterative : " & Format$(FactIter(i), "#,####")
     Next
 End Sub 'Main
- 
+
 Private Function FactRec(n As Variant) As Variant
     n = CDec(n)
     If n = 1 Then
@@ -10927,7 +10927,7 @@ Private Function FactRec(n As Variant) As Variant
         FactRec = n * FactRec(n - 1)
     End If
 End Function 'FactRec
- 
+
 Private Function FactIter(n As Variant)
     Dim i As Variant, f As Variant
     f = 1#
@@ -11063,7 +11063,7 @@ fn main() {
 	mut facs := [1; MAX+1]
 	facs[0] = 1
   println('The 0-th Factorial number is: 1')
-	
+
 	for i:= 1; i <= MAX; i++ {
 		facs[i] = i * facs[i-1]
     num := facs[i]
@@ -11423,7 +11423,7 @@ end sub
 //iterative
 sub factorial2(n)
     local i, t
-    
+
     t = 1
     for i = 1 to n
         t = t * i
@@ -11476,14 +11476,14 @@ The [..] notation understands int, float and string but not big int so fact(BN) 
 
 ```zxbasic
 10 LET x=5: GO SUB 1000: PRINT "5! = ";r
-999 STOP 
+999 STOP
 1000 REM *************
 1001 REM * FACTORIAL *
 1002 REM *************
 1010 LET r=1
-1020 IF x<2 THEN RETURN 
+1020 IF x<2 THEN RETURN
 1030 FOR i=2 TO x: LET r=r*i: NEXT i
-1040 RETURN 
+1040 RETURN
 ```
 
 {{out}}
@@ -11498,14 +11498,14 @@ The [..] notation understands int, float and string but not big int so fact(BN) 
 
 ### Recursive
 
-Using VAL for delayed evaluation and AND's ability to return given string or empty, 
+Using VAL for delayed evaluation and AND's ability to return given string or empty,
 we can now control the program flow within an expression in a manner akin to LISP's cond:
 
 ```zxbasic
-DEF FN f(n) = VAL (("1" AND n<=0) + ("n*FN f(n-1)" AND n>0)) 
+DEF FN f(n) = VAL (("1" AND n<=0) + ("n*FN f(n-1)" AND n>0))
 ```
 
-But, truth be told, the parameter n does not withstand recursive calling. 
+But, truth be told, the parameter n does not withstand recursive calling.
 Changing the order of the product gives naught:
 
 ```zxbasic

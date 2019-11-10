@@ -15,8 +15,8 @@ tags = []
 
 The old talk page was at '''[[Talk:Collatz conjecture]]'''.}}
 
-==Brainf***==
-I have restrained myself from marking the Brainf*** example incorrect as it barely scrapes through at showing the sequence, let alone the other parts to the task. Given the nature of the language I might just sit back and wonder at the masochism. (No doubt in some future war with The Aliens, BF programmers will come into their own by decoding how their spaceships work and programming them to self destruct). --[[User:Paddy3118|Paddy3118]] 08:27, 23 June 2010 (UTC)
+==Brainfuck==
+I have restrained myself from marking the Brainfuck example incorrect as it barely scrapes through at showing the sequence, let alone the other parts to the task. Given the nature of the language I might just sit back and wonder at the masochism. (No doubt in some future war with The Aliens, BF programmers will come into their own by decoding how their spaceships work and programming them to self destruct). --[[User:Paddy3118|Paddy3118]] 08:27, 23 June 2010 (UTC)
 :And if BFers can't do it, the SNUSPers can! --[[User:IanOsgood|IanOsgood]] 00:18, 25 June 2010 (UTC)
 
 :: :-)
@@ -24,7 +24,7 @@ I have restrained myself from marking the Brainf*** example incorrect as it bare
 
 ==Fortran==
 The following fortran code should be correct (at least to display the sequence) but it doesn't seem to work.  Most numbers will be processed correctly but certain numbers will cause a weird arithmetic error during which the program will multiply by 3 and SUBTRACT 1 instead of adding, resulting in an infinite loop. The smallest of these numbers appears to be 113383, might this be a specific problem with my machine or compiler(im using force 2.0 atm, ancient, I know)?  Nothing too special about that number other than that it is prime, more of these glitched numbers seem to appear more frequently as the numbers get higher.
-   
+
 
        PROGRAM Hailstone
         IMPLICIT NONE
@@ -77,16 +77,16 @@ The Haskell version is 18 lines long. This version is 12 lines long and prints a
 
         import Data.List
         import Data.Ord(comparing)
-        
+
         main = do putStrLn $ "Collatz sequence for 27: " ++ ((show.hailstone) 27) ++ "\n"
                   putStrLn $ "The number " ++ (show longestChain)
                     ++" has the longest hailstone sequence for any number less then 100000."
-        
+
         hailstone n
           | n == 1 = [1]
           | even n = n:(hailstone (n `div` 2))
           | otherwise = n:(hailstone (3*n+1))
-        
+
         longestChain = fst $ maximumBy (comparing snd) $ map ((\x -> (x,(length.hailstone) x))) [1..100000]
 
 Should this be used instead? [[User:Mathlover2|Mathlover2]] ([[User talk:Mathlover2|talk]]) 16:31, 24 February 2015 (UTC)
@@ -110,7 +110,7 @@ Longest sequence under 10000000 : 8400511 with 686 elements
 I think the problem of C-Cache is the fact that beginning with i=159487-> 5097000814 > 2^32 > unsigned long the calculation gets wrong.
 I use 32 Bit.
 edit: some more start values reaching highest value in the sequence:
-I thought nearly quadratic for high values, but the last 319804831 -> 1414236446719942480 doesn't fit 
+I thought nearly quadratic for high values, but the last 319804831 -> 1414236446719942480 doesn't fit
 
 ```txt
 Longest sequence under         10 :         9 with   20 elements
@@ -130,12 +130,12 @@ Highest value     6631675 ->      60342610919632
 Longest sequence under  100000000 :  63728127 with  950 elements
 Highest value   120080895 ->    3277901576118580
 Longest sequence under 1000000000 : 670617279 with  987 elements
-Highest value   319804831 -> 1414236446719942480 <= nearly limit of Uint64 
+Highest value   319804831 -> 1414236446719942480 <= nearly limit of Uint64
 ```
 
 
 EDIT found a good web site Tomás Oliveira e Silva
-[[http://sweet.ua.pt/tos/3x+1.html]] with a list of first occurences of highest value upto 2^58  
+[[http://sweet.ua.pt/tos/3x+1.html]] with a list of first occurences of highest value upto 2^58
 [[http://sweet.ua.pt/tos/3x+1/t1.txt.gz]]
 I dont know, why his values or only * 0.5 instead of 27 ->9232 is listed with  4616, 319804831 -> 1414236446719942480 is listed with 707118223359971240.
 

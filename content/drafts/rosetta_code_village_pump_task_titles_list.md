@@ -189,7 +189,7 @@ tags = []
 |Conditional structures
 |-
 |[[Connect to Active Directory]]
-|Active Directory/Connect 
+|Active Directory/Connect
 |-
 |[[Constrained Genericity]]
 |Constrained genericity
@@ -783,7 +783,7 @@ tags = []
 |Literals/String
 |-
 |[[RCBF]]
-|Execute Brain****
+|Execute Brainfuck
 |-
 |[[RCHQ9+]]
 |Execute HQ9+

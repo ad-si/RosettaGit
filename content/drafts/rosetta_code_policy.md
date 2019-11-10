@@ -40,7 +40,7 @@ Pages should be on the topic of one of these:
 Off-topic contributions will be considered reason for immediate removal of the content (by the administrative team using an appropriate mechanism such as rolling back the content or deleting the page) and banning the user creating that content.
 
 
-###  Titles 
+###  Titles
 
 Pages that are the titles of tasks (and draft tasks) should always have the first letter in their name capitalized (this might even be enforced by Media Wiki) and other words should not be capitalized ''except'' if they are [[wp:Proper noun|proper nouns]] or abbreviations, which should ''always'' be capitalized. Thus, “[[Start from a main routine]]” (only the first letter is capitalized), “[[Conway's Game of Life]]” (“Game of Life” is capitalized that way on Wikipedia, and “Conway” would be as well, but that's capitalized because of the first letter rule) and “[[URL encoding]]” (“URL” is an abbreviation). Where an abbreviation is done in a non-standard way by convention, the correct form (that is, the form used by the people who originally defined it) should be used.
 
@@ -63,7 +63,7 @@ By contributing, you agree to allow the contribution to be distributed under the
 
 ### Profanity
 
-We aim to have the site accessible by schools and colleges, some of which have automatic monitors which may ban pages or sites with profanity so profanity should be avoided. Our policy on the [[Brainf***|Brainf*!k]] language for example is to never use its name in full. (Yes, there is an esoteric programming language with that name.)
+We aim to have the site accessible by schools and colleges, some of which have automatic monitors which may ban pages or sites with profanity so profanity should be avoided. Our policy on the [[Brainfuck|Brainf*!k]] language for example is to never use its name in full. (Yes, there is an esoteric programming language with that name.)
 
 
 ### Tone

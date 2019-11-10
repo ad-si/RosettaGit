@@ -87,7 +87,7 @@ func main() {
     var results []Result
     for _, match := range matches {
         if len(match) == 5 {
-            users, _ := strconv.Atoi(match[4]) 
+            users, _ := strconv.Atoi(match[4])
             if users >= minimum {
                 result := Result{match[1], users}
                 results = append(results, result)
@@ -160,7 +160,7 @@ Rank  Users  Language
  33     35    APL
  33=    35    J
  35     34    Tcl
- 35=    34    Brainf***
+ 35=    34    Brainfuck
  37     33    Objective-C
  38     32    COBOL
  38=    32    R
@@ -253,7 +253,7 @@ for my $k (sort { $table{$b} <=> $table{$a} } keys %table) {
 ## Perl 6
 
 {{works with|Rakudo|2017.11}}
-Use the mediawiki API rather than web scraping since it is much faster and less resource intensive. Show languages with more than 25 users since that is still a pretty short list and to demonstrate how tied rankings are handled. Change the '''$minimum''' parameter to adjust what the cut-off point will be. 
+Use the mediawiki API rather than web scraping since it is much faster and less resource intensive. Show languages with more than 25 users since that is still a pretty short list and to demonstrate how tied rankings are handled. Change the '''$minimum''' parameter to adjust what the cut-off point will be.
 
 This is all done in a single pass; ties are not detected until a language has the same count as a previous one, so ties are marked by a '''T''' next to the count indicating that '''this''' language has the same count as the '''previous'''.
 
@@ -271,7 +271,7 @@ my $start-time = now;
 
 say "
 ### ===
- Generated: { DateTime.new(time) } 
+ Generated: { DateTime.new(time) }
 ### ===
 ";
 
@@ -300,7 +300,7 @@ my $minimum = 25;
 
 say "
 ### ===
- elapsed: {(now - $start-time).round(.01)} seconds 
+ elapsed: {(now - $start-time).round(.01)} seconds
 ### ===
 ";
 
@@ -333,7 +333,7 @@ sub uri-query-string (*%fields) {
 ```txt
 
 ### ===
- Generated: 2018-06-01T22:09:26Z 
+ Generated: 2018-06-01T22:09:26Z
 ### ===
 
 #  1  Rank:  1    with 380  users:  C
@@ -371,7 +371,7 @@ sub uri-query-string (*%fields) {
 # 33  Rank: 33    with 34   users:  Delphi
 # 34  Rank: 34    with 33   users:  APL
 # 35  Rank: 34 T  with 33   users:  Ada
-# 36  Rank: 34 T  with 33   users:  Brainf***
+# 36  Rank: 34 T  with 33   users:  Brainfuck
 # 37  Rank: 34 T  with 33   users:  Objective-C
 # 38  Rank: 34 T  with 33   users:  Tcl
 # 39  Rank: 39    with 32   users:  R
@@ -428,16 +428,16 @@ Note: the implementation is very similar to [[Rosetta_Code/Rank_languages_by_pop
 
 ```racket
 #lang racket
- 
+
 (require racket/hash
          net/url
          json)
- 
+
 (define limit 64)
 (define (replacer cat) (regexp-replace #rx"^Category:(.*?) User$" cat "\\1"))
 (define category "Category:Language users")
 (define entries "users")
- 
+
 (define api-url (string->url "http://rosettacode.org/mw/api.php"))
 (define (make-complete-url gcmcontinue)
   (struct-copy url api-url
@@ -453,14 +453,14 @@ Note: the implementation is very similar to [[Rosetta_Code/Rank_languages_by_pop
 (define @ hash-ref)
 
 (define table (make-hash))
- 
+
 (let loop ([gcmcontinue ""])
   (define resp (read-json (get-pure-port (make-complete-url gcmcontinue))))
   (hash-union! table
                (for/hash ([(k v) (in-hash (@ (@ resp 'query) 'pages))])
                  (values (@ v 'title #f) (@ (@ v 'categoryinfo (hash)) 'size 0))))
   (cond [(@ resp 'continue #f) => (λ (c) (loop (@ c 'gcmcontinue)))]))
- 
+
 (for/fold ([prev #f] [rank #f] #:result (void))
           ([item (in-list (sort (hash->list table) > #:key cdr))] [i (in-range limit)])
   (match-define (cons cat size) item)
@@ -512,7 +512,7 @@ Rank: 32     (36 users) APL
 Rank: 32     (36 users) Tcl
 Rank: 32     (36 users) Delphi
 Rank: 35     (35 users) J
-Rank: 36     (34 users) Brainf***
+Rank: 36     (34 users) Brainfuck
 Rank: 37     (33 users) COBOL
 Rank: 37     (33 users) Objective-C
 Rank: 39     (32 users) Go
@@ -566,7 +566,7 @@ keep s lang
 gen users=.
 
 forval i=1/`c(N)' {
-	local s 
+	local s
 	preserve
 	copy `"https://rosettacode.org/mw/index.php?title=`=s[`i']'&redirect=no"' `i'.html, replace
 	import delimited `i'.html, delim("@") enc("utf-8") clear
@@ -635,7 +635,7 @@ save rc_users, replace
  34. | J                       35 |
  35. | APL                     34 |
      |----------------------------|
- 36. | Brainf***               34 |
+ 36. | Brainfuck               34 |
  37. | Tcl                     34 |
  38. | Objective-C             33 |
  39. | Smalltalk               33 |
@@ -680,7 +680,7 @@ fcn rsGet{
          //("2708",Dictionary(title:Category:C User,...,categoryinfo:D(pages:373,size:373,...)))
 	 // or title:SmartBASIC
 	 if((pgs:=x.find("categoryinfo")) and (pgs=pgs.find("pages")) and
-	    pgs>=MIN_USERS) 
+	    pgs>=MIN_USERS)
 	   return(pgs,x["title"].replace("Category:","").replace(" User",""));
 	   return(Void.Skip);
       });
@@ -695,7 +695,7 @@ allLangs:=rsGet();
 allLangs=allLangs.sort(fcn(a,b){ a[0]>b[0] });
 println("
 ### ====
- ",Time.Date.prettyDay()," 
+ ",Time.Date.prettyDay(),"
 ### ====
 ");
 foreach n,pgnm in ([1..].zip(allLangs))
@@ -708,7 +708,7 @@ foreach n,pgnm in ([1..].zip(allLangs))
 
 
 ### ====
- Wednesday, the 20th of December 2017 
+ Wednesday, the 20th of December 2017
 ### ====
 
 #  1 with  373 users: C

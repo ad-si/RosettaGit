@@ -11,11 +11,11 @@ tags = []
 +++
 
 {{wikipedia|Mandelbrot_set}}
-{{task|Fractals}} [[Category:Graphics]] [[Category:Raster graphics operations]] 
+{{task|Fractals}} [[Category:Graphics]] [[Category:Raster graphics operations]]
 
 
 ;Task:
-Generate and draw the [[wp:Mandelbrot set|Mandelbrot set]]. 
+Generate and draw the [[wp:Mandelbrot set|Mandelbrot set]].
 
 
 Note that there are [http://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set many algorithms] to draw Mandelbrot set and there are [http://en.wikibooks.org/wiki/Pictures_of_Julia_and_Mandelbrot_sets many functions] which generate it .
@@ -90,24 +90,24 @@ Note that there are [http://en.wikibooks.org/wiki/Fractals/Iterations_in_the_com
 
 ```txt
 &gt; (draw-mandelbrot 60 100)
-                                        #                   
-                                     ..                     
-                                   .####                    
-                            .     # .##.                    
-                             ##*###############.            
-                           #.##################             
-                          .######################.          
-                 ######.  #######################           
-               ##########.######################            
-##############################################              
-               ##########.######################            
-                 ######.  #######################           
-                          .######################.          
-                           #.##################             
-                             ##*###############.            
-                            .     # .##.                    
-                                   .####                    
-                                     ..                     
+                                        #
+                                     ..
+                                   .####
+                            .     # .##.
+                             ##*###############.
+                           #.##################
+                          .######################.
+                 ######.  #######################
+               ##########.######################
+##############################################
+               ##########.######################
+                 ######.  #######################
+                          .######################.
+                           #.##################
+                             ##*###############.
+                            .     # .##.
+                                   .####
+                                     ..
 ```
 
 
@@ -347,7 +347,7 @@ Plot part of the Mandelbrot set as a pseudo-gif image.
 
 
 ```algol68
- 
+
 INT pix = 300, max iter = 256, REAL zoom = 0.33 / pix;
 [-pix : pix, -pix : pix] INT plane;
 COMPL ctr = 0.05 I 0.75 # center of set #;
@@ -361,7 +361,7 @@ PROC iterate = (COMPL z0) INT:
         iter
   END;
 
-# Compute set and find maximum orbit length. #     
+# Compute set and find maximum orbit length. #
 INT max col := 0;
 FOR x FROM -pix TO pix
 DO FOR y FROM -pix TO pix
@@ -406,9 +406,9 @@ begin
     bottomEdge := -300;
     xStep      :=    7;
     yStep      :=   15;
- 
+
     maxIter    :=  200;
- 
+
     for y0 := topEdge step - yStep until bottomEdge do begin
         for x0 := leftEdge step xStep until rightEdge do begin
             integer x, y, i;
@@ -741,7 +741,7 @@ BEGIN {
 ## B
 
 This implements a 16bit fixed point arithmetic Mandelbrot set calculation.
-{{works with|The Amsterdam Compiler Kit - B|V6.1pre1}}                                                
+{{works with|The Amsterdam Compiler Kit - B|V6.1pre1}}
 
 ```B
 main() {
@@ -887,10 +887,10 @@ for x = 0 to graphwidth
 			r = wx * wx + wy * wy
 			k = k + 1
 		until r > m or k > kt
-		
+
 		if k > kt then
 			color black
-		else 
+		else
 			if k < 16 then color k * 8, k * 8, 128 + k * 4
 			if k >= 16 and k < 64 then color 128 + k - 16, 128 + k - 16, 192 + k - 16
 			if k >= 64 then color kt - k, 128 + (kt - k) / 2, kt - k
@@ -1073,11 +1073,11 @@ Works under BASIC on a PDP-8 running OS/8. Various emulators exist including sim
 =
 
 ```Quite BASIC
-      
+
 1000 REM Mandelbrot Set Project
 1010 REM Quite BASIC Math Project
 1015 REM 'http://www.quitebasic.com/prj/math/mandelbrot/
-1020 REM ------------------------ 
+1020 REM ------------------------
 1030 CLS
 1040 PRINT "This program plots a graphical representation of the famous Mandelbrot set.  It takes a while to finish so have patience and don't have too high expectations;  the graphics resolution is not very high on our canvas."
 2000 REM Initialize the color palette
@@ -1092,7 +1092,7 @@ Works under BASIC on a PDP-8 running OS/8. Various emulators exist including sim
 2080 LET X = U
 2090 LET Y = V
 2100 LET N = 0
-2110 REM Inner iteration loop starts here 
+2110 REM Inner iteration loop starts here
 2120 LET R = X * X
 2130 LET Q = Y * Y
 2140 IF R + Q > 4 OR N >= L THEN GOTO 2190
@@ -1102,7 +1102,7 @@ Works under BASIC on a PDP-8 running OS/8. Various emulators exist including sim
 2180 GOTO 2120
 2190 REM Compute the color to plot
 2200 IF N < 10 THEN LET C = "black" ELSE LET C = P[ROUND(8 * (N-10) / (L-10))]
-2210 PLOT I, J, C 
+2210 PLOT I, J, C
 2220 NEXT J
 2230 NEXT I
 2240 END
@@ -1139,65 +1139,65 @@ Works under BASIC on a PDP-8 running OS/8. Various emulators exist including sim
 WindowWidth  = 320  'RunBasic max size 800 x 600
 WindowHeight = 320
 'print zone -2 to 1 (X)
-'print zone -1.5 to 1.5 (Y)  
-a = -1.5  'graph -1.5 to -0.75, first "loop" 
+'print zone -1.5 to 1.5 (Y)
+a = -1.5  'graph -1.5 to -0.75, first "loop"
 b = -0.75  'adjust for max processor time (y0 for loop below)
 
 'open "Mandelbrot Set" for graphics_nsb_nf as #w  not used in RunBasic
- 
+
 graphic #w, WindowWidth, WindowHeight
 '#w "trapclose [quit]"       not used in RunBasic
 '#w "down"                   not used in RunBasic
- 
-cls 
-'#w flush() 
+
+cls
+'#w flush()
 #w cls("black")
 render #w
  '#w flush()
 input "OK, hit enter to continue"; guess
 cls
- 
+
 [man_calc]
 '3/screen size 3/800 = 0.00375  ** 3/790 = 0.0037974
 '3/screen size (y) 3/600 = .005 ** 3/590 = 0.0050847
 '3/215 = .0139 .0068 = 3/440
 cc = 3/299
 '
-    for x0 = -2 to 1 step cc    
-    for y0 = a to b step  cc 
+    for x0 = -2 to 1 step cc
+    for y0 = a to b step  cc
         x = 0
         y = 0
- 
+
         iteration    =   0
-        maxIteration = 255 
- 
+        maxIteration = 255
+
         while ( ( x *x +y *y) <=4) and ( iteration <maxIteration)
             xtemp      =x *x -y *y +x0
             y          =2 *x *y +y0
             x          = xtemp
             iteration  = iteration + 1
         wend
- 
+
         if iteration <>maxIteration then
             c =iteration
         else
             c =0
         end if
- 
+
         call pSet x0, y0, c
         'scan why scan? (wait for user input) with RunBasic ?
     next
 next
- 
+
 '#w flush()  'what is flush? RunBasic uses the render command.
 render #w
- 
+
 input "OK, hit enter to continue"; guess
 cls
 a = a + 0.75
 b = b + 0.75
 if b > 1.6 then goto[quit] else goto[man_calc]
- 
+
 sub pSet x, y, c
     xScreen = 5+(x +2)   /3 * 300 'need positive screen number
     yScreen = 5+(y +1.5) /3 * 300 'and 5x5 boarder
@@ -1209,11 +1209,11 @@ sub pSet x, y, c
     #w "color "; col$
     #w "set "; xScreen; " "; yScreen
 end sub
- 
+
 [quit]
 'cls
 print
-print "This is a Mandelbrot Graph output from www.runbasic.com" 
+print "This is a Mandelbrot Graph output from www.runbasic.com"
 render #w
 print "All done, good bye."
 end
@@ -1277,7 +1277,7 @@ For px = 1 To size * 1.5
     EndWhile
     If i < 99 Then
       GraphicsWindow.SetPixel(px, py, GraphicsWindow.GetColorFromRGB((255/25)*i, (255/25)*i, (255/5)*i))
-    Else 
+    Else
       GraphicsWindow.SetPixel(px, py, "black")
     EndIf
     c=0
@@ -1307,7 +1307,7 @@ For i = 1 To maxiter
     y = yi + (2 * x * y)
     x = xt
     Next
-    
+
 mandel = i
 End Function
 
@@ -1423,7 +1423,7 @@ v*288 p20/**288:+*"[Z"+-<:
 ```bash
 ((xmin=-8601))  # int(-2.1*4096)
 ((xmax=2867))   # int( 0.7*4096)
- 
+
 ((ymin=-4915))  # int(-1.2*4096)
 ((ymax=4915))   # int( 1.2*4096)
 
@@ -1512,8 +1512,8 @@ An example plot from the longer version:
 
 [[File:brace-mandelbrot-small.png]]
 
-=={{header|Brainf***}}==
-<lang Brainf***>
+=={{header|Brainfuck}}==
+<lang Brainfuck>
      A mandelbrot set fractal viewer in brainf*ck written by Erik Bosman
 +++++++++++++[->++>>>+++++>++>+<<<<<<]>>>>>++++++>--->>>>>>>>>>+++++++++++++++[[
 >>>>>>>>>]+[<<<<<<<<<]>>>>>>>>>-]+[>>>>>>>>[-]>]<<<<<<<<<[<<<<<<<<<]>>>>>>>>[-]+
@@ -1728,15 +1728,15 @@ AAAAAAAAAAAAAAABBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDEEEFGII
 Here is one file program. It directly creates ppm file.
 
 ```C
- /* 
+ /*
  c program:
  --------------------------------
   1. draws Mandelbrot set for Fc(z)=z*z +c
   using Mandelbrot algorithm ( boolean escape time )
- -------------------------------         
+ -------------------------------
  2. technique of creating ppm file is  based on the code of Claudio Rocchini
  http://en.wikipedia.org/wiki/Image:Color_complex_plot.jpg
- create 24 bit color graphic file ,  portable pixmap file = PPM 
+ create 24 bit color graphic file ,  portable pixmap file = PPM
  see http://en.wikipedia.org/wiki/Portable_pixmap
  to see the file use external application ( graphic viewer)
   */
@@ -1746,7 +1746,7 @@ Here is one file program. It directly creates ppm file.
  {
           /* screen ( integer) coordinate */
         int iX,iY;
-        const int iXmax = 800; 
+        const int iXmax = 800;
         const int iYmax = 800;
         /* world ( double) coordinate = parameter plane*/
         double Cx,Cy;
@@ -1759,7 +1759,7 @@ Here is one file program. It directly creates ppm file.
         double PixelHeight=(CyMax-CyMin)/iYmax;
         /* color component ( R or G or B) is coded from 0 to 255 */
         /* it is 24 bit color RGB file */
-        const int MaxColorComponentValue=255; 
+        const int MaxColorComponentValue=255;
         FILE * fp;
         char *filename="new1.ppm";
         char *comment="# ";/* comment should start with # */
@@ -1783,7 +1783,7 @@ Here is one file program. It directly creates ppm file.
              Cy=CyMin + iY*PixelHeight;
              if (fabs(Cy)< PixelHeight/2) Cy=0.0; /* Main antenna */
              for(iX=0;iX<iXmax;iX++)
-             {         
+             {
                         Cx=CxMin + iX*PixelWidth;
                         /* initial value of orbit = critical point Z= 0 */
                         Zx=0.0;
@@ -1803,12 +1803,12 @@ Here is one file program. It directly creates ppm file.
                         { /*  interior of Mandelbrot set = black */
                            color[0]=0;
                            color[1]=0;
-                           color[2]=0;                           
+                           color[2]=0;
                         }
-                     else 
+                     else
                         { /* exterior of Mandelbrot set = white */
                              color[0]=255; /* Red*/
-                             color[1]=255;  /* Green */ 
+                             color[1]=255;  /* Green */
                              color[2]=255;/* Blue */
                         };
                         /*write color to the file*/
@@ -1836,9 +1836,9 @@ Infinitely zoomable OpenGL program.  Adjustable colors, max iteration, black and
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
- 
+
 void set_texture();
- 
+
 typedef struct {unsigned char r, g, b;} rgb_t;
 rgb_t **tex = 0;
 int gwin;
@@ -1851,30 +1851,30 @@ int color_rotate = 0;
 int saturation = 1;
 int invert = 0;
 int max_iter = 256;
- 
+
 void render()
 {
 	double	x = (double)width /tex_w,
 		y = (double)height/tex_h;
- 
+
 	glClear(GL_COLOR_BUFFER_BIT);
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
- 
+
 	glBindTexture(GL_TEXTURE_2D, texture);
- 
+
 	glBegin(GL_QUADS);
- 
+
 	glTexCoord2f(0, 0); glVertex2i(0, 0);
 	glTexCoord2f(x, 0); glVertex2i(width, 0);
 	glTexCoord2f(x, y); glVertex2i(width, height);
 	glTexCoord2f(0, y); glVertex2i(0, height);
- 
+
 	glEnd();
- 
+
 	glFlush();
 	glFinish();
 }
- 
+
 int dump = 1;
 void screen_dump()
 {
@@ -1888,7 +1888,7 @@ void screen_dump()
 	fclose(fp);
 	printf("%s written\n", fn);
 }
- 
+
 void keypress(unsigned char key, int x, int y)
 {
 	switch(key) {
@@ -1896,25 +1896,25 @@ void keypress(unsigned char key, int x, int y)
 			glutDestroyWindow(gwin);
 			return;
 	case 27:	scale = 1./256; cx = -.6; cy = 0; break;
- 
+
 	case 'r':	color_rotate = (color_rotate + 1) % 6;
 			break;
- 
+
 	case '>': case '.':
 			max_iter += 128;
 			if (max_iter > 1 << 15) max_iter = 1 << 15;
 			printf("max iter: %d\n", max_iter);
 			break;
- 
+
 	case '<': case ',':
 			max_iter -= 128;
 			if (max_iter < 128) max_iter = 128;
 			printf("max iter: %d\n", max_iter);
 			break;
- 
+
 	case 'c':	saturation = 1 - saturation;
 			break;
- 
+
 	case 's':	screen_dump(); return;
 	case 'z':	max_iter = 4096; break;
 	case 'x':	max_iter = 128; break;
@@ -1922,7 +1922,7 @@ void keypress(unsigned char key, int x, int y)
 	}
 	set_texture();
 }
- 
+
 void hsv_to_rgb(int hue, int min, int max, rgb_t *p)
 {
 	if (min == max) max = min + 1;
@@ -1935,9 +1935,9 @@ void hsv_to_rgb(int hue, int min, int max, rgb_t *p)
 #	define VAL 255
 	double c = VAL * saturation;
 	double X = c * (1 - fabs(fmod(h, 2) - 1));
- 
+
 	p->r = p->g = p->b = 0;
- 
+
 	switch((int)h) {
 	case 0: p->r = c; p->g = X; return;
 	case 1:	p->r = X; p->g = c; return;
@@ -1947,7 +1947,7 @@ void hsv_to_rgb(int hue, int min, int max, rgb_t *p)
 	default:p->r = c; p->b = X;
 	}
 }
- 
+
 void calc_mandel()
 {
 	int i, j, iter, min, max;
@@ -1960,11 +1960,11 @@ void calc_mandel()
 		for (j = 0; j  < width; j++, px++) {
 			x = (j - width/2) * scale + cx;
 			iter = 0;
- 
+
 			zx = hypot(x - .25, y);
 			if (x < zx - 2 * zx * zx + .25) iter = max_iter;
 			if ((x + 1)*(x + 1) + y * y < 1/16) iter = max_iter;
- 
+
 			zx = zy = zx2 = zy2 = 0;
 			for (; iter < max_iter && zx2 + zy2 < 4; iter++) {
 				zy = 2 * zx * zy + y;
@@ -1977,48 +1977,48 @@ void calc_mandel()
 			*(unsigned short *)px = iter;
 		}
 	}
- 
+
 	for (i = 0; i < height; i++)
 		for (j = 0, px = tex[i]; j  < width; j++, px++)
 			hsv_to_rgb(*(unsigned short*)px, min, max, px);
 }
- 
+
 void alloc_tex()
 {
 	int i, ow = tex_w, oh = tex_h;
- 
+
 	for (tex_w = 1; tex_w < width;  tex_w <<= 1);
 	for (tex_h = 1; tex_h < height; tex_h <<= 1);
- 
+
 	if (tex_h != oh || tex_w != ow)
 		tex = realloc(tex, tex_h * tex_w * 3 + tex_h * sizeof(rgb_t*));
- 
+
 	for (tex[0] = (rgb_t *)(tex + tex_h), i = 1; i < tex_h; i++)
 		tex[i] = tex[i - 1] + tex_w;
 }
- 
+
 void set_texture()
 {
 	alloc_tex();
 	calc_mandel();
- 
+
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, tex_w, tex_h,
 		0, GL_RGB, GL_UNSIGNED_BYTE, tex[0]);
- 
+
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	render();
 }
- 
+
 void mouseclick(int button, int state, int x, int y)
 {
 	if (state != GLUT_UP) return;
- 
+
 	cx += (x - width / 2) * scale;
 	cy -= (y - height/ 2) * scale;
- 
+
 	switch(button) {
 	case GLUT_LEFT_BUTTON: /* zoom in */
 		if (scale > fabs(x) * 1e-16 && scale > fabs(y) * 1e-16)
@@ -2031,42 +2031,42 @@ void mouseclick(int button, int state, int x, int y)
 	}
 	set_texture();
 }
- 
- 
+
+
 void resize(int w, int h)
 {
 	printf("resize %d %d\n", w, h);
 	width = w;
 	height = h;
- 
+
 	glViewport(0, 0, w, h);
 	glOrtho(0, w, 0, h, -1, 1);
- 
+
 	set_texture();
 }
- 
+
 void init_gfx(int *c, char **v)
 {
 	glutInit(c, v);
 	glutInitDisplayMode(GLUT_RGB);
 	glutInitWindowSize(640, 480);
 	glutDisplayFunc(render);
- 
+
 	gwin = glutCreateWindow("Mandelbrot");
- 
+
 	glutKeyboardFunc(keypress);
 	glutMouseFunc(mouseclick);
 	glutReshapeFunc(resize);
 	glGenTextures(1, &texture);
 	set_texture();
 }
- 
+
 int main(int c, char **v)
 {
 	init_gfx(&c, v);
 	printf("keys:\n\tr: color rotation\n\tc: monochrome\n\ts: screen dump\n\t"
 		"<, >: decrease/increase max iteration\n\tq: quit\n\tmouse buttons to zoom\n");
- 
+
 	glutMainLoop();
 	return 0;
 }
@@ -2162,7 +2162,7 @@ template<typename ColorType, typename ImageType>
       std::complex<double> z = 0;
       unsigned int iterations;
 
-      for (iterations = 0; iterations < max_iterations && std::abs(z) < 2.0; ++iterations) 
+      for (iterations = 0; iterations < max_iterations && std::abs(z) < 2.0; ++iterations)
         z = z*z + c;
 
       image[ix][iy] = (iterations == max_iterations) ? set_color : non_set_color;
@@ -2196,7 +2196,7 @@ let: zoom 0 ref;
 
 func: render()()
   $rows clear
-  
+
   $max-y 2 / {
     let: y;
     $buf 0 seek
@@ -2212,7 +2212,7 @@ func: render()()
         let: nzx $zx deref ** $zy deref ** - $cx +;
 	$zy $zx deref *2 $zy deref * $cy + set
 	$zx $nzx set
-        $i &-- set-call	
+        $i &-- set-call
         $nzx ** $zy deref ** + #max < $i deref and
       } while
 
@@ -2221,7 +2221,7 @@ func: render()()
       @@s $buf print
     } for
 
-    $rows $buf str push   
+    $rows $buf str push
   } for
 
   1 1 #out move-to
@@ -2313,7 +2313,7 @@ public class MandelbrotSetForm : Form
         return Color.FromArgb(0, 0,
             (int)(MaxColor * Math.Pow(value, ContrastValue)));
     }
-    
+
     public MandelbrotSetForm()
     {
         // form creation
@@ -2422,7 +2422,7 @@ struct ComplexNumber
 
 (defn mandelbrot []
   (for [y (range 1 -1 -0.05)
-	x (range -2 0.5 0.0315)] 
+	x (range -2 0.5 0.0315)]
     (if (mandelbrot? (complex x y)) "#" " ")))
 
 (println (interpose \newline (map #(apply str %) (partition 80 (mandelbrot)))))
@@ -3278,7 +3278,7 @@ defmodule Mandelbrot do
       end) |> IO.puts
     end)
   end
-  
+
   defp loop(n, _, _, _, _, _) when n>=30, do: n
   defp loop(n, _, _, _, _, v) when v>4.0, do: n-1
   defp loop(n, re, im, zr, zi, _) do
@@ -3339,7 +3339,7 @@ Mandelbrot.set
 
 {{trans|Haskell}}
 
-Function ''seq_float/2'' is copied from  [https://gist.github.com/andruby/241489 Andrew Fecheyr's GitHubGist]. 
+Function ''seq_float/2'' is copied from  [https://gist.github.com/andruby/241489 Andrew Fecheyr's GitHubGist].
 
 Using module complex from [https://github.com/ghulette/mandelbrot-erlang/blob/master/simple/complex.erl Geoff Hulette's GitHub repository]
 
@@ -3363,20 +3363,20 @@ mandelbrot(A, MaxI, Z, I) ->
             NZ = complex:add(complex:mult(Z, Z), A),
             mandelbrot(A, MaxI, NZ, I + 1);
         false ->
-            case I of 
+            case I of
                 MaxI ->
                     $*;
                 _ ->
-                    $ 
+                    $
             end
     end.
 
 test() ->
     lists:map(
-        fun(S) -> io:format("~s",[S]) end, 
+        fun(S) -> io:format("~s",[S]) end,
         [
             [
-                begin 
+                begin
                     Z = complex:make(X, Y),
                     mandelbrot(Z, 50, Z, 1)
                 end
@@ -3390,11 +3390,11 @@ test() ->
 % Copied from https://gist.github.com/andruby/241489
 % **************************************************
 
-seq_float(Min, Max, Inc, Counter, Acc) when (Counter*Inc + Min) >= Max -> 
+seq_float(Min, Max, Inc, Counter, Acc) when (Counter*Inc + Min) >= Max ->
   lists:reverse([Max|Acc]);
-seq_float(Min, Max, Inc, Counter, Acc) -> 
+seq_float(Min, Max, Inc, Counter, Acc) ->
   seq_float(Min, Max, Inc, Counter+1, [Inc * Counter + Min|Acc]).
-seq_float(Min, Max, Inc) -> 
+seq_float(Min, Max, Inc) ->
   seq_float(Min, Max, Inc, 0, []).
 
 % **************************************************
@@ -3406,47 +3406,47 @@ Output:
 
 ```txt
 
-                                                                                 
-                                                                                 
-                                                                                 
-                                                           **                    
-                                                         ******                  
-                                                       ********                  
-                                                         ******                  
-                                                      ******** **   *            
-                                              ***   *****************            
-                                              ************************  ***      
-                                              ****************************       
-                                           ******************************        
-                                            ******************************       
-                                         ************************************    
-                                *         **********************************     
-                           ** ***** *     **********************************     
-                           ***********   ************************************    
-                         ************** ************************************     
-                         ***************************************************     
-                     *****************************************************       
-                   *****************************************************         
-                     *****************************************************       
-                         ***************************************************     
-                         ************** ************************************     
-                           ***********   ************************************    
-                           ** ***** *     **********************************     
-                                *         **********************************     
-                                         ************************************    
-                                            ******************************       
-                                           ******************************        
-                                              ****************************       
-                                              ************************  ***      
-                                              ***   *****************            
-                                                      ******** **   *            
-                                                         ******                  
-                                                       ********                  
-                                                         ******                  
-                                                           **                    
-                                                                                 
-                                                                                 
-                                                                                 
+
+
+
+                                                           **
+                                                         ******
+                                                       ********
+                                                         ******
+                                                      ******** **   *
+                                              ***   *****************
+                                              ************************  ***
+                                              ****************************
+                                           ******************************
+                                            ******************************
+                                         ************************************
+                                *         **********************************
+                           ** ***** *     **********************************
+                           ***********   ************************************
+                         ************** ************************************
+                         ***************************************************
+                     *****************************************************
+                   *****************************************************
+                     *****************************************************
+                         ***************************************************
+                         ************** ************************************
+                           ***********   ************************************
+                           ** ***** *     **********************************
+                                *         **********************************
+                                         ************************************
+                                            ******************************
+                                           ******************************
+                                              ****************************
+                                              ************************  ***
+                                              ***   *****************
+                                                      ******** **   *
+                                                         ******
+                                                       ********
+                                                         ******
+                                                           **
+
+
+
 
 
 ```
@@ -3503,19 +3503,19 @@ PC.LIB library.
 =={{header|F Sharp|F#}}==
 
 ```fsharp
-open System.Drawing 
+open System.Drawing
 open System.Windows.Forms
 type Complex =
-    { 
+    {
         re : float;
         im : float
     }
-let cplus (x:Complex) (y:Complex) : Complex = 
+let cplus (x:Complex) (y:Complex) : Complex =
     {
         re = x.re + y.re;
         im = x.im + y.im
     }
-let cmult (x:Complex) (y:Complex) : Complex = 
+let cmult (x:Complex) (y:Complex) : Complex =
     {
         re = x.re * y.re - x.im * y.im;
         im = x.re * y.im + x.im * y.re;
@@ -3558,7 +3558,7 @@ type Mandel = class
         x.Height <- Mandel.yPixels ;
         x.BackgroundImage <- x.bmp;
         x.generate();
-        x.Show();   
+        x.Show();
 end
 
 let f = new Mandel()
@@ -3636,7 +3636,7 @@ Results:
 
 ```fsharp
 
-open System.Drawing 
+open System.Drawing
 open System.Windows.Forms
 
 let showGraphic (colorForIter: int -> Color) (width: int) (height:int) maxIter view =
@@ -3644,7 +3644,7 @@ let showGraphic (colorForIter: int -> Color) (width: int) (height:int) maxIter v
   |> fun frm ->
     frm.Width <- width
     frm.Height <- height
-    frm.BackgroundImage <- 
+    frm.BackgroundImage <-
       new Bitmap(width,height)
       |> fun bmp ->
         getMandelbrotValues width height maxIter view
@@ -3871,7 +3871,7 @@ for im = -1.2 to 1.2 step stepsize
 {
    imag = i * im
    for real = -2 to 1 step stepsize
-   {  
+   {
       C = real + imag
       z = 0
       count = -1
@@ -3966,14 +3966,14 @@ void main(void)
 	vec2 z = vec2(0.0, 0.0);
 	vec3 c = vec3(0.0, 0.0, 0.0);
 	float v;
-	
+
 	for(int i=0;(i<170);i++)
 	{
 
 		if(((z.x*z.x+z.y*z.y) >= 4.0)) break;
 		z = vec2(z.x*z.x - z.y*z.y, 2.0*z.y*z.x) + uv;
-		
-		
+
+
 		if((z.x*z.x+z.y*z.y) >= 2.0)
 		{
 			c.b=float(i)/20.0;
@@ -3981,8 +3981,8 @@ void main(void)
 		}
 
 	}
-	
-	
+
+
 	gl_FragColor = vec4(c,1.0);
 }
 ```
@@ -4145,42 +4145,42 @@ Save the code to file m.hs and run :
 {{Out}}
 
 ```txt
-                            
-                                                           **                   
-                                                         ******                 
-                                                       ********                 
-                                                         ******                 
-                                                      ******** **   *           
-                                              ***   *****************           
-                                              ************************  ***     
-                                              ****************************      
-                                           ******************************       
-                                            ******************************      
-                                         ************************************   
-                                *         **********************************    
-                           ** ***** *     **********************************    
-                           ***********   ************************************   
-                         ************** ************************************    
-                         ***************************************************    
-                     *****************************************************      
- ***********************************************************************        
-                     *****************************************************      
-                         ***************************************************    
-                         ************** ************************************    
-                           ***********   ************************************   
-                           ** ***** *     **********************************    
-                                *         **********************************    
-                                         ************************************   
-                                            ******************************      
-                                           ******************************       
-                                              ****************************      
-                                              ************************  ***     
-                                              ***   *****************           
-                                                      ******** **   *           
-                                                         ******                 
-                                                       ********                 
-                                                         ******                 
-                                                           **  
+
+                                                           **
+                                                         ******
+                                                       ********
+                                                         ******
+                                                      ******** **   *
+                                              ***   *****************
+                                              ************************  ***
+                                              ****************************
+                                           ******************************
+                                            ******************************
+                                         ************************************
+                                *         **********************************
+                           ** ***** *     **********************************
+                           ***********   ************************************
+                         ************** ************************************
+                         ***************************************************
+                     *****************************************************
+ ***********************************************************************
+                     *****************************************************
+                         ***************************************************
+                         ************** ************************************
+                           ***********   ************************************
+                           ** ***** *     **********************************
+                                *         **********************************
+                                         ************************************
+                                            ******************************
+                                           ******************************
+                                              ****************************
+                                              ************************  ***
+                                              ***   *****************
+                                                      ******** **   *
+                                                         ******
+                                                       ********
+                                                         ******
+                                                           **
 ```
 
 
@@ -4414,7 +4414,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn graphics is required ]
 
 {{improve|Unicon|The example is correct; however, Unicon implemented additional graphical features and a better example may be possible.}}
@@ -4422,7 +4422,7 @@ end
 
 ## IDL
 
-IDL - Interactive Data Language 
+IDL - Interactive Data Language
 (free implementation: GDL - GNU Data Language
 http://gnudatalanguage.sourceforge.net)
 
@@ -4673,7 +4673,7 @@ Include (-
 [ numtof n r; @shiftl n 20 r; return r; ];
 [ fadd n m; return n+m; ];
 [ fsub n m; return n-m; ];
-[ fmul n m; n = n + $$1000000000; @sshiftr n 10 n; m = m + $$1000000000; @sshiftr m 10 m; return n * m; ]; 
+[ fmul n m; n = n + $$1000000000; @sshiftr n 10 n; m = m + $$1000000000; @sshiftr m 10 m; return n * m; ];
 [ fdiv n m; @sshiftr m 20 m; return n / m; ];
 [ fneg n; return -n; ];
 #endif;
@@ -4722,7 +4722,7 @@ A smaller version, based on a black&white implementation of viewmat (and paraphr
 ```
 
 
-The output is HTML-heavy and can be found [[Mandelbrot_set/J/Output|here]] 
+The output is HTML-heavy and can be found [[Mandelbrot_set/J/Output|here]]
 (split out to make editing this page easier).
 
 
@@ -4813,21 +4813,21 @@ function mandelbrot(canvas, xmin, xmax, ymin, ymax, iterations) {
   var ctx = canvas.getContext('2d');
   var img = ctx.getImageData(0, 0, width, height);
   var pix = img.data;
-  
+
   for (var ix = 0; ix < width; ++ix) {
     for (var iy = 0; iy < height; ++iy) {
       var x = xmin + (xmax - xmin) * ix / (width - 1);
       var y = ymin + (ymax - ymin) * iy / (height - 1);
       var i = mandelIter(x, y, iterations);
       var ppos = 4 * (width * iy + ix);
-      
+
       if (i > iterations) {
         pix[ppos] = 0;
         pix[ppos + 1] = 0;
         pix[ppos + 2] = 0;
       } else {
         var c = 3 * Math.log(i) / Math.log(iterations - 1.0);
-        
+
         if (c < 1) {
           pix[ppos] = 255 * c;
           pix[ppos + 1] = 0;
@@ -4846,7 +4846,7 @@ function mandelbrot(canvas, xmin, xmax, ymin, ymax, iterations) {
       pix[ppos + 3] = 255;
     }
   }
-  
+
   ctx.putImageData(img, 0, 0);
 }
 
@@ -4864,7 +4864,7 @@ mandelbrot(canvas, -2, 1, -1, 1, 1000);
 [[File:Mandelbrot-Javascript.png]]
 
 
-###  ES6/WebAssembly 
+###  ES6/WebAssembly
 
 
 With ES6 and WebAssembly, the program can run faster.  Of course, this requires a compiled WASM file, but one can easily build
@@ -4910,7 +4910,7 @@ implementation but generates SVG.  The resulting picture is the same.
 
 ```jq
 # SVG STUFF
-  def svg(id; width; height): 
+  def svg(id; width; height):
     "<svg width='\(width // "100%")' height='\(height // "100%") '
         id='\(id)'
         xmlns='http://www.w3.org/2000/svg'>";
@@ -4942,13 +4942,13 @@ def Mandeliter( cx; cy; maxiter ):
           ($xx+$yy)           # xx+yy
         ] )
     | maxiter - .[0];
- 
+
 # width and height should be specified as the number of pixels.
 # obj == { xmin: _, xmax: _, ymin: _, ymax: _ }
 def Mandelbrot( obj; width; height; iterations ):
   def pixies:
     range(0; width) as $ix
-    | (obj.xmin + ((obj.xmax - obj.xmin) * $ix / (width - 1))) as $x 
+    | (obj.xmin + ((obj.xmax - obj.xmin) * $ix / (width - 1))) as $x
     | range(0; height) as $iy
     | (obj.ymin + ((obj.ymax - obj.ymin) * $iy / (height - 1))) as $y
     | Mandeliter( $x; $y; iterations ) as $i
@@ -4973,7 +4973,7 @@ def Mandelbrot( obj; width; height; iterations ):
 '''Example''':
 
 ```jq
- Mandelbrot( {"xmin": -2, "xmax": 1, "ymin": -1, "ymax":1}; 900; 600; 1000 ) 
+ Mandelbrot( {"xmin": -2, "xmax": 1, "ymin": -1, "ymax":1}; 900; 600; 1000 )
 ```
 
 
@@ -5153,7 +5153,7 @@ fun main(args: Array<String>) {
 
 10 'steps set                           # How many iterations?
 
-iterate abs int 5 min 'print_line apply # Compute & print 
+iterate abs int 5 min 'print_line apply # Compute & print
 
 ```
 
@@ -5169,10 +5169,10 @@ define mandelbrotMaxIterations => 1000
 
 define mandelbrotIterate(x, y) => {
 	local(cr = #y - 0.5,
-		ci = #x, 
-		zi = 0.0, 
-		zr = 0.0, 
-		i = 0, 
+		ci = #x,
+		zi = 0.0,
+		zr = 0.0,
+		i = 0,
 		temp, zr2, zi2)
 
 	{
@@ -5180,7 +5180,7 @@ define mandelbrotIterate(x, y) => {
 		#temp = #zr * #zi
 		#zr2 = #zr * #zr
 		#zi2 = #zi * #zi
-				
+
 		#zi2 + #zr2 > mandelbrotBailout?
 			return #i
 		#i > mandelbrotMaxIterations?
@@ -5188,7 +5188,7 @@ define mandelbrotIterate(x, y) => {
 
 		#zr = #zr2 - #zi2 + #cr
 		#zi = #temp + #temp + #ci
-		
+
 		currentCapture->restart
 	}()
 }
@@ -5207,7 +5207,7 @@ define mandelbrotTest() => {
 				currentCapture->restart
 		}();
 		++#y
-		
+
 		#y <= 39.0?
 			currentCapture->restart
 	}()
@@ -5223,82 +5223,82 @@ mandelbrotTest
 
 ```txt
 
-                                       *                                       
-                                       *                                       
-                                       *                                       
-                                       *                                       
-                                       *                                       
-                                      ***                                      
-                                     *****                                     
-                                     *****                                     
-                                      ***                                      
-                                       *                                       
-                                   *********                                   
-                                 *************                                 
-                                ***************                                
-                             *********************                             
-                             *********************                             
-                              *******************                              
-                              *******************                              
-                              *******************                              
-                              *******************                              
-                            ***********************                            
-                              *******************                              
-                              *******************                              
-                             *********************                             
-                              *******************                              
-                              *******************                              
-                               *****************                               
-                                ***************                                
-                                 *************                                 
-                                   *********                                   
-                                       *                                       
-                                ***************                                
-                            ***********************                            
-                         * ************************* *                         
-                         *****************************                         
-                      * ******************************* *                      
-                       *********************************                       
-                      ***********************************                      
-                    ***************************************                    
-               *** ***************************************** ***               
-               *************************************************               
-                ***********************************************                
-                 *********************************************                 
-                 *********************************************                 
-                ***********************************************                
-                ***********************************************                
-              ***************************************************              
-               *************************************************               
-               *************************************************               
-              ***************************************************              
-              ***************************************************              
-         *    ***************************************************    *         
-       *****  ***************************************************  *****       
-       ****** *************************************************** ******       
-      ******* *************************************************** *******      
-    ***********************************************************************    
-    ********* *************************************************** *********    
-       ****** *************************************************** ******       
-       *****  ***************************************************  *****       
-              ***************************************************              
-              ***************************************************              
-              ***************************************************              
-              ***************************************************              
-               *************************************************               
-               *************************************************               
-              ***************************************************              
-                ***********************************************                
-                ***********************************************                
-                  *******************************************                  
-                   *****************************************                   
-                 *********************************************                 
-                **** ****************** ****************** ****                
-                 ***  ****************   ****************  ***                 
-                  *    **************     **************    *                  
-                         ***********       ***********                         
-                         **  *****           *****  **                         
-                          *   *                 *   *                          
+                                       *
+                                       *
+                                       *
+                                       *
+                                       *
+                                      ***
+                                     *****
+                                     *****
+                                      ***
+                                       *
+                                   *********
+                                 *************
+                                ***************
+                             *********************
+                             *********************
+                              *******************
+                              *******************
+                              *******************
+                              *******************
+                            ***********************
+                              *******************
+                              *******************
+                             *********************
+                              *******************
+                              *******************
+                               *****************
+                                ***************
+                                 *************
+                                   *********
+                                       *
+                                ***************
+                            ***********************
+                         * ************************* *
+                         *****************************
+                      * ******************************* *
+                       *********************************
+                      ***********************************
+                    ***************************************
+               *** ***************************************** ***
+               *************************************************
+                ***********************************************
+                 *********************************************
+                 *********************************************
+                ***********************************************
+                ***********************************************
+              ***************************************************
+               *************************************************
+               *************************************************
+              ***************************************************
+              ***************************************************
+         *    ***************************************************    *
+       *****  ***************************************************  *****
+       ****** *************************************************** ******
+      ******* *************************************************** *******
+    ***********************************************************************
+    ********* *************************************************** *********
+       ****** *************************************************** ******
+       *****  ***************************************************  *****
+              ***************************************************
+              ***************************************************
+              ***************************************************
+              ***************************************************
+               *************************************************
+               *************************************************
+              ***************************************************
+                ***********************************************
+                ***********************************************
+                  *******************************************
+                   *****************************************
+                 *********************************************
+                **** ****************** ****************** ****
+                 ***  ****************   ****************  ***
+                  *    **************     **************    *
+                         ***********       ***********
+                         **  *****           *****  **
+                          *   *                 *   *
 
 ```
 
@@ -5483,9 +5483,9 @@ function love.mousereleased( x, y, button, istouch )
         if y > miY then mxY = y
         else l = y; mxY = miY; miY = l
         end
-        miX = remap( miX, 0, wid, minX, maxX ) 
+        miX = remap( miX, 0, wid, minX, maxX )
         mxX = remap( mxX, 0, wid, minX, maxX )
-        miY = remap( miY, 0, hei, minY, maxY ) 
+        miY = remap( miY, 0, hei, minY, maxY )
         mxY = remap( mxY, 0, hei, minY, maxY )
         minX = miX; maxX = mxX; minY = miY; maxY = mxY
         startFractal()
@@ -5617,12 +5617,12 @@ Faster version:
 
 ```mathematica
 cf = With[{
-      mandel = Block[{z = #, c = #}, 
+      mandel = Block[{z = #, c = #},
         Catch@Do[If[Abs[z] > 2, Throw@i]; z = z^2 + c, {i, 100}]] &
     },
    Compile[{},Table[mandel[y + x I], {x, -1, 1, 0.005}, {y, -2, 0.5, 0.005}]]
   ];
-ArrayPlot[cf[]] 
+ArrayPlot[cf[]]
 ```
 
 Built-in function:
@@ -5636,7 +5636,7 @@ MandelbrotSetPlot[]
 
  filter mandelbrot (gradient coloration)
     c=ri:(xy/xy:[X,X]*1.5-xy:[0.5,0]);
-    z=ri:[0,0]; # initial value z0 = 0 
+    z=ri:[0,0]; # initial value z0 = 0
     # iteration of z
     iter=0;
     while abs(z)<2 && iter<31
@@ -5659,41 +5659,41 @@ function [theSet,realAxis,imaginaryAxis] = mandelbrotSet(start,gridSpacing,last,
 
     %Define the escape time algorithm
     function escapeTime = escapeTimeAlgorithm(z0)
-        
+
         escapeTime = 0;
         z = 0;
-        
+
         while( (abs(z)<=2) && (escapeTime < maxIteration) )
-            z = (z + z0)^2;            
+            z = (z + z0)^2;
             escapeTime = escapeTime + 1;
         end
-                
+
     end
-    
+
     %Define the imaginary axis
     imaginaryAxis = (imag(start):imag(gridSpacing):imag(last));
-    
+
     %Define the real axis
     realAxis = (real(start):real(gridSpacing):real(last));
-    
+
     %Construct the complex plane from the real and imaginary axes
     complexPlane = meshgrid(realAxis,imaginaryAxis) + meshgrid(imaginaryAxis(end:-1:1),realAxis)'.*i;
-    
-    %Apply the escape time algorithm to each point in the complex plane 
+
+    %Apply the escape time algorithm to each point in the complex plane
     theSet = arrayfun(@escapeTimeAlgorithm, complexPlane);
-    
+
 
     %Draw the set
     pcolor(realAxis,imaginaryAxis,theSet);
     shading flat;
-    
+
 end
 ```
 
 
 To use this function you must specify the:
 <ol>
-  <li>lower left hand corner of the complex plane from which to start the image,  
+  <li>lower left hand corner of the complex plane from which to start the image,
   <li>the grid spacing in both the imaginary and real directions,
   <li>the upper right hand corner of the complex plane at which to end the image and
   <li>the maximum iterations for the escape time algorithm.
@@ -5732,7 +5732,7 @@ def mandelbrot(expr maxX, maxY) =
     t := i / max_iteration;
     col[i] = (t,t,t);
   endfor;
-  
+
 
   for px := 0 upto maxX:
     for py := 0 upto maxY:
@@ -5823,7 +5823,7 @@ VAR width := 200;
     Zr, Zi, Cr, Ci, Tr, Ti: REAL;
 
 BEGIN
-  
+
   Wr.PutText(Stdio.stdout, "P4\n" & Fmt.Int(width) & " " & Fmt.Int(height) & "\n");
 
   FOR y := 0 TO height - 1 DO
@@ -5831,7 +5831,7 @@ BEGIN
       Zr := 0.0; Zi := 0.0;
       Cr := 2.0 * FLOAT(x) / FLOAT(width) - 1.5;
       Ci := 2.0 * FLOAT(y) / FLOAT(height) - 1.0;
-      
+
       FOR i := 1 TO m + 1 DO
         Tr := Zr*Zr - Zi*Zi + Cr;
         Ti := 2.0*Zr*Zi + Ci;
@@ -5839,7 +5839,7 @@ BEGIN
         isOverLimit := Zr*Zr + Zi*Zi > limit2;
         IF isOverLimit THEN EXIT; END;
       END;
-      
+
       IF isOverLimit THEN
         byteacc := Word.Xor(Word.LeftShift(byteacc, 1), 16_00);
       ELSE
@@ -5847,7 +5847,7 @@ BEGIN
       END;
 
       INC(bitnum);
-      
+
       IF bitnum = 8 THEN
         Wr.PutChar(Stdio.stdout, VAL(byteacc, CHAR));
         byteacc := 0;
@@ -5987,7 +5987,7 @@ import complex
 proc mandelbrot(a: Complex): Complex =
   for i in 0 .. <50:
     result = result * result + a
- 
+
 iterator stepIt(start, step: float, iterations: int): auto =
   for i in 0 .. iterations:
     yield start + float(i) * step
@@ -6000,7 +6000,7 @@ for y in stepIt(1.0, -0.05, 41):
     else:
       rows.add(' ')
   rows.add("\n")
- 
+
 echo rows
 ```
 
@@ -6022,7 +6022,7 @@ let mandelbrot xMin xMax yMin yMax xPixels yPixels maxIter =
              mandelbrotIterator z' c (n-1) in
   Graphics.open_graph
     (" "^(string_of_int xPixels)^"x"^(string_of_int yPixels));
-  let dx = (xMax -. xMin) /. (float_of_int xPixels) 
+  let dx = (xMax -. xMin) /. (float_of_int xPixels)
   and dy = (yMax -. yMin) /. (float_of_int yPixels) in
   for xi = 0 to xPixels - 1 do
     for yi = 0 to yPixels - 1 do
@@ -6036,7 +6036,7 @@ let mandelbrot xMin xMax yMin yMax xPixels yPixels maxIter =
          Graphics.plot xi yi )
     done
   done;;
- 
+
 mandelbrot (-1.5) 0.5 (-1.0) 1.0 500 500 200;;
 ```
 
@@ -6045,7 +6045,7 @@ mandelbrot (-1.5) 0.5 (-1.0) 1.0 500 500 200;;
 ## Octave
 
 
-This code runs rather slowly and produces coloured Mandelbrot set by accident ([[Media:Mandel-Octave.jpg|output image]]). 
+This code runs rather slowly and produces coloured Mandelbrot set by accident ([[Media:Mandel-Octave.jpg|output image]]).
 
 
 ```octave
@@ -6166,9 +6166,9 @@ Output:
 Define function mandelbrot():
 
 ```parigp
-mandelbrot() = 
+mandelbrot() =
 {
-  forstep(y=-1, 1, 0.05, 
+  forstep(y=-1, 1, 0.05,
     forstep(x=-2, 0.5, 0.0315,
       print1(((c)->my(z=c);for(i=1,20,z=z*z+c;if(abs(z)>2,return(" ")));"#")(x+y*I)));
     print());
@@ -6179,47 +6179,47 @@ mandelbrot() =
 Output:
 ```txt
 gp > mandelbrot()
-                                                                                
-                                                                                
-                                                            #                   
-                                                        #  ###  #               
-                                                        ########                
-                                                       #########                
-                                                         ######                 
-                                             ##    ## ############  #           
-                                              ### ###################      #    
-                                              #############################     
-                                              ############################      
-                                          ################################      
-                                           ################################     
-                                         #################################### # 
-                          #     #        ###################################    
-                          ###########    ###################################    
-                           ###########   #####################################  
-                         ############## ####################################    
-                        ####################################################    
-                     ######################################################     
-#########################################################################       
-                     ######################################################     
-                        ####################################################    
-                         ############## ####################################    
-                           ###########   #####################################  
-                          ###########    ###################################    
-                          #     #        ###################################    
-                                         #################################### # 
-                                           ################################     
-                                          ################################      
-                                              ############################      
-                                              #############################     
-                                              ### ###################      #    
-                                             ##    ## ############  #           
-                                                         ######                 
-                                                       #########                
-                                                        ########                
-                                                        #  ###  #               
-                                                            #                   
-                                                                                
-                                                                                
+
+
+                                                            #
+                                                        #  ###  #
+                                                        ########
+                                                       #########
+                                                         ######
+                                             ##    ## ############  #
+                                              ### ###################      #
+                                              #############################
+                                              ############################
+                                          ################################
+                                           ################################
+                                         #################################### #
+                          #     #        ###################################
+                          ###########    ###################################
+                           ###########   #####################################
+                         ############## ####################################
+                        ####################################################
+                     ######################################################
+#########################################################################
+                     ######################################################
+                        ####################################################
+                         ############## ####################################
+                           ###########   #####################################
+                          ###########    ###################################
+                          #     #        ###################################
+                                         #################################### #
+                                           ################################
+                                          ################################
+                                              ############################
+                                              #############################
+                                              ### ###################      #
+                                             ##    ## ############  #
+                                                         ######
+                                                       #########
+                                                        ########
+                                                        #  ###  #
+                                                            #
+
+
 ```
 
 
@@ -6350,13 +6350,13 @@ for (my $y = 1; $y >= -1; $y -= 0.05) {
 
 {{Works with|rakudo|2016-05-01}}
 [[File:Mandel-perl6.png|thumb]]
-Variant of a Mandelbrot script from the [http://modules.perl6.org/ Perl 6 ecosystem]. Produces a [[Write ppm file|Portable Pixel Map]] to STDOUT. 
-Redirect into a file to save it. 
+Variant of a Mandelbrot script from the [http://modules.perl6.org/ Perl 6 ecosystem]. Produces a [[Write ppm file|Portable Pixel Map]] to STDOUT.
+Redirect into a file to save it.
 Converted to a .png file for display here.
 
 
 ```perl6
-constant @color_map = map ~*.comb(/../).map({:16($_)}), < 
+constant @color_map = map ~*.comb(/../).map({:16($_)}), <
 000000 0000fc 4000fc 7c00fc bc00fc fc00fc fc00bc fc007c fc0040 fc0000 fc4000
 fc7c00 fcbc00 fcfc00 bcfc00 7cfc00 40fc00 00fc00 00fc40 00fc7c 00fcbc 00fcfc
 00bcfc 007cfc 0040fc 7c7cfc 9c7cfc bc7cfc dc7cfc fc7cfc fc7cdc fc7cbc fc7c9c
@@ -6378,17 +6378,17 @@ b4fcc4 b4fcd8 b4fce8 b4fcfc b4e8fc b4d8fc b4c4fc 000070 1c0070 380070 540070
 402c3c 402c34 402c30 402c2c 40302c 40342c 403c2c 40402c 3c402c 34402c 30402c
 2c402c 2c4030 2c4034 2c403c 2c4040 2c3c40 2c3440 2c3040
 >;
- 
+
 constant MAX_ITERATIONS = 50;
 my $width = my $height = +(@*ARGS[0] // 31);
- 
+
 sub cut(Range $r, UInt $n where $n > 1) {
     $r.min, * + ($r.max - $r.min) / ($n - 1) ... $r.max
 }
- 
+
 my @re = cut(-2 .. 1/2, $height);
 my @im = cut( 0 .. 5/4, $width div 2 + 1) X* 1i;
- 
+
 sub mandelbrot(Complex $z is copy, Complex $c) {
     for 1 .. MAX_ITERATIONS {
 	$z = $z*$z + $c;
@@ -6396,11 +6396,11 @@ sub mandelbrot(Complex $z is copy, Complex $c) {
     }
     return 0;
 }
- 
+
 say "P3";
 say "$width $height";
 say "255";
- 
+
 for @re -> $re {
     put @color_map[|.reverse, |.[1..*]][^$width] given
     my @ = map &mandelbrot.assuming(0i, *), $re «+« @im;
@@ -6417,7 +6417,7 @@ This is included in the distribution (with some extra validation) as demo\mandle
 ```Phix
 --
 -- Mandlebrot set in ascii art demo.
--- 
+--
 constant b=" .:,;!/>)|&IH%*#"
 atom r, i, c, C, z, Z, t, k
     for y=30 to 0 by -1 do
@@ -6477,7 +6477,7 @@ constant Main = create(Window, "Mandelbrot Set", 0, 0, 50, 50, cWidth+16, cHeigh
          mIter1000 = create(MenuItem,"1000 (slow, high detail)",0, mIter, 0,0,0,0,0),
          m50to1000 = {mIter50,mIter100,mIter500,mIter1000},
          i50to1000 = {     50,     100,     500,     1000}
-        
+
 integer mainDib = 0
 
 constant whitePen = c_func(xCreatePen, {0,1,BrightWhite})
@@ -6523,7 +6523,7 @@ end function
 
 procedure mandel(atom x0, atom y0, atom scale)
 atom x,y
-integer c   
+integer c
     t0 = time()
     y = y0
     for yi=1 to cHeight do
@@ -6910,28 +6910,28 @@ Example :<BR>
 
 ```Prolog
 
-// Following code is a zoomable Mandelbrot. 
-// Of course, you want to click on an interesting area 
+// Following code is a zoomable Mandelbrot.
+// Of course, you want to click on an interesting area
 // with contrast and more colors to zoom in.
 
 double x, y, zr, zi, zr2, zi2, cr, ci, n;
 double zmx1, zmx2, zmy1, zmy2, f, di, dj;
 double fn1, fn2, fn3, re, gr, bl, xt, yt, i, j;
- 
+
 void setup() {
   size(500, 500);
   di = 0;
   dj = 0;
   f = 10;
-  fn1 = random(20); 
-  fn2 = random(20); 
+  fn1 = random(20);
+  fn2 = random(20);
   fn3 = random(20);
   zmx1 = int(width / 4);
   zmx2 = 2;
   zmy1 = int(height / 4);
   zmy2 = 2;
 }
- 
+
 void draw() {
   if (i <= width) i++;
   x =  (i +  di)/ zmx1 - zmx2;
@@ -6939,10 +6939,10 @@ void draw() {
     y = zmy2 - (j + dj) / zmy1;
     zr = 0;
     zi = 0;
-    zr2 = 0; 
-    zi2 = 0; 
-    cr = x;   
-    ci = y;  
+    zr2 = 0;
+    zi2 = 0;
+    cr = x;
+    ci = y;
     n = 1;
     while (n < 200 && (zr2 + zi2) < 4) {
       zi2 = zi * zi;
@@ -6950,17 +6950,17 @@ void draw() {
       zi = 2 * zi * zr + ci;
       zr = zr2 - zi2 + cr;
       n++;
-    }  
+    }
     re = (n * fn1) % 255;
     gr = (n * fn2) % 255;
     bl = (n * fn3) % 255;
-    stroke((float)re, (float)gr, (float)bl); 
+    stroke((float)re, (float)gr, (float)bl);
     point((float)i, (float)j);
   }
 }
- 
+
 void mousePressed() {
-  background(200); 
+  background(200);
   xt = mouseX;
   yt = mouseY;
   di = di + xt - float(width / 2);
@@ -7077,7 +7077,7 @@ If OpenWindow(#Window1, 0, 0, #width, #height, "'Mandelbrot set' PureBasic Examp
            Else
               Plot(x, y,  Color(i & 255))
            EndIf
-           
+
          Next
          StopDrawing()
          SetGadgetState(#ImgGadget, ImageID(#Image1))
@@ -7086,7 +7086,7 @@ If OpenWindow(#Window1, 0, 0, #width, #height, "'Mandelbrot set' PureBasic Examp
            If Event = #PB_Event_CloseWindow
              End
            EndIf
-         Until Event = 0 
+         Until Event = 0
        Next
     EndIf
     Repeat
@@ -7136,12 +7136,12 @@ def mandelbrot(z , c , n=40):
     if abs(z) > 1000:
         return float("nan")
     elif n > 0:
-        return mandelbrot(z ** 2 + c, c, n - 1) 
+        return mandelbrot(z ** 2 + c, c, n - 1)
     else:
         return z ** 2 + c
 
 print("\n".join(["".join(["#" if not math.isnan(mandelbrot(0, x + 1j * y).real) else " "
-                 for x in [a * 0.02 for a in range(-80, 30)]]) 
+                 for x in [a * 0.02 for a in range(-80, 30)]])
                  for y in [a * 0.05 for a in range(-20, 20)]])
      )
 
@@ -7182,7 +7182,7 @@ show()
 
 
 
-Another Numpy version using masks to avoid (explicit) nested loops. 
+Another Numpy version using masks to avoid (explicit) nested loops.
 Runs about 16x faster for the same resolution.
 
 
@@ -7207,7 +7207,7 @@ mask = exit_times > 0
 for k in range(max_iter):
     Z[mask] = Z[mask] * Z[mask] + C[mask]
     mask, old_mask = abs(Z) < 2, mask
-    #use XOR to detect the area which has changed 
+    #use XOR to detect the area which has changed
     exit_times[mask ^ old_mask] = k
 
 plt.imshow(exit_times.T,
@@ -7405,7 +7405,7 @@ Ysize = 21;  minIM = -1;  maxIM = +1;     stepY = (maxIM-minIM) / Ysize
 
 ### version 3
 
-This REXX version produces a larger output   (it uses the full width of the terminal screen (less one),   and the height is one-half of the width. 
+This REXX version produces a larger output   (it uses the full width of the terminal screen (less one),   and the height is one-half of the width.
 
 ```rexx
 /*REXX program  generates and displays a Mandelbrot set as an ASCII art character image.*/
@@ -7480,9 +7480,9 @@ minIM = -1;     maxIM = +1;       stepY = (maxIM-minIM) / Ysize
 
 ```
 
-This REXX program makes use of   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
-The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]]. 
+The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
 
 
@@ -7494,7 +7494,7 @@ The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZ
 
 load "guilib.ring"
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                setwindowtitle("Mandelbrot set")
@@ -7539,7 +7539,7 @@ func draw
                        z2=2*z1*z2+i3 z1=a-b+r3
                 next
                 if n != 31 drawpoint(x,y) ok
-            next 
+            next
         next
 
         endpaint()
@@ -7609,7 +7609,7 @@ class Pixmap
       count += 1
     end
     count
-  end 
+  end
 end
 
 Pixmap.mandelbrot(300,300).save('mandel.ppm')
@@ -7828,7 +7828,7 @@ $data: ()!global;
         $size:  ($zx * $zx) + ($zy * $zy);
       }
 
-      @include plot($x, $y, $count); 
+      @include plot($x, $y, $count);
     }
 }
 .set {
@@ -7893,7 +7893,7 @@ const proc: displayMandelbrotSet (in complex: center, in float: zoom) is func
       for y range -pix to pix do
         z0 := center + complex(flt(x) * zoom, flt(y) * zoom);
         point(x + pix, y + pix, colorTable[iterate(z0)]);
-      end for;    
+      end for;
     end for;
   end func;
 
@@ -7941,15 +7941,15 @@ makeResult(val(0), iters(0)) := (FinalValue: val, Iterations: iters);
 zSquaredOperation(startingNum(0), currentNum(0)) :=
     complexAdd(startingNum, complexMultiply(currentNum, currentNum));
 
-zSquared(minX(0), maxX(0), resolutionX(0), minY(0), maxY(0), resolutionY(0), maxMagnitude(0), maxIters(0))[Y,X] := 
+zSquared(minX(0), maxX(0), resolutionX(0), minY(0), maxY(0), resolutionY(0), maxMagnitude(0), maxIters(0))[Y,X] :=
     let
         stepX := (maxX - minX) / resolutionX;
         stepY := (maxY - minY) / resolutionY;
-        
+
         currentX := X * stepX + minX;
         currentY := Y * stepY + minY;
-        
-    in 
+
+    in
         operateUntil(zSquaredOperation, makeComplex(currentX, currentY), makeComplex(currentX, currentY), maxMagnitude, 0, maxIters)
     foreach Y within 0 ... (resolutionY - 1),
             X within 0 ... (resolutionX - 1);
@@ -7970,7 +7970,7 @@ COLOR_COUNT := size(colorSelections);
 
 colorRange := range(0, 255, 1);
 
-colors := 
+colors :=
     let
         first[i] := rgb(0, 0, i) foreach i within colorRange;
         second[i] := rgb(i, i, 255) foreach i within colorRange;
@@ -7986,7 +7986,7 @@ colors :=
         blueR[i] := rgb(0, 0, i) foreach i within reverse(colorRange);
 
     in
-        //red ++ redR ++ green ++ greenR ++ blue ++ blueR;  
+        //red ++ redR ++ green ++ greenR ++ blue ++ blueR;
         first ++ second ++ third ++ fourth ++ fifth;
         //first ++ fourth;
 
@@ -7995,15 +7995,15 @@ colorSelections := range(1, size(colors), 30);
 getSmoothColorings(zSquaredResult(2), maxIters(0))[Y,X] :=
     let
         current := zSquaredResult[Y,X];
-        
+
         zn := complexMagnitude(current.FinalValue);
         nu := ln(ln(zn) / ln(2)) / ln(2);
-        
+
         result := abs(current.Iterations + 1 - nu);
-        
+
         index := floor(result);
         rem := result - index;
-                
+
         color1 := colorSelections[(index mod COLOR_COUNT) + 1];
         color2 := colorSelections[((index + 1) mod COLOR_COUNT) + 1];
     in
@@ -8012,7 +8012,7 @@ getSmoothColorings(zSquaredResult(2), maxIters(0))[Y,X] :=
         colors[color1] when color2 < color1
     else
         colors[floor(linearInterpolate(color1, color2, rem))];
-        
+
 linearInterpolate(v0(0), v1(0), t(0)) := (1 - t) * v0 + t * v1;
 
 //endregion
@@ -8059,13 +8059,13 @@ int main(int argc, char ** argv)
     double computeTime;
     double colorTime;
     double renderTime;
-    
+
     while(!draw_disp.is_closed())
     {
         if(redraw)
         {
             redraw = false;
-            
+
             t.start();
             sl_zSquared(xmin, xmax, imageWidth, ymin, ymax, imageHeight, maxMag, maxIters, cores, computeResult);
             t.stop();
@@ -8096,7 +8096,7 @@ int main(int argc, char ** argv)
 
             draw_disp.set_title("X:[%f, %f] Y:[%f, %f] | Mandelbrot Fractal in SequenceL | Compute Time: %f | Color Time: %f | Render Time: %f | Total FPS: %f", xmin, xmax, ymin, ymax, cores, computeTime, colorTime, renderTime, 1 / (computeTime + colorTime + renderTime));
         }
-        
+
         draw_disp.wait();
 
         double xdiff = (xmax - xmin);
@@ -8416,10 +8416,10 @@ Creates same <code>mandelbrot.pgm</code> file.
 
 (defsymacro c0 '(0 . 0))
 
-(macro-time 
+(macro-time
   (defun with-cplx-expand (specs body)
     (tree-case specs
-       (((re im expr) . rest) 
+       (((re im expr) . rest)
         ^(tree-bind (,re . ,im) ,expr ,(with-cplx-expand rest body)))
        (() (tree-case body
              ((a b . rest) ^(progn ,a ,b ,*rest))
@@ -8568,7 +8568,7 @@ Output:
 1111111111111111111122222222222222222222222222222222222222222222222222222222222222222222222222222222211
 1111111111111111111111122222222222222222222222222222222222222222222222222222222222222222222222222211111
 
-0 OK, 0:1726    
+0 OK, 0:1726
 ```
 
 
@@ -8705,7 +8705,7 @@ SetVid($03);                                    \restore normal text display
 
 ## XSLT
 
-The fact that you can create an image of the Mandelbrot Set with XSLT is sometimes under-appreciated. 
+The fact that you can create an image of the Mandelbrot Set with XSLT is sometimes under-appreciated.
 However, it has been discussed extensively [http://thedailywtf.com/Articles/Stupid-Coding-Tricks-XSLT-Mandelbrot.aspx on the internet] so is best reproduced here, and the code can be executed directly in your browser at that site.
 
 {{omit from|M4}}
@@ -8739,7 +8739,7 @@ pre span { background:<xsl:value-of select="background" /> }
     (<a href="http://iki.fi/bisqwit/">http://iki.fi/bisqwit/</a>)
    </div>
    <h1 style="margin:0px">XSLT fractal</h1>
-   
+
 ```txt
 <xsl:call-template name="bisqwit-mandelbrot" />
 ```
@@ -8810,7 +8810,7 @@ pre span { background:<xsl:value-of select="background" /> }
   /></span></xsl:otherwise>
  </xsl:choose
 ></xsl:template>
- 
+
 </xsl:stylesheet>
 
 ```
@@ -8871,20 +8871,20 @@ next xcoord
 ;  Compute a Mandelbrot set on a simple Z80 computer.
 ;
 ; Porting this program to another Z80 platform should be easy and straight-
-; forward: The only dependencies on my homebrew machine are the system-calls 
+; forward: The only dependencies on my homebrew machine are the system-calls
 ; used to print strings and characters. These calls are performed by loading
 ; IX with the number of the system-call and performing an RST 08. To port this
-; program to another operating system just replace these system-calls with 
+; program to another operating system just replace these system-calls with
 ; the appropriate versions. Only three system-calls are used in the following:
-; _crlf: Prints a CR/LF, _puts: Prints a 0-terminated string (the adress of 
-; which is expected in HL), and _putc: Print a single character which is 
+; _crlf: Prints a CR/LF, _puts: Prints a 0-terminated string (the adress of
+; which is expected in HL), and _putc: Print a single character which is
 ; expected in A. RST 0 give control back to the monitor.
 ;
 #include        "mondef.asm"
 
                 org     ram_start
 
-scale           equ     256                     ; Do NOT change this - the 
+scale           equ     256                     ; Do NOT change this - the
                                                 ; arithmetic routines rely on
                                                 ; this scaling factor! :-)
 divergent       equ     scale * 4
@@ -8978,7 +8978,7 @@ iteration_loop  push    bc                      ; iteration -> stack
                 ld      de, (z_1_square_high)
                 adc     hl, de
 
-                ld      h, l                    ; HL now contains (z_0 ** 2 + 
+                ld      h, l                    ; HL now contains (z_0 ** 2 +
                 ld      l, b                    ; z_1 ** 2) / scale
 
                 ld      bc, divergent
@@ -9001,7 +9001,7 @@ iteration_end
                 sbc     hl, hl
                 ld      l, a
                 ld      de, display             ; Get start of character array
-                add     hl, de                  ; address and load the 
+                add     hl, de                  ; address and load the
                 ld      a, (hl)                 ; character to be printed
                 ld      ix, _putc               ; Print the character
                 rst     08
@@ -9053,7 +9053,7 @@ z_1_square_low  defw    0
 display         defb    " .-+*=#@"              ; 8 characters for the display
 
 ;
-;   Compute DEHL = BC * DE (signed): This routine is not too clever but it 
+;   Compute DEHL = BC * DE (signed): This routine is not too clever but it
 ; works. It is based on a standard 16-by-16 multiplication routine for unsigned
 ; integers. At the beginning the sign of the result is determined based on the
 ; signs of the operands which are negated if necessary. Then the unsigned
@@ -9115,7 +9115,7 @@ mul_16_exit     dec     a
 ```txt
 
 Generating a Mandelbrot set
-.......       @@@@@@@@@@@@@@@@@@@@########===*+  .  *######@@@@@ 
+.......       @@@@@@@@@@@@@@@@@@@@########===*+  .  *######@@@@@
 ......     @@@@@@@@@@@@@@@@@@@@#########====+-.    -*===#####@@@@
 .....   @@@@@@@@@@@@@@@@@@@@#########===**+-         +*====####@@
 ....  @@@@@@@@@@@@@@@@@@@########==*+-.-+-..         .-+****+*##@

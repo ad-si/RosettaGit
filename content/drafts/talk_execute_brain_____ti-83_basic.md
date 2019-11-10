@@ -1,5 +1,5 @@
 +++
-title = "Talk:Execute Brain****/TI-83 BASIC"
+title = "Talk:Execute Brainfuck/TI-83 BASIC"
 description = ""
 date = 2010-02-06T14:26:16Z
 aliases = []

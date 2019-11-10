@@ -5555,7 +5555,7 @@ If the user name has a space in it, replace the space with an underscore: [[Rose
 |style="width: 10em; background-color: #fff;"| 2007-02-01
 |style="width: 6em; background-color: #fff;"| Task
 |-
-|style="background-color: #fff;"| [[Execute%20Brain%2A%2A%2A%2A|Execute Brain****]]
+|style="background-color: #fff;"| [[Execute%20Brain%2A%2A%2A%2A|Execute Brainfuck]]
 |style="width: 10em; background-color: #fff;"| 2007-11-28
 |style="width: 6em; background-color: #fff;"| Task
 |-

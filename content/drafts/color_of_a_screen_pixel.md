@@ -14,7 +14,7 @@ tags = []
 [[Category:Testing]]
 
 ;Task:
-Get color information from an arbitrary pixel on the screen, such as the current location of the mouse cursor.  
+Get color information from an arbitrary pixel on the screen, such as the current location of the mouse cursor.
 
 The mouse cursor may or may not have to be active in a GUI created by your program.  These functions are OS related.
 
@@ -111,7 +111,7 @@ There is no HSCRN( X,Y) function in Applesoft.  What follows is an elaborate sub
  100  REM GET HCOLOR
  110  REM  PARAMETERS: X Y
  120  REM  RETURNS: C
- 130  REM 
+ 130  REM
  140 P = 0:X = X + 1
  150  ON (X < 280) GOSUB 300
  160 PR = P:P = 0:X = X - 2
@@ -122,12 +122,12 @@ There is no HSCRN( X,Y) function in Applesoft.  What follows is an elaborate sub
  210  IF  NOT ((PL = PR) AND (PL <  > P)) THEN C = C + P * 3: RETURN
  220  IF ODD THEN P =  NOT P
  230 C = C + P + 1
- 240  RETURN 
- 250  REM 
+ 240  RETURN
+ 250  REM
  260  REM GET PIXEL
  270  REM  PARAMETERS: X Y
  280  REM  RETURNS: H P
- 290  REM 
+ 290  REM
  300 H =  INT (X / 7)
  310 V =  INT (Y / 8)
  320 VO =  PEEK (37)
@@ -170,7 +170,7 @@ In [[BBC BASIC for Windows]] you can read either the 'logical colour' (palette i
 
 '''Example 1:''' Commodore 64
 
-There are no graphics commands in Commodore 64 BASIC. High resolution (hires) graphics are programmed by directly manipulating the hardware registers and memory. 
+There are no graphics commands in Commodore 64 BASIC. High resolution (hires) graphics are programmed by directly manipulating the hardware registers and memory.
 
 The Commodore 64 hires bitmap is 320&times;200, subdivided into 8&times;8 cells starting at the top left and moving right. Each cell is addressed top to bottom by 8 bytes. Each byte controls a horizontal row of 8 bits. This requires calculation on the programmer's part to translate X,Y coordinates into a specific memory address/value combination (lines 1210 through 1220).
 
@@ -226,7 +226,7 @@ On both machines, there is a split graphics-text screen that can be used, and th
 ## FreeBASIC
 =
 This is a very simple example from the FreeBASIC documentation. To obtain the color of an arbitrary screen pixel (i.e. outside
-the graphics screen controlled by FB) one would need to use API functions. 
+the graphics screen controlled by FB) one would need to use API functions.
 
 ```freebasic
 FB 1.05.0 Win64
@@ -538,7 +538,7 @@ int main()
 	Control^ TempControl = gcnew Control();
 	MousePoint = TempControl->MousePosition;
 	Bitmap^ TempBitmap = gcnew Bitmap(1,1);
-	Graphics^ g = Graphics::FromImage(TempBitmap);	
+	Graphics^ g = Graphics::FromImage(TempBitmap);
 	g->CopyFromScreen((Point)MousePoint, Point(0, 0), Size(1, 1));
 	Color color = TempBitmap->GetPixel(0,0);
 	Console::WriteLine("R: "+color.R.ToString());
@@ -768,7 +768,7 @@ func main() {
 
     // get color of pixel at that position
     color := robotgo.GetPixelColor(x, y)
-    fmt.Printf("Color of pixel at (%d, %d) is 0x%s\n", x, y, color)   
+    fmt.Printf("Color of pixel at (%d, %d) is 0x%s\n", x, y, color)
 }
 ```
 
@@ -788,35 +788,35 @@ Icon and Unicon don't have direct access to the screen; however, we can read the
 
 ```Icon
 link graphics,printf
- 
-procedure main()  
- 
+
+procedure main()
+
    WOpen("canvas=hidden")                   # hide for query
    height := WAttrib("displayheight") - 45  # adjust for ...
    width  := WAttrib("displaywidth") - 20   # ... window 7 borders
    WClose(&window)
- 
-   W := WOpen("size="||width||","||height,"bg=black") | 
-        stop("Unable to open window")   
- 
+
+   W := WOpen("size="||width||","||height,"bg=black") |
+        stop("Unable to open window")
+
    every 1 to 10 do {   # generate some random rectangles within the frame
-      x := ?width 
+      x := ?width
       y := ?(height-100)
       WAttrib("fg="||?["red","green","blue","purple","yellow"])
       FillRectangle(x,x+50,y,y+50)
       }
-      
-   while Event() do       
+
+   while Event() do
       printf("x=%d,y=%d pixel=%s\n",&x,&y,Pixel(&x,&y,&x,&y))
-      
+
    WDone(W)                                  # q to exit
 end
 
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
 [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 
 Sample Output:
@@ -858,7 +858,7 @@ cols = getpixelcolors(x, y)
 println("At screen point (x=$x, y=$y) the color RGB components are red: $(cols[1]), green: $(cols[2]), and blue: $(cols[3])")
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 At screen point (x=120, y=100) the color RGB components are red: 1, green: 36, and blue: 86
@@ -1183,11 +1183,11 @@ al_destroy_bitmap(image)
 al_destroy_display(display)
 
 func ring_getpixel(image,x,y)
-       newcolor = al_get_pixel(image,x,y)  
+       newcolor = al_get_pixel(image,x,y)
        r=copy(" ",4)  g=copy(" ",4)  b=copy(" ",4)
        p1 = VarPtr("r","float")
-       p2 = VarPtr("g","float") 
-       p3 = VarPtr("b","float") 
+       p2 = VarPtr("g","float")
+       p3 = VarPtr("b","float")
        al_unmap_rgb_f(newcolor, p1 , p2 , p3 )
        r = bytes2float(r)
        g = bytes2float(g)
@@ -1293,7 +1293,7 @@ Color:= ReadPix(X, Y);
 {{omit from|AWK|Does not have this functionality in the language}}
 {{omit from|Batch File|No access to GUI functions}}
 {{omit from|Blast}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|GUISS}}
 {{omit from|Lilypond}}
 {{omit from|Logtalk}}

@@ -87,7 +87,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Infinities is
    type Real is digits 5 range -10.0..10.0;
-   
+
    function Sup return Real is
       Result : Real := Real'Last;
    begin
@@ -140,9 +140,9 @@ The subtype Safe_Float keeps all the range of Float, yet behaves properly upon o
 
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''ted transput}}
-Note: The underlying hardware may sometimes support an infinity, but the ALGOL 68 standard itself does not, and gives no way of setting a variable to either &plusmn;&infin;. 
+Note: The underlying hardware may sometimes support an infinity, but the ALGOL 68 standard itself does not, and gives no way of setting a variable to either &plusmn;&infin;.
 
-ALGOL 68 does have some 7 built in [[Exceptions#ALGOL_68|exceptions]], these might be used to detect exceptions during transput, and so <u>if</u> the underlying hardware <u>does</u> support &infin;, then it would be detected with a ''on value error'' while printing and if ''mended'' would appear as a field full of ''error char''.  
+ALGOL 68 does have some 7 built in [[Exceptions#ALGOL_68|exceptions]], these might be used to detect exceptions during transput, and so <u>if</u> the underlying hardware <u>does</u> support &infin;, then it would be detected with a ''on value error'' while printing and if ''mended'' would appear as a field full of ''error char''.
 
 
 ```algol68
@@ -188,11 +188,11 @@ printf "%f\n" atof "infinity" (: this prints "inf" :)
 
 
 ```AWK
-  BEGIN { 
-    k=1; 
-    while (2^(k-1) < 2^k) k++; 
-    INF = 2^k; 
-    print INF; 
+  BEGIN {
+    k=1;
+    while (2^(k-1) < 2^k) k++;
+    INF = 2^k;
+    print INF;
   }
 ```
 
@@ -200,7 +200,7 @@ printf "%f\n" atof "infinity" (: this prints "inf" :)
 This has been tested with GAWK 3.1.7 and MAWK, both return
 
 ```txt
- inf 
+ inf
 ```
 
 
@@ -213,7 +213,7 @@ This has been tested with GAWK 3.1.7 and MAWK, both return
       *FLOAT 64
       PRINT FNinfinity
       END
-      
+
       DEF FNinfinity
       LOCAL supported%, maxpos, prev, inct
       supported% = TRUE
@@ -334,7 +334,7 @@ Java's floating-point types (float, double) all support infinity. Clojure has li
 ```
 
 
-The largest possible number in Java (without using the Big classes) is also in the Double class 
+The largest possible number in Java (without using the Big classes) is also in the Double class
 (def biggestNumber Double/MAX_VALUE). Its value is (1+(1-2^(-52)))*2^1023 or 1.7976931348623157*10^308 (a.k.a. "big"). Other number classes (Integer, Long, Float, Byte, and Short) have maximum values that can be accessed in the same way.
 
 
@@ -441,7 +441,7 @@ Delphi defines the following constants in Math:
   NegInfinity = -1.0 / 0.0;
 ```
 
-  
+
 Test for infinite value using:
 
 ```Delphi
@@ -625,7 +625,7 @@ program to_f_the_ineffable
    use, intrinsic :: ieee_arithmetic
    integer :: i
    real dimension(2) :: y, x = (/ 30, ieee_value(y,ieee_positive_inf) /)
-   
+
    do i = 1, 2
       if (ieee_support_datatype(x(i))) then
          if (ieee_is_finite(x(i))) then
@@ -633,7 +633,7 @@ program to_f_the_ineffable
          else
             print *, 'x(',i,') is infinite'
          end if
-         
+
       else
          print *, 'x(',i,') is not in an IEEE-supported format'
       end if
@@ -808,7 +808,7 @@ Infinity
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-Icon and Unicon have no infinity value (or defined maximum or minimum values).  Reals are implemented as C doubles and the behavior could vary somewhat from platform to platform.  
+Icon and Unicon have no infinity value (or defined maximum or minimum values).  Reals are implemented as C doubles and the behavior could vary somewhat from platform to platform.
 Both explicitly check for divide by zero and treat it as a runtime error (201), so it's not clear how you could produce one with the possible exception of externally called code.
 
 
@@ -845,7 +845,7 @@ Output:
 
 ```txt
 
-9.999999999E62 
+9.999999999E62
 
 ```
 
@@ -926,7 +926,7 @@ jq uses IEEE 754 64-bit floating-point arithmetic, and very large number literal
 
 
 ```jq>def infinite: 1e1000;</lang
- 
+
 
 To test whether a JSON entity is equal to `infinite`, one can simply use `==` in the expected manner. Thus, assuming `infinite` has been defined, one could define a predicate, isinfinite, as follows:
 
@@ -1230,7 +1230,7 @@ gives back:
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-MATLAB implements the IEEE 754 floating point standard as the default for all numeric data types. +Inf and -Inf are by default implemented and supported by MATLAB. To check if a variable has the value +/-Inf, one can use the built-in function "isinf()" which will return a Boolean 1 if the number is +/-inf. 
+MATLAB implements the IEEE 754 floating point standard as the default for all numeric data types. +Inf and -Inf are by default implemented and supported by MATLAB. To check if a variable has the value +/-Inf, one can use the built-in function "isinf()" which will return a Boolean 1 if the number is +/-inf.
 
 
 ```Matlab
@@ -1471,12 +1471,12 @@ Output
 ---------------------------
 Message (Press HELP to view stack trace)
 ---------------------------
-? 
-? 
+?
+?
 
 yes
 ---------------------------
-OK   Help   
+OK   Help
 ---------------------------
 ```
 
@@ -1618,7 +1618,7 @@ my $y = -inf;
 Inf support is required by language spec on all abstract Numeric types (in the absence of subset constraints) including Num, Rat and Int types. Native integers cannot support Inf, so attempting to assign Inf will result in an exception; native floats are expected to follow IEEE standards including +/- Inf and NaN.
 
 ```perl6
-my $x = 1.5/0;       # Failure: catchable error, if evaluated will return: "Attempt to divide by zero ... 
+my $x = 1.5/0;       # Failure: catchable error, if evaluated will return: "Attempt to divide by zero ...
 my $y = (1.5/0).Num; # assigns 'Inf'
 ```
 
@@ -1714,19 +1714,19 @@ PureBasic uses [[wp:IEEE_754-2008|IEEE 754]] coding for float types.  PureBasic 
 If OpenConsole()
   Define.d a, b
   b = 0
-  
+
   ;positive infinity
   PrintN(StrD(Infinity())) ;returns the value for positive infinity from builtin function
-   
+
   a = 1.0
   PrintN(StrD(a / b)) ;calculation results in the value of positive infinity
-  
+
   ;negative infinity
   PrintN(StrD(-Infinity())) ;returns the value for negative infinity from builtin function
-  
+
   a = -1.0
   PrintN(StrD(a / b)) ;calculation results in the value of negative infinity
-  
+
   Print(#crlf$ + #crlf$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -1750,9 +1750,9 @@ This is how you get infinity:
 inf
 ```
 
-''Note: When passing in a string to float(), values for NaN and Infinity may be returned, depending on the underlying C library. The specific set of strings accepted which cause these values to be returned depends entirely on the underlying C library used to compile Python itself, and is known to vary.'' 
+''Note: When passing in a string to float(), values for NaN and Infinity may be returned, depending on the underlying C library. The specific set of strings accepted which cause these values to be returned depends entirely on the underlying C library used to compile Python itself, and is known to vary.''
 
-''The Decimal module explicitly supports +/-infinity Nan, +/-0.0, etc without exception.'' 
+''The Decimal module explicitly supports +/-infinity Nan, +/-0.0, etc without exception.''
 
 Floating-point division by 0 doesn't give you infinity, it raises an exception:
 
@@ -1779,7 +1779,7 @@ It works by trying to create a float bigger than the machine can handle.
 
 ```R
  Inf                    #positive infinity
- -Inf                   #negative infinity 
+ -Inf                   #negative infinity
  .Machine$double.xmax   # largest finite floating-point number
  is.finite              # function to test to see if a number is finite
 
@@ -1852,9 +1852,9 @@ the biggest number that can be used is:
 
 ```
 
-For most REXX interpreters, the maximum number of digits is only limited by virtual storage, 
+For most REXX interpreters, the maximum number of digits is only limited by virtual storage,
 
-but the pratical limit would be a little less than half of available virtual storage, 
+but the pratical limit would be a little less than half of available virtual storage,
 
 which would (realistically) be around one billion digits. Other interpreters have a limitation of roughly 8 million digits.
 
@@ -2032,7 +2032,7 @@ but we can simulate the other behavior with:
   1.0 / 0.0
 ] on: ZeroDivide do:[:ex |
   ex proceedWith: (Float infinity)
-] 
+]
 -> INF
 ```
 
@@ -2251,7 +2251,7 @@ Exception thrown: MathError(INF (number is infinite))
 
 ## ZX Spectrum Basic
 
-ZX Spectrum BASIC has no infinity handling; 
+ZX Spectrum BASIC has no infinity handling;
 ```zxbasic>PRINT 1/0
 ```
  will be met with <pre
@@ -2282,7 +2282,7 @@ Output will end with:
 Precision has been lost by this stage through the loop, but one more manual double and subtract 1 will get you the true displayable maximum of 1.7014118E+38 (or 2^127-1).
 
 {{omit from|bc|No infinity. Numbers have unlimited precision, so no largest possible value.}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|dc|No infinity. Numbers have unlimited precision, so no largest possible value.}}
 {{omit from|Integer BASIC}}
 {{omit from|Retro|No floating point in standard VM}}

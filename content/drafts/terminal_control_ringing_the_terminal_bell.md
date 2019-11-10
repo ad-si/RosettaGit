@@ -14,7 +14,7 @@ tags = []
 [[Terminal Control::task| ]]
 
 ;Task:
-Make the terminal running the program ring its "bell". 
+Make the terminal running the program ring its "bell".
 
 
 On modern terminal emulators, this may be done by playing some other sound which might or might not be configurable, or by flashing the title bar or inverting the colors of the screen, but was classically a physical bell within the terminal.   It is usually used to indicate a problem where a wrong character has been typed.
@@ -101,7 +101,7 @@ fileappend, `a, *
 ```
 
 
-This requires that you compile the exe in console mode (see Lexikos script to change this) or pipe the file 
+This requires that you compile the exe in console mode (see Lexikos script to change this) or pipe the file
 through more: autohotkey bell.ahk |more
 
 
@@ -236,7 +236,7 @@ bracmat 'put$\a'
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 Assuming the output stream is connected to a TTY, printing BEL should ring its bell.
 
 
@@ -316,15 +316,15 @@ Standard compliant:
 ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. mf-bell.
-       
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  bell-code              PIC X USAGE COMP-X VALUE 22.
        01  dummy-param            PIC X.
-       
+
        PROCEDURE DIVISION.
            CALL X"AF" USING bell-code, dummy-param
-       
+
            GOBACK
            .
 ```
@@ -800,7 +800,7 @@ echo "\a"
 \\ 8/14/2016 aev
 Strchr(7) \\ press <Enter>
 ```
- 
+
 ;or:
 
 ```parigp

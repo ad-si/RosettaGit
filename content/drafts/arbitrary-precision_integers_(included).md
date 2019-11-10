@@ -16,7 +16,7 @@ Using the in-built capabilities of your language, calculate the integer value of
 
          <big><big><math>5^{4^{3^2}}</math></big></big>
 
-*  Confirm that the first and last twenty digits of the answer are:      
+*  Confirm that the first and last twenty digits of the answer are:
       62060698786608744707...92256259918212890625
 *  Find and show the number of decimal digits in the answer.
 
@@ -72,7 +72,7 @@ dup 20 s:lsub . "..." .  20 s:rsub . cr
    (declare (xargs :mode :program))
    (let* ((x (expt 5 (expt 4 (expt 3 2))))
           (s (mv-let (col str)
-                     (fmt1-to-string "~xx" 
+                     (fmt1-to-string "~xx"
                                      (list (cons #\x x))
                                      0)
                 (declare (ignore col))
@@ -192,7 +192,7 @@ def Main()
   var result as Str
   result = Str(5**4**3**2)
   len = result.length()
-  Print(len)  
+  Print(len)
   Print(result[:20])
   Print(result[len-20:])
 end
@@ -215,9 +215,9 @@ quit
 ```
 
 
-Output: 
+Output:
 ```txt
-$ time bc 5432.bc  
+$ time bc 5432.bc
  First 20 digits: 62060698786608744707
   Last 20 digits: 92256259918212890625
 Number of digits: 183231
@@ -351,9 +351,9 @@ main()
 {{out}}
 
 ```txt
-$ make LDLIBS=-lcrypto 5432 
+$ make LDLIBS=-lcrypto 5432
 cc -O2 -pipe    -o 5432 5432.c -lcrypto
-$ time ./5432 
+$ time ./5432
  First 20 digits: 62060698786608744707
   Last 20 digits: 92256259918212890625
 Number of digits: 183231
@@ -367,8 +367,8 @@ Number of digits: 183231
 ### Pure C
 
 {{incorrect|C|Task states that an implementation of big ints should not be done}}
-This is done in pure C.  The multiplication code is slow (grade school, just done using strings), 
-but since the text representation was required, it is MUCH easier to do it this way, than to have 
+This is done in pure C.  The multiplication code is slow (grade school, just done using strings),
+but since the text representation was required, it is MUCH easier to do it this way, than to have
 to implement division and modulus to convert a base 2^32 number into base-10.
 
 
@@ -392,7 +392,7 @@ unsigned char *str_mult(const unsigned char *A, const unsigned char *B)
 	/* convert A and B from ASCII string numbers, into numeric */
 	a = malloc(al+1); strcpy(a, A); for (ax = 0; ax < al; ++ax) a[ax] -= '0';
 	b = malloc(bl+1); strcpy(b, B); for (bx = 0; bx < bl; ++bx) b[bx] -= '0';
-	
+
 	/* grade-school method of multiplication */
 	for (ax = al - 1; ax >= 0; ax--) {
 		int carry = 0;
@@ -483,7 +483,7 @@ int main(int argc, char const *argv[])
                                       ).convert_to<uint64_t>();
     mp::mpz_int res = mp::pow(mp::mpz_int(5), tmpres);
     std::string s = res.str();
-    std::cout << s.substr(0, 20) 
+    std::cout << s.substr(0, 20)
               << "..."
               << s.substr(s.length() - 20, 20) << std::endl;
     return 0;
@@ -520,7 +520,7 @@ static class Program {
         Debug.Assert(result.EndsWith("92256259918212890625"));
 
         Console.WriteLine("n = 5^4^3^2");
-        Console.WriteLine("n = {0}...{1}", 
+        Console.WriteLine("n = {0}...{1}",
             result.Substring(0, 20),
             result.Substring(result.Length - 20, 20)
             );
@@ -654,9 +654,9 @@ This listing includes a few calculations, 12345**9 is an example that demonstrat
        01 number-length        usage binary-long.
 
        01 window-width         constant as 20.
-       01 limit-width          usage binary-long.       
+       01 limit-width          usage binary-long.
        01 number-buffer        pic x(window-width) based.
-       
+
        procedure division.
        arbitrary-main.
 
@@ -789,7 +789,7 @@ Common Lisp has arbitrary precision integers, inherited from MacLisp: "[B]ignums
 
 ```lisp
 (let ((s (format () "~s" (expt 5 (expt 4 (expt 3 2))))))
-  (format t "~a...~a, length ~a" (subseq s 0 20) 
+  (format t "~a...~a, length ~a" (subseq s 0 20)
           (subseq s (- (length s) 20)) (length s)))
 ```
 
@@ -831,8 +831,8 @@ Dart's only integral type '''int''' supports arbitrary length integers.
 ```dart
 void main() {
   var s = pow(5, pow(4, pow(3, 2))).toString();
-  
-  print('contains given digits: ${s.startsWith('62060698786608744707') && s.endsWith('92256259918212890625')}'); 
+
+  print('contains given digits: ${s.startsWith('62060698786608744707') && s.endsWith('92256259918212890625')}');
   print('number of digits: ${s.length}');
 }
 ```
@@ -863,7 +863,7 @@ ly Z sc						[c = length of y]sz
 {{out}}
 
 ```txt
-$ time dc 5432.dc                                                              
+$ time dc 5432.dc
  First 20 digits: 62060698786608744707
   Last 20 digits: 92256259918212890625
 Number of digits: 183231
@@ -907,13 +907,13 @@ E implementations are required to support arbitrary-size integers transparently.
 (string-append "..." (number->string (modulo big (expt 10 n)))))
 
 (define (first-n big (n 20))
-	(while (> big e10000) 
+	(while (> big e10000)
 		(set! big (/ big e10000))) ;; cut 10000 digits at a time
 	(string-append (take (number->string big) n) "..."))
 
 ;; faster than directly using (number-length big)
 (define (digits big (digits 0))
-	(while (> big e10000) 
+	(while (> big e10000)
 		(set! big (/ big e10000))
 		(set! digits (1+ digits)))
 	(+ (* digits 10000) (number-length big)))
@@ -941,11 +941,11 @@ E implementations are required to support arbitrary-size integers transparently.
 defmodule Arbitrary do
   def pow(_,0), do: 1
   def pow(b,e) when e > 0, do: pow(b,e,1)
-  
+
   defp pow(b,1,acc), do: acc * b
   defp pow(b,p,acc) when rem(p,2)==0, do: pow(b*b,div(p,2),acc)
   defp pow(b,p,acc), do: pow(b,p-1,acc*b)
-  
+
   def test do
     s = pow(5,pow(4,pow(3,2))) |> to_string
     l = String.length(s)
@@ -1016,7 +1016,7 @@ pow(B,P,Acc) ->
     pow(B,P-1,Acc*B).
 
 test() ->
-    I = pow(5,pow(4,pow(3,2))),   
+    I = pow(5,pow(4,pow(3,2))),
     S = integer_to_list(I),
     L = length(S),
     Prefix = lists:sublist(S,20),
@@ -1033,7 +1033,7 @@ test() ->
  ok
 
 =={{header|F Sharp|F#}}==
-You can specifiy arbitrary-precision integers (bigint or System.Numeric.BigInteger) in F# by postfixing the number with the letter 'I'. While '**' is the power function, two things should be noted: 
+You can specifiy arbitrary-precision integers (bigint or System.Numeric.BigInteger) in F# by postfixing the number with the letter 'I'. While '**' is the power function, two things should be noted:
 * bigint does not support raising to a power of a bigint
 * The int type does not support the power method
 
@@ -1089,7 +1089,7 @@ program bignum
     implicit none
     type(im) :: a
     integer :: n
-    
+
     call fm_set(50)
     a = to_im(5)**(to_im(4)**(to_im(3)**to_im(2)))
     n = to_int(floor(log10(to_fm(a))))
@@ -1173,7 +1173,7 @@ This prints <CODE>Length=183231, 62060698786608744707...92256259918212890625</CO
 
 
 ```gap
-n:=5^(4^(3^2));; 
+n:=5^(4^(3^2));;
 s := String(n);;
 m := Length(s);
 # 183231
@@ -1294,8 +1294,8 @@ main = do
 
 ```Hoon
 
-=+  big=(pow 5 (pow 4 (pow 3 2)))                                
-=+  digits=(lent (skip <big> |=(a/* ?:(=(a '.') & |))))          
+=+  big=(pow 5 (pow 4 (pow 3 2)))
+=+  digits=(lent (skip <big> |=(a/* ?:(=(a '.') & |))))
 [digits (div big (pow 10 (sub digits 20))) (mod big (pow 10 20))]
 
 ```
@@ -1309,7 +1309,7 @@ main = do
 As of 23 July 2016, the standard library lacks a base-10 logarithm, so the length is computed by pretty-printing the number and counting the length of the resulting string without grouping dots.
 
 =={{header|Icon}} and {{header|Unicon}}==
-Both Icon and Unicon have built-in support for bignums. 
+Both Icon and Unicon have built-in support for bignums.
 
 Note: It takes far longer to convert the result to a string than it does to do the computation itself.
 
@@ -1421,7 +1421,7 @@ It takes however only seconds in RunBASIC, which is written by the same author, 
 Note the brackets are needed to enforce the desired order of exponentiating.
 
 ```lb
-a$ = str$( 5^(4^(3^2))) 
+a$ = str$( 5^(4^(3^2)))
 print len( a$)
 print left$( a$, 20); "......"; right$( a$, 20)
 ```
@@ -1439,13 +1439,13 @@ Julia includes built-in support for arbitrary-precision arithmetic using the [ht
 ```julia>julia
  @elapsed bigstr = string(BigInt(5)^4^3^2)
 0.017507363
- 
-julia> length(bigstr) 
+
+julia> length(bigstr)
 183231
- 
+
 julia> bigstr[1:20]
 "62060698786608744707"
- 
+
 julia> bigstr[end-20:end]
 "892256259918212890625"
 ```
@@ -1462,7 +1462,7 @@ define integer->pow(factor::integer) => {
         ? return 0
 
     local(retVal) = 1
-    
+
     loop(#factor) => { #retVal *= self }
 
     return #retVal
@@ -1537,7 +1537,7 @@ numDigits =
 
       183231
 
->> [sprintf('%d',leadingdigit(answer,20)) '...' sprintf('%d',trailingdigit(answer,20))] 
+>> [sprintf('%d',leadingdigit(answer,20)) '...' sprintf('%d',trailingdigit(answer,20))]
 %First and Last 20 Digits
 
 ans =
@@ -1575,11 +1575,11 @@ module BigInt
         def len = n.Length;
         def first20 = n.Substring(0, 20);
         def last20 = n.Substring(len - 20, 20);
-        
+
         assert (first20 == "62060698786608744707", "High order digits are incorrect");
         assert (last20 == "92256259918212890625", "Low order digits are incorrect");
         assert (len == 183231, "Result contains wrong number of digits");
-        
+
         WriteLine("Result: {0} ... {1}", first20, last20);
         WriteLine($"Length of result: $len digits");
     }
@@ -1640,12 +1640,12 @@ return
 
 ```txt
 
-Run time in seconds: 6.696671 
- 
-Expected result: 62060698786608744707...92256259918212890625 
-  Actual result: 62060698786608744707...92256259918212890625 
-         digits: 183231 
- 
+Run time in seconds: 6.696671
+
+Expected result: 62060698786608744707...92256259918212890625
+  Actual result: 62060698786608744707...92256259918212890625
+         digits: 183231
+
 Result confirmed
 
 ```
@@ -1693,12 +1693,12 @@ return
 
 ```txt
 
-Run time in seconds: 7.103424 
- 
-Expected result: 62060698786608744707...92256259918212890625 
-  Actual result: 62060698786608744707...92256259918212890625 
-         digits: 183231 
- 
+Run time in seconds: 7.103424
+
+Expected result: 62060698786608744707...92256259918212890625
+  Actual result: 62060698786608744707...92256259918212890625
+         digits: 183231
+
 Result confirmed
 
 ```
@@ -1833,7 +1833,7 @@ Oforth handles arbitrary precision integers :
 ```Oforth
 import: mapping
 
-5 4 3 2 pow pow pow >string dup left( 20 ) . dup right( 20 ) . size . 
+5 4 3 2 pow pow pow >string dup left( 20 ) . dup right( 20 ) . size .
 ```
 
 
@@ -2036,7 +2036,7 @@ printf("5**4**3**2 = %s...%s and has %i digits\n", substr($y,0,20), substr($y,-2
 {{out}}
 
 ```perl
-$ time perl transparent-bigint.pl 
+$ time perl transparent-bigint.pl
 5**4**3**2 = 62060698786608744707...92256259918212890625 and has 183231 digits
     1m4.28s real     1m4.30s user     0m0.00s system
 ```
@@ -2150,11 +2150,11 @@ Result: 183231
 ```PowerShell
 #  Perform calculation
 $BigNumber = [BigInt]::Pow( 5, [BigInt]::Pow( 4, [BigInt]::Pow( 3, 2 ) ) )
- 
+
 #  Display first and last 20 digits
 $BigNumberString = [string]$BigNumber
 $BigNumberString.Substring( 0, 20 ) + "..." + $BigNumberString.Substring( $BigNumberString.Length - 20, 20 )
- 
+
 #  Display number of digits
 $BigNumberString.Length
 ```
@@ -2182,7 +2182,7 @@ task(Length) :-
     number_codes(N, Codes),
     append(`62060698786608744707`, _,  Codes),
     append(_, `92256259918212890625`, Codes),
-    
+
     length(Codes, Length).
 
 ```
@@ -2262,8 +2262,8 @@ cat("first 20 digits:",substr(largestr,1,20),"\n",
 {{out}}
 
 ```txt
-first 20 digits: 62060698786608744707 
- last 20 digits: 92256259918212890625 
+first 20 digits: 62060698786608744707
+ last 20 digits: 92256259918212890625
  number of digits:  183231
 ```
 
@@ -2301,9 +2301,9 @@ Most REXXes have a practical limit of around eight million bytes, but that is mo
 
 ### manual setting of decimal digits
 
-Note:  both REXX versions (below) don't work with: 
-:::*   PC/REXX 
-:::*   Personal REXX 
+Note:  both REXX versions (below) don't work with:
+:::*   PC/REXX
+:::*   Personal REXX
 as those REXX versions have a practical maximum of around '''3,700''' or less for '''numeric digits'''   (officially, it's '''4K''').
 
 The '''3,700''' limit is based on the setting of RXISA, program size, and the amount of storage used by REXX variables.
@@ -2385,7 +2385,7 @@ if true == rexx   then say 'passed!'             /*either it passed,  ···    
 
 ## Ruby
 
-Ruby comes with built-in support for arbitrary precision integers. 
+Ruby comes with built-in support for arbitrary precision integers.
 
 
 ```ruby
@@ -2408,7 +2408,7 @@ puts "5**4**3**2 = #{y[0..19]}...#{y[-20..-1]} and has #{y.length} digits"
 
 
 ```runbasic
-x$ = str$( 5^(4^(3^2))) 
+x$ = str$( 5^(4^(3^2)))
 print "Length:";len( x$)
 print left$( x$, 20); "......"; right$( x$, 20)
 ```
@@ -2424,7 +2424,7 @@ Length:183231
 
 ## Rust
 
-This is accomplished via the `num` crate. This used to be part of the standard library, but was relegated to an external crate when Rust hit 1.0. It is still owned and maintained by members of the Rust core team and is the de-facto library for numerical generics and arbitrary precision arithmetic. 
+This is accomplished via the `num` crate. This used to be part of the standard library, but was relegated to an external crate when Rust hit 1.0. It is still owned and maintained by members of the Rust core team and is the de-facto library for numerical generics and arbitrary precision arithmetic.
 
 
 ```rust
@@ -2436,7 +2436,7 @@ use num::pow::pow;
 fn main() {
     let big = BigUint::from_u8(5).unwrap();
     let answer_as_string = format!("{}", pow(big,pow(4,pow(3,2))));
-    
+
       // The rest is output formatting.
     let first_twenty: String = answer_as_string.chars().take(20).collect();
     let last_twenty_reversed: Vec<char> = answer_as_string.chars().rev().take(20).collect();
@@ -2519,7 +2519,7 @@ res23: String = 62060698786608744707
 scala> res22 length
 res24: Int = 183231
 
-scala> 
+scala>
 ```
 
 
@@ -2611,10 +2611,10 @@ function main()
     s = "Success! The integer matches both the first 20 and the last 20 digits. There are " + .tostr(.len(s2), 10) + " digits in the result.{d}{a}"
   else
     s = ""
-    if .lstr(s2, 20) != FIRST20 
+    if .lstr(s2, 20) != FIRST20
       s = "Failure! The first 20 digits are: " + .lstr(s2, 20) + " but they should be: " + FIRST20 + "{d}{a}"
     end if
-    if .rstr(s2, 20) != LAST20 
+    if .rstr(s2, 20) != LAST20
       s = s + "Failure! The first 20 digits are: " + .lstr(s2, 20) + " but they should be: " + LAST20 + "{d}{a}"
     end if
   end if
@@ -2704,17 +2704,17 @@ end;
 it took too long to run
 
 
-###  mLite 
+###  mLite
 
 mLite does not have a logarithm function so one was constructed (see fun log10)
 
 ```sml
 
-fun 
+fun
 	ntol (0, x) = if len x < 1 then [0] else x
        | (n, x) = ntol (n div 10, (n mod 10) :: x)
        | n      = ntol (n, [])
-and  
+and
 	powers_of_10 9 = 1000000000
                | 8 = 100000000
                | 7 = 10000000
@@ -2725,19 +2725,19 @@ and
                | 2 = 100
                | 1 = 10
                | 0 = 1
-and 
+and
 	size (c, 0) = c
        | (c, n > 9999999999) = size (c + 10, trunc (n / 10000000000))
        | (c, n)              = size (c +  1, trunc (n / 10))
        | n                   = size (     0, trunc (n / 10))
-and 
+and
 	makeVisible L = map (fn x = if int x then chr (x + 48) else x) L
-and 
+and
 	log10 (n, 0, x) = ston ` implode ` makeVisible ` rev x
         | (n, c, x) =
             let val n' = n^10;
               val size_n' = size n'
-            in 
+            in
               log10 (n' / powers_of_10 size_n', c - 1, size_n' :: x)
 			end
         | (n, c) =
@@ -2756,7 +2756,7 @@ print "Count  = "; println digitCount;
 val end20 = fiveFourThreeTwo mod (10^20);
 print "End 20 = "; println end20;
 
-val top20 = fiveFourThreeTwo div (10^(digitCount - 20)); 
+val top20 = fiveFourThreeTwo div (10^(digitCount - 20));
 print "Top 20 = "; println top20;
 
 ```
@@ -2767,7 +2767,7 @@ Output
 
  Count = 183231
  End 20 = 92256259918212890625
- Top 20 = 62060698786608744707 
+ Top 20 = 62060698786608744707
 
 ```
 
@@ -3001,7 +3001,7 @@ println(s[0,20],"...",s[-20,*]);
 {{omit from|AWK|Only has double-precision floating-point numbers.}}
 {{omit from|AutoHotkey}}
 {{omit from|Batch File}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|Forth|No support for big integers beyond double-cell integers}}
 {{omit from|PostScript}}
 {{omit from|SAS}}

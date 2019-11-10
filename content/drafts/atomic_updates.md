@@ -49,14 +49,14 @@ var bucket-size
   a:new swap
   (
     \ make a random int up to 1000
-    rand-pcg n:abs 1000 n:mod 
+    rand-pcg n:abs 1000 n:mod
     a:push
   ) swap times
   bucket ! ;
 
 \ display bucket and its total:
-: .bucket 
-  bucket lock @ 
+: .bucket
+  bucket lock @
     dup . space
     ' n:+ 0 a:reduce . cr
   bucket unlock drop ;
@@ -82,13 +82,13 @@ var bucket-size
   rand-pcg n:abs bucket-size @ n:mod dup >r
   repeat
     drop
-    rand-pcg n:abs bucket-size @ n:mod 
+    rand-pcg n:abs bucket-size @ n:mod
     r@ over n:=
-  while! 
+  while!
   r> ;
 
-\ Pick two buckets and make them more equal (by a quarter of their difference): 
-: make-equal 
+\ Pick two buckets and make them more equal (by a quarter of their difference):
+: make-equal
   repeat
     pick2
     bucket lock @
@@ -125,7 +125,7 @@ var bucket-size
   10 genbucket bucket @ a:len bucket-size ! drop
 
   \ print the bucket
-  .bucket 
+  .bucket
 
   \ the problem's tasks:
   ' make-equal t:task
@@ -160,14 +160,14 @@ var bucket-size
 ```ada
 with Ada.Text_IO;  use Ada.Text_IO;
 with Ada.Numerics.Discrete_Random;
- 
+
 procedure Test_Updates is
- 
+
    type Bucket_Index is range 1..13;
    package Random_Index is new Ada.Numerics.Discrete_Random (Bucket_Index);
    use Random_Index;
    type Buckets is array (Bucket_Index) of Natural;
- 
+
    protected type Safe_Buckets is
       procedure Initialize (Value : Buckets);
       function Get (I : Bucket_Index) return Natural;
@@ -176,18 +176,18 @@ procedure Test_Updates is
    private
       Data : Buckets := (others => 0);
    end Safe_Buckets;
- 
+
    protected body Safe_Buckets is
       procedure Initialize (Value : Buckets) is
       begin
          Data := Value;
       end Initialize;
- 
+
       function Get (I : Bucket_Index) return Natural is
       begin
          return Data (I);
       end Get;
- 
+
       procedure Transfer (I, J : Bucket_Index; Amount : Integer) is
          Increment : constant Integer :=
             Integer'Max (-Data (J), Integer'Min (Data (I), Amount));
@@ -195,18 +195,18 @@ procedure Test_Updates is
          Data (I) := Data (I) - Increment;
          Data (J) := Data (J) + Increment;
       end Transfer;
- 
+
       function Snapshot return Buckets is
       begin
          return Data;
       end Snapshot;
    end Safe_Buckets;
- 
+
    Data : Safe_Buckets;
- 
+
    task Equalize;
    task Mess_Up;
- 
+
    task body Equalize is
       Dice : Generator;
       I, J : Bucket_Index;
@@ -217,7 +217,7 @@ procedure Test_Updates is
          Data.Transfer (I, J, (Data.Get (I) - Data.Get (J)) / 2);
       end loop;
    end Equalize;
- 
+
    task body Mess_Up is
       Dice : Generator;
    begin
@@ -225,7 +225,7 @@ procedure Test_Updates is
          Data.Transfer (Random (Dice), Random (Dice), 100);
       end loop;
    end Mess_Up;
- 
+
 begin
    Data.Initialize ((1,2,3,4,5,6,7,8,9,10,11,12,13));
    loop
@@ -286,11 +286,11 @@ loop 100
 	temp := Bucket[B1] + Bucket[B2]
 	Random, value, 0, %temp%
 	Bucket[B1] := value,	Bucket[B2] := temp-value		; redistribute values arbitrarily
-	
+
 	VisualTip := "Original Total = " Originaltotal "`n"
 	loop, %Buckets%
 		VisualTip .= SubStr("0" Bucket[A_Index], -1) " : " x(Bucket[A_Index]) "`n" , total += Bucket[A_Index]
-		
+
 	ToolTip % VisualTip "Current Total = " total
 	if (total <> Originaltotal)
 		MsgBox "Error"
@@ -306,9 +306,9 @@ Randomize(ByRef B1, ByRef B2, Buckets){
 }
 
 x(n){
-	loop, % n 
+	loop, % n
 		Res.= ">"
-	return Res 
+	return Res
 }
 ```
 
@@ -321,26 +321,26 @@ The BBC BASIC interpreter is single-threaded so the 'concurrent' tasks are imple
 
 ```bbcbasic
       INSTALL @lib$+"TIMERLIB"
-      
+
       DIM Buckets%(100)
       FOR i% = 1 TO 100 : Buckets%(i%) = RND(10) : NEXT
-      
+
       tid0% = FN_ontimer(10, PROCdisplay, 1)
       tid1% = FN_ontimer(11, PROCflatten, 1)
       tid2% = FN_ontimer(12, PROCroughen, 1)
-      
+
       ON ERROR PROCcleanup : REPORT : PRINT : END
       ON CLOSE PROCcleanup : QUIT
-      
+
       REPEAT
         WAIT 0
       UNTIL FALSE
       END
-      
+
       DEF PROCdisplay
       PRINT SUM(Buckets%()) " ", MOD(Buckets%())
       ENDPROC
-      
+
       DEF PROCflatten
       LOCAL d%, i%, j%
       REPEAT
@@ -350,7 +350,7 @@ The BBC BASIC interpreter is single-threaded so the 'concurrent' tasks are imple
       d% = Buckets%(i%) - Buckets%(j%)
       PROCatomicupdate(Buckets%(i%), Buckets%(j%), d% DIV 4)
       ENDPROC
-      
+
       DEF PROCroughen
       LOCAL i%, j%
       REPEAT
@@ -359,14 +359,14 @@ The BBC BASIC interpreter is single-threaded so the 'concurrent' tasks are imple
       UNTIL i%<>j%
       PROCatomicupdate(Buckets%(i%), Buckets%(j%), RND(10))
       ENDPROC
-      
+
       DEF PROCatomicupdate(RETURN src%, RETURN dst%, amt%)
       IF amt% > src% amt% = src%
       IF amt% < -dst% amt% = -dst%
       src% -= amt%
       dst% += amt%
       ENDPROC
-      
+
       DEF PROCcleanup
       PROC_killtimer(tid0%)
       PROC_killtimer(tid1%)
@@ -406,7 +406,7 @@ void transfer_value(int from, int to, int howmuch)
 
   if ( (from == to) || ( howmuch < 0 ) ||
        (from < 0 ) || (to < 0) || (from >= N_BUCKETS) || (to >= N_BUCKETS) ) return;
-  
+
   if ( from > to ) {
     int temp1 = from;
     from = to;
@@ -422,7 +422,7 @@ void transfer_value(int from, int to, int howmuch)
     howmuch = buckets[from];
   if ( -howmuch > buckets[to] && swapped )
     howmuch = -buckets[to];
-  
+
   buckets[from] -= howmuch;
   buckets[to] += howmuch;
 
@@ -856,18 +856,18 @@ Now for the test:
         diff (- a-val b-val)
         amt (/ diff 2)]
     (xfer m a b amt)))
-    
+
 (defn randomize [m a b]
   (let [{a-val a b-val b} m
         min-val (min a-val b-val)
         amt (rand-int (- min-val) min-val)]
     (xfer m a b amt)))
-  
+
 (defn test-conc [f data a b n name]
   (dotimes [i n]
     (swap! data f a b)
     (println (str "total is " (reduce + (vals @data)) " after " name " iteration " i))))
-    
+
 (def thread-eq (Thread. #(test-conc equalize *data* :a :b 1000 "equalize")))
 (def thread-rand (Thread. #(test-conc randomize *data* :a :b 1000 "randomize")))
 
@@ -1144,7 +1144,7 @@ def makeDisplayComponent(buckets) {
 
       g.setColor(colors.getWhite())
       g.fillRect(0, 0, pixelsW, pixelsH)
-      
+
       g.setColor(colors.getDarkGray())
       var sum := 0
       for i in 0..!bucketsW {
@@ -1154,7 +1154,7 @@ def makeDisplayComponent(buckets) {
         g.fillRect(x0 + 1, pixelsH - value,
                    x1 - x0 - 1, value)
       }
-      
+
       g.setColor(colors.getBlack())
       g."drawString(String, int, int)"(`Total: $sum`, 2, 20)
     }
@@ -1191,7 +1191,7 @@ doWhileUnresolved(done, fn {
   def j := (ni + 1) %% buckets.size()
   buckets.transfer(i, j, (buckets[i] - buckets[j]) // 4)
   ni := j
-})    
+})
 
 # Messes up buckets
 var mi := 0
@@ -1204,8 +1204,8 @@ doWhileUnresolved(done, fn {
 
 # Updates display at fixed 10 Hz
 # (Note: tries to catch up; on slow systems slow this down or it will starve the other tasks)
-def clock := timer.every(100, def _(_) { 
-  if (Ref.isResolved(done)) { 
+def clock := timer.every(100, def _(_) {
+  if (Ref.isResolved(done)) {
     clock.stop()
   } else {
     display.repaint()
@@ -1458,11 +1458,11 @@ type Buckets(n) =
   let rand = System.Random()
   let mutex = Array.init n (fun _ -> new Mutex())
   let bucket = Array.init n (fun _ -> 100)
-  
+
   member this.Count = n
-  
+
   member this.Item n = bucket.[n]
-  
+
   member private this.Lock is k =
     let is = Seq.sort is
     for i in is do
@@ -1470,7 +1470,7 @@ type Buckets(n) =
     try k() finally
     for i in is do
       mutex.[i].ReleaseMutex()
-  
+
   member this.Transfer i j d =
     if i <> j && d <> 0 then
       let i, j, d = if d > 0 then i, j, d else j, i, -d
@@ -1478,14 +1478,14 @@ type Buckets(n) =
         let d = min d bucket.[i]
         bucket.[i] <- bucket.[i] - d
         bucket.[j] <- bucket.[j] + d)
-  
+
   member this.Read =
     this.Lock [0..n-1] (fun () -> Array.copy bucket)
-  
+
   member this.Print() =
     let xs = this.Read
     printf "%A = %d\n" xs (Seq.sum xs)
-  
+
   interface System.IDisposable with
     member this.Dispose() =
       for m in mutex do
@@ -1785,18 +1785,18 @@ class Buckets {
             cells << random.nextInt(limit)
         }
     }
-    
+
     synchronized getAt(i) {
         cells[i]
     }
-    
+
     synchronized transfer(from, to, amount) {
         assert from in (0..<n) && to in (0..<n)
         def cappedAmt = [cells[from], amount].min()
         cells[from] -= cappedAmt
         cells[to] += cappedAmt
     }
-    
+
     synchronized String toString() { cells.toString() }
 }
 
@@ -1936,7 +1936,7 @@ transfer b@(Buckets n v) i j amt | amt < 0        = transfer b j i (-amt)
 
 roughen, smooth, display :: Buckets -> IO ()
 
-pick buckets = randomRIO (1, size buckets)                   
+pick buckets = randomRIO (1, size buckets)
 
 roughen buckets = forever loop where
   loop = do i <- pick buckets
@@ -1969,14 +1969,14 @@ main = do buckets <- makeBuckets 100
 Sample output:
 
  Total: 10000
- 200       *           *                                   *                                             
- 160       *           *           *            *          *                *  *   *          *        * 
+ 200       *           *                                   *
+ 160       *           *           *            *          *                *  *   *          *        *
  120 **   ** *  ***   ****   **    *   *    *   ** *    * **              * *  *   * *        *   *    **
   80 ***  ** ** ***** **** ******  ****** ***   ** **  ***** * * *****    * * **   * ***     **   *    **
   40 ********** ******************************* ***** ****** *******************  ******* ***************
- 
+
  Total: 10000
- 200                                   *                                                                 
+ 200                                   *
  160                *        *         *                         *     *                      *         *
  120     *  **  *** *  *     **    *  **    *    ** * *    *  ** *   * *  * *    *   * **     *      * **
   80  ***** **  ********     ***   * *** ** **  *** * * ***** ****   ***  *** * ** *** ***  * *** *  * **
@@ -2584,7 +2584,7 @@ The following example can be found in the Logtalk distribution and is used here 
         random::random(0, Limit, Delta),
         transfer(FromBucket, Delta, ToBucket),
         redistribute_loop(N).
-    
+
     display_loop(0) :-
         !.
     display_loop(N) :-
@@ -2625,9 +2625,9 @@ true.
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-transfer[bucks_, src_, dest_, n_] := 
+transfer[bucks_, src_, dest_, n_] :=
   ReplacePart[
-   bucks, {src -> Max[bucks[[src]] - n, 0], 
+   bucks, {src -> Max[bucks[[src]] - n, 0],
     dest -> bucks[[dest]] + Min[bucks[[src]], n]}];
 DistributeDefinitions[transfer];
 SetSharedVariable[bucks, comp];
@@ -2636,15 +2636,15 @@ comp = True;
 Print["Original sum: " <> IntegerString[Plus @@ bucks]];
 Print[Dynamic["Current sum: " <> IntegerString[Plus @@ bucks]]];
 WaitAll[{ParallelSubmit[
-    While[True, While[! comp, Null]; comp = False; 
-     Module[{a = RandomInteger[{1, 20}], b = RandomInteger[{1, 20}]}, 
-      bucks = transfer[bucks, Max[a, b], Min[a, b], 
-        Floor[Abs[bucks[[a]] - bucks[[b]]]/2]]]; comp = True]], 
+    While[True, While[! comp, Null]; comp = False;
+     Module[{a = RandomInteger[{1, 20}], b = RandomInteger[{1, 20}]},
+      bucks = transfer[bucks, Max[a, b], Min[a, b],
+        Floor[Abs[bucks[[a]] - bucks[[b]]]/2]]]; comp = True]],
    ParallelSubmit[
-    While[True, While[! comp, Null]; comp = False; 
-     Module[{src = RandomInteger[{1, 20}], 
-       dest = RandomInteger[{1, 20}]}, 
-      bucks = transfer[bucks, src, dest, 
+    While[True, While[! comp, Null]; comp = False;
+     Module[{src = RandomInteger[{1, 20}],
+       dest = RandomInteger[{1, 20}]},
+      bucks = transfer[bucks, src, dest,
         RandomInteger[{1, bucks[[src]]}]]]; comp = True]]}];
 ```
 
@@ -2679,7 +2679,7 @@ declare
      for I in 1..N do R.I = {Fun} end
      R
   end
-  
+
   Buckets = {Make buckets NBuckets fun {$} {Cell.new StartVal} end}
   Locks = {Make locks NBuckets Lock.new}
   LockList = {Record.toList Locks}
@@ -2695,7 +2695,7 @@ declare
                 }
      Sum = {Record.foldL Snapshot Number.'+' 0}
   in
-     {Print Snapshot}   
+     {Print Snapshot}
      {System.showInfo "  sum: "#Sum}
      Sum = ExpectedSum %% assert
   end
@@ -2712,7 +2712,7 @@ declare
 
   %%
   %% MANIPULATE
-  %%  
+  %%
   proc {Smooth I J}
      Diff = @(Buckets.I) - @(Buckets.J) %% reading without lock: by design
      Amount = Diff div 4
@@ -2853,23 +2853,23 @@ $t1->join; $t2->join; $t3->join;
 ```perl6
 #| A collection of non-negative integers, with atomic operations.
 class BucketStore {
-  
+
   has $.elems is required;
   has @!buckets = ^1024 .pick xx $!elems;
   has $lock     = Lock.new;
- 
+
   #| Returns an array with the contents of all buckets.
   method buckets {
     $lock.protect: { [@!buckets] }
   }
- 
+
   #| Transfers $amount from bucket at index $from, to bucket at index $to.
   method transfer ($amount, :$from!, :$to!) {
     return if $from == $to;
- 
+
     $lock.protect: {
       my $clamped = $amount min @!buckets[$from];
- 
+
       @!buckets[$from] -= $clamped;
       @!buckets[$to]   += $clamped;
     }
@@ -2884,10 +2884,10 @@ my $initial-sum = $bucket-store.buckets.sum;
 Thread.start: {
   loop {
     my @buckets = $bucket-store.buckets;
-    
+
     # Pick 2 buckets, so that $to has not more than $from
     my ($to, $from) = @buckets.keys.pick(2).sort({ @buckets[$_] });
-    
+
     # Transfer half of the difference, rounded down
     $bucket-store.transfer: ([-] @buckets[$from, $to]) div 2, :$from, :$to;
   }
@@ -2897,10 +2897,10 @@ Thread.start: {
 Thread.start: {
   loop {
     my @buckets = $bucket-store.buckets;
-    
+
     # Pick 2 buckets
     my ($to, $from) = @buckets.keys.pick(2);
- 
+
     # Transfer a random portion
     $bucket-store.transfer: ^@buckets[$from] .pick, :$from, :$to;
   }
@@ -2909,12 +2909,12 @@ Thread.start: {
 # Loop to display buckets
 loop {
   sleep 1;
-  
+
   my @buckets = $bucket-store.buckets;
   my $sum = @buckets.sum;
-  
+
   say "{@buckets.fmt: '%4d'}, total $sum";
-  
+
   if $sum != $initial-sum {
     note "ERROR: Total changed from $initial-sum to $sum";
     exit 1;
@@ -3175,7 +3175,7 @@ If OpenWindow(0,0,0,100,150,"Atomic updates",#PB_Window_SystemMenu)
   ; Set up a small GUI
   For i=0 To 9
     TextGadget(i, 0,i*15,50, 15,"Bucket #"+Str(i))
-  Next i 
+  Next i
   TextGadget(10,55,135,40,15,"=")
   AddWindowTimer(0,0,500)
   Buckets(0)=#TotalAmount
@@ -3188,7 +3188,7 @@ If OpenWindow(0,0,0,100,150,"Atomic updates",#PB_Window_SystemMenu)
         SetGadgetText(i, Str(Inventory(i)))
       Next i
     EndIf
-  Until Event=#PB_Event_CloseWindow 
+  Until Event=#PB_Event_CloseWindow
   Quit=#True  ; Tell threads to shut down
   WaitThread(Thread1): WaitThread(Thread2)
 EndIf
@@ -3328,7 +3328,7 @@ Sample Output:
       (define j (min (floor (* i (/ n 9))) (sub1 n)))
       (printf "~a (~a). " (add1 i) (add1 j))
       (displayln (list-ref log j)))))
-  
+
 (define *log* (list (show-buckets)))
 
 (define-syntax-rule (inc! x) (set! x (add1 x)))
@@ -3347,7 +3347,7 @@ Sample Output:
 (define (clamp i j)
   (cond [*clamp-lock* (inc! *blocks*)
                       #f]
-        [else (set! *clamp-lock* #t) 
+        [else (set! *clamp-lock* #t)
               (let ([result #f]
                     [g (gensym)])
                 (unless (locked? i)
@@ -3362,11 +3362,11 @@ Sample Output:
 (define (unclamp i j)
   (unlock! i)
   (unlock! j))
-  
+
 (define (transfer i j amount)
   (let* ([lock1 (locked? i)]
          [lock2 (locked? j)]
-         [a (get-value i)] 
+         [a (get-value i)]
          [b (get-value j)]
          [c (- a amount)]
          [d (+ b amount)])
@@ -3377,18 +3377,18 @@ Sample Output:
                                             (set! *log*
                                                   (cons (show-buckets) *log*))]
           [else (error 'transfer "Lock problem")])))
-                     
+
 (define (equalize i j)
   (when (clamp i j)
     (let ([a (get-value i)]
           [b (get-value j)])
       (unless (= a b)
-        (transfer i j (if (> a b) 
+        (transfer i j (if (> a b)
                           (floor (/ (- a b) 2))
                           (- (floor (/ (- b a) 2)))))
         (inc! *equalizations*)))
         (unclamp i j)))
-      
+
 (define (randomize i j)
   (when (clamp i j)
     (let* ([a (get-value i)]
@@ -3437,22 +3437,22 @@ Equalizations 33616, Randomizations 159240, Transfers: 192857, Blocks 579035
 
 bucket = list(10)
 f2 = 0
-for i = 1 to 10 
+for i = 1 to 10
      bucket[i] = floor(random(9)*10)
 next
- 
+
 a = display("display:")
-see nl	
-a = flatten(a)	
-see "" + a + nl
-a = display("flatten:")	
 see nl
-a = transfer(3,5)	
+a = flatten(a)
+see "" + a + nl
+a = display("flatten:")
+see nl
+a = transfer(3,5)
 see a + nl
-see "19 from 3 to 5: "	
+see "19 from 3 to 5: "
 a = display(a)
 see nl
- 
+
 func display(a)
         display = 0
         see "" + a + " " + char(9)
@@ -3462,15 +3462,15 @@ func display(a)
         next
        see " total:" + display
        return display
- 
+
 func flatten(f)
         f1 = floor((f / 10) + 0.5)
         for i = 1 to 10
              bucket[i] = f1
              f2	 = f2 + f1
-        next 
+        next
         bucket[10] = bucket[10] + f - f2
- 
+
 func transfer(a1,a2)
         transfer = floor(random(9)/10 * bucket[a1])
         bucket[a1] = bucket[a1] - transfer
@@ -3594,10 +3594,10 @@ end
 Sample Output:
 
 ```txt
- 221  521  331 1186  654  185  521   19, total 3638                             
- 455  455  455  455  454  454  455  455, total 3638                             
- 455  455  455  455  454  454  455  455, total 3638                             
- 755    3  115   10  598 1326  515  316, total 3638                             
+ 221  521  331 1186  654  185  521   19, total 3638
+ 455  455  455  455  454  454  455  455, total 3638
+ 455  455  455  455  454  454  455  455, total 3638
+ 755    3  115   10  598 1326  515  316, total 3638
 ```
 
 
@@ -3623,7 +3623,7 @@ FUNCTION display(a$)
     next i
   print " Total:";display
 END FUNCTION
- 
+
 FUNCTION flatten(f)
    f1 = int((f / 10) + .5)
    for i = 1 to 10
@@ -3704,7 +3704,7 @@ fn main() {
     let r_buckets = e_buckets.clone();
     let p_buckets = e_buckets.clone();
 
-    thread::spawn(move || { 
+    thread::spawn(move || {
         let mut rng = rand::thread_rng();
         loop {
             let mut buckets = e_buckets.lock().unwrap();
@@ -3740,7 +3740,7 @@ fn main() {
 object AtomicUpdates {
 
   class Buckets(ns: Int*) {
-    
+
     import scala.actors.Actor._
 
     val buckets = ns.toArray
@@ -4082,11 +4082,11 @@ fcn threadE(b){ while(1) { b.transferEq();  } }
 b:=B();
 do(10){ threadA.launch(b); } do(10){ threadE.launch(b); }
 
-while(1){ 
-   v:=b.values(); 
+while(1){
+   v:=b.values();
    v.println("-->",v.sum(),"  ", b.cnt.value," transfers ",
-	     vm.numThreads," threads"); 
-   Atomic.sleep(2.5); 
+	     vm.numThreads," threads");
+   Atomic.sleep(2.5);
 }
 ```
 
@@ -4119,7 +4119,7 @@ class C{
       pipe = Thread.Pipe(), cnt=Atomic.Int();
    fcn init{
       pipe.write(buckets);
-      "Initial sum: ".println(values().sum()); 
+      "Initial sum: ".println(values().sum());
    }
    fcn transferArb{  // transfer arbitary amount from 1 bucket to another
       b1:=(0).random(N); b2:=(0).random(N);
@@ -4148,7 +4148,7 @@ class C{
 
 {{omit from|AWK}}
 {{omit from|Befunge}}
-{{omit from|Brainf***}}
+{{omit from|Brainfuck}}
 {{omit from|gnuplot}}
 {{omit from|JavaScript}}
 {{omit from|LaTeX}}

@@ -13,7 +13,7 @@ tags = []
 {{task|String_manipulation}}
 
 ;Task:
-Generate an array, list, lazy sequence, or even an indexable string of all the lower case ASCII characters, from <big> a </big> to <big> z.</big> If the standard library contains such a sequence, show how to access it, but don't fail to show how to generate a similar sequence. 
+Generate an array, list, lazy sequence, or even an indexable string of all the lower case ASCII characters, from <big> a </big> to <big> z.</big> If the standard library contains such a sequence, show how to access it, but don't fail to show how to generate a similar sequence.
 
 For this basic task use a reliable style of coding, a style fit for a very large program, and use strong typing if available. It's bug prone to enumerate all the lowercase characters manually in the code. During code review it's not immediate obvious to spot the bug in a Tcl line like this contained in a page of code:
 
@@ -38,7 +38,7 @@ This creates the list in the queue
 
 ## 360 Assembly
 
-In EBCDIC coding there are more than 24 characters between a and z. 
+In EBCDIC coding there are more than 24 characters between a and z.
 So we have to get rid of characters between i and j and also between r and s.
 
 ```360asm
@@ -46,7 +46,7 @@ So we have to get rid of characters between i and j and also between r and s.
 LOWER    CSECT
          USING  LOWER,R15          set base register
          LA     R7,PG              pgi=@pg
-         SR     R6,R6              clear 
+         SR     R6,R6              clear
          IC     R6,=C'a'           char='a'
          BCTR   R6,0               char=char-1
 LOOP     LA     R6,1(R6)           char=char+1
@@ -132,8 +132,8 @@ abcdefghijklmnopqrstuvwxyz
 ## ABAP
 
 
-###  Example with simple write statement 
- 
+###  Example with simple write statement
+
 
 ```ABAP
 REPORT lower_case_ascii.
@@ -248,10 +248,10 @@ Alternative version
 
 ```AppleScript
 on run
-    
+
     {enumFromTo("a", "z"), ¬
         enumFromTo("🐐", "🐟")}
-    
+
 end run
 
 -- GENERIC FUNCTIONS ---------------------------------------------------------
@@ -290,9 +290,9 @@ end signum
 {{Out}}
 
 ```AppleScript
-{{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
-"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}, 
-{"🐐", "🐑", "🐒", "🐓", "🐔", "🐕", "🐖", "🐗", 
+{{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"},
+{"🐐", "🐑", "🐒", "🐓", "🐔", "🐕", "🐖", "🐗",
 "🐘", "🐙", "🐚", "🐛", "🐜", "🐝", "🐞", "🐟"}}
 ```
 
@@ -401,7 +401,7 @@ EndFunc
 ## AWK
 
 {{works with|gawk}}
-Generate all character codes, and test each one if it matches 
+Generate all character codes, and test each one if it matches
 the POSIX character class for "lowercase".
 
 Note this is dependent on the locale-setting,
@@ -634,7 +634,7 @@ The left hand side pushes the sequence 'a' to 'z' onto the stack in reverse orde
 ```
 
 
-=={{header|Brainf***}}==
+=={{header|Brainfuck}}==
 
 
 ```bf
@@ -756,7 +756,7 @@ abcdefghijklmnopqrstuvwxyz
 ```
 
 
-Old style Property and enumerable based solution 
+Old style Property and enumerable based solution
 
 ```csharp
 namespace RosettaCode.GenerateLowerCaseASCIIAlphabet
@@ -945,7 +945,7 @@ Output:
 
 ```txt
 
-abcdefghijklmnopqrstuvwxyz                                                                          
+abcdefghijklmnopqrstuvwxyz
 
 ```
 
@@ -1034,15 +1034,15 @@ ELENA 4.1 :
 ```elena
 import extensions;
 import system'collections;
- 
+
 singleton Alphabet : Enumerable
 {
     Enumerator enumerator() = new Enumerator::
     {
         char current;
- 
+
         get() = current;
- 
+
         bool next()
         {
             if (nil==current)
@@ -1057,19 +1057,19 @@ singleton Alphabet : Enumerable
             {
                 ^ false
             };
- 
+
             ^ true
         }
- 
+
         reset()
         {
             current := nil
         }
- 
+
         enumerable() = self;
     };
 }
- 
+
 public program()
 {
     console.printLine(Alphabet)
@@ -1202,19 +1202,19 @@ Two methods are demonstrated below
 <lang>create lalpha    27 chars allot    \ create a string in memory for 26 letters and count byte
 
 : ]lalpha ( index -- addr )              \ index the string like an array (return an address)
-          lalpha char+ + ;       
+          lalpha char+ + ;
 
 \ method 1: fill memory with ascii values using a loop
-: fillit ( -- )               
+: fillit ( -- )
          26 0
          do
-           [char] a I +            \ calc. the ASCII value, leave on the stack  
+           [char] a I +            \ calc. the ASCII value, leave on the stack
            I ]lalpha c!            \ store the value on stack in the string at index I
          loop
          26 lalpha c! ;            \ store the count byte at the head of the string
 
 
-\ method 2: load with a string literal 
+\ method 2: load with a string literal
 : Loadit    s" abcdefghijklmnopqrstuvwxyz" lalpha PLACE ;
 
 
@@ -1515,7 +1515,7 @@ In ES6, the new '''String.fromCodePoint()''' method can can return 4-byte charac
   ['🐐', '🐟']
 ]);
 ```
- 
+
 
 Output:
 
@@ -1524,7 +1524,7 @@ Output:
 [["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
  ["🐐", "🐑", "🐒", "🐓", "🐔", "🐕", "🐖", "🐗", "🐘", "🐙", "🐚", "🐛", "🐜", "🐝", "🐞", "🐟"]]
 ```
- 
+
 
 {{works with|ECMAScript|6}}
 
@@ -1793,7 +1793,7 @@ function getAlphabet ()
 end
 
 local alpha = getAlphabet()
-print(alpha[25] .. alpha[1] .. alpha[25]) 
+print(alpha[25] .. alpha[1] .. alpha[25])
 ```
 
 {{Out}}
@@ -1850,7 +1850,7 @@ delete([], makelist(if(alphacharp(ascii(i))) then parse_string(ascii(i)) else []
 {{Out}}
 
 ```txt
- [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z] 
+ [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]
 ```
 
 
@@ -1959,7 +1959,7 @@ LOWASCMIN
 ```txt
 
 SAMPLES>DO ^LOWASCMIN
-a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z         
+a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
 
 ```
 
@@ -2180,9 +2180,9 @@ gen: procedure options (main);  /* 7 April 2014. */
    declare i fixed binary;
 
    letters(1), letter = lowercase('A');
- 
+
    do i = 2 to 26;
-      iletters(i) = iletters(i-1) + 1;    
+      iletters(i) = iletters(i-1) + 1;
    end;
    put edit (letters) (a);
 
@@ -2493,7 +2493,7 @@ sapply(97:122, intToUtf8)
 
 ### ASCII version
 
-This version only works under ASCII machines   (where the values of the lowercase '''a''' through the lowercase '''z''' characters are contiguous (and consecutive).  
+This version only works under ASCII machines   (where the values of the lowercase '''a''' through the lowercase '''z''' characters are contiguous (and consecutive).
 
 ```rexx
 /* REXX ---------------------------------------------------------------
@@ -2512,17 +2512,17 @@ abcdefghijklmnopqrstuvwxyz
 
 ### idiomatic version
 
-This REXX version shows how to generate an indexable string of a similar sequence   as per the 
+This REXX version shows how to generate an indexable string of a similar sequence   as per the
 
-lowercase ASCII alphabet   (or rather, the Latin [English] alphabet),   using a reliable style of coding   
+lowercase ASCII alphabet   (or rather, the Latin [English] alphabet),   using a reliable style of coding
 
-(for both   '''ASCII'''   and   '''EBCDIC'''   systems). 
+(for both   '''ASCII'''   and   '''EBCDIC'''   systems).
 
-This version also works on non-ASCII systems   (such as EBCDIC)   and isn't dependent on the 
+This version also works on non-ASCII systems   (such as EBCDIC)   and isn't dependent on the
 
 consecutiveness nature of any particular ASCII character subsequence.
 
-Note that on an '''EBCDIC''' system,   there are   '''41'''   characters between (lowercase)   <big><big> a </big></big>   ──►   <big><big> z </big></big>     
+Note that on an '''EBCDIC''' system,   there are   '''41'''   characters between (lowercase)   <big><big> a </big></big>   ──►   <big><big> z </big></big>
 
 (inclusive),   some of which don't have viewable/displayable glyphs.
 
@@ -2576,7 +2576,7 @@ fn main() {
     // An iterator over the lowercase alpha's
     let ascii_iter = (0..26)
         .map(|x| (x + b'a') as char);
- 
+
     println!("{:?}", ascii_iter.collect::<Vec<char>>());
 }
 ```
@@ -2641,7 +2641,7 @@ object Abc extends App {
 ```
 {{out}}
  Successfully completed without errors. [within 675 ms]
- 
+
  Process finished with exit code 0
 
 
@@ -2787,21 +2787,21 @@ Previously, it was claimed that the method that maps ascii number to character i
 
 ```SuperCollider
 
-(97..122).asAscii; // This example unfortunately throws an error 
+(97..122).asAscii; // This example unfortunately throws an error
                    // for me when running it on version 3.10.2
 
-// Apparently, the message 'asAscii' cannot be understood by 
-// an Array, so I used the message 'collect' to apply the function 
-// enclosed in {} to each individual element of the Array, 
+// Apparently, the message 'asAscii' cannot be understood by
+// an Array, so I used the message 'collect' to apply the function
+// enclosed in {} to each individual element of the Array,
 // passing them the message 'asAscii':
 
-(97..122).collect({|asciiCode| asciiCode.asAscii}); 
+(97..122).collect({|asciiCode| asciiCode.asAscii});
 
-// Instead of writing the ascii codes directly as numbers, 
-// one could also pass the chars a and z the message 'ascii' to convert 
+// Instead of writing the ascii codes directly as numbers,
+// one could also pass the chars a and z the message 'ascii' to convert
 // them to ascii codes – perhaps making the code a bit clearer:
 
-($a.ascii..$z.ascii).collect({|asciiCode| asciiCode.asAscii}); 
+($a.ascii..$z.ascii).collect({|asciiCode| asciiCode.asAscii});
 
 // both examples output [ a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z ]
 
@@ -2858,7 +2858,7 @@ set alpha [apply {{} {
 
 ## UNIX Shell
 
-In bash or ksh93 with <tt>braceexpand</tt> set: 
+In bash or ksh93 with <tt>braceexpand</tt> set:
 
 ```sh
 lower=({a..z})
