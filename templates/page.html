@@ -33,7 +33,9 @@
 
     <div itemprop="articleBody">
       {% if page.extra.task %}
-        <p class="task">{{page.extra.task}}</p>
+        <div class="task">
+          {{page.extra.task | markdown | safe}}
+        </div>
       {% endif %}
 
       {{ page.content | safe }}

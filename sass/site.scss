@@ -67,6 +67,7 @@ section {
 }
 
 pre {
+  border-radius: 5px;
   padding: 1rem;
   overflow-x: scroll;
   font-size: 0.85rem;
@@ -119,6 +120,10 @@ blockquote {
 }
 
 img {
+  max-width: 100%;
+}
+
+video {
   max-width: 100%;
 }
 
@@ -309,6 +314,10 @@ main {
   background-color: $color-task-bg;
   padding: 0.8em 1.4em;
   margin-bottom: 2rem;
+
+  :last-child {
+    margin-bottom: 0;
+  }
 }
 
 footer {
