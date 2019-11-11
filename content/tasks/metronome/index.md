@@ -5,36 +5,40 @@ date = 2019-05-20T13:38:22Z
 aliases = []
 [extra]
 id = 10462
+task = """
+  Implement a Metronome.
+  It should be capable of producing high and low audio beats,
+  accompanied by a visual beat indicator,
+  and the beat pattern and tempo should be configurable.
+"""
 [taxonomies]
 categories = []
-tags = []
+tags = ["music", "metronome"]
 +++
 
-{{task}}<!--{{task|Temporal media}}-->
-[[File:Metronome.jpg|420px||right]]
+![An image of a mechanical metronome](metronome.jpeg)
 
-The task is to implement a   [https://en.wikipedia.org/wiki/Metronomemetronome metronome]. 
+For the purpose of this task,
+it is acceptable to play sound files for production of the beat notes,
+and an external player may be used.
 
-The metronome should be capable of producing high and low audio beats, accompanied by a visual beat indicator, and the beat pattern and tempo should be configurable.
+However, the playing of the sounds should not interfere
+with the timing of the metronome.
 
-For the purpose of this task, it is acceptable to play sound files for production of the beat notes, and an external player may be used. 
+The visual indicator can simply be a blinking red or green area of the screen
+(depending on whether a high or low beat is being produced),
+and the metronome can be implemented using a terminal display,
+or optionally, a graphical display, depending on the language capabilities.
 
-However, the playing of the sounds should not interfere with the timing of the metronome.
-
-The visual indicator can simply be a blinking red or green area of the screen (depending on whether a high or low beat is being produced), and the metronome can be implemented using a terminal display, or optionally, a graphical display, depending on the language capabilities. 
-
-If the language has no facility to output sound, then it is permissible for this to implemented using just the visual indicator.
-
-
-
+If the language has no facility to output sound,
+then it is permissible for this to implemented using just the visual indicator.
 
 
 ## Ada
 
-{{This metronome only does 60 bpm with 1 Measure length.}}
+This metronome only does 60 bpm with 1 Measure length.
 
 ```Ada
-      
 with Ada.Text_IO;   use Ada.Text_IO;
 
  --This package is for the delay.
@@ -48,22 +52,22 @@ procedure Main is
 begin
 
    Put_Line ("Hello, this is 60 BPM");
-   
+
    loop
 
       Ada.Text_IO.Put (Ada.Characters.Latin_1.BEL);
       delay 0.9; --Delay in seconds.  If you change to 0.0 the program will crash.
-      
+
    end loop;
 
 end Main;
 ```
 
 
-
 ## AutoHotkey
 
-Rather basic implementation, but meets the requirements and is reasonably accurate.
+Rather basic implementation,
+but meets the requirements and is reasonably accurate.
 
 ```AHK
 bpm      = 120 ; Beats per minute
@@ -102,6 +106,7 @@ Esc::
 
 ## AppleScript
 
+```applescript
 set bpm to the text returned of (display dialog "How many beats per minute?" default answer 60)
 
 set pauseBetweenBeeps to (60 / bpm)
@@ -113,13 +118,12 @@ repeat
 	delay pauseBetweenBeeps
 
 end repeat
+```
 
 
 ## AWK
 
-
 ```AWK
-
 # syntax: GAWK -f METRONOME.AWK
 @load "time"
 BEGIN {
@@ -140,10 +144,9 @@ function metronome(beats_per_min,beats_per_bar,limit,  beats,delay,errors) {
       sleep(delay)
     }
 }
-
 ```
 
-{{out}}
+Output:
 
 ```txt
 
@@ -160,12 +163,12 @@ TICK tick tick tick
 
 ## BBC BASIC
 
-{{works with|BBC BASIC for Windows}}
+Works with BBC BASIC for Windows
 
 ```bbcbasic
       BeatPattern$ = "HLLL"
       Tempo% = 100
-      
+
       *font Arial,36
       REPEAT
         FOR beat% = 1 TO LEN(BeatPattern$)
@@ -187,12 +190,16 @@ TICK tick tick tick
 ```
 
 
-
 ## C
 
-Using <code>usleep</code> with self correcting delays.  Audio is the bell character, which will definitely drive one insane (but I'm ok: my computer doesn't have the bell device).  Invoke with <code>./a.out [beats_per_minute]</code>, default to 60.
+Using `usleep` with self correcting delays.
+Audio is the bell character,
+which will definitely drive one insane
+(but I'm ok: my computer doesn't have the bell device).
+Invoke with `./a.out [beats_per_minute]`, default to 60.
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -282,7 +289,6 @@ int main(int c, char**v)
 ```
 
 
-
 ## Common Lisp
 
 Depends on quicklisp and OpenAL.
@@ -354,6 +360,7 @@ FREQUENCY, and SAMPLING-FREQUENCY."
                      (terpri)))))))))))
 ```
 
+Output:
 
 ```txt
 CL-USER> (metronome 100 '(h l l l))
@@ -362,26 +369,19 @@ HLL; Evaluation aborted on NIL.
 ```
 
 
-
 ## EchoLisp
 
-
 ```scheme
-
 ;; available preloaded sounds are : ok, ko, tick, tack, woosh, beep, digit .
 (lib 'timer)
 
 (define (metronome) (blink) (play-sound 'tack))
 (at-every 1000 'metronome) ;; every 1000 msec
 ;; CTRL-C to stop
-
 ```
 
 
-
-
 ## Factor
-
 
 ```factor
 USING: accessors calendar circular colors.constants colors.hsv
@@ -455,45 +455,44 @@ MAIN: metronome-main
 ```
 
 
-
-=={{header|F Sharp|F#}}==
+## F\#
 
 ```fsharp
 open System
 open System.Threading
 // You can use .wav files for your clicks.
-// If used, make sure they are in the same file 
+// If used, make sure they are in the same file
 // as this program's executable file.
-let high_pitch = 
+let high_pitch =
     new System.Media.SoundPlayer("Ping Hi.wav")
-let low_pitch = 
+let low_pitch =
     new System.Media.SoundPlayer("Ping Low.wav")
 let factor x y = x / y
 // Notice that exact bpm would not work by using
 // Thread.Sleep() as there are additional function calls
 // that would consume a miniscule amount of time.
 // This number may need to be adjusted based on the cpu.
-let cpu_error = -750.0  
+let cpu_error = -750.0
 let print = function
 | 1 -> high_pitch.Play(); printf "\nTICK "
 | _ -> low_pitch.Play(); printf "tick "
-let wait (time:int) = 
+let wait (time:int) =
     Thread.Sleep(time)
 // Composition of functions
 let tick = float>>factor (60000.0+cpu_error)>>int>>wait
-let rec play beats_per_measure current_beat beats_per_minute = 
+let rec play beats_per_measure current_beat beats_per_minute =
     match current_beat, beats_per_measure with
-    | a, b -> 
+    | a, b ->
         current_beat |> print
         beats_per_minute |> tick
-        if a <> b then 
+        if a <> b then
             beats_per_minute |> play beats_per_measure (current_beat + 1)
 [<EntryPointAttribute>]
-let main (args : string[]) = 
+let main (args : string[]) =
     let tempo, beats = int args.[0], int args.[1]
     Seq.initInfinite (fun i -> i + 1)
     |> Seq.iter (fun _ -> tempo |> play beats 1 |> ignore)
-    0 
+    0
 ```
 
 Sample run:
@@ -506,9 +505,7 @@ TICK tick tick tick tick tick
 TICK tick tick tick tick tick
 TICK tick tick tick tick tick
 TICK tick tick^C
-
 ```
-
 
 
 ## Go
@@ -519,7 +516,7 @@ to change bpm and bpb into command line arguments,
 make it a function/object,
 and/or substitute sound production instead of text output.
 
-<code>time.Ticker</code>'s documentation says that it
+`time.Ticker`'s documentation says that it
 "adjusts the intervals or drops ticks to make up for slow receivers".
 So, as long as the output or sound production finishes before the next tick,
 the timing will be reliable and will not drift which is the gist of this task.
@@ -552,24 +549,20 @@ func main() {
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 Delay: 833.333333ms
 
-TICK tick tick tick 
-TICK tick tick tick 
+TICK tick tick tick
+TICK tick tick tick
 TICK tick ^C
-
 ```
 
 
 ## Haskell
 
-
-{{works with|GHC|7.4.2}}
-
+Works with GHC 7.4.2
 
 ```Haskell
 import Control.Concurrent
@@ -627,19 +620,27 @@ metronome p i = do
 ```
 
 
-
 ## J
 
-The explicit version (nbars,t) MET (barlengths;bpm) prints a bell character every beat, accompanied by a sequence of slashes, spaces, and backspaces to create a little animation. It includes a beat hand and a measure (or bar) hand.
+The explicit version (nbars,t) MET (barlengths;bpm)
+prints a bell character every beat,
+accompanied by a sequence of slashes, spaces,
+and backspaces to create a little animation.
+It includes a beat hand and a measure (or bar) hand.
 
-MET can take several barlengths and bpm values, in which case it will cycle through them individually at each measure, creating (perhaps) interesting patterns. It will stop when nbars measures have been cycled through, or at the end of the current measure if the time limit is exceeded. The clock is self correcting.
+MET can take several barlengths and bpm values,
+in which case it will cycle through them individually at each measure,
+creating (perhaps) interesting patterns.
+It will stop when nbars measures have been cycled through,
+or at the end of the current measure if the time limit is exceeded.
+The clock is self correcting.
 
 MET returns the total number of measures, beats, and elapsed time.
 
-If you leave out the left arguments, it will set them to infinity, so you can go insane without worrying about the metronome ever stopping.
+If you leave out the left arguments, it will set them to infinity,
+so you can go insane without worrying about the metronome ever stopping.
 
 ```j
-
 MET=: _ _&$: :(4 : 0)
 
   'BEL BS LF CR'=. 7 8 10 13 { a.
@@ -671,22 +672,21 @@ MET=: _ _&$: :(4 : 0)
 
   print clrln
   i , j , t - ti
-
 )
+```
 
+Basic tacit version; this is probably considered bad coding style. At least I removed the "magic constants". Sort of.
+The above version is by far superior.
 
-NB. Basic tacit version; this is probably considered bad coding style. At least I removed the "magic constants". Sort of.
-NB. The above version is by far superior.
+```
 'BEL BS LF'=: 7 8 10 { a.
 '`print delay'=: 1!:2&4`(6!:3)
 met=: _&$: :((] ({:@] [ LF print@[ (-.@{.@] [ delay@[ print@] (BEL,2#BS) , (2 2$'\  /') {~ {.@])^:({:@])) 1 , <.@%) 60&% [ print@('\ '"_))
-
 ```
 
-{{out}}
+Output:
 
 ```txt
-
    16 60 MET 4;120
 4  / 120  /
 
@@ -697,21 +697,18 @@ met=: _&$: :((] ({:@] [ LF print@[ (-.@{.@] [ delay@[ print@] (BEL,2#BS) , (2 2$
 
    MET 4 8;120 240    NB. It can almost make music!
 bpb \  bpm \
-
 ```
 
 
 ## Java
 
-
 ```java
-
 class Metronome{
 	double bpm;
 	int measure, counter;
 	public Metronome(double bpm, int measure){
 		this.bpm = bpm;
-		this.measure = measure;	
+		this.measure = measure;
 	}
 	public void start(){
 		while(true){
@@ -739,11 +736,9 @@ public class test {
 ```
 
 
-
 ## Julia
 
-{{works with|Julia|0.6}}
-
+Works with Julia 0.6
 
 ```julia
 function metronome(bpm::Real=72, bpb::Int=4)
@@ -762,42 +757,36 @@ end
 ```
 
 
-
 ## Kotlin
-
 
 ```scala
 // version 1.1.2
 
-fun metronome(bpm: Int, bpb: Int, maxBeats: Int = Int.MAX_VALUE) {    
+fun metronome(bpm: Int, bpb: Int, maxBeats: Int = Int.MAX_VALUE) {
     val delay = 60_000L / bpm
     var beats = 0
     do {
         Thread.sleep(delay)
         if (beats % bpb == 0) print("\nTICK ")
         else print("tick ")
-        beats++ 
+        beats++
     }
     while (beats < maxBeats)
     println()
 }
 
-fun main(args: Array<String>) = metronome(120, 4, 20) // limit to 20 beats 
+fun main(args: Array<String>) = metronome(120, 4, 20) // limit to 20 beats
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
-TICK tick tick tick 
-TICK tick tick tick 
-TICK tick tick tick 
-TICK tick tick tick 
-TICK tick tick tick 
-
+TICK tick tick tick
+TICK tick tick tick
+TICK tick tick tick
+TICK tick tick tick
+TICK tick tick tick
 ```
-
 
 
 ## Liberty BASIC
@@ -893,10 +882,9 @@ end sub
 ```
 
 
-
 ## Perl
 
-The module <code>Time::HiRes</code> provides sub-second <tt>sleep</tt>. Text output only.
+The module `Time::HiRes` provides sub-second <tt>sleep</tt>. Text output only.
 
 ```perl
 use Time::HiRes qw(sleep gettimeofday);
@@ -921,8 +909,7 @@ for (my $next_time = $base_time ; ; $next_time += $duration) {
 }
 ```
 
-Sample run
-{{out}}
+Output:
 
 ```txt
 $ metronome 60 6
@@ -931,14 +918,18 @@ TICK tick tick tick tick tick
 TICK tick tick tick tick tick
 TICK tick tick tick tick tick
 ^C
-
 ```
-
 
 
 ## Perl 6
 
-This code only uses textual output, but any noise-generating commands may be substituted; as long as they are executed synchronously, and do not run longer than the specified duration, the timing loop will compensate, since the sequence operator is determining a list of absolute times for each <tt>sleep</tt> to target.
+This code only uses textual output,
+but any noise-generating commands may be substituted;
+as long as they are executed synchronously,
+and do not run longer than the specified duration,
+the timing loop will compensate,
+since the sequence operator is determining a list of absolute times
+for each <tt>sleep</tt> to target.
 
 ```perl6
 sub MAIN ($beats-per-minute = 72, $beats-per-bar = 4) {
@@ -968,13 +959,10 @@ TICK tick tick tick tick tick
 TICK tick tick tick tick tick
 TICK tick tick tick tick tick
 TICK tick tick^C
-
 ```
 
 
-
 ## Phix
-
 
 ```Phix
 integer tempo = 120,    -- beats per minute (max 800)
@@ -983,7 +971,7 @@ integer tempo = 120,    -- beats per minute (max 800)
 
 integer low_freq = #200, low_duration = 20,
         high_freq = #400, high_duration = 20
-           
+
 atom k32=0, xBeep
 atom t0 = time(), count = 0
 atom duration = 60/tempo,
@@ -1019,7 +1007,8 @@ You may also want to have a look at demo\rosetta\virtunome.exw, a gui version.
 
 ## PicoLisp
 
-A short beep (440 Hz, 40 msec) is produced in a child process, while a "pendulum" is swinging left and right. Hitting any key will stop it.
+A short beep (440 Hz, 40 msec) is produced in a child process,
+while a "pendulum" is swinging left and right. Hitting any key will stop it.
 
 ```PicoLisp
 (de metronome (Bpm)
@@ -1042,24 +1031,16 @@ Test:
 ```
 
 
-
 ## PureBasic
 
-<font face="Courier New">Metronome features: 
+Metronome features:
 
+- A periodic graphical-metronomimic image
+- The wav file is included within the resulting executable as raw data
+- A milliseconds between each click field in order to assess accuracy
+- Volumn controls for when you just can't stand it anymore!
 
-
-</font>
-<ul>
-  <li><font face="Courier New">A periodic graphical-metronomimic image.</font></li>
-  <li><font face="Courier New">The wav file is included within the
-resulting executable as raw data.</font></li>
-  <li><font face="Courier New">A milliseconds between each click field
-in order to assess accuracy.</font></li>
-  <li><font face="Courier New">Volumn controls for when you just can't
-stand it anymore!</font></li>
-</ul>
-[[file:MetronomeScreenShot.png|PureBasic output|thumb|200px]]
+![Screenshot of a metronome app written in PureBasic](metronome_screenshot.png)
 
 ```PureBasic
 Structure METRONOMEs
@@ -1073,9 +1054,9 @@ Structure METRONOMEs
   originX.i
   originY.i
   radius.i
-  activityStatus.i 
+  activityStatus.i
 EndStructure
- 
+
 Enumeration       ;gadgets
   #TEXT_MSPB      ;milliseconds per beat
   #STRING_MSPB    ;milliseconds per beat
@@ -1086,9 +1067,9 @@ Enumeration       ;gadgets
   #BUTTON_VOLM    ;volume -
   #BUTTON_VOLP    ;volume +
   #BUTTON_START   ;start
-  #SPIN_BPM       
+  #SPIN_BPM
   #CANVAS_METRONOME
-EndEnumeration  
+EndEnumeration
 
 Enumeration       ;sounds
   #SOUND_LOW
@@ -1096,7 +1077,7 @@ Enumeration       ;sounds
 EndEnumeration
 
 #WINDOW = 0       ;window
-  
+
 Procedure handleError(Value, text.s)
   If Not Value: MessageRequester("Error", text): End: EndIf
 EndProcedure
@@ -1109,15 +1090,15 @@ Procedure drawMetronome(*m.METRONOMEs, Angle.f, cycleCount = 0)
       CircleY = Int(*m\radius * Sin(Radian(Angle)))
       If Angle = 90
         If cycleCount: circleColor = RGB(255, 0, 0): Else: circleColor = RGB(0, 255, 0): EndIf
-        LineXY(*m\originX, *m\originY, *m\originX, *m\originY - CircleY, RGB(255, 255, 0)) 
+        LineXY(*m\originX, *m\originY, *m\originX, *m\originY - CircleY, RGB(255, 255, 0))
         Circle(*m\originX + CircleX, *m\originY - CircleY - *m\radius * 0.15, 10, circleColor)
       Else
-        LineXY(*m\originX, *m\originY - *m\radius * 1.02, *m\originX, *m\originY - *m\radius, RGB(255, 255, 0)) 
+        LineXY(*m\originX, *m\originY - *m\radius * 1.02, *m\originX, *m\originY - *m\radius, RGB(255, 255, 0))
         LineXY(*m\originX, *m\originY, *m\originX + CircleX, *m\originY - CircleY, RGB(255, 255, 0))
       EndIf
-      
+
     StopDrawing()
-    
+
     ProcedureReturn 1
   EndIf
 EndProcedure
@@ -1126,20 +1107,20 @@ Procedure.i Metronome(*m.METRONOMEs)
   Protected milliseconds = Int((60 * 1000) / *m\BeatsPerMinute)
   Protected msPerFrame, framesPerBeat
   Protected i, j, cycleCount, startTime, frameEndTime, delayTime, delayError, h.f
-  
+
   ;calculate metronome angles for each frame of animation
   If *m\BeatsPerMinute < 60
     framesPerBeat = Round(milliseconds / 150, #PB_Round_Nearest)
   Else
     framesPerBeat = Round((*m\BeatsPerMinute - 420) / -60, #PB_Round_Nearest)
   EndIf
-  
+
   If framesPerBeat < 1
     framesPerBeat = 1
     Dim metronomeFrameAngle.f(1, framesPerBeat)
     metronomeFrameAngle(0, 1) = 90
     metronomeFrameAngle(1, 1) = 90
-  Else  
+  Else
     Dim metronomeFrameAngle.f(1, framesPerBeat * 2)
     For j = 1 To framesPerBeat
       h = 45 / framesPerBeat
@@ -1151,47 +1132,47 @@ Procedure.i Metronome(*m.METRONOMEs)
     framesPerBeat * 2
   EndIf
   msPerFrame   = milliseconds / framesPerBeat
-  
+
   PlaySound(#SOUND_HIGH)
   startTime = ElapsedMilliseconds()
-  Repeat 
+  Repeat
     For i = 0 To 1
       frameEndTime = startTime + msPerFrame
       For j = 1 To framesPerBeat
         drawMetronome(*m, metronomeFrameAngle(i, j), cycleCount)
-                
+
         ;check for thread exit
         If *m\activityStatus < 0
           *m\activityStatus = 0
           ProcedureReturn
         EndIf
-        
+
         delayTime = frameEndTime - ElapsedMilliseconds()
         If (delayTime - delayError) >= 0
           Delay(frameEndTime - ElapsedMilliseconds() - delayError) ;wait the remainder of frame
         ElseIf delayTime < 0
           delayError = - delayTime
-        EndIf 
+        EndIf
         frameEndTime + msPerFrame
       Next
-      
+
       ;check for thread exit
       If *m\activityStatus < 0
         *m\activityStatus = 0
         ProcedureReturn
       EndIf
-      
+
       While (ElapsedMilliseconds() - startTime) < milliseconds:  Wend
-      
+
       SetGadgetText(*m\msPerBeat, Str(ElapsedMilliseconds() - startTime))
       cycleCount + 1: cycleCount % *m\BeatsPerCycle
       If cycleCount = 0
         PlaySound(#SOUND_HIGH)
       Else
         PlaySound(#SOUND_LOW)
-      EndIf 
+      EndIf
       startTime + milliseconds
-    Next 
+    Next
   ForEver
 EndProcedure
 
@@ -1199,7 +1180,7 @@ Procedure startMetronome(*m.METRONOMEs, MetronomeThread) ;start up the thread wi
   *m\BeatsPerMinute = Val(GetGadgetText(#STRING_BPM))
   *m\BeatsPerCycle  = Val(GetGadgetText(#STRING_BPC))
   *m\activityStatus = 1
-  
+
   If *m\BeatsPerMinute
     MetronomeThread = CreateThread(@Metronome(), *m)
   EndIf
@@ -1236,18 +1217,18 @@ handleError(CatchSound(#SOUND_LOW, ?sClick, ?eClick - ?sClick), "Could Not Catch
 handleError(CatchSound(#SOUND_HIGH, ?sClick, ?eClick - ?sClick), "Could Not CatchSound")
 SetSoundFrequency(#SOUND_HIGH, 50000)
 SoundVolume(#SOUND_LOW, ourMetronome\volume)
-SoundVolume(#SOUND_HIGH, ourMetronome\volume) 
+SoundVolume(#SOUND_HIGH, ourMetronome\volume)
 
 ;setup window & GUI
 Define Style, i, wp, gh
 
 Style = #PB_Window_SystemMenu | #PB_Window_ScreenCentered | #PB_Window_MinimizeGadget
 handleError(OpenWindow(#WINDOW, 0, 0, w + 200 + 12, h + 4, "Metronome", Style), "Not OpenWindow")
-SetWindowColor(#WINDOW, $505050) 
+SetWindowColor(#WINDOW, $505050)
 
 If LoadFont(0, "tahoma", 9, #PB_Font_HighQuality | #PB_Font_Bold)
   SetGadgetFont(#PB_Default, FontID(0))
-EndIf 
+EndIf
 
 i = 3: wp = 10: gh = 22
 TextGadget(#TEXT_MSPB, w + wp, gh * i, 100, gh, "MilliSecs/Beat ", #PB_Text_Center)
@@ -1260,26 +1241,26 @@ StringGadget(#STRING_BPC, w + wp + 108, gh * i, 90, gh, "4", #PB_String_Numeric)
 GadgetToolTip(#STRING_BPC, "Valid range is 1 -> BPM")
 ButtonGadget(#BUTTON_START, w + wp, gh * i, 200, gh, "Start", #PB_Button_Toggle): i + 2
 ButtonGadget(#BUTTON_VOLM, w + wp, gh * i, 100, gh, "-Volume")
-ButtonGadget(#BUTTON_VOLP, w + wp + 100, gh * i, 100, gh, "+Volume") 
+ButtonGadget(#BUTTON_VOLP, w + wp + 100, gh * i, 100, gh, "+Volume")
 CanvasGadget(ourMetronome\canvasGadget, 0, 0, ourMetronome\w, ourMetronome\h, #PB_Image_Border)
-drawMetronome(ourMetronome, 90) 
+drawMetronome(ourMetronome, 90)
 
 Define msg, GID, MetronomeThread, Value
 Repeat ;the control loop for our application
   msg = WaitWindowEvent(1)
   GID = EventGadget()
   etp = EventType()
-  
+
   If GetAsyncKeyState_(#VK_ESCAPE): End: EndIf ;remove when app is o.k.
-  
+
   Select msg
-      
+
     Case #PB_Event_CloseWindow
       End
-      
+
     Case #PB_Event_Gadget
       Select GID
-        
+
         Case #STRING_BPM
           If etp = #PB_EventType_LostFocus
             Value = Val(GetGadgetText(#STRING_BPM))
@@ -1287,10 +1268,10 @@ Repeat ;the control loop for our application
             Value = 390
             ElseIf Value < 20
             Value = 20
-            EndIf 
+            EndIf
             SetGadgetText(#STRING_BPM, Str(Value))
-          EndIf 
-          
+          EndIf
+
         Case #STRING_BPC
           If etp = #PB_EventType_LostFocus
             Value = Val(GetGadgetText(#STRING_BPC))
@@ -1298,11 +1279,11 @@ Repeat ;the control loop for our application
               Value = Val(GetGadgetText(#STRING_BPM))
             ElseIf Value < 1
               Value = 1
-            EndIf 
+            EndIf
             SetGadgetText(#STRING_BPC, Str(Value))
-          EndIf 
-          
-        Case #BUTTON_VOLP, #BUTTON_VOLM ;change volume 
+          EndIf
+
+        Case #BUTTON_VOLP, #BUTTON_VOLM ;change volume
           If GID = #BUTTON_VOLP And ourMetronome\volume < 100
             ourMetronome\volume + 10
           ElseIf GID = #BUTTON_VOLM And ourMetronome\volume > 0
@@ -1310,7 +1291,7 @@ Repeat ;the control loop for our application
           EndIf
           SoundVolume(#SOUND_LOW, ourMetronome\volume)
           SoundVolume(#SOUND_HIGH, ourMetronome\volume)
-          
+
         Case #BUTTON_START ;the toggle button for start/stop
           Select GetGadgetState(#BUTTON_START)
             Case 1
@@ -1321,12 +1302,12 @@ Repeat ;the control loop for our application
               stopMetronome(ourMetronome, MetronomeThread)
               SetGadgetText(#BUTTON_START,"Start")
           EndSelect
-          
+
       EndSelect
   EndSelect
 ForEver
 End
- 
+
 DataSection
   ;a small wav file saved as raw data
   sClick:
@@ -1385,12 +1366,9 @@ EndDataSection
 ```
 
 
-
 ## Pure Data
 
-
 ```txt
-
 #N canvas 553 78 360 608 10;
 #X obj 20 20 cnv 15 320 140 empty empty empty 20 12 0 14 -228856 -66577 0;
 #X obj 20 190 cnv 15 320 36 empty empty empty 20 12 0 14 -233017 -66577 0;
@@ -1462,16 +1440,12 @@ EndDataSection
 #X connect 39 0 38 0;
 #X connect 39 0 38 1;
 #X connect 40 0 41 0;
-
 ```
-
 
 
 ## Python
 
-
 ```Python
-
 #lang Python
 import time
 
@@ -1485,21 +1459,16 @@ def main(bpm = 72, bpb = 4):
         else:
             print 'TICK'
         time.sleep(sleep)
-        
+
 
 
 main()
-
-
 ```
-
 
 
 ## Racket
 
-
 ```Racket
-
 #lang racket
 
 (require racket/gui)
@@ -1541,15 +1510,15 @@ main()
 
 (send* f (center) (show #t))
 (void (thread flip))
-
 ```
-
 
 
 ## REXX
 
 These REXX program examples are modeled after the Perl 6 example.
-===textual visual, no sound===
+
+
+### Textual visual, no sound
 
 ```rexx
 /*REXX program simulates a visual (textual)  metronome  (with no sound).                */
@@ -1573,20 +1542,20 @@ bt=1/bpb                                         /*calculate a   tock-time   int
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   when using the default inputs:
-<per>
-TICK tock tock tock tock
-TICK tock tock tock tock
-TICK tock tock tock tock
-TICK tock tock tock tock
-TICK tock tock tock tock
-TICK tock tock tock tock
+Output when using the default inputs:
 
+```txt
+TICK tock tock tock tock
+TICK tock tock tock tock
+TICK tock tock tock tock
+TICK tock tock tock tock
+TICK tock tock tock tock
+TICK tock tock tock tock
 ```
 
+### With sound, REGINA only
 
-===with sound, REGINA only===
-This REXX version   ''only''   executes when using the Regina REXX interpreter.  
+This REXX version only executes when using the Regina REXX interpreter.
 
 ```rexx
 /*REXX program simulates a  metronome  (with sound).    Regina REXX only.               */
@@ -1615,7 +1584,7 @@ bt=1/bpb                                         /*calculate a   tock─time   i
 ```
 
 
-===with sound, PC/REXX only===
+### With sound, PC/REXX only
 
 ```rexx
 /*REXX program simulates a  metronome  (with sound).      PC/REXX or Personal REXX only.*/
@@ -1644,34 +1613,28 @@ bt=1/bpb                                         /*calculate a   tock─time   i
 ```
 
 
-
 ## Ruby
 
-This code rings the audible bell on every beat and write "And n" to stdout where n is the bar number that was just finished
+This code rings the audible bell on every beat
+and write "And n" to stdout where n is the bar number that was just finished
 
 ```ruby
-
-#!/usr/bin/ruby
-
 bpm = Integer(ARGV[0]) rescue 60 # sets BPM by the first command line argument, set to 60 if none provided
 msr = Integer(ARGV[1]) rescue 4 # sets number of beats in a measure by the second command line argument, set to 4 if none provided
 i = 0
 
 loop do
-  (msr-1).times do 
+  (msr-1).times do
     puts "\a"
     sleep(60.0/bpm)
   end
   puts "\aAND #{i += 1}"
   sleep(60.0/bpm)
 end
-
 ```
 
 
-
 ## Scala
-
 
 ```Scala
 def metronome(bpm: Int, bpb: Int, maxBeats: Int = Int.MaxValue) {
@@ -1690,11 +1653,12 @@ def metronome(bpm: Int, bpb: Int, maxBeats: Int = Int.MaxValue) {
 metronome(120, 4, 20) // limit to 20
 ```
 
-{{Out}} See it running in your browser by [https://scastie.scala-lang.org/7iejBcWqQISAIGtBCG6BNQ Scastie (JVM)].
+Output:
+See it be executed in your browser by
+[Scastie (JVM)](https://scastie.scala-lang.org/7iejBcWqQISAIGtBCG6BNQ).
 
 
 ## Sidef
-
 
 ```ruby
 func metronome (beats_per_minute = 72, beats_per_bar = 4) {
@@ -1719,10 +1683,9 @@ func metronome (beats_per_minute = 72, beats_per_bar = 4) {
 say metronome(ARGV.map{ Num(_) }...)
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 % sidef metronome.sf 60 6
 
 TICK tick tick tick tick tick
@@ -1732,14 +1695,13 @@ TICK tick tick tick tick tick
 TICK tick tick tick tick tick
 TICK tick tick tick tick tick
 TICK tick tick tick^C
-
 ```
-
 
 
 ## Tcl
 
-This code only rings the bell on the high beat, which occurs at the start of the bar.
+This code only rings the bell on the high beat,
+which occurs at the start of the bar.
 
 ```tcl
 package require Tcl 8.5
@@ -1772,11 +1734,6 @@ vwait forever
 
 It might be executed like this:
 
-```bash>tclsh8.5 metronome.tcl 90 4</lang
-
-
-{{omit from|GUISS}}
-{{omit from|Lotus 123 Macro Scripting}}
-{{omit from|Maxima}}
-{{omit from|TPP}}
-{{omit from|Batch File|Bell character is its only sound}}
+```bash
+tclsh8.5 metronome.tcl 90 4
+```

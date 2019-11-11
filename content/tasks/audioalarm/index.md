@@ -5,13 +5,28 @@ date = 2019-07-07T13:47:53Z
 aliases = []
 [extra]
 id = 10136
+task = """
+  Write a program that asks the user to enter a certain number,
+  representing a number of seconds.
+  After the user enters the number,
+  the program will ask the user to enter the name of an MP3 audio file
+  (without the .mp3 file extension).
+  The program will then display a (usually blank) page.
+  After the time (indicated by the number) is up,
+  a sound (indicated by the MP3 file) will go off.
+  Useful for timers and alarm clocks.
+  The app must be installed in its own folder,
+  preferrably with a name like `AudioAlarm`.
+  To install a sound on the app,
+  copy the MP3 to the app folder you set up.
+  Then, when the app asks you for the filename,
+  you type in the name without an extension.
+"""
 [taxonomies]
 categories = []
-tags = []
+tags = ["audio", "file-system"]
 +++
 
-{{draft task}}
-'''AudioAlarm''' is a program that asks the user to enter a certain number, representing a number of seconds. After the user enters the number, the program will ask the user to enter the name of an MP3 audio file (without the .mp3 file extension). The program will then display a (usually blank) page. After the time (indicated by the number) is up, a sound (indicated by the MP3 file) will go off. Useful for timers and alarm clocks. The app must be installed in its own folder, preferrably with a name like ''AudioAlarm''. To install a sound on the app, just copy the MP3 to the app folder you set up. Then, when the app asks you for the filename, you just type in the name without an extension.
 
 ## AutoHotkey
 
@@ -27,9 +42,7 @@ RunWait % file
 
 ## AWK
 
-
 ```AWK
-
 # syntax: GAWK -f AUDIOALARM.AWK
 BEGIN {
     printf("enter seconds to wait: ")
@@ -51,16 +64,12 @@ BEGIN {
     system(sprintf("START \"C:\\PROGRAM FILES\\WINDOWS MEDIA PLAYER\\WMPLAYER.EXE\" \"%s\"",music_filename))
     exit(0)
 }
-
 ```
-
 
 
 ## Batch File
 
-
 ```dos
-
 @echo off
 
 :: Get user input
@@ -77,10 +86,9 @@ if %intcheck%==0 goto input
 cls
 timeout /t %time% /nobreak >nul
 start "" "%alarm%.mp3"
-
 ```
 
-{{out}}
+Output:
 
 ```txt
 
@@ -90,12 +98,9 @@ Input name of alarm: alarm name with spaces
 ```
 
 
-
 ## EchoLisp
 
-
 ```scheme
-
 (lib 'timer)
 (lib 'audio)
 
@@ -104,28 +109,29 @@ Input name of alarm: alarm name with spaces
 	(audio-show) ;; show audio control
 	(audio-play) ;; play it
 	)
-	
+
 (define (task)
-  (define audio-file 
+  (define audio-file
     (read-string "ring0" "audio-file name? ring0/ring1/ring2/dalida"))
   (define seconds (read-number 3600 "countdown (seconds) ?"))
   (audio-src (string-append "./sounds/" audio-file))
   (at seconds 'seconds AudioAlarm))
 
-;; out
 (task)
-
-11/2/2016 23:43:42 : AudioAlarm
-Time to wake-up ;; + ... 🎼 🎶🎵🎶🎵
-
-
 ```
 
+Output:
+
+```txt
+11/2/2016 23:43:42 : AudioAlarm
+Time to wake-up ;; + ... 🎼 🎶🎵🎶🎵
+```
 
 
 ## Go
 
-As Go does not have any audio support in its standard library, this invokes the SoX utility's 'play' command to play the required .mp3 file.
+As Go does not have any audio support in its standard library,
+this invokes the SoX utility's 'play' command to play the required .mp3 file.
 
 ```go
 package main
@@ -175,9 +181,7 @@ func main() {
 ```
 
 
-
 ## Java
-
 
 ```Java
 import com.sun.javafx.application.PlatformImpl;
@@ -222,22 +226,23 @@ public class AudioAlarm {
 ```
 
 
-=={{header|JavaScript}}/{{header|HTML}}==
+## JavaScript / HTML
 
-```JavaScript><title> AudioAlarm </title
+```html
+<title> AudioAlarm </title>
 
 <script>
-    var a=prompt("Enter a number of seconds", "");
-    var b=prompt("Enter the name of an MP3 file you have installed in the directory (without extension)", "");
-    document.write("<meta http-equiv='refresh' content='"+a+";url="+b+".mp3'>")
+  var a=prompt("Enter a number of seconds", "")
+  var b=prompt("Enter the name of an MP3 file you have installed in the directory (without extension)", "")
+  document.write("<meta http-equiv='refresh' content='"+a+";url="+b+".mp3'>")
 </script>
 ```
 
 
-
 ## Kotlin
 
-For this to work on Ubuntu, 'glib' and 'libav-tools' need to be installed on your system.
+For this to work on Ubuntu,
+'glib' and 'libav-tools' need to be installed on your system.
 
 ```scala
 // version 1.1.51
@@ -290,22 +295,19 @@ fun main(args: Array<String>) {
 }
 ```
 
-
 Sample input:
 
 ```txt
-
 Enter number of seconds to wait for alarm to sound : 3
 Enter name of MP3 file (without the extension) to sound alarm : alarm
-
 ```
-
 
 
 ## Liberty BASIC
 
-LB can play wav files natively. Here we call the standard Windows Media Player for an MP3.
-If not already running, this will add an extra delay...
+LB can play wav files natively.
+Here we call the standard Windows Media Player for an MP3.
+If not already running, this will add an extra delay.
 It will error if the mp3 file does not exist in the specified path.
 
 ```lb
@@ -326,12 +328,10 @@ end
 ```
 
 
-
 ## Lua
 
-{{Trans|Ruby}}
-luasdl2 and luafilesystem libraries required.
-
+Translated from Ruby.
+`luasdl2` and `luafilesystem` libraries required.
 
 ```lua
 SDL = require "SDL"
@@ -349,13 +349,10 @@ Music:play(1)
 
 print("Press Enter to quit")
 io.read()
-
 ```
 
 
-
 ## Phix
-
 
 ```Phix
 -- edit this as necessary!!
@@ -370,15 +367,16 @@ include syswait.ew
 ```
 
 
-
 ## Pure Data
 
-(Pure Data really needed file upload: A screenshot of the patch would save space and at the same time be self-explanatory, thus making the script superfluous.)
+(Pure Data really needed file upload:
+A screenshot of the patch would save space
+and at the same time be self-explanatory,
+thus making the script superfluous.)
 
 '''Alarm.pd:'''
 
 ```txt
-
 #N canvas 623 244 351 664 10;
 #X obj 18 19 cnv 15 310 30 empty empty empty 20 12 0 14 -203904 -66577 0;
 #X obj 227 183 cnv 15 60 30 empty empty empty 20 12 0 14 -204786 -66577 0;
@@ -479,21 +477,26 @@ include syswait.ew
 #X connect 47 0 48 0;
 #X connect 48 0 35 0;
 #X connect 50 0 35 0;
-
 ```
 
-'''Features:'''
-* Pd has built-in WAV file support - mp3 will require an extension
-* Time input by hours, minutes and seconds
-* Start, pause and resume button
-* Sound file selection via file browser dialog, test button and volume control
+Features:
+
+- Pd has built-in WAV file support - mp3 will require an extension
+- Time input by hours, minutes and seconds
+- Start, pause and resume button
+- Sound file selection via file browser dialog, test button and volume control
 
 
 ## Python
 
-Python natively supports playing .wav files (via the [https://docs.python.org/3.4/library/wave.html wave] library), but not .mp3. Therefore, this calls to the OS to start the file. This behaves as though the mp3 file were double-clicked and plays the file with the default system player.
+Python natively supports playing .wav files
+(via the [https://docs.python.org/3.4/library/wave.html wave] library),
+but not .mp3.
+Therefore, this calls to the OS to start the file.
+This behaves as though the mp3 file were double-clicked
+and plays the file with the default system player.
 
-{{works with|Python|3.4.1}}
+Works with Python 3.4.1
 
 
 ```python
@@ -508,10 +511,10 @@ os.startfile(sound + ".mp3")
 ```
 
 
-
 ## Racket
 
-Racket does not currently have native mp3 support so this example uses system to call an external application.
+Racket does not currently have native mp3 support,
+so this example uses system to call an external application.
 
 ```racket
 #lang racket
@@ -527,12 +530,9 @@ Racket does not currently have native mp3 support so this example uses system to
 ```
 
 
-
 ## REXX
 
-
-### using SLEEP
-
+### Using SLEEP
 
 ```rexx
 /*REXX pgm to prompt user for: # (of secs); a name of a MP3 file to play*/
@@ -553,8 +553,7 @@ MP3FILE'.MP3'
 '''output''' when using the input of: <tt> xxx </tt>
 
 
-### using spin
-
+### Using spin
 
 ```rexx
 /*REXX pgm to prompt user for: # (of secs); a name of a MP3 file to play*/
@@ -575,12 +574,9 @@ MP3FILE'.MP3'
 ```
 
 
-
 ## Ring
 
-
 ```ring
-
 # Project : AudioAlarm
 
 load "stdlib.ring"
@@ -591,18 +587,16 @@ give mp3
 f = mp3 + ".mp3"
 sleep(sec)
 system("C:\Ring\wmplayer.exe C:\Ring\calmosoft\" + f)
-
 ```
 
 Output:
 
-[https://www.dropbox.com/s/9l5fef83wj61zw5/AudioAlarm.avi?dl=0 AudioAlarm]
+{{ video(src="audioalarm.webm") }}
 
 
 ## Ruby
 
-requires mpg123 to be installed.
-
+Requires mpg123 to be installed.
 
 ```ruby
 puts "Enter a number of seconds:"
@@ -611,14 +605,10 @@ puts "Enter a MP3 file to be played"
 mp3filepath = File.dirname(__FILE__) + "/" + gets.chomp + ".mp3"
 sleep(seconds)
 pid = fork{ exec 'mpg123','-q', mp3filepath }
-
 ```
 
 
-
 ## Tcl
-
-{{libheader|Snack}}
 
 ```tcl
 package require sound
@@ -641,9 +631,7 @@ exit
 ```
 
 
-
 ## Yabasic
-
 
 ```Yabasic
 input "How long to wait for (seconds): " sec
@@ -656,10 +644,10 @@ exit 0
 ```
 
 
-
 ## zkl
 
-There is no built in sound support so this example is coded for my Linux box.
+There is no built in sound support,
+so this example is coded for my Linux box.
 A change: rather than seconds to wait, a time is used.
 
 ```zkl
@@ -676,13 +664,11 @@ Atomic.sleep(time+1); // veg out until sound plays, then exit
 //to just play the file, no threads:
 //Atomic.sleep(time);
 //System.cmd("mplayer "+file);
-
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 $ zkl ding
 Time to play mp3 file: 8:23pm
 File to play: ding
@@ -691,7 +677,5 @@ Play ding.mp3 in 45 seconds
 MPlayer2 UNKNOWN (C) 2000-2012 MPlayer Team
 ...
 Exiting... (End of file)
-$ 
-
+$
 ```
-
