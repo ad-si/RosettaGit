@@ -47,7 +47,6 @@ languages = [
   "logo",
   "lua",
   "m2000_interpreter",
-  "mathematica",
   "wolfram_language",
   "matlab",
   "mercury",
@@ -130,7 +129,7 @@ b[i] = g[i] xor b[i-1]
 It includes step-by-step animations.
 
 
-## Ada
+## [Ada](/languages/ada)
 
 Demonstrates the use of shift operators. Code scalable to 6, 7 or 8 bits.
 Values are implemented with 8 bits according to representation clause
@@ -229,7 +228,7 @@ Output:
 
 
 
-## Aime
+## [Aime](/languages/aime)
 
 Translated from C
 
@@ -323,7 +322,7 @@ Output:
 
 
 
-## ALGOL 68
+## [ALGOL 68](/languages/algol_68)
 
 In Algol 68 the BITS mode is specifically designed for manipulating machine words as a row of bits so it is natural to treat Gray encoded integers as values of MODE BITS.  The standard operator BIN (INT) : BITS converts an INT value to a BITS value.  The ABS (BITS) : INT operator performs the reverse conversion, though it has not been needed for this task.  It is also natural in the language for simple operations on values to be implemented as operators, rather than as functions, as in the program below.
 
@@ -383,7 +382,7 @@ Output:
 
 
 
-## APL
+## [APL](/languages/apl)
 
 Generate the complete N-bit Gray sequence as a matrix:
 <sup>[http://ngn.github.io/apl/web/index.html#code=N%u21905%0A%28%7B%280%2C%u2375%29%u236A1%2C%u2296%u2375%7D%u2363N%29%281%200%u2374%u236C%29,run=1 run]</sup>
@@ -450,7 +449,7 @@ Output:
 
 
 
-## AutoHotkey
+## [AutoHotkey](/languages/autohotkey)
 
 
 ```AHK
@@ -517,7 +516,7 @@ Output:
 ```
 
 
-## AWK
+## [AWK](/languages/awk)
 
 
 ```awk
@@ -599,7 +598,7 @@ Output:
 ```
 
 
-## BBC BASIC
+## [BBC BASIC](/languages/bbc_basic)
 
 Works with BBC BASIC for Windows
 
@@ -623,7 +622,7 @@ Works with BBC BASIC for Windows
 
 
 
-## bc
+## [bc](/languages/bc)
 
 This language has no bitwise logic. We must repeat, with each bit, the exclusive-or calculation. This solution uses <tt>h % 2</tt> and <tt>i % 2</tt> to grab the low bits, and repeats <tt>if (h % 2 != i % 2)</tt> to check if the exclusive-or is one. Our encoding and decoding functions are identical except that <tt>h</tt> always comes from the decoded integer.
 
@@ -717,7 +716,7 @@ Output:
 
 
 
-## C
+## [C](/languages/c)
 
 Translated from Tcl
 
@@ -804,7 +803,7 @@ Output:
 
 
 
-## C++
+## [C++](/languages/c++)
 
 
 ```cpp
@@ -892,7 +891,7 @@ Number	Binary	Gray	Decoded
 
 
 
-## C sharp
+## [C#](/languages/c_sharp)
 
 
 ```c sharp
@@ -964,7 +963,7 @@ Number	Binary	Gray	Decoded
 
 
 
-## CoffeeScript
+## [CoffeeScript](/languages/coffeescript)
 
 
 ```coffeescript
@@ -984,7 +983,7 @@ for i in [0..32]
 
 
 
-## Common Lisp
+## [Common Lisp](/languages/common_lisp)
 
 
 ```lisp
@@ -1044,7 +1043,7 @@ Output:
 
 
 
-## Component Pascal
+## [Component Pascal](/languages/component_pascal)
 
 BlackBox Component Builder
 
@@ -1150,7 +1149,7 @@ Output:
 
 
 
-## Crystal
+## [Crystal](/languages/crystal)
 
 Translated from C
 
@@ -1225,7 +1224,7 @@ Output:
 
 
 
-## D
+## [D](/languages/d)
 
 
 ```d
@@ -1367,7 +1366,7 @@ Output:
 
 
 
-## Delphi
+## [Delphi](/languages/delphi)
 
 Translated from DWScript
 
@@ -1421,7 +1420,7 @@ end.
 
 
 
-## DWScript
+## [DWScript](/languages/dwscript)
 
 
 
@@ -1453,7 +1452,7 @@ end;
 
 
 
-## Elixir
+## [Elixir](/languages/elixir)
 
 Translated from Erlang
 
@@ -1478,7 +1477,7 @@ end)
 output is the same as "Erlang".
 
 
-## Erlang
+## [Erlang](/languages/erlang)
 
 Translated from Euphoria
 
@@ -1555,7 +1554,7 @@ Output:
 
 
 
-## Euphoria
+## [Euphoria](/languages/euphoria)
 
 
 ```euphoria
@@ -1635,7 +1634,7 @@ Output:
 ```
 
 
-=={{header|F_Sharp|F#}}==
+## [F#](/languages/f_sharp)
 
 ### The Function
 
@@ -1698,7 +1697,7 @@ Output:
 
 
 
-## Factor
+## [Factor](/languages/factor)
 
 Translation of C.
 
@@ -1763,7 +1762,7 @@ Running above code prints:
 
 
 
-## Forth
+## [Forth](/languages/forth)
 
 As a low level language Forth provides efficient bit manipulation operators.
 These functions take input parameters from the stack and return the result on the stack.
@@ -1836,7 +1835,7 @@ FORTH> test
 
 
 
-## Fortran
+## [Fortran](/languages/fortran)
 
 Using [http://www.everyspec.com/MIL-STD/MIL-STD+(1700+-+1799)/download.php?spec=MIL-STD-1753.011044.PDF MIL-STD-1753] extensions in '''Fortran 77''', and formulas found at OEIS for [http://oeis.org/A003188 direct] and [http://oeis.org/A006068 inverse] Gray code :
 
@@ -1927,7 +1926,7 @@ C On EBCDIC machines, use 240 instead of 48.
 ```
 
 
-## FreeBASIC
+## [FreeBASIC](/languages/freebasic)
 
 
 ```freebasic
@@ -1961,7 +1960,7 @@ Print " i     binary     gray   gra2bin"
 Print String(32,"=")
 
 For i = 0 To 31
-    Print Using "## --> "; i;
+    Print Using "## [--> "; i;](/languages/--> "; i;)
     print Bin(i,5); " --> ";
     Print Bin(bin2gray(i),5); " --> ";
     Print Bin(gray2bin(bin2gray(i)),5)
@@ -1980,7 +1979,7 @@ Output:
 ```txt
  i     binary     gray   gra2bin
 
-### ==========================
+### [==========================](/languages/==========================)
 
  0 --> 00000 --> 00000 --> 00000
  1 --> 00001 --> 00001 --> 00001
@@ -2018,7 +2017,7 @@ Output:
 
 
 
-## Frink
+## [Frink](/languages/frink)
 
 Frink has built-in functions to convert to and from binary reflected Gray code.
 
@@ -2035,7 +2034,7 @@ for i=0 to 31
 
 
 
-## Go
+## [Go](/languages/go)
 
 Translated from Euphoria
 Binary reflected, as described in the task.  Reading down through the solutions, the Euphoria decode algorithm caught my eye as being concise and easy to read.
@@ -2109,7 +2108,7 @@ decimal  binary   gray    decoded
 
 
 
-## Groovy
+## [Groovy](/languages/groovy)
 
 Solution:
 
@@ -2142,7 +2141,7 @@ def binary = { i, minBits = 1 ->
 
 println "number   binary   gray code   decode"
 println "
-### ===   ======   =========   ===
+### [===   ======   =========   ===](/languages/===   ======   =========   ===)
 "
 (0..31).each {
     def code = grayEncode(it)
@@ -2160,7 +2159,7 @@ Results:
 ```txt
 number   binary   gray code   decode
 
-### ===   ======   =========   ===
+### [===   ======   =========   ===](/languages/===   ======   =========   ===)
 
      0    00000       00000        0
      1    00001       00001        1
@@ -2198,7 +2197,7 @@ number   binary   gray code   decode
 
 
 
-## Haskell
+## [Haskell](/languages/haskell)
 
 For zero padding, replace the %5s specifiers in the format string with %05s.
 
@@ -2278,7 +2277,7 @@ Sample run:
 
 
 
-## J
+## [J](/languages/j)
 
 
 <code>G2B</code> is an invertible function which will translate Gray code to Binary:
@@ -2338,7 +2337,7 @@ Required example:
 
 
 
-## Java
+## [Java](/languages/java)
 
 Translated from C
 
@@ -2544,7 +2543,7 @@ Number	Binary	Gray Code	Decoded Gray Code
 
 
 
-## Julia
+## [Julia](/languages/julia)
 
 Works with Julia|0.6
 Translated from C
@@ -2564,7 +2563,7 @@ end
 Note that these functions work for any integer type, including arbitrary-precision integers (the built-in <code>BigInt</code> type).
 
 
-## K
+## [K](/languages/k)
 
 
 Binary to Gray code
@@ -2676,7 +2675,7 @@ Output:
 
 
 
-## Kotlin
+## [Kotlin](/languages/kotlin)
 
 
 ```scala
@@ -2750,7 +2749,7 @@ Number  Binary  Gray    Decoded
 
 
 
-## Liberty BASIC
+## [Liberty BASIC](/languages/liberty_basic)
 
 
 ```lb
@@ -2815,7 +2814,7 @@ Number  Binary  Gray    Decoded
 
 
 
-## Limbo
+## [Limbo](/languages/limbo)
 
 Translated from Go
 
@@ -2912,7 +2911,7 @@ Output:
 </code>
 
 
-## Logo
+## [Logo](/languages/logo)
 
 Translated from Euphoria
 
@@ -3008,11 +3007,11 @@ Output:
 ```
 
 
-
-## Lua
+## [Lua](/languages/lua)
 
 Translated from Euphoria
-This code uses the [http://bitop.luajit.org/index.html Lua BitOp] module.  Designed to be a module named <tt>gray.lua</tt>.
+This code uses the [http://bitop.luajit.org/index.html Lua BitOp] module.
+Designed to be a module named <tt>gray.lua</tt>.
 
 ```lua
 local _M = {}
@@ -3108,8 +3107,7 @@ Output:
 ```
 
 
-
-## M2000 Interpreter
+## [M2000 Interpreter](/languages/m2000_interpreter)
 
 Translated from C
 
@@ -3183,7 +3181,7 @@ Output:
 ```
 
 
-## Mathematica / Wolfram Language
+## [Wolfram Language](/languages/wolfram_language)
 
 ```Mathematica
 graycode[n_]:=BitXor[n,BitShiftRight[n]]
@@ -3207,7 +3205,7 @@ Grid[{# ,IntegerDigits[#,2],IntegerDigits[graycode@#,2], IntegerDigits[graydecod
 ```
 
 
-## MATLAB
+## [MATLAB](/languages/matlab)
 
 ```MATLAB
 
@@ -3301,7 +3299,7 @@ Gray code of 5 bits
 
 
 
-## Mercury
+## [Mercury](/languages/mercury)
 
 
 The following is a full implementation of Gray encoding and decoding.
@@ -3456,7 +3454,7 @@ The output of the program looks like this:
 ```
 
 
-## Nim
+## [Nim](/languages/nim)
 
 Translated from C
 
@@ -3523,7 +3521,7 @@ Output:
 
 
 
-## OCaml
+## [OCaml](/languages/ocaml)
 
 
 
@@ -3558,7 +3556,7 @@ let () =
 
 
 
-## PARI/GP
+## [PARI/GP](/languages/pari/gp)
 
 This code may have exposed a bug in PARI 2.4.4: <code>apply(Str, 1)</code> fails.
 As a workaround I used a closure: <code>apply(k->Str(k), 1)</code>.
@@ -3611,12 +3609,12 @@ Output:
 
 
 
-## Pascal
+## [Pascal](/languages/pascal)
 
 See [[Gray_code#Delphi | Delphi]]
 
 
-## Perl
+## [Perl](/languages/perl)
 
 
 
@@ -3646,7 +3644,7 @@ for (0..31) {
 
 
 
-## Perl 6
+## [Perl 6](/languages/perl_6)
 
 
 ```perl6
@@ -3714,7 +3712,7 @@ while <tt>+&</tt> is a bitwise AND, while <tt>+^</tt> is bitwise XOR
 (here used as part of an assignment metaoperator).
 
 
-## Phix
+## [Phix](/languages/phix)
 
 Translated from Delphi}} (turned out to be almost the same as Euphori
 
@@ -3735,7 +3733,7 @@ end function
 integer e,d
 puts(1," N  Binary Gray   Decoded\n"&
        "==
-### ==  =====  ====
+### [==  =====  ====](/languages/==  =====  ====)
 \n")
 for i=0 to 31 do
     e = gray_encode(i)
@@ -3751,7 +3749,7 @@ Output:
 
  N  Binary Gray   Decoded
 ==
-### ==  =====  ====
+### [==  =====  ====](/languages/==  =====  ====)
 
  0  00000  00000   0
  1  00001  00001   1
@@ -3790,7 +3788,7 @@ Output:
 
 
 
-## PHP
+## [PHP](/languages/php)
 
 
 ```php
@@ -3868,7 +3866,7 @@ Output:
 
 
 
-## PicoLisp
+## [PicoLisp](/languages/picolisp)
 
 
 ```PicoLisp
@@ -3934,7 +3932,7 @@ Output:
 
 
 
-## PL/I
+## [PL/I](/languages/pl/i)
 
 
 ```PL/I
@@ -4011,7 +4009,7 @@ end Gray_code;
 
 
 
-## PowerBASIC
+## [PowerBASIC](/languages/powerbasic)
 
 
 ```powerbasic
@@ -4036,12 +4034,9 @@ next
 ```
 
 
+## [Prolog](/languages/prolog)
 
-## Prolog
-
-
-
-###  Codecs
+### Codecs
 
 The encoding and decoding predicates are simple and will work
 with any Prolog that supports bitwise integer operations.
@@ -4063,8 +4058,7 @@ from_gray(G, N) :-
 ```
 
 
-
-###  Test Code
+### Test Code
 
 A quick driver around this to test it will prove the point.
 (This test script uses features not available in every Prolog implementation.)
@@ -4153,7 +4147,7 @@ Number    Binary    Gray      Decoded   Number
 
 
 
-## PureBasic
+## [PureBasic](/languages/purebasic)
 
 
 ```PureBasic
@@ -4231,7 +4225,7 @@ Number Binary Gray    Decoded
 
 
 
-## Python
+## [Python](/languages/python)
 
 This example works with lists of discrete binary digits.
 
@@ -4306,7 +4300,7 @@ int:15 -> bin:[1, 1, 1, 1] -> gray:[1, 0, 0, 0] -> bin:[1, 1, 1, 1] -> int:15
 
 
 
-## R
+## [R](/languages/r)
 
 
 ```r
@@ -4341,7 +4335,7 @@ return (binary)
 
 
 
-## Racket
+## [Racket](/languages/racket)
 
 
 ```racket
@@ -4407,7 +4401,7 @@ Output:
 
 
 
-## REXX
+## [REXX](/languages/rexx)
 
 The leading zeroes for the binary numbers and the gray code could've easily been elided.
 
@@ -4481,7 +4475,7 @@ gray2b: procedure; parse arg x 1 $ 2;    do g=2  to length(x)
 
 
 
-## Ring
+## [Ring](/languages/ring)
 
 
 ```ring
@@ -4566,7 +4560,7 @@ Output:
 
 
 
-## Ruby
+## [Ruby](/languages/ruby)
 
 <tt>Integer#from_gray</tt> has recursion so it can use each bit of the answer to compute the next bit.
 
@@ -4639,7 +4633,7 @@ Output:
 
 
 
-## Rust
+## [Rust](/languages/rust)
 
 Works with Rust 1.1
 
@@ -4666,7 +4660,7 @@ fn main() {
 
 
 
-## Scala
+## [Scala](/languages/scala)
 
 Functional style: the Gray code is encoded to, and decoded from a String.
 The <code>scanLeft</code> function takes a sequence (here, of characters) and produces a collection containing cumulative results of applying an operator going left to right.
@@ -4796,14 +4790,14 @@ decimal  binary   gray  decoded
 
 
 
-## Scratch
+## [Scratch](/languages/scratch)
 
 <div style="overflow: auto;">
 [http://i.imgur.com/0sw5D4T.png]
 </div>
 
 
-## Seed7
+## [Seed7](/languages/seed7)
 
 The type [http://seed7.sourceforge.net/libraries/bin32.htm bin32] is intended for bit operations that are not defined for [http://seed7.sourceforge.net/libraries/integer.htm integer] values.
 Bin32 is used for the [http://seed7.sourceforge.net/libraries/bin32.htm#%28in_bin32%29%3E%3C%28in_bin32%29 exclusive or]
@@ -4881,7 +4875,7 @@ Output:
 
 
 
-## Sidef
+## [Sidef](/languages/sidef)
 
 Translated from Perl
 
@@ -4943,10 +4937,7 @@ Output:
 ```
 
 
-
-## Standard ML
-
-
+## [Standard ML](/languages/standard_ml)
 
 ```sml
 fun gray_encode b =
@@ -4978,7 +4969,7 @@ aux 0w0
 
 
 
-## SQL
+## [SQL](/languages/sql)
 
 
 ```sql
@@ -5020,7 +5011,7 @@ SELECT @binary
 
 
 
-## Tcl
+## [Tcl](/languages/tcl)
 
 
 ```tcl
@@ -5093,7 +5084,7 @@ Output:
 
 
 
-## Ursala
+## [Ursala](/languages/ursala)
 
 
 
@@ -5154,7 +5145,7 @@ Output:
 
 
 
-## VHDL
+## [VHDL](/languages/vhdl)
 
 Combinatorial encoder:
 
@@ -5200,7 +5191,7 @@ end architecture rtl;
 
 
 
-## XPL0
+## [XPL0](/languages/xpl0)
 
 
 ```XPL0
@@ -5285,7 +5276,7 @@ Output:
 
 
 
-## zkl
+## [zkl](/languages/zkl)
 
 
 ```zkl
