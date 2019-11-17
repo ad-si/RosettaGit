@@ -7802,7 +7802,7 @@ repeat {
 ```ActionScript
 /**
   <doc>
-    <h3>Rosetta Code, 99 bottles of beer on the wall, in Neko</h3>
+    <h3>RosettaGit, 99 bottles of beer on the wall, in Neko</h3>
 
     <pre>
     Tectonics:

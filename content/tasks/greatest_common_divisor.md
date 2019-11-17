@@ -1232,7 +1232,7 @@ where A and B are positive 35-bit integers.
 The rest of the program is fairly straightforward.
 
 ```edsac
- [Greatest common divisor for Rosetta Code.
+ [Greatest common divisor for RosettaGit.
   Program for EDSAC, Initial Orders 2]
 
  [Set up pairs of integers for demo]

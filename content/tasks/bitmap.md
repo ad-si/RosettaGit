@@ -1665,7 +1665,7 @@ type Bitmap struct {
     pxRow      [][]Pixel // rows of pixels as slices of px
 }
 
-const creator = "# Creator: Rosetta Code http://rosettacode.org/"
+const creator = "# Creator: RosettaGit https://www.rosettagit.org"
 
 // New is a Bitmap "constructor."  Parameters x and y are extents.
 // That is, the new bitmap will have x columns and y rows.

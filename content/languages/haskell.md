@@ -5,22 +5,20 @@ date = 2018-04-09T04:12:23Z
 aliases = []
 [extra]
 id = 1706
+website = "https://haskell.org"
+wikipedia = "Haskell_(programming_language)"
 [taxonomies]
 categories = []
-tags = []
+tags = [
+  "functional",
+  "pure",
+  "safe",
+  "static",
+  "garbage-collected",
+  "declarative",
+  "lazy",
+]
 +++
-
-{{language|Haskell
-|strength=strong
-|safety=safe
-|compat=structural
-|checking=static
-|gc=yes
-|LCT=yes
-|site=http://haskell.org
-|bnf=http://haskell.org/onlinereport/index.html}}{{codepad}}
-{{language programming paradigm|Declarative}}
-{{language programming paradigm|functional}}
 
 Haskell is a standardized purely functional programming language
 with non-strict semantics, named after the logician Haskell Curry.
@@ -34,10 +32,3 @@ with an interpreter and compilers that proved useful already after
 just a few months of its writing.
 Darcs is a revision control system, with several innovative features.
 Linspire GNU/Linux chose Haskell for system tools development.
-
-
-==Citations==
-* [[wp:Haskell_%28programming_language%29|Wikipedia:Haskell (programming language)]]
-
-==Todo==
-[[Reports:Tasks_not_implemented_in_Haskell]]

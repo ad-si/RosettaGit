@@ -6,9 +6,9 @@
   <ul>
     {% for page in term.pages %}
       <li>
-        {% if page.taxonomies.categories %}
-          <span>{{page.taxonomies.categories[0] | title}}</span>
-        {% else %}
+        {% if page.components is containing("tasks") %}
+          <span>Task</span>
+        {% elif page.components is containing("languages") %}
           <span>Language</span>
         {% endif %}
         <a href="{{page.permalink}}">

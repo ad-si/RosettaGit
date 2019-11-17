@@ -20,8 +20,6 @@ languages = [
   "elixir",
   "factor",
   "forth",
-  "integers",
-  "strings",
   "fortran",
   "go",
   "haskell",

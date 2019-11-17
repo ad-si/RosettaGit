@@ -2,15 +2,14 @@
 paginate_by = 999999
 +++
 
-RosettaGit is a programming [chrestomathy] site.
-The idea is to present solutions to the same task
+The idea of RosettaGit is to present solutions to the same task
 in as many different programming languages as possible.
 It demonstrates how languages are similar and different
 and can help you learn new approaches to solving problems.
 
-RosettaGit currently has **{{number_of_tasks}} tasks**,
+RosettaGit currently features **{{number_of_tasks}} tasks**,
 **{{number_of_drafts}} drafts**,
-and features **{{number_of_langs}} programming languages**.
+and **{{number_of_langs}} programming languages**.
 
 **The ultimate goal is to have solutions to every task in every language.**
 
@@ -29,7 +28,6 @@ please check out my launch blog post at
 
 
 [blog-post]: https://adriansieber.com/rosettagit
-[chrestomathy]: https://en.wikipedia.org/wiki/Chrestomathy
 [MediaWiki]: https://www.mediawiki.org/wiki/MediaWiki
 [rosettacode.org]: https://rosettacode.org
 [rosettagit]: https://github.com/ad-si/rosettagit

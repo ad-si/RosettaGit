@@ -38,6 +38,24 @@
         </div>
       {% endif %}
 
+      {% if page.components is containing("drafts")  %}
+        <div class="draft-warning">
+          <p><strong>⚠️ Warning: This is a draft ⚠️</strong></p>
+          <p>
+            This means it might contain formatting issues,
+            incorrect code, conceptual problems, or other severe issues.
+          </p>
+          <p>
+            If you want to help to improve and eventually enable this page,
+            please fork
+            <a
+              href="https://github.com/ad-si/RosettaGit"
+            >RosettaGit's repository</a>
+            and open a merge request on GitHub.
+          </p>
+        </div>
+      {% endif %}
+
       {{ page.content | safe }}
     </div>
   </article>
@@ -80,6 +98,16 @@
           Submit an issue
         </a>
       </li>
+      {% if page.components is containing("languages")  %}
+        <li>
+          {% set wikiRoot = "https://en.wikipedia.org/wiki" %}
+          {% set wikiName = page.extra.wikipedia| default(value=page.slug) %}
+
+          <a href="{{wikiRoot}}/{{wikiName}}">
+            Page on Wikipedia
+          </a>
+        </li>
+      {% endif %}
     </ul>
   </p>
 

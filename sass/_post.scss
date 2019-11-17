@@ -68,3 +68,31 @@
     }
   }
 }
+
+.task {
+  font-size: 1.1em;
+  color: $color-task-font;
+  border: 1px solid $color-task;
+  border-radius: 5px;
+  background-color: $color-task-bg;
+  padding: 0.8em 1.4em;
+  margin-bottom: 2rem;
+
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.draft-warning {
+  font-size: 1.1em;
+  color: $color-draft-warning-font;
+  border: 1px solid $color-draft-warning;
+  border-radius: 5px;
+  background-color: $color-draft-warning-bg;
+  padding: 0.8em 1.4em;
+  margin-bottom: 2rem;
+
+  :last-child {
+    margin-bottom: 0;
+  }
+}

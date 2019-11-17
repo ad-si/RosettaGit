@@ -12,6 +12,10 @@ $color-task: hsl(150, 50%, 80%);
 $color-task-bg: hsl(150, 50%, 90%);
 $color-task-font: hsl(150, 50%, 20%);
 
+$color-draft-warning: hsl(60, 80%, 60%);
+$color-draft-warning-bg: hsl(60, 80%, 90%);
+$color-draft-warning-font: hsl(60, 80%, 20%);
+
 * {
   margin: 0;
   padding: 0;
@@ -261,6 +265,7 @@ main {
 .section-container {
   ul {
     columns: 2;
+    column-gap: 2em;
     margin-left: 2em;
     font-size: 1.1rem;
   }
@@ -268,10 +273,12 @@ main {
 
 #languages-content {
   columns: 3;
+  column-gap: 2em;
 }
 
 .taxonomy ul {
   columns: 2;
+  column-gap: 5em;
   line-height: 1.4;
 
   a {
@@ -307,20 +314,6 @@ main {
   & > a {
     color: $color-link;
     text-decoration: none;
-  }
-}
-
-.task {
-  font-size: 1.1em;
-  color: $color-task-font;
-  border: 1px solid $color-task;
-  border-radius: 5px;
-  background-color: $color-task-bg;
-  padding: 0.8em 1.4em;
-  margin-bottom: 2rem;
-
-  :last-child {
-    margin-bottom: 0;
   }
 }
 
