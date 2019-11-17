@@ -1,0 +1,370 @@
++++
+title = "ALGOL 68"
+description = ""
+date = 2016-06-19T09:26:10Z
+aliases = []
+[extra]
+id = 2355
+[taxonomies]
+categories = []
+tags = []
++++
+
+[[File:Algol68.png|64px|left|alt=Language|link=http://sourceforge.net/projects/algol68]]
+{{language|ALGOL 68
+|parampass=both
+|strength=soft, weak, meek, firm and strong - depending on context.
+|safety=safe
+|express=explicit
+|compat=structural
+|checking=both
+|LCT=yes}}
+ALGOL 68 (short for ALGOrithmic Language 1968) is an [[imperative programming|imperative]] computer programming language that was conceived as a successor to the ALGOL 60 programming language, designed with the goal of a much wider scope of application and more rigorously defined syntax and semantics.
+
+The main aims and principles of design of ALGOL 68:
+#Completeness and clarity of design,
+#Orthogonal design,
+#Security,
+#Efficiency:
+#* Static mode checking,
+#* Mode-independent parsing,
+#* Independent compilation,
+#* Loop optimization,
+#* Representations - in minimal & larger character sets.
+
+==Execute an ALGOL 68 program online==
+* http://www.compileonline.com/execute_algol_online.php
+==Grammar==
+The grammar for ALGOL 68 is officially in the two level, [[wp:Van Wijngaarden grammar|Van Wijngaarden grammar]] but a subset has been done in the one level [[wp:Backus–Naur Form|Backus–Naur Form]]:
+* [[wp:Van Wijngaarden grammar|Van Wijngaarden grammar]]: [http://www.fh-jena.de/~kleine/history/languages/Algol68-ReportAttachement.pdf]
+* [[wp:Backus–Naur Form|Backus–Naur Form]]/[[wp:Yacc|Yacc]]: [http://wwwmathlabo.univ-poitiers.fr/~maavl/algol68/syntax68]
+* [http://www.softwarepreservation.org/projects/ALGOL/book/Lindsey_van_der_Meulen-IItA68-Revised-SyntaxOnly.pdf/view Syntax Chart (Size 516.6 kB - File type application/pdf)]
+
+==Resources==
+* ALGOL BULLETIN - March 1959 to August 1988, in 52 issues[http://archive.computerhistory.org/resources/text/algol/algol_bulletin]
+* Algol68 mailinglist - December 2008 - algol68-user AT lists.sourceforge.net[https://lists.sourceforge.net/lists/listinfo/algol68-user]
+* Algol68 group at linked: [http://www.linkedin.com/groups/Algol68-2333923] - includes various famous compiler composers.
+
+FYI: There are two online manual pages:
+* [http://jmvdveer.home.xs4all.nl/algol68g.pdf Algol 68G Manual - By Marcel van der Veer]
+* [http://www.poenikatu.co.uk/algol68/ Programming Algol 68 Made Easy - Sian Mountbatten]
+
+Or - if you prefer a hardcopy - you can try and pick up a hard cover manual like "''Informal Introduction to Algol 68''" - by C. H. Lindsey & S. V. Vander Meulen.  Be sure to get the 1977 edition:
+* [http://www.amazon.com/gp/offer-listing/0720405041/ref=dp_olp_used?ie=UTF8&condition=used www.amazon.com] - Aboout $119
+* [http://search.barnesandnoble.com/Informal-Introduction-to-ALGOL-68/C-H-Lindsey/e/9780720407266/?itm=3&USRI=Informal+Introduction+to+Algol+68 barnesandnoble.com] - about $40
+IItA68 is a beautiful book, and makes great "bedtime" reading... Highly recommended!
+* '''NEW:''' [http://www.softwarepreservation.org/projects/ALGOL/book/Lindsey_van_der_Meulen-IItA68-Revised.pdf softwarepreservation.org has an on-line IItA68 PDF] ready for download.
+
+Editor modes:
+* [http://www.jemarch.net/a68-mode Emacs mode] for Algol 68  supporting syntax highlighting and context-sensitive indentation.
+* [http://www.vim.org/scripts/script.php?script_id=1927 Vim script] providing support for syntax highlighting.
+* '''NEW:''' [http://qbnz.com/highlighter/demo.php GeSHi syntax highlighting]
+
+==Status==
+* 20th December 1968 - '''ALGOL 68's''' Final Report was ratified by [http://en.wikipedia.org/wiki/UNESCO UNESCO's] [http://en.wikipedia.org/wiki/IFIP IFIP] working group 2.1 in Munich.
+* 20th December 2008 - [[Zig_Zag#ALGOL 68|Zig Zag]] - the 100th '''ALGOL 68''' code contribution on rosettacode.org!
+** Happy 40th Birthday '''ALGOL 68''',
+** AND 50th Birthday '''ALGOL 58'''.
+* 23rd August 2009 - [http://sourceforge.net/projects/algol68/files/ algol68g-1.18.0-9h] released
+* 20th December 2009 - Happy 51st/41st Birthdays with [[Hamming_numbers#ALGOL_68|Hamming numbers]] - the 200th '''ALGOL 68''' code contribution on rosettacode.org!
+** This time code was by [[User:Algol68g|Marcel van der Veer]], author of [http://www.xs4all.nl/~jmvdveer/algol.html Algol 68 Genie]
+* 25th October 2011 - [[User:Jejones3141|Jejones3141]] added [[Soundex#ALGOL_68|Soundex]] - the 300th '''ALGOL 68''' code specimen.
+
+== Revisions ==
+*Mar. 1968: Draft Report on the Algorithmic Language ALGOL 68 - Edited by: A. van Wijngaarden, B.J. Mailloux, J.E.L. Peck and C.H.A. Koster.
+*Oct. 1968: Penultimate Draft Report on the Algorithmic Language ALGOL 68 - Chapters 1-9 - Edited by: A. van Wijngaarden, B.J. Mailloux, J.E.L. Peck and C.H.A. Koster.
+*Dec. 1968: Report on the Algorithmic Language ALGOL 68 - Offprint from Numerische Mathematik, 14, 79-218 (1969); Springer-Verlag. - Edited by: A. van Wijngaarden, B.J. Mailloux, J.E.L. Peck and C.H.A. Koster.
+*Sep 1973: Revised Report on the Algorithmic Language Algol 68 - Springer-Verlag 1976 - Edited by: A. van Wijngaarden, B.J. Mailloux, J.E.L. Peck, C.H.A. Koster, M. Sintzoff, C.H. Lindsey, L.G.L.T. Meertens and R.G. Fisker.
+==Code samples==
+Most of the code samples provided here have a leading <code>main:(</code> and a matching <code>)</code> at the end. These are not actually required in the language, but are included so as to highlight that the code sample is complete, and works with (at least) [[ALGOL 68G]] unmodified.
+
+On some compilers, it may be necessary to include appropriate "job cards"
+or precludes in order for the programs to compile successfully. Hopefully
+not too much else is required. Examples:
+{|border="1" style="border-collapse: collapse; border: 5px double grey;"  align="center"
+|| Brief Algol68
+|| Algol68 as in rosettacode
+|| Actual ELLA Algol 68RS code
+|-
+||
+ print(("Hello, world!",new line))
+||
+ main:(
+   print(("Hello, world!",new line))
+ )
+||
+ PROGRAM helloworld CONTEXT VOID
+ USE standard
+ BEGIN
+   print(("Hello, world!", new line))
+ END
+ FINISH
+|}
+
+### Example of different program representations
+
+At the time when ALGOL 68 was defined some predominant computers had
+24 or 36 bit words, with 6 bit character sets.  Hence it was desirable that
+ALGOL 68 should be able to run on machines with only uppercase.
+The official spec provided for different representations of the same
+program. Quote stropping (enclosing the bold words in single quotes)
+and Point stropping (preceeding the bold words with a dot)
+were used.  A variant of Point stropping called RES stropping was also defined.
+In RES stropping some language-defined bold words are not preceded by a dot.
+A pragmatic comment may have been required to indicate which
+stropping convention was to be used, as in some of the examples below.
+Upper stropping (representing the bold words by upper case and
+non-bold words in lower case) was introduced by Algol 68R. Upper stropping
+is used by Algol 68RS and is one of the options for Algol 68G.
+Rutgers ALGOL 68 uses quote stropping. Most of the samples
+on Rosetta Code use Upper stropping.
+Example:
+{|border="1" style="border-collapse: collapse; border: 5px double grey;"  align="center"
+|| Algol68 as typically published
+ ¢ bold/underline typeface ¢
+ '''mode''' '''xint''' = '''int''';
+ '''xint''' sum sq:=0;
+ '''for''' i '''while'''
+   sum sq≠70&times;70
+ '''do'''
+   sum sq+:=i↑2
+ '''od'''
+|| quote stropping (similar to wiki)
+ 'pr' quote 'pr'
+ 'mode' 'xint' = 'int';
+ 'xint' sum sq:=0;
+ 'for' i 'while'
+   sum sq≠70&times;70
+ 'do'
+   sum sq+:=i↑2
+ 'od'
+|| 7-bit/ascii compiler
+ .PR UPPER .PR
+ MODE XINT = INT;
+ XINT sum sq:=0;
+ FOR i WHILE
+   sum sq/=70*70
+ DO
+   sum sq+:=i**2
+ OD
+|| 6-bits/byte compiler
+ .PR POINT .PR
+ .MODE .XINT = .INT;
+ .XINT SUM SQ:=0;
+ .FOR I .WHILE
+   SUM SQ .NE 70*70
+ .DO
+   SUM SQ .PLUSAB I .UP 2
+ .OD
+|| RES stropping
+ .PR RES .PR
+ mode .xint = int;
+ .xint sum sq:=0;
+ for i while
+   sum sq≠70&times;70
+ do
+   sum sq+:=i↑2
+ od
+|| Upper stropping
+ # upper case = bold #
+ MODE XINT = INT;
+ XINT sum sq:=0;
+ FOR i WHILE
+   sum sq /= 70*70
+ DO
+   sum sq PLUSAB i UP 2
+ OD
+|}
+
+== Coercion (casting) ==
+ALGOL 68 has a hierarchy of contexts which determine which kind of
+coercions are available at a particular point in the program. These contexts are:
+{|class="wikitable"
+!rowspan=2| N
+
+a
+
+m
+
+e
+!rowspan=2| Context location
+!colspan=5| Coercions available in this context
+!rowspan=2| Coercion examples
+|-
+|bgcolor=aaaaff|Soft
+|bgcolor=aaeeaa|Weak
+|bgcolor=ffee99|Meek
+|bgcolor=ffcc99|Firm
+|bgcolor=ffcccc|Strong
+|-
+!S
+
+t
+
+r
+
+o
+
+n
+
+g
+||Right hand side of:
+* Identity-declarations, as "~" in:
+```algol68
+REAL x = ~
+```
+
+* Initialisations, as "~" in:
+```algol68
+REAL x := ~
+```
+
+Also:
+* Actual-parameters of calls, as "~" in:
+```algol68
+PROC: sin(~)
+```
+
+* Enclosed clauses of casts, as "~" in:
+```algol68
+REAL(~)
+```
+
+* Units of routine-texts
+* Statements yielding VOID
+* All parts (but one) of a balanced clause
+* One side of an identity relation, as "~" in:
+```algol68
+ ~ IS ~
+```
+
+|bgcolor=aaaaff rowspan=4 width="50px"| deproc- eduring
+|bgcolor=aaeeaa rowspan=3 width="50px"| all '''soft''' then weak deref- erencing
+|bgcolor=ffee99 rowspan=2 width="50px"| all '''weak''' then deref- erencing
+|bgcolor=ffcc99 rowspan=1 width="50px"| all '''meek''' then uniting
+|bgcolor=ffcccc width="50px"| all '''firm''' then widening, rowing and voiding
+|colspan=1 bgcolor=ffcccc|
+Widening occurs if there is no loss of precision. For example: An INT will be coerced to a REAL, and a REAL will be coerced to a LONG REAL.  But not vice-versa.  Examples:
+
+```algol68
+INT to LONG INT
+INT to REAL
+REAL to COMPL
+BITS to []BOOL
+BYTES to STRING
+```
+
+A variable can also be coerced (rowed) to an array of length 1.
+
+For example:
+
+```algol68
+INT to [1]INT
+REAL to [1]REAL
+```
+ etc
+|-
+!F
+
+i
+
+r
+
+m
+||
+*Operands of formulas as "~" in:
+```algol68
+OP: ~ * ~
+```
+
+*Parameters of transput calls
+|colspan=3 bgcolor=ffcc99| Example:
+
+```algol68
+UNION(INT,REAL) var := 1
+```
+
+|-
+!M
+
+e
+
+e
+
+k
+||
+* Trimscripts (yielding INT)
+* Enquiries: e.g. as "~" in the following
+
+```algol68
+IF ~ THEN ... FI
+```
+ and
+
+```algol68
+FROM ~ BY ~ TO ~ WHILE ~ DO ... OD etc
+```
+
+* Primaries of calls (e.g. sin in sin(x))
+|colspan=4 bgcolor=ffee99|Examples:
+
+```algol68
+REF REF BOOL to BOOL
+REF REF REF INT to INT
+```
+
+|-
+!W
+
+e
+
+a
+
+k
+||
+* Primaries of slices, as in "~" in:
+```algol68
+~[1:99]
+```
+
+* Secondaries of selections, as "~" in:
+```algol68
+value OF ~
+```
+
+|colspan=5 bgcolor=aaeeaa|Examples:
+
+```algol68
+REF BOOL to REF BOOL
+REF REF INT to REF INT
+REF REF REF REAL to REF REAL
+REF REF REF REF STRUCT to REF STRUCT
+```
+
+|-
+!S
+
+o
+
+f
+
+t
+|| The LHS of assignments, as "~" in:
+```algol68
+~ := ...
+```
+
+|colspan=6 bgcolor=aaaaff| Example:
+* deproceduring of:
+```algol68>PROC REAL random: e.g. random</lang
+
+|}
+For more details about Primaries and Secondaries refer to [[Operator_precedence#ALGOL_68|Operator precedence]].
+
+==See also==
+*[[Web 68]]
+*[[ALGOL 60]]
+*[[ALGOL W]]
+== Code Specimen ==
+{{language programming paradigm|Concurrent}}
+{{language programming paradigm|Imperative}}

@@ -9,34 +9,34 @@ id = 17061
 categories = ["task"]
 languages = [
   "11l",
-  "360-assembly",
+  "360_assembly",
   "8th",
-  "acurity-architect",
+  "acurity_architect",
   "ada",
-  "algol-68",
-  "algol-w",
+  "algol_68",
+  "algol_w",
   "apex",
   "apl",
   "applescript",
   "astro",
   "autohotkey",
   "awk",
-  "batch-file",
+  "batch_file",
   "bacon",
   "basic",
-  "commodore-basic",
-  "sinclair-zx81-basic",
-  "bbc-basic",
+  "commodore_basic",
+  "sinclair_zx81_basic",
+  "bbc_basic",
   "bracmat",
   "c",
   "c++",
-  "c-sharp",
+  "c_sharp",
   "regex",
   "ceylon",
   "clojure",
   "coffeescript",
-  "common-lisp",
-  "component-pascal",
+  "common_lisp",
+  "component_pascal",
   "d",
   "delphi",
   "dyalect",
@@ -65,31 +65,31 @@ languages = [
   "jsish",
   "julia",
   "kotlin",
-  "liberty-basic",
+  "liberty_basic",
   "logo",
   "lua",
   "maple",
-  "m2000-interpreter",
+  "m2000_interpreter",
   "mathematica",
-  "wolfram-language",
+  "wolfram_language",
   "matlab",
   "maxscript",
   "mercury",
   "miniscript",
   "nim",
-  "oberon-2",
+  "oberon_2",
   "objeck",
   "ocaml",
   "oforth",
-  "openedge-progress",
-  "pari-gp",
+  "openedge_progress",
+  "pari_gp",
   "pascal",
   "perl",
-  "perl-6",
+  "perl_6",
   "phix",
   "php",
   "picolisp",
-  "pl-i",
+  "pl_i",
   "powerbasic",
   "powershell",
   "prolog",
@@ -102,7 +102,7 @@ languages = [
   "rexx",
   "ring",
   "ruby",
-  "run-basic",
+  "run_basic",
   "rust",
   "scala",
   "scheme",
@@ -116,13 +116,13 @@ languages = [
   "tcl",
   "tuscript",
   "txr",
-  "unix-shell",
+  "unix_shell",
   "utfool",
   "vba",
   "yabasic",
   "zkl",
   "zonnon",
-  "zx-spectrum-basic",
+  "zx_spectrum_basic",
 ]
 tags = ["game", "puzzle"]
 +++
@@ -5116,7 +5116,7 @@ CONFUSE: true
 
 ```lb
 
-print "Rosetta Code - ABC problem (recursive solution)"
+print "RosettaGit - ABC problem (recursive solution)"
 print
 blocks$="BO XK DQ CP NA GT RE TG QD FS JW HU VI AN OB ER FS LY PC ZM"
 data "A"
@@ -5165,7 +5165,7 @@ Output:
 
 ```txt
 
-Rosetta Code - ABC problem (recursive solution)
+RosettaGit - ABC problem (recursive solution)
 
 >>> can_make_word("A")
 True
@@ -5191,7 +5191,7 @@ Program complete.
 
 ```lb
 
-print "Rosetta Code - ABC problem (procedural solution)"
+print "RosettaGit - ABC problem (procedural solution)"
 print
 w$(1)="A"
 w$(2)="BARK"
@@ -5331,7 +5331,7 @@ Output:
 
 ```txt
 
-Rosetta Code - ABC problem (procedural solution)
+RosettaGit - ABC problem (procedural solution)
 
 >>> can_make_word("A")
 True

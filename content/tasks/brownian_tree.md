@@ -8,13 +8,13 @@ id = 7145
 [taxonomies]
 categories = ["task"]
 languages = [
-  "applesoft-basic",
+  "applesoft_basic",
   "autohotkey",
-  "bbc-basic",
+  "bbc_basic",
   "c",
   "c#",
   "c++",
-  "common-lisp",
+  "common_lisp",
   "d",
   "delphi",
   "easylang",
@@ -31,13 +31,14 @@ languages = [
   "javascript",
   "julia",
   "kotlin",
-  "liberty-basic",
+  "liberty_basic",
   "lua",
   "mathematica",
   "ocaml",
   "octave",
-  "pari-gpperl",
-  "perl-6",
+  "pari_gp",
+  "perl_5",
+  "perl_6",
   "phix",
   "picolisp",
   "processing",
@@ -48,21 +49,21 @@ languages = [
   "rexx",
   "ring",
   "ruby",
-  "run-basic",
+  "run_basic",
   "rust",
   "scala",
   "scheme",
   "seed7",
   "sequencel",
   "sidef",
-  "sinclair-zx81-basic",
+  "sinclair_zx81_basic",
   "tcl",
-  "ti-83-basic",
+  "ti-83_basic",
   "unicon",
-  "visual-basic",
+  "visual_basic",
   "xpl0",
   "zkl",
-  "zx-spectrum-basic",
+  "zx_spectrum_basic",
 ]
 tags = ["geometry", "fractals", "graphics", "raster-graphics"]
 +++
@@ -1612,7 +1613,12 @@ func hasNeighbor(x, y int) bool {
 ## Haskell
 
 
-The modules <code>[[Bitmap#Haskell|Bitmap]]</code>, <code>[[Bitmap/Write a PPM file#Haskell|Bitmap.Netpbm]]</code>, and <code>[[Bitmap/Histogram#Haskell|Bitmap.BW]]</code> are on Rosetta Code. The commented-out type signatures require [http://hackage.haskell.org/trac/haskell-prime/wiki/ScopedTypeVariables scoped type variables] in order to function.
+The modules <code>[[Bitmap#Haskell|Bitmap]]</code>,
+<code>[[Bitmap/Write a PPM file#Haskell|Bitmap.Netpbm]]</code>,
+and <code>[[Bitmap/Histogram#Haskell|Bitmap.BW]]</code> are on RosettaGit.
+The commented-out type signatures require
+[http://hackage.haskell.org/trac/haskell-prime/wiki/ScopedTypeVariables scoped type variables]
+in order to function.
 
 
 ```haskell
@@ -2849,7 +2855,7 @@ Output:
 
 
 
-## Perl
+## Perl 5
 
 [[File:brownian-00.png|thumb]][[File:brownian-05.png|thumb]][[File:brownian-11.png|thumb]]
 Simulation code. Showing three sample images with different STEP and ATTRACT parameters, to demonstrate how sensitive the result is to them.

@@ -1,0 +1,33 @@
++++
+title = "Potion"
+description = ""
+date = 2014-11-18T11:56:49Z
+aliases = []
+[extra]
+id = 15776
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{language|Potion
+|exec=machine
+|site=http://perl11.org/potion/
+|exec=interpreted
+|strength=weak
+|safety=safe
+|express=implicit
+|checking=dynamic
+|parampass=value
+|gc=yes
+|LCT=yes
+|bnf=https://github.com/perl11/potion/blob/master/core/syntax.y}}
+{{language programming paradigm|Object-oriented}}
+
+Potion is a small, fast, object and mixin-orientated, high-level, cross-platform, dynamic functional programming language under 10k sloc, with a stack-based syntax.
+Message passing as in [[Smalltalk]], an object system as in [[Io]] and the vm based on [[Lua]]. The [[JIT]] is simplier and new.
+The parser generator is based on [http://piumarta.com/software/peg/ peg/leg].
+
+==See also==
+* [https://github.com/perl11/potion/ Potion repo]
+* [http://perl11.org/p2/ perl11.org/p2/] is based on potion

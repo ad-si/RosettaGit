@@ -1,2 +1,25 @@
 +++
+title = "Nim"
+description = ""
+date = 2018-11-18T14:45:02Z
+aliases = []
+[extra]
+id = 18453
+[taxonomies]
+categories = []
+tags = []
 +++
+
+{{language
+|exec=machine
+|gc=yes (optional)
+|parampass=both
+|express=both
+|strength=strong
+|LCT=yes
+|checking=static
+|site=http://nim-lang.org}}
+{{language programming paradigm|imperative}}
+Nim (formerly known as Nimrod) is a general purpose, high-level, system programming, statically typed imperative compiled programming language that is developed by Andreas Rumpf. There is a lot of focus on portability and efficiency. The language compiles to C, C++ and JavaScript. Nim is actively being developed. The language has extensive [https://nim-lang.org/documentation.html documentation], and a very good [https://nim-lang.org/docs/tut1.html tutorial].
+
+You can ask for help in the chat on Freenode in the #nim channel, on [https://gitter.im/nim-lang/Nim Gitter/Nim] or in the [https://forum.nim-lang.org forum].

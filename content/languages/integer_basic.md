@@ -1,0 +1,21 @@
++++
+title = "Integer BASIC"
+description = ""
+date = 2011-02-18T05:31:37Z
+aliases = []
+[extra]
+id = 9057
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{stub}}{{language|Integer BASIC
+|exec=interpreted}}
+{{implementation|BASIC}}
+
+Integer BASIC, written by [[wp:Steve Wozniak|Steve Wozniak]], was the [[BASIC]] interpreter of the [[wp:Apple I|Apple I]] and original [[wp:Apple II|Apple II]] computers. Originally available on cassette, then included in ROM on the original [[wp:Apple II|Apple II]] computer at release in 1977.
+
+==See Also==
+* [[wp:Integer BASIC|Wikipedia: Integer BASIC]]
+* [http://www.landsnail.com/a2ref2.htm Apple II Programmer's Reference] from ][ In a Mac, via [http://www.landsnail.com/ Landsnail.com]

@@ -17,20 +17,20 @@ tags = []
 
 
 
-An <span style="font-family: serif">[[O]](''n''<sup>2</sup>)</span> sorting algorithm which moves elements one at a time into the correct position. 
-The algorithm consists of inserting one element at a time into the previously sorted part of the array, moving higher ranked elements up as necessary. 
+An `[[O]](''n''<sup>2</sup>)` sorting algorithm which moves elements one at a time into the correct position.
+The algorithm consists of inserting one element at a time into the previously sorted part of the array, moving higher ranked elements up as necessary.
 To start off, the first (or smallest, or any arbitrary) element of the unsorted array is considered to be the sorted part.
 
-Although insertion sort is an <span style="font-family: serif">[[O]](''n''<sup>2</sup>)</span> algorithm, its simplicity, low overhead, good locality of reference and efficiency make it a good choice in two cases: 
+Although insertion sort is an `[[O]](''n''<sup>2</sup>)` algorithm, its simplicity, low overhead, good locality of reference and efficiency make it a good choice in two cases:
 
-(i) small <span style="font-family: serif">''n''</span>, 
+(i) small `''n''`,
 
-(ii) as the final finishing-off algorithm for <span style="font-family: serif">[[O]](''n'' log''n'')</span> algorithms such as [[Merge sort|mergesort]] and [[quicksort]].
+(ii) as the final finishing-off algorithm for `[[O]](''n'' log''n'')` algorithms such as [[Merge sort|mergesort]] and [[quicksort]].
 
 The algorithm is as follows (from [[wp:Insertion_sort#Algorithm|wikipedia]]):
  '''function''' ''insertionSort''(array A)
      '''for''' i '''from''' 1 '''to''' length[A]-1 '''do'''
-         value := A[i] 
+         value := A[i]
          j := i-1
          '''while''' j >= 0 '''and''' A[j] > value '''do'''
              A[j+1] := A[j]
@@ -48,7 +48,7 @@ Writing the algorithm for integers will suffice.
 ## 360 Assembly
 
 {{trans|PL/I}}
-These programs use two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible. 
+These programs use two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible.
 
 ### Basic
 
@@ -61,7 +61,7 @@ INSSORT  CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          LA     R6,2               i=2
          LA     R9,A+L'A           @a(2)
@@ -99,7 +99,7 @@ LOOPXI   C      R6,N               do i=1 to n
          LA     R8,L'A(R8)         @a(i)
          B      LOOPXI             next i
 ELOOPXI  XPRNT  PG,L'PG            print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -135,7 +135,7 @@ INSSORTS CSECT
      DC     17F'0'             savearea
      STM    R14,R12,12(R13)    prolog
      ST     R13,4(R15)         "
-     ST     R15,8(R13)         " 
+     ST     R15,8(R13)         "
      LR     R13,R15            "
      LA     R6,2               i=2
      LA     R9,A+L'A           @a(2)
@@ -169,7 +169,7 @@ INSSORTS CSECT
        LA     R8,L'A(R8)         @a(i)
      ENDDO  ,                  next i
      XPRNT  PG,L'PG            print buffer
-     L      R13,4(0,R13)       epilog 
+     L      R13,4(0,R13)       epilog
      LM     R14,R12,12(R13)    "
      XR     R15,R15            "
      BR     R14                exit
@@ -235,7 +235,7 @@ function insertionSort(array:Array)
 
 ```ada
 type Data_Array is array(Natural range <>) of Integer;
- 
+
 procedure Insertion_Sort(Item : in out Data_Array) is
    First : Natural := Item'First;
    Last  : Natural := Item'Last;
@@ -311,11 +311,11 @@ External in-place insertion sort routine for integers. From the pseudo code but 
 
 ```algolw
 % insertion sorts in-place the array A. As Algol W procedures can't find the bounds %
-% of an array parameter, the lower and upper bounds must be specified in lb and ub  % 
+% of an array parameter, the lower and upper bounds must be specified in lb and ub  %
 procedure insertionSortI ( integer array A ( * ); integer value lb, ub ) ;
     for i := lb + 1 until ub do begin
         integer v, j;
-        v := A( i ); 
+        v := A( i );
         j := i - 1;
         while j >= lb and A( j ) > v do begin
             A( j + 1 ) := A( j );
@@ -365,7 +365,7 @@ end.
 /* ARM assembly Raspberry PI  */
 /*  program insertionSort.s   */
 /* look Pseudocode begin this task  */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -381,7 +381,7 @@ szMessSortNok:      .asciz "Table not sorted !!!!!.\n"
 sMessResult:        .ascii "Value  : "
 sMessValeur:        .fill 11, 1, ' '            @ size => 11
 szCarriageReturn:  .asciz "\n"
- 
+
 .align 4
 iGraine:  .int 123456
 .equ NBELEMENTS,      10
@@ -390,38 +390,38 @@ TableNumber:     .int   10,9,8,7,6,5,4,3,2,1
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                              @ entry of program 
- 
+.global main
+main:                                              @ entry of program
+
 1:
     ldr r0,iAdrTableNumber                         @ address number table
     mov r1,#0
-    mov r2,#NBELEMENTS                             @ number of élements 
+    mov r2,#NBELEMENTS                             @ number of élements
     bl insertionSort
     ldr r0,iAdrTableNumber                         @ address number table
     bl displayTable
- 
+
     ldr r0,iAdrTableNumber                         @ address number table
-    mov r1,#NBELEMENTS                             @ number of élements 
+    mov r1,#NBELEMENTS                             @ number of élements
     bl isSorted                                    @ control sort
     cmp r0,#1                                      @ sorted ?
-    beq 2f                                    
+    beq 2f
     ldr r0,iAdrszMessSortNok                       @ no !! error sort
     bl affichageMess
     b 100f
 2:                                                 @ yes
     ldr r0,iAdrszMessSortOk
     bl affichageMess
-100:                                               @ standard end of the program 
+100:                                               @ standard end of the program
     mov r0, #0                                     @ return code
     mov r7, #EXIT                                  @ request to exit program
     svc #0                                         @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:    .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
@@ -429,7 +429,7 @@ iAdrTableNumber:          .int TableNumber
 iAdrszMessSortOk:         .int szMessSortOk
 iAdrszMessSortNok:        .int szMessSortNok
 /******************************************************************/
-/*     control sorted table                                   */ 
+/*     control sorted table                                   */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements  > 0  */
@@ -451,9 +451,9 @@ isSorted:
     b 1b
 100:
     pop {r2-r4,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 /******************************************************************/
-/*         insertion sort                                              */ 
+/*         insertion sort                                              */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the first element    */
@@ -482,10 +482,10 @@ insertionSort:
 
 100:
     pop {r2,r3,r4,lr}
-    bx lr                                                  @ return 
+    bx lr                                                  @ return
 
 /******************************************************************/
-/*      Display table elements                                */ 
+/*      Display table elements                                */
 /******************************************************************/
 /* r0 contains the address of table */
 displayTable:
@@ -507,41 +507,41 @@ displayTable:
     pop {r0-r3,lr}
     bx lr
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:	                                            @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b	                                    @ and loop
                                                     @ and move digit from left of area
@@ -554,23 +554,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -578,12 +578,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 ```
@@ -613,7 +613,7 @@ InsertionSort(var) {                     ; SORT COMMA SEPARATED LIST
    Return SubStr(sorted,2)               ; drop leading comma
 }
 ```
- 
+
 
 
 ## AWK
@@ -707,7 +707,7 @@ Note that the array index is assumed to start at zero.
       NEXT
       PRINT
       END
-      
+
       DEF PROCinsertionsort(a(), n%)
       LOCAL i%, j%, t
       FOR i% = 1 TO n%-1
@@ -751,7 +751,7 @@ Note that the array index is assumed to start at zero.
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>  100 PROGRAM "InserSrt.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 NUMERIC ARRAY(5 TO 21)
 130 CALL INIT(ARRAY)
 140 CALL WRITE(ARRAY)
@@ -935,7 +935,7 @@ Translated from the Haskell example:
 		  ([sorted [y & raw] x]
 		     (if (nil? y) (conj sorted x)
 			 (if (<= x y ) (concat sorted [x,y] raw)
-			     (recur (conj sorted y)  raw x )))))]	
+			     (recur (conj sorted y)  raw x )))))]
     (reduce insert [] data)))
 ;Usage:(in-sort! [6,8,5,9,3,2,1,4,7])
 ;Returns: [1 2 3 4 5 6 7 8 9]
@@ -1120,7 +1120,7 @@ prompt$ cobc -xj insertionsort.cob
 (defun span (predicate list)
   (let ((tail (member-if-not predicate list)))
     (values (ldiff list tail) tail)))
- 
+
 (defun less-than (x)
   (lambda (y) (< y x)))
 
@@ -1399,7 +1399,7 @@ print data[]
 
 {{works with|EiffelStudio|6.6 (with provisional loop syntax)}}
 
-This solution is shown in the routine <code lang="eiffel">sort</code> of the class <code lang="eiffel">MY_SORTED_SET</code>. 
+This solution is shown in the routine <code lang="eiffel">sort</code> of the class <code lang="eiffel">MY_SORTED_SET</code>.
 
 For a more complete explanation of the Eiffel sort examples, see the [[Sorting algorithms/Bubble sort#Eiffel|Bubble sort]].
 
@@ -1446,35 +1446,35 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 extension op
 {
     insertionSort()
         = self.clone().insertionSort(0, self.Length - 1);
- 
+
     insertionSort(int first, int last)
     {
         for(int i := first + 1, i <= last, i += 1)
         {
             var entry := self[i];
             int j := i;
- 
+
             while (j > first && self[j - 1] > entry)
             {
                 self[j] := self[j - 1];
- 
+
                 j -= 1
             };
- 
+
             self[j] := entry
         }
     }
 }
- 
+
 public program()
 {
     var list := new int[]::(3, 9, 4, 6, 8, 1, 7, 2, 5);
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after :", list.insertionSort().asEnumerable());
 }
@@ -1497,10 +1497,10 @@ after :1,2,3,4,5,6,7,8,9
 ```elixir
 defmodule Sort do
   def insert_sort(list) when is_list(list), do: insert_sort(list, [])
-  
+
   def insert_sort([], sorted), do: sorted
   def insert_sort([h | t], sorted), do: insert_sort(t, insert(h, sorted))
-  
+
   defp insert(x, []), do: [x]
   defp insert(x, sorted) when x < hd(sorted), do: [x | sorted]
   defp insert(x, [h | t]), do: [h | insert(x, t)]
@@ -1532,13 +1532,13 @@ or smaller number n1 or n2"
   (cond
    ((eval (list rel n1 n2)) n1)
    (t n2)))
-  
+
 (defun min-or-max-of-a-list (lon rel)
   "lon is a list of numbers, rel is '< or '>, this fonction
 returns the higher or lower number of the list"
   (if (cdr lon)
-      (min-or-max-of-2-numbers (car lon) 
-			       (min-or-max-of-a-list (cdr lon) rel) 
+      (min-or-max-of-2-numbers (car lon)
+			       (min-or-max-of-a-list (cdr lon) rel)
 			       rel)
     (car lon)))
 
@@ -1559,7 +1559,7 @@ returns a list containing the same elements but which is sorted
 according to rel"
   (if lon
       (cons (min-or-max-of-a-list lon rel)
-	    (sort-insertion 
+	    (sort-insertion
 	     (remove-number-from-list
 	      (min-or-max-of-a-list lon rel)
 	      lon)
@@ -1722,7 +1722,7 @@ After: {
 
 
 =={{header|F Sharp|F#}}==
-Procedural Version 
+Procedural Version
 
 ```fsharp
 
@@ -1730,7 +1730,7 @@ Procedural Version
 // The input parameter is a generic array (any type that can perform comparison).
 // As is typical of functional programming style the input array is not modified;
 // a copy of the input array is made and modified and returned.
-let insertionSort (A: _ array) = 
+let insertionSort (A: _ array) =
     let B = Array.copy A
     for i = 1 to B.Length - 1 do
         let mutable value = B.[i]
@@ -1748,7 +1748,7 @@ Functional Version
 
 ```fsharp
 
-let insertionSort collection = 
+let insertionSort collection =
 
     // Inserts an element into its correct place in a sorted collection
     let rec sinsert element collection =
@@ -1758,7 +1758,7 @@ let insertionSort collection =
         | x, y::ys -> y :: (ys |> sinsert x)
 
     // Performs Insertion Sort
-    let rec isort acc collection = 
+    let rec isort acc collection =
         match collection, acc with
         | [], _ -> acc
         | x::xs, ys -> xs |> isort (sinsert x ys)
@@ -1783,7 +1783,7 @@ let insertionSort collection =
     dup @ over cell+ !		\ a[j] = a[j-1]
   repeat then
   r> swap ! ;		\ a[j] = v
- 
+
 : sort ( array len -- )
   1 ?do dup i cells + insert loop drop ;
 
@@ -1804,7 +1804,7 @@ subroutine sort(n, a)
     implicit none
     integer :: n, i, j
     real :: a(n), x
-    
+
     do i = 2, n
         x = a(i)
         j = i - 1
@@ -1820,9 +1820,9 @@ end subroutine
 
 
 
-###  Alternate Fortran 77 version 
+###  Alternate Fortran 77 version
 
-This also could have a problem with the compound test always being fully evaluated, so... 
+This also could have a problem with the compound test always being fully evaluated, so...
 ```fortran
       SUBROUTINE SORT(N,A)
       IMPLICIT NONE
@@ -1912,7 +1912,7 @@ unsort   -7  -1   4  -6   5   2   1  -2   0  -5  -4   6  -3   7   3
 
 
 ```gap
-InsertionSort := function(L) 
+InsertionSort := function(L)
   local n, i, j, x;
   n := Length(L);
   for i in [ 2 .. n ] do
@@ -2055,7 +2055,7 @@ Solution:
 
 ```groovy
 def insertionSort = { list ->
-    
+
     def size = list.size()
     (1..<size).each { i ->
         def value = list[i]
@@ -2095,7 +2095,7 @@ import Data.List (insert)
 
 insertionSort :: Ord a => [a] -> [a]
 insertionSort = foldr insert []
- 
+
 -- Example use:
 -- *Main> insertionSort [6,8,5,9,3,2,1,4,7]
 -- [1,2,3,4,5,6,7,8,9]
@@ -2125,18 +2125,18 @@ ENDDO
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    demosort(insertionsort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
 procedure insertionsort(X,op)        #: return sorted X
-local i,temp 
+local i,temp
 
    op := sortop(op,X)                # select how and what we sort
-   
+
    every i := 2 to *X do {
       temp := X[j := i]
-      while op(temp,X[1 <= (j -:= 1)]) do 
+      while op(temp,X[1 <= (j -:= 1)]) do
          X[j+1] := X[j]
       X[j+1] := temp
       }
@@ -2298,7 +2298,7 @@ def insertion_sort:
 ```
 where insert/1 inserts its argument into its input, which can, by construction, be assumed here to be sorted.  This algorithm will work in jq for any JSON array.
 
-The following solution uses an "industrial strength" implementation of bsearch (binary search) that requires the following control structure: 
+The following solution uses an "industrial strength" implementation of bsearch (binary search) that requires the following control structure:
 
 ```jq
 # As soon as "condition" is true, then emit . and stop:
@@ -2337,7 +2337,7 @@ def bsearch(target):
                    end
                  end ))
     | if .[2] == null then # compute the insertion point
-         if $in[ .[0] ] < target then (-2 -.[0]) 
+         if $in[ .[0] ] < target then (-2 -.[0])
          else (-1 -.[0])
          end
       else .[2]
@@ -2348,7 +2348,7 @@ def bsearch(target):
 def insert(x):
   if length == 0 then [x]
   else
-    bsearch(x) as $i 
+    bsearch(x) as $i
     | ( if $i < 0 then -(1+$i) else $i end ) as $i
     | .[0:$i] + [x] + .[$i:]
   end ;
@@ -2541,7 +2541,7 @@ insertionSort[a_List] := Module[{A = a},
   For[i = 2, i <= Length[A], i++,
    value = A[[i]];    j = i - 1;
    While[j >= 1 && A[[j]] > value, A[[j + 1]] = A[[j]]; j--;];
-   A[[j + 1]] = value;]; 
+   A[[j + 1]] = value;];
 A
 ]
 ```
@@ -2561,17 +2561,17 @@ This is a direct translation of the pseudo-code above, except that it has been m
 function list = insertionSort(list)
 
     for i = (2:numel(list))
-        
+
         value = list(i);
         j = i - 1;
-        
+
         while (j >= 1) && (list(j) > value)
             list(j+1) = list(j);
             j = j-1;
         end
-        
+
         list(j+1) = value;
-                   
+
     end %for
 end %insertionSort
 ```
@@ -2600,7 +2600,7 @@ insertion_sort(u) := block(
       j: i - 1,
       while j >= 1 and u[j] > x do (
          u[j + 1]: u[j],
-         j: j - 1      
+         j: j - 1
       ),
       u[j + 1]: x
    )
@@ -2653,10 +2653,10 @@ a = insort b
 
 ```ocaml
 fun insertion_sort L =
-	let 
+	let
 		fun insert
 				(x,[]) = [x]
-			|	(x, y :: ys) = 
+			|	(x, y :: ys) =
 					if x <= y then
 						x :: y :: ys
 					else
@@ -2665,7 +2665,7 @@ fun insertion_sort L =
 		foldr (insert,[]) L
 	end;
 
-println ` insertion_sort [6,8,5,9,3,2,1,4,7];		
+println ` insertion_sort [6,8,5,9,3,2,1,4,7];
 
 ```
 
@@ -2747,7 +2747,7 @@ END InsertSort.
 .	de \\$1.dump end
 .		nr i 0 1
 .		ds out "
-.		while \\\\n+i<=\\\\n[\\$1.c] .as out "\\\\n[\\$1..\\\\ni] 
+.		while \\\\n+i<=\\\\n[\\$1.c] .as out "\\\\n[\\$1..\\\\ni]
 .		tm \\\\*[out]
 .		rm out
 .		rr i
@@ -2810,7 +2810,7 @@ END InsertSort.
 .	de \\$1.dump end
 .		nr i 0 1
 .		ds out "
-.		while \\\\n+i<=\\\\n[\\$1.c] .as out "\\\\n[\\$1..\\\\ni] 
+.		while \\\\n+i<=\\\\n[\\$1.c] .as out "\\\\n[\\$1..\\\\ni]
 .		tm \\\\*[out]
 .		rm out
 .		rr i
@@ -2866,7 +2866,7 @@ module InsertSort
             a[j + 1] = value;
         }
     }
-    
+
     Main() : void
     {
         def arr = array[1, 4, 8, 3, 8, 3, 5, 2, 6];
@@ -2998,7 +2998,7 @@ bundle Default {
         values[i]->PrintLine();
       };
     }
-      
+
     function : InsertionSort (a : Int[]) ~ Nil {
       each(i : a) {
         value := a[i];
@@ -3021,7 +3021,7 @@ bundle Default {
 
 
 ```ocaml
-let rec insert lst x = 
+let rec insert lst x =
   match lst with
     [] -> [x]
   | y :: ys  when x <= y -> x :: y :: ys
@@ -3048,7 +3048,7 @@ Returns a new sorted list.
    2 l size for: i [
       l at(i) ->v
       i 1- ->j
-      while(j) [ 
+      while(j) [
          l at(j) dup v <= ifTrue: [ drop break ]
          j 1+ swap l put
          j 1- ->j
@@ -3127,7 +3127,7 @@ show:
 
 ```txt
 Element  1 before sort: ---Monday's Child Is Fair of Face  (by Mother Goose)---
-Element  2 before sort: 
+Element  2 before sort:
 ### =================================================
 
 Element  3 before sort: Monday's child is fair of face;
@@ -3140,7 +3140,7 @@ Element  9 before sort: But the child that is born on the Sabbath day
 Element 10 before sort: Is blithe and bonny, good and gay.
 -------------------------------------------------------------------------------
 Element  1  after sort: ---Monday's Child Is Fair of Face  (by Mother Goose)---
-Element  2  after sort: 
+Element  2  after sort:
 ### =================================================
 
 Element  3  after sort: But the child that is born on the Sabbath day
@@ -3309,9 +3309,9 @@ integer j
     end for
     return s
 end function
- 
+
 constant s = {4, 15, "delta", 2, -31, 0, "alpha", 19, "gamma", 2, 13, "beta", 782, 1}
- 
+
 puts(1,"Before: ")    ?s
 puts(1,"After: ")     ?insertion_sort(s)
 ```
@@ -3416,7 +3416,7 @@ function insertionSort($arr){
 		$arr[$j+1] = $val
 	}
 }
- 
+
 $arr = @(4,2,1,6,9,3,8,7)
 insertionSort($arr)
 $arr -join ","
@@ -3436,12 +3436,12 @@ $arr -join ","
 ```prolog
 insert_sort(L1,L2) :-
   insert_sort_intern(L1,[],L2).
- 
+
 insert_sort_intern([],L,L).
 insert_sort_intern([H|T],L1,L) :-
   insert(L1,H,L2),
   insert_sort_intern(T,L2,L).
- 
+
 insert([],X,[X]).
 insert([H|T],X,[X,H|T]) :-
   X =< H,
@@ -3450,10 +3450,10 @@ insert([H|T],X,[H|T2]) :-
   insert(T,X,T2).
 ```
 
- 
+
  % Example use:
  %    ?- insert_sort([2,23,42,3,10,1,34,5],L).
- %    L = [1,2,3,5,10,23,34,42] ? 
+ %    L = [1,2,3,5,10,23,34,42] ?
  %    yes
 
 
@@ -3490,7 +3490,7 @@ Example use:
 
 ```txt
  ?- isort([2,23,42,3,10,1,34,5],L).
-L = [1,2,3,5,10,23,34,42] 
+L = [1,2,3,5,10,23,34,42]
 
 ```
 
@@ -3503,7 +3503,7 @@ L = [1,2,3,5,10,23,34,42]
 Procedure insertionSort(Array a(1))
   Protected low, high
   Protected firstIndex, lastIndex = ArraySize(a())
-  
+
   If lastIndex > firstIndex + 1
     low = firstIndex + 1
     While low <= lastIndex
@@ -3530,7 +3530,7 @@ EndProcedure
 ```python
 def insertion_sort(L):
     for i in xrange(1, len(L)):
-        j = i-1 
+        j = i-1
         key = L[i]
         while (L[j] > key) and (j >= 0):
            L[j+1] = L[j]
@@ -3559,14 +3559,14 @@ def insertion_sort(L):
 def insertion_sort_bin(seq):
     for i in range(1, len(seq)):
         key = seq[i]
-        # invariant: ``seq[:i]`` is sorted        
+        # invariant: ``seq[:i]`` is sorted
         # find the least `low' such that ``seq[low]`` is not less then `key'.
         #   Binary search in sorted sequence ``seq[low:up]``:
         low, up = 0, i
         while up > low:
             middle = (low + up) // 2
             if seq[middle] < key:
-                low = middle + 1              
+                low = middle + 1
             else:
                 up = middle
         # insert key at position ``low``
@@ -3587,7 +3587,7 @@ def insertion_sort_bin(seq):
 
 
 ## R
-           
+
 Direct translation of pseudocode.
 
 ```r
@@ -3605,7 +3605,7 @@ insertionsort <- function(x)
       x[j+1] <- value
    }
    x
-} 
+}
 insertionsort(c(4, 65, 2, -31, 0, 99, 83, 782, 1)) # -31   0   1   2   4  65  83  99 782
 ```
 
@@ -3710,13 +3710,13 @@ End Sub
 
 ```rebol
 
-; This program works with REBOL version R2 and R3, to make it work with Red 
+; This program works with REBOL version R2 and R3, to make it work with Red
 ; change the word func to function
 insertion-sort: func [
 	a [block!]
 	/local i [integer!] j [integer!] n [integer!]
 	value [integer! string! date!]
-][ 
+][
 	i: 2
 	n: length? a
 
@@ -3725,7 +3725,7 @@ insertion-sort: func [
 		j: i
 		while [ all [ 	1 < j
 				value < a/(j - 1) ]][
-			
+
 	       		a/:j: a/(j - 1)
 			j: j - 1
         	]
@@ -3758,14 +3758,14 @@ probe insertion-sort [12-Jan-2015 11-Jan-2015 11-Jan-2016 12-Jan-2014]
 ```txt
 
 [1 2 3 4 6 7 8 9]
-[{---Monday's Child Is Fair of Face (by Mother Goose)---} 
-    "But the child that is born on the Sabbath day" 
-    "Friday's child is loving and giving;" 
-    "Is blithe and bonny, good and gay." 
-    "Monday's child is fair of face;" 
-    "Saturday's child works hard for a living;" 
-    "Thursday's child has far to go;" 
-    "Tuesday's child is full of grace;" 
+[{---Monday's Child Is Fair of Face (by Mother Goose)---}
+    "But the child that is born on the Sabbath day"
+    "Friday's child is loving and giving;"
+    "Is blithe and bonny, good and gay."
+    "Monday's child is fair of face;"
+    "Saturday's child works hard for a living;"
+    "Thursday's child has far to go;"
+    "Tuesday's child is full of grace;"
     "Wednesday's child is full of woe;"
 ]
 [12-Jan-2014 11-Jan-2015 12-Jan-2015 11-Jan-2016]
@@ -3817,7 +3817,7 @@ show:  do j=1  for #;  say '   element'  right(j,length(#))  arg(1)": "  @.j; en
 ```txt
 
    element  1 before sort:  ---Monday's Child Is Fair of Face  (by Mother Goose)---
-   element  2 before sort:  
+   element  2 before sort:
 ### =================================================
 
    element  3 before sort:  Monday's child is fair of face;
@@ -3830,7 +3830,7 @@ show:  do j=1  for #;  say '   element'  right(j,length(#))  arg(1)": "  @.j; en
    element 10 before sort:  Is blithe and bonny, good and gay.
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
    element  1  after sort:  ---Monday's Child Is Fair of Face  (by Mother Goose)---
-   element  2  after sort:  
+   element  2  after sort:
 ### =================================================
 
    element  3  after sort:  But the child that is born on the Sabbath day
@@ -3861,7 +3861,7 @@ func insertionsort blist
          while j >= 1 and blist[j] > value
                blist[j+1] = blist[j]
                j = j - 1
-         end   
+         end
          blist[j+1] = value
       next
       return blist
@@ -3940,7 +3940,7 @@ for i = 1 to sortEnd
 next i
 wait
 
-function insertSort(x)                   ' Insert Sort Function 
+function insertSort(x)                   ' Insert Sort Function
 i = 1
 while x > insSort(i) and i <= sortEnd
   i = i + 1
@@ -4117,7 +4117,7 @@ loop1	value = A<i>
 loop2	gt(j,0) gt(A<j>,value)	:f(done2)
 	A<j + 1> = A<j>
 	j = j - 1	:(loop2)
-done2	A<j + 1> = value	
+done2	A<j + 1> = value
 	i = ?lt(i,aSize) i + 1	:s(loop1)
 	i = 1
 
@@ -4134,7 +4134,7 @@ end
 mata
 void insertion_sort(real vector a) {
 	real scalar i, j, n, x
-	
+
 	n = length(a)
 	for (i=2; i<=n; i++) {
 		x = a[i]
@@ -4158,7 +4158,7 @@ Using generics.
 (inout list:[T]) {
     for i in 1..<list.count {
         var j = i
-        
+
         while j > 0 && list[j - 1] > list[j] {
            swap(&list[j], &list[j - 1])
             j--
@@ -4248,7 +4248,7 @@ Input into L<sub>1</sub>, run prgmSORTINS, output in L<sub>2</sub>.
   PROC _Insertionsort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
 
 
@@ -4265,30 +4265,30 @@ _Insertionsort PARAM (1)               ' Insertion sort
     @(d@) = c@
   NEXT
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -4357,7 +4357,7 @@ Private Function insertion_sort(s As Variant) As Variant
     Next i
     insertion_sort = s
 End Function
- 
+
 Public Sub main()
     s = [{4, 15, "delta", 2, -31, 0, "alpha", 19, "gamma", 2, 13, "beta", 782, 1}]
     Debug.Print "Before: ", Join(s, ", ")
@@ -4435,7 +4435,7 @@ proc InsertionSort(A, L);       \Sort array A of length L
 int  A, L;
 int  I, J, V;
 [for I:= 1 to L-1 do
-    [V:= A(I); 
+    [V:= A(I);
     J:= I-1;
     while J>=0 and A(J)>V do
         [A(J+1):= A(J);
@@ -4457,7 +4457,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ```txt
 
--5 1 1 2 3 4 4 5 6 9 
+-5 1 1 2 3 4 4 5 6 9
 
 ```
 

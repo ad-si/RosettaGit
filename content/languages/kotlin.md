@@ -1,2 +1,21 @@
 +++
+title = "Kotlin"
+description = ""
+date = 2018-05-02T09:44:06Z
+aliases = []
+[extra]
+id = 11088
+[taxonomies]
+categories = []
+tags = []
 +++
+
+{{language
+|checking=static
+|tags=kotlin
+|site=http://kotlinlang.org}}Kotlin is a statically-typed programming language that runs on the [[JVM]] and can also be compiled to JavaScript. It is being developed by JetBrains with assistance from open source contributors and is intended for industrial use.
+
+
+In addition, a separate team at JetBrains is developing a version of Kotlin which compiles (via LLVM) directly to machine code for various platforms. The first Technology Preview for this version was rolled out in April 2017.
+
+Kotlin has become a popular language for developing Android applications and, in May 2017, Google announced official support for it alongside Java and C++.

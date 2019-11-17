@@ -1,3 +1,0 @@
-+++
-title = "Liberty Basic"
-+++
