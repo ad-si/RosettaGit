@@ -1,7 +1,7 @@
 base_url = "https://rosettagit.org"
 compile_sass = true
 highlight_code = true
-build_search_index = true
+build_search_index = false
 # theme = "dinkleberg"
 highlight_theme = "monokai"
 
