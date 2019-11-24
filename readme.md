@@ -8,4 +8,4 @@ brew install zola
 
 ## Development
 
-Check out the [makefile] for all relevant tasks.
+Check out the [makefile](./makefile) for all relevant tasks.
