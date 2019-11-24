@@ -1,17 +1,26 @@
 {% extends "index.html" %}
 
 {% block content %}
+<div id="section-languages">
   <h2>Languages</h2>
 
   <div id="languages-content">
+    {% set langsSection = get_section(path="languages/_index.md") %}
+    {% set taxonomy = get_taxonomy(kind="languages") %}
+    {% set languages = taxonomy.items | map(attribute="slug") %}
+
     {% if terms %}
       <h3>With Tasks</h3>
 
       <ul>
         {% for category in terms %}
+          {% set singleton =
+              langsSection.pages |
+              filter(attribute="slug", value=category.slug)
+          %}
           <li>
             <a href="{{ category.permalink }}"
-              >{{ category.name | capitalize }}</a>
+              >{{ singleton[0] | get(key="title") }}</a>
             <small>
               ({{ category.pages | length }})
             </small>
@@ -21,11 +30,6 @@
     {% endif %}
 
     <h3>Without Tasks Yet</h3>
-
-
-    {% set langsSection = get_section(path="languages/_index.md") %}
-    {% set taxonomy = get_taxonomy(kind="languages") %}
-    {% set languages = taxonomy.items | map(attribute="name") %}
 
     <ul>
       {% for lang in langsSection.pages %}
@@ -40,5 +44,5 @@
       {% endfor %}
     </ul>
   </div>
-
+</div>
 {% endblock content %}

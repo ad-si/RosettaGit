@@ -1,7 +1,12 @@
 {% extends "index.html" %}
 
 {% block content %}
-  <h2># {{term.name}}</h2>
+<div id="section-tag">
+  <h2>
+    <span class="tag">
+      {{term.name}}
+    </span>
+  </h2>
 
   <ul>
     {% for page in term.pages %}
@@ -17,4 +22,5 @@
       </li>
     {% endfor %}
   </ul>
+</div>
 {% endblock content %}

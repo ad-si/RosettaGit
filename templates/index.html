@@ -127,37 +127,34 @@
 </head>
 
 <body>
-  {{ macro::organization(itemprop=false) }}
+  <div class="wrapper">
+    <header>
+      <nav>
+        <a class="title" href="{{config.base_url}}">
+          {% block header_title %}
+            {% if config.extra.blog_logo %}
+              <img
+                src="{{get_url(path=config.extra.blog_logo, trailing_slash=false)}}"
+                alt=""
+              >
+            {% endif %}
 
-  <header class="header">
-    <div class="container">
-      <a class="title" href="{{config.base_url}}">
-        {% block header_title %}
-          {% if config.extra.blog_logo %}
-            <img
-              src="{{get_url(path=config.extra.blog_logo, trailing_slash=false)}}"
-              alt=""
-            >
-          {% endif %}
-
-          {% if config.extra.blog_title %}
-            <h1>{{config.extra.blog_title}}</h1>
-          {% endif %}
-        {% endblock header_title %}
-      </a>
-      {% if config.extra.header_links %}
-        <ul class="links">
-          {% for link in config.extra.header_links %}
-            <li>
-              <a href="{{link.url}}">{{link.name}}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </div>
-  </header>
-
-  <div class="container padding-header">
+            {% if config.extra.blog_title %}
+              <h1>{{config.extra.blog_title}}</h1>
+            {% endif %}
+          {% endblock header_title %}
+        </a>
+        {% if config.extra.header_links %}
+          <ul class="links">
+            {% for link in config.extra.header_links %}
+              <li>
+                <a href="{{link.url}}">{{link.name}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </nav>
+    </header>
 
     <aside class="sidebar">
       {% block sidebar %}
@@ -176,54 +173,57 @@
 
     <main>
       {% block content %}
-        <div id="introduction">
-          {% set taskSection = get_section(path="tasks/_index.md") %}
-          {% set number_of_tasks = taskSection.pages | length | as_str %}
+        <div id="landing-page-content">
+          <div id="introduction">
+            {% set taskSection = get_section(path="tasks/_index.md") %}
+            {% set number_of_tasks = taskSection.pages | length | as_str %}
 
-          {% set draftSection = get_section(path="drafts/_index.md") %}
-          {% set number_of_drafts = draftSection.pages | length | as_str %}
+            {% set draftSection = get_section(path="drafts/_index.md") %}
+            {% set number_of_drafts = draftSection.pages | length | as_str %}
 
-          {% set langSection = get_section(path="languages/_index.md") %}
-          {% set number_of_langs = langSection.pages | length | as_str %}
+            {% set langSection = get_section(path="languages/_index.md") %}
+            {% set number_of_langs = langSection.pages | length | as_str %}
 
-          {{ section.content
-            | replace(from="{{number_of_tasks}}", to=number_of_tasks )
-            | replace(from="{{number_of_drafts}}", to=number_of_drafts)
-            | replace(from="{{number_of_langs}}", to=number_of_langs)
-            | safe }}
-        </div>
+            {{ section.content
+              | replace(from="{{number_of_tasks}}", to=number_of_tasks )
+              | replace(from="{{number_of_drafts}}", to=number_of_drafts)
+              | replace(from="{{number_of_langs}}", to=number_of_langs)
+              | safe }}
+          </div>
 
-        <hr>
+          <hr>
 
-        <div class="task-listing-container">
-          <h3>Tasks</h3>
-          <ul>
-            {% for page in taskSection.pages %}
-              <li class="{% if current_path == page.path %}active{% endif %}">
-                <a href="{{page.permalink}}">{{page.title}}</a>
-              </li>
-            {% endfor %}
-          </ul>
+          <div class="task-listing-container">
+            <h3>Tasks</h3>
+            <ul>
+              {% for page in taskSection.pages %}
+                <li class="{% if current_path == page.path %}active{% endif %}">
+                  <a href="{{page.permalink}}">{{page.title}}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
       {% endblock content %}
     </main>
-  </div>
-  <footer>
-    <p>
-      Created by <a href="https://adriansieber.com">Adrian Sieber</a> and
-      <a href="https://github.com/ad-si/rosettagit/graphs/contributors">
-        contributors
-      </a>
-      with <a href="https://www.getzola.org">Zola</a>
-    </p>
-    <p>
-      <small>
-        Licensed under the
-        <a href="https://spdx.org/licenses/GFDL-1.3-or-later.html">
-          GFDL-1.3-or-later
+
+    <footer>
+      <p>
+        Created by <a href="https://adriansieber.com">Adrian Sieber</a> and
+        <a href="https://github.com/ad-si/rosettagit/graphs/contributors">
+          contributors
         </a>
-      </small>
-    </p>
-  </footer>
+        with <a href="https://www.getzola.org">Zola</a>
+      </p>
+      <p>
+        <small>
+          Licensed under the
+          <a href="https://spdx.org/licenses/GFDL-1.3-or-later.html">
+            GFDL-1.3-or-later
+          </a>
+        </small>
+      </p>
+    </footer>
+  </div>
 </body>
 </html>

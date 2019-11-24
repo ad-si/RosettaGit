@@ -1,9 +1,16 @@
 {% extends "index.html" %}
 
 {% block content %}
+<div id="section-language">
   <section>
+    {% set langsSection = get_section(path="languages/_index.md") %}
+    {% set singleton = langsSection.pages |
+        filter(attribute="slug", value=term.slug)
+    %}
+    {% set termTitle = singleton[0] | get(key="title") %}
+
     <h2>
-      {% if term.name %} {{ term.name | title }}
+      {% if term.name %} {{termTitle}}
       {% else %} {{ page.title }}
       {% endif %}
     </h2>
@@ -33,14 +40,15 @@
       <h3>Tasks</h3>
 
       <ul>
-        {% for page in term.pages %}
+        {% for taskPage in term.pages %}
           <li>
-            <a href="{{page.permalink}}">
-              {{page.title}}
+            <a href="{{taskPage.permalink}}#{{term.slug}}">
+              {{taskPage.title}}
             </a>
           </li>
         {% endfor %}
       </ul>
     </section>
   {% endif %}
+</div>
 {% endblock content %}

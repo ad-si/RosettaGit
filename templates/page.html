@@ -31,33 +31,31 @@
       {% endif %}
     {% endif %}
 
-    <div itemprop="articleBody">
-      {% if page.extra.task %}
-        <div class="task">
-          {{page.extra.task | markdown | safe}}
-        </div>
-      {% endif %}
+    {% if page.extra.task %}
+      <div class="task">
+        {{page.extra.task | markdown | safe}}
+      </div>
+    {% endif %}
 
-      {% if page.components is containing("drafts")  %}
-        <div class="draft-warning">
-          <p><strong>⚠️ Warning: This is a draft ⚠️</strong></p>
-          <p>
-            This means it might contain formatting issues,
-            incorrect code, conceptual problems, or other severe issues.
-          </p>
-          <p>
-            If you want to help to improve and eventually enable this page,
-            please fork
-            <a
-              href="https://github.com/ad-si/RosettaGit"
-            >RosettaGit's repository</a>
-            and open a merge request on GitHub.
-          </p>
-        </div>
-      {% endif %}
+    {% if page.components is containing("drafts")  %}
+      <div class="draft-warning">
+        <p><strong>⚠️ Warning: This is a draft ⚠️</strong></p>
+        <p>
+          This means it might contain formatting issues,
+          incorrect code, conceptual problems, or other severe issues.
+        </p>
+        <p>
+          If you want to help to improve and eventually enable this page,
+          please fork
+          <a
+            href="https://github.com/ad-si/RosettaGit"
+          >RosettaGit's repository</a>
+          and open a merge request on GitHub.
+        </p>
+      </div>
+    {% endif %}
 
-      {{ page.content | safe }}
-    </div>
+    {{ page.content | safe }}
   </article>
 {% endblock content %}
 
