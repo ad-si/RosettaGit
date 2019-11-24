@@ -14,13 +14,14 @@ and **{{number_of_langs}} programming languages**.
 **The ultimate goal is to have solutions to every task in every language.**
 
 The data was originally forked from [rosettacode.org] on 2019-10-22.
-In comparison to Rosetta Code all code is stored and hosted
+In comparison to Rosetta Code, in RosettaGit all code is stored and hosted
 in a [repository on GitHub][rosettagit] instead of a [MediaWiki].
 This has following advantages:
 
 - Code can be edited with proper text editors
 - Continous integration and delivery can be used to ensure a high code quality
 - All infrastrucuture for git (e.g. GitHub) simplifies further development
+- Faster load times as pages are only rebuilt after a change
 
 For a detailed explanation and build-log of this fork,
 please check out my launch blog post at
