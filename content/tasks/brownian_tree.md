@@ -5,6 +5,7 @@ date = 2019-08-08T17:17:35Z
 aliases = []
 [extra]
 id = 7145
+task = "Generate and draw a Brownian tree."
 [taxonomies]
 categories = ["task"]
 languages = [
@@ -72,8 +73,6 @@ tags = ["geometry", "fractals", "graphics", "raster-graphics"]
 
 
 ## Task
-
-Generate and draw a Brownian tree.
 
 A Brownian Tree is generated as a result of an initial seed,
 followed by the interaction of two processes.

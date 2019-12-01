@@ -5,6 +5,11 @@ date = 2019-10-17T04:29:11Z
 aliases = []
 [extra]
 id = 17061
+task = """
+  Write a function that takes a string (word)
+  and determines whether the word can be spelled
+  with the given collection of blocks.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [
@@ -158,13 +163,6 @@ The sample collection of blocks:
 (P C)
 (Z M)
 ```
-
-## Task
-
-Write a function that takes a string (word)
-and determines whether the word can be spelled
-with the given collection of blocks.
-
 
 The rules are simple:
 

@@ -5,6 +5,13 @@ date = 2019-09-30T11:45:31Z
 aliases = []
 [extra]
 id = 9374
+task = """
+  Create functions to encode a number to and decode a number from Gray code.
+  Display the normal binary representations,
+  Gray code representations,
+  and decoded Gray code values for all 5-bit binary numbers
+  (0-31 inclusive, leading 0's not necessary).
+"""
 [taxonomies]
 categories = ["task"]
 languages = [
@@ -85,13 +92,12 @@ languages = [
 tags = ["binary"]
 +++
 
-Gray code is a form of binary encoding where transitions between consecutive numbers differ by only one bit.
-This is a useful encoding for reducing hardware data hazards with values that change rapidly and/or connect to slower hardware as inputs.
-It is also useful for generating inputs for [[wp:Karnaugh map|Karnaugh maps]] in order from left to right or top to bottom.
-
-Create functions to encode a number to and decode a number from Gray code.
-
-Display the normal binary representations, Gray code representations, and decoded Gray code values for all 5-bit binary numbers (0-31 inclusive, leading 0's not necessary).
+Gray code is a form of binary encoding
+where transitions between consecutive numbers differ by only one bit.
+This is a useful encoding for reducing hardware data hazards
+with values that change rapidly and/or connect to slower hardware as inputs.
+It is also useful for generating inputs for [Karnaugh maps]
+in order from left to right or top to bottom.
 
 There are many possible Gray codes.
 The following encodes what is called "binary reflected Gray code."
@@ -123,10 +129,15 @@ for other bits:
 b[i] = g[i] xor b[i-1]
 ```
 
+Reference:
 
-;Reference
-* [http://www.wisc-online.com/Objects/ViewObject.aspx?ID=IAU8307 Converting Between Gray and Binary Codes].
-It includes step-by-step animations.
+* [Converting Between Gray and Binary Codes][ref]
+  (Includes step-by-step animations)
+
+[ref]: http://www.wisc-online.com/Objects/ViewObject.aspx?ID=IAU8307
+
+
+---
 
 
 ## [Ada](/languages/ada)

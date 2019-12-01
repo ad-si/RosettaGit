@@ -5,6 +5,17 @@ date = 2019-07-20T21:24:01Z
 aliases = []
 [extra]
 id = 9333
+task = """
+  Implement a routine of Euler's method
+  and then to use it to solve the given example of Newton's cooling law
+  with it for three different step sizes of:
+
+  - 2 s
+  - 5 s
+  - 10 s
+
+  Then compare it with the analytical solution.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [
@@ -78,8 +89,10 @@ languages = [
 tags = ["math"]
 +++
 
-Euler's method numerically approximates solutions of first-order ordinary differential equations (ODEs) with a given initial value.
-It is an explicit method for solving initial value problems (IVPs), as described in [[wp:Euler method|the wikipedia page]].
+Euler's method numerically approximates solutions of first-order ordinary differential equations
+(ODEs) with a given initial value.
+It is an explicit method for solving initial value problems (IVPs),
+as described in [[wp:Euler method|the wikipedia page]].
 
 The ODE has to be provided in the following form:
 
@@ -126,19 +139,12 @@ The analytical solution, which we will compare to the numerical approximation, i
 <math>T(t) = T_R + (T_0 - T_R) \; e^{-k t}</math>
 
 
-;Task:
-Implement a routine of Euler's method and then to use it to solve the given example of Newton's cooling law with it for three different step sizes of:
-:::*   2 s
-:::*   5 s       and
-:::*   10 s
-and to compare with the analytical solution.
+Initial values:
 
-
-;Initial values:
-:::*   initial temperature <math>T_0</math> shall be   100 °C
-:::*   room temperature <math>T_R</math> shall be   20 °C
-:::*   cooling constant   <math>k</math>   shall be   0.07
-:::*   time interval to calculate shall be from   0 s   ──►   100 s
+- Initial temperature <math>T_0</math> shall be 100 °C
+- Room temperature <math>T_R</math> shall be 20 °C
+- Cooling constant <math>k</math> shall be 0.07
+- Time interval to calculate shall be from 0 s ──► 100 s
 
 
 
