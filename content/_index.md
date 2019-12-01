@@ -28,7 +28,7 @@ please check out my launch blog post at
 [adriansieber.com][blog-post].
 
 
-[blog-post]: https://adriansieber.com/rosettagit
+[blog-post]: https://adriansieber.com/announcing-rosettagit
 [MediaWiki]: https://www.mediawiki.org/wiki/MediaWiki
 [rosettacode.org]: https://rosettacode.org
 [rosettagit]: https://github.com/ad-si/rosettagit
