@@ -1993,28 +1993,25 @@ main() {
 
 ## Dc
 
-
 ```dc
 [Hello world!]p
 ```
 
-...or print a numerically represented string.
+...or print a numerically represented string:
 
-```dc>5735816763073014741799356604682 P</lang
-
+```dc
+5735816763073014741799356604682 P
+```
 
 
 ## DCL
-
 
 ```DCL
 $ write sys$output "Hello world!"
 ```
 
 
-
 ## DDNC
-
 
 DDNC can only output to a single 7-segment LED display digit, so first we must convert each character into its 7-segment equivalent numerical value.
 
