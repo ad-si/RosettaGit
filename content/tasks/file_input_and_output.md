@@ -24,6 +24,16 @@ main = readFile "input.txt" >>= writeFile "output.txt"
 ```
 
 
+## [Python](/languages/python)
+
+```python
+i = open("input.txt", "r")
+o = open("output.txt", "w+")
+o.write(i.read())
+```
+
+
+
 ## [Rust](/languages/rust)
 
 **Note:**
