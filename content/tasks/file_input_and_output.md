@@ -41,3 +41,11 @@ fn main() {
   file.write_all(&data).unwrap();
 }
 ```
+
+## [JavaScript](/languages/javascript)
+
+```javascript
+const fs = require('fs');
+const content = fs.readFileSync('input.txt');
+fs.writeFileSync('output.txt', content);
+```
