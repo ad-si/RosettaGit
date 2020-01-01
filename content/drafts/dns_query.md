@@ -453,11 +453,11 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 Implementation takes a host name string as a parameter, and returns the IP addresses in a comma-delimited string.  Note that a failed lookup throws a SocketException.
 
-```csharp
+```c#
 
         private string LookupDns(string s)
         {

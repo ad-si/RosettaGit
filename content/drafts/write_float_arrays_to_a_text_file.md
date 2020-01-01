@@ -232,9 +232,9 @@ The file <tt>"floatArray"</tt> then contains the following:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System.IO;
 
 class Program

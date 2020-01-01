@@ -22,7 +22,7 @@ Invert matrix   '''A'''   using Gauss-Jordan method.
 ## C#
 
 
-```csharp
+```c#
 
 using System;
 
@@ -101,7 +101,7 @@ namespace Rosetta
         {
             this.rows = rows;
             this.cols = cols;
-            b = new double[rows * cols];            
+            b = new double[rows * cols];
         }
 
         internal Matrix(int size)
@@ -125,8 +125,8 @@ namespace Rosetta
         {
             get { return b[row * cols + col]; }
             set { b[row * cols + col] = value; }
-        }        
-        
+        }
+
         public static Vector operator*(Matrix lhs, Vector rhs)
         {
             if (lhs.cols != rhs.rows) throw new Exception("I can't multiply matrix by vector");
@@ -218,7 +218,7 @@ namespace Rosetta
 ```
 
 
-```csharp
+```c#
 
 using System;
 
@@ -228,7 +228,7 @@ namespace Rosetta
     {
         static void Main(string[] args)
         {
-            Matrix M = new Matrix(4, 4, new double[] { -1, -2, 3, 2, -4, -1, 6, 2, 7, -8, 9, 1, 1, -2, 1, 3 });            
+            Matrix M = new Matrix(4, 4, new double[] { -1, -2, 3, 2, -4, -1, 6, 2, 7, -8, 9, 1, 1, -2, 1, 3 });
             M.InvPartial();
             M.print();
         }
@@ -570,7 +570,7 @@ fun main(args: Array<String>) {
         doubleArrayOf(-1.0,  2.0, -1.0),
         doubleArrayOf( 0.0, -1.0,  2.0)
     )
-    b.inverse().printf("Inverse of B is :\n")    
+    b.inverse().printf("Inverse of B is :\n")
 }
 ```
 
@@ -581,15 +581,15 @@ fun main(args: Array<String>) {
 
 Inverse of A is :
 
- -0.812500    0.125000    0.187500  
-  0.125000   -0.250000    0.125000  
-  0.520833    0.125000   -0.145833  
+ -0.812500    0.125000    0.187500
+  0.125000   -0.250000    0.125000
+  0.520833    0.125000   -0.145833
 
 Inverse of B is :
 
-  0.750000    0.500000    0.250000  
-  0.500000    1.000000    0.500000  
-  0.250000    0.500000    0.750000  
+  0.750000    0.500000    0.250000
+  0.500000    1.000000    0.500000
+  0.250000    0.500000    0.750000
 
 ```
 
@@ -913,7 +913,7 @@ pp(inverse(test),{pp_Nest,1})
 
 function gauss-jordan-inv([double[][]]$a) {
     $n = $a.count
-    [double[][]]$b = 0..($n-1) | foreach{[double[]]$row = @(0) * $n; $row[$_] = 1; ,$row} 
+    [double[][]]$b = 0..($n-1) | foreach{[double[]]$row = @(0) * $n; $row[$_] = 1; ,$row}
     for ($k = 0; $k -lt $n; $k++) {
         $lmax, $max = $k, [Math]::Abs($a[$k][$k])
         for ($l = $k+1; $l -lt $n; $l++) {
@@ -921,7 +921,7 @@ function gauss-jordan-inv([double[][]]$a) {
             if($max -lt $tmp) {
                 $max, $lmax = $tmp, $l
             }
-        }        
+        }
         if ($k -ne $lmax) {
             $a[$k], $a[$lmax] = $a[$lmax], $a[$k]
             $b[$k], $b[$lmax] = $b[$lmax], $b[$k]
@@ -940,7 +940,7 @@ function gauss-jordan-inv([double[][]]$a) {
                     $b[$i][$j] -= $b[$k][$j]*$aik
                 }
             }
-        }    
+        }
     }
     $b
 }
@@ -1492,7 +1492,7 @@ Private Function inverse(mat As Variant) As Variant
     Next i
     inverse = inv
 End Function
- 
+
 Public Sub main()
     Dim test As Variant
     test = inverse(Array( _
@@ -1510,9 +1510,9 @@ End Sub
 {{out}}
 
 ```txt
- 0,75          0,5           0,25         
- 0,5           1             0,5          
- 0,25          0,5           0,75 
+ 0,75          0,5           0,25
+ 0,5           1             0,5
+ 0,25          0,5           0,75
 ```
 
 

@@ -410,11 +410,11 @@ http%3A%2F%2Ffoo%20bar%2F is decoded: http://foo bar/ !
 
 
 
-## C sharp
+## C#
 
 
 
-```csharp
+```c#
 using System;
 
 namespace URLEncode

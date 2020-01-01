@@ -20,7 +20,7 @@ Implement the   [[wp:Kronecker_product|Kronecker product]]   of two matrices (ar
 
 ;Test cases:
 Show results for each of the following two samples:
- 
+
 
 
 Sample 1 (from Wikipedia):
@@ -34,7 +34,7 @@ Sample 1 (from Wikipedia):
           │3 4│  x  │6 7│  =  │ 6  7 12 14│
 	  └   ┘     └   ┘     │ 0 15  0 20│
 	                      │18 21 24 28│
-                              └           ┘ 
+                              └           ┘
 
 ```
 
@@ -43,7 +43,7 @@ Sample 2:
 
 ```txt
 
-          ┌     ┐     ┌       ┐     ┌                       ┐       
+          ┌     ┐     ┌       ┐     ┌                       ┐
           │0 1 0│     │1 1 1 1│     │0 0 0 0 1 1 1 1 0 0 0 0│
           │1 1 1│  x  │1 0 0 1│  =  │0 0 0 0 1 0 0 1 0 0 0 0│
           │0 1 0│     │1 1 1 1│     │0 0 0 0 1 1 1 1 0 0 0 0│
@@ -63,7 +63,7 @@ See implementations and results below in JavaScript and PARI/GP languages.
 
 
 ;Related task:
-* [[Kronecker_product_based_fractals| Kronecker product based fractals]]. 
+* [[Kronecker_product_based_fractals| Kronecker product based fractals]].
 
 
 
@@ -194,7 +194,7 @@ B1       DC     F'0',F'5'              b1(2,2)
          DC     F'6',F'7'
 DIM1     DC     H'2',H'2',H'2',H'2'    dim a1 , dim b1
 A2       DC     F'0',F'1',F'0'         a2(3,3)
-         DC     F'1',F'1',F'1'  
+         DC     F'1',F'1',F'1'
          DC     F'0',F'1',F'0'
 B2       DC     F'1',F'1',F'1',F'1'    b2(3,4)
          DC     F'1',F'0',F'0',F'1'
@@ -432,29 +432,29 @@ on kprod(xs, ys)
             map(my concat, my transpose(m))
         end |λ|
     end script
-    
+
     script
-        -- Multiplication by N over a list of lists    
+        -- Multiplication by N over a list of lists
         -- f :: [[Num]] -> Num -> [[Num]]
         on f(mx, n)
             script
                 on product(a, b)
                     a * b
                 end product
-                
+
                 on |λ|(xs)
                     map(curry(product)'s |λ|(n), xs)
                 end |λ|
             end script
-            
+
             map(result, mx)
         end f
-        
+
         on |λ|(zs)
             map(curry(f)'s |λ|(ys), zs)
         end |λ|
     end script
-    
+
     concatMap(concatTranspose, map(result, xs))
 end kprod
 
@@ -555,7 +555,7 @@ on show(e)
                 show(v)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", map(serialized, e)) & "}"
     else if c = record then
         script showField
@@ -564,7 +564,7 @@ on show(e)
                 k & ":" & show(v)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", ¬
             map(showField, zip(allKeys(e), allValues(e)))) & "}"
     else if c = date then
@@ -589,11 +589,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 
@@ -753,52 +753,52 @@ Entering and printing matrices on the console is tedious even for matrices with 
 #include<stdio.h>
 
 int main(){
-	
+
 	char input[100],output[100];
 	int i,j,k,l,rowA,colA,rowB,colB,rowC,colC,startRow,startCol;
 	double **matrixA,**matrixB,**matrixC;
-	
+
 	printf("Enter full path of input file : ");
 	fscanf(stdin,"%s",input);
-	
+
 	printf("Enter full path of output file : ");
 	fscanf(stdin,"%s",output);
-	
+
 	FILE* inputFile = fopen(input,"r");
-	
+
 	fscanf(inputFile,"%d%d",&rowA,&colA);
-	
+
 	matrixA = (double**)malloc(rowA * sizeof(double*));
-	
+
 	for(i=0;i<rowA;i++){
 		matrixA[i] = (double*)malloc(colA*sizeof(double));
 		for(j=0;j<colA;j++){
 			fscanf(inputFile,"%lf",&matrixA[i][j]);
 		}
 	}
-	
+
 	fscanf(inputFile,"%d%d",&rowB,&colB);
-	
+
 	matrixB = (double**)malloc(rowB * sizeof(double*));
-	
+
 	for(i=0;i<rowB;i++){
 		matrixB[i] = (double*)malloc(colB*sizeof(double));
 		for(j=0;j<colB;j++){
 			fscanf(inputFile,"%lf",&matrixB[i][j]);
 		}
 	}
-	
+
 	fclose(inputFile);
-	
+
 	rowC = rowA*rowB;
 	colC = colA*colB;
-	
+
 	matrixC = (double**)malloc(rowC*sizeof(double*));
-	
+
 	for(i=0;i<rowA*rowB;i++){
 		matrixC[i] = (double*)malloc(colA*colB*sizeof(double));
 	}
-	
+
 	for(i=0;i<rowA;i++){
 		for(j=0;j<colA;j++){
 			startRow = i*rowB;
@@ -812,16 +812,16 @@ int main(){
 	}
 
 	FILE* outputFile = fopen(output,"w");
-	
+
 	for(i=0;i<rowC;i++){
 		for(j=0;j<colC;j++){
 			fprintf(outputFile,"%lf\t",matrixC[i][j]);
 		}
 		fprintf(outputFile,"\n");
 	}
-	
+
 	fclose(outputFile);
-	
+
 	printf("\n\n\nKronecker product of the two matrices written to %s.",output);
 }
 
@@ -862,25 +862,25 @@ Output file :
 
 ```txt
 
-0.000000	0.000000	0.000000	0.000000	1.000000	1.000000	1.000000	1.000000	0.000000	0.000000	0.000000	0.000000	
-0.000000	0.000000	0.000000	0.000000	1.000000	0.000000	0.000000	1.000000	0.000000	0.000000	0.000000	0.000000	
-0.000000	0.000000	0.000000	0.000000	1.000000	1.000000	1.000000	1.000000	0.000000	0.000000	0.000000	0.000000	
-1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	
-1.000000	0.000000	0.000000	1.000000	1.000000	0.000000	0.000000	1.000000	1.000000	0.000000	0.000000	1.000000	
-1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	
-0.000000	0.000000	0.000000	0.000000	1.000000	1.000000	1.000000	1.000000	0.000000	0.000000	0.000000	0.000000	
-0.000000	0.000000	0.000000	0.000000	1.000000	0.000000	0.000000	1.000000	0.000000	0.000000	0.000000	0.000000	
-0.000000	0.000000	0.000000	0.000000	1.000000	1.000000	1.000000	1.000000	0.000000	0.000000	0.000000	0.000000	
+0.000000	0.000000	0.000000	0.000000	1.000000	1.000000	1.000000	1.000000	0.000000	0.000000	0.000000	0.000000
+0.000000	0.000000	0.000000	0.000000	1.000000	0.000000	0.000000	1.000000	0.000000	0.000000	0.000000	0.000000
+0.000000	0.000000	0.000000	0.000000	1.000000	1.000000	1.000000	1.000000	0.000000	0.000000	0.000000	0.000000
+1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000
+1.000000	0.000000	0.000000	1.000000	1.000000	0.000000	0.000000	1.000000	1.000000	0.000000	0.000000	1.000000
+1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000
+0.000000	0.000000	0.000000	0.000000	1.000000	1.000000	1.000000	1.000000	0.000000	0.000000	0.000000	0.000000
+0.000000	0.000000	0.000000	0.000000	1.000000	0.000000	0.000000	1.000000	0.000000	0.000000	0.000000	0.000000
+0.000000	0.000000	0.000000	0.000000	1.000000	1.000000	1.000000	1.000000	0.000000	0.000000	0.000000	0.000000
 
 
 ```
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -907,7 +907,7 @@ public static class KroneckerProduct
             Copy(r * rRows, c * rColumns, left[r, c]);
         }
         return result;
-        
+
         void Copy(int startRow, int startColumn, int multiplier) {
             foreach (var (r, c) in from r in Range(0, rRows) from c in Range(0, rColumns) select (r, c)) {
                 result[startRow + r, startColumn + c] = right[r, c] * multiplier;
@@ -972,7 +972,7 @@ alias Matrix = uint[][];
 string toString(Matrix m) {
     auto ob = new OutBuffer();
     foreach(row; m) {
-        //The format specifier inside the %(...%) is 
+        //The format specifier inside the %(...%) is
         //automatically applied to each element of a range
         //Thus prints each line flanked by |
         ob.writefln("|%(%2d %)|", row);
@@ -1004,18 +1004,18 @@ void sample(Matrix m1, Matrix m2) {
 void main() {
     Matrix A = [[1,2],[3,4]];
     Matrix B = [[0,5],[6,7]];
-    
+
     sample(A,B);
-    
-    Matrix C = 
+
+    Matrix C =
     [[0,1,0],
      [1,1,1],
      [0,1,0]];
-    Matrix D = 
+    Matrix D =
     [[1,1,1,1],
      [1,0,0,1],
      [1,1,1,1]];
-    
+
     sample(C,D);
 }
 
@@ -1026,40 +1026,40 @@ Output:
 
 ```txt
 
-Matrix A:                                     
-| 1  2|                                       
-| 3  4|                                       
-                                              
-Matrix B:                                     
-| 0  5|                                       
-| 6  7|                                       
-                                              
-A (X) B:                                      
-| 0  5  0 10|                                 
-| 6  7 12 14|                                 
-| 0 15  0 20|                                 
-|18 21 24 28|                                 
-                                              
-Matrix A:                                     
-| 0  1  0|                                    
-| 1  1  1|                                    
-| 0  1  0|                                    
-                                              
-Matrix B:                                     
-| 1  1  1  1|                                 
-| 1  0  0  1|                                 
-| 1  1  1  1|                                 
-                                              
-A (X) B:                                      
-| 0  0  0  0  1  1  1  1  0  0  0  0|         
-| 0  0  0  0  1  0  0  1  0  0  0  0|         
-| 0  0  0  0  1  1  1  1  0  0  0  0|         
-| 1  1  1  1  1  1  1  1  1  1  1  1|         
-| 1  0  0  1  1  0  0  1  1  0  0  1|         
-| 1  1  1  1  1  1  1  1  1  1  1  1|         
-| 0  0  0  0  1  1  1  1  0  0  0  0|         
-| 0  0  0  0  1  0  0  1  0  0  0  0|         
-| 0  0  0  0  1  1  1  1  0  0  0  0|         
+Matrix A:
+| 1  2|
+| 3  4|
+
+Matrix B:
+| 0  5|
+| 6  7|
+
+A (X) B:
+| 0  5  0 10|
+| 6  7 12 14|
+| 0 15  0 20|
+|18 21 24 28|
+
+Matrix A:
+| 0  1  0|
+| 1  1  1|
+| 0  1  0|
+
+Matrix B:
+| 1  1  1  1|
+| 1  0  0  1|
+| 1  1  1  1|
+
+A (X) B:
+| 0  0  0  0  1  1  1  1  0  0  0  0|
+| 0  0  0  0  1  0  0  1  0  0  0  0|
+| 0  0  0  0  1  1  1  1  0  0  0  0|
+| 1  1  1  1  1  1  1  1  1  1  1  1|
+| 1  0  0  1  1  0  0  1  1  0  0  1|
+| 1  1  1  1  1  1  1  1  1  1  1  1|
+| 0  0  0  0  1  1  1  1  0  0  0  0|
+| 0  0  0  0  1  0  0  1  0  0  0  0|
+| 0  0  0  0  1  1  1  1  0  0  0  0|
 
 ```
 
@@ -1102,9 +1102,9 @@ IN: rosetta-code.kronecker
 
 ## Fortran
 
-The plan is to pass the two arrays to a subroutine, which will return their Kronecker product as a third parameter. This relies on the expanded array-handling facilities introduced with F90, especially the ability of a subroutine to allocate an array of a size of its choosing, this array being a parameter to the subroutine. Some compilers offering the "allocate" statement do not handle this! Further features of the MODULE protocol of F90 allow arrays passed to a subroutine to have their sizes ascertained in the subroutine (via function UBOUND, ''etc.'') rather than this information being supplied via the programmer coding additional parameters. This is not all to the good: multi-dimensional arrays must therefore be the actual size of their usage rather than say A(100,100) but only using the first fifty elements (in one place) and the first thirty in another. Thus, for such usage the array must be re-allocated the correct size each time, and, the speed of access to such arrays is reduced - see [[Sequence_of_primorial_primes#Fixed-size_data_aggregates]] for an example. Similarly, suppose a portion of a large array is to be passed as a parameter, as is enabled by F90 syntax such as <code>A(3:7,9:12)</code> to select a 5x4 block: those elements will ''not'' be in contiguous memory locations, as is expected by the subroutine, so they will be copied into a temporary storage area that will become the parameter and their values will be copied back on return. Copy-in copy-out, instead of by reference. With large arrays, this imposes a large overhead. A further detail of the MODULE protocol when passing arrays is that if the parameter's declaration does not specify the lower bound, it will be treated as if it were one even if the actual array is declared otherwise - see [[Array_length#Fortran]] for example. 
+The plan is to pass the two arrays to a subroutine, which will return their Kronecker product as a third parameter. This relies on the expanded array-handling facilities introduced with F90, especially the ability of a subroutine to allocate an array of a size of its choosing, this array being a parameter to the subroutine. Some compilers offering the "allocate" statement do not handle this! Further features of the MODULE protocol of F90 allow arrays passed to a subroutine to have their sizes ascertained in the subroutine (via function UBOUND, ''etc.'') rather than this information being supplied via the programmer coding additional parameters. This is not all to the good: multi-dimensional arrays must therefore be the actual size of their usage rather than say A(100,100) but only using the first fifty elements (in one place) and the first thirty in another. Thus, for such usage the array must be re-allocated the correct size each time, and, the speed of access to such arrays is reduced - see [[Sequence_of_primorial_primes#Fixed-size_data_aggregates]] for an example. Similarly, suppose a portion of a large array is to be passed as a parameter, as is enabled by F90 syntax such as <code>A(3:7,9:12)</code> to select a 5x4 block: those elements will ''not'' be in contiguous memory locations, as is expected by the subroutine, so they will be copied into a temporary storage area that will become the parameter and their values will be copied back on return. Copy-in copy-out, instead of by reference. With large arrays, this imposes a large overhead. A further detail of the MODULE protocol when passing arrays is that if the parameter's declaration does not specify the lower bound, it will be treated as if it were one even if the actual array is declared otherwise - see [[Array_length#Fortran]] for example.
 
-In older-style Fortran, the arrays would be of some "surely-big-enough" size, fixed at compile time, and there would be additional parameters describing the bounds in use for each invocation. Since no array-assignment statements were available, there would be additional DO-loops to copy each block of values. In all versions of Fortran, the ordering of array elements in storage is "column-major" so that the DATA statement appears to initialise the arrays with their transpose - see [[Matrix_transposition#Fortran]] for example. As a result, the default output order for an array, if written as just <code>WRITE (6,*) A</code> will be that of the transposed order, just as with the default order of the DATA statement's data. To show the desired order of A(''row'',''column''), the array must be written with explicit specification of the order of elements, as is done by subroutine SHOW: columns across the page, rows running down the page. 
+In older-style Fortran, the arrays would be of some "surely-big-enough" size, fixed at compile time, and there would be additional parameters describing the bounds in use for each invocation. Since no array-assignment statements were available, there would be additional DO-loops to copy each block of values. In all versions of Fortran, the ordering of array elements in storage is "column-major" so that the DATA statement appears to initialise the arrays with their transpose - see [[Matrix_transposition#Fortran]] for example. As a result, the default output order for an array, if written as just <code>WRITE (6,*) A</code> will be that of the transposed order, just as with the default order of the DATA statement's data. To show the desired order of A(''row'',''column''), the array must be written with explicit specification of the order of elements, as is done by subroutine SHOW: columns across the page, rows running down the page.
 ```Fortran
       MODULE ARRAYMUSH	!A rather small collection.
        CONTAINS		!For the specific problem only.
@@ -1192,7 +1192,7 @@ A is 3x3 B is 3x4 A.k.B is 9x12
 ```
 
 
-An alternative approach is not to produce the array AB at all, just calculate its elements as needed. Using the array dimension variables as defined above, 
+An alternative approach is not to produce the array AB at all, just calculate its elements as needed. Using the array dimension variables as defined above,
 ```Fortran
 AB(i,j) = A((i - 1)/RB + 1,(j - 1)/CB + 1)*B(MOD(i - 1,RB) + 1,MOD(j - 1,CB) + 1))
 ```
@@ -1858,7 +1858,7 @@ function matp2doc(title,mat) {
 }
 
 ```
- 
+
 
 ;Required tests:
 
@@ -1884,7 +1884,7 @@ function matp2doc(title,mat) {
 </html>
 
 ```
- 
+
 {{Output}} '''Console and page results'''
 
 ```txt
@@ -1968,7 +1968,7 @@ function matp2doc(title,mat) {
 }
 
 ```
- 
+
 ;Required tests:
 
 ```html
@@ -1993,7 +1993,7 @@ function matp2doc(title,mat) {
 </html>
 
 ```
- 
+
 
 {{Output}} '''Console and page results'''
 
@@ -2354,7 +2354,7 @@ function prod( a, b )
 end
 --[[entry point]]--
 a = { { 1, 2 }, { 3, 4 } }; b = { { 0, 5 }, { 6, 7 } }
-prod( a, b )      
+prod( a, b )
 a = { { 0, 1, 0 }, { 1, 1, 1 }, { 0, 1, 0 } }
 b = { { 1, 1, 1, 1 }, { 1, 0, 0, 1 }, { 1, 1, 1, 1 } }
 prod( a, b )
@@ -2392,7 +2392,7 @@ PRODUCT:
 ```mathematica
 KroneckerProduct[{{1, 2}, {3, 4}}, {{0, 5}, {6, 7}}]//MatrixForm
 
-KroneckerProduct[{{0, 1, 0}, {1, 1, 1}, {0, 1, 0}}, 
+KroneckerProduct[{{0, 1, 0}, {1, 1, 1}, {0, 1, 0}},
  {{1, 1, 1, 1}, {1, 0, 0, 1}, {1, 1, 1, 1}}]//MatrixForm
 ```
 
@@ -2454,7 +2454,7 @@ ans =
 ## PARI/GP
 
 
-###  Version #1 
+###  Version #1
 
 {{Works with|PARI/GP|2.9.1 and above}}
 
@@ -2462,7 +2462,7 @@ ans =
 
 \\ Print title and matrix mat rows. 4/17/16 aev
 matprows(title,mat)={print(title); for(i=1,#mat[,1], print(mat[i,]))}
-\\ 
+\\
 \\ Create and return the Kronecker product of the a and b matrices. 4/17/16 aev
 matkronprod(a,b,pflg=0)={
 my(m=#a[,1],n=#a[1,],p=#b[,1],q=#b[1,],r,rtn,ctn);
@@ -2489,8 +2489,8 @@ matprows("Sample 2 result:",r);
 }
 
 ```
- 
-   
+
+
 {{Output}}
 
 ```txt
@@ -2514,7 +2514,7 @@ Sample 2 result:
 ```
 
 
-###  Version #2 
+###  Version #2
 
 This version is from B. Allombert. 12/12/17
 {{Works with|PARI/GP|2.9.1 and above}}
@@ -2523,7 +2523,7 @@ This version is from B. Allombert. 12/12/17
 
 \\ Print title and matrix mat rows. aev
 matprows(title,mat)={print(title); for(i=1,#mat[,1], print(mat[i,]))}
-\\ 
+\\
 \\ Create and return the Kronecker product of the a and b matrices. 12/12/17 ba
 kronprod(a,b)={return(matconcat(matrix(#a[,1],#a,i,j,a[i,j]*b)))}
 {\\ Requireq tests:
@@ -2541,8 +2541,8 @@ matprows("Sample 2 result:",r);
 }
 
 ```
- 
-   
+
+
 {{Output}}
 
 ```txt
@@ -2670,7 +2670,7 @@ function kronecker(sequence a, b)
     end for
     return res
 end function
- 
+
 constant a = {{1,2},
               {3,4}},
          b = {{0,5},
@@ -2716,19 +2716,19 @@ EnableExplicit
 DataSection
   Matrix_A_B_Dimension_Bsp1:
   Data.i 2,2,?MatrixA_Werte_Bsp1,2,2,?MatrixB_Werte_Bsp1
-    
+
   Matrix_A_B_Dimension_Bsp2:
   Data.i 3,3,?MatrixA_Werte_Bsp2,3,4,?MatrixB_Werte_Bsp2
-  
+
   MatrixA_Werte_Bsp1:
   Data.i 1,2,3,4
-  
+
   MatrixA_Werte_Bsp2:
   Data.i 0,1,0,1,1,1,0,1,0
-  
+
   MatrixB_Werte_Bsp1:
   Data.i 0,5,6,7
-  
+
   MatrixB_Werte_Bsp2:
   Data.i 1,1,1,1,1,0,0,1,1,1,1,1
 EndDataSection
@@ -2789,7 +2789,7 @@ PrintN("Matrix C=AxB")
 For i=1 To ma ; Zeile MA
   For j=1 To na ; Spalte MA
     For k=1 To mb ; Zeile MB
-      For l=1 To nb ; Spalte MB        
+      For l=1 To nb ; Spalte MB
         mxc(Str(i)+","+Str(j)+","+Str(k)+","+Str(l))=mxa(i,j)*mxb(k,l)
       Next
     Next
@@ -2802,13 +2802,13 @@ For i=1 To ma ; Zeile MA
     For j=1 To na ; Spalte MA
       For l=1 To nb ; Spalte MB
         mk$=Str(i)+","+Str(j)+","+Str(k)+","+Str(l)
-        If FindMapElement(mxc(),mk$)        
+        If FindMapElement(mxc(),mk$)
           Print(RSet(Str(mxc()),2," ")+" ")
-        EndIf        
+        EndIf
       Next
     Next
     PrintN("|")
-  Next    
+  Next
 Next
 PrintN("Press return") : Input()
 Return
@@ -2901,7 +2901,7 @@ def kronecker(matrix1, matrix2):
             final_list.append(sub_list)
             sub_list = []
             check +=1
-            
+
     return final_list
 
 # Result 1
@@ -2974,7 +2974,7 @@ for row in kronecker(t, u):
 
 We can still get the power of list comprehensions (without generating the unreadably long single lines of code referred to above) by de-sugaring them down to the underlying list monad pattern.
 
-Version three rewrites the list comprehension above in terms of '''concatMap''' (the 'bind' or 'insert' operator for list monads), to which we pass a function that returns its value wrapped in a list. (Where values are filtered out by a condition, we return an empty list). 
+Version three rewrites the list comprehension above in terms of '''concatMap''' (the 'bind' or 'insert' operator for list monads), to which we pass a function that returns its value wrapped in a list. (Where values are filtered out by a condition, we return an empty list).
 
 Note, for example, that the innermost expression here has to be <code>lambda num1: [num1 * num2]</code>, rather than just <code>lambda num1: num1 * num2</code>.
 
@@ -3114,7 +3114,7 @@ Uses typed racket, since the 'math/...' libraries are much more performant in th
                               [3 4]])
                      (matrix [[0 5]
                               [6 7]]))
-  
+
   (Kronecker-product (matrix [[0 1 0]
                               [1 1 1]
                               [0 1 0]])
@@ -3285,14 +3285,14 @@ y = [[1, 1, 1, 1], [1, 0, 0, 1], [1, 1, 1, 1]]
 kroneckerproduct(x, y)
 
 func kroneckerproduct(a,b)
- 
+
 
 for i = la1 to ua1
       for k = lb1 to ub1
             see "["
             for j = la2 to ua2
                  for l = lb2 to ub2
-                       see a[i][j] * b[k][l] 
+                       see a[i][j] * b[k][l]
                        if j = ua1 and l = ub2
                           see "]" + nl
                        else
@@ -3422,14 +3422,14 @@ BEGIN
                 CI := CI + 1
             END
     END KRONECKERPRODUCT;
-     
+
     ! --- EXAMPLE 1 --- ;
     BEGIN
         INTEGER ARRAY A(1:2, 1:2);
         INTEGER ARRAY B(1:2, 1:2);
         INTEGER ARRAY C(1:4, 1:4);
 
-         
+
         ! {{1, 2}, {3, 4}} ;
 
         A(1, 1) := 1;
@@ -3507,7 +3507,7 @@ BEGIN
         KRONECKERPRODUCT(X, Y, C);
 
         OUTMATRIX(C, 1); OUTIMAGE;
-     
+
         ! OUTPUT:
 
         ! [0 0 0 0 1 1 1 1 0 0 0 0]
@@ -3679,16 +3679,16 @@ Results in:
 
 ```txt
 
-[ 
-	[ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ], 
-	[ 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0 ], 
-	[ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ], 
-	[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], 
-	[ 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 ], 
-	[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], 
-	[ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ], 
-	[ 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0 ], 
-	[ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ] 
+[
+	[ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ],
+	[ 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0 ],
+	[ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ],
+	[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+	[ 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 ],
+	[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+	[ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ],
+	[ 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0 ],
+	[ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ]
 ]
 
 ```
@@ -3718,11 +3718,11 @@ returns:
 
 ```txt
 
-[ 
-	[ 0, 5, 0, 10 ], 
-	[ 6, 7, 12, 14 ], 
-	[ 0, 15, 0, 20 ], 
-	[ 18, 21, 24, 28 ] 
+[
+	[ 0, 5, 0, 10 ],
+	[ 6, 7, 12, 14 ],
+	[ 0, 15, 0, 20 ],
+	[ 18, 21, 24, 28 ]
 ]
 
 ```
@@ -3762,11 +3762,11 @@ proc kroenecker {A B} {
 
 proc lolcat {args} {    ;# see https://wiki.tcl.tk/41507
     concat {*}[uplevel 1 lmap $args]
-}                                           
+}
 
 # more compact but obtuse, using [lmap] and [lolcat]
 proc kroenecker {A B} {
-    lolcat arow $A { 
+    lolcat arow $A {
         lmap brow $B {
             lolcat a $arow {
                 lmap b $brow {
@@ -3808,7 +3808,7 @@ foreach {a b} $inputs {
   6   7  12  14
   0  15   0  20
  18  21  24  28
-  
+
   0   0   0   0   1   1   1   1   0   0   0   0
   0   0   0   0   1   0   0   1   0   0   0   0
   0   0   0   0   1   1   1   1   0   0   0   0
@@ -3829,21 +3829,21 @@ foreach {a b} $inputs {
 ```vb
 ' Kronecker product - 05/04/2017
 dim a(),b(),r()
- 
+
 sub kroneckerproduct '(a,b)
     m=ubound(a,1): n=ubound(a,2)
     p=ubound(b,1): q=ubound(b,2)
     rtn=m*p
     ctn=n*q
-    redim r(rtn,ctn) 
+    redim r(rtn,ctn)
     for i=1 to m
         for j=1 to n
             for k=1 to p
                 for l=1 to q
-                    r(p*(i-1)+k,q*(j-1)+l)=a(i,j)*b(k,l)  
+                    r(p*(i-1)+k,q*(j-1)+l)=a(i,j)*b(k,l)
     next: next: next: next
 end sub 'kroneckerproduct
- 
+
 sub printmatrix(text,m,w)
     wscript.stdout.writeline text
     select case m
@@ -3863,13 +3863,13 @@ sub printmatrix(text,m,w)
         wscript.stdout.writeline
     next
 end sub 'printmatrix
- 
+
 sub printall(w)
-    printmatrix "matrix a:", "a", w 
-    printmatrix "matrix b:", "b", w 
-    printmatrix "kronecker product:", "r", w  
+    printmatrix "matrix a:", "a", w
+    printmatrix "matrix b:", "b", w
+    printmatrix "kronecker product:", "r", w
 end sub 'printall
- 
+
 sub main()
     xa=array( 1, 2, _
               3, 4)
@@ -3877,7 +3877,7 @@ sub main()
     k=0: for i=1 to ubound(a,1): for j=1 to ubound(a,1)
         a(i,j)=xa(k): k=k+1
     next:next
-    xb=array( 0, 5, _ 
+    xb=array( 0, 5, _
               6, 7)
     redim b(2,2)
     k=0: for i=1 to ubound(b,1): for j=1 to ubound(b,1)
@@ -3885,17 +3885,17 @@ sub main()
     next:next
     kroneckerproduct
     printall 3
- 
-    xa=array( 0, 1, 0, _ 
-              1, 1, 1, _ 
+
+    xa=array( 0, 1, 0, _
+              1, 1, 1, _
               0, 1, 0)
     redim a(3,3)
     k=0: for i=1 to ubound(a,1): for j=1 to ubound(a,1)
         a(i,j)=xa(k): k=k+1
     next:next
-    xb=array( 1, 1, 1, 1, _ 
-              1, 0, 0, 1, _ 
-              1, 1, 1, 1) 
+    xb=array( 1, 1, 1, 1, _
+              1, 0, 0, 1, _
+              1, 1, 1, 1)
     redim b(3,4)
     k=0: for i=1 to ubound(b,1): for j=1 to ubound(b,1)
         b(i,j)=xb(k): k=k+1
@@ -3964,11 +3964,11 @@ A:=GSL.Matrix(2,2).set(1,2, 3,4);
 B:=GSL.Matrix(2,2).set(0,5, 6,7);
 kronecker(A,B).format(3,0).println();	// format(width,precision)
 
-A:=GSL.Matrix(3,3).set(0,1,0, 
-		       1,1,1, 
+A:=GSL.Matrix(3,3).set(0,1,0,
+		       1,1,1,
 		       0,1,0);
-B:=GSL.Matrix(3,4).set(1,1,1,1, 
-		       1,0,0,1, 
+B:=GSL.Matrix(3,4).set(1,1,1,1,
+		       1,0,0,1,
 		       1,1,1,1);
 kronecker(A,B).format(2,0).println();
 ```

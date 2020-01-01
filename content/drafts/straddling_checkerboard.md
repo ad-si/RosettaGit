@@ -540,7 +540,7 @@ decoded: INTHEWINTER1965/WEWEREHUNGRY/JUSTBARELYALIVE
 
 Translation of [[Straddling_checkerboard#Java|Java]] via [[Straddling_checkerboard#D|D]]
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

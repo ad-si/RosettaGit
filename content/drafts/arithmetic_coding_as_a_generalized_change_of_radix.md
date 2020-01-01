@@ -25,10 +25,10 @@ Show the results, in base 10, for all the following strings:
 
 Verify the implementation by decoding the results back into strings and checking for equality with the given strings.
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -561,11 +561,11 @@ aekDec=:adverb define
   c=.+/\0,}:f                NB. cumulative frequencies
   C=.<:}.c,m                 NB. id lookup table
   N=. (* 10&^)/y             NB. remainder being decoded
-  r=. ''                     NB. result of decode 
+  r=. ''                     NB. result of decode
   for_d. m^x:i.-m do.        NB. positional values
    id=. <.N%d                NB. character id
    i=.C I.id                 NB. character index
-   N=.<.(N -(i{c)*d)%i{f     NB. corrected remainder 
+   N=.<.(N -(i{c)*d)%i{f     NB. corrected remainder
    r=.r,u{~i                 NB. accumulated result
   end.
 )
@@ -1320,7 +1320,7 @@ TOBEORNOTTOBEORTOBEORNOT => 1150764267498783364 * 10^15
 
 ```Phix
 include mpfr.e
- 
+
 function cumulative_freq(sequence freq)
     integer total = 0,
             l = length(freq)
@@ -1334,7 +1334,7 @@ function cumulative_freq(sequence freq)
     end for
     return cf
 end function
- 
+
 function arithmethic_coding(string str, integer radix)
     sequence freq = repeat(0,256)
     for i=1 to length(str) do
@@ -1370,7 +1370,7 @@ function arithmethic_coding(string str, integer radix)
     mpz_fdiv_q(diff,hi,t1)
     return {diff, powr, freq}
 end function
- 
+
 function arithmethic_decoding(mpz num, integer radix, pwr, sequence freq)
     mpz enc = mpz_init(),
         pow = mpz_init(),
@@ -1410,10 +1410,10 @@ function arithmethic_decoding(mpz num, integer radix, pwr, sequence freq)
     end for
     return decoded
 end function
- 
+
 constant tests = {"DABDDB", "DABDDBBDDBA", "ABRACADABRA", "TOBEORNOTTOBEORTOBEORNOT"},
          radix = 10
- 
+
 for i=1 to length(tests) do
     string str = tests[i]
     {mpz enc, integer pow, sequence freq} = arithmethic_coding(str, radix)
@@ -2049,15 +2049,15 @@ fcn cumulativeFreq(freqHash){
    foreach b in (256){ if(v:=freqHash.find(b)){ cf[b]=total; total+=v; } }
    cf
 }
- 
+
 fcn arithmethicCoding(str, radix){
    bytes   :=str.split("").apply("toAsc");   // string to bytes: "0"-->0x31
    freqHash:=Dictionary(); bytes.pump(Void,freqHash.incV); // frequency chars
    cf      :=cumulativeFreq(freqHash);		// The cumulative frequency
- 
+
    base,lower:=bytes.len(), BN(0);	// Lower bound
    pf:=BN(1);				// Product of all frequencies
- 
+
    // Each term is multiplied by the product of the
    // frequencies of all previously occurring symbols
    foreach b in (bytes){
@@ -2091,7 +2091,7 @@ fcn arithmethicDecoding(enc, radix, powr, freqHash){
       if(v:=dict.find(b)) lchar=v;
       else if(lchar)      dict[b]=lchar;
    }
- 
+
    // Decode the input number
    decoded:=Data();	// byte bucket
    foreach n in ([base-1..0, -1]){
@@ -2113,12 +2113,12 @@ testStrings:=T(
         "DABDDBBDDBA",
         "ABRACADABRA",
         "TOBEORNOTTOBEORTOBEORNOT",);
- 
+
 foreach  str in (testStrings){
     enc,pow,freq := arithmethicCoding(str,radix);
     dec:=arithmethicDecoding(enc, radix, pow, freq);
     print("%-25s=> %19s * %d^%s\n".fmt(str,enc,radix,pow));
- 
+
     if(str!=dec) println("\tHowever that is incorrect!");
 }
 ```

@@ -1103,9 +1103,9 @@ roman for 1666 is 8 bytes: MDCLXVI
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 class Program
 {
@@ -1139,7 +1139,7 @@ class Program
 
 One-liner Mono REPL
 
-```csharp
+```c#
 
 Func<int, string> toRoman = (number) =>
   new Dictionary<int, string>

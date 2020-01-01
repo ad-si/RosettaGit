@@ -69,11 +69,11 @@ http://oeis.org/A000105
 ; Cf.
 [[Pentomino_tiling|Pentomino tiling]]
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|D}}
 Turns out the source for the counting only version of the D code example could be tweaked to show solutions as well.  The max rank can be changed by supplying a command line parameter.  The free polyominos of any rank can be displayed by changing the variable named '''target''' to a reasonable number.  This program will also indicate the estimated times for larger ranks.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,7 +124,7 @@ namespace cppfpe
                 for (int i = n + 1; i <= n + 10; i++)
                 {
                     if (ms >= lim) break; ms += 44; ms <<= 2; ti = TimeSpan.FromMilliseconds(ms);
-                    Console.WriteLine("{0,2} : {1,2}d {2,2}h {3,2}m {4:00}.{5:000}s", i, 
+                    Console.WriteLine("{0,2} : {1,2}d {2,2}h {3,2}m {4:00}.{5:000}s", i,
                         ti.Days, ti.Hours, ti.Minutes, ti.Seconds, ti.Milliseconds);
                 }
             }
@@ -313,9 +313,9 @@ namespace cppfpe
             if (a.Length > b.Length) b += new string(' ', a.Length - b.Length);
             if (a.Length < b.Length) a += new string(' ', b.Length - a.Length);
             for (int i = 0; i < a.Length - 1; i++)
-                res += " 12└4┘─┴8│┌├┐┤┬┼"[(a[i] == a[i + 1] ? 0 : 1) + 
+                res += " 12└4┘─┴8│┌├┐┤┬┼"[(a[i] == a[i + 1] ? 0 : 1) +
                                           (b[i + 1] == a[i + 1] ? 0 : 2) +
-                                          (a[i] == b[i] ? 0 : 4) + 
+                                          (a[i] == b[i] ? 0 : 4) +
                                           (b[i] == b[i + 1] ? 0 : 8)];
             return res;
         }
@@ -743,10 +743,10 @@ defmodule Polyominoes do
     miny = Enum.map(poly, &elem(&1,1)) |> Enum.min
     Enum.map(poly, fn {x,y} -> {x - minx, y - miny} end) |> Enum.sort
   end
-  
+
   defp rotate90({x, y}), do: {y, -x}
   defp reflect({x, y}), do: {-x, y}
-  
+
   # All the plane symmetries of a rectangular region.
   defp rotations_and_reflections(poly) do
     poly1 = Enum.map(poly,  &rotate90/1)
@@ -758,22 +758,22 @@ defmodule Polyominoes do
     poly7 = Enum.map(poly6, &rotate90/1)
     [poly, poly1, poly2, poly3, poly4, poly5, poly6, poly7]
   end
-  
+
   defp canonical(poly) do
     rotations_and_reflections(poly) |> Enum.map(&translate2origin/1)
   end
-  
+
   # All four points in Von Neumann neighborhood.
   defp contiguous({x,y}) do
     [{x - 1, y}, {x + 1, y}, {x, y - 1}, {x, y + 1}]
   end
-  
+
   # Finds all distinct points that can be added to a Polyomino.
   defp new_points(poly) do
     points = Enum.flat_map(poly, &contiguous/1)
     Enum.uniq(points) -- poly
   end
-  
+
   defp new_polys(polys) do
     Enum.reduce(polys, {[], HashSet.new}, fn poly, {polyomino, pattern} ->
       Enum.reduce(new_points(poly), {polyomino, pattern}, fn point, {pol, pat} ->
@@ -788,12 +788,12 @@ defmodule Polyominoes do
     end)
     |> elem(0)
   end
-  
+
   # Generates polyominoes of rank n recursively.
   def rank(0), do: [[]]
   def rank(1), do: [[{0,0}]]
   def rank(n), do: new_polys(rank(n-1))
-  
+
   # Generates a textual representation of a Polyomino.
   def text_representation(poly) do
     table = Enum.map(poly, &{&1, "#"}) |> Enum.into(Map.new)
@@ -971,7 +971,7 @@ func (po polyomino) toPointset() pointset {
 // Finds all distinct points that can be added to a Polyomino.
 func (po polyomino) newPoints() polyomino {
     pset := po.toPointset()
-    m := make(pointset) 
+    m := make(pointset)
     for _, p := range po {
         pts := p.contiguous()
         for _, pt := range pts {
@@ -1055,21 +1055,21 @@ func main() {
 
 All free polyominoes of rank 5:
 
-(0, 0) (0, 1) (0, 2) (0, 3) (0, 4) 
-(0, 0) (0, 1) (0, 2) (0, 3) (1, 0) 
-(0, 0) (0, 1) (0, 2) (0, 3) (1, 1) 
-(0, 0) (0, 1) (0, 2) (1, 0) (1, 1) 
-(0, 0) (0, 1) (0, 2) (1, 0) (1, 2) 
-(0, 0) (0, 1) (0, 2) (1, 0) (2, 0) 
-(0, 0) (0, 1) (0, 2) (1, 1) (2, 1) 
-(0, 0) (0, 1) (0, 2) (1, 2) (1, 3) 
-(0, 0) (0, 1) (1, 1) (1, 2) (2, 1) 
-(0, 0) (0, 1) (1, 1) (1, 2) (2, 2) 
-(0, 0) (0, 1) (1, 1) (2, 1) (2, 2) 
-(0, 1) (1, 0) (1, 1) (1, 2) (2, 1) 
+(0, 0) (0, 1) (0, 2) (0, 3) (0, 4)
+(0, 0) (0, 1) (0, 2) (0, 3) (1, 0)
+(0, 0) (0, 1) (0, 2) (0, 3) (1, 1)
+(0, 0) (0, 1) (0, 2) (1, 0) (1, 1)
+(0, 0) (0, 1) (0, 2) (1, 0) (1, 2)
+(0, 0) (0, 1) (0, 2) (1, 0) (2, 0)
+(0, 0) (0, 1) (0, 2) (1, 1) (2, 1)
+(0, 0) (0, 1) (0, 2) (1, 2) (1, 3)
+(0, 0) (0, 1) (1, 1) (1, 2) (2, 1)
+(0, 0) (0, 1) (1, 1) (1, 2) (2, 2)
+(0, 0) (0, 1) (1, 1) (2, 1) (2, 2)
+(0, 1) (1, 0) (1, 1) (1, 2) (2, 1)
 
 Number of free polyominoes of ranks 1 to 10:
-1 1 2 5 12 35 108 369 1285 4655 
+1 1 2 5 12 35 108 369 1285 4655
 
 ```
 
@@ -1194,51 +1194,51 @@ All free polyominoes of rank 5:
 #
 
 ##
-# 
-# 
-# 
+#
+#
+#
 
-# 
+#
 ##
-# 
-# 
-
-##
-##
-# 
+#
+#
 
 ##
-# 
+##
+#
+
+##
+#
 ##
 
 ###
-#  
-#  
+#
+#
 
-#  
+#
 ###
-#  
+#
 
-# 
-# 
+#
+#
 ##
  #
 
-#  
+#
 ###
- # 
+ #
 
-#  
-## 
+#
+##
  ##
 
-#  
+#
 ###
   #
 
- # 
+ #
 ###
- # 
+ #
 ```
 
 
@@ -1422,17 +1422,17 @@ public class FreePolyominoesEnum {
 
 
 ```txt
-(0,0) (0,1) (1,1) (1,2) (2,1) 
-(0,0) (0,1) (0,2) (1,0) (1,1) 
-(0,0) (0,1) (0,2) (0,3) (1,1) 
-(0,1) (1,0) (1,1) (1,2) (2,1) 
-(0,0) (0,1) (0,2) (1,1) (2,1) 
-(0,0) (0,1) (1,1) (1,2) (2,2) 
-(0,0) (0,1) (0,2) (1,2) (1,3) 
-(0,0) (0,1) (1,1) (2,1) (2,2) 
-(0,0) (0,1) (0,2) (1,0) (1,2) 
-(0,0) (0,1) (0,2) (0,3) (1,0) 
-(0,0) (0,1) (0,2) (1,0) (2,0) 
+(0,0) (0,1) (1,1) (1,2) (2,1)
+(0,0) (0,1) (0,2) (1,0) (1,1)
+(0,0) (0,1) (0,2) (0,3) (1,1)
+(0,1) (1,0) (1,1) (1,2) (2,1)
+(0,0) (0,1) (0,2) (1,1) (2,1)
+(0,0) (0,1) (1,1) (1,2) (2,2)
+(0,0) (0,1) (0,2) (1,2) (1,3)
+(0,0) (0,1) (1,1) (2,1) (2,2)
+(0,0) (0,1) (0,2) (1,0) (1,2)
+(0,0) (0,1) (0,2) (0,3) (1,0)
+(0,0) (0,1) (0,2) (1,0) (2,0)
 (0,0) (0,1) (0,2) (0,3) (0,4)
 ```
 
@@ -1448,7 +1448,7 @@ import Base.show, Base.==, Base.hash
 
 struct Point x::Float64; y::Float64 end
 hash(p::Point) = hash(p.x, hash(p.y))
-==(p1::Point, p2::Point) = p1.x == p2.x && p1.y == p2.y 
+==(p1::Point, p2::Point) = p1.x == p2.x && p1.y == p2.y
 
 pointsort!(pv) = sort!(pv, lt = (a, b) -> a.x == b.x ? a.y < b.y : a.x < b.x)
 
@@ -1459,7 +1459,7 @@ end
 Poly(poly::Poly) = Poly(poly.vp)
 Poly(poly::Poly, v::Vector{Point}) = Poly(vcat(poly.vp, v))
 Poly(poly, f::Function) = Poly(pointsort!(map(p -> f(p), deepcopy(poly.vp))))
-==(p1::Poly, p2::Poly) = length(p1.vp) == length(p2.vp) && 
+==(p1::Poly, p2::Poly) = length(p1.vp) == length(p2.vp) &&
     all(i -> p1.vp[i] == p2.vp[i], 1:length(p1.vp))
 hash(p1::Poly) = reduce((x, y) -> hash(hash(x), hash(y)), p1.vp)
 
@@ -1682,21 +1682,21 @@ fun main(args: Array<String>) {
 
 All free polyominoes of rank 5:
 
-(0, 0) (0, 1) (0, 2) (0, 3) (0, 4) 
-(0, 0) (0, 1) (0, 2) (0, 3) (1, 0) 
-(0, 0) (0, 1) (0, 2) (0, 3) (1, 1) 
-(0, 0) (0, 1) (0, 2) (1, 0) (1, 1) 
-(0, 0) (0, 1) (0, 2) (1, 0) (1, 2) 
-(0, 0) (0, 1) (0, 2) (1, 0) (2, 0) 
-(0, 0) (0, 1) (0, 2) (1, 1) (2, 1) 
-(0, 0) (0, 1) (0, 2) (1, 2) (1, 3) 
-(0, 0) (0, 1) (1, 1) (1, 2) (2, 1) 
-(0, 0) (0, 1) (1, 1) (1, 2) (2, 2) 
-(0, 0) (0, 1) (1, 1) (2, 1) (2, 2) 
-(0, 1) (1, 0) (1, 1) (1, 2) (2, 1) 
+(0, 0) (0, 1) (0, 2) (0, 3) (0, 4)
+(0, 0) (0, 1) (0, 2) (0, 3) (1, 0)
+(0, 0) (0, 1) (0, 2) (0, 3) (1, 1)
+(0, 0) (0, 1) (0, 2) (1, 0) (1, 1)
+(0, 0) (0, 1) (0, 2) (1, 0) (1, 2)
+(0, 0) (0, 1) (0, 2) (1, 0) (2, 0)
+(0, 0) (0, 1) (0, 2) (1, 1) (2, 1)
+(0, 0) (0, 1) (0, 2) (1, 2) (1, 3)
+(0, 0) (0, 1) (1, 1) (1, 2) (2, 1)
+(0, 0) (0, 1) (1, 1) (1, 2) (2, 2)
+(0, 0) (0, 1) (1, 1) (2, 1) (2, 2)
+(0, 1) (1, 0) (1, 1) (1, 2) (2, 1)
 
 Number of free polyominoes of ranks 1 to 10:
-1 1 2 5 12 35 108 369 1285 4655 
+1 1 2 5 12 35 108 369 1285 4655
 
 ```
 
@@ -1729,9 +1729,9 @@ function Puzzle(string a, string b) -- tests each intersection to determine corr
     if length(a)<length(b) then a &= repeat(' ', length(b)-length(a)) end if
     for i=1 to length(a)-1 do
         integer n=i+1
-        res &= glyphs[iff(a[i]==a[n]?0:1) + 
+        res &= glyphs[iff(a[i]==a[n]?0:1) +
                       iff(b[n]==a[n]?0:2) +
-                      iff(a[i]==b[i]?0:4) + 
+                      iff(a[i]==b[i]?0:4) +
                       iff(b[i]==b[n]?0:8) + 1];
     end for
     return utf32_to_utf8(res)
@@ -1753,7 +1753,7 @@ function double_width(string s)
     end for
     return t
 end function
- 
+
 function Cornered(string s) -- converts plain ascii art into cornered version
     sequence lines = split(s,'\n')
     string res = ""
@@ -1782,7 +1782,7 @@ function Assemble(sequence p)
     end for
     return Cornered(join(lines,"\n"))&"\n"
 end function
- 
+
 function toStr(sequence field)
 -- converts field into a minimal string
     string res = repeat(' ',n*(fWid+1)-1)
@@ -1860,7 +1860,7 @@ procedure CheckIt(sequence field, integer lv)
 end procedure
 
 function Recurse(integer lv, sequence field, putlist, integer putno, putlast)
--- this is probably about ten times slower than C#... 
+-- this is probably about ten times slower than C#...
 --  (some you win, some you lose - it has certainly not helped converting
 --   0-based indexing to 1-based simply by adding +1 almost everywhere.)
     CheckIt(field, lv)
@@ -1998,11 +1998,11 @@ Estimated completion times:
 ```txt
 
 Displaying rank 5:
- ┌───┐   ┌─────┐     ┌─┐   ┌───┐   ┌───┐     ┌───┐     ┌───┐     ┌───┐   ┌─┐     ┌─────┐   ┌─┐     ┌─┐   
- │   │   │ ┌───┘   ┌─┘ │   │ ┌─┘   │ ┌─┘   ┌─┘ ┌─┘     │ ┌─┘   ┌─┘ ┌─┘   │ └─┐   └─┐ ┌─┘   │ │   ┌─┘ └─┐ 
- │ ┌─┘   │ │       │ ┌─┘   │ │     │ └─┐   └─┐ │     ┌─┘ │     │ ┌─┘     │ ┌─┘     │ │     │ │   └─┐ ┌─┘ 
- └─┘     └─┘       │ │     │ │     └───┘     └─┘     └───┘     └─┘       │ │       └─┘     │ │     └─┘   
-                   └─┘     └─┘                                           └─┘               │ │           
+ ┌───┐   ┌─────┐     ┌─┐   ┌───┐   ┌───┐     ┌───┐     ┌───┐     ┌───┐   ┌─┐     ┌─────┐   ┌─┐     ┌─┐
+ │   │   │ ┌───┘   ┌─┘ │   │ ┌─┘   │ ┌─┘   ┌─┘ ┌─┘     │ ┌─┘   ┌─┘ ┌─┘   │ └─┐   └─┐ ┌─┘   │ │   ┌─┘ └─┐
+ │ ┌─┘   │ │       │ ┌─┘   │ │     │ └─┐   └─┐ │     ┌─┘ │     │ ┌─┘     │ ┌─┘     │ │     │ │   └─┐ ┌─┘
+ └─┘     └─┘       │ │     │ │     └───┘     └─┘     └───┘     └─┘       │ │       └─┘     │ │     └─┘
+                   └─┘     └─┘                                           └─┘               │ │
                                                                                            └─┘
 
 ```
@@ -2101,46 +2101,46 @@ main()
 [1, 1, 2, 5, 12, 35, 108, 369, 1285, 4655]
 
 All free polyominoes of rank 5:
-##### 
+#####
 
 ####
-#    
+#
 
 ####
- #   
+ #
 
 ###
-##  
+##
 
 ###
-# # 
+# #
 
 ###
-#  
-#   
+#
+#
 
 ###
- # 
- #  
+ #
+ #
 
-### 
-  ## 
+###
+  ##
 
-## 
+##
  ##
- #  
+ #
 
-## 
+##
  ##
-  # 
+  #
 
-## 
- # 
- ## 
+##
+ #
+ ##
 
- # 
+ #
 ###
- #  
+ #
 ```
 
 
@@ -2266,7 +2266,7 @@ not included in code below). But I think it's interesting nonetheless.
         [else
          (define s_ (s-normalise o ((car xs) o s) #:bottom-mask bm #:left-mask lm))
          (if (and seen? (seen? s_)) #f (loop (cons s_ rv) (cdr xs)))])))
-  
+
   (and ss1
        (let loop : (Option Shape)
          ((rv : (Option Shape) (sub1 (expt 2 (sqr o))))
@@ -2290,7 +2290,7 @@ not included in code below). But I think it's interesting nonetheless.
   (define s2
     (for/list : Shapes ((s+ : Shape (in-list (cons s s1))))
       (s-reflect:x=y o s+)))
-  
+
   (for/list : Shapes ((s (in-list (append s1 s2))))
     (s-normalise o s #:bottom-mask bm #:left-mask lm)))
 
@@ -2314,7 +2314,7 @@ not included in code below). But I think it's interesting nonetheless.
 (define (s-normalise o s #:bottom-mask bm #:left-mask lm)
   (cond [(zero? s) s]; stop an infinte loop!
         [else
-         (define -o (- o))  
+         (define -o (- o))
          ;; if there are no bits in a mask, we need to pull some in from...
          (: s-down Shape)
          (define s-down (let: loop : Shape ((s : Shape s))
@@ -2346,7 +2346,7 @@ not included in code below). But I think it's interesting nonetheless.
   (: saae (Shape -> Shapes))
   (: seen? (Shape -> Boolean))
   (: seen! (Shape -> Void))
-  
+
   (define bm (order->bottom-mask (+ 2 o)))
   (define lm (order->left-mask (+ 2 o)))
   (define shrink (curry s-shrink-1 (+ o 2)))
@@ -2356,7 +2356,7 @@ not included in code below). But I think it's interesting nonetheless.
                                     #:bottom-mask bm #:left-mask lm))
   (define all-seen-shapes #{(make-hash) :: (HashTable Shape Boolean)})
   (define all-new-shapes
-    (for*/list : Shapes ((k : Shape (in-list ss)) (s : Shape (in-list (saae k)))) s))  
+    (for*/list : Shapes ((k : Shape (in-list ss)) (s : Shape (in-list (saae k)))) s))
   (polynominoes (add1 o) all-new-shapes))
 
 (define nth-order-polynominoes
@@ -2549,43 +2549,43 @@ All free polyominoes of rank 5:
 #####
 
 ####
-#   
+#
 
 ####
- #  
+ #
 
 ###
-## 
+##
 
 ###
 # #
 
 ###
-#  
-#  
+#
+#
 
 ###
- # 
- # 
+ #
+ #
 
-### 
+###
   ##
 
-## 
+##
  ##
- # 
+ #
 
-## 
+##
  ##
   #
 
-## 
- # 
+##
+ #
  ##
 
- # 
+ #
 ###
- # 
+ #
 
 ```
 
@@ -2671,17 +2671,17 @@ object Free {
 
 
 ```txt
-(0,0) (0,1) (1,1) (1,2) (2,1) 
-(0,0) (0,1) (0,2) (1,0) (1,1) 
-(0,0) (0,1) (0,2) (0,3) (1,1) 
-(0,1) (1,0) (1,1) (1,2) (2,1) 
-(0,0) (0,1) (0,2) (1,1) (2,1) 
-(0,0) (0,1) (1,1) (1,2) (2,2) 
-(0,0) (0,1) (0,2) (1,2) (1,3) 
-(0,0) (0,1) (1,1) (2,1) (2,2) 
-(0,0) (0,1) (0,2) (1,0) (1,2) 
-(0,0) (0,1) (0,2) (0,3) (1,0) 
-(0,0) (0,1) (0,2) (1,0) (2,0) 
+(0,0) (0,1) (1,1) (1,2) (2,1)
+(0,0) (0,1) (0,2) (1,0) (1,1)
+(0,0) (0,1) (0,2) (0,3) (1,1)
+(0,1) (1,0) (1,1) (1,2) (2,1)
+(0,0) (0,1) (0,2) (1,1) (2,1)
+(0,0) (0,1) (1,1) (1,2) (2,2)
+(0,0) (0,1) (0,2) (1,2) (1,3)
+(0,0) (0,1) (1,1) (2,1) (2,2)
+(0,0) (0,1) (0,2) (1,0) (1,2)
+(0,0) (0,1) (0,2) (0,3) (1,0)
+(0,0) (0,1) (0,2) (1,0) (2,0)
 (0,0) (0,1) (0,2) (0,3) (0,4)
 ```
 
@@ -2778,43 +2778,43 @@ All free polyominoes of rank 5:
 #####
 
 ####
-#   
+#
 
 ####
- #  
+ #
 
 ###
-## 
+##
 
 ###
 # #
 
 ###
-#  
-#  
+#
+#
 
 ###
- # 
- # 
+ #
+ #
 
-### 
+###
   ##
 
-## 
+##
  ##
- # 
+ #
 
-## 
+##
  ##
   #
 
-## 
- # 
+##
+ #
  ##
 
- # 
+ #
 ###
- # 
+ #
 
 ```
 

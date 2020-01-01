@@ -600,9 +600,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 string chr = string.Empty;
 if(Console.KeyAvailable)
   chr = Console.ReadKey().Key.ToString();

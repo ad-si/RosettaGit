@@ -886,9 +886,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections;
 
@@ -932,7 +932,7 @@ namespace RosettaCode {
 
 
 
-```csharp
+```c#
 namespace RosettaCode {
     class Program {
         static void Main(string[] args) {
@@ -947,7 +947,7 @@ namespace RosettaCode {
 {{trans|C}}
 {{works with|C sharp|C#|6.0+}}
 
-```csharp
+```c#
 using static System.Console;
 class Sierpinsky
 {
@@ -970,7 +970,7 @@ class Sierpinsky
 {{trans|OCaml}}
 {{works with|C sharp|C#|3.0+}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1004,7 +1004,7 @@ class Program
 Or, with fold / reduce (a.k.a. aggregate):
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

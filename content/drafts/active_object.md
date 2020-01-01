@@ -243,7 +243,7 @@ output
 
 {{works with|C# 6}}
 
-```csharp
+```c#
 using System;
 using System.Threading.Tasks;
 

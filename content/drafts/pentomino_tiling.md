@@ -12,23 +12,23 @@ tags = []
 
 {{draft task}}
 
-A [[wp:Pentomino|pentomino]] is a polyomino that consists of 5 squares. There are 12 pentomino shapes, 
-if you don't count rotations and reflections. Most pentominoes can form their own mirror image through 
+A [[wp:Pentomino|pentomino]] is a polyomino that consists of 5 squares. There are 12 pentomino shapes,
+if you don't count rotations and reflections. Most pentominoes can form their own mirror image through
 rotation, but some of them have to be flipped over.
 
 
 ```txt
-        I                                                                        
-        I     L       N                                                 Y        
+        I
+        I     L       N                                                 Y
  FF     I     L      NN     PP     TTT              V       W     X    YY      ZZ
-FF      I     L      N      PP      T     U U       V      WW    XXX    Y      Z 
+FF      I     L      N      PP      T     U U       V      WW    XXX    Y      Z
  F      I     LL     N      P       T     UUU     VVV     WW      X     Y     ZZ
 ```
- 
 
 
-A Pentomino tiling is an example of an [[wp:Exact_cover|exact cover]] problem and can take on many forms. 
-A traditional tiling presents an 8 by 8 grid, where 4 cells are left uncovered. The other cells are covered 
+
+A Pentomino tiling is an example of an [[wp:Exact_cover|exact cover]] problem and can take on many forms.
+A traditional tiling presents an 8 by 8 grid, where 4 cells are left uncovered. The other cells are covered
 by the 12 pentomino shapes, without overlaps, with every shape only used once.
 
 The 4 uncovered cells should be chosen at random. Note that not all configurations are solvable.
@@ -65,7 +65,7 @@ Y Y Y Y P U - U
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -97,7 +97,7 @@ namespace PentominoTiling
                 {
                     randRow = rand.Next(nRows);
                     randCol = rand.Next(nCols);
-                } 
+                }
                 while (grid[randRow][randCol] == blank);
 
                 grid[randRow][randCol] = blank;
@@ -442,14 +442,14 @@ Sample output:
 
 ```txt
 
-Z I I I I I - Y 
-Z Z Z V - F Y Y 
-U U Z V - F F Y 
-U V V V F F X Y 
-U U P P W X X X 
-T P P P W W X - 
-T T T N N W W L 
-T N N N L L L L 
+Z I I I I I - Y
+Z Z Z V - F Y Y
+U U Z V - F F Y
+U V V V F F X Y
+U U P P W X X X
+T P P P W W X -
+T T T N N W W L
+T N N N L L L L
 
 ```
 
@@ -618,14 +618,14 @@ public class PentominoTiling {
 
 
 ```txt
-F I I I I I L L 
-F F F P P V L - 
-Z F P P P V L N 
-Z Z Z V V V L N 
-- X Z - W W N N 
-X X X W W - N T 
-U X U W Y T T T 
-U U U Y Y Y Y T 
+F I I I I I L L
+F F F P P V L -
+Z F P P P V L N
+Z Z Z V V V L N
+- X Z - W W N N
+X X X W W - N T
+U X U W Y T T T
+U U U Y Y Y Y T
 ```
 
 
@@ -771,7 +771,7 @@ import java.util.Random
 val F = arrayOf(
     intArrayOf(1, -1, 1, 0, 1, 1, 2, 1), intArrayOf(0, 1, 1, -1, 1, 0, 2, 0),
     intArrayOf(1, 0, 1, 1, 1, 2, 2, 1), intArrayOf(1, 0, 1, 1, 2, -1, 2, 0),
-    intArrayOf(1, -2, 1, -1, 1, 0, 2, -1), intArrayOf(0, 1, 1, 1, 1, 2, 2, 1), 
+    intArrayOf(1, -2, 1, -1, 1, 0, 2, -1), intArrayOf(0, 1, 1, 1, 1, 2, 2, 1),
     intArrayOf(1, -1, 1, 0, 1, 1, 2, -1), intArrayOf(1, -1, 1, 0, 2, 0, 2, 1)
 )
 
@@ -789,7 +789,7 @@ val L = arrayOf(
 val N = arrayOf(
     intArrayOf(0, 1, 1, -2, 1, -1, 1, 0), intArrayOf(1, 0, 1, 1, 2, 1, 3, 1),
     intArrayOf(0, 1, 0, 2, 1, -1, 1, 0), intArrayOf(1, 0, 2, 0, 2, 1, 3, 1),
-    intArrayOf(0, 1, 1, 1, 1, 2, 1, 3), intArrayOf(1, 0, 2, -1, 2, 0, 3, -1), 
+    intArrayOf(0, 1, 1, 1, 1, 2, 1, 3), intArrayOf(1, 0, 2, -1, 2, 0, 3, -1),
     intArrayOf(0, 1, 0, 2, 1, 2, 1, 3), intArrayOf(1, -1, 1, 0, 2, -1, 3, -1)
 )
 
@@ -951,7 +951,7 @@ constant pentominoes = split("""
 .FF...I.....L.....NN....PP....TTT...........V.....W....X....YY.....ZZ..
 FF....I.....L.....N.....PP.....T....U.U.....V....WW...XXX....Y.....Z...
 .F....I.....LL....N.....P......T....UUU...VVV...WW.....X.....Y....ZZ...""",'\n')
------ ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- 
+----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
 function get_shapes()
     sequence res = {}
@@ -994,10 +994,10 @@ end function
 constant shapes = get_shapes(),
          nRows = 8,
          nCols = 8
- 
+
 sequence grid = repeat(repeat(' ',nCols),nRows),
          placed = repeat(false,length(shapes))
- 
+
 function can_place(sequence o, integer r, c, ch)
     for i=1 to length(o) by 2 do
         integer x := c + o[i+1],
@@ -1014,7 +1014,7 @@ function can_place(sequence o, integer r, c, ch)
     end for
     return true
 end function
- 
+
 procedure un_place(sequence o, integer r, c)
     grid[r][c] = ' '
     for i=1 to length(o) by 2 do
@@ -1052,10 +1052,10 @@ end function
 
 function unsolveable()
 --
--- The only unsolvable grids seen have 
+-- The only unsolvable grids seen have
 --  -.- or -..- or -... at edge/corner,
 --   -      --      ---           -
---  or somewhere in the middle a -.- 
+--  or somewhere in the middle a -.-
 --                                -
 --
 -- Simply place all shapes at all positions/orientations,
@@ -1085,7 +1085,7 @@ function unsolveable()
     end for
     return false
 end function
- 
+
 procedure add_four_randomly()
     integer count = 0
     while count<4 do
@@ -1259,28 +1259,28 @@ End Module
 Solution found result ''(typical output)'':
 
 ```txt
-Y F F █ L L L L 
-Y Y F F L P P P 
-Y T F N N N P P 
-Y T N N █ V V V 
-T T T W W Z Z V 
-U U X █ W W Z V 
-U X X X █ W Z Z 
-U U X I I I I I 
+Y F F █ L L L L
+Y Y F F L P P P
+Y T F N N N P P
+Y T N N █ V V V
+T T T W W Z Z V
+U U X █ W W Z V
+U X X X █ W Z Z
+U U X I I I I I
 ```
 
 Impossible to solve result ''(a somewhat rare occurrence)'':
 
 ```txt
 no solution for this configuration:
-. █ . . . . . . 
-█ . . █ . . . . 
-. . . . . . . . 
-. . . . █ . . . 
-. . . . . . . . 
-. . . . . . . . 
-. . . . . . . . 
-. . . . . . . . 
+. █ . . . . . .
+█ . . █ . . . .
+. . . . . . . .
+. . . . █ . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
 ```
 
 ===VB .NET alternative output ''(corner characters)''===
@@ -1333,13 +1333,13 @@ fcn tryPlaceOrientation(o, R,C, shapeIndex){
    True
 }
 fcn removeOrientation(o, r,c)
-  { grid[r][c]=-1; foreach ro,co in (o){ grid[r+ro][c+co]=-1 } } 
+  { grid[r][c]=-1; foreach ro,co in (o){ grid[r+ro][c+co]=-1 } }
 fcn solve(pos,numPlaced){
    if(numPlaced==target) return(True);
 
    row,col:=pos.divr(nCols);
    if(grid[row][col]!=-1) return(solve(pos+1,numPlaced));
- 
+
    foreach i in (shapes.len()){
       if(not placed[i]){
 	 foreach orientation in (shapes[i]){

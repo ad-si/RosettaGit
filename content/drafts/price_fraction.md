@@ -569,9 +569,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 namespace ConsoleApplication1
 {
     class Program

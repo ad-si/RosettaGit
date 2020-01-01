@@ -857,9 +857,9 @@ int main (const int argc, const char** argv) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 class Program
     {

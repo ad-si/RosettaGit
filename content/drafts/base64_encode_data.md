@@ -497,9 +497,9 @@ AAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAE=
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 namespace RosettaCode.Base64EncodeData
 {
     using System;

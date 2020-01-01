@@ -618,12 +618,12 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|int, long, decimal}}
 The floating point types (float, double) don't raise an exception, but return the values Infinity or NaN as appropriate.
 
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode {

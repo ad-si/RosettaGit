@@ -20,7 +20,7 @@ tags = []
 Implement the [[wp:15_puzzle|Fifteen Puzzle Game]].
 
 
-The   '''15-puzzle'''   is also known as: 
+The   '''15-puzzle'''   is also known as:
 :::*   '''Fifteen Puzzle'''
 :::*   '''Gem Puzzle'''
 :::*   '''Boss Puzzle'''
@@ -55,7 +55,7 @@ package Generic_Puzzle is
    subtype Col_Type is Positive range 1 .. Cols;
    type Moves is (Up, Down, Left, Right);
    type Move_Arr is array(Moves) of Boolean;
-   
+
    function Get_Point(Row: Row_Type; Col: Col_Type) return String;
    function Possible return Move_Arr;
    procedure Move(The_Move: Moves);
@@ -69,21 +69,21 @@ The package implementation is as follows.
 
 ```Ada
 package body Generic_Puzzle is
-   
+
    Field: array(Row_Type, Col_Type) of Natural;
    Current_R: Row_Type := Rows;
    Current_C: Col_Type := Cols;
-   -- invariant: Field(Current_R, Current_C=0) 
+   -- invariant: Field(Current_R, Current_C=0)
    -- and for all R, C: Field(R, C) < R*C
    -- and for all (R, C) /= (RR, CC): Field(R, C) /= Field(RR, CC)
-   
+
    function Get_Point(Row: Row_Type; Col: Col_Type) return String is
       (Name(Field(Row, Col)));
-      
+
    function Possible return Move_Arr is
       (Up => Current_R > 1, Down => Current_R < Rows,
        Left => Current_C > 1, Right => Current_C < Cols);
-      
+
    procedure Move(The_Move: Moves) is
       Old_R: Row_Type; Old_C: Col_Type; N: Natural;
    begin
@@ -93,15 +93,15 @@ package body Generic_Puzzle is
 	 -- remember current row and column
 	 Old_R := Current_R;
 	 Old_C := Current_C;
-	 
+
 	 -- move the virtual cursor to a new position
-	 case The_Move is 
+	 case The_Move is
 	   when Up    => Current_R := Current_R - 1;
 	   when Down  => Current_R := Current_R + 1;
 	   when Left  => Current_C := Current_C - 1;
 	   when Right => Current_C := Current_C + 1;
 	 end case;
-	 
+
 	 -- swap the tiles on the board
 	 N := Field(Old_R, Old_C);
 	 Field(Old_R, Old_C) := Field(Current_R, Current_C);
@@ -115,7 +115,7 @@ begin
    begin
       for R in Row_Type loop
 	 for C in Col_Type loop
-	    if (R /= Current_R) or else (C /= Current_C) then 
+	    if (R /= Current_R) or else (C /= Current_C) then
 	       Field(R, C) := N;
 	       N := N + 1;
 	    else
@@ -128,32 +128,32 @@ end Generic_Puzzle;
 ```
 
 
-The main program reads the level from the command line. A larger level implies a more difficult instance. The default level is 10, which is fairly simple. After randomizing the board, the user can move the tiles. 
+The main program reads the level from the command line. A larger level implies a more difficult instance. The default level is 10, which is fairly simple. After randomizing the board, the user can move the tiles.
 
 
 ```Ada
-with Generic_Puzzle, Ada.Text_IO, 
+with Generic_Puzzle, Ada.Text_IO,
      Ada.Numerics.Discrete_Random, Ada.Command_Line;
 
 procedure Puzzle_15 is
-   
+
    function Image(N: Natural) return String is
       (if N=0 then "   " elsif N < 10 then " " & Integer'Image(N)
 	else Integer'Image(N));
-	
+
    package Puzzle is new Generic_Puzzle(Rows => 4, Cols => 4, Name => Image);
-    
+
    package Rnd is new Ada.Numerics.Discrete_Random(Puzzle.Moves);
    Rand_Gen: Rnd.Generator;
-    
-   Level: Natural := (if Ada.Command_Line.Argument_Count = 0 then 10 
+
+   Level: Natural := (if Ada.Command_Line.Argument_Count = 0 then 10
                       else Natural'Value(Ada.Command_Line.Argument(1)));
    Initial_Moves: Natural := (2**(Level/2) + 2**((1+Level)/2))/2;
    Texts: constant array(Puzzle.Moves) of String(1..9) :=
        ("u,U,^,8: ", "d,D,v,2: ", "l,L,<,4: ", "r,R,>,6: ");
-   Move_Counter: Natural := 0;    
+   Move_Counter: Natural := 0;
    Command: Character;
-       
+
  begin
     -- randomize board
     for I in 1 .. Initial_Moves loop
@@ -165,8 +165,8 @@ procedure Puzzle_15 is
 	  end if;
        end;
     end loop;
-    
-    -- read command and perform move	  
+
+    -- read command and perform move
     loop
       -- Print board
       for R in Puzzle.Row_Type loop
@@ -186,14 +186,14 @@ procedure Puzzle_15 is
 	       Ada.Text_IO.Put_Line("Left!"); Puzzle.Move(Puzzle.Left);
 	    when 'r' | 'R' | '>' | '6' =>
 	       Ada.Text_IO.Put_Line("Right!"); Puzzle.Move(Puzzle.Right);
-	    when '!' => 
-	       Ada.Text_IO.Put_Line(Natural'Image(Move_Counter) & " moves!"); 
+	    when '!' =>
+	       Ada.Text_IO.Put_Line(Natural'Image(Move_Counter) & " moves!");
 	       exit;
-	    when others => 
+	    when others =>
 	       raise Constraint_Error with "wrong input";
 	 end case;
 	 Move_Counter := Move_Counter + 1;
-      exception when Constraint_Error => 
+      exception when Constraint_Error =>
 	 Ada.Text_IO.Put_Line("Possible Moves and Commands:");
 	 for M in Puzzle.Moves loop
 	    if Puzzle.Possible(M) then
@@ -238,20 +238,20 @@ u,U,^,8: UP   d,D,v,2: DOWN   l,L,<,4: LEFT   r,R,>,6: RIGHT   !: Quit
 Right!
   1  2  3  4
   5  6  7  8
-  9 10 11   
+  9 10 11
  13 14 15 12
 2
 Down!
   1  2  3  4
   5  6  7  8
   9 10 11 12
- 13 14 15   
+ 13 14 15
 !
  4 moves!
 ```
 
 
-For other puzzles, one must just the single line with the package instantiation. E.g., for an 8-puzzle, we would write the following. 
+For other puzzles, one must just the single line with the package instantiation. E.g., for an 8-puzzle, we would write the following.
 ```Ada
    package Puzzle is new Generic_Puzzle(Rows => 3, Cols => 3, Name => Image);
 ```
@@ -348,7 +348,7 @@ win
 
 /* ARM assembly Raspberry PI  */
 /*  program puzzle15.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -371,7 +371,7 @@ win
 .equ SIGINT,   2    @ Issued if the user sends an interrupt signal (Ctrl + C)
 .equ SIGQUIT,  3    @ Issued if the user sends a quit signal (Ctrl + D)
 .equ SIGTERM, 15    @ Software termination signal (sent by kill by default)
-.equ SIGTTOU, 22    @ 
+.equ SIGTTOU, 22    @
 
 .equ NBBOX,  16
 .equ TAILLEBUFFER,   10
@@ -382,37 +382,37 @@ win
 /* structure termios see doc linux*/
     .struct  0
 term_c_iflag:                    @ input modes
-    .struct  term_c_iflag + 4 
+    .struct  term_c_iflag + 4
 term_c_oflag:                    @ output modes
-    .struct  term_c_oflag + 4 
+    .struct  term_c_oflag + 4
 term_c_cflag:                    @ control modes
-    .struct  term_c_cflag + 4 
+    .struct  term_c_cflag + 4
 term_c_lflag:                    @ local modes
-    .struct  term_c_lflag + 4 
+    .struct  term_c_lflag + 4
 term_c_cc:                       @ special characters
-    .struct  term_c_cc + 20      @ see length if necessary 
+    .struct  term_c_cc + 20      @ see length if necessary
 term_fin:
 
 /* structure sigaction see doc linux */
     .struct  0
 sa_handler:
-    .struct  sa_handler + 4 
+    .struct  sa_handler + 4
 sa_mask:
-    .struct  sa_mask + 4 
+    .struct  sa_mask + 4
 sa_flags:
-    .struct  sa_flags + 4 
+    .struct  sa_flags + 4
 sa_sigaction:
-    .struct  sa_sigaction + 4 
+    .struct  sa_sigaction + 4
 sa_fin:
 
 /* structure poll see doc linux */
     .struct  0
 poll_fd:                            @   File Descriptor
-    .struct  poll_fd + 4 
+    .struct  poll_fd + 4
 poll_events:                        @  events mask
-    .struct  poll_events + 4 
+    .struct  poll_events + 4
 poll_revents:                       @ events returned
-    .struct  poll_revents + 4 
+    .struct  poll_revents + 4
 poll_fin:
 /*********************************/
 /* Initialized data              */
@@ -434,7 +434,7 @@ sHexa: .space 9,' '
          .ascii "  decimal :  "
 sDeci: .space 15,' '
          .asciz "\n"
-szClear:     .byte 0x1B 
+szClear:     .byte 0x1B
 		     .byte 'c'                         @ console clear
 		     .byte 0
 /*********************************/
@@ -456,18 +456,18 @@ stPoll2:        .skip poll_fin
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                @ entry of program 
+.global main
+main:                                @ entry of program
     mov r0,#0
     ldr r2,iAdribox
-    mov r9,#0                        @ move counter 
+    mov r9,#0                        @ move counter
 1:                                   @ loop init boxs
     add r1,r0,#1                     @ box value
     str r1,[r2,r0, lsl #2]           @ store value
     add r0,#1                        @ increment counter
     cmp r0,#NBBOX - 2                @ end ?
     ble 1b
-    mov r10,#15                      @ empty box location 
+    mov r10,#15                      @ empty box location
     ldr r0,iAdribox
     bl shuffleGame
 2:                                   @ loop moves
@@ -477,7 +477,7 @@ main:                                @ entry of program
     //bl gameOK                      @ end game ?
     //cmp r0,#1
     //beq 50f
-    bl readKey                       @ read key 
+    bl readKey                       @ read key
     cmp r0,#-1
     beq 100f                         @ error or control-c
     mov r1,r0                        @ key
@@ -494,11 +494,11 @@ main:                                @ entry of program
     ldr r0,iAdrszMessGameWin
     bl affichageMess
 
-100:                                 @ standard end of the program 
+100:                                 @ standard end of the program
     mov r0, #0                       @ return code
     mov r7, #EXIT                    @ request to exit program
     svc #0                           @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
@@ -506,7 +506,7 @@ iAdribox:                 .int ibox
 iAdrszMessGameWin:        .int szMessGameWin
 iAdrsMessCounter:         .int sMessCounter
 /******************************************************************/
-/*     key move                                                   */ 
+/*     key move                                                   */
 /******************************************************************/
 /* r0 contains boxs address           */
 /* r1 contains key value               */
@@ -515,7 +515,7 @@ iAdrsMessCounter:         .int sMessCounter
 keyMove:
     push {r1-r8,lr}                  @ save  registers
     mov r8,r0
-    cmp r1,#0x42                     @ down arrow 
+    cmp r1,#0x42                     @ down arrow
     bne 1f
     cmp r10,#4                       @ if r10 < 4   error
     blt 80f
@@ -557,11 +557,11 @@ keyMove:
     str r3,[r8,r10,lsl #2]
     add r9,#1                        @ increment move counter
 100:
-    pop {r1-r8,lr}                   @ restaur registers 
+    pop {r1-r8,lr}                   @ restaur registers
     bx lr                            @return
 iAdriCodeError:             .int iCodeError
 /******************************************************************/
-/*     shuffle game                                       */ 
+/*     shuffle game                                       */
 /******************************************************************/
 /* r0 contains boxs address           */
 shuffleGame:
@@ -586,10 +586,10 @@ shuffleGame:
     bgt 1b
 
 100:
-    pop {r1-r6,lr}                      @ restaur registers 
+    pop {r1-r6,lr}                      @ restaur registers
     bx lr                               @return
 /******************************************************************/
-/*     game Ok ?                                      */ 
+/*     game Ok ?                                      */
 /******************************************************************/
 /* r0 contains boxs address           */
 gameOK:
@@ -610,10 +610,10 @@ gameOK:
     mov r0,#1                           @ game Ok
 
 100:
-    pop {r1-r8,lr}                      @ restaur registers 
+    pop {r1-r8,lr}                      @ restaur registers
     bx lr                               @return
 /******************************************************************/
-/*     display game                                       */ 
+/*     display game                                       */
 /******************************************************************/
 /* r0 contains boxs address           */
 displayGame:
@@ -621,7 +621,7 @@ displayGame:
     @ clear !
     mov r4,r0
     ldr r0,iAdrszClear
-    bl affichageMess 
+    bl affichageMess
     mov r2,#0
     ldr r1,iAdrsMessValeur
 1:
@@ -657,46 +657,46 @@ displayGame:
     ldr r0,iAdrszMessMoveError          @ display error message
     bl affichageMess
 100:
-    pop {r1-r5,lr}                      @ restaur registers 
+    pop {r1-r5,lr}                      @ restaur registers
     bx lr                               @return
 iSpaces:                       .int 0x00202020       @ spaces
-iAdrszClear:                   .int szClear          
+iAdrszClear:                   .int szClear
 iAdrszMessMoveError:           .int szMessMoveError
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -709,18 +709,18 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -731,40 +731,40 @@ divisionpar10U:
     push {r2,r3,r4, lr}
     mov r4,r0                                          @ save value
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   Generation random number                  */
 /***************************************************/
 /* r0 contains limit  */
 genereraleas:
-    push {r1-r4,lr}                                    @ save registers 
+    push {r1-r4,lr}                                    @ save registers
     ldr r4,iAdriGraine
     ldr r2,[r4]
     ldr r3,iNbDep1
     mul r2,r3,r2
     ldr r3,iNbDep1
     add r2,r2,r3
-    str r2,[r4]                                        @ maj de la graine pour l appel suivant 
+    str r2,[r4]                                        @ maj de la graine pour l appel suivant
     cmp r0,#0
     beq 100f
     mov r1,r0                                          @ divisor
     mov r0,r2                                          @ dividende
     bl division
     mov r0,r3                                          @ résult = remainder
-  
+
 100:                                                   @ end function
     pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @ return
 /*****************************************************/
 iAdriGraine: .int iGraine
 iNbDep1: .int 0x343FD
-iNbDep2: .int 0x269EC3 
+iNbDep2: .int 0x269EC3
 /***************************************************/
 /* integer division unsigned                       */
 /***************************************************/
@@ -778,14 +778,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -800,7 +800,7 @@ readKey:
     mov r1,#TCGETS
     ldr r2,iAdrstOldtio
     mov r7, #IOCTL                               @ call system Linux
-    svc #0 
+    svc #0
     cmp r0,#0                                    @ error ?
     beq 1f
     ldr r1,iAdrszMessErreur                      @ error message
@@ -815,21 +815,21 @@ readKey:
     ldr r1,iAdrstSigAction
     mov r2,#0                                    @ NULL
     mov r7, #SIGACTION                           @ call system
-    svc #0 
+    svc #0
     cmp r0,#0                                    @ error ?
     bne 97f
     mov r0,#SIGQUIT
     ldr r1,iAdrstSigAction
     mov r2,#0                                    @ NULL
-    mov r7, #SIGACTION                           @ call system 
-    svc #0 
+    mov r7, #SIGACTION                           @ call system
+    svc #0
     cmp r0,#0                                    @ error ?
     bne 97f
     mov r0,#SIGTERM
     ldr r1,iAdrstSigAction
     mov r2,#0                                    @ NULL
-    mov r7, #SIGACTION                           @ appel systeme 
-    svc #0 
+    mov r7, #SIGACTION                           @ appel systeme
+    svc #0
     cmp r0,#0
     bne 97f
     @
@@ -839,8 +839,8 @@ readKey:
     mov r0,#SIGTTOU                              @invalidate other process signal
     ldr r1,iAdrstSigAction1
     mov r2,#0                                    @ NULL
-    mov r7,#SIGACTION                            @ call system 
-    svc #0 
+    mov r7,#SIGACTION                            @ call system
+    svc #0
     cmp r0,#0
     bne 97f
     @
@@ -848,21 +848,21 @@ readKey:
     mov r0,#STDIN
     mov r1,#TCGETS
     ldr r2,iAdrstCurtio                          @ address current termio
-    mov r7,#IOCTL                                @ call systeme 
-    svc #0 
+    mov r7,#IOCTL                                @ call systeme
+    svc #0
     cmp r0,#0                                    @ error ?
     bne 97f
     mov r2,#ICANON | ECHO                        @ no key pressed echo on display
-    mvn r2,r2                                    @ and one key 
+    mvn r2,r2                                    @ and one key
     ldr r1,iAdrstCurtio
     ldr r3,[r1,#term_c_lflag]
-    and r3,r2                                    @ add flags 
+    and r3,r2                                    @ add flags
     str r3,[r1,#term_c_lflag]                    @ and store
-    mov r0,#STDIN                                @ maj terminal current state 
+    mov r0,#STDIN                                @ maj terminal current state
     mov r1,#TCSETS
     ldr r2,iAdrstCurtio
     mov r7, #IOCTL                               @ call system
-    svc #0 
+    svc #0
     cmp r0,#0
     bne 97f
     @
@@ -878,9 +878,9 @@ readKey:
     mov r1,#POLLIN                                @ action code
     str r1,[r0,#poll_events]
     mov r1,#1                                     @ items number structure poll
-    mov r2,#0                                     @ timeout = 0 
+    mov r2,#0                                     @ timeout = 0
     mov r7,#SYSPOLL                               @ call system POLL
-    svc #0 
+    svc #0
     cmp r0,#0                                     @ key pressed ?
     ble 2b                                        @ no key pressed -> loop
                                                   @ read key
@@ -900,7 +900,7 @@ readKey:
     mov r0,#STDIN
     mov r1,#TCSETS
     ldr r2,iAdrstOldtio
-    mov r7,#IOCTL                                 @ call system  
+    mov r7,#IOCTL                                 @ call system
     svc #0
     cmp r0,#0
     beq 99f                                       @ restaur ok
@@ -924,9 +924,9 @@ iAdrstOldtio:             .int stOldtio
 iAdrstCurtio:             .int stCurtio
 iAdrstSigAction:          .int stSigAction
 iAdrstSigAction1:         .int stSigAction1
-iAdrszMessErreur :        .int szMessErreur 
+iAdrszMessErreur :        .int szMessErreur
 /******************************************************************/
-/*     traitement du signal                                       */ 
+/*     traitement du signal                                       */
 /******************************************************************/
 sighandler:
     push {r0,r1}
@@ -954,12 +954,12 @@ displayError:
     bl affichageMess
 100:
     pop {r0-r2,lr}                          @ restaur registers
-    bx lr                                   @ return 
+    bx lr                                   @ return
 iAdrszMessErr:                 .int szMessErr
 iAdrsHexa:                     .int sHexa
 iAdrsDeci:                     .int sDeci
 /******************************************************************/
-/*     Converting a register to hexadecimal                      */ 
+/*     Converting a register to hexadecimal                      */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion16:
@@ -969,9 +969,9 @@ conversion16:
     mov r3,r0                                          @ save entry value
 1:                                                     @ start loop
     and r0,r3,r4                                       @value register and mask
-    lsr r0,r2                                          @ move right 
+    lsr r0,r2                                          @ move right
     cmp r0,#10                                         @ compare value
-    addlt r0,#48                                       @ <10  ->digit	
+    addlt r0,#48                                       @ <10  ->digit
     addge r0,#55                                       @ >10  ->letter A-F
     strb r0,[r1],#1                                    @ store digit on area and + 1 in area address
     lsr r4,#4                                          @ shift mask 4 positions
@@ -979,7 +979,7 @@ conversion16:
     bge 1b                                             @  no -> loop
 
 100:
-    pop {r1-r4,lr}                                     @ restaur registers 
+    pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @return
 
 
@@ -1371,8 +1371,8 @@ enum Move { MOVE_UP = 0, MOVE_DOWN = 1, MOVE_LEFT = 2, MOVE_RIGHT = 3 };
 
 #define NROWS     4
 #define NCOLLUMNS 4
-int holeRow;       
-int holeCollumn;   
+int holeRow;
+int holeCollumn;
 int cells[NROWS][NCOLLUMNS];
 const int nShuffles = 100;
 
@@ -1380,7 +1380,7 @@ int Game_update(enum Move move){
     const int dx[] = {  0,  0, -1, +1 };
     const int dy[] = { -1, +1,  0,  0 };
     int i = holeRow     + dy[move];
-    int j = holeCollumn + dx[move];    
+    int j = holeCollumn + dx[move];
     if ( i >= 0 && i < NROWS && j >= 0 && j < NCOLLUMNS ){
         cells[holeRow][holeCollumn] = cells[i][j];
         cells[i][j] = 0; holeRow = i; holeCollumn = j;
@@ -1405,15 +1405,15 @@ void Game_setup(void){
 int Game_isFinished(void){
     int i,j; int k = 1;
     for ( i = 0; i < NROWS; i++ )
-        for ( j = 0; j < NCOLLUMNS; j++ ) 
+        for ( j = 0; j < NCOLLUMNS; j++ )
             if ( (k < NROWS*NCOLLUMNS) && (cells[i][j] != k++ ) )
                 return 0;
-    return 1;        
+    return 1;
 }
 
 
 /* *****************************************************************************
- * View 
+ * View
  */
 
 void View_showBoard(){
@@ -1447,7 +1447,7 @@ enum Move Controller_getMove(void){
             ;
         switch ( c ){
             case 27: exit(EXIT_SUCCESS);
-            case 'd' : return MOVE_UP;   
+            case 'd' : return MOVE_UP;
             case 'u' : return MOVE_DOWN;
             case 'r' : return MOVE_LEFT;
             case 'l' : return MOVE_RIGHT;
@@ -1466,9 +1466,9 @@ int main(void){
     do Game_setup(); while ( Game_isFinished() );
 
     View_showBoard();
-    while( !Game_isFinished() ){ 
-        Game_update( Controller_getMove() ); 
-        View_showBoard(); 
+    while( !Game_isFinished() ){
+        Game_update( Controller_getMove() );
+        View_showBoard();
     }
 
     View_displayMessage("You win");
@@ -1553,8 +1553,8 @@ enum Move { MOVE_UP = 0, MOVE_DOWN = 1, MOVE_LEFT = 2, MOVE_RIGHT = 3 };
 
 #define NROWS     4
 #define NCOLLUMNS 4
-int holeRow;       
-int holeCollumn;   
+int holeRow;
+int holeCollumn;
 int cells[NROWS][NCOLLUMNS];
 const int nShuffles = 100;
 
@@ -1562,7 +1562,7 @@ int Game_update(enum Move move){
     const int dx[] = {  0,  0, -1, +1 };
     const int dy[] = { -1, +1,  0,  0 };
     int i = holeRow     + dy[move];
-    int j = holeCollumn + dx[move];    
+    int j = holeCollumn + dx[move];
     if ( i >= 0 && i < NROWS && j >= 0 && j < NCOLLUMNS ){
         cells[holeRow][holeCollumn] = cells[i][j];
         cells[i][j] = 0; holeRow = i; holeCollumn = j;
@@ -1587,21 +1587,21 @@ void Game_setup(void){
 int Game_isFinished(void){
     int i,j; int k = 1;
     for ( i = 0; i < NROWS; i++ )
-        for ( j = 0; j < NCOLLUMNS; j++ ) 
+        for ( j = 0; j < NCOLLUMNS; j++ )
             if ( (k < NROWS*NCOLLUMNS) && (cells[i][j] != k++ ) )
                 return 0;
-    return 1;        
+    return 1;
 }
 
 
 /* *****************************************************************************
- * View 
+ * View
  */
 
 int fieldWidth;
 #ifdef WIN32API_CONSOLE
 HANDLE hConsole;
-CONSOLE_SCREEN_BUFFER_INFO csbi; 
+CONSOLE_SCREEN_BUFFER_INFO csbi;
 #endif
 
 void View_setup_base(void)
@@ -1641,7 +1641,7 @@ void View_displayMessage(char* text)
 
 void View_setup(void) {
     View_setup_base();
-    initscr();        
+    initscr();
     clear();
 }
 
@@ -1671,14 +1671,14 @@ void View_displayMessage(char* text)
 #elif defined(WIN32API_CONSOLE)
 
 void View_setup(void) {
-    const COORD coordHome = { 0, 0 }; 
+    const COORD coordHome = { 0, 0 };
     CONSOLE_CURSOR_INFO cci;
     DWORD size, nWritten;
     View_setup_base();
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    cci.bVisible = FALSE; 
+    cci.bVisible = FALSE;
     cci.dwSize = 1;
-    SetConsoleCursorInfo(hConsole,&cci);    
+    SetConsoleCursorInfo(hConsole,&cci);
     GetConsoleScreenBufferInfo(hConsole,&(csbi));
     size = csbi.dwSize.X*csbi.dwSize.Y;
     FillConsoleOutputCharacter(hConsole,' ',size,coordHome,&nWritten);
@@ -1696,7 +1696,7 @@ void View_showBoard()
         for ( j = 0; j < NCOLLUMNS; j++ ){
             COORD coord = { ((SHORT)fieldWidth+1)*j, coord.Y = 2*i };
             if ( cells[i][j] ){
-                sprintf(labelString,"%*d", fieldWidth, cells[i][j]);                
+                sprintf(labelString,"%*d", fieldWidth, cells[i][j]);
                 attributes = BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED;
             }else{
                 sprintf(labelString,"%*s", fieldWidth, " ");
@@ -1735,7 +1735,7 @@ enum Move Controller_getMove(void){
             ;
         switch ( c ){
             case 27: exit(EXIT_SUCCESS);
-            case 'd' : return MOVE_UP;   
+            case 'd' : return MOVE_UP;
             case 'u' : return MOVE_DOWN;
             case 'r' : return MOVE_LEFT;
             case 'l' : return MOVE_RIGHT;
@@ -1761,7 +1761,7 @@ enum Move Controller_getMove(void){
     for(;;){
         switch ( wgetch(stdscr) ){
             case  27: exit(EXIT_SUCCESS);
-            case KEY_DOWN  : return MOVE_UP;   
+            case KEY_DOWN  : return MOVE_UP;
             case KEY_UP    : return MOVE_DOWN;
             case KEY_RIGHT : return MOVE_LEFT;
             case KEY_LEFT  : return MOVE_RIGHT;
@@ -1787,7 +1787,7 @@ enum Move Controller_getMove(void){
             case  27: exit(EXIT_SUCCESS);
             case   0:
             case 224: switch ( getch() ){
-                case 80 : return MOVE_UP;   
+                case 80 : return MOVE_UP;
                 case 72 : return MOVE_DOWN;
                 case 77 : return MOVE_LEFT;
                 case 75 : return MOVE_RIGHT;
@@ -1813,13 +1813,13 @@ int main(void) {
     srand((unsigned)time(NULL));
 
     do Game_setup(); while ( Game_isFinished() );
-    View_setup(); 
+    View_setup();
     Controller_setup();
 
     View_showBoard();
-    while( !Game_isFinished() ){ 
-        Game_update( Controller_getMove() ); 
-        View_showBoard(); 
+    while( !Game_isFinished() ){
+        Game_update( Controller_getMove() );
+        View_showBoard();
     }
 
     View_displayMessage("You win");
@@ -1832,13 +1832,13 @@ int main(void) {
 
 
 
-## C sharp
+## C#
 
 {{libheader|System.Windows.Forms}}
 {{libheader|System.Drawing}}
 {{works with|C sharp|6}}
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Linq;
@@ -2307,7 +2307,7 @@ start fifteen puzzle
 
 Credit to this post for help with the inversions-counting function: [http://www.lispforum.com/viewtopic.php?f=2&t=3422]
 
-Run it (after loading the file) with 
+Run it (after loading the file) with
 ```lisp
 |15|::main
 ```
@@ -2687,17 +2687,17 @@ The initial version had me so enamoured by the notion of consecutive cells for t
 
 The plan is to use parameters for the board size, which need not be square. As often with Fortran, messing with arrays is the key, though not without opportunities for confusion. Because Fortran stores arrays in column-major order, the arrays are accessed as BOARD(column,row) even though the arrangement is treated as rows down the page and columns across as is usual. By this means, consecutive elements in storage of array BOARD(c,r) are such that the same storage accessed via array BORED(i) thanks to <code>EQUIVALENCE(BOARD,BORED)</code> indexes them as consecutive elements, and so the test that the values are in consecutive order becomes delightfully simple, though alas there is no equivalent of the ''iota'' function of APL whereby the test could be <code>ALL(BORED(1:N - 1) .EQ. IOTA(N - 1))</code>
 
-Column-major ordering also applies to array WAY, which lists the offsets needed to locate squares deemed adjacent to a given location, such as that of the blank square, located by LOCI = LOCZ + WAY(i). Adjacent LOCI are checked for being in range, and if so, added to the list in array LOCM with the moveable piece identified in array MOVE. 
+Column-major ordering also applies to array WAY, which lists the offsets needed to locate squares deemed adjacent to a given location, such as that of the blank square, located by LOCI = LOCZ + WAY(i). Adjacent LOCI are checked for being in range, and if so, added to the list in array LOCM with the moveable piece identified in array MOVE.
 
 It transpires that the F90 compiler will not allow a PARAMETER statement to define values for items appearing in an EQUIVALENCE statement; so much for an attempt to do so in a systematic manner employing related names.
 
 The game plan is to start with an ordered array so that each cell definitely has a unique code, then jumble them via "random" swaps. Possible arrangements turn out to have either odd or even parity based on the number of out-of-sequence squares, and as the allowed transformations do not change the parity and the solution state has even parity, odd parity starting states should not be presented except by those following Franz Kafka. The calculation is simplified by always having the blank square in the last position, thus in the last row. Once an even-parity starting state is floundered upon, the blank square is re-positioned using allowable moves so that the parity is not altered thereby. Then the game begins: single-square moves only are considered, though in practice groups of squares could be moved horizontally or vertically rather than one-step-at-a-time - a possible extension.
 
-The source style uses F90 for its array arithmetic abilities, especially the functions ALL, ANY and COUNT. A statement 
+The source style uses F90 for its array arithmetic abilities, especially the functions ALL, ANY and COUNT. A statement
 ```Fortran
 LOCZ = MINLOC(BOARD)	!Find the zero. 0 = BOARD(LOCZ(1),LOCZ(2)) == BOARD(ZC,ZR)
 ```
- could be used but is unnecessary thanks to tricks with EQUIVALENCE. For earlier Fortran, various explicit DO-loops would have to be used. This would at least make clear whether or not the equivalents of ANY and ALL terminated on the first failure or doggedly scanned the entire array no matter what. 
+ could be used but is unnecessary thanks to tricks with EQUIVALENCE. For earlier Fortran, various explicit DO-loops would have to be used. This would at least make clear whether or not the equivalents of ANY and ALL terminated on the first failure or doggedly scanned the entire array no matter what.
 ```Fortran
       SUBROUTINE SWAP(I,J)	!Alas, furrytran does not provide this.
        INTEGER I,J,T		!So, we're stuck with supplying the obvious.
@@ -2878,7 +2878,7 @@ The display here turns out to be less rectangular than that of the "console" scr
 byPos As New Byte[]                                             'Stores the position of the 'Tiles'
 siMoves As Short                                                'Stores the amount of moves
 hTimer As Timer                                                 'Timer
-dTimerStart As Date                                             'Stores the start time 
+dTimerStart As Date                                             'Stores the start time
 dTimerDiff As Date                                              'Stores the time from the start to now
 bTimerOn As Boolean                                             'To know if the Timer is running
 
@@ -2901,7 +2901,7 @@ Dim byRand, byTest As Byte                                      'Various variabl
 Dim bOK As Boolean                                              'Used to stop duplicate numbers being added
 Dim bSolvable As Boolean
 
-Repeat                                                          'Repeat until the puzzle is solvable    
+Repeat                                                          'Repeat until the puzzle is solvable
   Do                                                            'Start of a Do loop to create 0 to 15 in random order
     byRand = Rand(0, 15)                                        'Get a random number between 0 and 15
     If byRand = 0 Then byRand = 99                              'Change 0 to 99 for the Blank space
@@ -2923,7 +2923,7 @@ For byRand = 0 To 15                                            'Loop
   Endif
   hButton = New Button(Me) As "AllButtons"                      'Add a new button to the Form, all buttons grouped as 'AllButtons'
   With hButton                                                  'With the following properties
-    .Text = Str(byPos[byRand])                                  'Add Button text 
+    .Text = Str(byPos[byRand])                                  'Add Button text
     .Tag = Str(byPos[byRand])                                   'Add a Tag
     .Height = (Me.Height - 10) / 4                              'Set the Button height
     .Width = (Me.Width - 10) / 4                                'Set the Button width
@@ -2952,7 +2952,7 @@ End
 Public Sub AddTimer()                                           'To add a Timer
 
 hTimer = New Timer As "MyTimer"                                 'Add a Timer
-hTimer.Delay = 1000                                             'Set the timer delay 
+hTimer.Delay = 1000                                             'Set the timer delay
 
 End
 
@@ -3052,10 +3052,10 @@ For Each byTemp In byCheck                                      'For each value 
     byPos[byTemp] = Last.Text                                   'Set the new position of the Tile in byPos
     byPos[byCount] = 99                                         'Set the existing Tile position to = 99 (blank)
     Inc siMoves                                                 'Inc the amount of moves made
-    If Not bTimerOn Then                                        'If the Timer is now needed then 
+    If Not bTimerOn Then                                        'If the Timer is now needed then
       dTimerStart = Time(Now)                                   'Set the Start time to NOW
       hTimer.start                                              'Start the Timer
-      bTimerOn = True                                           'Set bTimerOn to True 
+      bTimerOn = True                                           'Set bTimerOn to True
     Endif
     Break                                                       'Get out of here
   End If
@@ -3101,7 +3101,7 @@ Me.Children.clear                                               'Clear the Form 
 For Each byTemp In byPos                                        'For each 'Position'
   If byTemp = 99 Then                                           'If the Position's value is 99 then it's the space
     AddPanel                                                    'Go to the AddPanel routine
-  Else                                                          'If the Position's value is NOT 99 then 
+  Else                                                          'If the Position's value is NOT 99 then
     hButton = New Button(Me) As "AllButtons"                    'Create a new Button
   With hButton                                                  'With the following properties
     .Text = Str(byPos[byCount])                                 'Text as stored in byPos
@@ -3117,7 +3117,7 @@ For Each byTemp In byPos                                        'For each 'Posit
     End If
   hButton.Font.size = siFontH / 16                              'Set Font height
   Endif
-  
+
   Inc byCount                                                   'Increase counter
 Next
 
@@ -3140,7 +3140,7 @@ For siCount0 = 0 To byPos.Max                                   'Loop through th
     End If
     Continue                                                    'Go to the end of the loop
   End If
-  For siCount1 = siCount0 + 1 To byPos.Max                      'Loop through the positions 
+  For siCount1 = siCount0 + 1 To byPos.Max                      'Loop through the positions
     If byPos[siCount0] > byPos[siCount1] Then Inc siInversion   'Counts the inversions
   Next                                                          'See https://www.cs.bham.ac.uk/~mdr/teaching/modules04/java2/TilesSolvability.html
 Next
@@ -3448,11 +3448,11 @@ Please enter number to move
 procedure Main()
     // console init
     SET SCOREBOARD OFF
-    SetMode(30,80) 
+    SetMode(30,80)
     ret := 0
 
     // main loop
-    yn := .F.  
+    yn := .F.
     DO WHILE yn == .F.
         // draw console
         cls
@@ -3462,9 +3462,9 @@ procedure Main()
         SetColor()
 
         // input size of grid
-        tam := 0           
+        tam := 0
         @ MaxRow() - 2, 4 SAY "Size of grid: " GET tam PICTURE "9"
-        READ 
+        READ
 
         // Initialize numbers
         lista := ARRAY (tam * tam)
@@ -3475,10 +3475,10 @@ procedure Main()
         grid := ARRAY (tam,tam)
 
         // populate grid with numbers
-        FOR i := 1 TO tam 
-            FOR j := 1 TO tam 
-                grid[i,j] := lista1[ (i-1) * tam + j] 
-            NEXT 
+        FOR i := 1 TO tam
+            FOR j := 1 TO tam
+                grid[i,j] := lista1[ (i-1) * tam + j]
+            NEXT
         NEXT
         Mostra(@grid)
         InKey(0)
@@ -3499,12 +3499,12 @@ procedure Main()
             possp := 0
             invct := 0  // change counter
             FOR i := 1 TO tam * tam -1
-                IF lista[i] != tam*tam 
-                    FOR j := i + 1 TO tam * tam 
+                IF lista[i] != tam*tam
+                    FOR j := i + 1 TO tam * tam
                         IF lista[j] != tam*tam
                             IF lista[i] > lista[j]
-                                invct++ 
-                            ENDIF 
+                                invct++
+                            ENDIF
                         ENDIF
                     NEXT
                 ELSE
@@ -3513,45 +3513,45 @@ procedure Main()
             NEXT
             linv := If( ( (invct % 2) == 0 ), .T., .F.)
             lkin := If( ( (tam - Int( (possp -1) / tam )) % 2) == 0, .T., .F. )
-            
+
             IF ( (tam % 2) != 0)    // if grid size is odd
                 IF linv                 // if number of positions changes is even, solvable
                     EXIT
-                ELSE 
+                ELSE
                     LOOP                // if is odd, not solvable, scramble more
                 ENDIF               // if grid size is even
-            ELSE                    
+            ELSE
                                         // If changes is even and space position is in odd line
                                         // or changes is odd and space position is in even line
-                                        // (XOR condition) is solvable 
-                IF (linv .AND. !lkin) .OR. (!linv .AND. lkin) // XOR !!! 
+                                        // (XOR condition) is solvable
+                IF (linv .AND. !lkin) .OR. (!linv .AND. lkin) // XOR !!!
                     EXIT
                 ElSE                    // else scramble more
-                    LOOP    
+                    LOOP
                 ENDIF
             ENDIF
 
         ENDDO
 
         // populate the grid with scrambled numbers
-        FOR i := 1 TO tam 
-            FOR j := 1 TO tam 
-                grid[i,j] := lista[ (i-1) * tam + j] 
-            NEXT 
+        FOR i := 1 TO tam
+            FOR j := 1 TO tam
+                grid[i,j] := lista[ (i-1) * tam + j]
+            NEXT
         NEXT
         ret := Mostra(@grid)
 
     // play
         key := 0
         DO WHILE LastKey() != K_ESC
-            key := 0 
+            key := 0
             // find the space coords
             xe := 0
             ye := 0
             lv := tam*tam
-            FOR i := 1 TO tam 
-                FOR j := 1 TO tam 
-                    IF grid[i,j] == lv 
+            FOR i := 1 TO tam
+                FOR j := 1 TO tam
+                    IF grid[i,j] == lv
                         xe :=i
                         ye :=j
                     ENDIF
@@ -3559,32 +3559,32 @@ procedure Main()
             NEXT
             // the direction keys
             key := inkey(0)
-            DO CASE 
+            DO CASE
                 CASE key == K_UP
                     IF xe > 1
                         grid[xe,ye] := grid[xe-1,ye]
                         grid[xe-1,ye] := lv
                     ENDIF
-                    ret := Mostra(@grid)            
+                    ret := Mostra(@grid)
                 CASE key == K_DOWN
                     IF xe < tam
                         grid[xe,ye] := grid[xe+1,ye]
                         grid[xe+1,ye] := lv
                     ENDIF
-                    ret := Mostra(@grid)   
+                    ret := Mostra(@grid)
                 CASE key == K_LEFT
                     IF ye > 1
                         grid[xe,ye] := grid[xe,ye-1]
                         grid[xe,ye-1] := lv
                     ENDIF
-                    ret := Mostra(@grid)   
+                    ret := Mostra(@grid)
                 CASE key == K_RIGHT
                     IF ye < tam
                         grid[xe,ye] := grid[xe,ye+1]
                         grid[xe,ye+1] := lv
                     ENDIF
-                    ret := Mostra(@grid)   
-            ENDCASE  
+                    ret := Mostra(@grid)
+            ENDCASE
             IF ret == tam*tam-1                             // ret is qtty numbers in position
                 @ MaxRow() - 3, 4 SAY "Fim de jogo!"        // if ret == (size*size) -1
                 key := K_ESC                                // all numbers in position
@@ -3592,7 +3592,7 @@ procedure Main()
             ENDIF
         ENDDO
         @ MaxRow() - 2, 4 SAY "Deseja sair? (yn): " GET yn PICTURE "Y"
-        READ 
+        READ
         @ MaxRow() - 3, 4 SAY "              "
     ENDDO
 return NIL
@@ -3600,19 +3600,19 @@ return NIL
 FUNCTION Mostra(grid)
     // Show the gris
     fim := 0                                                    // how many numbers in position?
-    SetColor("BG+/B,W/N") 
+    SetColor("BG+/B,W/N")
     @ 5,10 , 5 + tam * 2, 9 + tam * 4 BOX B_SINGLE + Space(1)
     i := 0
     FOR y := 1 TO tam
         FOR x := 1 TO tam
             IF grid[x,y] == tam * tam                           // show space
                 SetColor(" B/GR+, W/N")
-                @ x*2 + 4, i + 11 SAY "  " 
+                @ x*2 + 4, i + 11 SAY "  "
                 SetColor("BG+/B,W/N")
-            ELSE 
+            ELSE
                 IF ( (x-1) * tam + y ) == grid[x,y]             // show number in position
                     SetColor("W/G,W/N")
-                    @ x*2 + 4, i + 11 SAY grid[x,y] PICTURE "99" 
+                    @ x*2 + 4, i + 11 SAY grid[x,y] PICTURE "99"
                     fim++
                 ELSE                                            // show number out position
                     SetColor("BG+/B,W/N")
@@ -3815,7 +3815,7 @@ class FifteenPuzzle extends JPanel {
                     int dir = 0;
                     if (c1 == c2 && Math.abs(r1 - r2) > 0) {
                         dir = (r1 - r2) > 0 ? 4 : -4;
-                        
+
                     } else if (r1 == r2 && Math.abs(c1 - c2) > 0) {
                         dir = (c1 - c2) > 0 ? 1 : -1;
                     }
@@ -3828,7 +3828,7 @@ class FifteenPuzzle extends JPanel {
                         } while (blankPos != clickPos);
                         tiles[blankPos] = 0;
                     }
-                    
+
                     gameOver = isSolved();
                 }
                 repaint();
@@ -4010,7 +4010,7 @@ function updateBtns() {
     clickCounter.innerHTML = "Clicks: " + clicks;
 }
 function shuffle() {
-    var v = 0, t; 
+    var v = 0, t;
     do {
         getPossibles();
         while( true ) {
@@ -4021,7 +4021,7 @@ function shuffle() {
         oldzx = zx; oldzy = zy;
         board[zx][zy] = board[t.x][t.y];
         zx = t.x; zy = t.y;
-        board[zx][zy] = 16; 
+        board[zx][zy] = 16;
     } while( ++v < 200 );
 }
 function restart() {
@@ -4056,7 +4056,7 @@ function btnHandle( e ) {
         board[zx][zy] = 16;
         updateBtns();
         if( checkFinished() ) {
-            setTimeout(function(){ 
+            setTimeout(function(){
                 alert( "WELL DONE!" );
                 restart();
             }, 1);
@@ -4582,7 +4582,7 @@ on OpenStack
    set the width of the templateButton to 50
    set the height of the templateButton to 50
    repeat with i=1 to 16
-      create button 
+      create button
       set the label of  button i to i
       if i =1 then
          set the top of button 1 to 0
@@ -4594,28 +4594,28 @@ on OpenStack
       end if
       if i >= 5 and i <= 8 then
          set the top of button i to the bottom of button 1
-         if i = 5 then 
+         if i = 5 then
             set the left of button i to the left of button 1
          else
             set the left of button i to the right of button (i - 1)
          end if
-      end if   
+      end if
       if i >= 9 and i <= 12 then
          set the top of button i to the bottom of button 5
-         if i = 9 then 
+         if i = 9 then
             set the left of button i to the left of button 1
-         else 
+         else
             set the left of button i to the right of button (i - 1)
          end if
-      end if   
+      end if
       if i >= 13 and i <= 16 then
          set the top of button i to the bottom of button 9
-         if i = 13 then 
+         if i = 13 then
             set the left of button i to the left of button 1
-         else 
+         else
             set the left of button i to the right of button (i - 1)
          end if
-      end if   
+      end if
       #this is usally the script directly wirtten in the objects, it's really weird this way
       put "on MouseUp" &CR& "if checkDistance(the label of me) then" & CR &"put the loc of me into temp" into ts
       put CR& "set the loc of me to the loc of button 16" after ts
@@ -4623,7 +4623,7 @@ on OpenStack
       set the script of button i to ts
    end repeat
    #graphic adjustements
-   set the visible of button 16 to false   
+   set the visible of button 16 to false
    set the width of this stack to the right of button 16
    set the height of this stack to the bottom of button 16
 end openStack
@@ -4631,7 +4631,7 @@ end openStack
 function checkDistance i
    if (((the top of button i - the bottom of button 16) = 0 OR (the top of button 16 - the bottom of button i) = 0) AND the left of button i = the left of button 16) OR (((the left of button i - the right of button 16) = 0 OR (the right of button i - the left of button 16) = 0) AND the top of button i = the top of button 16) then
       return true
-   else 
+   else
       return false
    end if
 end checkDistance
@@ -4650,10 +4650,10 @@ Screenshot:
 math.randomseed( os.time() )
 local puz = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0 }
 local dir = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } }
-local sx, sy = 4, 4 
+local sx, sy = 4, 4
 
 function isValid( tx, ty )
-    return tx > 0 and tx < 5 and ty > 0 and ty < 5  
+    return tx > 0 and tx < 5 and ty > 0 and ty < 5
 end
 function display()
     io.write( "\n\n" )
@@ -4678,17 +4678,17 @@ function getUserNove()
     for d = 1, 4 do
         tx = sx; ty = sy
         tx = tx + dir[d][1]; ty = ty + dir[d][2]
-        
-        if isValid( tx, ty ) then 
+
+        if isValid( tx, ty ) then
             table.insert( moves, puz[tx + ty * 4 - 4] )
         end
     end
-    
+
     io.write( "Your possible moves are: " )
-    for i = 1, #moves do 
+    for i = 1, #moves do
         io.write( string.format( "%d ", moves[i] ) )
     end
-    
+
     io.write ( "\nYour move: " ); r = tonumber( io.read() )
     if r ~= nil then
         for i = 1, #moves do
@@ -4700,7 +4700,7 @@ function getUserNove()
 end
 function checked( r )
     for i = 1, #puz do
-        if puz[i] == r then 
+        if puz[i] == r then
             puz[i] = 0
             sx = 1 + ( i - 1 ) % 4; sy = math.floor( ( i + 3 ) / 4 )
         elseif puz[i] == 0 then
@@ -4731,7 +4731,7 @@ function beginGame()
                     display()
                     io.write( "\nDone!\n\nPlay again (Y/N)?" )
                     r = io.read()
-                    if r ~= "Y" and r ~= "y" then 
+                    if r ~= "Y" and r ~= "y" then
                         return
                     else
                         break
@@ -4786,7 +4786,7 @@ Also the code is not the best, because we can move from 4 position to 5 (we can'
 ```M2000 Interpreter
 
 Module Puzzle15 {
-      
+
       00 BASE 1 : DEF RND(X)=RND
       10 REM 15-PUZZLE GAME
       20 REM COMMODORE BASIC 2.0
@@ -4906,7 +4906,7 @@ Puzzle15
 
 
 The ideal in Mercury is to have a declarative module that encodes the game logic, and then separate modules to implement a human player with text commands (here), or keyed commands, or some kind of AI player, and so on. fifteen.print/3 is a arguably a smudge on fifteen's interface:
- 
+
 
 ```Mercury
 :- module fifteen.
@@ -5345,7 +5345,7 @@ To move, input the number to slide into the blank. If you accidentally make an i
      3  7 13
  11  8  6 15
   9 10 12  4
-  1  5 14  2 > 
+  1  5 14  2 >
 
 ```
 
@@ -5659,7 +5659,7 @@ end.
 {{libheader|Tk}}
 {{libheader|Perl/Tk}}
 This Tk 15 puzzle implementation also shows the solvability of the current puzzle and the relative difficulty of it.
-On verbosity shows how the solvability is calculated. The program has some extra feature like font size and color scheme but also the possibility to set the intial board disposition. 
+On verbosity shows how the solvability is calculated. The program has some extra feature like font size and color scheme but also the possibility to set the intial board disposition.
 This program was originally posted by me at [http://www.perlmonks.org/?node_id=1192660 perlmonks]
 
 ```perl
@@ -5925,7 +5925,7 @@ This short console program just poses solvable puzzles: it achieves this shuffli
 
 ```perl
 
-use strict; 
+use strict;
 use warnings;
 
 use List::Util qw(shuffle first);
@@ -5940,7 +5940,7 @@ for (1..$ARGV[0]||1000) {
 while(1){
   print +(join ' ',map{$_==16?'  ':sprintf '%02s',$_}@{$tbl[$_]}),"\n" for 0..3;
   my $m = <STDIN>;
-  chomp $m;  
+  chomp $m;
   die "Enter a number to move!" unless $m;
   if ($m > 15){
 	warn "$m not in the board! Enter a tile from 1 to 15\n";
@@ -6247,7 +6247,7 @@ Procedure ShuffleBoard(difficulty.i)
     Dim randomKey$(3)
     randomkey$(0)=#up:randomkey$(1)=#down:randomkey$(2)=#left:randomkey$(3)=#right
     For i=1 To difficulty
-       UpdateBoard(randomKey$(Random(3))) 
+       UpdateBoard(randomKey$(Random(3)))
     Next i
 EndProcedure
 NewBoard()
@@ -6427,7 +6427,7 @@ Enter the difficulty : 0 1 2
 Enter 0 to exit
 Hello user:
 To change the position just enter the no. near it
-14 	15 	
+14 	15
 14
 +-----+-----+-----+-----+
 |  1  |  7  |  2  |  4  |
@@ -6440,7 +6440,7 @@ To change the position just enter the no. near it
 +-----+-----+-----+-----+
 Hello user:
 To change the position just enter the no. near it
-10 	14 	11 	
+10 	14 	11
 
 ```
 
@@ -6607,7 +6607,7 @@ move.d<-function(m){
     pos=which(m==0)
     m[pos]=m[pos-1]
     m[pos-1]=0
-  }  
+  }
   return(m)
 }
 move.l<-function(m){
@@ -6642,7 +6642,7 @@ Sample output:
 ```txt
 
 > puz15(scramble.length=4)
-+----+----+----+----+ 
++----+----+----+----+
 |  1 |  2 |  3 |  4 |
 +----+----+----+----+
 |  5 |  6 |  7 |  8 |
@@ -6652,7 +6652,7 @@ Sample output:
 | 13 | 14 | 11 | 15 |
 +----+----+----+----+
 Move:w
-+----+----+----+----+ 
++----+----+----+----+
 |  1 |  2 |  3 |  4 |
 +----+----+----+----+
 |  5 |  6 |  7 |  8 |
@@ -6662,7 +6662,7 @@ Move:w
 | 13 | 14 |    | 15 |
 +----+----+----+----+
 Move:a
-+----+----+----+----+ 
++----+----+----+----+
 |  1 |  2 |  3 |  4 |
 +----+----+----+----+
 |  5 |  6 |  7 |  8 |
@@ -6674,7 +6674,7 @@ Move:a
 
 [1] "You win!"
 
- It took you 2 moves. 
+ It took you 2 moves.
 
 ```
 
@@ -6761,9 +6761,9 @@ rebol []  random/seed now  g: [style t box red [
 
 This REXX version allows the user to specify the size of the puzzle   ('''N''',   where   '''NxN'''   is the size of the puzzle).
 
-With some more complexity, the REXX computer program could be changed to allow multiple-tile moves   (so that, for instance, three tiles could be slid to the right). 
+With some more complexity, the REXX computer program could be changed to allow multiple-tile moves   (so that, for instance, three tiles could be slid to the right).
 
-Over half of the REXX program has to do with input validation and presentation of the puzzle (grid). 
+Over half of the REXX program has to do with input validation and presentation of the puzzle (grid).
 
 ```rexx
 /*REXX pgm implements the 15─puzzle (AKA: Gem Puzzle, Boss Puzzle, Mystic Square, 14─15)*/
@@ -6847,7 +6847,7 @@ showGrid: parse arg show;       !.=;                      x= x/1;       #= 0;   
            ╚══╩══╩══╩══╝
 
 ──────── Please enter a tile number  or  numbers  ────────  (or Quit).
-13                           ◄■■■■■■■■■■ user input. 
+13                           ◄■■■■■■■■■■ user input.
            ╔══╦══╦══╦══╗
            ║10║ 7║ 8║11║
            ╠══╬══╬══╬══╣
@@ -6859,7 +6859,7 @@ showGrid: parse arg show;       !.=;                      x= x/1;       #= 0;   
            ╚══╩══╩══╩══╝
 
 ──────── Please enter a tile number  or  numbers  ────────  (or Quit).
-1  15  3                     ◄■■■■■■■■■■ user input. 
+1  15  3                     ◄■■■■■■■■■■ user input.
            ╔══╦══╦══╦══╗
            ║10║ 7║ 8║11║
            ╠══╬══╬══╬══╣
@@ -6871,7 +6871,7 @@ showGrid: parse arg show;       !.=;                      x= x/1;       #= 0;   
            ╚══╩══╩══╩══╝
 
 ──────── Please enter a tile number  or  numbers  ────────  (or Quit).
-quit                         ◄■■■■■■■■■■ user input. 
+quit                         ◄■■■■■■■■■■ user input.
 
 
 ──────── quitting.
@@ -6901,26 +6901,26 @@ load "guilib.ring"
 app1 = new qapp {
 
         stylefusionblack()
-        empty = 16  
+        empty = 16
         nrMoves = 0
         nrSleep = 1
-        butSize = 4 
+        butSize = 4
         curBut = 4
         temp = 0
         flaginit = 0
         flagsave = 0
         flagmove = 0
-        button = list(52)   
+        button = list(52)
         sizebtn = list(7)
-        table1 = [] 
-        table2 = [] 
+        table1 = []
+        table2 = []
         table3 = []
         nDegree = 0
         nrDegree = [0,90,180,270 ,-90,-180,-270]
         nDegreeRight = 0
         nDegreeLeft = 0
         btnDegree = newlist(52,2)
-        CounterMan = 0 
+        CounterMan = 0
         t1 = 0
 
         win1 = new qwidget() {
@@ -6932,84 +6932,84 @@ app1 = new qapp {
                         for m=1 to 2
                              btnDegree[n][m] = 0
                         next
-                  next 
+                  next
 
                    for n = 4 to 7
-                               sizebtn[n] = new qpushbutton(win1)   
+                               sizebtn[n] = new qpushbutton(win1)
                                {
                                                   col = n%4
                                                   setgeometry(100+col*40,60,40,40)
                                                   settext(string(n) + "x" + string(n))
                                                   setclickevent("newsize(" + string(n) + ")")
-                               } 
-                   next    
+                               }
+                   next
 
                   btnMoves = new qpushbutton(win1)
                   {
                                  setgeometry(100,260,80,40)
                                  settext("0")
-                                 show() 
+                                 show()
                   }
 
                    scramblebtn = new qpushbutton(win1)
                    {
                                          setgeometry(100,300,160,40)
                                          settext("Scramble")
-                                         setclickevent("scramble()")                        
+                                         setclickevent("scramble()")
                    }
 
-                   resetbtn = new qpushbutton(win1)   
+                   resetbtn = new qpushbutton(win1)
                    {
                                     setgeometry(100,340,160,40)
                                     settext("Reset")
                                     setclickevent("resettiles()")
                    }
 
-                   savebtn = new qpushbutton(win1)   
+                   savebtn = new qpushbutton(win1)
                    {
-                                   setgeometry(100,380,160,40)  
-                                   settext("Save Game")  
+                                   setgeometry(100,380,160,40)
+                                   settext("Save Game")
                                    setclickevent("pSave()")
                    }
 
-                   playbtn = new qpushbutton(win1)   
+                   playbtn = new qpushbutton(win1)
                    {
-                                   setgeometry(100,420,160,40)  
-                                   settext("Resume Game")  
+                                   setgeometry(100,420,160,40)
+                                   settext("Resume Game")
                                    setclickevent("pPlay()")
                    }
 
-                   sleepbtn = new qpushbutton(win1)   
+                   sleepbtn = new qpushbutton(win1)
                    {
-                                   setgeometry(100,460,160,40)  
-                                   settext("Sleep Time: ")  
+                                   setgeometry(100,460,160,40)
+                                   settext("Sleep Time: ")
 
                    }
 
-                  decbtn = new qpushbutton(win1)   
+                  decbtn = new qpushbutton(win1)
                   {
-                               setgeometry(220,460,40,40)  
-                               settext("<-")  
+                               setgeometry(220,460,40,40)
+                               settext("<-")
                                setclickevent("pDecSleep()")
                   }
 
-                  incbtn = new qpushbutton(win1)   
+                  incbtn = new qpushbutton(win1)
                   {
-                               setgeometry(260,460,40,40)  
-                               settext("->")  
+                               setgeometry(260,460,40,40)
+                               settext("->")
                                setclickevent("pIncSleep()")
                   }
 
-                 rightbtn = new qpushbutton(win1)   
+                 rightbtn = new qpushbutton(win1)
                  {
-                               setgeometry(100,500,160,40)  
-                               settext("In the Right Place : ")  
+                               setgeometry(100,500,160,40)
+                               settext("In the Right Place : ")
                  }
 
-                 timebtn = new qpushbutton(win1)   
+                 timebtn = new qpushbutton(win1)
                  {
-                               setgeometry(100,540,160,40)  
-                               settext("Elapsed Time : ")  
+                               setgeometry(100,540,160,40)
+                               settext("Elapsed Time : ")
                  }
 
                 TimerMan = new qtimer(win1)
@@ -7018,7 +7018,7 @@ app1 = new qapp {
                                   settimeoutevent("pTime()")
                                   stop()
                }
-              newsize(4) 
+              newsize(4)
               show()
         }
         exec()
@@ -7034,14 +7034,14 @@ Func newlist x, y
      return alist
 
 func scramble
-       for n= 1 to 1000   
+       for n= 1 to 1000
             curBut=random(butSize*butSize-1)+1
             up = (empty = (curBut - butSize))
             down = (empty = (curBut + butSize))
             left = ((empty = (curBut - 1)) and ((curBut % butSize) != 1))
             right = ((empty = (curBut + 1)) and ((curBut % butSize) != 0))
             move = up or down or left  or right
-            if move = 1 
+            if move = 1
                button[curBut] { temp2 = text() }
                col = empty%butSize
                if col = 0 col = butSize ok
@@ -7068,7 +7068,7 @@ func scramble
        next
        table1 = []
        table2 = []
-       table3 = []   
+       table3 = []
        for n = 1 to butSize*butSize
              add(table1, button[n].text())
              add(table2, button[n].text())
@@ -7099,11 +7099,11 @@ func movetile curBut2
            left = ((empty = (curBut2- 1)) and ((curBut2 % butSize) != 1))
            right = ((empty = (curBut2 + 1)) and ((curBut2 % butSize) != 0))
            move = up or down or left  or right
-           if move = 1 
-              temp2 = button[curBut2].text() 
+           if move = 1
+              temp2 = button[curBut2].text()
               btnDegree[empty][1] = temp2
               add(table1, temp2)
-              add(table2, string(curBut2))              
+              add(table2, string(curBut2))
               col = empty%butSize
               if col = 0 col = butSize ok
               row = ceil(empty/butSize)
@@ -7112,7 +7112,7 @@ func movetile curBut2
                                    nDegree = btnDegree[curBut2][2]
                                    btnDegree[empty][2] = nDegree
                                    button[empty].setbuttoncolor("orange")
-                                   button[empty].settext(temp2)                                   
+                                   button[empty].settext(temp2)
               }
               add(table3, string(nDegree))
               button[curBut2].setbuttoncolor("cyan")
@@ -7122,14 +7122,14 @@ func movetile curBut2
               btnMoves.settext(string(nrMoves))
               isGameOver()
            ok
-      ok 
+      ok
       flagmove = 1
       pElapsedTime()
       rightPlace()
       return
 
 func resettiles
-        nDegree = 0  
+        nDegree = 0
         empty = butSize*butSize
         for empty = 1 to butSize*butSize-1
              btnDegree[empty][2] = 0
@@ -7142,7 +7142,7 @@ func resettiles
         button[butSize*butSize] {settext("")}
         table1 = []
         table2 = []
-        table3 = []   
+        table3 = []
         for n = 1 to butSize*butSize
              add(table1, button[n].text())
              add(table2, button[n].text())
@@ -7206,9 +7206,9 @@ func pBack
                 {
                 setgeometry(60+(butSize-1)*40,60+(butSize+1)*40,40,40)
                 settext("Here")
-                setclickevent("pHere()")   
-                show() 
-                } 
+                setclickevent("pHere()")
+                show()
+                }
         for n = 1 to butSize*butSize
               button[n].setenabled(true)
         next
@@ -7220,7 +7220,7 @@ func pBack
         isGameOver()
 
 func rotateleft
-        if button[butSize*butSize+2].text() != "Here" 
+        if button[butSize*butSize+2].text() != "Here"
            button[butSize*butSize+2].close()
            button[butSize*butSize+2] = new ButtonWithRotatedText(win1)
                       button[butSize*butSize+2] {
@@ -7233,12 +7233,12 @@ func rotateleft
                       empty = butSize*butSize+2
                       btnDegree[empty][1] = temp
                       button[butSize*butSize+2]{settext(temp)}
-                      } 
+                      }
                       empty = emptysave
         ok
 
 func rotateright
-        if button[butSize*butSize+2].text() != "Here"  
+        if button[butSize*butSize+2].text() != "Here"
            button[butSize*butSize+2].close()
            button[butSize*butSize+2] = new ButtonWithRotatedText(win1)
                       button[butSize*butSize+2] {
@@ -7256,7 +7256,7 @@ func rotateright
         ok
 
 func newsize curBut
-        win1{ 
+        win1{
                 sizenew = curBut%4
                 win1.resize(360+sizenew*40,640+sizenew*40)
                 if flaginit != 0
@@ -7283,13 +7283,13 @@ func newsize curBut
                      button[n] = new ButtonWithRotatedText(win1)
                                        button[n] {
                                        setgeometry(60+col*40,60+row*40,40,40)
-                                       button[n].setbuttoncolor("yellow")                                       
+                                       button[n].setbuttoncolor("yellow")
                                        nDegree = 0
                                        if n < curBut*curBut
                                           button[n].settext(string(n))
                                        but n = curBut*curBut
                                           button[n].settext("")
-                                       ok 
+                                       ok
                                        setClickEvent("movetile(" + string(n) +")")
                                        }
                 next
@@ -7299,31 +7299,31 @@ func newsize curBut
                                         setgeometry(100,60+(curBut+1)*40,(curBut-3)*40,40)
                                         setStyleSheet("text-align:center")
                                         settext("0")
-                                        show() 
+                                        show()
                 }
 
                 button[curBut*curBut+1] = new qpushbutton(win1)
                 {
                                               setgeometry(60+(curBut-2)*40,60+(curBut+1)*40,40,40)
                                               settext("<-")
-                                              setclickevent("rotateLeft()")   
-                                              show() 
-                } 
+                                              setclickevent("rotateLeft()")
+                                              show()
+                }
 
                 button[curBut*curBut+2] = new qpushbutton(win1)
                 {
                                              setgeometry(60+(curBut-1)*40,60+(curBut+1)*40,40,40)
                                              settext("Here")
-                                             setclickevent("pHere()")   
-                                             show() 
+                                             setclickevent("pHere()")
+                                             show()
                 }
 
                 button[curBut*curBut+3] = new qpushbutton(win1)
                 {
                                              setgeometry(60+curBut*40,60+(curBut+1)*40,40,40)
                                              settext("->")
-                                             setclickevent("rotateRight()")   
-                                             show() 
+                                             setclickevent("rotateRight()")
+                                             show()
                  }
 
                 scramblebtn = new qpushbutton(win1)
@@ -7331,73 +7331,73 @@ func newsize curBut
                                       setgeometry(100,100+(curBut+1)*40,curBut*40,40)
                                       settext("Scramble")
                                       setclickevent("scramble()")
-                                      show()                        
+                                      show()
                 }
 
-                resetbtn = new qpushbutton(win1)   
+                resetbtn = new qpushbutton(win1)
                 {
                                  setgeometry(100,100+(curBut+2)*40,curBut*40,40)
                                  settext("Reset")
                                  setclickevent("resettiles()")
-                                 show() 
+                                 show()
                 }
 
-                savebtn = new qpushbutton(win1)   
+                savebtn = new qpushbutton(win1)
                 {
                                  setgeometry(100,100+(curBut+3)*40,curBut*40,40)
                                  settext("Save Game")
                                  setclickevent("pSave()")
-                                 show() 
+                                 show()
                 }
 
-                playbtn = new qpushbutton(win1)   
+                playbtn = new qpushbutton(win1)
                 {
-                               setgeometry(100,100+(curBut+4)*40,curBut*40,40)  
-                               settext("Resume Game")  
+                               setgeometry(100,100+(curBut+4)*40,curBut*40,40)
+                               settext("Resume Game")
                                setclickevent("pPlay()")
                                show()
                 }
 
-                sleepbtn = new qpushbutton(win1)   
+                sleepbtn = new qpushbutton(win1)
                 {
-                               setgeometry(100,100+(curBut+5)*40,(curBut-2)*40,40)  
-                               settext("Sleep Time: " + string(nrSleep) + " s")  
+                               setgeometry(100,100+(curBut+5)*40,(curBut-2)*40,40)
+                               settext("Sleep Time: " + string(nrSleep) + " s")
                                show()
                 }
 
-                decbtn = new qpushbutton(win1)   
+                decbtn = new qpushbutton(win1)
                 {
-                               setgeometry(100+(curBut-2)*40,100+(curBut+5)*40,40,40)  
-                               settext("<-")  
+                               setgeometry(100+(curBut-2)*40,100+(curBut+5)*40,40,40)
+                               settext("<-")
                                setclickevent("pDecSleep()")
                                show()
                 }
 
-                incbtn = new qpushbutton(win1)   
+                incbtn = new qpushbutton(win1)
                 {
-                               setgeometry(100+(curBut-1)*40,100+(curBut+5)*40,40,40)  
-                               settext("->")  
+                               setgeometry(100+(curBut-1)*40,100+(curBut+5)*40,40,40)
+                               settext("->")
                                setclickevent("pIncSleep()")
                                show()
                 }
 
-               rightbtn = new qpushbutton(win1)   
+               rightbtn = new qpushbutton(win1)
                 {
-                               setgeometry(100,100+(curBut+6)*40,curBut*40,40)  
-                               settext("In the Right Place : ")  
+                               setgeometry(100,100+(curBut+6)*40,curBut*40,40)
+                               settext("In the Right Place : ")
                                show()
                 }
 
-                timebtn = new qpushbutton(win1)   
+                timebtn = new qpushbutton(win1)
                 {
-                               setgeometry(100,100+(curBut+7)*40,curBut*40,40)  
-                               settext("Elapsed Time : ")  
+                               setgeometry(100,100+(curBut+7)*40,curBut*40,40)
+                               settext("Elapsed Time : ")
                                show()
                 }
 
                 table1 = []
                 table2 = []
-                table3 = []   
+                table3 = []
                 for n = 1 to butSize*butSize
                       add(table1, button[n].text())
                       add(table2, button[n].text())
@@ -7431,14 +7431,14 @@ func pSave
         write(cName1,textedit1)
         write(cName2,textedit2)
         write(cName3,textedit3)
-         flagsave = 1   
+         flagsave = 1
          timebtn.settext("Elapsed Time : ")
          t1 = clock()
          return
 
 func pPlay
         if  flagsave = 0 or flagmove = 0
-            warning()  
+            warning()
         else
            chdir(currentdir())
            cName1 = "CalmoSoftPuzzle1.txt"
@@ -7451,7 +7451,7 @@ func pPlay
            textedit3 = read(cName3)
            table3 = str2list(textedit3)
            for empty = 1 to butSize*butSize
-                button[empty].setbuttoncolor("yellow") 
+                button[empty].setbuttoncolor("yellow")
                 nDegree = number(table3[empty])
                 btnDegree[empty][1] = table1[empty]
                 button[empty] {settext(table1[empty])}
@@ -7465,11 +7465,11 @@ func pPlay
 
 func pTime()
         if flagsave = 0 or flagmove = 0
-           warning()    
+           warning()
         else
            CounterMan++
            pPlaySleep()
-           sleep(nrSleep*1000) 
+           sleep(nrSleep*1000)
            pElapsedTime()
            if CounterMan = len(table1)
               TimerMan.stop()
@@ -7487,22 +7487,22 @@ func pPlaySleep
         nDegree = 0
         button[number(place)].setbuttoncolor("cyan")
         button[number(place)] {settext("")}
-        empty = number(place)        
+        empty = number(place)
         nrMoves = nrMoves + 1
         btnMoves.settext(string(nrMoves))
 
 func pIncSleep
-        nrSleep = nrSleep + 1 
+        nrSleep = nrSleep + 1
         sleepbtn.settext("Sleep Time: " + string(nrSleep) + " s")
 
 func pDecSleep
-        if nrSleep > 1 
+        if nrSleep > 1
            nrSleep = nrSleep - 1
            sleepbtn.settext("Sleep Time: " + string(nrSleep) + " s")
         ok
 
 func sleep(x)
-        nTime = x 
+        nTime = x
         oTest = new qTest
         oTest.qsleep(nTime)
         return
@@ -7517,11 +7517,11 @@ func isGameOver
         next
         if flagend = 1
            new qmessagebox(win1) {
-                   setwindowtitle("Game Over") 
+                   setwindowtitle("Game Over")
                    settext("Congratulations!")
                    show()
-                   }   
-        ok   
+                   }
+        ok
 
 func rightPlace
         count = 0
@@ -7529,15 +7529,15 @@ func rightPlace
              if button[n].text() = n and btnDegree[n][2] = 0
                 count = count + 1
              ok
-        next   
+        next
         rightbtn.settext("In the Right Place : " + count)
 
 func warning
         new qmessagebox(win1) {
-                setwindowtitle("Warning!") 
+                setwindowtitle("Warning!")
                 settext("First you must play and save the game.")
                 show()
-                }         
+                }
 
 func pElapsedTime
         t2 = (clock() - t1)/1000
@@ -7555,7 +7555,7 @@ func init( oParent)
         oButton.setAttribute(Qt_WA_DeleteOnClose, True)
         oButton.Show()
         return
-    
+
 func close()
         oLabel.close()
         oButton.close()
@@ -7567,63 +7567,63 @@ func setstylesheet(x)
 func setgeometry( x,y,width,height)
         oButton.setgeometry(x,y,width,height)
         oLabel.setgeometry( x,y,width,height)
-        
+
 func setText( cValue)
         cText = cValue
         return
-    
-func Text() 
+
+func Text()
          return cText
 
-func setTranslate( x,y )    
+func setTranslate( x,y )
          nTransX = x
-         nTransY = y		
+         nTransY = y
          return
 
 func TranslateOffsetX()
-        return nTransX 
+        return nTransX
 
 func TranslateOffsetY()
-        return nTransY 
-	
+        return nTransY
+
 func setRotationDegree( nValue)
         nDegree = nValue
         return
-    
+
 func RotationDegree()
         return nDegree
 
 func setClickEvent( cEvent)
         oButton.setClickEvent(cEvent)
         return
-    
+
 func braceend()
-        draw() 
+        draw()
         return
 
-func setEnabled(value)        
+func setEnabled(value)
         oButton.setenabled(value)
-        return	
+        return
 
- func setButtonColor(color)  
-         colorIt = "background-color:" + color  
-         oButton.setstylesheet(colorIt) 
+ func setButtonColor(color)
+         colorIt = "background-color:" + color
+         oButton.setstylesheet(colorIt)
          return
-    	
+
 func draw()
          picture = new qpicture()
          color   = new qcolor() { setrgb(0,0,255,255) }
          pen     = new qpen()   { setcolor(color) setwidth(10) }
-                    
-         painter = new qpainter() 
+
+         painter = new qpainter()
          {
-                       begin(picture)        
+                       begin(picture)
                        setpen(pen)
                        oFont = new qfont("Courier New",12,75,0)
                        oFont.setpointsize(20)
                        setfont(oFont)
                        if nDegree = 0
-                          if btnDegree[empty] [1]="In" p1 = -8 p2=0 
+                          if btnDegree[empty] [1]="In" p1 = -8 p2=0
                           translate(p1,p2) ok ok
                        if nDegree = 0
                           if btnDegree[empty] [1]<10 p1 = 10 p2=10 else p1=5 p2=10 ok
@@ -7646,14 +7646,14 @@ func draw()
                        but nDegree = -270
                              if btnDegree[empty] [1]<10 p1=10 p2=-10 else p1=10 p2=-15 ok
                              translate(p1,p2)
-                       ok						
+                       ok
                        rotate(nDegree)
-	          drawtext(0,0,this.Text())   
+	          drawtext(0,0,this.Text())
                        endpaint()
          }
          oLabel {
-                    setpicture(picture)  
-                     show() 
+                    setpicture(picture)
+                     show()
                     }
          return
 
@@ -7670,7 +7670,7 @@ require 'io/console'
 class Board
   SIZE = 4
   RANGE = 0...SIZE
-  
+
   def initialize
     width = (SIZE*SIZE-1).to_s.size
     @frame = ("+" + "-"*(width+2)) * SIZE + "+"
@@ -7683,9 +7683,9 @@ class Board
     message
     play
   end
-  
+
   private
-  
+
   def randomize
     @board[0][0], @board[SIZE-1][SIZE-1] = 0, 1
     @board[SIZE-1][0], @board[0][SIZE-1] = @board[0][SIZE-1], @board[SIZE-1][0]
@@ -7697,9 +7697,9 @@ class Board
       @board[nx][ny], @board[x][y] = 0, @board[nx][ny]
       x, y, dx, dy = nx, ny, nx-x, ny-y
     end
-    @x, @y = x, y 
+    @x, @y = x, y
   end
-  
+
   def draw
     puts "\e[H\e[2J"
     @board.each do |row|
@@ -7709,7 +7709,7 @@ class Board
     puts @frame
     puts "Step: #{@step}"
   end
-  
+
   DIR = {up: [-1,0], down: [1,0], left: [0,-1], right: [0,1]}
   def move(direction)
     dx, dy = DIR[direction]
@@ -7721,7 +7721,7 @@ class Board
       draw
     end
   end
-  
+
   def play
     until @board == @orign
       case  key_in
@@ -7729,26 +7729,26 @@ class Board
       when "\e[B", "s" then move(:down)
       when "\e[C", "d" then move(:right)
       when "\e[D", "a" then move(:left)
-      
+
       when "q","\u0003","\u0004"  then exit
       when "h"  then message
       end
     end
-    
+
     puts "Congratulations, you have won!"
   end
-  
+
   def key_in
     input = STDIN.getch
-    if input == "\e" 
+    if input == "\e"
       2.times {input << STDIN.getch}
     end
     input
   end
-  
+
   def message
     puts <<~EOM
-      Use the arrow-keys or WASD on your keyboard to push board in the given direction.   
+      Use the arrow-keys or WASD on your keyboard to push board in the given direction.
       PRESS q TO QUIT (or Ctrl-C or Ctrl-D)
     EOM
   end
@@ -7785,8 +7785,8 @@ PRESS q TO QUIT (or Ctrl-C or Ctrl-D)
 call SetCSS
 ' ---- fill 15 squares with 1 to 15
 dim sq(16)
-for i = 1 to 15: sq(i) = i: next 
- 
+for i = 1 to 15: sq(i) = i: next
+
 '----- shuffle the squares
 [newGame]
 for i = 1 to 100		' Shuffle the squares
@@ -7796,7 +7796,7 @@ for i = 1 to 100		' Shuffle the squares
 	sq(j)	= sq(k)
 	sq(k)	= h
 next i
- 
+
 ' ---- show the squares
 [loop]
 cls
@@ -7813,37 +7813,37 @@ for i = 1 to 16
 next i
 html "</table>"
 wait
- 
+
 ' ---- Find what square they picked
-[pick]			
+[pick]
 picked	= val(EventKey$)
 move	= 0             '                0000000001111111
 if picked - 1 > 0 then  ' LEFT           1234567890123456
 				if mid$(" *** *** *** ***",picked,1) = "*" and sq(picked -1) = 0 then move = -1 :end if
 if picked + 1 < 17 then ' RIGHT
 				if mid$("*** *** *** *** ",picked,1) = "*" and sq(picked +1) = 0 then move =  1 :end if
-if picked - 4 > 0  then ' UP 
+if picked - 4 > 0  then ' UP
 				if mid$("    ************",picked,1) = "*" and sq(picked -4) = 0 then move = -4 :end if
-if picked + 4 < 17 then ' DOWN 
+if picked + 4 < 17 then ' DOWN
 				if mid$("************    ",picked,1) = "*" and sq(picked +4) = 0 then move =  4 :end if
 ' ---- See if they picked a valid square next to the blank square
 if move = 0 then
 	print "Invalid move: ";sq(picked)
 	wait
 end if
- 
+
 ' ---- Valid squire, switch it with the blank square
 sq(picked + move) = sq(picked) ' move to the empty square
 sq(picked) = 0
 for i = 1 to 15  ' ---- If they got them all in a row they are a winner
 	if sq(i) <> i then goto [loop]
 next i
- 
+
 print "----- You are a winner -----"
 input "Play again (Y/N)";a$
 if a$ = "Y" then goto [newGame]		' set up new game
 end
- 
+
 ' ---- Make the squares look nice
 SUB SetCSS
 CSSClass ".lBtn", "{
@@ -7863,19 +7863,19 @@ Output:
 
 ```rust
 extern crate rand;
- 
+
 use std::collections::HashMap;
 use std::fmt;
- 
+
 use rand::Rng;
 use rand::seq::SliceRandom;
- 
+
 #[derive(Copy, Clone, PartialEq, Debug)]
 enum Cell {
     Card(usize),
     Empty,
 }
- 
+
 #[derive(Eq, PartialEq, Hash, Debug)]
 enum Direction {
     Up,
@@ -7883,28 +7883,28 @@ enum Direction {
     Left,
     Right,
 }
- 
+
 enum Action {
     Move(Direction),
     Quit,
 }
- 
+
 type Board = [Cell; 16];
 const EMPTY: Board = [Cell::Empty; 16];
- 
+
 struct P15 {
     board: Board,
 }
- 
+
 impl P15 {
     fn new() -> Self {
         let mut board = EMPTY;
         for (i, cell) in board.iter_mut().enumerate().skip(1) {
             *cell = Cell::Card(i);
         }
- 
+
         let mut rng = rand::thread_rng();
- 
+
         board.shuffle(&mut rng);
         if !Self::is_valid(board) {
             // random swap
@@ -7915,21 +7915,21 @@ impl P15 {
             }
             board.swap(i, j);
         }
- 
+
         Self { board }
     }
- 
+
     fn is_valid(mut board: Board) -> bool {
         // TODO: optimize
         let mut permutations = 0;
- 
+
         let pos = board.iter().position(|&cell| cell == Cell::Empty).unwrap();
- 
+
         if pos != 15 {
             board.swap(pos, 15);
             permutations += 1;
         }
- 
+
         for i in 1..16 {
             let pos = board
                 .iter()
@@ -7938,24 +7938,24 @@ impl P15 {
                     _ => false,
                 })
                 .unwrap();
- 
+
             if pos + 1 != i {
                 board.swap(pos, i - 1);
                 permutations += 1;
             }
         }
- 
+
         permutations % 2 == 0
     }
- 
+
     fn get_empty_position(&self) -> usize {
         self.board.iter().position(|&c| c == Cell::Empty).unwrap()
     }
- 
+
     fn get_moves(&self) -> HashMap<Direction, Cell> {
         let mut moves = HashMap::new();
         let i = self.get_empty_position();
- 
+
         if i > 3 {
             moves.insert(Direction::Up, self.board[i - 4]);
         }
@@ -7970,7 +7970,7 @@ impl P15 {
         }
         moves
     }
- 
+
     fn play(&mut self, direction: &Direction) {
         let i = self.get_empty_position();
         // This is safe because `ask_action` only returns legal moves
@@ -7981,7 +7981,7 @@ impl P15 {
             Direction::Down => self.board.swap(i, i + 4),
         };
     }
- 
+
     fn is_complete(&self) -> bool {
         self.board.iter().enumerate().all(|(i, &cell)| match cell {
             Cell::Card(value) => value == i + 1,
@@ -7989,7 +7989,7 @@ impl P15 {
         })
     }
 }
- 
+
 impl fmt::Display for P15 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         r#try!(write!(f, "+----+----+----+----+\n"));
@@ -7998,7 +7998,7 @@ impl fmt::Display for P15 {
                 Cell::Card(value) => r#try!(write!(f, "| {:2} ", value)),
                 Cell::Empty => r#try!(write!(f, "|    ")),
             }
- 
+
             if i % 4 == 3 {
                 r#try!(write!(f, "|\n"));
                 r#try!(write!(f, "+----+----+----+----+\n"));
@@ -8007,10 +8007,10 @@ impl fmt::Display for P15 {
         Ok(())
     }
 }
- 
+
 fn main() {
     let mut p15 = P15::new();
- 
+
     for turns in 1.. {
         println!("{}", p15);
         match ask_action(&p15.get_moves()) {
@@ -8022,21 +8022,21 @@ fn main() {
                 break;
             }
         }
- 
+
         if p15.is_complete() {
             println!("Well done ! You won in {} turns", turns);
             break;
         }
     }
 }
- 
+
 fn ask_action(moves: &HashMap<Direction, Cell>) -> Action {
     use std::io::{self, Write};
     use Action::*;
     use Direction::*;
- 
+
     println!("Possible moves:");
- 
+
     if let Some(&Cell::Card(value)) = moves.get(&Up) {
         println!("\tU) {}", value);
     }
@@ -8052,7 +8052,7 @@ fn ask_action(moves: &HashMap<Direction, Cell>) -> Action {
     println!("\tQ) Quit");
     print!("Choose your move : ");
     io::stdout().flush().unwrap();
- 
+
     let mut action = String::new();
     io::stdin().read_line(&mut action).expect("read error");
     match action.to_uppercase().trim() {
@@ -8085,7 +8085,7 @@ import scala.collection.parallel.immutable.ParVector
 
 object FifteenPuzzle {
   def main(args: Array[String]): Unit = play()
-  
+
   @tailrec def play(len: Int = 1000): Unit = if(gameLoop(Board.randState(len))) play(len)
   def gameLoop(board: Board): Boolean = {
     val read = new ConsoleReader()
@@ -8095,12 +8095,12 @@ object FifteenPuzzle {
       Operation.BACKWARD_CHAR -> 'l',
       Operation.NEXT_HISTORY -> 'd',
       Operation.FORWARD_CHAR -> 'r')
-    
+
     @tailrec
     def gloop(b: Board): Boolean = {
       println(s"\u001B[2J\u001B[2;0H$b\n←↑→↓q")
       if(b.isSolved) println("Solved!\nPlay again? (y/n)")
-      
+
       read.readBinding(km) match{
         case Operation.SELF_INSERT => read.getLastBinding match{
           case "q" => false
@@ -8112,10 +8112,10 @@ object FifteenPuzzle {
         case _ => gloop(b)
       }
     }
-    
+
     gloop(board)
   }
-  
+
   case class Board(mat: immutable.HashMap[(Int, Int), Int], x: Int, y: Int) {
     def move(mvs: Seq[Char]): Board = mvs.foldLeft(this){case (b, m) => b.move(m)}
     def move(mov: Char): Board = mov match {
@@ -8125,19 +8125,19 @@ object FifteenPuzzle {
       case 'u' if y > 0 => Board(mat ++ Seq(((x, y), mat((x, y - 1))), ((x, y - 1), 0)), x, y - 1)
       case _ => this
     }
-    
+
     def isSolved: Boolean = sumDist == 0
     def sumDist: Int = mat.to(LazyList).map{ case ((a, b), n) => if(n == 0) 6 - a - b else (a + b - ((n - 1) % 4) - ((n - 1) / 4)).abs }.sum
-  
+
     override def toString: String = {
       val lst = mat.toVector.map { case ((a, b), n) => (4 * b + a, n) }.sortWith(_._1 < _._1).map(_._2)
       lst.map { n => if (n == 0) "  " else f"$n%2d" }.grouped(4).map(_.mkString(" ")).mkString("\n")
     }
   }
-  
+
   object Board {
     val moves: Vector[Char] = Vector('r', 'l', 'd', 'u')
-    
+
     def apply(config: Vector[Int]): Board = {
       val ind = config.indexOf(0)
       val formed = config.zipWithIndex.map { case (n, i) => ((i % 4, i / 4), n) }
@@ -8145,7 +8145,7 @@ object FifteenPuzzle {
       builder ++= formed
       Board(builder.result, ind % 4, ind / 4)
     }
-    
+
     def solveState: Board = apply((1 to 15).toVector :+ 0)
     def randState(len: Int, rand: Random = new Random()): Board = Iterator
       .fill(len)(moves(rand.nextInt(4)))
@@ -8225,8 +8225,8 @@ object FifteenPuzzle {
     (when (zero? (modulo i 4)) (newline))
     (let ((curr (vector-ref board i)))
       (display curr)
-      (display (if (and (number? curr) 
-                        (> curr 9)) 
+      (display (if (and (number? curr)
+                        (> curr 9))
                  " "
                  "  ")))))
 
@@ -8235,7 +8235,7 @@ object FifteenPuzzle {
   (let ((board (create-start-position)))
     (do ((count 1 (+ count 1))
          (moves (find-moves board) (find-moves board)))
-      ((finished? board) 
+      ((finished? board)
        (display (string-append "\nCOMPLETED PUZZLE in "
                                (number->string count)
                                " moves\n")))
@@ -8255,31 +8255,31 @@ object FifteenPuzzle {
 
 ```txt
 
-1  2     3  
-5  7  6  11 
-13 14 8  4  
-10 9  15 12 
+1  2     3
+5  7  6  11
+13 14 8  4
+10 9  15 12
 Enter a move: (right left down)
 right
 
-1  2  3     
-5  7  6  11 
-13 14 8  4  
-10 9  15 12 
+1  2  3
+5  7  6  11
+13 14 8  4
+10 9  15 12
 Enter a move: (left down)
 down
 
-1  2  3  11 
-5  7  6     
-13 14 8  4  
-10 9  15 12 
+1  2  3  11
+5  7  6
+13 14 8  4
+10 9  15 12
 Enter a move: (left down up)
 down
 
-1  2  3  11 
-5  7  6  4  
-13 14 8     
-10 9  15 12 
+1  2  3  11
+5  7  6  4
+13 14 8
+10 9  15 12
 Enter a move: (left down up)
 
 ```
@@ -8295,7 +8295,7 @@ solution=[tiles(1:4);...
           tiles(13:16)];
 solution=string(solution);
 solution(16)=" ";
-          
+
 init_pos=grand(1,"prm",tiles);
 puzzle=[init_pos(1:4);...
         init_pos(5:8);...
@@ -8320,7 +8320,7 @@ n_moves=0;
 solved=%F;
 while ~solved
     disp(puzzle); mprintf("\n");
-    
+
     neighbours=[0 -1;...
                -1  0;...
                 0 +1;...
@@ -8328,7 +8328,7 @@ while ~solved
     neighbours(:,1)=neighbours(:,1)+blank_pos(1);
     neighbours(:,2)=neighbours(:,2)+blank_pos(2);
     neighbours=[neighbours zeros(4,1)]
-    
+
     i=0;
     for i=1:4
         if ~(neighbours(i,1)<1 | neighbours(i,1)>4 |...
@@ -8336,10 +8336,10 @@ while ~solved
            neighbours(i,3)=evstr(puzzle(neighbours(i,1),neighbours(i,2)));
        end
     end
-    
+
     valid_move=%F;
     while ~valid_move
-        move_tile=[];    
+        move_tile=[];
         move_tile=input("Enter tile you want to move (0 to exit):");
         if sum(move_tile==neighbours(:,3)) & move_tile~=0 then
             valid_move=%T;
@@ -8352,12 +8352,12 @@ while ~solved
             disp("Invalid input");
         end
     end
-    
+
     neighb_i=find(neighbours(:,3)'==move_tile);
     puzzle(neighbours(neighb_i,1),neighbours(neighb_i,2))=" ";
     puzzle(blank_pos(1),blank_pos(2))=string(move_tile);
     blank_pos=neighbours(neighb_i,1:2);
-    
+
     if sum(puzzle==solution)==16 then
         solved=%T;
         disp(puzzle);
@@ -8436,7 +8436,7 @@ Enter tile you want to move (0 to exit):
 !                !
 !13  14  15      !
 
-   _____       _               _ _ 
+   _____       _               _ _
   / ____|     | |             | | |
  | (___   ___ | |_   _____  __| | |
   \___ \ / _ \| \ \ / / _ \/ _` | |
@@ -8459,7 +8459,7 @@ BEGIN
     BEGIN
         INTEGER ARRAY TILES(0:NUMTILES);
         INTEGER BLANKPOS;
- 
+
         PROCEDURE INVARIANT;
         BEGIN
             INTEGER ARRAY UQ(0:NUMTILES);
@@ -8497,7 +8497,7 @@ BEGIN
             END;
             INVARIANT;
         END;
-     
+
         PROCEDURE RESET;
         BEGIN
             INTEGER I;
@@ -8506,7 +8506,7 @@ BEGIN
             BLANKPOS := NUMTILES;
             INVARIANT;
         END;
-     
+
         ! ONLY HALF THE PERMUTATIONS OF THE PUZZLE ARE SOLVABLE.
         ! WHENEVER A TILE IS PRECEDED BY A TILE WITH HIGHER VALUE IT COUNTS
         ! AS AN INVERSION. IN OUR CASE, WITH THE BLANK SPACE IN THE HOME
@@ -8656,7 +8656,7 @@ BEGIN
 
         SHUFFLE;
     END;
- 
+
     REF(FIFTEENPUZZLE) P;
 
     OUTTEXT("INPUT RANDOM SEED: ");
@@ -8742,7 +8742,7 @@ struct
 		if width < 1 orelse height < 1
 			then raise Subscript
 			else Array.tabulate (height, fn _ => Array.tabulate (width, fn _ => a))
-	
+
 	fun size b =
 		let
 			val firstrow = Array.sub (b, 0)
@@ -8750,7 +8750,7 @@ struct
 			(Array.length firstrow, Array.length b)
 		end
 
-	
+
 	fun get b (x, y) = Array.sub (Array.sub (b, y), x)
 
 	fun set b (x, y) v = Array.update (Array.sub (b, y), x, v)
@@ -8779,7 +8779,7 @@ structure Board :> P15BOARD =
 struct
 	(* Matrix + empty Field position *)
 	type board = int option Matrix.matrix * (int * int) ref
-	
+
 	datatype direction = North | East | South | West
 
 	exception IllegalMove
@@ -8788,7 +8788,7 @@ struct
 
 	fun construct (width, height) =
 		let
-			val emptyBoard : int option Matrix.matrix = Matrix.construct NONE (width, height) 
+			val emptyBoard : int option Matrix.matrix = Matrix.construct NONE (width, height)
 		in
 			(* Fill the board with numbers *)
 			List.tabulate (height, fn y => List.tabulate (width, fn x =>
@@ -8824,14 +8824,14 @@ struct
 		in
 			List.mapPartial (fn pos => SOME (Matrix.get mat pos; pos) handle Subscript => NONE) directions
 		end
-	
+
 	fun moves (mat, rpos) =
 		let
 			val neighbors = neighbors mat (!rpos)
 		in
 			map (fn pos => valOf (Matrix.get mat pos)) neighbors
 		end
-		
+
 	fun move (mat, rpos) m =
 		let
 			val (hx, hy) = !rpos
@@ -8931,7 +8931,7 @@ struct
 		in
 			foldl (fn (y, str) => (foldl (fn (x, str') => str' ^ (fieldToString (Board.get board (x, y))) ^ "\t") str xs) ^ "\n") "" ys
 		end
-	
+
 	fun printBoard board = print (boardToString board)
 
 
@@ -8951,7 +8951,7 @@ struct
 				) handle Board.IllegalMove => print "Illegal move!\n"
 		end
 
-	
+
 	fun start () =
 		let
 			val () = cls ()
@@ -8984,7 +8984,7 @@ The dimensions of the board (eg. 4x4) and the number of shuffles should be enter
 Works with Tcl/Tk 8.5
 
 This program uses Tk, the graphical counterpart to Tcl.
-The tiles are made of a grid of buttons, and the text 
+The tiles are made of a grid of buttons, and the text
 on the buttons is moved around.
 
 The button "New game" selects one of the canned puzzles.
@@ -9037,7 +9037,7 @@ The window-title is used to show messages.
 
     set t [.key$k cget -text]
     .key$e config -text $t
-    .key$k config -text "_";  
+    .key$k config -text "_";
     return 1
   }
 
@@ -9078,7 +9078,7 @@ The window-title is used to show messages.
     foreach k $::Keys  {
       set t [lindex $::Puzz $i]
       incr i
-      .key$k config -text $t -background white;  
+      .key$k config -text $t -background white;
     }
     Check
   }
@@ -9294,11 +9294,11 @@ DefineGrid:
     If iSide < 3 Or iNum > 10 Then GoTo DefineGrid
     iSize = iSide ^ 2
     ReDim iGrid(1 To iSize)
-    
+
 Initalize:
     InitializeGrid
     If Not IsSolvable Then GoTo Initalize
-      
+
 GetInput:
     vInput = InputBox(ShowGrid & vbCr & "Enter number to move into empty tile", sTitle)
     If vInput = "" Then
@@ -9344,9 +9344,9 @@ Function InitializeGrid()
     Dim i As Integer
     Dim x As Integer
     Dim y As Integer
-    
+
     sMessage = "New " & iSide & " x " & iSide & " game started" & vbCr
-    
+
     For i = 1 To iSize
         iGrid(i) = 0
     Next i
@@ -9377,7 +9377,7 @@ End Function
 
 Function TestGrid() As Boolean
     Dim i As Integer
-    
+
     For i = 1 To iSize - 1
         If Not iGrid(i) = i Then
             TestGrid = False
@@ -9401,7 +9401,7 @@ Function ValidMove(ByVal i As Integer) As Boolean
     Dim e As Integer
     Dim xDiff As Integer
     Dim yDiff As Integer
-    
+
     e = FindTile(0)
     xDiff = GetX(i) - GetX(e)
     yDiff = GetY(i) - GetY(e)
@@ -9439,7 +9439,7 @@ Function ShowGrid()
     Dim i As Integer
     Dim sNum As String
     Dim s As String
-    
+
     For x = 1 To iSide
         For y = 1 To iSide
             sNum = iGrid(GetI(x, y))
@@ -9461,10 +9461,10 @@ Sample output:
 
 ```txt
 
-10  4   3   14  
-9   15  1   6   
-12  11  7   8   
-2   5       13  
+10  4   3   14
+9   15  1   6
+12  11  7   8
+2   5       13
 
 New 4 x 4 game started
 
@@ -9483,10 +9483,10 @@ Enter number to move into empty tile
         segment	.data
 check:	db	"1   2   3   4",10,"  5   6   7   8",10,"  9  10  11  12",10," 13  14  1"
 puzzle:	db	27,"c",10,"  1   2   3   4",10,"  5   6   7   8",10,"  9  10  11  12",10," 13  14  15    ",10,10
-	db	" Direction ?",13             
+	db	" Direction ?",13
 	db	" Well done !  ",10,10
 inKey:	dw	0,0,0,0
-	
+
 	segment	.text
 	global	_start
 
@@ -9512,7 +9512,7 @@ quatre:	mov	ax,di
 	loop	Mixing
 	cmp	cx,ax
 
-MainLp:	mov	rdx,80	
+MainLp:	mov	rdx,80
 Succes:	lea	rsi,[puzzle]
 	mov	rdi,1
 	mov	rax,1
@@ -9541,9 +9541,9 @@ SWAPPIN:mov	rdx,rbx
 	cmp	rbx,16
 	cmovae	rbx,rdx
 NotUp:	cmp	al,"B"
-	jne	NotDwn	
+	jne	NotDwn
 	sub	rbx,4
-	cmovc	rbx,rdx	
+	cmovc	rbx,rdx
 NotDwn:	cmp	al,"C"
 	jne	NotLft
 	test	rbx,3
@@ -9600,7 +9600,7 @@ print "\n\n\nNumber of movements: ",mov,"\nEnd\n"
 
 sub finish()
 	local x, y, v
-	
+
 	for y = 1 to dy
 		for x = 1 to dx
 			v = v + 1
@@ -9612,9 +9612,9 @@ end sub
 
 sub moveTile()
 	local direction$
-	
+
 	direction$ = inkey$
-	
+
 	switch direction$
 		case "up": if (ey + 1) < (dy + 1) then grid(ex, ey) = grid(ex, ey + 1) : ey = ey + 1  end if : break
 		case "down": if (ey - 1) > 0 then grid(ex, ey) = grid(ex, ey - 1) : ey = ey - 1  end if : break
@@ -9628,11 +9628,11 @@ end sub
 
 sub drawTable()
 	local x, y
-	
+
 	clear screen
-	
+
 	print "   Use the cursor keys"
-	
+
 	for x = 1 to dx
 		for y = 1 to dy
 			print at(x * 3, y * 2);
@@ -9653,28 +9653,28 @@ Adaptation from Phix solution
 board$ = "123456789ABCDEF0"
 solve$ = board$
 pos = 16
- 
+
 sub print_board()
     local i, n$
-	
+
     clear screen
     for i = 1 to len(board$)
     	if i = pos then
             print "   ";
     	else
     	    n$ = str$(dec(mid$(board$, i, 1)), "###")
-    	    print n$; 
+    	    print n$;
         end if
         if mod(i, 4) = 0 print
     next
     print
 end sub
- 
+
 sub move(d)
     local new_pos, delta(4)
-    
+
     delta(1) = 4 : delta(2) = 1 : delta(3) = -1 : delta(4) = -4
-    
+
     new_pos = pos + delta(d)
     if new_pos >= 1 and new_pos <= 16 and (mod(pos, 4) = mod(new_pos, 4) or floor((pos - 1) / 4) = floor((new_pos - 1) / 4)) then
     	mid$(board$, pos, 1) = mid$(board$, new_pos, 1)
@@ -9682,7 +9682,7 @@ sub move(d)
         pos = new_pos
     end if
 end sub
- 
+
 for i = 1 to 100 : move(int(ran(4))+1) : next
 do
     print_board()

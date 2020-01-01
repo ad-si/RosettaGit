@@ -16,11 +16,11 @@ tags = []
 Generate a sequence of primes by means of trial division.
 
 
-Trial division is an algorithm where a candidate number is tested for being a prime by trying to divide it by other numbers. 
+Trial division is an algorithm where a candidate number is tested for being a prime by trying to divide it by other numbers.
 
 You may use primes, or any numbers of your choosing, as long as the result is indeed a sequence of primes.
 
-The sequence may be bounded (i.e. up to some limit), unbounded, starting from the start (i.e. 2) or above some given value. 
+The sequence may be bounded (i.e. up to some limit), unbounded, starting from the start (i.e. 2) or above some given value.
 
 Organize your function as you wish, in particular, it might resemble a filtering operation, or a sieving operation.
 
@@ -44,24 +44,24 @@ If you want to use a ready-made <code>is_prime</code> function, use one from the
 ## Ada
 
 
-Use the generic function Prime_Numbers.Is_Prime, as specified in [[Prime decomposition#Ada]]. The program reads two numbers A and B from the command line and prints all primes between A and B (inclusive). 
+Use the generic function Prime_Numbers.Is_Prime, as specified in [[Prime decomposition#Ada]]. The program reads two numbers A and B from the command line and prints all primes between A and B (inclusive).
 
 
 ```Ada
 with Prime_Numbers, Ada.Text_IO, Ada.Command_Line;
 
 procedure Sequence_Of_Primes is
-   
-   package Integer_Numbers is new 
-     Prime_Numbers (Natural, 0, 1, 2); 
+
+   package Integer_Numbers is new
+     Prime_Numbers (Natural, 0, 1, 2);
    use Integer_Numbers;
-   
+
    Start: Natural := Natural'Value(Ada.Command_Line.Argument(1));
    Stop:  Natural := Natural'Value(Ada.Command_Line.Argument(2));
-   
+
 begin
    for I in Start .. Stop loop
-      if Is_Prime(I) then 
+      if Is_Prime(I) then
          Ada.Text_IO.Put(Natural'Image(I));
       end if;
    end loop;
@@ -80,7 +80,7 @@ end Sequence_Of_Primes;
 
 ## ALGOL 68
 
-Simple bounded sequence using the "is prime" routine from [[Primality by trial division#ALGOL 68]] 
+Simple bounded sequence using the "is prime" routine from [[Primality by trial division#ALGOL 68]]
 
 ```algol68
 # is prime PROC from the primality by trial division task #
@@ -141,7 +141,7 @@ COMMENT
 
 INTEGER I, K, M, N, S, NPRIMES, DIVISIBLE, FALSE, TRUE;
 
-COMMENT COMPUTE P MOD Q; 
+COMMENT COMPUTE P MOD Q;
 INTEGER FUNCTION MOD (P, Q);
 INTEGER P, Q;
 BEGIN
@@ -182,7 +182,7 @@ READ (NPRIMES);
             WRITE (I, ":", N);
           END;
         N := N + 2;
-      END;  
+      END;
   END;
 WRITE("All done. Goodbye");
 END
@@ -370,9 +370,9 @@ function is_prime(x,  i) {
 ```Batch File
 
 @echo off
-::Prime list using trial division 
+::Prime list using trial division
 :: Unbounded (well, up to 2^31-1, but you'll kill it before :)
-:: skips factors of 2 and 3 in candidates and in divisors 
+:: skips factors of 2 and 3 in candidates and in divisors
 :: uses integer square root to find max divisor to test
 :: outputs numbers in rows of 10 right aligned primes
 setlocal enabledelayedexpansion
@@ -394,7 +394,7 @@ set /a div+=inc2, inc2=6-inc2, res=(num%%div)
 if %div% gtr !maxdiv! call :line %num% &  goto nxtcand
 if %res%  equ 0 (goto :nxtcand ) else ( goto nxtdiv)
 
-:sqrt2   [num] calculates integer square root 
+:sqrt2   [num] calculates integer square root
 if %1 leq 0 exit /b 0
 set /A "x=%1/(11*1024)+40, x=(%1/x+x)>>1, x=(%1/x+x)>>1, x=(%1/x+x)>>1, x=(%1/x+x)>>1, x=(%1/x+x)>>1, x+=(%1-x*x)>>31,sq=x*x
 if sq gtr %1 set x-=1
@@ -406,10 +406,10 @@ set num1=      %1
 set lin=!lin!%num1:~-7%
 set /a cnt+=1,res1=(cnt%%10)
 if %res1% neq 0 goto:eof
-echo %lin% 
+echo %lin%
 set cnt1=    !cnt!
 set lin=!cnt1:~-5!:
-goto:eof 
+goto:eof
 
 ```
 
@@ -497,12 +497,12 @@ v#>::48*:*/\48*:*%%!#v_1^
 int isPrime(unsigned int n)
 {
 	unsigned int num;
-	
-	if ( n < 2||!(n & 1)) 
+
+	if ( n < 2||!(n & 1))
 		return n == 2;
 
 	for (num = 3; num <= n/num; num += 2)
-		if (!(n % num)) 
+		if (!(n % num))
 			return 0;
 	return 1;
 }
@@ -510,10 +510,10 @@ int isPrime(unsigned int n)
 int main()
 {
 	unsigned int l,u,i,sum=0;
-	
+
 	printf("Enter lower and upper bounds: ");
 	scanf("%ld%ld",&l,&u);
-	
+
 	for(i=l;i<=u;i++){
 		if(isPrime(i)==1)
 			{
@@ -521,9 +521,9 @@ int main()
 				sum++;
 			}
 	}
-	
+
 	printf("\n\nPrime numbers found in [%ld,%ld] : %ld",l,u,sum);
-	
+
 	return 0;
 }
 
@@ -567,10 +567,10 @@ Prime numbers found in [1,100] : 25
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -692,16 +692,16 @@ int main( int argc, char* argv[] )
           when (notany (evenly-divides n) primes)
           collect n into primes
           finally (return primes)))
-     
+
 (defun evenly-divides (n)
     "Create a function that checks whether its input divides N evenly"
     (lambda (x) (integerp (/ n x))))
-     
+
 (print (primes-up-to 100))
 ```
 
 
-Output: 
+Output:
 ```txt
 (2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97)
 ```
@@ -759,10 +759,10 @@ void main() /*@safe*/ {
 	(cond
 	[(< p 2) #f]
 	[(zero? (modulo p 2)) (= p 2)]
-	[else 
+	[else
 		(for/and ((d [3 5 .. (1+ (sqrt p))] ))  (!zero? (modulo p d)))]))
 
-(is-prime? 101) → #t	
+(is-prime? 101) → #t
 ```
 
 
@@ -827,19 +827,19 @@ void main() /*@safe*/ {
 		(for ((p [n .. ] )) #:break (is-prime? p) =>  p ))
 		(writeln next) ;; or whatever action here
 		(1+ next)) ;; unbounded : return #f to stop or CTRL-C
-		
-		
+
+
 
 (define t-primes (make-task t-next-prime 1_000_000_000_000))
 
 (task-run t-primes)
    → #task:id:95:running
-1000000000039    
-1000000000061    
-1000000000063    
-1000000000091    
-1000000000121    
-1000000000163    
+1000000000039
+1000000000061
+1000000000063
+1000000000091
+1000000000121
+1000000000163
 *stopped*
 ```
 
@@ -950,13 +950,13 @@ ELENA 4.x :
 import extensions;
 import system'routines;
 import system'math;
- 
-isPrime = 
+
+isPrime =
     (n => new Range(2,(n.sqrt() - 1).RoundedInt).allMatchedBy:(i => n.mod:i != 0));
- 
+
 Primes =
     (n => new Range(2, n - 2).filterBy:isPrime);
- 
+
 public program()
 {
     console.printLine(Primes(100))
@@ -981,11 +981,11 @@ defmodule Prime do
   def sequence do
     Stream.iterate(2, &(&1+1)) |> Stream.filter(&is_prime/1)
   end
-  
+
   def is_prime(2), do: true
   def is_prime(n) when n<2 or rem(n,2)==0, do: false
   def is_prime(n), do: is_prime(n,3)
-  
+
   defp is_prime(n,k) when n<k*k, do: true
   defp is_prime(n,k) when rem(n,k)==0, do: false
   defp is_prime(n,k), do: is_prime(n,k+2)
@@ -1132,67 +1132,67 @@ Allow User Abort [Off]
 # Set default number of minutes
 Set Variable [$maxduration; Value:1]
 # Ask user for a desired duration of the test
-Show Custom Dialog [	"Setup"; 
-			"Enter the number of minutes (0,1-15, 6s increments) you would like this test to run.¶" & 
-			"Hit any of the modifier-keys until the result-dialog appears, when you wish to break off the test."; 
+Show Custom Dialog [	"Setup";
+			"Enter the number of minutes (0,1-15, 6s increments) you would like this test to run.¶" &
+			"Hit any of the modifier-keys until the result-dialog appears, when you wish to break off the test.";
 			$maxduration ]
 If [Get ( LastMessageChoice ) = 1]
 	# Set all start-variables
 	Set Variable 	[
-			$result; 
-			Value:	Let ( [ 
-					$start = Get ( CurrentTimeUTCMilliseconds ) ; 
-					x = Ceiling ( Abs ( 10 * $maxduration ) ) / 10 ; 
-					y = Case ( x < ,1 ; ,1 ; x > 15 ; 15 ; x ) ; 
+			$result;
+			Value:	Let ( [
+					$start = Get ( CurrentTimeUTCMilliseconds ) ;
+					x = Ceiling ( Abs ( 10 * $maxduration ) ) / 10 ;
+					y = Case ( x < ,1 ; ,1 ; x > 15 ; 15 ; x ) ;
 					$time = y * 60000 ; // 1 minute = 60000 milliseconds
-					$number = 1 ; 
-					$primenumbers = 2 ; 
-					$duration = "" 
-				] ; 
-					"" 
+					$number = 1 ;
+					$primenumbers = 2 ;
+					$duration = ""
+				] ;
+					""
 				)]
 	Loop
 		# Increase each iteration by 2 (besides 2 there are no even prime numbers)
 		# exit after duration is exceeded or when a modifier-key is actuated
-		Exit Loop If [	Let ( [ 
-					$number = $number + 2 ; 
+		Exit Loop If [	Let ( [
+					$number = $number + 2 ;
 					$i = 1
-				] ; 
-					$duration > $time or 
-					Get ( ActiveModifierKeys ) ≥ 1  
+				] ;
+					$duration > $time or
+					Get ( ActiveModifierKeys ) ≥ 1
 				)]
 		Loop
 			# Loop until it is determined that a number is or isn't a prime number or the duration is exceeded
 			# supplement $primenumbers each time one is found, update $duration each iteration
-			Exit Loop If [	Let ( [ 
-						$x = GetValue ( $primenumbers ; ValueCount ( $primenumbers ) - $i ) ; 
-						$d = If ( $x > 0 ; $number / $x ) ; 
-						$e = If ( Floor ( $d ) = $d ; $d ) ; 
-						$i = $i + 1 ; 
-						s = ( $x - 1 ) > $number/2 and $e = "" ; 
-						$primenumbers = If ( 	$x = "" or s ; 
-									List ( $primenumbers ; $number ) ; 
-									$primenumbers ) ; 
+			Exit Loop If [	Let ( [
+						$x = GetValue ( $primenumbers ; ValueCount ( $primenumbers ) - $i ) ;
+						$d = If ( $x > 0 ; $number / $x ) ;
+						$e = If ( Floor ( $d ) = $d ; $d ) ;
+						$i = $i + 1 ;
+						s = ( $x - 1 ) > $number/2 and $e = "" ;
+						$primenumbers = If ( 	$x = "" or s ;
+									List ( $primenumbers ; $number ) ;
+									$primenumbers ) ;
 						$duration = Get ( CurrentTimeUTCMilliseconds ) - $start
-					] ; 
+					] ;
 						$x = "" or $e > 0 or s or $duration > $time
 					)]
 		End Loop
 	End Loop
 	# Count the number of primes found
 	Set Variable 	[
-			$result; 
-			Value:	Let ( [ 
-					$n = ValueCount ( $primenumbers ) ; 
+			$result;
+			Value:	Let ( [
+					$n = ValueCount ( $primenumbers ) ;
 					$$array = $primenumbers
-				] ; 
-					"" 
+				] ;
+					""
 				)]
 	# Show results to user
-	Show Custom Dialog [	"Result"; 
-				List ( 
-					"Prime numbers found: " & $n ; 
-					"Largest prime number: " & GetValue ( $primenumbers ; 1 ) ; 
+	Show Custom Dialog [	"Result";
+				List (
+					"Prime numbers found: " & $n ;
+					"Largest prime number: " & GetValue ( $primenumbers ; 1 ) ;
 					"Duration of test (ms): " & $duration )]
 End If
 #
@@ -1297,8 +1297,8 @@ End Function
 
 ' Print all primes from 101 to 999
 For i As Integer = 101 To 999
-  If isPrime(i) Then 
-    Print Str(i); " "; 
+  If isPrime(i) Then
+    Print Str(i); " ";
   End If
 Next
 
@@ -1327,19 +1327,19 @@ Sleep
 
 ## Go
 
-An unbounded cascading filtering method using channels, adapted from the classic concurrent prime sieve example in the "Try Go" window at http://golang.org/, improved by postponing the initiation of the filtering by a prime until the prime's square is seen in the input. 
+An unbounded cascading filtering method using channels, adapted from the classic concurrent prime sieve example in the "Try Go" window at http://golang.org/, improved by postponing the initiation of the filtering by a prime until the prime's square is seen in the input.
 
 ```go
 package main
- 
+
 import "fmt"
- 
+
 func NumsFromBy(from int, by int, ch chan<- int) {
   for i := from; ; i+=by {
     ch <- i
   }
 }
- 
+
 func Filter(in <-chan int, out chan<- int, prime int) {
   for {
     i := <-in
@@ -1348,13 +1348,13 @@ func Filter(in <-chan int, out chan<- int, prime int) {
     }
   }
 }
- 
-func Sieve(out chan<- int) { 
+
+func Sieve(out chan<- int) {
   out <- 3
   q := 9
   ps := make(chan int)
   go Sieve(ps)                   // separate primes supply
-  p := <-ps         
+  p := <-ps
   nums := make(chan int)
   go NumsFromBy(5,2,nums)        // end of setup
   for i := 0; ; i++ {
@@ -1375,7 +1375,7 @@ func primes (c chan<- int) {
   c <- 2
   go Sieve(c)
 }
- 
+
 func main() {
   ch := make(chan int)
   go primes(ch)
@@ -1391,7 +1391,7 @@ func main() {
 
 ```txt
 
-First twenty: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 
+First twenty: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 
 ```
 
@@ -1508,13 +1508,13 @@ primes = 2 : 3 : [n | n <- [5,7..], foldr (\p r-> p*p > n || rem n p > 0 && r)
 The classic David Turner's 1983 (1976? 1975?) SASL code repeatedly ''sieves'' a stream of candidate numbers from those divisible by a prime at a time, and works even for unbounded streams, thanks to lazy evaluation:
 
 ```haskell
-primesT = sieve [2..] 
+primesT = sieve [2..]
           where
           sieve (p:xs) = p : sieve [x | x <- xs, rem x p /= 0]
--- map head 
+-- map head
 --  . iterate (\(p:xs) -> filter ((> 0).(`rem` p)) xs) $ [2..]
 ```
-  
+
 
 As shown in Melissa O'Neill's paper [http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf "The Genuine Sieve of Eratosthenes"], its complexity is quadratic in number of primes produced whereas that of optimal trial division is <math>O(n^{1.5}/(\log n)^{0.5})</math>, and of true SoE it is <math>O(n\log n\log\log n)</math>, in ''n'' primes produced.
 
@@ -1526,11 +1526,11 @@ Indeed as Eratosthenes sieve works by counting, ''its'' removal step could be pr
 Bounded formulation has normal trial division complexity, because it can stop early via an explicit guard:
 
 ```haskell
-primesTo m = sieve [2..m] 
+primesTo m = sieve [2..m]
    where
    sieve (p:xs) | p*p > m   = p : xs
                 | otherwise = p : sieve [x | x <- xs, rem x p /= 0]
--- (\(a,b:_) -> map head a ++ b) . span ((< m).(^2).head) 
+-- (\(a,b:_) -> map head a ++ b) . span ((< m).(^2).head)
 --   $ iterate (\(p:xs) -> filter ((>0).(`rem`p)) xs) [2..m]
 ```
 
@@ -1544,11 +1544,11 @@ To make it unbounded, the guard cannot be simply discarded. The firing up of a f
 ```haskell
 primesPT = sieve primesPT [2..]
            where
-           sieve ~(p:ps) (x:xs) = x : after (p*p) xs 
+           sieve ~(p:ps) (x:xs) = x : after (p*p) xs
                                         (sieve ps . filter ((> 0).(`rem` p)))
-           after q (x:xs) f | x < q = x : after q xs f 
+           after q (x:xs) f | x < q = x : after q xs f
                             | otherwise = f (x:xs)
--- fix $ concatMap (fst.fst) . iterate (\((_,t),p:ps) -> 
+-- fix $ concatMap (fst.fst) . iterate (\((_,t),p:ps) ->
 --         (span (< head ps^2) [x | x <- t, rem x p > 0], ps)) . (,) ([2,3],[4..])
 ```
 
@@ -1563,7 +1563,7 @@ Explicating the run-time list of ''filters'' (created implicitly by the sieves a
 ```haskell
 import Data.List (inits)
 
-primesST = 2 : 3 : sieve 5 9 (drop 2 primesST) (inits $ tail primesST) 
+primesST = 2 : 3 : sieve 5 9 (drop 2 primesST) (inits $ tail primesST)
    where
    sieve x q ps (fs:ft) = filter (\y-> all ((/=0).rem y) fs) [x,x+2..q-2]
                           ++ sieve (q+2) (head ps^2) (tail ps) ft
@@ -1651,7 +1651,7 @@ public class Test {
 
 {{works with|Julia|0.6}}
 
-I've chosen to solve this task by creating a new iterator type, <tt>TDPrimes</tt>.  <tt>TDPrimes</tt> contains the upper limit of the sequence.  The iteration state is the list of computed primes, and the item returned with each iteration is the current prime.  The core of the solution is the <tt>next</tt> method for <tt>TDPrimes</tt>, which computes the next prime by trial division of the previously determined primes contained in the iteration state. 
+I've chosen to solve this task by creating a new iterator type, <tt>TDPrimes</tt>.  <tt>TDPrimes</tt> contains the upper limit of the sequence.  The iteration state is the list of computed primes, and the item returned with each iteration is the current prime.  The core of the solution is the <tt>next</tt> method for <tt>TDPrimes</tt>, which computes the next prime by trial division of the previously determined primes contained in the iteration state.
 
 
 ```julia
@@ -1731,7 +1731,7 @@ Produce an array of primes, p, satisfying 50 <= p <= 99:
 // version 1.0.6
 
 fun isPrime(n: Int): Boolean {
-    if (n < 2) return false 
+    if (n < 2) return false
     if (n % 2 == 0) return n == 2
     if (n % 3 == 0) return n == 3
     var d : Int = 5
@@ -1750,7 +1750,7 @@ fun main(args: Array<String>) {
     print("    2")
     for (i in 3..1999 step 2)
         if (isPrime(i)) {
-            count++ 
+            count++
             print("%5d".format(i))
             if (count % 15 == 0) println()
         }
@@ -1800,7 +1800,7 @@ fun main(args: Array<String>) {
    {if {> {* :m :m} :n}
     then :n
     else {if {= {% :n :m} 0}
-          then 
+          then
           else {prime.rec {+ :m 1} :n} }}}}
  {lambda {:n}
   {prime.rec 2 :n} }}
@@ -1933,23 +1933,23 @@ function primeList = sieveOfEratosthenes(lastNumber)
 
     list = (2:lastNumber); %Construct list of numbers
     primeList = []; %Preallocate prime list
-    
+
     while( list(1)^2 <lastNumber )
-        
+
         primeList = [primeList list(1)]; %add prime to the prime list
         list( mod(list,list(1))==0 ) = []; %filter out all multiples of the current prime
-        
+
     end
-    
+
     primeList = [primeList list]; %The rest of the numbers in the list are primes
-        
+
 end
 ```
 {{out|Sample Output}}
  sieveOfEratosthenes(30)
- 
+
  ans =
- 
+
      2     3     5     7    11    13    17    19    23    29
 
 
@@ -1985,7 +1985,7 @@ select(trial, [1..100])
 ## Pascal
 
 {{libheader|primTrial}} {{works with|Free Pascal}}
-Hiding the work in a existing unit. 
+Hiding the work in a existing unit.
 
 ```Pascal
 
@@ -2132,7 +2132,7 @@ function eratosthenes ($n) {
 }
 function sieve-start-end ($start,$end) {
     (eratosthenes $end) | where{$_ -ge $start}
-    
+
 }
 "$(sieve-start-end 100 200)"
 
@@ -2161,16 +2161,16 @@ Define *count.Integer=@count
 
 Procedure.i AddCount(*c.Integer) ; *counter: by Ref
   *c\i+1
-  ProcedureReturn *c\i  
-EndProcedure 
-  
+  ProcedureReturn *c\i
+EndProcedure
+
 Procedure.s FormatStr(tx$,l.i)
   Shared *count
   If AddCount(*count)%10=0
     ProcedureReturn RSet(tx$,l,#SPC)+#TBLF
   Else
     ProcedureReturn RSet(tx$,l,#SPC)+#TB
-  EndIf  
+  EndIf
 EndProcedure
 
 Procedure.b Trial(n.i)
@@ -2183,11 +2183,11 @@ EndProcedure
 
 Procedure.b isPrime(n.i)
   If (n>1 And n%2<>0 And Trial(n)) Or n=2 : ProcedureReturn #True : EndIf
-  ProcedureReturn #False  
+  ProcedureReturn #False
 EndProcedure
 
 OpenConsole("Sequence of primes by Trial Division")
-PrintN("Input (n1<n2 & n1>0)") 
+PrintN("Input (n1<n2 & n1>0)")
 Print("n1 : ") : a=Int(Val(Input()))
 Print("n2 : ") : b=Int(Val(Input()))
 l=Len(Str(b))
@@ -2196,7 +2196,7 @@ If a<b And a>0
   For n=a To b
     If isPrime(n)
       Print(FormatStr(Str(n),l))
-    EndIf  
+    EndIf
   Next
   Print(~"\nPrimes= "+Str(*count\i))
   Input()
@@ -2252,13 +2252,13 @@ def primes_below(n):
 
 ## Racket
 
- 
+
 Infinite list of primes:
- 
 
-###  Using laziness 
 
- 
+###  Using laziness
+
+
 This example uses infinite lists (streams) to implement a sieve algorithm that produces all prime numbers.
 
 
@@ -2294,7 +2294,7 @@ Since a prime's multiples that count start from its square, we should only add t
 
 
 
-###  Using threads and channels 
+###  Using threads and channels
 
 
 Same algorithm as above, but now using threads and channels to produce a channel of all prime numbers (similar to newsqueak).  The macro at the top is a convenient wrapper around definitions of channels using a thread that feeds them.
@@ -2323,7 +2323,7 @@ Same algorithm as above, but now using threads and channels to produce a channel
 
 
 
-###  Using generators 
+###  Using generators
 
 
 Yet another variation of the same algorithm as above, this time using generators.
@@ -2349,11 +2349,11 @@ Yet another variation of the same algorithm as above, this time using generators
 
 ### somewhat optimized
 
-This is an open-ended approach and it's a simple implementation and could be optimized more with some easy programming. 
+This is an open-ended approach and it's a simple implementation and could be optimized more with some easy programming.
 
 The method used is to divided all odd numbers by all previous odd primes up to and including the   <big>'''√{{overline|  }}'''</big>   of the odd number.
 
-Usage note:   by using a negative number (for the program's argument), the list of primes is suppressed, but the prime count is still shown. 
+Usage note:   by using a negative number (for the program's argument), the list of primes is suppressed, but the prime count is still shown.
 
 ```rexx
 /*REXX program lists a  sequence of primes  by  testing  primality  by  trial division. */
@@ -2448,7 +2448,7 @@ tell= (N>0);            N= abs(N)                /*N is negative?   Then don't d
 say  #       ' primes found.'                    /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -2467,9 +2467,9 @@ func isPrime n
      if n < 2 return false ok
      if n < 4 return true ok
      if n % 2 = 0 return false ok
-     for d = 3 to sqrt(n) step 2 
+     for d = 3 to sqrt(n) step 2
          if n % d = 0 return false ok
-     next	
+     next
      return true
 
 ```
@@ -2493,7 +2493,7 @@ p pg.next # => 31
 ## Scala
 
 ===Odds-Only "infinite" primes generator using Streams and Co-Inductive Streams===
-Using Streams, [http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf the "unfaithful sieve"], i.e. '''sub-optimal trial division sieve'''. 
+Using Streams, [http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf the "unfaithful sieve"], i.e. '''sub-optimal trial division sieve'''.
 
 ```scala
 def sieve(nums: Stream[Int]): Stream[Int] =
@@ -2674,7 +2674,7 @@ puts ""
 
 ```txt
 
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
 ```
 

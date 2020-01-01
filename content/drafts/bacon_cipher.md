@@ -617,10 +617,10 @@ LETSHAUESOMEFUNWITHBACONCIPHER
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

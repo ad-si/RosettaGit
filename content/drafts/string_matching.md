@@ -1097,10 +1097,10 @@ loc=s2.find(s3,loc+1)//returns 2
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Mono|2.6}}
 
-```csharp
+```c#
 
 class Program
 {

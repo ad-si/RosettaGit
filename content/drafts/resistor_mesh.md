@@ -368,10 +368,10 @@ R = 1.60899124172989
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

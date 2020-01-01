@@ -12,7 +12,7 @@ tags = []
 
 {{draft task}}
 
-'''Cipolla's algorithm''' 
+'''Cipolla's algorithm'''
 
 Solve '''x² ≡ n (mod p)'''
 
@@ -25,7 +25,7 @@ Legendre symbol
 * The Legendre symbol ( a | p) denotes the value of  a ^ ((p-1)/2) (mod p)
 * (a | p) ≡  1 if a is a square (mod p)
 * (a | p) ≡  -1  if a is not a square (mod p)
-* (a | p) ≡ 0 is a ≡ 0 
+* (a | p) ≡ 0 is a ≡ 0
 
 
 Arithmetic in Fp²
@@ -43,7 +43,7 @@ Let ω a symbol such as ω² is a member of Fp and not a square,  x and y member
 * Input : p an odd prime, and n ≠ 0 in Fp
 * Step 0. Check that n is indeed a square  : (n | p) must be ≡ 1
 * Step 1. Find, by trial and error, an a > 0 such as (a² - n) is '''not''' a square : (a²-n | p) must be ≡ -1.
-* Step 2.  Let  ω² = a² - n. Compute, in Fp2 :  (a + ω) ^ ((p + 1)/2) (mod p) 
+* Step 2.  Let  ω² = a² - n. Compute, in Fp2 :  (a + ω) ^ ((p + 1)/2) (mod p)
 To compute this step, use a pair of numbers, initially [a,1], and use repeated "multiplication" which is defined such that [c,d] times [e,f] is (mod p) [ c*c + ω²*f*f, d*e + c*f ].
 * Step 3. Check that the result is ≡  x +  0 * ω  in  Fp2, that is x in Fp.
 * Step 4. Output the two positive solutions, x and p - x  (mod p).
@@ -69,9 +69,9 @@ Legendre (ω² , 13) → -1    // ok - not square
 
 '''Task'''
 
-Implement the above. 
+Implement the above.
 
-Find solutions (if any) for 
+Find solutions (if any) for
 * n = 10 p = 13
 * n = 56 p = 101
 * n = 8218 p = 10007
@@ -81,9 +81,9 @@ Find solutions (if any) for
 
 '''Extra credit'''
 
-* n     665165880     p     1000000007    
-* n     881398088036     p     1000000000039    
-* n  =  34035243914635549601583369544560650254325084643201     p  = 10^50 + 151   	
+* n     665165880     p     1000000007
+* n     881398088036     p     1000000000039
+* n  =  34035243914635549601583369544560650254325084643201     p  = 10^50 + 151
 
 
 See also:
@@ -93,9 +93,9 @@ See also:
 
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 
@@ -306,28 +306,28 @@ Tuple!(BigInt, "x", BigInt, "y", bool, "b")(825631188280903622613789939574502135
 (lib 'bigint)
 
 ;; test equality mod p
-(define-syntax-rule (mod= a b p) 
+(define-syntax-rule (mod= a b p)
 	 (zero?  (% (- a b) p)))
 
-(define (Legendre a p)  
+(define (Legendre a p)
 	 (powmod a (/ (1- p) 2) p))
 
-;; Arithmetic in Fp² 
+;; Arithmetic in Fp²
 (struct Fp² ( x y ))
 ;; a + b
 (define (Fp²-add Fp²:a Fp²:b p ω2)
 	(Fp² (% (+ a.x b.x) p) (% (+ a.y b.y) p)))
 ;; a * b
-(define (Fp²-mul Fp²:a Fp²:b p ω2) 
+(define (Fp²-mul Fp²:a Fp²:b p ω2)
 	(Fp² (% (+ (* a.x b.x) (* ω2 a.y b.y)) p) (% (+ (* a.x b.y) (* a.y b.x)) p)))
 
-;; a * a	
+;; a * a
 (define (Fp²-square Fp²:a p ω2)
 	(Fp² (% (+ (* a.x a.x) (* ω2 a.y a.y)) p) (%  (* 2 a.x a.y)  p)))
 
 ;; a ^ n
 (define (Fp²-pow Fp²:a n p ω2)
-	(cond 
+	(cond
 	((= 0 n) (Fp² 1 0))
 	((= 1 n) (Fp² a.x a.y))
 	((= 2 n) (Fp²-mul a a p ω2))
@@ -335,13 +335,13 @@ Tuple!(BigInt, "x", BigInt, "y", bool, "b")(825631188280903622613789939574502135
 	(else (Fp²-mul a (Fp²-pow a (1- n) p ω2) p ω2))))
 
 ;; x^2 ≡ n (mod p) ?
-(define (Cipolla n p) 
+(define (Cipolla n p)
 ;; check n is a square
 	(unless (= 1 (Legendre n p)) (error "not a square (mod p)" (list n p)))
 ;; iterate until suitable 'a' found
-	(define a  
+	(define a
 		(for ((t (in-range 2 p))) ;; t = tentative a
-		  #:break (= (1- p)  (Legendre (- (* t t) n) p)) => t 
+		  #:break (= (1- p)  (Legendre (- (* t t) n) p)) => t
 		))
 	(define ω2 (- (* a a) n))
 	;; (writeln 'a-> a 'ω2-> ω2 'ω-> 'ω)
@@ -395,7 +395,7 @@ let Cipolla n g =
   let fE=Seq.unfold(fun(n,i)->Some((n,i),((n*n+i*i*b)%g,(2I*n*i)%g)))(a,1I)|>Seq.cache
   let rec fL Πn Πi α β=match 2I**α with
                         Ω when Ω<β->fL Πn Πi (α+1) β
-                       |Ω when Ω>β->let n,i=Seq.item (α-1) fE in fL ((Πn*n+Πi*i*b)%g) ((Πn*i+Πi*n)%g) 0 (β-Ω/2I)    
+                       |Ω when Ω>β->let n,i=Seq.item (α-1) fE in fL ((Πn*n+Πi*i*b)%g) ((Πn*i+Πi*n)%g) 0 (β-Ω/2I)
                        |_->let n,i=Seq.item α fE in ((Πn*n+Πi*i*b)%g)
   if fN 1I n ((g-1I)/2I) g<>1I then None else Some(fL 1I 0I 0 ((g+1I)/2I))
 
@@ -407,7 +407,7 @@ let Cipolla n g =
 
 ```fsharp
 
-let test=[(10I,13I);(56I,101I);(8218I,10007I);(8219I,10007I);(331575I,1000003I);(665165880I,1000000007I);(881398088036I,1000000000039I);(34035243914635549601583369544560650254325084643201I,10I**50+151I)] 
+let test=[(10I,13I);(56I,101I);(8218I,10007I);(8219I,10007I);(331575I,1000003I);(665165880I,1000000007I);(881398088036I,1000000000039I);(34035243914635549601583369544560650254325084643201I,10I**50+151I)]
 test|>List.iter(fun(n,g)->match Cipolla n g with Some r->printfn "Cipolla %A %A -> %A (%A) check %A" n g r (g-r) ((r*r)%g) |_->printfn "Cipolla %A %A -> has no result" n g)
 
 ```
@@ -436,7 +436,7 @@ Real: 00:00:00.089, CPU: 00:00:00.090, GC gen0: 2, gen1: 0
 ### LongInt version
 
 Had a close look at the EchoLisp code for step 2.
-Used the FreeBASIC code from the Miller-Rabin task for prime testing. 
+Used the FreeBASIC code from the Miller-Rabin task for prime testing.
 
 ```freebasic
 ' version 08-04-2017
@@ -602,7 +602,7 @@ For i = 1 To 7
         Continue For
     End If
 
-    Do 
+    Do
         Do
             a = Rnd * (p -2) +2
             w2 = a * a - n
@@ -1033,7 +1033,7 @@ pow2=: conjunction define
 cipolla=: dyad define
   assert. 1=1 p: y [ 'y must be prime'
   assert. 1= x leg y [ 'x must be square mod y'
-  a=.1 
+  a=.1
   whilst. (0 ~:{: r) do. a=. a+1
     while. 1>: leg&y@(x -~ *:) a do. a=.a+1 end.
     w2=. y|(*:a) - x
@@ -1535,15 +1535,15 @@ Roots of 34035243914635549601583369544560650254325084643201 are (825631188280903
 {{libheader|mpfr}}
 
 ```Phix
-include mpfr.e 
+include mpfr.e
 
 procedure legendre(mpz r, a, p)
 -- Legendre symbol, returns 1, 0 or p - 1 (in r)
     mpz_sub_ui(r,p,1)
     {} = mpz_fdiv_q_ui(r, r, 2)
     mpz_powm(r,a,r,p)
-end procedure 
- 
+end procedure
+
 procedure mul_point(sequence a, b, mpz omega2, p)
 -- (modifies a)
     mpz {xa,ya} = a,
@@ -1568,11 +1568,11 @@ function cipolla(object no, po)
 mpz n = mpz_init(no),
     p = mpz_init(po),
     t = mpz_init()
- 
+
     -- Step 0, validate arguments
     legendre(t,n,p)
     if mpz_cmp_si(t,1)!=0 then return {"0","0","false"} end if
- 
+
     -- Step 1, find a, omega2
     integer a = 0
     mpz omega2 = mpz_init(),
@@ -1586,7 +1586,7 @@ mpz n = mpz_init(no),
         if mpz_cmp(t,pm1)=0 then exit end if
         a += 1
     end while
- 
+
     -- Step 2, compute power
     sequence r = {mpz_init(1),mpz_init(0)},
              s = {mpz_init(a),mpz_init(1)}
@@ -1603,17 +1603,17 @@ mpz n = mpz_init(no),
     end while
 
     -- Step 3, check x in Fp
-    if mpz_cmp_si(r[2],0)!=0 then return {"0","0","false"} end if 
- 
+    if mpz_cmp_si(r[2],0)!=0 then return {"0","0","false"} end if
+
     -- Step 5, check x * x = n
     mpz_powm_ui(t,r[1],2,p)
-    if mpz_cmp(t,n)!=0 then return {"0","0","false"} end if 
- 
+    if mpz_cmp(t,n)!=0 then return {"0","0","false"} end if
+
     -- Step 4, solutions
     mpz_sub(p,p,r[1])
     return {mpz_get_str(r[1]), mpz_get_str(p), "true"}
 end function
- 
+
 constant tests = {{10,13},
                   {56,101},
                   {8218,10007},
@@ -1820,10 +1820,10 @@ Roots of 8219 mod 10007: ()
 ;; which obviates the need for p to be passed around constantly
 (define (Cipolla n p) (with-modulus p (mod-Cipolla n)))
 
-(define (mod-Legendre a)  
+(define (mod-Legendre a)
   (modexpt a (/ (sub1 (current-modulus)) 2)))
- 
-;; Arithmetic in Fp² 
+
+;; Arithmetic in Fp²
 (struct Fp² (x y))
 
 (define-syntax-rule (Fp²-destruct* (a a.x a.y) ...)
@@ -1835,27 +1835,27 @@ Roots of 8219 mod 10007: ()
   (Fp² (mod+ a.x b.x) (mod+ a.y b.y)))
 
 ;; a * b
-(define (Fp²-mul a b ω2) 
+(define (Fp²-mul a b ω2)
   (Fp²-destruct* (a a.x a.y) (b b.x b.y))
   (Fp² (mod+ (* a.x b.x) (* ω2 a.y b.y)) (mod+ (* a.x b.y) (* a.y b.x))))
- 
-;; a * a	
+
+;; a * a
 (define (Fp²-square a ω2)
   (Fp²-destruct* (a a.x a.y))
   (Fp² (mod+ (sqr a.x) (* ω2 (sqr a.y))) (mod* 2 a.x a.y)))
- 
+
 ;; a ^ n
 (define (Fp²-pow a n ω2)
   (Fp²-destruct* (a a.x a.y))
-  (cond 
+  (cond
     ((= 0 n) (Fp² 1 0))
     ((= 1 n) a)
     ((= 2 n) (Fp²-mul a a ω2))
     ((even? n) (Fp²-square (Fp²-pow a (/ n 2) ω2) ω2))
     (else (Fp²-mul a (Fp²-pow a (sub1 n) ω2) ω2))))
- 
+
 ;; x^2 ≡ n (mod p) ?
-(define (mod-Cipolla n) 
+(define (mod-Cipolla n)
   ;; check n is a square
   (unless (= 1 (mod-Legendre n)) (error 'Cipolla "~a not a square (mod ~a)" n (current-modulus)))
   ;; iterate until suitable 'a' found
@@ -2226,7 +2226,7 @@ Uses lib GMP (GNU MP Bignum Library).
 var [const] BN=Import("zklBigNum");   //libGMP
 fcn modEq(a,b,p) { (a-b)%p==0 }
 fcn Legendre(a,p){ a.powm((p - 1)/2,p) }
- 
+
 class  Fp2{  // Arithmetic in Fp^2
    fcn init(_x,_y){ var [const] x=BN(_x), y=BN(_y) }	// two big ints
    //fcn add(b,p){ self((x + b.x)%p,(y + b.y)%p) }	// a + b

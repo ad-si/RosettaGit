@@ -616,10 +616,10 @@ After 3000000 games, I won 1999747 by switching.  That is 66.658233%.
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 class Program

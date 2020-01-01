@@ -269,11 +269,11 @@ Output:
 
 
 
-## C sharp
+## C#
 
 We can use the built-in function from BigInteger.
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

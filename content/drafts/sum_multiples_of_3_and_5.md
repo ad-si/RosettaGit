@@ -597,11 +597,11 @@ $ ./a.out 23e45
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 The following C# 5 / .Net 4 code is an <i>efficient solution</i> in that it does not iterate through the numbers 1 ... n - 1 in order to calculate the answer. On the other hand, the System.Numerics.BigInteger class (.Net 4 and upwards) is not itself efficient because calculations take place in software instead of hardware. Consequently, it may be <i>faster</i> to conduct the calculation for smaller values with native ("primitive") types using a 'brute force' iteration approach.
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

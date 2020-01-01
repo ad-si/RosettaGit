@@ -1722,7 +1722,7 @@ int main()
 
 ### C\#
 
-```csharp
+```c#
 using System;
 
 class Program
@@ -1760,7 +1760,7 @@ class Program
 
 Works with C# 6+.
 
-```csharp
+```c#
 using System;
 class Program
 {
@@ -1780,7 +1780,7 @@ class Program
 Works with C# 3+.
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1804,7 +1804,7 @@ class Program
 
 ###  Flexible Version
 
-```csharp
+```c#
 using System;
 using System.Globalization;
 class Program
@@ -1855,7 +1855,7 @@ class Program
 Works with C# 3+.
 
 
-```csharp
+```c#
 class songs
 {
     static void Main(string[] args)
@@ -1910,7 +1910,7 @@ Take one down, pass it around
 
 Works with C# 3+.
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1937,7 +1937,7 @@ class Program
 
 ###  A Fun One
 
-```csharp
+```c#
 string[] bottles = {
       "80 Shilling",
 			"Abita Amber",
@@ -2075,7 +2075,7 @@ for (int i = 0; i < 99; i++)
 
 ###  Using recursion
 
-```csharp
+```c#
 public static void BottlesSong(int numberOfBottles)
 {
     if (numberOfBottles > 0)
@@ -2093,7 +2093,7 @@ public static void BottlesSong(int numberOfBottles)
 
 ###  Using a While Loop
 
-```csharp
+```c#
 static void Main(string[] args)
 {
     int numBottles = 99;

@@ -2787,10 +2787,10 @@ int APIENTRY _tWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpC
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;

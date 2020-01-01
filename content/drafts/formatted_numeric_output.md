@@ -440,9 +440,9 @@ Binary: 00111.001
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 class Program
     {

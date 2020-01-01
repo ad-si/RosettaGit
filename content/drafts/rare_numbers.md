@@ -45,7 +45,7 @@ Show all output here, on this page.
 {{trans|Go}}
 Converted to unsigned longs in order to reach 19 digits.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,7 +71,7 @@ class Program {
     // converts digs array to the "difference"
     static UI ToDif() { UI r = 0; for (int i = 0; i < digs.Length; i++)
             r = r * 10 + (uint)digs[i]; return r; }
-    
+
     // converts digs array to the "sum"
     static UI ToSum() { UI r = 0; for (int i = digs.Length - 1; i >= 0; i--)
             r = r * 10 + (uint)digs[i]; return Dif + (r << 1); }
@@ -132,7 +132,7 @@ class Program {
         for (nd = 2, nd2 = 0, odd = false; nd <= MxD; nd++, nd2++, odd = !odd) { digs = new int[nd];
             if (nd == 4) { lists[0].Add(zl); lists[1].Add(ol); lists[2].Add(el); lists[3].Add(ol); }
             else if (tLst[nd2].Count > lists[0].Count) foreach (LST list in lists) list.Add(dl);
-            ixs = new LST(); 
+            ixs = new LST();
             foreach (term t in tLst[nd2]) ixs.Add(new Lst { t.a, t.b });
             foreach (LST list in lists) { cnd = new int[list.Count]; Fnmr(list, 0); }
             WriteLine("  {0,2}  {1,10:n0}", nd, (DT.Now - st).TotalMilliseconds); }
@@ -144,7 +144,7 @@ class Program {
 ```
 
 {{out}}
-Results from a core i7-7700 @ 3.6Ghz.  This C# version isn't as fast as the Go version using the same hardware.  C# computes up to 17, 18 and 19 digits in under 9 minutes, 1 2/3 hours and over 2 1/2 hours respectively.  (Go is about 6 minutes, 1 1/4 hours, and under 2 hours). 
+Results from a core i7-7700 @ 3.6Ghz.  This C# version isn't as fast as the Go version using the same hardware.  C# computes up to 17, 18 and 19 digits in under 9 minutes, 1 2/3 hours and over 2 1/2 hours respectively.  (Go is about 6 minutes, 1 1/4 hours, and under 2 hours).
 
 The '''''long'''-to-'''ulong''''' conversion isn't causing the reduced performance, C# has more overhead as compared to Go. This C# version can easily be converted to use BigIntegers to go beyond 19 digits, but becomes around eight times slower. (ugh!)
 <pre style="height:64ex;overflow:scroll"> digs elapsed(ms) R/N  Rare Numbers
@@ -329,7 +329,7 @@ This solution demonstrates the concept described in [[Talk:Rare_numbers#30_mins_
 
 ```fsharp
 
-// Find all Rare numbers with a digits. Nigel Galloway: September 18th., 2019. 
+// Find all Rare numbers with a digits. Nigel Galloway: September 18th., 2019.
 let rareNums a=
   let tN=set[1L;4L;5L;6L;9L]
   let izPS g=let n=(float>>sqrt>>int64)g in n*n=g
@@ -338,7 +338,7 @@ let rareNums a=
   let rec fG n i g e l=seq{
     match l with
      h::t->for l in max 0L (0L-h)..min 9L (9L-h) do if e>1L||l=0L||tN.Contains((2L*l+h)%10L) then yield! fG (n+l*e+(l+h)*g) (i+l*g+(l+h)*e) (g/10L) (e*10L) t
-    |_->if n>(pown 10L (a-1)) then for l in (if a%2=0 then [0L] else [0L..9L]) do let g=l*(pown 10L (a/2)) in if izPS (n+i+2L*g) then yield (i+g,n+g)} 
+    |_->if n>(pown 10L (a-1)) then for l in (if a%2=0 then [0L] else [0L..9L]) do let g=l*(pown 10L (a/2)) in if izPS (n+i+2L*g) then yield (i+g,n+g)}
   fN [0L..9L] [] (a/2) |> Seq.collect(List.rev >> fG 0L 0L (pown 10L (a-1)) 1L)
 
 ```
@@ -848,13 +848,13 @@ The first 8 rare numbers are: [65, 621770, 281089082, 2022652202, 2042832002, 86
 
 ## REXX
 
-(See the ''discussion'' page for a simplistic 1<sup>st</sup> version that computes   ''rare''   numbers only using the task's basic rules).  
+(See the ''discussion'' page for a simplistic 1<sup>st</sup> version that computes   ''rare''   numbers only using the task's basic rules).
 
-Most of the hints (properties of ''rare'' numbers) within Shyam Sunder Gupta's   [http://www.shyamsundergupta.com/rare.htm <u>webpage</u>]   have been incorporated in this 
+Most of the hints (properties of ''rare'' numbers) within Shyam Sunder Gupta's   [http://www.shyamsundergupta.com/rare.htm <u>webpage</u>]   have been incorporated in this
 
 REXX program and the logic is now expressed within the list of   '''AB...PQ'''   (abutted numbers within the   '''@g'''   list).
 
-These improvements made this REXX version around   '''25%'''   faster than the previous version   (see the discussion page). 
+These improvements made this REXX version around   '''25%'''   faster than the previous version   (see the discussion page).
 
 ```rexx
 /*REXX program  calculates and displays  a  specified amount of   rare    numbers.      */

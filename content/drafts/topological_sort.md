@@ -1104,10 +1104,10 @@ I - destroyed
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
 namespace Algorithms
 {

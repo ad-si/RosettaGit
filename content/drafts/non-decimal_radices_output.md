@@ -300,10 +300,10 @@ int main()
 Binary conversion using <tt>%b</tt> is not standard.
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
 using System;
 

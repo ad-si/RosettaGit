@@ -465,9 +465,9 @@ int main(void)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace rms
@@ -496,7 +496,7 @@ namespace rms
 An alternative method demonstrating the more functional style introduced by LINQ and lambda expressions in C# 3.
 {{works with|C sharp|C#|3}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

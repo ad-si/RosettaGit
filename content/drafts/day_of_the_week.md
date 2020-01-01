@@ -1137,9 +1137,9 @@ Yuletide holidays must be allowed in the following years:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 class Program
@@ -1161,7 +1161,7 @@ class Program
 
 Using LINQ:
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1180,7 +1180,7 @@ class Program
 ```
 Lambda expressions FTW:
 
-```csharp
+```c#
 using System;
 using System.Linq;
 

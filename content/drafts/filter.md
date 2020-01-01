@@ -743,10 +743,10 @@ In-place filtered not multiple of 3: 1 2 4 5 7 8 10
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|.NET|1.1}}
 
-```csharp
+```c#
 ArrayList array = new ArrayList( new int[] { 1, 2, 3, 4, 5 } );
 ArrayList evens = new ArrayList();
 foreach( int i in array )
@@ -778,7 +778,7 @@ foreach( int i in evens )
 
 Replacing the delegate with the more concise lambda expression syntax.
 
-```csharp
+```c#
 int[] array = { 1, 2, 3, 4, 5 };
 int[] evens = array.Where(i => (i % 2) == 0).ToArray();
 

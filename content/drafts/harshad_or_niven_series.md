@@ -435,9 +435,9 @@ int main(void)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;
@@ -514,7 +514,7 @@ namespace Harshad
 ### Shorter solution
 
 
-```csharp
+```c#
 using System.Collections.Generic;
 using static System.Linq.Enumerable;
 using static System.Console;

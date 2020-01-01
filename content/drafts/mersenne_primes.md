@@ -13,7 +13,7 @@ tags = []
 {{draft task}}
 Mersenne primes:
 
-Challenge: 
+Challenge:
 
 Create code that will list (preferably calculate) all of the Mersenne primes until some limitation is reached.  For information on what a Mersenne prime is, go to this link: [[https://en.wikipedia.org/wiki/Mersenne_prime]]
 
@@ -25,7 +25,7 @@ on isPrime(integ)
 	set isComposite to ""
 	if (integ / 2) = (integ / 2 div 1) then
 		log integ & " is composite because 2 is a factor" as string --buttons {"OK", "Cancel"} default button 1 cancel button 2
-		
+
 	else
 		set x to 2
 		set sqrtOfInteg to integ ^ 0.5
@@ -35,12 +35,12 @@ on isPrime(integ)
 				set isComposite to 1
 				set x to x + 1
 			else
-				
+
 				set x to x + 1
 			end if
-			
-			
-			
+
+
+
 		end repeat
 		log integ & " is prime" as string --buttons {"OK", "Cancel"} default button 1 cancel button 2
 		if isComposite = 1 then
@@ -49,7 +49,7 @@ on isPrime(integ)
 			display dialog integ
 		end if
 	end if
-	
+
 end isPrime
 set x to 2
 repeat
@@ -65,7 +65,7 @@ end repeat
 
 Needs a better primality checking algorithm to do really large prime numbers.
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 
@@ -155,7 +155,7 @@ bool isPrime(BigInt bi) {
     if (bi < 2) return false;
     if (bi % 2 == 0) return bi == 2;
     if (bi % 3 == 0) return bi == 3;
-    
+
     auto test = BigInt(5);
     while (test * test < bi) {
         if (bi % test == 0) return false;
@@ -760,7 +760,7 @@ forprimes { is_mersenne_prime($_) && say } 1e9;
 {{works with|Rakudo|2018.01}}
 We already have a multitude of tasks that demonstrate '''how''' to find Mersenne primes; [[Prime decomposition]], [[Primality by trial division]], [[Trial factoring of a Mersenne number]], [[Lucas-Lehmer test]], [[Miller–Rabin primality_test]], etc. that all have Perl 6 entries. I'm not sure what I could add here that would be useful.
 
-Hmmm. 
+Hmmm.
 
 <blockquote>''Create code that will list all of the Mersenne primes until some limitation is reached.''</blockquote>
 
@@ -864,7 +864,7 @@ while true do
         p = iff(p>2?p+2:3)
         mpz_set_si(bp,p)
         if mpz_probable_prime_p(bp, state) then exit end if
-    end while   
+    end while
 end while
 {mp,bp} = mpz_free({mp,bp})
 state =  gmp_randclear(state)
@@ -945,63 +945,63 @@ def MillerRabinPrimalityTest(number):
     '''
     because the algorithm input is ODD number than if we get
     even and it is the number 2 we return TRUE ( spcial case )
-    if we get the number 1 we return false and any other even 
+    if we get the number 1 we return false and any other even
     number we will return false.
     '''
     if number == 2:
         return True
     elif number == 1 or number % 2 == 0:
         return False
-    
+
     ''' first we want to express n as : 2^s * r ( were r is odd ) '''
-    
+
     ''' the odd part of the number '''
     oddPartOfNumber = number - 1
-    
+
     ''' The number of time that the number is divided by two '''
     timesTwoDividNumber = 0
-    
+
     ''' while r is even divid by 2 to find the odd part '''
     while oddPartOfNumber % 2 == 0:
         oddPartOfNumber = oddPartOfNumber / 2
-        timesTwoDividNumber = timesTwoDividNumber + 1 
-     
+        timesTwoDividNumber = timesTwoDividNumber + 1
+
     '''
-    since there are number that are cases of "strong liar" we 
+    since there are number that are cases of "strong liar" we
     need to check more then one number
     '''
     for time in range(3):
-        
+
         ''' choose "Good" random number '''
         while True:
             ''' Draw a RANDOM number in range of number ( Z_number )  '''
             randomNumber = random.randint(2, number)-1
             if randomNumber != 0 and randomNumber != 1:
                 break
-        
+
         ''' randomNumberWithPower = randomNumber^oddPartOfNumber mod number '''
         randomNumberWithPower = pow(randomNumber, oddPartOfNumber, number)
-        
+
         ''' if random number is not 1 and not -1 ( in mod n ) '''
         if (randomNumberWithPower != 1) and (randomNumberWithPower != number - 1):
             # number of iteration
             iterationNumber = 1
-            
+
             ''' while we can squre the number and the squered number is not -1 mod number'''
             while (iterationNumber <= timesTwoDividNumber - 1) and (randomNumberWithPower != number - 1):
                 ''' squre the number '''
                 randomNumberWithPower = pow(randomNumberWithPower, 2, number)
-                
+
                 # inc the number of iteration
                 iterationNumber = iterationNumber + 1
-            '''     
+            '''
             if x != -1 mod number then it because we did not found strong witnesses
             hence 1 have more then two roots in mod n ==>
             n is composite ==> return false for primality
             '''
             if (randomNumberWithPower != (number - 1)):
                 return False
-            
+
     ''' well the number pass the tests ==> it is probably prime ==> return true for primality '''
     return True
 
@@ -1054,9 +1054,9 @@ done
 
 ## REXX
 
-This REXX version   (using a 32-bit Regina REXX interpreter)   will find those Mersenne primes which are less than 
+This REXX version   (using a 32-bit Regina REXX interpreter)   will find those Mersenne primes which are less than
 
-8 million decimal digits   (which would be '''M43''').   
+8 million decimal digits   (which would be '''M43''').
 
 ```rexx
 /*REXX program uses  exponent─and─mod  operator to test possible Mersenne numbers.      */
@@ -1154,15 +1154,15 @@ Output:
 ```Scala
 object MersennePrimes extends App {
   import Stream._
- 
+
   def primeSieve(s: Stream[Int]): Stream[Int] =
     s.head #:: primeSieve(s.tail filter { _ % s.head != 0 })
   val primes = primeSieve(from(2))
- 
+
   def mersenne(p: Int): BigInt = (BigInt(2) pow p) - 1
- 
+
   def s(mp: BigInt, p: Int): BigInt = { if (p == 1) 4 else ((s(mp, p - 1) pow 2) - 2) % mp }
- 
+
   val upbPrime = 9941
   println(s"Finding Mersenne primes in M[2..$upbPrime]")
   ((primes takeWhile (_ <= upbPrime)).par map { p => (p, mersenne(p)) }

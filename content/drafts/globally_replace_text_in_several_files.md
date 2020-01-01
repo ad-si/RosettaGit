@@ -414,10 +414,10 @@ int main(){
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
 using System.Collections.Generic;
 using System.IO;

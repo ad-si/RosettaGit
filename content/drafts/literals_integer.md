@@ -645,10 +645,10 @@ GCC supports specifying integers in binary using the [http://gcc.gnu.org/onlined
 
 To specify a literal of an unsigned integer, you add the suffix "u" or "U". To specify a literal of a "long" integer, you add the suffix "l" or "L". In C99, to specify a literal of a "long long" integer, you add the suffix "ll" or "LL". (The "l" and "ll" forms are discouraged as "l" looks like the digit "1"). The "u" suffixes can be combined with "l" or "ll" suffixes for unsigned long or unsigned long long integers.
 
-=={{header|C sharp|C#}}==
+## C#
 C# has decimal and hexadecimal integer literals, the latter of which are prefixed with <code>0x</code>:
 
-```csharp
+```c#
 int a = 42;
 int b = 0x2a;
 ```
@@ -660,7 +660,7 @@ Literals of either form can be suffixed with <code>U</code> and/or <code>L</code
 '''Update'''<br/>
 As of C#7, integer literals can be written in binary with the prefix <code>0b</code>. Furthermore, underscores can be used as separators:
 
-```csharp
+```c#
 
 int x = 0b1100_1001_1111_0000;
 

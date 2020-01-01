@@ -10,43 +10,43 @@ categories = []
 tags = []
 +++
 
-{{task|Prime Numbers}} 
+{{task|Prime Numbers}}
 [[Category:Arithmetic]]
 [[Category:Arithmetic operations]]
 {{omit from|GUISS}}
 
-A Mersenne number is a number in the form of 2<sup>P</sup>-1. 
+A Mersenne number is a number in the form of 2<sup>P</sup>-1.
 
-If P is prime, the Mersenne number may be a Mersenne prime 
-(if P is not prime, the Mersenne number is also not prime). 
+If P is prime, the Mersenne number may be a Mersenne prime
+(if P is not prime, the Mersenne number is also not prime).
 
-In the search for Mersenne prime numbers it is advantageous to eliminate exponents by finding a small factor before starting a,  potentially lengthy, [[Lucas-Lehmer test]]. 
+In the search for Mersenne prime numbers it is advantageous to eliminate exponents by finding a small factor before starting a,  potentially lengthy, [[Lucas-Lehmer test]].
 
-There are very efficient algorithms for determining if a number divides 2<sup>P</sup>-1 (or equivalently, if 2<sup>P</sup> mod (the number) = 1). 
-Some languages already have built-in implementations of this exponent-and-mod operation (called ''modPow'' or similar). 
+There are very efficient algorithms for determining if a number divides 2<sup>P</sup>-1 (or equivalently, if 2<sup>P</sup> mod (the number) = 1).
+Some languages already have built-in implementations of this exponent-and-mod operation (called ''modPow'' or similar).
 
 The following is how to implement this ''modPow'' yourself:
 
-For example, let's compute 2<sup>23</sup> mod 47. 
-Convert the exponent 23 to binary, you get 10111. Starting with <tt>square</tt> = 1, repeatedly square it. 
-Remove the top bit of the exponent, and if it's 1 multiply <tt>square</tt> by the base of the exponentiation (2), then compute <tt>square</tt> modulo 47. 
+For example, let's compute 2<sup>23</sup> mod 47.
+Convert the exponent 23 to binary, you get 10111. Starting with <tt>square</tt> = 1, repeatedly square it.
+Remove the top bit of the exponent, and if it's 1 multiply <tt>square</tt> by the base of the exponentiation (2), then compute <tt>square</tt> modulo 47.
 Use the result of the modulo from the last step as the initial value of <tt>square</tt> in the next step:
 
-                   remove       optional   
+                   remove       optional
        square      top bit   multiply by 2   mod 47
-    ────────────   ───────   ─────────────   ────── 
+    ────────────   ───────   ─────────────   ──────
     1*1 = 1        1  0111   1*2 = 2            2
     2*2 = 4        0   111      no              4
     4*4 = 16       1    11   16*2 = 32         32
     32*32 = 1024   1     1   1024*2 = 2048     27
     27*27 = 729    1         729*2 = 1458       1
 
-Since 2<sup>23</sup> mod 47 = 1, 47 is a factor of 2<sup>P</sup>-1. 
-(To see this, subtract 1 from both sides: 2<sup>23</sup>-1 = 0 mod 47.) 
-Since we've shown that 47 is a factor, 2<sup>23</sup>-1 is not prime. 
-Further properties of Mersenne numbers allow us to refine the process even more. 
-Any factor q of 2<sup>P</sup>-1 must be of the form 2kP+1, k being a positive integer or zero. Furthermore, q must be 1 or 7 mod 8. 
-Finally any potential factor q must be [[Primality by Trial Division|prime]]. 
+Since 2<sup>23</sup> mod 47 = 1, 47 is a factor of 2<sup>P</sup>-1.
+(To see this, subtract 1 from both sides: 2<sup>23</sup>-1 = 0 mod 47.)
+Since we've shown that 47 is a factor, 2<sup>23</sup>-1 is not prime.
+Further properties of Mersenne numbers allow us to refine the process even more.
+Any factor q of 2<sup>P</sup>-1 must be of the form 2kP+1, k being a positive integer or zero. Furthermore, q must be 1 or 7 mod 8.
+Finally any potential factor q must be [[Primality by Trial Division|prime]].
 As in other trial division algorithms, the algorithm stops when 2kP+1 > sqrt(N).
 
 These primality tests only work on Mersenne numbers where P is prime. For example, M<sub>4</sub>=15 yields no factors using these techniques, but factors into 3 and 5, neither of which fit 2kP+1.
@@ -77,12 +77,12 @@ Using the above method find a factor of  2<sup>929</sup>-1 (aka M929)
 ## 360 Assembly
 
 {{trans|BBC BASIC}}
-Use of bitwise operations 
+Use of bitwise operations
 (TM (Test under Mask), SLA (Shift Left Arithmetic),SRA (Shift Right Arithmetic)).
 <lang>*        Factors of a Mersenne number  11/09/2015
 MERSENNE CSECT
          USING  MERSENNE,R15
-         MVC    Q,=F'929'          q=929   (M929=2**929-1) 
+         MVC    Q,=F'929'          q=929   (M929=2**929-1)
          LA     R6,1               k=1
 LOOPK    C      R6,=F'1048576'     do k=1 to 2**20
          BNL    ELOOPK
@@ -103,7 +103,7 @@ OK       MVI    PRIME,X'00'        then prime=false   is prime?
 J2J3     L      R4,P               p
          SRDA   R4,32              r4>>r5
          DR     R4,R1              p/j
-         LTR    R4,R4              if p//j=0 
+         LTR    R4,R4              if p//j=0
          BZ     NOTPRIME           then goto notprime
          LA     R1,1(R1)           j=j+1
          BCT    R2,J2J3
@@ -117,7 +117,7 @@ WHILED   LR     R5,R7              d
 J2J4     L      R4,P               p
          SRDA   R4,32              r4>>r5
          DR     R4,R7              /d
-         LTR    R4,R4              if p//d=0 
+         LTR    R4,R4              if p//d=0
          BZ     NOTPRIME           then goto notprime
          AR     R7,R1              d=d+j
          LA     R1,2(R1)           j=j+2
@@ -131,7 +131,7 @@ WHILEI   LTR    R8,R8              do while(i^=0)
          BZ     EWHILEI
          ST     R8,PG              i
          TM     PG+3,B'00000001'   if first bit of i not 1
-         BZ     NOTFIRST           
+         BZ     NOTFIRST
          L      R5,Y               y
          M      R4,Z               *z
          LA     R4,0
@@ -144,7 +144,7 @@ NOTFIRST L      R5,Z               z
          ST     R4,Z               z=(z*z)//p
          SRA    R8,1               i=i/2   by shift right 1
          B      WHILEI
-EWHILEI  CLI    PRIME,X'01'        if prime 
+EWHILEI  CLI    PRIME,X'01'        if prime
          BNE    NOTOK
          CLC    Y,=F'1'            and if y=1
          BNE    NOTOK
@@ -167,7 +167,7 @@ Y        DS     F
 Z        DS     F
 FACTOR   DS     F                  a factor of q
 PG       DS     CL24               buffer
-         YREGS 
+         YREGS
          END    MERSENNE
 ```
 
@@ -270,8 +270,8 @@ end Mersenne;
 {{trans|Fortran}}
 
 {{works with|ALGOL 68|Standard - with prelude inserted manually}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
-<!--  {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
+<!--  {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 Compiles, but I couldn't maxint not in library, works with manually entered maxint, bits width. Leaving some issue with newline -->
 
 ```algol68
@@ -411,7 +411,7 @@ PowMod(x,n,m) { ; x**n mod m
       PRINT "A factor of M929 is "; FNmersenne_factor(929)
       PRINT "A factor of M937 is "; FNmersenne_factor(937)
       END
-      
+
       DEF FNmersenne_factor(P%)
       LOCAL K%, Q%
       IF NOT FNisprime(P%) THEN = -1
@@ -422,7 +422,7 @@ PowMod(x,n,m) { ; x**n mod m
         ENDIF
       NEXT K%
       = 0
-      
+
       DEF FNisprime(N%)
       LOCAL D%
       IF N% MOD 2=0 THEN = (N% = 2)
@@ -435,7 +435,7 @@ PowMod(x,n,m) { ; x**n mod m
         D% += 4
       ENDWHILE
       = TRUE
-      
+
       DEF FNmodpow(X%, N%, M%)
       LOCAL I%, Y%, Z%
       I% = N% : Y% = 1 : Z% = X%
@@ -488,7 +488,7 @@ A factor of M937 is 28111
       & 1:?primeCandidate
       & ( nextPrimeCandidate
         =   ( !nextincs:&!incs:?nextincs
-            | 
+            |
             )
           & !nextincs:%?inc ?nextincs
           & !inc+!primeCandidate:?primeCandidate
@@ -552,7 +552,7 @@ int isPrime(int n){
 	return 1;}
 
 main() {int i,d,p,r,q=929;
-	if (!isPrime(q)) return 1; 
+	if (!isPrime(q)) return 1;
 	r=q;
 	while(r>0) r<<=1;
 	d=2*q+1;
@@ -568,10 +568,10 @@ main() {int i,d,p,r,q=929;
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace prog
@@ -583,7 +583,7 @@ namespace prog
 			int q = 929;
 			if ( !isPrime(q) ) return;
 			int r = q;
-			while( r > 0 ) 
+			while( r > 0 )
 				r <<= 1;
 			int d = 2 * q + 1;
 			do
@@ -595,13 +595,13 @@ namespace prog
 					if (p < 0) i *= 2;
 					if (i > d) i -= d;
 				}
-				if (i != 1) d += 2 * q; else break;				
+				if (i != 1) d += 2 * q; else break;
 			}
 			while(true);
-			
-			Console.WriteLine("2^"+q+"-1 = 0 (mod "+d+")"); 
+
+			Console.WriteLine("2^"+q+"-1 = 0 (mod "+d+")");
 		}
-		
+
 		static bool isPrime(int n)
 		{
 			if ( n % 2 == 0 ) return n == 2;
@@ -733,19 +733,19 @@ mersenneFactor = (p) ->
             return q
         k++
     return null
- 
+
 isPrime = (value) ->
     for i in [2...value]
         return false if value % i == 0
         return true  if value % i != 0
- 
+
 trialFactor = (base, exp, mod) ->
     square = 1
     bits = exp.toString(2).split('')
     for bit in bits
         square = Math.pow(square, 2) * (if +bit is 1 then base else 1) % mod
     return square == 1
- 
+
 checkMersenne = (p) ->
     factor = mersenneFactor(+p)
     console.log "M#{p} = 2^#{p}-1 is #{if factor is null then "prime" else "composite with #{factor}"}"
@@ -799,7 +799,7 @@ M929 = 2^929-1 is composite with 13007
  13007
 
 
-###  Version 2 
+###  Version 2
 
 
 We can use a primality test from the [[Primality by Trial Division#Common_Lisp|Primality by Trial Division]] task.
@@ -808,7 +808,7 @@ We can use a primality test from the [[Primality by Trial Division#Common_Lisp|P
 ```lisp
 (defun primep (n)
   "Is N prime?"
-  (and (> n 1) 
+  (and (> n 1)
        (or (= n 2) (oddp n))
        (loop for i from 3 to (isqrt n) by 2
 	  never (zerop (rem n i)))))
@@ -846,7 +846,7 @@ We can run the same tests from the [[#Ruby|Ruby]] entry.
 
 ```txt
 > (loop for p in '(2 3 4 5 7 11 13 17 19 23 29 31 37 41 43 47 53 929)
-        do (multiple-value-bind (primep factor) 
+        do (multiple-value-bind (primep factor)
                (mersenne-prime-p p)
              (format t "~&M~w = 2**~:*~w-1 is ~:[composite with factor ~w~;prime~]."
                      p primep factor)))
@@ -903,7 +903,7 @@ ulong mersenneFactor(in ulong p) pure nothrow @nogc {
     immutable ulong limit = p <= 64 ? cast(ulong)(real(2.0) ^^ p - 1).sqrt : uint.max; // prevents silent overflows
     for (ulong k = 1; (2 * p * k + 1) < limit; k++) {
         immutable ulong q = 2 * p * k + 1;
-        if ((q % 8 == 1 || q % 8 == 7) && isPrime(q) && 
+        if ((q % 8 == 1 || q % 8 == 7) && isPrime(q) &&
             modPow(2, p, q) == 1)
             return q;
     }
@@ -966,29 +966,29 @@ defmodule Mersenne do
     limit = :math.sqrt(:math.pow(2, p) - 1)
     mersenne_loop(p, limit, 1)
   end
-  
+
   defp mersenne_loop(p, limit, k) when (2*k*p - 1) > limit, do: nil
   defp mersenne_loop(p, limit, k) do
     q = 2*k*p + 1
     if prime?(q) and rem(q,8) in [1,7] and trial_factor(2,p,q),
       do: q, else: mersenne_loop(p, limit, k+1)
   end
-  
+
   defp trial_factor(base, exp, mod) do
     Integer.digits(exp, 2)
     |> Enum.reduce(1, fn bit,square ->
       (square * square * (if bit==1, do: base, else: 1)) |> rem(mod)
     end) == 1
   end
-  
+
   def check_mersenne(p) do
     IO.write "M#{p} = 2**#{p}-1 is "
     f = mersenne_factor(p)
     IO.puts if f, do: "composite with factor #{f}", else: "prime"
   end
-  
+
   def prime?(n), do: prime?(n, :math.sqrt(n), 2)
-  
+
   defp prime?(_, limit, i) when limit < i, do: true
   defp prime?(n, limit, i) do
     if rem(n,i) == 0, do: false, else: prime?(n, limit, i+1)
@@ -1034,48 +1034,48 @@ The modpow function is not my original. This is a translation of python, more or
 
 ```erlang
 
--module(mersene2).                                                            
--export([prime/1,modpow/3,mf/1]).                                             
-                                                                              
-mf(P) -> merseneFactor(P,math:sqrt(math:pow(2,P)-1),2).                       
-                                                                              
-merseneFactor(P,Limit,Acc) when Acc >= Limit -> io:write("None found");       
-merseneFactor(P,Limit,Acc) ->                                                 
-        Q = 2 * P * Acc + 1,                                                  
-        Isprime = prime(Q),                                                   
-        Mod = modpow(2,P,Q),                                                  
-                                                                              
-        if                                                                    
-            Isprime == false ->                                               
-               merseneFactor(P,Limit,Acc+1);                                  
-                                                                              
-            Q rem 8 =/= 1 andalso Q rem 8 =/= 7 ->                            
-               merseneFactor(P,Limit,Acc+1);                                  
-                                                                              
-             Mod == 1 ->                                                      
-                io:format("M~w is composite with Factor: ~w~n",[P,Q]);        
-                                                                              
-            true -> merseneFactor(P,Limit,Acc+1)                              
-        end.                                                                  
-                                                                              
-modpow(B, E, M) -> modpow(B, E, M, 1).                                        
-                                                                              
-modpow(_B, E, _M, R) when E =< 0 -> R;                                        
-modpow(B, E, M, R) ->                                                         
-    R1 = case E band 1 =:= 1 of                                               
-             true -> (R * B) rem M;                                           
-             false  -> R                                                      
-         end,                                                                 
-    modpow( (B*B) rem M, E bsr 1, M, R1).                                     
-                                                                              
-prime(N) -> divisors(N, N-1).     
+-module(mersene2).
+-export([prime/1,modpow/3,mf/1]).
 
-divisors(N, 1) -> true;                 
-divisors(N, C) ->                       
-   case N rem C =:= 0 of                
-      true  -> false;                   
-      false -> divisors(N, C-1)         
-   end.                                 
+mf(P) -> merseneFactor(P,math:sqrt(math:pow(2,P)-1),2).
+
+merseneFactor(P,Limit,Acc) when Acc >= Limit -> io:write("None found");
+merseneFactor(P,Limit,Acc) ->
+        Q = 2 * P * Acc + 1,
+        Isprime = prime(Q),
+        Mod = modpow(2,P,Q),
+
+        if
+            Isprime == false ->
+               merseneFactor(P,Limit,Acc+1);
+
+            Q rem 8 =/= 1 andalso Q rem 8 =/= 7 ->
+               merseneFactor(P,Limit,Acc+1);
+
+             Mod == 1 ->
+                io:format("M~w is composite with Factor: ~w~n",[P,Q]);
+
+            true -> merseneFactor(P,Limit,Acc+1)
+        end.
+
+modpow(B, E, M) -> modpow(B, E, M, 1).
+
+modpow(_B, E, _M, R) when E =< 0 -> R;
+modpow(B, E, M, R) ->
+    R1 = case E band 1 =:= 1 of
+             true -> (R * B) rem M;
+             false  -> R
+         end,
+    modpow( (B*B) rem M, E bsr 1, M, R1).
+
+prime(N) -> divisors(N, N-1).
+
+divisors(N, 1) -> true;
+divisors(N, C) ->
+   case N rem C =:= 0 of
+      true  -> false;
+      false -> divisors(N, C-1)
+   end.
 
 ```
 
@@ -1101,7 +1101,7 @@ M929 is composite with Factor: 13007
 
 
 ```factor
-USING: combinators.short-circuit interpolate io kernel locals   
+USING: combinators.short-circuit interpolate io kernel locals
 math math.bits math.functions math.primes sequences ;
 IN: rosetta-code.mersenne-factors
 
@@ -1221,7 +1221,7 @@ FUNCTION  Mfactor(p)
       EXIT
     END IF
   END DO
- 
+
   maxk = 16384  / p     ! limit for k to prevent overflow of 32 bit signed integer
   DO k = 1, maxk
     q = 2*p*k + 1
@@ -1273,7 +1273,7 @@ End Function
 Dim q(1 To 16) As Integer = {11, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71, 73, 79, 83, 97, 929}
 For k As Integer = 1 To 16
   If isPrime(q(k)) Then
-    Dim As Integer d, i, p, r = q(k) 
+    Dim As Integer d, i, p, r = q(k)
     While r > 0 : r Shl= 1 : Wend
     d = 2 * q(k) + 1
     Do
@@ -1291,7 +1291,7 @@ For k As Integer = 1 To 16
         Exit Do
       End If
     Loop
-    Print "2^"; Str(q(k)); Tab(6); " - 1 = 0 (mod"; d; ")" 
+    Print "2^"; Str(q(k)); Tab(6); " - 1 = 0 (mod"; d; ")"
   Else
     Print Str(q(k)); " is not prime"
   End If
@@ -1569,7 +1569,7 @@ trialfac=: 3 : 0
 trialfac 929
 13007
 ```
- 
+
 
 ```j>trialfac 44497</lang
 
@@ -1587,7 +1587,7 @@ class MersenneFactorCheck
 {
 
   private final static BigInteger TWO = BigInteger.valueOf(2);
-  
+
   public static boolean isPrime(long n)
   {
     if (n == 2)
@@ -1600,7 +1600,7 @@ class MersenneFactorCheck
         return false;
     return true;
   }
-  
+
   public static BigInteger findFactorMersenneNumber(int primeP)
   {
     if (primeP <= 0)
@@ -1613,7 +1613,7 @@ class MersenneFactorCheck
     BigInteger possibleFactor = BigInteger.ONE;
     int possibleFactorBits12 = 0;
     int twoPBits12 = primeP & 3;
-    
+
     while ((possibleFactor = possibleFactor.add(twoP)).compareTo(maxFactor) <= 0)
     {
       possibleFactorBits12 = (possibleFactorBits12 + twoPBits12) & 3;
@@ -1624,7 +1624,7 @@ class MersenneFactorCheck
     }
     return null;
   }
-  
+
   public static void checkMersenneNumber(int p)
   {
     if (!isPrime(p))
@@ -1647,7 +1647,7 @@ class MersenneFactorCheck
     checkMersenneNumber(929);
     return;
   }
-  
+
 }
 
 ```
@@ -1699,7 +1699,7 @@ function mersenne_factor(p){
   }
   return null
 }
- 
+
 function isPrime(value){
   for (var i=2; i < value; i++){
     if (value % i == 0){
@@ -1710,7 +1710,7 @@ function isPrime(value){
 	 }
   }
 }
- 
+
 function trial_factor(base, exp, mod){
   var square, bits
   square = 1
@@ -1720,7 +1720,7 @@ function trial_factor(base, exp, mod){
   }
   return (square == 1)
 }
- 
+
 function check_mersenne(p){
   var f, result
   console.log("M"+p+" = 2^"+p+"-1 is ")
@@ -1929,8 +1929,8 @@ Believe it or not, this type of test runs faster in Mathematica than the squarin
 
 ```mathematica
 
-For[i = 2, i < Prime[1000000], i = NextPrime[i], 
- If[Mod[2^44497, i] == 1, 
+For[i = 2, i < Prime[1000000], i = NextPrime[i],
+ If[Mod[2^44497, i] == 1,
   Print["divisible by "<>i]]]; Print["prime test passed; call Lucas and Lehmer"]
 ```
 
@@ -2000,7 +2000,7 @@ echo "2^",q," - 1 = 0 (mod ",d,")"
 
 
 ```octave
-% test a bit; lsb is 1 (like built-in bit* ops) 
+% test a bit; lsb is 1 (like built-in bit* ops)
 function b = bittst(n, p)
   b = bitand(n, 2^(p-1)) > 0;
 endfunction
@@ -2066,15 +2066,15 @@ while( i<=len & status ==1,
        if( B[i] != 0,
            q = q*2;
        );
-       r = q%S;     
+       r = q%S;
        q = r*r;
        if( i == len & r == 1,
-           status = 0; 
+           status = 0;
            printp("Not Prime!");
-       ); 
+       );
        i++;
 );
-return(status); 
+return(status);
 }
 ```
 
@@ -2194,7 +2194,7 @@ sub factors {
 	my $n = shift;
 	my $p = 2;
 	my @out;
- 
+
 	while ($n >= $p * $p) {
 		while ($n % $p == 0) {
 			push @out, $p;
@@ -2205,15 +2205,15 @@ sub factors {
 	push @out, $n if $n > 1 || !@out;
 	@out;
 }
- 
+
 sub next_prime {
 	my $p = shift;
 	do { $p = $p == 2 ? 3 : $p + 2 } until is_prime($p);
 	$p;
 }
- 
+
 my %pcache;
-sub is_prime { 
+sub is_prime {
 	my $x = shift;
 	$pcache{$x} //=	(factors($x) == 1)
 }
@@ -2349,7 +2349,7 @@ my @primes = 2, 3, -> $n is copy {
     }
     $n;
 } ... *;
- 
+
 multi factors(1) { 1 }
 multi factors(Int $remainder is copy) {
   gather for @primes -> $factor {
@@ -2464,8 +2464,8 @@ function mersenne_factor(integer p)
     while 1 do
         atom q = 2*p*k + 1
         if q>=limit then exit end if
-        if find(mod(q,8),{1,7}) 
-        and is_prime(q) 
+        if find(mod(q,8),{1,7})
+        and is_prime(q)
         and modpow(2,p,q)=1 then
             return q
         end if
@@ -2517,7 +2517,7 @@ echo 'M929 has a factor: ',  mersenneFactor(929), '</br>';
 
 function mersenneFactor($p) {
     $limit = sqrt(pow(2, $p) - 1);
-    for ($k = 1; 2 * $p * $k - 1 < $limit; $k++) { 
+    for ($k = 1; 2 * $p * $k - 1 < $limit; $k++) {
         $q = 2 * $p * $k + 1;
         if (isPrime($q) && ($q % 8 == 1 || $q % 8 == 7) && bcpowmod("2", "$p", "$q") == "1") {
             return $q;
@@ -2665,7 +2665,7 @@ M929 has a factor: 13007
 ```racket
 
 #lang racket
- 
+
 (define (number->digits n)
   (map (compose1 string->number string)
        (string->list (number->string n 2))))
@@ -2674,7 +2674,7 @@ M929 has a factor: 13007
   (for/fold ([square 1])
     ([d (number->digits exp)])
     (modulo (* (if (= d 1) 2 1) square square) base)))
- 
+
 ; Search through all integers from 1 on to find the first divisor.
 ; Returns #f if 2^p-1 is prime.
 (define (mersenne-factor p)
@@ -2754,7 +2754,7 @@ testMer: procedure;  parse arg x;              p=2**x  /* [↓]  do we have enou
                     end   /*k*/
 ```
 
-Program note:   the   '''iSqrt'''   function computes the integer square root of a non-negative integer without using any floating point, just integers. 
+Program note:   the   '''iSqrt'''   function computes the integer square root of a non-negative integer without using any floating point, just integers.
 
 {{out|output|text=  when using the default (two) ranges of numbers:}}
 
@@ -2805,7 +2805,7 @@ see "A factor of M929 is " + mersennefactor(929) + nl
 see "A factor of M937 is " + mersennefactor(937) + nl
 
 func mersennefactor(p)
-       if not isprime(p) 
+       if not isprime(p)
          return -1
        ok
        for k = 1 to 50
@@ -2817,9 +2817,9 @@ func mersennefactor(p)
                   ok
                ok
             ok
-       next 
+       next
        return 0
- 
+
 func isprime(num)
        if (num <= 1) return 0 ok
        if (num % 2 = 0) and num != 2 return 0 ok
@@ -3124,7 +3124,7 @@ const func integer: modPow (in var integer: base,
 const func integer: mersenneFactor (in integer: exponent) is func
   result
     var integer: factor is 0;
-  local 
+  local
     var integer: maxk is 0;
     var integer: k is 1;
     var boolean: searching is TRUE;
@@ -3225,7 +3225,7 @@ For <code>primes::is_prime</code> see [[Prime decomposition#Tcl]]
 proc int2bits {n} {
     binary scan [binary format I1 $n] B* binstring
     return [split [string trimleft $binstring 0] ""]
-    
+
     # another method
     if {$n == 0} {return 0}
     set bits [list]
@@ -3286,13 +3286,13 @@ Prompt Q
 While K≤2^20 and T=0
 2KQ+1→P
 remainder(P,8)→W
-If W=1 or W=7 
+If W=1 or W=7
 Then
 0→E:0→M
 If remainder(P,2)=0:1→M
 If remainder(P,3)=0:1→M
 5→D
-While M=0 and DD≤P 
+While M=0 and DD≤P
 If remainder(P,D)=0:1→M
 D+2→D
 If remainder(P,D)=0:1→M
@@ -3305,8 +3305,8 @@ If remainder(I,2)=1:remainder(YZ,P)→Y
 remainder(ZZ,P)→Z
 iPart(I/2)→I
 End
-If E=1 and Y=1 
-Then 
+If E=1 and Y=1
+Then
 P→F:1→T
 End
 End
@@ -3414,12 +3414,12 @@ A factor of M937 is 28111
     for i=1 to 59
         z=i
         if z=59 then z=929  ':) 61 turns into 929.
-        if isPrime(z) then 
+        if isPrime(z) then
             r=testM(z)
             zz=left("M" & z & space(4),4)
-            if r=0 then 
+            if r=0 then
                 Wscript.echo zz & " prime."
-            else 
+            else
                 Wscript.echo zz & " not prime, a factor: " & r
             end if
         end if
@@ -3463,7 +3463,7 @@ function testM(x)
         if q>sqroot then exit do
         if (q and 7)=1 or (q and 7)=7 then
             if isPrime(q) then
-                if modPow(2,x,q)=1 then 
+                if modPow(2,x,q)=1 then
                     testM=q
                     exit function
                 end if
@@ -3471,7 +3471,7 @@ function testM(x)
         end if
         k=k+1
     loop
-    testM=0 
+    testM=0
 end function
 ```
 
@@ -3563,7 +3563,7 @@ M47           factor=2351
 var [const] BN=Import("zklBigNum");  // libGMP
 
     // M = 2^P - 1 , P prime
-    // Look for a prime divisor q such as: 
+    // Look for a prime divisor q such as:
     //     q < M.sqrt(), q = 1 or 7 modulo 8, q = 1 + 2kP
     // q is divisor if 2.powmod(P,q) == 1
     // m-divisor returns q or False

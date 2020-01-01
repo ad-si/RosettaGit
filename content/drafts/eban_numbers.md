@@ -208,10 +208,10 @@ count = 7999
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 
 namespace EbanNumbers {
@@ -468,14 +468,14 @@ Dim As Integer start, ended, printable, count
 Dim As Long i, b, r, m, t
 Do
     Read start, ended, printable
-    
+
     If start = 0 Then Exit Do
     If start = 2 Then
         Print "eban numbers up to and including"; ended; ":"
     Else
         Print "eban numbers between "; start; " and "; ended; " (inclusive):"
     End If
-    
+
     count = 0
     For i = start To ended Step 2
         b = Int(i / 1000000000)
@@ -487,7 +487,7 @@ Do
         If m >= 30 And m <= 66 Then m = (m Mod 10)
         If t >= 30 And t <= 66 Then t = (t Mod 10)
         If r >= 30 And r <= 66 Then r = (r Mod 10)
-        If b = 0 Or b = 2 Or b = 4 Or b = 6 Then             
+        If b = 0 Or b = 2 Or b = 4 Or b = 6 Then
             If m = 0 Or m = 2 Or m = 4 Or m = 6 Then
                 If t = 0 Or t = 2 Or t = 4 Or t = 6 Then
                     If r = 0 Or r = 2 Or r = 4 Or r = 6 Then
@@ -595,7 +595,7 @@ func main() {
             if r >= 30 && r <= 66 {
                 r %= 10
             }
-            if b == 0 || b == 2 || b == 4 || b == 6 {             
+            if b == 0 || b == 2 || b == 4 || b == 6 {
                 if m == 0 || m == 2 || m == 4 || m == 6 {
                     if t == 0 || t == 2 || t == 4 || t == 6 {
                         if r == 0 || r == 2 || r == 4 || r == 6 {
@@ -622,30 +622,30 @@ func main() {
 ```txt
 
 eban numbers up to and including 1000:
-2 4 6 30 32 34 36 40 42 44 46 50 52 54 56 60 62 64 66 
-count = 19 
+2 4 6 30 32 34 36 40 42 44 46 50 52 54 56 60 62 64 66
+count = 19
 
 eban numbers between 1000 and 4000 (inclusive):
-2000 2002 2004 2006 2030 2032 2034 2036 2040 2042 2044 2046 2050 2052 2054 2056 2060 2062 2064 2066 4000 
-count = 21 
+2000 2002 2004 2006 2030 2032 2034 2036 2040 2042 2044 2046 2050 2052 2054 2056 2060 2062 2064 2066 4000
+count = 21
 
 eban numbers up to and including 10000:
-count = 79 
+count = 79
 
 eban numbers up to and including 100000:
-count = 399 
+count = 399
 
 eban numbers up to and including 1000000:
-count = 399 
+count = 399
 
 eban numbers up to and including 10000000:
-count = 1599 
+count = 1599
 
 eban numbers up to and including 100000000:
-count = 7999 
+count = 7999
 
 eban numbers up to and including 1000000000:
-count = 7999 
+count = 7999
 
 ```
 
@@ -670,7 +670,7 @@ iseban =: [: *./ 0 2 4 6 e.~ [: itemAmend [: |: (4#1000)&#:
    NB. INPUT are the correct integers, head and tail shown
    ({. , {:) INPUT =: 1000 + i. 3001
 1000 4000
-   
+
    (;~ #)  iseban Filter INPUT
 ┌──┬────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │21│2000 2002 2004 2006 2030 2032 2034 2036 2040 2042 2044 2046 2050 2052 2054 2056 2060 2062 2064 2066 4000│
@@ -924,7 +924,7 @@ for my $t ('e') {
 
     say "\n
 ### =======
- $t-ban: 
+ $t-ban:
 ### =======
 ";
     my @a = grep { $_ <= 1000 } @bans;
@@ -950,7 +950,7 @@ for my $t ('e') {
 ```txt
 
 ### =======
- e-ban: 
+ e-ban:
 ### =======
 
 e-ban numbers up to 1000: 19
@@ -988,9 +988,9 @@ Up to and including          one sextillion: 1,279,999,999
 ## Perl 6
 
 {{works with|Rakudo|2018.12}}
-Modular approach, very little is hard coded. Change the $upto order-of-magnitude limit to adjust the search/display ranges. Change the letter(s) given to the enumerate / count subs to modify which letter(s) to disallow. 
+Modular approach, very little is hard coded. Change the $upto order-of-magnitude limit to adjust the search/display ranges. Change the letter(s) given to the enumerate / count subs to modify which letter(s) to disallow.
 
-Will handle multi-character 'bans'. Demonstrate for e-ban, t-ban and subur-ban. 
+Will handle multi-character 'bans'. Demonstrate for e-ban, t-ban and subur-ban.
 
 Directly find :
 :* [[oeis:A006933|OEIS:A006933 Numbers without e]]: Eban
@@ -1071,7 +1071,7 @@ for < e t subur > -> $n { # An assortment for demonstration
     my @j = @bans.grep: 1000 <= * <= 4000;
     put "\n
 ### =======
- {$n}-ban: 
+ {$n}-ban:
 ### =======
 \n" ~
         "{$n}-ban numbers up to 1000: {+@k}\n[{@k».&comma}]\n\n" ~
@@ -1092,7 +1092,7 @@ for < e t subur > -> $n { # An assortment for demonstration
 ```txt
 
 ### =======
- e-ban: 
+ e-ban:
 ### =======
 
 e-ban numbers up to 1000: 19
@@ -1126,7 +1126,7 @@ Up to and including          one sextillion: 1,279,999,999
 
 
 ### =======
- t-ban: 
+ t-ban:
 ### =======
 
 t-ban numbers up to 1000: 56
@@ -1160,7 +1160,7 @@ Up to and including          one sextillion: 52,706,752
 
 
 ### =======
- subur-ban: 
+ subur-ban:
 ### =======
 
 subur-ban numbers up to 1000: 35
@@ -1299,7 +1299,7 @@ count_eban(10^21) : 1,279,999,999
   show a count of all eban numbers up and including 100,000
   show a count of all eban numbers up and including 1,000,000
   show a count of all eban numbers up and including 10,000,000
-  
+
 """
 
 import inflect
@@ -1321,7 +1321,7 @@ for i in range(1,1001):
     if not 'e' in p.number_to_words(i):
         print(str(i)+' ',end='')
         count += 1
-        
+
 print(' ')
 print(' ')
 print('count = '+str(count))
@@ -1339,7 +1339,7 @@ for i in range(1000,4001):
     if not 'e' in p.number_to_words(i):
         print(str(i)+' ',end='')
         count += 1
-        
+
 print(' ')
 print(' ')
 print('count = '+str(count))
@@ -1356,7 +1356,7 @@ count = 0
 for i in range(1,10001):
     if not 'e' in p.number_to_words(i):
         count += 1
-        
+
 print(' ')
 print('count = '+str(count))
 print(' ')
@@ -1372,7 +1372,7 @@ count = 0
 for i in range(1,100001):
     if not 'e' in p.number_to_words(i):
         count += 1
-        
+
 print(' ')
 print('count = '+str(count))
 print(' ')
@@ -1388,7 +1388,7 @@ count = 0
 for i in range(1,1000001):
     if not 'e' in p.number_to_words(i):
         count += 1
-        
+
 print(' ')
 print('count = '+str(count))
 print(' ')
@@ -1404,7 +1404,7 @@ count = 0
 for i in range(1,10000001):
     if not 'e' in p.number_to_words(i):
         count += 1
-        
+
 print(' ')
 print('count = '+str(count))
 print(' ')
@@ -1421,45 +1421,45 @@ Output:
 
 ```txt
 
- 
+
 eban numbers up to and including 1000:
- 
-2 4 6 30 32 34 36 40 42 44 46 50 52 54 56 60 62 64 66  
- 
+
+2 4 6 30 32 34 36 40 42 44 46 50 52 54 56 60 62 64 66
+
 count = 19
- 
- 
+
+
 eban numbers between 1000 and 4000 (inclusive):
- 
-2000 2002 2004 2006 2030 2032 2034 2036 2040 2042 2044 2046 2050 2052 2054 2056 2060 2062 2064 2066 4000  
- 
+
+2000 2002 2004 2006 2030 2032 2034 2036 2040 2042 2044 2046 2050 2052 2054 2056 2060 2062 2064 2066 4000
+
 count = 21
- 
- 
+
+
 eban numbers up to and including 10000:
- 
- 
+
+
 count = 79
- 
- 
+
+
 eban numbers up to and including 100000:
- 
- 
+
+
 count = 399
- 
- 
+
+
 eban numbers up to and including 1000000:
- 
- 
+
+
 count = 399
- 
- 
+
+
 eban numbers up to and including 10000000:
- 
- 
+
+
 count = 1599
- 
- 
+
+
 Run time in seconds: 1134.289519125
 
 ```
@@ -1468,7 +1468,7 @@ Run time in seconds: 1134.289519125
 
 ## REXX
 
-Programming note:   REXX has no shortcuts for   '''if'''   statements, so the multiple   '''if'''   statements weren't combined into one.  
+Programming note:   REXX has no shortcuts for   '''if'''   statements, so the multiple   '''if'''   statements weren't combined into one.
 
 ```rexx
 /*REXX program to display eban numbers (those that don't have an "e" their English name)*/
@@ -1756,8 +1756,8 @@ data 0, 0, false
 
 do
     read start, ended, printable
-    if not start break 
-    
+    if not start break
+
     if start = 2 then
         Print "eban numbers up to and including ", ended
     else
@@ -1774,7 +1774,7 @@ do
         if m >= 30 and m <= 66 m = mod(m, 10)
         if t >= 30 and t <= 66 t = mod(t, 10)
         if r >= 30 and r <= 66 r = mod(r, 10)
-        if b = 0 or b = 2 or b = 4 or b = 6 then             
+        if b = 0 or b = 2 or b = 4 or b = 6 then
             if m = 0 or m = 2 or m = 4 or m = 6 then
                 if t = 0 or t = 2 or t = 4 or t = 6 then
                     if r = 0 or r = 2 or r = 4 or r = 6 then
@@ -1830,11 +1830,11 @@ fcn magic(z){ z.isEven and z<=6 }
 {{out}}
 <pre style="height:35ex">
 eban numbers up to and including 1,000:
-2 4 6 30 32 34 36 40 42 44 46 50 52 54 56 60 62 64 66 
+2 4 6 30 32 34 36 40 42 44 46 50 52 54 56 60 62 64 66
 count = 19
 
 eban numbers between 1,000 and 4,000 (inclusive):
-2000 2002 2004 2006 2030 2032 2034 2036 2040 2042 2044 2046 2050 2052 2054 2056 2060 2062 2064 2066 4000 
+2000 2002 2004 2006 2030 2032 2034 2036 2040 2042 2044 2046 2050 2052 2054 2056 2060 2062 2064 2066 4000
 count = 21
 
 eban numbers up to and including 10,000:

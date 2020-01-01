@@ -424,10 +424,10 @@ int main(int argc, char *argv[])
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.IO;
 

@@ -187,12 +187,12 @@ clahs nohd<t>
     {
       pairent = p;
       balans = balansd;
-      daata = daata_in; 
+      daata = daata_in;
     }
 
     is_heder(booleean anser)
     {
-        balans.eecuuols(heder,anser); 
+        balans.eecuuols(heder,anser);
     }
 
     eecuuols(nohd<t> other, booleean anser)
@@ -325,7 +325,7 @@ clahs nohd<t>
                 lepht.balans = riit_hi;
                 rohtaat_riit(root);
             }
-        }   
+        }
     }
 
     balans_riit(nohd<t> root)
@@ -334,7 +334,7 @@ clahs nohd<t>
         select (riit.balans)
         {
             caas riit_hi
-            { 
+            {
                 root.balans = balansd;
                 riit.balans = balansd;
                 rohtaat_lepht(root);
@@ -376,9 +376,9 @@ clahs nohd<t>
                riit.balans = lepht_hi;
                rohtaat_lepht(root);
            }
-        }   
+        }
     }
-    
+
     balans_tree(nohd<t> root, direcshon phronn)
     {
         booleean torler = troo;
@@ -431,7 +431,7 @@ clahs nohd<t>
                         root.balans = lepht_hi;
                         torler = troo;
                     }
-    
+
                     caas riit_hi
                     {
                         root.balans = balansd;
@@ -447,7 +447,7 @@ clahs nohd<t>
                    {
                        root.balans = balansd;
                        torler = phals;
-                   }    
+                   }
 
                    caas balansd
                    {
@@ -566,7 +566,7 @@ clahs nohd<t>
                             {
                                 balans_riit(pairent.riit);
                             }
-                       }    
+                       }
                    }
                 }
              }
@@ -664,7 +664,7 @@ clahs entree_orlredee_ecsists_ecssepshon
 
 }
 
-clahs set_entree<t> 
+clahs set_entree<t>
 {
     set_entree(nohd<t> n)
     {
@@ -743,7 +743,7 @@ clahs set<t>
                     booleean is_graater = phals;
                     root.daata.les(daata, is_graater);
                     iph (is_graater)
-                    {  
+                    {
                         booleean root_riit_is_nul = phals;
                         root.nohd.riit.is_nul(root_riit_is_nul);
                         iph (!root_riit_is_nul)
@@ -1063,18 +1063,18 @@ int main(void)
 ```txt
 
 Inserting integer values 1 to 10
-Printing balance: 0 0 0 1 0 0 0 0 1 0 
+Printing balance: 0 0 0 1 0 0 0 0 1 0
 
 ```
 
 
 
-###  More elaborate version 
+###  More elaborate version
 
 See [[AVL_tree/C++]]
 
 
-###  Managed C++ 
+###  Managed C++
 
 See [[AVL_tree/Managed_C++]]
 
@@ -1584,7 +1584,7 @@ void main() @safe {
 
 ```txt
 Inserting values 1 to 10
-Printing balance: 0 0 0 1 0 0 0 0 1 0 
+Printing balance: 0 0 0 1 0 0 0 0 1 0
 ```
 
 
@@ -2231,7 +2231,7 @@ Printing balance: 0 0 0 1 0 1 0 0 0
 
 
 
-###  More elaborate version 
+###  More elaborate version
 
 See [[AVL_tree/Java]]
 
@@ -2440,14 +2440,14 @@ AVL.__mt={__index = AVL}
 
 
 function AVL:new(list)
-  local o={}  
+  local o={}
   setmetatable(o, AVL.__mt)
   for _,v in ipairs(list or {}) do
     o=o:insert(v)
   end
   return o
 end
-  
+
 function AVL:rebalance()
   local rotated=false
   if self.balance>1 then
@@ -2475,7 +2475,7 @@ function AVL:rebalance()
 end
 
 function AVL:insert(v)
-  if not self.value then 
+  if not self.value then
     self.value=v
     self.balance=0
     return self,1
@@ -2493,7 +2493,7 @@ function AVL:insert(v)
     self.balance=self.balance+grow
   end
   self,rotated=self:rebalance()
-  return self, (rotated or self.balance==0) and 0 or grow 
+  return self, (rotated or self.balance==0) and 0 or grow
 end
 
 function AVL:delete_move(dir,other,mul)
@@ -2637,7 +2637,7 @@ class AVLNode {
   @left : AVLNode;
   @right : AVLNode;
   @above : AVLNode;
-  
+
   New(key : Int, above : AVLNode) {
     @key := key;
     @above := above;
@@ -2702,17 +2702,17 @@ class AVLTree {
       @root := AVLNode->New( key, Nil);
       return true;
     };
- 
+
     n := @root;
     while(true) {
       if(n->GetKey() = key) {
         return false;
       };
-      
+
       parent := n;
       goLeft := n->GetKey() > key;
       n := goLeft ? n->GetLeft() : n->GetRight();
- 
+
       if(n = Nil) {
         if(goLeft) {
           parent->SetLeft(AVLNode->New( key, parent));
@@ -2742,7 +2742,7 @@ class AVLTree {
       };
       return;
     };
- 
+
     if (node->GetLeft() <> Nil) {
       child := node->GetLeft();
       while (child->GetRight() <> Nil) {
@@ -2764,7 +2764,7 @@ class AVLTree {
     if (@root = Nil) {
       return;
     };
- 
+
     child := @root;
     while (child <> Nil) {
       node := child;
@@ -2778,7 +2778,7 @@ class AVLTree {
 
   method : Rebalance(n : AVLNode) ~ Nil {
     SetBalance(n);
- 
+
     if (n->GetBalance() = -2) {
       if (Height(n->GetLeft()->GetLeft()) >= Height(n->GetLeft()->GetRight())) {
         n := RotateRight(n);
@@ -2786,7 +2786,7 @@ class AVLTree {
       else {
         n := RotateLeftThenRight(n);
       };
-     
+
     } else if (n->GetBalance() = 2) {
       if(Height(n->GetRight()->GetRight()) >= Height(n->GetRight()->GetLeft())) {
         n := RotateLeft(n);
@@ -2795,7 +2795,7 @@ class AVLTree {
         n := RotateRightThenLeft(n);
       };
     };
- 
+
     if(n->GetAbove() <> Nil) {
       Rebalance(n->GetAbove());
     } else {
@@ -2806,16 +2806,16 @@ class AVLTree {
   method : RotateLeft(a : AVLNode) ~ AVLNode {
     b := a->GetRight();
     b->SetAbove(a->GetAbove());
- 
+
     a->SetRight(b->GetLeft());
- 
+
     if(a->GetRight() <> Nil) {
       a->GetRight()->SetAbove(a);
     };
-    
+
     b->SetLeft(a);
     a->SetAbove(b);
-    
+
     if (b->GetAbove() <> Nil) {
       if (b->GetAbove()->GetRight() = a) {
         b->GetAbove()->SetRight(b);
@@ -2823,26 +2823,26 @@ class AVLTree {
         b->GetAbove()->SetLeft(b);
       };
     };
- 
+
     SetBalance(a);
     SetBalance(b);
- 
+
     return b;
   }
-  
+
   method : RotateRight(a : AVLNode) ~ AVLNode {
     b := a->GetLeft();
     b->SetAbove(a->GetAbove());
- 
+
     a->SetLeft(b->GetRight());
-    
+
     if (a->GetLeft() <> Nil) {
       a->GetLeft()->SetAbove(a);
     };
-    
+
     b->SetRight(a);
     a->SetAbove(b);
- 
+
     if (b->GetAbove() <> Nil) {
       if (b->GetAbove()->GetRight() = a) {
         b->GetAbove()->SetRight(b);
@@ -2850,7 +2850,7 @@ class AVLTree {
         b->GetAbove()->SetLeft(b);
       };
     };
-    
+
     SetBalance(a);
     SetBalance(b);
 
@@ -2861,7 +2861,7 @@ class AVLTree {
     n->SetLeft(RotateLeft(n->GetLeft()));
     return RotateRight(n);
   }
- 
+
   method : RotateRightThenLeft(n : AVLNode) ~ AVLNode {
     n->SetRight(RotateRight(n->GetRight()));
     return RotateLeft(n);
@@ -2889,7 +2889,7 @@ class AVLTree {
   method : public : PrintBalance() ~ Nil {
     PrintBalance(@root);
   }
- 
+
   method : PrintBalance(n : AVLNode) ~ Nil {
     if (n <> Nil) {
       PrintBalance(n->GetLeft());
@@ -2903,12 +2903,12 @@ class AVLTree {
 class Test {
   function : Main(args : String[]) ~ Nil {
     tree := AVLTree->New();
- 
+
     "Inserting values 1 to 10"->PrintLine();
     for(i := 1; i < 10; i+=1;) {
       tree->Insert(i);
     };
- 
+
     "Printing balance: "->Print();
     tree->PrintBalance();
   }
@@ -2934,27 +2934,27 @@ Printing balance: 0 0 0 1 0 1 0 0 0
 @implementation AVLTree
 
 -(BOOL)insertWithKey:(NSInteger)key {
-    
+
     if (self.root == nil) {
         self.root = [[AVLTreeNode alloc]initWithKey:key andParent:nil];
     } else {
-        
+
         AVLTreeNode *n = self.root;
         AVLTreeNode *parent;
-        
+
         while (true) {
-            
+
             if (n.key == key) {
                 return false;
             }
-            
+
             parent = n;
-            
+
             BOOL goLeft = n.key > key;
             n = goLeft ? n.left : n.right;
-            
+
             if (n == nil) {
-                
+
                 if (goLeft) {
                     parent.left = [[AVLTreeNode alloc]initWithKey:key andParent:parent];
                 } else {
@@ -2965,14 +2965,14 @@ Printing balance: 0 0 0 1 0 1 0 0 0
             }
         }
     }
-    
+
     return true;
 }
 
 -(void)rebalanceStartingAtNode:(AVLTreeNode*)n {
-    
+
     [self setBalance:@[n]];
-    
+
     if (n.balance == -2) {
         if ([self height:(n.left.left)] >= [self height:n.left.right]) {
             n = [self rotateRight:n];
@@ -2986,7 +2986,7 @@ Printing balance: 0 0 0 1 0 1 0 0 0
             n = [self rotateRightThenLeft:n];
         }
     }
-    
+
     if (n.parent != nil) {
         [self rebalanceStartingAtNode:n.parent];
     } else {
@@ -2996,19 +2996,19 @@ Printing balance: 0 0 0 1 0 1 0 0 0
 
 
 -(AVLTreeNode*)rotateRight:(AVLTreeNode*)a {
-    
+
     AVLTreeNode *b = a.left;
     b.parent = a.parent;
-    
+
     a.left = b.right;
-    
+
     if (a.left != nil) {
         a.left.parent = a;
     }
-    
+
     b.right = a;
     a.parent = b;
-    
+
     if (b.parent != nil) {
         if (b.parent.right == a) {
             b.parent.right = b;
@@ -3016,43 +3016,43 @@ Printing balance: 0 0 0 1 0 1 0 0 0
             b.parent.left = b;
         }
     }
-    
+
     [self setBalance:@[a,b]];
     return b;
-    
+
 }
 
 -(AVLTreeNode*)rotateLeftThenRight:(AVLTreeNode*)n {
-    
+
     n.left = [self rotateLeft:n.left];
     return [self rotateRight:n];
-    
+
 }
 
 -(AVLTreeNode*)rotateRightThenLeft:(AVLTreeNode*)n {
-    
+
     n.right = [self rotateRight:n.right];
     return [self rotateLeft:n];
 }
 
 -(AVLTreeNode*)rotateLeft:(AVLTreeNode*)a {
-    
+
     //set a's right node as b
     AVLTreeNode* b = a.right;
     //set b's parent as a's parent (which could be nil)
     b.parent = a.parent;
     //in case b had a left child transfer it to a
     a.right = b.left;
-    
+
     // after changing a's reference to the right child, make sure the parent is set too
     if (a.right != nil) {
         a.right.parent = a;
     }
-    
+
     // switch a over to the left to be b's left child
     b.left = a;
     a.parent = b;
-    
+
     if (b.parent != nil) {
         if (b.parent.right == a) {
             b.parent.right = b;
@@ -3060,30 +3060,30 @@ Printing balance: 0 0 0 1 0 1 0 0 0
             b.parent.right = b;
         }
     }
-    
+
     [self setBalance:@[a,b]];
-    
+
     return b;
-    
+
 }
 
 
 
 -(void) setBalance:(NSArray*)nodesArray {
-    
+
     for (AVLTreeNode* n in nodesArray) {
-        
+
         n.balance = [self height:n.right] - [self height:n.left];
     }
-    
+
 }
 
 -(int)height:(AVLTreeNode*)n {
-    
+
     if (n == nil) {
         return -1;
     }
-    
+
     return 1 + MAX([self height:n.left], [self height:n.right]);
 }
 
@@ -3103,7 +3103,7 @@ Printing balance: 0 0 0 1 0 1 0 0 0
     }
 }
 @end
--- test 
+-- test
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -3116,10 +3116,10 @@ int main(int argc, const char * argv[]) {
         [tree insertWithKey:4];
         [tree insertWithKey:5];
         [tree insertWithKey:6];
-        
+
         NSLog(@"printing balance: ");
         [tree printBalance:tree.root];
-        
+
         NSLog(@"printing key: ");
         [tree printKey:tree.root];
     }
@@ -3157,10 +3157,10 @@ printing key:
 
 ## Phix
 
-Translated from the C version at http://www.geeksforgeeks.org/avl-tree-set-2-deletion 
+Translated from the C version at http://www.geeksforgeeks.org/avl-tree-set-2-deletion
 
 The standard distribution includes demo\rosetta\AVL_tree.exw, which contains a slightly longer but perhaps more readable version,
-with a command line equivalent of https://www.cs.usfca.edu/~galles/visualization/AVLtree.html as well as a simple tree structure 
+with a command line equivalent of https://www.cs.usfca.edu/~galles/visualization/AVLtree.html as well as a simple tree structure
 display routine and additional verification code (both modelled on the C version found on this page)
 
 ```Phix
@@ -3311,7 +3311,7 @@ sequence test = shuffle(tagset(50003))
 
 """
 
-Python AVL tree example based on 
+Python AVL tree example based on
 
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/lec06_code.zip
 
@@ -3327,10 +3327,10 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-in
 
 class AVLNode(object):
     """A node in the AVL tree."""
-    
+
     def __init__(self, parent, k):
         """Creates a node.
-        
+
         Args:
             parent: The node's parent.
             k: key of the node.
@@ -3339,7 +3339,7 @@ class AVLNode(object):
         self.parent = parent
         self.left = None
         self.right = None
-  
+
     def _str(self):
         """Internal method for ASCII art."""
         label = str(self.key)
@@ -3370,17 +3370,17 @@ class AVLNode(object):
           [left_line + ' ' * (width - left_width - right_width) + right_line
            for left_line, right_line in zip(left_lines, right_lines)]
         return lines, pos, width
-        
+
     def __str__(self):
         return '\n'.join(self._str()[0])
 
     def find(self, k):
-        """Finds and returns the node with key k from the subtree rooted at this 
+        """Finds and returns the node with key k from the subtree rooted at this
         node.
-        
+
         Args:
             k: The key of the node we want to find.
-        
+
         Returns:
             The node with key k.
         """
@@ -3392,15 +3392,15 @@ class AVLNode(object):
             else:
                 return self.left.find(k)
         else:
-            if self.right is None:  
+            if self.right is None:
                 return None
             else:
                 return self.right.find(k)
-    
+
     def find_min(self):
-        """Finds the node with the minimum key in the subtree rooted at this 
+        """Finds the node with the minimum key in the subtree rooted at this
         node.
-        
+
         Returns:
             The node with the minimum key.
         """
@@ -3408,7 +3408,7 @@ class AVLNode(object):
         while current.left is not None:
             current = current.left
         return current
-       
+
     def next_larger(self):
         """Returns the node with the next larger key (the successor) in the BST.
         """
@@ -3421,7 +3421,7 @@ class AVLNode(object):
 
     def insert(self, node):
         """Inserts a node into the subtree rooted at this node.
-        
+
         Args:
             node: The node to be inserted.
         """
@@ -3439,7 +3439,7 @@ class AVLNode(object):
                 self.right = node
             else:
                 self.right.insert(node)
-  
+
     def delete(self):
         """Deletes and returns this node from the tree."""
         if self.left is None or self.right is None:
@@ -3470,44 +3470,44 @@ class AVL(object):
     """
     AVL binary search tree implementation.
     """
-    
+
     def __init__(self):
         """ empty tree """
         self.root = None
-    
+
     def __str__(self):
         if self.root is None: return '<empty tree>'
         return str(self.root)
 
     def find(self, k):
-        """Finds and returns the node with key k from the subtree rooted at this 
+        """Finds and returns the node with key k from the subtree rooted at this
         node.
-        
+
         Args:
             k: The key of the node we want to find.
-        
+
         Returns:
             The node with key k or None if the tree is empty.
         """
         return self.root and self.root.find(k)
-                
+
     def find_min(self):
         """Returns the minimum node of this BST."""
-        
+
         return self.root and self.root.find_min()
-    
+
     def next_larger(self, k):
         """Returns the node that contains the next larger (the successor) key in
         the BST in relation to the node with key k.
-        
+
         Args:
             k: The key of the node of which the successor is to be found.
-            
+
         Returns:
             The successor node.
         """
         node = self.find(k)
-        return node and node.next_larger()   
+        return node and node.next_larger()
 
     def left_rotate(self, x):
         y = x.right
@@ -3565,7 +3565,7 @@ class AVL(object):
     def insert(self, k):
         """Inserts a node with key k into the subtree rooted at this node.
         This AVL version guarantees the balance property: h = O(lg n).
-        
+
         Args:
             k: The key of the node to be inserted.
         """
@@ -3580,10 +3580,10 @@ class AVL(object):
     def delete(self, k):
         """Deletes and returns a node with key k if it exists from the BST.
         This AVL version guarantees the balance property: h = O(lg n).
-        
+
         Args:
             k: The key of the node that we want to delete.
-            
+
         Returns:
             The deleted node with key k.
         """
@@ -3599,7 +3599,7 @@ class AVL(object):
             if self.root is not None:
                 self.root.parent = None
         else:
-            deleted = node.delete()   
+            deleted = node.delete()
         ## node.parent is actually the old parent of the node,
         ## which is the first potentially out-of-balance node.
         self.rebalance(deleted.parent)
@@ -4186,11 +4186,11 @@ Printing balance: 0 0 0 1 0 0 0 0 1 0
 ```simula
 CLASS AVL;
 BEGIN
- 
+
     ! AVL TREE ADAPTED FROM JULIENNE WALKER'S PRESENTATION AT ;
     ! HTTP://ETERNALLYCONFUZZLED.COM/TUTS/DATASTRUCTURES/JSW_TUT_AVL.ASPX. ;
     ! THIS PORT USES SIMILAR INDENTIFIER NAMES. ;
-     
+
     ! THE KEY INTERFACE MUST BE SUPPORTED BY DATA STORED IN THE AVL TREE. ;
     CLASS KEY;
     VIRTUAL:
@@ -4198,14 +4198,14 @@ BEGIN
         PROCEDURE EQUAL IS BOOLEAN PROCEDURE EQUAL(K); REF(KEY) K;;
     BEGIN
     END KEY;
-     
+
     ! NODE IS A NODE IN AN AVL TREE. ;
     CLASS NODE(DATA); REF(KEY) DATA;  ! ANYTHING COMPARABLE WITH LESS AND EQUAL. ;
     BEGIN
         INTEGER  BALANCE;             ! BALANCE FACTOR ;
         REF(NODE) ARRAY LINK(0:1);    ! CHILDREN, INDEXED BY "DIRECTION", 0 OR 1. ;
     END NODE;
-     
+
     ! A LITTLE READABILITY FUNCTION FOR RETURNING THE OPPOSITE OF A DIRECTION, ;
     ! WHERE A DIRECTION IS 0 OR 1. ;
     ! WHERE JW WRITES !DIR, THIS CODE HAS OPP(DIR). ;
@@ -4213,7 +4213,7 @@ BEGIN
     BEGIN
         OPP := 1 - DIR;
     END OPP;
-     
+
     ! SINGLE ROTATION ;
     REF(NODE) PROCEDURE SINGLE(ROOT, DIR); REF(NODE) ROOT; INTEGER DIR;
     BEGIN
@@ -4223,23 +4223,23 @@ BEGIN
         SAVE.LINK(DIR) :- ROOT;
         SINGLE :- SAVE;
     END SINGLE;
-     
+
     ! DOUBLE ROTATION ;
     REF(NODE) PROCEDURE DOUBLE(ROOT, DIR); REF(NODE) ROOT; INTEGER DIR;
     BEGIN
         REF(NODE) SAVE;
         SAVE :- ROOT.LINK(OPP(DIR)).LINK(DIR);
-     
+
         ROOT.LINK(OPP(DIR)).LINK(DIR) :- SAVE.LINK(OPP(DIR));
         SAVE.LINK(OPP(DIR)) :- ROOT.LINK(OPP(DIR));
         ROOT.LINK(OPP(DIR)) :- SAVE;
-     
+
         SAVE :- ROOT.LINK(OPP(DIR));
         ROOT.LINK(OPP(DIR)) :- SAVE.LINK(DIR);
         SAVE.LINK(DIR) :- ROOT;
         DOUBLE :- SAVE;
     END DOUBLE;
-     
+
     ! ADJUST BALANCE FACTORS AFTER DOUBLE ROTATION ;
     PROCEDURE ADJUSTBALANCE(ROOT, DIR, BAL); REF(NODE) ROOT; INTEGER DIR, BAL;
     BEGIN
@@ -4251,7 +4251,7 @@ BEGIN
                             ELSE BEGIN ROOT.BALANCE := 0;    N.BALANCE := BAL; END;
         NN.BALANCE := 0;
     END ADJUSTBALANCE;
-     
+
     REF(NODE) PROCEDURE INSERTBALANCE(ROOT, DIR); REF(NODE) ROOT; INTEGER DIR;
     BEGIN REF(NODE) N;  INTEGER BAL;
         N :- ROOT.LINK(DIR);
@@ -4267,9 +4267,9 @@ BEGIN
             INSERTBALANCE :- DOUBLE(ROOT, OPP(DIR));
         END;
     END INSERTBALANCE;
-    
+
     CLASS TUPLE(N,B); REF(NODE) N; BOOLEAN B;;
-     
+
     REF(TUPLE) PROCEDURE INSERTR(ROOT, DATA); REF(NODE) ROOT; REF(KEY) DATA;
     BEGIN
         IF ROOT == NONE THEN
@@ -4295,7 +4295,7 @@ BEGIN
             END;
         END;
     END INSERTR;
-     
+
     ! INSERT A NODE INTO THE AVL TREE. ;
     ! DATA IS INSERTED EVEN IF OTHER DATA WITH THE SAME KEY ALREADY EXISTS. ;
     PROCEDURE INSERT(TREE, DATA); NAME TREE; REF(NODE) TREE; REF(KEY) DATA;
@@ -4304,27 +4304,27 @@ BEGIN
         T :- INSERTR(TREE, DATA);
         TREE :- T.N;
     END INSERT;
-     
+
     REF(TUPLE) PROCEDURE REMOVEBALANCE(ROOT, DIR); REF(NODE) ROOT; INTEGER DIR;
     BEGIN REF(NODE) N;  INTEGER BAL;
         N :- ROOT.LINK(OPP(DIR));
         BAL := 2*DIR - 1;
-    
+
         IF N.BALANCE = -BAL THEN
         BEGIN ROOT.BALANCE := 0; N.BALANCE := 0;
             REMOVEBALANCE :- NEW TUPLE(SINGLE(ROOT, DIR), FALSE);
         END ELSE
-    
+
         IF N.BALANCE = BAL THEN
         BEGIN ADJUSTBALANCE(ROOT, OPP(DIR), -BAL);
             REMOVEBALANCE :- NEW TUPLE(DOUBLE(ROOT, DIR), FALSE);
         END ELSE
-    
+
         BEGIN ROOT.BALANCE := -BAL; N.BALANCE := BAL;
             REMOVEBALANCE :- NEW TUPLE(SINGLE(ROOT, DIR), TRUE);
         END
     END REMOVEBALANCE;
-     
+
     REF(TUPLE) PROCEDURE REMOVER(ROOT, DATA); REF(NODE) ROOT; REF(KEY) DATA;
     BEGIN INTEGER DIR; BOOLEAN DONE; REF(TUPLE) T;
 
@@ -4338,13 +4338,13 @@ BEGIN
                 REMOVER :- NEW TUPLE(ROOT.LINK(1), FALSE);
                 GOTO L;
             END
-    
+
             ELSE IF ROOT.LINK(1) == NONE THEN
             BEGIN
                 REMOVER :- NEW TUPLE(ROOT.LINK(0), FALSE);
                 GOTO L;
             END
-    
+
             ELSE
             BEGIN REF(NODE) HEIR;
                 HEIR :- ROOT.LINK(0);
@@ -4366,15 +4366,15 @@ BEGIN
         ROOT.BALANCE := ROOT.BALANCE + 1 - 2*DIR;
         IF ROOT.BALANCE = 1 OR ROOT.BALANCE = -1 THEN
             REMOVER :- NEW TUPLE(ROOT, TRUE)
-    
+
         ELSE IF ROOT.BALANCE = 0 THEN
             REMOVER :- NEW TUPLE(ROOT, FALSE)
-    
+
         ELSE
             REMOVER :- REMOVEBALANCE(ROOT, DIR);
     L:
     END REMOVER;
-     
+
     ! REMOVE A SINGLE ITEM FROM AN AVL TREE. ;
     ! IF KEY DOES NOT EXIST, FUNCTION HAS NO EFFECT. ;
     PROCEDURE REMOVE(TREE, DATA); NAME TREE; REF(NODE) TREE; REF(KEY) DATA;
@@ -4393,7 +4393,7 @@ EXTERNAL CLASS AVL;
 
 AVL
 BEGIN
- 
+
     KEY CLASS INTEGERKEY(I); INTEGER I;
     BEGIN
         BOOLEAN PROCEDURE LESS (K); REF(KEY) K; LESS  := I < K QUA INTEGERKEY.I;
@@ -4413,12 +4413,12 @@ BEGIN
     INTEGER I;
     REF(NODE) TREE;
     OUTTEXT("Empty tree: "); DUMP(TREE); OUTIMAGE;
- 
+
     FOR I := 3, 1, 4, 1, 5 DO
     BEGIN OUTTEXT("Insert "); OUTINT(I, 0); OUTTEXT(": ");
           INSERT(TREE, NEW INTEGERKEY(I)); DUMP(TREE); OUTIMAGE;
     END;
- 
+
     FOR I := 3, 1 DO
     BEGIN OUTTEXT("Remove "); OUTINT(I, 0); OUTTEXT(": ");
           REMOVE(TREE, NEW INTEGERKEY(I)); DUMP(TREE); OUTIMAGE;
@@ -4458,7 +4458,7 @@ namespace eval AVL {
 	variable root nil class
 	constructor {{nodeClass AVL::Node}} {
 	    set class [oo::class create Node [list superclass $nodeClass]]
- 
+
 	    # Create a nil instance to act as a leaf sentinel
 	    set nil [my NewNode ""]
 	    set root [$nil ref]
@@ -4837,7 +4837,7 @@ class AVLtree <T> {
             parent: AVLnode<T> = this.root,
             delNode: AVLnode<T> = null,
             child: AVLnode<T> = this.root
-        
+
         while (child !== null) {
             parent = n
             n = child
@@ -4980,7 +4980,7 @@ class AVLtree <T> {
     private setBalance(n: AVLnode<T>): void {
         n.balance = this.height(n.right) - this.height(n.left)
     }
-    
+
     public showNodeBalance(n: AVLnode<T>): string {
         if (n !== null) {
             return `${this.showNodeBalance(n.left)} ${n.balance} ${this.showNodeBalance(n.right)}`

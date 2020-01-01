@@ -20,7 +20,7 @@ The other player on seeing the first players choice will choose his sequence. Th
 
 
 ;Example:
-One player might choose the sequence '''HHT''' and the other '''THT'''. 
+One player might choose the sequence '''HHT''' and the other '''THT'''.
 
 Successive coin tosses of '''HTTHT''' gives the win to the second player as the last three coin tosses are his sequence.
 
@@ -256,7 +256,7 @@ I Win! Better Luck Next Time...
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 penney
 PRINT "*** Penney's Game ***"
 REPEAT
@@ -351,7 +351,7 @@ Enter a sequence of three choices, each of them either H or T:
 > HTT
 I choose HHT.
 Starting the game...
-     H  H  H  H  H  T  
+     H  H  H  H  H  T
 I won!
 Another game? (Y/N) Y
 
@@ -361,7 +361,7 @@ I choose HTH.
 Enter a sequence of three choices, each of them either H or T:
 > HHT
 Starting the game...
-     T  T  H  H  H  H  T  
+     T  T  H  H  H  H  T
 Congratulations! You won.
 Another game? (Y/N) N
 Thank you for playing!
@@ -486,7 +486,7 @@ int main(void)
             user = getuser();
             ai   = getai(user);
         }
-        
+
         playerwins += rungame(user, ai);
         totalgames++;
 
@@ -550,7 +550,7 @@ public:
 	while( true )
 	{
 	    playerChoice = computerChoice = "";
-	    if( rand() % 2 ) 
+	    if( rand() % 2 )
 	    { computer(); player(); }
 	    else
 	    { player(); computer(); }
@@ -558,7 +558,7 @@ public:
 	    play();
 
 	    cout << "[Y] to play again "; cin >> a;
-	    if( a[0] != 'Y' && a[0] != 'y' ) 
+	    if( a[0] != 'Y' && a[0] != 'y' )
 	    {
 		cout << "Computer won " << cW << " times." << endl << "Player won " << pW << " times.";
 		break;
@@ -572,7 +572,7 @@ private:
         if( playerChoice.length() == 0 )
 	{
 	    for( int x = 0; x < 3; x++ )
-		computerChoice.append( ( rand() % 2 ) ? "H" : "T", 1 );	
+		computerChoice.append( ( rand() % 2 ) ? "H" : "T", 1 );
 	}
 	else
 	{
@@ -638,17 +638,17 @@ Computer's sequence of three is: HHT
 Tossed sequence: THHT
 Computer wins!
 
-[Y] to play again 
+[Y] to play again
 
 ```
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using static System.Console;
 using static System.Threading.Thread;
 using System;
@@ -873,7 +873,7 @@ Current score | CPU: 0, You: 1
 YOU get to go first.
 What sequence of 3 Heads/Tails do you choose?
 tht
-Computer chooses TTH: 
+Computer chooses TTH:
 Tosses: HHHTTH
 COMPUTER WINS!
 
@@ -940,7 +940,7 @@ The output is the same as the Python entry.
 ```elixir
 defmodule Penney do
   @toss [:Heads, :Tails]
-  
+
   def game(score \\ {0,0})
   def game({iwin, ywin}=score) do
     IO.puts "Penney game score  I : #{iwin}, You : #{ywin}"
@@ -954,7 +954,7 @@ defmodule Penney do
     IO.puts "\n #{winner} win!\n"
     game(score)
   end
-  
+
   defp setup(:Heads) do
     myC = Enum.shuffle(@toss) ++ [Enum.random(@toss)]
     joined = Enum.join(myC, " ")
@@ -968,14 +968,14 @@ defmodule Penney do
     IO.puts "I chose  : #{joined}"
     {myC, yC}
   end
-  
+
   defp yourChoice do
     IO.write "Enter your choice (H/T) "
     choice = read([])
     IO.puts "You chose: #{Enum.join(choice, " ")}"
     choice
   end
-  
+
   defp read([_,_,_]=choice), do: choice
   defp read(choice) do
     case IO.getn("") |> String.upcase do
@@ -984,7 +984,7 @@ defmodule Penney do
       _   -> read(choice)
     end
   end
-  
+
   defp loop(myC, myC, _, {iwin, ywin}), do: {"I", {iwin+1, ywin}}
   defp loop(yC,  _,  yC, {iwin, ywin}), do: {"You", {iwin, ywin+1}}
   defp loop(seq, myC, yC, score) do
@@ -1047,10 +1047,10 @@ IN: rosetta-code.penneys-game
     "Please input a 3-long sequence of H or T (heads or tails)."
     print "Example: HTH" print "> " write readln >upper >array ;
 
-! Get the human player's input sequence with error checking.    
+! Get the human player's input sequence with error checking.
 : get-input ( -- seq )
     t [ drop input-seq dup valid-input? not ] loop ;
-    
+
 ! Add a random coin flip to a vector.
 : flip-coin ( vector -- vector' )
     t|f CHAR: H CHAR: T ? over push ;
@@ -1058,7 +1058,7 @@ IN: rosetta-code.penneys-game
 ! Generate a random 3-long sequence of coin flips.
 : rand-seq ( -- seq )
     V{ } clone 3 [ flip-coin ] times ;
-    
+
 ! Generate the optimal sequence response to a given sequence.
 : optimal ( seq1 -- seq2 )
     [ second dup CHAR: H = [ CHAR: T ] [ CHAR: H ] if ]
@@ -1098,7 +1098,7 @@ IN: rosetta-code.penneys-game
 ! Check for human victory.
 : human-won? ( cseq hseq coin-flips -- ? )
     3 tail* >array = nip ;
-    
+
 ! Check for computer victory.
 : computer-won? ( cseq hseq coin-flips -- ? )
     3 tail* >array pick = 2nip ;
@@ -1116,7 +1116,7 @@ IN: rosetta-code.penneys-game
 : start-game ( -- )
     welcome t|f [ human-first dup optimal swap ]
     [ computer-first human-second ] if flip-coins ;
-    
+
 start-game
 ```
 
@@ -1454,7 +1454,7 @@ You win!
    playPenney''
 Choose a sequence of three coin tosses (H/T):
 HTT
-Computer chose HHT 
+Computer chose HHT
 Toss sequence is HTHTT
 You win!
 ```
@@ -1561,7 +1561,7 @@ function autobet(ob::BitArray{1})
     ob != opt || return ~opt
     return opt
 end
-autobet(ob::Array{Bool,1}) = autobet(convert(BitArray{1}, ob))    
+autobet(ob::Array{Bool,1}) = autobet(convert(BitArray{1}, ob))
 
 function pgencode{T<:String}(a::T)
     b = uppercase(a)
@@ -1906,7 +1906,7 @@ until( r == "N" or r == "n" )
 
 ```txt
 
->lua -e "io.stdout:setvbuf 'no'" "penny.lua" 
+>lua -e "io.stdout:setvbuf 'no'" "penny.lua"
 My sequence is: TTH
 Enter your sequence of three H and/or T: HHT
 TTTTH
@@ -2279,7 +2279,7 @@ use warnings;
 #Choose who goes first
 binaryRand() == 0 ? flipCoin(userFirst()) : flipCoin(compFirst());
 
-#Return a randomly generated 1 or 0 
+#Return a randomly generated 1 or 0
 sub binaryRand
 {
     return int(rand(2));
@@ -2352,11 +2352,11 @@ sub userFirst
     #Generate the optimal sequence based on $uSeq
     my $middle = substr($uSeq, 1, 1);
     $middle eq "H" ? $cSeq = "T" : $cSeq = "H";
-    $cSeq = $cSeq . substr($uSeq, 0, 2); 
+    $cSeq = $cSeq . substr($uSeq, 0, 2);
 
     print("user- $uSeq\ncomp- $cSeq\n");
     my @seqArr = ($uSeq, $cSeq);
-    return @seqArr; 
+    return @seqArr;
 }
 
 #Flips a coin, checking both sequences against the contents of the given array
@@ -2394,7 +2394,7 @@ Please enter a sequence of 3 of "H" and "T". EG: HHT
 >thh
 user- THH
 The sequence of tosses was: HTTHTTHTHTHTTTHTTTHH
-The player wins! 
+The player wins!
 
 ### ==========================================
 
@@ -2404,7 +2404,7 @@ Please enter a sequence of 3 of "H" and "T". EG: HHT
 user- HHT
 comp- HHH
 The sequence of tosses was: THHH
-The computer wins! 
+The computer wins!
 
 ```
 
@@ -2429,7 +2429,7 @@ sub flipping {
         print "/\b";  sleep .1;
     }
 }
- 
+
 sub your-choice($p is copy) {
     loop (my @seq; @seq != 3; $p = "{Bozo.pick}! Please pick exactly 3: ") {
         @seq = prompt($p).uc.comb(/ H | T /).map: {
@@ -2439,7 +2439,7 @@ sub your-choice($p is copy) {
     }
     @seq;
 }
- 
+
 repeat until prompt("Wanna play again? ").lc ~~ /^n/ {
     my $mefirst = Coin.roll;
     print tc "$mefirst I start, {Coin(+!$mefirst).lc} you start, flipping...\n\t";
@@ -2463,7 +2463,7 @@ repeat until prompt("Wanna play again? ").lc ~~ /^n/ {
         say "OK, you'll win if we see: ", @yours;
         print "In that case, I'll just randomly choose: "; sleep 2; say @mine = Coin(+!@yours[1]), |@yours[0,1];
     }
-     
+
     sub check($a,$b,$c) {
         given [$a,$b,$c] {
             when @mine  { say "\n{Yay.pick}, I win, and you lose!"; Nil }
@@ -2502,7 +2502,7 @@ So, you'll win if we see: Tails Tails Heads
 Yo!
 Can I borrow that coin again?
 Here we go!
-	Tails Tails Tails Tails Tails Heads 
+	Tails Tails Tails Tails Tails Heads
 Argh, you win, but I'll beat you next time!
 Wanna play again? y
 Tails I start, heads you start, flipping...
@@ -2517,7 +2517,7 @@ So, you'll win if we see: Heads Heads Heads
 OK!
 You feeling lucky?
 Here we go!
-	Tails Tails Tails Heads Heads Heads 
+	Tails Tails Tails Heads Heads Heads
 Drat, you win, but I'll beat you next time!
 Wanna play again? y
 Heads I start, tails you start, flipping...
@@ -2528,7 +2528,7 @@ In that case, I'll just randomly choose: Tails Tails Heads
 Right...
 Pay attention now!
 Here we go!
-	Heads Tails Tails Heads 
+	Heads Tails Tails Heads
 Hah, I win, and you lose!
 Wanna play again? n
 ```
@@ -2564,18 +2564,18 @@ integer user
     printf(1,"\n")
     return user
 end function
- 
+
 function getbot(int user)
     int bot = iff(user=-1?rand(8)-1
                          :4-and_bits(user,2)*2+floor(user/2))
     printf(1,"Robort picks %s\n", {trio(bot)})
     return bot
 end function
- 
+
 function rungame(integer user, bot)
     /* We only need to store the last 3 tosses, as 0..7 */
     int last3 = rand(8)-1
- 
+
     printf(1,"Rolling: %s",{trio(last3)})
     while 1 do
         if user=last3 then
@@ -2590,17 +2590,17 @@ function rungame(integer user, bot)
         sleep(0.5)
     end while
 end function
- 
+
 procedure main()
     integer playerwins = 0,
             totalgames = 0,
             robortwins = 0
- 
+
     /* Just use ctrl-c or Escape to exit */
     while 1 do
         integer user = -1,
                 bot  = -1
- 
+
         printf(1,"\n")
         if rand(2)=1 then
             bot  = getbot(-1)
@@ -2609,18 +2609,18 @@ procedure main()
             user = getuser(-1)
             bot  = getbot(user)
         end if
- 
+
         playerwins += rungame(user, bot)
         totalgames += 1
         robortwins = totalgames-playerwins
- 
-        printf(1,"Robort:%d  You:%d  out of %d games\n", 
+
+        printf(1,"Robort:%d  You:%d  out of %d games\n",
                  {robortwins, playerwins, totalgames})
         printf(1,"
 ### ============================
 \n")
     end while
- 
+
 end procedure
 main()
 ```
@@ -2822,8 +2822,8 @@ coin_s(h, 'H'). coin_s(t, 'T').
 opp(h, t). opp(t, h).
 ```
 
- 
-Output: 
+
+Output:
 
 ```txt
 
@@ -2864,7 +2864,7 @@ else:
         you = input('After you: What sequence of three Heads/Tails will you win with: ')
     me = ('H' if you[1] == 'T' else 'T') + you[:2]
     print('I win on first seeing {} in the list of tosses'.format(me))
-    
+
 print('Rolling:\n  ', end='')
 rolled = ''
 while True:
@@ -2883,22 +2883,22 @@ while True:
 {{out}}
 
 ```txt
->>> 
+>>>
 After you: What sequence of three Heads/Tails will you win with: TTH
 I win on first seeing HTT in the list of tosses
 Rolling:
   THHTHHTT
   I win!
->>> 
+>>>
 ### ============================= RESTART =============================
 
->>> 
+>>>
 I choose first and will win on first seeing HHT in the list of tosses
 What sequence of three Heads/Tails will you win with: THH
 Rolling:
   HTHTHTTTHTTTTTTHH
   You win!
->>> 
+>>>
 ```
 
 
@@ -2917,61 +2917,61 @@ Rolling:
 
 
 penneysgame <- function() {
-  
+
   #---------------------------------------------------------------
   # Who goes first?
   #---------------------------------------------------------------
-  
+
   first <- sample(c("PC", "Human"), 1)
-  
+
   #---------------------------------------------------------------
   # Determine the sequences
   #---------------------------------------------------------------
-  
+
   if (first == "PC") { # PC goes first
-    
+
     pc.seq <- sample(c("H", "T"), 3, replace = TRUE)
     cat(paste("\nI choose first and will win on first seeing", paste(pc.seq, collapse = ""), "in the list of tosses.\n\n"))
     human.seq <- readline("What sequence of three Heads/Tails will you win with: ")
     human.seq <- unlist(strsplit(human.seq, ""))
-    
+
   } else if (first == "Human") { # Player goest first
-    
+
     cat(paste("\nYou can choose your winning sequence first.\n\n"))
     human.seq <- readline("What sequence of three Heads/Tails will you win with: ")
     human.seq <- unlist(strsplit(human.seq, "")) # Split the string into characters
     pc.seq <- c(human.seq[2], human.seq[1:2]) # Append second element at the start
     pc.seq[1] <- ifelse(pc.seq[1] == "H", "T", "H") # Switch first element to get the optimal guess
     cat(paste("\nI win on first seeing", paste(pc.seq, collapse = ""), "in the list of tosses.\n"))
-    
+
   }
-  
+
   #---------------------------------------------------------------
   # Start throwing the coin
   #---------------------------------------------------------------
-  
+
   cat("\nThrowing:\n")
-  
+
   ran.seq <- NULL
-  
+
   while(TRUE) {
-    
+
     ran.seq <- c(ran.seq, sample(c("H", "T"), 1)) # Add a new coin throw to the vector of throws
-    
+
     cat("\n", paste(ran.seq, sep = "", collapse = "")) # Print the sequence thrown so far
-    
+
     if (length(ran.seq) >= 3 && all(tail(ran.seq, 3) == pc.seq)) {
       cat("\n\nI win!\n")
       break
     }
-    
+
     if (length(ran.seq) >= 3 && all(tail(ran.seq, 3) == human.seq)) {
       cat("\n\nYou win!\n")
       break
     }
-    
+
     Sys.sleep(0.5) # Pause for 0.5 seconds
-    
+
   }
 }
 
@@ -3113,7 +3113,7 @@ Hom-Sap wins!
 
 ## REXX
 
-The REXX program keeps a running score   (number of wins out of so many games played)   as well as 
+The REXX program keeps a running score   (number of wins out of so many games played)   as well as
 
 allowing the human to pick the number (length) of the coin toss sequence.
 
@@ -3121,7 +3121,7 @@ A fair amount of code was added to ensure a valid response from the human player
 
 The human player is allowed to spell out the   '''H'''   or   '''T'''   (as '''heads''' or '''tails''').
 
-A feature also added was to allow a seed for the   '''random'''   BIF to allow repeatability for a game.  
+A feature also added was to allow a seed for the   '''random'''   BIF to allow repeatability for a game.
 
 ```rexx
 /*REXX program plays/simulates  Penney's Game,  a  two-player  coin toss sequence game. */
@@ -3193,7 +3193,7 @@ randComp: if @.comp\==''  then return                  /*the computer already ha
           return
 ```
 
-'''output'''   of a six-game session   (ended by user entering a '''quit'''): 
+'''output'''   of a six-game session   (ended by user entering a '''quit'''):
 
 ```txt
 
@@ -3248,7 +3248,7 @@ heads heads heads        ◄■■■■■■■■■■■ human's input
 ───────── The computer won first toss, the pick was:  HTH
 
 ───────── Pick a sequence of 3 coin tosses of  H or T (Heads or Tails) or Quit:
-t t h                    ◄■■■■■■■■■■■ human's input 
+t t h                    ◄■■■■■■■■■■■ human's input
 
 ─────────       your pick: TTH
 ───────── computer's pick: HTH
@@ -3333,7 +3333,7 @@ loop do
     myC = Toss - [yC[1]] + yC.first(2)
     puts "I chose #{myC.join(' ')}"
   end
-  
+
   seq = Array.new(3){Toss.sample}
   print seq.join(' ')
   loop do
@@ -3539,7 +3539,7 @@ main() {
   done
   p1=$(tr a-z A-Z <<<"$p1")
 
-  if [ -z "$p2" ]; then 
+  if [ -z "$p2" ]; then
     p2=$(choose_sequence "$p1")
     echo "I choose: $p2"
   fi
@@ -3577,7 +3577,7 @@ choose_sequence() {
 }
 
 flip() {
-  if (( RANDOM % 2 )); then 
+  if (( RANDOM % 2 )); then
     echo H
   else
     echo T

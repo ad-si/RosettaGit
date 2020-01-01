@@ -1163,9 +1163,9 @@ area    perimeter       sides
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```Csharp
+```c#
 using System;
 using System.Collections.Generic;
 

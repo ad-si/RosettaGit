@@ -593,7 +593,7 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 In C# it is possible to [http://msdn.microsoft.com/en-us/library/s53ehcz3%28VS.71%29.aspx overload operators] (+, -, *, etc..), but to do so requires the overload to implement at least one argument as the calling type.
 
 What this means, is that if we have the class, A, to do an overload of + - we must set one of the arguments as the type "A".
@@ -605,7 +605,7 @@ However - coming to think of it, one could overload the "int" class, and enter t
 --[[User:LordMike|LordMike]] 17:45, 5 May 2010 (UTC)
 
 
-```csharp
+```c#
 
 static void Main(string[] args)
 {

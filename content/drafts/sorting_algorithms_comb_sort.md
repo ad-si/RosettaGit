@@ -455,9 +455,9 @@ void combsort ( ForwardIterator first, ForwardIterator last )
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace CombSort

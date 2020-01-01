@@ -216,10 +216,10 @@ main()
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 class Program
 {
     static void Main()

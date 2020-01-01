@@ -734,10 +734,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|C++}}
 
-```csharp
+```c#
 static void Main(string[] args)
 {
 	Console.WriteLine("Perfect numbers from 1 to 33550337:");
@@ -766,7 +766,7 @@ static bool IsPerfect(int num)
 
 ===Version using Lambdas, will only work from version 3 of C# on===
 
-```csharp
+```c#
 static void Main(string[] args)
 {
 	Console.WriteLine("Perfect numbers from 1 to 33550337:");

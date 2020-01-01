@@ -400,11 +400,11 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 Instead of copying a bunch of arrays, I made a class with an indexer that simply accesses the correct items in the original matrix.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using static System.Linq.Enumerable;

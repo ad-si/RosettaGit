@@ -565,10 +565,10 @@ while (1) {
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -627,7 +627,7 @@ w: 1
 Declarative approach:
 
 
-```csharp
+```c#
 
 var freq =  from c in str
             where char.IsLetter(c)

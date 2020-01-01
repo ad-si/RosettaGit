@@ -994,10 +994,10 @@ Pungenday, Bureaucracy 19th, Year of Our Lady of Discord 3182
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 public static class DiscordianDate

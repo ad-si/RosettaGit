@@ -780,11 +780,11 @@ It is: 6281
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C#|3.0}}
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

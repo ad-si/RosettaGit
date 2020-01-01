@@ -695,7 +695,7 @@ Output:
 
 
 
-## C sharp
+## C#
 
 The same solver can solve Hidato, Holy Knight's Tour, Hopido and Numbrix puzzles.<br/>
 The input can be an array of strings if each cell is one character. The length of the first row must be the number of columns in the puzzle.<br/>
@@ -703,7 +703,7 @@ Any non-numeric value indicates a no-go.<br/>
 If there are cells that require more characters, then a 2-dimensional array of ints must be used. Any number < 0 indicates a no-go.<br/>
 The puzzle can be made circular (the end cell must connect to the start cell). In that case, no start cell needs to be given.
 
-```csharp
+```c#
 using System.Collections;
 using System.Collections.Generic;
 using static System.Console;

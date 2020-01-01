@@ -265,10 +265,10 @@ void insert_after(Node<T>* N, T&& data)
 
 
 
-=={{header|C sharp|C#}}==
+## C#
 The function handles creation of nodes in addition to inserting them.
 
-```csharp
+```c#
 static void InsertAfter(Link prev, int i)
 {
     if (prev.next != null)
@@ -283,7 +283,7 @@ static void InsertAfter(Link prev, int i)
 
 Example use:
 
-```csharp
+```c#
 static void Main()
 {
     //Create A(5)->B(7)

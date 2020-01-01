@@ -455,10 +455,10 @@ string without control characters: K�O:~���7�5����
 ���W��@>��ȓ�q�Q@���W-
 string without extended characters: KO:~75W@>qQ@W-
 </PRE>
-=={{header|C sharp|C#}}==
+## C#
 Uses the test string from REXX.
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

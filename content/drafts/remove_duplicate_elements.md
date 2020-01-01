@@ -715,11 +715,11 @@ int main()
  15
 
 
-## C sharp
+## C#
 
 {{works with |C sharp|C#|2+}}
 
-```csharp
+```c#
 int[] nums = { 1, 1, 2, 3, 4, 4 };
 List<int> unique = new List<int>();
 foreach (int n in nums)
@@ -730,7 +730,7 @@ foreach (int n in nums)
 
 {{works with |C sharp|C#|3+}}
 
-```csharp
+```c#
 int[] nums = {1, 1, 2, 3, 4, 4};
 int[] unique = nums.Distinct().ToArray();
 ```

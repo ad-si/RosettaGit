@@ -53,7 +53,7 @@ Implementing '''churchFromInt''' as a fold seems to protect Applescript from ove
 on run
     set cThree to churchFromInt(3)
     set cFour to churchFromInt(4)
-    
+
     map(intFromChurch, ¬
         {churchAdd(cThree, cFour), churchMult(cThree, cFour), ¬
             churchExp(cFour, cThree), churchExp(cThree, cFour)})
@@ -167,7 +167,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -180,14 +180,14 @@ on mReturn(f)
 end mReturn
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -210,10 +210,10 @@ end succ
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 public delegate Numeral Numeral(Numeral f);
@@ -409,31 +409,31 @@ four ^ three -> 64
 
 ```haskell
 churchZero = const id
- 
+
 churchSucc = (<*>) (.)
- 
+
 churchAdd = (<*>) . fmap (.)
- 
+
 churchMult = (.)
- 
+
 churchExp = flip id
- 
+
 churchFromInt :: Int -> ((a -> a) -> a -> a)
 churchFromInt 0 = churchZero
 churchFromInt n = churchSucc $ churchFromInt (n - 1)
- 
+
 -- Or as a fold:
 -- churchFromInt n = foldr (.) id . replicate n
- 
+
 -- Or as an iterate:
 -- churchFromInt n = iterate churchSucc churchZero !! n
- 
+
 intFromChurch :: ((Int -> Int) -> Int -> Int) -> Int
 intFromChurch cn = cn succ 0
- 
+
 -- TEST --------------------------------------------
 [cThree, cFour] = churchFromInt <$> [3, 4]
- 
+
 main :: IO ()
 main =
   print $
@@ -580,7 +580,7 @@ end
 runtests()
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 Church 3 + Church 4 = 7
@@ -599,7 +599,7 @@ Church 3 ^ Church 4 = 81
 ```Scheme
 
 {def succ {lambda {:n :f :x} {:f {:n :f :x}}}}
-{def add {lambda {:n :m :f :x} {{:n :f} {:m :f :x}}}} 
+{def add {lambda {:n :m :f :x} {{:n :f} {:m :f :x}}}}
 {def mul {lambda {:n :m :f} {:m {:n :f}}}}
 {def power {lambda {:n :m} {:m :n}}}
 
@@ -624,46 +624,46 @@ Church 3 ^ Church 4 = 81
 ```lua
 
 function churchZero()
-  return function(x) return x end 
-end 
+  return function(x) return x end
+end
 
 function churchSucc(c)
-  return function(f) 
+  return function(f)
     return function(x)
       return f(c(f)(x))
-    end 
-  end 
-end 
+    end
+  end
+end
 
 function churchAdd(c, d)
-  return function(f) 
-    return function(x) 
+  return function(f)
+    return function(x)
       return c(f)(d(f)(x))
-    end 
-  end 
-end 
+    end
+  end
+end
 
 function churchMul(c, d)
-  return function(f) 
+  return function(f)
       return c(d(f))
-  end 
-end 
+  end
+end
 
-function churchExp(c, e) 
+function churchExp(c, e)
   return e(c)
-end 
+end
 
-function numToChurch(n) 
+function numToChurch(n)
   local ret = churchZero
-  for i = 1, n do 
-    ret = succ(ret) 
-  end 
-  return ret 
-end 
+  for i = 1, n do
+    ret = succ(ret)
+  end
+  return ret
+end
 
 function churchToNum(c)
-  return c(function(x) return x + 1 end)(0) 
-end 
+  return c(function(x) return x + 1 end)(0)
+end
 
 three =  churchSucc(churchSucc(churchSucc(churchZero)))
 four = churchSucc(churchSucc(churchSucc(churchSucc(churchZero))))
@@ -833,8 +833,8 @@ say map -> \f { to_int.(f) },
 ```Phix
 type church(object c)
 -- eg {r_add,1,{a,b}}
-    return sequence(c) and length(c)=3 
-       and integer(c[1]) and integer(c[2]) 
+    return sequence(c) and length(c)=3
+       and integer(c[1]) and integer(c[2])
        and sequence(c[3]) and length(c[3])=2
 end type
 
@@ -934,7 +934,7 @@ four ^ three -> 64
 
 ## Prolog
 
-Prolog terms can be used to represent church numerals. 
+Prolog terms can be used to represent church numerals.
 
 ```prolog
 church_zero(z).
@@ -984,7 +984,7 @@ run :-
 
 ```txt
 
-7 12 81 64 
+7 12 81 64
 
 ```
 
@@ -1143,7 +1143,7 @@ if __name__ == '__main__':
 
 ```racket
 #lang racket
- 
+
 (define zero (λ (f) (λ (x) x)))
 (define zero* (const identity)) ; zero renamed
 
@@ -1444,7 +1444,7 @@ L(7,12,64,81)
 
 ```
 
-OK, that was the easy sleazy cheat around way to do it. 
+OK, that was the easy sleazy cheat around way to do it.
 The wad of nested functions way is as follows:
 
 ```zkl

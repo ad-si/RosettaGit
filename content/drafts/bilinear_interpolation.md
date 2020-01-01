@@ -70,11 +70,11 @@ void scale(image_t *src, image_t *dst, float scalex, float scaley){
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 Seems to have some artifacting in the output, but the image is at least recognizable.
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 

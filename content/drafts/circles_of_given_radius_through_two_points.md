@@ -13,7 +13,7 @@ tags = []
 {{task}}
 [[File:2 circles through 2 points.jpg|500px||right|2 circles with a given radius through 2 points in 2D space.]]
 
-Given two points on a plane and a radius, usually two circles of given radius can be drawn through the points. 
+Given two points on a plane and a radius, usually two circles of given radius can be drawn through the points.
 ;Exceptions:
 # r==0.0 should be treated as never describing circles (except in the case where the points are coincident).
 # If the points are coincident then an infinite number of circles with the point on their circumference can be drawn, unless r==0.0 as well which then collapses the circles to a point.
@@ -68,7 +68,7 @@ OP   XDIFF = ( POINT p1, POINT p2 )REAL: x OF p1 - x OF p2;
 PRIO YDIFF = 5;
 OP   YDIFF = ( POINT p1, POINT p2 )REAL: y OF p1 - y OF p2;
 # returns the distance between two points                            #
-OP   -     = ( POINT p1, POINT p2 )REAL: 
+OP   -     = ( POINT p1, POINT p2 )REAL:
      BEGIN
         REAL x diff   = p1 XDIFF p2;
         REAL y diff   = p1 YDIFF p2;
@@ -202,7 +202,7 @@ CircleCenter(x1, y1, x2, y2, r){
 
 Examples:
 ```AutoHotkey
-data = 
+data =
 (
 0.1234 0.9876 0.8765 0.2345 2.0
 0.0000 2.0000 0.0000 0.0000 1.0
@@ -360,36 +360,36 @@ Points are the same
 typedef struct{
 	double x,y;
 	}point;
-	
+
 double distance(point p1,point p2)
 {
 	return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
 }
-	
+
 void findCircles(point p1,point p2,double radius)
 {
 	double separation = distance(p1,p2),mirrorDistance;
-	
+
 	if(separation == 0.0)
 	{
 		radius == 0.0 ? printf("\nNo circles can be drawn through (%.4f,%.4f)",p1.x,p1.y):
 							 printf("\nInfinitely many circles can be drawn through (%.4f,%.4f)",p1.x,p1.y);
 	}
-	
+
 	else if(separation == 2*radius)
 	{
-		printf("\nGiven points are opposite ends of a diameter of the circle with center (%.4f,%.4f) and radius %.4f",(p1.x+p2.x)/2,(p1.y+p2.y)/2,radius); 
+		printf("\nGiven points are opposite ends of a diameter of the circle with center (%.4f,%.4f) and radius %.4f",(p1.x+p2.x)/2,(p1.y+p2.y)/2,radius);
 	}
-	
+
 	else if(separation > 2*radius)
 	{
 		printf("\nGiven points are farther away from each other than a diameter of a circle with radius %.4f",radius);
-	}   
-	
+	}
+
 	else
 	{
 		mirrorDistance =sqrt(pow(radius,2) - pow(separation/2,2));
-		
+
 		printf("\nTwo circles are possible.");
 		printf("\nCircle C1 with center (%.4f,%.4f), radius %.4f and Circle C2 with center (%.4f,%.4f), radius %.4f",(p1.x+p2.x)/2 + mirrorDistance*(p1.y-p2.y)/separation,(p1.y+p2.y)/2 + mirrorDistance*(p2.x-p1.x)/separation,radius,(p1.x+p2.x)/2 - mirrorDistance*(p1.y-p2.y)/separation,(p1.y+p2.y)/2 - mirrorDistance*(p2.x-p1.x)/separation,radius);
 	}
@@ -399,18 +399,18 @@ int main()
 {
     int i;
 
-    point cases[] = 	
-    {	{0.1234, 0.9876},    {0.8765, 0.2345},  
-	{0.0000, 2.0000},    {0.0000, 0.0000},   
-	{0.1234, 0.9876},    {0.1234, 0.9876},   
-	{0.1234, 0.9876},    {0.8765, 0.2345},    
+    point cases[] =
+    {	{0.1234, 0.9876},    {0.8765, 0.2345},
+	{0.0000, 2.0000},    {0.0000, 0.0000},
+	{0.1234, 0.9876},    {0.1234, 0.9876},
+	{0.1234, 0.9876},    {0.8765, 0.2345},
 	{0.1234, 0.9876},    {0.1234, 0.9876}
     };
 
     double radii[] = {2.0,1.0,2.0,0.5,0.0};
 
     for(i=0;i<5;i++)
-    {	
+    {
 	printf("\nCase %d)",i+1);
 	findCircles(cases[2*i],cases[2*i+1],radii[i]);
     }
@@ -440,11 +440,11 @@ No circles can be drawn through (0.1234,0.9876)
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|6}}
 
-```csharp
+```c#
 using System;
 public class CirclesOfGivenRadiusThroughTwoPoints
 {
@@ -457,7 +457,7 @@ public class CirclesOfGivenRadiusThroughTwoPoints
             new [] { 0.1234, 0.9876, 0.8765, 0.2345, 0.5 },
             new [] { 0.1234, 0.9876, 0.1234, 0.9876,   0 }
         };
-		
+
         foreach (var a in values) {
             var p = new Point(a[0], a[1]);
             var q = new Point(a[2], a[3]);
@@ -470,7 +470,7 @@ public class CirclesOfGivenRadiusThroughTwoPoints
             }
         }
     }
-	
+
     static Point[] FindCircles(Point p, Point q, double radius) {
         if(radius < 0) throw new ArgumentException("Negative radius.");
         if(radius == 0) {
@@ -478,14 +478,14 @@ public class CirclesOfGivenRadiusThroughTwoPoints
             else throw new InvalidOperationException("No circles.");
         }
         if (p == q) throw new InvalidOperationException("Infinite number of circles.");
-		
+
         double sqDistance = Point.SquaredDistance(p, q);
         double sqDiameter = 4 * radius * radius;
         if (sqDistance > sqDiameter) throw new InvalidOperationException("Points are too far apart.");
-		
+
         Point midPoint = new Point((p.X + q.X) / 2, (p.Y + q.Y) / 2);
         if (sqDistance == sqDiameter) return new [] { midPoint };
-		
+
         double d = Math.Sqrt(radius * radius - sqDistance / 4);
         double distance = Math.Sqrt(sqDistance);
         double ox = d * (q.X - p.X) / distance, oy = d * (q.Y - p.Y) / distance;
@@ -494,28 +494,28 @@ public class CirclesOfGivenRadiusThroughTwoPoints
             new Point(midPoint.X + oy, midPoint.Y - ox)
         };
     }
-	
+
     public struct Point
     {
         public Point(double x, double y) : this() {
             X = x;
             Y = y;
         }
-	
+
         public double X { get; }
         public double Y { get; }
-	
+
         public static bool operator ==(Point p, Point q) => p.X == q.X && p.Y == q.Y;
         public static bool operator !=(Point p, Point q) => p.X != q.X || p.Y != q.Y;
-	
+
         public static double SquaredDistance(Point p, Point q) {
             double dx = q.X - p.X, dy = q.Y - p.Y;
             return dx * dx + dy * dy;
         }
-		
+
         public override string ToString() => $"({X}, {Y})";
-		
-    }	
+
+    }
 }
 ```
 
@@ -902,7 +902,7 @@ let circlePoints p q (radius:double) =
     else Some (center1, center2)
 
 [<EntryPoint>]
-let main _ = 
+let main _ =
     printfn "%A" (circlePoints (0.1234, 0.9876) (0.8765, 0.2345) 2.0)
     printfn "%A" (circlePoints (0.0, 2.0) (0.0, 0.0) 1.0)
     printfn "%A" (circlePoints (0.1234, 0.9876) (0.1234, 0.9876) 2.0)
@@ -934,7 +934,7 @@ math.functions prettyprint sequences strings ;
 IN: rosetta-code.circles
 DEFER: find-circles
 
-! 
+!
 ###  Input =================================================
 
 
@@ -948,7 +948,7 @@ CONSTANT: test-cases {
     T{ input f { 0.1234 0.9876 } { 0.1234 0.9876 } 0 }
 }
 
-! 
+!
 ###  Edge case handling ====================================
 
 
@@ -981,7 +981,7 @@ CONSTANT: too-far
         [ find-circles ]
     } cond ;
 
-! 
+!
 ###  Program Logic =========================================
 
 
@@ -1001,7 +1001,7 @@ CONSTANT: too-far
     [ y3 x2 x1 r q ] [ circle-coords ] bi@ :> ( x w y z )
     { x y } { w z } = { { x y } } { { w z } { x y } } ? ;
 
-! 
+!
 ###  Output ================================================
 
 
@@ -1017,12 +1017,12 @@ CONSTANT: too-far
     first "one circle found at " write .point "." print ;
 
 : .two ( seq -- )
-    [ first ] [ second ] bi "two circles found at " write 
+    [ first ] [ second ] bi "two circles found at " write
     .point " and " write .point "." print ;
 
 : .circles ( seq -- ) dup length 1 = [ .one ] [ .two ] if ;
 
-! 
+!
 ###  Main word =============================================
 
 
@@ -1279,7 +1279,7 @@ Fortran 66 made standard the availability of complex number arithmetic. This ver
       GO TO 10				!Try it again.
 
    20 CLOSE(IN)		!Finihed with input.
-      END	!Finished. 
+      END	!Finished.
 ```
 
 
@@ -1761,20 +1761,20 @@ const findC = (...args) => {
 ].forEach((t,i) => console.log(`Test: ${i}: ${findC(...t)}`));
 
 ```
- 
+
 
 Output:
 
 ```JavaScript
 
-Test: 0: p1: 0.1234,0.9876, p2: 0.8765,0.2345, r:2 Result: Circle at 1.8631118016581891,1.974211801658189 Circle at -0.863211801658189,-0.7521118016581889 
+Test: 0: p1: 0.1234,0.9876, p2: 0.8765,0.2345, r:2 Result: Circle at 1.8631118016581891,1.974211801658189 Circle at -0.863211801658189,-0.7521118016581889
 Test: 1: p1: 0,2, p2: 0,0, r:1 Result: Points on diameter. Circle at: 0,1
 Test: 2: p1: 0.1234,0.9876, p2: 0.1234,0.9876, r:2 Result: Coincident point. Infinite solutions
 Test: 3: p1: 0.1234,0.9876, p2: 0.8765,0.2345, r:0.5 Result: No intersection. Points further apart than circle diameter
 Test: 4: p1: 0.1234,0.9876, p2: 0.1234,0.9876, r:0 Result: Radius Zero
 
 ```
- 
+
 
 
 ## jq
@@ -1794,7 +1794,7 @@ In this section, a point in the plane will be represented by its Cartesian co-or
 def circle_centers:
   def sq: .*.;
   def c(x3; y1; y2; r; d): x3 + ((r|sq - ((d/2)|sq)) | sqrt) * (y1-y2)/d;
-      
+
   .[0] as $x1 | .[1] as $y1 | .[2] as $x2 | .[3] as $y2 | .[4] as $r
   | ((($x2-$x1)|sq) + (($y2-$y1)|sq) | sqrt) as $d
   | (($x1+$x2)/2) as $x3
@@ -1820,12 +1820,12 @@ def circle_centers:
  [0.0000,    2.0000,    0.0000,    0.0000,    1],
  [0.1234,    0.9876,    0.1234,    0.9876,    2],
  [0.1234,    0.9876,    0.8765,    0.2345,  0.5],
- [0.1234,    0.9876,    0.1234,    0.9876,    0] 
+ [0.1234,    0.9876,    0.1234,    0.9876,    0]
  )
  | "\(.) ───► \(circle_centers)"
 ```
 
- 
+
 {{out}}
 
 ```sh
@@ -2000,7 +2000,7 @@ fun main(args: Array<String>) {
     val radii = doubleArrayOf(2.0, 1.0, 2.0, 0.5, 0.0)
     for (i in 0..4) {
         try {
-            val (p1, p2) = points[i]            
+            val (p1, p2) = points[i]
             val r  = radii[i]
             println("For points $p1 and $p2 with radius $r")
             val (c1, c2) = findCircles(p1, p2, r)
@@ -2216,7 +2216,7 @@ drawCircles := proc(x1, y1, x2, y2, r, $)
 			circle(P2Cir, [B, r]);#make a circle around the second point
 			intersection('i', P1Cir, P2Cir);
 			#the intersection of the above 2 circles should give you the centers of the two circles you need to draw
-			c1 := plottools[circle](coordinates(`if`(type(i, list), i[1], i)), r);#make the first circle 
+			c1 := plottools[circle](coordinates(`if`(type(i, list), i[1], i)), r);#make the first circle
 			c2 := plottools[circle](coordinates(`if`(type(i, list), i[2], i)), r);#make the second circle
 			plots[display](c1, c2, scaling = constrained);#draw
 		end if;
@@ -2252,18 +2252,18 @@ The circle is a point at [.1234, .9876].
 Off[Solve::ratnz];
 circs::invrad = "The radius is invalid.";
 circs::equpts = "The given points (`1`, `2`) are equivalent.";
-circs::dist = 
+circs::dist =
   "The given points (`1`, `2`) and (`3`, `4`) are too far apart for \
 radius `5`.";
 circs[_, _, 0.] := Message[circs::invrad];
-circs[{p1x_, p1y_}, {p1x_, p1y_}, _] := 
+circs[{p1x_, p1y_}, {p1x_, p1y_}, _] :=
   Message[circs::equpts, p1x, p1y];
-circs[p1 : {p1x_, p1y_}, p2 : {p2x_, p2y_}, r_] /; 
-  EuclideanDistance[p1, p2] > 2 r := 
- Message[circs::dist, p1x, p1y, p2x, p2y, r]; 
-circs[p1 : {p1x_, p1y_}, p2 : {p2x_, p2y_}, r_] := 
- Values /@ 
-  Solve[Abs[x - p1x]^2 + Abs[y - p1y]^2 == 
+circs[p1 : {p1x_, p1y_}, p2 : {p2x_, p2y_}, r_] /;
+  EuclideanDistance[p1, p2] > 2 r :=
+ Message[circs::dist, p1x, p1y, p2x, p2y, r];
+circs[p1 : {p1x_, p1y_}, p2 : {p2x_, p2y_}, r_] :=
+ Values /@
+  Solve[Abs[x - p1x]^2 + Abs[y - p1y]^2 ==
     Abs[x - p2x]^2 + Abs[y - p2y]^2 == r^2, {x, y}];
 ```
 
@@ -2341,17 +2341,17 @@ apply('getsol, cons(sol, d[4]));
 
 {{out}}
 <lang>apply('getsol, cons(sol, d[1]));
-two solutions 
-(%o9) [[x0 = 1.86311180165819, y0 = 1.974211801658189], 
+two solutions
+(%o9) [[x0 = 1.86311180165819, y0 = 1.974211801658189],
                             [x0 = - 0.86321180165819, y0 = - 0.75211180165819]]
 (%i10) apply('getsol, cons(sol, d[2]));
-single solution 
+single solution
 (%o10)                       [x0 = 0.0, y0 = 1.0]
 (%i11) apply('getsol, cons(sol, d[3]));
-no solutions 
+no solutions
 (%o11)                                []
 (%i12) apply('getsol, cons(sol, d[4]));
-infinity many solutions 
+infinity many solutions
 (%o12)                              infmany
 ```
 
@@ -2618,20 +2618,20 @@ You can construct the following circles:
 
 ```oforth
 : circleCenter(x1, y1, x2, y2, r)
-| d xmid ymid r1 md | 
+| d xmid ymid r1 md |
    x2 x1 - sq  y2 y1 - sq + sqrt -> d
    x1 x2 + 2 / -> xmid
-   y1 y2 + 2 / -> ymid   
+   y1 y2 + 2 / -> ymid
    2 r * -> r1
 
    d 0.0 == ifTrue: [ "Infinite number of circles" . return ]
    d r1 == ifTrue:  [ System.Out "One circle: (" << xmid << ", " << ymid << ")" << cr return ]
    d r1  > ifTrue:  [ "No circle" . return ]
 
-   r sq d 2 / sq - sqrt ->md    
+   r sq d 2 / sq - sqrt ->md
 
-   System.Out "C1 : (" << xmid y1 y2 - md * d / + << ", " << ymid x2 x1 - md * d / + << ")" << cr 
-   System.Out "C2 : (" << xmid y1 y2 - md * d / - << ", " << ymid x2 x1 - md * d / - << ")" << cr 
+   System.Out "C1 : (" << xmid y1 y2 - md * d / + << ", " << ymid x2 x1 - md * d / + << ")" << cr
+   System.Out "C2 : (" << xmid y1 y2 - md * d / - << ", " << ymid x2 x1 - md * d / - << ")" << cr
 ;
 ```
 
@@ -2842,7 +2842,7 @@ for @input {
 ```
 
 
-Another possibility is to use the Complex plane, 
+Another possibility is to use the Complex plane,
 for it often makes calculations easier with plane geometry:
 
 
@@ -2932,7 +2932,7 @@ points {0.1234,0.9876}, {0.1234,0.9876} with radius 0.0 ==> same points/radius i
 ## PL/I
 
 {{trans|REXX}}
- 
+
 ```PL/I
 twoci: Proc Options(main);
  Dcl 1 *(5),
@@ -2944,10 +2944,10 @@ twoci: Proc Options(main);
  Dcl i Bin Fixed(31);
  Put Edit('     x1     y1     x2     y2  r '||
           '  cir1x   cir1y   cir2x   cir2y')(Skip,a);
- Put Edit(' 
+ Put Edit('
 ### === ====== ====== ===
   = '||
-          ' 
+          '
 ### ===  ======  ======  ===
 ')(Skip,a);
  Do i=1 To 5;
@@ -2981,19 +2981,19 @@ twoci: Proc Options(main);
  End;
  End;
 ```
-    
+
 {{out}}
 
 ```txt
      x1     y1     x2     y2  r   cir1x   cir1y   cir2x   cir2y
- 
+
 ### === ====== ====== ======  =  ======  ======  ======  ===
 
  0.1234 0.9876 0.8765 0.2345  2  1.8631  1.9742 -0.8632 -0.7521
  0.0000 2.0000 0.0000 0.0000  1  0.0000  1.0000  0.0000  1.0000
  0.1234 0.9876 0.1234 0.9876  2 coincident points give infinite circles
  0.1234 0.9876 0.8765 0.2345  1 points are too far apart for the given radius
- 0.1234 0.9876 0.1234 0.9876  0 radius of zero gives no circles.                     
+ 0.1234 0.9876 0.1234 0.9876  0 radius of zero gives no circles.
 
 ```
 
@@ -3001,7 +3001,7 @@ twoci: Proc Options(main);
 
 ## Python
 
-The function raises the ValueError exception for the special cases 
+The function raises the ValueError exception for the special cases
 and uses try - except to catch these and extract the exception detail.
 
 
@@ -3164,7 +3164,7 @@ Drawing circles:
 
 (require 2htdp/image)
 
-(define/match (point v) 
+(define/match (point v)
   [{(vector x y)} (λ (s) (place-image (circle 2 "solid" "black") x y s))])
 
 (define/match (circ v r)
@@ -3220,7 +3220,7 @@ sqrt:  procedure; arg x; if x=0  then return 0;  d=digits(); numeric digits;  h=
          do k=j+5  to 0  by -1;  numeric digits m.k;  g=(g+x/g)*.5;  end  /*k*/;  return g
 ```
 
-{{out|output}} 
+{{out|output}}
 
 ```txt
 
@@ -3282,11 +3282,11 @@ x2 = 0.1234
 y2 = 0.9876
 r= 0.0
 see "5 : " + x1 + " " + y1 + " " + x2 + " " + y2 + " " + r + nl
-twocircles(x1, y1, x2, y2, r)        
- 
+twocircles(x1, y1, x2, y2, r)
+
 func twocircles(x1, y1, x2, y2, r)
-        if x1=x2 and y1=y2 
-           if r=0 
+        if x1=x2 and y1=y2
+           if r=0
               see "It will be a single point (" + x1 + "," + y1 + ") of radius 0" + nl + nl
               return
            else
@@ -3298,14 +3298,14 @@ func twocircles(x1, y1, x2, y2, r)
         if r<r2
            see "Points are too far apart (" + 2*r2 + ") - there are no circles of radius " + r + nl + nl
            return
-        ok 
-        cx=(x1+x2)/2 
+        ok
+        cx=(x1+x2)/2
         cy=(y1+y2)/2
-        dd2=sqrt(pow(r,2)-pow(r2,2))  
-        dx1=x2-cx  
+        dd2=sqrt(pow(r,2)-pow(r2,2))
+        dx1=x2-cx
         dy1=y2-cy
         dx = 0-dy1/r2*dd2
-        dy = dx1/r2*dd2  
+        dy = dx1/r2*dd2
         see "(" + (cx+dy) + ", " + (cy+dx) + ")" + nl
         see "(" + (cx-dy) + ", " + (cy-dx) + ")" + nl + nl
 
@@ -3684,14 +3684,14 @@ class PointTest extends FunSuite {
            (if (> r 0)
              'infinite   ; r > 0
              (list c1))) ; else r = 0
-          ((< (* 2 r) d) 
+          ((< (* 2 r) d)
            '()) ; circle cannot reach both points, as too far apart
           ((approx= r 0.0) ; r = 0, no circles, as points differ
-           '()) 
+           '())
           (else ; find up to two circles meeting c1 and c2
             (let* ((mid-pt (list (avg (x-coord c1) (x-coord c2))
                                  (avg (y-coord c1) (y-coord c2))))
-                   (offset (sqrt (- (square r) 
+                   (offset (sqrt (- (square r)
                                     (square (* 0.5 d)))))
                    (delta-cx (/ (- (x-coord c1) (x-coord c2)) d))
                    (delta-cy (/ (- (y-coord c1) (y-coord c2)) d)))
@@ -3702,7 +3702,7 @@ class PointTest extends FunSuite {
                             (- (y-coord mid-pt) (* offset delta-cy))))))))))
 
 ;; work through the input examples, outputting results
-(for-each 
+(for-each
   (lambda (c1 c2 r)
     (let ((result (find-circles c1 c2 r)))
       (display "p1: ") (display c1)
@@ -3777,7 +3777,7 @@ const proc: findCircles (in point: p1, in point: p2, in float: radius) is func
     elsif separation = 2.0 * radius then
       writeln("Given points are opposite ends of a diameter of the circle with center (" <&
               (p1.x + p2.x) / 2.0 digits 4 <& ", " <& (p1.y + p2.y) / 2.0 digits 4 <& ") and radius " <&
-              radius digits 4); 
+              radius digits 4);
     elsif separation > 2.0 * radius then
       writeln("Given points are farther away from each other than a diameter of a circle with radius " <&
               radius digits 4);
@@ -4319,9 +4319,9 @@ SCAN
     rr = rad
     GetCircles(p1, p2, rr)
     ?
-ENDSCAN 	
+ENDSCAN
 
-SET DECIMALS TO 
+SET DECIMALS TO
 SET FIXED OFF
 
 PROCEDURE GetCircles(op1 As point, op2 As point, r As Double)
@@ -4360,7 +4360,7 @@ TEXT TO lcTxt TEXTMERGE NOSHOW PRETEXT 3
     Points (<<op1.xc>>,<<op1.yc>>), (<<op2.xc>>,<<op2.yc>>) Radius <<r>>.
 ENDTEXT
 ? lcTxt
-ENDPROC	
+ENDPROC
 
 DEFINE CLASS point As Custom
 xc = 0
@@ -4391,30 +4391,30 @@ ENDDEFINE
 
 
 Points (0.1234,0.9876), (0.8765,0.2345) Radius 2.0000.
-Points (0.1234,0.9876), (0.8765,0.2345) Radius 2.0000.         
+Points (0.1234,0.9876), (0.8765,0.2345) Radius 2.0000.
 Circle 1 (-0.8632, -0.7521)
-Circle 1 (-0.8632, -0.7521)  
+Circle 1 (-0.8632, -0.7521)
 Circle 2 (1.8631, 1.9742)
-Circle 2 (1.8631, 1.9742)   
+Circle 2 (1.8631, 1.9742)
 
 Points (0.0000,2.0000), (0.0000,0.0000) Radius 1.0000.
-Points (0.0000,2.0000), (0.0000,0.0000) Radius 1.0000.         
+Points (0.0000,2.0000), (0.0000,0.0000) Radius 1.0000.
 Circle 1 (0.0000, 1.0000)
-Circle 1 (0.0000, 1.0000)   
+Circle 1 (0.0000, 1.0000)
 Circle 2 (0.0000, 1.0000)
-Circle 2 (0.0000, 1.0000)   
+Circle 2 (0.0000, 1.0000)
 
 Points (0.1234,0.9876), (0.1234,0.9876) Radius 2.0000.
-Points (0.1234,0.9876), (0.1234,0.9876) Radius 2.0000.         
-Points are coincident.  
+Points (0.1234,0.9876), (0.1234,0.9876) Radius 2.0000.
+Points are coincident.
 
 Points (0.1234,0.9876), (0.8765,0.2345) Radius 0.5000.
-Points (0.1234,0.9876), (0.8765,0.2345) Radius 0.5000.         
-Cannot solve for these parameters.     
+Points (0.1234,0.9876), (0.8765,0.2345) Radius 0.5000.
+Cannot solve for these parameters.
 
 Points (0.1234,0.9876), (0.1234,0.9876) Radius 0.0000.
-Points (0.1234,0.9876), (0.1234,0.9876) Radius 0.0000.         
-Points are coincident.  
+Points (0.1234,0.9876), (0.1234,0.9876) Radius 0.0000.
+Points are coincident.
 
 ```
 
@@ -4423,10 +4423,10 @@ Points are coincident.
 ## XPL0
 
 An easy way to solve this:
-translate the coordinates so that one point is at the origin. 
-Then rotate the coordinate frame so that the second point is on the X-axis. 
-The circles' X coordinate is then half the distance to the second point. 
-The circles' Y coordinates are easily seen as +/-sqrt(radius^2 - circleX^2). 
+translate the coordinates so that one point is at the origin.
+Then rotate the coordinate frame so that the second point is on the X-axis.
+The circles' X coordinate is then half the distance to the second point.
+The circles' Y coordinates are easily seen as +/-sqrt(radius^2 - circleX^2).
 Now undo the rotation and translation.
 The method used here is a streamlining of these steps.
 
@@ -4545,18 +4545,18 @@ Points: (0.1234,0.9876), (0.1234,0.9876) r=0.0
 30 PRINT i;") ";x1;" ";y1;" ";x2;" ";y2;" ";r
 40 GO SUB 1000
 50 NEXT i
-60 STOP 
+60 STOP
 70 DATA 0.1234,0.9876,0.8765,0.2345,2.0
 80 DATA 0.0000,2.0000,0.0000,0.0000,1.0
 90 DATA 0.1234,0.9876,0.1234,0.9876,2.0
 100 DATA 0.1234,0.9876,0.8765,0.2345,0.5
 110 DATA 0.1234,0.9876,0.1234,0.9876,0.0
 1000 IF NOT (x1=x2 AND y1=y2) THEN GO TO 1090
-1010 IF r=0 THEN PRINT "It will be a single point (";x1;",";y1;") of radius 0": RETURN 
-1020 PRINT "There are any number of circles via single point (";x1;",";y1;") of radius ";r: RETURN 
+1010 IF r=0 THEN PRINT "It will be a single point (";x1;",";y1;") of radius 0": RETURN
+1020 PRINT "There are any number of circles via single point (";x1;",";y1;") of radius ";r: RETURN
 1090 LET p1=(x1-x2): LET p2=(y1-y2)
 1100 LET r2=SQR (p1*p1+p2*p2)/2
-1110 IF r<r2 THEN PRINT "Points are too far apart (";2*r2;") - there are no circles of radius ";r: RETURN 
+1110 IF r<r2 THEN PRINT "Points are too far apart (";2*r2;") - there are no circles of radius ";r: RETURN
 1120 LET cx=(x1+x2)/2
 1130 LET cy=(y1+y2)/2
 1140 LET dd2=SQR (r^2-r2^2)

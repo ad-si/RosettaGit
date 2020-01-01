@@ -873,11 +873,11 @@ int main()
 
 
 
-## C sharp
+## C#
 
 C# does not have a built-in Reverse method for strings, and cannot reverse them in place because they are immutable. One way to implement this is to convert the string to an array of characters, reverse that, and return a new string from the reversed array:
 
-```csharp
+```c#
 static string ReverseString(string input)
 {
     char[] inputChars = input.ToCharArray();
@@ -889,7 +889,7 @@ static string ReverseString(string input)
 
 As of .Net 3.5 the LINQ-to-objects allows the Reverse() extension method to be called on a string, since String implements the IEnumerable<char> interface. Because of this, the return type of Reverse is IEnumerable<char>. Fortunately, LINQ also provides the ToArray extension method, which can be used in conjunction with the constructor of string that accepts a char array:
 
-```csharp
+```c#
 using System.Linq;
 
 // ...
@@ -904,7 +904,7 @@ return new string(input.Reverse().ToArray());
 
 System.Globalization.StringInfo provides a means of separating a string into individual graphemes.
 
-```csharp
+```c#
 public string ReverseElements(string s)
 {
     // In .NET, a text element is series of code units that is displayed as one character, and so reversing the text

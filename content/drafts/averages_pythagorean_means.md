@@ -615,13 +615,13 @@ The arithmetic mean is 5.5 , the geometric mean 4.52873 and the harmonic mean 3.
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 The standard Linq extension method <tt>Average</tt> provides arithmetic mean. This example adds two more extension methods for the geometric and harmonic means.
 
 {{works with|C sharp|C#|3}}
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

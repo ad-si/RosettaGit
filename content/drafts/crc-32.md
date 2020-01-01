@@ -424,9 +424,9 @@ Checksum: 414fa339
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```Csharp
+```c#
 
     /// <summary>
     /// Performs 32-bit reversed cyclic redundancy checks.
@@ -504,7 +504,7 @@ Checksum: 414fa339
 
 Test:
 
-```Csharp
+```c#
 
 	var arrayOfBytes = Encoding.ASCII.GetBytes("The quick brown fox jumps over the lazy dog");
 

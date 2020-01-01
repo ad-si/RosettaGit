@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task}}
-Some languages provide the facility to declare functions and subroutines through the use of [[wp:Function prototype|function prototyping]]. 
+Some languages provide the facility to declare functions and subroutines through the use of [[wp:Function prototype|function prototyping]].
 
 
 ;Task:
@@ -130,19 +130,19 @@ MODE KWNAME = STRUCT(STRING name),
      KWSPECIES = STRUCT(STRING species),
      KWBREED = STRUCT(STRING breed),
      OWNER=STRUCT(STRING first name, middle name, last name);
- 
+
 # due to the "Yoneda ambiguity" simple arguments must have an unique operator defined #
 OP NAME = (STRING name)KWNAME: (KWNAME opt; name OF opt := name; opt),
    SPECIES = (STRING species)KWSPECIES: (KWSPECIES opt; species OF opt := species; opt),
    BREED = (STRING breed)KWBREED: (KWBREED opt; breed OF opt := breed; opt);
- 
+
 PROC ([]UNION(KWNAME,KWSPECIES,KWBREED,OWNER) #options#)VOID print pet;
 
 # subroutines, and fuctions are procedures, so have the same prototype declarations #
 
 # An explanation and example of any special forms of prototyping not covered by the above:  #
-COMMENT 
-  If a function has no arguments, eg f, 
+COMMENT
+  If a function has no arguments, eg f,
   then it is not requied to pass it a "vacuum()" to call it, eg "f()" not correct!
   Rather is can be called without the () vacuum. eg "f"
   A GOTO "label" is equivalent to "PROC VOID label".
@@ -187,12 +187,12 @@ int atleastoneargs(int, ...); /* One mandatory integer argument followed by vara
 
 
 
-## C sharp
+## C#
 
 '''Abstract methods'''<br/>
 Interfaces and abstract classes can define abstract methods that must be implemented by subclasses.
 
-```csharp
+```c#
 using System;
 abstract class Printer
 {
@@ -210,7 +210,7 @@ class PrinterImpl : Printer
 '''Delegates'''<br/>
 A delegate is similar to a function pointer. They are multicast: multiple methods can be attached to them.
 
-```csharp
+```c#
 using System;
 public delegate int IntFunction(int a, int b);
 
@@ -243,7 +243,7 @@ The following conditions apply to partial methods:<br/>
 - The method must return void.<br/>
 - No access modifiers are allowed. Partial methods are implicitly private.
 
-```csharp
+```c#
 //file1.cs
 public partial class Program
 {
@@ -348,7 +348,7 @@ Prototypes were introduced in COBOL 2002. In the following examples, <code>PROGR
 
 ## Common Lisp
 
-In Common Lisp, function prototypes can be used with <code>(declaim (inline func-name))</code> function arguments are taken when the function is defined. In addition, the argument types aren't needed. 
+In Common Lisp, function prototypes can be used with <code>(declaim (inline func-name))</code> function arguments are taken when the function is defined. In addition, the argument types aren't needed.
 
 Caveat -- This works with specific implementations of CL. This was tested in SBCL.
 
@@ -363,7 +363,7 @@ Caveat -- This works with specific implementations of CL. This was tested in SBC
 (defun no-args ()
   (format nil "no arguments!"))
 
-(defun one-arg (x) 
+(defun one-arg (x)
   ; inserts the value of x into a string
   (format nil "~a" x))
 
@@ -376,15 +376,15 @@ Caveat -- This works with specific implementations of CL. This was tested in SBC
   (format nil "~a ~a~%" x y))
 
 
-(no-args) ;=> "no arguments!" 
+(no-args) ;=> "no arguments!"
 
 (one-arg 1) ;=> "1"
 
-(two-args 1 "example") ;=> "1 example" 
+(two-args 1 "example") ;=> "1 example"
 
-(optional-args 1.0) ;=> "1.0 NIL" 
+(optional-args 1.0) ;=> "1.0 NIL"
 
-(optional-args 1.0 "example") ;=> "1.0 example" 
+(optional-args 1.0 "example") ;=> "1.0 example"
 
 ```
 
@@ -454,27 +454,27 @@ void main() {}
 ```freebasic
 ' FB 1.05.0 Win64
 
-' The position regarding prototypes is broadly similar to that of the C language in that functions, 
-' sub-routines or operators (unless they have already been fully defined) must be declared before they can be used. 
+' The position regarding prototypes is broadly similar to that of the C language in that functions,
+' sub-routines or operators (unless they have already been fully defined) must be declared before they can be used.
 ' This is usually done near the top of a file or in a separate header file which is then 'included'.
 
-' Parameter names are optional in declarations. When calling functions, using parameter names 
+' Parameter names are optional in declarations. When calling functions, using parameter names
 ' (as opposed to identifying arguments by position) is not supported.
 
 Type MyType ' needed for operator declaration
   i As Integer
 End Type
 
-Declare Function noArgs() As Integer  ' function with no argument that returns an integer 
-Declare Function twoArgs(As Integer, As Integer) As Integer ' function with two arguments that returns an integer 
+Declare Function noArgs() As Integer  ' function with no argument that returns an integer
+Declare Function twoArgs(As Integer, As Integer) As Integer ' function with two arguments that returns an integer
 Declare Function atLeastOneArg CDecl(As Integer, ...) As Integer ' one mandatory integer argument followed by varargs
-Declare Function optionalArg(As Integer = 0) As Integer ' function with a (single) optional argument with default value 
+Declare Function optionalArg(As Integer = 0) As Integer ' function with a (single) optional argument with default value
 Declare Sub noArgs2() ' sub-routine with no argument
 Declare Operator + (As MyType, As MyType) As MyType ' operator declaration (no hidden 'This' parameter for MyType)
 
 
-' FreeBASIC also supports object-oriented programming and here all constructors, destructors, 
-' methods (function or sub), properties and operators (having a hidden 'This' parameter) must be 
+' FreeBASIC also supports object-oriented programming and here all constructors, destructors,
+' methods (function or sub), properties and operators (having a hidden 'This' parameter) must be
 ' declared within a user defined type and then defined afterwards.
 
 
@@ -482,8 +482,8 @@ Type MyType2
   Public:
     Declare Constructor(As Integer)
     Declare Destructor()
-    Declare Sub MySub()   
-    Declare Function MyFunction(As Integer) As Integer 
+    Declare Sub MySub()
+    Declare Function MyFunction(As Integer) As Integer
     Declare Property MyProperty As Integer
     Declare Operator Cast() As String
   Private:
@@ -542,8 +542,8 @@ Otherwise, Go does have the concept of a function signature which includes param
 
 ## Haskell
 
-A function can be declared without giving it's prototype in Haskell. The haskell compiler has got type inference 
-whereby it can infer the return type and type of variable given to function. You can still hardcode the prototype 
+A function can be declared without giving it's prototype in Haskell. The haskell compiler has got type inference
+whereby it can infer the return type and type of variable given to function. You can still hardcode the prototype
 which specifies the datatype of variables and return type. For ex. Consider a function add which takes two
 integers and returns their sum. It can be prototyped and declared as :
 
@@ -555,8 +555,8 @@ add x y = x+y
 ```
 
 
-Actually all functions in haskell are functions with just one arguments. Haskell will treat above function as a 
-function which takes an int and returns a function with type (:: (Int->Int)) . Then this function which is returned 
+Actually all functions in haskell are functions with just one arguments. Haskell will treat above function as a
+function which takes an int and returns a function with type (:: (Int->Int)) . Then this function which is returned
 is such that it takes an int and returns an int.
 Similarly for any function add which takes 3 integers and adds them the actual prototype will be as follows:
 
@@ -574,7 +574,7 @@ printThis = putStrLn("This is being printed.")
 
 ```
 
-But haskell would rather consider the function to be of return type IO() in this case.  
+But haskell would rather consider the function to be of return type IO() in this case.
 
 Two arguments:
 
@@ -618,7 +618,7 @@ J assumes an unknown name is a verb of infinite rank.  Rank determines the frame
    NB. f has infinite ranks
    f b. 0
 _ _ _
-   
+
    NB. The verb g makes a table.
    g=: f/~
 
@@ -633,11 +633,11 @@ _ _ _
 0 2 4  6  8
 0 3 6  9 12
 0 4 8 12 16
-   
+
    NB. g was defined as if f had infinite rank.
    g i.5
 0 1 4 9 16
-   
+
    NB. f is known to have rank 0.
    g=: f/~
 
@@ -648,11 +648,11 @@ _ _ _
 0 2 4  6  8
 0 3 6  9 12
 0 4 8 12 16
-   
-   
+
+
 
    NB. change f to another rank 0 verb
-   f=: +   
+   f=: +
 
    NB. and construct an addition table
    g i.5
@@ -661,11 +661,11 @@ _ _ _
 2 3 4 5 6
 3 4 5 6 7
 4 5 6 7 8
-   
+
 
    NB. f is multiplication at infinite rank
    f=: *"_
-   
+
 
    NB. g, however, has rank 0
    g i.5
@@ -681,7 +681,7 @@ _ _ _
 ## JavaScript
 
 
-###  ES5 
+###  ES5
 
 JavaScript functions may also be used to define prototype objects
 
@@ -729,7 +729,7 @@ l.length; // 2
 
 
 
-###  ES6 
+###  ES6
 
 Class Declarations are used to define prototype objects
 
@@ -741,7 +741,7 @@ class List {
     return [].push.apply(this, arguments);
   }
   pop() {
-    return [].pop.call(this);  
+    return [].pop.call(this);
   }
 }
 
@@ -763,7 +763,7 @@ class List {
     return [].push.apply(this, arguments);
   }
   pop() {
-    return [].pop.call(this);  
+    return [].pop.call(this);
   }
 }
 
@@ -783,7 +783,7 @@ l.length; // 2
 Julia does not need or use function prototypes in general. Generic functions are further specialized as to argument type and return type during just-in-time compilation if required. However, when interacting with other languages such a C which use function prototypes, Julia can prototype its functions for passing its functions to external languages with the @cfunction macro:
 
 
-```julia>julia 
+```julia>julia
  function mycompare(a, b)::Cint
       (a < b) ? -1 : ((a > b) ? +1 : 0)
   end
@@ -808,7 +808,7 @@ The order of declarations in Kotlin is unimportant and so forward declaration of
 
 The only place where function (or property) prototypes are needed is for abstract members of classes or interfaces whose implementation will be provided by overriding those members in a derived or implementing class or object.
 
-Here's an example of this. Note that since Kotlin allows arguments to be passed either by name or position for all functions, there is no separate prototype for this situation. Moreover, since arguments may be passed by name, it is strongly recommended (but not obligatory) that the parameter names for overriding members should be the same as for the functions they override. The compiler will issue a warning if this recommendation is not followed. 
+Here's an example of this. Note that since Kotlin allows arguments to be passed either by name or position for all functions, there is no separate prototype for this situation. Moreover, since arguments may be passed by name, it is strongly recommended (but not obligatory) that the parameter names for overriding members should be the same as for the functions they override. The compiler will issue a warning if this recommendation is not followed.
 
 ```scala
 // version 1.0.6
@@ -905,7 +905,7 @@ function plusargs(x:int, xs: ...): int = ? ;;
 ## M2000 Interpreter
 
 Functions/modules are declared before used. So the flow matter, position in code not matter (perhaps we can put functions in a simple routine, using a label, execute a gosub to label, then make the functions, and then return. Functions amd modules added to a specific list of functions/modules, so every time interpreter check that list (a hash table). They can change definition including signature. Any module/function before executed has no declared local modules/functions. Declarations performed as they executed. For modules, we can prepare a non changed module before begin execute module's code, and when declaration for same name module comes to execute, it just skipped.
- 
+
 Subroutines are parts of functions/modules and first searched from bottom, added to a list of subs positions,therefore they can't changed.
 Example of change an inner module using another module with same signature. Module MyBeta {Read x : ... } or Module MyBeta (x) { ... } or Module MyBeta(x) { } is the same.
 
@@ -933,23 +933,23 @@ Signatures needed for Event object. An event object get a list of functions, cal
 
 ```M2000 Interpreter
 
-Module Check {, 
+Module Check {,
       \\ make an event object
       \\ with a prototype signature
       \\ first parameter  is numeric/object by value, and second is by reference
       Event Alfa {
             Read x, &z
       }
-      
+
       \\ make a function with same signature
       Function ServiceAlfa {
             read a, &b
             b+=a
       }
-      
+
       \\ add function to event
       Event Alfa new &ServiceAlfa()
-      
+
       \\ call event in this module
       var=30
       Call Event Alfa,  10, &var
@@ -967,7 +967,7 @@ Module Check {,
             Print m=14
       }
       checkinside Alfa
-      \\ so now we call Alfa 
+      \\ so now we call Alfa
       Call Event Alfa,  10, &var
       Print var=50
       Event Alfa Hold
@@ -987,14 +987,14 @@ Using a function for local call (module visibility)
 
 ```M2000 Interpreter
 
-Module Check {, 
+Module Check {,
       \\ make an event object
       \\ with a prototype signature
       \\ first parameter  is numeric/object by value, and second is by reference
       Event Alfa {
             Read x, &z
       }
-      
+
       \\ make a function with same signature
       \\ but here prepared to used with current module visibility
       m=0
@@ -1005,10 +1005,10 @@ Module Check {,
             b+=a
             m++
       }
-      
+
       \\ add function to event, making reference as local to module
       Event Alfa new Lazy$(&ServiceAlfa())
-      
+
       \\ call event in this module
       var=30
       Call Event Alfa,  10, &var
@@ -1026,7 +1026,7 @@ Module Check {,
             Print m=14
       }
       checkinside Alfa
-      \\ so now we call Alfa 
+      \\ so now we call Alfa
       Call Event Alfa,  10, &var
       Print var=50
       Event Alfa Hold
@@ -1047,16 +1047,16 @@ Using a Function in a Group (Groups are the User objects in M2000)
 
 ```M2000 Interpreter
 
-Module Check {, 
+Module Check {,
       \\ make an event object
       \\ with a prototype signature
       \\ first parameter  is numeric/object by value, and second is by reference
       Event Alfa {
             Read x, &z
       }
-      
+
       \\ make a group function with same signature
-     
+
      Group IamStatic {
             m=0
             Function ServiceAlfa(a, &b) {
@@ -1064,10 +1064,10 @@ Module Check {,
                   .m++
             }
 }
-      
+
       \\ add function to event, making reference as local to module
       Event Alfa new &IamStatic.ServiceAlfa()
-      
+
       \\ call event in this module
       var=30
       Call Event Alfa,  10, &var
@@ -1085,7 +1085,7 @@ Module Check {,
             Print m=14
       }
       checkinside Alfa
-      \\ so now we call Alfa 
+      \\ so now we call Alfa
       Call Event Alfa,  10, &var
       Print var=50
       Event Alfa Hold
@@ -1172,7 +1172,7 @@ Oforth can only forward declare methods (see Mutual Recursion task). A method ca
 
 This creates a new method object with name myMethod (or does nothing if this object already exists). It says nothing about method implementations (number of parameters, return value, ...).
 
-A method object is not directly related to classes : 
+A method object is not directly related to classes :
 
 - A method object is created.
 
@@ -1394,45 +1394,45 @@ Procedure.f aoo(x.f, y.f): ProcedureReturn x + y: EndProcedure
 Procedure.f caoo(x.f, y.f, m.f = 1): ProcedureReturn (x + y) * m: EndProcedure
 
 ;ProtoType defined for any function with no arguments and that returns a string
-Prototype.s showString() 
+Prototype.s showString()
 ;Prototype defined for any function with two float arguments and that returns a float
 Prototype.f doMath(x.f, y.f)
 ;ProtoType defined for any function with two float arguments and an optional float argument and that returns a float
-Prototype.f doMathWithOpt(x.f, y.f, m.f = 0) 
+Prototype.f doMathWithOpt(x.f, y.f, m.f = 0)
 
 Define a.f = 12, b.f = 5, c.f = 9
 Define proc_1.showString, proc_2.doMath, proc_3.doMathWithOpt ;using defined ProtoTypes
 If OpenConsole("ProtoTypes and Forward Declarations")
-  
+
   PrintN("Forward Declared procedures:")
   PrintN(boo())
   PrintN(StrF(a, 2) + " * " + StrF(b, 2) + " = " + StrF(moo(a, b), 2))
   PrintN(StrF(a, 2) + " * " + StrF(b, 2) + " + " + StrF(c, 2) + " = " + StrF(cmoo(a, b, c), 2))
   PrintN(StrF(a, 2) + " * " + StrF(b, 2) + " = " + StrF(cmoo(a, b), 2))
-  
+
   ;set pointers to second set of functions
   proc_1 = @boo()
   proc_2 = @aoo()
   proc_3 = @caoo()
-  
+
   PrintN("ProtoTyped procedures (set 1):")
   PrintN(proc_1())
   PrintN(StrF(a, 2) + " ? " + StrF(b, 2) + " = " + StrF(proc_2(a, b), 2))
   PrintN(StrF(a, 2) + " ? " + StrF(b, 2) + " ? " + StrF(c, 2) + " = " + StrF(proc_3(a, b, c), 2))
   PrintN(StrF(a, 2) + " ? " + StrF(b, 2) + " = " + StrF(proc_3(a, b), 2))
-  
+
   ;set pointers to second set of functions
   proc_1 = @booTwo()
   proc_2 = @moo()
   proc_3 = @cmoo()
-  
+
   PrintN("ProtoTyped procedures (set 2):")
   PrintN(proc_1())
   PrintN(StrF(a, 2) + " ? " + StrF(b, 2) + " = " + StrF(proc_2(a, b), 2))
   PrintN(StrF(a, 2) + " ? " + StrF(b, 2) + " ? " + StrF(c, 2) + " = " + StrF(proc_3(a, b, c), 2))
   PrintN(StrF(a, 2) + " ? " + StrF(b, 2) + " = " + StrF(proc_3(a, b), 2))
-  
-  
+
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -1526,7 +1526,7 @@ Another way is using the <tt>typed/racket</tt> language, like this
 ## REXX
 
 In the REXX language, there is no difference between functions and
-subroutines,   <big> ''except that'' </big>   functions  
+subroutines,   <big> ''except that'' </big>   functions
 ''must''   return a value,   even if that value is a
 "null"   (empty string).
 

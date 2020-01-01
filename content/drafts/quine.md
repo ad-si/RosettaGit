@@ -711,10 +711,10 @@ int main(){char*c="#include <stdio.h>%cint main(){char*c=%c%s%c;printf(c,10,34,c
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 class Program { static void Main() { var s = "class Program {{ static void Main() {{ var s = {0}{1}{0}; System.Console.WriteLine(s, (char)34, s); }} }}"; System.Console.WriteLine(s, (char)34, s); } }
 ```
 

@@ -643,9 +643,9 @@ for (p = arg; p!=end; ++p) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 int sum = 0, prod = 1;
 int[] arg = { 1, 2, 3, 4, 5 };
 foreach (int value in arg) {
@@ -659,7 +659,7 @@ foreach (int value in arg) {
 {{works with|C sharp|C#|3}}
 
 
-```csharp
+```c#
 int[] arg = { 1, 2, 3, 4, 5 };
 int sum = arg.Sum();
 int prod = arg.Aggregate((runningProduct, nextFactor) => runningProduct * nextFactor);

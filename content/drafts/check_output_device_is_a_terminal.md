@@ -129,9 +129,9 @@ int main() {
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace CheckTerminal {

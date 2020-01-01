@@ -288,10 +288,10 @@ void output_ppm(FILE *fd, image img)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 This implementation uses a StreamWriter to write the header in text, then writes the pixel data in binary using a BinaryWriter.
 
-```csharp
+```c#
 using System;
 using System.IO;
 class PPMWriter

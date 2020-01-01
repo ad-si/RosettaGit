@@ -1361,10 +1361,10 @@ q0*q1 - q1*q0: 0 - 2i + 4j - 2k
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 struct Quaternion : IEquatable<Quaternion>
@@ -1460,7 +1460,7 @@ struct Quaternion : IEquatable<Quaternion>
 
 Demonstration:
 
-```csharp
+```c#
 using System;
 
 static class Program

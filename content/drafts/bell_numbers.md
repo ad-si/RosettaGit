@@ -148,7 +148,7 @@ The first ten rows of Bell's triangle:
 =={{header|C#|C_sharp}}==
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

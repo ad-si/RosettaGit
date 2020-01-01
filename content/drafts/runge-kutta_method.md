@@ -386,7 +386,7 @@ x       y       rel. err.
 ## C#
 
 
-```csharp
+```c#
 
 using System;
 

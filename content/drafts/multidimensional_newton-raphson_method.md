@@ -23,7 +23,7 @@ using Newton-Raphson metod.
 
 For matrix inversion and matrix and vector definitions - see C# source from [[Gaussian elimination]]
 
-```csharp
+```c#
 
 using System;
 
@@ -37,7 +37,7 @@ namespace Rosetta
     }
 
     class Newton
-    {                
+    {
         internal Vector Do(int size, IFun fun, Vector start)
         {
             Vector X = start.Clone();
@@ -56,14 +56,14 @@ namespace Rosetta
                 //need weight vector because different coordinates can diffs by order of magnitudes
             } while (F.norm(fun.weights()) > 1e-12);
             return X;
-        }       
+        }
     }
 }
 
 ```
 
 
-```csharp
+```c#
 
 using System;
 
@@ -443,7 +443,7 @@ Results of Nonlinear Solver Algorithm
 
 A straightforward approach multiplying by the inverse of the Jacobian, rather than dividing by f'(x) as one would do in the single dimensional case, which is quick enough here.
 
-As neither the JDK nor the Kotlin Standard Library have matrix functions built in, most of the functions used have been taken from other tasks. 
+As neither the JDK nor the Kotlin Standard Library have matrix functions built in, most of the functions used have been taken from other tasks.
 
 ```scala
 // Version 1.2.31
@@ -484,7 +484,7 @@ operator fun Matrix.minus(other: Matrix): Matrix {
         }
     }
     return result
-} 
+}
 
 fun Matrix.transpose(): Matrix {
     val rows = this.size
@@ -731,7 +731,7 @@ Solution: [0.8936282344764825 0.8945270103905782 -0.04008928615915281]
 {{trans|Go}}
 Uses code from [[Reduced_row_echelon_form#Phix]],
 [[Gauss-Jordan_matrix_inversion#Phix]],
-[[Matrix_transposition#Phix]], and 
+[[Matrix_transposition#Phix]], and
 [[Matrix_multiplication#Phix]]
 
 See std distro for a complete runnable version.
@@ -795,10 +795,10 @@ sequence fs, jacob, guesses
        y = -x^2 + x + 0.5
        y + 5xy = x^2
        given initial guesses of x = y = 1.2
- 
+
        Example taken from:
        http://www.fixoncloud.com/Home/LoginValidate/OneProblemComplete_Detailed.php?problemid=286
- 
+
        Expected results: x = 1.23332, y = 0.2122
     */
     fs = {routine_id("f1"),routine_id("f2")}
@@ -806,20 +806,20 @@ sequence fs, jacob, guesses
              {routine_id("j3"),routine_id("j4")}}
     guesses := {1.2, 1.2}
     printf(1,"Approximate solutions are x = %.7f,  y = %.7f\n\n", solve(fs, jacob, guesses))
- 
+
     /*
        solve the three non-linear equations:
        9x^2 + 36y^2 + 4z^2 - 36 = 0
        x^2 - 2y^2 - 20z = 0
        x^2 - y^2 + z^2 = 0
        given initial guesses of x = y = 1.0 and z = 0.0
- 
+
        Example taken from:
        http://mathfaculty.fullerton.edu/mathews/n2003/FixPointNewtonMod.html (exercise 5)
- 
+
        Expected results: x = 0.893628, y = 0.894527, z = -0.0400893
     */
- 
+
     fs = {routine_id("f3"), routine_id("f4"), routine_id("f5")}
     jacob = {{routine_id("j11"),routine_id("j12"),routine_id("j13")},
              {routine_id("j21"),routine_id("j22"),routine_id("j23")},

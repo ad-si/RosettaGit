@@ -500,10 +500,10 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Security.Cryptography;
 
@@ -523,7 +523,7 @@ private static int GetRandomInt()
 
 Park-Miller random number generator
 
-```csharp
+```c#
 
 const long m = 2147483647L;
 const long a = 48271L;

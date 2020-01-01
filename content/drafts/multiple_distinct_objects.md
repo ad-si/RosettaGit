@@ -402,10 +402,10 @@ for (int i = 0; i < n; ++i)
 
 Of course, also in this case one can use the other sequence containers or plain new/delete instead of <tt>vector</tt>.
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Collections.Generic;

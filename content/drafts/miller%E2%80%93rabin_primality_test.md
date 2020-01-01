@@ -787,9 +787,9 @@ Inspiration from http://stackoverflow.com/questions/4424374/determining-if-a-num
 
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 public static class RabinMiller
 {
     public static bool IsPrime(int n, int k)
@@ -824,7 +824,7 @@ public static class RabinMiller
 
 
 
-```csharp
+```c#
 // Miller-Rabin primality test as an extension method on the BigInteger type.
 // Based on the Ruby implementation on this page.
 public static class BigIntegerExtensions

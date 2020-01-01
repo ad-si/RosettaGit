@@ -38,7 +38,7 @@ with Ada.Integer_Text_IO, Ada.Text_IO;
     Put (" .. ");
     Put (Integer'Last);
     New_Line;
- 
+
     Put ("Float digits: ");
     Put (Float'Digits);
     New_Line;
@@ -75,7 +75,7 @@ var z = "hello"
 var a = 1234
 
 function count_ints {
-    // there are builtin integer variables that we don't want to count.  There are 
+    // there are builtin integer variables that we don't want to count.  There are
     // 3 of them
     var intcount = 0
     // map of builtin variables we want to ignore
@@ -87,7 +87,7 @@ function count_ints {
     foreach v split (main, 0) {
         var varname = v
         try {
-            var value = eval (varname)      
+            var value = eval (varname)
             if (typeof(value) == "integer") {
                 if (varname in ignore) {
                     continue
@@ -123,7 +123,7 @@ ALGOL 68 doesn't allow you to ask about compiler versions, but you can use
 constants specifying parameters of the target, such as the range of the standard
 integer type, or the precision of the standard floating point type.
 
-Also: The constant(s) ''int lengths'' (''real lengths'') is the number (+1) of '''long''' 
+Also: The constant(s) ''int lengths'' (''real lengths'') is the number (+1) of '''long'''
 precision types of '''int''' ('''reals''') available at run time.
 
 {{trans|Ada}}
@@ -152,7 +152,7 @@ Float digits:         +15
 ```
 
 
-The types of a value can also - crudely - be determined at run time.  This is most useful for ALGOL 68's tagged unions, but it can also be used on any value.  Note also that if a type is '''union'''ed with a '''void''', then the '''empty''' value can be set to indicate that a variable has not been formally initialised to a value.  
+The types of a value can also - crudely - be determined at run time.  This is most useful for ALGOL 68's tagged unions, but it can also be used on any value.  Note also that if a type is '''union'''ed with a '''void''', then the '''empty''' value can be set to indicate that a variable has not been formally initialised to a value.
 
 The following code demonstrates tagged-union introspection:
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
@@ -161,14 +161,14 @@ The following code demonstrates tagged-union introspection:
 
 ```algol68
 BEGIN
-    MODE SSMODES = UNION(SHORT SHORT BITS, SHORT SHORT BYTES, #SHORT SHORT CHAR,# 
+    MODE SSMODES = UNION(SHORT SHORT BITS, SHORT SHORT BYTES, #SHORT SHORT CHAR,#
                          SHORT SHORT INT, SHORT SHORT REAL, SHORT SHORT COMPL);
-    MODE  SMODES = UNION(SHORT BITS, SHORT BYTES, #SHORT CHAR,# 
+    MODE  SMODES = UNION(SHORT BITS, SHORT BYTES, #SHORT CHAR,#
                          SHORT INT, SHORT REAL, SHORT COMPL);
     MODE  NMODES = UNION(BITS, BYTES, CHAR, INT, REAL, COMPL);
-    MODE  LMODES = UNION(LONG BITS, LONG BYTES, #LONG CHAR,# 
+    MODE  LMODES = UNION(LONG BITS, LONG BYTES, #LONG CHAR,#
                          LONG INT, LONG REAL, LONG COMPL);
-    MODE LLMODES = UNION(LONG LONG BITS, LONG LONG BYTES, #LONG LONG CHAR,# 
+    MODE LLMODES = UNION(LONG LONG BITS, LONG LONG BYTES, #LONG LONG CHAR,#
                          LONG LONG INT, LONG LONG REAL, LONG LONG COMPL);
     MODE  XMODES = UNION(BOOL, SEMA, STRING, VOID, CHANNEL, FILE, FORMAT);
 
@@ -199,8 +199,8 @@ BEGIN
         "ARRAY, PROC or STRUCT"
       ESAC;
 
-    []MODES x = (EMPTY, 1, 2.0, 3I4, SHORT SHORT 5, SHORT 6, LONG 7, LONG LONG 8, 
-                 8r666, bytes pack("abc"), TRUE, "xyz", LEVEL 1, 
+    []MODES x = (EMPTY, 1, 2.0, 3I4, SHORT SHORT 5, SHORT 6, LONG 7, LONG LONG 8,
+                 8r666, bytes pack("abc"), TRUE, "xyz", LEVEL 1,
                  stand in channel, stand in, $ddd$);
 
     STRING sep := "";
@@ -245,7 +245,7 @@ printf(($g" "$,TYPEOF 1, TYPEOF "x", TYPEOF pi, TYPEOF (0 I 1 ), $l$))
 
 ```txt
 
-INT CHAR REAL COMPL 
+INT CHAR REAL COMPL
 
 ```
 
@@ -292,7 +292,7 @@ if bloop
     MsgBox % abs(bloop)
 return
 ```
- 
+
 
 
 ## AWK
@@ -335,18 +335,18 @@ abs(bloop) = 1
 
 ```bbcbasic
       IF VAL(FNversion) < 5.94 THEN PRINT "Version is too old" : END
-      
+
       ON ERROR LOCAL PRINT "Variable 'bloop' doesn't exist" : END
       test = bloop
       RESTORE ERROR
-      
+
       ON ERROR LOCAL PRINT "Function 'FNabs()' is not defined" : END
       test = ^FNabs()
       RESTORE ERROR
-      
+
       PRINT FNabs(bloop)
       END
-      
+
       DEF FNversion
       LOCAL F%, V$
       F% = OPENOUT(@tmp$+"version.txt")
@@ -363,8 +363,8 @@ abs(bloop) = 1
 
 ## C
 
-Determining the make and version of the compiler, C standard, 
-and environment features is one of the primary uses of the C preprocessor. 
+Determining the make and version of the compiler, C standard,
+and environment features is one of the primary uses of the C preprocessor.
 This has allowed C to become the ''lingua franca'' of the [[open source]] movement.
 
 {{works with|C|94 and later}}
@@ -378,15 +378,15 @@ This has allowed C to become the ''lingua franca'' of the [[open source]] moveme
 ```
 
 
-However, there is no facility in C for checking whether individual variables 
-and functions have been declared. 
-In open source, the GNU [[autotools]] are often used for this purpose, 
-doing this kind of check in a shell script and defining symbols 
+However, there is no facility in C for checking whether individual variables
+and functions have been declared.
+In open source, the GNU [[autotools]] are often used for this purpose,
+doing this kind of check in a shell script and defining symbols
 such as HAVE_ABS which ''can'' be checked by the preprocessor.
-=={{header|C sharp|C#}}==
+## C#
 There has to be some caveats made with C#.  There are no truly "global" variables - just publicly exported ones from individual classes/types.  I chose to make a couple of public static variables in my program's class.  Also, the "version" of the compiler is difficult to impossible to get at.  There are no predefined compiler constants that can be compared against as in C/C++ but then again, it's hardly the thing that counts in C#.  What really counts is the version of .NET and the framework you're working with since that determines what C++ features you can use and the various calls that can be made.  Consequently, I check the .NET version to make sure it's past 4.0 and exit if not.
 
-```csharp
+```c#
 using System;
 using System.Reflection;
 
@@ -490,13 +490,13 @@ Partial answer...
 ; check Java version
 (let [version (Double/parseDouble (re-find #"\d*\.\d*" (System/getProperty "java.version")))]
   (if (>= version 1.5)
-    (println "Version ok") 
+    (println "Version ok")
     (throw (Error. "Bad version"))))
 
 ; check Clojure version
 (let [version (Double/parseDouble (re-find #"\d*\.\d*" (clojure-version)))]
   (if (>= version 1.0)
-    (println "Version ok") 
+    (println "Version ok")
     (throw (Error. "Bad version"))))
 
 ```
@@ -528,7 +528,7 @@ The ''list-all-packages'' and ''do-symbols'' forms enable a lisp program to exam
 ```lisp
 (let ((sum 0)
       (ints '()))
-  (loop for pkg in (list-all-packages) 
+  (loop for pkg in (list-all-packages)
         do (do-symbols (s pkg)
                        (when (and (boundp s)
                                   (integerp (symbol-value s)))
@@ -638,7 +638,7 @@ Sum of integers:
   (writeln "Please reload EchoLisp : CTRL-F5, CMD-R or other...")
   (exit))
 
-(if (and (bound? 'bloop) (bound? 'abs) (procedure? abs)) 
+(if (and (bound? 'bloop) (bound? 'abs) (procedure? abs))
     (abs bloop) 'NOT-HERE)
     → NOT-HERE
 
@@ -652,9 +652,9 @@ Sum of integers:
     (writeln kv)
     (second kv))
 
-    ("bloop" -777)    
-    ("gee" 555)    
-    ("buzz" 333)    
+    ("bloop" -777)
+    ("gee" 555)
+    ("buzz" 333)
     → 111 ;; sum
 
 
@@ -689,7 +689,7 @@ call_abs_with_bloop( {abs, 1}, {bloop, 0} ) -> erlang:abs( bloop() );
 call_abs_with_bloop( _Missing, _Not_here ) -> abs_and_bloop_missing.
 
 exit_if_too_old( Release ) when Release	< "R13A" -> erlang:exit( too_old_release );
-exit_if_too_old( _Release ) -> ok. 
+exit_if_too_old( _Release ) -> ok.
 
 ```
 
@@ -811,7 +811,7 @@ Dim bloop As Integer = -15
   #EndIf
 #Else
   Print "bloop does not exist"
-#EndIf 
+#EndIf
 Sleep
 ```
 
@@ -839,7 +839,7 @@ Dim bloop As Integer = -15
   #EndIf
 #Else
   Print "bloop does not exist"
-#EndIf 
+#EndIf
 Sleep
 ```
 
@@ -862,7 +862,7 @@ Dim bloop As Integer = -15
   #EndIf
 #Else
   Print "bloop does not exist"
-#EndIf 
+#EndIf
 Sleep
 ```
 
@@ -885,7 +885,7 @@ Version 4 (version code omitted for brevity):
   #EndIf
 #Else
   Print "bloop does not exist"
-#EndIf 
+#EndIf
 Sleep
 ```
 
@@ -1125,7 +1125,7 @@ getSlot("arbitraryMethod") code
 
 
 =={{header|IS-BASIC}}==
-<lang IS-BASIC>100 IF VERNUM<2.1 THEN PRINT "Version is too old.":STOP 
+<lang IS-BASIC>100 IF VERNUM<2.1 THEN PRINT "Version is too old.":STOP
 110 WHEN EXCEPTION USE ERROR
 120   PRINT ABS(BLOOP)
 130 END WHEN
@@ -1158,7 +1158,7 @@ Compute <tt>abs(bloop)</tt> if <tt>abs</tt> is a function and <tt>bloop</tt> is 
 ```
 
 
-This last expression is longer than the others, because it has a couple of extra guard checks; in J, the programmer doesn't need to care if the data is a single number or an array, or what hardware representation is used for numbers (32-bit int, IEEE float, etc).  
+This last expression is longer than the others, because it has a couple of extra guard checks; in J, the programmer doesn't need to care if the data is a single number or an array, or what hardware representation is used for numbers (32-bit int, IEEE float, etc).
 
 So this expression takes pains to emulate solutions in other languages (i.e. only reports globals that are single numbers, and whose value = floor(value), so that even if the number is represented as a float in the machine, you still get the right answer).
 
@@ -1294,17 +1294,17 @@ fun main(args: Array<String>) {
     // get version of JVM
     val version = System.getProperty("java.version")
     if (version >= "1.6") println("The current JVM version is $version")
-    else println("Must use version 1.6 or later")  
+    else println("Must use version 1.6 or later")
 
     // check that 'bloop' and 'Math.abs' are available
-    // note that the class created by the Kotlin compiler for top level declarations will be called 'IntroKt'     
-    val topLevel = Class.forName("IntroKt") 
+    // note that the class created by the Kotlin compiler for top level declarations will be called 'IntroKt'
+    val topLevel = Class.forName("IntroKt")
     val math = Class.forName("java.lang.Math")
-    val abs = math.getDeclaredMethod("abs", Int::class.java)  
+    val abs = math.getDeclaredMethod("abs", Int::class.java)
     val methods = topLevel.getDeclaredMethods()
     for (method in methods) {
         // note that the read-only Kotlin property 'bloop' is converted to the static method 'getBloop' in Java
-        if (method.name == "getBloop" && method.returnType == Int::class.java) {  
+        if (method.name == "getBloop" && method.returnType == Int::class.java) {
             println("\nabs(bloop) = ${abs.invoke(null, method.invoke(null))}")
             break
         }
@@ -1315,7 +1315,7 @@ fun main(args: Array<String>) {
     var sum = 0
     for (method in methods) {
         if (method.returnType == Int::class.java) {
-            count++       
+            count++
             sum += method.invoke(null) as Int
         }
     }
@@ -1432,11 +1432,11 @@ push hl
 push af
 ld bc,&df00 ; select BASIC ROM
 out (c),c   ;   (ROM 0)
- 
+
 ld bc,&7f86 ; make ROM accessible at &c000
 out (c),c             ;   (RAM block 3)
 
-ld hl,&c001 ; copy ROM version number to RAM 
+ld hl,&c001 ; copy ROM version number to RAM
 ld de,&4040
 ld bc,3
 ldir
@@ -1660,7 +1660,7 @@ If[NameQ["bloop"] && NameQ["Abs"],
 
 
 <lang>globalintegers = Symbol /@ Select[Names["Global`*"], IntegerQ[Symbol[#]] &];
-Print [ globalintegers //Length, " global integer(s) and their sum is: ", globalintegers // Total]  
+Print [ globalintegers //Length, " global integer(s) and their sum is: ", globalintegers // Total]
 ```
 
 
@@ -1675,26 +1675,26 @@ Print [ globalintegers //Length, " global integer(s) and their sum is: ", global
 
 ```Matlab
    % convert version into numerical value
-   v = version; 
+   v = version;
    v(v=='.')=' ';
-   v = str2num(v); 
-   if v(2)>10; v(2) = v(2)/10; end; 
-   ver = v(1)+v(2)/10; 
+   v = str2num(v);
+   if v(2)>10; v(2) = v(2)/10; end;
+   ver = v(1)+v(2)/10;
    if exist('OCTAVE_VERSION','builtin')
-      if ver < 3.0, 
+      if ver < 3.0,
          exit
-      end; 
+      end;
    else
-      if ver < 7.0, 
+      if ver < 7.0,
          exit
-      end; 
-   end	
- 
+      end;
+   end
+
    % test variable bloob, and test whether function abs is defined as m-function, mex-function or builtin-function
    if exist('bloob','var') && any(exist('abs')==[2,3,5])
 	printf('abs(bloob) is %f\n',abs(bloob));
-	return; 
-   end; 
+	return;
+   end;
 ```
 
 Extra credit task:
@@ -1704,16 +1704,16 @@ Extra credit task:
    % find all integers
    varlist = whos;
    ix = [strmatch('int', {varlist.class}),strmatch('uint', {varlist.class})];
-   intsumall = 0; 
-   intsum = 0; 
+   intsumall = 0;
+   intsum = 0;
    for k=1:length(ix)
       if prod(varlist(ix).size)==1,
          intsum = intsum + eval(varlist.name);		% sum only integer scalars
       elseif prod(varlist(ix).size)>=1,
          tmp = eval(varlist.name);
-         intsumall = intsumall + sum(tmp(:));		% sum all elements of integer array. 	
-      end; 
-   end; 
+         intsumall = intsumall + sum(tmp(:));		% sum all elements of integer array.
+      end;
+   end;
    printf('sum of integer scalars: %i\n',intsum);
    printf('sum of all integer elements: %i\n',intsumall);
 
@@ -1884,7 +1884,7 @@ Oforth does not have global variables, only global constants.
 
 ```Oforth
 : bloopAbs
-| bl m | 
+| bl m |
    System.VERSION println
 
    Word find("bloop") ->bl
@@ -1996,7 +1996,7 @@ print "object \$cpl does not have 'explode' method\n"
 
 ```
 
-Keep in mind that what a package has as method names are not equal to what method names can be called on this package, due to things like AUTOLOAD.  
+Keep in mind that what a package has as method names are not equal to what method names can be called on this package, due to things like AUTOLOAD.
 For most uses, introspection is meaningless, just call the method (and catch exceptions if it's important).
 
 An example that solves the task:
@@ -2017,10 +2017,10 @@ else {
 }
 ```
 
-Note that this program will exit with a message "Perl v5.10.0 required" if run under perl version lower than 5.10 and it actually uses a feature introduced in that version (<code>say</code>). 
-The program checks whether the variable is actually defined and not if it just exists. 
-In Perl a variable can exist and have an undefined value, and checking for existence is problematic because many read-only operations may create an empty slot in the global namespace as a side effect. It doesn't make sense to calculate absolute values of existent but undefined variables so it doesn't matter in this task. 
-It can be tested by commenting out the <code>our $bloop</code> line.  
+Note that this program will exit with a message "Perl v5.10.0 required" if run under perl version lower than 5.10 and it actually uses a feature introduced in that version (<code>say</code>).
+The program checks whether the variable is actually defined and not if it just exists.
+In Perl a variable can exist and have an undefined value, and checking for existence is problematic because many read-only operations may create an empty slot in the global namespace as a side effect. It doesn't make sense to calculate absolute values of existent but undefined variables so it doesn't matter in this task.
+It can be tested by commenting out the <code>our $bloop</code> line.
 The existence of <code>abs()</code> function is tested using <code>eval</code> that returns false if the <code>abs(1)</code> cannot be invoked which can be tested by changing the name of the function in the <code>eval</code> test.
 
 Extra task:
@@ -2052,7 +2052,7 @@ It prints:
 
 ```
 
-This example uses the <code>test</code> namespace instead of the default, because there already are some integer numbers in the <code>main</code> namespace like the PID, etc. 
+This example uses the <code>test</code> namespace instead of the default, because there already are some integer numbers in the <code>main</code> namespace like the PID, etc.
 The program to sum those numbers would be:
 
 ```perl
@@ -2140,7 +2140,7 @@ Using complex_abs() is probably closer to the task requirement in that if comple
 In this case it happens to give exactly the same result, however under the hood it is actually returning sqrt((-42)*(-42)+(0)*(0)).
 
 There is (as yet) no var_id() builtin, the following is a quick cobbling-together of code from builtins\VM\prtnidN.e (routine_id)
-and builtins\VM\pDiagN.e (ex.err file creation), not very pretty but it seems to work, and of course all this sort of stuff is 
+and builtins\VM\pDiagN.e (ex.err file creation), not very pretty but it seems to work, and of course all this sort of stuff is
 normally hidden away out of sight in builtins\VM.
 
 ```Phix
@@ -2227,7 +2227,7 @@ object symtab,
                       @@:
                         mov [o],rsi
                     []
-                      } 
+                      }
                 if novalue then
                     ?{si_name,"no_value"}
                 else
@@ -2469,7 +2469,7 @@ CompilerIf #PB_Compiler_Version<441
   CompilerError "You failed the version check!"
 CompilerEndIf
 
-CompilerIf   Defined(bloop,#PB_Variable) 
+CompilerIf   Defined(bloop,#PB_Variable)
   CompilerIf Defined(Abs(),#PB_Function)
     Abs(bloop)
   CompilerEndIf
@@ -2487,8 +2487,8 @@ CompilerEndIf
  major, minor, bugfix = sys.version_info[:3]
  if major < 2:
      sys.exit('Python 2 is required')
- 
- 
+
+
  def defined(name): # LBYL (Look Before You Leap)
      return name in globals() or name in locals() or name in vars(__builtins__)
 
@@ -2534,7 +2534,7 @@ sum_of_global_int_vars()
 
 ```R
 
-if(getRversion() < "2.14.1") 
+if(getRversion() < "2.14.1")
 {
    warning("Your version of R is older than 2.14.1")
    q()  # exit R, with the option to cancel
@@ -2549,7 +2549,7 @@ We now perform three checks: we want to know if bloop is in the user workspace (
 bloop <- -3.4
 if(exists("bloop", envir=globalenv()) && exists("abs") && is.function(abs))
 {
-   abs(bloop)      
+   abs(bloop)
 }
 ```
 
@@ -2729,7 +2729,7 @@ syntax:  return 1
 ```ring
 
 # Project: Introspection
- 
+
 if version() < 1.8
    see "Version is too old" + " (" + version() + ")" + nl
 else
@@ -2797,10 +2797,10 @@ def variable_counter(b)
       sum += value
     end
   end
-  
+
   global_variables.each {|varname| check_var.call(varname, eval(varname.to_s))}
   eval('local_variables', b).each {|varname| check_var.call(varname, eval(varname.to_s, b))}
-  
+
   puts "these #{int_vars.length} variables in the global scope are integers:"
   puts int_vars.inspect
   puts "their sum is: #{sum}"
@@ -2875,8 +2875,8 @@ lobby slotValues inject: 0 into: [| :sum :value | (value is: Integer) ifTrue: [s
 "Smalltalk at: #bloop put: -10."
 s := Smalltalk version.
 (s =~ '(\d+)\.(\d+)\.(\d+)')
-  ifMatched: [:match |  
-       v := (( (match at: 1) asInteger ) * 100) + 
+  ifMatched: [:match |
+       v := (( (match at: 1) asInteger ) * 100) +
             (( (match at: 2) asInteger ) * 10) +
             ( (match at: 3) asInteger )
   ].
@@ -2902,7 +2902,7 @@ hm := 0.
 sum := 0.
 (Smalltalk keys) do: [ :els |
         ( (Smalltalk at: els) isKindOf: Number )
-          ifTrue: [ hm := hm + 1. 
+          ifTrue: [ hm := hm + 1.
                     sum := sum + (Smalltalk at: els).
                     "Transcript show: (els asString) ; cr" ]
     ] .
@@ -2961,14 +2961,14 @@ Prgm
       EndIf
     EndIf
   EndFor
-  
+
   If isVar(bloop) Then        © Dynamic name check can be done with isVar(#aString)
     © Builtin functions cannot be tested for.
     Disp abs(bloop)
   Else
     Disp "No bloop"
   EndIf
-  
+
   © There is no way to get a list of global variables.
 EndPrgm
 ```
@@ -2982,7 +2982,7 @@ EndPrgm
 Starting with Release 1.1, Toka allows for checking the version number:
 
 
-```toka>VERSION 101 
+```toka>VERSION 101
  [ bye ] ifFalse
 ```
 

@@ -981,10 +981,10 @@ void line(int x0, int y0, int x1, int y1) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Port of the C version.
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;

@@ -2537,9 +2537,9 @@ void bitwise(int a, int b)
 }
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 static void bitwise(int a, int b)
         {
             Console.WriteLine("a and b is {0}", a & b);

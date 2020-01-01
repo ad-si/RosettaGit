@@ -477,10 +477,10 @@ y = 1 + 2x + 3x^2
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{libheader|Math.Net}}
 
-```csharp
+```c#
         public static double[] Polyfit(double[] x, double[] y, int degree)
         {
             // Vandermonde matrix

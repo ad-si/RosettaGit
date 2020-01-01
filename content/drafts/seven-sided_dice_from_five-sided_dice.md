@@ -437,11 +437,11 @@ int main()
 
 
 
-## C sharp
+## C#
 
 {{trans|Java}}
 
-```csharp
+```c#
 
 using System;
 

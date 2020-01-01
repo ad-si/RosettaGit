@@ -387,10 +387,10 @@ int main( int argc, char* argv[] )
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;

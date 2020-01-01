@@ -581,11 +581,11 @@ Note that the container used to store the queue elements can be specified explic
 (and add <tt>#include <list></tt>, of course). Also note that the containers can be used directly; in that case <tt>push</tt> and <tt>pop</tt> have to be replaced by <tt>push_back</tt> and <tt>pop_front</tt>.
 
 
-## C sharp
+## C#
 
 In C# we can use the Queue<T> class in the .NET 2.0 framework.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

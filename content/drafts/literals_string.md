@@ -10,23 +10,23 @@ categories = []
 tags = []
 +++
 
-{{task|Basic language learning}} 
-[[Category: String manipulation]] 
+{{task|Basic language learning}}
+[[Category: String manipulation]]
 [[Category: Syntax elements]]
 
 ;Task:
-Show literal specification of characters and strings. 
+Show literal specification of characters and strings.
 
 If supported, show how the following work:
 :*   ''verbatim strings''   (quotes where escape sequences are quoted literally)
-:*   ''here-strings''    
+:*   ''here-strings''
 
 
 
 Also, discuss which quotes expand variables.
 
 
-;Related tasks: 
+;Related tasks:
 *   [[Special characters]]
 *   [[Here document]]
 
@@ -50,11 +50,11 @@ msg : string := "hello world";
 empty : string := "";  -- an empty string
 ```
 
-The length of a string in Ada is equal to the number of characters in the string. 
-Ada does not employ a terminating null character like C. 
-A string can have zero length, but zero length strings are not often used. 
-Ada's string type is a fixed length string. 
-It cannot be extended after it is created. 
+The length of a string in Ada is equal to the number of characters in the string.
+Ada does not employ a terminating null character like C.
+A string can have zero length, but zero length strings are not often used.
+Ada's string type is a fixed length string.
+It cannot be extended after it is created.
 If you need to extend the length of a string you need to use either a ''bounded string'', which has a pre-determined maximum length, similar to C strings, or an ''unbounded string'' which can expand or shrink to match the data it contains.
 
 
@@ -96,7 +96,7 @@ STRING stringxyz = "xyz";
 FORMAT twonewlines = $ll$, threenewpages=$ppp$, fourbackspaces=$bbbb$;
 ```
 
-Note: When only uppercase characters sets are available (eg on computers with only 
+Note: When only uppercase characters sets are available (eg on computers with only
 6 bits per "byte") the single quote can used to denote a reserved word. eg
 
 ```algol68
@@ -126,7 +126,7 @@ A string can span lines, but cannot contain newlines. String literals are concat
 
 ```algol68
 STRING linexyz := "line X;" +
- "line Y;" + 
+ "line Y;" +
  "line Z;";
 ```
 
@@ -146,7 +146,7 @@ FORMAT foo  = $"prefix_"f(my_symbol)"_suffix"$;
 putf(linef ,foo);
 ```
 
-In <b>standard</b> ALGOL 68 a "book" is a file.   A book is composed of pages and lines and 
+In <b>standard</b> ALGOL 68 a "book" is a file.   A book is composed of pages and lines and
 therefore a FORMAT be used for inserting backspaces, space, newlines and newpages into books.
 
 ```algol68
@@ -154,7 +154,7 @@ INT pages=100, lines=25, characters=80;
 FILE bookf; FLEX[pages]FLEX[lines]FLEX[characters]CHAR book;
 associate(bookf, book);
 
-# following putf inserts the string "    Line 4 indented 5" on page 3 #  
+# following putf inserts the string "    Line 4 indented 5" on page 3 #
 putf(bookf, $3p"Page 3"4l5x"Line 4 indented 5"$)
 ```
 
@@ -232,12 +232,12 @@ cChar2:                  .byte 0x41          @ character A
 szCarriageReturn:        .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszMessString
     bl affichageMess                            @ display message
@@ -264,21 +264,21 @@ iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsCharA:               .int sCharA
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -288,7 +288,7 @@ affichageMess:
 
 ## AutoHotkey
 
-unicode 
+unicode
 
 ```AutoHotkey
 "c" ; character
@@ -296,7 +296,7 @@ unicode
 hereString =   ; with interpolation of %variables%
 (
 "<>"
-the time is %A_Now% 
+the time is %A_Now%
 \!
 )
 
@@ -310,7 +310,7 @@ literal %A_Now%  ; no interpolation here
 
 ## AWK
 
-In awk, strings are enclosed using doublequotes. 
+In awk, strings are enclosed using doublequotes.
 Characters are just strings of length 1.
 
 ```awk
@@ -319,7 +319,7 @@ Characters are just strings of length 1.
 	s1 = "abcd"	# simple string
 	s2 = "ab\"cd"	# string containing a double quote, escaped with backslash
 	print s1
-	print s2 
+	print s2
 ```
 
 
@@ -354,8 +354,8 @@ Note that string literals are only null-terminated if they are assigned to a var
 ## BASIC
 
 
-Traditional BASIC implementations do not use literal character notation within a string or here document notation. 
-However, literal characters can be referenced using their character code and these can be added to strings as required. 
+Traditional BASIC implementations do not use literal character notation within a string or here document notation.
+However, literal characters can be referenced using their character code and these can be added to strings as required.
 Here we use the ASCII code for doublequotes to get the characters into a string:
 
 
@@ -367,10 +367,10 @@ Here we use the ASCII code for doublequotes to get the characters into a string:
 ```
 
 
-''Most'' modern BASIC implementations don't differentiate between characters and strings -- a character is just a string of length 1. 
-Few (if any) BASIC implementations support variables inside strings; instead, they must be handled outside the quotes. 
-Most BASICs don't support escaping inside the string, with the possible exception of the VB-style <code>""</code> for a single quotation mark (not supported by most BASICs). 
-To insert otherwise-unprintable characters requires the use of <code>CHR$</code>. 
+''Most'' modern BASIC implementations don't differentiate between characters and strings -- a character is just a string of length 1.
+Few (if any) BASIC implementations support variables inside strings; instead, they must be handled outside the quotes.
+Most BASICs don't support escaping inside the string, with the possible exception of the VB-style <code>""</code> for a single quotation mark (not supported by most BASICs).
+To insert otherwise-unprintable characters requires the use of <code>CHR$</code>.
 (One notable exception is [[FreeBASIC]], which supports C-style escaping with <code>OPTION ESCAPE</code>.)
 
 Strings can optionally be declared as being a certain length, much like C strings.
@@ -452,8 +452,8 @@ print "Tom said," + "'The fox ran away.'"
 
 === {{header|ZX Spectrum Basic}} ===
 
-The ZX Spectrum supports the use of CHR$(34). 
-Alternatively, it is possible to print the doublequotes, 
+The ZX Spectrum supports the use of CHR$(34).
+Alternatively, it is possible to print the doublequotes,
 by adding an extra pair of doublequotes:
 
 
@@ -472,9 +472,9 @@ by adding an extra pair of doublequotes:
 
 ## BBC BASIC
 
-Quoted (literal) strings consist of 8-bit characters and support both ANSI and UTF-8 encodings; they may not contain 'control' characters (0x00 to 0x1F).  
-The only special character is the double-quote " which must be escaped as "".  
-There is no special representation for a single character (it is just a string of length one).  
+Quoted (literal) strings consist of 8-bit characters and support both ANSI and UTF-8 encodings; they may not contain 'control' characters (0x00 to 0x1F).
+The only special character is the double-quote " which must be escaped as "".
+There is no special representation for a single character (it is just a string of length one).
 'Here strings' are not supported.
 
 ```bbcbasic
@@ -493,7 +493,7 @@ This is a "quoted string"
 
 ## bc
 
-The double-quote " starts a literal string which ends at the next double-quote. 
+The double-quote " starts a literal string which ends at the next double-quote.
 Thus strings can span multiple lines and cannot contain a double-qoute (there is no escaping mechanism).
 
 Characters are just strings of length one.
@@ -501,10 +501,10 @@ Characters are just strings of length one.
 
 ## Befunge
 
-The double quote character (") enters a string literal mode, where ASCII values of characters encountered in the current instruction pointer direction up to the next quote are pushed onto the stack. 
-Thus, any character may be used in a string except for a quote (ascii 34), 
-which may be pushed using <tt>57*1-</tt>. 
-Note: since you are pushing the string onto a stack, you usually want to define the string in reverse order so that the first character is on top. 
+The double quote character (") enters a string literal mode, where ASCII values of characters encountered in the current instruction pointer direction up to the next quote are pushed onto the stack.
+Thus, any character may be used in a string except for a quote (ascii 34),
+which may be pushed using <tt>57*1-</tt>.
+Note: since you are pushing the string onto a stack, you usually want to define the string in reverse order so that the first character is on top.
 
 ```befunge
 "gnirts">:#,_@
@@ -514,14 +514,14 @@ Note: since you are pushing the string onto a stack, you usually want to define 
 
 ## Bracmat
 
-Strings of any length can always be surrounded by quotes. 
-They <i>must</i> be surrounded by quotes if the string contains white space characters or one of the characters <code>=.,|&:+*^'$_;{}</code> or character sequences <code>\D</code> or <code>\L</code>. 
-They must also be surrounded by quotes if they start with one or more characters from the set <code>[~/#&lt;&gt;%@?!-</code>. 
-Inside strings the characters <code>"</code> and <code>\</code> must be escaped with a backslash <code>\</code>. 
-White space characters for carriage return, newline and tabulator can be expressed as <code>\r</code>, <code>\n</code> and <code>\t</code>, respectively. 
-Escape sequences need not be enclosed in quotes. 
+Strings of any length can always be surrounded by quotes.
+They <i>must</i> be surrounded by quotes if the string contains white space characters or one of the characters <code>=.,|&:+*^'$_;{}</code> or character sequences <code>\D</code> or <code>\L</code>.
+They must also be surrounded by quotes if they start with one or more characters from the set <code>[~/#&lt;&gt;%@?!-</code>.
+Inside strings the characters <code>"</code> and <code>\</code> must be escaped with a backslash <code>\</code>.
+White space characters for carriage return, newline and tabulator can be expressed as <code>\r</code>, <code>\n</code> and <code>\t</code>, respectively.
+Escape sequences need not be enclosed in quotes.
 A string expression prepended with <code>@</code> or <code>%</code> has no escape sequences: all characters except quotes are taken litterally.
-These are 10 examples of valid string expressions. 
+These are 10 examples of valid string expressions.
 (The last example is a multiline string.)
 {{out|Examples}}
 
@@ -562,7 +562,7 @@ char str[] = "z";
 ```
 
 
-This means that 'z' and "z" are different. 
+This means that 'z' and "z" are different.
 The former is a character while the latter is a string, an array of two characters: the letter 'z' and the string-terminator null '\0'.
 
 C has no raw string feature ''(please define)''. C also has no built-in mechanism for expanding variables within strings.
@@ -598,14 +598,14 @@ a newline-separated
 raw string)";
 </LANG>
 
-=={{header|C sharp|C#}}==
+## C#
 
 '''C#''' uses single quotes for characters and double quotes for strings just like C.
 
 '''C#''' supports verbatim strings. These begin with @" and end with ". Verbatim quotes may contain line breaks and so verbatim strings and here-strings overlap.
 
 
-```csharp
+```c#
 string path = @"C:\Windows\System32";
 string multiline = @"Line 1.
 Line 2.
@@ -721,7 +721,7 @@ Specified delimiter string:
 
 ```d
 // Any character is allowed after the first quote;
-// the string ends with that same character followed 
+// the string ends with that same character followed
 // by a quote.
 auto str = q"$"Hello?" he enquired.$";
 ```
@@ -796,7 +796,7 @@ Specific character codes (Unicode) can be specified via # (outside of the string
 
 ```delphi
 
-const s1 := 'quoted "word" in string';   
+const s1 := 'quoted "word" in string';
 const s2 := "quoted ""word"" in string"; // sames as s1, shows the doubling of the delimiter
 const s2 := 'first line'#13#10'second line';   // CR+LF in the middle
 
@@ -889,7 +889,7 @@ ELENA 4.x :
    var c := $65; // character
    var s := "some text"; // UTF-8 literal
    var w := "some wide text"w; // UTF-16 literal
-   var s2 := "text with ""quotes"" and 
+   var s2 := "text with ""quotes"" and
 two lines";
 
 ```
@@ -1329,7 +1329,7 @@ s\" hello\nthere!"
 
 ## Fortran
 
-First Fortran (1958) did not offer any means to manipulate text except via the H (for Hollerith) code in FORMAT statements of the form nH where n was an integer that counted the ''exact'' numbers of characters following the H, any characters, that constituted the text literal. Miscounts would cause a syntax error, if you were lucky. This would be used for output to annotate the numbers, but consider the following: 
+First Fortran (1958) did not offer any means to manipulate text except via the H (for Hollerith) code in FORMAT statements of the form nH where n was an integer that counted the ''exact'' numbers of characters following the H, any characters, that constituted the text literal. Miscounts would cause a syntax error, if you were lucky. This would be used for output to annotate the numbers, but consider the following:
 ```Fortran
       DIMENSION ATWT(12)
       PRINT 1
@@ -1337,14 +1337,14 @@ First Fortran (1958) did not offer any means to manipulate text except via the H
       DO 10 I = 1,12
         READ  1,ATWT(I)
    10   PRINT 1,ATWT(I)
-      END 
+      END
 ```
 
 Evidently, the syntax highlighter here does not recognise the Hollerith style usage. Nor do some compilers, even if in its original home within FORMAT statements.
 
-The first PRINT statement writes out a heading, here with lower case letters as an anachronism. Then the loop reads a deck of cards containing the name of an element and its atomic weight into an array ATWT, but the special feature is that the first twelve characters of each card replace the text in the FORMAT statement, and thus the following PRINT statement shows the name of the element followed by its atomic weight as just read.      
+The first PRINT statement writes out a heading, here with lower case letters as an anachronism. Then the loop reads a deck of cards containing the name of an element and its atomic weight into an array ATWT, but the special feature is that the first twelve characters of each card replace the text in the FORMAT statement, and thus the following PRINT statement shows the name of the element followed by its atomic weight as just read.
 
-Fortran IV introduced a text literal, specified within apostrophes, with two apostrophes in a row indicating an apostrophe within the text. Later, either an apostrophe or a double quote could be used to start a text string (and the same one must be used to end it) so that if one or the other were desired within a text literal, the other could be used as its delimiters. If both were desired, then there would be no escape from doubling for one. Because spaces are significant within text literals, a long text literal continued on the next line would have the contents of column seven of the continuation line immediately following the contents of column 72 of the continued line - except that (for some compilers reading disc files) if such lines did not extend to column 72 (because trailing spaces were trimmed from the records) rather less text would be defined. So, even though this is in fixed-format (or card image) style, again misinterpreted by the syntax highlighter, 
+Fortran IV introduced a text literal, specified within apostrophes, with two apostrophes in a row indicating an apostrophe within the text. Later, either an apostrophe or a double quote could be used to start a text string (and the same one must be used to end it) so that if one or the other were desired within a text literal, the other could be used as its delimiters. If both were desired, then there would be no escape from doubling for one. Because spaces are significant within text literals, a long text literal continued on the next line would have the contents of column seven of the continuation line immediately following the contents of column 72 of the continued line - except that (for some compilers reading disc files) if such lines did not extend to column 72 (because trailing spaces were trimmed from the records) rather less text would be defined. So, even though this is in fixed-format (or card image) style, again misinterpreted by the syntax highlighter,
 ```Fortran
       BLAH = "
      1Stuff"
@@ -1354,13 +1354,13 @@ might be the equivalent of only <code>BLAH = "Stuff"</code> instead of defining 
 
 Within the text literal, any character whatever may be supplied as text grist, according to the encodement recognised by the card reader as this was a fixed-format file - cards have an actual physical size. This applied also to source text held in disc files, as they were either fixed-size records or, for variable-length records, records had a length specification and the record content was not involved. Variable-length records were good for omitting the storage of the trailing spaces on each line, except that the sequence numbers were at the end of the line! In this case they might be omitted (unlike a card deck, a disc file's records are not going to be dropped) or there may be special provision for them to be at the start of each line with the source text's column one staring in column nine of the record. But, for the likes of paper tape, the question "How long is a record?" has no natural answer, and record endings were marked by a special symbol. Such a symbol (or symbol sequence) could not appear within a record, such as within a text literal and be taken as a part of the text. This style has been followed by the ASCII world, with variously CR, CRLF, LFCR and CR sequences being used to mark end-of-record. Such characters cannot be placed within a text literal, but the CHAR(n) function makes them available in character expressions. Some compilers however corrupt the "literal" nature of text ''literals'' by allowing escape sequences to do so, usually in the style popularised by C, thus \n, and consequently, \\ should a single \ be desired.
 
-Some examples, supposing that TEXT is a CHARACTER variable. 
+Some examples, supposing that TEXT is a CHARACTER variable.
 ```Fortran
       TEXT = 'That''s right!'            !Only apostrophes as delimiters. Doubling required.
       TEXT = "That's right!"             !Chose quotes, so that apostrophes may be used freely.
       TEXT = "He said ""That's right!""" !Give in, and use quotes for a "quoted string" source style.
       TEXT = 'He said "That''s right!"'  !Though one may dabble in inconsistency.
-      TEXT = 23HHe said "That's right!"  !Some later compilers allowed Hollerith to escape from FORMAT. 
+      TEXT = 23HHe said "That's right!"  !Some later compilers allowed Hollerith to escape from FORMAT.
 ```
 
 
@@ -1411,9 +1411,9 @@ IsChar('a');
 # true
 IsString("abc");
 # true
-IsString('a');  
+IsString('a');
 # false
-IsChar("a");   
+IsChar("a");
 # false
 ```
 
@@ -1441,7 +1441,7 @@ A string.
 ```freebasic
 
 Print "Hello, World."
-Print Chr(34); "Hello, World." & Chr(34) 
+Print Chr(34); "Hello, World." & Chr(34)
 
 Print "Tom said, ""The fox ran away."""
 Print "Tom said," + "'The fox ran away.'"
@@ -1556,7 +1556,7 @@ println gString
 ```
 
 
-[[UNIX Shell]] command line users should recognize these forms of syntax as ''strong'' ('-delimited) and ''weak'' ("-delimited) quoting. 
+[[UNIX Shell]] command line users should recognize these forms of syntax as ''strong'' ('-delimited) and ''weak'' ("-delimited) quoting.
 And like [[UNIX Shell]] weak quoting syntax, the evaluated subexpression part of the GString syntax loses its special meaning when preceded by a backslash (\):
 
 
@@ -1569,7 +1569,7 @@ assert gString3 == '1 + 1 = ${1 + 1}'
 ```
 
 
-Groovy also supports multi-line String literals and multi-line GString expressions. 
+Groovy also supports multi-line String literals and multi-line GString expressions.
 
 
 ```groovy
@@ -1654,7 +1654,7 @@ assert apostrophe == apostrophe2
 
 
 
-###  language support 
+###  language support
 
 Characters use single quotes, strings use double quotes. Both allow Unicode. Escape sequences start with a backslash. There are no verbatim strings, no here-strings, and no expansion of variables in strings.
 
@@ -1699,13 +1699,13 @@ HicEst makes no distinction between single characters and strings. One can use s
 CHARACTER c1='A', c2="B", c3=&C&
 CHARACTER str1='single quotes', str2="double quotes", str3*100
 
-str3 = % delimit "Nested 'strings' " if needed % 
+str3 = % delimit "Nested 'strings' " if needed %
 ```
 
 A null character CHAR(0) is printed as " ", displayed as "." in dialogs, but ends the string in Windows controls such as StatusBar or ClipBoard
 
 ```hicest
-str3 = 'a string' // CHAR(0) // "may contain" // $CRLF // ~ any character ~ 
+str3 = 'a string' // CHAR(0) // "may contain" // $CRLF // ~ any character ~
 ```
 
 Named literal constants in HicEst:
@@ -1773,7 +1773,7 @@ Duplicating either of them quotes them. Thus the following contains three single
 
 
 ```idl
-a = ' that''s a string 
+a = ' that''s a string
 print,a
 ;==>  that's a string
 ```
@@ -1846,7 +1846,7 @@ Home is a room. The description is "This is where you live...
 ```
 
 
-Single quotes in a string are translated to double quotes when they occur outside of a word: the string literal 
+Single quotes in a string are translated to double quotes when they occur outside of a word: the string literal
 ```inform7
 "'That's nice,' said the captain."
 ```
@@ -1915,7 +1915,7 @@ For multiline literals, you may define an explicit noun, which is terminated by 
 
 ```j
 template =: noun define
-Hello, NAME.  
+Hello, NAME.
 
 My name is SHYSTER, and I'm here to tell
 you that you my have already won $AMOUNT!!
@@ -1937,22 +1937,22 @@ shyster =:  'Ed McMahon'
 amount  =:  1e6
 payment =:  2 * amount
 address =:  'Publisher''s Clearing House'
- 
+
 targets =:  ;:   'NAME SHYSTER AMOUNT PAYMENT ADDRESS'
 sources =:  ":&.> name;shyster;amount;payment;address
 
 message =: template rplc targets,.sources
 ```
 
-    
+
 While C-like interpolation can be effected with another:
 
 
 ```j
    load 'printf'
-   
+
    'This should look %d%% familiar \nto programmers of %s.' sprintf 99;'C'
-This should look 99% familiar 
+This should look 99% familiar
 to programmers of C.
 ```
 
@@ -2003,7 +2003,7 @@ Unicode characters can be entered as literals or as 4 character hexadecimal esca
 
 Note that in the case of the Emoji character above, where more than 4 hexadecimal characters are needed, ES5 requires us to separately write a pair of surrogate halves, and the '''String.length''' of such characters is 2.
 
-ES6 introduces Unicode code point escapes such as 
+ES6 introduces Unicode code point escapes such as
 ```txt
 '\u{2F804}'
 ```
@@ -2014,7 +2014,7 @@ allowing direct escaping of code points up to 0x10FFFF.
 
 jq supports all JSON types, including JSON strings; jq also supports "string interpolation".
 
-The rules for constructing JSON string literals are explained elsewhere (notably at json.org), so here we'll focus on "string interpolation" -- a technique for creating JSON strings programmatically using string literals,  much like ruby's "#{...}", for example.  The twist is that the string literal for specifying string interpolation is (by design) not itself a valid JSON string.  
+The rules for constructing JSON string literals are explained elsewhere (notably at json.org), so here we'll focus on "string interpolation" -- a technique for creating JSON strings programmatically using string literals,  much like ruby's "#{...}", for example.  The twist is that the string literal for specifying string interpolation is (by design) not itself a valid JSON string.
 
 Suppose that:
 * s is (or is a reference to) a JSON entity (e.g. a string or a number), and
@@ -2089,8 +2089,8 @@ fun main(args: Array<String>) {
     val cl = 'a'          // character literal - can contain escaped character
     val esl = "abc\ndef"  // escaped string literal - can contain escaped character(s)
     val rsl = """
-              This is a raw string literal   
-              which does not treat escaped characters 
+              This is a raw string literal
+              which does not treat escaped characters
               (\t, \b, \n, \r, \', \", \\, \$ and \u)
               specially and can contain new lines.
 
@@ -2166,10 +2166,10 @@ LabVIEW is a graphical language so it uses graphical string delimiters. No escap
 ## LaTeX
 
 
-Since LaTeX is a markup language rather than a programming language, quotes are displayed rather than interpreted. 
-However, quotes do deserve special mention in LaTeX. 
-Opening (left) quotes are denoted with backquotes and closing (right) quotes are denoted with quotes. 
-Single quotes use a single symbol and double quotes use double symbols. 
+Since LaTeX is a markup language rather than a programming language, quotes are displayed rather than interpreted.
+However, quotes do deserve special mention in LaTeX.
+Opening (left) quotes are denoted with backquotes and closing (right) quotes are denoted with quotes.
+Single quotes use a single symbol and double quotes use double symbols.
 For example, to typeset 'a' is for "apple" in LaTeX, one would type
 
 
@@ -2178,9 +2178,9 @@ For example, to typeset 'a' is for "apple" in LaTeX, one would type
 ```
 
 
-One common mistake is to use the same symbol for opening and closing quotes, 
-which results in the one of the quotes being backward in the output. 
-Another common mistake is to use a double quote symbol in the input file 
+One common mistake is to use the same symbol for opening and closing quotes,
+which results in the one of the quotes being backward in the output.
+Another common mistake is to use a double quote symbol in the input file
 rather than two single quotes in order to produce a double quote in the output.
 
 
@@ -2276,7 +2276,7 @@ put quote & "string" & quote -- "string"
 
 ## Logo
 
-Logo does not have a string or character type that is separate from its symbol type ("word"). A literal word is specified by prefixing a double-quote character. 
+Logo does not have a string or character type that is separate from its symbol type ("word"). A literal word is specified by prefixing a double-quote character.
 Reserved and delimiting characters, ()[];~+-*/\=<>| and newline, may be used if preceded by a backslash. Alternatively, the string may be wrapped in vertical bars, in which case only backslash and vertical bar need be escaped.
 
 ```logo
@@ -2289,8 +2289,8 @@ print "|Hello, world|
 ## Lua
 
 
-Strings can be enclosed using singlequotes or doublequotes. 
-Having two different types of quotation symbols enables either of the symbols 
+Strings can be enclosed using singlequotes or doublequotes.
+Having two different types of quotation symbols enables either of the symbols
 to be embedded within a string enclosed with the other symbol.
 
 
@@ -2303,8 +2303,8 @@ longstring2 = [==[ can contain [[ other ]=] longstring " and ' string [===[ qual
 ```
 
 
-Note that interpolation of variables names within a string does not take place. 
-However, interpolation of literal characters escape sequences does occur, 
+Note that interpolation of variables names within a string does not take place.
+However, interpolation of literal characters escape sequences does occur,
 irrespective of whether singlequote or doublequote enclosures are being used.
 
 
@@ -2327,7 +2327,7 @@ Print Quote$("Hello There")={"Hello There"}
 
 ## M4
 
-The quoting characters are <tt>`</tt> and <tt>'</tt>, 
+The quoting characters are <tt>`</tt> and <tt>'</tt>,
 but can be changed by the <code>changequote</code> macro:
 
 ```m4
@@ -2389,7 +2389,7 @@ There is no character type in Mathematica, only string type.
 Strings start and end with single quotes, the escape sequence for a single quote with in a string, is the use of two consequtive single quotes
 
 ```Matlab
-  
+
     s1 = 'abcd'   % simple string
     s2 = 'ab''cd'   % string containing a single quote
 
@@ -2485,7 +2485,7 @@ Strings in Modula-3 use double quotes.
 VAR str: TEXT := "foo";
 ```
 
-<code>TEXT</code> is the string type in Modula-3.  
+<code>TEXT</code> is the string type in Modula-3.
 Characters can be stored in an array and then converted to type TEXT using the function <code>Text.FromChars</code> in the <code>Text</code> module.
 
 Strings (of type <code>TEXT</code>) can be converted into an array of characters using the function <code>Text.SetChars</code>.
@@ -2502,16 +2502,16 @@ Text.SetChars(chrarray, str);
 
 ## MUMPS
 
-All strings are delimited by the double quotes character. 
+All strings are delimited by the double quotes character.
 But you can escape the double quotes to add a double quotes character to a string.
 
 ```txt
 USER>SET S1="ABC"
- 
+
 USER>SET S2="""DEF"""
- 
+
 USER>SET S3="""GHI"
- 
+
 USER>W S1
 ABC
 USER>W S2
@@ -2525,10 +2525,10 @@ USER>W S3
 
 ## Nemerle
 
-Character literals are enclosed in single quotes. 
-Regular strings are enclosed in double quotes, and use \ to delimit special characters, whitespace similar to C. 
-A @ preceding the double quotes indicates a literal string. 
-A $ preceding the double quote indicates string interpolation, identifiers prefixed with $ inside the string literal will be replaced with their value. 
+Character literals are enclosed in single quotes.
+Regular strings are enclosed in double quotes, and use \ to delimit special characters, whitespace similar to C.
+A @ preceding the double quotes indicates a literal string.
+A $ preceding the double quote indicates string interpolation, identifiers prefixed with $ inside the string literal will be replaced with their value.
 Nemerle also has a recursive string literal, enclosed within <# #>, that is the same as a literal string, except that it allows nesting of strings.
 
 
@@ -2586,7 +2586,7 @@ which represents a pointer to a statically allocated string object, of type <tt>
 
 ## Objeck
 
-Objeck string support is similar to Java except that string elements are 1-byte in length.  
+Objeck string support is similar to Java except that string elements are 1-byte in length.
 In addition, string literals may terminated using a NULL character or the string's length calculation.
 
 
@@ -2640,12 +2640,12 @@ Another syntax to include verbatim text:
 
 ## Octave
 
-Strings can be defined in Octave with single or double quotes. 
-In order to maintain compatible with Matlab, 
-it is recommended to use single quotes for defining strings. 
+Strings can be defined in Octave with single or double quotes.
+In order to maintain compatible with Matlab,
+it is recommended to use single quotes for defining strings.
 
 ```Octave
-  
+
     s1 = 'abcd'   % simple string
     s2 = 'ab''cd'   % string containing a single quote using an escaped single quote
     s3 = 'ab"cd'   % simple string containing a double quote
@@ -2725,8 +2725,8 @@ There are just three escapes:
 ```
 
 
-Any other escaped character simply represents itself; <code>\\</code> and <code>\"</code> are the most useful. 
-There are no characters or character strings as such, 
+Any other escaped character simply represents itself; <code>\\</code> and <code>\"</code> are the most useful.
+There are no characters or character strings as such,
 but Vectorsmall("string") is very similar to a character array.
 
 Version 2.4.3 added the functions <code>printf</code> and <code>Strprintf</code> which allow interpolation (typically with %Ps).
@@ -2740,8 +2740,8 @@ See [[Literals/String#Delphi | Delphi]]
 ## Perl
 
 
-Perl makes no distinction between single characters and strings. 
-One can use single or double quotes, but they are different. 
+Perl makes no distinction between single characters and strings.
+One can use single or double quotes, but they are different.
 Double-quotes allows you to interpolate variables and escape sequences, while single-quotes do not.
 
 
@@ -2773,7 +2773,7 @@ END
 
 ## Perl 6
 
-Unlike most languages that hardwire their quoting mechanisms, the quote mechanism in Perl 6 is extensible, and all normal-looking quotes actually derive from a parent quoting language called Q via grammatical mixins, applied via standard Perl 6 adverbial syntax.  
+Unlike most languages that hardwire their quoting mechanisms, the quote mechanism in Perl 6 is extensible, and all normal-looking quotes actually derive from a parent quoting language called Q via grammatical mixins, applied via standard Perl 6 adverbial syntax.
 The available quote mixins, straight from current spec S02, are:
 
 ```txt
@@ -2801,14 +2801,14 @@ Short       Long            Meaning
 :p          :path           Return a Path object (see S16 for more options
 ```
 
-In any case, an initial <tt>Q</tt>, <tt>q</tt>, or <tt>qq</tt> may omit the initial colon to form traditional Perl quotes such as <tt>qw//</tt>.  
+In any case, an initial <tt>Q</tt>, <tt>q</tt>, or <tt>qq</tt> may omit the initial colon to form traditional Perl quotes such as <tt>qw//</tt>.
 And Q can be used by itself to introduce a quote that has no escapes at all except for the closing delimiter:
 
 ```perl6
 my $raw = Q'$@\@#)&!#';
 ```
 
-Note that the single quotes there imply no single quoting semantics as they would in Perl 5.  They're just the quotes the programmer happened to choose, since they were most like the raw quoting.  Single quotes imply <tt>:q</tt> only when used as normal single quotes are, as discussed below.  
+Note that the single quotes there imply no single quoting semantics as they would in Perl 5.  They're just the quotes the programmer happened to choose, since they were most like the raw quoting.  Single quotes imply <tt>:q</tt> only when used as normal single quotes are, as discussed below.
 As in Perl 5, you can use any non-alphanumeric, non-whitespace characters for delimiters with the general forms of quoting, including matching bracket characters, including any Unicode brackets.
 
 Using the definitions above, we can derive the various standard "sugar" quotes from Q, including:
@@ -2830,9 +2830,9 @@ quasi {...} Q :code {...}
 
 The <tt>:qq</tt>-derived languages all give normal Perlish interpolation, but individual interpolations may be chosen or suppressed with extra adverbs.
 
-Unlike in Perl 5, we don't use backticks as shorthand for what is now expressed as <tt>qqx//</tt> in Perl 6.  
-(Backticks are now reserved for user-defined syntax.)  
-Heredocs now have no special <tt><<</tt> syntax, 
+Unlike in Perl 5, we don't use backticks as shorthand for what is now expressed as <tt>qqx//</tt> in Perl 6.
+(Backticks are now reserved for user-defined syntax.)
+Heredocs now have no special <tt><<</tt> syntax,
 but fall out of the <tt>:to</tt> adverb:
 
 ```perl6
@@ -2863,7 +2863,7 @@ Backslash sequences recognized by <tt>:b</tt> (and hence <tt>:qq</tt>) include:
 "\c[LATIN CAPITAL LETTER A, COMBINING RING ABOVE]"
 ```
 
-Leading <tt>0</tt> specifically does not mean octal in Perl 6; 
+Leading <tt>0</tt> specifically does not mean octal in Perl 6;
 you must use <tt>\o</tt> instead.
 
 
@@ -2905,7 +2905,7 @@ string s = "food"
     s[2..5] = ""        -- s is now "fed"
 ```
 
-Special characters may be entered (between quotes) using a back-slash: 
+Special characters may be entered (between quotes) using a back-slash:
 
 ```txt
 
@@ -2922,11 +2922,11 @@ Special characters may be entered (between quotes) using a back-slash:
         \xHH     #HH     any hexadecimal byte (\u, \U currently omitted, see note below)
 
 ```
-  
+
 There are no other automatic substitutions, other than through explict function calls such as printf.
 
-Strings can also be entered by using triple quotes or backticks intead of double quotes to include linebreaks and avoid any backslash interpretation. 
-If the literal begins with a newline, it is discarded and any immediately following leading underscores specify a (maximum) trimming that should be applied to all subsequent lines. Examples: 
+Strings can also be entered by using triple quotes or backticks intead of double quotes to include linebreaks and avoid any backslash interpretation.
+If the literal begins with a newline, it is discarded and any immediately following leading underscores specify a (maximum) trimming that should be applied to all subsequent lines. Examples:
 
 ```Phix
 ts = """
@@ -2943,10 +2943,10 @@ string\thing'
 ts = "this\nstring\\thing"
 ```
 
-which are all equivalent. 
+which are all equivalent.
 
-On a practical note, as long as you have at least 2GB of physical memory, you should experience no problems whatsoever constructing a string with 400 million characters, 
-and you could more than triple that by allocating things up front, however deliberately hogging the biggest block of memory the system will allow is generally considered 
+On a practical note, as long as you have at least 2GB of physical memory, you should experience no problems whatsoever constructing a string with 400 million characters,
+and you could more than triple that by allocating things up front, however deliberately hogging the biggest block of memory the system will allow is generally considered
 bad programming practice, and may lead to disk thrashing.
 
 Hex string literals are also supported (mainly for compatibility with OpenEuphoria, x/u/U for 1/2/4 byte codes), eg:
@@ -2955,16 +2955,16 @@ Hex string literals are also supported (mainly for compatibility with OpenEuphor
 ?x"68 65 6c 6c 6f";     -- displays "hello"
 ```
 
-As noted above, escapes \u and \U are currently omitted from the previous table, but as the source (ptok.e) notes, it is more about testing/documenting than any technical 
+As noted above, escapes \u and \U are currently omitted from the previous table, but as the source (ptok.e) notes, it is more about testing/documenting than any technical
 difficulty handling them in the tokeniser.
 
 
 ## PHP
 
 
-PHP makes no distinction between single characters and strings. 
-One can use single or double quotes, but they are different. 
-Double-quotes allows you to interpolate variables and escape sequences, 
+PHP makes no distinction between single characters and strings.
+One can use single or double quotes, but they are different.
+Double-quotes allows you to interpolate variables and escape sequences,
 while single-quotes do not.
 
 
@@ -2991,7 +2991,7 @@ END;
 
 ## PicoLisp
 
-PicoLisp doesn't have a string data type. Instead, symbols are used. 
+PicoLisp doesn't have a string data type. Instead, symbols are used.
 Certain uninterned symbols, called [http://software-lab.de/doc/ref.html#transient "transient symbols"], however, look and behave like strings on other languages.
 
 Syntactically, transient symbols (called "strings" in the following) are surrounded by double quotes.
@@ -3058,7 +3058,7 @@ preprocessor" // single literal string with newlines in it
 ## plainTeX
 
 
-The same as [[Quotes#LaTeX|LaTeX case]], even though one should say the opposite. 
+The same as [[Quotes#LaTeX|LaTeX case]], even though one should say the opposite.
 The <tt>``</tt> and <tt><nowiki>''</nowiki></tt> in TeX (plainTeX, LaTeX and many more) are just examples of ligatures.
 
 
@@ -3090,11 +3090,11 @@ Backslash is used to insert special charaters into strings:
 ## PowerShell
 
 
-PowerShell makes no distinction between characters and strings. 
-Single quoted strings do not interpolate variable contents but double quoted strings do. 
+PowerShell makes no distinction between characters and strings.
+Single quoted strings do not interpolate variable contents but double quoted strings do.
 Also, escape sequences are quoted literally as separate characters within single quotes.
 
-PowerShell here-strings begin with @' (or @") followed immediately by a line break and end with a line break followed by '@ (or "@). 
+PowerShell here-strings begin with @' (or @") followed immediately by a line break and end with a line break followed by '@ (or "@).
 Escape sequences and variables are interpolated in @" quotes but not in @' quotes.
 
 
@@ -3210,7 +3210,7 @@ EndSelect
 ## Python
 
 
-Python makes no distinction between single characters and strings. 
+Python makes no distinction between single characters and strings.
 One can use single or double quotes.
 
 
@@ -3225,10 +3225,10 @@ u'\u05d0' # unicode literal
 ```
 
 
-As shown in the last examples, Unicode strings 
+As shown in the last examples, Unicode strings
 are single or double quoted with a "u" or "U" prepended thereto.
 
-Verbatim (a.k.a. "raw") strings are contained within either single or double quotes, but have an "r" or "R" prepended to indicate that backslash characters should NOT be treated as "escape sequences."  
+Verbatim (a.k.a. "raw") strings are contained within either single or double quotes, but have an "r" or "R" prepended to indicate that backslash characters should NOT be treated as "escape sequences."
 This is useful when defining regular expressions as it avoids the need to use sequences like \\\\ (a sequence of four backslashes) in order to get one literal backslash into a regular expression string.
 
 
@@ -3250,15 +3250,15 @@ Here-strings are denoted with triple quotes.
 
 The "u" and "r" prefixes can also be used with triple quoted strings.
 
-Triple quoted strings can contain any mixture of double and single quotes as well as embedded newlines, etc. 
-They are terminated by unescaped triple quotes of the same type that initiated the expression.  
+Triple quoted strings can contain any mixture of double and single quotes as well as embedded newlines, etc.
+They are terminated by unescaped triple quotes of the same type that initiated the expression.
 They are generally used for "doc strings" and other multi-line string expressions --- and are useful for "commenting out" blocks of code.
 
 
 ## R
 
-R  makes no distinction between characters and strings, and uses single and double quotes interchangeably, though double quotes are considered to be preferred.  
-Verbatim strings are not supported.  
+R  makes no distinction between characters and strings, and uses single and double quotes interchangeably, though double quotes are considered to be preferred.
+Verbatim strings are not supported.
 See [http://stat.ethz.ch/R-manual/R-patched/library/base/html/Quotes.html ?Quotes] for more information.
 
 
@@ -3292,7 +3292,7 @@ a b     # Error: unexpected symbol in "a b"
 ```
 
 
-R will print different styles of single and double quote using sQuote and dQuote 
+R will print different styles of single and double quote using sQuote and dQuote
 
 
 ```R
@@ -3331,7 +3331,7 @@ returns
 ## Racket
 
 
-Characters are specified as hash-backslash-character, 
+Characters are specified as hash-backslash-character,
 sometime using a name for the character.
 
 
@@ -3350,7 +3350,7 @@ the same goes for doubly-escaped backslashes (leading to the usual
 regexp fun).
 
 Racket source code is read as UTF-8 text so strings can include Unicode
-characters -- but the internal representation is UCS-4.  
+characters -- but the internal representation is UCS-4.
 This includes "\NNN" for octals and "\xHH" for hex and "\uHHHH" for higher characters.
 See the [http://docs.racket-lang.org/reference/reader.html#%28part._parse-string%29 docs] for a complete specification.
 
@@ -3376,10 +3376,10 @@ $c
 
 ## REXX
 
-There are two types of quotes used for REXX literals: 
+There are two types of quotes used for REXX literals:
 :::*   '''"'''     (sometimes called a double quote or quote)
 :::*   '''<nowiki>'</nowiki>'''     (sometimes called a single quote or apostrophe)
-There is no difference between them as far as specifying a REXX literal. 
+There is no difference between them as far as specifying a REXX literal.
 
 You can double them (code two of them adjacent) to specify a quote within the string.
 
@@ -3392,7 +3392,7 @@ escape1 = "that's it!"
 escape2 = 'that''s it!'
 ```
 
-Variable expansion is not possible within REXX literals. 
+Variable expansion is not possible within REXX literals.
 
 Simply concatenate the string with the variable:
 
@@ -3493,7 +3493,7 @@ val c = 'c'
 ```
 
 
-However, symbols are denoted with a single quote, 
+However, symbols are denoted with a single quote,
 so care must be taken not to confuse the two:
 
 
@@ -3502,7 +3502,7 @@ val sym = 'symbol
 ```
 
 
-Strings can use either double quotes, or three successive double quotes. 
+Strings can use either double quotes, or three successive double quotes.
 The first allows special characters, the second doesn't:
 
 
@@ -3517,7 +3517,7 @@ res6: java.lang.String = newline and slash: \n and \\
 ```
 
 
-However, Unicode characters are expanded wherever they happen, even inside comments. 
+However, Unicode characters are expanded wherever they happen, even inside comments.
 So, for instance:
 
 
@@ -3597,7 +3597,7 @@ var char: ch is 'z';
 
 The type [http://seed7.sourceforge.net/manual/types.htm#string string] describes sequences of Unicode characters.
 The characters in the string use the UTF-32 encoding.
-A [http://seed7.sourceforge.net/manual/tokens.htm#String_literals string literal] is a sequence of UTF-8 encoded Unicode characters surrounded by double quotes. 
+A [http://seed7.sourceforge.net/manual/tokens.htm#String_literals string literal] is a sequence of UTF-8 encoded Unicode characters surrounded by double quotes.
 
 
 ```seed7
@@ -3605,9 +3605,9 @@ var string: stri is "hello";
 ```
 
 
-This means that 'z' and "z" are different. 
+This means that 'z' and "z" are different.
 The former is a character while the latter is a string.
-Seed7 strings are not null terminated (they do not end with \0). 
+Seed7 strings are not null terminated (they do not end with \0).
 They can contain any sequence of UNICODE (UTF-32) characters (including a \0).
 Empty strings are also allowed. In order to represent non-printable characters and certain printable characters the following escape sequences may be used.
 
@@ -3758,7 +3758,7 @@ val it = "Hello world" : string
 ```
 
 
-Strings may be split across lines and concatenated 
+Strings may be split across lines and concatenated
 by having two backslashes around the newline and whitespace:
 
 ```sml
@@ -3785,7 +3785,7 @@ println(str3)
 
 ```txt
 
-Swift also supports control characters 
+Swift also supports control characters
 	Like this
 
 ```
@@ -3814,8 +3814,8 @@ puts $str ;# ==> This is Tcl $::tcl_version\tIt is [clock format [clock seconds]
 
 
 =={{header|TI-89 BASIC}}==
-Double quotes enclose strings, e.g. <code>"Hello Rosetta Code"</code>. 
-There are no escape characters. 
+Double quotes enclose strings, e.g. <code>"Hello Rosetta Code"</code>.
+There are no escape characters.
 Quotes in strings are doubled: <code>"This > "" < is one double-quote."</code>
 
 
@@ -3861,11 +3861,11 @@ The Unix shell supports several types of quotation marks:
 * backticks - Used to capture the output from an external program
 
 
-###  Quotation marks within a literal String 
+###  Quotation marks within a literal String
 
 
-It is possible to place singlequote characters within a string 
-enclosed with doublequotes and to put doublequote characters 
+It is possible to place singlequote characters within a string
+enclosed with doublequotes and to put doublequote characters
 in a string enclosed within singlequotes:
 
 ```bash
@@ -3883,11 +3883,11 @@ print "The man said \"hello\".";
 
 
 
-###  Here documents 
+###  Here documents
 
 
-The shell supports the use of here documents for the passing of quoted text as input into a command. 
-Here documents cannot be used to represent literal strings as an expression for variable assignment. 
+The shell supports the use of here documents for the passing of quoted text as input into a command.
+Here documents cannot be used to represent literal strings as an expression for variable assignment.
 
 
 ```bash
@@ -3931,7 +3931,7 @@ c = 'Hobson''s choice'
 Multi-line strings are enclosed in dash-brackets.
 
 ```Ursala
-d = 
+d =
 
 -[this is a list
 of strings]-
@@ -4046,16 +4046,16 @@ caret. For example, this assigns the ASCII value of A (hex 41) to Ch:
 
 Ch:= ^A;
 
-Strings are one-dimensional byte arrays. 
+Strings are one-dimensional byte arrays.
 For example, this assigns the address of the string enclosed in quote marks to Str:
 
 Str:= "Hello, world!";
 
-The ASCII code for each character is stored in sequential bytes. 
-By default strings are terminated with the most significant bit set 
-on the last character. 
-The exclamation point would be stored as hex A1. 
-Strings can also be terminated with a zero byte (like in the C language). 
+The ASCII code for each character is stored in sequential bytes.
+By default strings are terminated with the most significant bit set
+on the last character.
+The exclamation point would be stored as hex A1.
+Strings can also be terminated with a zero byte (like in the C language).
 If the command:
 
 string 0;
@@ -4064,7 +4064,7 @@ occurs anywhere before a string is set up then it will have an extra zero
 byte at the end.
 
 A quote mark can be included in a string by preceding it with a caret.
-Carets are also included this way. 
+Carets are also included this way.
 For example:
 
 "^"^^^" is a ^"caret^""
@@ -4073,7 +4073,7 @@ results in:
 
 "^" is a "caret"
 
-Carets can also be used to specify control characters. 
+Carets can also be used to specify control characters.
 For example, this is escape E (hex 1B C5):
 
 "^[E"
@@ -4106,7 +4106,7 @@ Double and single quote characters may also be escaped with XML entities: &amp;q
 
 ## zkl
 
-Interpreted string: "hoho". Raw string: 0'|hoho| where | is user choosen. \b, \f, \n, \r, \t, \e escapes are supported. 
+Interpreted string: "hoho". Raw string: 0'|hoho| where | is user choosen. \b, \f, \n, \r, \t, \e escapes are supported.
 Two adjacent strings are treated as one: "foo" 0'~bar~ --> "foobar".
 No variable expansion.
 

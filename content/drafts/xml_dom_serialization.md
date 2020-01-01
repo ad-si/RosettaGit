@@ -400,11 +400,11 @@ int main()
 
 
 
-## C sharp
+## C#
 
 Serialization using the built-in System.Xml.Serialization library of .Net.
 
-```csharp
+```c#
 using System.Xml;
 using System.Xml.Serialization;
 [XmlRoot("root")]

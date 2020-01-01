@@ -572,10 +572,10 @@ lcp( "foo" , "foobar" ) = foo
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace LCP {

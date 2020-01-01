@@ -672,7 +672,7 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 This C# implementation uses a class to hold the buckets and data associated with them. The ThreadSafeBuckets class implements thread-stability, and ensures that two threads cannot operate on the same data at the same time. Additionally, the class uses a seperate mutex for each bucket, allowing multiple operations to occur at once if they do not alter the same buckets.
 
@@ -681,7 +681,7 @@ I updated the original class for a few things:
  - The previous implementation tracked a "swapped" state - which seems a harder way to tackle the problem.   You need to acquire the locks in the correct order, not swap i and j
 
 
-```csharp
+```c#
 
 using System; //Rand class
 using System.Threading; //Thread, Mutex classes

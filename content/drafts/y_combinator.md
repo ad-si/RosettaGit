@@ -886,7 +886,7 @@ fib:  1 2 3 5 8 13 21 34 55
 
 
 
-## C sharp
+## C#
 
 
 Like many other statically typed languages, this involves a recursive type, and like other strict languages, it is the Z-combinator instead.
@@ -896,7 +896,7 @@ The combinator here is expressed entirely as a lambda expression and is a static
 ''Note: in the code, <code>Func<T, TResult></code> is a delegate type (the CLR equivalent of a function pointer) that has a parameter of type <code>T</code> and return type of <code>TResult</code>. See [[Higher-order functions#C#]] or [https://docs.microsoft.com/en-us/dotnet/standard/delegates-lambdas the documentation] for more information.''
 
 
-```csharp
+```c#
 using System;
 
 static class YCombinator<T, TResult>
@@ -932,7 +932,7 @@ static class Program
 
 Alternatively, with a non-generic holder class (note that <code>Fix</code> is now a method, as properties cannot be generic):
 
-```csharp
+```c#
 static class YCombinator
 {
     private delegate Func<T, TResult> RecursiveFunc<T, TResult>(RecursiveFunc<T, TResult> r);
@@ -945,7 +945,7 @@ static class YCombinator
 
 Using the late-binding offered by <code>dynamic</code> to eliminate the recursive type:
 
-```csharp
+```c#
 static class YCombinator<T, TResult>
 {
     public static Func<Func<Func<T, TResult>, Func<T, TResult>>, Func<T, TResult>> Fix { get; } =
@@ -956,7 +956,7 @@ static class YCombinator<T, TResult>
 
 The usual version using recursion, disallowed by the task (implemented as a generic method):
 
-```csharp
+```c#
 static class YCombinator
 {
     static Func<T, TResult> Fix<T, TResult>(Func<Func<T, TResult>, Func<T, TResult>> f) => x => f(Fix(f))(x);
@@ -974,7 +974,7 @@ To compare differences in language and runtime instead of in approaches to the t
 
 '''Verbatim'''
 
-```csharp
+```c#
 using Func = System.Func<int, int>;
 using FuncFunc = System.Func<System.Func<int, int>, System.Func<int, int>>;
 
@@ -1021,7 +1021,7 @@ static class Program {
 
 '''Semi-idiomatic'''
 
-```csharp
+```c#
 using System;
 
 using FuncFunc = System.Func<System.Func<int, int>, System.Func<int, int>>;
@@ -1059,7 +1059,7 @@ Since C# does not have local classes, <code>RecursiveFunc</code> and <code>y1</c
 
 '''Verbatim'''
 
-```csharp
+```c#
 using System;
 using System.Diagnostics;
 
@@ -1113,7 +1113,7 @@ class Program {
 
 '''Semi-idiomatic'''
 
-```csharp
+```c#
 using System;
 using System.Diagnostics;
 
@@ -1166,7 +1166,7 @@ static class Program {
 
 '''Verbatim'''
 
-```csharp
+```c#
 using System;
 
 // Func and FuncFunc can be defined using using aliases and the System.Func<T, TReult> type, but RecursiveFunc must be a delegate type of its own.
@@ -1215,7 +1215,7 @@ static class Program {
 
 Recursive:
 
-```csharp
+```c#
     static Func Y(FuncFunc f) {
         return delegate (int x) {
             return f(Y(f))(x);
@@ -1226,7 +1226,7 @@ Recursive:
 
 '''Semi-idiomatic'''
 
-```csharp
+```c#
 using System;
 
 delegate int Func(int i);
@@ -1255,7 +1255,7 @@ static class Program {
 
 Recursive:
 
-```csharp
+```c#
     static Func Y(FuncFunc f) => x => f(Y(f))(x);
 ```
 
@@ -1266,7 +1266,7 @@ Recursive:
 
 Since Java uses interfaces and C# uses delegates, which are the only type that the C# compiler will coerce lambda expressions to, this code declares a <code>Functions</code> class for providing a means of converting CLR delegates to objects that implement the <code>Function</code> and <code>RecursiveFunction</code> interfaces.
 
-```csharp
+```c#
 using System;
 
 static class Program {
@@ -1323,7 +1323,7 @@ static class Program {
 
 For demonstrative purposes, to completely avoid using CLR delegates, lambda expressions can be replaced with explicit types that implement the functional interfaces. Closures are thus implemented by replacing all usages of the original local variable with a field of the type that represents the lambda expression; this process, called "hoisting" is actually how variable capturing is implemented by the C# compiler (for more information, see [https://blogs.msdn.microsoft.com/abhinaba/2005/10/18/c-anonymous-methods-are-not-closures/ this Microsoft blog post].
 
-```csharp
+```c#
 using System;
 
 static class YCombinator {
@@ -1422,7 +1422,7 @@ static class YCombinator {
 
 To conclude this chain of decreasing reliance on language features, here is above code translated to C# 1.0. The largest change is the replacement of the generic interfaces with the results of manually substituting their type parameters.
 
-```csharp
+```c#
 using System;
 
 class Program {
@@ -1528,7 +1528,7 @@ class Program {
 Since C# delegates cannot declare members, extension methods are used to simulate doing so.
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1668,7 +1668,7 @@ static class Program {
 
 The more idiomatic version doesn't look much different.
 
-```csharp
+```c#
 using System;
 
 static class Program {
@@ -1695,7 +1695,7 @@ static class Program {
 
 Without recursive type:
 
-```csharp
+```c#
     public static Func<A, B> Y<A, B>(Func<Func<A, B>, Func<A, B>> f) {
         Func<dynamic, Func<A, B>> r = z => { var w = (Func<dynamic, Func<A, B>>)z; return f(_0 => w(w)(_0)); };
         return r(r);
@@ -1705,7 +1705,7 @@ Without recursive type:
 
 Recursive:
 
-```csharp
+```c#
     public static Func<In, Out> Y<In, Out>(Func<Func<In, Out>, Func<In, Out>> f) {
         return x => f(Y(f))(x);
     }

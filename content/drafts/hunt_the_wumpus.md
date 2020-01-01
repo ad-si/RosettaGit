@@ -12,16 +12,16 @@ tags = []
 
 {{task|Games}}
 {{Clarify_task}}
-Create a simple implementation of the classic textual game [http://en.wikipedia.org/wiki/Hunt_the_Wumpus Hunt The Wumpus]. 
+Create a simple implementation of the classic textual game [http://en.wikipedia.org/wiki/Hunt_the_Wumpus Hunt The Wumpus].
 
 The rules are:
 
-The game is set in a cave that consists of a 20 room labyrinth. 
-Each room is connected to 3 other rooms (the cave is modeled after the 
-vertices of a dodecahedron). 
+The game is set in a cave that consists of a 20 room labyrinth.
+Each room is connected to 3 other rooms (the cave is modeled after the
+vertices of a dodecahedron).
 The objective of the player is to find and kill the horrendous beast Wumpus that lurks in the cave.
 
-The player has 5 arrows. 
+The player has 5 arrows.
 If they run out of arrows before killing the Wumpus, the player loses the game.
 
 In the cave there are:
@@ -37,14 +37,14 @@ If the player enters a room with a giant bat, the bat takes him and transports h
 
 Each turn the player can either walk into an adjacent room or shoot into an adjacent room.
 
-Whenever the player enters a room, he "senses" what happens in adjacent rooms. 
+Whenever the player enters a room, he "senses" what happens in adjacent rooms.
 The messages are:
 
 * Nearby Wumpus: "You smell something terrible nearby."
 * Nearby bat: "You hear a rustling."
 * Nearby pit: "You feel a cold wind blowing from a nearby cavern."
 
-When the player shoots, he wins the game if he is shooting in the room with the Wumpus. 
+When the player shoots, he wins the game if he is shooting in the room with the Wumpus.
 If he shoots into another room, the Wumpus has a 75% of chance of waking up and moving into an adjacent room: if this is the room with the player, he eats him up and the game is lost.
 
 
@@ -62,7 +62,7 @@ See [[Hunt_The_Wumpus/CSharp]].
 
 I've tried to stick as closely as possible to the task description but, as some points are unclear, I've had to make the following assumptions:
 
-1. The bats and the pits are in separate rooms but the Wumpus can be in any room whether there's another hazard in it or not. 
+1. The bats and the pits are in separate rooms but the Wumpus can be in any room whether there's another hazard in it or not.
 
 2. The game starts with the player in room 1 which initially contains no hazards.
 
@@ -239,18 +239,18 @@ func main() {
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "Wumpus.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 NUMERIC RO(1 TO 20,1 TO 3),LO(1 TO 20),WPOS
 130 LET ARROWS=5:LET L=1
 140 CALL INIT
-150 DO 
+150 DO
 160   PRINT :PRINT "You are in room";L
 170   PRINT "Tunnels lead to ";RO(L,1);RO(L,2);RO(L,3)
 180   IF MON(1) THEN PRINT "You smell something terrible nearby."
 190   IF MON(2) OR MON(3) THEN PRINT "You hear a rustling."
 200   IF MON(4) OR MON(5) THEN PRINT "You feel a cold wind blowing from a nearby cavern."
 210   PRINT :PRINT "Shoot or move? (S-M)"
-220   DO 
+220   DO
 230     LET K$=UCASE$(INKEY$)
 240   LOOP UNTIL K$="S" OR K$="M"
 250   IF K$="M" THEN ! Move
@@ -258,40 +258,40 @@ func main() {
 270     LET I=VAL(I$)
 280     IF CHK(I) THEN
 290       LET L=I
-300     ELSE 
+300     ELSE
 310       PRINT "Not possibile."
-320     END IF 
+320     END IF
 330   ELSE  ! Shoot
 340     INPUT PROMPT "Where? ":I$
 350     LET I=VAL(I$)
 360     IF CHK(I) THEN
 370       IF LO(I)=1 THEN
 380         PRINT "You kill the Monster Wumpus.":PRINT "You win.":EXIT DO
-390       ELSE 
+390       ELSE
 400         PRINT "Arrows aren't that crooked - Try another room."
 410         IF RND(4)<3 THEN
 420           PRINT "You woke the Wumpus and he moved."
 430           LET LO(WPOS)=0:LET WPOS=RO(WPOS,RND(2)+1):LET LO(WPOS)=1
-440         END IF 
+440         END IF
 450         LET ARROWS=ARROWS-1
 460         IF ARROWS=0 THEN PRINT "You ran out of arrows.":EXIT DO
-470       END IF 
-480     ELSE 
+470       END IF
+480     ELSE
 490       PRINT "Not possibile."
-500     END IF 
-510   END IF 
+500     END IF
+510   END IF
 520   SELECT CASE LO(L)
 530   CASE 1
 540     PRINT "You eaten by Wumpus.":EXIT DO
 550   CASE 2,3
 560     PRINT "A giant bat takes you in another room.":LET I=L
-570     DO 
+570     DO
 580       LET L=RND(19)+1
 590     LOOP UNTIL I<>L
 600   CASE ELSE
-610   END SELECT 
+610   END SELECT
 620   IF LO(L)=4 OR LO(L)=5 THEN PRINT "You fall into a bottomless pit.":EXIT DO
-630 LOOP 
+630 LOOP
 640 DEF MON(X)=X=LO(RO(L,1)) OR X=LO(RO(L,2)) OR X=LO(RO(L,3))
 650 DEF CHK(X)=X=RO(L,1) OR X=RO(L,2) OR X=RO(L,3)
 660 DEF INIT
@@ -300,16 +300,16 @@ func main() {
 690     LET LO(I)=0
 700     FOR J=1 TO 3
 710       READ RO(I,J)
-720     NEXT 
-730   NEXT 
+720     NEXT
+730   NEXT
 740   LET WPOS=RND(19)+2:LET LO(WPOS)=1
 750   FOR I=2 TO 5
-760     DO 
+760     DO
 770       LET T=RND(19)+2
 780     LOOP UNTIL LO(T)=0
 790     LET LO(T)=I
-800   NEXT 
-810 END DEF 
+800   NEXT
+810 END DEF
 820 DATA 2,6,5,3,8,1,4,10,2,5,2,3,1,14,4,15,1,7,17,6,8,7,2,9,18,8,10,9,3,11
 830 DATA 19,10,12,11,4,13,20,12,14,5,11,13,6,16,14,20,15,17,16,7,18,17,9,19,18,11,20,19,13,16
 ```
@@ -413,7 +413,7 @@ function wumpushunt(cheatmode = false)
     function senseroom(p)
         linkedrooms = rooms[p]
         if cheatmode
-            println("linked rooms are $(rooms[p]), which have $(roomcontents[rooms[p][1]]), 
+            println("linked rooms are $(rooms[p]), which have $(roomcontents[rooms[p][1]]),
                 $(roomcontents[rooms[p][2]]), $(roomcontents[rooms[p][3]])")
         end
         if any(x -> roomcontents[x] == "Wumpus", linkedrooms)
@@ -582,21 +582,21 @@ Module WumpusGame {
                   }
             } Else.if a$="T" Then {
                   Arrows--
-                  Print "Choose Tunnel to Throw Arrow: 1, 2  or 3"      
+                  Print "Choose Tunnel to Throw Arrow: 1, 2  or 3"
                   r=Val("0"+Key$)-1
                   if r>=0 and r<=2 then {
                         i=room(PlayerPos)
                         If Content(Array(i, r))=Wumpus then {
                               Done=True
                       } Else.if random(1,4)<4 then WakeWumpus()
-                  }            
+                  }
             } Else.if a$="G" Then {
                    Arrows=0
             } Else.if a$="H" Then Help~
       }
       If Done then Print "You kill the Monster Wumpus; You Win.": Exit
       Print "You loose."
-      
+
       Sub TranspotPlayer()
             local r=random(1,20)
             While Content(r)<>EmptyRoom {r=random(1,20)}
@@ -632,7 +632,7 @@ Module WumpusGame {
             If Wumpus_near Then Print "You smell something terrible nearby."
             If bat_near Then Print "You hear a rustling."
             if pit_near Then Print "You feel a cold wind blowing from a nearby cavern."
-      End Sub    
+      End Sub
 }
 WumpusGame
 
@@ -654,7 +654,7 @@ See [[Hunt_The_Wumpus/Phix]].
 ## Prolog
 
 
-Prolog package available here:  
+Prolog package available here:
 
 https://github.com/jburse/jekejeke-samples/raw/master/pack/games/wumpus-1.0.0.zip
 
@@ -1043,7 +1043,7 @@ write(' PIT   -  ''I FEEL A DRAFT'''), nl, nl.
 ## Python
 
 
-This implementation of "Hunt the Wumpus" follows is based on the rules of the original game (see discussion page for more information). It uses python 3 syntax and the standard library random. 
+This implementation of "Hunt the Wumpus" follows is based on the rules of the original game (see discussion page for more information). It uses python 3 syntax and the standard library random.
 
 
 ```python
@@ -1054,7 +1054,7 @@ class WumpusGame(object):
 
 
 	def __init__(self, edges=[]):
-		
+
 		# Create arbitrary caves from a list of edges (see the end of the script for example).
 		if edges:
 			cave = {}
@@ -1066,9 +1066,9 @@ class WumpusGame(object):
 		# If no edges are specified, play in the standard cave: a dodecahedron.
 		else:
 			cave = {1: [2,3,4], 2: [1,5,6], 3: [1,7,8], 4: [1,9,10], 5:[2,9,11],
-				6: [2,7,12], 7: [3,6,13], 8: [3,10,14], 9: [4,5,15], 10: [4,8,16], 
-				11: [5,12,17], 12: [6,11,18], 13: [7,14,18], 14: [8,13,19], 
-				15: [9,16,17], 16: [10,15,19], 17: [11,20,15], 18: [12,13,20], 
+				6: [2,7,12], 7: [3,6,13], 8: [3,10,14], 9: [4,5,15], 10: [4,8,16],
+				11: [5,12,17], 12: [6,11,18], 13: [7,14,18], 14: [8,13,19],
+				15: [9,16,17], 16: [10,15,19], 17: [11,20,15], 18: [12,13,20],
 				19: [14,16,20], 20: [17,18,19]}
 
 		self.cave = cave
@@ -1104,25 +1104,25 @@ class WumpusGame(object):
 
 
 	def breadth_first_search(self, source, target, max_depth=5):
-		""" The game board (whether custom or standard dodecahedron) is an undirected graph. 
-			The rooms are the vertices and the tunnels are the edges of this graph. To find 
-			out whether a target room can be reached from a source room using a given amount 
+		""" The game board (whether custom or standard dodecahedron) is an undirected graph.
+			The rooms are the vertices and the tunnels are the edges of this graph. To find
+			out whether a target room can be reached from a source room using a given amount
 			of tunnels, one can do a breadth first search on the underlying undirected graph.
 
-			BFS works like this: start with the source vertex, maybe it is already the target? 
-			If not, then go a level deeper and find out, if one of the children (also called 
-			successors) of the source vertex is the wanted target. If not, then for each child, 
-			go a level deeper and find out if one of the grand-children is the wanted target. 
-			If not, then for each grand-child go a level deeper and so on. 
+			BFS works like this: start with the source vertex, maybe it is already the target?
+			If not, then go a level deeper and find out, if one of the children (also called
+			successors) of the source vertex is the wanted target. If not, then for each child,
+			go a level deeper and find out if one of the grand-children is the wanted target.
+			If not, then for each grand-child go a level deeper and so on.
 
-			The following is a recursive implementation of BFS. You will not find any loops 
-			(for, while). Instead you manage two lists. The first one ('stack') contains all 
-			the vertices of the current depth-level (e.g. all grand children). The second 
-			('visited') contains all vertices that you already checked. Now there are three 
+			The following is a recursive implementation of BFS. You will not find any loops
+			(for, while). Instead you manage two lists. The first one ('stack') contains all
+			the vertices of the current depth-level (e.g. all grand children). The second
+			('visited') contains all vertices that you already checked. Now there are three
 			possibilites: Either stack is empty, then all vertices have been checked unsuccessfully;
-			or the target vertex is a member of the stack, then you are happy; or the target is 
-			not a member of the stack, but there are still some vertices that you did not visit, 
-			then you append to the stack, all successors of the members of the stack and the old 
+			or the target vertex is a member of the stack, then you are happy; or the target is
+			not a member of the stack, but there are still some vertices that you did not visit,
+			then you append to the stack, all successors of the members of the stack and the old
 			stack now belongs to the visited vertices.
 		"""
 		# Set up some initial values.
@@ -1215,9 +1215,9 @@ class WumpusGame(object):
 
 	def enter_room(self, room_number):
 		""" Controls the process of entering a new room.
-		"""	
+		"""
 		print("Entering room {}...".format(room_number))
-		# Maybe a threat waits in the new room.	
+		# Maybe a threat waits in the new room.
 		if self.threats.get(room_number) == 'bat':
 			# The bat teleports the player to random empty room
 			print("You encounter a bat, it transports you to a random empty room.")
@@ -1246,7 +1246,7 @@ class WumpusGame(object):
 		self.arrows -= 1
 		threat = self.threats.get(room_number)
 		if threat in ['bat', 'wumpus']:
-			del self.threats[room_number]		
+			del self.threats[room_number]
 			if threat == 'wumpus':
 				print("Hurra, you killed the wumpus!")
 				return -1
@@ -1254,7 +1254,7 @@ class WumpusGame(object):
 				print("You killed a bat.")
 		elif threat in ['pit', None]:
 			print("This arrow is lost.")
-		
+
 		# If this was your last arrow and it did not hit the wumpus...
 		if self.arrows < 1:		# This (or the updating of self.arrows) seems to be broken...
 			print("Your quiver is empty.")
@@ -1265,17 +1265,17 @@ class WumpusGame(object):
 			#print("DEBUG: Wumpus moved.")
 			for room_number, threat in self.threats.items():
 				if threat == 'wumpus':
-					wumpus_pos = room_number					
+					wumpus_pos = room_number
 			new_pos = random.choice(list(set(self.cave[wumpus_pos]).difference(self.threats.keys())))
 			del self.threats[room_number]
-			self.threats[new_pos] = 'wumpus'			
+			self.threats[new_pos] = 'wumpus'
 			if new_pos == self.player_pos: # Wumpus entered players room.
 				print("Wumpus enters your room and eats you!")
 				return -1
 
 		return self.player_pos
 
-		
+
 	def gameloop(self):
 
 		print("HUNT THE WUMPUS")
@@ -1288,18 +1288,18 @@ class WumpusGame(object):
 
 		while 1:
 
-			#print("DEBUG: Your quiver holds {} arrows.".format(self.arrows))			
-			#print("DEBUG: Rooms with no threats are: {}.".format(self.get_safe_rooms()))			
+			#print("DEBUG: Your quiver holds {} arrows.".format(self.arrows))
+			#print("DEBUG: Rooms with no threats are: {}.".format(self.get_safe_rooms()))
 			#print("DEBUG: Threats are located in the following rooms: {}".format(self.threats))
 
 			print("You are in room {}.".format(self.player_pos), end=" ")
 			print("Tunnels lead to:  {0}  {1}  {2}".format(*self.cave[self.player_pos]))
-			
-			
+
+
 			inpt = self.get_players_input()		# Player choses move or shoot.
 			print()								# Visual separation of rounds.
 			if inpt[0] == 'm':					# Move.
-				target = inpt[1] 
+				target = inpt[1]
 				self.player_pos = self.enter_room(target)
 			elif inpt[0] == 's':				# Shoot.
 				target = inpt[1]
@@ -1309,16 +1309,16 @@ class WumpusGame(object):
 
 			if self.player_pos == -1:			# E.g. Deadly threat, quiver empty, etc.
 				break							# If any of the game loosing conditions are True,
-												# then player_pos will be -1. 
+												# then player_pos will be -1.
 
 		print()
-		print("Game over!")	
-		
+		print("Game over!")
 
-if __name__ == '__main__':						
+
+if __name__ == '__main__':
 	# Only executed if you start this script as the main script,
 	# i.e. you enter 'python path/to/wumpus.py' in a terminal.
-	# Assuming you saved the script in the directory 'path/to' 
+	# Assuming you saved the script in the directory 'path/to'
 	# and named it 'wumpus.py'.
 
 	# TODO: In the original game you can replay a dungeon (same positions of you and the threats)
@@ -1364,7 +1364,7 @@ To create an example for a valid edge list, navigate to the folder where you sav
 >>> WG = wumpus.WumpusGame()
 >>> edges = [[i, WG.cave[i][j]] for i in WG.cave.keys() for j in range(len(WG.cave[i]))]
 >>> print edges
-[[1,2], [1,3], [1,4], [2,1], [2,5], [2,6], [3,1], ...] 
+[[1,2], [1,3], [1,4], [2,1], [2,5], [2,6], [3,1], ...]
 
 ```
 
@@ -1531,7 +1531,7 @@ To create an example for a valid edge list, navigate to the folder where you sav
     (displayln "You hear a rustling."))
   (when (pit-nearby? (game-state-player-location current-game-state) current-game-state)
     (displayln "You feel a cold wind blowing from a nearby cavern.")))
-         
+
 (define (display-room-numbers lst)
   (display (string-join (map number->string lst) ", " #:before-last " or " #:after-last ".")))
 

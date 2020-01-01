@@ -384,7 +384,7 @@ x% = !y%
 With BBC BASIC on other platforms the address of a variable can be found by calling a short piece of machine code, see [http://beebwiki.mdfs.net/Address_of_a_variable BeebWiki].
 
 
-## C sharp
+## C#
 
 
 Use of pointers in C# is restricted to <code>unsafe</code> sections of code, which is enabled in Microsoft's C# compiler with the commandline parameter <code>/unsafe</code> or in Mono's C# compiler with <code>-unsafe</code> (or <code>--unsafe</code> in older versions).
@@ -395,7 +395,7 @@ Use of pointers in C# is restricted to <code>unsafe</code> sections of code, whi
 Note that void* is a "pure" address which doesn't carry the type information anymore. If you need the type information (e.g. to recover the variable itself in a type safe manner), use a pointer to the appropriate type instead; in this case int*.
 
 
-```csharp
+```c#
 unsafe
 {
   int i = 5;

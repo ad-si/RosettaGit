@@ -139,10 +139,10 @@ end Sort_List_Identifiers;
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Collections.Generic;

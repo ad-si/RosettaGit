@@ -22,11 +22,11 @@ The goal is to get the properties of an object, as names, values or both.
 Some languages support dynamic properties, which in general can only be inspected if a class' public API includes a way of listing them.
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,10 +49,10 @@ public static class Reflection
         from p in typeof(T).GetProperties(flags)
         where p.GetIndexParameters().Length == 0 //To filter out indexers
         select (p.Name, p.GetValue(obj, null));
-    
+
     public static IEnumerable<(string name, object value)> GetFieldValues<T>(T obj, BindingFlags flags) =>
         typeof(T).GetFields(flags).Select(f => (f.Name, f.GetValue(obj)));
-    
+
     class TestClass
     {
         private int privateField = 7;
@@ -85,22 +85,22 @@ ELENA 4.1 :
 import system'routines;
 import system'dynamic;
 import extensions;
- 
+
 class MyClass
 {
     prop int X;
     prop string Y;
 }
- 
+
 public program()
 {
     var o := new MyClass::
     {
         this X := 2;
- 
+
         this Y := "String";
     };
- 
+
     MyClass.__getProperties().forEach:(p)
     {
         console.printLine("o.",p,"=",cast MessageName(p).getPropertyValue(o))
@@ -222,13 +222,13 @@ func report(x interface{}) {
 
 Type main.t has 2 fields:
 Name     Type     Exported
-X        int      true    
-next     *main.t  false   
+X        int      true
+next     *main.t  false
 
 Type image.Point has 2 fields:
 Name     Type     Exported
-X        int      true    
-Y        int      true    
+X        int      true
+Y        int      true
 
 ```
 
@@ -299,7 +299,7 @@ import java.lang.reflect.Field;
 public class ListFields {
     public int examplePublicField = 42;
     private boolean examplePrivateField = true;
-    
+
     public static void main(String[] args) throws IllegalAccessException {
         ListFields obj = new ListFields();
         Class clazz = obj.getClass();
@@ -575,8 +575,8 @@ exampleProperty	Td,N,V_exampleProperty	3.14
 ## ooRexx
 
 Whereas in PL/I variables habe a (declared) type, in REXX and ooRexx a "typeless" variable
-can be assigned a string or object, respectively. 
-  
+can be assigned a string or object, respectively.
+
 The datatype builtin function can be used to determine the data type of a given string.
 
 Many of these options are also supported by other REXX implementations.
@@ -792,21 +792,21 @@ Get-Date | Get-Member -MemberType Property
 
    TypeName: System.DateTime
 
-Name        MemberType Definition                       
-----        ---------- ----------                       
-Date        Property   datetime Date {get;}             
-Day         Property   int Day {get;}                   
+Name        MemberType Definition
+----        ---------- ----------
+Date        Property   datetime Date {get;}
+Day         Property   int Day {get;}
 DayOfWeek   Property   System.DayOfWeek DayOfWeek {get;}
-DayOfYear   Property   int DayOfYear {get;}             
-Hour        Property   int Hour {get;}                  
-Kind        Property   System.DateTimeKind Kind {get;}  
-Millisecond Property   int Millisecond {get;}           
-Minute      Property   int Minute {get;}                
-Month       Property   int Month {get;}                 
-Second      Property   int Second {get;}                
-Ticks       Property   long Ticks {get;}                
-TimeOfDay   Property   timespan TimeOfDay {get;}        
-Year        Property   int Year {get;}                  
+DayOfYear   Property   int DayOfYear {get;}
+Hour        Property   int Hour {get;}
+Kind        Property   System.DateTimeKind Kind {get;}
+Millisecond Property   int Millisecond {get;}
+Minute      Property   int Minute {get;}
+Month       Property   int Month {get;}
+Second      Property   int Second {get;}
+Ticks       Property   long Ticks {get;}
+TimeOfDay   Property   timespan TimeOfDay {get;}
+Year        Property   int Year {get;}
 
 ```
 
@@ -824,17 +824,17 @@ Get-Date | Get-Member -MemberType Method -Name Add*
 
    TypeName: System.DateTime
 
-Name            MemberType Definition                            
-----            ---------- ----------                            
-Add             Method     datetime Add(timespan value)          
-AddDays         Method     datetime AddDays(double value)        
-AddHours        Method     datetime AddHours(double value)       
+Name            MemberType Definition
+----            ---------- ----------
+Add             Method     datetime Add(timespan value)
+AddDays         Method     datetime AddDays(double value)
+AddHours        Method     datetime AddHours(double value)
 AddMilliseconds Method     datetime AddMilliseconds(double value)
-AddMinutes      Method     datetime AddMinutes(double value)     
-AddMonths       Method     datetime AddMonths(int months)        
-AddSeconds      Method     datetime AddSeconds(double value)     
-AddTicks        Method     datetime AddTicks(long value)         
-AddYears        Method     datetime AddYears(int value)          
+AddMinutes      Method     datetime AddMinutes(double value)
+AddMonths       Method     datetime AddMonths(int months)
+AddSeconds      Method     datetime AddSeconds(double value)
+AddTicks        Method     datetime AddTicks(long value)
+AddYears        Method     datetime AddYears(int value)
 
 ```
 
@@ -848,13 +848,13 @@ The <code>[https://docs.python.org/3.5/library/functions.html#dir dir()]</code> 
 ```python
 class Parent(object):
     __priv = 'private'
-    
+
     def __init__(self, name):
         self.name = name
-    
+
     def __repr__(self):
         return '%s(%s)' % (type(self).__name__, self.name)
-    
+
     def doNothing(self):
         pass
 
@@ -868,11 +868,11 @@ class Child(Parent):
     @property
     def reBleh(self):
         return self.__reBleh
-    
+
     def __init__(self, name, *args):
         super(Child, self).__init__(name)
         self.args = args
-    
+
     def __dir__(self):
         myDir = filter(
             # filter out private fields
@@ -889,7 +889,7 @@ class Child(Parent):
                 # don't add dynamic properties for methods and other special properties
                 lambda p: (p[:2] != '__' or p[-2:] != '__') and not callable(getattr(self, p)),
                 myDir))
-    
+
     def __getattr__(self, name):
         if name[-5:] == '_bleh':
             # dynamic '_bleh' properties
@@ -897,7 +897,7 @@ class Child(Parent):
         if hasattr(super(Child, chld), '__getattr__'):
             return super(Child, self).__getattr__(name)
         raise AttributeError("'%s' object has no attribute '%s'" % (type(self).__name__, name))
-    
+
     def __setattr__(self, name, value):
         if name[-5:] == '_bleh':
             # skip backing properties that are methods
@@ -907,10 +907,10 @@ class Child(Parent):
             super(Child, self).__setattr__(name, value)
         elif hasattr(self, '__dict__'):
             self.__dict__[name] = value
-    
+
     def __repr__(self):
         return '%s(%s, %s)' % (type(self).__name__, self.name, str(self.args).strip('[]()'))
-    
+
     def doStuff(self):
         return (1+1.0/1e6) ** 1e6
 

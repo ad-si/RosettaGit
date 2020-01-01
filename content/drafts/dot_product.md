@@ -704,9 +704,9 @@ dot_product(int *a, int *b, size_t n)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 static void Main(string[] args)
 {
 	Console.WriteLine(DotProduct(new decimal[] { 1, 3, -5 }, new decimal[] { 4, -2, -1 }));
@@ -743,7 +743,7 @@ private static decimal DotProduct(decimal[] vec1, decimal[] vec2)
 ===Alternative using Linq (C# 4)===
 {{works with|C sharp|C#|4}}
 
-```csharp
+```c#
 public static decimal DotProduct(decimal[] a, decimal[] b) {
     return a.Zip(b, (x, y) => x * y).Sum();
 }

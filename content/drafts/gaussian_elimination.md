@@ -558,7 +558,7 @@ int main(void)
 
 This modifies A and b in place, which might not be quite desirable.
 
-```csharp
+```c#
 
 using System;
 
@@ -738,7 +738,7 @@ namespace Rosetta
 ```
 
 
-```csharp
+```c#
 
 using System;
 

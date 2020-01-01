@@ -552,10 +552,10 @@ one^|uno||three^^^^|four^^^|^cuatro|
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Text;
 using System.Collections.Generic;

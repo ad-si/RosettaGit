@@ -730,9 +730,9 @@ unsigned long from_base(std::string const& num_str, int base)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```CSharp
+```c#
 
 public static class BaseConverter {
 

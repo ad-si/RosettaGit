@@ -489,12 +489,12 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### Using Linq
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -530,7 +530,7 @@ class Program
 
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

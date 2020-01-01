@@ -758,10 +758,10 @@ Ordinal Rank
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

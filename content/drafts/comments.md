@@ -802,10 +802,10 @@ The fact that the newline is ''not'' part of the comment is important for multi-
 
 the line <tt>(no more macro text)</tt> is ''not'' part of the macro definition. Also escaping the line break at the end of the comment with '\' doesn't help, because that would make the third line part of the ''comment'' instead. Comments inside macros therefore have to be C-style.
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 //This is a comment.
 //This is other comment.
 

@@ -26,7 +26,7 @@ jortSort is a function that takes a single array of comparable objects as its ar
 with Ada.Text_IO, Ada.Containers.Generic_Array_Sort;
 
 procedure Jortsort is
-   
+
    function Jort_Sort(List: String) return Boolean is
       procedure Sort is new Ada.Containers.Generic_Array_Sort
 	(Positive, Character, Array_Type => String);
@@ -35,7 +35,7 @@ procedure Jortsort is
       Sort(Second_List);
       return Second_List = List;
    end Jort_Sort;
-   
+
    use Ada.Text_IO;
 begin
    Put_Line("""abbigail"" sorted: " & Boolean'Image(Jort_Sort("abbigail")));
@@ -162,7 +162,7 @@ int main(int argc, char* argv[])
 #include <algorithm>
 #include <string>
 #include <iostream>
-#include <iterator> 
+#include <iterator>
 
 class jortSort {
 public:
@@ -237,10 +237,10 @@ A 5 D R S : -> The array is not sorted!
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|JavaScript}}
 
-```csharp
+```c#
 using System;
 
 class Program
@@ -359,10 +359,10 @@ USING: kernel sorting ;
 
 Sub quicksort(a() As Integer, first As Integer, last As Integer)
   Dim As Integer length = last - first + 1
-  If length < 2 Then Return 
+  If length < 2 Then Return
   Dim pivot As Integer = a(first + length\ 2)
-  Dim lft As Integer = first 
-  Dim rgt As Integer = last 
+  Dim lft As Integer = first
+  Dim rgt As Integer = last
   While lft <= rgt
     While a(lft) < pivot
       lft +=1
@@ -374,7 +374,7 @@ Sub quicksort(a() As Integer, first As Integer, last As Integer)
        Swap a(lft), a(rgt)
        lft += 1
        rgt -= 1
-    End If 
+    End If
   Wend
   quicksort(a(), first, rgt)
   quicksort(a(), lft, last)
@@ -386,7 +386,7 @@ Function jortSort(a() As Integer) As Boolean
   Dim ub As Integer = UBound(a)
   Dim b(lb To ub) As Integer
   ' this could be done more quickly using memcpy
-  ' but we just copy element by element here 
+  ' but we just copy element by element here
   For i As Integer = lb To ub
     b(i) = a(i)
   Next
@@ -443,7 +443,7 @@ import (
 
 func main() {
   log.Println(jortSort([]int{1, 2, 1, 11, 213, 2, 4})) //false
-  log.Println(jortSort([]int{0, 1, 0, 0, 0, 0}))       //false 
+  log.Println(jortSort([]int{0, 1, 0, 0, 0, 0}))       //false
   log.Println(jortSort([]int{1, 2, 4, 11, 22, 22}))    //true
   log.Println(jortSort([]int{0, 0, 0, 1, 2, 2}))       //true
 }
@@ -857,7 +857,7 @@ Do i=2 To words(list)
   If word(list,i)<<word(list,i-1) Then
     Leave
   End
-Return (i=words(list)+1)|(list='')  
+Return (i=words(list)+1)|(list='')
 
 ```
 
@@ -997,18 +997,18 @@ False
 
 ```purebasic
 Macro isSort(liste)
-  If OpenConsole()    
+  If OpenConsole()
     Print("[ ") : ForEach liste : Print(liste+Space(1)) : Next : Print("] = ")
     If jortSort(liste) : PrintN("True") : Else : PrintN("False") : EndIf
-  EndIf  
+  EndIf
 EndMacro
 
 Procedure.b jortSort(List jortS.s())
   NewList cpy.s() : CopyList(jortS(),cpy()) : SortList(cpy(),#PB_Sort_Ascending)
-  ForEach jortS()    
+  ForEach jortS()
     SelectElement(cpy(),ListIndex(jortS()))
     If Not jortS()=cpy() : ProcedureReturn #False : EndIf
-  Next  
+  Next
   ProcedureReturn #True
 EndProcedure
 
@@ -1041,7 +1041,7 @@ jortsort(['a', 'c']) is True
 jortsort(['s', 'u', 'x']) is True
 jortsort('CVGH') is False
 jortsort('PQRST') is True
->>> 
+>>>
 ```
 
 
@@ -1087,7 +1087,7 @@ REXX has no built-in sort, so an   ''exchange sort''   is included here.
 The array elements (items) may be any form of number that REXX supports, and/or they can be alphabetic characters.
 
 ### using sort
- 
+
 
 ```rexx
 /*REXX program  verifies  that  an array  is sorted  using  a   jortSort   algorithm.   */
@@ -1127,7 +1127,7 @@ The array is not sorted.
 
 ```
 
-'''output'''   when using the input:   <tt>   0   -0   +0   0.0e-9   1   01   001   +1   1.0   1e8 </tt> 
+'''output'''   when using the input:   <tt>   0   -0   +0   0.0e-9   1   01   001   +1   1.0   1e8 </tt>
 
 ```txt
 
@@ -1136,7 +1136,7 @@ The array is sorted.
 
 ```
 
-'''output'''   when using the input:   <tt> cat dog eye fox gnu hog pig wombat something </tt> 
+'''output'''   when using the input:   <tt> cat dog eye fox gnu hog pig wombat something </tt>
 
 ```txt
 
@@ -1151,7 +1151,7 @@ The array is not sorted.
 
 In the   ''' http://jort.technology/ '''   webpage, the   '''jortSort'''   is defined as:
 
-jortSort checks if your inputs are sorted. 
+jortSort checks if your inputs are sorted.
 
 Nothing is mentioned how it does this, and it certainly doesn't say that it sorts the input to verify if it's in order.
 
@@ -1173,7 +1173,7 @@ jortSort: parse arg x
           return 1                                                /*array  is    sorted.*/
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> REXX version. 
+'''output'''   is the same as the 1<sup>st</sup> REXX version.
 
 
 
@@ -1192,7 +1192,7 @@ func jortSort array
      for i= 1 to len(originalArray)
          if originalArray[i] != array[i] return false ok
      next
-     return true  
+     return true
 
 ```
 
@@ -1215,12 +1215,12 @@ def jort_sort(array)
   # sort the array
   original_array = array.dup
   array.sort!
- 
+
   # compare to see if it was originally sorted
   original_array.length.times do |i|
     return false if original_array[i] != array[i]
   end
- 
+
   true
 end
 ```
@@ -1238,7 +1238,7 @@ fn jort_sort<T: Ord + Eq + Clone>(array: Vec<T>) -> bool {
     // sort the array
     let mut sorted_array = array.to_vec();
     sorted_array.sort();
-    
+
     // compare to see if it was originally sorted
     for i in 0..array.len() {
         if array[i] != sorted_array[i] {
@@ -1324,16 +1324,16 @@ There are a couple of limitations that make the program less useful than it woul
 
 ```Swift>func jortSort<T:Comparable
 (inout array: [T]) -> Bool {
- 
+
     // sort the array
     let originalArray = array
     array.sort({$0 < $1})
- 
+
     // compare to see if it was originally sorted
     for var i = 0; i < originalArray.count; ++i {
         if originalArray[i] != array[i] { return false }
     }
- 
+
     return true
 }
 ```

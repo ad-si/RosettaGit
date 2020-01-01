@@ -575,9 +575,9 @@ Code unstripped:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```Csharp
+```c#
 using System;
 
     class Program

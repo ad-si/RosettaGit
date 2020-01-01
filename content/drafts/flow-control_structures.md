@@ -577,14 +577,14 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
 ### return
 
 terminates the function and returns control to the caller.
 
-```csharp
+```c#
 int GetNumber() {
     return 5;
 }
@@ -596,7 +596,7 @@ int GetNumber() {
 throws (or rethrows) an exception. Control is transferred to the nearest catch block capable of catching the exception.<br/>
 A <code>finally</code> block is always executed before control leaves the <code>try</code> block.
 
-```csharp
+```c#
 try {
     if (someCondition) {
         throw new Exception();
@@ -614,7 +614,7 @@ try {
 
 In a generator method, <code>yield return</code> causes the method to return elements one at a time. To make this work, the compiler creates a state machine behind the scenes. <code>yield break</code> terminates the iteration.
 
-```csharp
+```c#
 public static void Main() {
     foreach (int n in Numbers(i => i >= 2) {
         Console.WriteLine("Got " + n);
@@ -646,7 +646,7 @@ Got 1
 
 is used to wait for an asynchronous operation (usually a Task) to complete. If the operation is already completed when <code>await</code> is encountered, the method will simply continue to execute. If the operation is not completed yet, the method will be suspended. A continuation will be set up to execute the rest of the method at a later time. Then, control will be returned to the caller.
 
-```csharp
+```c#
 async Task DoStuffAsync() {
     DoSomething();
     await someOtherTask;//returns control to caller if someOtherTask is not yet finished.
@@ -666,7 +666,7 @@ async Task DoStuffAsync() {
 <code>goto Label;</code> will cause control to jump to the statement with the corresponding label. This can be a <code>case</code> label inside a <code>switch</code>.<br/>
 Because the label must be in scope, <code>goto</code> cannot jump inside of a loop.
 
-```csharp
+```c#
 while (conditionA) {
     for (int i = 0; i < 10; i++) {
         if (conditionB) goto NextSection;

@@ -564,10 +564,10 @@ The longest common path of the given directories is /home/user1/tmp!
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

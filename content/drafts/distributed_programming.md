@@ -236,11 +236,11 @@ pvm> [2:t40029] EOF
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Start the program with "server" parameter to start the server, and "client" to start the client. The client will send data to the server and receive a response. The server will wait for data, display the data received, and send a response.
 
 
-```csharp
+```c#
 
 using System;
 using System.IO;

@@ -14,11 +14,11 @@ tags = []
 [[Category:Puzzles]]
 
 ;Task:
-Given a jumbled list of the numbers '''1''' to '''9''' that are definitely ''not'' in 
+Given a jumbled list of the numbers '''1''' to '''9''' that are definitely ''not'' in
 ascending order.
 
-Show the list,   and then ask the player how many digits from the 
-left to reverse. 
+Show the list,   and then ask the player how many digits from the
+left to reverse.
 
 Reverse those digits,   then ask again,   until all the digits end up in ascending order.
 
@@ -46,12 +46,12 @@ Note: Assume the player's input does not need extra validation.
 with Ada.Text_Io; use Ada.Text_Io;
 with Ada.Integer_Text_Io; use Ada.Integer_Text_Io;
 with Ada.Numerics.Discrete_Random;
- 
+
 procedure NumberReverse is
- 
+
    subtype RandRange is Integer range 1..9;
    type NumArrayType is array (Integer range 1..9) of Integer;
- 
+
    package RandNumbers is new Ada.Numerics.Discrete_Random(RandRange);
    use RandNumbers;
 
@@ -69,7 +69,7 @@ procedure NumberReverse is
          A(Temp) := I;
       end loop;
    end FillArray;
- 
+
    procedure Put(A : in NumArrayType) is
    begin
       for I in 1..9 loop
@@ -77,14 +77,14 @@ procedure NumberReverse is
          Put(" ");
       end loop;
    end Put;
- 
+
    procedure Prompt (Index : out Integer) is
    begin
       New_Line;
       Put("How many numbers would you like to reverse: ");
       Get(Index);
    end Prompt;
- 
+
    procedure ReverseArray(Arr : in out NumArrayType;
                           Index : in Integer) is
       Temp : RandRange;
@@ -95,7 +95,7 @@ procedure NumberReverse is
          Arr(Index + 1 - I) := Temp;
       end loop;
    end ReverseArray;
- 
+
    Sorted : constant NumArrayType := (1,2,3,4,5,6,7,8,9);
    Arr    : NumArrayType;
    Index  : Integer;
@@ -115,7 +115,7 @@ begin
    end loop;
    Put(Arr);
    New_Line;
-   Put("Congratulations! You win. It took " & 
+   Put("Congratulations! You win. It took " &
          Integer'Image(Count) & " tries.");
 end NumberReverse;
 
@@ -433,7 +433,7 @@ end
 
 Dada una lista aleatoria de numeros del 1 al 9,
 indica cuantos digitos de la izquierda voltear.
- El objetivo es obtener los digitos en orden 
+ El objetivo es obtener los digitos en orden
  con el 1 a la izquierda y el 9 a la derecha.
 
  0: 2 1 4 3 5 9 8 6 7   -- Cuantos volteamos 6
@@ -446,7 +446,7 @@ indica cuantos digitos de la izquierda voltear.
  7: 2 1 4 3 5 6 7 8 9   -- Cuantos volteamos 3
  8: 4 1 2 3 5 6 7 8 9   -- Cuantos volteamos 4
  9: 3 2 1 4 5 6 7 8 9   -- Cuantos volteamos 3
-10: 1 2 3 4 5 6 7 8 9 
+10: 1 2 3 4 5 6 7 8 9
 
    Necesitaste 10 intentos.
 
@@ -464,7 +464,7 @@ Note that I did not use the FOR command for looping. I used Batch File labels in
 ::Number Reversal Game Task from Rosetta Code Wiki
 ::Batch File Implementation
 ::
-::Please do not open this from command prompt. 
+::Please do not open this from command prompt.
 ::Directly Open the Batch File to play...
 ::
 
@@ -503,7 +503,7 @@ set /p move=How many digits from the left should I reverse?
 
 ::Reverse digits according to the player's input
 ::NOTE: The next command uses the fact that in Batch File,
-::The output for the division operation is only the integer part of the quotient. 
+::The output for the division operation is only the integer part of the quotient.
 set /a lim=(%move%+1)/2
 
 set cyc2=1
@@ -584,7 +584,7 @@ Note the use of the MOD(array()) function to test the equality of two arrays.
       DIM list%(8), done%(8), test%(8)
       list%() = 1, 2, 3, 4, 5, 6, 7, 8, 9
       done%() = list%()
-      
+
       REM Shuffle:
       REPEAT
         FOR i% = 9 TO 2 STEP -1
@@ -592,7 +592,7 @@ Note the use of the MOD(array()) function to test the equality of two arrays.
         NEXT
         test%() = list%() - done%()
       UNTIL MOD(test%()) <> 0
-      
+
       REM Run the game:
       tries% = 0
       REPEAT
@@ -604,7 +604,7 @@ Note the use of the MOD(array()) function to test the equality of two arrays.
       UNTIL MOD(test%()) = 0
       PRINT "You took " ; tries% " attempts."
       END
-      
+
       DEF PROCreverse(a%(), n%)
       IF n% < 2 ENDPROC
       LOCAL i%
@@ -751,10 +751,10 @@ int check_array(int *arr, int len)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 C# 3.0
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -791,7 +791,7 @@ class Program
 
 C# 1.0
 
-```csharp
+```c#
 class Program
 {
 	static void Main(string[] args)
@@ -846,7 +846,7 @@ class Program
 		Console.Read();
 	}
 
-	public static bool check(int[] p) 
+	public static bool check(int[] p)
 	{
 		// Check all items
 		for (int x = 0; x < p.Length - 1; x++)
@@ -927,7 +927,7 @@ void number_reversal_game()
 This uses the same helper functions as the C version.
 
 
-###  Alternate version using the C++ standard library 
+###  Alternate version using the C++ standard library
 
 This version uses the C++ standard library (note that none of the C helper functions are needed).
 
@@ -1004,9 +1004,9 @@ int main()
     (printf "Done! That took you %d steps%n" steps)
     (do
       (println unsorted)
-      (printf "Reverse how many? ") 
+      (printf "Reverse how many? ")
       (flush)
-      (let [flipcount (read)] 
+      (let [flipcount (read)]
         (recur (flip-at flipcount unsorted), (inc steps))))))
 ```
 
@@ -1073,7 +1073,7 @@ until shuffled == ordered
   next unless guess = gets
   next unless num = guess.to_i?
   next if num < 2 || num > SIZE
-  
+
   shuffled[0, num] = shuffled[0, num].reverse
   score += 1
 end
@@ -1164,7 +1164,7 @@ def game =
             let YY = (reverse (take N SHUFFLE)) ++ (drop N SHUFFLE) in
                 game GOAL YY (TURN + 1) ]
 
-def main = 
+def main =
     let XX = fromto 1 9 in game XX (shuffle XX) 0
 ```
 
@@ -1329,27 +1329,27 @@ ELENA 4.x:
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var sorted := Array.allocate(9).populate:(n => n + 1 );
     var values := sorted.clone().randomize:9;
- 
+
     while (sorted.sequenceEqual:values)
     {
         values := sorted.randomize:9
     };
- 
+
     var tries := new Integer();
     until (sorted.sequenceEqual:values)
     {
         tries.append:1;
- 
+
         console.print("# ",tries," : LIST : ",values," - Flip how many?");
- 
+
         values.sequenceReverse(0, console.readLine().toInt())
     };
- 
+
     console.printLine("You took ",tries," attempts to put the digits in order!").readChar()
 }
 ```
@@ -1369,14 +1369,14 @@ defmodule Number_reversal_game do
     attempt = loop( targets, jumbleds, 0 )
     IO.puts "Numbers sorted in #{attempt} atttempts"
   end
-  
+
   defp loop( targets, targets, attempt ), do: attempt
   defp loop( targets, jumbleds, attempt ) do
     IO.inspect jumbleds
     {n,_} = IO.gets("How many digits from the left to reverse? ") |> Integer.parse
     loop( targets, Enum.reverse_slice(jumbleds, 0, n), attempt+1 )
   end
-  
+
   defp usage(n), do: "Given a jumbled list of the numbers 1 to #{n} that are definitely not in ascending order, show the list then ask the player how many digits from the left to reverse. Reverse those digits, then ask again, until all the digits end up in ascending order."
 end
 
@@ -1508,18 +1508,18 @@ while 1 do
     for i = 1 to 9 do
         printf(1,"%d ",nums[i])
     end for
-    
+
     if accending(nums) then
         exit
     end if
-    
+
     flp = prompt_number(" -- How many numbers should be flipped? ",{1,9})
     for i = 1 to flp/2 do
         temp = nums[i]
         nums[i] = nums[flp-i+1]
         nums[flp-i+1] = temp
     end for
-    
+
     tries += 1
 end while
 
@@ -1647,7 +1647,7 @@ create nums 9 cells allot
   nums 10 1 do
     i over !  cell+
   loop drop
-  begin nums 9 shuffle nums 9 sorted? 0= until 
+  begin nums 9 shuffle nums 9 sorted? 0= until
   cr nums 9 .array ;
 
 : reverse ( addr len -- )
@@ -1667,9 +1667,9 @@ create nums 9 cells allot
     cr nums 9 .array
   then ;
 
-init 
+init
 1 2 8 5 7 6 9 4 3  ok
-7 flip 
+7 flip
 9 6 7 5 8 2 1 4 3  ok
 
 ```
@@ -1683,10 +1683,10 @@ init
 ```fortran
 program Reversal_game
   implicit none
- 
+
   integer :: list(9) = (/ 1, 2, 3, 4, 5, 6, 7, 8, 9 /)
   integer :: pos, attempts = 0
-    
+
   call random_seed
   do while (sorted(list))
     call Shuffle(list)
@@ -1724,7 +1724,7 @@ function Sorted(a)
   logical :: Sorted
   integer, intent(in) :: a(:)
   integer :: i
-  
+
   do i = 1, size(a)-1
     if(list(i+1) /= list(i)+1) then
       Sorted = .false.
@@ -1733,7 +1733,7 @@ function Sorted(a)
   end do
   Sorted = .true.
 end function
-  
+
 end program
 ```
 
@@ -1815,7 +1815,7 @@ println "Done! That took you ${steps} steps"
 
 ## Haskell
 
-Using Rosetta [[Knuth shuffle#Haskell|Knuth Shuffle]] 
+Using Rosetta [[Knuth shuffle#Haskell|Knuth Shuffle]]
 
 ```haskell
 import Data.List
@@ -1824,13 +1824,13 @@ import Rosetta.Knuthshuffle
 
 numberRevGame = do
   let goal = [1..9]
-  
+
       shuffle xs =
 	if xs /= goal then return xs
 		    else shuffle =<< knuthShuffle xs
 
       prefixFlipAt k = uncurry (++). first reverse. splitAt k
-      
+
       prompt r ry = do
 	 putStr $ show r ++ ". " ++ concatMap (flip (++) " ". show) ry
 		   ++ " How many to flip? "
@@ -1840,18 +1840,18 @@ numberRevGame = do
 	    else do
 	      putStrLn "Error. The number should be between 0 and 10. Try again"
 	      prompt r ry
-  
-      playNRG r nrs = 
+
+      playNRG r nrs =
 	if nrs == goal then do
 	  putStrLn $ "The answer is: " ++ concatMap (flip (++) " ". show) nrs
 	  putStrLn $ "It took you " ++ show r ++ " attempts to sort the numbers."
 	  putStrLn ""
 		else do
-		  answ <- prompt r nrs 
+		  answ <- prompt r nrs
 		  playNRG (succ r) (prefixFlipAt answ nrs)
-	 
+
   start <- shuffle goal
-  
+
   playNRG 1 start
 ```
 
@@ -1867,7 +1867,7 @@ Play:
 6. 6 5 3 2 1 4 7 8 9  How many to flip? 6
 7. 4 1 2 3 5 6 7 8 9  How many to flip? 4
 8. 3 2 1 4 5 6 7 8 9  How many to flip? 3
-The answer is: 1 2 3 4 5 6 7 8 9 
+The answer is: 1 2 3 4 5 6 7 8 9
 It took you 9 attempts to sort the numbers.
 ```
 
@@ -1911,20 +1911,20 @@ local x,nums,R,flips
 
 $define PROTECT ["WIN","ASK"]
 $define MAGIC   ["xyzzy","abracadabra","hocus","pocus","presto","changeo","open","sesame","irs"]
-   
+
 put(cq,"game")                                                 # start command queue - use command line
 rule := string(&digits--'0')                                   # ruler and move commands
 every put(protected := [], map(!PROTECT))                      # protected commands
 every put(magic := [], !MAGIC)
 
 while x := get(cq) | "MOVE" do {                               # command from queue or ask for move
-   case x of {                      
+   case x of {
       "help" | "h" | "?" :                                     # --- start of user facing commands ---
          write("Input a position.  The list will be flipped left to right at that point.\n",
 	       "You win when the list is sorted.\n",
 	       "Commands:\n",
                "   help, h, ? - shows this\n",
-               "   new, g     - new game\n",			   
+               "   new, g     - new game\n",
                "   ruler, r   - shows a ruler\n",
                "   show, s    - shows the list\n",
                "   <n>        - flips the list at ruler position n\n",
@@ -1932,38 +1932,38 @@ while x := get(cq) | "MOVE" do {                               # command from qu
                "and various magic words.\n"
                ) & put(cq,"rule")
       "game" | "g" | "new"  : {
-         put(cq,"help")                                     
+         put(cq,"help")
          flips := 0
          nums := rule
-         until nums ~== rule do 
+         until nums ~== rule do
          every !nums :=: ?nums                                 # shuffle
          }
-      "rule" | "ruler" | "r" : 
-         put(cq,"show") & every writes(" " || " " | !(if /mirror then rule else reverse(rule)) | "\n") 
+      "rule" | "ruler" | "r" :
+         put(cq,"show") & every writes(" " || " " | !(if /mirror then rule else reverse(rule)) | "\n")
       "show" | "s" :
-         every writes(" " || "=" | !nums | " =\n") 
+         every writes(" " || "=" | !nums | " =\n")
       !rule : {                                                #  0 - 9 for flipping
-         if /mirror then nums[1+:x] := reverse(nums[1+:x]) 
-         else nums[0-:x] := reverse(nums[0-:x]) 		 
+         if /mirror then nums[1+:x] := reverse(nums[1+:x])
+         else nums[0-:x] := reverse(nums[0-:x])
          flips +:= 1
          put(cq,if nums == rule then "WIN" else "show")
          }
-      "quit" | "q" : 
-         break write("Goodbye.") 
-      !magic:                                                  # --- start of magic 
-         write("That has no power here.  Try again!") 
-      "magic" | "mirror" | "m" : {                        
-         mirror := if /mirror then 1 else &null 
+      "quit" | "q" :
+         break write("Goodbye.")
+      !magic:                                                  # --- start of magic
+         write("That has no power here.  Try again!")
+      "magic" | "mirror" | "m" : {
+         mirror := if /mirror then 1 else &null
          write("Wait! What is this? The writing has reversed.")
-         }		   
+         }
       !protected:                                              # --- Start of internal (upper case) and protected commands
-         put(cq,?rule) & write("Tisk, Tisk, don't try and cheat.  Take a random penalty flip!") 		  
-      "MOVE" :                                                  
-         put(cq,ask("Command? : ") ) 		 
-      "WIN" : 
-         put(cq,"ASK") & write("Congratulations you won in ",flips," flips!") 
+         put(cq,?rule) & write("Tisk, Tisk, don't try and cheat.  Take a random penalty flip!")
+      "MOVE" :
+         put(cq,ask("Command? : ") )
+      "WIN" :
+         put(cq,"ASK") & write("Congratulations you won in ",flips," flips!")
       "ASK" :
-         put(cq,case ask("Play another game? : ") of { "y"|"yes" : "game"; "n"|"no" : "quit"; default : "ASK" } ) 
+         put(cq,case ask("Play another game? : ") of { "y"|"yes" : "game"; "n"|"no" : "quit"; default : "ASK" } )
       default:                                                 # --- say what?
          write("Sorry I don't know that command, try help?")
       }
@@ -1973,7 +1973,7 @@ end
 procedure ask(s)                       #: ask for input with prompt s and return the 1st word in lower case
 writes(\s)
 map(trim(read())) ? return tab(upto(' ')|0)
-end 
+end
 
 ```
 
@@ -2060,8 +2060,8 @@ The new print final score rule is listed instead of the print final score rule i
 
 
 ```io
-withRange := method( a, z, 
-    Range clone setRange(a,z) 
+withRange := method( a, z,
+    Range clone setRange(a,z)
 )
 sorted := withRange(1,9) asList
 numbers := sorted clone shuffle
@@ -2076,7 +2076,7 @@ while( numbers != sorted,
     withRange(0, ((flipcount-1)/2) floor) foreach( i,
         numbers swapIndices(i,flipcount-1-i)
     )
-    steps = steps+1 
+    steps = steps+1
 )
 writeln("Done! That took you ", steps, " steps")
 ```
@@ -2089,13 +2089,13 @@ writeln("Done! That took you ", steps, " steps")
 
 ```j
 require 'misc'                      NB. for the verb prompt
- 
+
 INTRO=: noun define
 Number Reversal Game
 Flip groups of numbers from the left of the list until
 the numbers are sorted in ascending order.
 )
- 
+
 reversegame=: verb define
   whilst. (-: /:~)nums do.
     nums=. 1+9?9                    NB. 1-9 in random order
@@ -2117,7 +2117,7 @@ reversegame=: verb define
 ```j
    reversegame''
 Number Reversal Game
-Sort the numbers in ascending order by repeatedly 
+Sort the numbers in ascending order by repeatedly
 flipping sets of numbers from the left.
 
 1: 4 7 5 6 9 1 2 8 3 How many numbers to flip?: 5
@@ -2227,7 +2227,7 @@ Use <code>knuth_shuffle()</code> function from [[Knuth shuffle#JavaScript|here]]
 <head>
     <title>Number Reversal Game</title>
 </head>
- 
+
 <body>
 <div id="start"></div>
 <div id="progress"></div>
@@ -2325,11 +2325,11 @@ def play:
   def sorted: . == sort;
 
   def reverse(n):  (.[0:n] | reverse)  + .[n:];
-  
+
   def prompt: "List: \(.list)\nEnter a pivot number: ";
 
   def report: "Great! Your score is \(.score)";
-  
+
   {list: ., score: 0}
   | (if .list | sorted then "List was sorted to begin with."
      else
@@ -2338,7 +2338,7 @@ def play:
      | foreach inputs as $n (.;
          .list |= reverse($n) | .score +=1;
          if .list | sorted then report, break $done else prompt end ))
-     end); 
+     end);
 ```
 
 
@@ -2354,13 +2354,13 @@ def play:
 ```txt
 $ jq -r -n -f play.jq
 List: [1,2,3,9,8,7,6,5,4]
-Enter a pivot number: 
+Enter a pivot number:
 9
 List: [4,5,6,7,8,9,3,2,1]
-Enter a pivot number: 
+Enter a pivot number:
 6
 List: [9,8,7,6,5,4,3,2,1]
-Enter a pivot number: 
+Enter a pivot number:
 9
 Great! Your score is 3
 ```
@@ -2400,14 +2400,14 @@ numrevgame()
 // version 1.1.2
 
 fun isAscending(a: IntArray): Boolean {
-    for (i in 0..8) if (a[i] != i + 1) return false 
+    for (i in 0..8) if (a[i] != i + 1) return false
     return true
 }
 
 fun main(args: Array<String>) {
     val r = java.util.Random()
-    var count = 0 
-    val numbers = IntArray(9) 
+    var count = 0
+    val numbers = IntArray(9)
     numbers[0] = 2 + r.nextInt(8) // this will ensure list isn't ascending
     for (i in 1..8) {
         var rn: Int
@@ -2417,10 +2417,10 @@ fun main(args: Array<String>) {
         numbers[i] = rn
     }
     println("Here's your first list : ${numbers.joinToString()}")
-    while (true) {        
+    while (true) {
         var rev: Int
-        do { 
-            print("How many numbers from the left are to be reversed : ")  
+        do {
+            print("How many numbers from the left are to be reversed : ")
             rev = readLine()!!.toInt()
         } while (rev !in 2..9)
         count++
@@ -2431,13 +2431,13 @@ fun main(args: Array<String>) {
             numbers[i++] = numbers[j]
             numbers[j--] = temp
         }
-        if (isAscending(numbers)) { 
-            println("Here's your final list : ${numbers.joinToString()}")   
+        if (isAscending(numbers)) {
+            println("Here's your final list : ${numbers.joinToString()}")
             break
         }
-        println("Here's your list now   : ${numbers.joinToString()}")   
+        println("Here's your list now   : ${numbers.joinToString()}")
     }
-    println("So you've completed the game with a score of $count")        
+    println("So you've completed the game with a score of $count")
 }
 ```
 
@@ -2511,7 +2511,7 @@ function numList:show ()
 end
 
 -- Reverse n values from left
-function numList:reverse (n)  
+function numList:reverse (n)
   local swapList = {}
   for k, v in pairs(self.values) do
     table.insert(swapList, v)
@@ -2546,12 +2546,12 @@ Using some ready made Print's from BASIC example
 
 Using stack of values which we can move easy values. When we call subs and pass arguments that arguments as values stored to same stack, but because we pop them (read to variables) we leave stack with 9 values for the game.
 
-To check if we have all values in order, we just check the difference of two items one after the other, if is one, and if not one then we leave checking returning false. 
+To check if we have all values in order, we just check the difference of two items one after the other, if is one, and if not one then we leave checking returning false.
 
 Sub CheckStack get a value by reference. Because stack of values always get values, a reference is a copy of a weak reference, so in CheckStack a new variable defined as local ok, and get the reference from weak reference in stack. When a sub exit any new,including local variables removed (deleted). Subs are always local to Module, and have same scope as module scope.
 
 To display the values of stack we use Stack statement with no arguments.
- 
+
 
 ```M2000 Interpreter
 
@@ -2603,11 +2603,11 @@ Number_Reversal_Game
 
 ## Mathematica
 
-<lang>Module[{array = Range@9, score = 0}, 
- While[array == Range@9, array = RandomSample@Range@9]; 
- While[array != Range@9, 
+<lang>Module[{array = Range@9, score = 0},
+ While[array == Range@9, array = RandomSample@Range@9];
+ While[array != Range@9,
   Print@array; (array[[;; #]] = Reverse@array[[;; #]]) &@
-   Input["How many digits would you like to reverse?"]; score++]; 
+   Input["How many digits would you like to reverse?"]; score++];
  Print@array; Print["Your score:", score]]
 ```
 
@@ -2739,7 +2739,7 @@ You took 11 attempts to put the digits in order!
 
 
 
-###  Imperative 
+###  Imperative
 
 
 
@@ -2775,7 +2775,7 @@ let sorted ar =
 let () =
   print_endline "\
   Number Reversal Game
-  Sort the numbers in ascending order by repeatedly 
+  Sort the numbers in ascending order by repeatedly
   flipping sets of numbers from the left.";
   Random.self_init();
   let nums = Array.init 9 (fun i -> succ i) in
@@ -2796,7 +2796,7 @@ let () =
 
 
 
-###  Functional 
+###  Functional
 
 
 
@@ -2834,7 +2834,7 @@ let rec sorted = function
 let () =
   print_endline "\
   Number Reversal Game
-  Sort the numbers in ascending order by repeatedly 
+  Sort the numbers in ascending order by repeatedly
   flipping sets of numbers from the left.";
   Random.self_init();
   let li = shuffle [1; 2; 3; 4; 5; 6; 7; 8; 9] in
@@ -2863,12 +2863,12 @@ import: console
 
 : reversalGame
 | l n |
-   doWhile: [		
+   doWhile: [
       ListBuffer new ->l
       while(l size 9 <>) [ 9 rand dup l include ifFalse: [ l add ] else: [ drop ] ]
       l sort l ==
       ]
- 
+
    0 while(l sort l <>) [
       System.Out "List is " << l << " ==> how many digits from left to reverse : " <-
       System.Console askln asInteger dup ifNull: [ drop continue ] ->n
@@ -2931,11 +2931,11 @@ declare
   in
      {Loop 0 {EnsureShuffled {List.number 1 9 1}}}
   end
- 
+
   fun {IsSorted Xs}
      {Sort Xs Value.'<'} == Xs
   end
- 
+
   local
      class TextFile from Open.file Open.text end
      StdIn = {New TextFile init(name:stdin)}
@@ -2944,7 +2944,7 @@ declare
         {StdIn getS($)}
      end
   end
- 
+
   fun {Shuffle Xs}
      {FoldL Xs
       fun {$ Z _}
@@ -2952,11 +2952,11 @@ declare
       end
       nil}
   end
- 
+
   fun {Pick Xs}
      {Nth Xs {OS.rand} mod {Length Xs} + 1}
   end
- 
+
   fun {Diff Xs Ys}
      {FoldL Ys List.subtract Xs}
   end
@@ -3088,16 +3088,16 @@ Simplified copy of [[Number_reversal_game#Euphoria|Euphoria]]
 puts(1,"Given a jumbled list of the numbers 1 to 9,\n")
 puts(1,"you must select how many digits from the left to reverse.\n")
 puts(1,"Your goal is to get the digits in order with 1 on the left and 9 on the right.\n")
- 
+
 constant inums = tagset(9)
 sequence nums
 integer turns = 0, flip
- 
+
 while 1 do
     nums = shuffle(inums)
     if nums!=inums then exit end if
 end while
- 
+
 while 1 do
     printf(1,"%2d : %d %d %d %d %d %d %d %d %d ",turns&nums)
     if nums=inums then exit end if
@@ -3105,7 +3105,7 @@ while 1 do
     nums[1..flip] = reverse(nums[1..flip])
     turns += 1
 end while
- 
+
 printf(1,"\nYou took %d turns to put the digits in order.", turns)
 ```
 
@@ -3136,11 +3136,11 @@ You took 8 turns to put the digits in order.
 ```PHP
 class ReversalGame {
     private $numbers;
- 
+
     public function __construct() {
         $this->initialize();
     }
- 
+
     public function play() {
         $i = 0;
         $moveCount = 0;
@@ -3161,14 +3161,14 @@ class ReversalGame {
                     break;
                 }
             }
- 
+
         }
     }
- 
+
     private function reverse($position) {
         array_splice($this->numbers, 0, $position, array_reverse(array_slice($this->numbers, 0, $position)));
     }
- 
+
     private function isSorted() {
         for ($i = 0; $i < count($this->numbers) - 1; ++$i) {
             if ($this->numbers[$i] > $this->numbers[$i + 1]) {
@@ -3177,14 +3177,14 @@ class ReversalGame {
         }
         return true;
     }
- 
+
     private function initialize() {
         $this->numbers = range(1, 9);
         while ($this->isSorted()) {
             shuffle($this->numbers);
         }
     }
-    
+
 }
 
 $game = new ReversalGame();
@@ -3280,7 +3280,7 @@ end digits;
 #adding the below function to the previous users submission to prevent the small
 #chance of getting an array that is in ascending order.
 
-#Full disclosure: I am an infrastructure engineer, not a dev. My code is likely 
+#Full disclosure: I am an infrastructure engineer, not a dev. My code is likely
 #bad.
 
 function generateArray{
@@ -3314,9 +3314,9 @@ Dim MyList(9)
 
 Declare is_list_sorted()
 
-If OpenConsole()       
+If OpenConsole()
   Define score, indata, i, txt$
-  
+
   For i=1 To 9         ;- Initiate the list
     MyList(i)=i
   Next
@@ -3325,7 +3325,7 @@ If OpenConsole()
       Swap MyList(i), MyList(Random(i)+1)
     Next
   Wend
-  
+
   ;- Start the Game
   Repeat
     score+1
@@ -3340,7 +3340,7 @@ If OpenConsole()
       Swap MyList(i),MyList(indata-i+1)
     Next
   Until is_list_sorted()
-  
+
   ;- Present result & wait for users input before closing down
   PrintN(#CRLF$+"You did it in "+str(score)+" moves")
   Print("Press ENTER to exit"): Input()
@@ -3438,9 +3438,9 @@ You took 10 attempts to put the digits in order!
     trials <- trials + 1
     cat("Trial", sprintf("%02d", trials), " # ", data, " #  ")
     answer <- readline(paste("Flip how many? "))
-    data[1:answer] <- data[answer:1]  
+    data[1:answer] <- data[answer:1]
   }
-  
+
   # Victory!
   cat("Well done.  You needed", trials, "flips. \n")
 }
@@ -3485,9 +3485,9 @@ Well done.  You needed 4 flips.
 import Prelude;
 import vis::Figure;
 import vis::Render;
- 
+
 public void NumberReversalGame(){
- 
+
 	//generate randomlist
 	L = [1..9];
 	score = 0;
@@ -3497,26 +3497,26 @@ public void NumberReversalGame(){
 		randomlist += temp[0];
 		L = temp[1];
 	}
-	 
+
 	// user interaction
 	score = 0;
 	text1 = "";
-	figure = 
+	figure =
 	box(vcat([
 		box(text(str(){
-			return "<randomlist>";})), 
-		box(textfield("Insert number of digits you would like to reverse here.", 
+			return "<randomlist>";})),
+		box(textfield("Insert number of digits you would like to reverse here.",
 			void(str s){
 				score += 1;
 				n = toInt(s);
-				spliced = slice(randomlist, 0, n);					
+				spliced = slice(randomlist, 0, n);
 				randomlist = reverse(spliced) + (randomlist - spliced);
 				},
 			fillColor("lightblue"))),
 		box(text(str(){
 			return ((randomlist == [1 .. 9]) ? "Well done! Your score: <score>." : "Keep going!");}))
 				]));
-	 
+
 	render(figure);
 }
 ```
@@ -3562,8 +3562,8 @@ print rejoin ["You took " tries " attempts."]
 
 This REXX version:
 :::*   displays the game's objective and rules
-:::*   validates the input   (must be a single non-zero decimal digit)  
-:::*   allows the user to enter   '''quit''' 
+:::*   validates the input   (must be a single non-zero decimal digit)
+:::*   allows the user to enter   '''quit'''
 :::*   allows the user to halt the game via   '''Cntl-Break'''   (or equivalent)
 
 ```rexx
@@ -3683,7 +3683,7 @@ while true
          leftrever = reverse(leftrever)
          for pos = 1 to r
                rever[pos] = leftrever[pos]
-         next  
+         next
          for m = 1 to len(rever)
               if rever[m] = m
                  num = num + 1
@@ -3707,7 +3707,7 @@ func showarray(vect)
              svect = svect + vect[n] + " "
        next
        svect = left(svect, len(svect) - 1)
-       see svect 
+       see svect
 
 ```
 
@@ -3802,7 +3802,7 @@ end
 
 [notOrdered]
 input "How many numbers to flip:";i
-i  = ((i-1) * 2) + 1 
+i  = ((i-1) * 2) + 1
 b$ = ""
 for j = i to 1 step -2
    b$ = b$ + mid$(a$,j,2)
@@ -4315,13 +4315,13 @@ Public Sub game()
     Debug.Print "Given a jumbled list of the numbers 1 to 9"
     Debug.Print "you must select how many digits from the left to reverse."
     Debug.Print "Your goal is to get the digits in order with 1 on the left and 9 on the right."
-     
+
     inums = [{1,2,3,4,5,6,7,8,9}]
     Dim nums As Variant
     Dim turns As Integer, flip As Integer
-     
+
     nums = shuffle(inums)
-     
+
     Do While True
         Debug.Print turns; ":";
         For Each x In nums: Debug.Print x;: Next x
@@ -4341,7 +4341,7 @@ Public Sub game()
             Exit Do
         End If
     Loop
-     
+
     Debug.Print "You took"; turns; "turns to put the digits in order."
 End Sub
 ```
@@ -4351,15 +4351,15 @@ End Sub
 Given a jumbled list of the numbers 1 to 9
 you must select how many digits from the left to reverse.
 Your goal is to get the digits in order with 1 on the left and 9 on the right.
- 0 : 1  4  3  9  8  7  6  2  5 
- 1 : 9  3  4  1  8  7  6  2  5 
- 2 : 5  2  6  7  8  1  4  3  9 
- 3 : 8  7  6  2  5  1  4  3  9 
- 4 : 3  4  1  5  2  6  7  8  9 
- 5 : 5  1  4  3  2  6  7  8  9 
- 6 : 2  3  4  1  5  6  7  8  9 
- 7 : 4  3  2  1  5  6  7  8  9 
- 8 : 1  2  3  4  5  6  7  8  9 
+ 0 : 1  4  3  9  8  7  6  2  5
+ 1 : 9  3  4  1  8  7  6  2  5
+ 2 : 5  2  6  7  8  1  4  3  9
+ 3 : 8  7  6  2  5  1  4  3  9
+ 4 : 3  4  1  5  2  6  7  8  9
+ 5 : 5  1  4  3  2  6  7  8  9
+ 6 : 2  3  4  1  5  6  7  8  9
+ 7 : 4  3  2  1  5  6  7  8  9
+ 8 : 1  2  3  4  5  6  7  8  9
 You took 8 turns to put the digits in order.
 ```
 
@@ -4400,15 +4400,15 @@ Example output:
 
 ```txt
 
-1 3 5 4 8 9 7 2 6 
+1 3 5 4 8 9 7 2 6
 Reverse how many digits? 3
-5 3 1 4 8 9 7 2 6 
+5 3 1 4 8 9 7 2 6
 Reverse how many digits? 4
-4 1 3 5 8 9 7 2 6 
+4 1 3 5 8 9 7 2 6
 Reverse how many digits? 5
-8 5 3 1 4 9 7 2 6 
+8 5 3 1 4 9 7 2 6
 Reverse how many digits? 2
-5 8 3 1 4 9 7 2 6 
+5 8 3 1 4 9 7 2 6
 
 ```
 

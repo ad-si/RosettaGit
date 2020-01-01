@@ -1016,7 +1016,7 @@ int main()
 ## C#
 
 
-```csharp
+```c#
 
 using System;
 using System.Globalization;

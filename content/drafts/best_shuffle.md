@@ -872,10 +872,10 @@ a (1)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 For both solutions, a class is used to encapsulate the original string and to scrambling. A private function of the class does the actual sorting. An implicit conversion from string is also provided to allow for simple initialization, e.g.:
 
-```csharp
+```c#
 ShuffledString[] array = {"cat", "dog", "mouse"};
 ```
 
@@ -883,7 +883,7 @@ Which will immediately shuffle each word.
 
 A sequential solution, which always produces the same output for the same input.
 
-```csharp
+```c#
 
 using System;
 using System.Text;
@@ -1016,7 +1016,7 @@ namespace BestShuffle_RC
 
 And a randomized solution, which will produce a more or less different result on every run:
 
-```csharp
+```c#
 
 using System;
 using System.Text;

@@ -413,7 +413,7 @@ Computation time was 35.5644 seconds
 {{trans|Visual Basic .NET}}
 (of the Snail Version)
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

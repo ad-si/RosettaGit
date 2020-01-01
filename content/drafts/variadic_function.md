@@ -815,10 +815,10 @@ int main()
 
 As the example shows, variadic templates allow any type to be passed.
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 
 class Program {

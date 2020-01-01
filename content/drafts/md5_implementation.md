@@ -11,10 +11,10 @@ tags = []
 +++
 
 {{task|Checksums}}
-The purpose of this task to code and validate an implementation of the MD5 Message Digest Algorithm by coding the algorithm directly (not using a call to a built-in or external hashing library).  For details of the algorithm refer to [[wp:Md5#Algorithm|MD5 on Wikipedia]] or the [http://www.ietf.org/rfc/rfc1321.txt MD5 definition in IETF RFC (1321)]. 
+The purpose of this task to code and validate an implementation of the MD5 Message Digest Algorithm by coding the algorithm directly (not using a call to a built-in or external hashing library).  For details of the algorithm refer to [[wp:Md5#Algorithm|MD5 on Wikipedia]] or the [http://www.ietf.org/rfc/rfc1321.txt MD5 definition in IETF RFC (1321)].
 
-* The implementation needs to implement the key functionality namely producing a correct message digest for an input string.  It is not necessary to mimic all of the calling modes such as adding to a digest one block at a time over subsequent calls.  
-* In addition to coding and verifying your implementation, note any challenges your language presented implementing the solution, implementation choices made, or limitations of your solution.  
+* The implementation needs to implement the key functionality namely producing a correct message digest for an input string.  It is not necessary to mimic all of the calling modes such as adding to a digest one block at a time over subsequent calls.
+* In addition to coding and verifying your implementation, note any challenges your language presented implementing the solution, implementation choices made, or limitations of your solution.
 * Solutions on this page should implement MD5 directly and NOT use built in (MD5) functions, call outs to operating system calls or library routines written in other languages as is common in the original [[MD5]] task.
 * The following are acceptable:
 ** An original implementation from the specification, reference implementation, or pseudo-code
@@ -25,8 +25,8 @@ The solutions shown here will provide practical illustrations of bit manipulatio
 
 The following verification strings and hashes come from RFC 1321:
 ```txt
-                            hash code <== string 
-   0xd41d8cd98f00b204e9800998ecf8427e <== ""  
+                            hash code <== string
+   0xd41d8cd98f00b204e9800998ecf8427e <== ""
    0x0cc175b9c0f1b6a831c399e269772661 <== "a"
    0x900150983cd24fb0d6963f7d28e17f72 <== "abc"
    0xf96b697d7cb7938d525a2f31aaf161d0 <== "message digest"
@@ -378,59 +378,59 @@ MD5 ("12345678901234567890123456789012345678901234567890123456789012345678901234
       PRINT FN_MD5("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
       PRINT FN_MD5(STRING$(8,"1234567890"))
       END
-      
+
       DEF FN_MD5(message$)
       LOCAL a%, b%, c%, d%, f%, g%, h0%, h1%, h2%, h3%, i%, bits%, chunk%, temp%
       LOCAL r&(), k%(), w%()
       DIM r&(63), k%(63), w%(15)
-      
+
       REM r specifies the per-round shift amounts:
       r&() = 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, \
       \      5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20, \
       \      4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, \
       \      6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21
-      
+
       REM Use binary integer part of the sines of integers (Radians) as constants:
       FOR i% = 0 TO 63
         k%(i%) = FN32(INT(ABS(SIN(i% + 1.0#)) * 2^32))
       NEXT
-      
+
       REM Initialize variables:
       h0% = &67452301
       h1% = &EFCDAB89
       h2% = &98BADCFE
       h3% = &10325476
-      
+
       bits% = LEN(message$)*8
-      
+
       REM Append '1' bit to message:
       message$ += CHR$&80
-      
+
       REM Append '0' bits until message length in bits = 448 (mod 512):
       WHILE (LEN(message$) MOD 64) <> 56
         message$ += CHR$0
       ENDWHILE
-      
+
       REM Append length of message (before pre-processing), in bits, as
       REM 64-bit little-endian integer:
       FOR i% = 0 TO 56 STEP 8
         message$ += CHR$(bits% >>> i%)
       NEXT
-      
+
       REM Process the message in successive 512-bit chunks:
       FOR chunk% = 0 TO LEN(message$) DIV 64 - 1
-        
+
         REM Break chunk into sixteen 32-bit little-endian words:
         FOR i% = 0 TO 15
           w%(i%) = !(!^message$ + 64*chunk% + 4*i%)
         NEXT i%
-        
+
         REM Initialize hash value for this chunk:
         a% = h0%
         b% = h1%
         c% = h2%
         d% = h3%
-        
+
         REM Main loop:
         FOR i% = 0 TO 63
           CASE TRUE OF
@@ -447,34 +447,34 @@ MD5 ("12345678901234567890123456789012345678901234567890123456789012345678901234
               f% = c% EOR (b% OR (NOT d%))
               g% = (7 * i%) MOD 16
           ENDCASE
-          
+
           temp% = d%
           d% = c%
           c% = b%
           b% = FN32(b% + FNlrot(FN32(a% + f%) + FN32(k%(i%) + w%(g%)), r&(i%)))
           a% = temp%
-          
+
         NEXT i%
-        
+
         REM Add this chunk's hash to result so far:
         h0% = FN32(h0% + a%)
         h1% = FN32(h1% + b%)
         h2% = FN32(h2% + c%)
         h3% = FN32(h3% + d%)
-        
+
       NEXT chunk%
-      
+
       = FNrevhex(h0%) + FNrevhex(h1%) + FNrevhex(h2%) + FNrevhex(h3%)
-      
+
       DEF FNrevhex(A%)
       SWAP ?(^A%+0),?(^A%+3)
       SWAP ?(^A%+1),?(^A%+2)
       = RIGHT$("0000000"+STR$~A%,8)
-      
+
       DEF FNlrot(n#, r%)
       n# = FN32(n#)
       = (n# << r%) OR (n# >>> (32 - r%))
-      
+
       DEF FN32(n#)
       WHILE n# > &7FFFFFFF : n# -= 2^32 : ENDWHILE
       WHILE n# < &80000000 : n# += 2^32 : ENDWHILE
@@ -488,11 +488,11 @@ MD5 ("12345678901234567890123456789012345678901234567890123456789012345678901234
 ''See the implementation at [[MD5#C]]. Also, RFC 1321 already provides C code.''
 
 
-## C sharp
+## C#
 
 Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-implementation-in-c/]):
 
-```csharp
+```c#
 
 	/// Represent digest with ABCD
 	sealed public class Digest
@@ -518,7 +518,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
                             MD5Helper.ReverseByte(C).ToString("X8")+
 			    MD5Helper.ReverseByte(D).ToString("X8");
 			return st;
-			
+
 		}
 	}
 
@@ -531,7 +531,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		/// <summary>
 		/// lookup table 4294967296*sin(i)
 		/// </summary>
-		protected readonly static uint []  T =new uint[64] 
+		protected readonly static uint []  T =new uint[64]
 			{	0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,
 				0xf57c0faf,0x4787c62a,0xa8304613,0xfd469501,
                 0x698098d8,0x8b44f7af,0xffff5bb1,0x895cd7be,
@@ -548,26 +548,26 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
                 0x655b59c3,0x8f0ccc92,0xffeff47d,0x85845dd1,
                 0x6fa87e4f,0xfe2ce6e0,0xa3014314,0x4e0811a1,
 				0xf7537e82,0xbd3af235,0x2ad7d2bb,0xeb86d391};
-		
+
 		/*****instance variables**************/
 		/// <summary>
-		/// X used to proces data in 
+		/// X used to proces data in
 		///	512 bits chunks as 16 32 bit word
 		/// </summary>
-		protected  uint [] X = new uint [16];	
-		
+		protected  uint [] X = new uint [16];
+
 		/// <summary>
-		/// the finger print obtained. 
+		/// the finger print obtained.
 		/// </summary>
-		protected Digest dgFingerPrint;			
+		protected Digest dgFingerPrint;
 
 		/// <summary>
 		/// the input bytes
 		/// </summary>
-		protected	byte [] m_byteInput;		
-		
-	
-		
+		protected	byte [] m_byteInput;
+
+
+
 		/**********************EVENTS AND DELEGATES*******************************************/
 
 		public delegate void ValueChanging (object sender,MD5ChangingEventArgs Changing);
@@ -578,7 +578,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		public event ValueChanged  OnValueChanged;
 
 
-		
+
 		/********************************************************************/
 		/***********************PROPERTIES ***********************/
 		/// <summary>
@@ -587,10 +587,10 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		public string Value
 		{
 			get
-			{ 
+			{
 				string st ;
 				char [] tempCharArray= new Char[m_byteInput.Length];
-				
+
 				for(int i =0; i<m_byteInput.Length;i++)
 					tempCharArray[i]=(char)m_byteInput[i];
 
@@ -599,7 +599,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 			}
 			set
 			{
-				/// raise the event to notify the changing 
+				/// raise the event to notify the changing
 				if (this.OnValueChanging !=null)
 					this.OnValueChanging(this,new MD5ChangingEventArgs(value));
 
@@ -607,17 +607,17 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 				m_byteInput=new byte[value.Length];
 				for (int i =0; i<value.Length;i++)
 					m_byteInput[i]=(byte)value[i];
-				dgFingerPrint=CalculateMD5Value();				
+				dgFingerPrint=CalculateMD5Value();
 
 				/// raise the event to notify the change
 				if (this.OnValueChanged !=null)
 					this.OnValueChanged(this,new MD5ChangedEventArgs(value,dgFingerPrint.ToString()));
-				 
+
 			}
-		}		
-		
+		}
+
 		/// <summary>
-		/// get/sets as  byte array 
+		/// get/sets as  byte array
 		/// </summary>
 		public byte [] ValueAsByte
 		{
@@ -639,7 +639,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 					m_byteInput[i]=value[i];
 				dgFingerPrint=CalculateMD5Value();
 
-	
+
 				/// notify the changed  value
 				if (this.OnValueChanged !=null)
 					this.OnValueChanged(this,new MD5ChangedEventArgs(value,dgFingerPrint.ToString()));
@@ -661,11 +661,11 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		/// Constructor
 		/// </summary>
 		public MD5()
-		{			
+		{
 			Value="";
 		}
-		
-		
+
+
 		/******************************************************************************/
 		/*********************METHODS**************************/
 
@@ -677,14 +677,14 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		{
 			/***********vairable declaration**************/
 			byte [] bMsg;	//buffer to hold bits
-			uint N;			//N is the size of msg as  word (32 bit) 
+			uint N;			//N is the size of msg as  word (32 bit)
 			Digest dg =new Digest();			//  the value to be returned
 
 			// create a buffer with bits padded and length is alos padded
 			bMsg=CreatePaddedBuffer();
 
 			N=(uint)(bMsg.Length*8)/32;		//no of 32 bit blocks
-			
+
 			for (uint  i=0; i<N/16;i++)
 			{
 				CopyBlock(bMsg,i);
@@ -692,7 +692,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 			}
 			return dg;
 		}
-	
+
 		/********************************************************
 		 * TRANSFORMATIONS :  FF , GG , HH , II  acc to RFC 1321
 		 * where each Each letter represnets the aux function used
@@ -715,7 +715,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		{
 			a = b + MD5Helper.RotateLeft((a + ((b&d) | (c & ~d) ) + X[k] + T[i-1]), s);
 		}
-		
+
 		/// <summary>
 		/// perform transformatio using h(b^c^d)
 		/// </summary>
@@ -723,7 +723,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		{
 			a = b + MD5Helper.RotateLeft((a + (b^c^d) + X[k] + T[i-1]), s);
 		}
-		
+
 		/// <summary>
 		/// perform transformatio using i (c^(b|~d))
 		/// </summary>
@@ -731,9 +731,9 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		{
 			a = b + MD5Helper.RotateLeft((a + (c^(b|~d))+ X[k] + T[i-1]), s);
 		}
-		
-		
-		
+
+
+
 		/// <summary>
 		/// Perform All the transformation on the data
 		/// </summary>
@@ -744,15 +744,15 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 		protected void PerformTransformation(ref uint A,ref uint B,ref uint C, ref uint D)
 		{
 			//// saving  ABCD  to be used in end of loop
-			
+
 			uint AA,BB,CC,DD;
 
-			AA=A;	
+			AA=A;
 			BB=B;
 			CC=C;
 			DD=D;
 
-			/* Round 1 
+			/* Round 1
 				* [ABCD  0  7  1]  [DABC  1 12  2]  [CDAB  2 17  3]  [BCDA  3 22  4]
 				* [ABCD  4  7  5]  [DABC  5 12  6]  [CDAB  6 17  7]  [BCDA  7 22  8]
 				* [ABCD  8  7  9]  [DABC  9 12 10]  [CDAB 10 17 11]  [BCDA 11 22 12]
@@ -804,17 +804,17 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 
 
 		/// <summary>
-		/// Create Padded buffer for processing , buffer is padded with 0 along 
+		/// Create Padded buffer for processing , buffer is padded with 0 along
 		/// with the size in the end
 		/// </summary>
 		/// <returns>the padded buffer as byte array</returns>
 		protected byte[] CreatePaddedBuffer()
 		{
-			uint pad;		//no of padding bits for 448 mod 512 
+			uint pad;		//no of padding bits for 448 mod 512
 			byte [] bMsg;	//buffer to hold bits
 			ulong sizeMsg;		//64 bit size pad
 			uint sizeMsgBuff;	//buffer size in multiple of bytes
-			int temp=(448-((m_byteInput.Length*8)%512)); //temporary 
+			int temp=(448-((m_byteInput.Length*8)%512)); //temporary
 
 
 			pad = (uint )((temp+512)%512);		//getting no of bits to  be pad
@@ -823,18 +823,18 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 
 			sizeMsgBuff= (uint) ((m_byteInput.Length)+ (pad/8)+8);
 			sizeMsg=(ulong)m_byteInput.Length*8;
-			bMsg=new byte[sizeMsgBuff];	///no need to pad with 0 coz new bytes 
+			bMsg=new byte[sizeMsgBuff];	///no need to pad with 0 coz new bytes
 			// are already initialize to 0 :)
 
 
 
 
-			////copying string to buffer 
+			////copying string to buffer
 			for (int i =0; i<m_byteInput.Length;i++)
 				bMsg[i]=m_byteInput[i];
 
 			bMsg[m_byteInput.Length]|=0x80;		///making first bit of padding 1,
-			
+
 			//wrting the size value
 			for (int i =8; i >0;i--)
 				bMsg[sizeMsgBuff-i]=(byte) (sizeMsg>>((8-i)*8) & 0x00000000000000ff);
@@ -858,7 +858,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 						(((uint) bMsg[block+(j+2)]) <<16 ) |
 						(((uint) bMsg[block+(j+1)]) <<8 ) |
 						(((uint) bMsg[block+(j)]) ) ;
-			
+
 			}
 		}
 	}
@@ -869,7 +869,7 @@ Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-impl
 
 Standard library-based implementation:
 
-```csharp
+```c#
 
 System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
 byte[] bs = System.Text.Encoding.UTF8.GetBytes(password);
@@ -878,7 +878,7 @@ System.Text.StringBuilder s = new System.Text.StringBuilder();
 foreach (byte b in bs)
 {
    s.Append(b.ToString("x2").ToLower());
-} 
+}
 password = s.ToString();
 
 ```
@@ -896,39 +896,39 @@ password = s.ToString();
 sum = (array) ->
   array.reduce (x, y) -> x + y
 
-md5 = do -> 
+md5 = do ->
   # Per-round shift amounts.
   s = [738695, 669989, 770404, 703814]
   s = (s[i >> 4] >> i % 4 * 5 & 31 for i in [0..63])
-  
+
   # Constants cache generated by sine.
   K = (Math.floor 2**32 * Math.abs Math.sin i for i in [1..64])
-  
+
   # Bitwise left rotate helper function.
   lrot = (x, y) ->
     x << y | x >>> 32 - y;
-  
+
   (input) ->
     # Initialize values.
     d0 = 0x10325476;
     a0 = 0x67452301;
     b0 = ~d0
     c0 = ~a0;
-    
+
     # Convert the message to 32-bit words, little-endian.
-    M = 
+    M =
       for i in [0...input.length] by 4
         sum (input.charCodeAt(i + j) << j*8 for j in [0..3])
-    
+
     # Pre-processing: append a 1 bit, then message length % 2^64.
     len = input.length * 8
     M[len >> 5] |= 128 << len % 32
     M[(len + 64 >>> 9 << 4) + 14] = len
-    
+
     # Process the message in chunks of 16 32-bit words.
     for x in [0...M.length] by 16
       [A, B, C, D] = [a0, b0, c0, d0]
-      
+
       # Main loop.
       for i in [0..63]
         if i < 16
@@ -943,15 +943,15 @@ md5 = do ->
         else
           F = C ^ (B | ~D)
           g = i * 7
-        
+
         [A, B, C, D] =
           [D, B + lrot(A + F + K[i] + (M[x + g % 16] ? 0), s[i]), B, C]
-      
+
       a0 += A
       b0 += B
       c0 += C
       d0 += D
-    
+
     # Convert the four words back to a string.
     return (
       for x in [a0, b0, c0, d0]
@@ -1442,12 +1442,12 @@ let g2Idx i = (5 * i + 1) % 16
 let g3Idx i = (3 * i + 5) % 16
 let g4Idx i = (7 * i) % 16
 
-let gIdxs = 
+let gIdxs =
   [ g1Idx; g2Idx; g3Idx; g4Idx ]
   |> List.collect (List.replicate 16)
   |> List.map2 (fun idx func -> func idx) [ 0..63 ]
 
-let s = 
+let s =
   [ [ 7; 12; 17; 22 ]
     [ 5; 9; 14; 20 ]
     [ 4; 11; 16; 23 ]
@@ -1455,26 +1455,26 @@ let s =
   |> List.collect (List.replicate 4)
   |> List.concat
 
-let k = 
+let k =
   [ 1...64. ] |> List.map (sin
                            >> abs
                            >> ((*) (2. ** 32.))
                            >> floor
                            >> uint32)
 
-type MD5 = 
+type MD5 =
   { a : uint32
     b : uint32
     c : uint32
     d : uint32 }
 
-let initialMD5 = 
+let initialMD5 =
   { a = 0x67452301u
     b = 0xefcdab89u
     c = 0x98badcfeu
     d = 0x10325476u }
 
-let md5round (msg : uint32 []) { MD5.a = a; MD5.b = b; MD5.c = c; MD5.d = d } i = 
+let md5round (msg : uint32 []) { MD5.a = a; MD5.b = b; MD5.c = c; MD5.d = d } i =
   let rotateL32 r x = (x <<< r) ||| (x >>> (32 - r))
   let f = fghi.[i] b c d
   let a' = b + (a + f + k.[i] + msg.[gIdxs.[i]]
@@ -1484,32 +1484,32 @@ let md5round (msg : uint32 []) { MD5.a = a; MD5.b = b; MD5.c = c; MD5.d = d } i 
     c = b
     d = c }
 
-let md5plus m (bs : byte []) = 
-  let msg = 
+let md5plus m (bs : byte []) =
+  let msg =
     bs
     |> Array.chunkBySize 4
     |> Array.take 16
     |> Array.map (fun elt -> System.BitConverter.ToUInt32(elt, 0))
-  
+
   let m' = List.fold (md5round msg) m [ 0..63 ]
   { a = m.a + m'.a
     b = m.b + m'.b
     c = m.c + m'.c
     d = m.d + m'.d }
 
-let padMessage (msg : byte []) = 
+let padMessage (msg : byte []) =
   let msgLen = Array.length msg
   let msgLenInBits = (uint64 msgLen) * 8UL
-  
-  let lastSegmentSize = 
+
+  let lastSegmentSize =
     let m = msgLen % 64
     if m = 0 then 64
     else m
-  
-  let padLen = 
+
+  let padLen =
     64 - lastSegmentSize + (if lastSegmentSize >= 56 then 64
                             else 0)
-  
+
   [| yield 128uy
      for i in 2..padLen - 8 do
        yield 0uy
@@ -1517,12 +1517,12 @@ let padMessage (msg : byte []) =
        yield ((msgLenInBits >>> (8 * i)) |> byte) |]
   |> Array.append msg
 
-let md5sum (msg : string) = 
+let md5sum (msg : string) =
   System.Text.Encoding.ASCII.GetBytes msg
   |> padMessage
   |> Array.chunkBySize 64
   |> Array.fold md5plus initialMD5
-  |> (fun { MD5.a = a; MD5.b = b; MD5.c = c; MD5.d = d } -> 
+  |> (fun { MD5.a = a; MD5.b = b; MD5.c = c; MD5.d = d } ->
     System.BitConverter.GetBytes a
     |> (fun x -> System.BitConverter.GetBytes b |> Array.append x)
     |> (fun x -> System.BitConverter.GetBytes c |> Array.append x)
@@ -1676,7 +1676,7 @@ Data "0cc175b9c0f1b6a831c399e269772661", "a"
 Data "900150983cd24fb0d6963f7d28e17f72", "abc"
 Data "f96b697d7cb7938d525a2f31aaf161d0", "message digest"
 Data "c3fcd3d76192e4007dfb496cca67e13b", "abcdefghijklmnopqrstuvwxyz"
-Data "d174ab98d277d9f5a5611c2c9f419d9f" 
+Data "d174ab98d277d9f5a5611c2c9f419d9f"
 Data "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 Data "57edf4a22be3c955ac49da2e2107b67a"
 Data "123456789012345678901234567890123456789012345678901234567890" _
@@ -2030,7 +2030,7 @@ sinA = listArray (1,64) $ map (floor . (*mult) . abs . sin) [1..64]
 
 main :: IO ()
 main = mapM_ (putStrLn . md5sum . BLC.pack)
-        [ "" 
+        [ ""
         , "a"
         , "abc"
         , "message digest"
@@ -2104,9 +2104,9 @@ procedure main()  # validate against the RFC test strings and more
    testMD5("", 16rd41d8cd98f00b204e9800998ecf8427e)    #R = MD5 test suite from RFC
    testMD5("a", 16r0cc175b9c0f1b6a831c399e269772661)   #R
    testMD5("abc", 16r900150983cd24fb0d6963f7d28e17f72) #R
-   testMD5("message digest", 16rf96b697d7cb7938d525a2f31aaf161d0) #R 
-   testMD5("abcdefghijklmnopqrstuvwxyz", 16rc3fcd3d76192e4007dfb496cca67e13b) #R 
-   testMD5("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", 16rd174ab98d277d9f5a5611c2c9f419d9f) #R        
+   testMD5("message digest", 16rf96b697d7cb7938d525a2f31aaf161d0) #R
+   testMD5("abcdefghijklmnopqrstuvwxyz", 16rc3fcd3d76192e4007dfb496cca67e13b) #R
+   testMD5("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", 16rd174ab98d277d9f5a5611c2c9f419d9f) #R
    testMD5("12345678901234567890123456789012345678901234567890123456789012345678901234567890", 16r57edf4a22be3c955ac49da2e2107b67a) #R
 end
 
@@ -2120,7 +2120,7 @@ link hexcvt # for testMD5
 $define B32                     4   #  32 bits
 $define B64                     8   #  64 bits in bytes
 $define B512                   64   # 512 bits in bytes
-$define M32          16r100000000   # 2^32 
+$define M32          16r100000000   # 2^32
 $define M64  16r10000000000000000   # 2^64
 
 procedure MD5(s)                                    #: return MD5 hash of message s
@@ -2129,7 +2129,7 @@ local mlength,message,hash
 static rs,ks,istate,maxpad,g
 
 initial {
-   every (rs := []) |||:= 
+   every (rs := []) |||:=
       (t := [ 7, 12, 17, 22] | [ 5,  9, 14, 20] | [ 4, 11, 16, 23] | [ 6, 10, 15, 21]) ||| t ||| t ||| t
    every put(ks := [],integer(M32 * abs(sin(i := 1 to 64))))
    istate := [ 16r67452301, 16rEFCDAB89, 16r98BADCFE, 16r10325476 ]  # "Magic" IV
@@ -2140,45 +2140,45 @@ initial {
          0 : put(g,i + 1)
          1 : put(g,(5*i+1) % 16 + 1)
 	 2 : put(g,(3*i+5) % 16 + 1)
-         3 : put(g,(7*i) % 16 + 1) 
+         3 : put(g,(7*i) % 16 + 1)
          }
-   if not (*rs = *ks = 64) then runerr(500,"MD5 setup error") 
+   if not (*rs = *ks = 64) then runerr(500,"MD5 setup error")
    }
                                                     # 1. Construct prefix
    t := (*s*8)%M64                                  # original message length
-   s ||:= maxpad                                    # append maximum padding 
-   s[0-:*s%B512] := ""                              # trim to final length 
+   s ||:= maxpad                                    # append maximum padding
+   s[0-:*s%B512] := ""                              # trim to final length
    s[0-:B64] := reverse(unsigned2string(t,B64) )    # as little endian length
-   
+
    message := []                                    # 2. Subdivide message
    s ? while put(message,move(B512))                #  into 512 bit blocks
 
                                                     # 3. Transform message ...
-   state := copy(istate)                            # Initialize hashes 
+   state := copy(istate)                            # Initialize hashes
    every m := !message do {                         # For each message block
       w := []
-      m ? while put(w,unsigned(reverse(move(B32)))) # break into little-endian words 
+      m ? while put(w,unsigned(reverse(move(B32)))) # break into little-endian words
 
       a := state[1]                                 # pick up hashes
       b := state[2]
       c := state[3]
       d := state[4]
 
-      every i := 1 to 64 do  {                      # Process 4 rounds of hashes	
+      every i := 1 to 64 do  {                      # Process 4 rounds of hashes
          case round := (i-1)/16 of {
 	    0 : a +:= ixor(d, iand(b,ixor(c,d)))          # 0..15  - alternate F
-            1 : a +:= ixor(c,iand(d,ixor(b,c)))           # 16..31 - alternate G	
+            1 : a +:= ixor(c,iand(d,ixor(b,c)))           # 16..31 - alternate G
             2 : a +:= ixor(b,ixor(c,d))                   # 32..47 - H
             3 : a +:= ixor(c,ior(b,ixor(d,16rffffffff)))  # 48..64 - alternate I
 	    }                                       # Core of FF, GG, HH, II
          a +:= ks[i] + w[g[i]]                      # and the rest
          a %:= M32
          a := ior( ishift(a,rs[i]), ishift(a,-(32-rs[i]))) # 32bit rotate
-         a +:= b    
+         a +:= b
          a :=: b :=: c :=: d                        # rotate variables
 	 }
- 
-      state[1] +:= a                                # Add back new hashes 
+
+      state[1] +:= a                                # Add back new hashes
       state[2] +:= b
       state[3] +:= c
       state[4] +:= d
@@ -2197,7 +2197,7 @@ local s
       i /:= 256
       }
    return reverse(s)
-end   
+end
 
 link unsigned                                       # string to unsigned integer
 ```
@@ -2365,21 +2365,21 @@ class MD5
   private static final int INIT_B = (int)0xEFCDAB89L;
   private static final int INIT_C = (int)0x98BADCFEL;
   private static final int INIT_D = 0x10325476;
-  
+
   private static final int[] SHIFT_AMTS = {
     7, 12, 17, 22,
     5,  9, 14, 20,
     4, 11, 16, 23,
     6, 10, 15, 21
   };
-  
+
   private static final int[] TABLE_T = new int[64];
   static
   {
     for (int i = 0; i < 64; i++)
       TABLE_T[i] = (int)(long)((1L << 32) * Math.abs(Math.sin(i + 1)));
   }
-  
+
   public static byte[] computeMD5(byte[] message)
   {
     int messageLenBytes = message.length;
@@ -2387,14 +2387,14 @@ class MD5
     int totalLen = numBlocks << 6;
     byte[] paddingBytes = new byte[totalLen - messageLenBytes];
     paddingBytes[0] = (byte)0x80;
-    
+
     long messageLenBits = (long)messageLenBytes << 3;
     for (int i = 0; i < 8; i++)
     {
       paddingBytes[paddingBytes.length - 8 + i] = (byte)messageLenBits;
       messageLenBits >>>= 8;
     }
-    
+
     int a = INIT_A;
     int b = INIT_B;
     int c = INIT_C;
@@ -2419,17 +2419,17 @@ class MD5
           case 0:
             f = (b & c) | (~b & d);
             break;
-            
+
           case 1:
             f = (b & d) | (c & ~d);
             bufferIndex = (bufferIndex * 5 + 1) & 0x0F;
             break;
-            
+
           case 2:
             f = b ^ c ^ d;
             bufferIndex = (bufferIndex * 3 + 5) & 0x0F;
             break;
-            
+
           case 3:
             f = c ^ (b | ~d);
             bufferIndex = (bufferIndex * 7) & 0x0F;
@@ -2441,13 +2441,13 @@ class MD5
         c = b;
         b = temp;
       }
-      
+
       a += originalA;
       b += originalB;
       c += originalC;
       d += originalD;
     }
-    
+
     byte[] md5 = new byte[16];
     int count = 0;
     for (int i = 0; i < 4; i++)
@@ -2461,7 +2461,7 @@ class MD5
     }
     return md5;
   }
-  
+
   public static String toHexString(byte[] b)
   {
     StringBuilder sb = new StringBuilder();
@@ -2479,7 +2479,7 @@ class MD5
       System.out.println("0x" + toHexString(computeMD5(s.getBytes())) + " <== \"" + s + "\"");
     return;
   }
-  
+
 }
 ```
 
@@ -2512,21 +2512,21 @@ class MD5
   private static final int INIT_B = (int)0xEFCDAB89L;
   private static final int INIT_C = (int)0x98BADCFEL;
   private static final int INIT_D = 0x10325476;
-  
+
   private static final int[] SHIFT_AMTS = {
     7, 12, 17, 22,
     5,  9, 14, 20,
     4, 11, 16, 23,
     6, 10, 15, 21
   };
-  
+
   private static final int[] TABLE_T = new int[64];
   static
   {
     for (int i = 0; i < 64; i++)
       TABLE_T[i] = (int)(long)((1L << 32) * Math.abs(Math.sin(i + 1)));
   }
-  
+
   public static byte[] computeMD5(byte[] message)
   {
     ByteBuffer padded = ByteBuffer.allocate((((message.length + 8) / 64) + 1) * 64).order(ByteOrder.LITTLE_ENDIAN);
@@ -2559,17 +2559,17 @@ class MD5
           case 0:
             f = (b & c) | (~b & d);
             break;
-            
+
           case 1:
             f = (b & d) | (c & ~d);
             bufferIndex = (bufferIndex * 5 + 1) & 0x0F;
             break;
-            
+
           case 2:
             f = b ^ c ^ d;
             bufferIndex = (bufferIndex * 3 + 5) & 0x0F;
             break;
-            
+
           case 3:
             f = c ^ (b | ~d);
             bufferIndex = (bufferIndex * 7) & 0x0F;
@@ -2581,14 +2581,14 @@ class MD5
         c = b;
         b = temp;
       }
-      
+
       a += originalA;
       b += originalB;
       c += originalC;
       d += originalD;
       padded.position(padded.position() + 64);
     }
-    
+
     ByteBuffer md5 = ByteBuffer.allocate(16).order(ByteOrder.LITTLE_ENDIAN);
     for (int n : new int[]{a, b, c, d})
     {
@@ -2596,7 +2596,7 @@ class MD5
     }
     return md5.array();
   }
-  
+
   public static String toHexString(byte[] b)
   {
     StringBuilder sb = new StringBuilder();
@@ -2614,7 +2614,7 @@ class MD5
       System.out.println("0x" + toHexString(computeMD5(s.getBytes())) + " <== \"" + s + "\"");
     return;
   }
-  
+
 }
 ```
 
@@ -2642,8 +2642,8 @@ class MD5
 # a rather literal translation of the pseudocode at https://en.wikipedia.org/wiki/MD5
 
 const s = UInt32[7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
-                 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 
-                 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,  4, 11, 16, 23, 
+                 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
+                 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,  4, 11, 16, 23,
                  6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21]
 
 const K = UInt32[0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee, 0xf57c0faf,
@@ -2746,7 +2746,7 @@ object MD5 {
     private val INIT_B = 0xEFCDAB89L.toInt()
     private val INIT_C = 0x98BADCFEL.toInt()
     private val INIT_D = 0x10325476
- 
+
     private val SHIFT_AMTS = intArrayOf(
         7, 12, 17, 22,
         5,  9, 14, 20,
@@ -2781,9 +2781,9 @@ object MD5 {
             var index = i shl 6
 
             for (j in 0..63) {
-                val temp = if (index < messageLenBytes) message[index] else 
+                val temp = if (index < messageLenBytes) message[index] else
                                paddingBytes[index - messageLenBytes]
-                buffer[j ushr 2] = (temp.toInt() shl 24) or (buffer[j ushr 2] ushr 8) 
+                buffer[j ushr 2] = (temp.toInt() shl 24) or (buffer[j ushr 2] ushr 8)
                 index++
             }
 
@@ -2802,10 +2802,10 @@ object MD5 {
                     }
 
                     1 -> {
-                        f = (b and d) or (c and d.inv()) 
+                        f = (b and d) or (c and d.inv())
                         bufferIndex = (bufferIndex * 5 + 1) and 0x0F
                     }
- 
+
                     2 -> {
                         f = b xor c xor d;
                         bufferIndex = (bufferIndex * 3 + 5) and 0x0F
@@ -2815,9 +2815,9 @@ object MD5 {
                         f = c xor (b or d.inv());
                         bufferIndex = (bufferIndex * 7) and 0x0F
                     }
-                } 
+                }
 
-                val temp = b + Integer.rotateLeft(a + f + buffer[bufferIndex] + 
+                val temp = b + Integer.rotateLeft(a + f + buffer[bufferIndex] +
                            TABLE_T[j], SHIFT_AMTS[(div16 shl 2) or (j and 3)])
                 a = d
                 d = c
@@ -2829,7 +2829,7 @@ object MD5 {
             b += originalB
             c += originalC
             d += originalD
-        }   
+        }
 
         val md5 = ByteArray(16)
         var count = 0
@@ -2837,7 +2837,7 @@ object MD5 {
         for (i in 0..3) {
             var n = if (i == 0) a else (if (i == 1) b else (if (i == 2) c else d))
 
-            for (j in 0..3) {      
+            for (j in 0..3) {
                 md5[count++] = n.toByte()
                 n = n ushr 8
             }
@@ -2863,7 +2863,7 @@ fun main(args: Array<String>) {
         "12345678901234567890123456789012345678901234567890123456789012345678901234567890"
     )
 
-    println("${"hash code".padStart(34)} <== string") 
+    println("${"hash code".padStart(34)} <== string")
     for (s in testStrings) {
         println("0x${MD5.compute(s.toByteArray()).toHexString()} <== \"$s\"")
     }
@@ -3212,34 +3212,34 @@ end repeat
 
 
 ```Mathematica
-md5[string_String] := 
- Module[{r = {7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 
-     22, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 4, 
-     11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 6, 10, 
-     15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21}, 
-   k = Table[Floor[2^32*Abs@Sin@i], {i, 1, 64}], h0 = 16^^67452301, 
-   h1 = 16^^efcdab89, h2 = 16^^98badcfe, h3 = 16^^10325476, 
+md5[string_String] :=
+ Module[{r = {7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17,
+     22, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 4,
+     11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 6, 10,
+     15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21},
+   k = Table[Floor[2^32*Abs@Sin@i], {i, 1, 64}], h0 = 16^^67452301,
+   h1 = 16^^efcdab89, h2 = 16^^98badcfe, h3 = 16^^10325476,
    data = Partition[
-     Join[FromDigits[Reverse@#, 256] & /@ 
+     Join[FromDigits[Reverse@#, 256] & /@
          Partition[
-          PadRight[Append[#, 128], Mod[56, 64, Length@# + 1]], 4], 
+          PadRight[Append[#, 128], Mod[56, 64, Length@# + 1]], 4],
         Reverse@IntegerDigits[8 Length@#, 2^32, 2]] &@
-      ImportString[string, "Binary"], 16], a, b, c, d, f, g}, 
-  Do[{a, b, c, d} = {h0, h1, h2, h3}; 
-   Do[Which[1 <= i <= 16, 
-     f = BitOr[BitAnd[b, c], BitAnd[BitNot[b], d]]; g = i - 1, 
-     17 <= i <= 32, f = BitOr[BitAnd[d, b], BitAnd[BitNot[d], c]]; 
-     g = Mod[5 i - 4, 16], 33 <= i <= 48, f = BitXor[b, c, d]; 
-     g = Mod[3 i + 2, 16], 49 <= i <= 64, 
-     f = BitXor[c, BitOr[b, BitNot[d] + 2^32]]; 
-     g = Mod[7 i - 7, 16]]; {a, b, c, d} = {d, 
+      ImportString[string, "Binary"], 16], a, b, c, d, f, g},
+  Do[{a, b, c, d} = {h0, h1, h2, h3};
+   Do[Which[1 <= i <= 16,
+     f = BitOr[BitAnd[b, c], BitAnd[BitNot[b], d]]; g = i - 1,
+     17 <= i <= 32, f = BitOr[BitAnd[d, b], BitAnd[BitNot[d], c]];
+     g = Mod[5 i - 4, 16], 33 <= i <= 48, f = BitXor[b, c, d];
+     g = Mod[3 i + 2, 16], 49 <= i <= 64,
+     f = BitXor[c, BitOr[b, BitNot[d] + 2^32]];
+     g = Mod[7 i - 7, 16]]; {a, b, c, d} = {d,
       BitOr[BitShiftLeft[#1, #2], BitShiftRight[#1, 32 - #2]] &[
-        Mod[a + f + k[[i]] + w[[g + 1]], 2^32], r[[i]]] + b, b, 
-      c}, {i, 1, 64}]; {h0, h1, h2, h3} = 
-    Mod[{h0, h1, h2, h3} + {a, b, c, d}, 2^32], {w, data}]; 
+        Mod[a + f + k[[i]] + w[[g + 1]], 2^32], r[[i]]] + b, b,
+      c}, {i, 1, 64}]; {h0, h1, h2, h3} =
+    Mod[{h0, h1, h2, h3} + {a, b, c, d}, 2^32], {w, data}];
   "0x" ~~ IntegerString[
     FromDigits[
-     Flatten[Reverse@IntegerDigits[#, 256, 4] & /@ {h0, h1, h2, h3}], 
+     Flatten[Reverse@IntegerDigits[#, 256, 4] & /@ {h0, h1, h2, h3}],
      256], 16, 32]]
 
 ```
@@ -3365,12 +3365,12 @@ PROCEDURE Transform(VAR state: ARRAY [0..3] OF Word.T;
 
   BEGIN
     Decode(x, input);
-    
+
     a := state[0];
     b := state[1];
     c := state[2];
     d := state[3];
-    
+
     (* Round 1 *)
     FF(a, b, c, d, x[ 0], S11, 16_d76aa478); (* 1 *)
     FF(d, a, b, c, x[ 1], S12, 16_e8c7b756); (* 2 *)
@@ -3455,7 +3455,7 @@ PROCEDURE Update(VAR md5ctx: T; input: TEXT) =
 
   BEGIN
     index := Word.And(Word.Shift(md5ctx.count[0], -3), 16_3F);
-    md5ctx.count[0] := 
+    md5ctx.count[0] :=
         Word.Plus(md5ctx.count[0], Word.Shift(Text.Length(input), 3));
 
     IF md5ctx.count[0] < Text.Length(input) THEN
@@ -3503,7 +3503,7 @@ PROCEDURE Final(VAR md5ctx: T): Digest=
         output[i*4+2] := VAL(Word.Extract(input[i], 16, 8), CHAR);
         output[i*4+3] := VAL(Word.Extract(input[i], 24, 8), CHAR)
       END;
-    END Encode; 
+    END Encode;
   BEGIN
     Encode(bits, md5ctx.count, 1);
     index := Word.And(Word.Shift(md5ctx.count[0], -3), 16_3F);
@@ -3580,7 +3580,7 @@ proc extractChunk(msg : seq[uint8], chunk: var openarray[uint32], offset: int) =
 
 proc leftRotate(val: uint32, shift: int) : uint32 =
   result = (val shl shift) or (val shr (32 - shift))
-  
+
 proc md5Sum(msg : seq[uint8]) : array[SumSize, uint8] =
   const
     s : array[ChunkSize, int] =
@@ -3664,7 +3664,7 @@ proc md5Sum(msg : seq[uint8]) : array[SumSize, uint8] =
       else:
         F = C xor (B or (not D))
         g = (7 * ii) mod 16
-        
+
       dTemp = D
       D = C
       C = B
@@ -3755,7 +3755,7 @@ main()
 #!/usr/bin/rexx
 
 /* Expected results:
-   0xd41d8cd98f00b204e9800998ecf8427e <== ""  
+   0xd41d8cd98f00b204e9800998ecf8427e <== ""
    0x0cc175b9c0f1b6a831c399e269772661 <== "a"
    0x900150983cd24fb0d6963f7d28e17f72 <== "abc"
    0xf96b697d7cb7938d525a2f31aaf161d0 <== "message digest"
@@ -3791,8 +3791,8 @@ d0 = .int32~new('10325476'x,"C")   -- D
 buffer = .mutablebuffer~new('00'x~copies(64),64)
 -- The position in the buffer to insert new input
 index = 1
--- message bytecount 
-count = 0 
+-- message bytecount
+count = 0
 -- initialize leftrotate amounts
 nrs = .array~of(7,12,17,22)
 s = nrs~union(nrs)~union(nrs)~union(nrs)
@@ -3804,9 +3804,9 @@ nrs = .array~of(6,10,15,21)
 s = s~union(nrs)~union(nrs)~union(nrs)~union(nrs)
 -- initialize sinus derived constants.
 -- sin function from RXMath Library shipped with OORexx
--- see ::routine directive at the end of the code 
+-- see ::routine directive at the end of the code
 do i=0 to 63
-  K.i = .int32~new(((2**32)*(sin(i+1,16,R)~abs))~floor) 
+  K.i = .int32~new(((2**32)*(sin(i+1,16,R)~abs))~floor)
 end
 -- process initial string if any
 self~update(chunk)
@@ -3833,7 +3833,7 @@ exit
     C = c0
     D = d0
     do i=0 to 63
-      select 
+      select
         when i<16 then do
           F = D~xor(B~and(C~xor(D)))
           g = i
@@ -3883,13 +3883,13 @@ exit
 return a0~string || b0~string || c0~string || d0~string
 
 -- A convenience class to encapsulate operations on non OORexx-like
--- things as little-endian 32-bit words  
-::class int32 public 
+-- things as little-endian 32-bit words
+::class int32 public
 
 ::attribute arch class
 
 ::method init class
-  self~arch = "little-endian"   -- can be adapted for multiple architectures 
+  self~arch = "little-endian"   -- can be adapted for multiple architectures
 
 -- Method to create an int32 like object
 -- Input can be a OORexx whole number (type="I") or
@@ -3919,17 +3919,17 @@ exit
   expose char4
   use strict arg other
 return .int32~new(char4~bitxor(other~char),"C")
- 
+
 ::method and  -- wrapper for OORexx bitand method
   expose char4
   use strict arg other
 return .int32~new(char4~bitand(other~char),"C")
- 
+
 ::method or   -- wrapper for OORexx bitor method
   expose char4
   use strict arg other
 return .int32~new(char4~bitor(other~char),"C")
- 
+
 ::method bitleft -- OORexx shift (<<) implementation
   expose char4
   use strict arg bits
@@ -3980,8 +3980,8 @@ return .int32~new(int32+other~int)
 ::method string -- retrieve integer as hexadecimal string
   expose char4
 return char4~reverse~c2x~lower
-  
--- Simplify function names for the necessary 'RxMath' functions	
+
+-- Simplify function names for the necessary 'RxMath' functions
 ::routine sin EXTERNAL "LIBRARY rxmath RxCalcSin"
 
 ```
@@ -4184,37 +4184,37 @@ ok 7 - d174ab98d277d9f5a5611c2c9f419d9f is MD5 digest ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ```perl6
 sub infix:<⊞>(uint32 $a, uint32 $b --> uint32) { ($a + $b) +& 0xffffffff }
 sub infix:«<<<»(uint32 $a, UInt $n --> uint32) { ($a +< $n) +& 0xffffffff +| ($a +> (32-$n)) }
- 
+
 constant FGHI = { ($^a +& $^b) +| (+^$a +& $^c) },
                 { ($^a +& $^c) +| ($^b +& +^$c) },
                 { $^a +^ $^b +^ $^c             },
                 { $^b +^ ($^a +| +^$^c)         };
- 
+
 constant _S = flat (7, 12, 17, 22) xx 4,
                   (5,  9, 14, 20) xx 4,
                   (4, 11, 16, 23) xx 4,
                   (6, 10, 15, 21) xx 4;
- 
+
 constant T = (floor(abs(sin($_ + 1)) * 2**32) for ^64);
- 
+
 constant k = flat (   $_           for ^16),
                   ((5*$_ + 1) % 16 for ^16),
                   ((3*$_ + 5) % 16 for ^16),
                   ((7*$_    ) % 16 for ^16);
- 
+
 sub little-endian($w, $n, *@v) {
     my \step1 = $w X* ^$n;
     my \step2 = @v X+> step1;
     step2 X% 2**$w;
 }
- 
+
 sub md5-pad(Blob $msg)
 {
     my $bits = 8 * $msg.elems;
     my @padded = flat $msg.list, 0x80, 0x00 xx -($bits div 8 + 1 + 8) % 64;
     flat @padded.map({ :256[$^d,$^c,$^b,$^a] }), little-endian(32, 2, $bits);
 }
- 
+
 sub md5-block(@H, @X)
 {
     my uint32 ($A, $B, $C, $D) = @H;
@@ -4229,10 +4229,10 @@ sub md5(Blob $msg --> Blob)
     md5-block(@H, @M[$_ .. $_+15]) for 0, 16 ...^ +@M;
     Blob.new: little-endian(8, 4, @H);
 }
- 
+
 use Test;
 plan 7;
- 
+
 for 'd41d8cd98f00b204e9800998ecf8427e', '',
     '0cc175b9c0f1b6a831c399e269772661', 'a',
     '900150983cd24fb0d6963f7d28e17f72', 'abc',
@@ -4611,9 +4611,9 @@ def md5(message):
         for i, val in enumerate([a, b, c, d]):
             hash_pieces[i] += val
             hash_pieces[i] &= 0xFFFFFFFF
-    
+
     return sum(x<<(32*i) for i, x in enumerate(hash_pieces))
-        
+
 def md5_to_hex(digest):
     raw = digest.to_bytes(16, byteorder='little')
     return '{:032x}'.format(int.from_bytes(raw, byteorder='big'))
@@ -4834,13 +4834,13 @@ dcl-proc Main;
   dcl-s inputDataLen int(10) INZ(0);
   dcl-s outputHash char(16);
   dcl-s outputHashHex char(32);
-  
+
   DSPLY 'Input: ' '' inputData;
   inputData = %trim(inputData);
   inputDataLen = %len(%trim(inputData));
   DSPLY ('Input=' + inputData);
   DSPLY ('InputLen=' + %char(inputDataLen));
-  
+
   // Convert from EBCDIC to ASCII
   if inputDataLen > 0;
     QDCXLATE(inputDataLen : inputData : 'QTCPASC');
@@ -4882,12 +4882,12 @@ dcl-proc CalculateMD5;
     n int(5) INZ(0);
     c char(1) OVERLAY(n : 2);
   end-ds;
-  
+
   numBlocks = (messageLen + 8) / 64 + 1;
   MD5_FillPadding(messageLen : numBlocks : padding);
   for i = 0 to numBlocks - 1;
     index = i * 64;
-    
+
     // Read message as little-endian 32-bit words
     for j = 1 to 16;
       multiplier = 1;
@@ -4902,27 +4902,27 @@ dcl-proc CalculateMD5;
         multiplier *= 256;
       endfor;
     endfor;
-    
+
     originalA = a;
     originalB = b;
     originalC = c;
     originalD = d;
-    
+
     for j = 0 to 63;
       div16 = j / 16;
       select;
         when div16 = 0;
           f = %bitor(%bitand(b : c) : %bitand(%bitnot(b) : d));
           bufferIndex = j;
-        
+
         when div16 = 1;
           f = %bitor(%bitand(b : d) : %bitand(c : %bitnot(d)));
           bufferIndex = %bitand(j * 5 + 1 : 15);
-        
+
         when div16 = 2;
           f = %bitxor(b : %bitxor(c : d));
           bufferIndex = %bitand(j * 3 + 5 : 15);
-        
+
         when div16 = 3;
           f = %bitxor(c : %bitor(b : Mask32Bit(%bitnot(d))));
           bufferIndex = %bitand(j * 7 : 15);
@@ -4939,7 +4939,7 @@ dcl-proc CalculateMD5;
     c = Mask32Bit(c + originalC);
     d = Mask32Bit(d + originalD);
   endfor;
-  
+
   for i = 0 to 3;
     if i = 0;
       tempInt = a;
@@ -4950,7 +4950,7 @@ dcl-proc CalculateMD5;
     else;
       tempInt = d;
     endif;
-    
+
     for j = 0 to 3;
       byteToInt.n = %bitand(tempInt : 255);
       %subst(outputHash : i * 4 + j + 1 : 1) = byteToInt.c;
@@ -4973,7 +4973,7 @@ dcl-proc MD5_FillPadding;
     mlb_bytes char(8) OVERLAY(messageLenBits);
   end-ds;
   dcl-s i int(10);
-  
+
   %subst(padding : 1 : 1) = X'80';
   totalLen = numBlocks * 64;
   paddingSize = totalLen - messageLen; // 9 to 72
@@ -4994,7 +4994,7 @@ dcl-proc RotateLeft32Bit;
     amount int(3) value;
   end-pi;
   dcl-s i int(3);
-  
+
   n = Mask32Bit(n);
   for i = 1 to amount;
     n *= 2;
@@ -5026,7 +5026,7 @@ dcl-proc ConvertToHex;
     // IBM i is big-endian
     charField char(1) OVERLAY(numField : 2);
   end-ds;
-  
+
   for i = 1 to inputDataLen;
     dataStruct.charField = %BitAnd(%subst(inputData : i : 1) : X'F0');
     dataStruct.numField /= 16;
@@ -5292,7 +5292,7 @@ fn md5(mut msg: Vec<u8>) -> (u32, u32, u32, u32) {
         op4!(C, D, A, B, 2, 15, 63);
         op4!(B, C, D, A, 9, 21, 64);
 
-        /* . . . increment each of the four registers by the value 
+        /* . . . increment each of the four registers by the value
         it had before this block was started.) */
 
         A = A.wrapping_add(AA);
@@ -5618,7 +5618,7 @@ for md5,msg in tests {
 
 ```txt
 
-d41d8cd98f00b204e9800998ecf8427e : 
+d41d8cd98f00b204e9800998ecf8427e :
 0cc175b9c0f1b6a831c399e269772661 : a
 900150983cd24fb0d6963f7d28e17f72 : abc
 f96b697d7cb7938d525a2f31aaf161d0 : message digest
@@ -5647,51 +5647,51 @@ Original source: [//github.com/krzyzanowskim/CryptoSwift CryptoSwift]
                            5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
                            4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
                            6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21]
-        
+
         /** binary integer part of the sines of integers (Radians) */
         private let K: [UInt32] = (0 ..< 64).map { UInt32(0x100000000 * abs(sin(Double($0 + 1)))) }
-        
+
         let a0: UInt32 = 0x67452301
         let b0: UInt32 = 0xefcdab89
         let c0: UInt32 = 0x98badcfe
         let d0: UInt32 = 0x10325476
-        
+
         private var message: NSData
-        
+
         //MARK: Public
-        
+
         public init(_ message: NSData) {
             self.message = message
         }
-        
+
         public func calculate() -> NSData? {
             var tmpMessage: NSMutableData = NSMutableData(data: message)
             let wordSize = sizeof(UInt32)
-            
+
             var aa = a0
             var bb = b0
             var cc = c0
             var dd = d0
-            
+
             // Step 1. Append Padding Bits
             tmpMessage.appendBytes([0x80]) // append one bit (Byte with one bit) to message
-            
+
             // append "0" bit until message length in bits ≡ 448 (mod 512)
             while tmpMessage.length % 64 != 56 {
                 tmpMessage.appendBytes([0x00])
             }
-            
+
             // Step 2. Append Length a 64-bit representation of lengthInBits
             var lengthInBits = (message.length * 8)
             var lengthBytes = lengthInBits.bytes(64 / 8)
             tmpMessage.appendBytes(reverse(lengthBytes));
-            
+
             // Process the message in successive 512-bit chunks:
             let chunkSizeBytes = 512 / 8
             var leftMessageBytes = tmpMessage.length
             for var i = 0; i < tmpMessage.length; i = i + chunkSizeBytes, leftMessageBytes -= chunkSizeBytes {
                 let chunk = tmpMessage.subdataWithRange(NSRange(location: i, length: min(chunkSizeBytes,leftMessageBytes)))
-                
+
                 // break chunk into sixteen 32-bit words M[j], 0 ≤ j ≤ 15
                 // println("wordSize \(wordSize)");
                 var M:[UInt32] = [UInt32](count: 16, repeatedValue: 0)
@@ -5699,20 +5699,20 @@ Original source: [//github.com/krzyzanowskim/CryptoSwift CryptoSwift]
                     var range = NSRange(location:x * wordSize, length: wordSize)
                     chunk.getBytes(&M[x], range:range);
                 }
-                
+
                 // Initialize hash value for this chunk:
                 var A:UInt32 = a0
                 var B:UInt32 = b0
                 var C:UInt32 = c0
                 var D:UInt32 = d0
-                
+
                 var dTemp:UInt32 = 0
-                
+
                 // Main loop
                 for j in 0...63 {
                     var g = 0
                     var F:UInt32 = 0
-                    
+
                     switch (j) {
                     case 0...15:
                         F = (B & C) | ((~B) & D)
@@ -5737,9 +5737,9 @@ Original source: [//github.com/krzyzanowskim/CryptoSwift CryptoSwift]
                     D = C
                     C = B
                     B = B &+ rotateLeft((A &+ F &+ K[j] &+ M[g]), s[j])
-                    A = dTemp    
+                    A = dTemp
                 }
-                
+
                 aa = aa &+ A
                 bb = bb &+ B
                 cc = cc &+ C
@@ -5751,7 +5751,7 @@ Original source: [//github.com/krzyzanowskim/CryptoSwift CryptoSwift]
             buf.appendBytes(&bb, length: wordSize)
             buf.appendBytes(&cc, length: wordSize)
             buf.appendBytes(&dd, length: wordSize)
-            
+
             return buf.copy() as? NSData;
         }
 
@@ -5760,7 +5760,7 @@ Original source: [//github.com/krzyzanowskim/CryptoSwift CryptoSwift]
         {
             return MD5(message).calculate();
         }
-        
+
         //MARK: Private
         private func rotateLeft(x:UInt32, _ n:UInt32) -> UInt32 {
             return (x &<< n) | (x &>> (32 - n))
@@ -5784,11 +5784,11 @@ func md5(var message: [UInt8]) -> [UInt8] {
   while message.count % 64 != 56 {
     message.append(0)
   }
-  
+
   var lengthBytes = [UInt8](count: 8, repeatedValue: 0)
   UnsafeMutablePointer<UInt64>(lengthBytes).memory = messageLenBits.littleEndian
   message += lengthBytes
-  
+
   var a : UInt32 = 0x67452301
   var b : UInt32 = 0xEFCDAB89
   var c : UInt32 = 0x98BADCFE
@@ -5830,7 +5830,7 @@ func md5(var message: [UInt8]) -> [UInt8] {
     c = c &+ originalC
     d = d &+ originalD
   }
-  
+
   var result = [UInt8](count: 16, repeatedValue: 0)
   for (i, n) in enumerate([a, b, c, d]) {
     UnsafeMutablePointer<UInt32>(result)[i] = n.littleEndian
@@ -6143,7 +6143,7 @@ Demonstration code:
 
 ```tcl
 foreach {hash <- string} {
-   0xd41d8cd98f00b204e9800998ecf8427e ==> ""  
+   0xd41d8cd98f00b204e9800998ecf8427e ==> ""
    0x0cc175b9c0f1b6a831c399e269772661 ==> "a"
    0x900150983cd24fb0d6963f7d28e17f72 ==> "abc"
    0xf96b697d7cb7938d525a2f31aaf161d0 ==> "message digest"

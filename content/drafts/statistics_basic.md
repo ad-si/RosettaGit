@@ -482,10 +482,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{libheader|Math.Net}}
 
-```csharp
+```c#
 using System;
 using MathNet.Numerics.Statistics;
 

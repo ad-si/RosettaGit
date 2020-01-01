@@ -757,11 +757,11 @@ int main(int argc, char **argv)
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|6}}
 
-```csharp
+```c#
 using System;
 using System.IO;
 using System.Linq;

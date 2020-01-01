@@ -418,11 +418,11 @@ int main(int argc, char *argv[])
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 C# example using the [http://www.opentk.com/ OpenTK] library, which is multiplatform and provides C# OpenGL bindings for .Net and Mono. This code creates its own window and draws the triangle into it.
 
 
-```csharp
+```c#
 using OpenTK;
 using OpenTK.Graphics;
 namespace OpenGLTest

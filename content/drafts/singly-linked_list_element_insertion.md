@@ -643,7 +643,7 @@ while (a)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Uses the generic version of the node type located [[Singly-linked_list/Element_definition#C#|here]].
 
 Creates nodes and inserts them from the data passed.
@@ -657,7 +657,7 @@ Creates nodes and inserts them from the data passed.
 
 
 
-```csharp
+```c#
 static void Main()
 {
     //Create A(5)->B(7)

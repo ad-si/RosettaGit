@@ -452,7 +452,7 @@ int main( ) {
 {{out}}
 <PRE>The smallest number is -10, the biggest 987!</PRE>
 
-=={{header|C sharp|C#}}==
+## C#
 The preferred way to return multiple values in C# is to use "out" paremeters on the method. This can be in addition to the value returned by the method.
 
 ```c sharp

@@ -590,10 +590,10 @@ You got it!
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 class Program

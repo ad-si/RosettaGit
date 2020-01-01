@@ -566,7 +566,7 @@ Example call:
  "foo"
 
 
-## C sharp
+## C#
 
 
 

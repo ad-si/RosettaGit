@@ -868,10 +868,10 @@ Enter matrix size (N): 5
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
 using System;
 using System.Linq;

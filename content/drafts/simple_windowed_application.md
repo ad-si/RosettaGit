@@ -417,10 +417,10 @@ int main( int argc , char *argv[ ] ) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System.Windows.Forms;
 
 class RosettaForm : Form

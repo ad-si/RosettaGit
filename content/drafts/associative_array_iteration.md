@@ -731,10 +731,10 @@ for (std::map<std::string, int>::iterator it = myDict.begin(); it != myDict.end(
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

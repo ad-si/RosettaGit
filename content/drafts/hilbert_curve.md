@@ -217,7 +217,7 @@ Same as Kotlin entry.
 
 {{trans|Visual Basic .NET}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

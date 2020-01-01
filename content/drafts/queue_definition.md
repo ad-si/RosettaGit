@@ -1499,7 +1499,7 @@ namespace rosettacode
 
 
 
-## C sharp
+## C#
 
 Compatible with C# 3.0 specification, requires System library for exceptions (from either .Net or Mono). A FIFO class in C# using generics and nodes.
 

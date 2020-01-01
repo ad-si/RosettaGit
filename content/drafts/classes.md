@@ -11,22 +11,22 @@ tags = []
 +++
 
 {{task|Basic language learning}}
-[[Category:Object oriented]] 
+[[Category:Object oriented]]
 [[Category:Type System]]
 [[Category:Encyclopedia]]
 
-In [[object-oriented programming]] '''class''' is a set (a [[wp:Transitive_closure|transitive closure]]) of types bound by the relation of [[inheritance]]. It is said that all types derived from some base type T and the type T itself form a class T. 
+In [[object-oriented programming]] '''class''' is a set (a [[wp:Transitive_closure|transitive closure]]) of types bound by the relation of [[inheritance]]. It is said that all types derived from some base type T and the type T itself form a class T.
 
 The first type T from the class T sometimes is called the '''root type''' of the class.
 
-A class of types itself, as a type, has the values and operations of its own. 
-The operations of are usually called '''methods''' of the root type. 
+A class of types itself, as a type, has the values and operations of its own.
+The operations of are usually called '''methods''' of the root type.
 Both operations and values are called [[polymorphism | polymorphic]].
 
-A polymorphic operation (method) selects an implementation depending on the actual specific type of the polymorphic argument. 
+A polymorphic operation (method) selects an implementation depending on the actual specific type of the polymorphic argument.
 
-The action of choice the type-specific implementation of a polymorphic operation is called '''dispatch'''. Correspondingly, polymorphic operations are often called '''dispatching''' or '''virtual'''. 
-Operations with multiple arguments and/or the results of the class are called '''multi-methods'''. 
+The action of choice the type-specific implementation of a polymorphic operation is called '''dispatch'''. Correspondingly, polymorphic operations are often called '''dispatching''' or '''virtual'''.
+Operations with multiple arguments and/or the results of the class are called '''multi-methods'''.
 A further generalization of is the operation with arguments and/or results from different classes.
 
 * single-dispatch languages are those that allow only one argument or result to control the dispatch. Usually it is the first parameter, often hidden, so that a prefix notation ''x''.''f''() is used instead of mathematical ''f''(''x'').
@@ -34,15 +34,15 @@ A further generalization of is the operation with arguments and/or results from 
 
 
 
-A polymorphic value has a type tag indicating its specific type from the class and the corresponding specific value of that type. 
-This type is sometimes called '''the most specific type''' of a [polymorphic] value. 
-The type tag of the value is used in order to resolve the dispatch. 
+A polymorphic value has a type tag indicating its specific type from the class and the corresponding specific value of that type.
+This type is sometimes called '''the most specific type''' of a [polymorphic] value.
+The type tag of the value is used in order to resolve the dispatch.
 The set of polymorphic values of a class is a transitive closure of the sets of values of all types from that class.
 
-In many [[object-oriented programming | OO]] languages 
-the type of the class of T and T itself are considered equivalent. 
-In some languages they are distinct (like in [[Ada]]). 
-When class T and T are equivalent, there is no way to distinguish 
+In many [[object-oriented programming | OO]] languages
+the type of the class of T and T itself are considered equivalent.
+In some languages they are distinct (like in [[Ada]]).
+When class T and T are equivalent, there is no way to distinguish
 polymorphic and specific values.
 
 
@@ -86,16 +86,16 @@ T MyType
 ```actionscript
 package {
     public class MyClass {
- 
+
         private var myVariable:int;  // Note: instance variables are usually "private"
- 
+
         /**
          * The constructor
          */
         public function MyClass() {
             // creates a new instance
         }
- 
+
         /**
          * A method
          */
@@ -137,7 +137,7 @@ The package body must contain the implementation of the procedures and functions
     begin
        Item := 2 * Item;
     end Some_Procedure;
- 
+
     function Set(Value : Integer) return My_Type is
        Temp : My_Type;
     begin
@@ -195,8 +195,8 @@ Other examples of this experimental approach are located at pages: [[Life in two
 
 
 ```algol68
-MODE MYDATA = STRUCT( 
-    INT name1 
+MODE MYDATA = STRUCT(
+    INT name1
 );
 STRUCT(
     INT name2,
@@ -206,7 +206,7 @@ STRUCT(
 ) class my data;
 class my data := (
   # name2 := # 2, # Class attribute #
- 
+
   # PROC new := # (REF MYDATA new)REF MYDATA:(
         (init OF class my data)(new);
         new
@@ -216,7 +216,7 @@ class my data := (
         """ Constructor  (Technically an initializer rather than a true 'constructor') """;
         name1 OF self := 0 # Instance attribute #
     ),
- 
+
   # PROC some method := # (REF MYDATA self)VOID:(
         """ Method """;
         name1 OF self := 1;
@@ -225,8 +225,8 @@ class my data := (
 );
 
 # class name, invoked as a function is the constructor syntax #
-REF MYDATA my data = (new OF class my data)(LOC MYDATA); 
- 
+REF MYDATA my data = (new OF class my data)(LOC MYDATA);
+
 MODE GENDEROPT = UNION(STRING, VOID);
 MODE AGEOPT = UNION(INT, VOID);
 
@@ -268,13 +268,13 @@ PROC attribute error := STRING: error char; # mend the error with the "error cha
 
 # Allocate the instance from HEAP #
 REF MYOTHERDATA person1 =  (new OF class my other data)(HEAP MYOTHERDATA, "John", EMPTY, EMPTY);
-print (((name OF person1), ": ", 
+print (((name OF person1), ": ",
         (gender OF person1|(STRING gender):gender|attribute error), " "));  # "John Male" #
 print (((age OF person1|(INT age):age|attribute error), new line)); # Raises AttributeError exception! #
 
 # Allocate the instance from LOC (stack) #
 REF MYOTHERDATA person2 = (new OF class my other data)(LOC MYOTHERDATA, "Jane", "Female", 23);
-print (((name OF person2), ": ", 
+print (((name OF person2), ": ",
         (gender OF person2|(STRING gender):gender|attribute error), " "));
 print (((age OF person2|(INT age):age|attribute error), new line))  # "Jane Female 23" #
 ```
@@ -398,7 +398,7 @@ obj.WhenCreated()
 class MyClass {
 ; Instance Variable #1
    time := A_Hour ":" A_Min ":" A_Sec
-   
+
 ; Constructor
    __New() {
       MsgBox, % "Constructing new object of type: " this.__Class
@@ -449,21 +449,21 @@ class MyClass {
 
 ```bbcbasic
       INSTALL @lib$+"CLASSLIB"
-      
+
       REM Declare the class:
       DIM MyClass{variable, @constructor, _method}
       DEF MyClass.@constructor MyClass.variable = PI : ENDPROC
       DEF MyClass._method = MyClass.variable ^ 2
-      
+
       REM Register the class:
       PROC_class(MyClass{})
-      
+
       REM Instantiate the class:
       PROC_new(myclass{}, MyClass{})
-      
+
       REM Call the method:
       PRINT FN(myclass._method)
-      
+
       REM Discard the instance:
       PROC_discard(myclass{})
 ```
@@ -477,7 +477,7 @@ class MyClass {
 
 # Constructors can take parameters (that automatically become properties)
 constructor Ball(color, radius)
-	
+
 	# Objects can also have functions (closures)
 	:volume
 		return 4/3 * {pi} * (radius ** 3)
@@ -485,7 +485,7 @@ constructor Ball(color, radius)
 	:show
 		return "a " + color + " ball with radius " + radius
 	end
-	
+
 end
 
 red_ball = Ball("red", 2)
@@ -627,9 +627,9 @@ public:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 public class MyClass
 {
     public MyClass()
@@ -688,69 +688,69 @@ defrecord example:
 ```cobol
        IDENTIFICATION DIVISION.
        CLASS-ID. my-class INHERITS base.
-       
+
        *> The 'INHERITS base' and the following ENVIRONMENT DIVISION
        *> are optional (in Visual COBOL).
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        REPOSITORY.
            CLASS base.
-     
+
            *> There is no way (as far as I can tell) of creating a
            *> constructor. However, you could wrap it with another
            *> method to achieve the desired effect.
            *>...
-     
+
            OBJECT.
                *> Instance data
                DATA DIVISION.
                WORKING-STORAGE SECTION.
                01  instance-variable PIC 9(8).
-       
+
                *> Properties can have getters and setters automatically
                *> generated.
                01  a-property        PIC 9(8) PROPERTY.
-               
+
                PROCEDURE DIVISION.
-       
+
                METHOD-ID. some-method.
                PROCEDURE DIVISION.
                    *> ...
                END METHOD some-method.
            END OBJECT.
        END CLASS my-class.
-       
+
        IDENTIFICATION DIVISION.
        PROGRAM-ID. example-class-use.
-       
+
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        REPOSITORY.
            *> These declarations brings the class and property into
            *> scope.
            CLASS my-class
-           PROPERTY a-property. 
-                  
+           PROPERTY a-property.
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        *> Declaring a my-class reference variable.
        01  instance USAGE OBJECT REFERENCE my-class.
-       
+
        PROCEDURE DIVISION.
-       
+
            *> Invoking a static method or (in this case) a constructor.
            INVOKE my-class "new" RETURNING instance
-           
+
            *> Invoking an instance method.
            INVOKE instance "some-method"
 
            *> Using the setter and getter of a-property.
            MOVE 5 TO a-property OF instance
            DISPLAY a-property OF instance
-       
+
            GOBACK
            .
-           
+
        END PROGRAM example-class-use.
 ```
 
@@ -765,14 +765,14 @@ class Rectangle
   # constructor accepts one argument and automatically assigns it
   # to an instance variable.
   (@width) ->
- 
+
   # Another instance variable.
   length: 10
- 
+
   # A method.
   area: ->
     @width * @length
- 
+
 # Instantiate the class using the 'new' operator.
 rect = new Rectangle 2
 ```
@@ -787,10 +787,10 @@ rect = new Rectangle 2
 class Rectangle
   # Constructor that accepts one argument
   constructor: (@width) ->
-  
+
   # An instance variable
   length: 10
-  
+
   # A method
   area: () ->
     @width * @length
@@ -836,13 +836,13 @@ TYPE
 	Instance* = POINTER TO LIMITED RECORD
 		x-, y- : LONGINT; (* Instance variables *)
 	END;
-	
+
 	PROCEDURE (self: Instance) Initialize*(x,y: LONGINT), NEW;
 	BEGIN
 		self.x := x;
 		self.y := y
 	END Initialize;
-	
+
 	(* constructor *)
 	PROCEDURE New*(x, y: LONGINT): Instance;
 	VAR
@@ -852,13 +852,13 @@ TYPE
 		point.Initialize(x,y);
 		RETURN point
 	END New;
-	
+
 	(* methods *)
 	PROCEDURE (self: Instance) Add*(other: Instance): Instance, NEW;
 	BEGIN
 		RETURN New(self.x + other.x,self.y + other.y);
 	END Add;
-	
+
 	PROCEDURE (self: Instance) ToString*(): POINTER TO ARRAY OF CHAR, NEW;
 	VAR
 		xStr,yStr: ARRAY 64 OF CHAR;
@@ -878,10 +878,10 @@ Module that uses previous class
 ```oberon2
 
 MODULE DrivePoint;
-IMPORT 
+IMPORT
 	Point,
 	StdLog;
-	
+
 PROCEDURE Do*;
 VAR
 	p,q: Point.Instance;
@@ -916,17 +916,17 @@ p.y:>  2
 
 ```crystal
 class MyClass
-  
+
   def initialize
     @instance_var = 0
   end
- 
+
   def add_1
     @instance_var += 1
   end
 
 end
- 
+
 my_class = MyClass.new
 
 ```
@@ -1077,7 +1077,7 @@ foo
 ```
 
 
-This is enough to declare a 
+This is enough to declare a
 
 
 ## DWScript
@@ -1147,7 +1147,7 @@ Example interactive session creating and using it:
 ## Eiffel
 
 
-###  The Most Basic Form of Class 
+###  The Most Basic Form of Class
 
 The shortest way to write an Eiffel class is to have the class keyword, followed by the name of the class (all caps), and ending with the end keyword.
 
@@ -1224,7 +1224,7 @@ feature {NONE} -- Initialization
        -- There is no requirement to use the word "make".
        -- The word "make" is just a naming convention.
     do
-       -- Initialization code goes here ... 
+       -- Initialization code goes here ...
     end
 
 end
@@ -1304,7 +1304,7 @@ end
 ;; define a sub-class of Person with same methods
 (define-class Writer (Person)  (books))
 (define-method tostring (Writer) (lambda (w)( format "🎩 %a" w.name)))
-(define-method mailto (Person Writer) 
+(define-method mailto (Person Writer)
 	(lambda (p w) (printf " From %a (age %d). Dear writer of %a ..." p p.age  w.books )))
 
 
@@ -1341,29 +1341,29 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 class MyClass
 {
     prop int Variable;
- 
+
     someMethod()
     {
         Variable := 1
-    }    
- 
+    }
+
     constructor()
     {
     }
 }
- 
+
 public program()
 {
     // instantiate the class
     var instance := new MyClass();
- 
+
     // invoke the method
     instance.someMethod();
- 
+
     // get the variable
     console.printLine("Variable=",instance.Variable)
 }
@@ -1468,19 +1468,19 @@ Example of a class:
 
 ```falcon
 class mailbox( max_msg )
-  
-   capacity = max_msg * 10 
+
+   capacity = max_msg * 10
    name = nil
-   messages = [] 
-  
+   messages = []
+
     init
       printl( "Box now ready for ", self.capacity, " messages." )
     end
-  
+
     function slot_left()
       return  self.capacity - len( self.messages )
     end
-  
+
 end
 ```
 
@@ -1503,7 +1503,7 @@ M: my-class quux foo>> 20 + ;
 C: <my-class> my-class
 10 20 30 <my-class> quux ! result: 30
 TUPLE: my-child-class < my-class quxx ;
-C: <my-child-class> my-child-class 
+C: <my-child-class> my-child-class
 M: my-child-class foobar 20 >>quux ;
 20 20 30 <my-child-class> foobar quux ! result: 30
 ```
@@ -1552,7 +1552,7 @@ class MyClass
 {
   // an instance variable
   Int x
-  
+
   // a constructor, providing default value for instance variable
   new make (Int x := 1)
   {
@@ -1663,7 +1663,7 @@ include FMS-SI.f
 foo f1    \ instantiate a foo object, in the dictionary, named f1
 f1 print  \ 10   send the print message to object f1
 20 f1 put \ send a message with one parameter to the object
-f1 print \ 20 
+f1 print \ 20
 
 
 : bar  \ bar is a normal Forth function definition
@@ -1678,9 +1678,9 @@ f1 print \ 20
   f print
   30 f put
   f print
-  f <free ;  
+  f <free ;
 
-bar  \ 10 30 
+bar  \ 10 30
 bar' \ 10 30
 
 ```
@@ -1943,7 +1943,7 @@ Rectangle new(float width,float height){
 float area(Rectangle self){
     return self.width*self.height;
 }
- 
+
 float perimeter(Rectangle self){
     return (self.width+self.height)*2.0;
 }
@@ -2065,12 +2065,12 @@ func main() {
 }
 ```
 
-On the last line, in the call to ps.happy(), ps is of the interface type happinessTester.  The method actually called is based on the underlying concrete type.  
+On the last line, in the call to ps.happy(), ps is of the interface type happinessTester.  The method actually called is based on the underlying concrete type.
 For the method call, this is called the receiver type and the variable b (in both happy methods) is called the receiver.  Dispatch is based on this single receiver so Go is a single dispatch kind of language.
 
 '''Type tag'''
 
-Go maintains something equivalent in its internal representation of interfaces.  In place of direct access to internal data, Go's reflect package provides a number of functions for inspecting types and returning useful information.  
+Go maintains something equivalent in its internal representation of interfaces.  In place of direct access to internal data, Go's reflect package provides a number of functions for inspecting types and returning useful information.
 Shown above for example, is code recovering the name of the concrete type underlying the dynamic type of the interface.
 
 {{out}} for second example:
@@ -2097,12 +2097,12 @@ A class:
 class Stuff {
     /** Heare bee anne instance variable declared */
     def guts
-    
+
     /** This constuctor converts bits into Stuff */
     Stuff(injectedGuts) {
         guts = injectedGuts
     }
-    
+
     /** Brethren and sistren, let us flangulate with this fine flangulating method */
     def flangulate() {
         println "This stuff is flangulating its guts: ${guts}"
@@ -2136,12 +2136,12 @@ stuff.flangulate()
 {{out}}
 
 ```txt
-This stuff is flangulating its guts: 
+This stuff is flangulating its guts:
 I have made mistakes in the past.
 I have made mistakes in the future.
     -- Vice President Dan Quayle
 
-This stuff is flangulating its guts: 
+This stuff is flangulating its guts:
 Our enemies are innovative and resourceful, and so are we.
 They never stop thinking about new ways to harm our country and our people,
 and neither do we.
@@ -2152,8 +2152,8 @@ and neither do we.
 
 ## Haskell
 
-Haskell is entirely statically typed; that is, the type of every expression is completely determined at compile-time. 
-Hence, the usual approach to object-oriented programming, in which the actual method invoked by a method call isn't determined until runtime (think of C++'s virtual functions), is impossible in Haskell 98. 
+Haskell is entirely statically typed; that is, the type of every expression is completely determined at compile-time.
+Hence, the usual approach to object-oriented programming, in which the actual method invoked by a method call isn't determined until runtime (think of C++'s virtual functions), is impossible in Haskell 98.
 Haskell's type classes allow for polymorphic functions, but all the polymorphism happens at compile-time (think of C++ templates) without the use of language extensions (existential types).
 
 ```haskell
@@ -2235,9 +2235,9 @@ class Example (x) # 'x' is a field in class
   end
 
   # 'initially' block is called on instance construction
-  initially (x) 
+  initially (x)
     if /x # if x is null (not given), then set field to 0
-      then self.x := 0 
+      then self.x := 0
       else self.x := x
 end
 
@@ -2544,7 +2544,7 @@ define mytype => type {
 	public asString() => {
 		return 'has a value of: "'+.val+'" and a rand number of "'+.rand+'"'
 	}
-	
+
 }
 
 local(x = mytype)
@@ -2683,7 +2683,7 @@ Section Public
 
 ## Logtalk
 
-The definition of classes in Logtalk require the use of meta-classes. In order to avoid infinite regression, we use here the usual trick of making a class an instance of itself. The class meta-class holds the constructor method, allowing the class to accept a message for creating a new instance. The class itself defines the methods and variables of its instances. 
+The definition of classes in Logtalk require the use of meta-classes. In order to avoid infinite regression, we use here the usual trick of making a class an instance of itself. The class meta-class holds the constructor method, allowing the class to accept a message for creating a new instance. The class itself defines the methods and variables of its instances.
 
 ```logtalk
 :- object(metaclass,
@@ -2804,7 +2804,7 @@ Class zz {
             Rem : Marshal1=AnyMarshal()
             Marshal2=AnyMarshal()
             Marshal3=AnyMarshal()
-           
+
             \\ So now we see counters (three zero)
             Print Marshal1, Marshal2, Marshal3 \\ 0, 0, 0
             \\ Now we prepare Alfa and Alfa.Beta groups
@@ -2813,8 +2813,8 @@ Class zz {
                         Function SuperClass.Counter {
                               For SuperClass {
                                     =.counter
-                              }           
-                        }      
+                              }
+                        }
                   }
                   Module PrintData {
                         For SuperClass {
@@ -2847,7 +2847,7 @@ Class zz {
             \\ validation being for top group superclass and all members if are same
             \\ but not for inner superclasses. This maybe change in later revisions of language.
             Print Valid(@alfa as epsilon), Valid(@alfa.beta as epsilon.beta) \\ -1  0
-          
+
       }
 }
 Dim A(10)
@@ -2867,20 +2867,20 @@ Below are two examples of classes declared in MATLAB. GenericClass is defined wi
 
 @GenericClass
 
-GenericClass.m: Class Constructor  
+GenericClass.m: Class Constructor
 
 ```MATLAB
 function GenericClassInstance = GenericClass(varargin)
 
-        if isempty(varargin) %No input arguments             
+        if isempty(varargin) %No input arguments
             GenericClassInstance.classVariable = 0; %Generates a struct
         else
             GenericClassInstance.classVariable = varargin{1}; %Generates a struct
         end
-        
+
         %Converts the struct to a class of type GenericClass
         GenericClassInstance = class(GenericClassInstance,'GenericClass');
-        
+
 end
 ```
 
@@ -2931,31 +2931,31 @@ GenericClass2.m: This is the classdef, it includes the class constructor as well
 
 ```MATLAB
 classdef GenericClass2
-    
+
     properties
         classVariable
     end %properties
-    
+
     methods
-         
+
         %Class constructor
-        function objectInstance = GenericClass2(varargin)        
-            if isempty(varargin) %No input arguments             
+        function objectInstance = GenericClass2(varargin)
+            if isempty(varargin) %No input arguments
                 objectInstance.classVariable = 0;
             else
                 objectInstance.classVariable = varargin{1};
             end
-        end      
-        
+        end
+
         %Set function
         function setValue(GenericClassInstance,newValue)
             GenericClassInstance.classVariable = newValue;
-            
+
             %MATLAB magic that changes the object in the scope that called
             %this set function.
-            assignin('caller',inputname(1),GenericClassInstance);  
+            assignin('caller',inputname(1),GenericClassInstance);
         end
-        
+
     end %methods
 end
 ```
@@ -3046,17 +3046,17 @@ println $inst.getName()
 public class MyClass
 {
     public this() { }  // the constructor in Nemerle is always named 'this'
-    
+
     public MyVariable : int
     {
         get;
         set;
     }
-    
+
     public MyMethod() : void
     {
     }
-    
+
 }
 
 def myInstance = MyClass();                                           // no 'new' keyword needed
@@ -3074,13 +3074,13 @@ class ClassExample
 
   properties private -- class scope
   foo = int
-  
+
   properties public  -- publicly visible
   bar = boolean
-  
+
   properties indirect -- generates bean patterns
   baz = String()
-  
+
   method main(args=String[]) static -- main method
     clsex = ClassExample()   -- instantiate
     clsex.foo = 42
@@ -3180,31 +3180,31 @@ Exported procedures are marked with an asterisk (*). There is nothing special ab
 bundle Default {
   class MyClass {
     @var : Int;
-    
+
     New() {
     }
-    
+
     method : public : SomeMethod() ~ Nil {
     	@var := 1;
     }
-    
+
     method : public : SetVar(var : Int) ~ Nil {
       @var := var;
     }
-    
+
     method : public : GetVar() ~ Int {
       return @var;
     }
   }
-  
+
   class Test {
     function : Main(args : String[]) ~ Nil {
       inst := MyClass->New();
       inst->GetVar()->PrintLine();
-      
+
       inst->SomeMethod();
       inst->GetVar()->PrintLine();
-      
+
       inst->SetVar(15);
       inst->GetVar()->PrintLine();
     }
@@ -3247,11 +3247,11 @@ begin
  { create instances }
  instance.init;
  new(pInstance, init); { alternatively: pInstance := new(MyClass, init); }
- 
+
  { call method }
  instance.someMethod;
  pInstance^.someMethod;
- 
+
  { get rid of the objects }
  instance.done;
  dispose(pInstance, done);
@@ -3368,7 +3368,7 @@ Otus Lisp have no classes support.
 ## ooRexx
 
 ooRexx classes are defined using directives.  Only methods of the class can directly access instance variables to avoid fragile base class
-problems, methods can only access variables at the level of the class hierarchy they are defined. ::attribute directives create setter and getter methods that allow instance variables to be accessed in other contexts. 
+problems, methods can only access variables at the level of the class hierarchy they are defined. ::attribute directives create setter and getter methods that allow instance variables to be accessed in other contexts.
 
 
 ```ooRexx
@@ -3429,7 +3429,7 @@ union
 end union
 
 method space(sys n)
-  s=space n  
+  s=space n
 end method
 
 method delete()
@@ -3662,11 +3662,11 @@ extern printf;
 
 class @MyClass {
 	field @Integer myField { get:get_myField, set:set_myField };
-	
+
 	new [
 		this.set_myField(2);
 	]
-	
+
 	@Void method [
 		this.set_myField(this::get_myField + 1);
 	]
@@ -3833,13 +3833,13 @@ class MyClass
 {
 [type]$MyProperty1
 [type]$MyProperty2 = "Default value"
- 
+
     # Constructor
     MyClass( [type]$MyParameter1, [type]$MyParameter2 )
     {
     # Code
     }
- 
+
     # Method ( [returntype] defaults to [void] )
     [returntype] MyMethod( [type]$MyParameter3, [type]$MyParameter4 )
     {
@@ -3858,27 +3858,27 @@ class Banana
 # Properties
 [string]$Color
 [boolean]$Peeled
- 
+
 # Default constructor
 Banana()
     {
     $This.Color = "Green"
     }
- 
+
 # Constructor
 Banana( [boolean]$Peeled )
     {
     $This.Color = "Green"
     $This.Peeled = $Peeled
     }
- 
+
 # Method
 Ripen()
     {
     If ( $This.Color -eq "Green" ) { $This.Color = "Yellow" }
     Else { $This.Color = "Brown" }
     }
- 
+
 # Method
 [boolean] IsReadyToEat()
     {
@@ -3951,24 +3951,24 @@ Hello from the programming language Processing
 
 
 ```PureBasic
-Interface OO_Interface ; Interface for any value of this type 
-  Get.i()        
-  Set(Value.i) 
+Interface OO_Interface ; Interface for any value of this type
+  Get.i()
+  Set(Value.i)
   ToString.s()
   Destroy()
-EndInterface 
+EndInterface
 
-Structure OO_Structure ; The *VTable structure  
+Structure OO_Structure ; The *VTable structure
   Get.i
   Set.i
   ToString.i
   Destroy.i
-EndStructure 
+EndStructure
 
-Structure OO_Var  
+Structure OO_Var
   *VirtualTable.OO_Structure
-  Value.i 
-EndStructure 
+  Value.i
+EndStructure
 
 Procedure OO_Get(*Self.OO_Var)
   ProcedureReturn *Self\Value
@@ -4018,24 +4018,24 @@ Using the open-source precompiler [http://www.development-lounge.de/viewtopic.ph
 ```PureBasic
 Class Foo
   Private Value.i
-  
+
   BeginPublic
     Method Init()
-      ; Any needed code goes here  
+      ; Any needed code goes here
     EndMethod
-    
+
     Method Release()
       ; Any code befoe freeing the object goes here
     EndMethod
-    
+
     Method Get()
-      MethodReturn This\Value  
+      MethodReturn This\Value
     EndMethod
-    
+
     Method Set(n)
       This\Value = n
     EndMethod
-    
+
     Method.s ToString()
       MethodReturn Str(This\Value)
     EndMethod
@@ -4062,15 +4062,15 @@ class MyClass:
         Constructor  (Technically an initializer rather than a true "constructor")
         """
         self.name1 = 0 # Instance attribute
-  
+
     def someMethod(self):
         """
         Method
         """
         self.name1 = 1
         MyClass.name2 = 3
-  
-  
+
+
 myclass = MyClass() # class name, invoked as a function is the constructor syntax.
 
 class MyOtherClass:
@@ -4264,7 +4264,7 @@ I am Beta!
 
 ## REALbasic
 
-This class "contains" a number ('TheNumber'). The Number methods allow read and write access to the number, and provide an example of method overloading as well as use of the "Assigns" keyword. 
+This class "contains" a number ('TheNumber'). The Number methods allow read and write access to the number, and provide an example of method overloading as well as use of the "Assigns" keyword.
 
 
 ```vb
@@ -4313,7 +4313,7 @@ rebol [
 cowboy: make object! [
 	name: "Tex"  ; Instance variable.
 	hi: does [   ; Method.
-		print [self/name ": Howdy!"]] 
+		print [self/name ": Howdy!"]]
 ]
 
 ; I create two instances of the 'cowboy' class.
@@ -4323,10 +4323,10 @@ roy: make cowboy [
 	name: "Roy"  ; Override 'name' property.
 ]
 
-print "Say 'hello', boys:"  tex/hi  roy/hi  
+print "Say 'hello', boys:"  tex/hi  roy/hi
 print ""
 
-; Now I'll subclass 'cowboy'. Subclassing looks a lot like instantiation: 
+; Now I'll subclass 'cowboy'. Subclassing looks a lot like instantiation:
 
 legend: make cowboy [
 	deed: "..."
@@ -4374,7 +4374,7 @@ Class Point x y z func print see x + nl + y + nl + z + nl
 ```
 
 
-The previous program can be written in another way 
+The previous program can be written in another way
 
 
 ```ring
@@ -4405,17 +4405,17 @@ Class Point                     # define the Point class
 
 ```ruby
 class MyClass
-  
+
   def initialize
     @instance_var = 0
   end
- 
+
   def add_1
     @instance_var += 1
   end
 
 end
- 
+
 my_class = MyClass.new #allocates an object and calls it's initialize method, then returns it.
 
 ```
@@ -4474,12 +4474,12 @@ class CLASSTEST is
   -- constructor
   create(x, y, z:INT):CLASSTEST is
     res :CLASSTEST := new; -- or res ::= new
-    res.x := x; 
+    res.x := x;
     res.y := y;
     res.z := z;
     return res;
   end;
-  
+
   -- a getter for the private y summed to s
   getPrivateY(s:INT):INT is
     -- y is not shadowed so we can write y instead of
@@ -4786,7 +4786,7 @@ TIScript is [[wp:Prototype-based programming|prototype-based]] and yet it has cl
 
 
 ```javascript
-class Car 
+class Car
 {
   //Constructor function.
   function this(brand, weight, price = 0) {
@@ -4796,7 +4796,7 @@ class Car
   }
   property price(v) // computable property, special kind of member function
   {
-    get { return this._price; } // getter section 
+    get { return this._price; } // getter section
     set { this._price = v; }    // setter section
   }
   function toString() { // member function, method of a Car.
@@ -4804,7 +4804,7 @@ class Car
   }
 }
 
-class Truck : Car 
+class Truck : Car
 {
   function this(brand, size) {
     super(brand, 2000); // Call of constructor of super class (Car here)
@@ -4927,16 +4927,16 @@ print ${s.sum}
 public class MyClass : Object {
     // Instance variable
     public int variable;
-    
+
     // Method
     public void some_method() {
         variable = 24;
     }
-    
+
     // Constructor
     public MyClass() {
         variable = 42;
-    }   
+    }
 }
 void main() {
     // Class instance
@@ -5050,9 +5050,9 @@ End Sub
 
 ```txt
 foodemo
-f.Bar is  100 
-Five times f.Bar is  500 
-f2.Bar is  10 
+f.Bar is  100
+Five times f.Bar is  500
+f2.Bar is  10
 ---object destroyed---
 object f0 was created
 ---object destroyed---
@@ -5109,22 +5109,22 @@ End Class
 'Declare and create separately
 Dim foo1 As Foo
 foo1 = New Foo
- 
+
 'Declare and create at the same time
 Dim foo2 As New Foo
- 
-'... while passing constructor parameters 
+
+'... while passing constructor parameters
 Dim foo3 As New Foo(5)
- 
+
 '... and them immediately set properties
 Dim foo4 As New Foo With {.Bar = 10}
- 
+
 'Calling a method that returns a value
 Console.WriteLine(foo4.MultiplyBar(20))
- 
+
 'Calling a method that performs an action
 foo4.DoubleBar()
- 
+
 'Reading/writing properties
 Console.WriteLine(foo4.Bar)
 foo4.Bar = 1000
@@ -5149,7 +5149,7 @@ o2.ShowInstance()
 
 DEFINE CLASS MyClass As Session
 *!* Custom property (protected)
-PROTECTED nInstance 
+PROTECTED nInstance
 nInstance = 0
 
 *!* Constructor
@@ -5157,13 +5157,13 @@ PROCEDURE Init(tnInstance As Integer)
 IF VARTYPE(tnInstance) = "N"
     THIS.nInstance = tnInstance
 ELSE
-    THIS.nInstance = THIS.nInstance + 1 
+    THIS.nInstance = THIS.nInstance + 1
 ENDIF
 ENDPROC
 
 *!* Custom Method
 PROCEDURE ShowInstance
-? "Instance", THIS.nInstance 
+? "Instance", THIS.nInstance
 ENDPROC
 ENDDEFINE
 

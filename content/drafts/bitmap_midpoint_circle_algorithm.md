@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-{{task|Raster graphics operations}}Using the data storage type defined [[Basic_bitmap_storage|on this page]] for raster images, 
-write an implementation of the '''midpoint circle algorithm''' 
+{{task|Raster graphics operations}}Using the data storage type defined [[Basic_bitmap_storage|on this page]] for raster images,
+write an implementation of the '''midpoint circle algorithm'''
 (also known as '''Bresenham's circle algorithm'''). <BR>
 ([[wp:Midpoint_circle_algorithm|definition on Wikipedia]]).
 
@@ -31,11 +31,11 @@ procedure Circle
    ddF_Y : Integer := -2 * Radius;
    X     : Integer := 0;
    Y     : Integer := Radius;
-begin 
+begin
    Picture (Center.X, Center.Y + Radius) := Color;
    Picture (Center.X, Center.Y - Radius) := Color;
    Picture (Center.X + Radius, Center.Y) := Color;
-   Picture (Center.X - Radius, Center.Y) := Color; 
+   Picture (Center.X - Radius, Center.Y) := Color;
    while X < Y loop
       if F >= 0 then
          Y := Y - 1;
@@ -44,7 +44,7 @@ begin
       end if;
       X := X + 1;
       ddF_X := ddF_X + 2;
-      F := F + ddF_X + 1;    
+      F := F + ddF_X + 1;
       Picture (Center.X + X, Center.Y + Y) := Color;
       Picture (Center.X - X, Center.Y + Y) := Color;
       Picture (Center.X + X, Center.Y - Y) := Color;
@@ -107,14 +107,14 @@ circle OF class image :=
              INT radius,
              PIXEL color
           )VOID:
-BEGIN 
+BEGIN
    INT f     := 1 - radius,
-   POINT ddf := (0, -2 * radius), 
+   POINT ddf := (0, -2 * radius),
          df := (0, radius);
    picture [x OF center, y OF center + radius] :=
    picture [x OF center, y OF center - radius] :=
    picture [x OF center + radius, y OF center] :=
-   picture [x OF center - radius, y OF center] := color; 
+   picture [x OF center - radius, y OF center] := color;
    WHILE x OF df < y OF df DO
       IF f >= 0 THEN
          y OF df -:= 1;
@@ -123,7 +123,7 @@ BEGIN
       FI;
       x OF df +:= 1;
       x OF ddf +:= 2;
-      f +:= x OF ddf + 1;    
+      f +:= x OF ddf + 1;
       picture [x OF center + x OF df, y OF center + y OF df] :=
       picture [x OF center - x OF df, y OF center + y OF df] :=
       picture [x OF center + x OF df, y OF center - y OF df] :=
@@ -133,7 +133,7 @@ BEGIN
       picture [x OF center + y OF df, y OF center - x OF df] :=
       picture [x OF center - y OF df, y OF center - x OF df] := color
    OD
-END # circle #; 
+END # circle #;
 
 SKIP
 ```
@@ -141,13 +141,13 @@ SKIP
 ```algol68
 #!/usr/bin/a68g --script #
 # -*- coding: utf-8 -*- #
- 
+
 PR READ "prelude/Bitmap.a68" PR; # c.f. [[rc:Bitmap]] #
 PR READ "prelude/Bitmap/Bresenhams_line_algorithm.a68" PR; # c.f. [[rc:Bitmap/Bresenhams_line_algorithm]] #
 PR READ "prelude/Bitmap/Midpoint_circle_algorithm.a68" PR;
 
 # The following illustrates use: #
- 
+
 test:(
    REF IMAGE x = INIT LOC [1:16, 1:16] PIXEL;
    (fill OF class image)(x, (white OF class image));
@@ -444,15 +444,15 @@ goto :EOF
 ```bbcbasic
       Width% = 200
       Height% = 200
-      
+
       REM Set window size:
       VDU 23,22,Width%;Height%;8,16,16,128
-      
+
       REM Draw circles:
       PROCcircle(100,100,40, 0,0,0)
       PROCcircle(100,100,80, 255,0,0)
       END
-      
+
       DEF PROCcircle(cx%,cy%,r%,R%,G%,B%)
       LOCAL f%, x%, y%, ddx%, ddy%
       f% = 1 - r% : y% = r% : ddy% = - 2*r%
@@ -479,7 +479,7 @@ goto :EOF
         PROCsetpixel(cx%-y%, cy%-x%, R%,G%,B%)
       ENDWHILE
       ENDPROC
-      
+
       DEF PROCsetpixel(x%,y%,r%,g%,b%)
       COLOUR 1,r%,g%,b%
       GCOL 1
@@ -531,9 +531,9 @@ void raster_circle(
     plot(x0 + radius, y0);
     plot(x0 - radius, y0);
 
-    while(x < y) 
+    while(x < y)
     {
-        if(f >= 0) 
+        if(f >= 0)
         {
             y--;
             ddF_y += 2;
@@ -541,7 +541,7 @@ void raster_circle(
         }
         x++;
         ddF_x += 2;
-        f += ddF_x + 1;    
+        f += ddF_x + 1;
         plot(x0 + x, y0 + y);
         plot(x0 - x, y0 + y);
         plot(x0 + x, y0 - y);
@@ -561,7 +561,7 @@ void raster_circle(
 This extension method extends GenericImage which is very similar to [http://rosettacode.org/wiki/Bitmap#C.23 Bitmap] but instead of using a SetPixel method it uses a "Color this[int x, int y] { get; set; }" property to get and set pixels.
 
 
-```csharp
+```c#
 
         /// <summary>
         /// Draws a circle.
@@ -577,10 +577,10 @@ This extension method extends GenericImage which is very similar to [http://rose
         /// </param>
         /// <param name="radius">
         /// The radius of the circle.
-        /// </param>  
+        /// </param>
         /// <param name="color">
         /// The color to use.
-        /// </param>    
+        /// </param>
         public static void DrawCircle(this GenericImage image, int centerX, int centerY, int radius, Color color)
         {
             int d = (5 - radius * 4) / 4;
@@ -665,26 +665,26 @@ Based upon the Common Lisp version.
 
 
 ```txt
-                    
-                    
-                    
-       xxxxxxx      
-     xx       xx    
-    x           x   
-    x           x   
-   x             x  
-   x             x  
-   x             x  
-   x             x  
-   x             x  
-   x             x  
-   x             x  
-    x           x   
-    x           x   
-     xx       xx    
-       xxxxxxx      
-                    
-                    
+
+
+
+       xxxxxxx
+     xx       xx
+    x           x
+    x           x
+   x             x
+   x             x
+   x             x
+   x             x
+   x             x
+   x             x
+   x             x
+    x           x
+    x           x
+     xx       xx
+       xxxxxxx
+
+
 nil
 
 ```
@@ -921,13 +921,13 @@ END EVENTS
 SUB MidpointCircle()
 	BresenhamCircle(Breadth \ 2, Height \ 2, 80, &HFF) ' Red: Windows stores colors in BGR order
 	BresenhamCircle(Breadth \ 2, Height \ 2, 40, 0) ' Black
-	
+
 	SUB BresenhamCircle(cx, cy, radius, colour)
 		DIM x = 0, y = radius, f = 1 - radius, dx = 0, dy = -2 * radius
-		
+
 		PSET(FBSL.GETDC, cx, cy + radius, colour)(FBSL.GETDC, cx, cy - radius, colour)
 		PSET(FBSL.GETDC, cx + radius, cy, colour)(FBSL.GETDC, cx - radius, cy, colour)
-		
+
 		WHILE x < y
 			IF f >= 0 THEN: DECR(y): INCR(dy, 2)(f, dy): END IF ' Try also "IF f THEN" :)
 			INCR(x)(dx, 2)(f, dx + 1)
@@ -1050,7 +1050,7 @@ subroutine draw_circle_toch(ch, c, radius, v)
      call plot(ch, point(c%x + y, c%y - x), v)
      call plot(ch, point(c%x - y, c%y - x), v)
   end do
-  
+
 end subroutine draw_circle_toch
 
 subroutine draw_circle_rgb(img, c, radius, color)
@@ -1058,7 +1058,7 @@ subroutine draw_circle_rgb(img, c, radius, color)
   type(point), intent(in) :: c
   integer, intent(in) :: radius
   type(rgb), intent(in) :: color
-  
+
   call draw_circle_toch(img%red, c, radius, color%red)
   call draw_circle_toch(img%green, c, radius, color%green)
   call draw_circle_toch(img%blue, c, radius, color%blue)
@@ -1068,7 +1068,7 @@ subroutine draw_circle_sc(img, c, radius, lum)
   type(scimage), intent(out) :: img
   type(point), intent(in) :: c
   integer, intent(in) :: radius, lum
-  
+
   call draw_circle_toch(img%channel, c, radius, lum)
 end subroutine draw_circle_sc
 ```
@@ -1226,7 +1226,7 @@ generateCirclePoints (x0, y0) radius
       points = concatMap generatePoints $ unfoldr step initialValues
       generatePoints (x, y)
         = [(xop x0 x', yop y0 y') | (x', y') <- [(x, y), (y, x)], xop <- [(+), (-)], yop <- [(+), (-)]]
-      
+
       -- The initial values for the loop
       initialValues = (1 - radius, 1, (-2) * radius, 0, radius)
 
@@ -1264,7 +1264,7 @@ plotPoints surface colour points = surface // zip points (repeat colour)
 
 -- Draws a circle of the given colour on the surface given a center and radius
 drawCircle :: Surface -> Colour -> Point -> Int -> Surface
-drawCircle surface colour center radius 
+drawCircle surface colour center radius
   = plotPoints surface colour (generateCirclePoints center radius)
 
 -- Converts a surface to a string
@@ -1457,9 +1457,9 @@ fun drawCircle(bbs: BasicBitmapStorage, centerX: Int, centerY: Int, radius: Int,
     var d = (5 - radius * 4) / 4
     var x = 0
     var y = radius
- 
+
     do {
-        with(bbs) { 
+        with(bbs) {
             setPixel(centerX + x, centerY + y, circleColor)
             setPixel(centerX + x, centerY - y, circleColor)
             setPixel(centerX - x, centerY + y, circleColor)
@@ -1471,13 +1471,13 @@ fun drawCircle(bbs: BasicBitmapStorage, centerX: Int, centerY: Int, radius: Int,
         }
         if (d < 0) {
             d += 2 * x + 1
-        } 
+        }
         else {
             d += 2 * (x - y) + 1
             y--
         }
         x++
-    } 
+    }
     while (x <= y)
 }
 
@@ -1485,7 +1485,7 @@ fun main(args: Array<String>) {
     val bbs = BasicBitmapStorage(400, 400)
     bbs.fill(Color.pink)
     drawCircle(bbs, 200, 200, 100, Color.black)
-    drawCircle(bbs, 200, 200,  50, Color.white)     
+    drawCircle(bbs, 200, 200,  50, Color.white)
     val label = JLabel(ImageIcon(bbs.image))
     val title = "Bresenham's circle algorithm"
     JOptionPane.showMessageDialog(null, label, title, JOptionPane.PLAIN_MESSAGE)
@@ -1524,9 +1524,9 @@ INTERFACE Circle;
 IMPORT Bitmap;
 
 PROCEDURE Draw(
-  img: Bitmap.T; 
-  center: Bitmap.Point; 
-  radius: CARDINAL; 
+  img: Bitmap.T;
+  center: Bitmap.Point;
+  radius: CARDINAL;
   color: Bitmap.Pixel);
 
 END Circle.
@@ -1539,10 +1539,10 @@ MODULE Circle;
 IMPORT Bitmap;
 
 PROCEDURE Draw(
-  img: Bitmap.T; 
-  center: Bitmap.Point; 
-  radius: CARDINAL; 
-  color: Bitmap.Pixel) = 
+  img: Bitmap.T;
+  center: Bitmap.Point;
+  radius: CARDINAL;
+  color: Bitmap.Pixel) =
   VAR f := 1 - radius;
       ddfx := 0;
       ddfy := - 2 * radius;
@@ -1651,7 +1651,7 @@ augment class Bitmap {
             }
             $x++;
             $ddF_x += 2;
-            $f += $ddF_x + 1;    
+            $f += $ddF_x + 1;
             self.set-pixel($x0 + $x, $y0 + $y, $value);
             self.set-pixel($x0 - $x, $y0 + $y, $value);
             self.set-pixel($x0 + $x, $y0 - $y, $value);
@@ -1704,7 +1704,7 @@ let raster_circle ~img ~color ~c:(x0, y0) ~r =
 ## Phix
 
 {{Trans|Go}}
-Requires new_image() from [[Bitmap#Phix|Bitmap]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]]. 
+Requires new_image() from [[Bitmap#Phix|Bitmap]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]].
 Included as demo\rosetta\Bitmap_Circle.exw, results may be verified with demo\rosetta\viewppm.exw
 
 ```Phix
@@ -1906,13 +1906,13 @@ Procedure rasterCircle(cx, cy, r, Color)
   Protected f= 1 - r
   Protected ddF_X, ddF_Y = -2 * r
   Protected x, y = r
-  
+
   Plot(cx, cy + r, Color)
   Plot(cx, cy - r, Color)
   Plot(cx + r, cy, Color)
   Plot(cx - r, cy, Color)
   While x < y
-    If f >= 0 
+    If f >= 0
       y - 1
       ddF_Y + 2
       f + ddF_Y
@@ -1964,13 +1964,13 @@ def circle(self, x0, y0, radius, colour=black):
     self.set(x0 - radius, y0, colour)
 
     while x < y:
-        if f >= 0: 
+        if f >= 0:
             y -= 1
             ddf_y += 2
             f += ddf_y
         x += 1
         ddf_x += 2
-        f += ddf_x    
+        f += ddf_x
         self.set(x0 + x, y0 + y, colour)
         self.set(x0 - x, y0 + y, colour)
         self.set(x0 + x, y0 - y, colour)
@@ -2067,7 +2067,7 @@ Port of the Pyhton solution.
       (draw-point dc (+ x0 y) (- y0 x))
       (draw-point dc (- x0 y) (- y0 x))
       (loop))))
- 
+
 (define bm (make-object bitmap% 25 25))
 (define dc (new bitmap-dc% [bitmap bm]))
 (send dc set-smoothing 'unsmoothed)
@@ -2081,9 +2081,9 @@ bm
 
 ## REXX
 
-Programming note:   because of character output to a terminal screen, a circle appears to be elongated in the 
+Programming note:   because of character output to a terminal screen, a circle appears to be elongated in the
 
-vertical direction because characters are "taller" than they're "wide", so this REXX version attempts to maintain 
+vertical direction because characters are "taller" than they're "wide", so this REXX version attempts to maintain
 
 a good aspect ratio.
 
@@ -2195,12 +2195,12 @@ Pixel = Struct.new(:x, :y)
 class Pixmap
   def draw_circle(pixel, radius, colour)
     validate_pixel(pixel.x, pixel.y)
- 
+
     self[pixel.x, pixel.y + radius] = colour
     self[pixel.x, pixel.y - radius] = colour
     self[pixel.x + radius, pixel.y] = colour
     self[pixel.x - radius, pixel.y] = colour
- 
+
     f = 1 - radius
     ddF_x = 1
     ddF_y = -2 * radius
@@ -2262,7 +2262,7 @@ object BitmapOps {
          x+=1
          ddF_x+=2
          f+=ddF_x
-			
+
          bm.setPixel(x0+x, y0+y, c)
          bm.setPixel(x0-x, y0+y, c)
          bm.setPixel(x0+x, y0-y, c)
@@ -2300,7 +2300,7 @@ proc drawCircle {image colour point radius} {
     set ddF_y [expr {-2 * $radius}]
     set x 0
     set y $radius
-    
+
     while {$x < $y} {
         assert {$ddF_x == 2 * $x + 1}
         assert {$ddF_y == -2 * $y}
@@ -2329,7 +2329,7 @@ proc drawCircle {image colour point radius} {
 set img [newImage 200 100]
 label .l -image $img
 pack .l
- 
+
 fill $img black
 drawCircle $img blue {100 50} 49
 ```
@@ -2444,7 +2444,7 @@ This is the code from the PPM class:
 	 y+=1;
 	 if (radiusError<0) radiusError+=2*y + 1;
 	 else{ x-=1; radiusError+=2*(y - x + 1); }
-      }      
+      }
    }
 ```
 

@@ -10,17 +10,17 @@ categories = []
 tags = []
 +++
 
-{{task|Geometric Primitives}} 
+{{task|Geometric Primitives}}
 {{requires|Graphics}}
 [[Category:3D]]
 
 ;Task:
-Draw a   [http://en.wikipedia.org/wiki/Cuboid cuboid]   with relative dimensions of   <big> 2 &times; 3 &times; 4. </big> 
+Draw a   [http://en.wikipedia.org/wiki/Cuboid cuboid]   with relative dimensions of   <big> 2 &times; 3 &times; 4. </big>
 
 
-The cuboid can be represented graphically, or in   [https://en.wikipedia.org/wiki/ASCII_art ASCII art],   depending on the language capabilities. 
+The cuboid can be represented graphically, or in   [https://en.wikipedia.org/wiki/ASCII_art ASCII art],   depending on the language capabilities.
 
-To fulfill the criteria of being a cuboid, three faces must be visible. 
+To fulfill the criteria of being a cuboid, three faces must be visible.
 
 Either static or rotational projection is acceptable for this task.
 
@@ -105,11 +105,11 @@ end Main;
    /    / |
   /    /  |
  /    /   +
-+----+   / 
-|    |  /  
-|    | /   
-|    |/    
-+----+     
++----+   /
+|    |  /
+|    | /
+|    |/
++----+
 ```
 
 
@@ -304,7 +304,7 @@ Uses BBC BASIC's native parallelogram plot.
       ORIGIN 100, 100
       PROCcuboid(200, 300, 400)
       END
-      
+
       DEF PROCcuboid(x, y, z)
       MOVE 0, 0 : MOVE 0, y
       GCOL 1 : PLOT 117, x, y
@@ -361,9 +361,9 @@ Code works fine but only '.' and ':' characters show up on the cuboid.
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
- 
+
 const char *shades = ".:!*oe&#%@";
- 
+
 void vsub(double *v1, double *v2, double *s) {
 	s[0] = v1[0] - v2[0];
 	s[1] = v1[1] - v2[1];
@@ -375,7 +375,7 @@ double normalize(double * v) {
         v[0] /= len; v[1] /= len; v[2] /= len;
 	return len;
 }
- 
+
 double dot(double *x, double *y) {
         return x[0]*y[0] + x[1]*y[1] + x[2]*y[2];
 }
@@ -500,7 +500,7 @@ int main()
 Output :
 
 ```txt
-                                
+
                                 .
                         ................
                 ...............................
@@ -549,16 +549,16 @@ int main()
 {
     int k;
     initwindow(1500,810,"Rosetta Cuboid");
-    
+
     do{
        std::cout<<"Enter ratio of sides ( 0 or -ve to exit) : ";
        std::cin>>k;
-       
+
        if(k>0){
                 bar3d(100, 100, 100 + 2*k, 100 + 4*k, 3*k, 1);
        }
        }while(k>0);
-    
+
     return 0;
 }
 
@@ -572,7 +572,7 @@ int main()
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -766,7 +766,7 @@ void main() {
 {{Out}}
 
 ```txt
-    +-----------------+ 
+    +-----------------+
    /                 /|
   /                 / |
  /                 /  |
@@ -788,7 +788,7 @@ void main() {
 |                 |/
 +-----------------+
 
-  +--------+ 
+  +--------+
  /        /|
 +--------+ |
 |        | |
@@ -796,7 +796,7 @@ void main() {
 |        |/
 +--------+
 
-   +-----------------------------------------------------+ 
+   +-----------------------------------------------------+
   /                                                     /|
  /                                                     / |
 +-----------------------------------------------------+  |
@@ -818,7 +818,7 @@ defmodule Cuboid do
   @y 2
   @z 3
   @dir %{-: {1,0}, |: {0,1}, /: {1,1}}
-  
+
   def draw(nx, ny, nz) do
     IO.puts "cuboid #{nx} #{ny} #{nz}:"
     {x, y, z} = {@x*nx, @y*ny, @z*nz}
@@ -833,12 +833,12 @@ defmodule Cuboid do
       IO.puts Enum.map_join(0..x+y, fn i -> Map.get(area, {i,j}, " ") end)
     end)
   end
-  
+
   defp draw_line(area, n, sx, sy, c) do
     {dx, dy} = Map.get(@dir, c)
     draw_line(area, n, sx, sy, c, dx, dy)
   end
-  
+
   defp draw_line(area, n, _, _, _, _, _) when n<0, do: area
   defp draw_line(area, n, i, j, c, dx, dy) do
     Map.update(area, {i,j}, c, fn _ -> :+ end)
@@ -991,7 +991,7 @@ func main() {
 ```txt
 
 cuboid 2 3 4:
-    +-----------------+ 
+    +-----------------+
    /                 /|
   /                 / |
  /                 /  |
@@ -1014,7 +1014,7 @@ cuboid 2 3 4:
 +-----------------+
 
 cuboid 1 1 1:
-  +--------+ 
+  +--------+
  /        /|
 +--------+ |
 |        | |
@@ -1023,7 +1023,7 @@ cuboid 1 1 1:
 +--------+
 
 cuboid 6 2 1:
-   +-----------------------------------------------------+ 
+   +-----------------------------------------------------+
   /                                                     /|
  /                                                     / |
 +-----------------------------------------------------+  |
@@ -1051,7 +1051,7 @@ type Fl = GLfloat
 
 cuboid :: IO ()
 cuboid = do
-  color red   ; render front  
+  color red   ; render front
   color green ; render side
   color blue  ; render top
 
@@ -1112,28 +1112,28 @@ With larger resolutions and the viewmat script, this code can generate reasonabl
 ```j
    vectors =. ((% +/&.:*:"1) _1 1 0,:_1 _1 3) +/@:*"1/~ 2 3 4*=i.3
    ' .*o' {~  +/ 1 2 3* (|:"2 -."_ 1~ vectors) ([:*./ 1 = 0 1 I. %.~)"_ 1"_1 _ ]4j21 ,~"0/&:i: 4j41
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                       oooo               
-                  ooooooooooooo           
-              oooooooooooooo....          
-              *****oooo.........          
-              *******...........          
-              *******...........          
-              *******...........          
-              *******...........          
-              *******...........          
-              *******...........          
-              *******...........          
-              *******.........            
-                *****.....                
-                                          
-                                          
+
+
+
+
+
+
+
+                       oooo
+                  ooooooooooooo
+              oooooooooooooo....
+              *****oooo.........
+              *******...........
+              *******...........
+              *******...........
+              *******...........
+              *******...........
+              *******...........
+              *******...........
+              *******.........
+                *****.....
+
+
 ```
 
 
@@ -1341,7 +1341,7 @@ public class Cuboid extends JPanel {
 
         function drawCuboid() {
             g.save();
-            
+
             g.clearRect(0, 0, canvas.width, canvas.height);
             g.translate(canvas.width / 2, canvas.height / 2);
             g.strokeStyle = "#FFFFFF";
@@ -1353,7 +1353,7 @@ public class Cuboid extends JPanel {
                 g.moveTo(p1[0], p1[1]);
                 g.lineTo(p2[0], p2[1]);
             });
-            
+
             g.closePath();
             g.stroke();
 
@@ -1373,7 +1373,7 @@ public class Cuboid extends JPanel {
 ## Julia
 
 
-###  ASCII Art 
+###  ASCII Art
 
 {{trans|Python}}
 {{works with|Julia|0.6}}
@@ -1714,7 +1714,7 @@ Sub triFill x1,y1, x2,y2, x3,y3
             #g "Line ";Int(x+x2);" ";Int(x*slope1+y);" ";Int(x+x2);" ";Int(x*slope3+y2)
         Next
     End If
-End Sub 
+End Sub
 
 ```
 
@@ -1785,7 +1785,7 @@ This creates a cuboid with one corner at (0,0,0) and the opposite at (2,3,4):
 Graphics3D[Cuboid[{0,0,0},{2,3,4}]]
 ```
 
-Output would be fully-rendered, rotatable 3D in the notebook. 
+Output would be fully-rendered, rotatable 3D in the notebook.
 Also, many aspects of the cuboid's appearance and lighting can be controlled quite easily. For those, see Mathematica's documentation in the program or on the web.
 
 
@@ -1832,7 +1832,7 @@ cuboid 6, 2, 1
 {{Out}}
 
 ```txt
-    +-----------------+ 
+    +-----------------+
    /                 /|
   /                 / |
  /                 /  |
@@ -1854,7 +1854,7 @@ cuboid 6, 2, 1
 |                 |/
 +-----------------+
 
-  +--------+ 
+  +--------+
  /        /|
 +--------+ |
 |        | |
@@ -1862,7 +1862,7 @@ cuboid 6, 2, 1
 |        |/
 +--------+
 
-   +-----------------------------------------------------+ 
+   +-----------------------------------------------------+
   /                                                     /|
  /                                                     / |
 +-----------------------------------------------------+  |
@@ -1905,11 +1905,11 @@ Cuboid(a,b,c,u=10)={
 my(dx,dy,ttl="Cuboid AxBxC: ",size=200,da=a*u,db=b*u,dc=c*u);
 print(" *** ",ttl,a,"x",b,"x",c,"; u=",u);
 plotinit(0);
-plotscale(0, 0,size, 0,size); 
+plotscale(0, 0,size, 0,size);
 plotcolor(0,7); \\grey
 plotmove(0, 0,0);
 plotrline(0,dc,da\2); plotrline(0,db,0); plotrline(0,-db,0);
-plotrline(0,0,da); 
+plotrline(0,0,da);
 plotcolor(0,2); \\black
 plotmove(0, db,da);
 plotrline(0,0,-da); plotrline(0,-db,0);
@@ -1926,7 +1926,7 @@ Cuboid(5,3,1,20); \\Cuboid2.png
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -1963,7 +1963,7 @@ procedure DoCuboid(sWidth, sHeight, Depth: integer);
     totalWidth, totalHeight: integer;
   begin
     Width  := widthScale  * sWidth;
-    Height := heightScale * sHeight;    
+    Height := heightScale * sHeight;
     totalWidth  := 2 * Width + Depth + 3;
     totalHeight := Height + Depth + 3;
     setlength (Cuboid, totalHeight + 1);
@@ -2007,7 +2007,7 @@ procedure DoCuboid(sWidth, sHeight, Depth: integer);
         write (Cuboid[i,j]);
       writeln;
     end;
-  end;  
+  end;
 
 begin
   writeln('1, 1, 1:');
@@ -2030,8 +2030,8 @@ end.
 +--------+ |
 |        | |
 |        | +
-|        |/ 
-+--------+  
+|        |/
++--------+
 2, 3, 4:
      +----------------+
     /                /|
@@ -2044,11 +2044,11 @@ end.
 |                |    |
 |                |    |
 |                |    +
-|                |   / 
-|                |  /  
-|                | /   
-|                |/    
-+----------------+     
+|                |   /
+|                |  /
+|                | /
+|                |/
++----------------+
 6, 2, 1:
   +------------------------------------------------+
  /                                                /|
@@ -2058,8 +2058,8 @@ end.
 |                                                | |
 |                                                | |
 |                                                | +
-|                                                |/ 
-+------------------------------------------------+ 
+|                                                |/
++------------------------------------------------+
 ```
 
 
@@ -2114,7 +2114,7 @@ cuboid 6, 2, 1;
 ```txt
 
 cuboid 2 3 4:
-    +-----------------+ 
+    +-----------------+
    /                 /|
   /                 / |
  /                 /  |
@@ -2137,7 +2137,7 @@ cuboid 2 3 4:
 +-----------------+
 
 cuboid 1 1 1:
-  +--------+ 
+  +--------+
  /        /|
 +--------+ |
 |        | |
@@ -2146,7 +2146,7 @@ cuboid 1 1 1:
 +--------+
 
 cuboid 6 2 1:
-   +-----------------------------------------------------+ 
+   +-----------------------------------------------------+
   /                                                     /|
  /                                                     / |
 +-----------------------------------------------------+  |
@@ -2247,15 +2247,15 @@ sub cuboid ( [$x, $y, $z] ) {
     sub horz ($X, $Y) { %t{$Y     }{$X + $_} = True for 0 .. x }
     sub vert ($X, $Y) { %t{$Y + $_}{$X     } = True for 0 .. y }
     sub diag ($X, $Y) { %t{$Y - $_}{$X + $_} = True for 0 .. z }
- 
+
     horz(0, z); horz(z, 0); horz(  0, z+y);
     vert(0, z); vert(x, z); vert(z+x,   0);
     diag(0, z); diag(x, z); diag(  x, z+y);
- 
+
     say "[$x, $y, $z]";
     braille-graphics %t;
 }
- 
+
 cuboid $_ for [2,3,4], [3,4,2], [4,2,3], [1,1,1], [8,1,1], [1,8,1], [1,1,8];
 ```
 
@@ -2288,7 +2288,7 @@ sequence x = {-2.0, +2.0, +2.0, -2.0,  -2.0, +2.0, +2.0, -2.0},
          z = {-1.0, -1.0, -1.0, -1.0,  +1.0, +1.0, +1.0, +1.0},
          Segment = {1,2, 2,3, 3,4, 4,1, 5,6, 6,7, 7,8, 8,5, 1,5, 2,6, 3,7, 4,8}
 
-atom Size = 50.0,       -- drawing size 
+atom Size = 50.0,       -- drawing size
      Sz = 0.008,        -- tumbling speeds
      Sx =-0.013,        -- ""
      Sy =-0.013,        -- ""
@@ -2305,12 +2305,12 @@ procedure draw_cube(integer wx, wh)
         v2 = Segment[v+1]
         c = CD_RED
         style = CD_CONTINUOUS
-        if v1=farv or v2=farv then 
+        if v1=farv or v2=farv then
             c = CD_BLUE
             style = CD_DASHED
         end if
         cdCanvasSetForeground(cd_canvas, c)
-        cdCanvasLineStyle(cd_canvas, style)  
+        cdCanvasLineStyle(cd_canvas, style)
         atom x1 = x[v1]*Size+wx,
              y1 = y[v1]*Size+wh,
              x2 = x[v2]*Size+wx,
@@ -2349,7 +2349,7 @@ function canvas_resize_cb(Ihandle /*canvas*/)
 end function
 
 function k_any(Ihandle /*ih*/, atom c)
-    if c=K_ESC then 
+    if c=K_ESC then
         return IUP_CLOSE
     elsif c=K_UP then
         for i=1 to 8 do
@@ -2419,9 +2419,9 @@ main()
 
 
 
-###  ascii 
+###  ascii
 
-Two versions: the first uses a complete/rectangular grid and outputs at the end, 
+Two versions: the first uses a complete/rectangular grid and outputs at the end,
 whereas the second uses a slightly trickier line-by-line approach.
 
 ```Phix
@@ -2644,12 +2644,12 @@ cuboid(3, 2, 1)
 	(glRotatef *AngleX 1 0 0)
 	(glRotatef *AngleY 0 1 0)
 	(glutSolidCube 1.0)
-	
+
 	(glDisable GL_LIGHTING)
 	(glColor4f 0.4 0.4 0.4 1.0)
 	(glutWireCube 1.002)
 	(glEnable GL_LIGHTING)
-	
+
 	(glFlush)
 	(glutSwapBuffers) )
 
@@ -2658,20 +2658,20 @@ cuboid(3, 2, 1)
 
 
 =={{header|POV-Ray}}==
-<lang POV-Ray>camera { perspective location <2.6,2.2,-4.2> look_at <0,-.5,0> 
+<lang POV-Ray>camera { perspective location <2.6,2.2,-4.2> look_at <0,-.5,0>
        aperture .05 blur_samples 100 variance 1/100000 focal_point <2,1,-2>}
-                            
+
 light_source{< 60,20,-20> color rgb 2}
 
 sky_sphere { pigment{ gradient z color_map{[0 rgb 0.3][.1 rgb <.7,.8,1>][1 rgb .2]} }}
 
-box { <0,0,0> <3,2,4> 
-  texture { 
+box { <0,0,0> <3,2,4>
+  texture {
     pigment{ agate }
     normal { checker }
     finish { reflection {0.20 metallic 0.2} }
-  } 
-  translate <-1,-.5,-2> 
+  }
+  translate <-1,-.5,-2>
 }
 ```
 
@@ -2821,7 +2821,7 @@ def _pr(t, x, y, z):
     txt = '\n'.join(''.join(t[(n,m)] for n in range(3+x+z)).rstrip()
                     for m in reversed(range(3+y+z)))
     return txt
-		
+
 def cuboid(x,y,z):
     t = {(n,m):' ' for n in range(3+x+z) for m in range(3+y+z)}
     xrow = ['+'] + ['%i' % (i % 10) for i in range(x)] + ['+']
@@ -2835,7 +2835,7 @@ def cuboid(x,y,z):
     if _debug: print(_pr(t, x, y, z))
     for k,ch in enumerate(zdepth):
         t[(k,1+y+k)] = t[(1+x+k,1+y+k)] = t[(1+x+k,k)] = ch
-	
+
     return _pr(t, x, y, z)
 
 
@@ -2891,7 +2891,7 @@ The cuboid (otherwise known as a "box" :)
 
 ```python
 from visual import *
-mybox = box(pos=(0,0,0), length=4, height=2, width=3, axis=(-0.1,-0.1,0.1) ) 
+mybox = box(pos=(0,0,0), length=4, height=2, width=3, axis=(-0.1,-0.1,0.1) )
 scene.title = "VPython: cuboid"
 ```
 
@@ -2900,9 +2900,9 @@ scene.title = "VPython: cuboid"
 ### =Cuboid viewer=
 
 This has a lot of extras around the cuboid,
-so you can rotate the box (stepwise and continous), 
+so you can rotate the box (stepwise and continous),
 change the background, color, transparancy, material,
-show infos about scene and object, 
+show infos about scene and object,
 plus a selfrunning demo-mode that cycles thru everything.
 
 ```python
@@ -2948,8 +2948,8 @@ def backgr() :
 
 ## Selection of colors:
 
-col_list = [color.white, color.red,  color.orange, color.yellow,  
-            color.green, color.blue, color.cyan,   color.magenta, 
+col_list = [color.white, color.red,  color.orange, color.yellow,
+            color.green, color.blue, color.cyan,   color.magenta,
             color.black]
 col = itertools.cycle(col_list)
 #c = col.next()
@@ -3037,7 +3037,7 @@ def objCount():
     for obj in scene.objects:
         n=n+1
     return n
-            
+
 def objInfo(obj) :
     print( "\nObject:", obj )
     print( "Pos:",  obj.pos,   "Size:", obj.size )
@@ -3055,7 +3055,7 @@ def sceneInfo(sc) :
     print( ".ambient:", sc.ambient )
     print( "Lights:",   sc.lights  )    # distant_light
     print( "objects:", objCount(), scene.objects )
-    
+
 #...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
 
 scene.width  = 600
@@ -3153,9 +3153,9 @@ def stop() :
     global autoDemo, rotAn
     autoDemo = -1
     while rotAn <> 0 :
-      rotAngle() 
+      rotAngle()
     print("**Stop**")
-      
+
 r=100
 t=0
 while True:                 # Animation-loop
@@ -3194,7 +3194,7 @@ Procedure Draw_a_Cuboid(Window, X,Y,Z)
   CreateImage(0,w,h)
   If StartDrawing(ImageOutput(0))
     c= RGB(250, 40, 5)
-    
+
     ;- Calculate the cones in the Cuboid
     xk = w/50     : yk = h/50
     x0 = Z/2 + xk : y0 = yk
@@ -3204,7 +3204,7 @@ Procedure Draw_a_Cuboid(Window, X,Y,Z)
     x4 = x2       : y4 = y2 + Y
     x5 = x4 + X   : y5 = y4
     x6 = x5 + Z/2 : y6 = y5 - Z/2
-    
+
     ;- Draw it
     LineXY(x0,y0,x1,y1,c)
     LineXY(x0,y0,x2,y2,c)
@@ -3216,7 +3216,7 @@ Procedure Draw_a_Cuboid(Window, X,Y,Z)
     LineXY(x5,y5,x6,y6,c)
     LineXY(x5,y5,x3,y3,c)
     LineXY(x6,y6,x1,y1,c)
-    
+
     ;- Fill the areas
     FillArea(x,y,-1,RGB(255, 0, 0))
     FillArea(x,y-z/2,-1,RGB(0, 0, 255))
@@ -3290,7 +3290,7 @@ EndIf
                 (glVertex3d x 0.0 0.0)
                 (glVertex3d x y 0.0)
                 (glVertex3d 0.0 y 0.0)
-                (glVertex3d 0.0 0.0 0.0)) 
+                (glVertex3d 0.0 0.0 0.0))
   (gl-begin-end GL_QUADS
                 (glColor3f 0 1 0)
                 (glVertex3d x y 0.0)
@@ -3336,7 +3336,7 @@ EndIf
 : ---     ( -  )  '+ putc @w 2 * [ '- putc ] times '+ putc ;
 : ?       ( n- )  @h <> [ '| ] [ '+ ] if ;
 : slice   ( n- )  '/ putc @w 2 * spaces '/ putc @d swap - dup spaces ? putc cr ;
-: |...|/  ( -  )  @h [ '| putc @w 2 * spaces '| putc 1- spaces '/ putc cr ] iterd ;  
+: |...|/  ( -  )  @h [ '| putc @w 2 * spaces '| putc 1- spaces '/ putc cr ] iterd ;
 : face    ( -  )
    ---    @w 1+ spaces '/ putc cr
   |...|/
@@ -3361,11 +3361,11 @@ EndIf
    /    / |
   /    /  |
  /    /   +
-+----+   / 
-|    |  /  
-|    | /   
-|    |/    
-+----+     
++----+   /
+|    |  /
+|    | /
+|    |/
++----+
 
 ```
 
@@ -3455,7 +3455,7 @@ load "guilib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Draw a cuboid")
@@ -3566,41 +3566,41 @@ cuboid 2 3 4:
 |     |     | + |/|
 |     |     |/| + |
 +-----+-----+ |/| +
-|     |     | + |/ 
-|     |     |/| +  
-+-----+-----+ |/   
-|     |     | +    
-|     |     |/     
-+-----+-----+      
+|     |     | + |/
+|     |     |/| +
++-----+-----+ |/
+|     |     | +
+|     |     |/
++-----+-----+
 cuboid 1 1 1:
   +-----+
  /     /|
 +-----+ |
 |     | +
-|     |/ 
-+-----+  
+|     |/
++-----+
 cuboid 6 2 1:
     +-----+-----+-----+-----+-----+-----+
    /     /     /     /     /     /     /|
   +-----+-----+-----+-----+-----+-----+ |
  /     /     /     /     /     /     /| +
-+-----+-----+-----+-----+-----+-----+ |/ 
-|     |     |     |     |     |     | +  
-|     |     |     |     |     |     |/   
-+-----+-----+-----+-----+-----+-----+    
++-----+-----+-----+-----+-----+-----+ |/
+|     |     |     |     |     |     | +
+|     |     |     |     |     |     |/
++-----+-----+-----+-----+-----+-----+
 cuboid 2 4 1:
         +-----+-----+
        /     /     /|
       +-----+-----+ |
      /     /     /| +
-    +-----+-----+ |/ 
-   /     /     /| +  
-  +-----+-----+ |/   
- /     /     /| +    
-+-----+-----+ |/     
-|     |     | +      
-|     |     |/       
-+-----+-----+        
+    +-----+-----+ |/
+   /     /     /| +
+  +-----+-----+ |/
+ /     /     /| +
++-----+-----+ |/
+|     |     | +
+|     |     |/
++-----+-----+
 
 ```
 
@@ -4071,7 +4071,7 @@ fcn cuboid(w,h,z){
    clr=0xff; // blue right side of cuboid
    bitmap.line(w,0, a,b, clr); bitmap.line(a,b, c,d, clr);
    bitmap.line(w,h, c,d, clr);
-   
+
    e:=c-w;
    clr=0xfff00; // green top of cuboid
    bitmap.line(0,h, e,d, clr); bitmap.line(c,d, e,d, clr);

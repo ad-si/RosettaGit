@@ -813,9 +813,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -861,7 +861,7 @@ public class Program
 Here is another implementation that uses recursion, intead of an explicit stack:
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;
@@ -908,7 +908,7 @@ public class Program
 
 Recursive version
 
-```csharp
+```c#
 using System;
 class Combinations
 {

@@ -11,11 +11,11 @@ tags = []
 +++
 
 {{task|Text processing}}
-Given a text file of many lines, where fields within a line 
+Given a text file of many lines, where fields within a line
 are delineated by a single 'dollar' character, write a program
-that aligns each column of fields by ensuring that words in each 
+that aligns each column of fields by ensuring that words in each
 column are separated by at least one space.
-Further, allow for each word in a column to be either left 
+Further, allow for each word in a column to be either left
 justified, right justified, or center justified within its column.
 
 <br clear=all>Use the following text to test your programs:
@@ -88,7 +88,7 @@ ALICOL   CSECT
          ST     R13,4(R15)         link backward
          ST     R15,8(R13)         link forward
          LR     R13,R15            set addressability
-         LA     R8,1               i=1 
+         LA     R8,1               i=1
        DO WHILE=(C,R8,LE,=A(NI))   do r=1 to hbound(t)
          LA     R7,1                 j=1
          LA     R6,L'T               i=length(t)
@@ -118,7 +118,7 @@ LEAVEI1  LR     R1,R8                r
          LA     R0,1                 1
          ST     R0,I0                i0=1
          SR     R9,R9                c=0
-         LA     R6,1                 i=1 
+         LA     R6,1                 i=1
        DO WHILE=(CR,R6,LE,R7)        do i=1 to j
          LA     R4,WT-1                @wt
          AR     R4,R6                  i
@@ -140,15 +140,15 @@ LEAVEI1  LR     R1,R8                r
          LR     R2,R8              r
          BCTR   R2,0               -1
          ST     R2,ROWS            rows=r-1
-         LA     R7,1               j=1 
+         LA     R7,1               j=1
        DO WHILE=(C,R7,LE,=A(3))    do j=1 to 3
          XPRNT  =C'--',2             print
-         LA     R8,1                 r=1 
+         LA     R8,1                 r=1
        DO WHILE=(C,R8,LE,ROWS)       do r=1 to rows
          MVC    PG,=CL120' '           pg=' '
          LA     R0,1                   1
          ST     R0,IB                  ib=1
-         LA     R9,1                   c=1 
+         LA     R9,1                   c=1
        DO WHILE=(C,R9,LE,COLS)         do c=1 to cols
          LR     R1,R8                    r
          BCTR   R1,0                     -1
@@ -157,7 +157,7 @@ LEAVEI1  LR     R1,R8                r
          MH     R1,=AL2(L'WOR)           ~
          LA     R4,WOR-L'WOR(R1)         @wor(r,c)
          MVC    W,0(R4)                  w=wor(r,c)
-         LA     R6,L'W                   i=length(w) 
+         LA     R6,L'W                   i=length(w)
        DO WHILE=(C,R6,GE,=A(1))          do i=length(w) to 1 by -1
          LA     R4,W-1                     @w
          AR     R4,R6                      i
@@ -205,7 +205,7 @@ LEAVEI2  EQU    *                        ~
          LA     R9,1(R9)                 c++
        ENDDO    ,                      enddo c
          XPRNT  PG,L'PG                print
-         LA     R8,1(R8)               r++ 
+         LA     R8,1(R8)               r++
        ENDDO    ,                    enddo r
          LA     R7,1(R7)             j++
        ENDDO    ,                  enddo j
@@ -238,15 +238,15 @@ SEQ      EQU    *                  --begin seq
          BR     R14                --end seq
 NI       EQU    6                  ni
 NJ       EQU    12                 nj
-T DC CL68'Given$a$text$file$of$many$lines,$where$fields$within$a$line$' 
+T DC CL68'Given$a$text$file$of$many$lines,$where$fields$within$a$line$'
   DC CL68'are$delineated$by$a$single$''dollar''$character,$write$a$progX
-               ramm' 
+               ramm'
   DC CL68'that$aligns$each$column$of$fields$by$ensuring$that$words$in$eX
-               ach$' 
-  DC CL68'column$are$separated$by$at$least$one$space.' 
-  DC CL68'Further,$allow$for$each$word$in$a$column$to$be$either$left$' 
+               ach$'
+  DC CL68'column$are$separated$by$at$least$one$space.'
+  DC CL68'Further,$allow$for$each$word$in$a$column$to$be$either$left$'
   DC CL68'justified,$right$justified,$or$center$justified$within$its$coX
-               lumn.' 
+               lumn.'
 WOR      DC     (NI*NJ)CL10' '     wor(ni,nj) char(10)
 WID      DC     16F'0'             wid(16)
 COLS     DC     F'0'
@@ -258,7 +258,7 @@ I0       DS     F
 IB       DS     F
 PG       DS     CL120
          REGEQU
-         END    ALICOL 
+         END    ALICOL
 ```
 
 {{out}}
@@ -308,16 +308,16 @@ var, raw-text
 var width
 
 : read-and-parse \ --
-  raw-text @ 
+  raw-text @
   ( "$" s:/ data @ swap a:push drop )
   s:eachline ;
 
 : find-widest \ -- n
   data @ ( ( swap s:len nip n:max ) swap a:reduce ) 0 a:reduce ;
 
-: print-data \ fmt -- 
+: print-data \ fmt --
   width @ swap s:strfmt >r
-  data @ 
+  data @
   (
     nip
     (
@@ -327,18 +327,18 @@ var width
 
     cr
   ) a:each drop rdrop ;
-  
+
 
 : app:main
-  read-and-parse 
+  read-and-parse
 
   \ find widest column, and add one for the space:
   find-widest n:1+ width !
 
   \ print the data
-  cr "right:" . cr "%%>%ds" print-data 
-  cr "left:" . cr "%%<%ds" print-data 
-  cr "center:" . cr "%%|%ds" print-data 
+  cr "right:" . cr "%%>%ds" print-data
+  cr "left:" . cr "%%<%ds" print-data
+  cr "center:" . cr "%%|%ds" print-data
   bye ;
 
 
@@ -349,28 +349,28 @@ var width
 ```txt
 
 right:
-      Given          a       text       file         of       many     lines,      where     fields     within          a       line           
+      Given          a       text       file         of       many     lines,      where     fields     within          a       line
         are delineated         by          a     single   'dollar' character,      write          a    program
-       that     aligns       each     column         of     fields         by   ensuring       that      words         in       each           
+       that     aligns       each     column         of     fields         by   ensuring       that      words         in       each
      column        are  separated         by         at      least        one     space.
-   Further,      allow        for       each       word         in          a     column         to         be     either       left           
+   Further,      allow        for       each       word         in          a     column         to         be     either       left
  justified,      right justified,         or     center  justified     within        its    column.
 
 left:
-Given      a          text       file       of         many       lines,     where      fields     within     a          line                  
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each                  
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left                  
-justified, right      justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 
 center:
-   Given        a        text       file        of        many      lines,      where     fields     within        a        line               
-    are    delineated     by          a       single    'dollar'  character,    write        a       program  
-   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each               
-  column       are     separated     by         at        least       one      space.   
- Further,     allow       for       each       word        in          a       column       to         be       either      left               
-justified,    right   justified,     or       center    justified   within       its      column. 
+   Given        a        text       file        of        many      lines,      where     fields     within        a        line
+    are    delineated     by          a       single    'dollar'  character,    write        a       program
+   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each
+  column       are     separated     by         at        least       one      space.
+ Further,     allow       for       each       word        in          a       column       to         be       either      left
+justified,    right   justified,     or       center    justified   within       its      column.
 
 ```
 
@@ -491,7 +491,7 @@ justified,   right    justified,     or       center   justified    within      
 ```ada
 with Ada.Characters.Latin_1;  use Ada.Characters.Latin_1;
 with Ada.Text_IO;             use Ada.Text_IO;
-with Strings_Edit;            use Strings_Edit; 
+with Strings_Edit;            use Strings_Edit;
 
 procedure Column_Aligner is
    Text : constant String :=
@@ -558,24 +558,24 @@ end Column_Aligner;
 
 Formatted file sample:
 <pre style="height:15ex;overflow:scroll">
-Given      a          text       file   of     many      lines,     where    fields  within  a      line  
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each  
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left  
-justified, right      justified, or     center justified within     its      column. 
-      Given          a       text   file     of      many     lines,    where  fields  within      a line 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
+      Given          a       text   file     of      many     lines,    where  fields  within      a line
         are delineated         by      a single  'dollar' character,    write       a program
-       that     aligns       each column     of    fields         by ensuring    that   words     in each 
+       that     aligns       each column     of    fields         by ensuring    that   words     in each
      column        are  separated     by     at     least        one   space.
-   Further,      allow        for   each   word        in          a   column      to      be either left 
+   Further,      allow        for   each   word        in          a   column      to      be either left
  justified,      right justified,     or center justified     within      its column.
-   Given        a        text     file    of      many     lines,     where   fields  within    a   line  
-    are    delineated     by        a   single  'dollar' character,   write     a    program 
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each  
-  column       are     separated   by     at     least       one     space.  
- Further,     allow       for     each   word      in         a      column     to      be   either left  
-justified,    right   justified,   or   center justified   within      its   column. 
+   Given        a        text     file    of      many     lines,     where   fields  within    a   line
+    are    delineated     by        a   single  'dollar' character,   write     a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column       are     separated   by     at     least       one     space.
+ Further,     allow       for     each   word      in         a      column     to      be   either left
+justified,    right   justified,   or   center justified   within      its   column.
 
 ```
 
@@ -689,7 +689,7 @@ PROC flex page = (PAGE in page, INT row, col)PAGE:(
   out page
 );
 
-FILE text in file; 
+FILE text in file;
 associate(text in file, text in list);
 make term(text in file, "$");
 
@@ -700,14 +700,14 @@ FOR row DO
   FOR col DO
     STRING tok;
     getf(text in file, ($gx$,tok));
-    IF row > 1 UPB page THEN page := flex page(page, row, 2 UPB page) FI; 
-    IF col > 2 UPB page THEN page := flex page(page, 1 UPB page, col) FI; 
+    IF row > 1 UPB page THEN page := flex page(page, row, 2 UPB page) FI;
+    IF col > 2 UPB page THEN page := flex page(page, 1 UPB page, col) FI;
     page[row,col]:=tok
   OD;
-  stop iteration: 
+  stop iteration:
     SKIP
 OD;
-stop iteration: 
+stop iteration:
   SKIP;
 
 BEGIN
@@ -724,12 +724,12 @@ BEGIN
   PROC left = (STRING in, INT len)STRING: in + " "*(len - UPB in),
        right = (STRING in, INT len)STRING: " "*(len - UPB in) + in,
        centre = (STRING in, INT len)STRING: ( INT pad=len-UPB in;  pad%2*" "+ in + (pad-pad%2)*" " );
-  
+
   []STRUCT(STRING name, PROC(STRING,INT)STRING align) aligners = (("Left",left), ("Left",right), ("Centre",centre));
-  
-  FOR index TO UPB aligners DO 
+
+  FOR index TO UPB aligners DO
     print((new line, "# ",name OF aligners[index]," Column-aligned output:",new line));
-    aligner(page, align OF aligners[index]) 
+    aligner(page, align OF aligners[index])
   OD
 END
 ```
@@ -764,7 +764,7 @@ on columnsAligned(eAlign, lstCols)
     -- padwords :: Int -> [String] -> [[String]]
     script padwords
         on |λ|(n, lstWords)
-            
+
             -- pad :: String -> String
             script pad
                 on |λ|(str)
@@ -782,11 +782,11 @@ on columnsAligned(eAlign, lstCols)
                     end if
                 end |λ|
             end script
-            
+
             map(pad, lstWords)
         end |λ|
     end script
-    
+
     unlines(map(my unwords, ¬
         transpose(zipWith(padwords, ¬
             map(my widest, lstCols), lstCols))))
@@ -800,17 +800,17 @@ on lineColumns(strColDelim, strText)
             splitOn(strColDelim, str)
         end |λ|
     end script
-    
+
     set lstRows to map(_words, splitOn(linefeed, pstrLines))
     set nCols to widest(lstRows)
-    
+
     -- fullRow :: [[a]] -> [[a]]
     script fullRow
         on |λ|(lst)
             lst & replicate(nCols - (length of lst), {""})
         end |λ|
     end script
-    
+
     transpose(map(fullRow, lstRows))
 end lineColumns
 
@@ -822,13 +822,13 @@ end widest
 -- TEST ----------------------------------------------------------------------
 on run
     set lstCols to lineColumns("$", pstrLines)
-    
+
     script testAlignment
         on |λ|(eAlign)
             columnsAligned(eAlign, lstCols)
         end |λ|
     end script
-    
+
     intercalate(return & return, ¬
         map(testAlignment, {eLeft, eRight, eCenter}))
 end run
@@ -880,7 +880,7 @@ on |length|(xs)
     length of xs
 end |length|
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -904,7 +904,7 @@ on map(f, xs)
     end tell
 end map
 
--- maximumBy :: (a -> a -> Ordering) -> [a] -> a 
+-- maximumBy :: (a -> a -> Ordering) -> [a] -> a
 on maximumBy(f, xs)
     set cmp to mReturn(f)
     script max
@@ -916,7 +916,7 @@ on maximumBy(f, xs)
             end if
         end |λ|
     end script
-    
+
     foldl(max, missing value, xs)
 end maximumBy
 
@@ -930,7 +930,7 @@ on min(x, y)
 end min
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 
 -- replicate :: Int -> a -> [a]
@@ -942,7 +942,7 @@ on replicate(n, a)
     end if
     if n < 1 then return out
     set dbl to a
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -968,11 +968,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 
@@ -1002,26 +1002,26 @@ end zipWith
 {{Out}}
 
 ```txt
- Given        a            text         file     of       many        lines,       where      fields    within    a        line    
- are          delineated   by           a        single   'dollar'    character,   write      a         program                    
- that         aligns       each         column   of       fields      by           ensuring   that      words     in       each    
- column       are          separated    by       at       least       one          space.                                          
- Further,     allow        for          each     word     in          a            column     to        be        either   left    
- justified,   right        justified,   or       center   justified   within       its        column.                              
+ Given        a            text         file     of       many        lines,       where      fields    within    a        line
+ are          delineated   by           a        single   'dollar'    character,   write      a         program
+ that         aligns       each         column   of       fields      by           ensuring   that      words     in       each
+ column       are          separated    by       at       least       one          space.
+ Further,     allow        for          each     word     in          a            column     to        be        either   left
+ justified,   right        justified,   or       center   justified   within       its        column.
 
-      Given            a         text     file       of        many       lines,      where    fields    within        a   line    
-        are   delineated           by        a   single    'dollar'   character,      write         a   program                    
-       that       aligns         each   column       of      fields           by   ensuring      that     words       in   each    
-     column          are    separated       by       at       least          one     space.                                        
-   Further,        allow          for     each     word          in            a     column        to        be   either   left    
- justified,        right   justified,       or   center   justified       within        its   column.                              
+      Given            a         text     file       of        many       lines,      where    fields    within        a   line
+        are   delineated           by        a   single    'dollar'   character,      write         a   program
+       that       aligns         each   column       of      fields           by   ensuring      that     words       in   each
+     column          are    separated       by       at       least          one     space.
+   Further,        allow          for     each     word          in            a     column        to        be   either   left
+ justified,        right   justified,       or   center   justified       within        its   column.
 
-   Given          a           text       file      of       many        lines,      where     fields    within      a      line    
-    are       delineated       by         a      single   'dollar'    character,    write        a      program                    
-    that        aligns        each      column     of      fields         by       ensuring    that      words      in     each    
-   column        are       separated      by       at       least        one        space.                                         
-  Further,      allow         for        each     word       in           a         column      to        be      either   left    
- justified,     right      justified,     or     center   justified     within       its      column.                              
+   Given          a           text       file      of       many        lines,      where     fields    within      a      line
+    are       delineated       by         a      single   'dollar'    character,    write        a      program
+    that        aligns        each      column     of      fields         by       ensuring    that      words      in     each
+   column        are       separated      by       at       least        one        space.
+  Further,      allow         for        each     word       in           a         column      to        be      either   left
+ justified,     right      justified,     or     center   justified     within       its      column.
 ```
 
 
@@ -1032,7 +1032,7 @@ end zipWith
 
 ```AutoHotkey
 Alignment := "L"																				; Options: L, R, C
-Text = 
+Text =
 ( LTrim
 	Given$a$text$file$of$many$lines,$where$fields$within$a$line$
 	are$delineated$by$a$single$'dollar'$character,$write$a$program
@@ -1182,7 +1182,7 @@ Example output in Alignment: left - center - right - left - center - right - lef
 Given          a            text file     of        many lines,      where    fields within    a    line
 are        delineated         by a      single  'dollar' character,  write         a program
 that         aligns         each column   of      fields by         ensuring    that words     in   each
-column        are      separated by       at       least one         space. 
+column        are      separated by       at       least one         space.
 Further,     allow           for each    word         in a           column       to be      either left
 justified,   right    justified, or     center justified within       its    column.
 
@@ -1324,12 +1324,12 @@ Print_In_Columns(2)
 
 ```txt
 
-Given      a          text       file       of         many       lines,     where      fields     within     a          line       
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each       
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left       
-justified, right      justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 
       Given          a       text       file         of       many     lines,      where     fields     within          a       line
         are delineated         by          a     single   'dollar' character,      write          a    program
@@ -1338,12 +1338,12 @@ justified, right      justified, or         center     justified  within     its
    Further,      allow        for       each       word         in          a     column         to         be     either       left
  justified,      right justified,         or     center  justified     within        its    column.
 
-   Given        a        text       file        of        many      lines,      where     fields     within        a        line    
-    are    delineated     by          a       single    'dollar'  character,    write        a       program  
-   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each    
-  column       are     separated     by         at        least       one      space.   
- Further,     allow       for       each       word        in          a       column       to         be       either      left    
-justified,    right   justified,     or       center    justified   within       its      column.  
+   Given        a        text       file        of        many      lines,      where     fields     within        a        line
+    are    delineated     by          a       single    'dollar'  character,    write        a       program
+   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each
+  column       are     separated     by         at        least       one      space.
+ Further,     allow       for       each       word        in          a       column       to         be       either      left
+justified,    right   justified,     or       center    justified   within       its      column.
 
 
 ```
@@ -1367,58 +1367,58 @@ echo justified,$right$justified,$or$center$justified$within$its$column.>>file.tx
 
 for /f "tokens=1-13 delims=$" %%a in ('type file.txt') do (
  call:maxlen %%a %%b %%c %%d %%e %%f %%g %%h %%i %%j %%k %%l %%m  )
-echo. 
-for /f "tokens=1-13 delims=$" %%a in ('type file.txt') do (
- call:align 1 %%a %%b %%c %%d %%e %%f %%g %%h %%i %%j %%k %%l %%m  ) 
 echo.
 for /f "tokens=1-13 delims=$" %%a in ('type file.txt') do (
- call:align 2 %%a %%b %%c %%d %%e %%f %%g %%h %%i %%j %%k %%l %%m  )  
+ call:align 1 %%a %%b %%c %%d %%e %%f %%g %%h %%i %%j %%k %%l %%m  )
 echo.
 for /f "tokens=1-13 delims=$" %%a in ('type file.txt') do (
- call:align 3 %%a %%b %%c %%d %%e %%f %%g %%h %%i %%j %%k %%l %%m  )   
-   
+ call:align 2 %%a %%b %%c %%d %%e %%f %%g %%h %%i %%j %%k %%l %%m  )
+echo.
+for /f "tokens=1-13 delims=$" %%a in ('type file.txt') do (
+ call:align 3 %%a %%b %%c %%d %%e %%f %%g %%h %%i %%j %%k %%l %%m  )
+
 exit /B
 
-:maxlen     &::sets variables len1 to len13  
+:maxlen     &::sets variables len1 to len13
   set "cnt=1"
 :loop1
   if "%1"=="" exit /b
   call:strlen %1 length
   if !len%cnt%! lss !length! set len%cnt%=!length!
-  set /a cnt+=1  
+  set /a cnt+=1
   shift
-  goto loop1  
-  
-:align 
-  setlocal   
+  goto loop1
+
+:align
+  setlocal
   set cnt=1
   set print=
 :loop2
   if "%2"=="" echo(%print%&endlocal & exit /b
-  set /a width=len%cnt%,cnt+=1  
+  set /a width=len%cnt%,cnt+=1
   set arr=%2
   if %1 equ 1 call:left   %width% arr
   if %1 equ 2 call:right  %width% arr
   if %1 equ 3 call:center %width% arr
   set "print=%print%%arr% "
   shift /2
-  goto loop2  
- 
-:left %num% &string  
+  goto loop2
+
+:left %num% &string
   setlocal
    set "arr=!%2!                     "
    set arr=!arr:~0,%1!
   endlocal & set %2=%arr%
 exit /b
-  
-:right %num% &string  
+
+:right %num% &string
   setlocal
    set "arr=                    !%2!"
    set arr=!arr:~-%1!
    endlocal & set %2=%arr%
 exit /b
-  
-:center %num% &string  
+
+:center %num% &string
 setlocal
   set /a width=%1-1
   set arr=!%2!
@@ -1427,8 +1427,8 @@ setlocal
   if "!arr:~%width%,1!"=="" set "arr= %arr%"
   if "!arr:~%width%,1!"=="" goto loop3
 endlocal & set %2=%arr%
-exit /b  
-   
+exit /b
+
 :strlen  StrVar  &RtnVar
   setlocal EnableDelayedExpansion
   set "s=#%~1"
@@ -1483,7 +1483,7 @@ justified   right    justified   or   center justified  within     its    column
       DATA "column$are$separated$by$at$least$one$space."
       DATA "Further,$allow$for$each$word$in$a$column$to$be$either$left$"
       DATA "justified,$right$justified,$or$center$justified$within$its$column."
-      
+
       REM First find the maximum length of a 'word':
       max% = 0
       READ nlines%
@@ -1495,7 +1495,7 @@ justified   right    justified   or   center justified  within     its    column
         UNTIL word$ = ""
       NEXT Line%
       @% = max% : REM set column width
-      
+
       REM Now display the aligned text:
       RESTORE
       READ nlines%
@@ -1507,9 +1507,9 @@ justified   right    justified   or   center justified  within     its    column
         UNTIL word$ = ""
         PRINT
       NEXT Line%
-      
+
       END
-      
+
       DEF FNword(text$, delim$)
       PRIVATE delim%
       LOCAL previous%
@@ -1524,7 +1524,7 @@ justified   right    justified   or   center justified  within     its    column
       ELSE
         = MID$(text$, previous%, delim%-previous%) + " "
       ENDIF
-      
+
       DEF FNjustify(word$, field%, mode$)
       IF word$ = "" THEN = ""
       CASE mode$ OF
@@ -1615,14 +1615,14 @@ justified   right    justified   or   center justified  within     its    column
 See [[Column Aligner/C]]
 
 
-## C sharp
+## C#
 
 Uses a delegate, which were added to the language in C# 2, to define left-, right-, or center-justified.
 
 {{works with|C sharp|C#|2+}}
 
 
-```csharp
+```c#
 using System;
 class ColumnAlignerProgram
 {
@@ -1660,7 +1660,7 @@ class ColumnAlignerProgram
             {
                 if (j < table[i].Length)
                     formattedTable[i][j] = justification(table[i][j], columnWidth);
-                else 
+                else
                     formattedTable[i][j] = new String(' ', columnWidth);
             }
         }
@@ -1675,14 +1675,14 @@ class ColumnAlignerProgram
 
     static string JustifyLeft(string s, int width) { return s.PadRight(width); }
     static string JustifyRight(string s, int width) { return s.PadLeft(width); }
-    static string JustifyCenter(string s, int width) 
-    { 
-        return s.PadLeft((width + s.Length) / 2).PadRight(width); 
+    static string JustifyCenter(string s, int width)
+    {
+        return s.PadLeft((width + s.Length) / 2).PadRight(width);
     }
 
     static void Main()
     {
-        string[] input = {    
+        string[] input = {
             "Given$a$text$file$of$many$lines,$where$fields$within$a$line$",
             "are$delineated$by$a$single$'dollar'$character,$write$a$program",
             "that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$",
@@ -1706,11 +1706,11 @@ class ColumnAlignerProgram
 ```txt
 
   Given        a         text     file    of     many      lines,    where   fields  within    a    line
-   are     delineated     by       a    single 'dollar'  character,  write      a    program            
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
-  column      are     separated    by     at     least      one      space.                             
+  column      are     separated    by     at     least      one      space.
  Further,    allow       for      each   word     in         a       column    to      be    either left
-justified,   right    justified,   or   center justified   within     its    column.                    
+justified,   right    justified,   or   center justified   within     its    column.
 
 ```
 
@@ -1828,9 +1828,9 @@ justified,$right$justified,$or$center$justified$within$its$column.")
            perform
               varying             w-idx from 1 by 1
                  until            w-idx > MAX-LINES
-              unstring w-line(w-idx) delimited by "$" into w-content(w-idx, 1), w-content(w-idx, 2), 
-                  w-content(w-idx, 3), w-content(w-idx, 4), w-content(w-idx, 5), w-content(w-idx, 6), 
-                  w-content(w-idx, 7), w-content(w-idx, 8), w-content(w-idx, 9), w-content(w-idx, 10), 
+              unstring w-line(w-idx) delimited by "$" into w-content(w-idx, 1), w-content(w-idx, 2),
+                  w-content(w-idx, 3), w-content(w-idx, 4), w-content(w-idx, 5), w-content(w-idx, 6),
+                  w-content(w-idx, 7), w-content(w-idx, 8), w-content(w-idx, 9), w-content(w-idx, 10),
                   w-content(w-idx, 11), w-content(w-idx, 12),
               perform
                  varying          w-idy from 1 by 1
@@ -1915,29 +1915,29 @@ align = (input, alignment = 'center') ->
       left = Math.floor excess / 2
       right = excess - left
       pad(left) + s + pad(right)
-      
+
     right: (s, width) ->
       excess = width - s.length
       pad(excess) + s
-      
+
     left: (s, width) ->
       excess = width - s.length
       s + pad(excess)
 
   padder = padders[alignment]
-        
+
   for line in tokenized_lines
     padded_tokens = (padder(token, col_widths[i]) for token, i in line)
     console.log padded_tokens.join ' '
-  
 
-input = [ 
+
+input = [
   "Given$a$text$file$of$many$lines,$where$fields$within$a$line$"
   "are$delineated$by$a$single$'dollar'$character,$write$a$program"
   "that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$"
   "column$are$separated$by$at$least$one$space."
   "Further,$allow$for$each$word$in$a$column$to$be$either$left$"
-  "justified,$right$justified,$or$center$justified$within$its$column." 
+  "justified,$right$justified,$or$center$justified$within$its$column."
 ]
 
 for alignment in ['center', 'right', 'left']
@@ -1948,30 +1948,30 @@ for alignment in ['center', 'right', 'left']
 
 {{out}}
 <lang>
-> coffee align_columns.coffee 
+> coffee align_columns.coffee
 
 ----- center
-  Given        a         text     file    of     many      lines,    where   fields  within    a    line 
+  Given        a         text     file    of     many      lines,    where   fields  within    a    line
    are     delineated     by       a    single 'dollar'  character,  write      a    program
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each 
-  column      are     separated    by     at     least      one      space. 
- Further,    allow       for      each   word     in         a       column    to      be    either left 
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
 justified,   right    justified,   or   center justified   within     its    column.
 
 ----- right
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
        are delineated         by      a single  'dollar' character,    write       a program
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
     column        are  separated     by     at     least        one   space.
-  Further,      allow        for   each   word        in          a   column      to      be either left 
+  Further,      allow        for   each   word        in          a   column      to      be either left
 justified,      right justified,     or center justified     within      its column.
 
 ----- left
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.  
-Further,   allow      for        each   word   in        a          column   to      be      either left 
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
 justified, right      justified, or     center justified within     its      column.
 
 ```
@@ -2065,24 +2065,24 @@ justified,$right$justified,$or$center$justified$within$its$column."
 {{out}}
 
 ```txt
-Given      a          txt        file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column. 
-  Given        a         txt      file    of     many      lines,    where   fields  within    a    line 
-   are     delineated     by       a    single 'dollar'  character,  write      a    program 
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each 
-  column      are     separated    by     at     least      one      space.  
- Further,    allow       for      each   word     in         a       column    to      be    either left 
-justified,   right    justified,   or   center justified   within     its    column. 
-     Given          a        txt   file     of      many     lines,    where  fields  within      a line 
-       are delineated         by      a single  'dollar' character,    write       a program 
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
-    column        are  separated     by     at     least        one   space. 
-  Further,      allow        for   each   word        in          a   column      to      be either left 
-justified,      right justified,     or center justified     within      its column. 
+Given      a          txt        file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
+  Given        a         txt      file    of     many      lines,    where   fields  within    a    line
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
+justified,   right    justified,   or   center justified   within     its    column.
+     Given          a        txt   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
+justified,      right justified,     or center justified     within      its column.
 ```
 
 
@@ -2182,7 +2182,7 @@ def alignColumns(align, text) {
         widths with= (i, widths.fetch(i, fn{0}).max(word.size()))
       }
     }
-    return accum "" for line in split { 
+    return accum "" for line in split {
       _ + accum "" for i => word in line {
         _ + align(widths[i] + 1, word)
       } + "\n"
@@ -2201,27 +2201,27 @@ Further,$allow$for$each$word$in$a$column$to$be$either$left$
 justified,$right$justified,$or$center$justified$within$its$column."; null
 
 ? println(alignColumns(left, text))
-Given      a          text       file   of     many      lines,     where    fields  within  a      line  
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each  
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left  
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 ? println(alignColumns(center, text))
-   Given        a        text     file    of      many     lines,     where   fields  within    a   line  
-    are    delineated     by        a   single  'dollar' character,   write     a    program 
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each  
-  column       are     separated   by     at     least       one     space.  
- Further,     allow       for     each   word      in         a      column     to      be   either left  
-justified,    right   justified,   or   center justified   within      its   column. 
+   Given        a        text     file    of      many     lines,     where   fields  within    a   line
+    are    delineated     by        a   single  'dollar' character,   write     a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column       are     separated   by     at     least       one     space.
+ Further,     allow       for     each   word      in         a      column     to      be   either left
+justified,    right   justified,   or   center justified   within      its   column.
 
 ? println(alignColumns(right, text))
-      Given          a       text   file     of      many     lines,    where  fields  within      a line 
+      Given          a       text   file     of      many     lines,    where  fields  within      a line
         are delineated         by      a single  'dollar' character,    write       a program
-       that     aligns       each column     of    fields         by ensuring    that   words     in each 
+       that     aligns       each column     of    fields         by ensuring    that   words     in each
      column        are  separated     by     at     least        one   space.
-   Further,      allow        for   each   word        in          a   column      to      be either left 
+   Further,      allow        for   each   word        in          a   column      to      be either left
  justified,      right justified,     or center justified     within      its column.
 ```
 
@@ -2251,7 +2251,7 @@ defmodule Align do
       |> Enum.join(" ") |> IO.puts
     end)
   end
-  
+
   defp adjust(field, width, :Left),  do: String.pad_trailing(field, width)
   defp adjust(field, width, :Right), do: String.pad_leading(field, width)
   defp adjust(field, width, _),      do: :string.centre(String.to_charlist(field), width)
@@ -2267,7 +2267,7 @@ justified,$right$justified,$or$center$justified$within$its$column.
 """
 
 Enum.each([:Left, :Right, :Center], fn alignment ->
-  IO.puts "\n# #{alignment} Column-aligned output:" 
+  IO.puts "\n# #{alignment} Column-aligned output:"
   Align.columns(text, alignment)
 end)
 ```
@@ -2281,7 +2281,7 @@ end)
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
-column     are        separated  by     at     least     one        space.  
+column     are        separated  by     at     least     one        space.
 Further,   allow      for        each   word   in        a          column   to      be      either left
 justified, right      justified, or     center justified within     its      column.
 
@@ -2297,7 +2297,7 @@ justified,      right justified,     or center justified     within      its col
   Given        a         text     file    of     many      lines,    where   fields  within    a    line
    are     delineated     by       a    single 'dollar'  character,  write      a    program
    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
-  column      are     separated    by     at     least      one      space. 
+  column      are     separated    by     at     least      one      space.
  Further,    allow       for      each   word     in         a       column    to      be    either left
 justified,   right    justified,   or   center justified   within     its    column.
 
@@ -2310,44 +2310,44 @@ justified,   right    justified,   or   center justified   within     its    col
 
 ```erlang
 
--module (align_columns).                                                                                                                                                       
-                                                                                                                                                                               
--export([align_left/0, align_right/0, align_center/0]).                                                                                                                        
--define (Lines,                                                                                                                                                                
-         ["Given\$a\$text\$file\$of\$many\$lines\$where\$fields\$within\$a\$line\$",                                                                                           
-          "are\$delineated\$by\$a\$single\$'dollar'\$character,\$write\$a\$program",                                                                                           
-          "that\$aligns\$each\$column\$of\$fields\$by\$ensuring\$that\$words\$in\$each\$",                                                                                     
-          "column\$are\$separated\$by\$at\$least\$one\$space.",                                                                                                                
-          "Further,\$allow\$for\$each\$word\$in\$a\$column\$to\$be\$either\$left\$",                                                                                           
-          "justified,\$right\$justified,\$or\$center\$justified\$within\$its\$column."].                                                                                       
-                                                                                                                                                                               
-align_left()-> align_columns(left).                                                                                                                                            
-align_right()-> align_columns(right).                                                                                                                                          
-align_center()-> align_columns(centre).                                                                                                                                        
-align_columns(Alignment) ->                                                                                                                                                    
-    Words = [ string:tokens(Line, "\$") || Line <- ?Lines ],                                                                                                                   
-    Words_length  = lists:foldl( fun max_length/2, [], Words),                                                                                                                 
-    Result = [prepare_line(Words_line, Words_length, Alignment)                                                                                                                
-              || Words_line <- Words],                                                                                                                                         
-                                                                                                                                                                               
-    [ io:fwrite("~s~n", [lists:flatten(Line)]) || Line <- Result],                                                                                                             
-    ok.                                                                                                                                                                        
-                                                                                                                                                                               
-max_length(Words_of_a_line, Acc_maxlength) ->                                                                                                                                  
-    Line_lengths = [length(W) || W <- Words_of_a_line ],                                                                                                                       
-    Max_nb_of_length = lists:max([length(Acc_maxlength), length(Line_lengths)]),                                                                                               
-    Line_lengths_prepared = adjust_list (Line_lengths, Max_nb_of_length, 0),                                                                                                   
-    Acc_maxlength_prepared = adjust_list(Acc_maxlength, Max_nb_of_length, 0),                                                                                                  
-    Two_lengths =lists:zip(Line_lengths_prepared, Acc_maxlength_prepared),                                                                                                     
-    [ lists:max([A, B]) || {A, B} <- Two_lengths].                                                                                                                             
-adjust_list(L, Desired_length, Elem) ->                                                                                                                                        
-    L++lists:duplicate(Desired_length - length(L), Elem).                                                                                                                      
-                                                                                                                                                                               
-prepare_line(Words_line, Words_length, Alignment) ->                                                                                                                           
-    All_words = adjust_list(Words_line, length(Words_length), ""),                                                                                                             
-    Zipped = lists:zip (All_words, Words_length),                                                                                                                              
-    [ apply(string, Alignment, [Word, Length + 1, $\s])                                                                                                                        
-      || {Word, Length} <- Zipped].                                                                                  
+-module (align_columns).
+
+-export([align_left/0, align_right/0, align_center/0]).
+-define (Lines,
+         ["Given\$a\$text\$file\$of\$many\$lines\$where\$fields\$within\$a\$line\$",
+          "are\$delineated\$by\$a\$single\$'dollar'\$character,\$write\$a\$program",
+          "that\$aligns\$each\$column\$of\$fields\$by\$ensuring\$that\$words\$in\$each\$",
+          "column\$are\$separated\$by\$at\$least\$one\$space.",
+          "Further,\$allow\$for\$each\$word\$in\$a\$column\$to\$be\$either\$left\$",
+          "justified,\$right\$justified,\$or\$center\$justified\$within\$its\$column."].
+
+align_left()-> align_columns(left).
+align_right()-> align_columns(right).
+align_center()-> align_columns(centre).
+align_columns(Alignment) ->
+    Words = [ string:tokens(Line, "\$") || Line <- ?Lines ],
+    Words_length  = lists:foldl( fun max_length/2, [], Words),
+    Result = [prepare_line(Words_line, Words_length, Alignment)
+              || Words_line <- Words],
+
+    [ io:fwrite("~s~n", [lists:flatten(Line)]) || Line <- Result],
+    ok.
+
+max_length(Words_of_a_line, Acc_maxlength) ->
+    Line_lengths = [length(W) || W <- Words_of_a_line ],
+    Max_nb_of_length = lists:max([length(Acc_maxlength), length(Line_lengths)]),
+    Line_lengths_prepared = adjust_list (Line_lengths, Max_nb_of_length, 0),
+    Acc_maxlength_prepared = adjust_list(Acc_maxlength, Max_nb_of_length, 0),
+    Two_lengths =lists:zip(Line_lengths_prepared, Acc_maxlength_prepared),
+    [ lists:max([A, B]) || {A, B} <- Two_lengths].
+adjust_list(L, Desired_length, Elem) ->
+    L++lists:duplicate(Desired_length - length(L), Elem).
+
+prepare_line(Words_line, Words_length, Alignment) ->
+    All_words = adjust_list(Words_line, length(Words_length), ""),
+    Zipped = lists:zip (All_words, Words_length),
+    [ apply(string, Alignment, [Word, Length + 1, $\s])
+      || {Word, Length} <- Zipped].
 ```
 
 
@@ -2358,28 +2358,28 @@ prepare_line(Words_line, Words_length, Alignment) ->
 1> c(align_columns).
 {ok,align_columns}
 2> align_columns:align_center().
-   Given        a        text     file    of      many      lines     where   fields  within    a   line 
-    are    delineated     by        a   single  'dollar' character,   write     a    program             
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each 
-  column       are     separated   by     at     least       one     space.                              
- Further,     allow       for     each   word      in         a      column     to      be   either left 
-justified,    right   justified,   or   center justified   within      its   column.                     
+   Given        a        text     file    of      many      lines     where   fields  within    a   line
+    are    delineated     by        a   single  'dollar' character,   write     a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column       are     separated   by     at     least       one     space.
+ Further,     allow       for     each   word      in         a      column     to      be   either left
+justified,    right   justified,   or   center justified   within      its   column.
 ok
-3> align_columns:align_left().  
-Given      a          text       file   of     many      lines      where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program             
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.                               
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column.                     
+3> align_columns:align_left().
+Given      a          text       file   of     many      lines      where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 ok
 4> align_columns:align_right().
       Given          a       text   file     of      many      lines    where  fields  within      a line
-        are delineated         by      a single  'dollar' character,    write       a program            
+        are delineated         by      a single  'dollar' character,    write       a program
        that     aligns       each column     of    fields         by ensuring    that   words     in each
-     column        are  separated     by     at     least        one   space.                            
+     column        are  separated     by     at     least        one   space.
    Further,      allow        for   each   word        in          a   column      to      be either left
- justified,      right justified,     or center justified     within      its column.                    
+ justified,      right justified,     or center justified     within      its column.
 ok
 
 ```
@@ -2457,26 +2457,26 @@ end for
 {{out}}
 
 ```txt
-Given      a          text       file       of         many       lines,     where      fields     within     a          line       
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each       
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left       
-justified, right      justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 
-  Given        a         text       file        of        many      lines,     where      fields     within       a         line    
-   are     delineated     by         a        single    'dollar'  character,   write        a       program   
-   that      aligns      each      column       of       fields       by      ensuring     that      words        in        each    
-  column      are     separated      by         at       least       one       space.   
- Further,    allow       for        each       word        in         a        column       to         be       either      left    
-justified,   right    justified,     or       center   justified    within      its      column.   
+  Given        a         text       file        of        many      lines,     where      fields     within       a         line
+   are     delineated     by         a        single    'dollar'  character,   write        a       program
+   that      aligns      each      column       of       fields       by      ensuring     that      words        in        each
+  column      are     separated      by         at       least       one       space.
+ Further,    allow       for        each       word        in         a        column       to         be       either      left
+justified,   right    justified,     or       center   justified    within      its      column.
 
-     Given          a       text       file         of       many     lines,      where     fields     within          a       line 
-       are delineated         by          a     single   'dollar' character,      write          a    program 
-      that     aligns       each     column         of     fields         by   ensuring       that      words         in       each 
-    column        are  separated         by         at      least        one     space. 
-  Further,      allow        for       each       word         in          a     column         to         be     either       left 
-justified,      right justified,         or     center  justified     within        its    column. 
+     Given          a       text       file         of       many     lines,      where     fields     within          a       line
+       are delineated         by          a     single   'dollar' character,      write          a    program
+      that     aligns       each     column         of     fields         by   ensuring       that      words         in       each
+    column        are  separated         by         at      least        one     space.
+  Further,      allow        for       each       word         in          a     column         to         be     either       left
+justified,      right justified,         or     center  justified     within        its    column.
 
 
 ```
@@ -2647,7 +2647,7 @@ PAUSE
    column       are     separated     by         at        least       one      space.
   Further,     allow       for       each       word        in          a       column       to         be       either      left
  justified,    right   justified,     or       center    justified   within       its      column.
- 
+
  Press any key to continue...
 
 
@@ -2736,7 +2736,7 @@ For the general situation, a utility has no knowledge of the maximum number of f
 
 The plan here is to read the file to find out. But, given that the maximum record length ''is'' unknown, reading records into some storage area is problematical. Some systems can create a "string" variable via the read statement that will be of the proper size, but older Fortran works always with storage sizes fixed at compile time. However, after F77 started being extended, a common extension was the Q-element in FORMAT statements, which instead of interpreting the content of a record, reports instead the number of characters yet unread in a record. Thus, a statement like <code>READ(in,"(Q)") L</code> will read a record of input and the first action is to place in variable L the number of characters yet to be processed of that record. Since the content of the record is not being transferred, there is no need for a CHARACTER area of sufficient size to receive all of it. Indeed here, nothing is read. As for the LF/CRLF/LFCR/CR issue, with FORMATTED input the file system makes its decision and presents record content without incorporating such out-of-context data.
 
-When data are being read into a CHARACTER variable, once the receiver is filled subsequent data in a long record will be ignored, and if the input record was smaller than the variable, trailing spaces will be supplied to fill out the variable. It is for this reason that the read statement is <code>READ (IN,11,END = 20) L,ACARD(1:L)</code> so that, ''on-the-fly'', the length of the record is determined, and then only that number of characters are placed in ACARD with no (possibly large number of) trailing spaces being appended. Naturally, subsequent inspection of ACARD will have to be careful not to look beyond character L, where detritus from previous usage will languish. 
+When data are being read into a CHARACTER variable, once the receiver is filled subsequent data in a long record will be ignored, and if the input record was smaller than the variable, trailing spaces will be supplied to fill out the variable. It is for this reason that the read statement is <code>READ (IN,11,END = 20) L,ACARD(1:L)</code> so that, ''on-the-fly'', the length of the record is determined, and then only that number of characters are placed in ACARD with no (possibly large number of) trailing spaces being appended. Naturally, subsequent inspection of ACARD will have to be careful not to look beyond character L, where detritus from previous usage will languish.
 
 Once the main programme has ascertained the maximum record length, subroutine RAKE can be invoked with this as a parameter. From F90 on, as introduced by Algol in the 1960s, functions and subroutines have been allowed to declare arrays of a size specified by a variable and so the "surely big enough" issue is reduced. Thus, given a maximum length of M, a record containing M field delimiters can represent M + 1 fields, all null. The last field's delimiter is the end-of-record, so one more. It is also possible to use ALLOCATE(...) to request storage of suitable dimension for a variable within a routine, but that introduces verbiage. So, a programme can request just enough storage for its particular tasks and thereby possibly succeed on a problem too large for an always-big-enough storage scheme, but on the other hand, the fixed storage allocation scheme doesn't suddenly run out in the middle of a job.
 
@@ -2897,15 +2897,15 @@ Sub Split(s As String, sep As String, result() As String)
   position(0) = 0
   For i = 0 To Len(s) - 1
     For j = 0 To Len(sep) - 1
-      If s[i] = sep[j] Then 
+      If s[i] = sep[j] Then
         count += 1
-        position(count) = i + 1 
+        position(count) = i + 1
       End If
     Next j
   Next i
   position(count + 1) = Len(s) + 1
   Redim result(count)
-  For i = 1 To count + 1    
+  For i = 1 To count + 1
     result(i - 1) = Mid(s, position(i - 1) + 1, position(i) - position(i - 1) - 1)
   Next
 End Sub
@@ -2921,17 +2921,17 @@ Sub CSet(buffer As String, s As Const String)
     lSpaces = diff \ 2
     LSet buffer, Space(lSpaces) + s
   End If
-End Sub  
-       
+End Sub
+
 Dim lines() As String
 Dim count As Integer = 0
 
 Open "align_columns.txt" For Input As #1
 
 While Not Eof(1)
-  Redim Preserve lines(count) 
+  Redim Preserve lines(count)
   Line Input #1, lines(count)
-  count +=1 
+  count +=1
 Wend
 
 Close #1
@@ -2945,20 +2945,20 @@ For i = 0 To numLines - 1
   Erase fields
   Split RTrim(lines(i), "$"), "$", fields()
   length = UBound(fields) + 1
-  If length > numColumns Then numColumns = length  
+  If length > numColumns Then numColumns = length
 Next
 
 ' Split lines into fields and work out maximum size of each column
-Dim matrix(numLines - 1, numColumns - 1) As String 
+Dim matrix(numLines - 1, numColumns - 1) As String
 Dim columnSizes(numColumns - 1) As Integer
 
 For i = 0 To numLines - 1
   Erase fields
   Split RTrim(lines(i), "$"), "$", fields()
-  For j = 0 To UBound(fields)    
+  For j = 0 To UBound(fields)
     matrix(i, j) = fields(j)
     length = Len(fields(j))
-    If  length > columnSizes(j) Then columnSizes(j) = length  
+    If  length > columnSizes(j) Then columnSizes(j) = length
   Next j
 Next i
 
@@ -2971,16 +2971,16 @@ Open "align_center_columns.txt" For Output As #3
 
 For i = 0 To UBound(matrix, 1)
   For j = 0 To UBound(matrix, 2)
-    buffer = Space(columnSizes(j)) 
+    buffer = Space(columnSizes(j))
     LSet buffer, matrix(i, j)
-    Print #1, buffer; 
+    Print #1, buffer;
     RSet buffer, matrix(i, j)
     Print #2, buffer;
     CSet buffer, matrix(i, j)
     Print #3, buffer;
     If j < UBound(matrix, 2) Then
       Print #1, "  "; : Print #2, "  "; : Print #3, "  ";
-    End If  
+    End If
   Next j
   Print #1, : Print #2, : Print #3,
 Next i
@@ -3004,29 +3004,29 @@ justified,$right$justified,$or$center$justified$within$its$column.
 --- align_left_columns.txt
 
 Given       a           text        file    of      many       lines,      where     fields   within   a       line
-are         delineated  by          a       single  'dollar'   character,  write     a        program              
+are         delineated  by          a       single  'dollar'   character,  write     a        program
 that        aligns      each        column  of      fields     by          ensuring  that     words    in      each
-column      are         separated   by      at      least      one         space.                                  
+column      are         separated   by      at      least      one         space.
 Further,    allow       for         each    word    in         a           column    to       be       either  left
-justified,  right       justified,  or      center  justified  within      its       column.                       
+justified,  right       justified,  or      center  justified  within      its       column.
 
 --- align_right_columns.txt
 
      Given           a        text    file      of       many      lines,     where   fields   within       a  line
-       are  delineated          by       a  single   'dollar'  character,     write        a  program              
+       are  delineated          by       a  single   'dollar'  character,     write        a  program
       that      aligns        each  column      of     fields          by  ensuring     that    words      in  each
-    column         are   separated      by      at      least         one    space.                                
+    column         are   separated      by      at      least         one    space.
   Further,       allow         for    each    word         in           a    column       to       be  either  left
-justified,       right  justified,      or  center  justified      within       its  column.                       
+justified,       right  justified,      or  center  justified      within       its  column.
 
 --- align_center_columns.txt
 
   Given         a          text      file     of      many       lines,     where    fields   within     a     line
-   are      delineated      by        a     single  'dollar'   character,   write       a     program              
+   are      delineated      by        a     single  'dollar'   character,   write       a     program
    that       aligns       each     column    of     fields        by      ensuring   that     words     in    each
-  column       are      separated     by      at      least       one       space.                                 
+  column       are      separated     by      at      least       one       space.
  Further,     allow        for       each    word      in          a        column     to       be     either  left
-justified,    right     justified,    or    center  justified    within      its     column.                       
+justified,    right     justified,    or    center  justified    within      its     column.
 
 ```
 
@@ -3088,12 +3088,12 @@ End
 
 ```txt
 
-Given      a          text       file       of         many       lines,     where      fields     within     a          line                  
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each                  
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left                  
-justified, right      justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 
      Given          a       text   file     of      many     lines,    where  fields  within      a line
        are delineated         by      a single  'dollar' character,    write       a program
@@ -3240,7 +3240,7 @@ column$are$separated$by$at$least$one$space.
 Further,$allow$for$each$word$in$a$column$to$be$either$left$
 justified,$right$justified,$or$center$justified$within$its$column.'''
 
-['Left', 'Center', 'Right'].each { align -> 
+['Left', 'Center', 'Right'].each { align ->
     println "${align} Justified:"
     alignColumns(align, rawTextInput)
     println()
@@ -3250,27 +3250,27 @@ justified,$right$justified,$or$center$justified$within$its$column.'''
 
 {{out}}
 <pre style="height:25ex;overflow:scroll">Left Justified:
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program             
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.                               
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column.                     
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 Center Justified:
-  Given        a         text     file    of     many      lines,    where   fields  within    a    line 
-   are     delineated     by       a    single 'dollar'  character,  write      a    program             
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each 
-  column      are     separated    by     at     least      one      space.                              
- Further,    allow       for      each   word     in         a       column    to      be    either left 
-justified,   right    justified,   or   center justified   within     its    column.                     
+  Given        a         text     file    of     many      lines,    where   fields  within    a    line
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
+justified,   right    justified,   or   center justified   within     its    column.
 
 Right Justified:
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
-       are delineated         by      a single  'dollar' character,    write       a program             
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
-    column        are  separated     by     at     least        one   space.                             
-  Further,      allow        for   each   word        in          a   column      to      be either left 
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
 justified,      right justified,     or center justified     within      its column.
 ```
 
@@ -3290,37 +3290,37 @@ PROCEDURE Main()
                 "Further,$allow$for$each$word$in$a$column$to$be$either$left$",;
                 "justified,$right$justified,$or$center$justified$within$its$column." }
    LOCAL e, nMax
-   
+
    // remove trailing dollars
    AEval( a, {|e,n| Iif( Right(e,1)=="$", a[n] := hb_StrShrink( e, 1 ), NIL ) } )
-   
+
    // find max word length
    nMax := 0
    AEval( a, {|e| AEval( hb_Atokens( e, "$"), {|i| nMax := Max( nMax, Len(i) )} ) } )
    nMax++
-   
+
    // start printing, padding words as needed
    ?
    ? "----Left aligned columns----"
    FOR EACH e IN a
-      ?  
+      ?
       AEval( hb_Atokens( e, "$"), {|i| QQout( PadR(i, nMax) )} )
    NEXT
-   
+
    ?
    ? "----Center aligned columns----"
    FOR EACH e IN a
       ?
       AEval( hb_Atokens( e, "$"), {|i| QQout( PadC(i, nMax) )} )
    NEXT
-   
+
    ?
    ? "----Right aligned columns----"
    FOR EACH e IN a
       ?
       AEval( hb_Atokens( e, "$"), {|i| QQout( PadL(i, nMax) )} )
    NEXT
-   
+
    RETURN
 
 ```
@@ -3329,20 +3329,20 @@ Output:
 
 ```text
 ----Left aligned columns----
-Given      a          text       file       of         many       lines,     where      fields     within     a          line       
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each       
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left       
-justified, right      justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 
 ----Center aligned columns----
-   Given        a        text       file        of        many      lines,      where     fields     within        a        line    
-    are    delineated     by          a       single    'dollar'  character,    write        a       program  
-   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each    
-  column       are     separated     by         at        least       one      space.   
- Further,     allow       for       each       word        in          a       column       to         be       either      left    
-justified,    right   justified,     or       center    justified   within       its      column.  
+   Given        a        text       file        of        many      lines,      where     fields     within        a        line
+    are    delineated     by          a       single    'dollar'  character,    write        a       program
+   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each
+  column       are     separated     by         at        least       one      space.
+ Further,     allow       for       each       word        in          a       column       to         be       either      left
+justified,    right   justified,     or       center    justified   within       its      column.
 
 ----Right aligned columns----
       Given          a       text       file         of       many     lines,      where     fields     within          a       line
@@ -3412,7 +3412,7 @@ import Data.Text as T
         justifyLeft, justifyRight, center)
 import Data.List (transpose, zip, maximumBy)
 import Data.Ord (comparing)
- 
+
 rows :: [[Text]]
 rows =
   (splitOn (pack "$") . pack) <$>
@@ -3423,7 +3423,7 @@ rows =
   , "Further,$allow$for$each$word$in$a$column$to$be$either$left$"
   , "justified,$right$justified,$or$center$justified$within$its$column."
   ]
- 
+
 cols :: [[Text]]
 cols =
   transpose $
@@ -3431,7 +3431,7 @@ cols =
    (flip P.replicate (pack []) .
     (-) (maximum (P.length <$> rows)) . P.length)) <$>
   rows
- 
+
 main :: IO ()
 main =
   mapM_ putStrLn $
@@ -3446,26 +3446,26 @@ main =
 {{Out}}
 
 ```txt
-Given       a           text        file    of      many       lines,      where     fields   within   a       line   
-are         delineated  by          a       single  'dollar'   character,  write     a        program                 
-that        aligns      each        column  of      fields     by          ensuring  that     words    in      each   
-column      are         separated   by      at      least      one         space.                                     
-Further,    allow       for         each    word    in         a           column    to       be       either  left   
-justified,  right       justified,  or      center  justified  within      its       column.                          
+Given       a           text        file    of      many       lines,      where     fields   within   a       line
+are         delineated  by          a       single  'dollar'   character,  write     a        program
+that        aligns      each        column  of      fields     by          ensuring  that     words    in      each
+column      are         separated   by      at      least      one         space.
+Further,    allow       for         each    word    in         a           column    to       be       either  left
+justified,  right       justified,  or      center  justified  within      its       column.
 
-      Given           a        text    file      of       many      lines,     where   fields   within       a  line  
-        are  delineated          by       a  single   'dollar'  character,     write        a  program                
-       that      aligns        each  column      of     fields          by  ensuring     that    words      in  each  
-     column         are   separated      by      at      least         one    space.                                  
-   Further,       allow         for    each    word         in           a    column       to       be  either  left  
- justified,       right  justified,      or  center  justified      within       its  column.                         
+      Given           a        text    file      of       many      lines,     where   fields   within       a  line
+        are  delineated          by       a  single   'dollar'  character,     write        a  program
+       that      aligns        each  column      of     fields          by  ensuring     that    words      in  each
+     column         are   separated      by      at      least         one    space.
+   Further,       allow         for    each    word         in           a    column       to       be  either  left
+ justified,       right  justified,      or  center  justified      within       its  column.
 
-   Given         a          text      file     of      many       lines,     where    fields   within     a     line  
-    are      delineated      by        a     single  'dollar'   character,   write       a     program                
-    that       aligns       each     column    of     fields        by      ensuring   that     words     in    each  
-   column       are      separated     by      at      least       one       space.                                   
-  Further,     allow        for       each    word      in          a        column     to       be     either  left  
- justified,    right     justified,    or    center  justified    within      its     column. 
+   Given         a          text      file     of      many       lines,     where    fields   within     a     line
+    are      delineated      by        a     single  'dollar'   character,   write       a     program
+    that       aligns       each     column    of     fields        by      ensuring   that     words     in    each
+   column       are      separated     by      at      least       one       space.
+  Further,     allow        for       each    word      in          a        column     to       be     either  left
+ justified,    right     justified,    or    center  justified    within      its     column.
 ```
 
 
@@ -3587,7 +3587,7 @@ Sample run:
 
 ```j
 'LEFT CENTER RIGHT'=: i.3                NB. justification constants
- 
+
 NB.* alignCols v Format delimited text in justified columns
 NB. y:          text to format
 NB.                 rows marked by last character in text
@@ -3620,19 +3620,19 @@ justified,$right$justified,$or$center$justified$within$its$column.
 )
 
    alignCols text           NB. default justification
- Given      a          text       file   of     many      lines,     where    fields  within  a      line  
- are        delineated by         a      single 'dollar'  character, write    a       program              
- that       aligns     each       column of     fields    by         ensuring that    words   in     each  
- column     are        separated  by     at     least     one        space.                                
- Further,   allow      for        each   word   in        a          column   to      be      either left  
- justified, right      justified, or     center justified within     its      column.                      
+ Given      a          text       file   of     many      lines,     where    fields  within  a      line
+ are        delineated by         a      single 'dollar'  character, write    a       program
+ that       aligns     each       column of     fields    by         ensuring that    words   in     each
+ column     are        separated  by     at     least     one        space.
+ Further,   allow      for        each   word   in        a          column   to      be      either left
+ justified, right      justified, or     center justified within     its      column.
 
    CENTER alignCols text    NB. specify desired justification as left argument
-   Given        a         text     file    of     many      lines,    where   fields  within    a    line  
-    are     delineated     by       a    single 'dollar'  character,  write      a    program              
-    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each  
-   column      are     separated    by     at     least      one      space.                               
-  Further,    allow       for      each   word     in         a       column    to      be    either left  
+   Given        a         text     file    of     many      lines,    where   fields  within    a    line
+    are     delineated     by       a    single 'dollar'  character,  write      a    program
+    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+   column      are     separated    by     at     least      one      space.
+  Further,    allow       for      each   word     in         a       column    to      be    either left
  justified,   right    justified,   or   center justified   within     its    column.
 ```
 
@@ -3665,7 +3665,7 @@ public class ColumnAligner {
 
     /**
      * Initialize columns aligner from lines in a single string
-     * 
+     *
      * @param s
      *            lines in a single string. Empty string does form a column.
      */
@@ -3678,7 +3678,7 @@ public class ColumnAligner {
 
     /**
      * Initialize columns aligner from lines in a list of strings
-     * 
+     *
      * @param lines
      *            lines in a single string. Empty string does form a column.
      */
@@ -3708,7 +3708,7 @@ public class ColumnAligner {
 
     /**
      * Left-align all columns
-     * 
+     *
      * @return Lines, terminated by "\n" of columns, separated by "|"
      */
     public String alignLeft() {
@@ -3722,7 +3722,7 @@ public class ColumnAligner {
 
     /**
      * Right-align all columns
-     * 
+     *
      * @return Lines, terminated by "\n" of columns, separated by "|"
      */
     public String alignRight() {
@@ -3736,7 +3736,7 @@ public class ColumnAligner {
 
     /**
      * Center-align all columns
-     * 
+     *
      * @return Lines, terminated by "\n" of columns, separated by "|"
      */
     public String alignCenter() {
@@ -3822,7 +3822,7 @@ for(x=0;x<input.length;x++) {
 for(x=0;x<cols;x++) {
  max=0;
  for(y=0;y<input.length;y++) if(input[y][x]&&max<input[y][x].length) max=input[y][x].length;
- for(y=0;y<input.length;y++) 
+ for(y=0;y<input.length;y++)
   if(input[y][x]) {
    diff=(max-input[y][x].length)/2;
    left=" ".repeat(Math.floor(diff));
@@ -3903,7 +3903,7 @@ Or (ES5) using transpose and zipWith:
 ```JavaScript
 (function (strText) {
     'use strict';
- 
+
     // [[a]] -> [[a]]
     function transpose(lst) {
         return lst[0].map(function (_, iCol) {
@@ -3912,7 +3912,7 @@ Or (ES5) using transpose and zipWith:
             })
         });
     }
- 
+
     // (a -> b -> c) -> [a] -> [b] -> [c]
     function zipWith(f, xs, ys) {
         return xs.length === ys.length ? (
@@ -3921,8 +3921,8 @@ Or (ES5) using transpose and zipWith:
             })
         ) : undefined;
     }
- 
-    // (a -> a -> Ordering) -> [a] -> a 
+
+    // (a -> a -> Ordering) -> [a] -> a
     function maximumBy(f, xs) {
         return xs.reduce(function (a, x) {
             return a === undefined ? x : (
@@ -3930,13 +3930,13 @@ Or (ES5) using transpose and zipWith:
             );
         }, undefined)
     }
- 
+
     // [String] -> String
     function widest(lst) {
         return maximumBy(length, lst)
             .length;
     }
- 
+
     // [[a]] -> [[a]]
     function fullRow(lst, n) {
         return lst.concat(Array.apply(null, Array(n - lst.length))
@@ -3944,7 +3944,7 @@ Or (ES5) using transpose and zipWith:
                 return ''
             }));
     }
- 
+
     // String -> Int -> String
     function nreps(s, n) {
         var o = '';
@@ -3956,68 +3956,68 @@ Or (ES5) using transpose and zipWith:
         }
         return o + s;
     }
- 
+
     // [String] -> String
     function unwords(xs) {
         return xs.join('  ');
     }
- 
+
     // [String] -> String
     function unlines(xs) {
         return xs.join('\n');
     }
- 
+
     // [a] -> Int
     function length(xs) {
         return xs.length;
     }
- 
+
     // -- Int -> [String] -> [[String]]
     function padWords(n, lstWords, eAlign) {
         return lstWords.map(function (w) {
             var lngPad = n - w.length;
- 
+
             return (
                     (eAlign === eCenter) ? (function () {
                         var lngHalf = Math.floor(lngPad / 2);
- 
+
                         return [
                             nreps(' ', lngHalf), w,
                             nreps(' ', lngPad - lngHalf)
                         ];
-                    })() : (eAlign === eLeft) ? 
+                    })() : (eAlign === eLeft) ?
                         ['', w, nreps(' ', lngPad)] :
                         [nreps(' ', lngPad), w, '']
                 )
                 .join('');
         });
     }
- 
+
     // MAIN
- 
+
     var eLeft = -1,
         eCenter = 0,
         eRight = 1;
- 
+
     var lstRows = strText.split('\n')
         .map(function (x) {
             return x.split('$');
         }),
- 
+
         lngCols = widest(lstRows),
         lstCols = transpose(lstRows.map(function (r) {
             return fullRow(r, lngCols)
         })),
         lstColWidths = lstCols.map(widest);
- 
+
     // THREE PARAGRAPHS, WITH VARIOUS WORD COLUMN ALIGNMENTS:
- 
+
     return [eLeft, eRight, eCenter]
         .map(function (eAlign) {
             var fPad = function (n, lstWords) {
                 return padWords(n, lstWords, eAlign);
             };
- 
+
             return transpose(
                     zipWith(fPad, lstColWidths, lstCols)
                 )
@@ -4025,7 +4025,7 @@ Or (ES5) using transpose and zipWith:
         })
         .map(unlines)
         .join('\n\n');
- 
+
 })(
     "Given$a$text$file$of$many$lines,$where$fields$within$a$line$\n\
 are$delineated$by$a$single$'dollar'$character,$write$a$program\n\
@@ -4041,26 +4041,26 @@ justified,$right$justified,$or$center$justified$within$its$column."
 
 
 ```txt
-Given       a           text        file    of      many       lines,      where     fields   within   a       line  
-are         delineated  by          a       single  'dollar'   character,  write     a        program                
-that        aligns      each        column  of      fields     by          ensuring  that     words    in      each  
-column      are         separated   by      at      least      one         space.                                    
-Further,    allow       for         each    word    in         a           column    to       be       either  left  
-justified,  right       justified,  or      center  justified  within      its       column.                         
+Given       a           text        file    of      many       lines,      where     fields   within   a       line
+are         delineated  by          a       single  'dollar'   character,  write     a        program
+that        aligns      each        column  of      fields     by          ensuring  that     words    in      each
+column      are         separated   by      at      least      one         space.
+Further,    allow       for         each    word    in         a           column    to       be       either  left
+justified,  right       justified,  or      center  justified  within      its       column.
 
-     Given           a        text    file      of       many      lines,     where   fields   within       a  line  
-       are  delineated          by       a  single   'dollar'  character,     write        a  program                
-      that      aligns        each  column      of     fields          by  ensuring     that    words      in  each  
-    column         are   separated      by      at      least         one    space.                                  
-  Further,       allow         for    each    word         in           a    column       to       be  either  left  
-justified,       right  justified,      or  center  justified      within       its  column.                         
+     Given           a        text    file      of       many      lines,     where   fields   within       a  line
+       are  delineated          by       a  single   'dollar'  character,     write        a  program
+      that      aligns        each  column      of     fields          by  ensuring     that    words      in  each
+    column         are   separated      by      at      least         one    space.
+  Further,       allow         for    each    word         in           a    column       to       be  either  left
+justified,       right  justified,      or  center  justified      within       its  column.
 
-  Given         a          text      file     of      many       lines,     where    fields   within     a     line  
-   are      delineated      by        a     single  'dollar'   character,   write       a     program                
-   that       aligns       each     column    of     fields        by      ensuring   that     words     in    each  
-  column       are      separated     by      at      least       one       space.                                   
- Further,     allow        for       each    word      in          a        column     to       be     either  left  
-justified,    right     justified,    or    center  justified    within      its     column.                         
+  Given         a          text      file     of      many       lines,     where    fields   within     a     line
+   are      delineated      by        a     single  'dollar'   character,   write       a     program
+   that       aligns       each     column    of     fields        by      ensuring   that     words     in    each
+  column       are      separated     by      at      least       one       space.
+ Further,     allow        for       each    word      in          a        column     to       be     either  left
+justified,    right     justified,    or    center  justified    within      its     column.
 ```
 
 
@@ -4091,10 +4091,10 @@ def center(width):
     else ($pad / 2 | floor) as $half
     | $half * " " + . + ($pad-$half) * " "
     end ;
- 
+
 # input: a single string, which includes newlines to separate lines, and $ to separate phrases;
 # method must be "left" "right" or anything else for central justification.
-def format(method): 
+def format(method):
   def justify(width):
     if   method == "left"  then ljust(width)
     elif method == "right" then rjust(width)
@@ -4103,7 +4103,7 @@ def format(method):
 
   # max_widths: input: an array of strings, each with "$" as phrase-separator;
   # return the appropriate column-wise maximum lengths
-  def max_widths: 
+  def max_widths:
     map(split("$") | map(length))
     | transpose | map(max) ;
 
@@ -4129,20 +4129,20 @@ def format(method):
 ```sh
 $ jq -M -R -r -s -f Align_columns.jq Align_columns.txt
 Center:
-   Given        a        text     file    of      many     lines,     where   fields  within    a   line 
-    are    delineated     by        a   single  'dollar' character,   write     a    program 
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each 
-  column       are     separated   by     at     least       one     space.  
- Further,     allow       for     each   word      in         a      column     to      be   either left 
-justified,    right   justified,   or   center justified   within      its   column. 
+   Given        a        text     file    of      many     lines,     where   fields  within    a   line
+    are    delineated     by        a   single  'dollar' character,   write     a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column       are     separated   by     at     least       one     space.
+ Further,     allow       for     each   word      in         a      column     to      be   either left
+justified,    right   justified,   or   center justified   within      its   column.
 
 Left:
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 Right:
       Given          a       text   file     of      many     lines,    where  fields  within      a line
@@ -4164,12 +4164,12 @@ From Javascript ES5 entry.
 /* Align columns, in Jsish */
 function alignColumns(phrases:array, just:string) {
     var x, y, max, diff, left, right, cols=0;
-     
+
     for(x=0; x<phrases.length; x++) {
         phrases[x] = phrases[x].split("$");
         if (phrases[x].length>cols) cols=phrases[x].length;
     }
-    
+
     for (x=0; x<cols; x++) {
         max = 0;
         for (y=0; y<phrases.length; y++) if (phrases[y][x] && max<phrases[y][x].length) max = phrases[y][x].length;
@@ -4209,7 +4209,7 @@ if (Interp.conf('unitTest')) {
 {{out}}
 
 ```txt
-prompt$ jsish --U alignColumns.jsi 
+prompt$ jsish --U alignColumns.jsi
 left
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
@@ -4262,15 +4262,15 @@ function center(s, width)
     return " "^pad2 * s * " "^(pad - pad2)
   end
 end
- 
+
 parts = [split(rstrip(line, '$'), '$') for line in split(txt, '\n')]
- 
+
 max_widths = zeros(Int, maximum(length, parts))
 for line in parts
   for (i, word) in enumerate(line)
     max_widths[i] = max(max_widths[i], length(word))
   end
-end    
+end
 max_widths += 1 # separate cols by at least one space
 
 for (label, justify) in (("Left", ljust), ("Right",rjust), ("Center",center))
@@ -4290,12 +4290,12 @@ end
 ```txt
 
 Left column-aligned output:
-Given      a          txt        file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column. 
+Given      a          txt        file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 ---------------------------------------------------------------------------------------------------------
 Right column-aligned output:
       Given          a        txt   file     of      many     lines,    where  fields  within      a line
@@ -4306,12 +4306,12 @@ Right column-aligned output:
  justified,      right justified,     or center justified     within      its column.
 ---------------------------------------------------------------------------------------------------------
 Center column-aligned output:
-   Given        a         txt     file    of      many     lines,     where   fields  within    a   line 
-    are    delineated     by        a   single  'dollar' character,   write     a    program 
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each 
-  column       are     separated   by     at     least       one     space.  
- Further,     allow       for     each   word      in         a      column     to      be   either left 
-justified,    right   justified,   or   center justified   within      its   column. 
+   Given        a         txt     file    of      many     lines,     where   fields  within    a   line
+    are    delineated     by        a   single  'dollar' character,   write     a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column       are     separated   by     at     least       one     space.
+ Further,     allow       for     each   word      in         a      column     to      be   either left
+justified,    right   justified,   or   center justified   within      its   column.
 ---------------------------------------------------------------------------------------------------------
 
 ```
@@ -4466,16 +4466,16 @@ prepcols(#text)
 {{out}}
 
 ```txt
-Left aligned result: 
-Given      a          text       file       of         many       lines,     where      fields     within     a          line       
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each       
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left       
-justified, right      justified, or         center     justified  within     its        column.    
+Left aligned result:
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 
 
-Right aligned result: 
+Right aligned result:
       Given          a       text       file         of       many     lines,      where     fields     within          a       line
         are delineated         by          a     single   'dollar' character,      write          a    program
        that     aligns       each     column         of     fields         by   ensuring       that      words         in       each
@@ -4484,13 +4484,13 @@ Right aligned result:
  justified,      right justified,         or     center  justified     within        its    column.
 
 
-Centered result: 
-   Given        a        text       file        of        many      lines,      where     fields     within        a        line    
-    are    delineated     by          a       single    'dollar'  character,    write        a       program  
-   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each    
-  column       are     separated     by         at        least       one      space.   
- Further,     allow       for       each       word        in          a       column       to         be       either      left    
-justified,    right   justified,     or       center    justified   within       its      column.  
+Centered result:
+   Given        a        text       file        of        many      lines,      where     fields     within        a        line
+    are    delineated     by          a       single    'dollar'  character,    write        a       program
+   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each
+  column       are     separated     by         at        least       one      space.
+ Further,     allow       for       each       word        in          a       column       to         be       either      left
+justified,    right   justified,     or       center    justified   within       its      column.
 
 ```
 
@@ -4809,32 +4809,32 @@ For the sample text, we get the following results.
 ```Maple
 
 > printf( "%s\n", AlignColumns( txt ) ):
-   Given        a         text       file        of        many      lines,     where      fields     within       a         line              
-    are     delineated     by         a        single    'dollar'  character,   write        a       program  
-    that      aligns      each      column       of       fields       by      ensuring     that      words        in        each              
-   column      are     separated      by         at       least       one       space.  
-  Further,    allow       for        each       word        in         a        column       to         be       either      left              
- justified,   right    justified,     or       center   justified    within      its      column.  
+   Given        a         text       file        of        many      lines,     where      fields     within       a         line
+    are     delineated     by         a        single    'dollar'  character,   write        a       program
+    that      aligns      each      column       of       fields       by      ensuring     that      words        in        each
+   column      are     separated      by         at       least       one       space.
+  Further,    allow       for        each       word        in         a        column       to         be       either      left
+ justified,   right    justified,     or       center   justified    within      its      column.
 > printf( "%s\n", AlignColumns( txt, "center" ) ): # same as above
-   Given        a         text       file        of        many      lines,     where      fields     within       a         line              
-    are     delineated     by         a        single    'dollar'  character,   write        a       program  
-    that      aligns      each      column       of       fields       by      ensuring     that      words        in        each              
-   column      are     separated      by         at       least       one       space.  
-  Further,    allow       for        each       word        in         a        column       to         be       either      left              
- justified,   right    justified,     or       center   justified    within      its      column.  
+   Given        a         text       file        of        many      lines,     where      fields     within       a         line
+    are     delineated     by         a        single    'dollar'  character,   write        a       program
+    that      aligns      each      column       of       fields       by      ensuring     that      words        in        each
+   column      are     separated      by         at       least       one       space.
+  Further,    allow       for        each       word        in         a        column       to         be       either      left
+ justified,   right    justified,     or       center   justified    within      its      column.
 > printf( "%s\n", AlignColumns( txt, "left" ) ):
-Given      a          text       file       of         many       lines,     where      fields     within     a          line                  
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each                  
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left                  
-justified, right      justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 > printf( "%s\n", AlignColumns( txt, "right" ) ):
-      Given          a       text       file         of       many     lines,      where     fields     within          a       line           
+      Given          a       text       file         of       many     lines,      where     fields     within          a       line
         are delineated         by          a     single   'dollar' character,      write          a    program
-       that     aligns       each     column         of     fields         by   ensuring       that      words         in       each           
+       that     aligns       each     column         of     fields         by   ensuring       that      words         in       each
      column        are  separated         by         at      least        one     space.
-   Further,      allow        for       each       word         in          a     column         to         be     either       left           
+   Further,      allow        for       each       word         in          a     column         to         be     either       left
  justified,      right justified,         or     center  justified     within        its    column.
 
 ```
@@ -4854,7 +4854,7 @@ Output with example text :
 
 ## ML/I
 
-In this example, ML/I reads its macros first, then switches input to the file containing the data to be formatted. Output is to 'standard output' or similar. 
+In this example, ML/I reads its macros first, then switches input to the file containing the data to be formatted. Output is to 'standard output' or similar.
 Note the presetting of P102 to indicate the alignment required.
 
 
@@ -5016,28 +5016,28 @@ for i, align in ["<",">","^"]:
 
 ```txt
 Left column-aligned output:
-Given      a          text       file   of     many      lines,     where    fields  within  a      line  
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each  
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left  
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 Right column-aligned output:
-      Given          a       text   file     of      many     lines,    where  fields  within      a line 
+      Given          a       text   file     of      many     lines,    where  fields  within      a line
         are delineated         by      a single  'dollar' character,    write       a program
-       that     aligns       each column     of    fields         by ensuring    that   words     in each 
+       that     aligns       each column     of    fields         by ensuring    that   words     in each
      column        are  separated     by     at     least        one   space.
-   Further,      allow        for   each   word        in          a   column      to      be either left 
+   Further,      allow        for   each   word        in          a   column      to      be either left
  justified,      right justified,     or center justified     within      its column.
 
 Center column-aligned output:
-   Given        a        text     file    of      many     lines,     where   fields  within    a   line  
-    are    delineated     by        a   single  'dollar' character,   write     a    program 
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each  
-  column       are     separated   by     at     least       one     space.  
- Further,     allow       for     each   word      in         a      column     to      be   either left  
-justified,    right   justified,   or   center justified   within      its   column. 
+   Given        a        text     file    of      many     lines,     where   fields  within    a   line
+    are    delineated     by        a   single  'dollar' character,   write     a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column       are     separated   by     at     least       one     space.
+ Further,     allow       for     each   word      in         a      column     to      be   either left
+justified,    right   justified,   or   center justified   within      its   column.
 ```
 
 
@@ -5103,23 +5103,23 @@ aligner(text, 0.5)
 {{out}}
 
 ```txt
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.  
-Further,   allow      for        each   word   in        a          column   to      be      either left 
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
 justified, right      justified, or     center justified within     its      column.
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
        are delineated         by      a single  'dollar' character,    write       a program
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
     column        are  separated     by     at     least        one   space.
-  Further,      allow        for   each   word        in          a   column      to      be either left 
+  Further,      allow        for   each   word        in          a   column      to      be either left
 justified,      right justified,     or center justified     within      its column.
-  Given        a         text     file    of     many      lines,    where   fields  within    a    line 
+  Given        a         text     file    of     many      lines,    where   fields  within    a    line
    are     delineated     by       a    single 'dollar'  character,  write      a    program
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each 
-  column      are     separated    by     at     least      one      space. 
- Further,    allow       for      each   word     in         a       column    to      be    either left 
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
 justified,   right    justified,   or   center justified   within     its    column.
 
 ```
@@ -5131,7 +5131,7 @@ works with oo2c version 2.
 ```oberon2
 
 MODULE Columns;
-IMPORT 
+IMPORT
   NPCT:Tools,
   Object,
   Out;
@@ -5144,9 +5144,9 @@ VAR
   words: ARRAY 6 OF Parts;
   columnWidth: ARRAY 128 OF INTEGER;
   lineIdx: INTEGER;
-  
+
   (*
-   * Size: returns de number of words in a line 
+   * Size: returns de number of words in a line
    *)
   PROCEDURE Size(p: Parts): INTEGER;
   VAR
@@ -5173,7 +5173,7 @@ VAR
     END;
     RETURN resp;
   END Max;
-  
+
   (*
    * MaxColumnWidth: returns the maximum width of a column
    *)
@@ -5189,7 +5189,7 @@ VAR
     END;
     RETURN SHORT(max)
   END MaxColumnWidth;
-  
+
   (*
    * PrintWords: prints the words in 'w' using the formatter passed in 'format'
    *)
@@ -5209,7 +5209,7 @@ VAR
     END;
     Out.Ln
   END PrintWords;
-  
+
 BEGIN
 lines[0] := "Given$a$text$file$of$many$lines,$where$fields$within$a$line$";
 lines[1] := "are$delineated$by$a$single$'dollar'$character,$write$a$program";
@@ -5244,17 +5244,17 @@ END Columns.
 
 ```txt
 
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
    Given        a         text     file    of     many      lines,    where   fields  within    a    line
     are     delineated     by       a    single 'dollar'  character,  write      a    program
     that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
-   column      are     separated    by     at     least      one      space. 
+   column      are     separated    by     at     least      one      space.
   Further,    allow       for      each   word     in         a       column    to      be    either left
  justified,   right    justified,   or   center justified   within     its    column.
 
@@ -5347,12 +5347,12 @@ import: file
 String method: justify( n just -- s )
 | l m |
    n self size - dup ->l 2 / ->m
-   String new 
+   String new
    just $RIGHT  if=: [ l <<nbl  self <<  return ]
    just $LEFT   if=: [ self <<  l <<nbl  return ]
    m <<nbl  self <<  l m - <<nbl
 ;
- 
+
 : align( file just -- )
 | lines maxsize |
     #[ wordsWith( '$' ) ] file File new map   ->lines
@@ -5479,7 +5479,7 @@ align right:
       Given          a       text   file     of      many     lines,    where  fields  within      a line
         are delineated         by      a single  'dollar' character,    write       a program
        that     aligns       each column     of    fields         by ensuring    that   words     in each
-     column        are  separated     by     at     least        one   space. 
+     column        are  separated     by     at     least        one   space.
    Further,      allow        for   each   word        in          a   column      to      be either left
  justified,      right justified,     or center justified     within      its column.
 
@@ -5570,28 +5570,28 @@ VIEW-AS ALERT-BOX.
 ---------------------------
 Message
 ---------------------------
-Given      a          text       file       of         many       lines,     where      fields     within     a          line                  
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each                  
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left                  
-justified, right      justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 
-     Given          a       text       file         of       many     lines,      where     fields     within          a       line            
-       are delineated         by          a     single   'dollar' character,      write          a    program 
-      that     aligns       each     column         of     fields         by   ensuring       that      words         in       each            
-    column        are  separated         by         at      least        one     space. 
-  Further,      allow        for       each       word         in          a     column         to         be     either       left            
-justified,      right justified,         or     center  justified     within        its    column. 
+     Given          a       text       file         of       many     lines,      where     fields     within          a       line
+       are delineated         by          a     single   'dollar' character,      write          a    program
+      that     aligns       each     column         of     fields         by   ensuring       that      words         in       each
+    column        are  separated         by         at      least        one     space.
+  Further,      allow        for       each       word         in          a     column         to         be     either       left
+justified,      right justified,         or     center  justified     within        its    column.
 
-   Given        a        text       file        of        many      lines,      where     fields     within        a        line               
-    are    delineated     by          a       single    'dollar'  character,    write        a       program  
-   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each               
-  column       are     separated     by         at        least       one      space.   
- Further,     allow       for       each       word        in          a       column       to         be       either      left               
-justified,    right   justified,     or       center    justified   within       its      column.  
+   Given        a        text       file        of        many      lines,      where     fields     within        a        line
+    are    delineated     by          a       single    'dollar'  character,    write        a       program
+   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each
+  column       are     separated     by         at        least       one      space.
+ Further,     allow       for       each       word        in          a       column       to         be       either      left
+justified,    right   justified,     or       center    justified   within       its      column.
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -5779,7 +5779,7 @@ declare
   end
 
   %% possible alignments:
-  
+
   fun {Left Txt Extra}
      Txt#{Spaces Extra}
   end
@@ -5795,7 +5795,7 @@ declare
   end
 
   %% helpers:
-  
+
   %% 3 -> unit(1 2 3)
   fun {TupleRange Max}
      {List.toTuple unit {List.number 1 Max 1}}
@@ -5808,7 +5808,7 @@ declare
   fun {Spaces N}
      case N of 0 then nil
      else & |{Spaces N-1}
-     end   
+     end
   end
 
   Lines = ["Given$a$text$file$of$many$lines,$where$fields$within$a$line$"
@@ -5929,7 +5929,7 @@ Call with parameter left (default), center or right.
 
 
 ```perl6
-my @lines = 
+my @lines =
 q|Given$a$text$file$of$many$lines,$where$fields$within$a$line$
 are$delineated$by$a$single$'dollar'$character,$write$a$program
 that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$
@@ -5939,10 +5939,10 @@ justified,$right$justified,$or$center$justified$within$its$column.
 |.lines;
 
 my @widths;
- 
+
 for @lines { for .split('$').kv { @widths[$^key] max= $^word.chars; } }
 for @lines { say |.split('$').kv.map: { (align @widths[$^key], $^word) ~ " "; } }
- 
+
 sub align($column_width, $word, $aligment = @*ARGS[0]) {
         my $lr = $column_width - $word.chars;
         my $c  = $lr / 2;
@@ -5983,7 +5983,7 @@ constant data = {
     "Further,$allow$for$each$word$in$a$column$to$be$either$left$",
     "justified,$right$justified,$or$center$justified$within$its$column."
 }
- 
+
 function split(sequence s, integer c)
 sequence out = {}
 integer first = 1, delim
@@ -5997,7 +5997,7 @@ integer first = 1, delim
     end while
     return out
 end function
- 
+
 function align(sequence s, integer width, integer alignment)
 integer n = width-length(s)
     if n<=0 then
@@ -6011,7 +6011,7 @@ integer n = width-length(s)
         return repeat(' ', floor(n/2)) & s & repeat(' ', floor(n/2+0.5))
     end if
 end function
- 
+
 procedure AlignColumns()
 integer llij
 sequence lines, li
@@ -6028,7 +6028,7 @@ sequence maxlens = {}
             if llij>maxlens[j] then maxlens[j] = llij end if
         end for
     end for
- 
+
     for a=-1 to 1 do    -- (alignment = left/centre/right)
         for i=1 to length(lines) do
             for j=1 to length(lines[i]) do
@@ -6083,12 +6083,12 @@ justified,      right justified,     or center justified     within      its col
 $j2justtype = array('L' => STR_PAD_RIGHT,
                     'R' => STR_PAD_LEFT,
                     'C' => STR_PAD_BOTH);
- 
+
 /**
  Justify columns of textual tabular input where the record separator is the newline
  and the field separator is a 'dollar' character.
  justification can be L, R, or C; (Left, Right, or Centered).
- 
+
  Return the justified output as a string
 */
 function aligner($str, $justification = 'L') {
@@ -6121,7 +6121,7 @@ that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$
 column$are$separated$by$at$least$one$space.
 Further,$allow$for$each$word$in$a$column$to$be$either$left$
 justified,$right$justified,$or$center$justified$within$its$column.';
- 
+
 foreach (array('L', 'R', 'C') as $j)
   echo aligner($textinfile, $j);
 
@@ -6160,26 +6160,26 @@ foreach (array('L', 'R', 'C') as $j)
 {{out}}
 
 ```txt
-Given      a          text       file   of     many      lines,     where    fields  within  a      line  
-are        delineated by         a      single 'dollar'  character, write    a       program              
-that       aligns     each       column of     fields    by         ensuring that    words   in     each  
-column     are        separated  by     at     least     one        space.                                
-Further,   allow      for        each   word   in        a          column   to      be      either left  
-justified, right      justified, or     center justified within     its      column.                      
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
-      Given          a       text   file     of      many     lines,    where  fields  within      a line 
-        are delineated         by      a single  'dollar' character,    write       a program             
-       that     aligns       each column     of    fields         by ensuring    that   words     in each 
-     column        are  separated     by     at     least        one   space.                             
-   Further,      allow        for   each   word        in          a   column      to      be either left 
- justified,      right justified,     or center justified     within      its column.                     
+      Given          a       text   file     of      many     lines,    where  fields  within      a line
+        are delineated         by      a single  'dollar' character,    write       a program
+       that     aligns       each column     of    fields         by ensuring    that   words     in each
+     column        are  separated     by     at     least        one   space.
+   Further,      allow        for   each   word        in          a   column      to      be either left
+ justified,      right justified,     or center justified     within      its column.
 
-   Given        a        text     file    of      many     lines,     where   fields  within    a   line 
-    are    delineated     by        a   single  'dollar' character,   write     a    program             
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each 
-  column       are     separated   by     at     least       one     space.                              
- Further,     allow       for     each   word      in         a      column     to      be   either left 
-justified,    right   justified,   or   center justified   within      its   column.                     
+   Given        a        text     file    of      many     lines,     where   fields  within    a   line
+    are    delineated     by        a   single  'dollar' character,   write     a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column       are     separated   by     at     least       one     space.
+ Further,     allow       for     each   word      in         a      column     to      be   either left
+justified,    right   justified,   or   center justified   within      its   column.
 ```
 
 
@@ -6236,7 +6236,7 @@ end;
 
 ```PowerShell
 
-$file = 
+$file =
 @'
 Given$a$text$file$of$many$lines,$where$fields$within$a$line$
 are$delineated$by$a$single$'dollar'$character,$write$a$program
@@ -6265,11 +6265,11 @@ $arr | Format-Table -HideTableHeaders -Wrap *
 
 ```txt
 
-Given      a          text       file   of     many      lines,     where    fields  within   a      line   
-are        delineated by         a      single 'dollar'  character, write    a       program                
-that       aligns     each       column of     fields    by         ensuring that    words    in     each   
-column     are        separated  by     at     least     one        space.                                  
-Further,   allow      for        each   word   in        a          column   to      be       either left   
+Given      a          text       file   of     many      lines,     where    fields  within   a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words    in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be       either left
 justified, right      justified, or     center justified within     its      column.
 
 ```
@@ -6291,7 +6291,7 @@ justified,$right$justified,$or$center$justified$within$its$column.",
 
 	% read the lines and the words
 	% compute the length of the longuest word.
-	% LP is the list of lines, 
+	% LP is the list of lines,
 	% each line is a list of words
 	parse(L, 0, N, LP, []),
 
@@ -6369,20 +6369,20 @@ parse_word([H|T], N1, NF, TF) -->
 ```txt
  ?- aligner.
 Left justified :
-Given      a          text       file       of         many       lines,     where      fields     within     a          line       
-are        delineated by         a          single     'dollar'   character, write      a          program    
-that       aligns     each       column     of         fields     by         ensuring   that       words      in         each       
-column     are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          column     to         be         either     left       
-justified, right      justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
+are        delineated by         a          single     'dollar'   character, write      a          program
+that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
+column     are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a          column     to         be         either     left
+justified, right      justified, or         center     justified  within     its        column.
 
 Centered justified :
-   Given        a        text       file        of        many      lines,      where     fields     within        a        line    
-    are    delineated     by          a       single    'dollar'  character,    write        a       program  
-   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each    
-  column       are     separated     by         at        least       one      space.   
- Further,     allow       for       each       word        in          a       column       to         be       either      left    
-justified,    right   justified,     or       center    justified   within       its      column.  
+   Given        a        text       file        of        many      lines,      where     fields     within        a        line
+    are    delineated     by          a       single    'dollar'  character,    write        a       program
+   that      aligns      each      column       of       fields       by      ensuring     that       words       in        each
+  column       are     separated     by         at        least       one      space.
+ Further,     allow       for       each       word        in          a       column       to         be       either      left
+justified,    right   justified,     or       center    justified   within       its      column.
 
 Right justified :
       Given          a       text       file         of       many     lines,      where     fields     within          a       line
@@ -6399,7 +6399,7 @@ true .
 
 ## PureBasic
 
-{{works with|PureBasic|4.41}} 
+{{works with|PureBasic|4.41}}
 
 ```PureBasic
 Declare max(a,b)
@@ -6407,7 +6407,7 @@ Declare max(a,b)
 If OpenConsole()
   Define a, i, x, y, maxlen
   Dim txt.s(0)
-  Restore lines             ; Get address of the first data block 
+  Restore lines             ; Get address of the first data block
   Read.i  a
   ReDim txt(a)
   For i=0 To a              ; Read the raw data lines
@@ -6426,7 +6426,7 @@ If OpenConsole()
   If maxlen%2
     maxlen+1                ; Just to make sure that 'centered' output looks nice....
   EndIf
-  
+
   PrintN(#CRLF$+"---- Right ----")
   For y=0 To ArraySize(matrix(),2)
     For x=0 To ArraySize(matrix(),1)
@@ -6434,7 +6434,7 @@ If OpenConsole()
     Next
     PrintN("")
   Next
-  
+
   PrintN(#CRLF$+"---- Left ----")
   For y=0 To ArraySize(matrix(),2)
     For x=0 To ArraySize(matrix(),1)
@@ -6442,7 +6442,7 @@ If OpenConsole()
     Next
     PrintN("")
   Next
-  
+
   PrintN(#CRLF$+"---- Center ----")
   For y=0 To ArraySize(matrix(),2)
     For x=0 To ArraySize(matrix(),1)
@@ -6451,7 +6451,7 @@ If OpenConsole()
     Next
     PrintN("")
   Next
-  
+
   PrintN(#CRLF$+#CRLF$+"Press ENTER to quit."): Input()
   CloseConsole()
 EndIf
@@ -6492,27 +6492,27 @@ EndDataSection
 
 ```python
 from StringIO import StringIO
- 
+
 textinfile = '''Given$a$text$file$of$many$lines,$where$fields$within$a$line$
 are$delineated$by$a$single$'dollar'$character,$write$a$program
 that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$
 column$are$separated$by$at$least$one$space.
 Further,$allow$for$each$word$in$a$column$to$be$either$left$
 justified,$right$justified,$or$center$justified$within$its$column.'''
- 
+
 j2justifier = dict(L=str.ljust, R=str.rjust, C=str.center)
- 
+
 def aligner(infile, justification = 'L'):
   ''' \
   Justify columns of textual tabular input where the row separator is the newline
   and the field separator is a 'dollar' character.
   justification can be L, R, or C; (Left, Right, or Centered).
- 
+
   Return the justified output as a string
   '''
   assert justification in j2justifier, "justification can be L, R, or C; (Left, Right, or Centered)."
   justifier = j2justifier[justification]
- 
+
   fieldsbyrow= [line.strip().split('$') for line in infile]
   # pad to same number of fields per row
   maxfields = max(len(row) for row in fieldsbyrow)
@@ -6528,10 +6528,10 @@ def aligner(infile, justification = 'L'):
                      for width, column in zip(colwidths, fieldsbycolumn) ]
   # rotate again
   fieldsbyrow = zip(*fieldsbycolumn)
- 
+
   return "\n".join( " ".join(row) for row in fieldsbyrow)
- 
- 
+
+
 for align in 'Left Right Center'.split():
   infile = StringIO(textinfile)
   print "\n# %s Column-aligned output:" % align
@@ -6544,28 +6544,28 @@ for align in 'Left Right Center'.split():
 ```txt
 
 # Left Column-aligned output:
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program             
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.                               
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column.                     
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 # Right Column-aligned output:
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
-       are delineated         by      a single  'dollar' character,    write       a program             
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
-    column        are  separated     by     at     least        one   space.                             
-  Further,      allow        for   each   word        in          a   column      to      be either left 
-justified,      right justified,     or center justified     within      its column.                     
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
+justified,      right justified,     or center justified     within      its column.
 
 # Center Column-aligned output:
-  Given        a         text     file    of      many     lines,    where    fields  within   a    line 
-   are     delineated     by       a    single  'dollar' character,  write      a    program             
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each 
-  column      are     separated    by     at     least      one      space.                              
- Further,    allow       for      each   word      in        a       column     to      be   either left 
-justified,   right    justified,   or   center justified   within     its    column.                     
+  Given        a         text     file    of      many     lines,    where    fields  within   a    line
+   are     delineated     by       a    single  'dollar' character,  write      a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word      in        a       column     to      be   either left
+justified,   right    justified,   or   center justified   within     its    column.
 ```
 
 
@@ -6634,7 +6634,7 @@ for i, justify in enumerate([str.ljust, str.center, str.rjust]):
 
 ### =As a fold=
 
-A fold/'''reduce''' between two transpositions. 
+A fold/'''reduce''' between two transpositions.
 
 (Selection of string justification methods via '''getattr'''):
 {{Works with|Python|3.7}}
@@ -6720,26 +6720,26 @@ if __name__ == '__main__':
 {{Out}}
 
 ```txt
-Given       a           text        file    of      many       lines,      where     fields   within   a       line  
-are         delineated  by          a       single  'dollar'   character,  write     a        program                
-that        aligns      each        column  of      fields     by          ensuring  that     words    in      each  
-column      are         separated   by      at      least      one         space.                                    
-Further,    allow       for         each    word    in         a           column    to       be       either  left  
-justified,  right       justified,  or      center  justified  within      its       column.                         
+Given       a           text        file    of      many       lines,      where     fields   within   a       line
+are         delineated  by          a       single  'dollar'   character,  write     a        program
+that        aligns      each        column  of      fields     by          ensuring  that     words    in      each
+column      are         separated   by      at      least      one         space.
+Further,    allow       for         each    word    in         a           column    to       be       either  left
+justified,  right       justified,  or      center  justified  within      its       column.
 
-  Given         a          text      file     of       many      lines,     where     fields   within    a     line  
-   are      delineated      by        a     single   'dollar'  character,   write       a     program                
-   that       aligns       each     column    of      fields       by      ensuring    that    words     in    each  
-  column       are      separated     by      at      least       one       space.                                   
- Further,     allow        for       each    word       in         a        column      to       be    either  left  
-justified,    right     justified,    or    center  justified    within      its     column.                         
+  Given         a          text      file     of       many      lines,     where     fields   within    a     line
+   are      delineated      by        a     single   'dollar'  character,   write       a     program
+   that       aligns       each     column    of      fields       by      ensuring    that    words     in    each
+  column       are      separated     by      at      least       one       space.
+ Further,     allow        for       each    word       in         a        column      to       be    either  left
+justified,    right     justified,    or    center  justified    within      its     column.
 
-     Given           a        text    file      of       many      lines,     where   fields   within       a  line  
-       are  delineated          by       a  single   'dollar'  character,     write        a  program                
-      that      aligns        each  column      of     fields          by  ensuring     that    words      in  each  
-    column         are   separated      by      at      least         one    space.                                  
-  Further,       allow         for    each    word         in           a    column       to       be  either  left  
-justified,       right  justified,      or  center  justified      within       its  column.      
+     Given           a        text    file      of       many      lines,     where   fields   within       a  line
+       are  delineated          by       a  single   'dollar'  character,     write        a  program
+      that      aligns        each  column      of     fields          by  ensuring     that    words      in  each
+    column         are   separated      by      at      least         one    space.
+  Further,       allow         for    each    word         in           a    column       to       be  either  left
+justified,       right  justified,      or  center  justified      within       its  column.
 ```
 
 
@@ -6779,12 +6779,12 @@ Right justified output shown.
 <div style="width:full;overflow:scroll">
 ```txt
 
-     Given          a       text       file         of       many     lines,      where     fields     within          a       line 
-       are delineated         by          a     single   'dollar' character,      write          a    program                       
-      that     aligns       each     column         of     fields         by   ensuring       that      words         in       each 
-    column        are  separated         by         at      least        one     space.                                             
-  Further,      allow        for       each       word         in          a     column         to         be     either       left 
-justified,      right justified,         or     center  justified     within        its    column.                                  
+     Given          a       text       file         of       many     lines,      where     fields     within          a       line
+       are delineated         by          a     single   'dollar' character,      write          a    program
+      that     aligns       each     column         of     fields         by   ensuring       that      words         in       each
+    column        are  separated         by         at      least        one     space.
+  Further,      allow        for       each       word         in          a     column         to         be     either       left
+justified,      right justified,         or     center  justified     within        its    column.
 
 ```
 </div>
@@ -6850,7 +6850,7 @@ Dim MText as QMemorystream
 DefStr TextLeft, TextRight, TextCenter
 DefStr MLine, LWord, Newline = chr$(13)+chr$(10)
 DefInt ColWidth(100), ColCount
-DefSng NrSpaces 
+DefSng NrSpaces
 
 'Find column widths
 MText.position = 0
@@ -6876,36 +6876,36 @@ for x = 0 to MText.linecount -1
         'Center
         TextCenter = TextCenter + Space$(floor((NrSpaces)/2)+1) + LWord + Space$(Ceil((NrSpaces)/2))
     next
-    TextLeft = TextLeft + Newline 
-    TextRight = TextRight + Newline 
-    TextCenter = TextCenter + Newline 
+    TextLeft = TextLeft + Newline
+    TextRight = TextRight + Newline
+    TextCenter = TextCenter + Newline
 next
 
 ```
 
 {{out}}
 <pre style="height:20ex;overflow:scroll">TextLeft contains:
-Given      a          text       file   of     many      lines,     where    fields  within  a      line  
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each  
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left  
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 TextRight contains:
-      Given          a       text   file     of      many     lines,    where  fields  within      a line 
+      Given          a       text   file     of      many     lines,    where  fields  within      a line
         are delineated         by      a single  'dollar' character,    write       a program
-       that     aligns       each column     of    fields         by ensuring    that   words     in each 
+       that     aligns       each column     of    fields         by ensuring    that   words     in each
      column        are  separated     by     at     least        one   space.
-   Further,      allow        for   each   word        in          a   column      to      be either left 
+   Further,      allow        for   each   word        in          a   column      to      be either left
  justified,      right justified,     or center justified     within      its column.
 
 TextCenter contains:
-   Given        a         text     file    of     many      lines,    where   fields  within    a    line 
+   Given        a         text     file    of     many      lines,    where   fields  within    a    line
     are     delineated     by       a    single 'dollar'  character,  write      a    program
-    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each 
-   column      are     separated    by     at     least      one      space. 
-  Further,    allow       for      each   word     in         a       column    to      be    either left 
+    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+   column      are     separated    by     at     least      one      space.
+  Further,    allow       for      each   word     in         a       column    to      be    either left
  justified,   right    justified,   or   center justified   within     its    column.
 
 ```
@@ -7346,27 +7346,27 @@ end
 
 # Left Column-aligned output:
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
-are        delineated by         a      single 'dollar'  character, write    a       program            
+are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
-column     are        separated  by     at     least     one        space.                              
+column     are        separated  by     at     least     one        space.
 Further,   allow      for        each   word   in        a          column   to      be      either left
-justified, right      justified, or     center justified within     its      column.                    
+justified, right      justified, or     center justified within     its      column.
 
 # Right Column-aligned output:
      Given          a       text   file     of      many     lines,    where  fields  within      a line
-       are delineated         by      a single  'dollar' character,    write       a program            
+       are delineated         by      a single  'dollar' character,    write       a program
       that     aligns       each column     of    fields         by ensuring    that   words     in each
-    column        are  separated     by     at     least        one   space.                            
+    column        are  separated     by     at     least        one   space.
   Further,      allow        for   each   word        in          a   column      to      be either left
-justified,      right justified,     or center justified     within      its column.                    
+justified,      right justified,     or center justified     within      its column.
 
 # Center Column-aligned output:
   Given        a         text     file    of     many      lines,    where   fields  within    a    line
-   are     delineated     by       a    single 'dollar'  character,  write      a    program            
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
-  column      are     separated    by     at     least      one      space.                             
+  column      are     separated    by     at     least      one      space.
  Further,    allow       for      each   word     in         a       column    to      be    either left
-justified,   right    justified,   or   center justified   within     its    column.                    
+justified,   right    justified,   or   center justified   within     its    column.
 
 ```
 
@@ -7429,7 +7429,7 @@ end function
 |for         |each        |word    |in          |a               |column    |
 |to          |be          |either  |left        |justified,      |right     |
 |justified,  |or          |center  |justified   |within          |its       |
-|column.     
+|column.
 ------------ align:right -- across:6 ------------
 |       Given|           a|    text|        file|              of|      many|
 |      lines,|       where|  fields|      within|               a|      line|
@@ -7453,7 +7453,7 @@ end function
 |    for     |    each    |  word  |     in     |       a        |  column  |
 |     to     |     be     | either |    left    |   justified,   |  right   |
 | justified, |     or     | center | justified  |     within     |   its    |
-|  column.   
+|  column.
 ```
 
 
@@ -7573,13 +7573,13 @@ object ColumnAligner {
 
   def align(aligners: List[String => String])(fields: Array[String]) =
     aligners zip fields map Function.tupled(_ apply _)
-  
+
   def alignFile(filename: String, alignment: Char) = {
     def table = getTable(filename)
     val aligners = columnWidths(table) map alignField(alignment)
     table map align(aligners) map (_ mkString " ")
   }
-  
+
   def printAlignedFile(filename: String, alignment: Char) {
     alignFile(filename, alignment) foreach println
   }
@@ -7599,18 +7599,18 @@ def pad(s:String, i:Int, d:String) = {
     case "center" => " "*(padsize/2) + s + " "*(padsize-padsize/2)
   }
 }
- 
+
 val lines = scala.io.Source.fromFile("c:\\text.txt").getLines.map(_.trim())
 val words = lines.map(_.split("\\$").toList).toList
 val lens = words.map(l => l.map(_.length)).toList
- 
+
 var maxlens = Map[Int,Int]() withDefaultValue 0
 lens foreach (l =>
   for(i <- (0 until l.length)){
     maxlens += i -> l(i).max(maxlens(i))
   }
 )
-  
+
 val padded = words map ( _.zipWithIndex.map{case(s,i)=>pad(s,maxlens(i),"center")+" "} )
 padded map (_.reduceLeft(_ + _)) foreach println
 ```
@@ -7648,15 +7648,15 @@ padded map (_.reduceLeft(_ + _)) foreach println
   (let* ((text-list (map split text))
          (max-line-len (fold (lambda (text val) (max (length text) val)) 0 text-list))
          (text-lines (map (lambda (line) (extend line max-line-len)) text-list))
-         (min-col-widths (map (lambda (col) 
-                                (fold (lambda (line val) 
+         (min-col-widths (map (lambda (col)
+                                (fold (lambda (line val)
                                         (max (string-length (list-ref line col))
-                                             val)) 
-                                      0 
+                                             val))
+                                      0
                                       text-lines))
                               (iota max-line-len))))
-    (map (lambda (line) 
-           (map (lambda (word width) 
+    (map (lambda (line)
+           (map (lambda (word width)
                   (display (string-append (align-word word width)
                                           " ")))
                 line min-col-widths)
@@ -7665,7 +7665,7 @@ padded map (_.reduceLeft(_ + _)) foreach println
   (newline))
 
 ;; show example
-(define *example* 
+(define *example*
   '("Given$a$text$file$of$many$lines,$where$fields$within$a$line$"
     "are$delineated$by$a$single$'dollar'$character,$write$a$program"
     "that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$"
@@ -7685,28 +7685,28 @@ padded map (_.reduceLeft(_ + _)) foreach println
 ```txt
 
 left
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program             
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.                               
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column.                     
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 center
-   Given        a        text     file    of      many     lines,     where   fields  within    a   line 
-    are    delineated     by        a   single  'dollar' character,   write     a    program             
-   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each 
-  column       are     separated   by     at     least       one     space.                              
- Further,     allow       for     each   word      in         a      column     to      be   either left 
-justified,    right   justified,   or   center justified   within      its   column.                     
+   Given        a        text     file    of      many     lines,     where   fields  within    a   line
+    are    delineated     by        a   single  'dollar' character,   write     a    program
+   that      aligns      each    column   of     fields      by     ensuring   that   words    in   each
+  column       are     separated   by     at     least       one     space.
+ Further,     allow       for     each   word      in         a      column     to      be   either left
+justified,    right   justified,   or   center justified   within      its   column.
 
 right
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
-       are delineated         by      a single  'dollar' character,    write       a program             
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
-    column        are  separated     by     at     least        one   space.                             
-  Further,      allow        for   each   word        in          a   column      to      be either left 
-justified,      right justified,     or center justified     within      its column.                     
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
+justified,      right justified,     or center justified     within      its column.
 
 
 ```
@@ -7802,20 +7802,20 @@ Example:
 
 ```txt
 
-$ cat align.txt 
+$ cat align.txt
 Given$a$text$file$of$many$lines,$where$fields$within$a$line$
 are$delineated$by$a$single$'dollar'$character,$write$a$program
 that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$
 column$are$separated$by$at$least$one$space.
 Further,$allow$for$each$word$in$a$column$to$be$either$left$
 justified,$right$justified,$or$center$justified$within$its$column.
-$ ./align-columns.sed align.txt 
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column. 
+$ ./align-columns.sed align.txt
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 ```
 
@@ -7884,12 +7884,12 @@ const proc: main is func
 
 ```txt
 
-  Given        a         text     file    of     many      lines,    where   fields  within    a    line  
-   are     delineated     by       a    single 'dollar'  character,  write      a    program 
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each  
-  column      are     separated    by     at     least      one      space.  
- Further,    allow       for      each   word     in         a       column    to      be    either left  
-justified,   right    justified,   or   center justified   within     its    column. 
+  Given        a         text     file    of     many      lines,    where   fields  within    a    line
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
+justified,   right    justified,   or   center justified   within     its    column.
 
 ```
 
@@ -7943,25 +7943,25 @@ align text 'right'
 
 
 ```txt
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
-  Given        a         text     file    of     many      lines,    where   fields  within    a    line 
-   are     delineated     by       a    single 'dollar'  character,  write      a    program 
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each 
-  column      are     separated    by     at     least      one      space.  
- Further,    allow       for      each   word     in         a       column    to      be    either left 
-justified,   right    justified,   or   center justified   within     its    column. 
+  Given        a         text     file    of     many      lines,    where   fields  within    a    line
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
+justified,   right    justified,   or   center justified   within     its    column.
 
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
-       are delineated         by      a single  'dollar' character,    write       a program 
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
-    column        are  separated     by     at     least        one   space. 
-  Further,      allow        for   each   word        in          a   column      to      be either left 
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
 justified,      right justified,     or center justified     within      its column.
 ```
 
@@ -8137,12 +8137,12 @@ SET exampletext=JOIN(new1,"$",new2,new3,new4,new5,new6,new7,new8,new9,new10,new1
 
 ```txt
 
-   Given    $     a      $    text    $  file  $   of   $   many    $   lines,   $  where   $ fields  $ within  $   a    $ line$ 
-    are     $ delineated $     by     $   a    $ single $ 'dollar'  $ character, $  write   $    a    $ program $        $       
-    that    $   aligns   $    each    $ column $   of   $  fields   $     by     $ ensuring $  that   $  words  $   in   $ each$ 
-   column   $    are     $ separated  $   by   $   at   $   least   $    one     $  space.  $         $         $        $       
-  Further,  $   allow    $    for     $  each  $  word  $    in     $     a      $  column  $   to    $   be    $ either $ left$ 
- justified, $   right    $ justified, $   or   $ center $ justified $   within   $   its    $ column. $         $        $       
+   Given    $     a      $    text    $  file  $   of   $   many    $   lines,   $  where   $ fields  $ within  $   a    $ line$
+    are     $ delineated $     by     $   a    $ single $ 'dollar'  $ character, $  write   $    a    $ program $        $
+    that    $   aligns   $    each    $ column $   of   $  fields   $     by     $ ensuring $  that   $  words  $   in   $ each$
+   column   $    are     $ separated  $   by   $   at   $   least   $    one     $  space.  $         $         $        $
+  Further,  $   allow    $    for     $  each  $  word  $    in     $     a      $  column  $   to    $   be    $ either $ left$
+ justified, $   right    $ justified, $   or   $ center $ justified $   within   $   its    $ column. $         $        $
 
 
 ```
@@ -8186,23 +8186,23 @@ SET exampletext=JOIN(new1,"$",new2,new3,new4,new5,new6,new7,new8,new9,new10,new1
 
 
 ```txt
-$ txr align-columns.txr align-columns.dat 
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program             
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.                               
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column.                     
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
-       are delineated         by      a single  'dollar' character,    write       a program             
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
-    column        are  separated     by     at     least        one   space.                             
-  Further,      allow        for   each   word        in          a   column      to      be either left 
-justified,      right justified,     or center justified     within      its column.                     
+$ txr align-columns.txr align-columns.dat
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
+justified,      right justified,     or center justified     within      its column.
   Given        a         text     file    of     many      lines,    where   fields  within    a    line
    are     delineated     by       a    single 'dollar'  character,  write      a    program
    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
-  column      are     separated    by     at     least      one      space.     
+  column      are     separated    by     at     least      one      space.
  Further,    allow       for      each   word     in         a       column    to      be    either left
 justified,   right    justified,   or   center justified   within     its    column.
 ```
@@ -8259,20 +8259,20 @@ EOF_OUTER
 
 ```sh
 
-$ ./just-nocenter.sh 
+$ ./just-nocenter.sh
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
-are        delineated by         a      single 'dollar'  character, write    a       program        
+are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
-column     are        separated  by     at     least     one        space.                          
+column     are        separated  by     at     least     one        space.
 Further,   allow      for        each   word   in        a          column   to      be      either left
-justified, right      justified, or     center justified within     its      column.                
+justified, right      justified, or     center justified within     its      column.
 
      Given          a       text   file     of      many     lines,    where  fields  within      a line
-       are delineated         by      a single  'dollar' character,    write       a program            
+       are delineated         by      a single  'dollar' character,    write       a program
       that     aligns       each column     of    fields         by ensuring    that   words     in each
-    column        are  separated     by     at     least        one   space.                            
+    column        are  separated     by     at     least        one   space.
   Further,      allow        for   each   word        in          a   column      to      be either left
-justified,      right justified,     or center justified     within      its column.                    
+justified,      right justified,     or center justified     within      its column.
 
 ```
 
@@ -8284,15 +8284,15 @@ The centered output will be added later, when I've more time.  '' I did this in 
 
 The algorithm is to lex the text to a list of lists of strings assuming $ as a separator,
 then pad the lists out to the length of the maximum length list, transpose,
-do the same with each column, and transpose again. 
-For left justification, nothing further but concatenation is needed. 
-For right justification, each word's string of trailing blanks is moved to the beginning, 
+do the same with each column, and transpose again.
+For left justification, nothing further but concatenation is needed.
+For right justification, each word's string of trailing blanks is moved to the beginning,
 and for center justification, the trailing blanks are divided equally between the beginning and end of each word.
 
 ```Ursala
 #import std
 
-text = 
+text =
 
 -[Given$a$text$file$of$many$lines,$where$fields$within$a$line$
 are$delineated$by$a$single$'dollar'$character,$write$a$program
@@ -8315,25 +8315,25 @@ main = mat0 <.just_left,just_center,just_right> text
 {{out}}
 <pre style="height:17ex;overflow:scroll">
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
-are        delineated by         a      single 'dollar'  character, write    a       program            
+are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
-column     are        separated  by     at     least     one        space.                              
+column     are        separated  by     at     least     one        space.
 Further,   allow      for        each   word   in        a          column   to      be      either left
-justified, right      justified, or     center justified within     its      column.                    
+justified, right      justified, or     center justified within     its      column.
 
   Given        a         text     file    of     many      lines,    where   fields  within    a    line
-   are     delineated     by       a    single 'dollar'  character,  write      a    program            
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
-  column      are     separated    by     at     least      one      space.                             
+  column      are     separated    by     at     least      one      space.
  Further,    allow       for      each   word     in         a       column    to      be    either left
-justified,   right    justified,   or   center justified   within     its    column.                    
+justified,   right    justified,   or   center justified   within     its    column.
 
      Given          a       text   file     of      many     lines,    where  fields  within      a line
-       are delineated         by      a single  'dollar' character,    write       a program            
+       are delineated         by      a single  'dollar' character,    write       a program
       that     aligns       each column     of    fields         by ensuring    that   words     in each
-    column        are  separated     by     at     least        one   space.                            
+    column        are  separated     by     at     least        one   space.
   Further,      allow        for   each   word        in          a   column      to      be either left
-justified,      right justified,     or center justified     within      its column.                    
+justified,      right justified,     or center justified     within      its column.
 
 ```
 
@@ -8353,7 +8353,7 @@ Public Sub TestSplit(Optional align As String = "left", Optional spacing As Inte
   Dim ncols As Integer
   Dim lines(6) As String
   Dim nlines As Integer
-  
+
   'check arguments
   If Not (align = "left" Or align = "right" Or align = "center") Then
     MsgBox "TestSplit: wrong argument 'align': " & align
@@ -8363,7 +8363,7 @@ Public Sub TestSplit(Optional align As String = "left", Optional spacing As Inte
     MsgBox "TestSplit: wrong argument: 'spacing' cannot be negative."
     Exit Sub
   End If
-  
+
   ' Sample Input (should be from a file)
   nlines = 6
   lines(1) = "Given$a$text$file$of$many$lines,$where$fields$within$a$line$"
@@ -8372,7 +8372,7 @@ Public Sub TestSplit(Optional align As String = "left", Optional spacing As Inte
   lines(4) = "column$are$separated$by$at$least$one$space."
   lines(5) = "Further,$allow$for$each$word$in$a$column$to$be$either$left$"
   lines(6) = "justified,$right$justified,$or$center$justified$within$its$column."
-  
+
   'first pass: count columns and column widths
   'the words are not kept in memory
   ncols = -1
@@ -8386,13 +8386,13 @@ Public Sub TestSplit(Optional align As String = "left", Optional spacing As Inte
       If Len(word(i)) > colwidth(i) Then colwidth(i) = Len(word(i))
     Next i
   Next l
-  
+
   'discard possibly empty columns at the right
   '(this assumes there is at least one non-empty column)
   While colwidth(ncols) = 0
     ncols = ncols - 1
   Wend
-  
+
   'second pass: print in columns
   For l = 1 To nlines
     word = Split(RTrim(lines(l)), "$")
@@ -8422,20 +8422,20 @@ End Sub
 
 testsplit , 4 'default alignment, non-default spacing
 Given         a             text          file      of        many         lines,        where       fields     within     a         line
-are           delineated    by            a         single    'dollar'     character,    write       a          program    
+are           delineated    by            a         single    'dollar'     character,    write       a          program
 that          aligns        each          column    of        fields       by            ensuring    that       words      in        each
-column        are           separated     by        at        least        one           space.      
+column        are           separated     by        at        least        one           space.
 Further,      allow         for           each      word      in           a             column      to         be         either    left
-justified,    right         justified,    or        center    justified    within        its         column.    
+justified,    right         justified,    or        center    justified    within        its         column.
 
 
 testsplit "center" 'non-default alignment, default spacing
   Given        a         text     file    of     many      lines,    where   fields  within    a    line
-   are     delineated     by       a    single 'dollar'  character,  write      a    program 
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
    that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
-  column      are     separated    by     at     least      one      space.  
+  column      are     separated    by     at     least      one      space.
  Further,    allow       for      each   word     in         a       column    to      be    either left
-justified,   right    justified,   or   center justified   within     its    column. 
+justified,   right    justified,   or   center justified   within     its    column.
 
 ```
 
@@ -8468,14 +8468,14 @@ justified,   right    justified,   or   center justified   within     its    col
 	rows=r-1
 	tt=Array("Left","Right","Center")
 	For n=1 To 3
-		Wscript.Echo 
-		Wscript.Echo "*****" & tt(n-1) & "*****" 
+		Wscript.Echo
+		Wscript.Echo "*****" & tt(n-1) & "*****"
 		For r=1 To rows
 			w=""
 			For c=1 To cols
 				x=wor(r,c): s=Space(d(c))
 				Select Case n
-					Case 1: w=w &" "& Left   (x & s,d(c)) 
+					Case 1: w=w &" "& Left   (x & s,d(c))
 					Case 2: w=w &" "& Right  (s & x,d(c))
 					Case 3: w=w &" "& xCentre(x,d(c)," ")
 				End Select 'n
@@ -8483,8 +8483,8 @@ justified,   right    justified,   or   center justified   within     its    col
 			Wscript.Echo Mid(w,2)
 		Next 'r
 	Next 'n
-	
-Function xCentre(c, n, Pad) 
+
+Function xCentre(c, n, Pad)
     Dim j
     If n > Len(c) Then
 		j = (n - Len(c)) \  2
@@ -8495,8 +8495,8 @@ Function xCentre(c, n, Pad)
     End If
 End Function 'xCentre
 
-Function xRTrim(c, Pad) 
-	Dim i2, l, cc 
+Function xRTrim(c, Pad)
+	Dim i2, l, cc
 	cc = "": l = Len(c)
 	If l > 0 Then
 		i2 = l
@@ -8507,7 +8507,7 @@ Function xRTrim(c, Pad)
 		If i2 > 0 Then cc = Mid(c, 1, i2)
 	End If
 	xRTrim = cc
-End Function 'xRTrim 
+End Function 'xRTrim
 
 ```
 
@@ -8595,27 +8595,27 @@ Repeat(ALL) {
 
 ```txt
 -- Left:
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 -- Center:
-  Given        a         text     file    of     many      lines,    where   fields  within    a    line 
-   are     delineated     by       a    single 'dollar'  character,  write      a    program 
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each 
-  column      are     separated    by     at     least      one      space.  
- Further,    allow       for      each   word     in         a       column    to      be    either left 
-justified,   right    justified,   or   center justified   within     its    column. 
+  Given        a         text     file    of     many      lines,    where   fields  within    a    line
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
+justified,   right    justified,   or   center justified   within     its    column.
 
 -- Right:
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
-       are delineated         by      a single  'dollar' character,    write       a program 
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
-    column        are  separated     by     at     least        one   space. 
-  Further,      allow        for   each   word        in          a   column      to      be either left 
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
 justified,      right justified,     or center justified     within      its column.
 ```
 
@@ -8627,7 +8627,7 @@ justified,      right justified,     or center justified     within      its col
 ```vb
 Sub AlignCols(Lines, Optional Align As AlignmentConstants, Optional Sep$ = "$", Optional Sp% = 1)
 Dim i&, j&, D&, L&, R&: ReDim W(UBound(Lines)): ReDim C&(0)
- 
+
   For j = 0 To UBound(W)
     W(j) = Split(Lines(j), Sep)
     If UBound(W(j)) > UBound(C) Then ReDim Preserve C(UBound(W(j)))
@@ -8652,7 +8652,7 @@ Const Text$ = "Given$a$text$file$of$many$lines,$where$fields$within$a$line$" & v
               "column$are$separated$by$at$least$one$space." & vbLf & _
               "Further,$allow$for$each$word$in$a$column$to$be$either$left$" & vbLf & _
               "justified,$right$justified,$or$center$justified$within$its$column."
- 
+
   Debug.Print vbLf; "-- Left:":   AlignCols Split(Text, vbLf), vbLeftJustify
   Debug.Print vbLf; "-- Center:": AlignCols Split(Text, vbLf), vbCenter
   Debug.Print vbLf; "-- Right:":  AlignCols Split(Text, vbLf), vbRightJustify
@@ -8663,27 +8663,27 @@ End Sub
 
 ```txt
 -- Left:
-Given      a          text       file   of     many      lines,     where    fields  within  a      line  
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each  
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left  
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 -- Center:
-  Given        a         text     file    of     many      lines,    where   fields  within    a    line  
-   are     delineated     by       a    single 'dollar'  character,  write      a    program 
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each  
-  column      are     separated    by     at     least      one      space.  
- Further,    allow       for      each   word     in         a       column    to      be    either left  
-justified,   right    justified,   or   center justified   within     its    column. 
+  Given        a         text     file    of     many      lines,    where   fields  within    a    line
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
+justified,   right    justified,   or   center justified   within     its    column.
 
 -- Right:
-     Given          a       text   file     of      many     lines,    where  fields  within      a line  
-       are delineated         by      a single  'dollar' character,    write       a program 
-      that     aligns       each column     of    fields         by ensuring    that   words     in each  
-    column        are  separated     by     at     least        one   space. 
-  Further,      allow        for   each   word        in          a   column      to      be either left  
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
 justified,      right justified,     or center justified     within      its column.
 ```
 
@@ -8765,27 +8765,27 @@ End Module
 
 ```txt
 -- Left:
-Given      a          text       file   of     many      lines,     where    fields  within  a      line 
-are        delineated by         a      single 'dollar'  character, write    a       program 
-that       aligns     each       column of     fields    by         ensuring that    words   in     each 
-column     are        separated  by     at     least     one        space.   
-Further,   allow      for        each   word   in        a          column   to      be      either left 
-justified, right      justified, or     center justified within     its      column. 
+Given      a          text       file   of     many      lines,     where    fields  within  a      line
+are        delineated by         a      single 'dollar'  character, write    a       program
+that       aligns     each       column of     fields    by         ensuring that    words   in     each
+column     are        separated  by     at     least     one        space.
+Further,   allow      for        each   word   in        a          column   to      be      either left
+justified, right      justified, or     center justified within     its      column.
 
 -- Center:
-  Given        a         text     file    of     many      lines,    where   fields  within    a    line 
-   are     delineated     by       a    single 'dollar'  character,  write      a    program 
-   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each 
-  column      are     separated    by     at     least      one      space.  
- Further,    allow       for      each   word     in         a       column    to      be    either left 
-justified,   right    justified,   or   center justified   within     its    column. 
+  Given        a         text     file    of     many      lines,    where   fields  within    a    line
+   are     delineated     by       a    single 'dollar'  character,  write      a    program
+   that      aligns      each    column   of    fields       by     ensuring  that    words    in   each
+  column      are     separated    by     at     least      one      space.
+ Further,    allow       for      each   word     in         a       column    to      be    either left
+justified,   right    justified,   or   center justified   within     its    column.
 
 -- Right:
-     Given          a       text   file     of      many     lines,    where  fields  within      a line 
-       are delineated         by      a single  'dollar' character,    write       a program 
-      that     aligns       each column     of    fields         by ensuring    that   words     in each 
-    column        are  separated     by     at     least        one   space. 
-  Further,      allow        for   each   word        in          a   column      to      be either left 
+     Given          a       text   file     of      many     lines,    where  fields  within      a line
+       are delineated         by      a single  'dollar' character,    write       a program
+      that     aligns       each column     of    fields         by ensuring    that   words     in each
+    column        are  separated     by     at     least        one   space.
+  Further,      allow        for   each   word        in          a   column      to      be either left
 justified,      right justified,     or center justified     within      its column.
 ```
 
@@ -8831,35 +8831,35 @@ format(text, 1).print();
 Blow apart the text into a list of words, find max len of any word, calc how many words will fit on a 80 col line, format all words into a bit bucket line at a time. Formatting is "%-ms" or "%ms" for left & right justify (m is field width), calculated for center. fmt is the string format method or center calc function, depending. Where string formatting can be used, it would be better to format all words in a line in one go but the code would be longer.
 {{out}}
 <pre  style="height:20ex;overflow:scroll">
-Given      a          text       file       of         many       lines,     
-where      fields     within     a          line       are        delineated 
-by         a          single     'dollar'   character, write      a          
-program    that       aligns     each       column     of         fields     
-by         ensuring   that       words      in         each       column     
-are        separated  by         at         least      one        space.     
-Further,   allow      for        each       word       in         a          
-column     to         be         either     left       justified, right      
-justified, or         center     justified  within     its        column.    
+Given      a          text       file       of         many       lines,
+where      fields     within     a          line       are        delineated
+by         a          single     'dollar'   character, write      a
+program    that       aligns     each       column     of         fields
+by         ensuring   that       words      in         each       column
+are        separated  by         at         least      one        space.
+Further,   allow      for        each       word       in         a
+column     to         be         either     left       justified, right
+justified, or         center     justified  within     its        column.
 
-  Given       a        text      file       of       many     lines,  
+  Given       a        text      file       of       many     lines,
   where     fields    within      a        line      are    delineated
-    by        a       single   'dollar' character,  write       a     
- program     that     aligns     each     column      of      fields  
-    by     ensuring    that     words       in       each     column  
-   are    separated     by        at      least      one      space.  
- Further,   allow      for       each      word       in        a     
-  column      to        be      either     left   justified,  right   
-justified,    or      center  justified   within     its     column.  
+    by        a       single   'dollar' character,  write       a
+ program     that     aligns     each     column      of      fields
+    by     ensuring    that     words       in       each     column
+   are    separated     by        at      least      one      space.
+ Further,   allow      for       each      word       in        a
+  column      to        be      either     left   justified,  right
+justified,    or      center  justified   within     its     column.
 
-     Given          a       text       file         of       many     lines, 
-     where     fields     within          a       line        are delineated 
-        by          a     single   'dollar' character,      write          a 
-   program       that     aligns       each     column         of     fields 
-        by   ensuring       that      words         in       each     column 
-       are  separated         by         at      least        one     space. 
-  Further,      allow        for       each       word         in          a 
-    column         to         be     either       left justified,      right 
-justified,         or     center  justified     within        its    column. 
+     Given          a       text       file         of       many     lines,
+     where     fields     within          a       line        are delineated
+        by          a     single   'dollar' character,      write          a
+   program       that     aligns       each     column         of     fields
+        by   ensuring       that      words         in       each     column
+       are  separated         by         at      least        one     space.
+  Further,      allow        for       each       word         in          a
+    column         to         be     either       left justified,      right
+justified,         or     center  justified     within        its    column.
 
 ```
 
@@ -8887,23 +8887,23 @@ The max width (without 'hack') of ZX Spectrum screen is 32 characters. The text 
 150 NEXT l
 155 LET s$="                                "( TO max)
 160 REM Now display the aligned text:
-170 LET m$="l": GO SUB 2000: PRINT 
-180 LET m$="r": GO SUB 2000: PRINT 
+170 LET m$="l": GO SUB 2000: PRINT
+180 LET m$="r": GO SUB 2000: PRINT
 190 LET m$="c": GO SUB 2000
-200 STOP 
+200 STOP
 1000 REM Maximum length of a word
 1010 LET lt=LEN t$: LET p=1: LET lw=0
 1020 FOR i=1 TO lt
 1030 IF t$(i)=d$ THEN LET lw=i-p: LET p=i: IF lw>max THEN LET max=lw
 1040 NEXT i
-1050 RETURN 
+1050 RETURN
 2000 REM Show aligned text
 2010 RESTORE 20
 2020 FOR l=1 TO nlines
 2030 READ t$
 2040 GO SUB 3000
 2050 NEXT l
-2060 RETURN 
+2060 RETURN
 3000 REM Show words
 3010 LET lt=LEN t$: LET p=1: LET lw=0
 3020 FOR i=1 TO lt
@@ -8915,7 +8915,7 @@ The max width (without 'hack') of ZX Spectrum screen is 32 characters. The text 
 3070 IF m$="c" THEN LET z$((max/2)-(lw/2) TO )=p$
 3080 PRINT z$;
 3090 NEXT i
-3095 PRINT 
+3095 PRINT
 3100 RETURN
 ```
 
@@ -8928,7 +8928,7 @@ is      the     screen.
 Need    adapt   text    sample
 for     show    the     result
 without problem ,right?
-But     see     the     code. 
+But     see     the     code.
 ```
 
 

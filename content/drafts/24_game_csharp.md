@@ -16,21 +16,21 @@ You could, for example, use the CodeDOM to dynamically compile an object that co
 
 Or, while not necessarily a good coding practice, but certainly a short and simple route, you could use System.Xml.XPath.XPathNavigator.Evaluate(string xpath) as shown here:
 
-```csharp
+```c#
 
 public class XPathEval : I24MathParser {
 	public float Evaluate(string expression) {
-		System.Xml.XPath.XPathNavigator navigator = 
+		System.Xml.XPath.XPathNavigator navigator =
 			new System.Xml.XPath.XPathDocument(new System.IO.StringReader("<r/>")).CreateNavigator();
 
-		//expath evaluator needs 
-		//	'/' expressed as "div" 
+		//expath evaluator needs
+		//	'/' expressed as "div"
 		//	'%' expressed as "mod"
 		string xpathExpression = expression.Replace("/", " div ").Replace("%", " mod ");
 		float answer = Convert.ToSingle(navigator.Evaluate(String.Format("number({0})", xpathExpression)));
 
 		return answer;
-	}  	
+	}
 }
 
 ```
@@ -39,7 +39,7 @@ public class XPathEval : I24MathParser {
 
 The XPathEval class is implementing this interface to facilitate swapping out Evaluate providers:
 
-```csharp
+```c#
 
 interface I24MathParser {
 	float Evaluate(string expression);
@@ -51,7 +51,7 @@ interface I24MathParser {
 
 Here is a more verbose, native solution - a lightweight math expression parser for evaluating 24 Game user input:
 
-```csharp
+```c#
 
 /// <summary>
 /// Lightweight math parser - C# does not have an Evaluate function
@@ -59,13 +59,13 @@ Here is a more verbose, native solution - a lightweight math expression parser f
 public class MathParser : I24MathParser {
 	//used to translate brackets to implied multiplication - i.e. "3(4)5(6)" will be interpreted as "3*(4)*5*(6)"
 	private const string bracketsPattern = @"(?<=[0-9)])(?<rightSide>\()|(?<=\))(?<rightSide>[0-9])";
-		
+
 	//finds multiplication or division sub expression - i.e. "4*8-4*2)" yields {"4*8", "4*2"}
 	private const string multiplyDividePattern = @"[0-9]+[/*][0-9]+";
-		
+
 	//finds bracketed expressions - i.e. "(4+30)(10-1)" yields {"4+30", "10-1"}
 	private const string subExpressionPattern = @"\(([0-9/*\-+]*)\)";
-		
+
 	//splits expression into it elements - i.e. "4+-30-4.123" yields {"4", "+", "-30" ,"-", "4.123"}
 	private const string tokenPattern = @"(?:(?<=[/*\-+]|^)[+-]?)?(?:[0-9]+(?:\.[0-9]*)?)|[/*\-+]";
 
@@ -88,7 +88,7 @@ public class MathParser : I24MathParser {
 		//brackets with no operator implies multiplication
 		string equation = brackets.Replace(input, "*${rightSide}");
 		float answer = Solve(equation);
-			
+
 		return answer;
 	}
 
@@ -106,7 +106,7 @@ public class MathParser : I24MathParser {
 
 		return answer;
 	}
-		
+
 
 	string SolveSubExpressions(Regex subExpression, string equation) {
 		float subResult;
@@ -151,7 +151,7 @@ public class MathParser : I24MathParser {
 				leftSide = Calculate(leftSide, symbol, rightSide);
 				match = match.NextMatch();
 			}
-		} 
+		}
 
 		return leftSide;
 	}
@@ -191,7 +191,7 @@ public class MathParser : I24MathParser {
 
 This is the main class that handles puzzle generation and user interaction
 
-```csharp
+```c#
 
 /// <summary>
 /// The Game.  Handles user interaction and puzzle generation.
@@ -239,7 +239,7 @@ class TwentyFourGame {
 	void PlayGame()	{
 		string input;
 		bool endGame = false;
-			
+
 
 		//repeat play cycle until user signals the end
 		do {
@@ -299,7 +299,7 @@ class TwentyFourGame {
 		GetInput(String.Empty);
 	}
 
-	
+
 	bool ValidateInput(string input, string puzzle) {
 		bool isValid;
 

@@ -36,9 +36,9 @@ myInstance.method(someParameter);
 
 Ada is a language based on strict typing. Nevertheless, since Ada 95 (the first major revision of the language), Ada also includes the concepts of a class. Types may be tagged, and for each tagged type T there is an associated type T'Class. If you define a method as "procedure Primitive(Self: T)", the actual parameter Self must be of type T, exactly, and the method Primitive will be called, well, statically. This may be surprising, if you are used to other object-oriented languages.
 
-If you define a method as "prodedure Dynamic(Self: T'Class)", the actual parameter can be either T or any of its descendents. Now, if you call Self.Primitive within the procedure Dynamic, it will be dispatching, i.e., it will call the primitive function matching the type of Self (i.e., either T or any of its subtype). This is what you would expect in many other object-oriented languages. 
+If you define a method as "prodedure Dynamic(Self: T'Class)", the actual parameter can be either T or any of its descendents. Now, if you call Self.Primitive within the procedure Dynamic, it will be dispatching, i.e., it will call the primitive function matching the type of Self (i.e., either T or any of its subtype). This is what you would expect in many other object-oriented languages.
 
-Finally, a static method can be defined as a subprogram within the same package that holds the object type and the other methods. 
+Finally, a static method can be defined as a subprogram within the same package that holds the object type and the other methods.
 
 Specify the class My_Class, with one primitive subprogram, one dynamic subprogram and a static subprogram:
 
@@ -67,7 +67,7 @@ Implement the package:
       begin
 	 Put("Hi there! ... ");
 	 Self.Primitive; -- dispatching call: calls different subprograms,
-                         -- depending on the type of Self  
+                         -- depending on the type of Self
       end Dynamic;
 
       procedure Static is
@@ -85,7 +85,7 @@ Specify and implement a subclass of My_Class:
       type Object is new My_Class.Object with null record;
       overriding procedure Primitive(Self: Object);
    end Other_Class;
-   
+
    package body Other_Class is
       procedure Primitive(Self: Object) is
       begin
@@ -102,21 +102,21 @@ The main program, making the dynamic and static calls:
 with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Call_Method is
-   
+
    package My_Class is ... -- see above
    package body My_Class is ... -- see above
-            
+
    package Other_Class is ... -- see above
    package body Other_Class is ... -- see above
-   
+
    Ob1: My_Class.Object; -- our "root" type
    Ob2: Other_Class.Object; -- a type derived from the "root" type
-      
+
 begin
    My_Class.Static;
-   Ob1.Primitive; 
-   Ob2.Primitive; 
-   Ob1.Dynamic; 
+   Ob1.Primitive;
+   Ob2.Primitive;
+   Ob1.Dynamic;
    Ob2.Dynamic;
 end Call_Method;
 ```
@@ -261,10 +261,10 @@ MyPointer->method(someParameter);
 
 =={{header|C_sharp|C#}}==
 
-```csharp
+```c#
 // Static
 MyClass.Method(someParameter);
- 
+
 // Instance
 myInstance.Method(someParameter);
 ```
@@ -335,7 +335,7 @@ In Common Lisp, classmethods are methods that apply to classes, rather than clas
 (defclass my-class ()
   ((x
     :accessor get-x  ;; getter function
-    :initarg :x      ;; arg name 
+    :initarg :x      ;; arg name
     :initform 0)))   ;; initial value
 
 ;; declaring a public class method
@@ -476,7 +476,7 @@ defmodule ObjectCall do
   def new() do
     spawn_link(fn -> loop end)
   end
-  
+
   defp loop do
     receive do
       {:concat, {caller, [str1, str2]}} ->
@@ -485,7 +485,7 @@ defmodule ObjectCall do
         loop
     end
   end
-  
+
   def concat(obj, str1, str2) do
     send obj, {:concat, {self(), [str1, str2]}}
 
@@ -532,7 +532,7 @@ M: object speak drop "I don't know how to speak!" print ;
 ! Place some objects of various classes in a sequence.
 ${ dog 0.75 <cat> 0.1 <cat> 10 }
 ! Call speak, a method, just like any other word.
-[ speak ] each 
+[ speak ] each
 ```
 
 {{out}}
@@ -692,7 +692,7 @@ t.InstanceMethod("Hello world!")
 MyType.Staticmethod("Hello static world!")
 Print
 Print "Press any key to quit the program"
-Sleep 
+Sleep
 
 ```
 
@@ -791,11 +791,11 @@ func main() {
     // Call constructor.  Technically it's just an exported function,
     // but it's a Go idiom to naming a function New that serves the purpose
     // of a constructor.
-    b := box.New() 
+    b := box.New()
 
     // Call instance method.  In Go terms, simply a method.
     b.TellSecret()
-    
+
     // Call class method.  In Go terms, another exported function.
     box.Count()
 }
@@ -805,7 +805,7 @@ func main() {
 ==Icon and {{header|Unicon}}==
 Icon does not have objects or methods; they can be implemented on top of other types such as records.
 
-Unicon has no concept of static methods; all methods are normally invoked using an instance of a class. While it is technically possible to call a method without an instance, it requires knowledge of the underlying implementation, such as the name-mangling conventions, and is non-standard.  
+Unicon has no concept of static methods; all methods are normally invoked using an instance of a class. While it is technically possible to call a method without an instance, it requires knowledge of the underlying implementation, such as the name-mangling conventions, and is non-standard.
 
 ```unicon
 procedure main()
@@ -828,7 +828,7 @@ class foo(cp1,cp2)
       # do something else
       return
    end
-initially 
+initially
    L := [cp1]
 end
 ```
@@ -946,7 +946,7 @@ x.y()
     abstract type Animal end
     abstract type Dog <: Animal end
     abstract type Cat <: Animal end
- 
+
     struct Collie <: Dog
         name::String
         weight::Float64
@@ -958,7 +958,7 @@ x.y()
     end
 
     #
-    # This function is static: it works on any dog, even on a blank instance, in 
+    # This function is static: it works on any dog, even on a blank instance, in
     #   the same way, to produce the same output for anything that isa Dog in type.
     #
     function soundalert(a::T) where T <: Dog
@@ -1033,7 +1033,7 @@ myObject someMethod: arg1, arg2, arg3.
 ## LFE
 
 
-LFE/Erlang doesn't have an object system. However, since LFE is a Lisp, one can do the same thing in LFE as one did in Lisps before CLOS: use closures to create and work with objects. 
+LFE/Erlang doesn't have an object system. However, since LFE is a Lisp, one can do the same thing in LFE as one did in Lisps before CLOS: use closures to create and work with objects.
 
 Not only that, but one may also use Erlang lightweight process to accomplish something very similar!
 
@@ -1212,8 +1212,8 @@ ok
 
 (defun fish-class (species children)
   "
-  This constructor is useful for two reasons: 
-    1) as a way of abstracting out the id generation from the 
+  This constructor is useful for two reasons:
+    1) as a way of abstracting out the id generation from the
        larger constructor, and
     2) spawning the 'object loop' code (fish-class/3).
   "
@@ -1382,7 +1382,7 @@ In Logtalk, class or instance are ''roles'' that an object can play depending on
     :- public(me/1).
     me(Me) :-
         self(Me).
- 
+
 :- end_object.
 
 ```
@@ -1397,7 +1397,7 @@ In Logtalk, class or instance are ''roles'' that an object can play depending on
     my_class(Class) :-
         self(Self),
         instantiates_class(Self, Class).
- 
+
 :- end_object.
 
 ```
@@ -1462,7 +1462,7 @@ Lua does not have a specific way of handling static methods, but similarly to Go
 Example module, named <code>box.lua</code>:
 
 ```lua
-local count = 0 
+local count = 0
 local box = { }
 local boxmt = { __index = box }
 function box:tellSecret ()
@@ -1470,16 +1470,16 @@ function box:tellSecret ()
 end
 
 local M = { }
-function M.new () 
+function M.new ()
     count = count + 1
     return setmetatable({ secret = count, contents = count % 2 == 0 and "rabbit" or "rock" }, boxmt)
 end
-function M.count () 
+function M.count ()
     return count
 end
 return M
 ```
- 
+
 
 Example use:
 
@@ -1504,7 +1504,7 @@ Module CheckIt {
       \\ A class definition is a function which return a Group
       \\ We can make groups and we can alter them using Group statement
       \\ Groups may have other groups inside
-      
+
       Group Alfa {
       Private:
             myvalue=100
@@ -1517,17 +1517,17 @@ Module CheckIt {
             }
             Module MyMethod {
                  Read x
-                 Print x*.myvalue 
+                 Print x*.myvalue
             }
       }
-      
+
       Alfa.MyMethod 5 '500
       Alfa.MyMethod %x=200   ' 20000
       \\ we can copy Alfa to Z
       Z=Alfa
       Z.MyMethod 5
       Z.SetValue=300
-      Z.MyMethod 5 ' 1500     
+      Z.MyMethod 5 ' 1500
       Alfa.MyMethod 5    ' 500
       Dim A(10)
       A(3)=Z
@@ -1609,7 +1609,7 @@ Fido says Woof!
 ```Nemerle
 // Static
 MyClass.Method(someParameter);
- 
+
 // Instance
 myInstance.Method(someParameter);
 ```
@@ -1721,12 +1721,12 @@ my_obj#my_meth params
 
 ## Oforth
 
-When a method is called, the top of the stack is used as the object on which the method will be applyed : 
+When a method is called, the top of the stack is used as the object on which the method will be applyed :
 
 ```Oforth>1.2 sqrt</lang
 
 
-For class methods, the top of the stack must be a class (which is also an object of Class class) : 
+For class methods, the top of the stack must be a class (which is also an object of Class class) :
 
 ```Oforth>Date now</lang
 
@@ -1765,7 +1765,7 @@ say .circle~instances('') 'circles were created'
   expose radius
   Say self~class
   Say self
-  return self~class~pi * radius * radius        
+  return self~class~pi * radius * radius
 ```
 
 '''Output:'''
@@ -1809,11 +1809,11 @@ MyClass::method($myInstance, $someParameter);
 
 {{works with|Rakudo|2015.12}}
 
-###  Basic method calls 
+###  Basic method calls
 
 
 ```perl6
-class Thing { 
+class Thing {
   method regular-example() { say 'I haz a method' }
 
   multi method multi-example() { say 'No arguments given' }
@@ -1859,7 +1859,7 @@ say @array».uc;  # uppercase all the strings: A C D Y Z
 
 
 
-###  Classless methods 
+###  Classless methods
 
 
 A method that is not in a class can be called by using the <code>&</code> sigil explicitly.
@@ -1953,7 +1953,7 @@ CREATE OR REPLACE TYPE BODY myClass AS
     BEGIN
         RETURN 'Called myClass.static_method';
     END static_method;
-    
+
     MEMBER FUNCTION instance_method RETURN VARCHAR2 IS
     BEGIN
         RETURN 'Called myClass.instance_method';
@@ -2136,10 +2136,10 @@ fn main() {
     // by calling the static method new of struct Foo
     let foo = Foo::new();
 
-    // get the answer to life 
+    // get the answer to life
     // by calling the instance method of object foo
     println!("The answer to life is {}.", foo.get_the_answer_to_life());
-    
+
     // Note that in Rust, methods still work on references to the object.
     // Rust will automatically do the appropriate dereferencing to get the method to work:
     let lots_of_references = &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&foo;
@@ -2214,7 +2214,7 @@ instance.method(:foo)(arg);
 
 ## Smalltalk
 
-In Smalltalk, calling an instance method is sending a message to an instance, and calling a class method is sending a message to a class object. Class methods are inherited through inheritance of classes. All messages (whether sent to a normal object or class object) are resolved dynamically at runtime, hence strictly speaking, there are no "static" methods. Often in literature, Smalltalk's class messages are described as synonymous to static function calls. This is wrong, because class methods can be overwritten in subclasses just as any other message. 
+In Smalltalk, calling an instance method is sending a message to an instance, and calling a class method is sending a message to a class object. Class methods are inherited through inheritance of classes. All messages (whether sent to a normal object or class object) are resolved dynamically at runtime, hence strictly speaking, there are no "static" methods. Often in literature, Smalltalk's class messages are described as synonymous to static function calls. This is wrong, because class methods can be overwritten in subclasses just as any other message.
 Classes are first class objects, meaning that references to them can be passed as argument, stored in other objects or returned as the result of a message send. This makes some of the common design patterns which deal with creation of objects trivial or even superfluous.  (see also: ObjectiveC)
 
 
@@ -2284,19 +2284,19 @@ In SuperCollider, classes are objects. To call a class or object method, a messa
 ```SuperCollider
 
 	SomeClass {
-	
+
 		*someClassMethod {
-			
+
 		}
-		
+
 		someInstanceMethod {
-			
+
 		}
-		
+
 	}
-	
+
 	SomeClass.someClassMethod;
-	
+
 	a = SomeClass.new;
 	a.someInstanceMethod;
 

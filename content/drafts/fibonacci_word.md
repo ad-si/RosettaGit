@@ -809,7 +809,7 @@ N          length  entropy
 
 
 
-## C sharp
+## C#
 
 
 ```C sharp

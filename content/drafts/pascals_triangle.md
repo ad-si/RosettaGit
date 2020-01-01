@@ -1288,12 +1288,12 @@ int main(){
 
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Fortran}}
 Produces no output when n is less than or equal to zero.
 
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode {
@@ -1324,7 +1324,7 @@ namespace RosettaCode {
 
 ===Arbitrarily large numbers (BigInteger), arbitrary row selection===
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Numerics;
@@ -1378,7 +1378,7 @@ namespace RosettaCode
 
 Example:
 
-```csharp
+```c#
 static void Main()
 {
 	IEnumerable<BigInteger[]> triangle = PascalsTriangle.GetTriangle(20);

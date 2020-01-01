@@ -233,11 +233,11 @@ In lexicographical order:
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using static System.Console;
 using static System.Linq.Enumerable;
 

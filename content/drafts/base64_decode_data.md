@@ -281,7 +281,7 @@ To err is human, but to really foul things up you need a computer.
 =={{header|C#|C_sharp}}==
 {{trans|Visual Basic .NET}}
 
-```csharp
+```c#
 using System;
 using System.Text;
 

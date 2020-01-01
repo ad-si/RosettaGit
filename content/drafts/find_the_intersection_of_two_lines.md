@@ -492,10 +492,10 @@ Point of intersection : (5.000000,5.000000)
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 public class Program

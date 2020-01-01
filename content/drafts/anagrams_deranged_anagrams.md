@@ -844,7 +844,7 @@ excitation intoxicate
 
 
 
-## C sharp
+## C#
 
 {{libheader|System}}
 {{libheader|System.Collections.Generic}}
@@ -852,7 +852,7 @@ excitation intoxicate
 {{libheader|System.IO}}
 {{works with|C sharp|6}}
 
-```csharp
+```c#
 public static void Main()
 {
     var lookupTable = File.ReadLines("unixdict.txt").ToLookup(line => AnagramKey(line));

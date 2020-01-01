@@ -2213,12 +2213,12 @@ int var = condition ? 1 : 2;
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ===if-elseif-else===
 
 
-```csharp
+```c#
 if (condition)
 {
    // Some Task
@@ -2244,7 +2244,7 @@ else
 
 
 
-```csharp
+```c#
 // if condition is true var will be set to 1, else 2.
 int var = condition ? 1 : 2;
 ```
@@ -2255,7 +2255,7 @@ int var = condition ? 1 : 2;
 
 
 
-```csharp
+```c#
 switch (value)
 {
    case 1:
@@ -2275,7 +2275,7 @@ switch (value)
 If fall through algorithms are required use the goto keyword.
 
 
-```csharp
+```c#
 switch (value)
 {
    case 1:

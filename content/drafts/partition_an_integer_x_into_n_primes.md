@@ -219,11 +219,11 @@ Partitioned 40355 with  3 primes 3+139+40213
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;

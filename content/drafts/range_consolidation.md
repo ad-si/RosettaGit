@@ -25,22 +25,22 @@ Given two ranges, the act of consolidation between them compares the two ranges:
 * If the ranges touch or intersect then the result is ''one'' new single range covering the overlapping ranges.
 * Otherwise the act of consolidation is to return the two non-touching ranges.
 
-Given N ranges where N>2 then the result is the same as repeatedly replacing all combinations of two ranges by their consolidation until no further consolidation between range pairs is possible. If N<2 then range consolidation has no strict meaning and the input can be returned. 
+Given N ranges where N>2 then the result is the same as repeatedly replacing all combinations of two ranges by their consolidation until no further consolidation between range pairs is possible. If N<2 then range consolidation has no strict meaning and the input can be returned.
 
 ;'''Example 1:'''
-:Given the two ranges <tt>[1, 2.5]</tt> and <tt>[3, 4.2]</tt> then there is no 
+:Given the two ranges <tt>[1, 2.5]</tt> and <tt>[3, 4.2]</tt> then there is no
 :common area between the ranges and the result is the same as the input.
 ;'''Example 2:'''
-:Given the two ranges <tt>[1, 2.5]</tt> and <tt>[1.8, 4.7]</tt> then there is 
-:an overlap <tt>[2.5, 1.8]</tt> between the ranges and the result is the single 
+:Given the two ranges <tt>[1, 2.5]</tt> and <tt>[1.8, 4.7]</tt> then there is
+:an overlap <tt>[2.5, 1.8]</tt> between the ranges and the result is the single
 :range <tt>[1, 4.7]</tt>.  Note that order of bounds in a range is not, (yet), stated.
 ;'''Example 3:'''
 :Given the two ranges <tt>[6.1, 7.2]</tt> and <tt>[7.2, 8.3]</tt> then they
-:touch at <tt>7.2</tt> and the result is the single range <tt>[6.1, 8.3]</tt>. 
+:touch at <tt>7.2</tt> and the result is the single range <tt>[6.1, 8.3]</tt>.
 ;'''Example 4:'''
-:Given the three ranges <tt>[1, 2]</tt> and <tt>[4, 8]</tt> and <tt>[2, 5]</tt> 
-:then there is no intersection of the ranges <tt>[1, 2]</tt> and <tt>[4, 8]</tt> 
-:but the ranges <tt>[1, 2]</tt> and <tt>[2, 5]</tt> overlap and consolidate to 
+:Given the three ranges <tt>[1, 2]</tt> and <tt>[4, 8]</tt> and <tt>[2, 5]</tt>
+:then there is no intersection of the ranges <tt>[1, 2]</tt> and <tt>[4, 8]</tt>
+:but the ranges <tt>[1, 2]</tt> and <tt>[2, 5]</tt> overlap and consolidate to
 :produce the range <tt>[1, 5]</tt>. This range, in turn, overlaps the other range
 :<tt>[4, 8]</tt>, and so consolidates to the final output of the single range
 :<tt>[1, 8]</tt>
@@ -74,11 +74,11 @@ Show output here.
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using static System.Math;
 using System.Linq;
 using System;
@@ -114,7 +114,7 @@ public static class RangeConsolidation
 
     private static (double s, double e) Consolidate((double s, double e) left, (double s, double e) right) =>
         (Min(Min(left.s, left.e), Min(right.s, right.e)), Max(Max(left.s, left.e), Max(right.s, right.e)));
-    
+
     private static (double s, double e) Normalize((double s, double e) range) =>
         (Min(range.s, range.e), Max(range.s, range.e));
 }
@@ -158,7 +158,7 @@ func min(x, y) {
 
 func overlap(left, right) {
     if max(left.s, left.e) > max(right.s, right.e) {
-        max(right.s, right.e) >= min(left.s, left.e) 
+        max(right.s, right.e) >= min(left.s, left.e)
     } else {
         max(left.s, left.e) >= min(right.s, right.e)
     }
@@ -786,7 +786,7 @@ function consolidate(sequence sets)
     end for
     return sort(sets)
 end function
- 
+
 procedure test(sequence set)
     printf(1,"%40v => %v\n",{set,consolidate(set)})
 end procedure
@@ -1023,7 +1023,7 @@ Consolidation of numeric ranges:
 
 Most of the REXX code was testing (and rebuilding) the syntax (insuring blanks after commas), and handling of a null set.
 
-The actual logic for the range consolidation is marked with the comments:     <big> <tt> /*■■■■►*/ </tt> </big> 
+The actual logic for the range consolidation is marked with the comments:     <big> <tt> /*■■■■►*/ </tt> </big>
 
 ```rexx
 /*REXX program performs range consolidation (they can be [equal] ascending/descending). */
@@ -1115,9 +1115,9 @@ xSort: procedure expose @.; parse arg n          /*a simple sort for small set o
 ```Yabasic
 sub sort(tabla())
     local items, i, t1, t2, s
-    
+
     items = arraysize(tabla(), 1)
-    
+
     repeat
         s = true
         for i = 1 to items-1
@@ -1135,7 +1135,7 @@ sub normalize(tabla())
     local items, i, t
 
     items = arraysize(tabla(), 1)
-    
+
     for i = 1 to items
         if tabla(i, 1) > tabla(i, 2) then
             t = tabla(i, 1)
@@ -1143,7 +1143,7 @@ sub normalize(tabla())
             tabla(i, 2) = t
         end if
     next
-    
+
     sort(tabla())
 end sub
 
@@ -1152,7 +1152,7 @@ sub consolidate(tabla())
 
     normalize(tabla())
     items = arraysize(tabla(), 1)
-    
+
     for i = 1 to items - 1
         if tabla(i + 1, 1) <= tabla(i, 2) then
             tabla(i + 1, 1) = tabla(i, 1)
@@ -1216,10 +1216,10 @@ fcn ppp(ll){ ll.pump(String,fcn(list){ list.concat(", ",  "[",  "] ") }) }
 
 ```txt
 
-[1.1, 2.2] --> [1.1, 2.2] 
-[6.1, 7.2] [7.2, 8.3] --> [6.1, 8.3] 
-[4, 3] [2, 1] --> [1, 2] [3, 4] 
-[4, 3] [2, 1] [-1, -2] [3.9, 10] --> [-2, -1] [1, 2] [3, 10] 
+[1.1, 2.2] --> [1.1, 2.2]
+[6.1, 7.2] [7.2, 8.3] --> [6.1, 8.3]
+[4, 3] [2, 1] --> [1, 2] [3, 4]
+[4, 3] [2, 1] [-1, -2] [3.9, 10] --> [-2, -1] [1, 2] [3, 10]
 [1, 3] [-6, -1] [-4, -5] [8, 2] [-6, -6] --> [-6, -1] [1, 8]
 
 ```

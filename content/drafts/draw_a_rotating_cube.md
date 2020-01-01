@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 ;Task
-Draw a rotating cube. 
+Draw a rotating cube.
 
 It should be oriented with one vertex pointing straight up, and its opposite vertex on the main diagonal (the one farthest away) straight down. It can be solid or wire-frame, and you can use ASCII art if your language doesn't have graphical capabilities. Perspective is optional.
 
@@ -30,7 +30,7 @@ It should be oriented with one vertex pointing straight up, and its opposite ver
 
 ## C
 
-Rotating wireframe cube in [https://www.opengl.org/ OpenGL], windowing implementation via [http://freeglut.sourceforge.net/ freeglut] 
+Rotating wireframe cube in [https://www.opengl.org/ OpenGL], windowing implementation via [http://freeglut.sourceforge.net/ freeglut]
 
 ```C
 
@@ -58,7 +58,7 @@ void onIdle(){
 
 void reshape(int w,int h){
 	float ar = (float) w / (float) h ;
-	
+
 	glViewport(0,0,(GLsizei)w,(GLsizei)h);
 	glTranslatef(0,0,-10);
 	glMatrixMode(GL_PROJECTION);
@@ -73,7 +73,7 @@ void init(){
 	float pos[] = {1,1,1,0};
 	float white[] = {1,1,1,0};
 	float shini[] = {70};
-	
+
 	glClearColor(.5,.5,.5,0);
 	glShadeModel(GL_SMOOTH);
 	glLightfv(GL_LIGHT0,GL_AMBIENT,white);
@@ -106,7 +106,7 @@ int main(int argC, char* argV[])
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -395,12 +395,12 @@ This implementation compiles to JavaScript that runs in a browser using the [htt
 
 
 ```Haskell
-{-# LANGUAGE RecursiveDo #-} 
-import Reflex.Dom 
+{-# LANGUAGE RecursiveDo #-}
+import Reflex.Dom
 import Data.Map as DM (Map, lookup, insert, empty, fromList)
-import Data.Matrix 
-import Data.Time.Clock 
-import Control.Monad.Trans 
+import Data.Matrix
+import Data.Time.Clock
+import Control.Monad.Trans
 
 size = 500
 updateFrequency = 0.2
@@ -409,7 +409,7 @@ rotationStep = pi/10
 data Color = Red | Green | Blue | Yellow | Orange | Purple | Black deriving (Show,Eq,Ord,Enum)
 
 zRot :: Float -> Matrix Float
-zRot rotation = 
+zRot rotation =
     let c = cos rotation
         s = sin rotation
     in fromLists [[ c,  s,  0,  0 ]
@@ -419,7 +419,7 @@ zRot rotation =
                  ]
 
 xRot :: Float -> Matrix Float
-xRot rotation = 
+xRot rotation =
     let c = cos rotation
         s = sin rotation
     in fromLists [[ 1,  0,  0,  0 ]
@@ -429,7 +429,7 @@ xRot rotation =
                  ]
 
 yRot :: Float -> Matrix Float
-yRot rotation = 
+yRot rotation =
     let c = cos rotation
         s = sin rotation
     in fromLists [[ c,  0, -s,  0 ]
@@ -454,16 +454,16 @@ scale s =
                ,[ 0,  0,  0,  1 ]
                ]
 
--- perspective transformation; 
+-- perspective transformation;
 perspective :: Matrix Float
-perspective = 
+perspective =
     fromLists  [[ 1,  0,  0,  0 ]
                ,[ 0,  1,  0,  0 ]
                ,[ 0,  0,  1,  1 ]
                ,[ 0,  0,  1,  1 ] ]
 
 transformPoints :: Matrix Float -> Matrix Float -> [(Float,Float)]
-transformPoints transform points = 
+transformPoints transform points =
     let result4d = points `multStd2` transform
         result2d = (\[x,y,z,w] -> (x/w,y/w)) <$> toLists result4d
     in result2d
@@ -471,37 +471,37 @@ transformPoints transform points =
 showRectangle :: MonadWidget t m => Float -> Float -> Float -> Float -> Color -> Dynamic t (Matrix Float) -> m ()
 showRectangle x0 y0 x1 y1 faceColor dFaceView = do
     let points = fromLists [[x0,y0,0,1],[x0,y1,0,1],[x1,y1,0,1],[x1,y0,0,1]]
-        pointsToString = concatMap (\(x,y) -> show x ++ ", " ++ show y ++ " ") 
+        pointsToString = concatMap (\(x,y) -> show x ++ ", " ++ show y ++ " ")
     dAttrs <- mapDyn (\fvk -> DM.fromList [ ("fill", show faceColor)
                                           , ("points", pointsToString (transformPoints fvk points))
                                           ] ) dFaceView
     elDynAttrSVG "polygon" dAttrs $ return ()
 
 showUnitSquare :: MonadWidget t m => Color -> Float -> Dynamic t (Matrix Float) -> m ()
-showUnitSquare faceColor margin dFaceView = 
+showUnitSquare faceColor margin dFaceView =
     showRectangle margin margin (1.0 - margin) (1.0 - margin) faceColor dFaceView
 
 -- show colored square on top of black square for outline effect
 showFace :: MonadWidget t m => Color -> Dynamic t (Matrix Float) -> m ()
-showFace faceColor dFaceView = do  
+showFace faceColor dFaceView = do
     showUnitSquare Black 0 dFaceView
     showUnitSquare faceColor 0.03 dFaceView
 
 facingCamera :: [Float] -> Matrix Float -> Bool
 facingCamera viewPoint modelTransform =
-    let cross [x0,y0,z0] [x1,y1,z1] = [y0*z1-z0*y1, z0*x1-x0*z1, x0*y1-y0*x1 ] 
+    let cross [x0,y0,z0] [x1,y1,z1] = [y0*z1-z0*y1, z0*x1-x0*z1, x0*y1-y0*x1 ]
         dot v0 v1 = sum $ zipWith (*) v0 v1
-        vMinus = zipWith (-) 
+        vMinus = zipWith (-)
 
-        untransformedPoints = fromLists [ [0,0,0,1]   -- lower left 
-                                        , [1,0,0,1]   -- lower right 
-                                        , [0,1,0,1] ] -- upper left 
+        untransformedPoints = fromLists [ [0,0,0,1]   -- lower left
+                                        , [1,0,0,1]   -- lower right
+                                        , [0,1,0,1] ] -- upper left
 
         transformedPoints = toLists $ untransformedPoints `multStd2` modelTransform
         pt00 = take 3 $ head transformedPoints         -- transformed lower left
         pt10 = take 3 $ transformedPoints !! 1         -- transformed upper right
         pt01 = take 3 $ transformedPoints !! 2         -- transformed upper left
-        
+
         tVec_10_00 = pt10 `vMinus` pt00                -- lower right to lower left
         tVec_01_00 = pt01 `vMinus` pt00                -- upper left to lower left
         perpendicular = tVec_10_00 `cross` tVec_01_00  -- perpendicular to face
@@ -513,13 +513,13 @@ facingCamera viewPoint modelTransform =
     in cameraToPlane `dot` perpendicular < 0
 
 faceView :: Matrix Float -> Matrix Float -> (Bool, Matrix Float)
-faceView modelOrientation faceOrientation = 
+faceView modelOrientation faceOrientation =
     let modelTransform =            translation (-1/2,-1/2,1/2) -- unit square to origin + z offset
                          `multStd2` faceOrientation             -- orientation specific to each face
                          `multStd2` scale (1/2)                 -- shrink cube to fit in view.
                          `multStd2` modelOrientation            -- position the entire cube
 
-        
+
         isFacingCamera = facingCamera [0,0,-1] modelTransform   -- backface elimination
 
         -- combine to get single transform from 2d face to 2d display
@@ -531,20 +531,20 @@ faceView modelOrientation faceOrientation =
     in (isFacingCamera, viewTransform)
 
 updateFaceViews :: Matrix Float -> Map Color (Matrix Float) -> (Color, Matrix Float) -> Map Color (Matrix Float)
-updateFaceViews modelOrientation prevCollection (faceColor, faceOrientation) = 
+updateFaceViews modelOrientation prevCollection (faceColor, faceOrientation) =
     let (isVisible, newFaceView) = faceView modelOrientation faceOrientation
-    in  if isVisible 
+    in  if isVisible
         then insert faceColor newFaceView prevCollection
         else prevCollection
 
 faceViews :: Matrix Float -> Map Color (Matrix Float)
 faceViews modelOrientation  =
-    foldl (updateFaceViews modelOrientation) empty 
-          [ (Purple , xRot (0.0) )  
-          , (Yellow , xRot (pi/2) )  
-          , (Red    , yRot (pi/2) )  
-          , (Green  , xRot (-pi/2) )  
-          , (Blue   , yRot (-pi/2) )  
+    foldl (updateFaceViews modelOrientation) empty
+          [ (Purple , xRot (0.0) )
+          , (Yellow , xRot (pi/2) )
+          , (Red    , yRot (pi/2) )
+          , (Green  , xRot (-pi/2) )
+          , (Blue   , yRot (-pi/2) )
           , (Orange , xRot (pi) )
           ]
 
@@ -557,13 +557,13 @@ viewModel modelOrientation = do
 view :: MonadWidget t m => Dynamic t (Matrix Float) -> m ()
 view modelOrientation = do
     el "h1" $ text "Rotating Cube"
-    elDynAttrSVG "svg" 
-        (constDyn $  DM.fromList [ ("width",  show size), ("height", show size) ]) 
+    elDynAttrSVG "svg"
+        (constDyn $  DM.fromList [ ("width",  show size), ("height", show size) ])
         $ viewModel modelOrientation
 
-main = mainWidget $ do 
+main = mainWidget $ do
     let initialOrientation = xRot (pi/4) `multStd2` zRot (atan(1/sqrt(2)))
-        update _ modelOrientation = modelOrientation `multStd2` (yRot (rotationStep) ) 
+        update _ modelOrientation = modelOrientation `multStd2` (yRot (rotationStep) )
 
     tick <- tickLossy  updateFrequency =<< liftIO getCurrentTime
     rec
@@ -572,7 +572,7 @@ main = mainWidget $ do
     return ()
 
 -- At end because of Rosetta Code handling of unmatched quotes.
-elDynAttrSVG a2 a3 a4 = do 
+elDynAttrSVG a2 a3 a4 = do
     elDynAttrNS' (Just "http://www.w3.org/2000/svg") a2 a3 a4
     return ()
 ```
@@ -651,8 +651,8 @@ public class RotatingCube extends JPanel {
                     (int) round(xy2[0]), (int) round(xy2[1]));
         }
 
-        for (double[] node : nodes) 
-            g.fillOval((int) round(node[0]) - 4, (int) round(node[1]) - 4, 8, 8);        
+        for (double[] node : nodes)
+            g.fillOval((int) round(node[0]) - 4, (int) round(node[1]) - 4, 8, 8);
     }
 
     @Override
@@ -745,7 +745,7 @@ public class RotatingCube extends JPanel {
 
         function drawCuboid() {
             g.save();
-            
+
             g.clearRect(0, 0, canvas.width, canvas.height);
             g.translate(canvas.width / 2, canvas.height / 2);
             g.strokeStyle = "#FFFFFF";
@@ -757,7 +757,7 @@ public class RotatingCube extends JPanel {
                 g.moveTo(p1[0], p1[1]);
                 g.lineTo(p2[0], p2[1]);
             });
-            
+
             g.closePath();
             g.stroke();
 
@@ -916,12 +916,12 @@ fun main(args: Array<String>) {
 
 
 ```maple
-plots:-display( 
-    seq( 
-        plots:-display( 
-            plottools[cuboid]( [0,0,0], [1,1,1] ), 
-        axes=none, scaling=constrained, orientation=[0,45,i] ), 
-    i = 0..360, 20 ), 
+plots:-display(
+    seq(
+        plots:-display(
+            plottools[cuboid]( [0,0,0], [1,1,1] ),
+        axes=none, scaling=constrained, orientation=[0,45,i] ),
+    i = 0..360, 20 ),
 insequence=true );
 ```
 
@@ -934,9 +934,9 @@ insequence=true );
 Dynamic[
     Graphics3D[
       GeometricTransformation[
-       GeometricTransformation[Cuboid[], RotationTransform[Pi/4, {1, 1, 0}]], 
+       GeometricTransformation[Cuboid[], RotationTransform[Pi/4, {1, 1, 0}]],
        RotationTransform[Clock[2 Pi], {0, 0, 1}]
-      ], 
+      ],
       Boxed -> False]]
 ```
 
@@ -1103,7 +1103,7 @@ cdCanvas cd_canvas
 --
 --          6-----2
 --      5-----1   3
---      8-----4  
+--      8-----4
 --
 -- ie the right face is 1-2-3-4 clockwise, and the left face
 --  is 5-6-7-8 counter-clockwise (unless using x-ray vision).
@@ -1197,7 +1197,7 @@ procedure draw_cube(integer wx, wh)
     -- find the three faces that contain the nearest point,
     -- then order by/draw them furthest diag away first.
     --  (one of them, and theoretically two but not at the
-    --   rotations in use, may be completely obscured, due 
+    --   rotations in use, may be completely obscured, due
     --   to the effects of the perspective projection.)
     --
     sequence faceset = {}
@@ -1359,7 +1359,7 @@ print "Drag up+down with middle mousebutton to zoom."
 
 deg45 = math.radians(45.0)  # 0.785398163397
 
-cube = box()    # using defaults, see http://www.vpython.org/contents/docs/defaults.html 
+cube = box()    # using defaults, see http://www.vpython.org/contents/docs/defaults.html
 cube.rotate( angle=deg45, axis=(1,0,0) )
 cube.rotate( angle=deg45, axis=(0,0,1) )
 
@@ -1406,13 +1406,13 @@ while True:                 # Animation-loop
   (matrix* (Ry (/ (current-inexact-milliseconds) 1000.))
            base-matrix))
 
-(define corners 
+(define corners
   (for*/list ([x '(-1.0 1.0)]
               [y '(-1.0 1.0)]
               [z '(-1.0 1.0)])
     (matrix [[x] [y] [z]])))
 
-(define lines 
+(define lines
   '((0 1) (0 2) (0 4) (1 3) (1 5)
     (2 3) (2 6) (3 7) (4 5) (4 6)
     (5 7) (6 7)))
@@ -1431,7 +1431,7 @@ while True:                 # Animation-loop
   (define-values (w h) (send dc get-size))
   (set! ox (/ w 2))
   (set! oy (/ h 2))
-  (define cs (for/vector ([c (in-list corners)]) 
+  (define cs (for/vector ([c (in-list corners)])
                (matrix* (current-matrix) c)))
   (for ([l (in-list lines)])
     (match-define (list i j) l)
@@ -1691,7 +1691,7 @@ proc render {canvas object} {
 }
 
 package require Tk
-pack [canvas .c] -expand yes -fill both 
+pack [canvas .c] -expand yes -fill both
 
 proc tick {} {
     .c delete all

@@ -1107,10 +1107,10 @@ It initially ran in about 5 seconds, then I changed <code>map</code> to <code>pm
 This gave a nice speedup for a dual core laptop; the speedup for parallel searches was over 3x on a server.
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -565,11 +565,11 @@ the 10000th emirp is 948349 !
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using static System.Console;
 using System;
 using System.Linq;

@@ -956,9 +956,9 @@ template<typename Set> std::set<Set> powerset(const Set& s)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 public IEnumerable<IEnumerable<T>> GetPowerSet<T>(List<T> list)
 {
@@ -1011,7 +1011,7 @@ public void PowerSetofColors()
 An alternative implementation for an arbitrary number of elements:
 
 
-```csharp
+```c#
 
   public IEnumerable<IEnumerable<T>> GetPowerSet<T>(IEnumerable<T> input) {
     var seed = new List<IEnumerable<T>>() { Enumerable.Empty<T>() }
@@ -1028,7 +1028,7 @@ An alternative implementation for an arbitrary number of elements:
 Non-recursive version
 
 
-```csharp
+```c#
 
   using System;
   class Powerset
@@ -1062,7 +1062,7 @@ Non-recursive version
 
 Recursive version
 
-```csharp
+```c#
 
 using System;
 class Powerset

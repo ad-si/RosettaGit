@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Mathematics}}
-[[wp:Bernoulli number|Bernoulli numbers]] are used in some series expansions of several functions   (trigonometric, hyperbolic, gamma, etc.),   and are extremely important in number theory and analysis. 
+[[wp:Bernoulli number|Bernoulli numbers]] are used in some series expansions of several functions   (trigonometric, hyperbolic, gamma, etc.),   and are extremely important in number theory and analysis.
 
 Note that there are two definitions of Bernoulli numbers;   this task will be using the modern usage   (as per   ''The National Institute of Standards and Technology convention'').
 
@@ -58,8 +58,8 @@ WITH GMP.Rationals, GMP.Integers, Ada.Text_IO, Ada.Strings.Fixed, Ada.Strings;
 USE GMP.Rationals, GMP.Integers, Ada.Text_IO, Ada.Strings.Fixed, Ada.Strings;
 
 PROCEDURE Main IS
-   
-   FUNCTION Bernoulli_Number (N : Natural) RETURN Unbounded_Fraction IS      
+
+   FUNCTION Bernoulli_Number (N : Natural) RETURN Unbounded_Fraction IS
       FUNCTION "/" (Left, Right : Natural) RETURN Unbounded_Fraction IS
         (To_Unbounded_Integer (Left) / To_Unbounded_Integer (Right));
       A : ARRAY (0 .. N) OF Unbounded_Fraction;
@@ -72,7 +72,7 @@ PROCEDURE Main IS
       END LOOP;
       RETURN A (0);
    END Bernoulli_Number;
-   
+
 BEGIN
    FOR I IN 0 .. 60 LOOP
       IF I MOD 2 = 0 OR I = 1 THEN
@@ -144,7 +144,7 @@ BEGIN
     PR precision 100 PR # sets the precision of LONG LONG INT        #
 
     # Code from the Arithmetic/Rational task                         #
-    # 
+    #
 ### ========================================================
  #
 
@@ -152,10 +152,10 @@ BEGIN
 
     PROC gcd = (LONG LONG INT a, b) LONG LONG INT: # greatest common divisor #
        (a = 0 | b |: b = 0 | a |: ABS a > ABS b  | gcd(b, a MOD b) | gcd(a, b MOD a));
- 
+
     PROC lcm = (LONG LONG INT a, b)LONG LONG INT: # least common multiple #
        a OVER gcd(a, b) * b;
- 
+
     PRIO // = 9; # higher then the ** operator #
     OP // = (LONG LONG INT num, den)FRAC: ( # initialise and normalise #
        LONG LONG INT common = gcd(num, den);
@@ -165,13 +165,13 @@ BEGIN
          ( num OVER common, den OVER common)
        FI
      );
- 
+
     OP + = (FRAC a, b)FRAC: (
        LONG LONG INT common = lcm(den OF a, den OF b);
        FRAC result := ( common OVER den OF a * num OF a + common OVER den OF b * num OF b, common );
        num OF result//den OF result
     );
- 
+
     OP - = (FRAC a, b)FRAC: a + -b,
        * = (FRAC a, b)FRAC: (
            LONG LONG INT num = num OF a * num OF b,
@@ -179,10 +179,10 @@ BEGIN
            LONG LONG INT common = gcd(num, den);
            (num OVER common) // (den OVER common)
          );
- 
+
     OP - = (FRAC frac)FRAC: (-num OF frac, den OF frac);
- 
-    # 
+
+    #
 ### ========================================================
  #
     # end code from the Arithmetic/Rational task                     #
@@ -199,7 +199,7 @@ BEGIN
          ELSE # n is valid        #
             [ 0 : n ]FRAC a;
             FOR i FROM LWB a TO UPB a DO a[ i ] := 0 // 1 OD;
-            FOR m FROM 0 TO n DO 
+            FOR m FROM 0 TO n DO
                 a[ m ] := 1 // ( m + 1 );
                 FOR j FROM m BY -1 TO 1 DO
                     a[ j - 1 ] := j * ( a[ j - 1 ] - a[ j ] )
@@ -275,7 +275,7 @@ B(60)       -1215233140483755572040304994079820246041491 / 56786730
               ' ( 1+!m:~>!arg:?m
                 &     ((!m+1:?j)^-1:?a)
                         map
-                      $ ( ( 
+                      $ ( (
                           = .(-1+!j:?j)*(!arg+-1*!a):?a
                           )
                         . !A
@@ -555,15 +555,15 @@ B(60) = -1215233140483755572040304994079820246041491 / 56786730
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-###  Using Mpir.NET 
+###  Using Mpir.NET
 
 {{libheader|Mpir.NET}}
 Translation of the C implementation
 
-```csharp
+```c#
 
 using Mpir.NET;
 using System;
@@ -602,11 +602,11 @@ namespace Bernoulli
             mpz_t n = new mpz_t();
             mpz_t d = new mpz_t();
 
-            for (uint  i = 0; i <= 60; ++i) 
+            for (uint  i = 0; i <= 60; ++i)
             {
                 bernoulli(rop, i);
 
-                if (mpir.mpq_cmp_ui(rop, 0, 1) != 0) 
+                if (mpir.mpq_cmp_ui(rop, 0, 1) != 0)
                 {
                     mpir.mpq_get_num(n, rop);
                     mpir.mpq_get_den(d, rop);
@@ -662,12 +662,12 @@ B(60) = -1215233140483755572040304994079820246041491 / 56786730
 
 
 
-###  Using Math.NET 
+###  Using Math.NET
 
 
 {{libheader|MathNet.Numerics}}
 
-```csharp
+```c#
 
 using System;
 using System.Console;
@@ -764,12 +764,12 @@ B(60) = -1215233140483755572040304994079820246041491 / 56786730
 
 
 
-###  Using System.Numerics 
+###  Using System.Numerics
 
 {{libheader|System.Numerics}}
 Algo based on the example provided in the header of this RC page (the one from Wikipedia). <br/> Extra feature - one can override the default of 60 by supplying a suitable number on the command line.  The column widths are not hard-coded, but will adapt to the widths of the items listed.
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 using System.Collections.Generic;
@@ -1178,7 +1178,7 @@ def bernoulli(n)
     end
     ar[0] # (which is Bn)
 end
-    
+
 b_nums = (0..61).map { |i| bernoulli(i) }
 width  = b_nums.map{ |b| b.numerator.to_s.size }.max
 b_nums.each_with_index { |b,i| puts "B(%2i) = %*i/%i" % [i, width, b.numerator, b.denominator] unless b.zero? }
@@ -1299,19 +1299,19 @@ Only 'small' rationals are supported in EchoLisp, i.e numerator and demominator 
 		 (set! r.a (/ r.a g)) (set! r.b (/ r.b g))
  		 (when (< r.b 0) (set! r.a ( - r.a)) (set! r.b (- r.b))) ;; denominator > 0
  		r)))
-			
+
 (define-method initialize (Rational) (lambda (r) (normalize r)))
 (define-method add (Rational) (lambda (r n)  ;; + Rational any number
 			(normalize (Rational (+ (* (+ #0 n) r.b) r.a) r.b))))
 (define-method add (Rational Rational) (lambda (r q) ;;; + Rational Rational
 			(normalize (Rational (+ (* r.a q.b) (* r.b q.a)) (* r.b q.b)))))
-(define-method sub (Rational Rational) (lambda (r q) 
+(define-method sub (Rational Rational) (lambda (r q)
 			(normalize (Rational (- (* r.a q.b) (* r.b q.a)) (* r.b q.b)))))
-(define-method mul (Rational Rational) (lambda (r q) 
+(define-method mul (Rational Rational) (lambda (r q)
 			(normalize (Rational  (* r.a q.a)  (* r.b q.b)))))
-(define-method mul (Rational) (lambda (r n) 
+(define-method mul (Rational) (lambda (r n)
 			(normalize (Rational  (* r.a (+ #0 n))  r.b ))))
-(define-method div (Rational Rational) (lambda (r q) 
+(define-method div (Rational Rational) (lambda (r q)
 			(normalize (Rational  (* r.a q.b)  (* r.b q.a)))))
 
 ```
@@ -1328,43 +1328,43 @@ Only 'small' rationals are supported in EchoLisp, i.e numerator and demominator 
 (for ((m (1+ n))) ;; #1 creates a large integer
 	(vector-set! A m (Rational #1 (+ #1 m)))
 	(for ((j (in-range m 0 -1)))
-	  (vector-set! A (1- j) 
+	  (vector-set! A (1- j)
 	  	(mul (sub (vector-ref A (1- j)) (vector-ref A j)) j))))
 	  (vector-ref A 0))
 
-    (for ((b (in-range 0 62 2))) (writeln b (B b)))  → 
+    (for ((b (in-range 0 62 2))) (writeln b (B b)))  →
 
-0                                                      1 / 1    
-2                                                      1 / 6    
-4                                                     -1 / 30    
-6                                                      1 / 42    
-8                                                     -1 / 30    
-10                                                      5 / 66    
-12                                                   -691 / 2730    
-14                                                      7 / 6    
-16                                                  -3617 / 510    
-18                                                  43867 / 798    
-20                                                -174611 / 330    
-22                                                 854513 / 138    
-24                                             -236364091 / 2730    
-26                                                8553103 / 6    
-28                                           -23749461029 / 870    
-30                                          8615841276005 / 14322    
-32                                         -7709321041217 / 510    
-34                                          2577687858367 / 6    
-36                                  -26315271553053477373 / 1919190    
-38                                       2929993913841559 / 6    
-40                                 -261082718496449122051 / 13530    
-42                                 1520097643918070802691 / 1806    
-44                               -27833269579301024235023 / 690    
-46                               596451111593912163277961 / 282    
-48                          -5609403368997817686249127547 / 46410    
-50                            495057205241079648212477525 / 66    
-52                        -801165718135489957347924991853 / 1590    
-54                       29149963634884862421418123812691 / 798    
-56                    -2479392929313226753685415739663229 / 870    
-58                    84483613348880041862046775994036021 / 354    
-60           -1215233140483755572040304994079820246041491 / 56786730      
+0                                                      1 / 1
+2                                                      1 / 6
+4                                                     -1 / 30
+6                                                      1 / 42
+8                                                     -1 / 30
+10                                                      5 / 66
+12                                                   -691 / 2730
+14                                                      7 / 6
+16                                                  -3617 / 510
+18                                                  43867 / 798
+20                                                -174611 / 330
+22                                                 854513 / 138
+24                                             -236364091 / 2730
+26                                                8553103 / 6
+28                                           -23749461029 / 870
+30                                          8615841276005 / 14322
+32                                         -7709321041217 / 510
+34                                          2577687858367 / 6
+36                                  -26315271553053477373 / 1919190
+38                                       2929993913841559 / 6
+40                                 -261082718496449122051 / 13530
+42                                 1520097643918070802691 / 1806
+44                               -27833269579301024235023 / 690
+46                               596451111593912163277961 / 282
+48                          -5609403368997817686249127547 / 46410
+50                            495057205241079648212477525 / 66
+52                        -801165718135489957347924991853 / 1590
+54                       29149963634884862421418123812691 / 798
+56                    -2479392929313226753685415739663229 / 870
+58                    84483613348880041862046775994036021 / 354
+60           -1215233140483755572040304994079820246041491 / 56786730
 
 (B 1) → 1 / 2
 
@@ -1379,9 +1379,9 @@ Only 'small' rationals are supported in EchoLisp, i.e numerator and demominator 
 defmodule Bernoulli do
   defmodule Rational do
     import Kernel, except: [div: 2]
-    
+
     defstruct numerator: 0, denominator: 1
-    
+
     def new(numerator, denominator\\1) do
       sign = if numerator * denominator < 0, do: -1, else: 1
       {numerator, denominator} = {abs(numerator), abs(denominator)}
@@ -1389,25 +1389,25 @@ defmodule Bernoulli do
       %Rational{numerator: sign * Kernel.div(numerator, gcd),
                 denominator: Kernel.div(denominator, gcd)}
     end
-    
+
     def sub(a, b) do
       new(a.numerator * b.denominator - b.numerator * a.denominator,
           a.denominator * b.denominator)
     end
-    
+
     def mul(a, b) when is_integer(a) do
       new(a * b.numerator, b.denominator)
     end
-    
+
     defp gcd(a,0), do: a
     defp gcd(a,b), do: gcd(b, rem(a,b))
   end
-  
+
   def numbers(n) do
     Stream.transform(0..n, {}, fn m,acc ->
       acc = Tuple.append(acc, Rational.new(1,m+1))
       if m>0 do
-        new = 
+        new =
           Enum.reduce(m..1, acc, fn j,ar ->
             put_elem(ar, j-1, Rational.mul(j, Rational.sub(elem(ar,j-1), elem(ar,j))))
           end)
@@ -1417,7 +1417,7 @@ defmodule Bernoulli do
       end
     end) |> Enum.to_list
   end
-  
+
   def task(n \\ 61) do
     b_nums = numbers(n)
     width  = Enum.map(b_nums, fn b -> b.numerator |> to_string |> String.length end)
@@ -1494,14 +1494,14 @@ let calculateBernoulli n =
     A.[0]
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     for n in [0..60] do
         let bernoulliNumber = calculateBernoulli n
-        match bernoulliNumber.Numerator.IsZero with 
-        | false -> 
+        match bernoulliNumber.Numerator.IsZero with
+        | false ->
             let formatedString = String.Format("B({0, 2}) = {1, 44} / {2}", n, bernoulliNumber.Numerator, bernoulliNumber.Denominator)
             printfn "%s" formatedString
-        | true -> 
+        | true ->
             printf ""
     0
 
@@ -1600,28 +1600,28 @@ Alternatively a method described by Brent and Harvey (2011) in "Fast computation
   1 1 tab set-nth
   2 n [a,b] [| k |
     k 1 - dup
-    tab nth *         
-    k tab set-nth    
+    tab nth *
+    k tab set-nth
   ] each
-  2 n [a,b] [| k |   
-    k n [a,b] [| j |   
-      j tab nth      
-      j k - 2 + *    
-      j 1 - tab nth  
-      j k - * +      
+  2 n [a,b] [| k |
+    k n [a,b] [| j |
+      j tab nth
+      j k - 2 + *
+      j 1 - tab nth
+      j k - * +
       j tab set-nth
     ] each
   ] each
   1 :> s!
   1 n [a,b] [| k |
-    k 2 * dup         
-    2^ dup 1 - *         
-    k tab nth         
-    swap / *          
-    s * k tab set-nth 
+    k 2 * dup
+    2^ dup 1 - *
+    k tab nth
+    swap / *
+    s * k tab set-nth
     s -1 * s!
   ] each
-  
+
   0  1 1 "%2d : %d / %d\n" printf
   1 -1 2 "%2d : %d / %d\n" printf
   1 n [a,b] [| k |
@@ -1927,8 +1927,8 @@ B(60) = -1215233140483755572040304994079820246041491/56786730
 
 ### =Task algorithm=
 
-This program works as a command line utility, that reads from stdin the number of elements to compute (default 60) and prints them in stdout. 
-The implementation of the algorithm is in the function bernoullis. The rest is for printing the results. 
+This program works as a command line utility, that reads from stdin the number of elements to compute (default 60) and prints them in stdout.
+The implementation of the algorithm is in the function bernoullis. The rest is for printing the results.
 
 
 ```Haskell
@@ -2301,7 +2301,7 @@ def long_minus(x;y): ((num1|tonumber) - (num2|tonumber)) | tostring;
 def long_multiply(num1; num2):
   ((num1|tonumber) * (num2|tonumber)) | tostring;
 
-# return [quotient, remainder] 
+# return [quotient, remainder]
 # 0/0 = 1; n/0 => error
 def long_divide(xx;yy):  # x/y => [q,r] imples x == (y * q) + r
   def ld(x;y):
@@ -2332,7 +2332,7 @@ def gcd(a; b):
   # subfunction rgcd expects [a,b] as input
   # i.e. a ~ .[0] and b ~ .[1]
   def rgcd:
-    .[0] as $a | .[1] as $b 
+    .[0] as $a | .[1] as $b
     | if $b == "0" then $a
       else [$b, long_mod($a ; $b ) ] | rgcd
       end;
@@ -2365,8 +2365,8 @@ def multiply(a; b):
   a as $a | b as $b
   | if ($a|type) == "string" and ($b|type) == "string" then [ long_multiply($a; $b), "1"]
     else
-      if $a|type == "string" then [ long_multiply( $a; $b[0]), $b[1] ] 
-      elif $b|type == "string" then [ long_multiply( $b; $a[0]), $a[1] ] 
+      if $a|type == "string" then [ long_multiply( $a; $b[0]), $b[1] ]
+      elif $b|type == "string" then [ long_multiply( $b; $a[0]), $a[1] ]
       else  [ long_multiply( $a[0]; $b[0]), long_multiply($a[1]; $b[1]) ]
       end
       | normalize
@@ -2376,7 +2376,7 @@ def minus(a; b):
   a as $a | b as $b
   | if $a == $b then ["0", "1"]
     else add($a; [ ($b[0]|negate), $b[1] ] )
-    end ; 
+    end ;
 ```
 
 
@@ -2530,7 +2530,7 @@ print(select(n->n[2]<>0,[seq([n,bernoulli(n,1)],n=0..60)]));
 
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-Mathematica has no native way for starting an array at index 0. I therefore had to build the array from 1 to n+1 instead of from 0 to n, adjusting the formula accordingly. 
+Mathematica has no native way for starting an array at index 0. I therefore had to build the array from 1 to n+1 instead of from 0 to n, adjusting the formula accordingly.
 
 ```Mathematica
 bernoulli[n_] := Module[{a = ConstantArray[0, n + 2]},
@@ -2685,16 +2685,16 @@ Tested with fpc 3.0.4
 ```Pascal
 
 (* Taken from the 'Ada 99' project, https://marquisdegeek.com/code_ada99 *)
- 
+
 program BernoulliForAda99;
- 
+
 uses BigDecimalMath; {library for arbitary high precision BCD numbers}
- 
+
 type
   Fraction = object
   private
     numerator, denominator: BigDecimal;
- 
+
   public
     procedure assign(n, d: Int64);
     procedure subtract(rhs: Fraction);
@@ -2702,8 +2702,8 @@ type
     procedure reduce();
     procedure writeOutput();
 end;
- 
- 
+
+
 function gcd(a, b: BigDecimal):BigDecimal;
 begin
   if (b = 0) then begin
@@ -2713,8 +2713,8 @@ begin
     gcd := gcd(b, a mod b);
  end;
 end;
- 
- 
+
+
 procedure Fraction.writeOutput();
 var sign : char;
 begin
@@ -2725,24 +2725,24 @@ begin
   write(' / ');
   write(BigDecimalToStr(abs(denominator)));
 end;
- 
- 
+
+
 procedure Fraction.assign(n, d: Int64);
 begin
 
   numerator := n;
   denominator := d;
 end;
- 
- 
+
+
 procedure Fraction.subtract(rhs: Fraction);
 begin
   numerator := numerator * rhs.denominator;
   numerator := numerator - (rhs.numerator * denominator);
   denominator := denominator * rhs.denominator;
 end;
- 
- 
+
+
 procedure Fraction.multiply(value: Int64);
 var
   temp :BigDecimal;
@@ -2750,8 +2750,8 @@ begin
   temp := value;
   numerator := numerator * temp;
 end;
- 
- 
+
+
 procedure Fraction.reduce();
 var gcdResult: BigDecimal;
 begin
@@ -2759,44 +2759,44 @@ begin
   begin
     numerator := numerator div gcdResult;     (* div is Int64 division *)
     denominator := denominator div gcdResult; (* could also use round(d/r) *)
-  end;  
+  end;
 end;
- 
- 
+
+
 function calculateBernoulli(n: Int64) : Fraction;
 var
   m, j: Int64;
   results: array of Fraction;
- 
+
   begin
     setlength(results, 60) ; {largest value 60}
     for m:= 0 to n do
     begin
       results[m].assign(1, m+1);
- 
+
       for j:= m downto 1 do
         begin
           results[j-1].subtract(results[j]);
           results[j-1].multiply(j);
           results[j-1].reduce();
-        end;  
+        end;
     end;
- 
+
     calculateBernoulli := results[0];
 end;
- 
- 
+
+
 (* Main program starts here *)
- 
+
 var
   b: Int64;
   result: Fraction;
- 
+
 begin
   writeln('Calculating Bernoulli numbers...');
   writeln('B( 0) :                                             1 / 1');
   for b:= 1 to 60  do
-    begin 
+    begin
 	if (b<3) or ((b mod 2) = 0) then begin
           result := calculateBernoulli(b);
           write('B(',b:2,')');
@@ -3097,10 +3097,10 @@ constant bernoulli =
 ;
 
 constant @bpairs = bernoulli[^52];
- 
+
 my $width = max @bpairs.map: *.value.numerator.chars;
 my $form = "B(%d)\t= \%{$width}d/%d\n";
- 
+
 printf $form, .key, .value.nude for @bpairs;
 ```
 
@@ -3128,7 +3128,7 @@ procedure bernoulli(mpq rop, integer n)
     mpq_set(rop, a[1])
     a = mpq_free(a)
 end procedure
- 
+
 mpq rop = mpq_init()
 mpz n = mpz_init(),
     d = mpz_init()
@@ -3204,7 +3204,7 @@ Brute force and method by Srinivasa Ramanujan.
          (fact N)
          (* (fact (- N K)) (fact K)) )
       1 ) )
-         
+
 (de A (N M)
    (let Sum (0 . 1)
       (for X M
@@ -3226,23 +3226,23 @@ Brute force and method by Srinivasa Ramanujan.
             (case (% N 6)
                (0
                   (f/
-                     (f- 
+                     (f-
                         (frac (+ N 3) 3)
                         (A N (/ N 6)) )
                      (binomial (+ N 3) N) ) )
                (2
                   (f/
-                     (f- 
+                     (f-
                         (frac (+ N 3) 3)
                         (A N (/ (- N 2) 6)) )
                      (binomial (+ N 3) N) ) )
                (4
                   (f/
-                     (f- 
+                     (f-
                         (f* (-1 . 1) (frac (+ N 3) 6))
                         (A N (/ (- N 4) 6)) )
                      (binomial (+ N 3) N) ) ) ) ) ) ) )
-      
+
 (de berno-brute (N)
    (cache '(NIL) N
       (let Sum (0 . 1)
@@ -3253,8 +3253,8 @@ Brute force and method by Srinivasa Ramanujan.
             (T
                (for (X 0 (> N X) (inc X))
                   (setq Sum
-                     (f+ 
-                        Sum 
+                     (f+
+                        Sum
                         (f* (binomial (inc N) X) (berno-brute X)) ) ) )
                (f/ (f* (-1 . 1) Sum) (binomial (inc N) N)) ) ) ) ) )
 
@@ -3433,15 +3433,15 @@ Output is exactly the same as before.
 
 
 {{incorrect|Pascal|
- The index numbers are not correct. 
- '''B<sub>0</sub>''' isn't shown. 
- The Bernoulli numbers are not shown as (reduced) fractions. 
- Bernoulli numbers equal to zero are to be suppressed. 
+ The index numbers are not correct.
+ '''B<sub>0</sub>''' isn't shown.
+ The Bernoulli numbers are not shown as (reduced) fractions.
+ Bernoulli numbers equal to zero are to be suppressed.
 
 }}
 
 R has the built-in function bernoulli(n), where n is the index, a whole number greater or equal to 0.
-It returns the first n+1 Bernoulli numbers, that are defined as a sequence of rational numbers. 
+It returns the first n+1 Bernoulli numbers, that are defined as a sequence of rational numbers.
 
 {{Works with|R|3.3.2 and above}}
 
@@ -3453,7 +3453,7 @@ require(pracma)
 bernoulli(60)
 
 ```
- 
+
 
 {{Output}}
 
@@ -3476,7 +3476,7 @@ Loading required package: pracma
 [51]  7.500867e+24  0.000000e+00 -5.038778e+26  0.000000e+00  3.652878e+28
 [56]  0.000000e+00 -2.849877e+30  0.000000e+00  2.386543e+32  0.000000e+00
 [61] -2.139995e+34
-> 
+>
 
 ```
 
@@ -3551,7 +3551,7 @@ use the same emmitter... it's just a matter of how long to wait for the emission
       (define +b (abs b))
       (values (max I (oom+1 (max n 1)))
               (max N (+ (oom+1 (numerator +b)) (if (negative? b) 1 0)))
-              (max D (oom+1 (denominator +b))))))  
+              (max D (oom+1 (denominator +b))))))
   (define (~a/w/a n w a) (~a n #:width w #:align a))
   (for ((n (non-zero-bernoulli-indices (in-naturals))) (b Bs))
     (printf "~a ~a/~a~%"
@@ -3579,37 +3579,37 @@ use the same emmitter... it's just a matter of how long to wait for the emission
 {{out}}
 
 ```txt
-B( 0) =                                            1/1       
-B( 1) =                                           -1/2       
-B( 2) =                                            1/6       
-B( 4) =                                           -1/30      
-B( 6) =                                            1/42      
-B( 8) =                                           -1/30      
-B(10) =                                            5/66      
-B(12) =                                         -691/2730    
-B(14) =                                            7/6       
-B(16) =                                        -3617/510     
-B(18) =                                        43867/798     
-B(20) =                                      -174611/330     
-B(22) =                                       854513/138     
-B(24) =                                   -236364091/2730    
-B(26) =                                      8553103/6       
-B(28) =                                 -23749461029/870     
-B(30) =                                8615841276005/14322   
-B(32) =                               -7709321041217/510     
-B(34) =                                2577687858367/6       
-B(36) =                        -26315271553053477373/1919190 
-B(38) =                             2929993913841559/6       
-B(40) =                       -261082718496449122051/13530   
-B(42) =                       1520097643918070802691/1806    
-B(44) =                     -27833269579301024235023/690     
-B(46) =                     596451111593912163277961/282     
-B(48) =                -5609403368997817686249127547/46410   
-B(50) =                  495057205241079648212477525/66      
-B(52) =              -801165718135489957347924991853/1590    
-B(54) =             29149963634884862421418123812691/798     
-B(56) =          -2479392929313226753685415739663229/870     
-B(58) =          84483613348880041862046775994036021/354     
+B( 0) =                                            1/1
+B( 1) =                                           -1/2
+B( 2) =                                            1/6
+B( 4) =                                           -1/30
+B( 6) =                                            1/42
+B( 8) =                                           -1/30
+B(10) =                                            5/66
+B(12) =                                         -691/2730
+B(14) =                                            7/6
+B(16) =                                        -3617/510
+B(18) =                                        43867/798
+B(20) =                                      -174611/330
+B(22) =                                       854513/138
+B(24) =                                   -236364091/2730
+B(26) =                                      8553103/6
+B(28) =                                 -23749461029/870
+B(30) =                                8615841276005/14322
+B(32) =                               -7709321041217/510
+B(34) =                                2577687858367/6
+B(36) =                        -26315271553053477373/1919190
+B(38) =                             2929993913841559/6
+B(40) =                       -261082718496449122051/13530
+B(42) =                       1520097643918070802691/1806
+B(44) =                     -27833269579301024235023/690
+B(46) =                     596451111593912163277961/282
+B(48) =                -5609403368997817686249127547/46410
+B(50) =                  495057205241079648212477525/66
+B(52) =              -801165718135489957347924991853/1590
+B(54) =             29149963634884862421418123812691/798
+B(56) =          -2479392929313226753685415739663229/870
+B(58) =          84483613348880041862046775994036021/354
 B(60) = -1215233140483755572040304994079820246041491/56786730
 ```
 
@@ -3624,7 +3624,7 @@ The double sum formula used is number   '''(33)'''   from the entry [http://math
 ::::::: <big><big> <math> B_n = \sum_{k=0}^n \frac{1}{k+1} \sum_{r=0}^k (-1)^r \binom kr r^n </math> </big></big>
 
 
-:::::::::::: where           <big><big> <math> \binom kr</math> </big></big>       is a binomial coefficient. 
+:::::::::::: where           <big><big> <math> \binom kr</math> </big></big>       is a binomial coefficient.
 
 
 ```rexx
@@ -3793,7 +3793,7 @@ B(60) = -1215233140483755572040304994079820246041491/56786730
 
 {{incorrect|Rust|
 
- '''B<sub>1</sub>''' isn't shown. 
+ '''B<sub>1</sub>''' isn't shown.
 
 }}
 
@@ -4022,7 +4022,7 @@ case class BFraction( numerator:BigInt, denominator:BigInt ) {
 def bernoulliB( n:Int ) : BFraction = {
 
   val aa : Array[BFraction] = Array.ofDim(n+1)
-  
+
   for( m <- 0 to n ) {
     aa(m) = BFraction(1,(m+1))
 
@@ -4110,7 +4110,7 @@ const func bigRational: bernoulli (in integer: n) is func
     var integer: j is 0;
     var array bigRational: a is 0 times bigRational.value;
   begin
-    a := [0 .. n] times bigRational.value; 
+    a := [0 .. n] times bigRational.value;
     for m range 0 to n do
       a[m] := 1_ / bigInteger(succ(m));
       for j range m downto 1 do
@@ -4286,7 +4286,7 @@ Package:[http://fricas.github.io/api/IntegerNumberTheoryFunctions.html?highlight
 
 ### =========
 
-Format: [n,B_n] 
+Format: [n,B_n]
 
 ### =========
 
@@ -4384,7 +4384,7 @@ Format: [n,B_n]
          1215233140483755572040304994079820246041491
    [60,- -------------------------------------------]
                            56786730
-                                                                   Type: Void 
+                                                                   Type: Void
 
 ```
 
@@ -4517,7 +4517,7 @@ Module Bernoulli_numbers
             End If
         Next i
     End Sub 'bernoulli_BigInt
-    
+
 End Module 'Bernoulli_numbers
 ```
 

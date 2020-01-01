@@ -29,7 +29,7 @@ The straightforward solution is a   O(n<sup>2</sup>)   algorithm   (which we can
      '''foreach''' j ∈ [i+1, N]
        '''if''' |P(i) - P(j)| < minDistance '''then'''
          minDistance ← |P(i) - P(j)|
-         minPoints ← { P(i), P(j) } 
+         minPoints ← { P(i), P(j) }
        '''endif'''
      '''endfor'''
    '''endfor'''
@@ -76,7 +76,7 @@ A better algorithm is based on the recursive divide&amp;conquer approach,   as e
 *   [http://www.cs.mcgill.ca/~cs251/ClosestPair/ClosestPairDQ.html Closest Pair (McGill)]
 *   [http://www.cs.ucsb.edu/~suri/cs235/ClosestPair.pdf Closest Pair (UCSB)]
 *   [http://classes.cec.wustl.edu/~cse241/handouts/closestpair.pdf Closest pair (WUStL)]
-*   [http://www.cs.iupui.edu/~xkzou/teaching/CS580/Divide-and-conquer-closestPair.ppt Closest pair (IUPUI)] 
+*   [http://www.cs.iupui.edu/~xkzou/teaching/CS580/Divide-and-conquer-closestPair.ppt Closest pair (IUPUI)]
 
 
 
@@ -130,7 +130,7 @@ CLOSEST  CSECT
        ENDDO    ,                  enddo while
          MVC    PG,=CL80'the minimum distance '
          ZAP    WP1,SQRT2          sqrt2
-         BAL    R14,EDITPK         edit 
+         BAL    R14,EDITPK         edit
          MVC    PG+21(L'WC),WC     output
          XPRNT  PG,L'PG            print buffer
          XPRNT  =CL22'is between the points:',22
@@ -139,10 +139,10 @@ CLOSEST  CSECT
          SLA    R1,4               *16
          LA     R4,PXY-16(R1)      @px(ii)
          MVC    WP1,0(R4)          px(ii)
-         BAL    R14,EDITPK         edit 
+         BAL    R14,EDITPK         edit
          MVC    PG+3(L'WC),WC      output
          MVC    WP1,8(R4)          py(ii)
-         BAL    R14,EDITPK         edit 
+         BAL    R14,EDITPK         edit
          MVC    PG+21(L'WC),WC     output
          XPRNT  PG,L'PG            print buffer
          MVC    PG,PGP             init buffer
@@ -150,10 +150,10 @@ CLOSEST  CSECT
          SLA    R1,4               *16
          LA     R4,PXY-16(R1)      @px(jj)
          MVC    WP1,0(R4)          px(jj)
-         BAL    R14,EDITPK         edit 
+         BAL    R14,EDITPK         edit
          MVC    PG+3(L'WC),WC      output
          MVC    WP1,8(R4)          py(jj)
-         BAL    R14,EDITPK         edit 
+         BAL    R14,EDITPK         edit
          MVC    PG+21(L'WC),WC     output
          XPRNT  PG,L'PG            print buffer
          L      R13,4(0,R13)       restore previous savearea pointer
@@ -185,7 +185,7 @@ DDSTORE  EQU    *             ---- ddmin=dd; ii=i; jj=j
          ST     R6,II              ii=i
          ST     R7,JJ              jj=j
          BR     R14           ---- return
-EDITPK   EQU    *             ---- 
+EDITPK   EQU    *             ----
          MVC    WM,MASK            set mask
          EDMK   WM,WP1             edit and mark
          BCTR   R1,0               -1
@@ -234,8 +234,8 @@ is between the points:
 
 ## Ada
 
-Dimension independent, but has to be defined at procedure call time 
-(could be a parameter). 
+Dimension independent, but has to be defined at procedure call time
+(could be a parameter).
 Output is simple, can be formatted using Float_IO.
 
 closest.adb: (uses brute force algorithm)
@@ -405,16 +405,16 @@ El par más cercano es 2 y 5 a una distancia de 0,077910191355
 
 ## BBC BASIC
 
-To find the closest pair it is sufficient to compare the squared-distances, 
+To find the closest pair it is sufficient to compare the squared-distances,
 it is not necessary to perform the square root for each pair!
 
 ```bbcbasic
       DIM x(9), y(9)
-      
+
       FOR I% = 0 TO 9
         READ x(I%), y(I%)
       NEXT
-      
+
       min = 1E30
       FOR I% = 0 TO 8
         FOR J% = I%+1 TO 9
@@ -424,7 +424,7 @@ it is not necessary to perform the square root for each pair!
       NEXT I%
       PRINT "Closest pair is ";mini% " and ";minj% " at distance "; SQR(min)
       END
-      
+
       DATA  0.654682, 0.925557
       DATA  0.409382, 0.619391
       DATA  0.891663, 0.888594
@@ -694,10 +694,10 @@ Points are conses whose cars are x coördinates and whose cdrs are y coördinate
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 We provide a small helper class for distance comparisons:
 
-```csharp
+```c#
 class Segment
 {
     public Segment(PointF p1, PointF p2)
@@ -725,7 +725,7 @@ class Segment
 
 Brute force:
 
-```csharp
+```c#
 Segment Closest_BruteForce(List<PointF> points)
 {
     int n = points.Count;
@@ -741,9 +741,9 @@ Segment Closest_BruteForce(List<PointF> points)
 
 
 
-And divide-and-conquer.  
+And divide-and-conquer.
 
-```csharp
+```c#
 
 public static Segment MyClosestDivide(List<PointF> points)
 {
@@ -801,7 +801,7 @@ private static Segment MyClosestRec(List<PointF> pointsByX)
 
 However, the difference in speed is still remarkable.
 
-```csharp
+```c#
 var randomizer = new Random(10);
 var points = Enumerable.Range( 0, 10000).Select( i => new PointF( (float)randomizer.NextDouble(), (float)randomizer.NextDouble())).ToList();
 Stopwatch sw = Stopwatch.StartNew();
@@ -826,14 +826,14 @@ Time used (Divide & Conquer): 1139.2111 ms
 
 Non Linq Brute Force:
 
-```csharp
+```c#
 
         Segment Closest_BruteForce(List<PointF> points)
         {
             Trace.Assert(points.Count >= 2);
 
             int count = points.Count;
-            
+
             // Seed the result - doesn't matter what points are used
             // This just avoids having to do null checks in the main loop below
             var result = new Segment(points[0], points[1]);
@@ -852,10 +852,10 @@ Non Linq Brute Force:
 ```
 
 
-Targeted Search: Much simpler than divide and conquer, and actually runs faster for the random points.  Key optimization is that if the distance along the X axis is greater than the best total length you already have, you can terminate the inner loop early.  However, as only sorts in the X direction, it degenerates into an N^2 algorithm if all the points have the same X.  
+Targeted Search: Much simpler than divide and conquer, and actually runs faster for the random points.  Key optimization is that if the distance along the X axis is greater than the best total length you already have, you can terminate the inner loop early.  However, as only sorts in the X direction, it degenerates into an N^2 algorithm if all the points have the same X.
 
 
-```csharp
+```c#
 
         Segment Closest(List<PointF> points)
         {
@@ -1055,26 +1055,26 @@ About 0.12 seconds run-time for brute-force version 2 (10_000 points) with with 
 defmodule Closest_pair do
   # brute-force algorithm:
   def bruteForce([p0,p1|_] = points), do: bf_loop(points, {distance(p0, p1), {p0, p1}})
-  
+
   defp bf_loop([_], acc), do: acc
   defp bf_loop([h|t], acc), do: bf_loop(t, bf_loop(h, t, acc))
-  
+
   defp bf_loop(_, [], acc), do: acc
   defp bf_loop(p0, [p1|t], {minD, minP}) do
     dist = distance(p0, p1)
     if dist < minD, do: bf_loop(p0, t, {dist, {p0, p1}}),
                   else: bf_loop(p0, t, {minD, minP})
   end
-  
+
   defp distance({p0x,p0y}, {p1x,p1y}) do
     :math.sqrt( (p1x - p0x) * (p1x - p0x) + (p1y - p0y) * (p1y - p0y) )
   end
-  
+
   # recursive divide&conquer approach:
   def recursive(points) do
     recursive(Enum.sort(points), Enum.sort_by(points, fn {_x,y} -> y end))
   end
-  
+
   def recursive(xP, _yP) when length(xP) <= 3, do: bruteForce(xP)
   def recursive(xP, yP) do
     {xL, xR} = Enum.split(xP, div(length(xP), 2))
@@ -1086,10 +1086,10 @@ defmodule Closest_pair do
     yS = Enum.filter(yP, fn {x,_} -> abs(xm - x) < dmin end)
     merge(yS, {dmin, pairMin})
   end
-  
+
   defp merge([_], acc), do: acc
   defp merge([h|t], acc), do: merge(t, merge_loop(h, t, acc))
-  
+
   defp merge_loop(_, [], acc), do: acc
   defp merge_loop(p0, [p1|_], {dmin,_}=acc) when dmin <= elem(p1,1) - elem(p0,1), do: acc
   defp merge_loop(p0, [p1|t], {dmin, pair}) do
@@ -1176,26 +1176,26 @@ Divide And Conquer:
 open System;
 open System.Drawing;
 open System.Diagnostics;
- 
+
 let Length (seg : (PointF * PointF) option) =
     match seg with
     | None -> System.Single.MaxValue
     | Some(line) ->
         let f = fst line
         let t = snd line
- 
+
         let dx = f.X - t.X
         let dy = f.Y - t.Y
         sqrt (dx*dx + dy*dy)
- 
- 
+
+
 let Shortest a b =
     if Length(a) < Length(b) then
         a
     else
         b
- 
- 
+
+
 let rec ClosestBoundY from maxY (ptsByY : PointF list) =
     match ptsByY with
     | [] -> None
@@ -1207,7 +1207,7 @@ let rec ClosestBoundY from maxY (ptsByY : PointF list) =
             let bestToRest = ClosestBoundY from maxY tl
             Shortest toHd bestToRest
 
- 
+
 let rec ClosestWithinRange ptsByY maxDy =
     match ptsByY with
     | [] -> None
@@ -1228,24 +1228,24 @@ let Halve pts =
 
     let n = (List.length pts) / 2
     ShiftToFirst [] pts n
-    
+
 
 let rec ClosestPair (pts : PointF list) =
     if List.length pts < 2 then
         None
     else
         let ptsByX = pts |> List.sortBy(fun(p) -> p.X)
- 
+
         let (left, right) = Halve ptsByX
         let leftResult = ClosestPair left
         let rightResult = ClosestPair right
- 
+
         let bestInHalf = Shortest  leftResult rightResult
         let bestLength = Length bestInHalf
- 
+
         let divideX = List.head(right).X
         let inBand = pts |> List.filter(fun(p) -> Math.Abs(p.X - divideX) < bestLength)
- 
+
         let byY = inBand |> List.sortBy(fun(p) -> p.Y)
         let bestCross = ClosestWithinRange byY bestLength
         Shortest bestInHalf bestCross
@@ -1280,7 +1280,7 @@ class Point
   Float x
   Float y
 
-  // create a random point 
+  // create a random point
   new make (Float x := Float.random * 10, Float y := Float.random * 10)
   {
     this.x = x
@@ -1313,7 +1313,7 @@ class Main
         {
           closestPair = [points[i], points[j]]
           closestDistance = trydistance
-        }        
+        }
       }
     }
 
@@ -1322,7 +1322,7 @@ class Main
 
   // use recursive divide-and-conquer approach
   static Point[] findClosestPair2 (Point[] points)
-  { 
+  {
     if (points.size <= 3) return findClosestPair1(points)
     points.sort |Point a, Point b -> Int| { a.x <=> b.x }
     bestLeft := findClosestPair2 (points[0..(points.size/2)])
@@ -1339,7 +1339,7 @@ class Main
     {
       minDistance = bestRight[0].distance(bestRight[1])
       closePoints = bestRight
-    }  
+    }
     yPoints := points.findAll |Point p -> Bool|
     {
       (points.last.x - p.x).abs < minDistance
@@ -1349,24 +1349,24 @@ class Main
     closestDist := Float.posInf
 
     for (Int i := 0; i < yPoints.size - 1; ++i)
-    { 
+    {
       for (Int j := (i+1); j < yPoints.size; ++j)
-      { 
+      {
         if ((yPoints[j].y - yPoints[i].y) >= minDistance)
         {
           break
         }
         else
-        { 
+        {
           dist := yPoints[i].distance (yPoints[j])
-          if (dist < closestDist) 
+          if (dist < closestDist)
           {
             closestDist = dist
             closestPair = [yPoints[i], yPoints[j]]
           }
         }
       }
-    } 
+    }
     if (closestDist < minDistance)
       return closestPair
     else
@@ -1449,9 +1449,9 @@ Next i
 For i = 0 To 8
     For j = i+1 To 9
         dist = (x(i) - x(j))^2 + (y(i) - y(j))^2
-        If dist < minDist Then 
-            minDist = dist 
-            mini = i 
+        If dist < minDist Then
+            minDist = dist
+            mini = i
             minj = j
         End If
     Next j
@@ -1658,12 +1658,12 @@ class Point {
     final Number x, y
     Point(Number x = 0, Number y = 0) { this.x = x; this.y = y }
     Number distance(Point that) { ((this.x - that.x)**2 + (this.y - that.y)**2)**0.5 }
-    String toString() { "{x:${x}, y:${y}}" } 
+    String toString() { "{x:${x}, y:${y}}" }
 }
 ```
 
 
-Brute force solution. Incorporates X-only and Y-only pre-checks in two places to cut down on the square root calculations: 
+Brute force solution. Incorporates X-only and Y-only pre-checks in two places to cut down on the square root calculations:
 
 ```groovy
 def bruteClosest(Collection pointCol) {
@@ -1676,7 +1676,7 @@ def bruteClosest(Collection pointCol) {
     (0..<(n-1)).each { i ->
         ((i+1)..<n).findAll { j ->
             (l[i].x - l[j].x).abs() < answer.distance &&
-            (l[i].y - l[j].y).abs() < answer.distance 
+            (l[i].y - l[j].y).abs() < answer.distance
         }.each { j ->
             if ((l[i].x - l[j].x).abs() < answer.distance &&
                 (l[i].y - l[j].y).abs() < answer.distance) {
@@ -1692,7 +1692,7 @@ def bruteClosest(Collection pointCol) {
 ```
 
 
-Elegant (divide-and-conquer reduction) solution. Incorporates X-only and Y-only pre-checks in two places (four if you count the inclusion of the brute force solution) to cut down on the square root calculations: 
+Elegant (divide-and-conquer reduction) solution. Incorporates X-only and Y-only pre-checks in two places (four if you count the inclusion of the brute force solution) to cut down on the square root calculations:
 
 ```groovy
 def elegantClosest(Collection pointCol) {
@@ -1707,7 +1707,7 @@ def reductionClosest(List xPoints, List yPoints) {
 //    assert (xPoints as Set) == (yPoints as Set)
     int n = xPoints.size()
     if (n < 10) return bruteClosest(xPoints)
-    
+
     int nMid = Math.ceil(n/2)
     List xLeft = xPoints[0..<nMid]
     List xRight = xPoints[nMid..<n]
@@ -1718,14 +1718,14 @@ def reductionClosest(List xPoints, List yPoints) {
         yLeft = xLeft.collect{ it }.sort { it.y }
         yRight = xRight.collect{ it }.sort { it.y }
     }
-    
+
     Map aLeft = reductionClosest(xLeft, yLeft)
     Map aRight = reductionClosest(xRight, yRight)
     Map aMin = aRight.distance < aLeft.distance ? aRight : aLeft
     List yMid = yPoints.findAll { (xMid - it.x).abs() < aMin.distance }
     int nyMid = yMid.size()
     if (nyMid < 2) return aMin
-    
+
     Map answer = aMin
     (0..<(nyMid-1)).each { i ->
         ((i+1)..<nyMid).findAll { j ->
@@ -1892,7 +1892,7 @@ foldl1'' = foldl1'
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-This is a brute force solution.  
+This is a brute force solution.
 It combines reading the points with computing the closest pair seen so far.
 
 ```unicon
@@ -1930,14 +1930,14 @@ end
 120 FOR I=1 TO 10
 130   READ X(I),Y(I)
 140   PRINT X(I),Y(I)
-150 NEXT 
+150 NEXT
 160 LET MN=INF
 170 FOR I=1 TO 9
 180   FOR J=I+1 TO 10
 190     LET DSQ=(X(I)-X(J))^2+(Y(I)-Y(J))^2
 200     IF DSQ<MN THEN LET MN=DSQ:LET MINI=I:LET MINJ=J
-210   NEXT 
-220 NEXT 
+210   NEXT
+220 NEXT
 230 PRINT "Closest pair is (";X(MINI);",";Y(MINI);") and (";X(MINJ);",";Y(MINJ);")":PRINT "at distance";SQR(MN)
 240 DATA 0.654682,0.925557
 250 DATA 0.409382,0.619391
@@ -2026,54 +2026,54 @@ public class ClosestPair
   {
     public final double x;
     public final double y;
-    
+
     public Point(double x, double y)
     {
       this.x = x;
       this.y = y;
     }
-    
+
     public String toString()
     {  return "(" + x + ", " + y + ")";  }
   }
-  
+
   public static class Pair
   {
     public Point point1 = null;
     public Point point2 = null;
     public double distance = 0.0;
-    
+
     public Pair()
     {  }
-    
+
     public Pair(Point point1, Point point2)
     {
       this.point1 = point1;
       this.point2 = point2;
       calcDistance();
     }
-    
+
     public void update(Point point1, Point point2, double distance)
     {
       this.point1 = point1;
       this.point2 = point2;
       this.distance = distance;
     }
-    
+
     public void calcDistance()
     {  this.distance = distance(point1, point2);  }
-    
+
     public String toString()
     {  return point1 + "-" + point2 + " : " + distance;  }
   }
-  
+
   public static double distance(Point p1, Point p2)
   {
     double xdist = p2.x - p1.x;
     double ydist = p2.y - p1.y;
     return Math.hypot(xdist, ydist);
   }
-  
+
   public static Pair bruteForce(List<? extends Point> points)
   {
     int numPoints = points.size();
@@ -2096,7 +2096,7 @@ public class ClosestPair
     }
     return pair;
   }
-  
+
   public static void sortByX(List<? extends Point> points)
   {
     Collections.sort(points, new Comparator<Point>() {
@@ -2111,7 +2111,7 @@ public class ClosestPair
       }
     );
   }
-  
+
   public static void sortByY(List<? extends Point> points)
   {
     Collections.sort(points, new Comparator<Point>() {
@@ -2126,7 +2126,7 @@ public class ClosestPair
       }
     );
   }
-  
+
   public static Pair divideAndConquer(List<? extends Point> points)
   {
     List<Point> pointsSortedByX = new ArrayList<Point>(points);
@@ -2135,36 +2135,36 @@ public class ClosestPair
     sortByY(pointsSortedByY);
     return divideAndConquer(pointsSortedByX, pointsSortedByY);
   }
-  
+
   private static Pair divideAndConquer(List<? extends Point> pointsSortedByX, List<? extends Point> pointsSortedByY)
   {
     int numPoints = pointsSortedByX.size();
     if (numPoints <= 3)
       return bruteForce(pointsSortedByX);
-    
+
     int dividingIndex = numPoints >>> 1;
     List<? extends Point> leftOfCenter = pointsSortedByX.subList(0, dividingIndex);
     List<? extends Point> rightOfCenter = pointsSortedByX.subList(dividingIndex, numPoints);
-    
+
     List<Point> tempList = new ArrayList<Point>(leftOfCenter);
     sortByY(tempList);
     Pair closestPair = divideAndConquer(leftOfCenter, tempList);
-    
+
     tempList.clear();
     tempList.addAll(rightOfCenter);
     sortByY(tempList);
     Pair closestPairRight = divideAndConquer(rightOfCenter, tempList);
-    
+
     if (closestPairRight.distance < closestPair.distance)
       closestPair = closestPairRight;
-    
+
     tempList.clear();
     double shortestDistance =closestPair.distance;
     double centerX = rightOfCenter.get(0).x;
     for (Point point : pointsSortedByY)
       if (Math.abs(centerX - point.x) < shortestDistance)
         tempList.add(point);
-    
+
     for (int i = 0; i < tempList.size() - 1; i++)
     {
       Point point1 = tempList.get(i);
@@ -2183,7 +2183,7 @@ public class ClosestPair
     }
     return closestPair;
   }
-  
+
   public static void main(String[] args)
   {
     int numPoints = (args.length == 0) ? 1000 : Integer.parseInt(args[0]);
@@ -2236,7 +2236,7 @@ function bruteforceClosestPair(arr) {
   } else {
     var minDist = distance(arr[0], arr[1]);
     var minPoints = arr.slice(0, 2);
-    
+
     for (var i=0; i<arr.length-1; i++) {
       for (var j=i+1; j<arr.length; j++) {
         if (distance(arr[i], arr[j]) < minDist) {
@@ -2476,7 +2476,7 @@ def closest_pair:
                          then [$k+1, [ $d, [$yS[$k], $yS[$i]]]]
                          else .[0] += 1
                          end) )
-      | .[1] 
+      | .[1]
     end;
   closestPair( sort_by(.[0]); sort_by(.[1])) ;
 ```
@@ -2775,7 +2775,7 @@ end module; #ClosestPair
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-nearestPair[data_] := 
+nearestPair[data_] :=
  Block[{pos, dist = N[Outer[EuclideanDistance, data, data, 1]]},
   pos = Position[dist, Min[DeleteCases[Flatten[dist], 0.]]];
   data[[pos[[1]]]]]
@@ -2785,9 +2785,9 @@ nearestPair[data_] :=
 {{out}}
 
 ```txt
-nearestPair[{{0.748501, 4.09624}, {3.00302, 5.26164}, {3.61878, 
-  9.52232}, {7.46911, 4.71611}, {5.7819, 2.69367}, {2.34709, 
-  8.74782}, {2.87169, 5.97774}, {6.33101, 0.463131}, {7.46489, 
+nearestPair[{{0.748501, 4.09624}, {3.00302, 5.26164}, {3.61878,
+  9.52232}, {7.46911, 4.71611}, {5.7819, 2.69367}, {2.34709,
+  8.74782}, {2.87169, 5.97774}, {6.33101, 0.463131}, {7.46489,
   4.6268}, {1.45428, 0.087596}}]
 
 {{7.46911, 4.71611}, {7.46489, 4.6268}}
@@ -2806,12 +2806,12 @@ function [closest,closestpair] = closestPair(xP,yP)
     N = numel(xP);
 
     if(N <= 3)
-        
+
         %Brute force closestpair
         if(N < 2)
             closest = +Inf;
             closestpair = {};
-        else        
+        else
             closest = norm(xP{1}-xP{2});
             closestpair = {xP{1},xP{2}};
 
@@ -2825,22 +2825,22 @@ function [closest,closestpair] = closestPair(xP,yP)
             end %for
         end %if (N < 2)
     else
-        
+
         halfN = ceil(N/2);
-        
+
         xL = { xP{1:halfN} };
         xR = { xP{halfN+1:N} };
         xm = xP{halfN}(1);
-        
+
         %cellfun( @(p)le(p(1),xm),yP ) is the same as { p ∈ yP : px ≤ xm }
         yLIndicies = cellfun( @(p)le(p(1),xm),yP );
-        
+
         yL = { yP{yLIndicies} };
         yR = { yP{~yLIndicies} };
 
         [dL,pairL] = closestPair(xL,yL);
         [dR,pairR] = closestPair(xR,yR);
-        
+
         if dL < dR
             dmin = dL;
             pairMin = pairL;
@@ -2885,7 +2885,7 @@ distance =
    0.500000000000000
 
 
-pair = 
+pair =
 
     [1x2 double]    [1x2 double] %The pair is [1.5 2] and [2 2] which is correct
 ```
@@ -2913,15 +2913,15 @@ s="0.654682,0.925557,0.409382,0.619391,0.891663,0.888594,0.716629,0.996200,0.477
   j=2
   dd=Math.Power(pxy[i][1]-pxy[j][1],2)+Math.Power(pxy[i][2]-pxy[j][2],2)
   ddmin=dd
-  ii=i 
+  ii=i
   jj=j
   For i=1 To n
     For j=1 To n
       dd=Math.Power(pxy[i][1]-pxy[j][1],2)+Math.Power(pxy[i][2]-pxy[j][2],2)
       If dd>0 Then
         If dd<ddmin Then
-          ddmin=dd 
-          ii=i 
+          ddmin=dd
+          ii=i
           jj=j
         EndIf
       EndIf
@@ -2930,7 +2930,7 @@ s="0.654682,0.925557,0.409382,0.619391,0.891663,0.888594,0.716629,0.996200,0.477
   sqrt1=ddmin
   sqrt2=ddmin/2
   For i=1 To 20
-    If sqrt1=sqrt2 Then 
+    If sqrt1=sqrt2 Then
       Goto exitfor
     EndIf
     sqrt1=sqrt2
@@ -2969,8 +2969,8 @@ See [[Closest-pair problem/Objective-C]]
 type point = { x : float; y : float }
 
 
-let cmpPointX (a : point) (b : point) = compare a.x b.x 
-let cmpPointY (a : point) (b : point) = compare a.y b.y 
+let cmpPointX (a : point) (b : point) = compare a.x b.x
+let cmpPointY (a : point) (b : point) = compare a.y b.y
 
 
 let distSqrd (seg : (point * point) option) =
@@ -2982,7 +2982,7 @@ let distSqrd (seg : (point * point) option) =
 
     let dx = a.x -. b.x in
     let dy = a.y -. b.y in
-  
+
     dx*.dx +. dy*.dy
 
 
@@ -3039,7 +3039,7 @@ let rec closestPairByX (ptsByX : point list) =
 
        let byY = List.sort cmpPointY inBand in
        let bestCross = closestInRange byY bestLength in
-       shortest bestInHalf bestCross      
+       shortest bestInHalf bestCross
 
 
 let closestPair pts =
@@ -3055,7 +3055,7 @@ let parsePoint str =
 
   let xVal = (float_of_string xStr) in
   let yVal = (float_of_string yStr) in
-  
+
   { x = xVal; y = yVal }
 
 
@@ -3083,7 +3083,7 @@ Printf.printf "Took %f [s]\n" taken;
 
 match c with
 | None -> Printf.printf "No closest pair\n"
-| Some(seg) -> 
+| Some(seg) ->
   let a = fst seg in
   let b = snd seg in
 
@@ -3192,7 +3192,7 @@ declare
   fun {RandomPoint}
      {Random 0.0 100.0}#{Random 0.0 100.0}
   end
-  
+
   Points = {MakeList 5}
 in
   {ForAll Points RandomPoint}
@@ -3345,7 +3345,7 @@ sub closest_pair_simple
 	my $p = pop @arr;
 	foreach my $l (@arr) {
 	    my $t = dist($p, $l);
-	    ($a, $b, $d) = ($p, $l, $t) if $t < $d;	    
+	    ($a, $b, $d) = ($p, $l, $t) if $t < $d;
 	}
     }
     return ($a, $b, $d);
@@ -3412,7 +3412,7 @@ sub closest_pair_real
 
     } else {
 	return ($m1, $m2, $dmin);
-    } 
+    }
 }
 
 
@@ -3465,45 +3465,45 @@ sub closest_pair_simple(@arr is copy) {
         my $p = pop @arr;
         for @arr -> $l {
             my $t = dist-squared($p, $l);
-            ($a, $b, $d) = $p, $l, $t if $t < $d;         
+            ($a, $b, $d) = $p, $l, $t if $t < $d;
         }
     }
     return $a, $b, sqrt $d;
 }
- 
+
 sub closest_pair(@r) {
     my @ax = @r.sort: { .[0] }
     my @ay = @r.sort: { .[1] }
     return closest_pair_real(@ax, @ay);
 }
- 
+
 sub closest_pair_real(@rx, @ry) {
     return closest_pair_simple(@rx) if @rx <= 3;
 
     my @xP = @rx;
     my @yP = @ry;
     my $N = @xP;
- 
+
     my $midx = ceiling($N/2)-1;
- 
+
     my @PL = @xP[0 .. $midx];
     my @PR = @xP[$midx+1 ..^ $N];
- 
+
     my $xm = @xP[$midx][0];
- 
+
     my @yR;
     my @yL;
     push ($_[0] <= $xm ?? @yR !! @yL), $_ for @yP;
- 
+
     my ($al, $bl, $dL) = closest_pair_real(@PL, @yR);
     my ($ar, $br, $dR) = closest_pair_real(@PR, @yL);
- 
+
     my ($m1, $m2, $dmin) = $dR < $dL
                                ?? ($ar, $br, $dR)
                                !! ($al, $bl, $dL);
- 
+
     my @yS = @yP.grep: { abs($xm - .[0]) < $dmin }
- 
+
     if @yS {
         my ($w1, $w2, $closest) = $m1, $m2, $dmin;
         for 0 ..^ @yS.end -> $i {
@@ -3512,13 +3512,13 @@ sub closest_pair_real(@rx, @ry) {
                 my $d = sqrt dist-squared(@yS[$k], @yS[$i]);
                 ($w1, $w2, $closest) = @yS[$k], @yS[$i], $d if $d < $closest;
             }
- 
+
         }
         return $w1, $w2, $closest;
- 
+
     } else {
         return $m1, $m2, $dmin;
-    } 
+    }
 }
 ```
 
@@ -3880,10 +3880,10 @@ Press ENTER to quit
 ```python
 """
   Compute nearest pair of points using two algorithms
-  
+
   First algorithm is 'brute force' comparison of every possible pair.
   Second, 'divide and conquer', is based on:
-    www.cs.iupui.edu/~xkzou/teaching/CS580/Divide-and-conquer-closestPair.ppt 
+    www.cs.iupui.edu/~xkzou/teaching/CS580/Divide-and-conquer-closestPair.ppt
 """
 
 from random import randint, randrange
@@ -3935,7 +3935,7 @@ def _closestPair(xP, yP):
         return (dm, pairm) if dm <= closestY[0] else closestY
     else:
         return dm, pairm
-    
+
 def times():
     ''' Time the different functions
     '''
@@ -3946,7 +3946,7 @@ def times():
         print 'Time for', f.__name__, timeit.Timer(
             '%s(pointList)' % f.__name__,
             'from closestpair import %s, pointList' % f.__name__).timeit(number=1)
-    
+
 
 
 pointList = [randint(0,1000)+1j*randint(0,1000) for i in range(2000)]
@@ -4024,7 +4024,7 @@ Time for bruteForceClosestPair 5.13221177552
 Time for closestPair 0.124602707886
 Time for bruteForceClosestPair 4.83609397284
 Time for closestPair 0.119326618327
->>> 
+>>>
 ```
 </div>
 
@@ -4035,7 +4035,7 @@ Time for closestPair 0.119326618327
 Brute force solution as per wikipedia pseudo-code
 
 ```R
-closest_pair_brute <-function(x,y,plotxy=F) { 
+closest_pair_brute <-function(x,y,plotxy=F) {
     xy = cbind(x,y)
     cp = bruteforce(xy)
     cat("\n\nShortest path found = \n From:\t\t(",cp[1],',',cp[2],")\n To:\t\t(",cp[3],',',cp[4],")\n Distance:\t",cp[5],"\n\n",sep="")
@@ -4046,9 +4046,9 @@ closest_pair_brute <-function(x,y,plotxy=F) {
     }
     distance <- function(p1,p2) {
         x1 = (p1[1])
-        y1 = (p1[2]) 
+        y1 = (p1[2])
         x2 = (p2[1])
-        y2 = (p2[2]) 
+        y2 = (p2[2])
         sqrt((x2-x1)^2 + (y2-y1)^2)
     }
     bf_iter <- function(m,p,idx=NA,d=NA,n=1) {
@@ -4061,7 +4061,7 @@ closest_pair_brute <-function(x,y,plotxy=F) {
         p = pmatrix[n,]
         ppd = c(p,bf_iter(pmatrix,p))
         if(ppd[5]<pd[5] || is.na(pd[5])) pd = ppd
-        if(n==length(pmatrix[,1]))  pd 
+        if(n==length(pmatrix[,1]))  pd
         else bruteforce(pmatrix,n+1,pd)
     }
 }
@@ -4102,16 +4102,16 @@ This is the quickest version, that makes use of the 'dist' function of R. It tak
 closest.pairs <- function(x, y=NULL, ...){
       # takes two-column object(x,y-values), or creates such an object from x and y values
        if(!is.null(y))  x <- cbind(x, y)
-       
+
        distances <- dist(x)
         min.dist <- min(distances)
           point.pair <- combn(1:nrow(x), 2)[, which.min(distances)]
-       
-     cat("The closest pair is:\n\t", 
-      sprintf("Point 1: %.3f, %.3f \n\tPoint 2: %.3f, %.3f \n\tDistance: %.3f.\n", 
-        x[point.pair[1],1], x[point.pair[1],2], 
-          x[point.pair[2],1], x[point.pair[2],2],  
-            min.dist), 
+
+     cat("The closest pair is:\n\t",
+      sprintf("Point 1: %.3f, %.3f \n\tPoint 2: %.3f, %.3f \n\tDistance: %.3f.\n",
+        x[point.pair[1],1], x[point.pair[1],2],
+          x[point.pair[2],1], x[point.pair[2],2],
+            min.dist),
             sep=""   )
      c( x1=x[point.pair[1],1],y1=x[point.pair[1],2],
         x2=x[point.pair[2],1],y2=x[point.pair[2],2],
@@ -4211,7 +4211,7 @@ closest.pairs.dandc <- function(x, y=NULL)
 		}
 	}
 	cp <- .cpdandc.rec(xp)
-	
+
 	yp <- x[order(x[,"y"]),]
 	xm <- xp[floor(dim(xp)[1]/2),"x"]
 	ys <- yp[which(abs(xm - yp[,"x"]) <= cp$d),]
@@ -4266,12 +4266,12 @@ How many points?
 Read 1 item
 Closest pairs divide and conquer:
 $p1
-         x          y 
-1.68807938 0.05876328 
+         x          y
+1.68807938 0.05876328
 
 $p2
-         x          y 
-1.68904694 0.05878173 
+         x          y
+1.68904694 0.05878173
 
 $d
 [1] 0.0009677302
@@ -4280,12 +4280,12 @@ That took 0.43 seconds.
 
 Closest pairs brute force:
 $p1
-         x          y 
-1.68807938 0.05876328 
+         x          y
+1.68807938 0.05876328
 
 $p2
-         x          y 
-1.68904694 0.05878173 
+         x          y
+1.68904694 0.05878173
 
 $d
 [1] 0.0009677302
@@ -4351,9 +4351,9 @@ The divide and conquer algorithm using a struct to represent points
   (cond [(= L 2) (vector->list Px)]
         [(= L 3) (apply min-pair (combinations (vector->list Px) 2))]
         [else (let*-values ([(Qx Rx) (vector-split-at Px (floor (/ L 2)))]
-                            ; Rx-min is the left most point in Rx 
+                            ; Rx-min is the left most point in Rx
                             [(Rx-min) (vector-ref Rx 0)]
-                            ; instead of sorting Qx, Rx by y 
+                            ; instead of sorting Qx, Rx by y
                             ; - Qy are members of Py to left of Rx-min
                             ; - Ry are the remaining members of Py
                             [(Qy Ry) (vector-partition Py (curryr left? Rx-min))]
@@ -4361,7 +4361,7 @@ The divide and conquer algorithm using a struct to represent points
                             [(pair2) (closest-pair/sorted Rx Ry)]
                             [(delta) (min (distance^2 pair1) (distance^2 pair2))]
                             [(pair3) (closest-split-pair Px Py delta)])
-                ; pair3 is null when there are no split pairs closer than delta 
+                ; pair3 is null when there are no split pairs closer than delta
                 (min-pair pair1 pair2 pair3))]))
 
 (define (closest-split-pair Px Py delta)
@@ -4386,7 +4386,7 @@ The divide and conquer algorithm using a struct to represent points
 ;; helper procedures
 
 ;; same as partition except for vectors
-;; it's critical to maintain the relative order of elements 
+;; it's critical to maintain the relative order of elements
 (define (vector-partition Py pred)
   (define-values (left right)
     (for/fold ([Qy null]
@@ -4421,7 +4421,7 @@ The divide and conquer algorithm using a struct to represent points
 (define points
        (shuffle
         (for/list ([ i (in-range 1000)]) (point i (* i i)))))
-(match-define (list (point p1x p1y) (point p2x p2y)) (closest-pair points)) 
+(match-define (list (point p1x p1y) (point p2x p2y)) (closest-pair points))
 (printf "Closest points on a quadratic curve (~a,~a) (~a,~a)\n" p1x p1y p2x p2y)
 
 ```
@@ -4442,9 +4442,9 @@ Closest points on a quadratic curve (0,0) (1,1)
 
 ## REXX
 
-Programming note:   this REXX version allows two (or more) points to be identical, and will 
+Programming note:   this REXX version allows two (or more) points to be identical, and will
 
-manifest itself as a minimum distance of zero   (the variable   <big> <tt> '''dd''' </tt> </big>   on line 17). 
+manifest itself as a minimum distance of zero   (the variable   <big> <tt> '''dd''' </tt> </big>   on line 17).
 
 ```rexx
 /*REXX program  solves the   closest pair   of  points  problem  (in two dimensions).   */
@@ -4540,7 +4540,7 @@ x[9] = 0.293786
 y[9] = 0.691701
 x[10] = 0.839186
 y[10] = 0.728260
- 
+
 min = 10000
 for i = 1 to 9
     for j = i+1 to 10
@@ -4643,17 +4643,17 @@ Courtesy http://dkokenge.com/rbp
 n =10                              ' 10 data points input
 dim x(n)
 dim y(n)
- 
+
 pt1 = 0                            ' 1st point
 pt2 = 0                            ' 2nd point
- 
+
 for i =1 to n                      ' read in data
-    read x(i)						
+    read x(i)
     read y(i)
 next i
- 
+
 minDist  = 1000000
- 
+
 for i =1 to n -1
     for j =i +1 to n
       distXsq =(x(i) -x(j))^2
@@ -4666,11 +4666,11 @@ for i =1 to n -1
       end if
     next j
 next i
- 
+
 print "Distance ="; minDist; " between ("; x(pt1); ", "; y(pt1); ") and ("; x(pt2); ", "; y(pt2); ")"
- 
+
 end
- 
+
 data  0.654682, 0.925557
 data  0.409382, 0.619391
 data  0.891663, 0.888594
@@ -4980,7 +4980,7 @@ struct Point {
   func distance(to p: Point) -> Double {
     let x = pow(p.x - self.x, 2)
     let y = pow(p.y - self.y, 2)
-    
+
     return (x + y).squareRoot()
   }
 }
@@ -4988,13 +4988,13 @@ struct Point {
 extension Collection where Element == Point {
   func closestPair() -> (Point, Point)? {
     let (xP, xY) = (sorted(by: { $0.x < $1.x }), sorted(by: { $0.y < $1.y }))
-    
+
     return Self.closestPair(xP, xY)?.1
   }
-  
+
   static func closestPair(_ xP: [Element], _ yP: [Element]) -> (Double, (Point, Point))? {
     guard xP.count > 3 else { return xP.closestPairBruteForce() }
-    
+
     let half = xP.count / 2
     let xl = Array(xP[..<half])
     let xr = Array(xP[half...])
@@ -5006,57 +5006,57 @@ extension Collection where Element == Point {
         cur.0.append(el)
       }
     })
-    
+
     guard let (distanceL, pairL) = closestPair(xl, yl) else { return nil }
     guard let (distanceR, pairR) = closestPair(xr, yr) else { return nil }
-    
+
     let (dMin, pairMin) = distanceL > distanceR ? (distanceR, pairR) : (distanceL, pairL)
-    
+
     let ys = yP.filter({ abs(xm - $0.x) < dMin })
-    
+
     var (closest, pairClosest) = (dMin, pairMin)
-    
+
     for i in 0..<ys.count {
       let p1 = ys[i]
-      
+
       for k in i+1..<ys.count {
         let p2 = ys[k]
-        
+
         guard abs(p2.y - p1.y) < dMin else { break }
-        
+
         let distance = abs(p1.distance(to: p2))
-        
+
         if distance < closest {
           (closest, pairClosest) = (distance, (p1, p2))
         }
       }
     }
-    
+
     return (closest, pairClosest)
   }
-  
+
   func closestPairBruteForce() -> (Double, (Point, Point))? {
     guard count >= 2 else { return nil }
-    
+
     var closestPoints = (self.first!, self[index(after: startIndex)])
     var minDistance = abs(closestPoints.0.distance(to: closestPoints.1))
-    
+
     guard count != 2 else { return (minDistance, closestPoints) }
-    
+
     for i in 0..<count {
       for j in i+1..<count {
         let (iIndex, jIndex) = (index(startIndex, offsetBy: i), index(startIndex, offsetBy: j))
         let (p1, p2) = (self[iIndex], self[jIndex])
-        
+
         let distance = abs(p1.distance(to: p2))
-        
+
         if distance < minDistance {
           minDistance = distance
           closestPoints = (p1, p2)
         }
       }
     }
-    
+
     return (minDistance, closestPoints)
   }
 }
@@ -5136,7 +5136,7 @@ proc closest_recursive {points} {
         set dmin $dR
         set dpair $pairR
     }
-    
+
     set xM [x [lindex $PL end]]
     foreach p $xP {
         if {abs($xM - [x $p]) < $dmin} {
@@ -5193,10 +5193,10 @@ Note that the <code>lindex</code> and <code>llength</code> commands are both O(1
 
 ## Ursala
 
-The brute force algorithm is easy. 
-Reading from left to right, clop is defined as a function 
-that forms the Cartesian product of its argument, 
-and then extracts the member whose left side is a minimum 
+The brute force algorithm is easy.
+Reading from left to right, clop is defined as a function
+that forms the Cartesian product of its argument,
+and then extracts the member whose left side is a minimum
 with respect to the floating point comparison relation
 after deleting equal pairs and attaching to the left of
 each remaining pair the sum of the squares of the differences
@@ -5208,7 +5208,7 @@ between corresponding coordinates.
 clop = @iiK0 fleq$-&l+ *EZF ^\~& plus+ sqr~~+ minus~~bbI
 ```
 
-The divide and conquer algorithm following the specification 
+The divide and conquer algorithm following the specification
 given above is a little more hairy but not much longer.
 The <code>eudist</code> library function
 is used to compute the distance between points.
@@ -5254,7 +5254,7 @@ example = clop test_data
 
 {{out}}
 The output shows the minimum distance and the two points separated
-by that distance. (If the brute force algorithm were used, it would 
+by that distance. (If the brute force algorithm were used, it would
 have displayed the square of the distance.)
 
 ```txt
@@ -5397,7 +5397,7 @@ Distance is 0.077910.
 
 ## XPL0
 
-The brute force method is simpler than the recursive solution 
+The brute force method is simpler than the recursive solution
 and is perfectly adequate, even for a thousand points.
 
 
@@ -5419,9 +5419,9 @@ for I:= 0 to N-2 do
         ];
     ];
 IntOut(0, SI);  Text(0, " -- ");  IntOut(0, SJ);  CrLf(0);
-RlOut(0, P(SI,0));  Text(0, ",");  RlOut(0, P(SI,1)); 
+RlOut(0, P(SI,0));  Text(0, ",");  RlOut(0, P(SI,1));
 Text(0, " -- ");
-RlOut(0, P(SJ,0));  Text(0, ",");  RlOut(0, P(SJ,1)); 
+RlOut(0, P(SJ,0));  Text(0, ",");  RlOut(0, P(SJ,1));
 CrLf(0);
 ];
 
@@ -5522,7 +5522,7 @@ L(Point(0.925092,0.81822),Point(0.891663,0.888594),0.0779102)
 100 NEXT j
 110 NEXT i
 120 PRINT "Closest pair is ";mini;" and ";minj;" at distance ";SQR min
-130 STOP 
+130 STOP
 140 DATA 0.654682,0.925557
 150 DATA 0.409382,0.619391
 160 DATA 0.891663,0.888594

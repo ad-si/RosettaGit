@@ -1008,11 +1008,11 @@ favorite plaything.
 
 
 
-## C sharp
+## C#
 
 Greedy algorithm:
 
-```csharp
+```c#
 namespace RosettaCode.WordWrap
 {
     using System;

@@ -918,7 +918,7 @@ std::vector<int> intVec;
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Variables in C# are very dynamic, in the form that they can be declared practically anywhere, with any scope.
 As in other languages, often used variables are: int, string, double etc.
 
@@ -929,14 +929,14 @@ They are declared with the type first, as in C:
 
 Multiple variables may be defined in a single line as follows:
 
-```csharp
+```c#
 int p, a, d;
 ```
 
 
 It is also possible to assign variables, either while declaring or in the program logic:
 
-```csharp
+```c#
 int a = 4;
 int b;
 int c = Func(a);

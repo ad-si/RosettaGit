@@ -425,9 +425,9 @@ e = 2.718281828459046
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace CalculateE {
@@ -462,7 +462,7 @@ e = 2.718281828459050
 ### Using Decimal type
 
 
-```csharp
+```c#
 using System;
 
 class Calc_E
@@ -496,7 +496,7 @@ class Calc_E
 {{libheader|System.Numerics}}
 Automatically determines number of padding digits required for the arbitrary precision output. Can calculate a quarter million digits of '''e''' in under half a minute.
 
-```csharp
+```c#
 using System; using System.Numerics;
 using static System.Math; using static System.Console;
 

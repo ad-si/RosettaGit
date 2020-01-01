@@ -20,10 +20,10 @@ The words may overlap but are not allowed to zigzag, or wrap around.
 
 
 
-;Task 
+;Task
 Create a 10 by 10 word search and fill it using words from the [http://www.puzzlers.org/pub/wordlists/unixdict.txt unixdict]. Use only words that are longer than 2, and contain no non-alphabetic characters.
 
-The cells not used by the hidden words should contain the message: ''Rosetta Code'', read from left to right, top to bottom. These letters should be somewhat evenly distributed over the grid, not clumped together. The message should be in upper case, the hidden words in lower case. All cells should either contain letters from the hidden words or from the message. 
+The cells not used by the hidden words should contain the message: ''Rosetta Code'', read from left to right, top to bottom. These letters should be somewhat evenly distributed over the grid, not clumped together. The message should be in upper case, the hidden words in lower case. All cells should either contain letters from the hidden words or from the message.
 
 Pack a minimum of 25 words into the grid.
 
@@ -37,16 +37,16 @@ Print the resulting grid and the solutions.
 ```txt
      0  1  2  3  4  5  6  7  8  9
 
-0    n  a  y  r  y  R  e  l  m  f 
-1    y  O  r  e  t  s  g  n  a  g 
-2    t  n  e  d  i  S  k  y  h  E 
-3    n  o  t  n  c  p  c  w  t  T 
-4    a  l  s  u  u  n  T  m  a  x 
-5    r  o  k  p  a  r  i  s  h  h 
-6    a  A  c  f  p  a  e  a  c  C 
-7    u  b  u  t  t  t  O  l  u  n 
-8    g  y  h  w  a  D  h  p  m  u 
-9    m  i  r  p  E  h  o  g  a  n 
+0    n  a  y  r  y  R  e  l  m  f
+1    y  O  r  e  t  s  g  n  a  g
+2    t  n  e  d  i  S  k  y  h  E
+3    n  o  t  n  c  p  c  w  t  T
+4    a  l  s  u  u  n  T  m  a  x
+5    r  o  k  p  a  r  i  s  h  h
+6    a  A  c  f  p  a  e  a  c  C
+7    u  b  u  t  t  t  O  l  u  n
+8    g  y  h  w  a  D  h  p  m  u
+9    m  i  r  p  E  h  o  g  a  n
 
 parish     (3,5)(8,5)   gangster   (9,1)(2,1)
 paucity    (4,6)(4,0)   guaranty   (0,8)(0,1)
@@ -90,7 +90,7 @@ public:
 };
 class Word {
 public:
-    Word( std::string s, int cs, int rs, int ce, int re, int dc, int dr ) : 
+    Word( std::string s, int cs, int rs, int ce, int re, int dc, int dr ) :
       word( s ), cols( cs ), rows( rs ), cole( ce ), rowe( re ), dx( dc ), dy( dr ) {}
     bool operator ==( const std::string& s ) { return 0 == word.compare( s ); }
     std::string word;
@@ -132,11 +132,11 @@ public:
         std::cout << "\n";
         std::vector<Word>::iterator w = used.begin();
         while( w != used.end() ) {
-            std::cout << std::right << std::setw( wid1 ) << ( *w ).word << " (" << ( *w ).cols << ", " << ( *w ).rows << ") (" 
+            std::cout << std::right << std::setw( wid1 ) << ( *w ).word << " (" << ( *w ).cols << ", " << ( *w ).rows << ") ("
                       << ( *w ).cole << ", " << ( *w ).rowe << ")\t";
             w++;
             if( w == used.end() ) break;
-            std::cout << std::setw( wid2 ) << ( *w ).word << " (" << ( *w ).cols << ", " << ( *w ).rows << ") (" 
+            std::cout << std::setw( wid2 ) << ( *w ).word << " (" << ( *w ).cols << ", " << ( *w ).rows << ") ("
                       << ( *w ).cole << ", " << ( *w ).rowe << ")\n";
             w++;
         }
@@ -219,10 +219,10 @@ private:
         do {
             for( std::vector<std::string>::iterator w = dictionary.begin(); w != dictionary.end(); w++ ) {
                 if( std::find( used.begin(), used.end(), *w ) != used.end() ) continue;
-            
+
                 if( add2Puzzle( *w ) ) {
                     es = getEmptySpaces();
-                    if( !es && used.size() >= MIN_WORD_CNT ) 
+                    if( !es && used.size() >= MIN_WORD_CNT )
                         return;
                 }
             }
@@ -288,11 +288,11 @@ dispel (6, 8) (6, 3)     kaplan (3, 9) (8, 9)
 
 
 
-## C sharp
+## C#
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -499,7 +499,7 @@ namespace Wordseach
                 Console.WriteLine(grid.Solutions[size - 1]);
 
             Console.ReadLine();
-        }        
+        }
     }
 }
 ```
@@ -993,16 +993,16 @@ Number of words: 28
 
      0  1  2  3  4  5  6  7  8  9
 
-0    d  R  g  n  i  p  l  e  h  w 
-1    o  O  o  e  g  n  i  h  n  u 
-2    r  e  b  c  p  S  o  e  r  c 
-3    s  l  E  g  o  j  l  e  h  s 
-4    T  z  e  n  i  g  m  a  h  T 
-5    s  z  e  i  o  a  n  o  o  p 
-6    n  u  A  d  e  c  C  a  e  u 
-7    a  p  a  r  e  l  O  n  c  t 
-8    o  D  c  i  m  a  t  h  e  s 
-9    r  a  E  b  e  r  e  s  i  r 
+0    d  R  g  n  i  p  l  e  h  w
+1    o  O  o  e  g  n  i  h  n  u
+2    r  e  b  c  p  S  o  e  r  c
+3    s  l  E  g  o  j  l  e  h  s
+4    T  z  e  n  i  g  m  a  h  T
+5    s  z  e  i  o  a  n  o  o  p
+6    n  u  A  d  e  c  C  a  e  u
+7    a  p  a  r  e  l  O  n  c  t
+8    o  D  c  i  m  a  t  h  e  s
+9    r  a  E  b  e  r  e  s  i  r
 
 cognacs    (3,2)(9,8)   unhinge    (9,1)(3,1)
 creamer    (2,8)(8,2)   whelping   (9,0)(2,0)
@@ -1106,7 +1106,7 @@ While the result is square, we flatten our intermediate results to simplify the 
 
 <code>key</code> lists the words we are placing, and where we placed them.
 
-<code>inuse</code> marks location+directions which already have a word (to prevent short words such as ''sal'' from being placed as prefixes of longer words such as ''sale''). 
+<code>inuse</code> marks location+directions which already have a word (to prevent short words such as ''sal'' from being placed as prefixes of longer words such as ''sale'').
 
 Once we have these, we go into a loop where:
 
@@ -1131,28 +1131,28 @@ Example run:
 
 ```J
    genpuz''
-    0 1 2 3 4 5 6 7 8 9                                                
-                                                                       
-0   y R p y r f O a p S                                                
-1   l o l s i f c c e a                                                
-2   l n v z i e n r n l                                                
-3   o p z s t e E i n l                                                
-4   h l s a v e r d a o                                                
-5   e a t a g r e e d y                                                
-6   m e m a g T f T A C                                                
-7   a y e r s p f z a p                                                
-8   O e c n a w o l l a                                                
-9   e s o p o r p c D E                                                
-                                                                       
- acetate     1  8 sw   │ gam         7  5 west │ pol         1  3 sw   
- acrid       1  8 south│ holly       5  1 north│ propose    10  7 west 
- agreed      6  4 east │ massif      7  1 ne   │ rsvp        1  5 sw   
+    0 1 2 3 4 5 6 7 8 9
+
+0   y R p y r f O a p S
+1   l o l s i f c c e a
+2   l n v z i e n r n l
+3   o p z s t e E i n l
+4   h l s a v e r d a o
+5   e a t a g r e e d y
+6   m e m a g T f T A C
+7   a y e r s p f z a p
+8   O e c n a w o l l a
+9   e s o p o r p c D E
+
+ acetate     1  8 sw   │ gam         7  5 west │ pol         1  3 sw
+ acrid       1  8 south│ holly       5  1 north│ propose    10  7 west
+ agreed      6  4 east │ massif      7  1 ne   │ rsvp        1  5 sw
  allowance   9 10 west │ neva        3  7 sw   │ sao         8  5 south
- alloy       2 10 south│ offer       9  7 north│ save        5  3 east 
- arm         9  5 nw   │ only        4  1 ne   │ sop        10  2 east 
- ayers       8  1 east │ pap        10  4 ne   │ tee         4  5 se   
- cop        10  8 nw   │ paz         8 10 west │ wan         9  6 west 
- fizzle      1  6 sw   │ penna       1  9 south│                       
+ alloy       2 10 south│ offer       9  7 north│ save        5  3 east
+ arm         9  5 nw   │ only        4  1 ne   │ sop        10  2 east
+ ayers       8  1 east │ pap        10  4 ne   │ tee         4  5 se
+ cop        10  8 nw   │ paz         8 10 west │ wan         9  6 west
+ fizzle      1  6 sw   │ penna       1  9 south│
 
 ```
 
@@ -1346,16 +1346,16 @@ Number of words: 27
 
      0  1  2  3  4  5  6  7  8  9
 
-0    R  p  d  i  o  r  o  t  r  a 
-1    O  a  o  e  s  b  l  o  c  S 
-2    m  s  t  l  f  e  t  l  a  y 
-3    E  t  e  i  y  o  t  s  T  i 
-4    e  y  l  b  t  g  r  s  p  l 
-5    r  l  T  i  A  h  o  e  e  l 
-6    o  e  l  h  t  j  c  n  s  C 
-7    z  l  o  u  a  a  O  t  a  t 
-8    u  k  r  g  c  n  D  z  i  l 
-9    o  t  r  a  v  e  l  E  v  w 
+0    R  p  d  i  o  r  o  t  r  a
+1    O  a  o  e  s  b  l  o  c  S
+2    m  s  t  l  f  e  t  l  a  y
+3    E  t  e  i  y  o  t  s  T  i
+4    e  y  l  b  t  g  r  s  p  l
+5    r  l  T  i  A  h  o  e  e  l
+6    o  e  l  h  t  j  c  n  s  C
+7    z  l  o  u  a  a  O  t  a  t
+8    u  k  r  g  c  n  D  z  i  l
+9    o  t  r  a  v  e  l  E  v  w
 
 rototill   (8,0)(1,7)   polygonal  (1,0)(9,8)
 fill       (4,2)(1,5)   goer       (3,8)(0,5)
@@ -1504,9 +1504,9 @@ printresult(wordmatrix("words.txt", false))
 
  Attempts: 1
  Number of words: 25
- 
+
       0  1  2  3  4  5  6  7  8  9
- 
+
  1    s  l  i  a  r  t  R  r  r  r
  2    n  o  i  t  c  u  a  O  e  e
  3    h  s  u  t  S  f  a  o  l  d
@@ -1703,16 +1703,16 @@ Number of words: 27
 
      0  1  2  3  4  5  6  7  8  9
 
-0    R  t  a  r  a  c  h  n  e  t 
-1    O  c  y  r  t  s  e  c  n  a 
-2    t  S  w  b  a  e  m  e  y  c 
-3    e  r  e  u  b  E  o  m  o  e 
-4    r  T  a  n  a  t  r  o  j  n 
-5    r  g  k  T  A  o  r  t  u  t 
-6    a  i  g  i  w  e  h  C  l  r 
-7    p  k  c  e  d  f  a  O  i  o 
-8    i  c  D  o  i  l  g  m  o  i 
-9    n  g  r  i  m  e  e  d  E  d 
+0    R  t  a  r  a  c  h  n  e  t
+1    O  c  y  r  t  s  e  c  n  a
+2    t  S  w  b  a  e  m  e  y  c
+3    e  r  e  u  b  E  o  m  o  e
+4    r  T  a  n  a  t  r  o  j  n
+5    r  g  k  T  A  o  r  t  u  t
+6    a  i  g  i  w  e  h  C  l  r
+7    p  k  c  e  d  f  a  O  i  o
+8    i  c  D  o  i  l  g  m  o  i
+9    n  g  r  i  m  e  e  d  E  d
 
 hemorrhage (6,0)(6,9)   ancestry   (9,1)(2,1)
 terrapin   (0,2)(0,9)   julio      (8,4)(8,8)
@@ -1739,7 +1739,7 @@ act        (2,0)(0,2)
 ```Phix
 --
 -- demo\rosetta\wordsearch.exw
--- 
+--
 ### =====================
 
 --
@@ -1840,7 +1840,7 @@ for x=2 to 11 do
         end if
     end for
 end for
-if length(message) then ?9/0 end if         
+if length(message) then ?9/0 end if
 puts(1,substitute(join(solution,'\n'),"X"," "))
 printf(1,"\n%d words\n",length(placed[1]))
 for i=1 to length(placed[1]) do
@@ -2014,97 +2014,97 @@ end for
 
 
 ```txt
-   0  1  2  3  4  5  6  7  8  9  
-0  R  s  o  y  b  e  a  n  O  p  
-1  r  d  h  t  a  b  e  S  e  r  
-2  o  e  n  a  o  h  k  n  l  u  
-3  t  t  y  o  r  a  i  e  i  s  
-4  a  e  r  u  r  n  d  g  a  s  
-5  r  s  E  m  s  e  n  T  l  e  
-6  i  t  a  u  c  i  h  T  f  l  
-7  a  A  l  e  l  l  o  y  l  l  
-8  n  a  r  s  e  r  a  l  a  C  
-9  O  p  D  l  u  m  e  n  c  E  
+   0  1  2  3  4  5  6  7  8  9
+0  R  s  o  y  b  e  a  n  O  p
+1  r  d  h  t  a  b  e  S  e  r
+2  o  e  n  a  o  h  k  n  l  u
+3  t  t  y  o  r  a  i  e  i  s
+4  a  e  r  u  r  n  d  g  a  s
+5  r  s  E  m  s  e  n  T  l  e
+6  i  t  a  u  c  i  h  T  f  l
+7  a  A  l  e  l  l  o  y  l  l
+8  n  a  r  s  e  r  a  l  a  C
+9  O  p  D  l  u  m  e  n  c  E
 
-ail       (4,8 ↑)     air       (7,0 ↑)  
-are       (8,6 ←)     aye       (2,3 ↙)  
-bath      (1,5 ←)     boor      (1,5 ↙)  
-calf      (9,8 ↑)     detest    (1,1 ↓)  
-est       (4,1 ↓)     flail     (6,8 ↑)  
-heron     (6,6 ↖)     karma     (2,6 ↙)  
-lares     (8,7 ←)     loy       (7,5 →)  
-lumen     (9,3 →)     nehru     (0,7 ↙)  
-peninsula (0,9 ↙)     precede   (9,1 ↗)  
-rotarian  (1,0 ↓)     roy       (3,4 ←)  
-russell   (1,9 ↓)     sling     (8,3 ↗)  
-soybean   (0,1 →)     tab       (1,3 →)  
-tar       (3,0 ↓)     
+ail       (4,8 ↑)     air       (7,0 ↑)
+are       (8,6 ←)     aye       (2,3 ↙)
+bath      (1,5 ←)     boor      (1,5 ↙)
+calf      (9,8 ↑)     detest    (1,1 ↓)
+est       (4,1 ↓)     flail     (6,8 ↑)
+heron     (6,6 ↖)     karma     (2,6 ↙)
+lares     (8,7 ←)     loy       (7,5 →)
+lumen     (9,3 →)     nehru     (0,7 ↙)
+peninsula (0,9 ↙)     precede   (9,1 ↗)
+rotarian  (1,0 ↓)     roy       (3,4 ←)
+russell   (1,9 ↓)     sling     (8,3 ↗)
+soybean   (0,1 →)     tab       (1,3 →)
+tar       (3,0 ↓)
 
 
-   0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 
-0  e  o  w  e  d  i  r  o  u  l  f  a  r  t  e  t  n  i  u  q  
-1  x  R  a  i  n  o  n  i  o  k  O  y  t  n  e  l  p  o  o  p  
-2  i  a  l  b  a  o  h  u  n  o  i  t  a  t  r  e  s  s  i  d  
-3  s  r  s  u  v  u  n  g  o  d  d  e  s  s  o  b  a  S  y  r  
-4  t  m  e  d  r  s  h  e  g  n  a  m  i  n  o  l  y  e  r  a  
-5  c  o  x  t  b  o  n  E  t  c  a  t  r  r  t  o  c  a  u  n  
-6  n  n  y  u  a  y  o  e  i  i  n  e  p  a  y  w  n  v  b  k  
-7  i  k  r  r  u  p  r  f  d  a  s  h  d  m  l  b  e  e  n  c  
-8  t  y  d  e  e  n  i  b  r  d  i  i  e  n  n  a  g  s  a  a  
-9  s  T  a  t  v  t  d  g  t  c  a  n  v  r  a  c  r  d  d  t  
-10 i  a  a  m  a  l  n  T  h  t  e  s  f  f  o  k  u  r  A  a  
-11 d  b  n  e  e  w  a  n  o  i  t  a  s  r  e  v  n  o  c  l  
-12 a  l  b  g  r  h  s  h  n  e  s  t  h  e  r  d  d  p  a  i  
-13 r  a  t  t  u  a  c  o  g  e  l  g  g  o  b  e  C  p  l  n  
-14 t  r  e  r  n  m  d  s  l  t  n  d  d  u  r  s  a  e  c  a  
-15 n  r  l  a  a  a  t  n  h  i  r  o  d  b  O  t  n  d  u  v  
-16 o  e  c  u  m  a  t  g  a  a  d  g  l  e  x  i  c  a  l  i  
-17 c  f  r  m  n  l  i  t  b  g  e  y  r  u  b  n  e  s  u  d  
-18 o  e  i  a  s  l  a  b  y  t  i  l  a  u  q  y  a  w  s  j  
-19 h  r  c  a  s  s  i  l  e  m  D  l  k  c  o  b  b  u  l  E  
+   0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19
+0  e  o  w  e  d  i  r  o  u  l  f  a  r  t  e  t  n  i  u  q
+1  x  R  a  i  n  o  n  i  o  k  O  y  t  n  e  l  p  o  o  p
+2  i  a  l  b  a  o  h  u  n  o  i  t  a  t  r  e  s  s  i  d
+3  s  r  s  u  v  u  n  g  o  d  d  e  s  s  o  b  a  S  y  r
+4  t  m  e  d  r  s  h  e  g  n  a  m  i  n  o  l  y  e  r  a
+5  c  o  x  t  b  o  n  E  t  c  a  t  r  r  t  o  c  a  u  n
+6  n  n  y  u  a  y  o  e  i  i  n  e  p  a  y  w  n  v  b  k
+7  i  k  r  r  u  p  r  f  d  a  s  h  d  m  l  b  e  e  n  c
+8  t  y  d  e  e  n  i  b  r  d  i  i  e  n  n  a  g  s  a  a
+9  s  T  a  t  v  t  d  g  t  c  a  n  v  r  a  c  r  d  d  t
+10 i  a  a  m  a  l  n  T  h  t  e  s  f  f  o  k  u  r  A  a
+11 d  b  n  e  e  w  a  n  o  i  t  a  s  r  e  v  n  o  c  l
+12 a  l  b  g  r  h  s  h  n  e  s  t  h  e  r  d  d  p  a  i
+13 r  a  t  t  u  a  c  o  g  e  l  g  g  o  b  e  C  p  l  n
+14 t  r  e  r  n  m  d  s  l  t  n  d  d  u  r  s  a  e  c  a
+15 n  r  l  a  a  a  t  n  h  i  r  o  d  b  O  t  n  d  u  v
+16 o  e  c  u  m  a  t  g  a  a  d  g  l  e  x  i  c  a  l  i
+17 c  f  r  m  n  l  i  t  b  g  e  y  r  u  b  n  e  s  u  d
+18 o  e  i  a  s  l  a  b  y  t  i  l  a  u  q  y  a  w  s  j
+19 h  r  c  a  s  s  i  l  e  m  D  l  k  c  o  b  b  u  l  E
 
-abate          (12,0 ↗)    alarm          (8,15 ↖) 
-alba           (2,1 →)     alma           (18,6 ↖) 
-amino          (4,10 →)    andean         (9,14 ↖) 
-andiron        (11,6 ↑)    ann            (8,15 ←) 
-armonk         (2,1 ↓)     balsa          (18,7 ←) 
-beatific       (12,2 ↗)    blowback       (3,15 ↓) 
+abate          (12,0 ↗)    alarm          (8,15 ↖)
+alba           (2,1 →)     alma           (18,6 ↖)
+amino          (4,10 →)    andean         (9,14 ↖)
+andiron        (11,6 ↑)    ann            (8,15 ←)
+armonk         (2,1 ↓)     balsa          (18,7 ←)
+beatific       (12,2 ↗)    blowback       (3,15 ↓)
 bock           (19,15 ←)   boggle         (13,14 ←)
-bred           (15,13 ↗)   bud            (2,3 ↓)  
+bred           (15,13 ↗)   bud            (2,3 ↓)
 budget         (13,14 ↙)   calculus       (11,18 ↓)
-catalina       (7,19 ↓)    circlet        (19,2 ↑) 
-clot           (5,16 ↖)    contradistinct (17,0 ↑) 
-conversation   (11,18 ←)   danbury        (9,18 ↑) 
-destiny        (12,15 ↓)   dissertation   (2,19 ←) 
+catalina       (7,19 ↓)    circlet        (19,2 ↑)
+clot           (5,16 ↖)    contradistinct (17,0 ↑)
+conversation   (11,18 ←)   danbury        (9,18 ↑)
+destiny        (12,15 ↓)   dissertation   (2,19 ←)
 dodo           (16,10 ↗)   drab           (14,11 ↙)
 drank          (2,19 ↓)    dusenbury      (17,19 ←)
 eavesdropped   (4,17 ↓)    enemy          (10,10 ↗)
-esther         (12,9 →)    exist          (0,0 ↓)  
-goddess        (3,7 →)     grant          (9,7 ↗)  
-halve          (12,7 ↖)    hero           (7,11 ↘) 
-hoard          (4,6 ↙)     hoc            (19,0 ↑) 
+esther         (12,9 →)    exist          (0,0 ↓)
+goddess        (3,7 →)     grant          (9,7 ↗)
+halve          (12,7 ↖)    hero           (7,11 ↘)
+hoard          (4,6 ↙)     hoc            (19,0 ↑)
 hurty          (2,6 ↙)     ivan           (16,19 ↑)
-juan           (18,19 ↖)   koinonia       (1,9 ←)  
+juan           (18,19 ↖)   koinonia       (1,9 ←)
 lexical        (16,12 →)   ligand         (19,11 ↖)
-lone           (16,12 ↖)   lounsbury      (0,9 ↙)  
-lubbock        (19,18 ←)   mange          (4,11 ←) 
-manure         (16,4 ↑)    melissa        (19,9 ←) 
-natty          (14,4 ↘)    nib            (8,5 →)  
+lone           (16,12 ↖)   lounsbury      (0,9 ↙)
+lubbock        (19,18 ←)   mange          (4,11 ←)
+manure         (16,4 ↑)    melissa        (19,9 ←)
+natty          (14,4 ↘)    nib            (8,5 →)
 nyu            (5,6 ↙)     offset         (10,14 ←)
-orphic         (4,14 ↙)    owe            (0,1 →)  
-pay            (6,12 →)    plenty         (1,16 ←) 
-poop           (1,19 ←)    purr           (7,5 ←)  
-quality        (18,14 ←)   quintet        (0,19 ←) 
+orphic         (4,14 ↙)    owe            (0,1 →)
+pay            (6,12 →)    plenty         (1,16 ←)
+poop           (1,19 ←)    purr           (7,5 ←)
+quality        (18,14 ←)   quintet        (0,19 ←)
 rca            (9,16 ←)    read           (12,14 ↘)
 referral       (19,1 ↑)    sadden         (10,11 ↖)
-salt           (2,17 ↙)    sang           (9,0 ↘)  
-schema         (14,7 ↖)    sexy           (3,2 ↓)  
-slight         (19,4 ↗)    solid          (12,6 ↘) 
-stan           (14,7 ↙)    tern           (5,8 ↙)  
-tetrafluoride  (0,15 ←)    thong          (9,8 ↓)  
+salt           (2,17 ↙)    sang           (9,0 ↘)
+schema         (14,7 ↖)    sexy           (3,2 ↓)
+slight         (19,4 ↗)    solid          (12,6 ↘)
+stan           (14,7 ↙)    tern           (5,8 ↙)
+tetrafluoride  (0,15 ←)    thong          (9,8 ↓)
 trauma         (13,3 ↓)    urgency        (10,16 ↑)
-visit          (9,12 ↖)    von            (3,4 ↗)  
-way            (18,17 ←)   wham           (11,5 ↓) 
+visit          (9,12 ↖)    von            (3,4 ↗)
+way            (18,17 ←)   wham           (11,5 ↓)
 ```
 
 
@@ -2161,7 +2161,7 @@ reg fitted; do{
       if(grid[r][c]=="?"){
 	 vs,wn:=buildVectors(r,c), findFit(vs,words);
 	 if(wn){
-	     w,n:=wn; pasteWord(r,c,vs[n][1,*].xplode(),w); 
+	     w,n:=wn; pasteWord(r,c,vs[n][1,*].xplode(),w);
 	     fitted.append(T(r,c,w));
 	  }
       }}
@@ -2170,7 +2170,7 @@ reg fitted; do{
 
 printGrid();
 println(fitted.len()," words fitted");
-fitted.pump(Console.println, T(Void.Read,3,False), 
+fitted.pump(Console.println, T(Void.Read,3,False),
    fcn{ vm.arglist.pump(String,
       fcn([(r,c,w)]){ "%-19s".fmt("[%d,%d]: %s  ".fmt(r,c,w)) }) }
 );
@@ -2194,13 +2194,13 @@ fitted.apply(fcn(w){ w[2].len() }).sum(0).println();
 8  t c f p O g u n r D
 9  k b o l s h o i b E
 26 words fitted
-[6,5]: eyed        [7,4]: dillon      [9,1]: bolshoi     [6,1]: rap         
-[9,8]: broach      [4,6]: claw        [0,2]: burn        [3,3]: way         
-[8,5]: gun         [2,7]: fad         [6,7]: gpo         [6,6]: beck        
-[8,0]: thymus      [4,5]: boast       [1,6]: dip         [2,5]: nib         
-[3,8]: bag         [4,2]: sex         [8,1]: core        [0,3]: nibs        
-[7,3]: gee         [5,2]: deaf        [4,4]: twa         [5,9]: puma        
-[0,0]: ski         [6,3]: lack        
+[6,5]: eyed        [7,4]: dillon      [9,1]: bolshoi     [6,1]: rap
+[9,8]: broach      [4,6]: claw        [0,2]: burn        [3,3]: way
+[8,5]: gun         [2,7]: fad         [6,7]: gpo         [6,6]: beck
+[8,0]: thymus      [4,5]: boast       [1,6]: dip         [2,5]: nib
+[3,8]: bag         [4,2]: sex         [8,1]: core        [0,3]: nibs
+[7,3]: gee         [5,2]: deaf        [4,4]: twa         [5,9]: puma
+[0,0]: ski         [6,3]: lack
 102
 
 ```
@@ -2390,16 +2390,16 @@ Number of words: 25
 
      0  1  2  3  4  5  6  7  8  9
 
-0    f  b  R  u  e  r  u  l  t  h 
-1    o  n  o  t  v  O  e  r  o  p 
-2    a  S  a  b  a  x  o  b  E  m 
-3    l  e  d  s  h  w  T  p  e  u 
-4    w  p  v  a  n  s  u  c  k  i 
-5    o  T  u  r  A  t  u  t  s  r 
-6    n  s  o  p  u  m  y  d  i  t 
-7    t  h  C  j  a  c  o  b  i  O 
-8    t  i  r  e  h  n  i  m  D  p 
-9    y  n  o  l  o  c  E  s  a  c 
+0    f  b  R  u  e  r  u  l  t  h
+1    o  n  o  t  v  O  e  r  o  p
+2    a  S  a  b  a  x  o  b  E  m
+3    l  e  d  s  h  w  T  p  e  u
+4    w  p  v  a  n  s  u  c  k  i
+5    o  T  u  r  A  t  u  t  s  r
+6    n  s  o  p  u  m  y  d  i  t
+7    t  h  C  j  a  c  o  b  i  O
+8    t  i  r  e  h  n  i  m  D  p
+9    y  n  o  l  o  c  E  s  a  c
 
 exhaust    (6,1)(0,7)   hornwort   (1,7)(8,0)
 btu        (3,2)(3,0)   jacobi     (3,7)(8,7)

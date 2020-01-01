@@ -1365,9 +1365,9 @@ Output:
 
 Cycle detection in <code>is_happy()</code> above is done using [[wp:Floyd's cycle-finding algorithm|Floyd's cycle-finding algorithm]].
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1430,7 +1430,7 @@ First 8 happy numbers : 1,7,10,13,19,23,28,31
 ===Alternate (cacheless)===
 Instead of caching and checking for being stuck in a loop, one can terminate on the "unhappy" endpoint of 89.  One might be temped to try caching the so-far-found happy and unhappy numbers and checking the cache to speed things up.  However, I have found that the cache implementation overhead reduces performance compared to this cacheless version.<br/>
 Reaching 10 million, the <34 second computation time was from Tio.run.  It takes under 5 seconds on a somewhat modern CPU.  If you edit it to max out at 100 million, it takes about 50 seconds (on the somewhat modern CPU).
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 class Program

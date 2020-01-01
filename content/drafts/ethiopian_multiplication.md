@@ -1337,14 +1337,14 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{works with|c sharp|C#|3+}}
 
 {{libheader|System.Linq}}
 
 
-```csharp
+```c#
 
 using System;
 using System.Linq;

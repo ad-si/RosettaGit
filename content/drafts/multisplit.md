@@ -436,13 +436,13 @@ int main( ) {
 <PRE>a b c</PRE>
 
 
-## C sharp
+## C#
 
 
 '''Extra Credit Solution'''
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

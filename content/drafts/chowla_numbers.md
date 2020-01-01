@@ -325,7 +325,7 @@ There are 5 perfect numbers < 350000000
 =={{header|C#|csharp}}==
 {{trans|Go}}
 
-```csharp
+```c#
 using System;
 
 namespace chowla_cs

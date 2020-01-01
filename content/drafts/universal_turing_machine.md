@@ -1249,10 +1249,10 @@ E;0;0;R;H
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

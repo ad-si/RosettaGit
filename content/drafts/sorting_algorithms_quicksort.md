@@ -1695,10 +1695,10 @@ template<typename RandomAccessIterator>
 }
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 Note that Array.Sort and ArrayList.Sort both use an unstable implementation of the quicksort algorithm.
 
-```csharp
+```c#
 //
 // The Tripartite conditional enables Bentley-McIlroy 3-way Partitioning.
 // This performs additional compares to isolate islands of keys equal to
@@ -1882,7 +1882,7 @@ namespace Sort {
 
 '''Example''':
 
-```csharp
+```c#
   using Sort;
   using System;
 
@@ -1906,7 +1906,7 @@ namespace Sort {
 A very inefficient way to do qsort in C# to prove C# code can be just as compact and readable as any dynamic code
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-A [http://www.otherwise.com/Jurtle/screenshots_win/assets/DisplayWindow_Full.png Polyspiral] is a spiral made of multiple line segments, whereby each segment is larger (or smaller) than the previous one by a given amount. Each segment also changes direction at a given angle. 
+A [http://www.otherwise.com/Jurtle/screenshots_win/assets/DisplayWindow_Full.png Polyspiral] is a spiral made of multiple line segments, whereby each segment is larger (or smaller) than the previous one by a given amount. Each segment also changes direction at a given angle.
 
 
 ;Task
@@ -28,7 +28,7 @@ If animation is not practical in your programming environment, you may show a si
     set incr to 0.0
 
     // animation loop
-    WHILE true 
+    WHILE true
 
         incr = (incr + 0.05) MOD 360
         x = width / 2
@@ -43,7 +43,7 @@ If animation is not practical in your programming environment, you may show a si
             length = length + 3
             angle = (angle + incr) MOD 360
         ENDFOR
-    
+
 
 ```
 
@@ -67,41 +67,41 @@ Straightforward implementation of the pseudocode, incr and angle are integers an
 void polySpiral(int windowWidth,int	windowHeight){
 	int incr = 0, angle, i, length;
 	double x,y,x1,y1;
-	
+
 	while(1){
-		incr = (incr + 5)%360; 
-		
+		incr = (incr + 5)%360;
+
 		x = windowWidth/2;
 		y = windowHeight/2;
-		
+
 		length = 5;
 		angle = incr;
-		
+
 		for(i=1;i<=150;i++){
 			x1 = x + length*cos(factor*angle);
 			y1 = y + length*sin(factor*angle);
 			line(x,y,x1,y1);
-			
+
 			length += 3;
-			
+
 			angle = (angle + incr)%360;
-			
+
 			x = x1;
 			y = y1;
 		}
 		delay(LAG);
-		cleardevice();	
+		cleardevice();
 	}
-}	
+}
 
 int main()
 {
 	initwindow(500,500,"Polyspiral");
-	
+
 	polySpiral(500,500);
-	
+
 	closegraph();
-	
+
 	return 0;
 }
 
@@ -187,13 +187,13 @@ public:
         BITMAPINFO       infoheader;
         BITMAP           bitmap;
         DWORD            wb;
-        
+
         GetObject( bmp, sizeof( bitmap ), &bitmap );
         DWORD* dwpBits = new DWORD[bitmap.bmWidth * bitmap.bmHeight];
         ZeroMemory( dwpBits, bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD ) );
         ZeroMemory( &infoheader, sizeof( BITMAPINFO ) );
         ZeroMemory( &fileheader, sizeof( BITMAPFILEHEADER ) );
-     
+
         infoheader.bmiHeader.biBitCount = sizeof( DWORD ) * 8;
         infoheader.bmiHeader.biCompression = BI_RGB;
         infoheader.bmiHeader.biPlanes = 1;
@@ -201,19 +201,19 @@ public:
         infoheader.bmiHeader.biHeight = bitmap.bmHeight;
         infoheader.bmiHeader.biWidth = bitmap.bmWidth;
         infoheader.bmiHeader.biSizeImage = bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD );
-     
+
         fileheader.bfType    = 0x4D42;
         fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
         fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
-     
+
         GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
-     
+
         HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL );
         WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
         WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
         WriteFile( file, dwpBits, bitmap.bmWidth * bitmap.bmHeight * 4, &wb, NULL );
         CloseHandle( file );
-     
+
         delete [] dwpBits;
     }
     HDC getDC() const     { return hdc; }
@@ -267,7 +267,7 @@ int main( int argc, char* argv[] ) {
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -443,7 +443,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 ```gnuplot
 
 ## plotpoly.gp 1/10/17 aev
-## Plotting a polyspiral and writing to the png-file. 
+## Plotting a polyspiral and writing to the png-file.
 ## Note: assign variables: rng, d, clr, filename and ttl (before using load command).
 ## Direction d (-1 clockwise / 1 counter-clockwise)
 reset
@@ -459,7 +459,7 @@ plot [0:c] t*cos(d*t), t*sin(d*t) lt rgb @clr
 set output
 
 ```
- 
+
 
 
 ### Plotting many versions of a polyspiral.
@@ -522,7 +522,7 @@ load "plotpoly.gp"
 
 #### NO PICTURES on RC starting from here, test it yourself
 
-##PS2 A polyspiral 
+##PS2 A polyspiral
 rng=20; d=1; clr = '"red"';
 filename = "PS2gp"; ttl = "Polyspiral #2 rng=20";
 load "plotpoly.gp"
@@ -581,7 +581,7 @@ load "plotpoly.gp"
 ## END ##
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -597,7 +597,7 @@ load "plotpoly.gp"
 
 ```gnuplot
 
-## plotpolya.gp 1/19/17 aev 
+## plotpolya.gp 1/19/17 aev
 ## Plotting a polyspiral and writing to the png-file. Simple plot for animation.
 ## Note: assign variables: rng, d, clr, filename (before using load command).
 ## ====  NO ttl (title) in this version.
@@ -613,7 +613,7 @@ plot [0:c] t*cos(d*t), t*sin(d*t) lt rgb @clr
 set output
 
 ```
- 
+
 
 
 ### Plotting many polyspiral and other pictures for animation.
@@ -683,7 +683,7 @@ rng=300; d=-1; clr = '"navy"'; filename = "PS13"; load "plotpolya.gp";
 rng=700; d=-1; clr = '"navy"'; filename = "PS14"; load "plotpolya.gp";
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -725,7 +725,7 @@ do for [i=8:14]{plot 'PS'.i.'.png' binary filetype=png with rgbimage}
 set output
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -748,7 +748,7 @@ Create 2 the following html-files and envoke them in browser.
 </body></html>
 
 ```
- 
+
 
 ```html
 
@@ -760,7 +760,7 @@ Create 2 the following html-files and envoke them in browser.
 </body></html>
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -773,7 +773,7 @@ Create 2 the following html-files and envoke them in browser.
 
 ## Go
 
-This uses Go's 'image' packages in its standard library to create an animated GIF. 
+This uses Go's 'image' packages in its standard library to create an animated GIF.
 
 When played this is similar to the Java entry but much quicker. The whole animation completes in 72 seconds and repeats indefinitely.
 
@@ -794,7 +794,7 @@ import (
     "image"
     "image/color"
     "image/gif"
-    "log" 
+    "log"
     "math"
     "os"
 )
@@ -896,7 +896,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    defer file.Close() 
+    defer file.Close()
     if err2 := gif.EncodeAll(file, &anim); err != nil {
         log.Fatal(err2)
     }
@@ -917,7 +917,7 @@ This implementation compiles to javascript that runs in the browser using the [h
 import Reflex
 import Reflex.Dom
 import Reflex.Dom.Time
-import Data.Text (Text, pack) 
+import Data.Text (Text, pack)
 import Data.Map (Map, fromList)
 import Data.Time.Clock (getCurrentTime)
 import Control.Monad.Trans (liftIO)
@@ -925,15 +925,15 @@ import Control.Monad.Trans (liftIO)
 type Point = (Float,Float)
 type Segment = (Point,Point)
 
-main = mainWidget $ do 
+main = mainWidget $ do
 
   -- An event that fires every 0.05 seconds.
-  dTick <- tickLossy 0.05 =<< liftIO getCurrentTime 
+  dTick <- tickLossy 0.05 =<< liftIO getCurrentTime
 
   -- A dynamically updating counter.
   dCounter <- foldDyn (\_ c -> c+1) (0::Int) dTick
 
-  let 
+  let
       -- A dynamically updating angle.
       dAngle = fmap (\c -> fromIntegral c / 800.0) dCounter
 
@@ -944,13 +944,13 @@ main = mainWidget $ do
       width = 600
       height = 600
 
-      boardAttrs = 
+      boardAttrs =
          fromList [ ("width" , pack $ show width)
                   , ("height", pack $ show height)
                   , ("viewBox", pack $ show (-width/2) ++ " " ++ show (-height/2) ++ " " ++ show width ++ " " ++ show height)
                   ]
 
-  elAttr "h1" ("style" =: "color:black") $ text "Polyspiral" 
+  elAttr "h1" ("style" =: "color:black") $ text "Polyspiral"
   elAttr "a" ("href" =: "http://rosettacode.org/wiki/Polyspiral#Haskell") $ text "Rosetta Code / Polyspiral / Haskell"
 
   el "br" $ return ()
@@ -966,7 +966,7 @@ lineAttrs ((x1,y1), (x2,y2)) =
            , ( "x2",    pack $ show x2)
            , ( "y2",    pack $ show y2)
            , ( "style", "stroke:blue")
-           ]    
+           ]
 
 -- Use svg to display a line segment.
 showLine :: MonadWidget t m => Int -> Dynamic t Segment -> m ()
@@ -974,10 +974,10 @@ showLine _ dSegment = elSvgns "line" (lineAttrs <$> dSegment) $ return ()
 
 -- Given a point and distance/bearing , get the next point
 advance :: Float -> (Point, Float, Float) -> (Point, Float, Float)
-advance angle ((x,y), len, rot) = 
+advance angle ((x,y), len, rot) =
   let new_x = x + len * cos rot
       new_y = y + len * sin rot
-      new_len = len + 3.0 
+      new_len = len + 3.0
       new_rot = rot + angle
   in ((new_x, new_y), new_len, new_rot)
 
@@ -999,7 +999,7 @@ elSvgns t m ma = do
 ```
 
 
-Link to live demo: https://dc25.github.io/rosettaCode__Polyspiral_haskell/ 
+Link to live demo: https://dc25.github.io/rosettaCode__Polyspiral_haskell/
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "PolySp.bas"
@@ -1040,38 +1040,38 @@ Link to live demo: https://dc25.github.io/rosettaCode__Polyspiral_haskell/
 ```J
 require 'gl2 trig media/imagekit'
 coinsert 'jgl2'
- 
+
 DT       =: %30       NB. seconds
 ANGLE    =: 0.025p1   NB. radians
 DIRECTION=: 0         NB. radians
- 
+
 POLY=: noun define
   pc poly;pn "Poly Spiral";
   minwh 320 320; cc isi isigraph;
 )
- 
-poly_run=: verb define 
+
+poly_run=: verb define
   wd POLY,'pshow'
   wd 'timer ',":DT * 1000
 )
- 
+
 poly_close=: verb define
   wd 'timer 0; pclose'
 )
- 
+
 sys_timer_z_=: verb define
   recalcAngle_base_ ''
   wd 'psel poly; set isi invalid'
 )
- 
+
 poly_isi_paint=: verb define
   drawPolyspiral DIRECTION
 )
- 
+
 recalcAngle=: verb define
   DIRECTION=: 2p1 | DIRECTION + ANGLE
 )
- 
+
 drawPolyspiral=: verb define
   glclear''
   x1y1 =. (glqwh'')%2
@@ -1086,7 +1086,7 @@ drawPolyspiral=: verb define
     a=. 2p1 | a - DIRECTION
   end.
 )
- 
+
 poly_run''
 ```
 
@@ -1171,7 +1171,7 @@ public class PolySpiral extends JPanel {
 ===Version #1 - Plain===
 This Polyspiral Generator page alows user to enjoy hundreds of polyspirals in different colors.
 
-This is inspired by a discovery made while using the gnuplot. 
+This is inspired by a discovery made while using the gnuplot.
 (See [[Talk:Polyspiral| Discussion ]] for Polyspiral task.)
 
 '''Note:'''
@@ -1232,12 +1232,12 @@ function pspiral() {
     <option value="brown">brown</option>
     <option value="maroon">maroon</option>
     <option value="black">black</option>
-  </select>  
+  </select>
   <b>Direction: </b>
-  <input id="dir" value="1" type="number" min="-1" max="1" size="1">  
+  <input id="dir" value="1" type="number" min="-1" max="1" size="1">
   <b>Range: </b>
-  <input id="rng" value="10" type="number" min="10" max="4000" step="10" size="4">  
-  <input type="button" value="Plot it!" onclick="pspiral();">  
+  <input id="rng" value="10" type="number" min="10" max="4000" step="10" size="4">
+  <input type="button" value="Plot it!" onclick="pspiral();">
 
   <h3>    Polyspiral</h3>
   <canvas id="cvsId" width="640" height="640" style="border: 2px inset;"></canvas>
@@ -1246,12 +1246,12 @@ function pspiral() {
 
 ```
 
-{{Output}} 
+{{Output}}
 
 ```txt
 
 Page with Polyspiral. Right-clicking on the canvas you can save spiral as a png-file, for example.
-Try all ranges/colors! But particularly these ranges: 50, 70, 80, 90, 110, 130, 160, 210, 220, 240, 270, 280, 290, 300, 310, 330, 
+Try all ranges/colors! But particularly these ranges: 50, 70, 80, 90, 110, 130, 160, 210, 220, 240, 270, 280, 290, 300, 310, 330,
 340, 350, 400, 430, 480, 510, all 1010-2000, a few 3000+, etc.
 
 ```
@@ -1444,7 +1444,7 @@ class PolySpiral() : JPanel() {
         var x1 = width / 2.0
         var y1 = height / 2.0
         var len = length
-        var angle = angleIncrement       
+        var angle = angleIncrement
         for (i in 0 until 150) {
             g.setColor(Color.getHSBColor(i / 150f, 1.0f, 1.0f))
             val x2 = x1 + Math.cos(angle) * len
@@ -1460,10 +1460,10 @@ class PolySpiral() : JPanel() {
     override protected fun paintComponent(gg: Graphics) {
         super.paintComponent(gg)
         val g = gg as Graphics2D
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON) 
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         drawSpiral(g, 5, Math.toRadians(inc))
-    } 
-} 
+    }
+}
 
 fun main(args: Array<String>) {
     SwingUtilities.invokeLater {
@@ -1524,7 +1524,7 @@ end
 ### Plotting helper functions
 
 Both versions #1 and #2 are based on using my own small plotting helper functions.
-You can find a few others on [http://oeis.org/wiki/User:Anatoly_E._Voevudko/VoeLib.gp#Plotting_helper_functions OEIS Wiki] and here on RC Wiki. 
+You can find a few others on [http://oeis.org/wiki/User:Anatoly_E._Voevudko/VoeLib.gp#Plotting_helper_functions OEIS Wiki] and here on RC Wiki.
 
 
 ```parigp
@@ -1570,12 +1570,12 @@ for(i=0, lim,
 }
 
 \\ Polyspiral() - Where: ai is an angle increment (in radians), d is a distance/length,
-\\ c is a direction 0/1 (clockwise/counter-clockwise); other parameters are self explanative. 
+\\ c is a direction 0/1 (clockwise/counter-clockwise); other parameters are self explanative.
 \\ 4/15/16 aev  Last updated: 4/18/16
 polyspiral(size,lim,ai,d,di,c=0)={
 plotinit(0);
 plotcolor(0,3); \\blue
-plotscale(0, -size,size, -size,size); 
+plotscale(0, -size,size, -size,size);
 plotmove(0, 0,0);
 plotpspiral(size,lim,ai,d,di,c);
 plotdraw([0,size,size]);
@@ -1590,7 +1590,7 @@ polyspiral(100000,100000,0.03,3,2);\\Polyspiral4.png
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -1600,10 +1600,10 @@ polyspiral(100000,100000,0.03,3,2);\\Polyspiral4.png
 
 > polyspiral(1500,1500,0.25,9,5);  \\Polyspiral1.png
 *** Polyspiral, size=1500 lim=1500 ai=0.250 d=9 di=5
- 
+
 > polyspiral(1500,1500,0.25,3,2);  \\Polyspiral2.png
 *** Polyspiral, size=1500 lim=1500 ai=0.250 d=3 di=2
- 
+
 > polyspiral(10000,10000,0.03,3,2);  \\Polyspiral3.png
 *** Polyspiral, size=100000 lim=100000 ai=0.030 d=3 di=2
 
@@ -1620,7 +1620,7 @@ polyspiral(100000,100000,0.03,3,2);\\Polyspiral4.png
 ===Version #2. Multi-spiral figure translated from zkl.===
 This is definitely not a polyspiral, but a very nice "multi-spiral" figure similar to shown in zkl
 and in a few other languages. Also, there is a very nice and impressive animation created in zkl,
-but not possible in PARI/GP. 
+but not possible in PARI/GP.
 
 {{trans|zkl}}
 
@@ -1651,12 +1651,12 @@ for(i=1, lim,
 }
 
 \\ Spiralz() - Where: ai is an angle increment (in radians), di is a distance/length
-\\ increment, other parameters are self explanative. 
+\\ increment, other parameters are self explanative.
 \\ 4/15/16 aev
 Spiralz(size,lim,ai,di,lim2)={
 plotinit(0); plotcolor(0,3); \\blue
-plotscale(0, -size,size, -size,size); 
-\\plotscale(0, 0,size, 0,size); 
+plotscale(0, -size,size, -size,size);
+\\plotscale(0, 0,size, 0,size);
 plotmove(0, 0,0);
 plotpspiralz(size,lim,ai,di,lim2);
 plotdraw([0,size,size]);
@@ -1667,7 +1667,7 @@ Spiralz(640,2,3.0,3.0,128);  \\Spiralz1.png
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -1686,7 +1686,7 @@ Spiralz(640,2,3.0,3.0,128);  \\Spiralz1.png
 {{works with|Rakudo|2018.09}}
 
 ===SVG "pseudo-animation"===
-Sort of an ersatz animation. Write updates to a svg file, most modern viewers will update as the content changes. 
+Sort of an ersatz animation. Write updates to a svg file, most modern viewers will update as the content changes.
 
 
 ```perl6
@@ -1867,7 +1867,7 @@ sub hsv2rgb ( $h, $s, $v ){ # inputs normalized 0-1
 
 Space toggles the timer, '+' increases speed (up to 100 FPS), '-' decreases speed.
 'M' toggles "mod360", which inverts the angle every 360/2PI or so, since sin/cos
-accept arguments in radians not degrees (and mod 2*PI changes nothing), producing 
+accept arguments in radians not degrees (and mod 2*PI changes nothing), producing
 non-true polyspirals, but quite interesting nevertheless.
 {{libheader|pGUI}}
 
@@ -2073,7 +2073,7 @@ y1 = 1080
 angle = 10
 length = 10
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("")
@@ -2104,7 +2104,7 @@ func draw
         paint = new qpainter() {
                   begin(p1)
                   setpen(pen)
-        for i = 1 to 150 
+        for i = 1 to 150
              x2 = x1 + cos(angle) * length
              y2 = y1 + sin(angle) * length
              drawline(x1, y1, x2, y2)

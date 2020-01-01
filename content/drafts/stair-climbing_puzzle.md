@@ -13,7 +13,7 @@ tags = []
 {{task}}
 From [http://lambda-the-ultimate.org/node/1872 Chung-Chieh Shan] (LtU):
 
-Your stair-climbing robot has a very simple low-level API: the "step" function takes no argument and attempts to climb one step as a side effect. Unfortunately, sometimes the attempt fails and the robot clumsily falls one step instead. The "step" function detects what happens and returns a boolean flag: true on success, false on failure. 
+Your stair-climbing robot has a very simple low-level API: the "step" function takes no argument and attempts to climb one step as a side effect. Unfortunately, sometimes the attempt fails and the robot clumsily falls one step instead. The "step" function detects what happens and returns a boolean flag: true on success, false on failure.
 
 Write a function "step_up" that climbs one step up [from the initial position] (by repeating "step" attempts if necessary). Assume that the robot is not already at the top of the stairs, and neither does it ever reach the bottom of the stairs. How small can you make "step_up"? Can you avoid using variables (even immutable ones) and numbers?
 
@@ -121,7 +121,7 @@ procedure Scaffolding is
          return False;
       end if;
    end Step;
-   
+
    procedure Step_Up is
    begin
       while not Step loop
@@ -173,7 +173,7 @@ void step_up(void)
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}}
 
@@ -185,7 +185,7 @@ void step_up(void)
       OD
    END # step up #;
 ```
-The following is a test program simulating step: 
+The following is a test program simulating step:
 ```Algol68
 
 PROC scaffolding = VOID:
@@ -341,9 +341,9 @@ void step_up()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 void step_up() {
     while (!step()) step_up();
 }
@@ -389,7 +389,7 @@ The internal recursion uses a counter; see the function documentation.
 
 
 
-###  Recursive 
+###  Recursive
 
 This satisfies Chung-chieh's challenge to avoid using numbers. Might blow the stack as
 ''p'' approaches 0.5.
@@ -522,7 +522,7 @@ def stepUpCounting() {
 Ordinary recursive solution:
 
 ```e
-def stepUpRecur() { 
+def stepUpRecur() {
     if (!step()) {
         stepUpRecur()
         stepUpRecur()
@@ -538,7 +538,7 @@ Eventual-recursive solution. This executes on the vat ''queue'' rather than the 
 def stepUpEventualRecur() {
     if (!step()) {
         return when (stepUpEventualRecur <- (),
-                     stepUpEventualRecur <- ()) -> {} 
+                     stepUpEventualRecur <- ()) -> {}
     }
 }
 ```
@@ -552,7 +552,7 @@ Fully eventual counting solution. This would be appropriate for controlling an a
 def stepUpEventual() {
     # This general structure (tail-recursive def{if{when}}) is rather common
     # and probably ought to be defined in a library.
-  
+
     def loop(deficit) {
         if (deficit > 0) {
             return when (def success := step()) -> {
@@ -579,13 +579,13 @@ step-up
 ;; Experimentation (not part of the task)
 ;; How much step calls to climb  1000 stairs ?
 ;; success is the robot success probability
-(define (step) 
+(define (step)
  (set! STEPS (1+ STEPS)) ;; count
  (< (random) SUCCESS)) ;; ->#t or #f
 
 (define (climb stairs)
 	(when (> stairs 0)  (step-up) (climb (1- stairs))))
-	
+
 (define (task  (stairs 1000))
 	(for ((success (in-range 1 0 -5/100)))
 	(set! SUCCESS success)
@@ -600,26 +600,26 @@ step-up
 
 ```txt
 
-stairs     1000     probability     1         steps     1000    
-stairs     1000     probability     19/20     steps     1062    
-stairs     1000     probability     9/10      steps     1115    
-stairs     1000     probability     17/20     steps     1207    
-stairs     1000     probability     4/5       steps     1254    
-stairs     1000     probability     3/4       steps     1305    
-stairs     1000     probability     7/10      steps     1440    
-stairs     1000     probability     13/20     steps     1542    
-stairs     1000     probability     3/5       steps     1641    
-stairs     1000     probability     11/20     steps     1865    
-stairs     1000     probability     1/2       steps     2045    
-stairs     1000     probability     9/20      steps     2177    
-stairs     1000     probability     2/5       steps     2615    
-stairs     1000     probability     7/20      steps     2769    
-stairs     1000     probability     3/10      steps     3312    
-stairs     1000     probability     1/4       steps     3963    
-stairs     1000     probability     1/5       steps     5054    
-stairs     1000     probability     3/20      steps     6573    
-stairs     1000     probability     1/10      steps     9840    
-stairs     1000     probability     1/20      steps     18689    
+stairs     1000     probability     1         steps     1000
+stairs     1000     probability     19/20     steps     1062
+stairs     1000     probability     9/10      steps     1115
+stairs     1000     probability     17/20     steps     1207
+stairs     1000     probability     4/5       steps     1254
+stairs     1000     probability     3/4       steps     1305
+stairs     1000     probability     7/10      steps     1440
+stairs     1000     probability     13/20     steps     1542
+stairs     1000     probability     3/5       steps     1641
+stairs     1000     probability     11/20     steps     1865
+stairs     1000     probability     1/2       steps     2045
+stairs     1000     probability     9/20      steps     2177
+stairs     1000     probability     2/5       steps     2615
+stairs     1000     probability     7/20      steps     2769
+stairs     1000     probability     3/10      steps     3312
+stairs     1000     probability     1/4       steps     3963
+stairs     1000     probability     1/5       steps     5054
+stairs     1000     probability     3/20      steps     6573
+stairs     1000     probability     1/10      steps     9840
+stairs     1000     probability     1/20      steps     18689
 
 ;; looks as if steps = stairs / success-probability
 
@@ -634,13 +634,13 @@ stairs     1000     probability     1/20      steps     18689
 ```elixir
 defmodule Stair_climbing do
   defp step, do: 1 == :rand.uniform(2)
-  
+
   defp step_up(true), do: :ok
   defp step_up(false) do
     step_up(step)
     step_up(step)
   end
-  
+
   def step_up, do: step_up(step)
 end
 
@@ -662,7 +662,7 @@ step() ->
 
 step_up(true) ->
     ok;
-step_up(false) ->   
+step_up(false) ->
     step_up(step()),
     step_up(step()).
 
@@ -854,7 +854,7 @@ end
 
 '''Solution (Tacit):'''
 
-```j>step         =: 0.6 
+```j>step         =: 0.6
  ?@0:
 attemptClimb =: [: <:`>:@.step 0:
 isNotUpOne   =: -.@(+/@])
@@ -873,7 +873,7 @@ step_upX=: monad define           NB. iterative
   while. -. +/y do. y=. y , _1 1 {~ step 0 end.
 )
 
-step_upR=: monad define           NB. recursive (stack overflow possible!)   
+step_upR=: monad define           NB. recursive (stack overflow possible!)
    while. -. step'' do. step_upR'' end.
 )
 ```
@@ -1319,7 +1319,7 @@ function StepUp
         StepUp
         }
     }
- 
+
 #  Step simulator for testing
 function Step
     {
@@ -1335,7 +1335,7 @@ function Step
         }
     return $Success
     }
- 
+
 #  Test
 $VerbosePreference = 'Continue'
 StepUp
@@ -1376,7 +1376,7 @@ Recursive version. Stack may overflow as probability of a fall approaches or exc
 Procedure step_up()
   While Not _step()
     step_up()
-  Wend 
+  Wend
 EndProcedure
 ```
 
@@ -1394,21 +1394,21 @@ Procedure _step()
     level - 1
     PrintN("Fell down to " + Str(level))
     ProcedureReturn #False
-  EndIf 
+  EndIf
 EndProcedure
-  
+
 ;recursive
 Procedure step_up()
   While Not _step()
     step_up()
-  Wend 
+  Wend
 EndProcedure
 
 If OpenConsole()
   PrintN("Begin at level: " + Str(level))
   step_up()
   PrintN("*** Now at level: " + Str(level))
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -1433,7 +1433,7 @@ Climbed up to 1
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```python
@@ -1450,7 +1450,7 @@ def step_up1()
 
 
 
-###  Recursive 
+###  Recursive
 
 This satisfies Chung-chieh's challenge to avoid using numbers. Might blow the stack as
 ''p'' approaches 0.5.
@@ -1483,7 +1483,7 @@ step <- function() {
 
 
 ### Recursive Solution
- 
+
 
 
 ```R
@@ -1649,13 +1649,13 @@ func stp
 ```runbasic
 
 result = stepUp()
- 
+
 Function stepUp()
     While Not(stepp())
         result = stepUp()
     Wend
 End Function
- 
+
 Function stepp()
 	stepp = int((Rnd(1) * 2))
 	print "Robot stepped "+word$("up down",stepp+1)
@@ -1821,7 +1821,7 @@ def stepUp {
         ((step) (step-up (- n-steps 1)))
         (else (step-up (+ n-steps 1)))))
 ```
-      
+
 
 
 ## Seed7
@@ -1872,7 +1872,7 @@ stepUp := [ [ step value ] whileFalse: [ stepUp value ] ].
 (*
  * val step : unit -> bool
  * This is a stub for a function which returns true if successfully climb a step or false otherwise.
- *) 
+ *)
 fun step() = true
 
 (*

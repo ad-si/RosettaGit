@@ -448,9 +448,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Text;
 using System.Linq;
@@ -512,7 +512,7 @@ class Program
 
 Alternate version using Regex (C#2 syntax only):
 
-```csharp
+```c#
 
 using System;
 using System.Text.RegularExpressions;

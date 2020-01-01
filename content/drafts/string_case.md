@@ -879,10 +879,10 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 
 class Program
 {
@@ -912,7 +912,7 @@ class Program
 
 Title case is a little different:
 
-```csharp
+```c#
 System.Console.WriteLine(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase("exAmpLe sTrinG"));
 ```
 

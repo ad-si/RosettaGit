@@ -247,7 +247,7 @@ ListNode* Solution::detectCycle(ListNode* A) {
 This solution uses generics, so may find cycles of any type of data, not just integers.
 
 
-```csharp
+```c#
 
 
 // First file: Cycles.cs

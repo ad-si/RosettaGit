@@ -556,10 +556,10 @@ int main(int argc, char **argv) {
 }
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 This effectively outputs the executable name, file path, and any arguments for the current program.
 
-```csharp
+```c#
 using System;
 namespace ProgramName
 {
@@ -575,7 +575,7 @@ namespace ProgramName
 
 In a C# application with a reference to System.Windows.Forms, the following can be used to retrieve the executable name and arguments without the full path.
 
-```csharp
+```c#
 using System;
 namespace ProgramName
 {

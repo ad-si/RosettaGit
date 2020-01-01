@@ -19,10 +19,10 @@ tags = []
 
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -216,11 +216,11 @@ fun extendedSyntheticDivision(dividend: IntArray, divisor: IntArray): Pair<IntAr
     for (i in 0 until separator) {
         out[i] /= normalizer
         val coef = out[i]
-        if (coef != 0) { 
+        if (coef != 0) {
             for (j in 1 until divisor.size) out[i + j] += -divisor[j] * coef
         }
     }
-    return out.copyOfRange(0, separator) to out.copyOfRange(separator, out.size) 
+    return out.copyOfRange(0, separator) to out.copyOfRange(separator, out.size)
 }
 
 fun main(args: Array<String>) {
@@ -324,8 +324,8 @@ for @tests -> @n, @d {
 {{out}}
 
 ```txt
-[1 -12 0 -42] / [1 -3] = [1 -9 -27], remainder [-123] 
-[1 0 0 0 -2] / [1 1 1 1] = [1 -1], remainder [0 0 -1] 
+[1 -12 0 -42] / [1 -3] = [1 -9 -27], remainder [-123]
+[1 0 0 0 -2] / [1 1 1 1] = [1 -1], remainder [0 0 -1]
 
 ```
 
@@ -349,7 +349,7 @@ function extendedSyntheticDivision(sequence dividend, divisor)
     end for
     return {out[1..separator],out[separator+1..$]}
 end function
- 
+
 constant tests = {{{1, -12, 0, -42},{1, -3}},
                   {{1, 0, 0, 0, -2},{1, 1, 1, 1}}}
 
@@ -440,7 +440,7 @@ POLYNOMIAL SYNTHETIC DIVISION
   (define normaliser (car divisor))
   (define divisor-length (length divisor)) ; } we use these often enough
   (define out-length (vector-length out))  ; }
-  
+
   (for ((i (in-range 0 (- out-length divisor-length -1))))
     (vector-set! out i (quotient (vector-ref out i) normaliser))
     (define coef (vector-ref out i))

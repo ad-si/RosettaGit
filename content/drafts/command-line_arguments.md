@@ -602,10 +602,10 @@ int main(int argc, char* argv[])
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 There are at least two methods to access the command-line arguments. The first method is to access the string array passed to Main. This method only accesses the arguments and not the path to the executable.
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode {
@@ -621,7 +621,7 @@ namespace RosettaCode {
 
 The second method is to call the Environment.GetCommandLineArgs function. This method also returns the path to the executable as args[0] followed by the actual command line arguments.
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode {

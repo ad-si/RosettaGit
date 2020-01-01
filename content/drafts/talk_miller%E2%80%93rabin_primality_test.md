@@ -15,12 +15,9 @@ tags = []
 The code for method RabinMiller.IsPrime(int n, int k) returns incorrect results.  For example, RabinMiller.IsPrime(181, 10) returns false even though 181 is prime.  I believe the incorrect value is returned because the line
 
 
-```C#
-
+```c#
 int mod = (int)Math.Pow(a, (double)temp) % n;
-
 ```
-
 
 overflows.
 
@@ -44,7 +41,7 @@ v = (1..times).find_all { |i| miller_rabin_prime?(n,g)}
 puts v.length
 
 ```
- 
+
 
 with n=703 (19 * 37) and g=1 for times=10,000 returned 2242 false trues, which compares well with the 2286 which may be expected [http://rosettacode.org/wiki/Talk:Carmichael_3_strong_pseudoprimes,_or_Miller_Rabin%27s_nemesis#Analysis from]. Increasing g to 5 reduced the number of false trues to 7. Increasing g to 10 reduced the number of false trues to 0 even when times was increased to 100000. Increasing times to 1000000 only returned 1 false true. Obviously these results will vary for each trial.--[[User:Nigel Galloway|Nigel Galloway]] 13:47, 30 December 2012 (UTC)
 
@@ -52,13 +49,13 @@ with n=703 (19 * 37) and g=1 for times=10,000 returned 2242 false trues, which c
 
 == python code errors ==
 
-The python code has multiple portions that are incorrect or not clear: 
+The python code has multiple portions that are incorrect or not clear:
 
 - a is chosen from 2 to n, not 2 to n-2
 
 - modular squaring should be done s-1 times, not s times
 
-- why is it written as 2 functions when it can be simplified? 
+- why is it written as 2 functions when it can be simplified?
 
 
 

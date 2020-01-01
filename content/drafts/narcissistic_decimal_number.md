@@ -801,9 +801,9 @@ int main( int argc, char* argv[] )
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 using System;
 
@@ -863,7 +863,7 @@ namespace Narcissistic
 ### or
 
 
-```csharp
+```c#
 
 //Narcissistic numbers: Nigel Galloway: February 17th., 2015
 using System;
@@ -935,7 +935,7 @@ namespace RC {
 {{libheader|System.Numerics}}
 {{trans|FreeBASIC}} (FreeBASIC, GMP version)<br/>Why stop at 25?  Even using '''ulong''' instead of '''int''' only gets one to the 44th item.  The 89th (last) item has 39 digits, which '''BigInteger''' easily handles.  Of course, the BigInteger implementation is slower than native data types.  But one can compensate a bit by calculating in parallel.  Not bad, it can get all 89 items in under 7 1/2 minutes on a core i7.  The calculation to the 25th item takes a fraction of a second.  The calculation for all items up to 25 digits long (67th item) takes about half a minute with sequential processing and less than a quarter of a minute using parallel processing.  Note that parallel execution involves some overhead, and isn't a time improvement unless computing around 15 digits or more.  This program can test all numbers up to 61 digits in under half an hour, of course the highest item found has only 39 digits.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

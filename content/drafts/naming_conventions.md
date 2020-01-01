@@ -388,7 +388,7 @@ int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 The Unix C standard library uses a prefix of "_" to "hide" raw Operating System calls from the non systems-programmer
 
 
-## C sharp
+## C#
 
 '''Capitalization'''<br/>
 - All keywords are lowercase (mandatory)<br/>
@@ -401,7 +401,7 @@ For example, the Visual Studio Gui designer will generate names of event handler
 '''Naming'''<br/>
 - Names of enums should be plural if it's a flags enum, otherwise it should be singular.
 
-```csharp
+```c#
 public enum Planet {
     Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
 }
@@ -424,7 +424,7 @@ public enum Days {
 You should:<br/>
 - prefix interface names with I e.g. IPrinter
 - prefix generic type parameters with T e.g.
-```csharp
+```c#
 Dictionary<TKey, TValue>
 ```
 

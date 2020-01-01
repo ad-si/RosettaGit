@@ -697,9 +697,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System.Net.Sockets;
 using System.Threading;
 

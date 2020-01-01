@@ -1346,10 +1346,10 @@ type = 5 = 'hommel' has a cumulative error of 4.35302e-07
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

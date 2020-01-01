@@ -122,10 +122,10 @@ int main(){
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

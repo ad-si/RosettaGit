@@ -55,11 +55,11 @@ ldap_unbind(ld);
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
-// Requires adding a reference to System.DirectoryServices 
+// Requires adding a reference to System.DirectoryServices
 var objDE = new System.DirectoryServices.DirectoryEntry("LDAP://DC=onecity,DC=corp,DC=fabrikam,DC=com");
 
 ```
@@ -72,14 +72,14 @@ var objDE = new System.DirectoryServices.DirectoryEntry("LDAP://DC=onecity,DC=co
 
 ```cfm
 
-<cfldap 
+<cfldap
 server = "#someip#"
-action="query" 
-start="somestart#" 
-username = "#someusername#" 
-password = "#somepassowrd#" 
-name = "results" 
-scope="subtree" 
+action="query"
+start="somestart#"
+username = "#someusername#"
+password = "#somepassowrd#"
+name = "results"
+scope="subtree"
 attributes = "#attributeslist#"
 >
 
@@ -110,7 +110,7 @@ void main() {
 
   // do something
   ...
-    
+
 }
 
 ```
@@ -182,7 +182,7 @@ func main() {
     }
     defer client.Close()
     err := client.Connect()
-    if err != nil { 
+    if err != nil {
         log.Fatalf("Failed to connect : %+v", err)
     }
     // Do something
@@ -508,7 +508,7 @@ This is a direct translation of the C code -- I have no idea how to try it out s
 
 ## Ruby
 
-Similar to Tcl, assume the AD server talks LDAP.  
+Similar to Tcl, assume the AD server talks LDAP.
 
 There are many Ruby LDAP packages ([http://rubyforge.org/search/?type_of_search=soft&words=ldap&Search=Search]) -- this solution uses [http://net-ldap.rubyforge.org/rdoc/ Net::LDAP] ("Pure Ruby LDAP Tools" on RubyForge, gem name "ruby-net-ldap")
 
@@ -548,7 +548,7 @@ conn.simple_bind("bind_dn", "bind_pass")?.success()?;
 
 ## Scala
 
-  
+
 ```scala
 import java.io.IOException
 

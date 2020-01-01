@@ -1233,9 +1233,9 @@ int main(int argc, char* argv[])
 MMVIII = 2008
 MDCLXVI = 1666</PRE>
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

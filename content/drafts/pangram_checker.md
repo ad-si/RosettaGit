@@ -970,11 +970,11 @@ no : The five boxing wizards dump quickly.
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 C# 3.0 or higher (.NET Framework 3.5 or higher)
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -996,7 +996,7 @@ static class Program
 Any version of C# language and .NET Framework
 
 
-```csharp
+```c#
 using System;
 
 namespace PangrammChecker

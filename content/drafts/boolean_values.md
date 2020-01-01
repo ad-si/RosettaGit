@@ -550,7 +550,7 @@ In C++, there are the constants <code>true</code> and <code>false</code> to repr
 * any pointer type, where the null pointer gives false and any other pointer gives true
 * any user-defined type with an implicit conversion operator either to <code>bool</code> or to a built-in type which itself can be converted to <code>bool</code> (i.e. any of the above). The C++ standard library contains one such implicit conversion: the implicit conversion of a stream <code>s</code> to <code>bool</code> gives <code>!s.fail()</code>
 
-=={{header|C sharp|C#}}==
+## C#
 In C#, there are the reserved keywords <code>true</code> and <code>false</code>. Variables to hold these values are declared as either <code>bool</code> or <code>Boolean</code>. These types are identical, as <code>bool</code> is just shortand for <code>Boolean</code>. The collection type <code>BitArray</code> returns its values as <code>Boolean</code>, packing 8 values into each byte (In contrast, the <code>Boolean</code> type uses the entire byte for one value).
 
 Unlike C/C++, there is no conversion in C# between other types and <code>Boolean</code>.

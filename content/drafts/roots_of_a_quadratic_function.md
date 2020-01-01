@@ -409,9 +409,9 @@ x2 = (9.99999999999999945153e-21, 0.00000000000000000000e+00)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

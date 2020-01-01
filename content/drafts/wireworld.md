@@ -1041,7 +1041,7 @@ int main(int argc, char* argv[])
 
 
 
-## C sharp
+## C#
 
 See: [[Wireworld/C sharp]]
 

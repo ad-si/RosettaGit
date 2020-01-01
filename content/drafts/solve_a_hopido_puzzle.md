@@ -57,7 +57,7 @@ SolveHopido(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 	num++								; increment num
 	if (num=max)							; if reached end
 		return map(Grid)					; return solution
- 
+
 	if locked[num]							; if current num is a locked value
 	{
 		row := StrSplit((StrSplit(locked[num], ",").1) , ":").1	; find row of num
@@ -71,7 +71,7 @@ SolveHopido(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 		{
 			R := StrSplit(value, ":").1
 			C := StrSplit(value, ":").2
- 
+
 			if (Grid[R,C] = "")				; a hole or out of bounds
 			|| InStr(Grid[R, C], ">")			; visited
 			|| Locked[num+1] && !(Locked[num+1]~= "\b" R ":" C "\b") ; not neighbor of locked[num+1]
@@ -79,7 +79,7 @@ SolveHopido(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 			|| Locked[num]					; locked value
 			|| Locked[Grid[R, C]]				; locked cell
 				continue
- 
+
 			if SolveHopido(Grid, Locked, Max, row, col, num, R, C)	; solve for current location, neighbor and value
 				return map(Grid)			; if solved, return solution
 		}
@@ -99,7 +99,7 @@ Neighbor(row,col){
 	. ","  row ":" col+3
 	. ","  row-3 ":" col
 	. ","  row+3 ":" col
-	
+
 	. ","  row+2 ":" col+2
 	. ","  row+2 ":" col-2
 	. ","  row-2 ":" col+2
@@ -129,14 +129,14 @@ Grid := [["",0 ,0 ,"",0 ,0 ,""]
 	,["","",0 ,0 ,0 ,"",""]
 	,["","","",0 ,"","",""]]
 ;--------------------------------
-; find locked cells, find max value 
+; find locked cells, find max value
 Locked := []
 max := 1
 for i, line in Grid
 	for j, element in line
 		if (element >= 0)
 			max++ 	, list .= i ":" j "`n"
-	
+
 random, rnd, 1, %max%
 loop, parse, list, `n, `r
 	if (A_Index = rnd)
@@ -154,11 +154,11 @@ return
 
 Outputs:
 ```txt
-	17	24		16	25	
+	17	24		16	25
 22	8	11	21	7	10	20
 13	2	5	14	1	4	15
-	18	23	9	19	26	
-		12	3	6		
+	18	23	9	19	26
+		12	3	6
 			27
 ```
 
@@ -191,7 +191,7 @@ public:
     {
 	dx[0] = -2; dy[0] = -2; dx[1] = -2; dy[1] =  2;
 	dx[2] =  2; dy[2] = -2; dx[3] =  2; dy[3] =  2;
-	dx[4] = -3; dy[4] =  0; dx[5] =  3; dy[5] =  0; 
+	dx[4] = -3; dy[4] =  0; dx[5] =  3; dy[5] =  0;
 	dx[6] =  0; dy[6] = -3; dx[7] =  0; dy[7] =  3;
     }
 
@@ -269,8 +269,8 @@ private:
     {
 	for( int b = 0; b < hei; b++ )
 	    for( int a = 0; a < wid; a++ )
-		if( arr[a + wid * b].val == 0 ) 
-		{ 
+		if( arr[a + wid * b].val == 0 )
+		{
 		    x = a; y = b; z = 1;
 		    arr[a + wid * b].val = z;
 		    return;
@@ -320,14 +320,14 @@ int main( int argc, char* argv[] )
 
 
 
-## C sharp
+## C#
 
 The same solver can solve Hidato, Holy Knight's Tour, Hopido and Numbrix puzzles.<br/>
 The input can be an array of strings if each cell is one character. The length of the first row must be the number of columns in the puzzle.<br/>
 Any non-numeric value indicates a no-go.<br/>
 If there are cells that require more characters, then a 2-dimensional array of ints must be used. Any number < 0 indicates a no-go.<br/>
 
-```csharp
+```c#
 using System.Collections;
 using System.Collections.Generic;
 using static System.Console;
@@ -341,7 +341,7 @@ public class Solver
         hopidoMoves = {(-3,0),(0,-3),(0,3),(3,0),(-2,-2),(-2,2),(2,-2),(2,2)},
 
     private (int dx, int dy)[] moves;
-        
+
     public static void Main()
     {
         Print(new Solver(hopidoMoves).Solve(false,
@@ -612,9 +612,9 @@ This solution uses HLPsolver from [[Solve_a_Hidato_puzzle#Elixir | here]]
 
 ```elixir
 # require HLPsolver
- 
+
 adjacent = [{-3, 0}, {0, -3}, {0, 3}, {3, 0}, {-2, -2}, {-2, 2}, {2, -2}, {2, 2}]
- 
+
 board = """
 . 0 0 . 0 0 .
 0 0 0 0 0 0 0
@@ -786,12 +786,12 @@ func main() {
 
 ```txt
 
-             1 22    14 21             
-         18 10  7 17 11  8 16          
-          5 24 27  4 23 26 13          
-             2 19  9 15 20             
-                6 25 12                
-                   3            
+             1 22    14 21
+         18 10  7 17 11  8 16
+          5 24 27  4 23 26 13
+             2 19  9 15 20
+                6 25 12
+                   3
 
 ```
 
@@ -909,27 +909,27 @@ Sample run:
 
 ->hopido <hopido1.in
 Input with 27 cells:
-                                 
-                                 
-           _  _     _  _         
-        _  _  _  _  _  _  _      
-        _  _  _  _  _  _  _      
-           _  _  _  _  _         
-              _  _  _            
-                 1               
-                                 
-                                 
+
+
+           _  _     _  _
+        _  _  _  _  _  _  _
+        _  _  _  _  _  _  _
+           _  _  _  _  _
+              _  _  _
+                 1
+
+
 Output with 27 cells:
-                                 
-                                 
-           3 21    13 22         
-       25  9  6 26 10  7 27      
-       20 17 14  2 18 15 12      
-           4 24  8  5 23         
-             19 16 11            
-                 1               
-                                 
-                                 
+
+
+           3 21    13 22
+       25  9  6 26 10  7 27
+       20 17 14  2 18 15 12
+           4 24  8  5 23
+             19 16 11
+                 1
+
+
 ->
 
 ```
@@ -1056,12 +1056,12 @@ public class Hopido {
 
 ```txt
 
-             1 22    14 21             
-         18 10  7 17 11  8 16          
-          5 24 27  4 23 26 13          
-             2 19  9 15 20             
-                6 25 12                
-                   3                   
+             1 22    14 21
+         18 10  7 17 11  8 16
+          5 24 27  4 23 26 13
+             2 19  9 15 20
+                6 25 12
+                   3
 ```
 
 
@@ -1218,12 +1218,12 @@ fun main(args: Array<String>) {
 
 ```txt
 
-             1 22    14 21             
-         18 10  7 17 11  8 16          
-          5 24 27  4 23 26 13          
-             2 19  9 15 20             
-                6 25 12                
-                   3    
+             1 22    14 21
+         18 10  7 17 11  8 16
+          5 24 27  4 23 26 13
+             2 19  9 15 20
+                6 25 12
+                   3
 
 ```
 
@@ -1324,11 +1324,11 @@ sub solveboard($board) {
     my @known;
     my @neigh;
     my @degree;
- 
+
     @grid = $board.lines.map: -> $line {
         [ $line.words.map: { /^_/ ?? 0 !! /^\./ ?? Rat !! $_ } ]
     }
- 
+
     sub neighbors($y,$x --> List) {
         eager gather for @adjacent {
             my $y1 = $y + .[0];
@@ -1396,7 +1396,7 @@ sub solveboard($board) {
         @grid[$y][$x] = $old;             # undo grid value conjecture
         return False;
     }
-     
+
     say "$tries tries";
 }
 ```
@@ -1405,12 +1405,12 @@ sub solveboard($board) {
 {{out}}
 
 ```txt
-   21  4    20  3   
+   21  4    20  3
 26 12 15 25 11 14 24
 17  6  9 18  5  8 19
-   22 27 13 23  2   
-      16  7 10      
-          1         
+   22 27 13 23  2
+      16  7 10
+          1
 59 tries
 ```
 
@@ -1435,7 +1435,7 @@ integer nrow, ncol
     for move=1 to length(moves) do
         nrow = row+moves[move][ROW]
         ncol = col+moves[move][COL]*3
-        if nrow>=1 and nrow<=length(board) 
+        if nrow>=1 and nrow<=length(board)
         and ncol>=1 and ncol<=length(board[row])
         and board[nrow][ncol]=' ' then
             board[nrow][ncol-1..ncol] = sprintf("%2d",n)
@@ -1580,12 +1580,12 @@ else:
  {{out}}
 ```txt
 
-    01 25    17 03   
+    01 25    17 03
  27 13 10 07 14 11 08
  24 21 18 02 22 19 16
-    06 26 12 09 04   
-       23 20 15      
-          05     
+    06 26 12 09 04
+       23 20 15
+          05
 
 ```
 
@@ -1699,7 +1699,7 @@ show: if maxR<1 | maxC<1  then call err  'no legal cell was specified.'
       say;    return
 ```
 
-'''output'''   when the input is: 
+'''output'''   when the input is:
 
 <tt> 1 4 1 \2 3 . . . \3 2 . . . . . \4 1 . . . . . . . \5 1 . . . . . . . \6 2 . . \6 5 . . </tt>
 
@@ -1754,20 +1754,20 @@ Which produces:
 ```txt
 
 Problem:
-     0  0     0  0   
+     0  0     0  0
   0  0  0  0  0  0  0
   0  0  0  0  0  0  0
-     0  0  0  0  0   
-        0  0  0      
-           1         
+     0  0  0  0  0
+        0  0  0
+           1
 
 Solution:
-     3 12     4 11   
+     3 12     4 11
   8 18 21  7 17 20  6
  13 24 27 14 23 26 15
-     2  9 19  5 10   
-       22 25 16      
-           1         
+     2  9 19  5 10
+       22 25 16
+           1
 
  0.001 sec
 
@@ -1883,19 +1883,19 @@ showPuzzle [hop solution] "Output"
 ```txt
 
 Input with 27 cells
-     __ __    __ __   
+     __ __    __ __
   __ __ __ __ __ __ __
   __ __ __ __ __ __ __
-     __ __ __ __ __   
-        __ __ __      
-            1         
+     __ __ __ __ __
+        __ __ __
+            1
 Output with 27 cells
-      3  6    23  7   
+      3  6    23  7
   27 11 14 26 10 13 25
    5 17 20  4 16 19 22
-      2  9 12 24  8   
-        15 18 21      
-            1         
+      2  9 12 24  8
+        15 18 21
+            1
 
 ```
 
@@ -1934,19 +1934,19 @@ println();
 ```txt
 
 Number of cells = 27
-   __ __    __ __    
-__ __ __ __ __ __ __ 
-__ __ __ __ __ __ __ 
-   __ __ __ __ __    
-      __ __ __       
-         __          
+   __ __    __ __
+__ __ __ __ __ __ __
+__ __ __ __ __ __ __
+   __ __ __ __ __
+      __ __ __
+         __
 
-    1  8     2  9    
-12 24 21 13 25 22 14 
-19  6  3 18  7  4 27 
-   16 11 23 15 10    
-      20  5 26       
-         17          
+    1  8     2  9
+12 24 21 13 25 22 14
+19  6  3 18  7  4 27
+   16 11 23 15 10
+      20  5 26
+         17
 
 ```
 

@@ -892,10 +892,10 @@ Sh ws  soul strppr. Sh took my hrt!
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 public static string RemoveCharactersFromString(string testString, string removeChars)

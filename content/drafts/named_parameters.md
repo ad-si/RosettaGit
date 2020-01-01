@@ -378,14 +378,14 @@ function_with_named_parameters(9, 2.5, true, "Hello");
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{works with|C sharp|C#|4.0}}
 
 Named parameters were added in C# 4.0.  The examples below demonstrate how named parameters and optional parameters are a single concept in the language.
 
 
-```csharp
+```c#
 using System;
 
 namespace NamedParams

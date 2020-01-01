@@ -86,31 +86,31 @@ struct MemoryStruct {
   char *memory;
   size_t size;
 };
- 
+
 static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
   size_t realsize = size * nmemb;
   struct MemoryStruct *mem = (struct MemoryStruct *)userp;
- 
+
   mem->memory = realloc(mem->memory, mem->size + realsize + 1);
- 
+
   memcpy(&(mem->memory[mem->size]), contents, realsize);
   mem->size += realsize;
   mem->memory[mem->size] = 0;
- 
+
   return realsize;
 }
 
 void checkResponse(char* str){
 	char ref[] = "Vendor not found";
 	int len = strlen(str),flag = 1,i;
-	
+
 	if(len<16)
 		fputs(str,stdout);
 	else{
 		for(i=0;i<len && i<16;i++)
 			flag = flag && (ref[i]==str[i]);
-		
+
 		flag==1?fputs("N/A",stdout):fputs(str,stdout);
 	}
 }
@@ -125,30 +125,30 @@ int main(int argC,char* argV[])
 			char* str = (char*)malloc((FIXED_LENGTH + len)*sizeof(char));
 			struct MemoryStruct chunk;
 			CURLcode res;
- 
+
 			chunk.memory = malloc(1);
-			chunk.size = 0;  
- 
+			chunk.size = 0;
+
         if ((curl = curl_easy_init()) != NULL) {
 				sprintf(str,"http://api.macvendors.com/%s",argV[1]);
 
                                 curl_easy_setopt(curl, CURLOPT_URL, str);
 				curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
 				curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
-				
+
 				free(str);
-				
+
 				res = curl_easy_perform(curl);
-				
+
                 if (res == CURLE_OK) {
 				checkResponse(chunk.memory);
                                 return EXIT_SUCCESS;
                 }
-				
+
                 curl_easy_cleanup(curl);
 			}
 		}
-        
+
         return EXIT_FAILURE;
 }
 
@@ -166,10 +166,10 @@ N/A
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Net;
 using System.Net.Http;
@@ -393,9 +393,9 @@ lookupMACvendor=: [: gethttp 'http://api.macvendors.com/'&,
 ```j
    addr=: '88:53:2E:67:07:BE';'FC:FB:FB:01:FA:21';'D4:F4:6F:C9:EF:8D';'23:45:67'
    (,&'   ' , lookupMACvendor)&> addr
-88:53:2E:67:07:BE   Intel Corporate   
+88:53:2E:67:07:BE   Intel Corporate
 FC:FB:FB:01:FA:21   Cisco Systems, Inc
-D4:F4:6F:C9:EF:8D   Apple, Inc.       
+D4:F4:6F:C9:EF:8D   Apple, Inc.
 23:45:67   Vendor not found
 ```
 
@@ -553,9 +553,9 @@ Module Checkit {
             Method htmldoc "open","GET", url$, false
             Method htmldoc "setRequestHeader","Content-Type", "application/x-www-form-urlencoded"
             Method htmldoc "send"
-            With  htmldoc, "responseText" as ready$ 
+            With  htmldoc, "responseText" as ready$
             res$=trim$(ready$)
-            if left$(res$,1)="{" then 
+            if left$(res$,1)="{" then
                   ="N/A"
             else
                    =res$
@@ -714,23 +714,23 @@ Apparently there is some rate limiting on place now, sleep a bit between request
 
 ```perl6
 use HTTP::UserAgent;
- 
+
 my $ua = HTTP::UserAgent.new;
- 
+
 $ua.timeout = 10; # seconds
- 
+
 my $server = 'http://api.macvendors.com/';
- 
+
 sub lookup ($mac) {
     my $response = $ua.get: "$server+$mac";
     sleep 1;
     return $response.is-success ?? $response.content !! 'N/A';
- 
+
     CATCH {             # Normally you would report some information about what
         default { Nil } # went wrong, but the task specifies to ignore errors.
     }
 }
- 
+
 for <
 BC:5F:F4
 FC-A1-3E
@@ -906,7 +906,7 @@ arr = ['88:53:2E:67:07:BE', 'FC:FB:FB:01:FA:21', 'D4:F4:6F:C9:EF:8D', '23:45:67'
 
 arr.each do |addr|
   vendor = Net::HTTP.get('api.macvendors.com', "/#{addr}/") rescue nil
-  puts "#{addr}  #{vendor}" 
+  puts "#{addr}  #{vendor}"
 end
 ```
 
@@ -1024,7 +1024,7 @@ proc geturl {url} {
     set tok [::http::geturl $url]
     finally ::http::cleanup $tok
     ::http::data $tok
-}   
+}
 proc maclookup {mac} {
     geturl http://api.macvendors.com/$mac
 }
@@ -1034,7 +1034,7 @@ foreach mac {00-14-22-01-23-45 88:53:2E:67:07:BE} {
 }
 ```
 
-     
+
 {{out}}
 
 ```txt

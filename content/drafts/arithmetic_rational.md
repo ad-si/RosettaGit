@@ -361,7 +361,7 @@ int main()
 See [[Rational Arithmetic/C]]
 
 
-## C sharp
+## C#
 
 <div style="text-align:right;font-size:7pt">''<nowiki>[</nowiki>This section is included from [[Arithmetic/Rational/C sharp|a subpage]] and should be edited there, not here.<nowiki>]</nowiki>''</div>
 {{:Arithmetic/Rational/C sharp}}

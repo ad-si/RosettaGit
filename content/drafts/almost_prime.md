@@ -642,10 +642,10 @@ k = 5:  32  48  72  80 108 112 120 162 168 176
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

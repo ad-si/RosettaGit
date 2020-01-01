@@ -558,7 +558,7 @@ int main() {
 
 Translated from Java.
 
-```csharp
+```c#
 using System;
 
 namespace CantorSet {

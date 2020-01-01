@@ -479,7 +479,7 @@ thisismine. has extension :  !
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 <lang [[C sharp|C#]]>public static string FindExtension(string filename) {
     int indexOfDot = filename.Length;

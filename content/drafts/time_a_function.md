@@ -829,12 +829,12 @@ int main() {
  Identity(4) takes 0 seconds.
  Sum(4) takes 0.01 seconds.
 
-=={{header|C sharp|C#}}==
+## C#
 
 Using Stopwatch.
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Threading;
@@ -863,7 +863,7 @@ class Program {
 Using DateTime.
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Threading;

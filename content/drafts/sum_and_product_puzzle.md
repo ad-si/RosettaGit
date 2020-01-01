@@ -34,11 +34,11 @@ So for your convenience, here's a break-down:
 
 {| class="wikitable"
 |-
-! 
+!
 ! Quote
 ! Implied fact
 |-
-! 1) 
+! 1)
 | S says "P does not know X and Y."
 | For every possible sum decomposition of the number <tt>X+Y</tt>, the product has in turn ''more than one'' product decomposition.
 |-
@@ -147,10 +147,10 @@ function is_prime(x,  i) {
 ```
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -167,18 +167,18 @@ public class Program
             ).ToHashSet();
 
         Console.WriteLine(pairs.Count);
-        
+
         var uniqueP = pairs.GroupBy(pair => pair.P).Where(g => g.Count() == 1).Select(g => g.Key).ToHashSet();
-        
+
         pairs.ExceptWith(pairs.GroupBy(pair => pair.S).Where(g => g.Any(pair => uniqueP.Contains(pair.P))).SelectMany(g => g));
         Console.WriteLine(pairs.Count);
-        
+
         pairs.ExceptWith(pairs.GroupBy(pair => pair.P).Where(g => g.Count() > 1).SelectMany(g => g));
         Console.WriteLine(pairs.Count);
-        
+
         pairs.ExceptWith(pairs.GroupBy(pair => pair.S).Where(g => g.Count() > 1).SelectMany(g => g));
         Console.WriteLine(pairs.Count);
-        
+
         foreach (var pair in pairs) Console.WriteLine(pair);
     }
 }
@@ -188,7 +188,7 @@ public static class Extensions
     public static IEnumerable<int> To(this int start, int end) {
         for (int i = start; i <= end; i++) yield return i;
     }
-    
+
     public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source) => new HashSet<T>(source);
 }
 ```
@@ -284,7 +284,7 @@ public static class Extensions
   "S says: Now I also know X and Y."
   (remove-if
    #'(lambda (sum-xys)
-       ;; remove those sums which have more than 1 product, that 
+       ;; remove those sums which have more than 1 product, that
        ;; appear only once amongst all remaining products
        (> (count 1 sum-xys :key #'car) 1))
    remaining-sums-with-their-products-occurrences-info
@@ -333,7 +333,7 @@ public static class Extensions
 
 (defun prod-decomp (n)
   (loop for x from 2 below (sqrt n)
-     for y = (/ n x)   
+     for y = (/ n x)
      if (and (>= 100 (+ x y)) (zerop (rem n x)))
      collect (list x y)))
 
@@ -425,17 +425,17 @@ defmodule Puzzle do
       Enum.all?(sumEq(s1,p), fn q -> length(mulEq(s1,q)) != 1 end)
     end)
     s3 = Enum.filter(s2, fn p -> only1?(mulEq(s1,p), s2) end)
-    Enum.filter(s3, fn p -> only1?(sumEq(s1,p), s3) end) |> IO.inspect 
+    Enum.filter(s3, fn p -> only1?(sumEq(s1,p), s3) end) |> IO.inspect
   end
-  
+
   defp add({x,y}), do: x + y
-  
+
   defp mul({x,y}), do: x * y
-  
+
   defp sumEq(s, p), do: Enum.filter(s, fn q -> add(p) == add(q) end)
-  
+
   defp mulEq(s, p), do: Enum.filter(s, fn q -> mul(p) == mul(q) end)
-  
+
   defp only1?(a, b) do
     MapSet.size(MapSet.intersection(MapSet.new(a), MapSet.new(b))) == 1
   end
@@ -667,7 +667,7 @@ For a further doubling of performance, we can redefine '''add''' and '''mul''' a
 
 The '''y > x''' condition can usefully be moved upstream – dropping it from the test, and redefining the range of y as '''[x + 1 .. 100]''' from the start. (The '''1 < x''' test can also be moved out of the test and into the initial generator).
 
-Finally, as we expect and need only one solution, Haskell's lazy evaluation strategy will avoid wasted tests if we request only the first item from the possible solution stream. 
+Finally, as we expect and need only one solution, Haskell's lazy evaluation strategy will avoid wasted tests if we request only the first item from the possible solution stream.
 
 ```Haskell
 import Data.List (intersect)
@@ -722,10 +722,10 @@ import java.util.List;
 
 
 /**
- * This program applies the logic in the Sum and Product Puzzle for the value 
- * provided by systematically applying each requirement to all number pairs in 
- * range. Note that the requirements: (x, y different), (x < y), and 
- * (x, y > MIN_VALUE) are baked into the loops in run(), sumAddends(), and 
+ * This program applies the logic in the Sum and Product Puzzle for the value
+ * provided by systematically applying each requirement to all number pairs in
+ * range. Note that the requirements: (x, y different), (x < y), and
+ * (x, y > MIN_VALUE) are baked into the loops in run(), sumAddends(), and
  * productFactors(), so do not need a separate test. Also note that to test a
  * solution to this logic puzzle, it is suggested to test the condition with
  * maxSum = 1685 to ensure that both the original solution (4, 13) and the
@@ -738,9 +738,9 @@ public class SumAndProductPuzzle {
     private static final int MIN_VALUE = 2;
     private List<int[]> firstConditionExcludes = new ArrayList<>();
     private List<int[]> secondConditionExcludes = new ArrayList<>();
-    
+
     public static void main(String... args){
-        
+
         if (args.length == 0){
             new SumAndProductPuzzle(100).run();
             new SumAndProductPuzzle(1684).run();
@@ -758,42 +758,42 @@ public class SumAndProductPuzzle {
             }
         }
     }
-    
+
     public SumAndProductPuzzle(int maxSum){
         this.beginning = System.currentTimeMillis();
         this.maxSum = maxSum;
-        System.out.println("Run with maximum sum of " + String.valueOf(maxSum) + 
+        System.out.println("Run with maximum sum of " + String.valueOf(maxSum) +
                 " started at " + String.valueOf(beginning) + ".");
     }
-    
+
     public void run(){
         for (int x = MIN_VALUE; x < maxSum - MIN_VALUE; x++){
             for (int y = x + 1; y < maxSum - MIN_VALUE; y++){
-                
+
                 if (isSumNoGreaterThanMax(x,y) &&
                     isSKnowsPCannotKnow(x,y) &&
                     isPKnowsNow(x,y) &&
                     isSKnowsNow(x,y)
                     ){
-                    System.out.println("Found solution x is " + String.valueOf(x) + " y is " + String.valueOf(y) + 
+                    System.out.println("Found solution x is " + String.valueOf(x) + " y is " + String.valueOf(y) +
                             " in " + String.valueOf(System.currentTimeMillis() - beginning) + "ms.");
                 }
             }
         }
-        System.out.println("Run with maximum sum of " + String.valueOf(maxSum) + 
+        System.out.println("Run with maximum sum of " + String.valueOf(maxSum) +
                 " ended in " + String.valueOf(System.currentTimeMillis() - beginning) + "ms.");
     }
-    
+
     public boolean isSumNoGreaterThanMax(int x, int y){
         return x + y <= maxSum;
     }
-    
+
     public boolean isSKnowsPCannotKnow(int x, int y){
-        
+
         if (firstConditionExcludes.contains(new int[] {x, y})){
             return false;
         }
-        
+
         for (int[] addends : sumAddends(x, y)){
             if ( !(productFactors(addends[0], addends[1]).size() > 1) ) {
                 firstConditionExcludes.add(new int[] {x, y});
@@ -802,20 +802,20 @@ public class SumAndProductPuzzle {
         }
         return true;
     }
-    
+
     public boolean isPKnowsNow(int x, int y){
-        
+
         if (secondConditionExcludes.contains(new int[] {x, y})){
             return false;
         }
-        
+
         int countSolutions = 0;
         for (int[] factors : productFactors(x, y)){
             if (isSKnowsPCannotKnow(factors[0], factors[1])){
                 countSolutions++;
             }
         }
-        
+
         if (countSolutions == 1){
             return true;
         } else {
@@ -823,9 +823,9 @@ public class SumAndProductPuzzle {
             return false;
         }
     }
-    
+
     public boolean isSKnowsNow(int x, int y){
-        
+
         int countSolutions = 0;
         for (int[] addends : sumAddends(x, y)){
             if (isPKnowsNow(addends[0], addends[1])){
@@ -834,12 +834,12 @@ public class SumAndProductPuzzle {
         }
         return countSolutions == 1;
     }
-    
+
     public List<int[]> sumAddends(int x, int y){
-        
+
         List<int[]> list = new ArrayList<>();
         int sum = x + y;
-        
+
         for (int addend = MIN_VALUE; addend < sum - addend; addend++){
             if (isSumNoGreaterThanMax(addend, sum - addend)){
                 list.add(new int[]{addend, sum - addend});
@@ -847,12 +847,12 @@ public class SumAndProductPuzzle {
         }
         return list;
     }
-    
+
     public List<int[]> productFactors(int x, int y){
-        
+
         List<int[]> list = new ArrayList<>();
         int product = x * y;
-        
+
         for (int factor = MIN_VALUE; factor < product / factor; factor++){
             if (product % factor == 0){
                 if (isSumNoGreaterThanMax(factor, product / factor)){
@@ -1184,13 +1184,13 @@ Solution: (4, 13)
 data class P(val x: Int, val y: Int, val sum: Int, val prod: Int)
 
 fun main(args: Array<String>) {
-    val candidates = mutableListOf<P>()    
+    val candidates = mutableListOf<P>()
     for (x in 2..49) {
         for (y in x + 1..100 - x) {
             candidates.add(P(x, y, x + y, x * y))
         }
     }
-   
+
     val sums = candidates.groupBy { it.sum }
     val prods = candidates.groupBy { it.prod }
 
@@ -1198,7 +1198,7 @@ fun main(args: Array<String>) {
     val fact2 = fact1.filter { prods[it.prod]!!.intersect(fact1).size == 1 }
     val fact3 = fact2.filter { sums[it.sum]!!.intersect(fact2).size == 1 }
     print("The only solution is : ")
-    for ((x, y, _, _) in fact3) println("x = $x, y = $y")    
+    for ((x, y, _, _) in fact3) println("x = $x, y = $y")
 }
 ```
 
@@ -1676,7 +1676,7 @@ print(final_pairs)
 
 ## Racket
 
-{{trans|D}}To calculate the results faster this program use memorization. So it has a modified version of <code>sum=</code> and <code>mul=</code> to increase the chances of reusing the results. 
+{{trans|D}}To calculate the results faster this program use memorization. So it has a modified version of <code>sum=</code> and <code>mul=</code> to increase the chances of reusing the results.
 
 ```Racket
 #lang racket
@@ -2377,12 +2377,12 @@ object ImpossiblePuzzle extends App {
     y <- 1 to 100
     if 1 < x && x < y && x + y < 100
   } yield (x, y)
- 
+
   def sum(xy: XY) = xy._1 + xy._2
   def prod(xy: XY) = xy._1 * xy._2
   def sumEq(xy: XY) = step0 filter { sum(_) == sum(xy) }
   def prodEq(xy: XY) = step0 filter { prod(_) == prod(xy) }
- 
+
   val step2 = step0 filter { sumEq(_) forall { prodEq(_).size != 1 }}
   val step3 = step2 filter { prodEq(_).intersect(step2).size == 1 }
   val step4 = step3 filter { sumEq(_).intersect(step3).size == 1 }
@@ -2418,14 +2418,14 @@ Run-time: about 3.82 seconds.
             lst)))
 
 ;; list of all (x y x+y x*y) combinations with y > x
-(define *xy-pairs* 
+(define *xy-pairs*
   (apply append
          (map (lambda (i)
                 (map (lambda (j)
                        (list i j (+ i j) (* i j)))
                      (iota (- 98 i) (+ 1 i))))
               (iota 96 2))))
-  
+
 ;; S says "P does not know X and Y"
 (define *products* ; get products which have multiple decompositions
   (let ((all-products (map fourth *xy-pairs*)))
@@ -2433,7 +2433,7 @@ Run-time: about 3.82 seconds.
             all-products)))
 
 (define *fact-1* ; every x+y has x*y in *products*
-  (filter (lambda (i) 
+  (filter (lambda (i)
             (every (lambda (p) (memq (fourth p) *products*))
                    (filter (lambda (p) (= (third i) (third p))) *xy-pairs*)))
           *xy-pairs*))
@@ -2450,7 +2450,7 @@ Run-time: about 3.82 seconds.
 (display (string-append "After S: " (number->string (length *fact-1*)) "\n"))
 (display (string-append "After P: " (number->string (length *fact-2*)) "\n"))
 (display (string-append "After S: " (number->string (length *fact-3*)) "\n"))
-(display (string-append "X: " 
+(display (string-append "X: "
                         (number->string (caar *fact-3*))
                         " Y: "
                         (number->string (cadar *fact-3*))

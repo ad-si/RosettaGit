@@ -942,11 +942,11 @@ Count:         BSD:           MS:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|C#|6+}}
 <!-- By Martin Freedman, 17/01/2018 -->
 
-```Csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1015,7 +1015,7 @@ MS next 10 Random
 
 From a Free Cell Deal solution
 
-```Csharp
+```c#
 
 using System;
 using System.Collections.Generic;

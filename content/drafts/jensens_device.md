@@ -389,11 +389,11 @@ int main () {
 Output: 5.18738
 
 
-## C sharp
+## C#
 
 Can be simulated via lambda expressions:
 
-```csharp
+```c#
 using System;
 
 class JensensDevice

@@ -39,7 +39,7 @@ yahooSearch(query, page)
   . "&b=" . start, search.txt
   fileread, content, search.txt
   reg = <a class="yschttl spt" href=".+?" >(.+?)</a></h3></div><div class="abstr">(.+?)</div><span class=url>(.+?)</span>
-  
+
   index := found := 1
   while (found := regexmatch(content, reg, self, found + 1))
   {
@@ -60,13 +60,13 @@ return url
 
 
 
-## C sharp
+## C#
 
 Generally it is not a good idea to scrape web pages.
 E. g. all implementations for this task which regex for
 "<a class=" fail by now, after Yahoo has changed its output format.
 
-```csharp
+```c#
 using System;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -104,7 +104,7 @@ class YahooSearch {
                 int iHref = str.IndexOf(after);
                 return iHref < 0 ? "" : str.Substring(iHref + after.Length);
             };
-            Converter<string, string> getText = p => 
+            Converter<string, string> getText = p =>
                 Regex.Replace(p, "<[^>]*>", x => "");
 
             Regex rx = new Regex(@"
@@ -131,7 +131,7 @@ class YahooSearch {
                     e.Groups["LinkAttributes"].Value, @"href="""), @""""));
                 string rtitle = getText(e.Groups["LinkText"].Value);
                 string rcontent = getText(e.Groups["Abstract"].Value);
-                
+
                 results.Add(new YahooResult(rurl, rtitle, rcontent));
             }
             return results.ToArray();
@@ -165,7 +165,7 @@ class YahooResult {
     }
 }
 
-// Usage: 
+// Usage:
 
 class Prog {
     static void Main() {
@@ -320,7 +320,7 @@ data YahooSearch = YahooSearch {
     searchQuery :: String,
     searchPage :: Int,
     searchItems :: [YahooSearchItem] }
-    
+
 -- URL for Yahoo! searches, without giving a page number
 yahooUrl = "http://search.yahoo.com/search?p="
 
@@ -352,7 +352,7 @@ printResults (YahooSearch q p items) = do
 
 urlTag, titleTag, contentTag1, contentTag2, ignoreTag,
     ignoreText :: Parsec String () String
-    
+
 -- parse a tag containing the URL of a search result
 urlTag = do { string "<a id=\"link-";
     many digit; string "\" class=\"yschttl spt\" href=\"";
@@ -388,7 +388,7 @@ parseCategory x = do
     res <- many x
     eof
     nonempty res
-    
+
 urls, titles, contents :: Parsec String () [String]
 
 -- parse HTML source looking for URL tags of the search results
@@ -418,7 +418,7 @@ items q =
 
 ```
 
-Simple invocation from GHCi: 
+Simple invocation from GHCi:
 ```txt
 yahoo "Rosetta%20code" >>= printResults
 ```
@@ -430,7 +430,7 @@ The code provides a suitable demonstration; however, could be made more robust b
 ```Icon
 link printf,strings
 
-procedure main() 
+procedure main()
 YS := YahooSearch("rosettacode")
 every 1 to 2 do {   # 2 pages
    YS.readnext()
@@ -439,13 +439,13 @@ every 1 to 2 do {   # 2 pages
 end
 
 class YahooSearch(urlpat,page,response)  #: class for Yahoo Search
-   
+
    method readnext()    #: read the next page of search results
-      self.page +:= 1   # can't find as w|w/o self 
+      self.page +:= 1   # can't find as w|w/o self
       readurl()
    end
-   
-   method readurl()     #: read the url 
+
+   method readurl()     #: read the url
       url := sprintf(self.urlpat,(self.page-1)*10+1)
       m := open(url,"m")  | stop("Unable to open : ",url)
       every (self.response := "") ||:= |read(m)
@@ -460,13 +460,13 @@ class YahooSearch(urlpat,page,response)  #: class for Yahoo Search
          title := tab(find("<")) & ="</a></h3></div>"
          tab(find("<")) & =("<div class=\"abstr\">" | "<div class=\"sm-abs\">")
          abstr := tab(find("<")) & ="</div>"
-         
+
          printf("\nTitle : %i\n",title)
          printf("URL   : %i\n",url)
          printf("Abstr : %i\n",abstr)
          }
    end
-   
+
 initially(searchtext)    #: initialize each instance
    urlpat := sprintf("http://search.yahoo.com/search?p=%s&b=%%d",searchtext)
    page := 0
@@ -474,9 +474,9 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec]
 
 Sample Output (truncated):
 ```txt
@@ -498,7 +498,7 @@ URL   : "http://rosettacode.org/wiki/Category:AutoHotkey"
 Abstr : "Listed below are all of the tasks on <b>Rosetta Code</b> which have bee
 n solved using AutoHotkey."
 
-... 
+...
 
 
 Title : "RosettaCON2011 Tutorials Collection | <wbr />RosettaCommons"
@@ -775,25 +775,25 @@ We cannot define a class in Mathematica, so I generate a "Manipulate" object ins
    StringCases[
     StringCases[
      URLFetch[
-      "http://search.yahoo.com/search?p=" <> query <> "&b=" <> 
-       ToString@page], "<ol" ~~ ___ ~~ "</ol>"], 
-    "<a" ~~ Shortest[__] ~~ "class=\"yschttl spt\" href=\"" ~~ 
-      Shortest[url__] ~~ "\"" ~~ Shortest[__] ~~ ">" ~~ 
-      Shortest[title__] ~~ 
-      "<div class=\"abstr\">" | "<div class=\"sm-abs\">" ~~ 
-      Shortest[abstr__] ~~ "</div>" :> 
-     Column[{Hyperlink[Style[#[[1]], Larger], #[[2]]], #[[3]], 
+      "http://search.yahoo.com/search?p=" <> query <> "&b=" <>
+       ToString@page], "<ol" ~~ ___ ~~ "</ol>"],
+    "<a" ~~ Shortest[__] ~~ "class=\"yschttl spt\" href=\"" ~~
+      Shortest[url__] ~~ "\"" ~~ Shortest[__] ~~ ">" ~~
+      Shortest[title__] ~~
+      "<div class=\"abstr\">" | "<div class=\"sm-abs\">" ~~
+      Shortest[abstr__] ~~ "</div>" :>
+     Column[{Hyperlink[Style[#[[1]], Larger], #[[2]]], #[[3]],
          Style[#[[2]], Smaller]} &@
-       StringReplace[{title, url, 
-         abstr}, {"<" ~~ Shortest[__] ~~ ">" -> "", 
-         "&#" ~~ n : DigitCharacter ... ~~ ";" :> 
-          FromCharacterCode[FromDigits@n], "&amp;" -> "&", 
-         "&quot;" -> "\"", "&lt;" -> "<", "&gt;" -> ">"}]]], 1], 
-  Spacings -> 2], {{input, "", "Yahoo!"}, 
-  InputField[Dynamic@input, String] &}, {{query, ""}, 
-  ControlType -> None}, {{page, 1}, ControlType -> None}, 
- Row[{Button["Search", page = 1; query = input], 
-   Button["Prev", page -= 10, Enabled -> Dynamic[page >= 10]], 
+       StringReplace[{title, url,
+         abstr}, {"<" ~~ Shortest[__] ~~ ">" -> "",
+         "&#" ~~ n : DigitCharacter ... ~~ ";" :>
+          FromCharacterCode[FromDigits@n], "&amp;" -> "&",
+         "&quot;" -> "\"", "&lt;" -> "<", "&gt;" -> ">"}]]], 1],
+  Spacings -> 2], {{input, "", "Yahoo!"},
+  InputField[Dynamic@input, String] &}, {{query, ""},
+  ControlType -> None}, {{page, 1}, ControlType -> None},
+ Row[{Button["Search", page = 1; query = input],
+   Button["Prev", page -= 10, Enabled -> Dynamic[page >= 10]],
    Button["Next", page += 10]}]]
 ```
 
@@ -815,7 +815,7 @@ declare
 
   %% Displays page 1 and 3 of the search results.
   %% The user can request and display more with context menu->Actions->Make Needed.
-  proc {ExampleUsage}    
+  proc {ExampleUsage}
      Pages = {YahooSearch "Rosetta code"}
   in
      {Inspector.configure widgetShowStrings true}
@@ -829,7 +829,7 @@ declare
   %% A page is a lazy list of entries like this: result(url:U title:T content:C).
   fun {YahooSearch Query}
      FetchURL = {CreateURLFetcher}
-     
+
      fun {Page Nr}
 	StartResult = (Nr-1)*10+1
 	%% only retrieve it when really needed
@@ -846,7 +846,7 @@ declare
 	for Match in {Regex.allMatches RE Doc} yield:Yield do
 	   Xs = {List.drop Doc Match.0.2}
 	in
-	   {Yield {ParseEntry Xs}}	 
+	   {Yield {ParseEntry Xs}}
 	end
      end
   in
@@ -898,7 +898,7 @@ declare
 	[] %% normal result
 	   R6 = R4
 	end
-	Abstract = 
+	Abstract =
 	choice
 	   {Const "<div class=\"abstr\">" R6 R7}
 	   {Fix {Until "</div>" R7 _}}
@@ -966,7 +966,7 @@ in
 package YahooSearch;
 
 use Encode;
-use HTTP::Cookies;  
+use HTTP::Cookies;
 use WWW::Mechanize;
 
 # --- Internals -------------------------------------------------
@@ -1089,43 +1089,43 @@ import re
 def fix(x):
     p = re.compile(r'<[^<]*?>')
     return p.sub('', x).replace('&amp;', '&')
- 
+
 class YahooSearch:
-    def __init__(self, query, page=1):       
+    def __init__(self, query, page=1):
         self.query = query
         self.page = page
         self.url = "http://search.yahoo.com/search?p=%s&b=%s" %(self.query, ((self.page - 1) * 10 + 1))
-        self.content = urllib.urlopen(self.url).read()        
- 
+        self.content = urllib.urlopen(self.url).read()
+
     def getresults(self):
         self.results = []
- 
+
         for i in re.findall('<a class="yschttl spt" href=".+?">(.+?)</a></h3></div>(.+?)</div>.*?<span class=url>(.+?)</span>', self.content):
- 
+
             title = fix(i[0])
             content = fix(i[1])
             url = fix(i[2])
- 
+
             self.results.append(YahooResult(title, content, url))
- 
+
         return self.results
- 
+
     def getnextpage(self):
         return YahooSearch(self.query, self.page+1)
- 
+
     search_results = property(fget=getresults)
     nextpage = property(fget=getnextpage)
- 
+
 class YahooResult:
     def __init__(self,title,content,url):
         self.title = title
         self.content = content
         self.url = url
- 
+
 # Usage:
- 
+
 x = YahooSearch("test")
- 
+
 for result in x.search_results:
     print result.title
 ```
@@ -1146,52 +1146,52 @@ YahooSearch <- function(query, page=1, .opts=list(), ignoreMarkUpErrors=TRUE)
    if(!require(RCurl) || !require(XML))
    {
       stop("Could not load required packages")
-   }   
-   
+   }
+
    # Replace " " with "%20", etc
    query <- curlEscape(query)
-   
+
    # Retrieve page
    b <- 10*(page-1)+1
    theurl <- paste("http://uk.search.yahoo.com/search?p=",
       query, "&b=", b, sep="")
    webpage <- getURL(theurl, .opts=.opts)
-   
+
    # Save search for nextpage function
-   .Search <- list(query=query, page=page, .opts=.opts, 
+   .Search <- list(query=query, page=page, .opts=.opts,
       ignoreMarkUpErrors=ignoreMarkUpErrors)
    assign(".Search", .Search, envir=globalenv())
-     
+
    # Parse HTML; retrieve results block
    webpage <- readLines(tc <- textConnection(webpage)); close(tc)
    if(ignoreMarkUpErrors)
    {
-      pagetree <- htmlTreeParse(webpage, error=function(...){})     
+      pagetree <- htmlTreeParse(webpage, error=function(...){})
    } else
    {
       pagetree <- htmlTreeParse(webpage)
    }
-   
-   
+
+
    findbyattr <- function(x, id, type="id")
    {
       ids <- sapply(x, function(x) x$attributes[type])
-      x[ids==id]   
+      x[ids==id]
    }
-      
+
    body <- pagetree$children$html$children$body
    bd <- findbyattr(body$children$div$children, "bd")
    left <- findbyattr(bd$div$children$div$children, "left")
-   web <- findbyattr(left$div$children$div$children, "web") 
+   web <- findbyattr(left$div$children$div$children, "web")
    resol <- web$div$children$ol
-   
+
    #Get url, title, content from results
    gettextfromnode <- function(x)
    {
-      un <- unlist(x$children)  
-      paste(un[grep("value", names(un))], collapse=" ") 
+      un <- unlist(x$children)
+      paste(un[grep("value", names(un))], collapse=" ")
    }
-   
+
    n <- length(resol)
    results <- list()
    length(results) <- n
@@ -1200,35 +1200,35 @@ YahooSearch <- function(query, page=1, .opts=list(), ignoreMarkUpErrors=TRUE)
       mainlink <- resol[[i]]$children$div$children[1]$div$children$h3$children$a
       url <- mainlink$attributes["href"]
       title <- gettextfromnode(mainlink)
-      
-      contenttext <- findbyattr(resol[[i]]$children$div$children[2], "abstr", type="class")      
+
+      contenttext <- findbyattr(resol[[i]]$children$div$children[2], "abstr", type="class")
       if(length(contenttext)==0)
       {
-          contenttext <- findbyattr(resol[[i]]$children$div$children[2]$div$children$div$children, 
+          contenttext <- findbyattr(resol[[i]]$children$div$children[2]$div$children$div$children,
             "sm-abs", type="class")
       }
-      
-      content <- gettextfromnode(contenttext$div)        
-      results[[i]] <- list(url=url, title=title, content=content)                                                        
+
+      content <- gettextfromnode(contenttext$div)
+      results[[i]] <- list(url=url, title=title, content=content)
    }
-   names(results) <- as.character(seq(b, b+n-1)) 
-   results 
+   names(results) <- as.character(seq(b, b+n-1))
+   results
 }
 
 nextpage <- function()
 {
-   if(exists(".Search", envir=globalenv())) 
+   if(exists(".Search", envir=globalenv()))
    {
-      .Search <- get(".Search", envir=globalenv())   
+      .Search <- get(".Search", envir=globalenv())
       .Search$page  <- .Search$page + 1L
       do.call(YahooSearch, .Search)
    } else
    {
       message("No search has been performed yet")
-   }   
+   }
 }
 
-#Usage        
+#Usage
 YahooSearch("rosetta code")
 nextpage()
 ```
@@ -1259,8 +1259,8 @@ nextpage()
          [html (request (format *yaho-url* query current-page))]
          [results (regexp-match* #px"lass=\"yschttl spt\" href=\".+?\">(.+?)<span class=url>(.+?)</span>.+?<div class=\"abstr\">(.+?)</div>" html #:match-select cdr)])
     (for ([result (in-list results)])
-      (printf "Title: ~a \n Link: ~a \n Text: ~a \n\n" 
-              (remove-tags (first result)) 
+      (printf "Title: ~a \n Link: ~a \n Text: ~a \n\n"
+              (remove-tags (first result))
               (remove-tags (second result) )
               (remove-tags (third result))))))
 
@@ -1277,66 +1277,66 @@ nextpage()
 ```txt
 
 (search-yahoo "Rosetta")
-Title: Partner With Our Interactive Marketing Agency Today | Rosetta 
- Link: www.rosetta.com 
- Text: Learn about the fastest growing interactive marketing agency in the country - Rosetta. Our strategic marketing planning is custom built and connects you with your ... 
+Title: Partner With Our Interactive Marketing Agency Today | Rosetta
+ Link: www.rosetta.com
+ Text: Learn about the fastest growing interactive marketing agency in the country - Rosetta. Our strategic marketing planning is custom built and connects you with your ...
 
-Title: Official Rosetta Stone® - Language Learning - Learn a Language 
- Link: www.rosettastone.com 
- Text: Learn a new language with Rosetta Stone®. SUMMER SALE! $349 Levels 1-5 Set + Free Shipping. Ending Soon! 
+Title: Official Rosetta Stone® - Language Learning - Learn a Language
+ Link: www.rosettastone.com
+ Text: Learn a new language with Rosetta Stone®. SUMMER SALE! $349 Levels 1-5 Set + Free Shipping. Ending Soon!
 
-Title: Rosetta (spacecraft) - Wikipedia, the free encyclopedia 
- Link: en.wikipedia.org/wiki/Rosetta_probe 
- Text: noun 1. a town in N Egypt, at a mouth of the Nile. 2. a female given name . Relevant Questions Why Was The Rosetta Ston... Who Is Rosetta Stone? Why Is The Rosetta ... 
+Title: Rosetta (spacecraft) - Wikipedia, the free encyclopedia
+ Link: en.wikipedia.org/wiki/Rosetta_probe
+ Text: noun 1. a town in N Egypt, at a mouth of the Nile. 2. a female given name . Relevant Questions Why Was The Rosetta Ston... Who Is Rosetta Stone? Why Is The Rosetta ...
 
-Title: Rosetta stone: Definition from Answers.com 
- Link: www.answers.com/topic/rosetta-stone 
- Text: Rosetta stone n. A basalt tablet bearing inscriptions in Greek and in Egyptian hieroglyphic and demotic scripts that w 
+Title: Rosetta stone: Definition from Answers.com
+ Link: www.answers.com/topic/rosetta-stone
+ Text: Rosetta stone n. A basalt tablet bearing inscriptions in Greek and in Egyptian hieroglyphic and demotic scripts that w
 
-Title: Rosetta (1999) - IMDb 
- Link: www.imdb.com/title/tt0200071 
- Text: The first scene, like almost all others, is a fighting scene. A girl, about 18, is sacked from her factory work because her trial period is over. The girl, Rosetta ... 
+Title: Rosetta (1999) - IMDb
+ Link: www.imdb.com/title/tt0200071
+ Text: The first scene, like almost all others, is a fighting scene. A girl, about 18, is sacked from her factory work because her trial period is over. The girl, Rosetta ...
 
-Title: Welcome to Rosetta Stone® Classroom 
- Link: salem-keizersd.rosettastoneclassroom.com 
- Text: Welcome to Rosetta Stone® Classroom. First Time Users; © 2013 Rosetta Stone Ltd. All rights reserved. 
+Title: Welcome to Rosetta Stone® Classroom
+ Link: salem-keizersd.rosettastoneclassroom.com
+ Text: Welcome to Rosetta Stone® Classroom. First Time Users; © 2013 Rosetta Stone Ltd. All rights reserved.
 
-Title: Rosetta Hardscapes 
- Link: www.discoverrosetta.com/index.html 
- Text: Rosetta Hardscapes sells and licenses concrete pavers, fire pits, retaining walls and landscaping features with the colors and textures of natural stone. 
+Title: Rosetta Hardscapes
+ Link: www.discoverrosetta.com/index.html
+ Text: Rosetta Hardscapes sells and licenses concrete pavers, fire pits, retaining walls and landscaping features with the colors and textures of natural stone.
 
 (next-page)
-Title: Rosetta Stone 
- Link: www.rosettastone.com/?prid=rosettaclassroom_com 
- Text: Find great prices &amp; selection on Rosetta Stone language software for Windows &amp; Mac; shop &amp; buy titles to learn Spanish, French, &amp; more. 
+Title: Rosetta Stone
+ Link: www.rosettastone.com/?prid=rosettaclassroom_com
+ Text: Find great prices &amp; selection on Rosetta Stone language software for Windows &amp; Mac; shop &amp; buy titles to learn Spanish, French, &amp; more.
 
-Title: rosetta stone spanish | eBay - Electronics, Cars, Fashion ... 
- Link: www.ebay.com/sch/i.html?_nkw=rosetta+stone+spanish 
- Text: Find great deals on eBay for rosetta stone spanish and rosetta stone spanish latin america. Shop with confidence. 
+Title: rosetta stone spanish | eBay - Electronics, Cars, Fashion ...
+ Link: www.ebay.com/sch/i.html?_nkw=rosetta+stone+spanish
+ Text: Find great deals on eBay for rosetta stone spanish and rosetta stone spanish latin america. Shop with confidence.
 
-Title: Apple - Rosetta 
- Link: www.apple.com/asia/rosetta 
- Text: Applications bearing the Universal symbol will run natively on both Intel- and PowerPC-based Mac computers. What about the applications you already own? Enter Rosetta. 
+Title: Apple - Rosetta
+ Link: www.apple.com/asia/rosetta
+ Text: Applications bearing the Universal symbol will run natively on both Intel- and PowerPC-based Mac computers. What about the applications you already own? Enter Rosetta.
 
-Title: Rosetta | Free Music, Tour Dates, Photos, Videos 
- Link: www.myspace.com/rosetta 
- Text: The International Rosetta Mission was approved in ... Lutetia is revealed by a comprehensive analysis of the data gathered by ESA&#39;s Rosetta spacecraft when it ... 
+Title: Rosetta | Free Music, Tour Dates, Photos, Videos
+ Link: www.myspace.com/rosetta
+ Text: The International Rosetta Mission was approved in ... Lutetia is revealed by a comprehensive analysis of the data gathered by ESA&#39;s Rosetta spacecraft when it ...
 
-Title: Amazon.com: rosetta stone 
- Link: www.amazon.com/s?ie=UTF8&amp;page=1&amp;rh=i%3Aaps%2Ck%3Arosetta... 
- Text: Rosetta Stone Spanish (Latin America) Level 1 by Rosetta Stone (CD-ROM - Sept. 14, 2010) - Mac OS X 10.6 Snow Leopard, Windows 7 / 8 / XP. Buy new: $179.00 . 
+Title: Amazon.com: rosetta stone
+ Link: www.amazon.com/s?ie=UTF8&amp;page=1&amp;rh=i%3Aaps%2Ck%3Arosetta...
+ Text: Rosetta Stone Spanish (Latin America) Level 1 by Rosetta Stone (CD-ROM - Sept. 14, 2010) - Mac OS X 10.6 Snow Leopard, Windows 7 / 8 / XP. Buy new: $179.00 .
 
-Title: Rosetta - Disney Wiki 
- Link: disney.wikia.com/wiki/Rosetta 
- Text: Rosetta: Yea, no, I don&#39;t really do mud.Vidia: But, you&#39;re a garden fairy!Rosetta: Ironic, isn&#39;t... 
+Title: Rosetta - Disney Wiki
+ Link: disney.wikia.com/wiki/Rosetta
+ Text: Rosetta: Yea, no, I don&#39;t really do mud.Vidia: But, you&#39;re a garden fairy!Rosetta: Ironic, isn&#39;t...
 
-Title: Rosetta - Hamilton, NJ - Company | Facebook 
- Link: www.facebook.com/rosetta 
- Text: Rosetta, Hamilton, NJ. 2,060 likes · 36 talking about this · 135 were here. We are currently ranked by Ad Age among the top US digital agencies and recently named ... 
+Title: Rosetta - Hamilton, NJ - Company | Facebook
+ Link: www.facebook.com/rosetta
+ Text: Rosetta, Hamilton, NJ. 2,060 likes · 36 talking about this · 135 were here. We are currently ranked by Ad Age among the top US digital agencies and recently named ...
 
-Title: Rosetta Stone (Game) - CNET Download.com 
- Link: download.cnet.com/Rosetta-Stone/3000-2111_4-10835868.html 
- Text: Whether your are playing Greek number mode or Egyptian letter mode, the number one rule to keep in mind is keeping the scales balanced but its not that ... 
+Title: Rosetta Stone (Game) - CNET Download.com
+ Link: download.cnet.com/Rosetta-Stone/3000-2111_4-10835868.html
+ Text: Whether your are playing Greek number mode or Egyptian letter mode, the number one rule to keep in mind is keeping the scales balanced but its not that ...
 
 ```
 
@@ -1374,7 +1374,7 @@ class SearchYahoo
 
   def fetch_results
     @url.query = URI.escape("p=%s&b=%d" % [@term, @page])
-    doc = open(@url) { |f| Hpricot(f) }  
+    doc = open(@url) { |f| Hpricot(f) }
     parse_html(doc)
   end
 
@@ -1590,7 +1590,7 @@ package require htmlparse
 package require textutil::adjust
 
 oo::class create yahoosearch {
-    
+
     method search {s} {
         my variable searchterm page baseurl
         set searchterm $s
@@ -1611,7 +1611,7 @@ oo::class create yahoosearch {
         incr page 10
         my getresults
     }
-    
+
     method nextresult {} {
         my variable results page
         if { ! [info exists results]} {

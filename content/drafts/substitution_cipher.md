@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{draft task|Encryption}} 
+{{draft task|Encryption}}
 [[Category:String manipulation]]
 
 Substitution Cipher Implementation - File Encryption/Decryption
@@ -19,7 +19,7 @@ Substitution Cipher Implementation - File Encryption/Decryption
 ;Task:
 Encrypt a input/source file by replacing every upper/lower case alphabets of the source file with another predetermined upper/lower case alphabets or symbols and save it into another output/encrypted file and then again convert that output/encrypted file into original/decrypted file.
 
-This type of Encryption/Decryption scheme is often called a Substitution Cipher. 
+This type of Encryption/Decryption scheme is often called a Substitution Cipher.
 
 
 ;Related tasks:
@@ -110,28 +110,28 @@ Takes input file name, plain and cipher keys and the action ( Encrypt or Decrypt
 int wideStrLen(wchar_t* str){
 	int i = 0;
 	while(str[i++]!=00);
-	
+
 	return i;
 }
 
 void processFile(char* fileName,char plainKey, char cipherKey,int flag){
-	
+
 	FILE* inpFile = fopen(fileName,"r");
 	FILE* outFile;
-	
+
 	int i,len, diff = (flag==ENCRYPT)?(int)cipherKey - (int)plainKey:(int)plainKey - (int)cipherKey;
 	wchar_t str[1000], *outStr;
 	char* outFileName = (char*)malloc((strlen(fileName)+5)*sizeof(char));
 
 	sprintf(outFileName,"%s_%s",fileName,(flag==ENCRYPT)?"ENC":"DEC");
-	
+
 	outFile = fopen(outFileName,"w");
-	
+
 	while(fgetws(str,1000,inpFile)!=NULL){
 		len = wideStrLen(str);
-		
+
 		outStr = (wchar_t*)malloc((len + 1)*sizeof(wchar_t));
-		
+
 		for(i=0;i<len;i++){
 			if((int)str[i]>=ALPHA && (int)str[i]<=OMEGA && flag == ENCRYPT)
 				outStr[i] = (wchar_t)((int)str[i]+diff);
@@ -141,12 +141,12 @@ void processFile(char* fileName,char plainKey, char cipherKey,int flag){
 				outStr[i] = str[i];
 		}
 		outStr[i]=str[i];
-		
+
 		fputws(outStr,outFile);
-		
+
 		free(outStr);
 	}
-	
+
 	fclose(inpFile);
 	fclose(outFile);
 }
@@ -156,10 +156,10 @@ int main(int argC,char* argV[]){
 		printf("Usage : %s <file name, plain key, cipher key, action (E)ncrypt or (D)ecrypt>",argV[0]);
 	else{
 		processFile(argV[1],argV[2][0],argV[3][0],(argV[4][0]=='E'||argV[4][0]=='e')?ENCRYPT:DECRYPT);
-		
+
 		printf("File %s_%s has been written to the same location as input file.",argV[1],(argV[4][0]=='E'||argV[4][0]=='e')?"ENC":"DEC");
 	}
-	
+
 	return 0;
 }
 
@@ -195,28 +195,28 @@ And here's what substitutionCipher.c_ENC looks like :
 mrx {mhiWxvPir,{glevcx. wxv-
 	mrx m A 4?
 	{lmpi,wxv_m//a%A44-?
-	
+
 	vixyvr m?
 
 
 zsmh tvsgiwwJmpi,glev. jmpiReqi0glev tpemrOi}0 glev gmtlivOi}0mrx jpek-
-	
+
 	JMPI. mrtJmpi A jstir,jmpiReqi0&v&-?
 	JMPI. syxJmpi?
-	
+
 	mrx m0pir0 hmjj A ,jpekAAIRGV]TX-C,mrx-gmtlivOi} 1 ,mrx-tpemrOi}>,mrx-tpemrOi} 1 ,mrx-gmtlivOi}?
 	{glevcx wxv_5444a0 .syxWxv?
 	glev. syxJmpiReqi A ,glev.-qeppsg,,wxvpir,jmpiReqi-/9-.wm~isj,glev--?
 
 	wtvmrxj,syxJmpiReqi0&)wc)w&0jmpiReqi0,jpekAAIRGV]TX-C&IRG&>&HIG&-?
-	
+
 	syxJmpi A jstir,syxJmpiReqi0&{&-?
-	
+
 	{lmpi,jkix{w,wxv054440mrtJmpi-%ARYPP-
 		pir A {mhiWxvPir,wxv-?
-		
+
 		syxWxv A ,{glevcx.-qeppsg,,pir / 5-.wm~isj,{glevcx--?
-		
+
 		jsv,mA4?m@pir?m//-
 			mj,,mrx-wxv_maBAEPTLE ** ,mrx-wxv_ma@ASQIKE ** jpek AA IRGV]TX-
 				syxWxv_ma A ,{glevcx-,,mrx-wxv_ma/hmjj-?
@@ -226,12 +226,12 @@ zsmh tvsgiwwJmpi,glev. jmpiReqi0glev tpemrOi}0 glev gmtlivOi}0mrx jpek-
 				syxWxv_ma A wxv_ma?
 		
 		syxWxv_maAwxv_ma?
-		
+
 		jtyx{w,syxWxv0syxJmpi-?
-		
+
 		jvii,syxWxv-?
 	
-	
+
 	jgpswi,mrtJmpi-?
 	jgpswi,syxJmpi-?
 
@@ -241,10 +241,10 @@ mrx qemr,mrx evkG0glev. evkZ_a-
 		tvmrxj,&Yweki > )w @jmpi reqi0 tpemr oi}0 gmtliv oi}0 egxmsr ,I-rgv}tx sv ,H-igv}txB&0evkZ_4a-?
 	ipwi
 		tvsgiwwJmpi,evkZ_5a0evkZ_6a_4a0evkZ_7a_4a0,evkZ_8a_4aAA+I+€€evkZ_8a_4aAA+i+-CIRGV]TX>HIGV]TX-?
-		
+
 		tvmrxj,&Jmpi )wc)w lew fiir {vmxxir xs xli weqi psgexmsr ew mrtyx jmpi2&0evkZ_5a0,evkZ_8a_4aAA+I+€€evkZ_8a_4aAA+i+-C&IRG&>&HIG&-?
 	
-	
+
 	vixyvr 4?
 
 
@@ -344,11 +344,11 @@ int main( int argc, char* argv[] ) {
 
 
 
-## C sharp
+## C#
 
 
 
-```csharp
+```c#
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -562,13 +562,13 @@ program substitution
   integer, parameter :: eof = -1
   integer :: in_unit = 9, out_unit = 10, ios
   character(len_max) :: line
-  
+
   open(in_unit, file="plain.txt",  iostat=ios)
   if (ios /= 0) then
     write(*,*) "Error opening plain.txt file"
     stop
   end if
-  
+
   open(out_unit, file="encrypted.txt", iostat=ios)
   if (ios /= 0) then
     write(*,*) "Error opening encrypted.txt file"
@@ -576,7 +576,7 @@ program substitution
   end if
 
 ! Encryption
-  do 
+  do
     read(in_unit, "(a)", iostat=ios) line
     if (ios > 0) then
       write(*,*) "Error reading plain.txt file"
@@ -584,7 +584,7 @@ program substitution
     else if (ios == eof) then
       exit
     end if
-            
+
     call cipher(trim(line))
     write(out_unit, "(a)", iostat=ios) trim(line)
     if (ios /= 0) then
@@ -601,15 +601,15 @@ program substitution
     write(*,*) "Error opening encrypted.txt file"
     stop
   end if
-  
+
   open(out_unit, file="decrypted.txt", iostat=ios)
   if (ios /= 0) then
     write(*,*) "Error opening decrypted.txt file"
     stop
   end if
- 
-! Decryption 
-  do 
+
+! Decryption
+  do
     read(in_unit, "(a)", iostat=ios) line
     if (ios > 0) then
       write(*,*) "Error reading encrypted.txt file"
@@ -617,18 +617,18 @@ program substitution
     else if (ios == eof) then
       exit
     end if
-            
+
     call cipher(trim(line))
     write(out_unit, "(a)", iostat=ios) trim(line)
     if (ios /= 0) then
       write(*,*) "Error writing decrypted.txt file"
       stop
     end if
-  end do  
+  end do
 
   close(in_unit)
   close(out_unit)
-  
+
 contains
 
 subroutine cipher(text)
@@ -648,7 +648,7 @@ subroutine cipher(text)
   end do
 end subroutine
 
-end program 
+end program
 ```
 
 {{out}}
@@ -692,23 +692,23 @@ Sub process(inputFile As String, outputFile As String, encrypt As Boolean)
      Sleep
      End
    End If
-   Dim As String alpha, key 
+   Dim As String alpha, key
    If encrypt Then
      alpha = string1 : key = string2
    Else
      alpha = string2 : key = string1
-   End If     
+   End If
    Open outputFile For Output As #2
    Dim s As String
    Dim p As Integer
    While Not Eof(1)
      Line Input #1, s
-     For i As Integer = 0 To Len(s) - 1  
+     For i As Integer = 0 To Len(s) - 1
        If (s[i] >= 65 AndAlso s[i] <= 90) OrElse (s[i] >= 97 AndAlso s[i] <= 122) Then
          p =  Instr(alpha, Mid(s, i + 1, 1)) - 1
-         s[i] = key[p]         
-       End If      
-     Next 
+         s[i] = key[p]
+       End If
+     Next
      Print #2, s
    Wend
    Close #1 : Close #2
@@ -769,7 +769,7 @@ Click here to know more.
 ```go
 package main
 
-import (    
+import (
     "fmt"
     "strings"
 )
@@ -830,7 +830,7 @@ Decoded:  The quick brown fox jumps over the lazy dog, who barks VERY loudly!
 250   LET OPENFILE=0
 260   WHEN EXCEPTION USE OPENERROR
 270     OPEN #1:N$
-280   END WHEN 
+280   END WHEN
 290   LET OPENFILE=-1
 300 END DEF
 310 DEF CHIPER(FUNC)
@@ -839,28 +839,28 @@ Decoded:  The quick brown fox jumps over the lazy dog, who barks VERY loudly!
 340     IF FUNC=1 THEN
 350       OPEN #2:"Encrypte.txt" ACCESS OUTPUT
 360       LET OUTP=2
-370     ELSE 
+370     ELSE
 380       OPEN #2:"Decrypte.txt" ACCESS OUTPUT
 390       LET OUTP=1
-400     END IF 
-410   END WHEN 
+400     END IF
+410   END WHEN
 420   WHEN EXCEPTION USE IOERROR
-430     DO 
+430     DO
 440       GET #1:K$
 450       IF UCASE$(K$)>="A" AND UCASE$(K$)<="Z" THEN
 460         PRINT #2:ST$(OUTP)(POS(ST$(FUNC),K$));
-470       ELSE 
+470       ELSE
 480         PRINT #2:K$;
-490       END IF 
+490       END IF
 500     LOOP UNTIL EOF
-510   END WHEN 
+510   END WHEN
 520   HANDLER IOERROR
 530     IF EXTYPE<>9228 THEN PRINT EXSTRING$(EXTYPE)
 540     CLOSE #2
 550     CLOSE #1
 560     LET EOF=1
-570   END HANDLER 
-580 END DEF 
+570   END HANDLER
+580 END DEF
 590 HANDLER OPENERROR
 600   PRINT EXSTRING$(EXTYPE)
 610   END
@@ -1201,11 +1201,11 @@ sub MAIN ($action = 'encode', $file = '') {
     die 'Only options are encode or decode.' unless $action ~~ any 'encode'|'decode';
 
     my $text = qq:to/END/;
-        Here we have to do is there will be a input/source file in which 
-        we are going to Encrypt the file by replacing every upper/lower 
-        case alphabets of the source file with another predetermined 
-        upper/lower case alphabets or symbols and save it into another 
-        output/encrypted file and then again convert that output/encrypted 
+        Here we have to do is there will be a input/source file in which
+        we are going to Encrypt the file by replacing every upper/lower
+        case alphabets of the source file with another predetermined
+        upper/lower case alphabets or symbols and save it into another
+        output/encrypted file and then again convert that output/encrypted
         file into original/decrypted file. This type of Encryption/Decryption
         scheme is often called a Substitution Cipher.
         END
@@ -1233,7 +1233,7 @@ sub decode ($text) { $text.trans($key => $chr) }
 ```txt
 Key = 3#}^",dLs*>tPMcZR!fmC rEKhlw1v4AOgj7Q]YI+|pDB82a&XFV9yzuH<WT%N;iS.0e:`G\n['6@_{bk)=-5qx(/?$JoU
 
-Encoded text: 
+Encoded text:
  +`=`3(`3n.x`35b3:b3[-35n`=`3([@@30`3.3[{kq5Z-bq=e`3G[@`3[{3(n[en3
 (`3.=`3\b[{\35b3]{e=?k535n`3G[@`30?3=`k@.e[{\3`x`=?3qkk`=Z@b(`=3
 e.-`3.@kn.0`5-3bG35n`3-bq=e`3G[@`3([5n3.{b5n`=3k=`:`5`=_[{`:3
@@ -1242,12 +1242,12 @@ bq5kq5Z`{e=?k5`:3G[@`3.{:35n`{3.\.[{3eb{x`=535n.53bq5kq5Z`{e=?k5`:3
 G[@`3[{5b3b=[\[{.@Z:`e=?k5`:3G[@`c39n[-35?k`3bG3]{e=?k5[b{ZQ`e=?k5[b{
 -en`_`3[-3bG5`{3e.@@`:3.3Vq0-5[5q5[b{37[kn`=c
 
-Decoded text: 
- Here we have to do is there will be a input/source file in which 
-we are going to Encrypt the file by replacing every upper/lower 
-case alphabets of the source file with another predetermined 
-upper/lower case alphabets or symbols and save it into another 
-output/encrypted file and then again convert that output/encrypted 
+Decoded text:
+ Here we have to do is there will be a input/source file in which
+we are going to Encrypt the file by replacing every upper/lower
+case alphabets of the source file with another predetermined
+upper/lower case alphabets or symbols and save it into another
+output/encrypted file and then again convert that output/encrypted
 file into original/decrypted file. This type of Encryption/Decryption
 scheme is often called a Substitution Cipher.
 
@@ -1270,7 +1270,7 @@ function encode(string s, integer decrypt=false)
     end for
     return s
 end function
- 
+
 string original = "A simple example.",
        encoded = encode(original),
        decoded = encode(encoded, true)
@@ -1357,7 +1357,7 @@ A straightforward implementation. The output is:
 Encoding it with the key: dV1>r7:TLlJa�uY o]MjH\hI^X	cPN#!fmv[
 <e=04|O'~{y$bAq@}U.WtF*)x/K?
 Q%S(�RB;25&s6Z9C3+D-_8kn,`Egiwzp"G
-Gives: 
+Gives:
 iPMhX\YiYmJhX\Y5
 Decoding it by the same key gives: A simple example.
 ```
@@ -1407,9 +1407,9 @@ so I don't display the plaintext in the output.
 (module+ test
   (require rackunit)
   (define my-key "LXRWzUrIYPJiVQyMwKudbAaDjSEefvhlqmOkGcBZCFsNpxHTgton")
-  
+
   (define-values (cypher decypher) (cypher/decypher my-key abc))
-  
+
   (define in-text #<<T
 The quick brown fox...
 .. jumped over
@@ -1417,11 +1417,11 @@ the lazy dog!
 T
     )
   (define cypher-text (cypher in-text))
-  
+
   (define plain-text (decypher cypher-text))
   (displayln cypher-text)
   (check-equal? plain-text in-text)
-  
+
   (define-values (file-cypher file-decypher) (cypher/decypher-files my-key abc))
   (file-cypher "data/substitution.in.txt" "data/substitution.crypt.txt" #:exists 'replace)
   (file-decypher "data/substitution.crypt.txt" "data/substitution.plain.txt" #:exists 'replace)

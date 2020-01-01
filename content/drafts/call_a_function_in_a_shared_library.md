@@ -277,10 +277,10 @@ opened with handle 0
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 In Windows.
 
-```csharp
+```c#
 using System.Runtime.InteropServices;
 
 class Program {

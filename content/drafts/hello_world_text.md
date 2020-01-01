@@ -1131,11 +1131,11 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Mono|1.2}}
 {{works with|Visual C sharp|Visual C#|2003}}
 
-```csharp
+```c#
 namespace HelloWorld
 {
     class Program

@@ -214,9 +214,9 @@ struct Node
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 class Link
 {
     public int Item { get; set; }

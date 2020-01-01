@@ -16,12 +16,12 @@ tags = []
 {{omit from|M4}}
 
 ;Task:
-Show the following output using one loop. 
+Show the following output using one loop.
  1, 2, 3, 4, 5
  6, 7, 8, 9, 10
 
 
-Try to achieve the result by forcing the next iteration within the loop 
+Try to achieve the result by forcing the next iteration within the loop
 upon a specific condition, if your language allows it.
 
 
@@ -80,7 +80,7 @@ ELOOPI   XR     R15,R15
          BR     R14
 MVC      DC     CL80' '
 XDEC     DS     CL16
-         YREGS  
+         YREGS
          END    LOOPCONT
 ```
 
@@ -95,23 +95,23 @@ XDEC     DS     CL16
 
 ## Ada
 
-Ada doesn't have a continue statement, 
-so we have to use a goto statement.  
-The previous submitter said continue is not needed.  
+Ada doesn't have a continue statement,
+so we have to use a goto statement.
+The previous submitter said continue is not needed.
 In this example it is indeed not needed,
-but that is not always the case. 
-An example is a loop where a number of interdependent conditions 
-are checked before executing the main body of the loop.  
-Without a continue statement (or goto), one ends up with 
+but that is not always the case.
+An example is a loop where a number of interdependent conditions
+are checked before executing the main body of the loop.
+Without a continue statement (or goto), one ends up with
 nested statements with the main body to the far right of the page.
 
 '''B.N.''' You should always try to avoid using a goto,
 but if you really must, it's there in Ada.
 
 P.S. it is often simplest to place the label on top of the
-loop, as in real life the need occurs when reading input, 
+loop, as in real life the need occurs when reading input,
 so there is no range condition in the loop and we can
-forgo the null statement. 
+forgo the null statement.
 
 
 ```ada
@@ -159,7 +159,7 @@ foreach i 1..10 {
     if ((i % 5) == 0) {
         println()
         continue
-    } 
+    }
     print (", ")
 }
 ```
@@ -198,7 +198,7 @@ foreach i 1..10 {
 
 ```algol68
 FOR i FROM 1 TO 10 DO
-  print ((i, 
+  print ((i,
     IF i MOD 5 = 0 THEN
       new line
     ELSE
@@ -300,7 +300,7 @@ BBC BASIC doesn't have a 'continue' statement so the remainder of the loop must 
 =
 ## Commodore BASIC
 =
-Commodore BASIC also doesn't have a 'continue' statement. In this example, a GOTO statement is used to simulate 'CONTINUE'. However, Commodore BASIC doesn't have a modulo (remainder) operator, so value of I/5 is check against INT(I/5). If they are the same, the remainder is zero. 
+Commodore BASIC also doesn't have a 'continue' statement. In this example, a GOTO statement is used to simulate 'CONTINUE'. However, Commodore BASIC doesn't have a modulo (remainder) operator, so value of I/5 is check against INT(I/5). If they are the same, the remainder is zero.
 
 ```qbasic
 10 FOR I = 1 to 10
@@ -401,7 +401,7 @@ This probably isn't the most idiomatic way to produce the specified output—but
 
 ==={{header|TI-89 BASIC}}===
 <lang ti-89>count()
-Prgm 
+Prgm
   ""→s
   For i,1,10
     s&string(i)→s
@@ -556,10 +556,10 @@ for(int i = 1;i <= 10; i++){
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 class Program {
@@ -696,10 +696,10 @@ Remove the leading space from the line break tag.
 
 ## Common Lisp
 
-Common Lisp doesn't have a continue keyword, but the <code>do</code> iteration construct does use an implicit <code>tagbody</code>, so it's easy to <code>go</code> to any label.  
-Four solutions follow.  
-The first pushes the conditional (whether to print a comma and a space or a newline) into the format string.  
-The second uses the implicit <code>tagbody</code> and <code>go</code>.  
+Common Lisp doesn't have a continue keyword, but the <code>do</code> iteration construct does use an implicit <code>tagbody</code>, so it's easy to <code>go</code> to any label.
+Four solutions follow.
+The first pushes the conditional (whether to print a comma and a space or a newline) into the format string.
+The second uses the implicit <code>tagbody</code> and <code>go</code>.
 The third is a do loop with conditionals outside of the output functions.
 
 ```lisp
@@ -725,8 +725,8 @@ The third is a do loop with conditionals outside of the output functions.
 ```
 
 
-These use the <code>loop</code> iteration form, which does not contain an implicit tagbody (though one could be explicitly included). 
-The first uses an explicit condition to omit the rest of the loop; 
+These use the <code>loop</code> iteration form, which does not contain an implicit tagbody (though one could be explicitly included).
+The first uses an explicit condition to omit the rest of the loop;
 the second uses <code>block</code>/<code>return-from</code> to obtain the effect of skipping the rest of the code in the <code>block</code> which makes up the entire loop body.
 
 
@@ -794,8 +794,8 @@ void main()
 
 ## dc
 
-The four commands <tt># n J M</tt> are special to [[OpenBSD dc]]. 
-The <tt>#</tt> command starts a comment. 
+The four commands <tt># n J M</tt> are special to [[OpenBSD dc]].
+The <tt>#</tt> command starts a comment.
 The <tt>n</tt> command prints a number without a newline.
 
 {{trans|bc}}
@@ -818,8 +818,8 @@ The <tt>n</tt> command prints a number without a newline.
 ```
 
 
-This program uses <tt>J</tt> and <tt>M</tt> to force the next iteration of a loop. 
-The <tt>''n''J</tt> command breaks ''n'' levels of brackets (like <tt>''n''Q</tt> does so), but then skips to the next <tt>M</tt> command. 
+This program uses <tt>J</tt> and <tt>M</tt> to force the next iteration of a loop.
+The <tt>''n''J</tt> command breaks ''n'' levels of brackets (like <tt>''n''Q</tt> does so), but then skips to the next <tt>M</tt> command.
 One can place <tt>M</tt> at the end of the iteration.
 
 
@@ -913,10 +913,10 @@ for i in 1..10 {
 
 ```ela
 open monad io
- 
-loop n = 
+
+loop n =
   if n > 10 then do
-      return () 
+      return ()
     else do
       putStr (show n)
       putStr f
@@ -934,7 +934,7 @@ _ = loop 1 ::: IO
 
 ```ela
 open monad io
- 
+
 loop [] = return ()
 loop (x::xs) = do
       putStr (show x)
@@ -942,7 +942,7 @@ loop (x::xs) = do
       loop xs
   where f | x % 5 == 0 = "\r\n"
           | else = ", "
- 
+
 _ = loop [1..10] ::: IO
 ```
 
@@ -985,19 +985,19 @@ Loops.continue
 %% Implemented by Arjun Sunel
 -module(continue).
 -export([main/0, for_loop/1]).
- 
+
 main() ->
 	for_loop(1).
-	
+
 for_loop(N)  when N /= 5 , N <10 ->
 	io:format("~p, ",[N] ),
 	for_loop(N+1);
-	
+
 for_loop(N) when N >=10->
 	if N=:=10 ->
 		io:format("~p\n",[N] )
 	end;
-	 
+
 for_loop(N) ->
 	if N=:=5 ->
 		io:format("~p\n",[N] ),
@@ -1061,14 +1061,14 @@ include std\console.e --only for any_key to make running command window easier o
 
 for i = 1 to 10 do
     if remainder(i,5) = 0 then
-        switch i do 
+        switch i do
             case 10 then
                 printf(1,"%d ",i)
                 break --new to euphoria 4.0.0+
             case else
                 printf(1,"%d\n", i)
         end switch
-                
+
         else
             printf(1,"%d, ", i)
             continue --new to euphoria 4.0.0+
@@ -1080,7 +1080,7 @@ any_key()
 
 
 =={{header|F Sharp|F#}}==
-<code>continue</code> is a reserved word, but it has no function. 
+<code>continue</code> is a reserved word, but it has no function.
 In any case, it is not needed to complete this task.
 ==={{trans|Ada}}===
 
@@ -1097,7 +1097,7 @@ for i in 1 .. 10 do
 
 ```fsharp
 
-let fN g=quibble (Seq.initInfinite(fun n ->if (n+1)%5=0 || (n+1)=List.length g then "\n" else ", ")) g  
+let fN g=quibble (Seq.initInfinite(fun n ->if (n+1)%5=0 || (n+1)=List.length g then "\n" else ", ")) g
 fN [1] |> Seq.iter(fun(n,g)->printf "%d%s" n g)
 fN [1..9] |> Seq.iter(fun(n,g)->printf "%d%s" n g)
 fN [1..10] |> Seq.iter(fun(n,g)->printf "%d%s" n g)
@@ -1117,7 +1117,7 @@ fN [1..11] |> Seq.iter(fun(n,g)->printf "%d%s" n g)
 1, 2, 3, 4, 5
 6, 7, 8, 9, 10
 11
- 
+
 ```
 
 
@@ -1127,7 +1127,7 @@ fN [1..11] |> Seq.iter(fun(n,g)->printf "%d%s" n g)
 There is no built-in <code>continue</code> in Factor.
 
 ```factor
-1 10 [a,b] [ 
+1 10 [a,b] [
     [ number>string write ]
     [ 5 mod 0 = "\n" ", " ? write ] bi
 ] each
@@ -1145,12 +1145,12 @@ While and for loops support <code>continue</code> to jump back to begin the next
 
 class LoopsContinue
 {
-  public static Void main () 
+  public static Void main ()
   {
     for (Int i := 1; i <= 10; ++i)
     {
       Env.cur.out.print (i)
-      if (i % 5 == 0) 
+      if (i % 5 == 0)
       {
         Env.cur.out.printLine ("")
         continue
@@ -1283,7 +1283,7 @@ For historical reasons, 6 is often the default unit number for standard output.
 
 Here the break and continuation comes through the workings of the FORMAT interpreter. The feature 4(etc) means four repetitions of the format items within the brackets, and as each datum from the WRITE statement arrives, it is aligned with the next format item that can receive a datum, the I-format specifier (here I0, which means an integer of only as many digits as are needed for the value) and until such a reciever is encountered, intervening format items are acted upon - 1X means "one space", and the quotes surround a text literal. Accordingly, the first datum generates a space, a one-digit value, and a comma, as does the second and so on. When the sixth datum is received, the end of the format statement has been reached, and the convention is to write the current line and start a new line of output, and further, go back in the FORMAT specification to the first-encountered open-bracket symbol (the rightmost) which in this case is not the beginning of the FORMAT statement but the one that has a repetition count of four in front of it, and, resume interpretation. When the last datum has been accepted, naturally, the line is printed.
 
-An alternative might be FORMAT (4(I2,","),I2) but that would generate 
+An alternative might be FORMAT (4(I2,","),I2) but that would generate
  1, 2, 3, 4, 5
  6, 7, 8, 9,10
 Alternatively, FORMAT (4(I2,","),I2,/,4(I2,","),I3) would do the trick but there would no longer be the loop, break, continue aspect to the interpretation of the FORMAT statement, merely a grinding through a list.
@@ -1401,7 +1401,7 @@ for (i in 1..10) {
 
 ## Haskell
 
-As a functional language, it is not idiomatic to have true loops - recursion is used instead. Below is one of many possible implementations of the task. 
+As a functional language, it is not idiomatic to have true loops - recursion is used instead. Below is one of many possible implementations of the task.
 The below code uses a guard (| symbol) to compose functions differently for the two alternative output paths, instead of using continue like in an imperative language.
 
 
@@ -1425,7 +1425,7 @@ DO i = 1, 10
     ELSE
       WRITE(APPend, Format=" ',', i3 ") i
     ENDIF
-ENDDO 
+ENDDO
 ```
 
 
@@ -1437,7 +1437,7 @@ procedure main()
 every writes(x := 1 to 10) do {
    if x % 5 = 0 then {
       write()
-      next         
+      next
       }
    writes(", ")
    }
@@ -1467,7 +1467,7 @@ for(i,1,10,
 
 ## J
 
-J is array-oriented, so there is very little need for loops.  
+J is array-oriented, so there is very little need for loops.
 For example, one could satisfy this task this way:
 
 
@@ -1476,20 +1476,20 @@ _2}."1'lq<, >'8!:2>:i.2 5
 ```
 
 
-J does support loops for those times they can't be avoided 
-(just like many languages support gotos for those time they can't be avoided).  
+J does support loops for those times they can't be avoided
+(just like many languages support gotos for those time they can't be avoided).
 
 ```j
-3 : 0 ] 10 
+3 : 0 ] 10
         z=.''
         for_i. 1 + i.y do.
             z =. z , ": i
 
              if. 0 = 5 | i do.
-                  z 1!:2 ]2 
+                  z 1!:2 ]2
                   z =. ''
-                  continue. 
-             end. 
+                  continue.
+             end.
 
              z =. z , ', '
         end.
@@ -1524,12 +1524,12 @@ Using the <code>print()</code> function from [[Rhino]] or [[SpiderMonkey]].
 ```javascript
 var output = "";
 for (var i = 1; i <= 10; i++) {
-  output += i; 
+  output += i;
   if (i % 5 == 0) {
     print(output);
     output = "";
     continue;
-  } 
+  }
   output += ", ";
 }
 ```
@@ -1568,7 +1568,7 @@ Output:
 
 ## jq
 
-jq does not have a "continue" statement. 
+jq does not have a "continue" statement.
 In jq 1.4, the simplest way to accomplish the given task is probably as follows:
 
 ```jq
@@ -1710,9 +1710,9 @@ put str
 
 ```LiveCode
 repeat with n = 1 to 10
-    put n 
+    put n
     if n is 5 then put return
-    if n < 10 and n is not 5 then put "," 
+    if n < 10 and n is not 5 then put ","
 end repeat
 ```
 
@@ -1727,7 +1727,7 @@ for i = 1, 10 do
     if i % 5 == 0 then
         io.write( "\n" )
     else
-    	io.write( ", " ) 
+    	io.write( ", " )
     end
 end
 ```
@@ -1824,14 +1824,14 @@ Print[tmp]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-Loops are considered slow in Matlab and Octave, 
-it is preferable to vectorize the code.  
+Loops are considered slow in Matlab and Octave,
+it is preferable to vectorize the code.
 
 ```Matlab
 disp([1:5; 6:10])
 ```
 
-or 
+or
 
 ```Matlab
 disp(reshape([1:10],5,2)')
@@ -1844,7 +1844,7 @@ A non-vectorized version of the code is shown below in Octave
 ```Matlab
 for i = 1:10
   printf(' %2d',  i);
-  if ( mod(i, 5) == 0 ) 
+  if ( mod(i, 5) == 0 )
     printf('\n');
     continue
   end
@@ -1895,7 +1895,7 @@ for i in 1 to 10 do
 
 ## Metafont
 
-Metafont has no a <tt>continue</tt> (or similar) keyword. 
+Metafont has no a <tt>continue</tt> (or similar) keyword.
 As the [[Loop/Continue#Ada|Ada solution]], we can complete the task just with conditional.
 
 
@@ -1912,8 +1912,8 @@ end
 ```
 
 
-Since <tt>message</tt> append always a newline at the end, 
-we need to build a string and output it at the end, 
+Since <tt>message</tt> append always a newline at the end,
+we need to build a string and output it at the end,
 instead of writing the output step by step.
 
 '''Note''': <tt>mod</tt> is not a built in; like TeX, "bare Metafont" is rather primitive, and normally a set of basic macros is preloaded to make it more usable; in particular <tt>mod</tt> is defined as
@@ -1925,10 +1925,10 @@ primarydef x mod y = (x-y*floor(x/y)) enddef;
 
 
 =={{header|Modula-3}}==
-Modula-3 defines the keyword <tt>RETURN</tt> as an exception, 
+Modula-3 defines the keyword <tt>RETURN</tt> as an exception,
 but when it is used with no arguments it works just like <tt>continue</tt> in [[C]].
 
-Note, however, that <tt>RETURN</tt> only works inside a procedure or 
+Note, however, that <tt>RETURN</tt> only works inside a procedure or
 a function procedure; use <tt>EXIT</tt> otherwise.
 
 Module code and imports are omitted.
@@ -2045,7 +2045,7 @@ options replace format comments java crossref savelog symbols nobinary
       iterate i_
       end
     say ', ' || nul
-        
+
     end i_
 
 ```
@@ -2109,7 +2109,7 @@ class Continue {
 
 ## OCaml
 
-There is no continue statement for for loops in OCaml, 
+There is no continue statement for for loops in OCaml,
 but it is possible to achieve the same effect with an exception.
 
 ```ocaml
@@ -2127,7 +2127,7 @@ but it is possible to achieve the same effect with an exception.
 - : unit = ()
 ```
 
-Though even if the continue statement does not exist, 
+Though even if the continue statement does not exist,
 it is possible to add it with camlp4.
 
 
@@ -2138,7 +2138,7 @@ it is possible to add it with camlp4.
 v = "";
 for i = 1:10
   v = sprintf("%s%d", v, i);
-  if ( mod(i, 5) == 0 ) 
+  if ( mod(i, 5) == 0 )
     disp(v)
     v = "";
     continue
@@ -2154,11 +2154,11 @@ endfor
 
 
 ```Oforth
-: loopCont 
-| i | 
-   10 loop: i [ 
+: loopCont
+| i |
+   10 loop: i [
       i dup print 5 mod ifZero: [ printcr continue ]
-      "," . 
+      "," .
       ] ;
 ```
 
@@ -2214,7 +2214,7 @@ foreach (1..10) {
 ```
 
 
-It is also possible to use a goto statement 
+It is also possible to use a goto statement
 to jump over the iterative code section for a particular loop:
 
 
@@ -2293,7 +2293,7 @@ for ($i = 1; $i <= 10; $i++) {
 
 ## PicoLisp
 
-PicoLisp doesn't have an explicit 'continue' functionality. 
+PicoLisp doesn't have an explicit 'continue' functionality.
 It can always be emulated with a conditional expression.
 
 ```PicoLisp
@@ -2393,7 +2393,7 @@ for i in xrange(1,11):
 for(i in 1:10)
 {
    cat(i)
-   if(i %% 5 == 0) 
+   if(i %% 5 == 0)
    {
       cat("\n")
       next
@@ -2407,7 +2407,7 @@ for(i in 1:10)
 ## Racket
 
 
-It is possible to skip loop iterations in Racket, 
+It is possible to skip loop iterations in Racket,
 but an explicit <tt>continue</tt> construct is rarely used:
 
 
@@ -2536,7 +2536,7 @@ $=                                               /*nullify the variable used for
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> REXX version. 
+'''output'''   is the same as the 1<sup>st</sup> REXX version.
 
 
 
@@ -2547,7 +2547,7 @@ $=                                               /*nullify the variable used for
 ```ring
 
 for i = 1 TO 10
-   see i 
+   see i
    if i % 5 = 0
       see nl
       loop
@@ -2635,7 +2635,7 @@ class MAIN is
     i:INT;
     loop i := 1.upto!(10);
       #OUT + i;
-      if i%5 = 0 then 
+      if i%5 = 0 then
         #OUT + "\n";
       else
         #OUT + ", ";
@@ -2649,7 +2649,7 @@ end;
 
 ## Scala
 
-Scala doesn't have a <code>continue</code> keyword. 
+Scala doesn't have a <code>continue</code> keyword.
 However, you may not even miss it, <code>if</code> could be used here.
 
 
@@ -2707,14 +2707,14 @@ Thinking In Scala<sup>©</sup> says: we avoid for loops and handle it the [[func
       continue
     end
     printf("\n")
-end 
+end
 ```
 
 {{out}}
 
 ```txt
- 1 ,  2 ,  3 ,  4 ,  5 
- 6 ,  7 ,  8 ,  9 , 10 
+ 1 ,  2 ,  3 ,  4 ,  5
+ 6 ,  7 ,  8 ,  9 , 10
 ```
 
 
@@ -2774,12 +2774,12 @@ begin
 
 1 to: 10 do: [ :i |
     [ :continue |
-        i % 5 = 0 ifTrue: [ 
+        i % 5 = 0 ifTrue: [
             Transcript show: i; cr.
             continue value ].
-        Transcript 
+        Transcript
             show: i;
-            show: ', '.		
+            show: ', '.
     ] valueWithExit.
 ]
 

@@ -361,11 +361,11 @@ Rosetta Code as a sha1 digest :48c98f7e5a6e736d790ab740dfc3f51a61abe2b5 !
 
 
 
-## C sharp
+## C#
 
 Tests the built-in SHA1CryptoServiceProvider:
 
-```csharp
+```c#
 using System;
 using System.Security.Cryptography;
 using System.Text;

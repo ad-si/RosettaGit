@@ -11,12 +11,12 @@ tags = []
 +++
 
 {{task|Basic language learning}}
-Most programming languages offer support for [[Creating a function|subroutines]]. 
-When execution changes between subroutines, different sets of variables and functions ("scopes") are available to the program. 
-Frequently these sets are defined by the placement of the variable and function declarations ("static scoping" or "lexical scoping"). 
+Most programming languages offer support for [[Creating a function|subroutines]].
+When execution changes between subroutines, different sets of variables and functions ("scopes") are available to the program.
+Frequently these sets are defined by the placement of the variable and function declarations ("static scoping" or "lexical scoping").
 These sets may also be defined by special modifiers to the variable and function declarations.
 
-Show the different scope modifiers available in your language and briefly explain how they change the scope of their variable or function. 
+Show the different scope modifiers available in your language and briefly explain how they change the scope of their variable or function.
 If your language has no scope modifiers, note it.
 
 
@@ -25,7 +25,7 @@ If your language has no scope modifiers, note it.
 
 ### Public and private declarative parts
 
-In [[Ada]] declarative region of a package has publicly visible and private parts. 
+In [[Ada]] declarative region of a package has publicly visible and private parts.
 The private part is introduced by '''private''':
 
 ```ada
@@ -106,7 +106,7 @@ assume_global()
   Global  ; assume all variables declared in this function are global in scope
   Static callcount := 0   ; except this one declared static, initialized once only
   MsgBox % singleton  ; usefull to initialize a bunch of singletons
-  callcount++ 
+  callcount++
 }
 
 assume_global2()
@@ -115,7 +115,7 @@ assume_global2()
   MsgBox % singleton
 }
 
-object(member, value = 0, null = 0) 
+object(member, value = 0, null = 0)
 {
   Static  ; assume all variables in this function to be static
   If value    ; can be used to simulate objects
@@ -141,7 +141,7 @@ Axe has no variable scope modifiers because all variables are static in memory.
 All variables are global by default, except the parameter which is local to the function.  There are no scope modifiers.
 
 ```ApplesoftBasic
- 10 X = 1                              	
+ 10 X = 1
  20  DEF  FN F(X) = X
  30  DEF  FN G(N) = X
  40  PRINT  FN F(2)
@@ -170,36 +170,36 @@ The scope modifier PRIVATE declares a variable static to a function; it sets the
 ```bbcbasic
       var1$ = "Global1"
       var2$ = "Global2"
-      
+
       PRINT "Before function call:"
       PRINT "var1$ = """ var1$ """"
       PRINT "var2$ = """ var2$ """"
-      
+
       PROCtestscope(var1$)
       PROCtestscope(var1$)
-      
+
       PRINT "After function call:"
       PRINT "var1$ = """ var1$ """"
       PRINT "var2$ = """ var2$ """"
       END
-      
+
       DEF PROCtestscope(var2$)
       PRINT "On entry to function:"
       PRINT "var1$ = """ var1$ """"
       PRINT "var2$ = """ var2$ """"
-      
+
       LOCAL var1$
       PRIVATE var2$
       PRINT "After LOCAL/PRIVATE:"
       PRINT "var1$ = """ var1$ """"
       PRINT "var2$ = """ var2$ """"
-      
+
       var1$ = "Local"
       var2$ = "Private"
       PRINT "After assignments:"
       PRINT "var1$ = """ var1$ """"
       PRINT "var2$ = """ var2$ """"
-      
+
       ENDPROC
 ```
 
@@ -246,7 +246,7 @@ One can think of each identifier as a stack. Function parameters and local ident
 ```bc
 define g(a) {
     auto b
-    
+
     b = 3
 
     "Inside g: a = "; a
@@ -279,7 +279,7 @@ a = 1; b = 1; c = 1; d = 1
 "Global scope (before call): b = "; b
 "Global scope (before call): c = "; c
 "Global scope (before call): d = "; d
-x = f(1)   
+x = f(1)
 "Global scope (before call): a = "; a
 "Global scope (before call): b = "; b
 "Global scope (before call): c = "; c
@@ -361,12 +361,12 @@ extern float v; // a global declared somewhere else
 int code(int arg)
 {
   int myp;        // 1) this can be seen only from inside code
-                  // 2) In recursive code this variable will be in a 
+                  // 2) In recursive code this variable will be in a
                   //    different stack frame (like a closure)
   static int myc; // 3) still a variable that can be seen only from
                   //    inside code, but its value will be kept
                   //    among different code calls
-                  // 4) In recursive code this variable will be the 
+                  // 4) In recursive code this variable will be the
                   //    same in every stack frame - a significant scoping difference
 }
 
@@ -394,10 +394,10 @@ int code(int);   // this is enough to be able to use global code defined in file
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 public //visible to anything.
 protected //visible to current class and to derived classes.
 internal //visible to anything inside the same assembly (.dll/.exe).
@@ -424,7 +424,7 @@ In case of top-level classes/structs/interfaces/enums this means internal, other
 Special case: explicit interface implementation.<br/>
 When a class explicitly implements an interface method, it is 'hidden' and that method can only be accessed through the interface:
 
-```csharp
+```c#
 public interface IPrinter
 {
     void Print();
@@ -488,7 +488,7 @@ The next example declaims that <code>*bug*</code> has dynamic scope. Meanwhile, 
            (format t "~%  There is some ~A in my ~A!" *bug* shape)))
     (format t "~%Put ~A in your ~A..." *bug* shape)
     (speak)
-    
+
     (let ((shape "circle") (*bug* "cockroach"))
       (format t "~%Put ~A in your ~A..." *bug* shape)
       (speak))))
@@ -585,7 +585,7 @@ Variables have global scope except for:
 
 A local variable cannot hide (have the same name as):
 * any routine
-* a global variable 
+* a global variable
 
 
 ```Eiffel
@@ -597,7 +597,7 @@ feature
 		do
 			-- r, i and s have scope here
 			-- as well as int and char
-			-- some_procedure and some_function additionally have scope here			
+			-- some_procedure and some_function additionally have scope here
 		end
 
 	s: STRING
@@ -828,7 +828,7 @@ As Kotlin supports both procedural and object oriented programming, the usage of
 
 Note in particular the following differences between Java and Kotlin:
 
-1. Kotlin does not have 'package private' visibility and, if no modifier is used, the default is 'public' (or 'protected' when overriding a protected member). 
+1. Kotlin does not have 'package private' visibility and, if no modifier is used, the default is 'public' (or 'protected' when overriding a protected member).
 
 2. Kotlin has the 'internal' modifier which means that the entity is visible everywhere within the same 'module'. A module, for this purpose, is essentially a set of source code files which are compiled together.
 
@@ -841,10 +841,10 @@ Note in particular the following differences between Java and Kotlin:
 
 class SomeClass {
     val id: Int
-  
+
     companion object {
         private var lastId = 0
-        val objectsCreated get() = lastId  
+        val objectsCreated get() = lastId
     }
 
     init {
@@ -935,7 +935,7 @@ Logtalk supports scope modifiers in predicate declarations and entity (object, c
 :- category(object,   % predicates declared in the protocol become protected for the category
     implements(protected::protocol)).
 
-:- protocol(extended, % no change to the scope of the predicates inherited from the extended protocol  
+:- protocol(extended, % no change to the scope of the predicates inherited from the extended protocol
     extends(public::minimal)).
 
 ```
@@ -995,7 +995,7 @@ Module Checkit {
                               \\ use <= to change members, else using = we define local variables
                               .x<=10
                               .z<=20
-                        } 
+                        }
                   }
                   ' print 1465
                   Alfa.AddOne
@@ -1039,7 +1039,7 @@ Print Module$  ' print A
 
 ```
 
-Subs are searched first time for current module/function, or from parent code, and stored in a list as name, internal number of code source and position in code. Modules can replaced (we sy decorated) with other modules, before call (see CheckThis changed for a call with ChangeOther). 
+Subs are searched first time for current module/function, or from parent code, and stored in a list as name, internal number of code source and position in code. Modules can replaced (we sy decorated) with other modules, before call (see CheckThis changed for a call with ChangeOther).
 
 Internal M2000 Interpreter uses "Execution Objects", named Basetasks, which hold code for consuming. Modules and functions run on own Basetasks, but subs use the current basetask. There are routines using Gosub and Return like Basic.
 
@@ -1056,7 +1056,7 @@ Module CheckIt {
                   Z=500
                   Hello("Bob")
             }
-            Function CheckFun { 
+            Function CheckFun {
                    Z=50
                    Hello("Mary")
             }
@@ -1076,7 +1076,7 @@ Module CheckIt {
             Print Z, M
             Return
       }
-      CheckSub 10     
+      CheckSub 10
       Module CheckOther {
             Z=1000
             Hello("John")
@@ -1097,9 +1097,9 @@ Module Alfa {
             if x>99 then exit
       }
       Wait 100
-      Sub PrintMe() 
+      Sub PrintMe()
             Print x
-      End Sub      
+      End Sub
 }
 Call Alfa
 
@@ -1116,7 +1116,7 @@ Block  -> localize values of variables (dynamic scoping)
 
 Module creates new symbols:
 
-Module[{x}, Print[x]; 
+Module[{x}, Print[x];
  Module[{x}, Print[x]]
 ]
 
@@ -1200,7 +1200,7 @@ Regular block scopes are defined simply by virtue of the declaration’s positio
 procedure super;
 var
 	f: boolean;
-	
+
 	procedure nestedProcedure;
 	var
 		c: char;
@@ -1379,8 +1379,8 @@ end function
 ```
 
 Here, localf() can only be invoked from within the same file, but globalf() can be invoked from any other file
-that (directly or indirectly) includes it. The global keyword is equally applicable to routines, variables, and constants. 
-A forward definition may be required before any named parameters can be used (on forward calls), and also occasionally to 
+that (directly or indirectly) includes it. The global keyword is equally applicable to routines, variables, and constants.
+A forward definition may be required before any named parameters can be used (on forward calls), and also occasionally to
 cure a "globalf has not been declared" variety of compilation error.
 
 Namespaces for specific (entire) files can be used to qualify global identifiers, should there be a name clash between several files.
@@ -1394,32 +1394,32 @@ res = xxx:globalf()     -- call a global function named globalf, specifically th
 ```
 
 Note however that one of the main reasons for namespaces is to avoid having to amend any included (3rd party)
-files, so having namespaces within the file itself may prove to be less than helpful, should they (the namespaces 
+files, so having namespaces within the file itself may prove to be less than helpful, should they (the namespaces
 themselves) ever clash.
 
-Also note that namespaces are always local, not that there is any problem at all with the same name dropping 
+Also note that namespaces are always local, not that there is any problem at all with the same name dropping
 in and out of scope in every single source file throughout the application. What this means is that if file
 a includes b includes c, you can refer in a to c via the namespace of b, but not directly, unless you also
 explicitly include c in a. (Obviously were something in c globally unique you could refer to it without any namespace.)
 
-The compiler maintains a list of files it has processed; re-inclusion (by some other file) just adds any 
+The compiler maintains a list of files it has processed; re-inclusion (by some other file) just adds any
 required namespace and otherwise quietly skips it.
 
 
 ## PicoLisp
 
-PicoLisp distinguishes between "scope" and "binding". 
-The scope of a symbol determines its visibility in a given context 
+PicoLisp distinguishes between "scope" and "binding".
+The scope of a symbol determines its visibility in a given context
 (whether or not it can be accessed), while binding is about assigning it a value.
 
 
 ### Scope
 
 In PicoLisp, the scope type of a symbol is either "internal", "transient" or
-"external". 
+"external".
 It is specified lexically: Internal symbols are just normal symbols.
 Transient symbols are surrounded by double quotes (and thus look like strings in
-other languages), and/or with an underlined font if possible. 
+other languages), and/or with an underlined font if possible.
 External symbols are surrounded by braces.
 
 * The scope of an internal symbol is global. This means that a symbol like AB123 is always the same object, residing at a certain location in memory (pointer equality).
@@ -1488,16 +1488,16 @@ Procedure test()
   Shared friend
   ;create a local variable distinct from a variable with global scope having the same name
   Protected extraYears = 2
-  
+
   PrintN(person + " and " + friend + " are " + Str(baseAge) + " and " + Str(baseAge + ageDiff + extraYears) + " years old.")
 EndProcedure
 
 
 If OpenConsole()
   test()
-  
+
   PrintN(person + " and " + friend + " are " + Str(baseAge) + " and " + Str(baseAge + ageDiff + extraYears) + " years old.")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -1547,7 +1547,7 @@ In the example below the name <code>x</code> is defined at various scopes and gi
         return "scoped_notdefinedlocally scope gives x = " + x
     print(scoped_notdefinedlocally())
 
-    
+
 >>> outerfunc()
 scoped_local scope gives x = scope local
 scoped_nonlocal scope gives x = From scope at outerfunc
@@ -1607,7 +1607,7 @@ print(x)                                   #"global x"
 
 local({ ## local({...}) is a shortcut for evalq({...}, envir=new.env())
         ## and is also equivalent to (function() {...})()
-  
+
   x <- "outer local x"
   print(x)                                 #"outer local x"
   x <<- "modified global x"
@@ -1615,12 +1615,12 @@ local({ ## local({...}) is a shortcut for evalq({...}, envir=new.env())
   y <<- "created global y"
   print(y)                                 #"created global y"
   local({
-    
+
     ## Note, <<- is _not_ a global assignment operator. If an
     ## enclosing scope defines the variable, that enclosing scope gets
     ## the assignment. This happens in the order of evalution; a local
     ## variable may be defined later on in the same scope.
-    
+
     x <- "inner local x"
     print(x)                               #"inner local x"
     x <<- "modified outer local x"
@@ -1629,7 +1629,7 @@ local({ ## local({...}) is a shortcut for evalq({...}, envir=new.env())
     print(y)                               #"modified global y"
     y <- "local y"
     print(y)                               #"local y"
-    
+
     ##this is the only way to reliably do a global assignment:
     assign("x", "twice modified global x", globalenv())
     print(evalq(x, globalenv()))           #"twice modified global x"
@@ -1667,7 +1667,7 @@ local({
 
 A function's arguments are not evaluated until needed; the function
 may change the evaluation rules for expressions given to its arguments
-by capturing its quoted argument via substitute() and evaluating it in a different 
+by capturing its quoted argument via substitute() and evaluating it in a different
 environment. For instance, with() evaluates its second argument in the environment
 defined by its first argument, enclosed within the current scope.
 
@@ -1703,19 +1703,19 @@ However, Racket identifier bindings do exist at particular phase levels (represe
 
 In the REXX language, all variables are global, and only within PROCEDUREs are variables local (private), except for those identified
 
-via the   '''expose'''   option.   There is a variant where the   '''expose'''   can have a list specified (along with variables and stems). 
+via the   '''expose'''   option.   There is a variant where the   '''expose'''   can have a list specified (along with variables and stems).
 
-Any REXX variables in an external routine (program) aren't known.  
+Any REXX variables in an external routine (program) aren't known.
 
 Note: the R4 REXX interpreter has an   '''exposeall'''   option that allows an external REXX subroutine to access the caller's local variables.
 
-There is a mechanism that allows external programs to access local REXX variables and is essentially restricted to assembler programs 
+There is a mechanism that allows external programs to access local REXX variables and is essentially restricted to assembler programs
 
-(or other programs) that use the REXXAPI interface. 
+(or other programs) that use the REXXAPI interface.
 
-All labels (names of subroutines/functions/procedures) are global, regardless of procedures. 
+All labels (names of subroutines/functions/procedures) are global, regardless of procedures.
 
-If more than one identical label is specified, only the first label is recognized (and it isn't considered an error).  
+If more than one identical label is specified, only the first label is recognized (and it isn't considered an error).
 
 ```rexx
 /*REXX program to display scope modifiers  (for subroutines/functions). */
@@ -1765,7 +1765,7 @@ Return
 s:
 Say 'in s sigl a b c' sigl a b c
 x=4
-Return    
+Return
 ```
 
 {{out}}
@@ -1793,11 +1793,11 @@ You can establish g. as global variable set by adding g. to each and every Proce
 The scope of a variable is decided by its first character(s).
 
 $variable : global variable. Visible everywhere. Very seldom used.
-  
+
 @@variable: class variable. Visible inside a class and it's instances. Very seldom used
- 
+
 @variable : instance variable. Visible inside a class instance. Commonly used.
- 
+
 variable  : local variable. visible inside whichever comes first: a loop, a proc, a method, a class, a program.
 
 
@@ -1816,7 +1816,7 @@ By default, methods are public. Use like this:
 ```ruby
 class Demo
   #public methods here
-  
+
   protected
   #protect methods here
 

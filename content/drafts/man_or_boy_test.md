@@ -886,13 +886,13 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 C# 2.0 supports anonymous methods which are used in the implementation below:
 
 {{works with|C sharp|C#|2+}}
 
 
-```csharp
+```c#
 using System;
 
 delegate T Func<T>();
@@ -925,7 +925,7 @@ C# 3.0 supports lambda expressions which are used in the implementation below:
 {{works with|C sharp|C#|3+}}
 
 
-```csharp
+```c#
 using System;
 
 class ManOrBoy

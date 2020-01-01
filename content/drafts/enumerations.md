@@ -87,7 +87,7 @@ Ada enumeration types are non-numeric discrete types. They can be used to index 
 
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
-Note: In this first example '''ALGOL 68''''s MODE does not create 
+Note: In this first example '''ALGOL 68''''s MODE does not create
 FRUITS as a distinct ''enumerated'' type.  In particular  FRUITS remain
 compatible with INT and so FRUITS inherit/share all INT's operators
 and procedures.
@@ -123,9 +123,9 @@ It is a cherry #          +4
 
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
-In this second example '''ALGOL 68''''s tagged unions are used to generate 
+In this second example '''ALGOL 68''''s tagged unions are used to generate
 the (private) values of the members of the enumerated type.  However this new type
-comes with no operators, not even the "=" equality operator.  Hence at 
+comes with no operators, not even the "=" equality operator.  Hence at
 least REPR (or ABS for INT type) must be defined if anything other then a
 '''case''' conditional clause is required.
 
@@ -187,9 +187,9 @@ writes 0, 1, 2 to the console.
 
 ## AutoHotkey
 
-AutoHotkey doesn't really enforce types.  
+AutoHotkey doesn't really enforce types.
 
-However you can simulate types like enumeration with associative arrays: 
+However you can simulate types like enumeration with associative arrays:
 
 ```AutoHotkey
 fruit_%apple% = 0
@@ -346,9 +346,9 @@ enum fruits : unsigned int { apple, banana, cherry };
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 enum fruits { apple, banana, cherry }
 
 enum fruits { apple = 0, banana = 1, cherry = 2 }
@@ -382,7 +382,7 @@ In Clojure you will typically use keywords when you would use enums in other lan
 (println (fruit-value :banana))
 ```
 
- 
+
 
 ## Common Lisp
 
@@ -541,11 +541,11 @@ enumeration FruitsKind
 end
 
 program EnumerationTest
-	
+
 	function main()
 		whatFruitAmI(FruitsKind.CHERRY);
 	end
- 
+
 	function whatFruitAmI(fruit FruitsKind)
 		case (fruit)
 			when(FruitsKind.APPLE)
@@ -575,11 +575,11 @@ library FruitsKind type BasicLibrary {}
 end
 
 program EnumerationTest
-	
+
 	function main()
 		whatFruitAmI(FruitsKind.CHERRY);
 	end
- 
+
 	function whatFruitAmI(fruit int in)
 		case (fruit)
 			when(FruitsKind.APPLE)
@@ -592,7 +592,7 @@ program EnumerationTest
 				syslib.writestdout("I'm not sure what you are.");
 		end
 	end
-	
+
 end
 
 ```
@@ -851,7 +851,7 @@ Additionally, enumeration types can be passed to <tt>write</tt>/<tt>writeLn</tt>
 Enumerations in F# always have explicit values:
 
 ```fsharp
-type Fruit = 
+type Fruit =
   | Apple = 0
   | Banana = 1
   | Cherry = 2
@@ -866,7 +866,7 @@ Simple discriminated unions can be used similarly to enumerations, but they are 
 
 
 ```fsharp
-type Fruit = 
+type Fruit =
   | Apple
   | Banana
   | Cherry
@@ -1052,7 +1052,7 @@ cherry	3
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Nether Icon nor Unicon has an explicit enumeration type; however, there are several approaches that can be used for this purpose: 
+Nether Icon nor Unicon has an explicit enumeration type; however, there are several approaches that can be used for this purpose:
 
 
 ```Icon
@@ -1060,7 +1060,7 @@ Nether Icon nor Unicon has an explicit enumeration type; however, there are seve
   fruits := set("apple", "banana", "cherry")          # a set keeps unique data
   fruits := table()                                   # table keeps an unique data with values
   fruits["apple"]  := 1
-  fruits["banana"] := 2 
+  fruits["banana"] := 2
   fruits["cherry"] := 3
 ```
 
@@ -1338,7 +1338,7 @@ put enumeration["BANANA"]
 enumeration["FOO"] = 666
 put enumeration["FOO"]
 -- <Void>
-  
+
 -- try to add a new value after construction using addProp (fails)
 enumeration.addProp("FOO", 666)
 put enumeration["FOO"]
@@ -1386,8 +1386,8 @@ Module Checkit {
       Print Len(banana)=1
       Print Len(cherry)=2
       Print Len(cherry2)=2, Cherry2=30, Type$(Cherry2)="Fruit2"
-      
-      k=each(Fruit) 
+
+      k=each(Fruit)
       While k {
             \\ name of variable, value, length from first (0, 1, 2)
             Print Eval$(k), Eval(k), k^
@@ -1411,9 +1411,9 @@ Module Checkit {
       }
       m++
       Print Eval$(m)="cherry", m
-      k=Each(Fruit2 end to start) 
+      k=Each(Fruit2 end to start)
       While k {
-             Print Eval$(k), Eval(k) , k^   
+             Print Eval$(k), Eval(k) , k^
              CheckByValue(Eval(k))
       }
       m2=apple2
@@ -1421,11 +1421,11 @@ Module Checkit {
       CheckByValue(m2)
       CheckByReference(&m2)
       Print m2
-      
+
       Sub CheckByValue(z as Fruit2)
             Print Eval$(z), z
       End Sub
-      
+
       Sub CheckByReference(&z as Fruit2)
             z++
             Print Eval$(z), z
@@ -1464,7 +1464,7 @@ c=3
 
 ## Mathematica
 
-Enumerations are not very useful in a symbolic language like Mathematica. If desired, an 'enum' function could be defined :  
+Enumerations are not very useful in a symbolic language like Mathematica. If desired, an 'enum' function could be defined :
 
 ```Mathematica
 MapIndexed[Set, {A, B, F, G}]
@@ -1490,7 +1490,7 @@ Example:
 ```MATLAB
 stuff = {'apple', [1 2 3], 'cherry',1+2i}
 
-stuff = 
+stuff =
 
     'apple'    [1x3 double]    'cherry'    [1.000000000000000 + 2.000000000000000i]
 ```
@@ -1548,7 +1548,7 @@ enum Fruit {
     |banana
     |cherry
 }
- 
+
 enum Season {
     |winter = 1
     |spring = 2
@@ -1596,7 +1596,7 @@ enum Dog {
 
 
 =={{header|Objective-C}}==
-With iOS 6+ SDK / Mac OS X 10.8+ SDK: 
+With iOS 6+ SDK / Mac OS X 10.8+ SDK:
 
 ```objc
 typedef NS_ENUM(NSInteger, fruits) { apple, banana, cherry };
@@ -1831,7 +1831,7 @@ With explicit values.
 Enum fruits {
     Apple = 10
     Banana = 15
-    Cherry = 30 
+    Cherry = 30
 }
 [fruits]::Apple
 [fruits]::Apple + 1
@@ -1865,7 +1865,7 @@ EndEnumeration
 This can also be adjusted to the form
 
 ```PureBasic
-Enumeration 10200 Step 12 
+Enumeration 10200 Step 12
   #Constant1           ; 10200
   #Constant2           ; 10212
   #Constant3           ; 10224
@@ -1896,7 +1896,7 @@ Enumeration NamedGroup 5
 EndEnumeration
 
 ;EnumerationBinary will use values that are a double of the previous value (or starting value).
-EnumerationBinary 
+EnumerationBinary
   #North                ; 1
   #West                 ; 2
   #South                ; 4
@@ -1925,17 +1925,17 @@ Note: [http://www.python.org/dev/peps/pep-0435/ enumerations have come to Python
 >>> Contact = Enum('Contact', 'FIRST_NAME, LAST_NAME, PHONE')
 >>> Contact.__members__
 mappingproxy(OrderedDict([('FIRST_NAME', <Contact.FIRST_NAME: 1>), ('LAST_NAME', <Contact.LAST_NAME: 2>), ('PHONE', <Contact.PHONE: 3>)]))
->>> 
+>>>
 >>> # Explicit
 >>> class Contact2(Enum):
 	FIRST_NAME = 1
 	LAST_NAME = 2
 	PHONE = 3
 
-	
+
 >>> Contact2.__members__
 mappingproxy(OrderedDict([('FIRST_NAME', <Contact2.FIRST_NAME: 1>), ('LAST_NAME', <Contact2.LAST_NAME: 2>), ('PHONE', <Contact2.PHONE: 3>)]))
->>> 
+>>>
 ```
 
 
@@ -2167,7 +2167,7 @@ see "cherry : " + cherry + nl
 
 ## Ruby
 
-There are plenty of ways to represent '''enum''' in Ruby. Here it is just one example: 
+There are plenty of ways to represent '''enum''' in Ruby. Here it is just one example:
 
 ```ruby
 module Fruits
@@ -2192,7 +2192,7 @@ module Card
   SUIT_VALUE = SUITS.each_with_index.to_h               # version 2.1+
 # SUIT_VALUE = Hash[ SUITS.each_with_index.to_a ]       # before it
   #=> {:Clubs=>0, :Hearts=>1, :Spades=>2, :Diamonds=>3}
- 
+
   PIPS = %i(2 3 4 5 6 7 8 9 10 Jack Queen King Ace)
   PIP_VALUE = PIPS.each.with_index(2).to_h              # version 2.1+
 # PIP_VALUE = Hash[ PIPS.each.with_index(2).to_a ]      # before it
@@ -2369,7 +2369,7 @@ enum Fruit {
 enum Fruit {
     case Apple, Banana, Cherry
 }
- 
+
 enum Season : Int {
     case Winter = 1
     case Spring = 2
@@ -2398,7 +2398,7 @@ it would be used like this:
 
 ```tcl
 enumerate fruit {apple blueberry cherry date elderberry}
- 
+
 fruit: date
 #   ==> prints "3"
 fruit@ 2
@@ -2434,7 +2434,7 @@ Enum fruits
   banana
   cherry
 End Enum
- 
+
 'here we use our own enumeration
 Enum fruits2
   pear = 5
@@ -2459,9 +2459,9 @@ End Sub
 ```txt
 
 test
-apple equals  0 
-kiwi equals  20 
-cherry plus kiwi plus pineapple equals  42 
+apple equals  0
+kiwi equals  20
+cherry plus kiwi plus pineapple equals  42
 
 ```
 
@@ -2552,7 +2552,7 @@ var
 begin
 		deserts := Fruits.banana;
 		writeln("ord(deserts): ",integer(deserts):2);
-		
+
 		for i := Fruits.apple to Fruits.cherry do
 			writeln(integer(i):2)
 		end

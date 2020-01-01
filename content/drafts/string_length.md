@@ -970,7 +970,7 @@ int main()
 
 Note that the strings are given as explicit hex sequences, so that the encoding used for the source code won't matter.
 
-=={{header|C sharp|C#}}==
+## C#
 '''Platform:''' [[.NET]]
 
 {{works with|C sharp|C #|1.0+}}
@@ -978,7 +978,7 @@ Note that the strings are given as explicit hex sequences, so that the encoding 
 ### Character Length
 
 
-```csharp
+```c#
 string s = "Hello, world!";
 int characterLength = s.Length;
 ```
@@ -989,7 +989,7 @@ int characterLength = s.Length;
 
 Strings in .NET are stored in Unicode.
 
-```csharp
+```c#
 using System.Text;
 
 string s = "Hello, world!";
@@ -998,7 +998,7 @@ int byteLength = Encoding.Unicode.GetByteCount(s);
 
 To get the number of bytes that the string would require in a different encoding, e.g., UTF8:
 
-```csharp
+```c#
 int utf8ByteLength = Encoding.UTF8.GetByteCount(s);
 ```
 

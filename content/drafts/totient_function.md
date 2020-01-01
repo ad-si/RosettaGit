@@ -34,7 +34,7 @@ If the totient number   (for '''N''')   is one less than   '''N''',   then   '''
 
 
 ;Task:
-Create a   '''totient'''   function and: 
+Create a   '''totient'''   function and:
 ::*   Find and display   (1 per line)   for the 1<sup>st</sup>   '''25'''   integers:
 ::::*   the integer   (the index)
 ::::*   the totient number for that integer
@@ -159,52 +159,52 @@ Translation of the second Go example
 
 int totient(int n){
 	int tot = n,i;
-	
+
 	for(i=2;i*i<=n;i+=2){
 		if(n%i==0){
 			while(n%i==0)
 				n/=i;
 			tot-=tot/i;
 		}
-		
+
 		if(i==2)
 			i=1;
 	}
-	
+
 	if(n>1)
 		tot-=tot/n;
-	
+
 	return tot;
 }
 
 int main()
 {
 	int count = 0,n,tot;
-	
+
 	printf(" n    %c   prime",237);
         printf("\n---------------\n");
-	
+
 	for(n=1;n<=25;n++){
 		tot = totient(n);
-		
+
 		if(n-1 == tot)
 			count++;
-		
+
 		printf("%2d   %2d   %s\n", n, tot, n-1 == tot?"True":"False");
 	}
-	
+
 	printf("\nNumber of primes up to %6d =%4d\n", 25,count);
-	
+
 	for(n = 26; n <= 100000; n++){
         tot = totient(n);
         if(tot == n-1)
 			count++;
-        
+
         if(n == 100 || n == 1000 || n%10000 == 0){
             printf("\nNumber of primes up to %6d = %4d\n", n, count);
         }
     }
-	
+
 	return 0;
 }
 
@@ -273,10 +273,10 @@ Number of primes up to 100000 = 9592
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using static System.Console;
 using static System.Linq.Enumerable;
 
@@ -380,7 +380,7 @@ func totient(n) {
         tot -= tot / n
     }
     return tot
-} 
+}
 
 print("n\tphi\tprime")
 var count = 0
@@ -617,12 +617,12 @@ Function esPrimo(n As Ulongint) As String
         If N Mod (i+1)=0 Then Exit Function
     Next i
     Return "True"
-End Function 
+End Function
 
 Sub display(n As Integer)
     Dim As Integer idx, phi
     If n = 0 Then Exit Sub
-    Print "  n  phi(n)   esPrimo" 
+    Print "  n  phi(n)   esPrimo"
     For idx = 1 To n
         phi = Totient(idx)
         Print Using "###   ###      \   \"; idx; phi; esPrimo(idx)
@@ -847,8 +847,8 @@ func totient(n int) int {
         tot -= tot / n
     }
     return tot
-} 
- 
+}
+
 func main() {
     fmt.Println(" n  phi   prime")
     fmt.Println("---------------")
@@ -870,7 +870,7 @@ func main() {
         if n == 100 || n == 1000 || n%10000 == 0 {
             fmt.Printf("\nNumber of primes up to %-6d = %d\n", n, count)
         }
-    }    
+    }
 }
 ```
 
@@ -889,11 +889,11 @@ The output is the same as before.
 import Control.Monad
 
 totient :: (Integral a) => a -> a
-totient n 
+totient n
     | n == 0      = 1             -- by definition phi(0) = 1
     | n < 0       = totient (-n)  -- phi(-n) is taken to be equal to phi(n)
     | otherwise   = loop n n 2    --
-    where 
+    where
         loop !m !tot !i
             | i * i > m         = if m > 1 then tot - (tot `div` m) else tot
             | m `mod` i == 0    = loop m' tot' i'
@@ -907,14 +907,14 @@ totient n
 main :: IO ()
 main = do
     putStrLn "n\tphi\tprime\n---------------------"
-    let loop !i !count 
+    let loop !i !count
             | i >= 10^6 = return ()
             | otherwise = do
                 let i'        = i + 1
                     tot       = totient i'
                     isPrime   = tot == i' - 1
                     count'    = if isPrime then count + 1 else count
-                when (i' <= 25) $ do 
+                when (i' <= 25) $ do
                     putStrLn $ (show i') ++ "\t" ++ (show tot) ++ "\t" ++ (show isPrime)
                 when (i' `elem` 25 : [ 10^k | k <- [2..6] ]) $ do
                     putStrLn $ "Number of primes up to " ++ (show i') ++ " = " ++ (show count')
@@ -930,10 +930,10 @@ main = do
 n       phi     prime
 ---------------------
 1       1       False
-2       1       True 
-3       2       True 
+2       1       True
+3       2       True
 4       2       False
-5       4       True 
+5       4       True
 6       2       False
 7       6       True
 8       4       False
@@ -982,7 +982,7 @@ Number of primes up to 1000000 = 78498
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 1 1 2 2 4 2 6 4 6  4 10  4 12  6  8  8 16  6 18  8 12 10 22  8 20
 0 1 1 0 1 0 1 0 0  0  1  0  1  0  0  0  1  0  1  0  0  0  1  0  0
-   
+
 
    NB. primes first exceeding the limits
    [&.:(p:inv) 10 ^ 2 + i. 4
@@ -990,7 +990,7 @@ Number of primes up to 1000000 = 78498
 
    p:inv 101 1009 10007 100003
 25 168 1229 9592
-   
+
    NB. limit and prime count
    (,. p:inv) 10 ^ 2 + i. 5
    100    25
@@ -1009,7 +1009,7 @@ Number of primes up to 1000000 = 78498
 
 ```julia
 φ(n) = sum(1 for k in 1:n if gcd(n, k) == 1)
- 
+
 is_prime(n) = φ(n) == n - 1
 
 function runphitests()
@@ -1619,7 +1619,7 @@ This is an ''incredibly'' inefficient way of finding prime numbers.
 
 <!-- The counting of primes  (or finding of primes)  was included in this task as a verification of the  totient  function's ability to detect a prime,  not to provide a method to find a prime --- it's an artifact of the function.   But, slow as it is, it's not as slow as the AKS test for primes.    Perhaps this could be moved to the discussion page if the efficiency is talk-worthy topic.    Gerard Schildberger.   !-->
 
-<!-- Also, the task requirements haven't shifted, they were clarified as at least one person failed to understand the 3rd requirement (please view the original wording).   If you think this one change constitutes an every-shifting change in the requirements, please feel free to revert the change.  I implore you to try to not add snipes (to the history log that can't be deleted).  I value your comments, but not so much when they're detrimental to the editing of a Rosetta Code task preamble, and comments that aren't constructive.   This is, after all, a draft task.   Better to change the wording now then later.  Adding clarification isn't shifting the requirements,  I tried to make the sentence structure clearer to understand.   I felt that an edification for a task's requirement was needed as it apparently didn't effectively convey what was needed to be marked (as a prime).   !--> 
+<!-- Also, the task requirements haven't shifted, they were clarified as at least one person failed to understand the 3rd requirement (please view the original wording).   If you think this one change constitutes an every-shifting change in the requirements, please feel free to revert the change.  I implore you to try to not add snipes (to the history log that can't be deleted).  I value your comments, but not so much when they're detrimental to the editing of a Rosetta Code task preamble, and comments that aren't constructive.   This is, after all, a draft task.   Better to change the wording now then later.  Adding clarification isn't shifting the requirements,  I tried to make the sentence structure clearer to understand.   I felt that an edification for a task's requirement was needed as it apparently didn't effectively convey what was needed to be marked (as a prime).   !-->
 
 
 ```perl6
@@ -1692,7 +1692,7 @@ function totient(integer n)
     end if
     return tot
 end function
- 
+
 printf(1," n  phi   prime\n")
 printf(1," --------------\n")
 integer count = 0
@@ -1791,7 +1791,7 @@ Number of primes up to 100000 = 9592
 {{out}}
 
 ```txt
- 
+
   N    Phi    Prime?
   -    ---    ------
   1      1
@@ -1836,7 +1836,7 @@ def  φ(n):
 if __name__ == '__main__':
     def is_prime(n):
         return φ(n) == n - 1
-    
+
     for n in range(1, 26):
         print(f" φ({n}) == {φ(n)}{', is prime' if is_prime(n)  else ''}")
     count = 0
@@ -1888,18 +1888,18 @@ Primes up to 10000: 1229
 
 ```racket
 #lang racket
- 
+
 (require math/number-theory)
- 
+
 (define (prime*? n) (= (totient n) (sub1 n)))
- 
+
 (for ([n (in-range 1 26)])
   (printf "φ(~a) = ~a~a~a\n"
           n
           (totient n)
           (if (prime*? n) " is prime" "")
           (if (prime? n) " (confirmed)" "")))
- 
+
 (for/fold ([count 0] #:result (void)) ([n (in-range 1 10001)])
    (define new-count (if (prime*? n) (add1 count) count))
    (when (member n '(100 1000 10000))
@@ -2050,7 +2050,7 @@ totient number for  25  ──►  20
 require "prime"
 
 def 𝜑(n)
-  n.prime_division.inject(1) {|res, (pr, exp)| res *= (pr-1) * pr**(exp-1) } 
+  n.prime_division.inject(1) {|res, (pr, exp)| res *= (pr-1) * pr**(exp-1) }
 end
 
 1.upto 25 do |n|
@@ -2068,31 +2068,31 @@ end
 
 ```txt
 
-1	 1	 
+1	 1
 2	 1	 prime
 3	 2	 prime
-4	 2	 
+4	 2
 5	 4	 prime
-6	 2	 
+6	 2
 7	 6	 prime
-8	 4	 
-9	 6	 
-10	 4	 
+8	 4
+9	 6
+10	 4
 11	 10	 prime
-12	 4	 
+12	 4
 13	 12	 prime
-14	 6	 
-15	 8	 
-16	 8	 
+14	 6
+15	 8
+16	 8
 17	 16	 prime
-18	 6	 
+18	 6
 19	 18	 prime
-20	 8	 
-21	 12	 
-22	 10	 
+20	 8
+21	 12
+22	 10
 23	 22	 prime
-24	 8	 
-25	 20	 
+24	 8
+25	 20
 Number of primes up to 100: 25
 Number of primes up to 1000: 168
 Number of primes up to 10000: 1229
@@ -2194,7 +2194,7 @@ The above approach, while concise, is not very performant. It must check the GCD
 def totientPrd(num: Int): Int = {
   @tailrec
   def dTrec(f: Int, n: Int): Int = if(n%f == 0) dTrec(f, n/f) else n
-  
+
   @tailrec
   def tTrec(ac: Int, i: Int, n: Int): Int = if(n != 1){
     if(n%i == 0) tTrec(ac*(i - 1)/i, i + 1, dTrec(i, n))
@@ -2202,7 +2202,7 @@ def totientPrd(num: Int): Int = {
   }else{
     ac
   }
-  
+
   tTrec(num, 2, num)
 }
 ```
@@ -2432,31 +2432,31 @@ foreach n in ([1..25]){
 
 {{out}}
 <pre style="height:35ex">
-φ( 1) ==  1 
+φ( 1) ==  1
 φ( 2) ==  1 is prime
 φ( 3) ==  2 is prime
-φ( 4) ==  2 
+φ( 4) ==  2
 φ( 5) ==  4 is prime
-φ( 6) ==  2 
+φ( 6) ==  2
 φ( 7) ==  6 is prime
-φ( 8) ==  4 
-φ( 9) ==  6 
-φ(10) ==  4 
+φ( 8) ==  4
+φ( 9) ==  6
+φ(10) ==  4
 φ(11) == 10 is prime
-φ(12) ==  4 
+φ(12) ==  4
 φ(13) == 12 is prime
-φ(14) ==  6 
-φ(15) ==  8 
-φ(16) ==  8 
+φ(14) ==  6
+φ(15) ==  8
+φ(16) ==  8
 φ(17) == 16 is prime
-φ(18) ==  6 
+φ(18) ==  6
 φ(19) == 18 is prime
-φ(20) ==  8 
-φ(21) == 12 
-φ(22) == 10 
+φ(20) ==  8
+φ(21) == 12
+φ(22) == 10
 φ(23) == 22 is prime
-φ(24) ==  8 
-φ(25) == 20 
+φ(24) ==  8
+φ(25) == 20
 
 ```
 

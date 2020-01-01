@@ -698,13 +698,13 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### By permutating
 
 {{works with|C sharp|C#|2+}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -751,7 +751,7 @@ namespace MissingPermutation
 ===By xor-ing the values===
 {{works with|C sharp|C#|3+}}
 
-```csharp
+```c#
 using System;
 using System.Linq;
 

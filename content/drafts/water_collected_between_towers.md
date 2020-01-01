@@ -13,24 +13,24 @@ tags = []
 {{task}}
 
 ;Task:
-In a two-dimensional world, we begin with any bar-chart (or row of close-packed 'towers', each of unit width), and then it rains, 
-completely filling all convex enclosures in the chart with water. 
+In a two-dimensional world, we begin with any bar-chart (or row of close-packed 'towers', each of unit width), and then it rains,
+completely filling all convex enclosures in the chart with water.
 
-                                                        
+
 
 ```txt
-9               ██           9               ██    
-8               ██           8               ██    
-7     ██        ██           7     ██≈≈≈≈≈≈≈≈██    
-6     ██  ██    ██           6     ██≈≈██≈≈≈≈██    
-5 ██  ██  ██  ████           5 ██≈≈██≈≈██≈≈████    
-4 ██  ██  ████████           4 ██≈≈██≈≈████████    
-3 ██████  ████████           3 ██████≈≈████████    
+9               ██           9               ██
+8               ██           8               ██
+7     ██        ██           7     ██≈≈≈≈≈≈≈≈██
+6     ██  ██    ██           6     ██≈≈██≈≈≈≈██
+5 ██  ██  ██  ████           5 ██≈≈██≈≈██≈≈████
+4 ██  ██  ████████           4 ██≈≈██≈≈████████
+3 ██████  ████████           3 ██████≈≈████████
 2 ████████████████  ██       2 ████████████████≈≈██
 1 ████████████████████       1 ████████████████████
 ```
 
-                                                        
+
 
 In the example above, a bar chart representing the values [5, 3, 7, 2, 6, 4, 5, 9, 1, 2] has filled, collecting 14 units of water.
 
@@ -74,23 +74,23 @@ See, also:
 on waterCollected(xs)
     set leftWalls to scanl1(my max, xs)
     set rightWalls to scanr1(my max, xs)
-    
+
     set waterLevels to zipWith(my min, leftWalls, rightWalls)
-    
+
     -- positive :: Num a => a -> Bool
     script positive
         on |λ|(x)
             x > 0
         end |λ|
     end script
-    
+
     -- minus :: Num a => a -> a -> a
     script minus
         on |λ|(a, b)
             a - b
         end |λ|
     end script
-    
+
     sum(filter(positive, zipWith(minus, waterLevels, xs)))
 end waterCollected
 
@@ -105,7 +105,7 @@ on run
             [5, 6, 7, 8], ¬
             [8, 7, 7, 6], ¬
             [6, 7, 10, 7, 6]])
-    
+
     --> {2, 14, 35, 0, 0, 0, 0}
 end run
 
@@ -176,7 +176,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -241,7 +241,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldl(add, 0, xs)
 end sum
 
@@ -341,70 +341,70 @@ Takes the integers as input from command line, prints out usage on incorrect inv
 
 int getWater(int* arr,int start,int end,int cutoff){
 	int i, sum = 0;
-	
+
 	for(i=start;i<=end;i++)
 		sum += ((arr[cutoff] > arr[i])?(arr[cutoff] - arr[i]):0);
-	
+
 	return sum;
 }
 
 int netWater(int* arr,int size){
 	int i, j, ref1, ref2, marker, markerSet = 0,sum = 0;
-	
+
 	if(size<3)
 		return 0;
 
 	for(i=0;i<size-1;i++){
 		start:if(i!=size-2 && arr[i]>arr[i+1]){
 				ref1 = i;
-				
+
 				for(j=ref1+1;j<size;j++){
 					if(arr[j]>=arr[ref1]){
 						ref2 = j;
-						
+
 						sum += getWater(arr,ref1+1,ref2-1,ref1);
 
 						i = ref2;
-						
+
 						goto start;
 					}
-					
+
 					else if(j!=size-1 && arr[j] < arr[j+1] && (markerSet==0||(arr[j+1]>=arr[marker]))){
 						marker = j+1;
 						markerSet = 1;
 					}
 				}
-				
+
 				if(markerSet==1){
 					sum += getWater(arr,ref1+1,marker-1,marker);
 
 					i = marker;
-					
+
 					markerSet = 0;
-					
+
 					goto start;
 				}
 			}
 		}
-	
+
 	return sum;
 }
 
 int main(int argC,char* argV[])
 {
 	int *arr,i;
-	
+
 	if(argC==1)
 		printf("Usage : %s <followed by space separated series of integers>");
 	else{
 		arr = (int*)malloc((argC-1)*sizeof(int));
-		
+
 		for(i=1;i<argC;i++)
 			arr[i-1] = atoi(argV[i]);
 
 		printf("Water collected : %d",netWater(arr,argC-1));
 	}
-	
+
 	return 0;
 }
 
@@ -516,13 +516,13 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### Version 1
 
 Translation from [[{{FULLPAGENAME}}#Visual_Basic_.NET|Visual Basic .NET]].  See that version 1 entry for code comment details and more sample output.
 
-```Csharp
+```c#
 class Program
 {
     static void Main(string[] args)
@@ -568,7 +568,7 @@ Block 7 retains  0 water units.
 
 Conventional "scanning" algorithm, translated from [[{{FULLPAGENAME}}#Version_2_2|the second version of Visual Basic.NET]], but (intentionally tweaked to be) incapable of verbose output.  See that version 2 entry for code comments and details.
 
-```cSharp
+```c#
 class Program
 {
 // Variable names key:
@@ -579,7 +579,7 @@ class Program
 //  wu Water units (count).
 // bof Blocks on floor (count).
 // col Column number in elevation array (position).
- 
+
     static void Main(string[] args)
     {
         int i = 1; int[][] tba = {new int[] { 1, 5, 3, 7, 2 },
@@ -783,7 +783,7 @@ ok
 
 
 =={{header|F_Sharp|F#}}==
-see http://stackoverflow.com/questions/24414700/water-collected-between-towers/43779936#43779936 for an explanation of this code. It is proportional to the number of towers. Although the examples on stackoverflow claim this, the n they use is actually the distance between the two end towers and not the number of towers. Consider the case of a tower of height 5 at 1, a tower of height 10 at 39, and a tower of height 3 at 101. 
+see http://stackoverflow.com/questions/24414700/water-collected-between-towers/43779936#43779936 for an explanation of this code. It is proportional to the number of towers. Although the examples on stackoverflow claim this, the n they use is actually the distance between the two end towers and not the number of towers. Consider the case of a tower of height 5 at 1, a tower of height 10 at 39, and a tower of height 3 at 101.
 
 ```fsharp
 
@@ -841,7 +841,7 @@ CONSTANT: test-cases {
 : area ( seq -- n )
     dup [ cum-max ] [ <reversed> cum-max reverse ] bi
     [ min ] 2map swap [ - ] 2map sum ;
-    
+
 test-cases [ dup area "%[%d, %] -> %d\n" printf ] each
 ```
 
@@ -965,9 +965,9 @@ func main() {
 ```Groovy
 
 Integer waterBetweenTowers(List<Integer> towers) {
-    // iterate over the vertical axis. There the amount of water each row can hold is 
+    // iterate over the vertical axis. There the amount of water each row can hold is
     // the number of empty spots, minus the empty spots at the beginning and end
-    return (1..towers.max()).collect { height -> 
+    return (1..towers.max()).collect { height ->
         // create a string representing the row, '#' for tower material and ' ' for air
         // use .trim() to remove spaces at beginning and end and then count remaining spaces
         towers.collect({ it >= height ? "#" : " " }).join("").trim().count(" ")
@@ -1064,7 +1064,7 @@ Inspired by [[#Julia]].
 
 '''Solution:'''
 
-```j>collectLevels =: >./\ <. 
+```j>collectLevels =: >./\ <.
 ./\.                          NB. collect levels after filling
 waterLevels=: collectLevels - ]                         NB. water levels for each tower
 collectedWater=: +/@waterLevels                         NB. sum the units of water collected
@@ -1198,7 +1198,7 @@ Block 7 does not hold any water units.
                 zipWith(min,          // lower of two flanking walls
                     scanl1(max, xs),  // highest walls to left
                     scanr1(max, xs)   // highest walls to right
-                ), 
+                ),
                 xs                    // tops of bars
             )
             .filter(function (x) {
@@ -1547,7 +1547,7 @@ fun main(args: Array<String>) {
         intArrayOf(8, 7, 7, 6),
         intArrayOf(6, 7, 10, 7, 6)
     )
-    for (tower in towers) { 
+    for (tower in towers) {
         println("${"%2d".format(waterCollected(tower))} from ${tower.contentToString()}")
     }
 }
@@ -1585,7 +1585,7 @@ Module Water {
       Data (6, 7, 10, 7, 6)
       bars=stack.size  ' mark stack frame
       Dim bar()
-      for bar=1 to bars 
+      for bar=1 to bars
             bar()=Array  ' pop an array from stack
             acc=0
             For i=1 to len(bar())-2
@@ -1622,17 +1622,17 @@ Module Water2 {
       Data (6, 7, 10, 7, 6)
       bars=stack.size  ' mark stack frame
       Dim bar()
-      For bar=1 to bars 
+      For bar=1 to bars
             bar()=Array  ' pop an array from stack
             acc=0
             range=bar()#max()-bar()#min()
-            if range>0 then 
+            if range>0 then
                   dim water(len(bar()))=bar()#max()
                   water(0)=bar(0)
                   water(len(bar())-1)=bar(len(bar())-1)
                   For j=1 to range-1
                         For i=1 to len(bar())-2
-                              if water(i)>bar(i) then if water(i-1)<water(i) Then water(i)-- 
+                              if water(i)>bar(i) then if water(i-1)<water(i) Then water(i)--
                         Next i
                         For i=len(bar())-2 to 1
                               if water(i)>bar(i) then if water(i+1)<water(i) Then water(i)--
@@ -1669,7 +1669,7 @@ Module Water3 {
       Data (6, 7, 10, 7, 6)
       bars=stack.size  ' mark stack frame
       Dim bar()
-      for bar=1 to bars 
+      for bar=1 to bars
             bar()=Array  ' pop an array from stack
             acc=0
             n=len(bar())-1
@@ -1795,7 +1795,7 @@ constant tests = {{1,5,3,7,2},
                   {5,6,7,8},
                   {8,7,7,6},
                   {6,7,10,7,6}}
-    
+
 for i=1 to length(tests) do
     sequence ti = tests[i]
     printf(1,"%35s : %d\n",{sprint(ti),collect_water(ti)})
@@ -1834,7 +1834,7 @@ function collect_water(sequence heights)
     end for
 
     sequence mins = sq_min(left_height,right_height),
-             diffs = sq_sub(mins,heights)            
+             diffs = sq_sub(mins,heights)
 
     return sum(diffs)
 end function
@@ -1843,7 +1843,7 @@ end function
 (same output)
 
 
-###  pretty print routine 
+###  pretty print routine
 
 
 ```Phix
@@ -2026,7 +2026,7 @@ total_water:    0
        (define new-rv (+ rv (max (- (min new-mx/r (car tallest/l)) a) 0)))
        (collect-from-right d (cdr tallest/l) new-mx/r new-rv)]))
 
-  (define reversed-left-list (build-tallest-left/rev-list towers 0 null))  
+  (define reversed-left-list (build-tallest-left/rev-list towers 0 null))
   (collect-from-right (reverse towers) reversed-left-list 0 0))
 
 (module+ test
@@ -2361,11 +2361,11 @@ i=1
 loop do
    break if i >=n
 left[i]=[left[i-1],array[i]].max
-   i += 1  
+   i += 1
 end
 right[n-1]=array[n-1]
 i=n-2
-loop do 
+loop do
 break if i<0
  right[i]=[right[i+1],array[i]].max
 i-=1
@@ -2524,16 +2524,16 @@ object TrappedWater extends App {
   (if (< (length chart) 3) ; catch the end cases
     0
     (apply +
-           (map (lambda (l c r) 
+           (map (lambda (l c r)
                   (if (or (<= l c)
                           (<= r c))
                     0
                     (- (min l r) c)))
                 (highest-left chart 0)
-                chart 
+                chart
                 (highest-right chart 0)))))
 
-(for-each 
+(for-each
   (lambda (chart)
     (display chart) (display " -> ") (display (total-collected chart)) (newline))
   '((1 5 3 7 2)
@@ -2666,7 +2666,7 @@ foreach p {
 
 '''Method:''' Instead of "scanning" adjoining towers for each column, this routine converts the tower data into a string representation with building blocks, empty spaces, and potential water retention sites.  The potential water retention sites are then "eroded" away where they are found to be unsupported.  This is accomplished with the '''.Replace()''' function.  The replace operations are unleashed upon the entire "block" of towers, rather than a cell at a time or a line at a time - which perhaps increases the program's execution-time, but reduces program's complexity.
 
-The program can optionally display the interim string representation of each tower block before the final count is completed.  I've since modified it to have the same block and wavy characters are the 
+The program can optionally display the interim string representation of each tower block before the final count is completed.  I've since modified it to have the same block and wavy characters are the
 [[{{FULLPAGENAME}}#version_3|REXX 9.3]] output, but used the double-wide columns, as pictured in the task definition area.
 
 ```vbnet
@@ -2824,7 +2824,7 @@ Module Module1
     End Function
 
     ''' <summary>
-    ''' report - Produces a report of the number of rain units found in 
+    ''' report - Produces a report of the number of rain units found in
     '''          a block of towers, optionally showing the towers.
     '''          Autoincrements the blkID for each report.
     ''' </summary>
@@ -2876,7 +2876,7 @@ Module Module1
 
     ''' <summary>
     ''' Main routine.
-    ''' 
+    '''
     ''' With one command line parameter, it shows tower blocks,
     '''  with no command line parameters, it shows a plain report
     '''</summary>
@@ -2944,7 +2944,7 @@ next i
 
 sub wcbt(s$)
 	local tower$(1), hr(1), hl(1), n, i, ans, k
-	
+
 	n = token(s$, tower$(), ",")
 
 	redim hr(n)
@@ -2986,9 +2986,9 @@ fcn waterCollected(walls){
            scanl(walls.reverse(),(0).max).reverse()) // right to left
      // now subtract the wall height from the water level and add 'em up
    .zipWith('-,walls).filter('>(0)).sum(0);
-} 
+}
 fcn scanl(xs,f,i=0){ // aka reduce but save list of results
-   xs.reduce('wrap(s,x,a){ s=f(s,x); a.append(s); s },i,ss:=List()); 
+   xs.reduce('wrap(s,x,a){ s=f(s,x); a.append(s); s },i,ss:=List());
    ss
 } // scanl((1,5,3,7,2),max,0) --> (1,5,5,7,7)
 ```

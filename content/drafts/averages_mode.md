@@ -543,9 +543,9 @@ int main()
 {{out}}
  2 3
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;

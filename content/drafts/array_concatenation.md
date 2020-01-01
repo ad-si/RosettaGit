@@ -1007,10 +1007,10 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode
@@ -1040,7 +1040,7 @@ Alternatively, using LINQ extension methods:
 
 {{works with|C sharp|C#|3}}
 
-```csharp
+```c#
 using System.Linq;
 
 class Program

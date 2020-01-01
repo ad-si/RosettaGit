@@ -27,8 +27,8 @@ languages = [
   "freebasic",
   "run_basic",
   "c",
-  "c++",
-  "c#",
+  "cpp",
+  "csharp",
   "clay",
   "cobol",
   "clojure",
@@ -38,7 +38,7 @@ languages = [
   "elixir",
   "erlang",
   "euler_math_toolbox",
-  "f#",
+  "fsharp",
   "factor",
   "forth",
   "fortran",
@@ -641,10 +641,10 @@ done
 ```
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace prog

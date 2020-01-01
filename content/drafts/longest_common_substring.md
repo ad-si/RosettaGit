@@ -311,12 +311,12 @@ test !
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### Using dynamic programming
 
 
-```csharp
+```c#
 using System;
 
 namespace LongestCommonSubstring
@@ -373,7 +373,7 @@ test
 
 {{trans|REXX}}
 
-```csharp
+```c#
 //C# program tests the LCSUBSTR (Longest Common Substring) subroutine.
 using System;
 namespace LongestCommonSubstring
@@ -425,7 +425,7 @@ namespace LongestCommonSubstring
 ===Searching for smaller substrings of a in b (simplified)===
 {{trans|zkl}}
 
-```csharp
+```c#
 //C# program tests the LCS (Longest Common Substring) subroutine.
 using System;
 namespace LongestCommonSubstring

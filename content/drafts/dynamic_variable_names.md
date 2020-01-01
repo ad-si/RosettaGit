@@ -57,8 +57,8 @@ The variable name should ''not'' be written in the program text, but should be t
       is←{ t←⍵ ⋄ ⎕this⍎⍺,'←t' } ⍝⍝ the 'Slick Willie' function ;)
       'test' is ⍳2 3
       test
- 1 1  1 2  1 3 
- 2 1  2 2  2 3 
+ 1 1  1 2  1 3
+ 2 1  2 2  2 3
 
 ```
 
@@ -68,8 +68,8 @@ The variable name should ''not'' be written in the program text, but should be t
 
 
 ```AutoHotkey
-InputBox, Dynamic, Variable Name   
-%Dynamic% = hello 
+InputBox, Dynamic, Variable Name
+%Dynamic% = hello
 ListVars
 MsgBox % %dynamic%  ; says hello
 ```
@@ -119,7 +119,7 @@ echo %name%=!%name%!
       dummy% = EVAL("FNassign("+name$+","+numeric$+")")
       PRINT "Variable " name$ " now has the value "; EVAL(name$)
       END
-      
+
       DEF FNassign(RETURN n, v) : n = v : = 0
 ```
 
@@ -142,12 +142,12 @@ echo %name%=!%name%!
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|5}}
 Not exactly a variable, but ExpandoObject allows adding properties at runtime.
 
-```csharp
+```c#
 using System;
 using System.Dynamic;
 using System.Collections.Generic;
@@ -161,7 +161,7 @@ public class Program
         dynamic expando = new ExpandoObject();
         var map = expando as IDictionary<string, object>;
         map.Add(varname, "Hello world!");
- 
+
         Console.WriteLine(expando.foo);
     }
 }
@@ -207,7 +207,7 @@ Symbols are grouped into ''packages'' — roughly namespaces — and any time sy
 
 Within the standard, every variable is either ''lexical'' or ''special'' (dynamic scope). There is no global lexical environment, so in order to "create a variable", we must either create our own mechanism to remember it for lexical binding in a later evaluation, or create a special variable. It is unspecified what happens when a symbol not lexically bound or declared ''special'' is used as a variable.
 
-Every symbol has a value slot — a field which, roughly, contains its current value ''considered as a special variable''. 
+Every symbol has a value slot — a field which, roughly, contains its current value ''considered as a special variable''.
 
 Therefore, there are two parts to dynamically creating a variable: we must declare it special, and give it a value. The first part is accomplished by the <code>proclaim</code> function for making declarations at run-time. The second part is simply assigning to the value slot.
 
@@ -268,16 +268,16 @@ def dynVarName(name) {
     def variable := makeNounExpr(null, name, null)
 
     return e`{
-    
+
         def a := 1
         def b := 2
         def c := 3
-    
+
         {
             def $variable := "BOO!"
             [a, b, c]
         }
-    
+
     }`.eval(safeScope)
 }
 
@@ -312,13 +312,13 @@ class TestClass
     {
         theVariables := new DynamicStruct()
     }
-    
+
     closure()
     {
         auto prop := new MessageName(console.write:"Enter the variable name:".readLine());
         (prop.setPropertyMessage())(theVariables,42);
-        
-        console.printLine(prop.Printable,"=",(prop.getPropertyMessage())(theVariables)).readChar()     
+
+        console.printLine(prop.Printable,"=",(prop.getPropertyMessage())(theVariables)).readChar()
     }
 }
 
@@ -351,7 +351,7 @@ This example deliberately doesn't use any temporary variables so their names won
 
 ## Erlang
 
-This task uses functions from [[Eval_in_environment#Erlang| Runtime evaluation]]. 
+This task uses functions from [[Eval_in_environment#Erlang| Runtime evaluation]].
 
 ```Erlang
 
@@ -420,7 +420,7 @@ Function FindVariableIndex(a() as DynamicVariable, v as String, nElements As Int
   For i As Integer = 1 To nElements
     If a(i).name = v Then Return i
   Next
-  Return 0 
+  Return 0
 End Function
 
 Dim As Integer n, index
@@ -429,7 +429,7 @@ Cls
 
 Do
  Input "How many variables do you want to create (max 5) "; n
-Loop Until n > 0 AndAlso n < 6 
+Loop Until n > 0 AndAlso n < 6
 
 Dim a(1 To n) As DynamicVariable
 Print
@@ -438,7 +438,7 @@ Print "OK, enter the variable names and their values, below"
 For i As Integer = 1 to n
   Print
   Print "  Variable"; i
-  Input "    Name  : ", a(i).name 
+  Input "    Name  : ", a(i).name
   a(i).name = LCase(Trim(a(i).name)) ' variable names are not case sensitive in FB
   If i > 0 Then
      index = FindVariableIndex(a(), a(i).name, i - 1)
@@ -446,7 +446,7 @@ For i As Integer = 1 to n
        Print "  Sorry, you've already created a variable of that name, try again"
        i -= 1
        Continue For
-     End If 
+     End If
   End If
   Input "    Value : ", a(i).value
   a(i).value = LCase(Trim(a(i).value))
@@ -635,7 +635,7 @@ OK, enter the variable names and their values, below
   Sorry, you've already created a variable of that name, try again
 
   Variable 3
-    Name  : wilfred 
+    Name  : wilfred
     Value : 3
 
 Enter q to quit
@@ -708,7 +708,7 @@ require 'misc'
 ```
 
 
-For example: 
+For example:
 ```j
    require 'misc'
    (prompt 'Enter variable name: ')=: 0
@@ -803,7 +803,7 @@ println("If I named the variable x:")
 {{out}}
 
 ```txt
-Insert the variable name: 
+Insert the variable name:
 x
 
 Inside quote:
@@ -1078,15 +1078,15 @@ This is done in immediate mode so you can see the variable is created, although 
 
 ```mumps>USER
 KILL ;Clean up workspace
- 
+
 USER>WRITE ;show all variables and definitions
- 
+
 USER>READ "Enter a variable name: ",A
 Enter a variable name: GIBBERISH
 USER>SET @A=3.14159
- 
+
 USER>WRITE
- 
+
 A="GIBBERISH"
 GIBBERISH=3.14159
 ```
@@ -1430,7 +1430,7 @@ newVariable: foo
 
 Checks could've been made to:
 :::*   check for the minimum number of arguments
-:::*   check for a legitimate REXX variable name 
+:::*   check for a legitimate REXX variable name
 
 ```rexx
 /*REXX program demonstrates the use of dynamic variable names & setting a val.*/
@@ -1557,18 +1557,18 @@ X print.
 ## Smalltalk
 
 {{works with|Pharo}}
-Define a block-temporary variable with name specified by user input. 
-Set that variable to 42. 
+Define a block-temporary variable with name specified by user input.
+Set that variable to 42.
 Print that variable's name and value.
 
 ```smalltalk
 | varName |
-varName := FillInTheBlankMorph 
+varName := FillInTheBlankMorph
 	request: 'Enter a variable name'.
-Compiler 
-	evaluate: '| ', varName, ' | ', varName, ' := 42. 
-	Transcript 
-		show: ''value of ', varName, '''; 
+Compiler
+	evaluate: '| ', varName, ' | ', varName, ' := 42.
+	Transcript
+		show: ''value of ', varName, ''';
 		show: '' is '';
 		show: ', varName.
 ```
@@ -1580,15 +1580,15 @@ Compiler
 Indirect string reference of variables is a basic feature of Snobol, using the $ operator. trim( ) is needed for Snobol4+.
 
 ```SNOBOL4
-*       # Get var name from user        
+*       # Get var name from user
         output = 'Enter variable name:'
         invar = trim(input)
-        
-*       # Get value from user, assign        
+
+*       # Get value from user, assign
         output = 'Enter value:'
         $invar = trim(input)
 
-*       Display 
+*       Display
         output = invar ' == ' $invar
 end
 ```

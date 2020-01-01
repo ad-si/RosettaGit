@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 ;Task
-Generate and draw a [[wp:Julia_set|Julia set]]. 
+Generate and draw a [[wp:Julia_set|Julia set]].
 
 
 
@@ -267,17 +267,17 @@ double mod(complex a){
 complex mapPoint(int width,int height,double radius,int x,int y){
 	complex c;
 	int l = (width<height)?width:height;
-	
+
 	c.x = 2*radius*(x - width/2.0)/l;
 	c.y = 2*radius*(y - height/2.0)/l;
-	
+
 	return c;
 }
 
 void juliaSet(int width,int height,complex c,double radius,int n){
 	int x,y,i;
 	complex z0,z1;
-	
+
 	for(x=0;x<=width;x++)
 		for(y=0;y<=height;y++){
 			z0 = mapPoint(width,height,radius,x,y);
@@ -298,22 +298,22 @@ int main(int argC, char* argV[])
 {
 	int width, height;
 	complex c;
-	
+
 	if(argC != 7)
 		printf("Usage : %s <width and height of screen, real and imaginary parts of c, limit radius and iterations>");
 	else{
 		width = atoi(argV[1]);
 		height = atoi(argV[2]);
-		
+
 		c.x = atof(argV[3]);
 		c.y = atof(argV[4]);
-		
+
 		initwindow(width,height,"Julia Set");
 		juliaSet(width,height,c,atof(argV[5]),atoi(argV[6]));
-		
+
 		getch();
 	}
-	
+
 	return 0;
 }
 
@@ -394,7 +394,7 @@ public:
         fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
         fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
         GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
-        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 
+        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
             FILE_ATTRIBUTE_NORMAL, NULL );
         WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
         WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
@@ -460,18 +460,18 @@ int main( int argc, char* argv[] ) {
     long double factor = FCT / BMP_SIZE;
     c.imag( ( factor * 184 ) + -1.4 );
     c.real( ( factor * 307 ) + -2.0 );
-    julia j; j.draw( c ); return 0;    
+    julia j; j.draw( c ); return 0;
 }
 
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Python}}
 
-```csharp
+```c#
 using System.Drawing;
-// Note: You have to add the System.Drawing assembly 
+// Note: You have to add the System.Drawing assembly
 //  (right-click "references," Add Reference, Assemblies, Framework,
 //    System.Drawing, OK)
 using System.Linq;
@@ -525,7 +525,7 @@ namespace RosettaJuliaSet
 C# also makes it relatively easy to do a multi-threaded version, which should run faster than the above:
 
 
-```csharp
+```c#
 
         public struct CalculatedPoint
         {
@@ -651,38 +651,38 @@ COMPLEX-MULTIPLICATION-PARAGRAPH.
 
 ```txt
 
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                            ###                         
-                          ## ##                         
-                       # ###   #### #                   
-                      ################        ###       
-         #    #      # ############### #    #######     
+
+
+
+
+
+
+
+
+
+                            ###
+                          ## ##
+                       # ###   #### #
+                      ################        ###
+         #    #      # ############### #    #######
        ##   #####      ######## #       #  #####      ##
-       ########  ###    ########    # ###   ### # ##  # 
+       ########  ###    ########    # ###   ### # ##  #
   ## #  ####     # #    # ####      #        ####  ### #
-  # #   ###      # #     #########    # ## ######       
-  #  #########  #         #########    ######  #        
-     ### ###     ## ## ############           #         
-       #   #     ######### ## ## #                      
-                    #####    ####                       
-                           # #                          
-                          ###                           
-                           #                            
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
+  # #   ###      # #     #########    # ## ######
+  #  #########  #         #########    ######  #
+     ### ###     ## ## ############           #
+       #   #     ######### ## ## #
+                    #####    ####
+                           # #
+                          ###
+                           #
+
+
+
+
+
+
+
 
 ```
 
@@ -701,7 +701,7 @@ def julia(c_real, c_imag)
     puts -1.4.step(to: 1.4, by: 0.02).map{|h| judge(c_real, c_imag, h, v)}.join
   end
 end
- 
+
 def judge(c_real, c_imag, x, y)
   50.times do
     z_real = (x * x - y * y) + c_real
@@ -711,7 +711,7 @@ def judge(c_real, c_imag, x, y)
   end
   "#"
 end
- 
+
 julia(-0.8, 0.156)
 
 ```
@@ -721,54 +721,54 @@ julia(-0.8, 0.156)
 ```txt
 
 -0.8 + 0.156i
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                        #                                                                   
-                                                                         #                                                                  
-                                                                      ##                                                                    
-                                                                     #######                                                                
-                                                                      ##  ####                                                              
-                                                                            ##                                                              
-                                                                # ####  ##  #                                                               
-                                                        #      #  ###   ###       # ##     #                                                
-                                                         #    ######          ##########  # #                                               
-                                                         # #   ######       ########## #                                                    
-                                                         #      ###  ### # ############  ######                         #                   
-                                                        ################   ###################   #               #   ###  #                 
-                                                         ################ #################### ##              #  ###   ##                  
-                         ##                            ##############################    ###  #### #          #######     ###               
-                       #  ##        ##               #  #####################  # #### ##    #### ###        ########### ######              
-                       # #    #####                     #####################     #              # ##       ######################          
-                     ###    ####### ####  #            #######################    #                ###      ############  ###   ##      ##  
+
+
+
+
+                                                                        #
+                                                                         #
+                                                                      ##
+                                                                     #######
+                                                                      ##  ####
+                                                                            ##
+                                                                # ####  ##  #
+                                                        #      #  ###   ###       # ##     #
+                                                         #    ######          ##########  # #
+                                                         # #   ######       ########## #
+                                                         #      ###  ### # ############  ######                         #
+                                                        ################   ###################   #               #   ###  #
+                                                         ################ #################### ##              #  ###   ##
+                         ##                            ##############################    ###  #### #          #######     ###
+                       #  ##        ##               #  #####################  # #### ##    #### ###        ########### ######
+                       # #    #####                     #####################     #              # ##       ######################
+                     ###    ####### ####  #            #######################    #                ###      ############  ###   ##      ##
                   ## ##  ## #################          ########################                     ###      ###########         ##   ### ##
-                  #################  ##  ###### #        # ################### #             #####   ##       ######## #      ### #  ###### 
-                  ############  ## ##       # ###            ##############   #            ##  ###   ##       #   #### #      # ##     ###  
-        ##        ###########  ##             ####          #############    ## #         ##   ### ##         ## #######      ##      ##### 
-     #########    #############                 ###           #  # ####### #  #           ###                 #############    #########    
-  #####      ##      ####### ##         ## ###   ##         # ##    #############          ####             ##  ###########        ##       
-   ###     ## #      # ####   #       ##   ###  ##            #   ##############            ### #       ## ##  ############                 
-  ######  # ###      # ########       ##   #####             # ################### #        # ######  ##  #################                 
-### ###   ##         ###########      ###                     ########################          ################# ##  ## ##                 
-   ##      ##   ###  ############      ###                #    #######################            #  #### #######    ###                    
-           ######################       ## #              #     #####################                     #####    # #                      
-               ###### ###########        ### ####    ## #### #  #####################  #               ##        ##  #                      
-                ###     #######          # ####  ###    ##############################                            ##                        
-                   ##   ###  #              ## #################### ################                                                        
-                  #  ###   #               #   ###################   ################                                                       
-                    #                         ######  ############ # ###  ###      #                                                        
-                                                     # ##########       ######   # #                                                        
-                                                # #  ##########          ######    #                                                        
-                                                 #     ## #       ###   ###  #      #                                                       
-                                                                #  ##  #### #                                                               
-                                                               ##                                                                           
-                                                               ####  ##                                                                     
-                                                                 #######                                                                    
-                                                                     ##                                                                     
-                                                                   #                                                                        
-                                                                    #                                                                       
-                                                                                                                                            
+                  #################  ##  ###### #        # ################### #             #####   ##       ######## #      ### #  ######
+                  ############  ## ##       # ###            ##############   #            ##  ###   ##       #   #### #      # ##     ###
+        ##        ###########  ##             ####          #############    ## #         ##   ### ##         ## #######      ##      #####
+     #########    #############                 ###           #  # ####### #  #           ###                 #############    #########
+  #####      ##      ####### ##         ## ###   ##         # ##    #############          ####             ##  ###########        ##
+   ###     ## #      # ####   #       ##   ###  ##            #   ##############            ### #       ## ##  ############
+  ######  # ###      # ########       ##   #####             # ################### #        # ######  ##  #################
+### ###   ##         ###########      ###                     ########################          ################# ##  ## ##
+   ##      ##   ###  ############      ###                #    #######################            #  #### #######    ###
+           ######################       ## #              #     #####################                     #####    # #
+               ###### ###########        ### ####    ## #### #  #####################  #               ##        ##  #
+                ###     #######          # ####  ###    ##############################                            ##
+                   ##   ###  #              ## #################### ################
+                  #  ###   #               #   ###################   ################
+                    #                         ######  ############ # ###  ###      #
+                                                     # ##########       ######   # #
+                                                # #  ##########          ######    #
+                                                 #     ## #       ###   ###  #      #
+                                                                #  ##  #### #
+                                                               ##
+                                                               ####  ##
+                                                                 #######
+                                                                     ##
+                                                                   #
+                                                                    #
+
 
 ```
 
@@ -822,7 +822,7 @@ defmodule Julia do
       end) |> IO.puts
     end)
   end
-  
+
   defp loop(_, _, _, _, char, i) when i>=50, do: char
   defp loop(_, _, _, _, " ", _), do: " "
   defp loop(c_real, c_imag, x, y, char, i) do
@@ -842,57 +842,57 @@ Julia.set(c_real, c_imag)
 {{out}}
 <pre style="font-size: 50%;">
 -0.8, 0.156
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                        #                                                                    
-                                                                         #                                                                   
-                                                                      ##                                                                     
-                                                                     #######                                                                 
-                                                                      ##  ####                                                               
-                                                                            ##                                                               
-                                                                # ####  ##  #                                                                
-                                                        #      #  ###   ###       # ##     #                                                 
-                                                         #    ######          ##########  # #                                                
-                                                         # #   ######       ########## #                                                     
-                                                         #      ###  ### # ############  ######                         #                    
-                                                        ################   ###################   #               #   ###  #                  
-                                                         ################ #################### ##              #  ###   ##                   
-                         ##                            ##############################    ###  #### #          #######     ###                
-                       #  ##        ##               #  #####################  # #### ##    #### ###        ########### ######               
-                       # #    #####                     #####################     #              # ##       ######################           
-                     ###    ####### ####  #            #######################    #                ###      ############  ###   ##      ##   
+
+
+
+
+                                                                        #
+                                                                         #
+                                                                      ##
+                                                                     #######
+                                                                      ##  ####
+                                                                            ##
+                                                                # ####  ##  #
+                                                        #      #  ###   ###       # ##     #
+                                                         #    ######          ##########  # #
+                                                         # #   ######       ########## #
+                                                         #      ###  ### # ############  ######                         #
+                                                        ################   ###################   #               #   ###  #
+                                                         ################ #################### ##              #  ###   ##
+                         ##                            ##############################    ###  #### #          #######     ###
+                       #  ##        ##               #  #####################  # #### ##    #### ###        ########### ######
+                       # #    #####                     #####################     #              # ##       ######################
+                     ###    ####### ####  #            #######################    #                ###      ############  ###   ##      ##
                   ## ##  ## #################          ########################                     ###      ###########         ##   ### ###
-                  #################  ##  ###### #        # ################### #             #####   ##       ######## #      ### #  ######  
-                  ############  ## ##       # ###            ##############   #            ##  ###   ##       #   #### #      # ##     ###   
-        ##        ###########  ##             ####          #############    ## #         ##   ### ##         ## #######      ##      #####  
-     #########    #############                 ###           #  # ####### #  #           ###                 #############    #########     
-  #####      ##      ####### ##         ## ###   ##         # ##    #############          ####             ##  ###########        ##        
-   ###     ## #      # ####   #       ##   ###  ##            #   ##############            ### #       ## ##  ############                  
-  ######  # ###      # ########       ##   #####             # ################### #        # ######  ##  #################                  
-### ###   ##         ###########      ###                     ########################          ################# ##  ## ##                  
-   ##      ##   ###  ############      ###                #    #######################            #  #### #######    ###                     
-           ######################       ## #              #     #####################                     #####    # #                       
-               ###### ###########        ### ####    ## #### #  #####################  #               ##        ##  #                       
-                ###     #######          # ####  ###    ##############################                            ##                         
-                   ##   ###  #              ## #################### ################                                                         
-                  #  ###   #               #   ###################   ################                                                        
-                    #                         ######  ############ # ###  ###      #                                                         
-                                                     # ##########       ######   # #                                                         
-                                                # #  ##########          ######    #                                                         
-                                                 #     ## #       ###   ###  #      #                                                        
-                                                                #  ##  #### #                                                                
-                                                               ##                                                                            
-                                                               ####  ##                                                                      
-                                                                 #######                                                                     
-                                                                     ##                                                                      
-                                                                   #                                                                         
-                                                                    #                                                                        
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
+                  #################  ##  ###### #        # ################### #             #####   ##       ######## #      ### #  ######
+                  ############  ## ##       # ###            ##############   #            ##  ###   ##       #   #### #      # ##     ###
+        ##        ###########  ##             ####          #############    ## #         ##   ### ##         ## #######      ##      #####
+     #########    #############                 ###           #  # ####### #  #           ###                 #############    #########
+  #####      ##      ####### ##         ## ###   ##         # ##    #############          ####             ##  ###########        ##
+   ###     ## #      # ####   #       ##   ###  ##            #   ##############            ### #       ## ##  ############
+  ######  # ###      # ########       ##   #####             # ################### #        # ######  ##  #################
+### ###   ##         ###########      ###                     ########################          ################# ##  ## ##
+   ##      ##   ###  ############      ###                #    #######################            #  #### #######    ###
+           ######################       ## #              #     #####################                     #####    # #
+               ###### ###########        ### ####    ## #### #  #####################  #               ##        ##  #
+                ###     #######          # ####  ###    ##############################                            ##
+                   ##   ###  #              ## #################### ################
+                  #  ###   #               #   ###################   ################
+                    #                         ######  ############ # ###  ###      #
+                                                     # ##########       ######   # #
+                                                # #  ##########          ######    #
+                                                 #     ## #       ###   ###  #      #
+                                                                #  ##  #### #
+                                                               ##
+                                                               ####  ##
+                                                                 #######
+                                                                     ##
+                                                                   #
+                                                                    #
+
+
+
+
 
 ```
 
@@ -966,7 +966,7 @@ getJuliaValues 80 25 -0.7 0.27015 1.0 50
 
 ```fsharp
 
-open System.Drawing 
+open System.Drawing
 open System.Windows.Forms
 
 let showGraphic (colorForIter: int -> Color) width height centerX centerY zoom maxIter =
@@ -974,7 +974,7 @@ let showGraphic (colorForIter: int -> Color) width height centerX centerY zoom m
   |> fun frm ->
     frm.Width <- width
     frm.Height <- height
-    frm.BackgroundImage <- 
+    frm.BackgroundImage <-
       new Bitmap(width,height)
       |> fun bmp ->
         getJuliaValues width height centerX centerY zoom maxIter
@@ -1159,7 +1159,7 @@ take a look [http://paulo-jorente.de/tests/juliaset/ here].
 
 ```javascript
 
-var maxIterations = 450, minX = -.5, maxX = .5, 
+var maxIterations = 450, minX = -.5, maxX = .5,
     minY = -.5, maxY = .5, wid, hei, ctx,
     jsX = 0.285, jsY = 0.01;
 
@@ -1170,7 +1170,7 @@ function remap( x, t1, t2, s1, s2 ) {
 }
 function getColor( c ) {
     var r, g, b, p = c / 32,
-        l = ~~( p * 6 ), o = p * 6 - l, 
+        l = ~~( p * 6 ), o = p * 6 - l,
         q = 1 - o;
 
     switch( l % 6 ) {
@@ -1181,8 +1181,8 @@ function getColor( c ) {
         case 4: r = o; g = 0; b = 1; break;
         case 5: r = 1; g = 0; b = q; break;
     }
-    var c = "#" + ( "00" + ( ~~( r * 255 ) ).toString( 16 ) ).slice( -2 ) + 
-                  ( "00" + ( ~~( g * 255 ) ).toString( 16 ) ).slice( -2 ) + 
+    var c = "#" + ( "00" + ( ~~( r * 255 ) ).toString( 16 ) ).slice( -2 ) +
+                  ( "00" + ( ~~( g * 255 ) ).toString( 16 ) ).slice( -2 ) +
                   ( "00" + ( ~~( b * 255 ) ).toString( 16 ) ).slice( -2 );
     return (c);
 }
@@ -1240,7 +1240,7 @@ function init() {
            .i += 1
            | .z_real = ((.x * .x) - (.y * .y) + $re)
            | .z_imag = ((.x * .y * 2) + $im)
- 	   | if pow(.z_real; 2) > 10000 then .plot = " " 
+ 	   | if pow(.z_real; 2) > 10000 then .plot = " "
              else .x = .z_real | .y = .z_imag
    	     end )
   | .plot ), "\n")
@@ -1251,7 +1251,7 @@ With the above program in a file called julia.jq, the following invocation of jq
 
 
 ```txt
-jq -nrj -f julia.jq --argjson re -0.8 --argjson im 0.156 
+jq -nrj -f julia.jq --argjson re -0.8 --argjson im 0.156
 
 ```
 
@@ -1388,7 +1388,7 @@ class Julia_panel : javax.swing.JPanel() {
             drawImage(image, 0, 0, null)
         }
     }
-    
+
     private val maxIter = 300
     private val zoom = 1
     private val moveX = 0.0
@@ -1757,11 +1757,11 @@ if __name__ == "__main__":
 	w, h, zoom = 800,600,1
 	bitmap = Image.new("RGB", (w, h), "white")
 	pix = bitmap.load()
- 
+
 	cX, cY = -0.7, 0.27015
 	moveX, moveY = 0.0, 0.0
 	maxIter = 255
- 
+
 	for x in range(w):
 		for y in range(h):
 			zx = 1.5*(x - w/2)/(0.5*zoom*w) + moveX
@@ -1773,7 +1773,7 @@ if __name__ == "__main__":
 				i -= 1
 			# convert byte to RGB (3 bytes), kinda magic to get nice colors
 			pix[x,y] = (i << 21) + (i << 10) + i*8
- 
+
 	bitmap.show()
 ```
 
@@ -1781,7 +1781,7 @@ if __name__ == "__main__":
 
 ### Vectorized
 
-Efficient version using vectorized operations in NumPy.  
+Efficient version using vectorized operations in NumPy.
 
 [https://imgur.com/a/o3j9Zzn Example output.]
 
@@ -1873,11 +1873,11 @@ if __name__ == '__main__':
 ```racket
 
 ;; Based on Mandelbrot code (GPL) from:
-;;  https://github.com/hebr3/Mandelbrot-Set-Racket/blob/master/Mandelbrot.v6.rkt 
+;;  https://github.com/hebr3/Mandelbrot-Set-Racket/blob/master/Mandelbrot.v6.rkt
 ;; Julia set algoithm (and coloring) from:
 ;;  http://lodev.org/cgtutor/juliamandelbrot.html
 ;; HSV code (GPL) based on:
-;;  https://github.com/takikawa/pict-utils/blob/master/pict-utils/hsv.rkt 
+;;  https://github.com/takikawa/pict-utils/blob/master/pict-utils/hsv.rkt
 
 #lang racket
 
@@ -2018,10 +2018,10 @@ _=scrsize(); parse var _ sd sw; sd=sd-4; sw=sw-1 /*obtain useable area for the t
 
 This REXX program makes use of   '''scrsize'''   REXX program (or BIF) which is used to determine the screen size of the terminal (console),
 
-and the plot size is adjusted according. 
+and the plot size is adjusted according.
 
 
-The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]]. 
+The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]].
 
 
 
@@ -2030,7 +2030,7 @@ The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.
 (Shown at   <sup>'''1'''</sup>/<sub>'''6'''</sub>   size.)
 
 '''output'''   when the defaults are used:
-<pre style="font-size:17%"> 
+<pre style="font-size:17%">
                                                                                                                                                                                                                           ■■
                                                                                                                                                                                                                           ■ ■
                                                                                                                                                                                                                        ■■ ■■
@@ -2197,11 +2197,11 @@ The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.
                                                                                                                                                                                                    ■ ■■■■■■■
                                                                                                                                                                                                        ■■ ■■
                                                                                                                                                                                                       ■ ■
-                                                                                                                                                                                                       ■■    
+                                                                                                                                                                                                       ■■
 
 ```
 
-Other outputs are shown in this Rosetta Code task's   ''discussion''   page. 
+Other outputs are shown in this Rosetta Code task's   ''discussion''   page.
 
 
 
@@ -2215,7 +2215,7 @@ Other outputs are shown in this Rosetta Code task's   ''discussion''   page.
 
 load "guilib.ring"
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Julia set")
@@ -2260,7 +2260,7 @@ func draw
                          if zreal*zreal>1000 flag = 0 loop ok
                          x=zreal
                          y=zimag
-                  next 
+                  next
                   if flag = 1
                      drawpoint(h+100,150-v)
                   ok
@@ -2303,53 +2303,53 @@ julia(-0.8, 0.156)
 {{out}}
 <pre style="font-size: 50%;">
 -0.8+0.156i
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                        #                                                                    
-                                                                         #                                                                   
-                                                                      ##                                                                     
-                                                                     #######                                                                 
-                                                                      ##  ####                                                               
-                                                                            ##                                                               
-                                                                # ####  ##  #                                                                
-                                                        #      #  ###   ###       # ##     #                                                 
-                                                         #    ######          ##########  # #                                                
-                                                         # #   ######       ########## #                                                     
-                                                         #      ###  ### # ############  ######                         #                    
-                                                        ################   ###################   #               #   ###  #                  
-                                                         ################ #################### ##              #  ###   ##                   
-                         ##                            ##############################    ###  #### #          #######     ###                
-                       #  ##        ##               #  #####################  # #### ##    #### ###        ########### ######               
-                       # #    #####                     #####################     #              # ##       ######################           
-                     ###    ####### ####  #            #######################    #                ###      ############  ###   ##      ##   
+
+
+
+
+                                                                        #
+                                                                         #
+                                                                      ##
+                                                                     #######
+                                                                      ##  ####
+                                                                            ##
+                                                                # ####  ##  #
+                                                        #      #  ###   ###       # ##     #
+                                                         #    ######          ##########  # #
+                                                         # #   ######       ########## #
+                                                         #      ###  ### # ############  ######                         #
+                                                        ################   ###################   #               #   ###  #
+                                                         ################ #################### ##              #  ###   ##
+                         ##                            ##############################    ###  #### #          #######     ###
+                       #  ##        ##               #  #####################  # #### ##    #### ###        ########### ######
+                       # #    #####                     #####################     #              # ##       ######################
+                     ###    ####### ####  #            #######################    #                ###      ############  ###   ##      ##
                   ## ##  ## #################          ########################                     ###      ###########         ##   ### ###
-                  #################  ##  ###### #        # ################### #             #####   ##       ######## #      ### #  ######  
-                  ############  ## ##       # ###            ##############   #            ##  ###   ##       #   #### #      # ##     ###   
-        ##        ###########  ##             ####          #############    ## #         ##   ### ##         ## #######      ##      #####  
-     #########    #############                 ###           #  # ####### #  #           ###                 #############    #########     
-  #####      ##      ####### ##         ## ###   ##         # ##    #############          ####             ##  ###########        ##        
-   ###     ## #      # ####   #       ##   ###  ##            #   ##############            ### #       ## ##  ############                  
-  ######  # ###      # ########       ##   #####             # ################### #        # ######  ##  #################                  
-### ###   ##         ###########      ###                     ########################          ################# ##  ## ##                  
-   ##      ##   ###  ############      ###                #    #######################            #  #### #######    ###                     
-           ######################       ## #              #     #####################                     #####    # #                       
-               ###### ###########        ### ####    ## #### #  #####################  #               ##        ##  #                       
-                ###     #######          # ####  ###    ##############################                            ##                         
-                   ##   ###  #              ## #################### ################                                                         
-                  #  ###   #               #   ###################   ################                                                        
-                    #                         ######  ############ # ###  ###      #                                                         
-                                                     # ##########       ######   # #                                                         
-                                                # #  ##########          ######    #                                                         
-                                                 #     ## #       ###   ###  #      #                                                        
-                                                                #  ##  #### #                                                                
-                                                               ##                                                                            
-                                                               ####  ##                                                                      
-                                                                 #######                                                                     
-                                                                     ##                                                                      
-                                                                   #                                                                         
-                                                                    #                                                                        
+                  #################  ##  ###### #        # ################### #             #####   ##       ######## #      ### #  ######
+                  ############  ## ##       # ###            ##############   #            ##  ###   ##       #   #### #      # ##     ###
+        ##        ###########  ##             ####          #############    ## #         ##   ### ##         ## #######      ##      #####
+     #########    #############                 ###           #  # ####### #  #           ###                 #############    #########
+  #####      ##      ####### ##         ## ###   ##         # ##    #############          ####             ##  ###########        ##
+   ###     ## #      # ####   #       ##   ###  ##            #   ##############            ### #       ## ##  ############
+  ######  # ###      # ########       ##   #####             # ################### #        # ######  ##  #################
+### ###   ##         ###########      ###                     ########################          ################# ##  ## ##
+   ##      ##   ###  ############      ###                #    #######################            #  #### #######    ###
+           ######################       ## #              #     #####################                     #####    # #
+               ###### ###########        ### ####    ## #### #  #####################  #               ##        ##  #
+                ###     #######          # ####  ###    ##############################                            ##
+                   ##   ###  #              ## #################### ################
+                  #  ###   #               #   ###################   ################
+                    #                         ######  ############ # ###  ###      #
+                                                     # ##########       ######   # #
+                                                # #  ##########          ######    #
+                                                 #     ## #       ###   ###  #      #
+                                                                #  ##  #### #
+                                                               ##
+                                                               ####  ##
+                                                                 #######
+                                                                     ##
+                                                                   #
+                                                                    #
 
 ```
 
@@ -2529,46 +2529,46 @@ for y in ^h {
 ```
 
 {{out}}
-<pre style="font-size: 50%;">                                                                        ##                                                                   
-                                                                      ##                                                                     
-                                                                     #######                                                                 
-                                                                      ########                                                               
-                                                                        #   ##                                                               
-                                                                 # ###  ##  #                                                                
-                                                         #      #####   ####       ##     ##                                                 
-                                                          #    ######         ##########   #                                                 
-                                                               ########     ##########    #                                                  
-                                                          ##   ###### ########################                       ###                     
-                                                          ################ ################### ##             ## # ### #                     
-                                                        #  #####################################             #  ###  ##                      
-                          # #                           ############################# ###########          # ######    ###                   
-                          #   #       ##                  ########################### #    ########       ################# #                
-                          # #    ####                    #####################  ###             ####      #####################              
-                        ###    ############             ######################  # #               ###     ################ ###     # # #     
-                        ###  # #################         ######################                    ##      ########### #      ##  ######     
+<pre style="font-size: 50%;">                                                                        ##
+                                                                      ##
+                                                                     #######
+                                                                      ########
+                                                                        #   ##
+                                                                 # ###  ##  #
+                                                         #      #####   ####       ##     ##
+                                                          #    ######         ##########   #
+                                                               ########     ##########    #
+                                                          ##   ###### ########################                       ###
+                                                          ################ ################### ##             ## # ### #
+                                                        #  #####################################             #  ###  ##
+                          # #                           ############################# ###########          # ######    ###
+                          #   #       ##                  ########################### #    ########       ################# #
+                          # #    ####                    #####################  ###             ####      #####################
+                        ###    ############             ######################  # #               ###     ################ ###     # # #
+                        ###  # #################         ######################                    ##      ########### #      ##  ######
                       ###########################           ####################           ######  ##       ##########     ### #   ###   # ##
                      ################ ##      ######          #################           ######## ##       #  ######     ## ##   ####     ##
-         #  #         ########### #             ####         #############   ####        ###  #######       ###########    ##    ######      
-        ##########    ############                ##           #  ##########  #           ##                ############    ##########       
-       ######    ##    ###########       #######  ###        ####   #############         ####             # ###########         #  #        
-###     ####   ## ##     ######  #       ## ########           #################          ######      ## ################                    
- ## #   ###   # ###     ##########       ##  ######           ####################           ###########################                     
-      ######  ##      # ###########      ##                    ######################         ################# #  ###                       
-      # # #     ### ################     ###               # #  ######################             ############    ###                       
-               #####################      ####             ###  #####################                    ####    # #                         
-                 # #################       ########    # ###########################                  ##       #   #                         
-                    ###    ###### #          ########### #############################                           # #                         
-                       ##  ###  #             #####################################  #                                                       
-                      # ### # ##             ## ################### ################                                                         
-                      ###                       ######################## ######   ##                                                         
-                                                   #    ##########     ########                                                              
-                                                  #   ##########         ######    #                                                         
-                                                  ##     ##       ####   #####      #                                                        
-                                                                 #  ##  ### #                                                                
-                                                                ##   #                                                                       
-                                                                ########                                                                     
-                                                                  #######                                                                    
-                                                                      ##                                                                     
+         #  #         ########### #             ####         #############   ####        ###  #######       ###########    ##    ######
+        ##########    ############                ##           #  ##########  #           ##                ############    ##########
+       ######    ##    ###########       #######  ###        ####   #############         ####             # ###########         #  #
+###     ####   ## ##     ######  #       ## ########           #################          ######      ## ################
+ ## #   ###   # ###     ##########       ##  ######           ####################           ###########################
+      ######  ##      # ###########      ##                    ######################         ################# #  ###
+      # # #     ### ################     ###               # #  ######################             ############    ###
+               #####################      ####             ###  #####################                    ####    # #
+                 # #################       ########    # ###########################                  ##       #   #
+                    ###    ###### #          ########### #############################                           # #
+                       ##  ###  #             #####################################  #
+                      # ### # ##             ## ################### ################
+                      ###                       ######################## ######   ##
+                                                   #    ##########     ########
+                                                  #   ##########         ######    #
+                                                  ##     ##       ####   #####      #
+                                                                 #  ##  ### #
+                                                                ##   #
+                                                                ########
+                                                                  #######
+                                                                      ##
                                                                     ##
 ```
 

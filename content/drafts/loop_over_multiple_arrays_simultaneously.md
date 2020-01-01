@@ -639,9 +639,9 @@ iteration scheme, as demonstrated in
  printing is defined, and the iteration continues up to the length of
 the shortest array.
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 class Program
 {
     static void Main(string[] args)
@@ -662,7 +662,7 @@ class Program
 Using Enumerable.Zip (stops when either source runs out of elements):
 
 
-```csharp
+```c#
 
 int[] numbers = { 1, 2, 3, 4 };
 string[] words = { "one", "two", "three" };
@@ -677,7 +677,7 @@ Console.WriteLine(numbers.Zip(words, (first, second) => first + " " +
 Like how a perl programmer would write it (still using Zip):
 
 
-```csharp
+```c#
 
 Console.WriteLine((new[] { 1, 2, 3, 4 }).Zip(new[] { "a", "b", "c" },
 (f, s) => f + " " + s));
@@ -688,7 +688,7 @@ Console.WriteLine((new[] { 1, 2, 3, 4 }).Zip(new[] { "a", "b", "c" },
 
 Custom implementation for arrays of different lengths that pads with spaces after the end of the shorter arrays:
 
-```csharp
+```c#
 
         public static void Multiloop(char[] A, char[] B, int[] C)
         {
@@ -701,7 +701,7 @@ Custom implementation for arrays of different lengths that pads with spaces afte
 
 usage:
 
-```csharp
+```c#
 Multiloop(new char[] { 'a', 'b', 'c', 'd' }, new char[] { 'A', 'B', 'C' }, new int[] { 1, 2, 3, 4, 5 });
 ```
 

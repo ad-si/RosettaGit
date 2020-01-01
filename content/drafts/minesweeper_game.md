@@ -574,7 +574,7 @@ StartGame(x,y) {
 								? "x" 12 " y" y*BlockSize+39			; fix vertical position
 								: "yp x+0")								; otherwise align to previous box
 							,% T_x%x%y%y%								; M is WingDings for mine
-			GuiControl,Hide,T_x%x%y%y%	
+			GuiControl,Hide,T_x%x%y%y%
 		}
 	}
 	GuiControl,,Timer,% "00" . TimePassed:=1
@@ -983,7 +983,7 @@ Mar 8, 2014
 ## BASIC256
 
 
-###  Mouse version 
+###  Mouse version
 
 [[File:Minesweeper game BASIC-256 won.png|thumb|right|Game won]]
 [[File:Minesweeper game BASIC-256 lost.png|thumb|right|Game lost (green mines are those that were flagged before explosion)]]
@@ -996,22 +996,22 @@ graphsize N*H,(M+1)*H
 font "Arial",H/2+1,75
 dim f(N,M) # 1 open, 2 mine, 4 expected mine
 dim s(N,M) # count of mines in a neighborhood
- 
+
 trian1 = {1,1,H-1,1,H-1,H-1} : trian2 = {1,1,1,H-1,H-1,H-1}
 mine = {2,2, H/2,H/2-2, H-2,2, H/2+2,H/2, H-2,H-2, H/2,H/2+2, 2,H-2, H/2-2,H/2}
 flag = {H/2-1,3, H/2+1,3, H-4,H/5, H/2+1,H*2/5, H/2+1,H*0.9-2, H*0.8,H-2, H*0.2,H-2, H/2-1,H*0.9-2}
- 
+
 mines = int(N*M*P) : k = mines : act = 0
-while k>0 
+while k>0
 	i = int(rand*N) : j = int(rand*M)
-	if not f[i,j] then 
+	if not f[i,j] then
 		f[i,j] = 2 : k = k - 1		# set mine
 		s[i,j] = s[i,j] + 1 : gosub adj	# count it
-		
+
 	end if
 end while
 togo =  M*N-mines : over = 0 : act = 1
- 
+
 gosub redraw
 while not over
 	clickclear
@@ -1023,7 +1023,7 @@ while not over
 		if clickb=1 then
 			if not (f[i,j]&4) then ai = i : aj = j : gosub opencell
 			if not s[i,j] then gosub adj
-		else 
+		else
 			if not (f[i,j]&1) then
 				if f[i,j]&4 then mines = mines+1
 				if not (f[i,j]&4) then mines = mines-1
@@ -1036,7 +1036,7 @@ while not over
 end while
 imgsave "Minesweeper_game_BASIC-256.png", "PNG"
 end
- 
+
 redraw:
 	for i = 0 to N-1
 		for j = 0 to M-1
@@ -1052,7 +1052,7 @@ redraw:
 	if over=-1 then text x,y,"You lost"
 	refresh
 	return
- 
+
 drawcell:
 	color darkgrey
 	rect i*H,j*H,H,H
@@ -1063,7 +1063,7 @@ drawcell:
 		if f[i,j]&4 then color blue : stamp i*H,j*H,flag
 	else
 		color 192,192,192 : rect i*H+1,j*H+1,H-2,H-2
-		# Draw 
+		# Draw
 		if f[i,j]&2 then	# mine
 			if not (f[i,j]&4) then color red
 			if f[i,j]&4 then color darkgreen
@@ -1073,7 +1073,7 @@ drawcell:
 		end if
 	end if
 	return
- 
+
 adj:
 	aj = j-1
 	if j and i then ai = i-1 : gosub adjact
@@ -1087,13 +1087,13 @@ adj:
 	if j<M-1 then ai = i : gosub adjact
 	if j<M-1 and i<N-1 then ai = i+1 : gosub adjact
 	return
- 
+
 adjact:
 	if not act then s[ai,aj] = s[ai,aj]+1 : return
 	if act then gosub opencell : return
- 
+
 opencell:
-	if not (f[ai,aj]&1) then 
+	if not (f[ai,aj]&1) then
 		f[ai,aj] = f[ai,aj]|1
 		togo = togo-1
 	end if
@@ -1286,7 +1286,7 @@ void matprint(void*a,int rank,size_t*shape,size_t size,void(*print_elt)()) {
   }
 # define SRANDOM srand
 # define RANDOM rand
-#endif  
+#endif
 
 #ifndef EXIT_SUCCESS
 # define EXIT_SUCCESS 1		/* just a guess */
@@ -1500,7 +1500,7 @@ int convert(const char*name,const char*s) {
   fprintf(stderr,"default:  %s 20 30 25\n",name);
   exit(EXIT_SUCCESS);
 }
-  
+
 void parse_command_line(int ac,char*av[],int*a,int*b,int*c) {
   switch (ac) {
   default:
@@ -1726,7 +1726,7 @@ int main(int c, char **v)
 
 ## C++
 
-This solution implements the required task and one more command: unknown. It is represented by a '?' that's why the flag in this solution is represented as a '!' 
+This solution implements the required task and one more command: unknown. It is represented by a '?' that's why the flag in this solution is represented as a '!'
 
 ```cpp
 
@@ -1767,10 +1767,10 @@ public:
 	    while( field[mx + wid * my].mine );
 	    field[mx + wid * my].mine = true;
 	}
-	graphs[0] = ' '; graphs[1] = '.'; graphs[2] = '*'; 
-	graphs[3] = '?'; graphs[4] = '!'; graphs[5] = 'X'; 
+	graphs[0] = ' '; graphs[1] = '.'; graphs[2] = '*';
+	graphs[3] = '?'; graphs[4] = '!'; graphs[5] = 'X';
     }
-	
+
     void gameLoop()
     {
 	string c, r, a;
@@ -1796,7 +1796,7 @@ private:
 	    Sleep( 3000 ); return;
 	}
 	if( a[0] == 'O' ) openCell( x, y );
-	else if( a[0] == 'F' ) 
+	else if( a[0] == 'F' )
 	{
 	    fd->open = true;
 	    fd->value = FLAG;
@@ -1814,7 +1814,7 @@ private:
     {
 	if( !isInside( x, y ) ) return false;
 	if( field[x + y * wid].mine ) boom();
-	else 
+	else
 	{
 	    if( field[x + y * wid].value == FLAG )
 	    {
@@ -1831,9 +1831,9 @@ private:
     void drawBoard()
     {
 	system( "cls" );
-	cout << "Marked mines: " << mMines << " from " << oMines << "\n\n";		
+	cout << "Marked mines: " << mMines << " from " << oMines << "\n\n";
 	for( int x = 0; x < wid; x++ )
-	    cout << "  " << ( char )( 65 + x ) << " "; 
+	    cout << "  " << ( char )( 65 + x ) << " ";
 	cout << "\n"; int yy;
 	for( int y = 0; y < hei; y++ )
 	{
@@ -1846,7 +1846,7 @@ private:
 	    {
 		fd = &field[x + yy]; cout<< "| ";
 		if( !fd->open ) cout << ( char )graphs[1] << " ";
-		else 
+		else
 		{
 		    if( fd->value > 9 )
 			cout << ( char )graphs[fd->value - 9] << " ";
@@ -1938,10 +1938,10 @@ private:
 		if( xx == 0 && yy == 0 ) continue;
 		if( isInside( x + xx, y + yy ) && field[x + xx + ( y + yy ) * wid].mine ) m++;
 	    }
-		
+
 	return m;
     }
-	
+
     int wid, hei, mMines, oMines;
     fieldData* field; bool go;
     int graphs[6];
@@ -2004,11 +2004,11 @@ Actions: o => open, f => flag, ? => unknown
 
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 The following solution implements the required task providing GUI (Windows Forms).
 
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -2030,7 +2030,7 @@ class MineFieldModel
     public bool[,] Opened{get;private set;}
     public bool[,] Marked{get; private set;}
     public int[,] Values{get;private set; }
-    public int Width{ get{return Mines.GetLength(1);} } 
+    public int Width{ get{return Mines.GetLength(1);} }
     public int Height{ get{return Mines.GetLength(0);} }
 
     public MineFieldModel(bool[,] mines)
@@ -2040,7 +2040,7 @@ class MineFieldModel
         this.Marked = new bool[Height, Width];
         this.Values = CalculateValues();
     }
-    
+
     private int[,] CalculateValues()
     {
         int[,] values = new int[Height, Width];
@@ -2067,7 +2067,7 @@ class MineFieldModel
     public void ForEachNeighbor(int i, int j, Action<int,int> action)
     {
         for (var i1 = i-1; i1 <= i+1; i1++)
-        for (var j1 = j-1; j1 <= j+1; j1++)               
+        for (var j1 = j-1; j1 <= j+1; j1++)
             if (InBounds(j1, i1) && !(i1==i && j1 ==j))
                 action(i1, j1);
     }
@@ -2101,7 +2101,7 @@ class MineFieldModel
                     OpenCellsStartingFrom(i1, j1);
             });
     }
-    
+
     void CheckForVictory(){
         int notMarked = 0;
         int wrongMarked = 0;
@@ -2110,7 +2110,7 @@ class MineFieldModel
                 notMarked++;
             if (!Mines[i,j] && Marked[i,j])
                 wrongMarked++;
-        }); 
+        });
         if (notMarked == 0 && wrongMarked == 0)
             Win();
     }
@@ -2130,12 +2130,12 @@ class MineFieldView: UserControl{
     public MineFieldModel Model{
         get{ return _model; }
         set
-        { 
-            _model = value; 
+        {
+            _model = value;
             this.Size = new Size(_model.Width * CellSize+1, _model.Height * CellSize+2);
         }
     }
-    
+
     public MineFieldView(){
         //Enable double-buffering to eliminate flicker
         this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer,true);
@@ -2160,7 +2160,7 @@ class MineFieldView: UserControl{
         var y = (coords.Y - rgn.Y)/CellSize;
         return new Point(x,y);
     }
-         
+
     static readonly Brush MarkBrush = new SolidBrush(Color.Blue);
     static readonly Brush ValueBrush = new SolidBrush(Color.Black);
     static readonly Brush UnexploredBrush = new SolidBrush(SystemColors.Control);
@@ -2183,8 +2183,8 @@ class MineFieldView: UserControl{
                     {
                         DrawStringInCenter(g, Model.Values[i,j].ToString(), ValueBrush, bounds);
                     }
-                } 
-                else 
+                }
+                else
                 {
                     g.FillRectangle(UnexploredBrush, bounds);
                     if (Model.Marked[i,j])
@@ -2242,7 +2242,7 @@ class MineSweepForm: Form
         var counter = new Label{ };
         counter.Text = model.RemainingMinesCount.ToString();
         var view = new MineFieldView
-                        { 
+                        {
                             Model = model, BorderStyle = BorderStyle.FixedSingle,
                         };
         var stackPanel = new FlowLayoutPanel
@@ -2290,39 +2290,39 @@ import ceylon.random {
 }
 
 class Cell() {
-	
+
 	shared variable Boolean covered = true;
 	shared variable Boolean flagged = false;
 	shared variable Boolean mined = false;
 	shared variable Integer adjacentMines = 0;
-	
-	string => 
-			if (covered && !flagged) 
-			then "." 
-			else if (covered && flagged) 
-			then "?" 
+
+	string =>
+			if (covered && !flagged)
+			then "."
+			else if (covered && flagged)
+			then "?"
 			else if (!covered && mined)
 			then "X"
-			else if (!covered && adjacentMines > 0) 
-			then adjacentMines.string 
+			else if (!covered && adjacentMines > 0)
+			then adjacentMines.string
 			else " ";
 }
 
 "The main function of the module. Run this one."
 shared void run() {
-	
+
 	value random = DefaultRandom();
 	value chanceOfBomb = 0.2;
-	
+
 	value width = 6;
 	value height = 4;
-	
+
 	value grid = Array { for (j in 1..height) Array { for (i in 1..width) Cell() } };
-	
+
 	function getCell(Integer x, Integer y) => grid[y]?.get(x);
-	
+
 	void initializeGrid() {
-		
+
 		for (row in grid) {
 			for (cell in row) {
 				cell.covered = true;
@@ -2330,21 +2330,21 @@ shared void run() {
 				cell.mined = random.nextFloat() < chanceOfBomb;
 			}
 		}
-		
-		function countAdjacentMines(Integer x, Integer y) => count { 
-			for (j in y - 1 .. y + 1) 
+
+		function countAdjacentMines(Integer x, Integer y) => count {
+			for (j in y - 1 .. y + 1)
 			for (i in x - 1 .. x + 1)
 			if (exists cell = getCell(i, j))
 			cell.mined
 		};
-		
+
 		for (j->row in grid.indexed) {
 			for (i->cell in row.indexed) {
 				cell.adjacentMines = countAdjacentMines(i, j);
 			}
 		}
 	}
-	
+
 	void displayGrid() {
 		print("  " + "".join(1..width));
 		print("  " + "-".repeat(width));
@@ -2354,7 +2354,7 @@ shared void run() {
 		print("  " + "-".repeat(width));
 		print("  " + "".join(1..width));
 	}
-	
+
 	Boolean won() =>
 		expand(grid).every((cell) => (cell.flagged && cell.mined) || (!cell.flagged && !cell.mined));
 
@@ -2370,7 +2370,7 @@ shared void run() {
 			}
 		}
 	}
-	
+
 	while (true) {
 		print("Welcome to minesweeper!
 		       -----------------------");
@@ -2379,7 +2379,7 @@ shared void run() {
 			displayGrid();
 			print("
 			       The number of mines to find is ``count(expand(grid)*.mined)``.
-			       What would you like to do? 
+			       What would you like to do?
 			       [1] reveal a free space (or blow yourself up)
 			       [2] mark (or unmark) a mine");
 			assert (exists instruction = process.readLine());
@@ -2394,7 +2394,7 @@ shared void run() {
 ### ===========
 
 						       === You lose! ===
-						       
+
 ### ===========
 ");
 						expand(grid).each((cell) => cell.covered = false);
@@ -2618,7 +2618,7 @@ shared void run() {
 <lang>len cell[] 56
 len cnt[] 56
 len flag[] 56
-# 
+#
 subr initvars
   state = 0
   ticks = 0
@@ -3118,7 +3118,7 @@ Grid has 2 mine(s), 0 mine(s) marked.
 Grid has 2 mine(s), 0 mine(s) marked.
      123456
      ------
-   1:      
+   1:
    2:    11
    3: 1111.
    4: 1....
@@ -3127,7 +3127,7 @@ Grid has 2 mine(s), 0 mine(s) marked.
 Grid has 2 mine(s), 1 mine(s) marked.
      123456
      ------
-   1:      
+   1:
    2:    11
    3: 1111?
    4: 1....
@@ -3136,7 +3136,7 @@ Grid has 2 mine(s), 1 mine(s) marked.
 Grid has 2 mine(s), 1 mine(s) marked.
      123456
      ------
-   1:      
+   1:
    2:    11
    3: 1111?
    4: 1...1
@@ -3145,7 +3145,7 @@ Grid has 2 mine(s), 1 mine(s) marked.
 Grid has 2 mine(s), 1 mine(s) marked.
      123456
      ------
-   1:      
+   1:
    2:    11
    3: 1111?
    4: 1..11
@@ -3154,7 +3154,7 @@ Grid has 2 mine(s), 1 mine(s) marked.
 Grid has 2 mine(s), 1 mine(s) marked.
      123456
      ------
-   1:      
+   1:
    2:    11
    3: 1111?
    4: 1.111
@@ -3163,14 +3163,14 @@ Grid has 2 mine(s), 1 mine(s) marked.
 Grid has 2 mine(s), 2 mine(s) marked.
      123456
      ------
-   1:      
+   1:
    2:    11
    3: 1111?
    4: 1?111
 You won!
      123456
      ------
-   1:      
+   1:
    2:    11
    3: 1111Y
    4: 1Y111
@@ -3220,14 +3220,14 @@ $define _DEFAULTS  [6,  4, .2, .6]  # task defaults
 $define _INDENT    6
 $define _MINE      "Y"
 $define _TRUEMINE  "Y"
-$define _FALSEMINE "N" 
+$define _FALSEMINE "N"
 $define _MASK      "."
 $define _MARK      "?"
 $define _TOGGLE1   ".?"
 $define _TOGGLE2   "?."
 
 procedure main(arglist)                           #: play the game
-static trace 
+static trace
 initial trace := -1
 
 DEFARGS := _DEFAULTS
@@ -3249,7 +3249,7 @@ while c := trim(read()) do {
             "q": stop("Quitting")                #   q quit
             "t": &trace :=: trace                #   t toggle tracing for debugging
             default: usage()
-            }} 
+            }}
    testforwin(g)
    }
 end
@@ -3279,7 +3279,7 @@ every \MF.grid[i := 1 to MF.rows,j:= 1 to MF.cols] +:= (/MF.grid[i-1 to i+1,j-1 
 
 showgrid()
 return
-end 
+end
 
 procedure usage()                                         #: show usage
 return write(
@@ -3307,11 +3307,11 @@ local r,c,x
    write(right("",_INDENT),"   ",repl("----+----|",MF.cols / 10 + 1)[1+:MF.cols])
    every r := 1 to *MF.mask do {
       writes(right(r,_INDENT)," : ")
-      every c := 1 to *MF.mask[r] do 
+      every c := 1 to *MF.mask[r] do
          writes( \MF.mask[r,c] | map(\MF.grid[r,c],"0"," ") | _MINE)
       write()
       }
-   write(MF.marked," marked mines and ",MF.mines - MF.marked," mines left to be marked.") 
+   write(MF.marked," marked mines and ",MF.mines - MF.marked," mines left to be marked.")
 end
 
 procedure mark()                                          #: mark/toggle squares
@@ -3328,17 +3328,17 @@ end
 procedure clear()                                         #: clear a square
 local i,j
 
-   if ( i := getn(MF.rows) ) & ( j :=getn(MF.cols) ) then 
-      if /MF.mask[i,j] then 
+   if ( i := getn(MF.rows) ) & ( j :=getn(MF.cols) ) then
+      if /MF.mask[i,j] then
          write(i," ",j," was already clear")
       else if /MF.grid[i,j] then endgame("KABOOM! You lost.")
          else return revealclearing(i,j)
 end
 
-procedure revealclearing(i,j)                             #: reaveal any clearing 
+procedure revealclearing(i,j)                             #: reaveal any clearing
 
    if \MF.mask[i,j] := &null then {
-      if MF.grid[i,j] = 0 then 
+      if MF.grid[i,j] = 0 then
          every revealclearing(i-1 to i+1,j-1 to j+1)
       return
       }
@@ -3347,12 +3347,12 @@ end
 procedure clearunmarked()                                 #: clears adjecent unmarked cells if #flags = count
 local i,j,k,m,n
 
-   if ( i := getn(MF.rows) ) & ( j :=getn(MF.cols) ) then 
+   if ( i := getn(MF.rows) ) & ( j :=getn(MF.cols) ) then
       if /MF.mask[i,j] & ( k := 0 < MF.grid[i,j] ) then {
          every (\MF.mask[i-1 to i+1,j-1 to j+1] == _MARK) & ( k -:= 1)
          if k = 0 then {
             every (m := i-1 to i+1) & ( n := j-1 to j+1) do
-               if \MF.mask[m,n] == _MASK then MF.mask[m,n] := &null 
+               if \MF.mask[m,n] == _MASK then MF.mask[m,n] := &null
             revealclearing(i,j)
             return
             }
@@ -3368,7 +3368,7 @@ local i,j,k
    every (i := 1 to MF.rows) & (j := 1 to MF.cols) do {
       if \MF.mask[i,j] == _MASK then {
          MF.mask[i,j] := &null
-         if /MF.grid[i,j] then k := 1 
+         if /MF.grid[i,j] then k := 1
          }
       }
    if \k then endgame("Kaboom - you loose.")
@@ -3386,7 +3386,7 @@ procedure endgame(tag)                                  #: end the game
 local i,j,m
 
    every !(m := list(MF.rows)) := list(MF.cols)         # new mask
-   every (i := 1 to MF.rows) & (j := 1 to MF.cols) do 
+   every (i := 1 to MF.rows) & (j := 1 to MF.cols) do
       if \MF.mask[i,j] == _MARK then
          m[i,j] := if /MF.grid[i,j] then _TRUEMINE else _FALSEMINE
    MF.mask := m
@@ -3437,7 +3437,7 @@ c 1 1
 
 ```j
 NB. minefield.ijs script
-NB. 
+NB.
 ### ===================================================
 
 NB. Game engine
@@ -3463,7 +3463,7 @@ clearTiles=: clearcell@:<:                 NB. decrement coords - J arrays are 0
 
 clearcell=: verb define
   if. #y do.
-    free=. (#~ (Cleared < 0 = Map) {~ <"1) y 
+    free=. (#~ (Cleared < 0 = Map) {~ <"1) y
     Cleared=: 1 (<"1 y)} Cleared           NB. set cell(s) as cleared
     if. #free do.
       clearcell (#~ Cleared -.@{~ <"1) ~. (<:$Map) (<."1) 0 >. getNbrs free
@@ -3488,7 +3488,7 @@ showField=: 4 : 0
   |: idx} (11&{ , 12&{ ,: Map&{) x  NB. transpose result - J arrays are row,column
 )
 
-NB. 
+NB.
 ### ===================================================
 
 NB. User interface
@@ -3503,7 +3503,7 @@ Tiles=: ' 12345678**.?'
 create=: verb define
   smoutput Instructions
   startgame y
-) 
+)
 destroy=: codestroy
 quit=: destroy
 
@@ -3515,7 +3515,7 @@ update=: 3 : 0
   'isend msg'=. eval ''
   smoutput msg
   smoutput < Tiles showField isend
-  if. isend do. 
+  if. isend do.
     msg=. ('K'={.msg) {:: 'won';'lost'
     smoutput 'You ',msg,'! Try again?'
     destroy ''
@@ -3525,9 +3525,9 @@ update=: 3 : 0
 
 Instructions=: 0 : 0
 
-###  MineSweeper 
+###  MineSweeper
 
-Object: 
+Object:
    Uncover (clear) all the tiles that are not mines.
 
 How to play:
@@ -3536,7 +3536,7 @@ How to play:
       clear__fld <column index> <row index>
  - mark and uncleared tile (?) as a suspected mine using the command:
       mark__fld <column index> <row index>
- - if you uncover a number, that is the number of mines adjacent 
+ - if you uncover a number, that is the number of mines adjacent
    to the tile
  - if you uncover a mine (*) the game ends (you lose)
  - if you uncover all tiles that are not mines the game ends (you win).
@@ -3554,9 +3554,9 @@ How to play:
    load 'minefield.ijs'
    fld=: Minesweeper 6 4
 
-###  MineSweeper 
+###  MineSweeper
 
-Object: 
+Object:
    Uncover (clear) all the tiles that are not mines.
 
 How to play:
@@ -3565,7 +3565,7 @@ How to play:
       clear__fld <column index> <row index>
  - mark and uncleared tile (?) as a suspected mine using the command:
       mark__fld <column index> <row index>
- - if you uncover a number, that is the number of mines adjacent 
+ - if you uncover a number, that is the number of mines adjacent
    to the tile
  - if you uncover a mine (*) the game ends (you lose)
  - if you uncover all tiles that are not mines the game ends (you win).
@@ -3622,7 +3622,7 @@ KABOOM!!
 │111   │
 └──────┘
 You lost! Try again?
-   fld=: Minesweeper 20 10            NB. create bigger minefield   
+   fld=: Minesweeper 20 10            NB. create bigger minefield
 ...                                   NB. instructions elided
 0 of 50 mines marked.
 ┌────────────────────┐
@@ -3669,7 +3669,7 @@ This is a version of minesweeper with a gui. The code might not be optimal, but 
 
 /*
  * Main.java
- * 
+ *
  * Created by Potrik
  * Last modified: 07.22.13
  */
@@ -3682,7 +3682,7 @@ public class Main
 		int y = 10;		//Height of the board
 		int d = 25;		//The difficulty of the game, the percentage of mines in the board. The number of mines per board is random, but this number is the probability that a cell will become
 					//a mine.
-		
+
 		new Minesweeper(x, y, d);
 	}
 }
@@ -3693,7 +3693,7 @@ public class Main
 
 /*
  * Cell.java
- * 
+ *
  * Created by Potrik
  * Last modified: 07.22.13
  */
@@ -3702,7 +3702,7 @@ public class Cell
 {
 	private boolean isMine, isFlagged, isObscured;
 	private int number;
-	
+
 	public Cell()
 	{
 		isMine = false;
@@ -3710,47 +3710,47 @@ public class Cell
 		isObscured = true;
 		number = 0;
 	}
-	
+
 	public void setMine()
 	{
 		isMine = true;
 	}
-	
+
 	public void flag()
 	{
 		isFlagged = true;
 	}
-	
+
 	public void unflag()
 	{
 		isFlagged = false;
 	}
-	
+
 	public void reveal()
 	{
 		isObscured = false;
 	}
-	
+
 	public void setNumber(int i)
 	{
 		number = i;
 	}
-	
+
 	public boolean isMine()
 	{
 		return isMine;
 	}
-	
+
 	public boolean isFlagged()
 	{
 		return isFlagged;
 	}
-	
+
 	public boolean isObscured()
 	{
 		return isObscured;
 	}
-	
+
 	public int getNumber()
 	{
 		return number;
@@ -3763,7 +3763,7 @@ public class Cell
 
 /*
  * Board.java
- * 
+ *
  * Created by Potrik
  * Last modified: 07.22.13
  */
@@ -3778,21 +3778,21 @@ public class Board extends JPanel
 	private static final long serialVersionUID = 1L;
 	private Minesweeper mine;
 	private Cell[][] cells;
-	
+
 	public Board(Minesweeper m)
 	{
 		mine = m;
 		cells = mine.getCells();
-		
+
 		addMouseListener(new Actions(mine));
-		
+
 		setPreferredSize(new Dimension(mine.getx() * 20, mine.gety() * 20));
 	}
-	
+
 	public void paintComponent(Graphics g)
 	{
 		cells = mine.getCells();
-		
+
 		for (int i = 0; i < mine.getx(); i++)
 		{
 			for (int j = 0; j < mine.gety(); j++)
@@ -3806,7 +3806,7 @@ public class Board extends JPanel
 						g.setColor(Color.ORANGE);
 						g.fillRect(i * 20, j * 20, i * 20 + 20, j * 20 + 20);
 						g.setColor(Color.BLACK);
-						
+
 						g.drawLine(i * 20, j * 20, i * 20 + 20, j * 20 + 20);
 						g.drawLine(i * 20, j * 20 + 20, i * 20 + 20, j * 20);
 					}
@@ -3920,7 +3920,7 @@ public class Board extends JPanel
 
 /*
  * Board.java
- * 
+ *
  * Created by Potrik
  * Last modified: 07.22.13
  */
@@ -3933,37 +3933,37 @@ import java.awt.event.MouseListener;
 public class Actions implements ActionListener, MouseListener
 {
 	private Minesweeper mine;
-	
+
 	public Actions(Minesweeper m)
 	{
 		mine = m;
 	}
-	
+
 	public void actionPerformed(ActionEvent e)
-	{	
+	{
 		mine.reset();
-		
+
 		mine.refresh();
 	}
-	
+
 	public void mouseClicked(MouseEvent e)
 	{
 		if (e.getButton() == 1)
 		{
 			int x = e.getX() / 20;
 			int y = e.getY() / 20;
-			
+
 			mine.select(x, y);
 		}
-		
+
 		if (e.getButton() == 3)
 		{
 			int x = e.getX() / 20;
 			int y = e.getY() / 20;
-			
+
 			mine.mark(x, y);
 		}
-		
+
 		mine.refresh();
 	}
 
@@ -3995,7 +3995,7 @@ public class Actions implements ActionListener, MouseListener
 
 /*
  * Minesweeper.java
- * 
+ *
  * Created by Potrik
  * Last modified: 07.22.13
  */
@@ -4015,51 +4015,51 @@ public class Minesweeper extends JFrame
 	private Board board;
 	private JButton reset;
 	private boolean finished;
-	
+
 	public Minesweeper(int x, int y, int d)
 	{
 		width = x;
 		height = y;
 		difficulty = d;
 		cells = new Cell[width][height];
-		
+
 		reset();
-		
+
 		board = new Board(this);
 		reset = new JButton("Reset");
-		
+
 		add(board, BorderLayout.CENTER);
 		add(reset, BorderLayout.SOUTH);
-		
+
 		reset.addActionListener(new Actions(this));
-		
+
 		setTitle("Minesweeper");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		pack();
 		setVisible(true);
 	}
-	
+
 	public int getx()
 	{
 		return width;
 	}
-	
+
 	public int gety()
 	{
 		return height;
 	}
-	
+
 	public Cell[][] getCells()
 	{
 		return cells;
 	}
-	
+
 	public void reset()
 	{
 		Random random = new Random();
 		finished = false;
-		
+
 		for (int i = 0; i < width; i++)
 		{
 			for (int j = 0; j < height; j++)
@@ -4067,7 +4067,7 @@ public class Minesweeper extends JFrame
 				Cell c = new Cell();
 				cells[i][j] = c;
 				int r = random.nextInt(100);
-				
+
 				if (r < difficulty)
 				{
 					cells[i][j].setMine();
@@ -4076,7 +4076,7 @@ public class Minesweeper extends JFrame
 		}
 		setNumbers();
 	}
-	
+
 	private void setNumbers()
 	{
 		for (int i = 0; i < width; i++)
@@ -4084,32 +4084,32 @@ public class Minesweeper extends JFrame
 			for (int j = 0; j < height; j++)
 			{
 				int count = 0;
-				
+
 				if (i > 0 &&	j > 0 && cells[i - 1]	[j - 1]	.isMine()) count++;
 				if (j > 0 && cells[i][j - 1].isMine()) count++;
 				if (i < width - 1 && j > 0 && cells[i + 1][j - 1].isMine()) count++;
-				
+
 				if (i > 0 && cells[i - 1][j].isMine()) count++;
 				if (i < width - 1 && cells[i + 1][j].isMine()) count++;
-				
+
 				if (i > 0 && j < height - 1 && cells[i - 1][j + 1].isMine()) count++;
 				if (j < height - 1	&& cells[i] [j + 1].isMine()) count++;
 				if (i < width - 1 && j < height - 1 && cells[i + 1][j + 1].isMine()) count++;
-				
+
 				cells[i][j].setNumber(count);
-				
+
 				if (cells[i][j].isMine())
 				{
 					cells[i][j].setNumber(-1);
 				}
-				
+
 				if (cells[i][j].getNumber() == 0)
 				{
 					cells[i][j].reveal();
 				}
 			}
 		}
-		
+
 		for (int i = 0; i < width; i++)
 		{
 			for (int j = 0; j < height; j++)
@@ -4117,29 +4117,29 @@ public class Minesweeper extends JFrame
 				if (i > 0 &&	j > 0 && cells[i - 1][j - 1].getNumber() == 0) cells[i][j].reveal();
 				if (j > 0 && cells[i][j - 1].getNumber() == 0) cells[i][j].reveal();
 				if (i < width - 1 && j > 0 && cells[i + 1][j - 1].getNumber() == 0) cells[i][j].reveal();
-				
+
 				if (i > 0 && cells[i - 1][j].getNumber() == 0) cells[i][j].reveal();
 				if (i < width - 1 && cells[i + 1]	[j]		.getNumber() == 0) cells[i][j].reveal();
-				
+
 				if (i > 0 && j < height - 1 && cells[i - 1][j + 1].getNumber() == 0) cells[i][j].reveal();
 				if (j < height - 1 && cells[i][j + 1].getNumber() == 0) cells[i][j].reveal();
 				if (i < width - 1 && j < height - 1 && cells[i + 1][j + 1]	.getNumber() == 0) cells[i][j].reveal();
 			}
 		}
 	}
-	
+
 	public void refresh()
 	{
 		board.repaint();
 	}
-	
+
 	public void select(int x, int y)
 	{
 		if (cells[x][y].isFlagged()) return;
 		cells[x][y].reveal();
 		resetMarks();
 		refresh();
-		
+
 		if (cells[x][y].isMine())
 		{
 			loose();
@@ -4149,7 +4149,7 @@ public class Minesweeper extends JFrame
 			win();
 		}
 	}
-	
+
 	private void loose()
 	{
 		finished = true;
@@ -4165,7 +4165,7 @@ public class Minesweeper extends JFrame
 		JOptionPane.showMessageDialog(null, "BOOOOM!");
 		reset();
 	}
-	
+
 	private void win()
 	{
 		finished = true;
@@ -4177,12 +4177,12 @@ public class Minesweeper extends JFrame
 				if (!cells[i][j].isMine()) cells[i][j].unflag();
 			}
 		}
-		
+
 		refresh();
 		JOptionPane.showMessageDialog(null, "Congratulations! You won!");
 		reset();
 	}
-	
+
 	private boolean won()
 	{
 		for (int i = 0; i < width; i++)
@@ -4195,18 +4195,18 @@ public class Minesweeper extends JFrame
 				}
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	public void mark(int x, int y)
 	{
 		if (cells[x][y].isFlagged()) cells[x][y].unflag();
 		else if (cells[x][y].isObscured()) cells[x][y].flag();
-		
+
 		resetMarks();
 	}
-	
+
 	private void resetMarks()
 	{
 		for (int i = 0; i < width; i++)
@@ -4217,7 +4217,7 @@ public class Minesweeper extends JFrame
 			}
 		}
 	}
-	
+
 	public boolean isFinished()
 	{
 		return finished;
@@ -4585,7 +4585,7 @@ By default when first play and hit mine, the mine change position. We can alter 
 
 We can place anything as command and we get response for errors. Also we can pass multiple commands.
 
-Algorithm not used recursion, but a feature of M2000, a stack of values which is visible from all statements in a module (and subroutines too). So when we need to clear to adjacent cells we just pass command to stack. Also there are two kind of clearing, type o and type n. The difference is that the second one allow searching if there is no adjacent cell with a mine. The second one send commands as type o (as a choice, you can alter this with a type n). 
+Algorithm not used recursion, but a feature of M2000, a stack of values which is visible from all statements in a module (and subroutines too). So when we need to clear to adjacent cells we just pass command to stack. Also there are two kind of clearing, type o and type n. The difference is that the second one allow searching if there is no adjacent cell with a mine. The second one send commands as type o (as a choice, you can alter this with a type n).
 
 
 
@@ -4617,7 +4617,7 @@ Module Minesweeper {
       End While
       used%=rows*columns-mines%
       \\ remove rem so to never loose from first open
-      Rem : 
+      Rem :
       swap_first%=used%
       \\ when mines%=0 or used%=0 then player win
       Report {Minesweeper - rosettacode task
@@ -4626,7 +4626,7 @@ Module Minesweeper {
             -  1 2   open 1 2
             -  q  to quit
             You can pass multiple commands in a line, but q erase all before execute
-      } 
+      }
       top_where=Row
       While not End_Game {GameLoop()}
       End
@@ -4646,7 +4646,7 @@ Module Minesweeper {
                   Rem: Print "  ";Board$(i%,j%)+" ";
             }
             Print
-      }      
+      }
       End Sub
       Sub PrintMines()
       Cls, top_where
@@ -4662,13 +4662,13 @@ Module Minesweeper {
                   Print "  ";Right$(Board$(i%,j%),1);"  ";
             }
             Print
-      }      
+      }
       End Sub
       Sub GameLoop()
             Local com$, loopagain as boolean
             PrintBoard()
             InputCommand()
-            do 
+            do
                   loopagain=true
                   while not empty
                               \\ process game command
@@ -4682,7 +4682,7 @@ Module Minesweeper {
                         Else.if com$="? " Then
                               SwapCell()
                         Else.if com$="c " Then
-                              Exit Sub                        
+                              Exit Sub
                         End if
                   End While
                   If mines%=0 or used%=0 then
@@ -4720,7 +4720,7 @@ Module Minesweeper {
                   }
             End While
             x=1
-            Flush 
+            Flush
             While com$<>""
                   com_label$=""
                   ParseCommand()
@@ -4739,7 +4739,7 @@ Module Minesweeper {
             skiptest=true
             ReadColumn()
             if len(com_label$)<>2 then
-                  com$=""     
+                  com$=""
             Else.if x=-1 then
                   com_label$=lcase$(Left$(com$,1))+" "
                   com$=mid$(com$, 2)
@@ -4750,18 +4750,18 @@ Module Minesweeper {
                         ReadColumn()
                         if x>-1 then ReadRow()
                   else.if com_label$="c " then
-                        cheat=true  
+                        cheat=true
                   else.if com_label$="q " then
                         flush
-                        com$=""                  
+                        com$=""
                   else
                         com_label$="Use q or ? for commands"
                         com$=""
-                  End if      
+                  End if
             else
                   ReadRow()
                   if x>-1 then com_label$="o "
-            End if 
+            End if
       End Sub
       Sub ReadRow()
             com$=mid$(com$,x)
@@ -4770,7 +4770,7 @@ Module Minesweeper {
                   com_label$="Need a row"
             else.if b_row<1 or b_row>rows then
                   com_label$="Need a row from 1 to "+str$(rows)
-                  x=-1 
+                  x=-1
             else
                   com$=mid$(com$,x+1)
                   x=1
@@ -4855,7 +4855,7 @@ Module Minesweeper {
                   End If
                   Board$(i%,j%)=if$(acc%=0->"  ",str$(acc%, "# "))
             }
-      End Sub     
+      End Sub
 }
 Minesweeper
 
@@ -4870,50 +4870,50 @@ Minesweeper
 
 
 ```mathematica
-DynamicModule[{m = 6, n = 4, minecount, grid, win, reset, clear, 
+DynamicModule[{m = 6, n = 4, minecount, grid, win, reset, clear,
   checkwin},
- reset[] := 
-  Module[{minesdata, adjacentmines}, 
-   minecount = RandomInteger[Round[{.1, .2} m*n]]; 
-   minesdata = 
-    Normal@SparseArray[# -> 1 & /@ 
-       RandomSample[Tuples[Range /@ {m, n}], minecount], {m, n}]; 
-   adjacentmines = 
+ reset[] :=
+  Module[{minesdata, adjacentmines},
+   minecount = RandomInteger[Round[{.1, .2} m*n]];
+   minesdata =
+    Normal@SparseArray[# -> 1 & /@
+       RandomSample[Tuples[Range /@ {m, n}], minecount], {m, n}];
+   adjacentmines =
     ArrayPad[
      Total[RotateLeft[
-         ArrayPad[minesdata, 
-          1], #] & /@ {{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1, 
-         0}, {-1, 1}, {0, 1}, {1, 1}}], -1]; 
-   grid = Array[{If[minesdata[[#1, #2]] == 1, "*", 
+         ArrayPad[minesdata,
+          1], #] & /@ {{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1,
+         0}, {-1, 1}, {0, 1}, {1, 1}}], -1];
+   grid = Array[{If[minesdata[[#1, #2]] == 1, "*",
         adjacentmines[[#1, #2]]], ".", 1} &, {m, n}]; win = ""];
  clear[i_, j_] :=
-  If[grid[[i, j, 1]] == "*", win = "You lost."; 
-    grid = grid /. {{n_Integer, "?", _} :> {n, "x", 0}, {"*", 
-         ".", _} :> {"*", "*", 0}}, 
-    grid[[i, j]] = {grid[[i, j, 1]], grid[[i, j, 1]], 0}; 
-    If[grid[[i, j, 2]] == 0, grid[[i, j, 2]] = ""; 
-     clear[i + #[[1]], 
-        j + #[[2]]] & /@ {{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1, 
-        0}, {-1, 1}, {0, 1}, {1, 1}}]] /; 
+  If[grid[[i, j, 1]] == "*", win = "You lost.";
+    grid = grid /. {{n_Integer, "?", _} :> {n, "x", 0}, {"*",
+         ".", _} :> {"*", "*", 0}},
+    grid[[i, j]] = {grid[[i, j, 1]], grid[[i, j, 1]], 0};
+    If[grid[[i, j, 2]] == 0, grid[[i, j, 2]] = "";
+     clear[i + #[[1]],
+        j + #[[2]]] & /@ {{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1,
+        0}, {-1, 1}, {0, 1}, {1, 1}}]] /;
    1 <= i <= m && 1 <= j <= n && grid[[i, j, 2]] == ".";
- checkwin[] := 
-  If[FreeQ[grid, {_Integer, "?", _} | {_, "*", _} | {_Integer, 
-      ".", _}], win = "You win."; 
+ checkwin[] :=
+  If[FreeQ[grid, {_Integer, "?", _} | {_, "*", _} | {_Integer,
+      ".", _}], win = "You win.";
    grid = grid /. {{"*", ".", _} :> {"*", "?", 1}}];
  reset[];
- Panel@Column@{Row@{Dynamic@minecount, "\t", 
-      Button["Reset", reset[]]}, 
+ Panel@Column@{Row@{Dynamic@minecount, "\t",
+      Button["Reset", reset[]]},
     Grid[Table[
-      With[{i = i, j = j}, 
+      With[{i = i, j = j},
        EventHandler[
-        Button[Dynamic[grid[[i, j, 2]]], Null, ImageSize -> {17, 17}, 
-         Appearance -> 
-          Dynamic[If[grid[[i, j, 3]] == 0, "Pressed", 
-            "DialogBox"]]], {{"MouseClicked", 1} :> 
-          If[win == "", clear[i, j]; checkwin[]], {"MouseClicked", 
-           2} :> If[win == "", 
-           Switch[grid[[i, j, 2]], ".", grid[[i, j, 2]] = "?"; 
-            minecount--, "?", grid[[i, j, 2]] = "."; minecount++]; 
+        Button[Dynamic[grid[[i, j, 2]]], Null, ImageSize -> {17, 17},
+         Appearance ->
+          Dynamic[If[grid[[i, j, 3]] == 0, "Pressed",
+            "DialogBox"]]], {{"MouseClicked", 1} :>
+          If[win == "", clear[i, j]; checkwin[]], {"MouseClicked",
+           2} :> If[win == "",
+           Switch[grid[[i, j, 2]], ".", grid[[i, j, 2]] = "?";
+            minecount--, "?", grid[[i, j, 2]] = "."; minecount++];
            checkwin[]]}]], {i, 1, m}, {j, 1, n}], Spacings -> {0, 0}],
      Dynamic[win]}]
 ```
@@ -4953,21 +4953,21 @@ function Minesweeper
     nRows = 6;
     nCols = 4;
     percentMines = 0.15;
-    
+
     % Create minefield
     nMines = ceil(percentMines*nRows*nCols);
     field = makeGrid(nRows, nCols, nMines);
-    
+
     % Create timer for updating in axes title
     stopwatch = timer('TimerFcn', {@updateTime, field}, ...
         'ExecutionMode', 'fixedRate', 'Period', 1, 'StartDelay', 1, ...
         'TasksToExecute', 999);
-    
+
     % Specify callbacks
     set(gcf, 'CloseRequestFcn', {@cleanUp, stopwatch})
     set(gca, 'ButtonDownFcn', {@onClick, field, stopwatch})
-    
-    
+
+
 end
 
 function field = makeGrid(nRows, nCols, nMines)
@@ -4989,7 +4989,7 @@ function field = makeGrid(nRows, nCols, nMines)
     set(gca, 'Color', [0.6 0.6 0.6])
     setTitle(nMines, ': )', 0)
     xlabel('left-click to dig, right-click to mark')
-    
+
     % Set up field structure
     % text will contain the handles to the labels in each square
     %   One character per square (or other functions will break)
@@ -5009,7 +5009,7 @@ function field = makeGrid(nRows, nCols, nMines)
     field = struct('text', zeros(nRows, nCols), ...
         'squares', zeros(nRows, nCols), ...
         'mines', false(nRows, nCols));
-    
+
     % Create individual square color and label objects
     for r = 1:nRows
         for c = 1:nCols
@@ -5021,7 +5021,7 @@ function field = makeGrid(nRows, nCols, nMines)
                 'HorizontalAlignment', 'center', 'HitTest', 'off');
         end
     end
-    
+
     % Place mines randomly without repeats
     k = 0;
     while k < nMines
@@ -5037,18 +5037,18 @@ function onClick(obj, event, field, stopwatch)
     if strcmp(stopwatch.Running, 'off')
         start(stopwatch)
     end
-    
+
     pt = get(obj, 'CurrentPoint');
     r = ceil(-pt(1, 2));
     c = ceil(pt(1, 1));
-    
+
     if r > 0 && c > 0 && r <= size(field.squares, 1) && ... % Not yet been "dug"
             c <= size(field.squares, 2) && ishandle(field.squares(r, c))
         buttons = {'normal' 'alt' 'extend'};
         btn = find(strcmp(get(get(obj, 'Parent'), 'SelectionType'), buttons));
         labels = '.M?'; % Unmarked, mine flag, unknown flag
         currLabel = get(field.text(r, c), 'String');
-        
+
         if btn == 1     % Left click
             if currLabel ~= labels(2);  % Don't dig if flagged as mine
                 if field.mines(r, c)    % Mine there -> you lose
@@ -5069,7 +5069,7 @@ function onClick(obj, event, field, stopwatch)
                     end
                 end
             end
-            
+
         elseif btn == 2 % Right-click
             % Rotate through labels list to the next one
             switch find(currLabel == labels)
@@ -5082,7 +5082,7 @@ function onClick(obj, event, field, stopwatch)
             end
             set(field.text(r, c), 'String', newLabel);
             setTitle(countMineFlags(field), ': )', stopwatch.TasksExecuted)
-            
+
         elseif btn == 3 % Middle-click
             % Mark/unmark unknown flag
             if currLabel == labels(1)
@@ -5333,7 +5333,7 @@ let minesweeper n m percent =
       print_endline "# You won!";
       reveal d g n
 
-let () = 
+let () =
   Random.self_init();
   let ios, fos = int_of_string, float_of_string in
   let n, m, percent =
@@ -5351,35 +5351,35 @@ Sample output:
 
  % ocaml minesweeper.ml
  # You have to find 5 mines
- 
+
        123456
        ||||||
    1 - ......
    2 - ......
    3 - ......
    4 - ......
- 
+
  > c 1 1
- 
+
        123456
        ||||||
    1 -   2...
    2 - 113...
    3 - ......
    4 - ......
- 
+
  > m 1 3
- 
+
        123456
        ||||||
    1 -   2...
    2 - 113...
    3 - ?.....
    4 - ......
- 
+
  > c 2 3
  # You lost!
- 
+
        123456
        ||||||
    1 -   2xx.
@@ -5569,25 +5569,25 @@ print "You won!\n";
 
 ```perl6
 enum Tile-Type <Empty Mine>;
- 
+
 class Tile {
     has Tile-Type $.type;
     has $.face is rw;
     method Str { with $!face { ~$!face } else { '.' } }
 }
- 
+
 class Field {
     has @.grid;
     has Int $.width;
     has Int $.height;
     has Int $.mine-spots;
     has Int $.empty-spots;
- 
+
     method new (Int $height, Int $width, Rat $mines-ratio=0.1) {
- 
+
         my $mine-spots = round $width*$height*$mines-ratio;
         my $empty-spots = $width*$height - $mine-spots;
- 
+
         my @grid;
         for ^$height X ^$width -> ($y, $x) {
             @grid[$y][$x] = Tile.new(type => Empty);
@@ -5597,37 +5597,37 @@ class Field {
         }
         self.bless(:$height, :$width, :@grid, :$mine-spots, :$empty-spots);
     }
- 
+
     method open( $y, $x) {
         return if @!grid[$y][$x].face.defined;
- 
+
         self.end-game("KaBoom") if @!grid[$y][$x].type ~~ Mine;
- 
+
         my @neighbors = gather do
 	    take [$y+.[0],$x+.[1]]
 		if 0 <= $y + .[0] < $!height && 0 <= $x + .[1] < $!width
 		 for [-1,-1],[+0,-1],[+1,-1],
 		     [-1,+0],        [+1,+0],
 		     [-1,+1],[+0,+1],[+1,+1];
- 
+
         my $mines = +@neighbors.grep: { @!grid[.[0]][.[1]].type ~~ Mine };
 
         $!empty-spots--;
         @!grid[$y][$x].face = $mines || ' ';
- 
+
         if $mines == 0 {
             self.open(.[0], .[1]) for @neighbors;
         }
         self.end-game("You won") if $!empty-spots == 0;
     }
- 
+
     method end-game(Str $msg ) {
         for ^$!height X ^$!width -> ($y, $x) {
             @!grid[$y][$x].face = '*' if @!grid[$y][$x].type ~~ Mine
         }
         die $msg;
     }
- 
+
     method mark ( $y, $x) {
         if !@!grid[$y][$x].face.defined {
             @!grid[$y][$x].face = "⚐";
@@ -5639,7 +5639,7 @@ class Field {
         }
         self.end-game("You won") if $!mine-spots == 0;
     }
- 
+
     constant @digs = |('a'..'z') xx *;
 
     method Str {
@@ -5649,7 +5649,7 @@ class Field {
 	      $y, '│', @!grid[$y][*],   "│\n"; },
 	         ' └', '─' xx $!width, '┘';
 	}
- 
+
     method valid ($y, $x) {
         0 <= $y < $!height && 0 <= $x < $!width
     }
@@ -5658,7 +5658,7 @@ class Field {
 sub a2n($a) { $a.ord > 64 ?? $a.ord % 32 - 1 !! +$a }
 
 my $f = Field.new(6,10);
- 
+
 loop {
     say ~$f;
     my @w = prompt("[open loc|mark loc|loc]: ").words;
@@ -5677,7 +5677,7 @@ loop {
 	last;
     }
 }
- 
+
 say ~$f;
 ```
 
@@ -5688,7 +5688,7 @@ say ~$f;
 Simple text-based console version
 
 ```Phix
-constant help = """ 
+constant help = """
 
 Minesweeper
 
@@ -5711,7 +5711,7 @@ X - the mine you detonated (if any)
 + - a mine which was correctly flagged
 """
 
-string board = """ 
+string board = """
 
  123456
 A......
@@ -5933,39 +5933,39 @@ function explore_field($field) {
 
     // Make reference to that long name
     $fields  = &$_SESSION['minesweeper'];
-    
+
     // @ operator helps avoiding isset()... (it removes E_NOTICEs)
-    
+
     // left side options
     if ($field % MINEGRID_WIDTH !== 1) {
         $mines += check_field(@$fields[$field - MINEGRID_WIDTH - 1]);
         $mines += check_field(@$fields[$field - 1]);
         $mines += check_field(@$fields[$field + MINEGRID_WIDTH - 1]);
     }
-    
+
     // bottom and top
     $mines += check_field(@$fields[$field - MINEGRID_WIDTH]);
     $mines += check_field(@$fields[$field + MINEGRID_WIDTH]);
-    
+
     // right side options
     if ($field % MINEGRID_WIDTH !== 0) {
         $mines += check_field(@$fields[$field - MINEGRID_WIDTH + 1]);
         $mines += check_field(@$fields[$field + 1]);
         $mines += check_field(@$fields[$field + MINEGRID_WIDTH + 1]);
     }
-    
+
     $fields[$field] = $mines;
-    
+
     if ($mines === 0) {
         if ($field % MINEGRID_WIDTH !== 1) {
             explore_field($field - MINEGRID_WIDTH - 1);
             explore_field($field - 1);
             explore_field($field + MINEGRID_WIDTH - 1);
         }
-        
+
         explore_field($field - MINEGRID_WIDTH);
         explore_field($field + MINEGRID_WIDTH);
-        
+
         if ($field % MINEGRID_WIDTH !== 0) {
             explore_field($field - MINEGRID_WIDTH + 1);
             explore_field($field + 1);
@@ -5981,18 +5981,18 @@ if (!isset($_SESSION['minesweeper'])) {
     $_SESSION['minesweeper'] = array_fill(1,
                                          MINEGRID_WIDTH * MINEGRID_HEIGHT,
                                          MINESWEEPER_NOT_EXPLORED);
-    
+
     // Generate random number of mines between 0.1 and 0.2
     $number_of_mines = (int) mt_rand(0.1 * MINEGRID_WIDTH * MINEGRID_HEIGHT,
                                      0.2 * MINEGRID_WIDTH * MINEGRID_HEIGHT);
-    
+
     // generate mines randomly
     $random_keys = array_rand($_SESSION['minesweeper'], $number_of_mines);
-    
+
     foreach ($random_keys as $key) {
         $_SESSION['minesweeper'][$key] = MINESWEEPER_MINE;
     }
-    
+
     // to make calculations shorter use SESSION variable to store the result
     $_SESSION['numberofmines'] = $number_of_mines;
 }
@@ -6088,7 +6088,7 @@ for ($x = 1; $x <= MINEGRID_HEIGHT; $x++) {
     echo '<tr>';
     for ($y = 1; $y <= MINEGRID_WIDTH; $y++) {
         echo '<td>';
-        
+
         $number = array_shift($mine_copy);
         switch ($number) {
             case MINESWEEPER_FLAGGED:
@@ -6114,10 +6114,10 @@ for ($x = 1; $x <= MINEGRID_HEIGHT; $x++) {
             case MINESWEEPER_NOT_EXPLORED:
                 // oncontextmenu causes the menu to disappear in
                 // Firefox, IE and Chrome
-                
+
                 // In case of Opera, modifying location causes menu
                 // to not appear.
-                
+
                 if (!empty($lost)) {
                     if ($number === MINESWEEPER_MINE) {
                         echo '<a>*</a>';
@@ -6234,7 +6234,7 @@ Number of mines: 5
 ......
 -> NIL
 
-: (c 6 4)          
+: (c 6 4)
 ......
 ...122
 ...100
@@ -6500,7 +6500,7 @@ There are 4 bombs on the grid
 . . . . . .
 . . . . . .
 . . . . . .
-|: 
+|:
 ```
 
 
@@ -6523,20 +6523,20 @@ Procedure makeGrid(n, m)
   Dim grid.cell(n - 1, m - 1)
   mineCount = n * m * (Random(4) + 2) / 10
   If mineCount < 0: mineCount = 1: EndIf
-  
+
   For x = 0 To n - 1
     For y = 0 To m - 1
       grid(x, y)\display = '.'
     Next
   Next
-  
+
   rm = mineCount
   While rm
     x = Random(n - 1)
     y = Random(m - 1)
     If Not grid(x, y)\isMine
       rm - 1: grid(x, y)\isMine = #True
-    EndIf 
+    EndIf
   Wend
   minesMarked = 0
   isGameOver = #False
@@ -6547,7 +6547,7 @@ Procedure displayGrid(isEndOfGame = #False)
   Protected x, y, display.s
   If Not isEndOfGame
     PrintN("Grid has " + Str(mineCount) + " mines, " + Str(minesMarked) + " mines marked.")
-  EndIf 
+  EndIf
   PrintN(Space(#lMargin + 1) + ReplaceString(Space(ArraySize(grid(), 1) + 1), " ", "-"))
   For y = 0 To ArraySize(grid(), 2)
     Print(RSet(Str(y + 1), #lMargin, " ") + ":")
@@ -6564,7 +6564,7 @@ Procedure endGame(msg.s)
   PrintN(msg): Print("Another game (y/n)?"): ans = Input()
   If LCase(Left(Trim(ans),1)) = "y"
     makeGrid(6, 4)
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure resign()
@@ -6601,7 +6601,7 @@ Procedure markCell(x, y)
     minesMarked - 1: grid(x, y)\display = '.'
   ElseIf grid(x, y)\display = '.'
     minesMarked + 1: grid(x, y)\display = '?'
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure countAdjMines(x, y)
@@ -6612,13 +6612,13 @@ Procedure countAdjMines(x, y)
         If i >= 0 And i <= ArraySize(grid(), 1)
           If grid(i, j)\isMine
             count + 1
-          EndIf 
-        EndIf 
+          EndIf
+        EndIf
       Next
-    EndIf 
+    EndIf
   Next
-  
-  ProcedureReturn count 
+
+  ProcedureReturn count
 EndProcedure
 
 Procedure clearCell(x, y)
@@ -6627,7 +6627,7 @@ Procedure clearCell(x, y)
     If grid(x, y)\display = '.'
       If Not grid(x,y)\isMine
         count = countAdjMines(x, y)
-        If count 
+        If count
           grid(x, y)\display = Asc(Str(count))
         Else
           grid(x, y)\display = ' '
@@ -6639,13 +6639,13 @@ Procedure clearCell(x, y)
           clearCell(x - 1, y - 1)
           clearCell(x    , y - 1)
           clearCell(x + 1, y - 1)
-        EndIf 
+        EndIf
       Else
         grid(x, y)\display = 'x'
         PrintN("Kaboom!  You lost!")
         resign()
-      EndIf 
-    EndIf 
+      EndIf
+    EndIf
   EndIf
 EndProcedure
 
@@ -6655,7 +6655,7 @@ Procedure testforwin()
     isCleared = #True
     For x = 0 To ArraySize(grid(), 1)
       For y = 0 To ArraySize(grid(), 2)
-        If grid(x, y)\display = '.': isCleared = #False: EndIf 
+        If grid(x, y)\display = '.': isCleared = #False: EndIf
       Next
     Next
   EndIf
@@ -6671,11 +6671,11 @@ If OpenConsole()
     Select Asc(LCase(Left(action, 1)))
       Case 'h', '?'
         usage()
-      Case 'n'  
+      Case 'n'
         makeGrid(6, 4): displayGrid()
       Case 'c'
         clearCell(Val(StringField(action, 2, " ")) - 1, Val(StringField(action, 3, " ")) - 1)
-        If Not isGameOver: displayGrid(): Else: testforwin(): EndIf 
+        If Not isGameOver: displayGrid(): Else: testforwin(): EndIf
       Case 'm'
         markCell(Val(StringField(action, 2, " ")) - 1, Val(StringField(action, 3, " ")) - 1)
         displayGrid()
@@ -6684,7 +6684,7 @@ If OpenConsole()
         resign()
     EndSelect
   Until isGameOver
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -6753,7 +6753,7 @@ Another game (y/n)?n
 Minesweeper game.
 
     There is an n by m grid that has a random number of between 20% to 60%
-    of randomly hidden mines that need to be found. 
+    of randomly hidden mines that need to be found.
 
     Positions in the grid are modified by entering their coordinates
     where the first coordinate is horizontal in the grid and the second
@@ -6792,8 +6792,8 @@ Minesweeper game.
           r
     Resigning will first show the grid with an 'N' for unfound true mines, a
     'Y' for found true mines and a '?' for where you marked clear space as a
-    mine 
-      
+    mine
+
 '''
 
 
@@ -6805,7 +6805,7 @@ try:
     raw_input
 except:
     raw_input = input
-    
+
 import random
 from itertools import product
 from pprint import pprint as pp
@@ -6814,7 +6814,7 @@ from pprint import pprint as pp
 def gridandmines(gridsize=gridsize, minerange=minerange):
     xgrid, ygrid = gridsize
     minmines, maxmines = minerange
-    minecount = xgrid * ygrid    
+    minecount = xgrid * ygrid
     minecount = random.randint(int(minecount*minmines), int(minecount*maxmines))
     grid = set(product(range(xgrid), range(ygrid)))
     mines = set(random.sample(grid, minecount))
@@ -6880,7 +6880,7 @@ if __name__ == '__main__':
                 resign(showgrid, mines, markedmines)
                 printgrid(showgrid)
                 break
-    
+
     print( '\nYou got %i and missed %i of the %i mines'
            % (len(mines.intersection(markedmines)),
               len(markedmines.difference(mines)),
@@ -6895,7 +6895,7 @@ if __name__ == '__main__':
 Minesweeper game.
 
     There is an n by m grid that has a random number of between 20% to 60%
-    of randomly hidden mines that need to be found. 
+    of randomly hidden mines that need to be found.
 
     Positions in the grid are modified by entering their coordinates
     where the first coordinate is horizontal in the grid and the second
@@ -6934,8 +6934,8 @@ Minesweeper game.
           r
     Resigning will first show the grid with an 'N' for unfound true mines, a
     'Y' for found true mines and a '?' for where you marked clear space as a
-    mine 
-      
+    mine
+
 
 
 There are 13 true mines of fixed position in the grid
@@ -7132,7 +7132,7 @@ puts <<EOS
     Minesweeper game.
 
     There is an n by m grid that has a random number of between 20% to 60%
-    of randomly hidden mines that need to be found. 
+    of randomly hidden mines that need to be found.
 
     Positions in the grid are modified by entering their coordinates
     where the first coordinate is horizontal in the grid and the second
@@ -7233,7 +7233,7 @@ def victory?
       mines_left -= 1 if $mines[x][y] and $screen[x][y] == "?"
     end
   end
-  
+
   mines_left == 0
 end
 
@@ -7251,7 +7251,7 @@ show_grid
 loop do
   print "> "
   action = gets.chomp.downcase
-  
+
   case action
   when "quit", "exit", "x", "q"
     puts "Bye!"
@@ -7627,9 +7627,9 @@ pub mod minesweeper {
 
 M I N E S W E E P E R
 
-Commands: 
-line col            - reveal line,col 
-m line col          - mark   line,col 
+Commands:
+line col            - reveal line,col
+m line col          - mark   line,col
 q                   - quit
 n                   - new game
 n width height perc - new game size and mine percentage
@@ -7891,7 +7891,7 @@ In your Vbaproject, insert :
 ```
 
 
-### Code Module : 
+### Code Module :
 
 
 ```vb
@@ -7929,7 +7929,7 @@ Need to reference the following object libraries (From the Tools menu, choose Re
 ```vb
 
 Option Explicit
- 
+
 Public myForm As Object
 Public Fram As MSForms.Frame
 Public Dico As Object
@@ -7952,11 +7952,11 @@ Private Const COLOR_MINE As Long = &H188B0
 Private Const COLOR_BOUTON As Long = &H8000000F
 Private Const COLOR_MINE_POSSIBLE As Long = &H80FF&
 Private Const COLOR_MINE_PROB As Long = &H8080FF
- 
+
 Property Get Neighbours() As cMinesweeper()
    Neighbours = cNeighbours
 End Property
- 
+
 Property Let Neighbours(ByRef nouvNeighbours() As cMinesweeper)
    cNeighbours = nouvNeighbours
 End Property
@@ -7964,11 +7964,11 @@ End Property
 Private Sub Class_Initialize()
     Set Dico = CreateObject("Scripting.dictionary")
 End Sub
- 
+
 Public Sub Show(ByRef Difficult As Long, Optional CheatMode As Boolean = False)
     On Error GoTo ErrorParametresMacros
     With ThisWorkbook.VBProject: End With
- 
+
     Dim Lin As Long, Col As Long, NbLines As Long, NbColumns As Long
     Dim NbMines As Long, MineAdress() As String, CptMine As Long
     Randomize Timer
@@ -7999,7 +7999,7 @@ Public Sub Show(ByRef Difficult As Long, Optional CheatMode As Boolean = False)
 ErrorParametresMacros:
     MsgBox "Programmatic Access to Visual Basic Project is not trusted. See it in Macro's security!"
 End Sub
- 
+
 Private Sub Create_Usf(strTitle As String, dblWidth As Double, dblHeight As Double)
     TypeObjet = "UserForm"
     Set myForm = ThisWorkbook.VBProject.VBComponents.Add(3)
@@ -8012,7 +8012,7 @@ Private Sub Create_Usf(strTitle As String, dblWidth As Double, dblHeight As Doub
         .Height = dblHeight
     End With
 End Sub
- 
+
 Public Sub New_Frame(myStringName As String, strTitle As String, dblWidth As Double, dblHeight As Double)
     If Dico.Exists(myStringName) = True Then Exit Sub
     Dim myClass As New cMinesweeper
@@ -8030,7 +8030,7 @@ Public Sub New_Frame(myStringName As String, strTitle As String, dblWidth As Dou
     Dico.Add myStringName, myClass
     Set myClass = Nothing
 End Sub
- 
+
 Public Sub New_Button(myStringName As String, strTitle As String, dblLeft As Double, dblTop As Double, boolMine As Boolean, Optional CheatMode As Boolean)
     If Dico.Exists(myStringName) = True Then Exit Sub
     Dim myClass As New cMinesweeper
@@ -8053,14 +8053,14 @@ Public Sub New_Button(myStringName As String, strTitle As String, dblLeft As Dou
     Dico.Add myStringName, myClass
     Set myClass = Nothing
 End Sub
- 
+
 Private Function IsIn(strAddress As String, Tb) As Boolean
     Dim i As Long
     For i = 0 To UBound(Tb)
         If Tb(i) = strAddress Then IsIn = True: Exit Function
     Next i
 End Function
- 
+
 Private Sub myButton_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal x As Single, ByVal y As Single)
     If Button = XlMouseButton.xlSecondaryButton Then
         Select Case myButton.Caption
@@ -8090,14 +8090,14 @@ Private Sub myButton_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, 
         myForm.Hide
     End If
 End Sub
- 
+
 Private Sub Show_Mines()
 Dim cle As Variant
     For Each cle In DicoParent.Keys
         If DicoParent.Item(cle).Mine Then DicoParent.Item(cle).myButton.BackColor = COLOR_MINE
     Next
 End Sub
- 
+
 Private Sub Demine(Cl As cMinesweeper)
 Dim NbMines As Integer
     NbMines = Count_Of_Mines(Cl.myButton.Name)
@@ -8118,7 +8118,7 @@ Dim NbMines As Integer
         End If
     End If
 End Sub
- 
+
 Private Function Count_Of_Mines(Bout As String) As Integer
 Dim i As Integer, j As Integer, Col As Integer, Lin As Integer
 Dim myClass As cMinesweeper
@@ -8133,7 +8133,7 @@ Dim myClass As cMinesweeper
         Next j
     Next i
 End Function
- 
+
 Private Sub What_Neighbours(Cl As cMinesweeper)
 Dim i As Integer, j As Integer, Col As Integer, Lin As Integer
 Dim myClass As cMinesweeper, ListNeighbours() As cMinesweeper, cpt As Byte
@@ -8151,7 +8151,7 @@ Dim myClass As cMinesweeper, ListNeighbours() As cMinesweeper, cpt As Byte
     Next i
     Cl.Neighbours = ListNeighbours
 End Sub
- 
+
 Private Function IsVictoriousGame() As Boolean
 Dim cle As Variant
     For Each cle In DicoParent.Keys
@@ -8159,7 +8159,7 @@ Dim cle As Variant
     Next
     IsVictoriousGame = True
 End Function
- 
+
 Private Sub Class_Terminate()
     Dim VBComp
     Set Dico = Nothing

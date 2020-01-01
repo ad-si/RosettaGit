@@ -991,11 +991,11 @@ The square of 25264 is 638269696 !
 
 
 
-## C sharp
+## C#
 
 
 
-```csharp
+```c#
 namespace Babbage_Problem
 {
     class iterateNumbers

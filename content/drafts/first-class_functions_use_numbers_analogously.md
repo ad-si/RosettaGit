@@ -51,7 +51,7 @@ procedure Firstclass is
    begin
       return n1 * n2 * m;
    end Multiplier;
-   
+
    num, inv : array (1 .. 3) of Float;
 begin
    num := (2.0, 4.0, 6.0);
@@ -93,7 +93,7 @@ REAL
   z  := x + y,
   zi := 1 / ( x + y );
 
-MODE F = PROC(REAL)REAL; 
+MODE F = PROC(REAL)REAL;
 
 PROC multiplier = (REAL n1, n2)F: ((REAL m)REAL: n1 * n2 * m);
 
@@ -160,7 +160,7 @@ Using the Spad code in [[First-class functions#Axiom]], this can be done more ec
 (map(mult,numbers)*map(mult,invers)) 0.5
 ```
 
-For comparison, [[First-class functions#Axiom]] gave: 
+For comparison, [[First-class functions#Axiom]] gave:
 
 ```Axiom
 fns := [sin$Float, cos$Float, (x:Float):Float +-> x^3]
@@ -181,24 +181,24 @@ inv := [asin$Float, acos$Float, (x:Float):Float +-> x^(1/3)]
       x = 2 : xi = 1/2
       y = 4 : yi = 0.25
       z = x + y : zi = 1 / (x + y)
-      
+
       REM Create the collections (here structures are used):
       DIM c{x, y, z}
       DIM ci{x, y, z}
       c.x = x : c.y = y : c.z = z
       ci.x = xi : ci.y = yi : ci.z = zi
-      
+
       REM Create some multiplier functions:
       multx = FNmultiplier(c.x, ci.x)
       multy = FNmultiplier(c.y, ci.y)
       multz = FNmultiplier(c.z, ci.z)
-      
+
       REM Test applying the compositions:
       x = 1.234567 : PRINT x " ", FN(multx)(x)
       x = 2.345678 : PRINT x " ", FN(multy)(x)
       x = 3.456789 : PRINT x " ", FN(multz)(x)
       END
-      
+
       DEF FNmultiplier(n1,n2)
       LOCAL f$, p%
       f$ = "(m)=" + STR$n1 + "*" + STR$n2 + "*m"
@@ -227,26 +227,26 @@ Compare with the implementation of First-class functions:
       DEF FNacs(a) = ACS(a)
       DEF FNcube(a) = a^3
       DEF FNroot(a) = a^(1/3)
-      
+
       dummy = FNsin(1)
-      
+
       REM Create the collections (here structures are used):
       DIM cA{Sin%, Cos%, Cube%}
       DIM cB{Asn%, Acs%, Root%}
       cA.Sin% = ^FNsin() : cA.Cos% = ^FNcos() : cA.Cube% = ^FNcube()
       cB.Asn% = ^FNasn() : cB.Acs% = ^FNacs() : cB.Root% = ^FNroot()
-      
+
       REM Create some function compositions:
       AsnSin% = FNcompose(cB.Asn%, cA.Sin%)
       AcsCos% = FNcompose(cB.Acs%, cA.Cos%)
       RootCube% = FNcompose(cB.Root%, cA.Cube%)
-      
+
       REM Test applying the compositions:
       x = 1.234567 : PRINT x, FN(AsnSin%)(x)
       x = 2.345678 : PRINT x, FN(AcsCos%)(x)
       x = 3.456789 : PRINT x, FN(RootCube%)(x)
       END
-      
+
       DEF FNcompose(f%,g%)
       LOCAL f$, p%
       f$ = "(x)=" + CHR$&A4 + "(&" + STR$~f% + ")(" + \
@@ -257,11 +257,11 @@ Compare with the implementation of First-class functions:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C#|4.0}}
 The structure here is exactly the same as the C# entry in [[First-class functions]]. The "var" keyword allows us to use the same initialization code for an array of doubles as an array of functions. Note that variable names have been changed to correspond with the new functionality.
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -327,7 +327,7 @@ For comparison:
 
 ```
 
-Output: 
+Output:
 
 ```txt
 (0.5 0.4999999999999999 0.5000000000000001)
@@ -384,7 +384,7 @@ The code from [[First-class functions]], for comparison:
       do (format t "~&(~A ∘ ~A)(~A) = ~A~%"
                  inverse
                  function
-                 value 
+                 value
                  (funcall composed value)))
 ```
 
@@ -416,14 +416,14 @@ void main()
     double z = x + y;
     double zi = 1.0 / (z);
 
-    double[3] f = [x, y, z]; 
+    double[3] f = [x, y, z];
     double[3] r = [xi, yi, zi];
 
     foreach (i; 0..3)
-    {   
+    {
         auto mult = multiplier(f[i], r[i]);
         writefln("%f * %f * %f == %f", f[i], r[i], 1.0, mult(1));
-    }   
+    }
 }
 ```
 
@@ -481,7 +481,7 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     real x := 2.0r;
@@ -490,12 +490,12 @@ public program()
     real yi := 0.25r;
     real z := x + y;
     real zi := 1.0r / (x + y);
- 
+
     var numlist := new real[]::(  x, y, z );
     var numlisti := new real[]::( xi, yi, zi );
- 
+
     var multiplied := numlist.zipBy(numlisti, (n1,n2 => (m => n1 * n2 * m) )).toArray();
- 
+
     multiplied.forEach:(multiplier){ console.printLine(multiplier(0.5r)) }
 }
 ```
@@ -557,10 +557,10 @@ let y = 4.0
 let yi = 0.25
 let z = x + y
 let zi = 1.0 / ( x + y )
-let multiplier (n1,n2) = fun (m:float) -> n1 * n2 * m 
+let multiplier (n1,n2) = fun (m:float) -> n1 * n2 * m
 
-[x; y; z] 
-|> List.zip [xi; yi; zi] 
+[x; y; z]
+|> List.zip [xi; yi; zi]
 |> List.map multiplier
 |> List.map ((|>) 0.5)
 |> printfn "%A"
@@ -593,7 +593,7 @@ CONSTANT: z $[ $ x $ y + ]
 CONSTANT: zi $[ 1 $ x $ y + / ]
 
 CONSTANT: A ${ x y z }
-CONSTANT: B ${ xi yi zi } 
+CONSTANT: B ${ xi yi zi }
 
 : multiplier ( n1 n2 -- q ) [ * * ] 2curry ;
 : create-all ( seq1 seq2 -- seq ) [ multiplier ] 2map ;
@@ -946,7 +946,7 @@ For contrast, here are the final results from  [[First-class functions#J]]:
 Although the pseudo-code to generate the numbers can certainly be written (see  above [http://rosettacode.org/wiki/First-class_functions/Use_numbers_analogously#Explicit_version Explicit version] ) this is not done for this version because it would destroy part of the analogy (J encourages, from the programming perspective, to process all components at once as opposed to one component at a time).  In addition, this version is done in terms of boxed lists of numbers instead of plain list of numbers, again, to preserve the analogy.
 
 <lang>   multiplier=. train@:((;:'&*') ;~ an@: *)
-   
+
    ]A=. 2  ; 4  ; (2 + 4)   NB. Corresponds to  ]A=. box (1&o.)`(2&o.)`(^&3)
 ┌─┬─┬─┐
 │2│4│6│
@@ -1162,7 +1162,7 @@ Composed=lambda (f1, f2) -> {
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
-This code demonstrates the example using structure similar to function composition, however the composition function is replace with the multiplier function. 
+This code demonstrates the example using structure similar to function composition, however the composition function is replace with the multiplier function.
 
 
 ```Mathematica
@@ -1239,7 +1239,7 @@ func main() -> int {
     var i = [ xi, yi, zi ] : float;
     var c = 0;
     var mult = let func(m : float) -> float { 0.0 };
-    
+
     for (c = 0; c < 3; c = c + 1) {
         mult = multiplier(f[c], i[c]);
         prints(f[c] + " * " + i[c] + " * " + 1.0 + " = " + mult(1) + "\n")
@@ -1283,7 +1283,7 @@ class FirstClass {
 
     numlisti := Vector->New()<FloatHolder>;
     numlisti->AddBack(xi); numlisti->AddBack(yi); numlisti->AddBack(zi);
-    
+
     each(i : numlist) {
       v := numlist->Get(i); vi := numlisti->Get(i);
       mult := Multiplier(v, vi);
@@ -1291,7 +1291,7 @@ class FirstClass {
       "{$v} * {$vi} * 0.5 = {$r}"->PrintLine();
     };
   }
-  
+
   function : Multiplier(a : FloatHolder, b : FloatHolder) ~ (FloatHolder) ~ FloatHolder {
     return \(FloatHolder) ~ FloatHolder : (c) =>  a * b * c;
   }
@@ -1350,8 +1350,8 @@ class FirstClass {
 : multiplier(n1, n2)  #[ n1 n2 * * ] ;
 
 : firstClassNum
-| x xi y yi z zi | 
-   2.0 ->x 
+| x xi y yi z zi |
+   2.0 ->x
    0.5 ->xi
    4.0 ->y
    0.25 ->yi
@@ -1386,7 +1386,7 @@ declare
   end
 
 in
- 
+
   for
      N in [X  Y  Z]
      I in [XI YI ZI]
@@ -1460,7 +1460,7 @@ The entry in first-class functions uses the same technique:
 ```perl
 sub compose {
     my ($f, $g) = @_;
- 
+
     sub {
         $f -> ($g -> (@_));
     };
@@ -1478,7 +1478,7 @@ compose($flist1[$_], $flist2[$_]) -> (0.5)
 
 ```perl6
 sub multiplied ($g, $f) { return { $g * $f * $^x } }
- 
+
 my $x  = 2.0;
 my $xi = 0.5;
 my $y  = 4.0;
@@ -1488,7 +1488,7 @@ my $zi = 1.0 / ( $x + $y );
 
 my @numbers = $x, $y, $z;
 my @inverses = $xi, $yi, $zi;
- 
+
 for flat @numbers Z @inverses { say multiplied($^g, $^f)(.5) }
 ```
 
@@ -1512,7 +1512,7 @@ sequence mtable = {}
 
 function multiplier(atom n1, atom n2)
     mtable = append(mtable,{n1,n2})
-    return length(mtable)   
+    return length(mtable)
 end function
 
 function call_multiplier(integer f, atom m)
@@ -1551,7 +1551,7 @@ sequence ctable = {}
 
 function compose(integer f, integer g)
     ctable = append(ctable,{f,g})
-    return length(ctable)   
+    return length(ctable)
 end function
 
 function call_composite(integer f, atom x)
@@ -1641,7 +1641,7 @@ With a similar output:
 This new task:
 
 ```python
-IDLE 2.6.1      
+IDLE 2.6.1
 >>> # Number literals
 >>> x,xi, y,yi = 2.0,0.5, 4.0,0.25
 >>> # Numbers from calculation
@@ -1696,7 +1696,7 @@ zi = 1.0 / ( x + y )
 num = c(x,y,z)
 inv = c(xi,yi,zi)
 
-multiplier(num,inv)(0.5) 
+multiplier(num,inv)(0.5)
 
 Output
 [1] 0.5 0.5 0.5
@@ -1852,10 +1852,10 @@ inverses: List[Double] = List(0.5, 0.25, 0.16666666666666666)
 scala> def multiplier = (n1: Double, n2: Double) => (m: Double) => n1 * n2 * m
 multiplier: (Double, Double) => (Double) => Double
 
-scala> def comp = numbers zip inverses map multiplier.tupled  
+scala> def comp = numbers zip inverses map multiplier.tupled
 comp: List[(Double) => Double]
 
-scala> comp.foreach(f=>println(f(0.5)))                     
+scala> comp.foreach(f=>println(f(0.5)))
 0.5
 0.5
 0.5

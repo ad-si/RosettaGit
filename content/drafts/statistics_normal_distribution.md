@@ -229,10 +229,10 @@ press enter
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{libheader|Math.Net}}
 
-```csharp
+```c#
 using System;
 using MathNet.Numerics.Distributions;
 using MathNet.Numerics.Statistics;

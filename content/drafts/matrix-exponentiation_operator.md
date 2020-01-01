@@ -710,10 +710,10 @@ m ^ 23=
 An alternative way would be to implement <tt>operator*=</tt> and conversion from number (giving multiples of the identity matrix) for the matrix and use the generic code from [[Exponentiation operator#C++]] with support for negative exponents removed (or alternatively, implement matrix inversion as well, implement /= in terms of it, and use the generic code unchanged). Note that the algorithm used there is much faster as well.
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;

@@ -1022,12 +1022,12 @@ bool is_palindrome(std::string const& s)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 '''Non-recursive'''
 
 
-```csharp
+```c#
 using System;
 
 class Program
@@ -1054,7 +1054,7 @@ class Program
 
 '''Using LINQ operators'''
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1078,7 +1078,7 @@ class Program
 
 Reversing a string is very slow. A much faster way is to simply compare characters.
 
-```csharp
+```c#
 using System;
 
 static class Program

@@ -301,10 +301,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.IO;
 using System.Net.Sockets;
@@ -326,7 +326,7 @@ class Program {
 Clean Socket alternative:
 
 
-```csharp
+```c#
 using System.Text;
 using System.Net.Sockets;
 

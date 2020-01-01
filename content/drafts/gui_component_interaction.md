@@ -682,7 +682,7 @@ int main(int argc, char **argv) {
 =={{header|C_sharp|C#}}==
 C# 3.0 with Windows Forms; compile as csc -t:winexe Program.cs on MS.NET or as gmcs -t:winexe Program.cs on Mono.
 
-```csharp
+```c#
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;

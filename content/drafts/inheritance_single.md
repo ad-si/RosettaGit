@@ -109,35 +109,35 @@ end Inheritance;
 ## Aikido
 
 
-```aikido 
+```aikido
 class Animal{
    //functions go here...
 }
 ```
 
 
-```aikido 
+```aikido
 class Dog extends Animal {
    //functions go here...
 }
 ```
 
 
-```aikido 
+```aikido
 class Cat extends Animal {
    //functions go here...
 }
 ```
 
 
-```aikido 
+```aikido
 class Lab extends Dog {
    //functions go here...
 }
 ```
 
 
-```aikido 
+```aikido
 class Collie extends Dog {
    //functions go here...
 }
@@ -186,7 +186,7 @@ Dog $(inherit ~Animal #{
 	init {
 		// some initialization for Dog's
 	}
-	
+
 })
 
 Lab $(inherit ~Dog #{
@@ -248,22 +248,22 @@ class Collie extends Dog {
 
 ```bbcbasic
       INSTALL @lib$+"CLASSLIB"
-      
+
       DIM Animal{method}
       PROC_class(Animal{})
-      
+
       DIM Cat{method}
       PROC_inherit(Cat{}, Animal{})
       PROC_class(Cat{})
-      
+
       DIM Dog{method}
       PROC_inherit(Dog{}, Animal{})
       PROC_class(Dog{})
-      
+
       DIM Labrador{method}
       PROC_inherit(Labrador{}, Dog{})
       PROC_class(Labrador{})
-      
+
       DIM Collie{method}
       PROC_inherit(Collie{}, Dog{})
       PROC_class(Collie{})
@@ -321,12 +321,12 @@ public class TechnoDrums extends ElectronicKit{
 ```cpp
 class Animal
 {
-  // ... 
+  // ...
 };
 
 class Dog: public Animal
 {
-  // ... 
+  // ...
 };
 
 class Lab: public Dog
@@ -346,37 +346,37 @@ class Cat: public Animal
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 class Animal
-{ 
-  /* ... */ 
+{
+  /* ... */
   // ...
 }
 
 class Dog : Animal
-{ 
-  /* ... */ 
+{
+  /* ... */
   // ...
 }
 
 class Lab : Dog
-{ 
-  /* ... */ 
+{
+  /* ... */
   // ...
 }
 
 class Collie : Dog
-{ 
+{
   /* ... */
-  // ... 
+  // ...
 }
 
 class Cat : Animal
-{ 
+{
   /* ... */
-  // ... 
+  // ...
 }
 ```
 
@@ -429,7 +429,7 @@ true
        CLASS-ID. Animal.
            *> ...
        END CLASS Animal.
-       
+
        CLASS-ID. Dog INHERITS Animal.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
@@ -438,16 +438,16 @@ true
 
            *> ...
        END CLASS Dog.
-       
-       CLASS-ID. Cat INHERITS Animal. 
+
+       CLASS-ID. Cat INHERITS Animal.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        REPOSITORY.
-           CLASS Animal. 
+           CLASS Animal.
 
            *> ...
        END CLASS Cat.
-           
+
        CLASS-ID. Lab INHERITS Dog.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
@@ -456,7 +456,7 @@ true
 
            *> ...
        END CLASS Lab.
-       
+
        CLASS-ID. Collie INHERITS Dog.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
@@ -527,15 +527,15 @@ tom.move!
        STRUC Animal
            DIM Species$ OF 20
        ENDSTRUC Animal
-       
-       STRUC Dog 
+
+       STRUC Dog
               INHERIT Animal
               DIM Race$ OF 20
               FUNC New CONSTRUCTOR
                      Species$="Dog"
               ENDFUNC New
        ENDSTRUC Dog
-       
+
        STRUC Cat
               INHERIT Animal
               DIM Race$ OF 20
@@ -543,14 +543,14 @@ tom.move!
                      Species$="Cat"
               ENDFUNC New
        ENDSTRUC Cat
-           
+
        STRUC Lab
               INHERIT Dog
               FUNC New CONSTRUCTOR
                      Race$:="Lab"
               ENDFUNC New
        ENDSTRUC Lab
-       
+
        STRUC Collie
               INHERIT Dog
               FUNC New CONSTRUCTOR
@@ -778,14 +778,14 @@ Testing against the types:
 ## Eiffel
 
 
-```eiffel 
+```eiffel
 class
     ANIMAL
 end
 ```
 
 
-```eiffel 
+```eiffel
 class
     DOG
 inherit
@@ -794,7 +794,7 @@ end
 ```
 
 
-```eiffel 
+```eiffel
 class
     CAT
 inherit
@@ -803,7 +803,7 @@ end
 ```
 
 
-```eiffel 
+```eiffel
 class
     LAB
 inherit
@@ -812,7 +812,7 @@ end
 ```
 
 
-```eiffel 
+```eiffel
 class
     COLLIE
 inherit
@@ -828,28 +828,28 @@ ELENA 4.x :
 
 ```elena
 class Animal
-{ 
+{
   // ...
 }
- 
+
 class Dog : Animal
-{ 
+{
   // ...
 }
- 
+
 class Lab : Dog
-{ 
+{
   // ...
 }
- 
+
 class Collie : Dog
-{ 
-  // ... 
+{
+  // ...
 }
- 
+
 class Cat : Animal
-{ 
-  // ... 
+{
+  // ...
 }
 ```
 
@@ -899,23 +899,23 @@ class Collie : Dog {
 
 
 ```fantom
-class Animal 
+class Animal
 {
 }
 
-class Dog : Animal 
+class Dog : Animal
 {
 }
 
-class Cat : Animal 
+class Cat : Animal
 {
 }
 
-class Lab : Dog 
+class Lab : Dog
 {
 }
 
-class Collie : Dog 
+class Collie : Dog
 {
 }
 ```
@@ -1180,16 +1180,16 @@ This example only works in Unicon.
 
 class Animal ()
 end
- 
+
 class Dog : Animal  ()
 end
- 
+
 class Cat : Animal  ()
 end
- 
+
 class Lab : Dog  ()
 end
- 
+
 class Collie : Dog ()
 end
 
@@ -1401,7 +1401,7 @@ class Animal [
 ];
 
 class Dog from Animal [
-	#Method goes here	
+	#Method goes here
 ];
 
 class Lab from Dog [
@@ -1522,7 +1522,7 @@ on new (me)
 end
 ```
 
-  
+
 
 ```lingo
 -- parent script "Cat"
@@ -1609,7 +1609,7 @@ Section Inherit
 
 ## Logtalk
 
-There is no "class" keyword in Logtalk; an "object" keyword is used instead (Logtalk objects play the role of classes, meta-classes, instances, or prototypes depending on the relations with other objects). 
+There is no "class" keyword in Logtalk; an "object" keyword is used instead (Logtalk objects play the role of classes, meta-classes, instances, or prototypes depending on the relations with other objects).
 
 ```logtalk
 
@@ -1678,7 +1678,7 @@ Module CheckIt {
                   M=Animal()
                   M=This
                   This=M
-            }      
+            }
       }
       Class Labrador {
             IamLabrador
@@ -1710,7 +1710,7 @@ Module CheckIt {
       \\ For expressions, or items from containers we have to use a function
       \\ which copies objects before using in Valid(@..)
       Def ValidObj(X,Y)=Valid(@X as Y)
-      Print ValidObj(B(5), Animal)=True 
+      Print ValidObj(B(5), Animal)=True
 }
 CheckIt
 
@@ -1745,19 +1745,19 @@ $objsetproto(Collie, Dog);
 class Animal {
     // ...
 }
- 
+
 class Dog: Animal {
     // ...
 }
- 
+
 class Lab: Dog {
     // ...
 }
- 
+
 class Collie: Dog {
     // ...
 }
- 
+
 class Cat: Animal {
     // ...
 }
@@ -1888,16 +1888,16 @@ MODULE Animals;
 TYPE
   Animal = POINTER TO AnimalDesc;
   AnimalDesc = RECORD END;
-  
+
   Cat = POINTER TO CatDesc;
   CatDesc = RECORD (AnimalDesc) END;
-  
+
   Dog = POINTER TO DogDesc;
   DogDesc = RECORD (AnimalDesc) END;
-  
+
   Lab = POINTER TO LabDesc;
   LabDesc = RECORD (DogDesc) END;
-  
+
   Collie = POINTER TO CollieDesc;
   CollieDesc = RECORD (DogDesc) END;
 
@@ -1913,16 +1913,16 @@ END Animals.
 ```objeck
 class Animal
 { #~ ... ~# }
- 
+
 class Dog from Animal
 { #~ ... ~# }
- 
+
 class Lab from Dog
 { #~ ... ~# }
- 
+
 class Collie from Dog
 { #~ ... ~# }
- 
+
 class Cat from Animal
 { #~ ... ~# }
 ```
@@ -1933,35 +1933,35 @@ class Cat from Animal
 ```objc
 @interface Animal : NSObject
 {
-  // ... 
+  // ...
 }
 // ...
 @end
 
 @interface Dog : Animal
 {
-  // ... 
+  // ...
 }
 // ...
 @end
 
 @interface Lab : Dog
 {
-  // ... 
+  // ...
 }
 // ...
 @end
 
 @interface Collie : Dog
 {
-  // ... 
+  // ...
 }
 // ...
 @end
 
 @interface Cat : Animal
 {
-  // ... 
+  // ...
 }
 // ...
 @end
@@ -2109,19 +2109,19 @@ class Animal
 end
 
 class Dog from Animal
-   %% ... 
+   %% ...
 end
 
 class Lab from Dog
-   %% ... 
+   %% ...
 end
 
 class Collie from Dog
-   %% ... 
+   %% ...
 end
 
 class Cat from Animal
-   %% ... 
+   %% ...
 end
 ```
 
@@ -2331,7 +2331,7 @@ Interface Lab Extends Dog
   Swim()
 EndInterface
 
-Interface Collie Extends Dog  
+Interface Collie Extends Dog
   HeardSheep()
 EndInterface
 ```
@@ -2623,10 +2623,10 @@ trait Collie: Dog {}
 ## Scala
 
 Scala has both classes and traits. Classes can only be singly inherited, but both
-can inherit a trait multiple times. 
+can inherit a trait multiple times.
 This inheritance can be declared at the point
 of instantiation as well, precluding the need to declare a trait or class for the
-sole purpose of combining traits. 
+sole purpose of combining traits.
 For the simple inheritance chain of this task,
 any (or all) of the <code>class</code> keywords below can be replaced with <code>trait</code>
 
@@ -2651,21 +2651,21 @@ The example below defines a hierarchy of implementation types.
 $ include "seed7_05.s7i";
 
 const type: Animal is new struct
-    # ... 
+    # ...
   end struct;
- 
+
 const type: Dog is sub Animal struct
-    # ... 
+    # ...
   end struct;
- 
+
 const type: Lab is sub Dog struct
     # ...
   end struct;
- 
+
 const type: Collie is sub Dog struct
     # ...
   end struct;
- 
+
 const type: Cat is sub Animal struct
     # ...
   end struct;
@@ -2675,7 +2675,7 @@ const type: Cat is sub Animal struct
 
 ## Self
 
-Self is a class-free, object-oriented language, and as such, it uses prototypal inheritance instead of classical inheritance. This is an example of the relevant excerpts from a Self transporter fileout. Normally the object tree would be built and navigated within the graphical Self environment. 
+Self is a class-free, object-oriented language, and as such, it uses prototypal inheritance instead of classical inheritance. This is an example of the relevant excerpts from a Self transporter fileout. Normally the object tree would be built and navigated within the graphical Self environment.
 
 ```self
 animal = ()
@@ -2752,7 +2752,7 @@ end
 
 ## Slate
 
- 
+
 
 ```slate
 define: #Animal &parents: {Cloneable}.
@@ -2800,23 +2800,23 @@ Object subclass: #Animal
 
 ```swift
 class Animal {
-  // ... 
+  // ...
 }
 
 class Dog : Animal {
-  // ... 
+  // ...
 }
 
 class Lab : Dog {
-  // ... 
+  // ...
 }
 
 class Collie : Dog {
-  // ... 
+  // ...
 }
 
 class Cat : Animal {
-  // ... 
+  // ...
 }
 ```
 

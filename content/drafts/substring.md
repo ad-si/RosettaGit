@@ -1311,7 +1311,7 @@ int main()
 
 =={{header|C_sharp|C#}}==
 
-```csharp
+```c#
 using System;
 namespace SubString
 {

@@ -546,10 +546,10 @@ int main()
 }
 ```
 
-=={{header|c sharp|C#}}==
+## C#
 This task is almost custom designed for C# LINQ and is really trivial using that.  Most of the following is support code.  The only two routines that actually implement the task at hand are CompareTo and GetLeaves at the bottom.  GetLeaves is a really simple BinTree procedure to retreive the leaves from left to right into an IEnumerable.  That IEnumerable can be zipped with the result of GetLeaves on another tree and the results compared giving us our final answer and since everything is deferred in LINQ, this has the desirable property spoken of in the problem's description that no comparisons are done after a non-matching pair.
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

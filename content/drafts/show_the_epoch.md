@@ -205,9 +205,9 @@ FileTime epoch is Monday, January 01, 1601, at 12:00:00 AM (UTC).
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 class Program

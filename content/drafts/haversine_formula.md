@@ -493,10 +493,10 @@ int main()
 ```
 
 
-=={{header|c sharp|C#}}==
+## C#
 {{trans|Groovy}}
 
-```csharp
+```c#
 public static class Haversine {
   public static double calculate(double lat1, double lon1, double lat2, double lon2) {
     var R = 6372.8; // In kilometers

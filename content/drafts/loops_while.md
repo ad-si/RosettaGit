@@ -10,16 +10,16 @@ categories = []
 tags = []
 +++
 
-{{task|Iteration}} 
-[[Category:Conditional loops]] 
+{{task|Iteration}}
+[[Category:Conditional loops]]
 [[Category:Simple]]
 {{omit from|GUISS|No loops and we cannot read values}}
 
 ;Task:
-Start an integer value at   '''1024'''. 
+Start an integer value at   '''1024'''.
 
-Loop while it is greater than zero. 
- 
+Loop while it is greater than zero.
+
 Print the value (with a newline) and divide it by two each time through the loop.
 
 
@@ -56,21 +56,21 @@ Print the value (with a newline) and divide it by two each time through the loop
 ## 360 Assembly
 
 ;Basic
-Using binary arithmetic. Convert results to EBCDIC printable output. 
+Using binary arithmetic. Convert results to EBCDIC printable output.
 
 ```360asm
 *        While                     27/06/2016
-WHILELOO CSECT                     program's control section 
+WHILELOO CSECT                     program's control section
          USING WHILELOO,12         set base register
          LR    12,15               load base register
          LA    6,1024              v=1024
-LOOP     LTR   6,6                 while v>0 
+LOOP     LTR   6,6                 while v>0
          BNP   ENDLOOP             .
          CVD   6,PACKED              convert v to packed decimal
          OI    PACKED+7,X'0F'        prepare unpack
          UNPK  WTOTXT,PACKED         packed decimal to zoned printable
          WTO   MF=(E,WTOMSG)         display v
-         SRA   6,1                   v=v/2   by right shift 
+         SRA   6,1                   v=v/2   by right shift
          B     LOOP                end while
 ENDLOOP  BR    14                  return to caller
 PACKED   DS    PL8                 packed decimal
@@ -82,17 +82,17 @@ WTOTXT   DC    CL4' '              wto text
 
 {{out}} (+ sign indicates "problem state" (non system key) issued WTO's
 <pre style="height:16ex">
-+1024 
-+0512 
-+0256 
-+0128 
-+0064 
-+0032 
-+0016 
-+0008 
-+0004 
-+0002 
-+0001 
++1024
++0512
++0256
++0128
++0064
++0032
++0016
++0008
++0004
++0002
++0001
 
 ```
 
@@ -104,7 +104,7 @@ WHILELOO CSECT
          USING WHILELOO,12         set base register
          LR    12,15               load base register
          LA    6,1024              v=1024
-         DO WHILE=(LTR,6,P,6)      do while v>0 
+         DO WHILE=(LTR,6,P,6)      do while v>0
          CVD   6,PACKED              convert v to packed decimal
          OI    PACKED+7,X'0F'        prepare unpack
          UNPK  WTOTXT,PACKED         packed decimal to zoned printable
@@ -112,7 +112,7 @@ WHILELOO CSECT
          SRA   6,1                   v=v/2   by right shift
          ENDDO ,                   end while
          BR    14                  return to caller
-PACKED   DS    PL8                 packed decimal 
+PACKED   DS    PL8                 packed decimal
 WTOMSG   DS    0F                  full word alignment for wto
 WTOLEN   DC    AL2(8),H'0'         length of wto buffer (4+1)
 WTOTXT   DC    CL4' '              wto text
@@ -124,7 +124,7 @@ Same as above
 
 
 ## 6502 Assembly
- 
+
 Code is called as a subroutine (i.e. JSR LoopsWhile).  Specific OS/hardware routines for printing are left unimplemented.
 
 ```6502asm
@@ -133,7 +133,7 @@ LoopsWhile:	PHA			;push accumulator onto stack
 		LDA #$00		;the 6502 is an 8-bit processor
 		STA Ilow		;and so 1024 ($0400) must be stored in two memory locations
 		LDA #$04
-		STA Ihigh		
+		STA Ihigh
 WhileLoop:	LDA Ilow
 		BNE NotZero
 		LDA Ihigh
@@ -315,10 +315,10 @@ ENDPROC
 
 ## AppleScript
 
-AppleScript does not natively support a standard out. 
+AppleScript does not natively support a standard out.
 Use the Script Editor's Event Log as the output.
 
-```AppleScript 
+```AppleScript
 set i to 1024
 repeat while i > 0
 	log i
@@ -362,15 +362,15 @@ szCarriageReturn:  .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                       @ entry of program 
+.global main
+main:                                       @ entry of program
     mov r4,#1024                            @ loop counter
-1:                                          @ begin loop 
+1:                                          @ begin loop
     mov r0,r4
     ldr r1,iAdrsMessValeur                  @ display value
     bl conversion10                         @ decimal conversion
@@ -383,7 +383,7 @@ main:                                       @ entry of program
     bgt 1b                                  @ no ->begin loop one
 
 
-100:                                        @ standard end of the program 
+100:                                        @ standard end of the program
     mov r0, #0                              @ return code
     mov r7, #EXIT                           @ request to exit program
     svc #0                                  @ perform the system call
@@ -392,73 +392,73 @@ iAdrsMessValeur:          .int sMessValeur
 iAdrszMessResult:         .int szMessResult
 iAdrszCarriageReturn:     .int szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                         @ save registers 
+    push {r1-r4,lr}                         @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                          @ start loop
     bl divisionpar10                        @ r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                              @ digit
     strb r1,[r3,r2]                         @ store digit on area
-    cmp r0,#0                               @ stop if quotient = 0 
-    subne r2,#1                               @ previous position    
+    cmp r0,#0                               @ stop if quotient = 0
+    subne r2,#1                               @ previous position
     bne 1b                                  @ else loop
                                             @ end replaces digit in front of area
     mov r4,#0
 2:
-    ldrb r1,[r3,r2] 
+    ldrb r1,[r3,r2]
     strb r1,[r3,r4]                         @ store in area begin
     add r4,#1
     add r2,#1                               @ previous position
     cmp r2,#LGZONECAL                       @ end
     ble 2b                                  @ loop
-    mov r1,#0                               @ final zero 
+    mov r1,#0                               @ final zero
     strb r1,[r3,r4]
 100:
-    pop {r1-r4,lr}                          @ restaur registres 
+    pop {r1-r4,lr}                          @ restaur registres
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}                           @ save registers  */
-    mov r4,r0  
+    mov r4,r0
     mov r3,#0x6667                         @ r3 <- magic_number  lower
     movt r3,#0x6666                        @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2                     @ r2 <- r2 >> 2
     mov r1, r0, LSR #31                    @ r1 <- r0 >> 31
-    add r0, r2, r1                         @ r0 <- r2 + r1 
-    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5 
+    add r0, r2, r1                         @ r0 <- r2 + r1
+    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                   @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2-r4}
     bx lr                                  @ return
@@ -749,9 +749,9 @@ is equivalent to
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 int i = 1024;
 while(i > 0){
    System.Console.WriteLine(i);
@@ -767,7 +767,7 @@ while(i > 0){
         write x,!
         set x = (x \ 2)    ; using non-integer division will never get to 0
     }
-	
+
     quit
 ```
 
@@ -786,7 +786,7 @@ SAMPLES>DO ^WHILELOOP
 4
 2
 1
-               
+
 
 ```
 
@@ -859,7 +859,7 @@ COBOL does not have a while loop construct, but it is does have a <code>PERFORM 
 
 ## ColdFusion
 
-Remove the leading space from the line break tag. 
+Remove the leading space from the line break tag.
 
 With tags:
 
@@ -931,7 +931,7 @@ WHILE X>0
 
    PRINT X
    X=X/2
-  
+
 ENDWHILE
 'Output starts with 1024 and ends with 1.
 
@@ -1173,7 +1173,7 @@ while i > 0
 
 (set! n 1024)
 (while (> n 0) (write n) (set! n (quotient n 2)))
-1024 512 256 128 64 32 16 8 4 2 1 
+1024 512 256 128 64 32 16 8 4 2 1
 
 ```
 
@@ -1204,7 +1204,7 @@ public program()
     while (i > 0)
     {
         console.writeLine:i;
- 
+
         i /= 2
     }
 }
@@ -1250,10 +1250,10 @@ Loops.while(1024)
 
 loop() ->
 	loop(1024).
- 
+
 loop(N) when N div 2 =:= 0 ->
 	io:format("~w~n", [N]);
-	
+
 loop(N) when N >0 ->
 	io:format("~w~n", [N]),
 	loop(N div 2).
@@ -1295,7 +1295,7 @@ Even without the <code>floor()</code> the code will in fact end.  But it's FAR b
 
 =={{header|F_Sharp|F#}}==
 
-```fsharp>let rec loop n = if n 
+```fsharp>let rec loop n = if n
  0 then printf "%d " n; loop (n / 2)
 loop 1024
 ```
@@ -1305,7 +1305,7 @@ loop 1024
 ## Factor
 
 
-```factor>1024 [ dup 0 
+```factor>1024 [ dup 0
  ] [ dup . 2 /i ] while drop
 ```
 
@@ -1543,7 +1543,7 @@ Output:
 Public Sub Main()
 Dim siCount As Short = 1024
 
-While siCount > 0 
+While siCount > 0
   Print siCount;;
   siCount /= 2
 Wend
@@ -1638,7 +1638,7 @@ while (i > 0) {
 ```haskell
 import Control.Monad (when)
 
-main = loop 1024      
+main = loop 1024
   where loop n = when (n > 0)
                       (do print n
                           loop (n `div` 2))
@@ -1666,14 +1666,14 @@ With MonadComprehensions extension you can write it a little bit more readable:
 
 ```haskell
 {-# LANGUAGE MonadComprehensions #-}
-import Data.IORef 
+import Data.IORef
 import Control.Monad.Loops
 
 main :: IO ()
 main = do
-   r <- newIORef 1024 
+   r <- newIORef 1024
    whileM_ [n > 0 | n <- readIORef r] $ do
-        n <- readIORef r  
+        n <- readIORef r
         print n
         modifyIORef r (`div` 2)
 ```
@@ -1742,7 +1742,7 @@ OPENCONSOLE
 WHILE X>0
 
     PRINT X
-    X=X/2 
+    X=X/2
 
 ENDWHILE
 'Output starts with 1024 and ends with 1.
@@ -1772,14 +1772,14 @@ J is array-oriented, so there is very little need for loops.  For example, one c
 ```
 
 
-J does support loops for those times they can't be avoided (just like many languages support gotos for those time they can't be avoided).  
+J does support loops for those times they can't be avoided (just like many languages support gotos for those time they can't be avoided).
 
 
 ```j
 monad define 1024
   while. 0 < y do.
     smoutput y
-    y =. <. -: y 
+    y =. <. -: y
   end.
   i.0 0
 )
@@ -1899,7 +1899,7 @@ DEFINE putln == put '\n putch.
 
 '''Using a filter'''
 
-```jq>def task: if . 
+```jq>def task: if .
  0 then ., (./2 | floor | task) else empty end;
 1024|task
 ```
@@ -1907,7 +1907,7 @@ DEFINE putln == put '\n putch.
 '''Using while/2'''
 
 If your jq does not include while/2 as a builtin, here is its definition:
- 
+
 ```jq
 def while(cond; update):
   def _while: if cond then ., (update | _while) else empty end;
@@ -2129,7 +2129,7 @@ end repeat
 i := 1024;
 { i > 0 }.while_do {
   i.println;
-  
+
   i := i / 2;
 };
 ```
@@ -2223,7 +2223,7 @@ Module Online { A=1024&: While A>0 {Print A: A/=2}} : OnLine
 
 To avoid generating an infinite sequence (1/2, 1/4, 1/8, 1/16, etc.) of fractions after n takes the value 1, we use integer division (iquo) rather than the solidus operation (/).
 
-```Maple>> n := 1024: while n 
+```Maple>> n := 1024: while n
  0 do print(n); n := iquo(n,2) end:
                                   1024
                                   512
@@ -2242,7 +2242,7 @@ To avoid generating an infinite sequence (1/2, 1/4, 1/8, 1/16, etc.) of fraction
 
 ## Mathematica
 
-Mathematica does not support integer-rounding, it would result in getting fractions: 1/2, 1/4 , 1/8 and so on; the loop would take infinite time without using the Floor function: 
+Mathematica does not support integer-rounding, it would result in getting fractions: 1/2, 1/4 , 1/8 and so on; the loop would take infinite time without using the Floor function:
 
 ```Mathematica
 i = 1024;
@@ -2432,29 +2432,29 @@ EndWhile
 * STORE EACH X IN NUMERIC ARRAY
 * PRINT ARRAY
 *******************************************
-M	EQU	1024		
+M	EQU	1024
 N	EQU	2
-LPR	EQU	18		
-BUF0	EQU	100		
-MSG	EQU	2000		
-LENGTH	EQU	500		
+LPR	EQU	18
+BUF0	EQU	100
+MSG	EQU	2000
+LENGTH	EQU	500
 	ORIG	3000
-START	IOC	0(LPR) 		
-	ENTX	M		
-CALC	STX	BUF0,1 		
-	DIV	=N=		
-	SRAX	5		
-	INC1	1		
-	JXP	CALC		
-	ST1	LENGTH		
-PRINT	LDA	BUF0,2		
-	CHAR			
-	STX	MSG		
-	OUT	MSG(LPR)	
-	INC2	1		
-	CMP2	LENGTH		
+START	IOC	0(LPR)
+	ENTX	M
+CALC	STX	BUF0,1
+	DIV	=N=
+	SRAX	5
+	INC1	1
+	JXP	CALC
+	ST1	LENGTH
+PRINT	LDA	BUF0,2
+	CHAR
+	STX	MSG
+	OUT	MSG(LPR)
+	INC2	1
+	CMP2	LENGTH
 	JNE	PRINT
-	HLT			
+	HLT
 	END	START
 
 ```
@@ -2579,7 +2579,7 @@ def loop(n : int) : void
         loop(n / 2);
     }
 }
-       
+
 loop(1024)
 ```
 
@@ -3041,7 +3041,7 @@ endwhile;
 
 ## PostScript
 
-PostScript has no real <code>while</code> loop, 
+PostScript has no real <code>while</code> loop,
 but it can easily be created with an endless loop and a check at the beginning:
 
 ```postscript
@@ -3096,8 +3096,8 @@ Start the calculation at a top-level like this:
 
 
 ```PureBasic
-If OpenConsole()  
-  
+If OpenConsole()
+
   x.i = 1024
   While x > 0
     PrintN(Str(x))
@@ -3129,7 +3129,7 @@ while n > 0:
 
 ```R
 i <- 1024L
-while(i > 0) 
+while(i > 0)
 {
    print(i)
    i <- i %/% 2
@@ -3289,7 +3289,7 @@ x=1024                                 /*define the initial value of  X.*/
 
 ```rexx
 /*REXX program demonstrates a  DO WHILE  with index reduction construct.*/
-                                       /* [↓] note:   BY   defaults to 1*/  
+                                       /* [↓] note:   BY   defaults to 1*/
         do j=1024  by 0  while  j>>0   /*this is an  exact  comparison. */
         say right(j,10)                /*pretty output by aligning right*/
         j=j%2                          /*in REXX, % is integer division.*/
@@ -3309,10 +3309,10 @@ x=1024                                 /*define the initial value of  X.*/
 ```ring
 
 i = 1024
-while i > 0 
+while i > 0
       see i + nl
       i = floor(i / 2)
-end            
+end
 
 ```
 
@@ -3602,7 +3602,7 @@ Since we have no integer type, we floor the result of the division each time.
 
 ```slate
 #n := 1024.
-[n isPositive] whileTrue: 
+[n isPositive] whileTrue:
   [inform: number printString.
    n := n // 2]
 ```
@@ -3614,7 +3614,7 @@ Since we have no integer type, we floor the result of the division each time.
 
 ```smalltalk
 number := 1024.
-[ number > 0 ] whileTrue: 
+[ number > 0 ] whileTrue:
   [ Transcript print: number; nl.
   number := number // 2 ]
 ```
@@ -3623,7 +3623,7 @@ number := 1024.
 
 ```smalltalk
 number := 1024.
-[ number <= 0 ] whileFalse: 
+[ number <= 0 ] whileFalse:
   [ Transcript print: number; nl.
   number := number // 2 ]
 ```
@@ -3648,7 +3648,7 @@ while i > 0 {
 {{works with|BST/BSTC}}
 {{works with|FastSpin/FlexSpin}}
 {{works with|HomeSpun}}
-{{works with|OpenSpin}} 
+{{works with|OpenSpin}}
 
 ```spin
 con
@@ -3974,7 +3974,7 @@ ENDLOOP
 8
 4
 2
-1 
+1
 
 ```
 
@@ -4009,7 +4009,7 @@ endwhile
 
 ```bash
 x=1024
-while [[ $x -gt 0 ]]; do 
+while [[ $x -gt 0 ]]; do
   echo $x
   x=$(( $x/2 ))
 done
@@ -4045,20 +4045,20 @@ end while
 
 ## Ursala
 
-Unbounded iteration is expressed with the -> operator. 
-An expression (p-> f) x, where p is a predicate and f is a function, 
+Unbounded iteration is expressed with the -> operator.
+An expression (p-> f) x, where p is a predicate and f is a function,
 evaluates to x, f(x), or f(f(x)), etc. as far as necessary to falsify p.
 
 Printing an intermediate result on each iteration is a bigger problem
-because side effects are awkward. 
-Instead, the function g in this example iteratively constructs a list of results, 
+because side effects are awkward.
+Instead, the function g in this example iteratively constructs a list of results,
 which is displayed on termination.
 
-The argument to g is the unit list <1024>.  
-The predicate p is ~&h, the function that tests whether 
-the head of a list is non-null (equivalent to non-zero). 
-The iterated function f is that which conses the 
-truncated half of the head of its argument with a copy of the whole argument. 
+The argument to g is the unit list <1024>.
+The predicate p is ~&h, the function that tests whether
+the head of a list is non-null (equivalent to non-zero).
+The iterated function f is that which conses the
+truncated half of the head of its argument with a copy of the whole argument.
 The main program takes care of list reversal and formatting.
 
 ```Ursala
@@ -4102,7 +4102,7 @@ main = %nP*=tK33 1024
 ## V
 
 
-```v>1024 [0 
+```v>1024 [0
 ] [
    dup puts
    2 / >int
@@ -4155,7 +4155,7 @@ for (#1 = 1024; #1 > 0; #1 /= 2) {
 
 @LOOP init:{@VAR n = 1024} while:(n > 0) next:{n /= 2}
 {
-     @SAY n; 
+     @SAY n;
 };
 ```
 
@@ -4217,20 +4217,20 @@ end
 
 
 ```Whitespace
-   	          
 
-    
- 
- 	
- 	   	 	 
-	
-     	 
-	 	  
-     
- 
-		  	
-		  
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4267,19 +4267,19 @@ printffmt db `%ld\n`,0
 
 segment .text
 
-main:	                     
-    push rbp                    
-    mov rbp,rsp 
-    
+main:
+    push rbp
+    mov rbp,rsp
+
 ; used rbx and r12 because printf preserves these values
-    
+
     mov rbx,1024                 ; start with 1024
     mov r12,2                    ; load 2 as divisor
 
-.toploop                         ; top of while loop    
+.toploop                         ; top of while loop
     cmp rbx,0                    ; compare to 0
     jle .done                    ; exit 0 or less
-    
+
     lea rdi,[printffmt]          ; print number in rsi
     mov rsi,rbx                  ; mov to rsi as argument
     call printf

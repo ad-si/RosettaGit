@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-Most programmers are familiar with the inexactness of floating point calculations in a binary processor. 
+Most programmers are familiar with the inexactness of floating point calculations in a binary processor.
 
 The classic example being:
 
@@ -30,7 +30,7 @@ There are pathological problems however, where seemingly simple, straight-forwar
 This task's purpose is to show how your language deals with such classes of problems.
 
 
-'''A sequence that seems to converge to a wrong limit.''' 
+'''A sequence that seems to converge to a wrong limit.'''
 
 Consider the sequence:
 :::::: <big><big>  v<sub>1</sub> =  2                                                                     </big></big>
@@ -62,18 +62,18 @@ Display the values of the sequence where   n =   3, 4, 5, 6, 7, 8, 20, 30, 50 & 
 
 
 ;Task 2:
-'''The Chaotic Bank Society'''   is offering a new investment account to their customers. 
+'''The Chaotic Bank Society'''   is offering a new investment account to their customers.
 
 You first deposit   $e - 1   where   e   is   2.7182818...   the base of natural logarithms.
 
-After each year, your account balance will be multiplied by the number of years that have passed, and $1 in service charges will be removed. 
+After each year, your account balance will be multiplied by the number of years that have passed, and $1 in service charges will be removed.
 
 So ...
 ::* after 1 year, your balance will be multiplied by 1 and $1 will be removed for service charges.
 ::* after 2 years your balance will be doubled and $1 removed.
 ::* after 3 years your balance will be tripled and $1 removed.
 ::* <b> ... </b>
-::* after 10 years, multiplied by 10 and $1 removed,  and so on. 
+::* after 10 years, multiplied by 10 and $1 removed,  and so on.
 
 
 What will your balance be after   25   years?
@@ -101,7 +101,7 @@ Demonstrate how to solve at least one of the first two problems, or both, and th
 
 ## 360 Assembly
 
-The system/360 hexadecimal single precision floating point format is known to its weakness 
+The system/360 hexadecimal single precision floating point format is known to its weakness
 in precision. A lot of more precise formats have been added since.
 
 '''A sequence that seems to converge to a wrong limit'''
@@ -110,7 +110,7 @@ in precision. A lot of more precise formats have been added since.
 ```360asm
 *        Pathological floating point problems  03/05/2016
 PATHOFP  CSECT
-         USING  PATHOFP,R13 
+         USING  PATHOFP,R13
 SAVEAR   B      STM-SAVEAR(R15)
          DC     17F'0'
 STM      STM    R14,R12,12(R13)
@@ -155,11 +155,11 @@ ELOOPN   L      R13,4(0,R13)
          XR     R15,R15
          BR     R14
          COPY   FORMATF
-         LTORG  
+         LTORG
 PG       DC     CL80' '          buffer
 U        DS     100E
          YREGS
-         YFPREGS 
+         YFPREGS
          END    PATHOFP
 ```
 
@@ -201,28 +201,28 @@ The divergence comes very soon.
 with Ada.Text_IO;
 
 procedure Converging_Sequence is
-   
+
    generic
       type Num is digits <>;
       After: Positive;
    procedure Task_1;
-      
+
    procedure Task_1 is
       package FIO is new Ada.Text_IO.Float_IO(Num);
       package IIO is new Ada.Text_IO.Integer_IO(Integer);
-   
+
       procedure Output (I: Integer; N: Num) is
       begin
 	 IIO.Put(Item => I, Width => 4);
 	 FIO.Put(Item => N, Fore => 4, Aft =>  After, Exp => 0);
 	 Ada.Text_IO.New_Line;
       end Output;
-   
+
       Very_Old: Num :=  2.0;
       Old:      Num := -4.0;
       Now:        Num;
    begin
-      Ada.Text_IO.Put_Line("Converging Sequence with" & Integer'Image(After) & 
+      Ada.Text_IO.Put_Line("Converging Sequence with" & Integer'Image(After) &
 			     " digits");
       for I in 3 .. 100 loop
 	 Now := 111.0  - 1130.0   /   Old   + 3000.0  /   (Old * Very_Old);
@@ -234,10 +234,10 @@ procedure Converging_Sequence is
       end loop;
       Ada.Text_IO.New_Line;
    end Task_1;
-   
+
    type Short is digits(8);
    type Long  is digits(16);
-   
+
    procedure Task_With_Short is new Task_1(Short, 8);
    procedure Task_With_Long  is new Task_1(Long, 16);
 begin
@@ -285,18 +285,18 @@ Converging Sequence with 16 digits
 with Ada.Text_IO, Ada.Numerics;
 
 procedure Chaotic_Bank is
-   
+
    generic
      type Num is digits <>;
      After: Positive;
    procedure Task_2;
-   
+
    procedure Task_2 is
       package IIO is new Ada.Text_IO.Integer_IO(Integer);
       package FIO is new Ada.Text_IO.Float_IO(Num);
       Balance: Num :=  Ada.Numerics.E - 1.0;
    begin
-      Ada.Text_IO.Put_Line("Chaotic Bank Society with" & 
+      Ada.Text_IO.Put_Line("Chaotic Bank Society with" &
 			     Integer'Image(After) & " digits");
       Ada.Text_IO.Put_Line("year        balance");
       for year in 1 .. 25 loop
@@ -307,13 +307,13 @@ procedure Chaotic_Bank is
       end loop;
       Ada.Text_IO.New_Line;
    end Task_2;
-   
+
    type Short is digits(8);
    type Long  is digits(16);
-   
+
    procedure Task_With_Short is new Task_2(Short, 8);
    procedure Task_With_Long  is new Task_2(Long, 16);
-   
+
 begin
    Task_With_Short;
    Task_With_Long;
@@ -366,25 +366,25 @@ year        balance
 
 
 ```Ada
-with Ada.Text_IO; use Ada.Text_IO;                                                                        
-                                                                                                          
-procedure Rumps_example is                                                                                
-                                                                                                          
-   type Short is digits(8);                                                                               
-   type Long  is digits(16);                                                                              
-                                                                                                          
-   A: constant := 77617.0;                                                                                
-   B: constant := 33096.0;                                                                                
-   C: constant := 333.75*B**6 + A**2*(11.0*A**2*B**2 - B**6 - 121.0*B**4 - 2.0) + 5.5*B**8 + A/(2.0*B);   
-                                                                                                          
-   package LIO is new Float_IO(Long);                                                                     
-   package SIO is new Float_IO(Short);                                                                    
-begin                                                                                                     
-   Put("Rump's Example, Short: ");                                                                        
-   SIO.Put(C, Fore => 1, Aft => 8, Exp => 0);  New_Line;                                                  
-   Put("Rump's Example, Long:  ");                                                                        
-   LIO.Put(C, Fore => 1, Aft => 16, Exp => 0); New_Line;                                                  
-end Rumps_example;  
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Rumps_example is
+
+   type Short is digits(8);
+   type Long  is digits(16);
+
+   A: constant := 77617.0;
+   B: constant := 33096.0;
+   C: constant := 333.75*B**6 + A**2*(11.0*A**2*B**2 - B**6 - 121.0*B**4 - 2.0) + 5.5*B**8 + A/(2.0*B);
+
+   package LIO is new Float_IO(Long);
+   package SIO is new Float_IO(Short);
+begin
+   Put("Rump's Example, Short: ");
+   SIO.Put(C, Fore => 1, Aft => 8, Exp => 0);  New_Line;
+   Put("Rump's Example, Long:  ");
+   LIO.Put(C, Fore => 1, Aft => 16, Exp => 0); New_Line;
+end Rumps_example;
 ```
 
 
@@ -510,7 +510,7 @@ function do_task1(){
     v[1] = 2
     v[2] = -4
     for (n=3; n<=100; n++) v[n] = 111 - 1130 / v[n-1] + 3000 / (v[n-1] * v[n-2])
-    
+
     for (i=3; i<=8; i++) print_results(i)
     print_results(20)
     print_results(30)
@@ -533,8 +533,8 @@ function do_task2(      balance, i){
 function do_task3(      a, b, f_ab){
     a = 77617
     b = 33096
-    
-    f_ab = 333.75 * b^6 + a^2 * (11*a^2*b^2 - b^6 - 121*b^4 - 2) + 5.5*b^8 + a/(2*b) 
+
+    f_ab = 333.75 * b^6 + a^2 * (11*a^2*b^2 - b^6 - 121*b^4 - 2) + 5.5*b^8 + a/(2*b)
     printf("\nTask 3\nf(%6.12f, %6.12f) = %10.24f", a, b, f_ab)
 }
 
@@ -607,39 +607,39 @@ Such exercises are very good examples that just because you have a nice library 
 
 void firstCase(){
 	mpf_t a,b,c;
-	
+
 	mpf_inits(a,b,c,NULL);
-	
+
 	mpf_set_str(a,"0.1",10);
 	mpf_set_str(b,"0.2",10);
 	mpf_add(c,a,b);
-	
+
 	gmp_printf("\n0.1 + 0.2 = %.*Ff",20,c);
 }
 
 void pathologicalSeries(){
 	int n;
 	mpf_t v1, v2, vn, a1, a2, a3, t2, t3, prod;
-	
+
 	mpf_inits(v1,v2,vn, a1, a2, a3, t2, t3, prod,NULL);
-	
+
 	mpf_set_str(v1,"2",10);
 	mpf_set_str(v2,"-4",10);
 	mpf_set_str(a1,"111",10);
 	mpf_set_str(a2,"1130",10);
 	mpf_set_str(a3,"3000",10);
-	
+
 	for(n=3;n<=100;n++){
 		mpf_div(t2,a2,v2);
 		mpf_mul(prod,v1,v2);
 		mpf_div(t3,a3,prod);
 		mpf_add(vn,a1,t3);
 		mpf_sub(vn,vn,t2);
-		
+
 		if((n>=3&&n<=8) || n==20 || n==30 || n==50 || n==100){
 			gmp_printf("\nv_%d : %.*Ff",n,(n==3)?1:(n>=4&&n<=7)?6:(n==8)?7:(n==20)?16:(n==30)?24:(n==50)?40:78,vn);
 		}
-		
+
 		mpf_set(v1,v2);
 		mpf_set(v2,vn);
 	}
@@ -647,26 +647,26 @@ void pathologicalSeries(){
 
 void healthySeries(){
 	int n;
-	
+
 	mpf_t num,denom,result;
 	mpq_t v1, v2, vn, a1, a2, a3, t2, t3, prod;
-	
+
 	mpf_inits(num,denom,result,NULL);
 	mpq_inits(v1,v2,vn, a1, a2, a3, t2, t3, prod,NULL);
-	
+
 	mpq_set_str(v1,"2",10);
 	mpq_set_str(v2,"-4",10);
 	mpq_set_str(a1,"111",10);
 	mpq_set_str(a2,"1130",10);
 	mpq_set_str(a3,"3000",10);
-	
+
 	for(n=3;n<=100;n++){
 		mpq_div(t2,a2,v2);
 		mpq_mul(prod,v1,v2);
 		mpq_div(t3,a3,prod);
 		mpq_add(vn,a1,t3);
 		mpq_sub(vn,vn,t2);
-		
+
 		if((n>=3&&n<=8) || n==20 || n==30 || n==50 || n==100){
 			mpf_set_z(num,mpq_numref(vn));
 			mpf_set_z(denom,mpq_denref(vn));
@@ -674,24 +674,24 @@ void healthySeries(){
 
 			gmp_printf("\nv_%d : %.*Ff",n,(n==3)?1:(n>=4&&n<=7)?6:(n==8)?7:(n==20)?16:(n==30)?24:(n==50)?40:78,result);
 		}
-		
+
 		mpq_set(v1,v2);
 		mpq_set(v2,vn);
 	}
 }
 
 int main()
-{	
+{
 	mpz_t rangeProd;
-	
+
 	firstCase();
-	
+
 	printf("\n\nPathological Series : ");
-	
+
 	pathologicalSeries();
-	
+
 	printf("\n\nNow a bit healthier : ");
-	
+
 	healthySeries();
 
 	return 0;
@@ -733,7 +733,7 @@ v_100 : 6.0000000193194779290600000000000000000000000000000000000000000000000000
 
 
 
-## C sharp
+## C#
 
 {{trans|Visual Basic .NET}}
 '''Compiler:''' Roslyn C# (language version >=7.3)
@@ -745,7 +745,7 @@ See VB.NET entry for details (Single is float in C#; Double is double, and Decim
 The following sections source code must be located in a single file.
 
 
-```csharp
+```c#
 #define USE_BIGRATIONAL
 #define BANDED_ROWS
 #define INCREASED_LIMITS
@@ -824,7 +824,7 @@ static class Common
 '''See''' [[#VB.NET Task 1]]
 
 
-```csharp
+```c#
 static class Task1
 {
     public static IEnumerable<float> SequenceSingle()
@@ -971,7 +971,7 @@ Wrong Convergence Sequence:
 '''See''' [[#VB.NET Task 2]]
 
 
-```csharp
+```c#
 static class Task2
 {
     public static IEnumerable<float> ChaoticBankSocietySingle()
@@ -1121,7 +1121,7 @@ Chaotic Bank Society:
 '''See''' [[#VB.NET Task 3]]
 
 
-```csharp
+```c#
 static class Task3
 {
     public static float SiegfriedRumpSingle(float a, float b)
@@ -1269,7 +1269,7 @@ BigRational:
 
 ## Clojure
 
-In Clojure, rational numbers are a first class data type!  This allow us to avoid these floating point calculation problems.  As long as the operations all involve integers, rational numbers will automatically be used behind the scenes.  If for some twisted reason you really wanted to introduce the error, you could change a number to a floating point in the equation to force floating point calculations instead.   
+In Clojure, rational numbers are a first class data type!  This allow us to avoid these floating point calculation problems.  As long as the operations all involve integers, rational numbers will automatically be used behind the scenes.  If for some twisted reason you really wanted to introduce the error, you could change a number to a floating point in the equation to force floating point calculations instead.
 
 ### Task 1: Converging Sequence
 
@@ -1380,7 +1380,7 @@ Balance after 25 (rational representation):
 The result converges to the wrong limit!
 {{out}}
 <pre style="height:20ex">
-       A 
+       A
    1      2
    2     -4
    3     18.5
@@ -1503,11 +1503,11 @@ Function v(n As UInteger, prev As __mpf_struct, prev2 As __mpf_struct) As __mpf_
   If n = 0 Then mpf_set_ui(@a, 0UL)
   If n = 1 Then mpf_set_ui(@a, 2UL)
   If n = 2 Then mpf_set_si(@a, -4L)
-  If n < 3 Then Return a 
+  If n < 3 Then Return a
   mpf_ui_div(@a, 1130UL, @prev)
   mpf_mul(@b, @prev, @prev2)
   mpf_ui_div(@c, 3000UL, @b)
-  mpf_ui_sub(@b, 111UL, @a) 
+  mpf_ui_sub(@b, 111UL, @a)
   mpf_add(@a, @b, @c)
   mpf_clear(@b)
   mpf_clear(@c)
@@ -1519,7 +1519,7 @@ Function f(a As Double, b As Double) As __mpf_Struct
   mpf_init(@temp1) : mpf_init(@temp2) : mpf_init(@temp3) : mpf_init(@temp4)
   mpf_init(@temp5) : mpf_init(@temp6) : mpf_init(@temp7) : mpf_init(@temp8)
   mpf_set_d(@temp1, a)               '' a
-  mpf_set_d(@temp2, b)               '' b 
+  mpf_set_d(@temp2, b)               '' b
   mpf_set_d(@temp3, 333.75)          '' 333.75
   mpf_pow_ui(@temp4, @temp2, 6UL)    '' b ^ 6
   mpf_mul(@temp3, @temp3, @temp4)    '' 333.75 * b^6
@@ -1535,7 +1535,7 @@ Function f(a As Double, b As Double) As __mpf_Struct
   mpf_mul(@temp7, @temp7, @temp5)    '' (11 * a^2 * b^2 - b^6 - 121 * b^4 - 2) * a^2
   mpf_add(@temp3, @temp3, @temp7)    '' 333.75 * b^6 + (11 * a^2 * b^2 - b^6 - 121 * b^4 - 2) * a^2
   mpf_set_d(@temp4, 5.5)             '' 5.5
-  mpf_pow_ui(@temp5, @temp2, 8UL)    '' b^8  
+  mpf_pow_ui(@temp5, @temp2, 8UL)    '' b^8
   mpf_mul(@temp4, @temp4, @temp5)    '' 5.5 * b^8
   mpf_add(@temp3, @temp3, @temp4)    '' 333.75 * b^6 + (11 * a^2 * b^2 - b^6 - 121 * b^4 - 2) * a^2 + 5.5 * b^8
   mpf_mul_ui(@temp4, @temp2, 2UL)    '' 2 * b
@@ -1554,9 +1554,9 @@ For i As Integer = 1 To 100
   If (i >= 3 AndAlso i <= 8) OrElse i = 20 OrElse i = 30 OrElse i = 50 OrElse i = 100 Then
     gmp_sprintf(@z,"%53.50Ff",@result) '' express result to 50 decimal places
     Print "n ="; i , z
-  End If 
+  End If
   prev2 = prev
-  prev = result    
+  prev = result
 Next
 
 mpf_clear(@prev) : mpf_clear(@prev2) '' note : prev = result
@@ -1567,16 +1567,16 @@ mpf_set_str(@e, "2.71828182845904523536028747135266249775724709369995", 10) '' e
 mpf_sub_ui(@balance, @e, 1UL)
 
 For i As ULong = 1 To 25
-  mpf_set_ui(@ii, i)  
+  mpf_set_ui(@ii, i)
   mpf_mul(@temp, @balance, @ii)
-  mpf_sub_ui(@balance, @temp, 1UL) 
-Next  
+  mpf_sub_ui(@balance, @temp, 1UL)
+Next
 
 Print
 Print "Chaotic B/S balance after 25 years : ";
 gmp_sprintf(@z,"%.16Ff",@balance) '' express balance to 16 decimal places
 Print z
-mpf_clear(@e) : mpf_clear(@balance) : mpf_clear(@ii) : mpf_clear(@temp) 
+mpf_clear(@e) : mpf_clear(@balance) : mpf_clear(@ii) : mpf_clear(@temp)
 
 Print
 Dim rump As __mpf_struct
@@ -1634,7 +1634,7 @@ Otherwise, a troublesome calculation might be recast into a different form that 
 
 Here, no such attempt is made. In the spirit of Formula Translation, this is a direct translation of the specified formulae into Fortran, with single and double precision results on display. There is no REAL*16 option, nor the REAL*10 that some systems allow to correspond to the eighty-bit floating-point format supported by the floating-point processor. The various integer constants cause no difficulty and I'm not bothering with writing them as <integer>.0 - the compiler can deal with this. The constants with fractional parts happen to be exactly represented in binary so there is no fuss over 333.75 and 333.75D0 whereas by contrast 0.1 and 0.1D0 are not equal. Similarly, there is no attempt to rearrange the formulae, for instance to have <code>A**2 * B**2</code> replaced by <code>(A*B)**2</code>, nor worry over <code>B**8</code> where 33096**8 = 1.439E36 and the largest possible single-precision number is 3.4028235E+38, in part because arithmetic within an expression can be conducted with a greater dynamic range. Most of all, no attention has been given to the subtractions...
 
-This would be F77 style Fortran, except for certain conveniences offered by F90, especially the availability of generic functions such as EXP whose type is determined by the type of its parameter, rather than having to use EXP and DEXP for single and double precision respectively, or else... The END statement for subroutines and functions names the routine being ended, a useful matter to have checked. 
+This would be F77 style Fortran, except for certain conveniences offered by F90, especially the availability of generic functions such as EXP whose type is determined by the type of its parameter, rather than having to use EXP and DEXP for single and double precision respectively, or else... The END statement for subroutines and functions names the routine being ended, a useful matter to have checked.
 ```Fortran
       SUBROUTINE MULLER
        REAL*4 VN,VNL1,VNL2	!The exact precision and dynamic range
@@ -1840,7 +1840,7 @@ Unlike a recurrence formula whereby a new result is calculated from previous res
 
 A simple function CBSERIES handles the special case deposit. The only question is how many terms of the series are required to produce a value accurate to the full precision in use. Thanks to the enquiry function EPSILON(x) offered by F90, the smallest number such that ''1 + eps'' differs from ''1'' for the precision of ''x'' is available without the need for cunning programming; this is a constant. An alternative form might be that EPSILON(X) returned the smallest number that, added to X, produced a result different from X in floating-point arithmetic of the precision of X - but this would not be a constant. Since the terms of the series are rapidly diminishing (and all are positive) a new term may be too small to affect the sum; this happens when S + T = S, or 1 + T/S = 1 + eps, thus the test in CBSERIES of T/S >= EPSILON(S) checks that the term affected the sum so that the loop stops for the first term that does not.
 
-A misthimk had TINY(S) instead of EPSILON(S), and this demonstrates again the importance of providing output that shows the actual  behaviour of a scheme and comparing it to expectations, since it showed that over a hundred terms were being calculated and the last term was tiny. Routine TINY(S) reports the smallest possible floating-point number in the precision of its parameter, which is not what is wanted! EPSILON(S) is tiny, but not so tiny as TINY(S). 2·220446049250313E-016 instead of 2·225073858507201E-308. 
+A misthimk had TINY(S) instead of EPSILON(S), and this demonstrates again the importance of providing output that shows the actual  behaviour of a scheme and comparing it to expectations, since it showed that over a hundred terms were being calculated and the last term was tiny. Routine TINY(S) reports the smallest possible floating-point number in the precision of its parameter, which is not what is wanted! EPSILON(S) is tiny, but not so tiny as TINY(S). 2·220446049250313E-016 instead of 2·225073858507201E-308.
 ```Fortran
       SUBROUTINE CBS	!The Chaotic Bank Society.
        INTEGER YEAR	!A stepper.
@@ -1877,7 +1877,7 @@ A misthimk had TINY(S) instead of EPSILON(S), and this demonstrates again the im
             IF (T/S .GE. EPSILON(S)) GO TO 3	!If they're still making a difference, another.
           CBSERIES = S		!Convergence is ever-faster as N increases.
         END FUNCTION CBSERIES	!So this is easy.
-      END SUBROUTINE CBS	!Madness! 
+      END SUBROUTINE CBS	!Madness!
 ```
 
 
@@ -2055,7 +2055,7 @@ link printf
 procedure sequence()
      local l := [2, -4]
      local iters := [3, 4, 5, 6, 7, 8, 20, 30, 50, 100, 200]
-     local i, j, k  
+     local i, j, k
      local n := 1
 
      write("Sequence convergence")
@@ -2381,7 +2381,7 @@ import java.math.RoundingMode;
 public class FPProblems {
     public static void wrongConvergence() {
         int[] INDEXES = new int[] { 3, 4, 5, 6, 7, 8, 20, 30, 50, 100 };
-        
+
         // Standard 64-bit floating point
         double[] fpValues = new double[100];
         fpValues[0] = 2.0;
@@ -2389,7 +2389,7 @@ public class FPProblems {
         for (int i = 2; i < fpValues.length; i++) {
             fpValues[i] = 111.0 - 1130.0 / fpValues[i - 1] + 3000.0 / (fpValues[i - 1] * fpValues[i - 2]);
         }
-        
+
         // Using rational representation
         BigRational[] brValues = new BigRational[100];
         brValues[0] = BigRational.valueOf(2);
@@ -2400,20 +2400,20 @@ public class FPProblems {
             BigRational clause3 = BigRational.valueOf(3000).divide(brValues[i - 1].multiply(brValues[i - 2]));
             brValues[i] = BigRational.valueOf(111).subtract(clause2).add(clause3);
         }
-        
+
         System.out.println("Wrong Convergence Sequence");
         for (int n : INDEXES) {
             BigDecimal value = brValues[n - 1].toBigDecimal(16, RoundingMode.HALF_UP);
             System.out.println("  For index " + n + ", FP value is " + fpValues[n - 1] + ", and rounded BigRational value is " + value.toPlainString());
         }
-        
+
         return;
     }
-    
+
     public static void chaoticBankSociety() {
         System.out.println("Chaotic Bank Society");
         double balance = Math.E - 1.0;
-        
+
         // Calculate e using first 1000 terms of the reciprocal of factorials formula
         BigRational e = BigRational.ONE;
         BigRational d = BigRational.ONE;
@@ -2422,10 +2422,10 @@ public class FPProblems {
             e = e.add(d.reciprocal());
         }
         System.out.println("DEBUG: e=" + e.toBigDecimal(100, RoundingMode.HALF_UP).toPlainString());
-        
+
         // Alternatively,
         // BigRational e = BigRational.valueOf(Math.E);
-        
+
         BigRational brBalance = e.subtract(BigRational.ONE);
         for (int year = 1; year <= 25; year++) {
             balance = (balance * year) - 1.0;
@@ -2434,7 +2434,7 @@ public class FPProblems {
             System.out.println("  Year=" + year + ", FP balance=" + balance + ", BigRational balance=" + bdValue.toPlainString());
         }
     }
-    
+
     public static void siegfriedRump() {
         System.out.println("Siegfried Rump formula");
         double fpValue;
@@ -2443,7 +2443,7 @@ public class FPProblems {
             double b = 33096.0;
             fpValue = 333.75 * Math.pow(b, 6) + a * a * (11.0 * a * a * b * b - Math.pow(b, 6) - 121.0 * Math.pow(b, 4) - 2.0) + 5.5 * Math.pow(b, 8) + a / (2.0 * b);
         }
-        
+
         BigRational brValue;
         {
             BigRational a = BigRational.valueOf(77617);
@@ -2456,15 +2456,15 @@ public class FPProblems {
             BigRational clause4 = a.divide(b.multiply(BigRational.valueOf(2)));
             brValue = clause1.add(clause2).add(clause3).add(clause4);
         }
-        
+
         System.out.println("  FP value is " + fpValue);
         System.out.println("  BigRational rounded value is " + brValue.toBigDecimal(64, RoundingMode.HALF_UP).toPlainString());
         System.out.println("  BigRational full value is " + brValue.toString());
     }
-    
+
     public static void main(String... args) {
         wrongConvergence();
-        
+
         System.out.println();
         chaoticBankSociety();
 
@@ -2529,7 +2529,7 @@ Siegfried Rump formula
 
 
 jq uses IEEE 754 64-bit numbers so it is easy to illustrate the pathological nature of the series.  This is shown in the following implementation of the first problem.  The second problem is solved using symbolic arithmetic.
- 
+
 
 ### v series
 
@@ -2552,7 +2552,7 @@ def v:
            | $new + {($s):  ((111 - (1130 / $x) + (3000 / ($x * $y)))) }
 	   end
        end;
-    . as $m | {} | v_($m) | .[($m|tostring)] ; 
+    . as $m | {} | v_($m) | .[($m|tostring)] ;
 ```
 
 
@@ -2723,7 +2723,7 @@ fun main(args: Array<String>) {
     var f  = c4 * b.pow(6, con480) + c7 * b.pow(8, con480) + a.divide(bigTwo * b, con480)
     val c8 = c5 * a.pow(2, con480) * b.pow(2, con480) - b.pow(6, con480) - c6 * b.pow(4, con480) - bigTwo
     f += c8 * a.pow(2, con480)
-    println("\nf(77617.0, 33096.0) is ${"%18.16f".format(f)}") 
+    println("\nf(77617.0, 33096.0) is ${"%18.16f".format(f)}")
 }
 ```
 
@@ -2854,11 +2854,11 @@ N[Map[v, {3, 4, 5, 6, 7, 8, 20, 30, 50, 100}], 80]
 {{out}}
 
 ```txt
-{18.500000000000000000000000000000000000000000000000000000000000000000000000000000, 
-9.3783783783783783783783783783783783783783783783783783783783783783783783783783784, 
-7.8011527377521613832853025936599423631123919308357348703170028818443804034582133, 
-7.1544144809752493535278906538603620243812338381972663465090506095308459549316587, 
-6.8067847369236329839417565962720090876232767078019311199463004079103629885888367, 
+{18.500000000000000000000000000000000000000000000000000000000000000000000000000000,
+9.3783783783783783783783783783783783783783783783783783783783783783783783783783784,
+7.8011527377521613832853025936599423631123919308357348703170028818443804034582133,
+7.1544144809752493535278906538603620243812338381972663465090506095308459549316587,
+6.8067847369236329839417565962720090876232767078019311199463004079103629885888367,
 6.5926327687044383927420027763659948265529823177346067194125634354115621230855591,
 6.0435521101892688677774773640975401331877150000061201379728002521382151385271029,
 6.0067860930312057585305540479532397058330723144383667645482877308904928243847153,
@@ -3117,7 +3117,7 @@ integer a = 77617,
 --   pb4121 = 121*power(b,4),
 --   pb6 = power(b,6),
 --   pb855 = 5.5*power(b,8),
---   f_ab = 333.75 * pb6 + pa2 * (pb2a211 - pb6 - pb4121 - 2) + pb855 + a/(2*b) 
+--   f_ab = 333.75 * pb6 + pa2 * (pb2a211 - pb6 - pb4121 - 2) + pb855 + a/(2*b)
 --printf(1,"f(%d, %d) = %.15f\n\n", {a, b, f_ab})
 bigatom pa2 = ba_power(a,2),
         pb2a211 = ba_multiply(11,ba_multiply(pa2,ba_power(b,2))),
@@ -3157,7 +3157,7 @@ f(77617, 33096) = -0.827396059946821
 
 
 
-###  gmp version 
+###  gmp version
 
 {{libheader|mpfr}}
 Note that bigatom is formally deprecated in favour of gmp. However there are significant benefits to the
@@ -3175,7 +3175,7 @@ Task3: needs at least 36 decimal places (my suspicions above re bigatom in 15 no
 include builtins\mpfr.e
 puts(1,"Task 1\n")
 constant {fns,fmts} = columnize({{3,1},{4,6},{5,6},{6,6},{7,6},{8,7},{20,16},{30,24},{50,40},{100,78}})
-mpfr_set_default_prec(-196) 
+mpfr_set_default_prec(-196)
 sequence v = {mpfr_init(2),mpfr_init(-4)}
 mpfr t1 = mpfr_init()
 for n=3 to 100 do
@@ -3194,13 +3194,13 @@ for n=3 to 100 do
         printf(1,"n = %-3d %s\n", {n, mpfr_sprintf(fmt,v[n])})
     end if
 end for
- 
+
 
 puts(1,"\nTask 2\n")
 --atom balance = exp(1)-1
 --for i=1 to 25 do balance = balance*i-1 end for
 --printf(1,"\nTask 2\nBalance after 25 years: $%12.10f", balance)
-mpfr_set_default_prec(-41) 
+mpfr_set_default_prec(-41)
 mpfr balance = mpfr_init("1.71828182845904523536028747135266249775724709369995"&
                            "95749669676277240766303535475945713821785251664274")
 for i=1 to 25 do
@@ -3219,12 +3219,12 @@ integer a = 77617,
 --   pb4121 = 121*power(b,4),
 --   pb6 = power(b,6),
 --   pb855 = 5.5*power(b,8),
---   f_ab = 333.75 * pb6 + pa2 * (pb2a211 - pb6 - pb4121 - 2) + pb855 + a/(2*b) 
+--   f_ab = 333.75 * pb6 + pa2 * (pb2a211 - pb6 - pb4121 - 2) + pb855 + a/(2*b)
 --printf(1,"f(%d, %d) = %.15f\n\n", {a, b, f_ab})
 -- (translation of FreeBASIC)
 mpfr {t2,t3,t4,t5,t6,t7} = mpfr_inits(6)
   mpfr_set_d(t1, a)          -- a
-  mpfr_set_d(t2, b)          -- b 
+  mpfr_set_d(t2, b)          -- b
   mpfr_set_d(t3, 333.75)     -- 333.75
   mpfr_pow_si(t4, t2, 6)     -- b ^ 6
   mpfr_mul(t3, t3, t4)       -- 333.75 * b^6
@@ -3240,7 +3240,7 @@ mpfr {t2,t3,t4,t5,t6,t7} = mpfr_inits(6)
   mpfr_mul(t7, t7, t5)       -- (11 * a^2 * b^2 - b^6 - 121 * b^4 - 2) * a^2
   mpfr_add(t3, t3, t7)       -- 333.75 * b^6 + (11 * a^2 * b^2 - b^6 - 121 * b^4 - 2) * a^2
   mpfr_set_d(t4, 5.5)        -- 5.5
-  mpfr_pow_si(t5, t2, 8)     -- b^8  
+  mpfr_pow_si(t5, t2, 8)     -- b^8
   mpfr_mul(t4, t4, t5)       -- 5.5 * b^8
   mpfr_add(t3, t3, t4)       -- 333.75 * b^6 + (11 * a^2 * b^2 - b^6 - 121 * b^4 - 2) * a^2 + 5.5 * b^8
   mpfr_mul_si(t4, t2, 2)     -- 2 * b
@@ -3371,7 +3371,7 @@ def rump(generic_a, generic_b) -> float:
     fractional_result = Fraction('333.75') * b**6 \
         + a**2 * ( 11 * a**2 * b**2 - b**6 - 121 * b**4 - 2 ) \
         + Fraction('5.5') * b**8 + a / (2 * b)
-    return(float(fractional_result)) 
+    return(float(fractional_result))
 
 print("rump(77617, 33096) = ", rump(77617.0, 33096.0))
 
@@ -3430,7 +3430,7 @@ The examples below use real numbers, and the <code>x</code> function is used to 
   (displayln "TASK 1")
   (for ((n (in-list '(3 4 5 6 7 8 20 30 50 100))))
     (printf "n=~a\t~a~%" n (decimal.18 (task-1 n))))
-  
+
   (printf "TASK 2: balance after 25 years = ~a~%" (decimal.18 (task-2)))
 
   (let ((t3 (task-3 77617 33096)))
@@ -3489,7 +3489,7 @@ TASK 3: f(77617, 33096) = -54767/66192 = -0.827396059946821368
 
 ## REXX
 
-The REXX language uses character-based arithmetic.   So effectively, it looks, feels, and tastes like <u>decimal</u> floating point 
+The REXX language uses character-based arithmetic.   So effectively, it looks, feels, and tastes like <u>decimal</u> floating point
 (implemented in software).
 
 So, the only (minor) problem is how many decimal digits should be used to solve these pathological floating point problems.
@@ -3540,16 +3540,16 @@ v.100 = 6.00000001931947792910
 
 ### The Chaotic Bank Society
 
-To be truly accurate, the number of decimal digits for   <big> ''' ''e'' ''' </big>   should have as many decimal digits as given on the 
+To be truly accurate, the number of decimal digits for   <big> ''' ''e'' ''' </big>   should have as many decimal digits as given on the
 
-command line (if specified),   but what's currently coded will suffice for the (default) number of years. 
+command line (if specified),   but what's currently coded will suffice for the (default) number of years.
 
-However, it makes a difference computing the balance   (with 341 decimal digits)   after   '''183'''   years   (when at 
+However, it makes a difference computing the balance   (with 341 decimal digits)   after   '''183'''   years   (when at
 
-that point,   the balance becomes negative and grows increasing negative fast).  
+that point,   the balance becomes negative and grows increasing negative fast).
 
 With 150 decimal digits, the balance becomes negative after   '''96'''   years.
- 
+
 
 ```rexx
 /*REXX pgm (pathological FP problem): the chaotic bank society offering a new investment*/
@@ -3656,7 +3656,7 @@ Ruby numbers have a "quo" division method, which returns a rational (a fraction)
 ```Ruby
 ar = [0, 2, -4]
 100.times{ar << (111 - 1130.quo(ar[-1])+ 3000.quo(ar[-1]*ar[-2])) }
- 
+
 [3, 4, 5, 6, 7, 8, 20, 30, 50, 100].each do |n|
   puts "%3d -> %0.16f" % [n, ar[n]]
 end
@@ -3910,7 +3910,7 @@ di %21x 1.71828182845904523
 =={{header|TI-83 BASIC}}==
 '''A sequence that seems to converge to a wrong limit'''
 
-Use the SEQ mode to enter the arithmetic progression. Note the way to set 
+Use the SEQ mode to enter the arithmetic progression. Note the way to set
   u(1)=2
   u(2)=-4
 
@@ -4505,7 +4505,7 @@ fcn tostr(bn,m,r){ // convert big int (*10^m) to float string with len r remaind
 }
 
 println("1st: Convergent series");
-foreach n in (T(3,4,5,6,7,8,20,30,50,100)){ 
+foreach n in (T(3,4,5,6,7,8,20,30,50,100)){
    "n =%3d; %3.20F  %s".fmt(n,series[n-1],u(n-1)).println();
 }
 ```

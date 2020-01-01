@@ -1419,12 +1419,12 @@ true
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 The LuhnCheck method takes an array of integers because values in memory will be integer-aligned.
 
 
-```csharp
+```c#
 
     public static class Luhn
     {
@@ -1470,7 +1470,7 @@ The LuhnCheck method takes an array of integers because values in memory will be
 Note that the original implementation, which follows, is flawed because it assumes that n is a number which, when represented as a string, has an even number of characters. Granted, the brief is for Credit Card Numbers which are all, at the time of writing, an even number of digits.
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1530,7 +1530,7 @@ namespace Luhn
 
 A solution without using LINQ, works for all versions of .NET.
 
-```csharp
+```c#
 
 using System;
 namespace Luhn_Test
@@ -1598,7 +1598,7 @@ namespace Luhn_Test
 
 A solution optimized for readability:
 
-```csharp
+```c#
 
 using System;
 using System.Linq;
@@ -1628,7 +1628,7 @@ public class CreditCardLogic
 
 Extremely compact version uses Europa rtl library https://github.com/CodeAlkemist/Europa-rtl
 
-```csharp
+```c#
 
 using System;
 using EuropaRTL.Utilities;

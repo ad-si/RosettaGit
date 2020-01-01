@@ -12,19 +12,19 @@ tags = []
 
 {{task|Image processing}}
 
-Many image processing algorithms are defined for [[wp:Grayscale|grayscale]] (or else monochromatic) images. 
+Many image processing algorithms are defined for [[wp:Grayscale|grayscale]] (or else monochromatic) images.
 
 
 ;Task:
-Extend the data storage type defined [[Basic_bitmap_storage|on this page]] to support grayscale images. 
+Extend the data storage type defined [[Basic_bitmap_storage|on this page]] to support grayscale images.
 
-Define two operations, one to convert a color image to a grayscale image and one for the backward conversion. 
+Define two operations, one to convert a color image to a grayscale image and one for the backward conversion.
 
 To get luminance of a color use the formula recommended by [http://www.cie.co.at/index_ie.html CIE]:
 
  <big> L  =  0.2126 &times; R   +   0.7152 &times; G   +   0.0722 &times; B </big>
 
-When using floating-point arithmetic make sure that rounding errors would not cause run-time problems or else distorted results when calculated luminance is stored as an unsigned integer. 
+When using floating-point arithmetic make sure that rounding errors would not cause run-time problems or else distorted results when calculated luminance is stored as an unsigned integer.
 
 
 
@@ -122,10 +122,10 @@ This uses the formula for gamma-corrected images, which is more appropriate to t
 ```bbcbasic
       Width% = 200
       Height% = 200
-      
+
       VDU 23,22,Width%;Height%;8,16,16,128
       *display c:\lena
-      
+
       FOR y% = 0 TO Height%-1
         FOR x% = 0 TO Width%-1
           rgb% = FNgetpixel(x%,y%)
@@ -137,13 +137,13 @@ This uses the formula for gamma-corrected images, which is more appropriate to t
         NEXT
       NEXT y%
       END
-      
+
       DEF PROCsetpixel(x%,y%,r%,g%,b%)
       COLOUR 1,r%,g%,b%
       GCOL 1
       LINE x%*2,y%*2,x%*2,y%*2
       ENDPROC
-      
+
       DEF FNgetpixel(x%,y%)
       LOCAL col%
       col% = TINT(x%*2,y%*2)
@@ -202,7 +202,7 @@ grayimage tograyscale(image img)
    unsigned int ofs;
 
    timg = alloc_grayimg(img->width, img->height);
-   
+
    for(x=0; x < img->width; x++)
    {
       for(y=0; y < img->height; y++)
@@ -232,7 +232,7 @@ image tocolor(grayimage img)
    unsigned int ofs;
 
    timg = alloc_img(img->width, img->height);
-   
+
    for(x=0; x < img->width; x++)
    {
       for(y=0; y < img->height; y++)
@@ -260,10 +260,10 @@ image tocolor(grayimage img)
 
 * ''Luminance'' is rounded. Since the C implementation is based on unsigned char (256 possible values per components), L can be at most 255.0 and rounding gives 255, as we expect. Changing the color_component type would only change 256, 255.0 and 255 values here written in something else, the code would work the same.
 
-=={{header|C sharp|C#}}==
+## C#
 To convert TO grayscale:
 
-```csharp
+```c#
 
 Bitmap tImage = new Bitmap("spectrum.bmp");
 
@@ -273,7 +273,7 @@ for (int x = 0; x < tImage.Width; x++)
 	{
 		Color tCol = tImage.GetPixel(x, y);
 
-		// L = 0.2126·R + 0.7152·G + 0.0722·B 
+		// L = 0.2126·R + 0.7152·G + 0.0722·B
 		double L = 0.2126 * tCol.R + 0.7152 * tCol.G + 0.0722 * tCol.B;
 		tImage.SetPixel(x, y, Color.FromArgb(Convert.ToInt32(L), Convert.ToInt32(L), Convert.ToInt32(L)));
 	}
@@ -294,31 +294,31 @@ tImage.Save("spectrum2.bmp");
         '[java.awt Color]
         '[java.awt.image BufferedImage]))
 
-(defn rgb-to-gray [color-image] 
+(defn rgb-to-gray [color-image]
   (let [width (.getWidth color-image)]
     (partition width
                (for [x (range width)
                      y (range (.getHeight color-image))]
-                 (let [rgb (.getRGB color-image x y) 
-                       rgb-object (new Color rgb) 
-                       r (.getRed rgb-object) 
+                 (let [rgb (.getRGB color-image x y)
+                       rgb-object (new Color rgb)
+                       r (.getRed rgb-object)
                        g (.getGreen rgb-object)
-                       b (.getBlue rgb-object) 
+                       b (.getBlue rgb-object)
                        a (.getAlpha rgb-object)]
                    ;Compute the grayscale value an return it: L = 0.2126·R + 0.7152·G + 0.0722·B
                    (+ (* r 0.2126) (* g 0.7152) (* b 0.0722)))))))
 
 
 (defn write-matrix-to-image [matrix filename]
-  (ImageIO/write 
-   (let [height (count matrix) 
-         width (count (first matrix)) 
+  (ImageIO/write
+   (let [height (count matrix)
+         width (count (first matrix))
          output-image (new BufferedImage width height BufferedImage/TYPE_BYTE_GRAY)]
-     (doseq [row-index    (range height) 
-             column-index (range width)] 
+     (doseq [row-index    (range height)
+             column-index (range width)]
        (.setRGB output-image column-index row-index (.intValue (nth (nth matrix row-index) column-index))))
      output-image)
-   "png" 
+   "png"
    (new File filename)))
 
 (println
@@ -352,7 +352,7 @@ Use the function rgb-to-gray-image to convert a rgb-image as loaded by the funct
       gray-image)))
 
 (export 'rgb-to-gray-image)
-      
+
 
 (defun grayscale-image-to-pgm-file (image file-name &optional (max-value 255))
   (with-open-file (p file-name :direction :output
@@ -792,7 +792,7 @@ subroutine rgbtosc(sc, colored)
      sc%channel = floor(0.2126*colored%red + 0.7152*colored%green + &
                         0.0722*colored%blue)
   end if
-  
+
 end subroutine rgbtosc
 
 subroutine sctorgb(colored, sc)
@@ -1036,14 +1036,14 @@ function toGray(img) {
   let imgH = img.height;
   cnv.width = imgW;
   cnv.height = imgH;
-  
+
   ctx.drawImage(img, 0, 0);
   let pixels = ctx.getImageData(0, 0, imgW, imgH);
   for (let y = 0; y < pixels.height; y ++) {
     for (let x = 0; x < pixels.width; x ++) {
       let i = (y * 4) * pixels.width + x * 4;
       let avg = (pixels.data[i] + pixels.data[i + 1] + pixels.data[i + 2]) / 3;
-      
+
       pixels.data[i] = avg;
       pixels.data[i + 1] = avg;
       pixels.data[i + 2] = avg;
@@ -1078,7 +1078,7 @@ function gray2rgb(img::Image)
     g = map((x)->RGB{Ufixed8}(x, x, x), img.data)
     return Image(g, spatialorder=spatialorder(img))
 end
- 
+
 ima = imread("grayscale_image_color.png")
 imb = rgb2gray(ima)
 imc = gray2rgb(imb)
@@ -1191,27 +1191,27 @@ end
 function ConvertToGrayscaleImage( bitmap )
     local size_x, size_y = #bitmap, #bitmap[1]
     local gray_im = {}
-  
+
     for i = 1, size_x do
         gray_im[i] = {}
-        for j = 1, size_y do 
+        for j = 1, size_y do
             gray_im[i][j] = math.floor( 0.2126*bitmap[i][j][1] + 0.7152*bitmap[i][j][2] + 0.0722*bitmap[i][j][3] )
         end
     end
-    
+
     return gray_im
 end
 
 function ConvertToColorImage( gray_im )
-    local size_x, size_y = #gray_im, #gray_im[1]    
+    local size_x, size_y = #gray_im, #gray_im[1]
     local bitmap = Allocate_Bitmap( size_x, size_y )         -- this function is defined at http://rosettacode.org/wiki/Basic_bitmap_storage#Lua
 
     for i = 1, size_x do
-        for j = 1, size_y do 
+        for j = 1, size_y do
             bitmap[i][j] = { gray_im[i][j], gray_im[i][j], gray_im[i][j] }
         end
     end
-    
+
     return bitmap
 end
 ```
@@ -1247,7 +1247,7 @@ Mathematica has a built-in grayscale conversion function called "ColorConvert". 
 
 ```Mathematica
 toGrayscale[rgb_Image] := ImageApply[#.{0.2126, 0.7152, 0.0722}&, rgb]
-toFakeRGB[L_Image] := ImageApply[{#, #, #}&, L] 
+toFakeRGB[L_Image] := ImageApply[{#, #, #}&, L]
 ```
 
 
@@ -1255,7 +1255,7 @@ toFakeRGB[L_Image] := ImageApply[{#, #, #}&, L]
 ## MATLAB
 
 Built in colour to grayscale converter uses the following forumula:
-0.2989*R + 0.5870*G + 0.1140*B 
+0.2989*R + 0.5870*G + 0.1140*B
 
 ```Matlab
 function [grayImage] = colortograyscale(inputImage)
@@ -1360,7 +1360,7 @@ function gray = rgb2gray (rgb)
 endfunction
 
 function lum = luminance(rgb)
-   lum = 0.2126*rgb(:,:,1) + 0.7152*rgb(:,:,2) + 0.0722*rgb(:,:,3); 
+   lum = 0.2126*rgb(:,:,1) + 0.7152*rgb(:,:,2) + 0.0722*rgb(:,:,3);
 endfunction
 ```
 
@@ -1384,17 +1384,17 @@ define
    fun {ToGraymap bitmap(Arr)}
       graymap({Array2D.map Arr Luminance})
    end
-   
+
    fun {Luminance Color}
       F = {Record.map Color Int.toFloat}
    in
       0.2126*F.1 + 0.7152*F.2 + 0.0722*F.3
    end
-   
+
    fun {FromGraymap graymap(Arr)}
       bitmap({Array2D.map Arr ToColor})
    end
-   
+
    fun {ToColor Lum}
       L = {Float.toInt Lum}
    in
@@ -1446,7 +1446,7 @@ exit 0;
 
 ## Perl 6
 
-This script expects to be fed a P6 .ppm file name at the command line. It will convert it to grey scale and save it as a binary portable grey map (P5 .pgm) file.  
+This script expects to be fed a P6 .ppm file name at the command line. It will convert it to grey scale and save it as a binary portable grey map (P5 .pgm) file.
 
 ```perl6
 sub MAIN ($filename = 'default.ppm') {
@@ -1478,7 +1478,7 @@ Original: [[File:Ppm-perl6.png]]   Grey Scale: [[File:Pgm-g2-perl6.png]]
 ## Phix
 
 {{Trans|Euphoria}}
-Requires read_ppm() from [[Bitmap/Read_a_PPM_file#Phix|Read_a_PPM_file]], see [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]] for actual use. 
+Requires read_ppm() from [[Bitmap/Read_a_PPM_file#Phix|Read_a_PPM_file]], see [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]] for actual use.
 Included as demo\rosetta\Bitmap_Greyscale.exw
 
 ```Phix
@@ -1494,7 +1494,7 @@ sequence color
     end for
     return image
 end function
- 
+
 sequence img = read_ppm("Lena.ppm")
     img = to_gray(img)
 ```
@@ -1619,7 +1619,7 @@ end;
 ```PureBasic
 Procedure ImageGrayout(image)
   Protected w, h, x, y, r, g, b, gray, color
-  
+
   w = ImageWidth(image)
   h = ImageHeight(image)
   StartDrawing(ImageOutput(image))
@@ -1638,14 +1638,14 @@ EndProcedure
 
 Procedure ImageToColor(image)
   Protected w, h, x, y, v, gray
-  
+
   w = ImageWidth(image)
   h = ImageHeight(image)
   StartDrawing(ImageOutput(image))
   For x = 0 To w - 1
     For y = 0 To h - 1
       gray = Point(x, y)
-      v    = Red(gray) ;for gray, each of the color's components is the same 
+      v    = Red(gray) ;for gray, each of the color's components is the same
       ;color = RGB(0.2126*v, 0.7152*v, 0.0722*v)
       Plot(x, y, RGB(v, v, v))
     Next
@@ -1674,7 +1674,7 @@ def togreyscale(self):
             l = int(0.2126 * r + 0.7152 * g + 0.0722 * b)
             self.set(w, h, Colour(l, l, l))
 
-Bitmap.togreyscale = togreyscale    
+Bitmap.togreyscale = togreyscale
 
 
 # Draw something simple
@@ -1721,7 +1721,7 @@ P3
 
 
 ## R
-           
+
 {{libheader|pixmap}}
 
 ```r
@@ -1800,7 +1800,7 @@ I gave up on uploading to Rosetta Code.
     (define r (bytes-ref pixels (+ i 1)))
     (define g (bytes-ref pixels (+ i 2)))
     (define b (bytes-ref pixels (+ i 3)))
-    (define l (exact-floor (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b))))    
+    (define l (exact-floor (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b))))
     (bytes-set! pixels (+ i 1) l)
     (bytes-set! pixels (+ i 2) l)
     (bytes-set! pixels (+ i 3) l))
@@ -1819,7 +1819,7 @@ rosetta
 
 ## REXX
 
-Note:   REXX uses characters instead of binary for storing numbers, so there is no rounding   (using characters to 
+Note:   REXX uses characters instead of binary for storing numbers, so there is no rounding   (using characters to
 
           store numbers is almost the same as using decimal floating point).
 

@@ -697,10 +697,10 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|C#|3.0+}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

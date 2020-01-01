@@ -230,7 +230,7 @@ out of bounds    +12544 > [:    +10000]- exiting to except bounds error
 As of February 2009 no open source libraries to do this task have been located.
 
 
-## C sharp
+## C#
 
 Strictly speaking, this task is impossible in C# because a type that behaves like an integer (<code>int</code>, or <code>System.Int32</code>; <code>Integer</code> in VB.NET) must be a struct (in order to have value-type semantics), and, since C# does not allow the definition of a parameterless constructor for a struct (instead generating a default parameterless constructor that sets each of its fields to the default value for the type of the field), an instance of the struct with the forbidden value of zero can be created through that default constructor.
 
@@ -239,7 +239,7 @@ A way to overcome this in the type's public interface, however, is to expose the
 Through operator overloading, it is possible to declare types in C# with the full complement of operators available on the primitive types. The following structure attempts to mimic the behavior of the <code>int</code> type in C# on .NET Core as much as possible, including interfaces and static members, delegating as much implementation as possible to the <code>Integer</code> type itself.
 
 
-```csharp
+```c#
 using System;
 using System.Globalization;
 

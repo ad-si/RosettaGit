@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 ;Task:
-Demonstrate how to copy data structures containing complex heterogeneous and cyclic semantics. 
+Demonstrate how to copy data structures containing complex heterogeneous and cyclic semantics.
 
 This is often referred to as [[wp:Deep_copy#Deep_copy|deep copying]], and is normally required where structures are mutable and to ensure that independent copies can be manipulated without side-effects.
 
@@ -149,7 +149,7 @@ Here is a list-of-maps, we copy it using cp:
 
 
 ```babel>babel
- ([map "foo" 3 "bar" 17] [map "foo" 4 "bar" 18] [map "foo" 5 "bar" 19] [map "foo" 0 "bar" 20]) cp 
+ ([map "foo" 3 "bar" 17] [map "foo" 4 "bar" 18] [map "foo" 5 "bar" 19] [map "foo" 0 "bar" 20]) cp
 babel> 2 ith "bar" lumap ! itod say !
 19
 ```
@@ -203,23 +203,23 @@ void showCake(layer3 cake){
 int main()
 {
 	layer3 cake1,cake2;
-	
+
 	cake1.d = 1;
 	cake1.e = 2;
 	cake1.l1.a = 3;
 	cake1.l2.b = 4;
 	cake1.l2.l1.a = 5;
-	
+
 	printf("Cake 1 is : ");
 	showCake(cake1);
-	
+
 	cake2 = cake1;
-	
+
 	cake2.l2.b += cake2.l2.l1.a;
-	
+
 	printf("\nCake 2 is : ");
 	showCake(cake2);
-	
+
 	return 0;
 }
 
@@ -263,7 +263,7 @@ typedef cell* list;
 
 void addToList(list *a,int num){
 	list temp, holder;
-	
+
 	if(*a==NULL){
 		*a = (list)malloc(sizeof(cell));
 		(*a)->data = num;
@@ -271,47 +271,47 @@ void addToList(list *a,int num){
 	}
 	else{
 		temp = *a;
-		
+
 		while(temp->next!=NULL)
 			temp = temp->next;
-		
+
 		holder = (list)malloc(sizeof(cell));
 		holder->data = num;
 		holder->next = NULL;
-		
+
 		temp->next = holder;
 	}
 }
 
 list copyList(list a){
 	list b, tempA, tempB, temp;
-	
+
 	if(a!=NULL){
 		b = (list)malloc(sizeof(cell));
 		b->data = a->data;
 		b->next = NULL;
-		
+
 		tempA = a->next;
 		tempB = b;
-		
+
 		while(tempA!=NULL){
 			temp = (list)malloc(sizeof(cell));
 			temp->data = tempA->data;
 			temp->next = NULL;
-		
+
 			tempB->next = temp;
 			tempB = temp;
-		
+
 			tempA = tempA->next;
 		}
 	}
-	
+
 	return b;
 }
 
 void printList(list a){
 	list temp = a;
-	
+
 	while(temp!=NULL){
 		printf("%d,",temp->data);
 		temp = temp->next;
@@ -323,22 +323,22 @@ int main()
 {
 	list a,b;
 	int i;
-	
+
 	for(i=1;i<=5;i++)
 		addToList(&a,i);
-	
+
 	printf("List a is : ");
-	
+
 	printList(a);
-	
+
 	b = copyList(a);
-	
+
 	free(a);
-	
+
 	printf("\nList a destroyed, List b is : ");
-	
+
 	printList(b);
-	
+
 	return 0;
 }
 
@@ -355,10 +355,10 @@ List a destroyed, List b is : 1,2,3,4,5,
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace prog
@@ -368,18 +368,18 @@ namespace prog
 		class MyClass : ICloneable
 		{
 			public MyClass() { f = new int[3]{2,3,5}; c = '1'; }
-			
+
 			public object Clone()
-			{				
+			{
 				MyClass cpy = (MyClass) this.MemberwiseClone();
-				cpy.f = (int[]) this.f.Clone();			
+				cpy.f = (int[]) this.f.Clone();
 				return cpy;
 			}
-			
+
 			public char c;
 			public int[] f;
 		}
-		
+
 		public static void Main( string[] args )
 		{
 			MyClass c1 = new MyClass();
@@ -401,7 +401,7 @@ Common Lisp has a printed notation which preserves circularity and shared substr
 We can copy a structure by printing it this way to a string and then reading the resulting string back to data.
 
 The circular notation consists of the two elements <code>#num= obj</code> and <code>#<num>#</code>.
-For instance <code>#42=(a b)</code> denotes the list <code>(a b)</code> and furthermore, it associates it with the number 42. Then, later in the same form, #42# denotes an additional occurence of the same <code>(a b)</code> object. So for instance, a cons cell whose <code>car</code> is 1, and whose <code>cdr</code> points back to that cons cell is written <code>#1=(1 . #1#)</code>. 
+For instance <code>#42=(a b)</code> denotes the list <code>(a b)</code> and furthermore, it associates it with the number 42. Then, later in the same form, #42# denotes an additional occurence of the same <code>(a b)</code> object. So for instance, a cons cell whose <code>car</code> is 1, and whose <code>cdr</code> points back to that cons cell is written <code>#1=(1 . #1#)</code>.
 
 
 ```lisp
@@ -599,7 +599,7 @@ func (c cds) deepcopy() *cds {
 
 // demo
 func main() {
-    // create and populate a structure 
+    // create and populate a structure
     c1 := &cds{1, "one", []byte("unit"), map[int]bool{1: true}}
     fmt.Println(c1)      // show it
     c2 := c1.deepcopy()  // copy it
@@ -792,7 +792,7 @@ Output:
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-Unicon and Icon support heterogeneous structures with loops.  The Unicon book has an example of a simple algorithm for producing a deep copy of a structured value (set, list, table, or record); however, that code did not handle graph structures that are not trees. The code for deepcopy below from Unilib is a modification that addresses loops. 
+Unicon and Icon support heterogeneous structures with loops.  The Unicon book has an example of a simple algorithm for producing a deep copy of a structured value (set, list, table, or record); however, that code did not handle graph structures that are not trees. The code for deepcopy below from Unilib is a modification that addresses loops.
 
 The code requires modification to run under Icon as Unicon extended key(X) to operate on lists and records not just tables.
 
@@ -838,10 +838,10 @@ procedure main()
    knotc   := copy(knot)     # built-in copy (shallow)
    knotdc  := deepcopy(knot) # deep copy
 
-    
-   showdeep("knota  (assignment) vs. knot",knota,knot) 
-   showdeep("knotc  (copy)  vs. knot",knotc,knot) 
-   showdeep("knotdc (deepcopy)  vs. knot",knotdc,knot) 
+
+   showdeep("knota  (assignment) vs. knot",knota,knot)
+   showdeep("knotc  (copy)  vs. knot",knotc,knot)
+   showdeep("knotdc (deepcopy)  vs. knot",knotdc,knot)
 
    xdump("knot   (original)",knot)
    xdump("knota  (assignment)",knota)
@@ -856,7 +856,7 @@ class Class1(a1,a2)     # class - looks like a record under the covers
       self.a1 := 1
       return
    end
-initially  
+initially
    self.a1 := 0
 end
 
@@ -888,9 +888,9 @@ end
 
 {{libheader|Unicon Code Library}}
 [https://tapestry.tucson.az.us/twiki/bin/view/Main/DeepCopy DeepCopy.icn]
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
-[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn provides xdump] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn provides xdump]
 
 The sample of output below compares all elements of a copy of a structure against the original.  Immutable types like numbers, strings, and csets will show as the same (i.e. ===) and different mutable types will show as not the same (i.e. ~===).  This clearly shows the difference between assignment, copy, and deepcopy.
 
@@ -1066,7 +1066,7 @@ fun <T : Serializable> deepCopy(obj: T?): T? {
     val ois  = ObjectInputStream(bais)
     @Suppress("unchecked_cast")
     return ois.readObject() as T
-} 
+}
 
 class Person(
     val name: String,
@@ -1169,9 +1169,9 @@ local(copy) = #myobject->ascopydeep
 
 ```lingo
 -- Supports lists, property lists, images, script instances and scalar values (integer, float, string, symbol).
-on deepcopy (var, cycleCheck)   
+on deepcopy (var, cycleCheck)
   case ilk(var) of
-  #list, #propList, #image: 
+  #list, #propList, #image:
     return var.duplicate()
   #instance:
     if string(var) starts "<Xtra " then return var -- deep copy makes no sense for Xtra instances
@@ -1183,7 +1183,7 @@ on deepcopy (var, cycleCheck)
       copy.setProp(var.getPropAt(i), deepcopy(var[i], cycleCheck))
     end repeat
     return copy
-  otherwise: 
+  otherwise:
     return var
   end case
 end
@@ -1216,27 +1216,27 @@ would also deep-copy metatables, function upvalues, etc.
 
 ```Lua
 function _deepcopy(o, tables)
- 
+
   if type(o) ~= 'table' then
     return o
   end
- 
+
   if tables[o] ~= nil then
     return tables[o]
   end
- 
+
   local new_o = {}
   tables[o] = new_o
- 
+
   for k, v in next, o, nil do
     local new_k = _deepcopy(k, tables)
     local new_v = _deepcopy(v, tables)
     new_o[new_k] = new_v
   end
- 
+
   return new_o
 end
- 
+
 function deepcopy(o)
   return _deepcopy(o, {})
 end
@@ -1248,12 +1248,12 @@ end
 ```txt
 > a = {'beans', 'sausage', 'eggs', {table='wood', fork='silver', dish='china'}}
 > aa = deepcopy(a)
-> 
-> a   
+>
+> a
 table: 0x55ef852b8390
 > aa
 table: 0x55ef852b4e50
-> 
+>
 > aa[2]
 sausage
 > aa[2] = 'bacon'
@@ -1261,12 +1261,12 @@ sausage
 bacon
 > a[2]
 sausage
-> 
+>
 > a[4]
 table: 0x55ef852b8880
 > aa[4]
 table: 0x55ef8528d6d0
-> aa[4].dish 
+> aa[4].dish
 china
 ```
 
@@ -1278,7 +1278,7 @@ Works with self-referencing / cyclic tables as well:
 > z[1][2] = {}
 > z[1][2][3] = z
 > zz = deepcopy(z)
-> z  
+> z
 table: 0x557659e84c00
 > zz
 table: 0x557659e59630
@@ -1350,7 +1350,7 @@ function deepcopy(o, mode)
   while #stack ~= 0 do
     local t = table.remove(stack)
     local new_t = tables[t]
-    
+
     for k,v in next, t, nil do
       if deep_keys   then k = copy(k) end
       if deep_values then v = copy(v) end
@@ -1495,7 +1495,7 @@ Everything in Mathematica is a value type.
 
 ```Mathematica
 a = {"foo", \[Pi], {<|
-     "deep" -> {# + 
+     "deep" -> {# +
          1 &, {{"Mathematica"}, {{"is"}, {"a"}}, {{{"cool"}}}, \
 {{"programming"}, {"language!"}}}}|>}};
 b = a;

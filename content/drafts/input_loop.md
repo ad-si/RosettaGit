@@ -473,10 +473,10 @@ void read_lines(std::istream& is, OutIt dest)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.IO;
 

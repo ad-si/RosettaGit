@@ -436,10 +436,10 @@ Number of minimum length Brauer chains: 6583
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace AdditionChains {

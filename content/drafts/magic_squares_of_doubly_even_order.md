@@ -697,7 +697,7 @@ It's Magic Sum is: 260
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace MagicSquareDoublyEven

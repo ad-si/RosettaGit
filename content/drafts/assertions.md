@@ -358,7 +358,7 @@ The behavior of a failed assertion is controlled by the listeners in the TraceLi
 Calls to methods of the Debug class are only compiled when the DEBUG compiler constant is defined, and so are intended for asserting invariants in internal code that could only be broken because of logic errors. Calls to methods of the Trace class similarly require the TRACE constant, which, however, is defined by default for both debug and release builds in Visual Studio projects—trace assertions can thus be used for various logging purposes in production code.
 
 
-```csharp
+```c#
 using System.Diagnostics; // Debug and Trace are in this namespace.
 
 static class Program

@@ -14,7 +14,7 @@ tags = []
 |topic=Example ordering
 |summary=correct alphabetic/ASCII ordering for languages
 }}
-In cleaning up the Ethiopian multiplication page I found that a few language examples were not in order and am in the process of moving them. I couldn't remember were it specifically said what the ordering should be w.r.t. case, so would like to propose that the '''examples be ordered without respect to case'''. 
+In cleaning up the Ethiopian multiplication page I found that a few language examples were not in order and am in the process of moving them. I couldn't remember were it specifically said what the ordering should be w.r.t. case, so would like to propose that the '''examples be ordered without respect to case'''.
 
 The other issue is the ordering of C++, C, C# C@ C... or whatever. I think it is too much to ask anyone to remember the ASCII ordering of other than alphanumerics and would ask that we ignore any mis-orderings if the ordering between language names depends on non-alphanumerics. How say you all? --[[User:Paddy3118|Paddy3118]] 10:44, 11 September 2010 (UTC)
 :Case-insensitive ordering is good. I know C comes first in that list since it's shortest. By that logic C++ would come last. I'm not sure about the others. For our existing languages it would go "C, C#, C++" but rules should be made. With the advent of SMW this might be moot. I'm pretty sure using SMW we could put examples on their own pages (probably in the old Example namespace) with a tag for which task they satisfy. Then each task page could transclude those example pages. Basically a task page would look like this:
@@ -39,7 +39,7 @@ I guess that the best order is C# before C++, and F# before Factor. What is the 
 :
 ```java5
 public static void main(String[] args) {
-	List<String> list= Arrays.asList("C","C++","C#","Chef", "C@", "C@q");
+	List<String> list= Arrays.asList("C","cpp","csharp","Chef", "C@", "C@q");
 	Collections.sort(list);
 	System.out.println(list);
 }

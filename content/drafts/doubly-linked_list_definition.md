@@ -658,7 +658,7 @@ int main ()
 
 
 
-## C sharp
+## C#
 
 
 The .NET framework provides the <code>LinkedListNode<T></code> class, which represents an individual node of a linked list, and the <code>LinkedList<T></code> class, which provides abstractions to read and modify a list as if it were a single object. The <code>LinkedListNode<T>.Next</code> and <code>LinkedListNode<T>.Previous</code> properties is read-only, ensuring that all lists must be created using <code>LinkedList<T></code> and that each list can only be mutated using the methods of its <code>LinkedList<T></code> instance (the appropriate .NET accessibility modifiers are used to hide these implementation details).

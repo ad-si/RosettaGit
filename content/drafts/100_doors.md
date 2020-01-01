@@ -27,6 +27,7 @@ languages = [
   "amigae",
   "apl",
   "applescript",
+  "applesoft_basic",
   "arbre",
   "argile",
   "arm_assembly",
@@ -34,16 +35,12 @@ languages = [
   "ats",
   "autohotkey",
   "autoit",
-  "axiom",
   "awk",
+  "axiom",
   "b",
-  "basic",
-  "applesoft_basic",
-  "basic256",
-  "commodore_basic",
-  "qbasic",
-  "sinclair_zx81_basic",
   "bacon",
+  "basic",
+  "basic256",
   "batch_file",
   "bbc_basic",
   "bc",
@@ -53,10 +50,8 @@ languages = [
   "bracmat",
   "burlesque",
   "c",
-  "c++",
-  "c_sharp",
-  "ceylon",
   "c1r",
+  "ceylon",
   "clarion",
   "clio",
   "clips",
@@ -66,13 +61,18 @@ languages = [
   "coffeescript",
   "coldfusion",
   "commodore_basic",
+  "commodore_basic",
   "common_lisp",
   "component_pascal",
   "coq",
+  "cpp",
   "crystal",
+  "csharp",
   "d",
   "dafny",
   "dart",
+  "qbasic",
+  "sinclair_zx81_basic",
 ]
 +++
 
@@ -2884,11 +2884,11 @@ int main()
 ```
 
 
-## C sharp
+## C#
 
 ### Unoptimized with Modulus % Operator
 
-```csharp
+```c#
 namespace ConsoleApplication1
 {
     using System;
@@ -2938,7 +2938,7 @@ namespace ConsoleApplication1
 ### Optimized for Increments
 
 
-```csharp
+```c#
 namespace ConsoleApplication1
 {
     using System;
@@ -2979,7 +2979,7 @@ namespace ConsoleApplication1
 
 (This version demonstrates a different thought pattern during development, where operation and presentation are separated. It could easily be refactored so that the operations to determine which doors are opened and to display the list of doors would be in separate methods, at which point it would become simple to extract them to separate classes and employ a DI pattern to switch the algorithm or display mechanism being used. It also keeps the calculation clear and concise.)
 
-```csharp
+```c#
 namespace ConsoleApplication1
 {
     using System;
@@ -3008,7 +3008,7 @@ namespace ConsoleApplication1
 ### Unoptimized but Concise
 
 
-```csharp
+```c#
 namespace ConsoleApplication1
 {
     using System;
@@ -3035,7 +3035,7 @@ namespace ConsoleApplication1
 ### Optimized for brevity
 
 
-```csharp
+```c#
 namespace ConsoleApplication1
 {
     using System;

@@ -23,7 +23,7 @@ tags = []
 
 ## Ada
 
-In some ways, Ada is a self documenting language by design.  When building packages (the equivalent of modules in python), you have to create two separate files: a spec and a body.  The spec resides in a .ads file, and contains the interface to the package that is visible to someone using it.  
+In some ways, Ada is a self documenting language by design.  When building packages (the equivalent of modules in python), you have to create two separate files: a spec and a body.  The spec resides in a .ads file, and contains the interface to the package that is visible to someone using it.
 
 All functions, procedures and data-types that can be used in other Ada programs have to have an entry in the spec that defines how they are used.  The only requirement for the body file is that it give definitions for everything found in the spec.  You can also include other functions in the body file to help build the functions defined in the spec.  Anything that doesn't appear in the .ads file won't be accessible to a programmer who uses that particular package.
 
@@ -90,9 +90,9 @@ someFunc {
 
 You can use the [http://www.autohotkey.com/forum/viewtopic.php?t=22548 GenDocs library].
 
-It generates html documentation in the style of the canonical ahk [http://www.autohotkey.com/docs/commands/MsgBox.htm documentation].  
+It generates html documentation in the style of the canonical ahk [http://www.autohotkey.com/docs/commands/MsgBox.htm documentation].
 
-[http://en.wikipedia.org/wiki/BBCode BBCode] is supported for markup. 
+[http://en.wikipedia.org/wiki/BBCode BBCode] is supported for markup.
 
 Example from the library distribution:
 ```AutoHotkey
@@ -105,7 +105,7 @@ Example from the library distribution:
 ;		number1 - First number to add.
 ;		number2 - Second number to add.
 ;		number3 - (Optional) Third number to add. You can just omit this parameter.
-; Return Value: 
+; Return Value:
 ;		sum of parameters
 ; Example:
 ;		MsgBox % example_add(example_add(2, 3, 4), 5)
@@ -144,7 +144,7 @@ int add(int a, int b) {
 
 
 ```lisp
-(def 
+(def
  #^{:doc "Metadata can contain documentation and can be added to vars like this."}
      test1)
 
@@ -193,11 +193,11 @@ the HTML generation process.
       *> |html <br />
       *> Functions include
       *> |exec cobcrun cobweb-gtk >cobweb-gtk.repository
-      *> |html 
+      *> |html
 ```txt
 
       *> |copy cobweb-gtk.repository
-      *> |html 
+      *> |html
 ```
 
       *> |exec rm cobweb-gtk.repository
@@ -235,7 +235,7 @@ id     identification division.
 done   goback.
        end program cobweb-gtk.
       *>****
-       
+
 ```
 
 
@@ -312,7 +312,7 @@ Common Lisp allows the definition of documentation strings for functions, variab
  CL-USER 88 > (documentation 'person 'type)
  "the person class"
 
-=={{header|C sharp|C#}}==
+## C#
 This documentation method will work perfectly with the built in object browser in Visual Studio. The object browser can then show detailed information for each component. To make documentation that can be parsed, a triple slash (///) must be used. Further information can be found in [http://aspalliance.com/696 this tutorial]. A list of available xml elements for use in documentation [http://aspalliance.com/696_Code_Documentation_in_NET.2 is here].
 
 
@@ -332,7 +332,7 @@ public static class XMLSystem
     /// </summary>
     /// <param name="name">A valid name of an XML document in the data folder</param>
     /// <returns>An XmlDocument containing the contents of the XML file</returns>
-    public static XmlDocument GetXML(string name) 
+    public static XmlDocument GetXML(string name)
     {
         return null;
     }
@@ -395,7 +395,7 @@ void main() {}
 ## Delphi
 
 XML comments are shown in the IDE and is included in the XML documentation produced by the compiler when using --docs.
- 
+
 
 ```Delphi
 type
@@ -440,7 +440,7 @@ Variables may not have doc-comments, because they are never part of the public i
 ## Eiffel
 
 
-The Eiffel language was designed with a goal of producing documentation directly from software text. Certain comments, contracts for publicly accessible routines, and the class invariant are all extracted into the documentation views of a class. 
+The Eiffel language was designed with a goal of producing documentation directly from software text. Certain comments, contracts for publicly accessible routines, and the class invariant are all extracted into the documentation views of a class.
 
 The following is a simple class written in Eiffel:
 
@@ -548,7 +548,7 @@ note
 class interface
     TIME_OF_DAY
 
-create 
+create
     make
 
 feature -- Initialization
@@ -557,7 +557,7 @@ feature -- Initialization
             -- Initialize to 00:00:00
         ensure
             initialized: hour = 0 and minute = 0 and second = 0
-	
+
 feature -- Access
 
     hour: INTEGER_32
@@ -568,7 +568,7 @@ feature -- Access
 
     second: INTEGER_32
             -- Seconds past the minute
-	
+
 feature -- Element change
 
     set_hour (h: INTEGER_32)
@@ -597,7 +597,7 @@ feature -- Element change
             second_set: second = s
             hour_unchanged: hour = old hour
             minute_unchanged: minute = old minute
-	
+
 invariant
     hour_valid: 0 <= hour and hour <= 23
     minute_valid: 0 <= minute and minute <= 59
@@ -607,7 +607,7 @@ end -- class TIME_OF_DAY
 ```
 
 
-It is important to notice what is missing from this view. It shows only the specification of the class. The implementations of routines and any routines which are not public are not visible. The notes and comments, public features (including contracts for routines), and the class invariant all remain as components of the specification. 
+It is important to notice what is missing from this view. It shows only the specification of the class. The implementations of routines and any routines which are not public are not visible. The notes and comments, public features (including contracts for routines), and the class invariant all remain as components of the specification.
 
 This view was produced by [[EiffelStudio]] which also supports an '''Interface''' view which is similar to the Contract view above, but also includes contracts for any inherited routines, and the complete inherited class invariant. EiffelStudio can publish these and other documentation view in HTML and other formats suitable for sharing.
 
@@ -631,7 +631,7 @@ end
 ```
 
 
-Individual modules can be documented using the @moduledoc attribute and heredocs (with markdown): 
+Individual modules can be documented using the @moduledoc attribute and heredocs (with markdown):
 
 ```Elixir
 
@@ -730,7 +730,7 @@ Put another way, reverse-compiling the code file will be unlikely to recover eve
 
 ### =In the source file=
 
-Thus, documentation depends on whatever the programmer sees fit to provide in the source file, possibly under protest. Originally, only "block" comments could be provided, signified by a C in column one (and in some extensions, a letter D in column one signified "debugging" statements that would be compiled in or not according to the setting of a compiler option), however this vertical alternation of layers of code and commentary can be obstructive to the reader. F90 standardised the "escape" comment style whereby outside a text literal, everything following an exclamation mark to the end of the line was regarded as a comment (B6700 Fortran used a %-symbol), thus code and commentary can be arranged in two non-clashing columns - especially if the source is listed via a reformatting system with that in mind. There is no comment start - comment stop facility as with {blah} in Pascal or /*blah*/ in pl/i, etc. and compilers may or may not recognise non-Fortran control lines such as $Omit or similar. 
+Thus, documentation depends on whatever the programmer sees fit to provide in the source file, possibly under protest. Originally, only "block" comments could be provided, signified by a C in column one (and in some extensions, a letter D in column one signified "debugging" statements that would be compiled in or not according to the setting of a compiler option), however this vertical alternation of layers of code and commentary can be obstructive to the reader. F90 standardised the "escape" comment style whereby outside a text literal, everything following an exclamation mark to the end of the line was regarded as a comment (B6700 Fortran used a %-symbol), thus code and commentary can be arranged in two non-clashing columns - especially if the source is listed via a reformatting system with that in mind. There is no comment start - comment stop facility as with {blah} in Pascal or /*blah*/ in pl/i, etc. and compilers may or may not recognise non-Fortran control lines such as $Omit or similar.
 
 Fortran 90 also introduced the ability to specify INTENT IN, OUT, or INOUT for parameters to routines,  as well as the usual type indications. Its MODULE protocol includes an INTERFACE specification to assist in the description of collections of functions or subroutines with different types and numbers of parameters. These change what the compiler allows or rejects, but are also often important parts of documentation.
 
@@ -741,7 +741,7 @@ Otherwise, aside from separately-prepared files, the documentation resides in th
 
 Outside systems are available to assist. It is common for text editors to employ syntax highlighting, but their designers rarely handle the full complexity of Fortran syntax correctly. For instance, the format of a number such as -3.145E+07 is difficult to scan, especially since in Fortran source, spaces are ignored outside of text literals. Then, consider the FORMAT codes, such as <code>31E16.7</code> and similar sequences. More serious efforts scan the Fortran source in order to extract information useful for documentation. There have long been available systems that will identify every routine in a programme and for each identify what routine calls it, and what routines it calls, along with further analysis on their parameters and their usage - this well before F90 introduced the optional INTENT feature. Similarly, within each routine, identify which variables are used (possibly as parameters) where and whether they are read or written there. And, analyse the usage of COMMON variables... Likewise, documentation might include a flowchart, and systems exist to produce these as well.
 
-Aside from the Fortran source code alone, there are systems that will also inspect the commentary associated with the code, and, if their conventions are followed (quite reasonable conventions, quoth the designer: declare ''and describe'' each parameter straight away, ''etc. etc.''), will produce for example a .html file with all manner of crosslinkages. For instance, given 
+Aside from the Fortran source code alone, there are systems that will also inspect the commentary associated with the code, and, if their conventions are followed (quite reasonable conventions, quoth the designer: declare ''and describe'' each parameter straight away, ''etc. etc.''), will produce for example a .html file with all manner of crosslinkages. For instance, given
 ```Fortran
       SUBROUTINE SHOW(A,N)   !Prints details to I/O unit LINPR.
         REAL*8 A    !Distance to the next node.
@@ -765,11 +765,11 @@ example :
 ```
 
 
-Another good practice is describing the stack use of a function : function ( stack before -- stack at end ) 
+Another good practice is describing the stack use of a function : function ( stack before -- stack at end )
 
 example :
 
-<lang>: cubed ( n -- n^3 ) dup dup * * ; 
+<lang>: cubed ( n -- n^3 ) dup dup * * ;
 ```
 
 
@@ -940,10 +940,10 @@ There are no formal conventions for documentation built into the Icon/Unicon. Ho
 ############################################################################
 #
 #  Long form docmentation
-#  
+#
 ############################################################################
 #
-#  Links:  
+#  Links:
 #
 ############################################################################
 
@@ -952,7 +952,7 @@ procedure x1()    #: short description of procedure
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 *  [http://www.cs.arizona.edu/icon/library/src/progs/ipldoc.icn ipldoc.icn] Program to collect library documentation.<br/>
 *  [http://www.cs.arizona.edu/icon/library/src/progs/iplindex.icn iplindex.icn] Program to produce indexed listing of the program library.
 
@@ -974,13 +974,13 @@ TBD
 Use [http://www.jsoftware.com/trac/base/browser/trunk/main/script/doc.ijs?rev=1 scripdoc]:
 
 ```j
-NB. 
+NB.
 ### ===================================================
 
 NB.*apply v apply verb x to y
 apply=: 128!:2
 
-NB. 
+NB.
 ### ===================================================
 
 NB.*def c : (explicit definition)
@@ -1040,9 +1040,9 @@ public class Doc{
 
 ## Julia
 
-Julia has a built-in documentation system for functions, types, and similar user-defined entities. 
+Julia has a built-in documentation system for functions, types, and similar user-defined entities.
 
-Quoting the Julia documentation pages: 
+Quoting the Julia documentation pages:
 
 Any string appearing at the top-level right before an object (function, macro, type or instance) will be interpreted as documenting it (these are called docstrings). Note that no blank lines or comments may intervene between a docstring and the documented object. Here is a basic example:
 
@@ -1084,7 +1084,7 @@ When running Julia from the REPL, functions and types documented with docstrings
 
 ## Kotlin
 
-Kotlin uses a system of comments called KDoc to document source code. This is similar to Java's Javadoc though there are some additional block tags to support Kotlin-specific constructs. 
+Kotlin uses a system of comments called KDoc to document source code. This is similar to Java's Javadoc though there are some additional block tags to support Kotlin-specific constructs.
 
 Inline markup uses an extended form of the Markdown syntax.
 
@@ -1097,7 +1097,7 @@ The following is a slightly extended version of the example in the official Kotl
  * A group of *members*.
  * @author A Programmer.
  * @since version 1.1.51.
- * 
+ *
  * This class has no useful logic; it's just a documentation example.
  *
  * @param T the type of a member in this group.
@@ -1165,7 +1165,7 @@ f::usage = "f[x,y] gives the sum of x and y"
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Script files can contain comments (being whatever follows a % character) and for a script in file Gnash.m that is in the current execute path (so that typing "Gnash" will initiate it), the command "help Gnash" will instead display the first comment block at the start of the file. So, if it starts 
+Script files can contain comments (being whatever follows a % character) and for a script in file Gnash.m that is in the current execute path (so that typing "Gnash" will initiate it), the command "help Gnash" will instead display the first comment block at the start of the file. So, if it starts
 ```MATLAB
 function Gnash(GnashFile);	%Convert to a "function". Data is placed in the "global" area.
 %   My first MatLab attempt, to swallow data as produced by Gnash's DUMP
@@ -1177,13 +1177,13 @@ The comments will be revealed. However, a test with Octave elicited only the com
 
 ## Neko
 
-'''nekoc -doc <file>''' generates XHTML documentation from within source.  The compiler scans for 
+'''nekoc -doc <file>''' generates XHTML documentation from within source.  The compiler scans for
 ```ActionScript
 /** ... **/
 ```
  multi line comments.
 
-Special 
+Special
 ```html><doc> ... </doc></lang
  tags can be used inside these documentation blocks and are parsed as XML nodes; and checked for valid XHTML.  Outside of the doc tags, the documentation parser can be used to create API documentation.
 
@@ -1370,14 +1370,14 @@ help about_comment_based_help
 ; This is a small demo-code to demonstrate PureBasic’s internal
 ; documentation system.
 
-;- All Includes 
+;- All Includes
 ; By starting the line with ‘;-‘ marks that specific line as a special comment,
-; and this will be included in the overview, while normal comments will not.  
+; and this will be included in the overview, while normal comments will not.
 
 IncludeFile "MyLibs.pbi"
 IncludeFile "Combustion_Data.pbi"
 
-;- 
+;-
 ;- Start of functions and Macros
 ;- Engeneering stuff
 
@@ -1434,7 +1434,7 @@ The built-in help() function uses the pydoc module to display docstring informat
  def somefunction():
 	"takes no args and returns None after doing not a lot"
 
-	
+
 >>> help(somefunction)
 Help on function somefunction in module __main__:
 
@@ -1453,7 +1453,7 @@ The [http://sphinx.pocoo.org/ Sphinx] Documentation generator suite is used to g
 
 ## R
 
-R objects are documented in files written in "R documentation" (Rd) format, which is similar to LaTeX markup.  See Chapter 2 of [http://cran.r-project.org/doc/manuals/R-exts.pdf Writing R Extensions] for the full details.  Example function document files can be created using 
+R objects are documented in files written in "R documentation" (Rd) format, which is similar to LaTeX markup.  See Chapter 2 of [http://cran.r-project.org/doc/manuals/R-exts.pdf Writing R Extensions] for the full details.  Example function document files can be created using
 
 ```r
 example(package.skeleton)
@@ -1580,8 +1580,8 @@ sum: func [
 	"Add numbers in block."
 	data [block! list!] "List of numbers to add together."
 	/average "Calculate average instead of sum."
-	/local 
-	i "Iteration variable."  
+	/local
+	i "Iteration variable."
 	x "Variable to hold results."
 ] [
 	x: 0  repeat i data [x: x + i]
@@ -1713,11 +1713,11 @@ One technique with REXX is to use in-line documentation as REXX supports the acc
 the REXX program's source, which can include documentation if properly ''fenced''.
 
 
-This particular example uses lowercase fences of: 
+This particular example uses lowercase fences of:
 :::*     '''<help> '''
-:::*     '''</help>''' 
+:::*     '''</help>'''
 
-to delineate the documentation.   But, any two unique strings could be used. 
+to delineate the documentation.   But, any two unique strings could be used.
 
 
 Note that the documentation is bracketed by the standard REXX comment delimiters to preserve program lexicographical integrity.
@@ -1819,7 +1819,7 @@ RDoc is documented here[http://www.ruby-doc.org/core/classes/RDoc.html].
 This is a class documentation comment.  This text shows at the top of the page
 for the class.
 
-Comments can be written inside "=begin rdoc"/"end" blocks or 
+Comments can be written inside "=begin rdoc"/"end" blocks or
 in normal '#' comment blocks.
 
 There are no '@parameters' like javadoc, but 'name-value' lists can be written:
@@ -1832,13 +1832,13 @@ class Doc
   Constant = nil
 
   # This is a method comment.  Parameters and return values can be named
-  # with the "call-seq" directive.  
+  # with the "call-seq" directive.
   #
   # call-seq:
   #   a_method(first_arg, second_arg) -> return_value
   #
   def a_method(arg1, arg2='default value')
-    do_stuff 
+    do_stuff
   end
 
   # Class methods will be shown in a separate section of the generated documentation.

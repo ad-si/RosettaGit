@@ -13,38 +13,38 @@ tags = []
 {{task}}
 
 ;Task:
-Show how to represent currency in a simple example, using a data type that represent exact values of dollars and cents.  
+Show how to represent currency in a simple example, using a data type that represent exact values of dollars and cents.
 
 
 ;Note:
 The '''IEEE 754''' binary floating point representations of numbers like   '''2.86'''   and   '''.0765'''   are not exact.
 
-For this example, data will be two items with prices in dollars and cents, a quantity for each, and a tax rate. 
- 
+For this example, data will be two items with prices in dollars and cents, a quantity for each, and a tax rate.
+
 Use the values:
 ::* 4000000000000000 hamburgers at $5.50 each
-::* 2 milkshakes at $2.86 each, and 
-::* a tax rate of 7.65%.  
+::* 2 milkshakes at $2.86 each, and
+::* a tax rate of 7.65%.
 
 
 
-(That number of hamburgers is a 4 with 15 zeros after it.    The number is contrived to exclude naïve task solutions using 64 bit floating point types.)  
+(That number of hamburgers is a 4 with 15 zeros after it.    The number is contrived to exclude naïve task solutions using 64 bit floating point types.)
 
 Compute and output (show results on this page):
 ::* the total price before tax
 ::* the tax
-::* the total with tax  
+::* the total with tax
 
 
 
-The tax value must be computed by rounding to the nearest whole cent and this exact value must be added to the total price before tax.  
+The tax value must be computed by rounding to the nearest whole cent and this exact value must be added to the total price before tax.
 
-The output must show dollars and cents with a decimal point. 
- 
+The output must show dollars and cents with a decimal point.
+
 The three results displayed should be:
 ::* 22000000000000005.72
-::* 1683000000000000.44 
-::* 23683000000000006.16  
+::* 1683000000000000.44
+::* 23683000000000006.16
 
 
 
@@ -74,7 +74,7 @@ BEGIN
     OP DOLLARS = ( LONG INT v, INT dp )CURRENCY: ( ( v * 100 ) + dp, 2, 100 );
     OP DOLLARS = (      INT v, INT dp )CURRENCY: LENG v DOLLARS dp;
     # issues an error message and stops the program if a has a different #
-    # number of decimal places to b                                      # 
+    # number of decimal places to b                                      #
     PROC check compatible = ( CURRENCY a, b )VOID:
          IF decimals OF a /= decimals OF b THEN print( ( "Incompatible CURRENCY values", newline ) ); stop FI;
     # operators to multiply CURRENCY values by integers                  #
@@ -84,7 +84,7 @@ BEGIN
     OP + = ( CURRENCY a, CURRENCY b )CURRENCY:
          BEGIN
             check compatible( a, b );
-            ( value OF a + value OF b, decimals OF a, fraction modulus OF a ) 
+            ( value OF a + value OF b, decimals OF a, fraction modulus OF a )
          END # + # ;
     # multiplies the CURRENCY value a by the FIXED value b,              #
     # rounding the result to the decimal places of a                     #
@@ -274,27 +274,27 @@ The reason is a weird rounding off error which happens if the mpf_set_d function
 int main()
 {
 	mpf_t burgerUnitPrice, milkshakePrice, burgerTotalPrice, totalPrice, tax, burgerNum, milkshakeNum;
-	
+
 	mpf_inits(burgerUnitPrice, milkshakePrice, burgerTotalPrice, totalPrice, tax,burgerNum, milkshakeNum,NULL);
-	
+
 	mpf_set_d(burgerUnitPrice,5.50);
 	mpf_set_d(milkshakePrice,2 * 2.86);
 	mpf_set_d(burgerNum,4000000000000000);
 	mpf_set_d(milkshakeNum,2);
-	
+
 	mpf_mul(burgerTotalPrice,burgerNum,burgerUnitPrice);
 	mpf_add(totalPrice,burgerTotalPrice,milkshakePrice);
-	
+
 	mpf_set_str(tax,"0.0765",10);
 	mpf_mul(tax,totalPrice,tax);
-	
+
 	gmp_printf("\nTotal price before tax : $ %.*Ff", 2, totalPrice);
 	gmp_printf("\nTotal tax : $ %.*Ff", 2, tax);
-	
+
 	mpf_add(totalPrice,totalPrice,tax);
-	
+
 	gmp_printf("\nTotal price after tax : $ %.*Ff", 2, totalPrice);
-	
+
 	return 0;
 }
 
@@ -312,11 +312,11 @@ Total price after tax : $ 23683000000000006.16
 
 
 
-## C sharp
+## C#
 
 The built in C# type decimal has a max value of 79228162514264337593543950335.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -394,7 +394,7 @@ Total with tax: $23,683,000,000,000,006.16
 (require '[clojurewerkz.money.currencies :as mc])
 (require '[clojurewerkz.money.format     :as mf])
 
-(let [burgers (ma/multiply (ma/amount-of mc/USD 5.50) 4000000000000000) 
+(let [burgers (ma/multiply (ma/amount-of mc/USD 5.50) 4000000000000000)
       milkshakes (ma/multiply (ma/amount-of mc/USD 2.86) 2)
       pre-tax (ma/plus burgers milkshakes)
       tax (ma/multiply pre-tax 0.0765 :up)]
@@ -419,7 +419,7 @@ Total before tax:  $22,000,000,000,000,005.72
 
 COBOL supports up to 31 digits of decimal precision, so won't need any fancy currency/BigInteger types!
 
-During calculations the default ROUNDED MODE IS clause, when specified, is NEAREST-AWAY-FROM-ZERO. When ROUNDED is not specified, the default mode is TRUNCATION.  The term "banker's rounding" implies NEAREST-EVEN. 
+During calculations the default ROUNDED MODE IS clause, when specified, is NEAREST-AWAY-FROM-ZERO. When ROUNDED is not specified, the default mode is TRUNCATION.  The term "banker's rounding" implies NEAREST-EVEN.
 
 {{works with|GNU Cobol|2.1}}
 
@@ -670,7 +670,7 @@ main = do
 
 ```txt
 
-$ ./currency 
+$ ./currency
 Subtotal   22000000000000005.72
 Tax         1683000000000000.44
 Total      23683000000000006.16
@@ -787,30 +787,30 @@ Subtotal: 22000000000000005.72
 
 
 ```javascript
-const money = require('money-math')                                            
+const money = require('money-math')
 
-let hamburgers = 4000000000000000                                              
-let hamburgerPrice = 5.50                                                      
+let hamburgers = 4000000000000000
+let hamburgerPrice = 5.50
 
-let shakes = 2                                                                 
-let shakePrice = 2.86                                                          
+let shakes = 2
+let shakePrice = 2.86
 
-let tax = 7.65                                                                 
+let tax = 7.65
 
-let hamburgerTotal = money.mul(hamburgers.toFixed(0), money.floatToAmount(hamburgerPrice))                                                                     
-let shakeTotal = money.mul(shakes.toFixed(0), money.floatToAmount(shakePrice)) 
+let hamburgerTotal = money.mul(hamburgers.toFixed(0), money.floatToAmount(hamburgerPrice))
+let shakeTotal = money.mul(shakes.toFixed(0), money.floatToAmount(shakePrice))
 
-let subTotal = money.add(hamburgerTotal, shakeTotal)                           
+let subTotal = money.add(hamburgerTotal, shakeTotal)
 
-let taxTotal = money.percent(subTotal, tax)                                    
+let taxTotal = money.percent(subTotal, tax)
 
-let total = money.add(subTotal, taxTotal)                                      
+let total = money.add(subTotal, taxTotal)
 
-console.log('Hamburger Total:', hamburgerTotal)                                
-console.log('Shake Total:', shakeTotal)                                        
-console.log('Sub Total:', subTotal)                                            
-console.log('Tax:', taxTotal)                                                  
-console.log('Total:', total)          
+console.log('Hamburger Total:', hamburgerTotal)
+console.log('Shake Total:', shakeTotal)
+console.log('Sub Total:', subTotal)
+console.log('Tax:', taxTotal)
+console.log('Total:', total)
 
 ```
 
@@ -910,11 +910,11 @@ Module Currency_Task {
       PrResults("tax", (hamburgers*hamburger_price+milkshakes*milkshake_price)*tax_rate)
       \\ 1 is double by default we can use 1# or 1@
       PrResults("total", (hamburgers*hamburger_price+milkshakes*milkshake_price)*(tax_rate+1))
-      
+
       \\ Using variables for partial calculations. They get type from expression result
       h_p_q=hamburgers*hamburger_price
       m_p_q=milkshakes*milkshake_price
-      
+
       \\ Using format$ to prepare final strings
       Print format$("{0:15}{1:-8}{2:-25}{3:-25}","Item", "price", "quantity", "value")
       Print format$("{0:15}{1:2:-8}{2:0:-25}{3:2:-25}","hamburger",hamburger_price,hamburgers, h_p_q)
@@ -941,7 +941,7 @@ Module Currency_Task {
       Print ExpressionType$(m_p_q)="Currency"
       Print ExpressionType$((h_p_q+m_p_q)*tax_rate)="Decimal"
       Print ExpressionType$((h_p_q+m_p_q)*(tax_rate+1))="Decimal"
-      
+
       Sub PrHeadLine(a$,b$,c$,d$)
             Print Part  $(1,15),a$,$(3,8),b$, $(3,25),c$, $(3,25),d$
             Print
@@ -978,7 +978,7 @@ Module Currency_Task {
       PrResults( "subtotal", hamburgers*hamburger_price+milkshakes*milkshake_price)
       PrResults("tax", (hamburgers*hamburger_price+milkshakes*milkshake_price)*tax_rate)
       PrResults("total", (hamburgers*hamburger_price+milkshakes*milkshake_price)*(tax_rate+1))
- 
+
       h_p_q=hamburgers*hamburger_price
       m_p_q=milkshakes*milkshake_price
       Document Doc$=format$("{0:15}{1:-8}{2:-25}{3:-30}","Item", "price", "quantity", "value")+{
@@ -989,8 +989,8 @@ Module Currency_Task {
       }+format$("{0:-48}{1:-30}","total", Str$((h_p_q+m_p_q)*(tax_rate+1),"$#,##0.00"))+{
       }
       clipboard Doc$
- 
- 
+
+
       Sub PrHeadLine(a$,b$,c$,d$)
             Print Part  $(1,15),a$,$(3,8),b$, $(3,25),c$, $(3,30),d$
             Print
@@ -1167,8 +1167,8 @@ Milkshake      2.86                  2                   5.72
 ## Perl 6
 
 {{works with|Rakudo|2016.01}}
-No need for a special type in Perl 6, since the <tt>Rat</tt> type is used for normal fractions.  
-(In order to achieve imprecision, you have to explicitly use scientific notation, 
+No need for a special type in Perl 6, since the <tt>Rat</tt> type is used for normal fractions.
+(In order to achieve imprecision, you have to explicitly use scientific notation,
 or use the <tt>Num</tt> type, or calculate a result that requires a denominator in excess of <tt>2 ** 64</tt>.  (There's no limit on the numerator.))
 
 ```perl6
@@ -1223,7 +1223,7 @@ Milkshake      2.86                  2                   5.72
 ```Phix
 include mpfr.e
 mpfr_set_default_prec(-20) -- ensure accuracy to at least 20 d.p.
-    
+
 mpfr total_price = mpfr_init("4000000000000000"),
      tmp = mpfr_init("5.5"),
      tax = mpfr_init("0.0765"),
@@ -1281,7 +1281,7 @@ Total before tax:  22,000,000,000,000,005.72
 
 ## Python
 
-This uses Pythons decimal module, 
+This uses Pythons decimal module,
 (and some copying of names from the Perl 6 example).
 
 
@@ -1332,11 +1332,11 @@ milkshake      2.86                  2                   5.72
 
 ## Racket
 
-Racket can handle fractions. 
-To read the decimals numbers as fractions instead of floating point numbers, 
-they must start with #e. 
-For example #e.3 -> 3/10 and .3 ->3E-1. 
-The main problem is rounding correctly and this part is handled in cents-*, that implements a multiplication that rounds to the cents. 
+Racket can handle fractions.
+To read the decimals numbers as fractions instead of floating point numbers,
+they must start with #e.
+For example #e.3 -> 3/10 and .3 ->3E-1.
+The main problem is rounding correctly and this part is handled in cents-*, that implements a multiplication that rounds to the cents.
 The rest of the program is only formatting.
 
 ```Racket
@@ -1377,7 +1377,7 @@ The rest of the program is only formatting.
   (show-formated "" "" "tax" (string-append "$" (~r tax #:precision '(= 2))))
   (show-formated "" "" "total" (string-append "$" (~r (+ net tax) #:precision '(= 2))))
   )
-         
+
 (define hamburger (item "hamburger" 4000000000000000 #e5.50))
 (define milkshake (item "milkshake" 2 #e2.86))
 (define all (list hamburger milkshake))
@@ -1402,8 +1402,8 @@ milkshake                   2    $2.86 ->                   $5.72
 
 ## REXX
 
-REXX uses characters to represent everything, including all forms of numbers.   
-So what is expressed as a literal (characters) is what REXX uses.   
+REXX uses characters to represent everything, including all forms of numbers.
+So what is expressed as a literal (characters) is what REXX uses.
 Essentially, it can be thought of as decimal.
 
 Programming note:   the tax rate can be expressed with or without a percent   ('''%''')  suffix.
@@ -1596,7 +1596,7 @@ object SizeMeUp extends App {
  4000000000000002	ordered items   	  Subtotal	22 000 000 000 000 005,72
                  	                	 7,65% tax	 1 683 000 000 000 000,44
                  	                	Amount due	23 683 000 000 000 006,16
- 
+
  Process finished with exit code 0
 
 
@@ -1757,7 +1757,7 @@ Total with tax € 23.683.000.000.000.006,16
 
 ## zkl
 
-zkl Ints are 64 bits, so we have 18 digits to play with. 
+zkl Ints are 64 bits, so we have 18 digits to play with.
 So, just multiply bucks by 100 and be careful when doing tax calculations.
 {{trans|Python}}
 

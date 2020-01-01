@@ -991,11 +991,11 @@ int main(int c, char **v)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 '''Translation of:''' Java
 
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 
@@ -1051,7 +1051,7 @@ namespace PiCalc {
 
 Adopted Version:
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

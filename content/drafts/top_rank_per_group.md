@@ -675,10 +675,10 @@ David Motsinger E27002  19250   D202
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

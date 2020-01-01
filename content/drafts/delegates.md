@@ -366,10 +366,10 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 interface IOperable

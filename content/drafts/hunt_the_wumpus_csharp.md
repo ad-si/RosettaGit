@@ -11,8 +11,8 @@ tags = []
 +++
 
 {{collection|Hunt_The_Wumpus}}
-In this version, arrows only fire a distance of one room. 
-Since bats relocate, we don't have to worry about the wumpus room being unreachable. 
+In this version, arrows only fire a distance of one room.
+Since bats relocate, we don't have to worry about the wumpus room being unreachable.
 
 There are also 3 bats instead of 2, and you get 3 arrows instead of 5.
 
@@ -22,7 +22,7 @@ There are also 3 bats instead of 2, and you get 3 arrows instead of 5.
 [[File:wumpus_java.png|200px|thumb|right]]
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Drawing;

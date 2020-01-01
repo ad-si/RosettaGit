@@ -1388,10 +1388,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 C# 3.0
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -1416,7 +1416,7 @@ class Program
 
 C# 1.0
 
-```csharp
+```c#
 static void Main(string[] args)
 {
 	do

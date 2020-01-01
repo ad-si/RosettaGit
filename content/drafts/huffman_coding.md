@@ -991,10 +991,10 @@ decoded: this is an example for huffman encoding
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

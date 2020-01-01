@@ -679,9 +679,9 @@ int main( ) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 string src = "Hello";
 string dst = src;
 ```

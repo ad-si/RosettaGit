@@ -118,9 +118,9 @@ procedure perfect_shuffle is
     for i in index loop initial (i) := i; end loop;
     d := initial;
     loop
-      for i in index_that_move loop 
-        next (i) := (if d (i) mod 2 = 0 then d(i)/2 else d(i)/2 + half_size); 
-      end loop;      
+      for i in index_that_move loop
+        next (i) := (if d (i) mod 2 = 0 then d(i)/2 else d(i)/2 + half_size);
+      end loop;
       exit when next (index_that_move)= initial(index_that_move);
       d := next;
       count := count + 1;
@@ -282,20 +282,20 @@ Outputs:
 
 
 ```c
-/* 
+/*
 ### > INCLUDES <=========================================================
 */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-/* 
+/*
 ### > CONSTANTS <========================================================
 */
 #define N_DECKS 7
 const int kDecks[N_DECKS] = { 8, 24, 52, 100, 1020, 1024, 10000 };
 
-/* 
+/*
 ### > FUNCTION PROTOTYPES <==============================================
 */
 int CreateDeck( int **deck, int nCards );
@@ -305,7 +305,7 @@ int InitedDeck( int *deck, int nCards );
 int ShuffleDeck( int *deck, int nCards );
 void FreeDeck( int **deck );
 
-/* 
+/*
 ### > FUNCTION DEFINITIONS <=============================================
 */
 
@@ -485,11 +485,11 @@ Cards count: 10000, shuffles required: 300.
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|6}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -521,7 +521,7 @@ public static class PerfectShuffle
         }
         return result;
     }
-    
+
 }
 ```
 
@@ -550,7 +550,7 @@ public static class PerfectShuffle
     (interleave (first half) (last half))))
 
 (defn solve [deck-size]
-  (let [original (range deck-size) 
+  (let [original (range deck-size)
         trials (drop 1 (iterate perfect-shuffle original))
         predicate #(= original %)]
     (println (format "%5s: %s" deck-size
@@ -746,20 +746,20 @@ for input in { 8, 24, 52, 100, 1020, 1024, 10000} {
 ```lisp
 
 ;; shuffler : a permutation vector which interleaves both halves of deck
-(define (make-shuffler n) 
+(define (make-shuffler n)
 	(let ((s (make-vector n)))
-		(for ((i (in-range 0 n 2))) (vector-set! s i (/ i 2))) 
+		(for ((i (in-range 0 n 2))) (vector-set! s i (/ i 2)))
 		(for ((i (in-range 0 n 2))) (vector-set! s (1+ i) (+ (/ n 2) (vector-ref s i))))
 	 s))
-	 
+
 ;; output : (n . # of shuffles needed to go back)
 (define (magic-shuffle n)
 		(when (odd? n) (error "magic-shuffle:odd input" n))
 		(let [(deck (list->vector (iota n))) ;; (0 1 ... n-1)
 			(dock (list->vector (iota n))) ;; keep trace or init deck
 			(shuffler (make-shuffler n))]
-		
-		(cons n (1+ 
+
+		(cons n (1+
 		(for/sum ((i Infinity)) ; (in-naturals missing  in EchoLisp v2.9)
 			(vector-permute! deck shuffler) ;; permutes in place
 		    #:break (eqv? deck dock) ;; compare to first
@@ -800,12 +800,12 @@ defmodule Perfect do
     m = div(n, 2)
     shuffle(start, magic_shuffle(start, m), m, 1)
   end
-  
+
   defp shuffle(start, start, _, step), do: step
   defp shuffle(start, deck, m, step) do
     shuffle(start, magic_shuffle(deck, m), m, step+1)
   end
-  
+
   defp magic_shuffle(deck, len) do
     {left, right} = Enum.split(deck, len)
     Enum.zip(left, right)
@@ -900,13 +900,13 @@ test-cases [ dup shuffle-count "%-11d %-11d\n" printf ] each
 ```txt
 
 Deck size   Number of shuffles required
-8           3          
-24          11         
-52          8          
-100         30         
-1020        1018       
-1024        10         
-10000       300        
+8           3
+24          11
+52          8
+100         30
+1020        1018
+1024        10
+10000       300
 
 ```
 
@@ -986,7 +986,7 @@ Cards count: 52, shuffles required: 8
 Cards count: 100, shuffles required: 30
 Cards count: 1020, shuffles required: 1018
 Cards count: 1024, shuffles required: 10
-Cards count: 10000, shuffles required: 300 
+Cards count: 10000, shuffles required: 300
 ```
 
 
@@ -995,7 +995,7 @@ Cards count: 10000, shuffles required: 300
 
 
 ```Haskell
-shuffle :: [a] -> [a]   
+shuffle :: [a] -> [a]
 shuffle lst = let (a,b) = splitAt (length lst `div` 2) lst
               in foldMap (\(x,y) -> [x,y]) $ zip a b
 
@@ -1086,7 +1086,7 @@ Meanwhile, the cycle length routine could look like this:
 ```
 
 
-Here, we first generate a list of integers of the required length in their natural order. We then reorder them using our <code>shuf</code> function, find the [[j:Vocabulary/ccapdot|cycles]] which result, find the lengths of each of these cycles then find the least common multiple of those lengths. 
+Here, we first generate a list of integers of the required length in their natural order. We then reorder them using our <code>shuf</code> function, find the [[j:Vocabulary/ccapdot|cycles]] which result, find the lengths of each of these cycles then find the least common multiple of those lengths.
 
 So here is the task example (with most of the middle trimmed out to avoid crashing the rosettacode wiki implementation):
 
@@ -1538,7 +1538,7 @@ function [New]=PerfectShuffle(Nitems, Nturns)
 Main:
 
 ```matlab
-Result=[]; %vector to store results 
+Result=[]; %vector to store results
 Q=[8, 24, 52, 100, 1020, 1024, 10000]; %queries
 for n=Q %for each query
     Same=0; %initialize comparison
@@ -1552,7 +1552,7 @@ for n=Q %for each query
 end
 disp([Q', Result])
 ```
-  
+
 {{out}}
 
 ```txt
@@ -1598,9 +1598,9 @@ PROCEDURE PerfectShuffle(VAR arr : ARRAY OF INTEGER);
         tp,tn,n : CARDINAL;
     BEGIN
         n := HIGH(arr);
-        tn := ti;      
+        tn := ti;
         tv := arr[ti];
-        REPEAT    
+        REPEAT
             tp := tn;
             IF tp MOD 2 = 0 THEN
                 tn := tp / 2
@@ -1625,7 +1625,7 @@ BEGIN
             INC(i,2)
         END;
         INC(c);
-        
+
         done := TRUE;
         FOR i:=0 TO HIGH(arr) DO
             IF arr[i] # INT(i+1) THEN
@@ -1762,7 +1762,7 @@ for my $size (8, 24, 52, 100, 1020, 1024, 10000) {
     my $n = 0;
     do { $n++; @shuffled = perfect_shuffle(@shuffled) }
         until all { $shuffled[$_] == $deck[$_] } 0..$#shuffled;
-    
+
     printf "%5d cards: %4d\n", $size, $n;
 }
 ```
@@ -1803,7 +1803,7 @@ for 8, 24, 52, 100, 1020, 1024, 10000 -> $size {
         $n++;
         @deck = perfect-shuffle @deck;
     }
- 
+
     printf "%5d cards: %4d\n", $size, $n;
 }
 ```
@@ -1839,7 +1839,7 @@ sequence res = deck
     end for
     return res
 end function
- 
+
 constant testsizes = {8, 24, 52, 100, 1020, 1024, 10000}
 for i=1 to length(testsizes) do
     sequence deck = tagset(testsizes[i])
@@ -1921,7 +1921,7 @@ def magic_shuffle(deck):
     >>> magic_shuffle([1,2,3,4])
     [1, 3, 2, 4]
     """
-    half = len(deck) // 2 
+    half = len(deck) // 2
     return flatten(zip(deck[:half], deck[half:]))
 
 def after_how_many_is_equal(shuffle_type,start,end):
@@ -1992,7 +1992,7 @@ def spin_number(source: T,
     """
     Applies given function to the source
     until the result becomes equal to it,
-    returns the number of calls 
+    returns the number of calls
     """
     is_equal_source = partial(eq, source)
     spins = repeat_call(function, source)
@@ -2025,11 +2025,11 @@ if __name__ == "__main__":
     main()
 
 ```
- 
+
 {{Out}}
 
 ```txt
-Deck length | Shuffles 
+Deck length | Shuffles
 8           | 3
 24          | 11
 52          | 8
@@ -2081,7 +2081,7 @@ wave.shuffle <- function(n) {
   deck <- 1:n ## create the original deck
   new.deck <- c(matrix(data = deck, ncol = 2, byrow = TRUE)) ## shuffle the deck once
   counter <- 1 ## track the number of loops
-  ## defining a loop that shuffles the new deck until identical with the original one 
+  ## defining a loop that shuffles the new deck until identical with the original one
   ## and in the same time increses the counter with 1 per loop
   while (!identical(deck, new.deck)) { ## logical condition
     new.deck <- c(matrix(data = new.deck, ncol = 2, byrow = TRUE)) ## shuffle
@@ -2095,7 +2095,7 @@ names(test) <- test.values ## name the result
 test ## print the result out
 
 > test
-    8    24    52   100  1020  1024 10000 
+    8    24    52   100  1020  1024 10000
     3    11     8    30  1018    10   300
 
 ```
@@ -2124,7 +2124,7 @@ test ## print the result out
 (module+ test
   (require rackunit)
   (check-equal? (perfect-shuffle '(1 2 3 4)) '(1 3 2 4))
-  
+
   (define (test-perfect-shuffles-needed n e)
     (define psn (perfect-shuffles-needed n))
     (printf "Deck size:\t~a\tShuffles needed:\t~a\t(~a)~%" n psn e)
@@ -2383,12 +2383,12 @@ disp([Q', Result])
 
 
 ```txt
-   8.       3.   
-   24.      11.  
-   52.      8.   
-   100.     30.  
+   8.       3.
+   24.      11.
+   52.      8.
+   100.     30.
    1020.    1018.
-   1024.    10.  
+   1024.    10.
    10000.   300.
 ```
 

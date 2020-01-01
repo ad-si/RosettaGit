@@ -1932,13 +1932,13 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
 Example of array of 10 int types:
 
 
-```csharp
+```c#
  int[] numbers = new int[10];
 ```
 
@@ -1946,7 +1946,7 @@ Example of array of 10 int types:
 Example of array of 3 string types:
 
 
-```csharp
+```c#
  string[] words = { "these", "are", "arrays" };
 ```
 
@@ -1954,7 +1954,7 @@ Example of array of 3 string types:
 You can also declare the size of the array and initialize the values at the same time:
 
 
-```csharp
+```c#
   int[] more_numbers = new int[3]{ 21, 14 ,63 };
 ```
 
@@ -1964,7 +1964,7 @@ For Multi-Dimensional arrays you declare them the same except for a comma in the
 
 The following creates a 3x2 int matrix
 
-```csharp
+```c#
   int[,] number_matrix = new int[3,2];
 ```
 
@@ -1972,7 +1972,7 @@ The following creates a 3x2 int matrix
 As with the previous examples you can also initialize the values of the array, the only difference being each row in the matrix must be enclosed in its own braces.
 
 
-```csharp
+```c#
   string[,] string_matrix = { {"I","swam"}, {"in","the"}, {"freezing","water"} };
 ```
 
@@ -1980,13 +1980,13 @@ As with the previous examples you can also initialize the values of the array, t
 or
 
 
-```csharp
+```c#
  string[,] funny_matrix = new string[2,2]{ {"clowns", "are"} , {"not", "funny"} };
 ```
 
 
 
-```csharp
+```c#
 int[] array = new int[10];
 
 array[0] = 1;
@@ -1999,7 +1999,7 @@ Console.WriteLine(array[0]);
 Dynamic
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

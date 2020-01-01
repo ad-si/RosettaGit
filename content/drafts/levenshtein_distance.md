@@ -835,10 +835,10 @@ distance between rosettacode and raisethysword : 8
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 This is a straightforward translation of the Wikipedia pseudocode.
 
-```csharp
+```c#
 using System;
 
 namespace LevenshteinDistance

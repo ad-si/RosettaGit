@@ -357,7 +357,7 @@ after:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 <lang C sharp|C#>    public static void Sort<T>(List<T> list) where T : IComparable {
         if (list.Count > 1) {
             StoogeSort(list, 0, list.Count - 1);

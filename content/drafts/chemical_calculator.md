@@ -23,7 +23,7 @@ Given a molecule's chemical formula, calculate the   [https://en.wikipedia.org/w
 ** He               (Helium)
 ** Uue                   (Ununennium)
 * The number of atoms is stated behind the atom or atom group
-* An atom group is specified using parenthesis. E.g. Butyric acid, (CH3)2CHCOOH, has two CH3 groups 
+* An atom group is specified using parenthesis. E.g. Butyric acid, (CH3)2CHCOOH, has two CH3 groups
 * A group may contain other groups, e.g. COOH(C(CH3)2)3CH3
 
 
@@ -35,7 +35,7 @@ Given a molecule's chemical formula, calculate the   [https://en.wikipedia.org/w
 
 
 The above number is known as the   [https://en.wikipedia.org/wiki/Avogadro_constant Avogadro constant],   which is
-named by the International Bureau of Weights and Measures (IBPM); 
+named by the International Bureau of Weights and Measures (IBPM);
 
 the initials are taken from   ''Bureau International des Poids et Mesures'',   the official name of the bureau.
 
@@ -160,7 +160,7 @@ assert  34.014 == molar_mass('H2O2')               # hydrogen peroxide
 assert  34.014 == molar_mass('(HO)2')              # hydrogen peroxide
 assert 142.036 == molar_mass('Na2SO4')             # sodium sulfate
 assert  84.162 == molar_mass('C6H12')              # cyclohexane
-assert 186.295 == molar_mass('COOH(C(CH3)2)3CH3')  # butyric or butanoic acid 
+assert 186.295 == molar_mass('COOH(C(CH3)2)3CH3')  # butyric or butanoic acid
 assert 176.124 == molar_mass('C6H4O2(OH)4')        # vitamin C
 assert 386.664 == molar_mass('C27H46O')            # cholesterol
 assert 315     == molar_mass('Uue')                # ununennium
@@ -324,7 +324,7 @@ begin
             if diff > 1'-12 or diff < -1'-12 then writeon( r_format := "A", r_d := 2, r_w := 9
                                                          , " expected:", expectedMass
                                                          )
-        end text ;                 
+        end text ;
         test( 1.008, "H" ); test( 2.016, "H2" );         test(  18.015, "H2O"   );
         test( 142.03553856000002, "Na2SO4"            ); test(  84.162, "C6H12" );
         test( 186.29499999999996, "COOH(C(CH3)2)3CH3" ); test( 350.45,  "UueCl" );
@@ -352,7 +352,7 @@ UueCl               :  350.450
 
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -584,7 +584,7 @@ molar_mass = (s) ->
 		if s[i] == '(' then result += '+' + next()
 		else if s[i] == ')' then result += next()
 		else if member '0','9'
-			result += '*' 
+			result += '*'
 			result += next() while member '0','9'
 		else if member 'A','Z'
 			name = next()
@@ -614,9 +614,9 @@ assert 315, molar_mass 'Uue'
 ```coffeescript
 ATOMIC_MASS = {H:1.008,C:12.011,O:15.999,Na:22.98976928,S:32.06,Uue:315}
 
-mul = (match, p1, offset, string) -> '*' + p1 
-add = (match, p1, offset, string) -> 
-	if p1 == '(' then return '+' + p1 
+mul = (match, p1, offset, string) -> '*' + p1
+add = (match, p1, offset, string) ->
+	if p1 == '(' then return '+' + p1
 	"+#{ATOMIC_MASS[p1]}"
 
 molar_mass = (s) ->
@@ -917,7 +917,7 @@ EBNF: molar-mass [=[
   elt = [A-Z] [a-z]? [a-z]? => [[ sift "" like "+" prepend ]]
   lparen = "(" => [[ "" like "+" prepend ]]
   any = . => [[ 1string ]]
-  mass = (elt|number|lparen|any)+ => [[ concat eval-infix ]]      
+  mass = (elt|number|lparen|any)+ => [[ concat eval-infix ]]
 ]=]
 
 ! assert= doesn't work due to floating point weirdness.
@@ -1498,32 +1498,32 @@ proc pass1(s:string): seq[string] = # "H2O" => @["H","*","2","+","O"]
 	result.add "0"
 	var i = 0
 	proc member(a:char,c:char): bool = i < s.len and a <= s[i] and s[i] <= c
-	proc next(): char = 
+	proc next(): char =
 		i += 1
 		s[i-1]
 	while i < s.len:
-		if s[i] == '(':	
+		if s[i] == '(':
 			result = result.concat @["+","("]
 			discard next()
 		elif s[i] == ')': result.add $next()
 		elif member('0','9'):
 			var number = ""
-			result.add "*" 
-			while member('0','9'): number &= $next() 
+			result.add "*"
+			while member('0','9'): number &= $next()
 			result.add number
 		elif member('A','Z'):
 			if i>0 and s[i-1] != '(': result.add "+"
 			var name = ""
 			name.add next()
-			while member('a','z'): name.add next() 
+			while member('a','z'): name.add next()
 			result.add name
 
 proc pass2(s:string): seq[string] = # "H2O" => @["H", "2", "*", "O", "+"]
-	let ops = "+*" 
+	let ops = "+*"
 	var tokens = pass1 s
 	var stack: seq[string]
 	var op: string
- 
+
 	for token in tokens:
 		case token
 		of "(": stack.add token
@@ -1542,7 +1542,7 @@ proc pass2(s:string): seq[string] = # "H2O" => @["H", "2", "*", "O", "+"]
 					result.add op
 				stack.add token
 			else: result.add token
- 
+
 	while stack.len > 0: result.add stack.pop()
 
 proc pass3(s:string): Table[string,int] = # "H2O" => { H:2, O:1 }
@@ -1564,14 +1564,14 @@ proc pass3(s:string): Table[string,int] = # "H2O" => { H:2, O:1 }
 						res[key] = h2[key]
 			stack.add res
 		elif item == "*":
-			let top: Table[string,int] = stack.pop() # 
+			let top: Table[string,int] = stack.pop() #
 			let hash: Table[string,int] = stack.pop()
 			let factor: int = top["factor"]
 			var res: Table[string,int] = initTable[string,int]()
 			for key in hash.keys:
-				let str : string = key 
+				let str : string = key
 				let value: int = hash[key]
-				res[key] = value * factor 
+				res[key] = value * factor
 			stack.add res
 		elif ATOMIC_MASS.haskey(item):
 			let res : Table[string,int] = {item: 1}.toTable
@@ -1586,7 +1586,7 @@ proc pass4(s: string) : float = # "H2O" => 18.015
 	let atoms: Table[string,int] = pass3 s
 	for key in atoms.keys:
 		let count : int = atoms[key]
-		result += float(count) * ATOMIC_MASS[key] 
+		result += float(count) * ATOMIC_MASS[key]
 	round result,3
 
 let molar_mass = pass4
@@ -1843,7 +1843,7 @@ molar_mass("(HO)2","Hydrogen peroxide",34.014)
 --molar_mass("Na2SO4","Sodium sulfate",142.036) -- (fine for "%g")
 molar_mass("Na2SO4","Sodium sulfate",142.03553856)  --   """
 molar_mass("C6H12","Cyclohexane",84.162)
-molar_mass("COOH(C(CH3)2)3CH3","",186.295) 
+molar_mass("COOH(C(CH3)2)3CH3","",186.295)
 molar_mass("C6H4O2(OH)4","Vitamin C",176.124)
 molar_mass("C27H46O","Cholesterol",386.664)
 molar_mass("Uue","Ununennium",315)
@@ -1884,7 +1884,7 @@ mul = lambda x : '*' + x.group(0)
 def add(x) :
     name = x.group(0)
     return '+' + name if name == '(' else '+' + str(ATOMIC_MASS[name])
- 
+
 def molar_mass(s):
     nazwa = s
     s = re.sub(r"\d+", mul, s)
@@ -2317,7 +2317,7 @@ fcn molarMass(str,mass=0.0){
       else mass=w;
    }
    ms:=List(mass);	// HO --> (1.008,15.999).sum()
-   while(str){ 
+   while(str){
       if(not atomRE.search(str)) throw(Exception.ValueError);
       ns,nm,n := atomRE.matched;
       n=(if(n) n.toInt() else 1);	// H2
@@ -2331,26 +2331,26 @@ fcn molarMass(str,mass=0.0){
 
 ```zkl
 var [const] atomicMass = Dictionary(
-  "Ac",227.000000, "Ag",107.868200, "Al", 26.981538, "Am",243.000000, "Ar", 39.948000, 
-  "As", 74.921595, "At",210.000000, "Au",196.966569, "B" , 10.810000, "Ba",137.327000, 
-  "Be",  9.012183, "Bi",208.980400, "Bk",247.000000, "Br", 79.904000, "C" , 12.011000, 
-  "Ca", 40.078000, "Cd",112.414000, "Ce",140.116000, "Cf",251.000000, "Cl", 35.450000, 
-  "Cm",247.000000, "Co", 58.933194, "Cr", 51.996100, "Cs",132.905452, "Cu", 63.546000, 
-  "Dy",162.500000, "Er",167.259000, "Es",252.000000, "Eu",151.964000, "F" , 18.998403, 
-  "Fe", 55.845000, "Fm",257.000000, "Fr",223.000000, "Ga", 69.723000, "Gd",157.250000, 
-  "Ge", 72.630000, "H" ,  1.008000, "He",  4.002602, "Hf",178.490000, "Hg",200.592000, 
-  "Ho",164.930330, "I" ,126.904470, "In",114.818000, "Ir",192.217000, "K" , 39.098300, 
-  "Kr", 83.798000, "La",138.905470, "Li",  6.940000, "Lu",174.966800, "Mg", 24.305000, 
-  "Mn", 54.938044, "Mo", 95.950000, "N" , 14.007000, "Na", 22.989769, "Nb", 92.906370, 
-  "Nd",144.242000, "Ne", 20.179700, "Ni", 58.693400, "Np",237.000000, "O" , 15.999000, 
-  "Os",190.230000, "P" , 30.973762, "Pa",231.035880, "Pb",207.200000, "Pd",106.420000, 
-  "Pm",145.000000, "Po",209.000000, "Pr",140.907660, "Pt",195.084000, "Pu",244.000000, 
-  "Ra",226.000000, "Rb", 85.467800, "Re",186.207000, "Rh",102.905500, "Rn",222.000000, 
-  "Ru",101.070000, "S" , 32.060000, "Sb",121.760000, "Sc", 44.955908, "Se", 78.971000, 
-  "Si", 28.085000, "Sm",150.360000, "Sn",118.710000, "Sr", 87.620000, "Ta",180.947880, 
-  "Tb",158.925350, "Te",127.600000, "Th",232.037700, "Ti", 47.867000, "Tl",204.380000, 
-  "Tm",168.934220, "U" ,238.028910, "V" , 50.941500, "W" ,183.840000, "Xe",131.293000, 
-  "Y" , 88.905840, "Yb",173.054000, "Zn", 65.380000, "Zr", 91.224000, 
+  "Ac",227.000000, "Ag",107.868200, "Al", 26.981538, "Am",243.000000, "Ar", 39.948000,
+  "As", 74.921595, "At",210.000000, "Au",196.966569, "B" , 10.810000, "Ba",137.327000,
+  "Be",  9.012183, "Bi",208.980400, "Bk",247.000000, "Br", 79.904000, "C" , 12.011000,
+  "Ca", 40.078000, "Cd",112.414000, "Ce",140.116000, "Cf",251.000000, "Cl", 35.450000,
+  "Cm",247.000000, "Co", 58.933194, "Cr", 51.996100, "Cs",132.905452, "Cu", 63.546000,
+  "Dy",162.500000, "Er",167.259000, "Es",252.000000, "Eu",151.964000, "F" , 18.998403,
+  "Fe", 55.845000, "Fm",257.000000, "Fr",223.000000, "Ga", 69.723000, "Gd",157.250000,
+  "Ge", 72.630000, "H" ,  1.008000, "He",  4.002602, "Hf",178.490000, "Hg",200.592000,
+  "Ho",164.930330, "I" ,126.904470, "In",114.818000, "Ir",192.217000, "K" , 39.098300,
+  "Kr", 83.798000, "La",138.905470, "Li",  6.940000, "Lu",174.966800, "Mg", 24.305000,
+  "Mn", 54.938044, "Mo", 95.950000, "N" , 14.007000, "Na", 22.989769, "Nb", 92.906370,
+  "Nd",144.242000, "Ne", 20.179700, "Ni", 58.693400, "Np",237.000000, "O" , 15.999000,
+  "Os",190.230000, "P" , 30.973762, "Pa",231.035880, "Pb",207.200000, "Pd",106.420000,
+  "Pm",145.000000, "Po",209.000000, "Pr",140.907660, "Pt",195.084000, "Pu",244.000000,
+  "Ra",226.000000, "Rb", 85.467800, "Re",186.207000, "Rh",102.905500, "Rn",222.000000,
+  "Ru",101.070000, "S" , 32.060000, "Sb",121.760000, "Sc", 44.955908, "Se", 78.971000,
+  "Si", 28.085000, "Sm",150.360000, "Sn",118.710000, "Sr", 87.620000, "Ta",180.947880,
+  "Tb",158.925350, "Te",127.600000, "Th",232.037700, "Ti", 47.867000, "Tl",204.380000,
+  "Tm",168.934220, "U" ,238.028910, "V" , 50.941500, "W" ,183.840000, "Xe",131.293000,
+  "Y" , 88.905840, "Yb",173.054000, "Zn", 65.380000, "Zr", 91.224000,
 ), m=RegExp("([1-9]+)"),
    atomRE=fcn{  // sort by name length, build RE: "(Lu|Es|Er..|W|Y)([1-9]*)"
 	 nms:=atomicMass.keys;

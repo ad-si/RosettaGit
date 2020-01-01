@@ -499,12 +499,12 @@ int main(int argc, char const *argv[])
 
 
 
-## C sharp
+## C#
 
 <code>System.Numerics.BigInteger</code> was added in C# 4. The exponent of <code>BigInteger.Pow()</code> is limited to a 32-bit signed integer, which is not a problem in this specific task.
 {{works with|C sharp|C#|4+}}
 
-```csharp
+```c#
 using System;
 using System.Diagnostics;
 using System.Linq;

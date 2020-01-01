@@ -14,12 +14,12 @@ tags = []
 [[Category:Mathematics]]
 <!-- Left Factorial !-->
 
-'''Left factorials''',   <big><big>!n</big></big>,   may refer to either   ''subfactorials''   or to   ''factorial sums''; 
+'''Left factorials''',   <big><big>!n</big></big>,   may refer to either   ''subfactorials''   or to   ''factorial sums'';
 
 the same notation can be confusingly seen used for the two different definitions.
 
-Sometimes,   ''subfactorials''   (also known as ''derangements'')   may use any of the notations: 
-:::::::*   <big><big> <span style="font-family:serif">!''n''`</span> </big></big> 
+Sometimes,   ''subfactorials''   (also known as ''derangements'')   may use any of the notations:
+:::::::*   <big><big> <span style="font-family:serif">!''n''`</span> </big></big>
 :::::::*   <big><big> <span style="font-family:serif">!''n''</span>  </big></big>
 :::::::*   <big><big> <span style="font-family:serif">''n''¡</span>  </big></big>
 
@@ -207,7 +207,7 @@ digit counts of !n for n = 1000(1000)10 000
         ' ( !step+!from:~>!to:?from
           & !fun$(leftFact$!from)
           )
-      & 
+      &
   )
 & out$"First 11 left factorials:"
 & iterate$(0.10.1.out)
@@ -541,9 +541,9 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 using System;
 using System.Numerics;
@@ -642,7 +642,7 @@ namespace LeftFactorial
 Faster Implementation
 
 
-```csharp
+```c#
 
 using System;
 using System.Numerics;
@@ -873,7 +873,7 @@ We use the 'bigint' library and memoization : (remember 'function).
 ```lisp
 
 (lib 'bigint)
-(define (!n n) 
+(define (!n n)
 	(if (zero? n)  0
 	(+ (!n (1- n)) (factorial (1- n)))))
 (remember '!n)
@@ -1101,18 +1101,18 @@ IN: rosetta-code.left-factorials
         [ number>string "!" prepend ] dip
         "%6s   %-6d\n" printf
     ] each nl ; inline
-    
+
 : digit-count ( n -- count ) log10 >integer 1 + ;
 
 : part1 ( -- ) 11 <iota> [ ] print-left-factorials ;
-    
+
 : part2 ( -- ) 20 110 10 <range> [ ] print-left-factorials ;
 
 : part3 ( -- )
     "Number of digits for" print
     1,000 10,000 1,000 <range>
     [ digit-count ] print-left-factorials ;
-    
+
 : main ( -- ) part1 part2 part3 ;
 
 MAIN: main
@@ -1122,16 +1122,16 @@ MAIN: main
 
 ```txt
 
-    !0   0     
-    !1   1     
-    !2   2     
-    !3   4     
-    !4   10    
-    !5   34    
-    !6   154   
-    !7   874   
-    !8   5914  
-    !9   46234 
+    !0   0
+    !1   1
+    !2   2
+    !3   4
+    !4   10
+    !5   34
+    !6   154
+    !7   874
+    !8   5914
+    !9   46234
    !10   409114
 
    !20   128425485935180314
@@ -1146,16 +1146,16 @@ MAIN: main
   !110   145722981061585297004706728001906071948635199234860720988658042536179281328615541936083296163475394237524337422204397431927131629058103519228197429698252556442336528920420940314
 
 Number of digits for
- !1000   2565  
- !2000   5733  
- !3000   9128  
- !4000   12670 
- !5000   16322 
- !6000   20062 
- !7000   23875 
- !8000   27749 
- !9000   31678 
-!10000   35656 
+ !1000   2565
+ !2000   5733
+ !3000   9128
+ !4000   12670
+ !5000   16322
+ !6000   20062
+ !7000   23875
+ !8000   27749
+ !9000   31678
+!10000   35656
 
 ```
 
@@ -1170,7 +1170,7 @@ This solution inspired by the Fortran one.
 36000 CONSTANT #DIGITS  \ Enough for !10000
 CREATE S #DIGITS ALLOT  S #DIGITS ERASE  VARIABLE S#
 CREATE F #DIGITS ALLOT  F #DIGITS ERASE  VARIABLE F#
-1 F C!  1 F# !  \ F = 1 = 0! 
+1 F C!  1 F# !  \ F = 1 = 0!
 
 \ "Bignums": represented by two cells on the stack:
 \ 1) An address pointing to the least-significant unit
@@ -1191,7 +1191,7 @@ CREATE F #DIGITS ALLOT  F #DIGITS ERASE  VARIABLE F#
    BEGIN over WHILE       \ 3: add any carry digits
      >R 10 mod/ ( addr m d R:addr*) R@ C! R> 1+
    REPEAT  rot - nip ;  \ calculate travel distance, discard 0 carry
-: B* ( addr u u' -- u'')  \ Multiply "bignum" inplace by U' 
+: B* ( addr u u' -- u'')  \ Multiply "bignum" inplace by U'
    0 2swap over >R dup >R bounds  ( u' 0 addr+u addr R:addr R:u)
    DO ( u' c) over I C@ * +  10 mod/ I C! LOOP
    nip R> BEGIN ( c u) over WHILE  \ insert carry, may have multiple digits
@@ -1200,7 +1200,7 @@ CREATE F #DIGITS ALLOT  F #DIGITS ERASE  VARIABLE F#
 : .B ( addr u)  over +  BEGIN 1-  \ print bignum
      dup C@ [char] 0 + EMIT  over over >=
    UNTIL  drop drop ;
-: .!n   0 <# #s [char] ! hold #> 6 over - spaces type space ; 
+: .!n   0 <# #s [char] ! hold #> 6 over - spaces type space ;
 : REPORT ( n)
    dup 10 <=  over dup  20 111 within  swap 10 mod 0= and or
    IF .!n [char] = emit space S S# @ .B cr
@@ -1262,9 +1262,9 @@ First, to see how far INTEGER*8 arithmetic can reach. This is the largest size l
 
 The function names are used as ordinary variables within the function while building the result; earlier compilers often did not allow such usage or produced incorrect code in certain cases. Ordinary integer variables are used since it is obvious that their range will not be exercised before the function result overflows, even with sixty-four bit integers for them. With two's complement arithmetic, negative numbers can appear in spite of the mathematics involved only being able to generate positive numbers, but this relies on the "sign bit" happening to become set and cannot be regarded as a definite check. Only a proper test such as the IF OVERFLOW found in First Fortran (1958) will do, but the modernisers have long abandoned this detail.
 
-Because this calculation won't get far, no attempt is made to save intermediate results (such as the factorial numbers) nor develop the results progressively even though they are to be produced in sequence. Each result is computed from the start, as per the specified formulae. 
+Because this calculation won't get far, no attempt is made to save intermediate results (such as the factorial numbers) nor develop the results progressively even though they are to be produced in sequence. Each result is computed from the start, as per the specified formulae.
 
-For output, to have the exclamation mark precede the number without a gap, format sequence <code>"!",I0</code> will do, the <code>I0</code> format code being standardised in F90. However, this produces varying-length digit sequences, which will mean that the following output changes position likewise. Rather than use say <code>I20</code> for the result and have a wide gap, code <code>I0</code> will do, and to start each such number in the same place, the code <code>T6</code> will start it in column six, far enough along not to clash with the first number on the line, given that it will not be large. 
+For output, to have the exclamation mark precede the number without a gap, format sequence <code>"!",I0</code> will do, the <code>I0</code> format code being standardised in F90. However, this produces varying-length digit sequences, which will mean that the following output changes position likewise. Rather than use say <code>I20</code> for the result and have a wide gap, code <code>I0</code> will do, and to start each such number in the same place, the code <code>T6</code> will start it in column six, far enough along not to clash with the first number on the line, given that it will not be large.
 ```Fortran
       MODULE LAIROTCAF	!Calculates "left factorials".
        CONTAINS		!The usual suspects.
@@ -1330,7 +1330,7 @@ Factorial: Overflow!
 ```
 
 
-Obviously, one could proceed using the services of some collection of "bignum" routines, and then the code would merely depict their uses for this problem. Since the task is to produce consecutive values, all that need be done is to maintain a S value holding the accumulated sum, and a F value for the successive factorials to be added into S. The only difficulty is to arrange the proper phasing of the starting values so that the calculation will work. Since only one multiply and one addition is needed per step, explicit code might as well be used, as follows: 
+Obviously, one could proceed using the services of some collection of "bignum" routines, and then the code would merely depict their uses for this problem. Since the task is to produce consecutive values, all that need be done is to maintain a S value holding the accumulated sum, and a F value for the successive factorials to be added into S. The only difficulty is to arrange the proper phasing of the starting values so that the calculation will work. Since only one multiply and one addition is needed per step, explicit code might as well be used, as follows:
 ```Fortran
 Calculates "left factorials", in sequence, and shows some.
       INTEGER ENUFF,BASE	!Some parameters.
@@ -1480,10 +1480,10 @@ For i As ULong = 0 To 110
 Next
 
 Print
- 
+
 For i As ULong = 1000 To 10000 Step 1000
   leftFactorial(t, i)
-  Print "!"; Str(i); " has "; digitCount(t); " digits" 
+  Print "!"; Str(i); " has "; digitCount(t); " digits"
 Next
 
 mpz_clear(@t)
@@ -1684,7 +1684,7 @@ end
 ```txt
 
 ->lfact
-0 1 2 4 10 34 154 874 5914 46234 409114 
+0 1 2 4 10 34 154 874 5914 46234 409114
 
 128425485935180314
 9157958657951075573395300940314
@@ -1697,7 +1697,7 @@ end
 942786239765826579160595268206839381354754349601050974345395410407078230249590414458830117442618180732911203520208889371641659121356556442336528920420940314
 145722981061585297004706728001906071948635199234860720988658042536179281328615541936083296163475394237524337422204397431927131629058103519228197429698252556442336528920420940314
 
-2565 5733 9128 12670 16322 20062 23875 27749 31678 35656 
+2565 5733 9128 12670 16322 20062 23875 27749 31678 35656
 ->
 
 ```
@@ -1771,7 +1771,7 @@ public class LeftFac{
 		}
 		return ans;
 	}
-	
+
 	public static BigInteger leftFact(BigInteger n){
 		BigInteger ans = BigInteger.ZERO;
 		for(BigInteger k = BigInteger.ZERO; k.compareTo(n.subtract(BigInteger.ONE)) <= 0; k = k.add(BigInteger.ONE)){
@@ -1779,16 +1779,16 @@ public class LeftFac{
 		}
 		return ans;
 	}
-	
+
 	public static void main(String[] args){
 		for(int i = 0; i <= 10; i++){
 			System.out.println("!" + i + " = " + leftFact(BigInteger.valueOf(i)));
 		}
-		
+
 		for(int i = 20; i <= 110; i += 10){
 			System.out.println("!" + i + " = " + leftFact(BigInteger.valueOf(i)));
 		}
-		
+
 		for(int i = 1000; i <= 10000; i += 1000){
 			System.out.println("!" + i + " has " + leftFact(BigInteger.valueOf(i)).toString().length() + " digits");
 		}
@@ -1971,16 +1971,16 @@ fun leftFactorial(n: Int): BigInteger {
     for (i in 1 until n) {
         fact *= BigInteger.valueOf(i.toLong())
         sum += fact
-    }        
+    }
     return sum
 }
-        
+
 fun main(args: Array<String>) {
-    for (i in 0..110) 
-        if (i <= 10 || (i % 10) == 0) 
+    for (i in 0..110)
+        if (i <= 10 || (i % 10) == 0)
             println("!${i.toString().padEnd(3)} = ${leftFactorial(i)}")
     println("\nLength of the following left factorials:")
-    for (i in 1000..10000 step 1000) 
+    for (i in 1000..10000 step 1000)
         println("!${i.toString().padEnd(5)} has ${leftFactorial(i).toString().length} digits")
 }
 ```
@@ -2316,7 +2316,7 @@ forstep(n=1000,1e4,1000,print1(#digits(lf(n))", "))
 ```txt
 %1 = [0, 1, 2, 4, 10, 34, 154, 874, 5914, 46234, 409114]
 %2 = [128425485935180314, 9157958657951075573395300940314, 20935051082417771847631371547939998232420940314, 620960027832821612639424806694551108812720525606160920420940314, 141074930726669571000530822087000522211656242116439949000980378746128920420940314, 173639511802987526699717162409282876065556519849603157850853034644815111221599509216528920420940314, 906089587987695346534516804650290637694024830011956365184327674619752094289696314882008531991840922336528920420940314, 16695570072624210767034167688394623360733515163575864136345910335924039962404869510225723072235842668787507993136908442336528920420940314, 942786239765826579160595268206839381354754349601050974345395410407078230249590414458830117442618180732911203520208889371641659121356556442336528920420940314, 145722981061585297004706728001906071948635199234860720988658042536179281328615541936083296163475394237524337422204397431927131629058103519228197429698252556442336528920420940314]
-2565, 5733, 9128, 12670, 16322, 20062, 23875, 27749, 31678, 35656, 
+2565, 5733, 9128, 12670, 16322, 20062, 23875, 27749, 31678, 35656,
 ```
 
 
@@ -2357,7 +2357,7 @@ printf "!%d has %d digits.\n", $_, length leftfact($_) for map $_*1000, 1..10;
 ```
 
 
-Since I copied the printf format strings from the perl6 implementation, 
+Since I copied the printf format strings from the perl6 implementation,
 the output from the code above is identical to the output of the perl6 code.
 
 
@@ -2435,9 +2435,9 @@ Same output.
 
 ```Phix
 include mpfr.e
- 
+
 sequence lf_list
- 
+
 procedure init(integer n)
     mpz f = mpz_init(1)
     lf_list = repeat(f,n+1)
@@ -2447,7 +2447,7 @@ procedure init(integer n)
         lf_list[i+1] = f
     end for
 end procedure
- 
+
 function lf(integer n, bool len=false)
 -- Returns left factorial of n, or it's length, as a string
     mpz sumf = mpz_init(0)
@@ -2455,7 +2455,7 @@ function lf(integer n, bool len=false)
     return iff(len?sprintf("%d",mpz_sizeinbase(sumf,10))
                   :mpz_get_str(sumf))
 end function
- 
+
 -- Main procedure
 atom t0 = time()
 init(10000)
@@ -2531,8 +2531,8 @@ complete (0.25s)
 ```
 
 {{out}}
-<lang>0-10 
-1 
+<lang>0-10
+1
 1
 2
 4
@@ -2572,7 +2572,7 @@ complete (0.25s)
 
 ## PL/I
 
-In PL/I the biggest integer type is <tt>'''fixed decimal(31)'''</tt> i.e. 31 digits. 
+In PL/I the biggest integer type is <tt>'''fixed decimal(31)'''</tt> i.e. 31 digits.
 To the best of my knowledge, no big integers exist.
 Results are shown for the first 11 integers, as required;
 then for the integers from 20 through 30 only, because factorials for n = 40 and larger are not possible.
@@ -2607,28 +2607,28 @@ end left_factorials;
 
 ```txt
 
-Left factorial of         0=                                 0 
-Left factorial of         1=                                 1 
-Left factorial of         2=                                 2 
-Left factorial of         3=                                 4 
-Left factorial of         4=                                10 
-Left factorial of         5=                                34 
-Left factorial of         6=                               154 
-Left factorial of         7=                               874 
-Left factorial of         8=                              5914 
-Left factorial of         9=                             46234 
-Left factorial of        10=                            409114 
-Left factorial of        20=                128425485935180314 
-Left factorial of        21=               2561327494111820314 
-Left factorial of        22=              53652269665821260314 
-Left factorial of        23=            1177652997443428940314 
-Left factorial of        24=           27029669736328405580314 
-Left factorial of        25=          647478071469567844940314 
-Left factorial of        26=        16158688114800553828940314 
-Left factorial of        27=       419450149241406189412940314 
-Left factorial of        28=     11308319599659758350180940314 
-Left factorial of        29=    316196664211373618851684940314 
-Left factorial of        30=   9157958657951075573395300940314 
+Left factorial of         0=                                 0
+Left factorial of         1=                                 1
+Left factorial of         2=                                 2
+Left factorial of         3=                                 4
+Left factorial of         4=                                10
+Left factorial of         5=                                34
+Left factorial of         6=                               154
+Left factorial of         7=                               874
+Left factorial of         8=                              5914
+Left factorial of         9=                             46234
+Left factorial of        10=                            409114
+Left factorial of        20=                128425485935180314
+Left factorial of        21=               2561327494111820314
+Left factorial of        22=              53652269665821260314
+Left factorial of        23=            1177652997443428940314
+Left factorial of        24=           27029669736328405580314
+Left factorial of        25=          647478071469567844940314
+Left factorial of        26=        16158688114800553828940314
+Left factorial of        27=       419450149241406189412940314
+Left factorial of        28=     11308319599659758350180940314
+Left factorial of        29=    316196664211373618851684940314
+Left factorial of        30=   9157958657951075573395300940314
 
 ```
 
@@ -2643,7 +2643,7 @@ Left factorial of        30=   9157958657951075573395300940314
 function left-factorial ([BigInt]$n) {
     [BigInt]$k, [BigInt]$fact = ([BigInt]::Zero), ([BigInt]::One)
     [BigInt]$lfact = ([BigInt]::Zero)
-    while($k -lt $n){        
+    while($k -lt $n){
         if($k -gt ([BigInt]::Zero)) {
             $fact = [BigInt]::Multiply($fact, $k)
             $lfact = [BigInt]::Add($lfact, $fact)
@@ -2661,7 +2661,7 @@ for($i = 10; $i -le 110; $i += 10) {
     "!$i = $(left-factorial $i)"
 }
 for($i = 1000; $i -le 10000; $i += 1000) {
-    $digits = [BigInt]::Log10($(left-factorial $i)) 
+    $digits = [BigInt]::Log10($(left-factorial $i))
     $digits = [Math]::Floor($digits) + 1
     if($digits -gt 1) {"!$i has $digits digits"}
     else {"!$i has $digits digit"}
@@ -2707,7 +2707,7 @@ for($i = 1000; $i -le 10000; $i += 1000) {
 !7000 has 23875 digits
 !8000 has 27749 digits
 !9000 has 31678 digits
-!10000 has 35656 digits 
+!10000 has 35656 digits
 
 ```
 
@@ -2721,7 +2721,7 @@ from itertools import islice
 
 def lfact():
     yield 0
-    fact, summ, n = 1, 0, 1 
+    fact, summ, n = 1, 0, 1
     while 1:
         fact, summ, n = fact*n, summ + fact, n + 1
         yield summ
@@ -2730,7 +2730,7 @@ print('first 11:\n  %r' % [lf for i, lf in zip(range(11), lfact())])
 print('20 through 110 (inclusive) by tens:')
 for lf in islice(lfact(), 20, 111, 10):
     print(lf)
-print('Digits in 1,000 through 10,000 (inclusive) by thousands:\n  %r' 
+print('Digits in 1,000 through 10,000 (inclusive) by thousands:\n  %r'
       % [len(str(lf)) for lf in islice(lfact(), 1000, 10001, 1000)] )
 ```
 
@@ -3024,7 +3024,7 @@ left ! of  10000  ───►  35656  digits
 
 a = leftFact(0,10,1)
 see "" + a + nl
- 
+
 func leftFact f,t,s
      see "------ From " + f + " --To -> " + t +" Step " + s + " -------" + nl
      for i = f to t step s
@@ -3131,7 +3131,7 @@ for i = f to t step s
 	next j
 	if i >= 1000 then
 		print i;" ";len(str$(lftFct));" "digits"
-	  else 
+	  else
 		print i;" ";lftFct
 	end if
 next i
@@ -3443,17 +3443,17 @@ and (iota 5 100 2) produces a list (100 102 104 106 108)
   (display "!") (display i) (display " ") (display r) (newline))
 
 ;; show left factorials for zero through ten (inclusive)
-(for-each 
+(for-each
   (lambda (i) (show i (left-factorial i)))
   (iota 11))
 
 ;; show left factorials for 20 through 110 (inclusive) by tens
-(for-each 
+(for-each
   (lambda (i) (show i (left-factorial i)))
   (iota 10 20 10))
 
 ;; number of digits in 1000 through 10000 by thousands:
-(for-each 
+(for-each
   (lambda (i) (show i (string-length (number->string (left-factorial i)))))
   (iota 10 1000 1000))
 
@@ -3480,7 +3480,7 @@ const func bigInteger: leftFact (in integer: n) is func
       factorial *:= bigInteger conv i;
     end for;
   end func;
- 
+
 const proc: main is func
   local
     var integer: n is 0;
@@ -3646,15 +3646,15 @@ for i (1000..10000 `by` 1000) {
 
 val store = ref 0;
 
-val rec dfac = fn 
+val rec dfac = fn
         (from,to,acc,cm) => if from = to then (from,acc,cm) else (store:=(from+1)*acc;dfac (from+1,to,!store,!store+cm ) );
 
-val rec cumlfac = fn 
+val rec cumlfac = fn
         (x::y::rm) => x :: cumlfac ( dfac (#1 x, #1 y, #2 x, #3 x) :: rm ) |
         rm =>rm ;
 
-val arguments = List.tabulate (10,fn 0=>(0,1,1)|i=>(i,0,0)) @ 
-                List.tabulate (10,fn i=> (10*i+19,0,0) )    @ 
+val arguments = List.tabulate (10,fn 0=>(0,1,1)|i=>(i,0,0)) @
+                List.tabulate (10,fn i=> (10*i+19,0,0) )    @
                 List.tabulate ( 10,fn i=> (1000*i+999,0,0));
 
 val result = (~1,0,0)::(cumlfac arguments);
@@ -3675,37 +3675,37 @@ List.app (fn triple :int*int*int =>
 ```txt
 
 time poly --script thisscript
-0 : 0 
-1 : 1 
-2 : 2 
-3 : 4 
-4 : 10 
-5 : 34 
-6 : 154 
-7 : 874 
-8 : 5914 
-9 : 46234 
-10 : 409114 
-20 : 128425485935180314 
-30 : 9157958657951075573395300940314 
-40 : 20935051082417771847631371547939998232420940314 
-50 : 620960027832821612639424806694551108812720525606160920420940314 
-60 : 141074930726669571000530822087000522211656242116439949000980378746128920420940314 
-70 : 173639511802987526699717162409282876065556519849603157850853034644815111221599509216528920420940314 
-80 : 906089587987695346534516804650290637694024830011956365184327674619752094289696314882008531991840922336528920420940314 
-90 : 16695570072624210767034167688394623360733515163575864136345910335924039962404869510225723072235842668787507993136908442336528920420940314 
-100 : 942786239765826579160595268206839381354754349601050974345395410407078230249590414458830117442618180732911203520208889371641659121356556442336528920420940314 
-110 : 145722981061585297004706728001906071948635199234860720988658042536179281328615541936083296163475394237524337422204397431927131629058103519228197429698252556442336528920420940314 
-1000 : 2565 
-2000 : 5733 
-3000 : 9128 
-4000 : 12670 
-5000 : 16322 
-6000 : 20062 
-7000 : 23875 
-8000 : 27749 
-9000 : 31678 
-10000 : 35656 
+0 : 0
+1 : 1
+2 : 2
+3 : 4
+4 : 10
+5 : 34
+6 : 154
+7 : 874
+8 : 5914
+9 : 46234
+10 : 409114
+20 : 128425485935180314
+30 : 9157958657951075573395300940314
+40 : 20935051082417771847631371547939998232420940314
+50 : 620960027832821612639424806694551108812720525606160920420940314
+60 : 141074930726669571000530822087000522211656242116439949000980378746128920420940314
+70 : 173639511802987526699717162409282876065556519849603157850853034644815111221599509216528920420940314
+80 : 906089587987695346534516804650290637694024830011956365184327674619752094289696314882008531991840922336528920420940314
+90 : 16695570072624210767034167688394623360733515163575864136345910335924039962404869510225723072235842668787507993136908442336528920420940314
+100 : 942786239765826579160595268206839381354754349601050974345395410407078230249590414458830117442618180732911203520208889371641659121356556442336528920420940314
+110 : 145722981061585297004706728001906071948635199234860720988658042536179281328615541936083296163475394237524337422204397431927131629058103519228197429698252556442336528920420940314
+1000 : 2565
+2000 : 5733
+3000 : 9128
+4000 : 12670
+5000 : 16322
+6000 : 20062
+7000 : 23875
+8000 : 27749
+9000 : 31678
+10000 : 35656
 (CPU 2.1Ghz:)        0.36 real         0.29 user         0.08 sys
 
 ```
@@ -3789,7 +3789,7 @@ fcn leftFact(n){
 ```zkl
 println("First 11 left factorials:\n", [0..10].apply(leftFact));
 lfs:=[20..111,10].apply(leftFact);
-println(("\n20 through 110 (inclusive) by tens:\n" + 
+println(("\n20 through 110 (inclusive) by tens:\n" +
 	 "%d\n"*lfs.len()).fmt(lfs.xplode()));
 
 println("Digits in 1,000 through 10,000 by thousands:\n",

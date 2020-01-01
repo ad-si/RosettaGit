@@ -367,10 +367,10 @@ alliance archbishop balm bonnet brute centipede cobol covariate departure deploy
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

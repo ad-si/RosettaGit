@@ -392,9 +392,9 @@ wage per hour: 55.35
 
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.IO;
 using System.Collections.Generic;

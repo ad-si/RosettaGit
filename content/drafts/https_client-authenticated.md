@@ -16,11 +16,11 @@ Demonstrate how to connect to a web server over HTTPS where that server requires
 
 This task is in general useful for use with [[Creating a SOAP Client|webservice client]]s as it offers a high level of assurance that the client is an acceptable counterparty for the server. For example, [http://aws.amazon.com/ Amazon Web Services] uses this style of authentication.
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|3.0}}
 
 
-```csharp
+```c#
 
 using System;
 using System.Net;

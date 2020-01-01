@@ -13,7 +13,7 @@ tags = []
 {{task}}
 [[File:chess_white_knight.jpg|200px||right]]
 
-Chess coaches have been known to inflict a kind of torture on beginners by taking a chess board, placing pennies on some squares and requiring that a Knight's tour be constructed that avoids the squares with pennies. 
+Chess coaches have been known to inflict a kind of torture on beginners by taking a chess board, placing pennies on some squares and requiring that a Knight's tour be constructed that avoids the squares with pennies.
 
 This kind of knight's tour puzzle is similar to   [[Solve a Hidato puzzle|Hidato]].
 
@@ -23,8 +23,8 @@ The present task is to produce a solution to such problems. At least demonstrate
 
 ```txt
 
-  0 0 0 
-  0   0 0 
+  0 0 0
+  0   0 0
   0 0 0 0 0 0 0
 0 0 0     0   0
 0   0     0 0 0
@@ -56,29 +56,29 @@ Extra credit is available for other interesting examples.
 ## Ada
 
 
-This solution uses the package Knights_Tour from [[Knight's Tour#Ada]]. The board is quadratic, the size of the board is read from the command line and the board itself is read from the standard input. For the board itself, Space and Minus indicate a no-go (i.e., a coin on the board), all other characters represent places the knight must visit. A '1' represents the start point. Ill-formatted input will crash the program. 
+This solution uses the package Knights_Tour from [[Knight's Tour#Ada]]. The board is quadratic, the size of the board is read from the command line and the board itself is read from the standard input. For the board itself, Space and Minus indicate a no-go (i.e., a coin on the board), all other characters represent places the knight must visit. A '1' represents the start point. Ill-formatted input will crash the program.
 
 
 ```Ada
 with Knights_Tour, Ada.Text_IO, Ada.Command_Line;
- 
+
 procedure Holy_Knight is
-   
+
    Size: Positive := Positive'Value(Ada.Command_Line.Argument(1));
    package KT is new Knights_Tour(Size => Size);
    Board: KT.Tour := (others => (others => Natural'Last));
-   
+
    Start_X, Start_Y: KT.Index:= 1; -- default start place (1,1)
    S: String(KT.Index);
    I: Positive := KT.Index'First;
 begin
    -- read the board from standard input
    while not Ada.Text_IO.End_Of_File and I <= Size loop
-      S := Ada.Text_IO.Get_Line; 
+      S := Ada.Text_IO.Get_Line;
       for J in KT.Index loop
          if S(J) = ' ' or S(J) = '-' then
             Board(I,J) := Natural'Last;
-         elsif S(J) = '1' then 
+         elsif S(J) = '1' then
               Start_X := I; Start_Y := J;  Board(I,J) := 1;
          else Board(I,J) := 0;
          end if;
@@ -87,7 +87,7 @@ begin
    end loop;
 
    -- print the board
-   Ada.Text_IO.Put_Line("Start Configuration (Length:" 
+   Ada.Text_IO.Put_Line("Start Configuration (Length:"
                           & Natural'Image(KT.Count_Moves(Board)) & "):");
    KT.Tour_IO(Board, Width => 1);
    Ada.Text_IO.New_Line;
@@ -128,7 +128,7 @@ Tour:
 
 
 
-###  Extra Credit 
+###  Extra Credit
 
 
 The Holy_Knight program can immediately be used to tackle "more interesting" problems, such as those from [http://www.archimedes-lab.org/knight_tour.html New Knight's Tour Puzzles and Graphs]. Here is one sample solution:
@@ -375,7 +375,7 @@ main:(
 
 ## Bracmat
 
-This solution can handle different input formats: the widths of the first and the other columns are computed. The cell were to start from should have a unique value, but this value is not prescribed. Non-empty cells (such as the start cell) should contain a character that is different from '-', '.' or white space. 
+This solution can handle different input formats: the widths of the first and the other columns are computed. The cell were to start from should have a unique value, but this value is not prescribed. Non-empty cells (such as the start cell) should contain a character that is different from '-', '.' or white space.
 The puzzle solver itself is only a few lines long.
 
 ```bracmat
@@ -385,7 +385,7 @@ The puzzle solver itself is only a few lines long.
       , parseBoard reverseList rightAlign solve strlen
     .   "'non-empty' is a pattern that is used several times in bigger patterns."
       & ( non-empty
-        = 
+        =
         =   %@
           : ~( "."
              | "-"
@@ -421,7 +421,7 @@ The puzzle solver itself is only a few lines long.
             Assumption: all columns have the same width and columns are separated by one or
             more spaces. The function can also be used to find the width of the first column
             by letting pat1 match a new line."
-            &     
+            &
                 ' ( ?
                     (   $pat1
                         [?pos1
@@ -438,7 +438,7 @@ The puzzle solver itself is only a few lines long.
                     )
                   )
               : (=?pattern)
-            & "'pattern', by design, always fails. The interesting part is a side effect: 
+            & "'pattern', by design, always fails. The interesting part is a side effect:
                the column width."
             & (@(!board:!pattern)|!minWidth)
         )
@@ -473,7 +473,7 @@ The puzzle solver itself is only a few lines long.
                         | (!val.!row.!col) !bins
                         )
                       : ?bins
-                  | 
+                  |
                   )
                 & !columnWidth:?width
                 & 1+!col:?col
@@ -564,7 +564,7 @@ The puzzle solver itself is only a few lines long.
       & display$(!arg,!path,!colWidth)
   )
 &     "
-  
+
       0 0 0
       0   0 0
       0 0 0 0 0 0 0
@@ -674,7 +674,7 @@ public:
     {
 	dx[0] = -1; dy[0] = -2; dx[1] = -1; dy[1] =  2;
 	dx[2] =  1; dy[2] = -2; dx[3] =  1; dy[3] =  2;
-	dx[4] = -2; dy[4] = -1; dx[5] = -2; dy[5] =  1; 
+	dx[4] = -2; dy[4] = -1; dx[5] = -2; dy[5] =  1;
 	dx[6] =  2; dy[6] = -1; dx[7] =  2; dy[7] =  1;
     }
 
@@ -753,8 +753,8 @@ private:
 	z = 99999;
 	for( int b = 0; b < hei; b++ )
 	    for( int a = 0; a < wid; a++ )
-		if( arr[a + wid * b].val > 0 && arr[a + wid * b].val < z ) 
-		{ 
+		if( arr[a + wid * b].val > 0 && arr[a + wid * b].val < z )
+		{
 		    x = a; y = b;
 		    z = arr[a + wid * b].val;
 		}
@@ -822,7 +822,7 @@ int main( int argc, char* argv[] )
 
 
 
-## C sharp
+## C#
 
 The same solver can solve Hidato, Holy Knight's Tour, Hopido and Numbrix puzzles.<br/>
 The input can be an array of strings if each cell is one character. The length of the first row must be the number of columns in the puzzle.<br/>
@@ -830,7 +830,7 @@ Any non-numeric value indicates a no-go.<br/>
 If there are cells that require more characters, then a 2-dimensional array of ints must be used. Any number < 0 indicates a no-go.<br/>
 The puzzle can be made circular (the end cell must connect to the start cell). In that case, no start cell needs to be given.
 
-```csharp
+```c#
 using System.Collections;
 using System.Collections.Generic;
 using static System.Console;
@@ -844,7 +844,7 @@ public class Solver
         knightMoves = {(1,-2),(2,-1),(2,1),(1,2),(-1,2),(-2,1),(-2,-1),(-1,-2)};
 
     private (int dx, int dy)[] moves;
-        
+
     public static void Main()
     {
         var knightSolver = new Solver(knightMoves);
@@ -871,7 +871,7 @@ public class Solver
             ".....000.....",
             "....00000....",
             ".....0.0.....",
-            ".....0.0....." 
+            ".....0.0....."
         ));
     }
 
@@ -1011,7 +1011,7 @@ public class Solver
 ## D
 
 {{trans|C++}}
-From the refactored C++ version with more precise typing, and some optimizations. The HolyKnightPuzzle struct is created at compile-time, so its pre-conditions can catch most malformed puzzles at compile-time. 
+From the refactored C++ version with more precise typing, and some optimizations. The HolyKnightPuzzle struct is created at compile-time, so its pre-conditions can catch most malformed puzzles at compile-time.
 
 ```d
 import std.stdio, std.conv, std.string, std.range, std.algorithm,
@@ -1189,9 +1189,9 @@ This solution uses HLPsolver from [[Solve_a_Hidato_puzzle#Elixir | here]]
 
 ```elixir
 # require HLPsolver
- 
+
 adjacent = [{-1,-2},{-2,-1},{-2,1},{-1,2},{1,2},{2,1},{2,-1},{1,-2}]
- 
+
 """
 . . 0 0 0
 . . 0 . 0 0
@@ -1205,19 +1205,19 @@ adjacent = [{-1,-2},{-2,-1},{-2,1},{-1,2},{1,2},{2,1},{2,-1},{1,-2}]
 |> HLPsolver.solve(adjacent)
 
 """
- _ _ _ _ _ 1 _ 0          
- _ _ _ _ _ 0 _ 0          
- _ _ _ _ 0 0 0 0 0        
- _ _ _ _ _ 0 0 0          
- _ _ 0 _ _ 0 _ 0 _ _ 0    
+ _ _ _ _ _ 1 _ 0
+ _ _ _ _ _ 0 _ 0
+ _ _ _ _ 0 0 0 0 0
+ _ _ _ _ _ 0 0 0
+ _ _ 0 _ _ 0 _ 0 _ _ 0
  0 0 0 0 0 _ _ _ 0 0 0 0 0
- _ _ 0 0 _ _ _ _ _ 0 0    
+ _ _ 0 0 _ _ _ _ _ 0 0
  0 0 0 0 0 _ _ _ 0 0 0 0 0
- _ _ 0 _ _ 0 _ 0 _ _ 0    
- _ _ _ _ _ 0 0 0          
- _ _ _ _ 0 0 0 0 0        
- _ _ _ _ _ 0 _ 0          
- _ _ _ _ _ 0 _ 0          
+ _ _ 0 _ _ 0 _ 0 _ _ 0
+ _ _ _ _ _ 0 0 0
+ _ _ _ _ 0 0 0 0 0
+ _ _ _ _ _ 0 _ 0
+ _ _ _ _ _ 0 _ 0
 """
 |> HLPsolver.solve(adjacent)
 ```
@@ -1387,28 +1387,28 @@ func main() {
 
 ```txt
 
---  17  14  29  --  --  --  --  
---  28  --  18  15  --  --  --  
---  13  16  27  30  19  32  07  
-25  02  11  --  --  06  --  20  
-12  --  26  --  --  31  08  33  
-01  24  03  10  05  34  21  --  
---  --  36  23  --  09  --  --  
---  --  --  04  35  22  --  --  
+--  17  14  29  --  --  --  --
+--  28  --  18  15  --  --  --
+--  13  16  27  30  19  32  07
+25  02  11  --  --  06  --  20
+12  --  26  --  --  31  08  33
+01  24  03  10  05  34  21  --
+--  --  36  23  --  09  --  --
+--  --  --  04  35  22  --  --
 
---  --  --  --  --  01  --  05  --  --  --  --  --  
---  --  --  --  --  10  --  12  --  --  --  --  --  
---  --  --  --  02  13  04  09  06  --  --  --  --  
---  --  --  --  --  08  11  14  --  --  --  --  --  
---  --  36  --  --  03  --  07  --  --  16  --  --  
-35  42  33  44  37  --  --  --  15  20  27  22  25  
---  --  38  41  --  --  --  --  --  17  24  --  --  
-39  34  43  32  45  --  --  --  19  28  21  26  23  
---  --  40  --  --  31  --  29  --  --  18  --  --  
---  --  --  --  --  46  51  56  --  --  --  --  --  
---  --  --  --  52  55  30  47  50  --  --  --  --  
---  --  --  --  --  48  --  54  --  --  --  --  --  
---  --  --  --  --  53  --  49  --  --  --  --  --  
+--  --  --  --  --  01  --  05  --  --  --  --  --
+--  --  --  --  --  10  --  12  --  --  --  --  --
+--  --  --  --  02  13  04  09  06  --  --  --  --
+--  --  --  --  --  08  11  14  --  --  --  --  --
+--  --  36  --  --  03  --  07  --  --  16  --  --
+35  42  33  44  37  --  --  --  15  20  27  22  25
+--  --  38  41  --  --  --  --  --  17  24  --  --
+39  34  43  32  45  --  --  --  19  28  21  26  23
+--  --  40  --  --  31  --  29  --  --  18  --  --
+--  --  --  --  --  46  51  56  --  --  --  --  --
+--  --  --  --  52  55  30  47  50  --  --  --  --
+--  --  --  --  --  48  --  54  --  --  --  --  --
+--  --  --  --  --  53  --  49  --  --  --  --  --
 
 ```
 
@@ -1538,28 +1538,28 @@ main =
 {{out}}
 
 ```txt
-    19 26 17            
-    36    20 25         
+    19 26 17
+    36    20 25
     31 18 27 16 21  6 23
  35 28 15       24     8
  30    32        7 22  5
-  1 34 29 14 11  4  9   
-        2 33    13      
-          12  3 10      
+  1 34 29 14 11  4  9
+        2 33    13
+          12  3 10
 
-                 1    31               
-                32    28               
-             56 27  2 33 30            
-                34 29 26               
-       48       55     3       24      
+                 1    31
+                32    28
+             56 27  2 33 30
+                34 29 26
+       48       55     3       24
  47 52 45 54 35          25  4 11  6 23
-       36 49                 9 22      
+       36 49                 9 22
  51 46 53 44 37          21 12  5 10  7
-       50       43    13        8      
-                38 41 20               
-             42 19 16 39 14            
-                40    18               
-                17    15               
+       50       43    13        8
+                38 41 20
+             42 19 16 39 14
+                40    18
+                17    15
 ```
 
 As requested, in an attempt to make this solution faster, the following is a version that replaces the Array with an STUArray (unboxed and mutable), and yields a speedup of 4.2. No speedups were gained until move validation was inlined with the logic in `solve'. This seems to point to the list consing as the overhead for time and allocation, although profiling did show that about 25% of the time in the immutable version was spent creating arrays. Perhaps a more experienced Haskeller could provide insight on how to further optimize this or what optimizations were frivolous (barring a different algorithm or search heuristic, and jumping into C, unless those are the only way).
@@ -1968,31 +1968,31 @@ Sample run:
 ```txt
 ->hkt <hkt.in
 Input with 36 cells:
-                                    
-                                    
-           _  _  _                  
-           _     _  _               
-           _  _  _  _  _  _  _      
-        _  _  _        _     _      
-        _     _        _  _  _      
-        1  _  _  _  _  _  _         
-              _  _     _            
-                 _  _  _            
-                                    
-                                    
+
+
+           _  _  _
+           _     _  _
+           _  _  _  _  _  _  _
+        _  _  _        _     _
+        _     _        _  _  _
+        1  _  _  _  _  _  _
+              _  _     _
+                 _  _  _
+
+
 Output with 36 cells:
-                                    
-                                    
-          19  4 13                  
-          12    18  5               
-          25 20  3 14 17  6 31      
-       21  2 11       32    16      
-       26    24       15 30  7      
-        1 22 27 10 35  8 33         
-             36 23    29            
-                28  9 34            
-                                    
-                                    
+
+
+          19  4 13
+          12    18  5
+          25 20  3 14 17  6 31
+       21  2 11       32    16
+       26    24       15 30  7
+        1 22 27 10 35  8 33
+             36 23    29
+                28  9 34
+
+
 ->
 
 ```
@@ -2013,8 +2013,8 @@ unpack=:verb define
 )
 
 ex1=:unpack ];._2]0 :0
-  0 0 0 
-  0   0 0 
+  0 0 0
+  0   0 0
   0 0 0 0 0 0 0
 0 0 0     0   0
 0   0     0 0 0
@@ -2103,8 +2103,8 @@ unpack=:verb define
 )
 
 ex1=:unpack ];._2]0 :0
-  0 0 0 
-  0   0 0 
+  0 0 0
+  0   0 0
   0 0 0 0 0 0 0
 0 0 0     0   0
 0   0     0 0 0
@@ -2166,19 +2166,19 @@ With this tool in hand, we can now attempt bigger problems:
 
 ```J
 ex2=:unpack ];._2]0 :0
-           1   0          
-           0   0          
-         0 0 0 0 0        
-           0 0 0          
-     0     0   0     0    
+           1   0
+           0   0
+         0 0 0 0 0
+           0 0 0
+     0     0   0     0
  0 0 0 0 0       0 0 0 0 0
-     0 0           0 0    
+     0 0           0 0
  0 0 0 0 0       0 0 0 0 0
-     0     0   0     0    
-           0 0 0          
-         0 0 0 0 0        
-           0   0          
-           0   0          
+     0     0   0     0
+           0 0 0
+         0 0 0 0 0
+           0   0
+           0   0
 )
 ```
 
@@ -2318,14 +2318,14 @@ public class HolyKnightsTour {
 
 
 ```txt
-         19 26 21                   
-         28    18 25                
-         33 20 27 22 17 24  7       
-      29  2 35        8    16       
-      34    32       23  6  9       
-       1 30  3 36 13 10 15          
-            12 31     5             
-                4 11 14             
+         19 26 21
+         28    18 25
+         33 20 27 22 17 24  7
+      29  2 35        8    16
+      34    32       23  6  9
+       1 30  3 36 13 10 15
+            12 31     5
+                4 11 14
 ```
 
 
@@ -2824,13 +2824,13 @@ Uses the Hidato puzzle solver module, which has its source code listed [[Solve_a
 using .Hidato       # Note that the . here means to look locally for the module rather than in the libraries
 
 const holyknight = """
- . 0 0 0 . . . . 
- . 0 . 0 0 . . . 
- . 0 0 0 0 0 0 0 
+ . 0 0 0 . . . .
+ . 0 . 0 0 . . .
+ . 0 0 0 0 0 0 0
  0 0 0 . . 0 . 0
  0 . 0 . . 0 0 0
- 1 0 0 0 0 0 0 . 
- . . 0 0 . 0 . . 
+ 1 0 0 0 0 0 0 .
+ . . 0 0 . 0 . .
  . . . 0 0 0 . . """
 
 const knightmoves = [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]]
@@ -2954,7 +2954,7 @@ fun findSolution(b: String, sz: Int) {
 }
 
 fun main(args: Array<String>) {
-    findSolution(board1,  8) 
+    findSolution(board1,  8)
     println()
     findSolution(board2, 13)
 }
@@ -2965,27 +2965,27 @@ fun main(args: Array<String>) {
 
 ```txt
 
---  17  14  29  --  --  --  --  
---  28  --  18  15  --  --  --  
---  13  16  27  30  19  32  07  
-25  02  11  --  --  06  --  20  
-12  --  26  --  --  31  08  33  
-01  24  03  10  05  34  21  --  
---  --  36  23  --  09  --  --  
---  --  --  04  35  22  --  --  
+--  17  14  29  --  --  --  --
+--  28  --  18  15  --  --  --
+--  13  16  27  30  19  32  07
+25  02  11  --  --  06  --  20
+12  --  26  --  --  31  08  33
+01  24  03  10  05  34  21  --
+--  --  36  23  --  09  --  --
+--  --  --  04  35  22  --  --
 
---  --  --  --  --  01  --  05  --  --  --  --  --  
---  --  --  --  --  10  --  12  --  --  --  --  --  
---  --  --  --  02  13  04  09  06  --  --  --  --  
---  --  --  --  --  08  11  14  --  --  --  --  --  
---  --  36  --  --  03  --  07  --  --  16  --  --  
-35  42  33  44  37  --  --  --  15  20  27  22  25  
---  --  38  41  --  --  --  --  --  17  24  --  --  
-39  34  43  32  45  --  --  --  19  28  21  26  23  
---  --  40  --  --  31  --  29  --  --  18  --  --  
---  --  --  --  --  46  51  56  --  --  --  --  --  
---  --  --  --  52  55  30  47  50  --  --  --  --  
---  --  --  --  --  48  --  54  --  --  --  --  --  
+--  --  --  --  --  01  --  05  --  --  --  --  --
+--  --  --  --  --  10  --  12  --  --  --  --  --
+--  --  --  --  02  13  04  09  06  --  --  --  --
+--  --  --  --  --  08  11  14  --  --  --  --  --
+--  --  36  --  --  03  --  07  --  --  16  --  --
+35  42  33  44  37  --  --  --  15  20  27  22  25
+--  --  38  41  --  --  --  --  --  17  24  --  --
+39  34  43  32  45  --  --  --  19  28  21  26  23
+--  --  40  --  --  31  --  29  --  --  18  --  --
+--  --  --  --  --  46  51  56  --  --  --  --  --
+--  --  --  --  52  55  30  47  50  --  --  --  --
+--  --  --  --  --  48  --  54  --  --  --  --  --
 --  --  --  --  --  53  --  49  --  --  --  --  --
 
 ```
@@ -3000,7 +3000,7 @@ fun main(args: Array<String>) {
 local p1, p1W = ".xxx.....x.xx....xxxxxxxxxx..x.xx.x..xxxsxxxxxx...xx.x.....xxx..", 8
 local p2, p2W = ".....s.x..........x.x.........xxxxx.........xxx.......x..x.x..x..xxxxx...xxxxx..xx.....xx..xxxxx...xxxxx..x..x.x..x.......xxx.........xxxxx.........x.x..........x.x.....", 13
 local puzzle, movesCnt, wid = {}, 0, 0
-local moves = { { -1, -2 }, {  1, -2 }, { -1,  2 }, {  1,  2 }, 
+local moves = { { -1, -2 }, {  1, -2 }, { -1,  2 }, {  1,  2 },
                 { -2, -1 }, { -2,  1 }, {  2, -1 }, {  2,  1 } }
 
 function isValid( x, y )
@@ -3043,7 +3043,7 @@ function fill( pz, w )
             table.insert( puzzle, 0 )
         elseif lp == "." then
             table.insert( puzzle, -1 ); movesCnt = movesCnt - 1
-        else 
+        else
             table.insert( puzzle, 1 )
             sx = 1 + ( i - 1 ) % wid; sy = math.floor( ( i + wid - 1 ) / wid )
         end
@@ -3151,7 +3151,7 @@ sub as_idx_hash {
 
 package KnightsTour;
 use strict;
-# If supplied, 'str' is parsed to set 'N', 'start_location', and 
+# If supplied, 'str' is parsed to set 'N', 'start_location', and
 # 'locations_to_visit'.  'legal_move_idxs' is for improving performance.
 use Class::Tiny qw( N start_location locations_to_visit str legal_move_idxs );
 use English;
@@ -3353,83 +3353,83 @@ END_SIZE_13_PROBLEM
 The timings shown below were obtained on a Dell Optiplex 9020 with 4 cores.
 
 ```txt
-...>holy_knights_tour.pl 
-Finding a tour for an 8x8 problem... 
-Found a tour after first move (6, 2) in 0.018372 seconds: 
-  -  - 18 31 16  -  -  - 
-  -  - 23  - 33 30  -  - 
-  - 19 32 17 24 15 34 29 
-  7 22  5  -  - 28  - 26 
- 20  -  8  -  - 25 14 35 
-  1  6 21  4 11 36 27  - 
-  -  -  2  9  - 13  -  - 
-  -  -  - 12  3 10  -  - 
+...>holy_knights_tour.pl
+Finding a tour for an 8x8 problem...
+Found a tour after first move (6, 2) in 0.018372 seconds:
+  -  - 18 31 16  -  -  -
+  -  - 23  - 33 30  -  -
+  - 19 32 17 24 15 34 29
+  7 22  5  -  - 28  - 26
+ 20  -  8  -  - 25 14 35
+  1  6 21  4 11 36 27  -
+  -  -  2  9  - 13  -  -
+  -  -  - 12  3 10  -  -
 
-Found a tour after first move (4, 2) in 0.010491 seconds: 
-  -  - 30 23 20  -  -  - 
-  -  -  9  - 31 22  -  - 
-  - 29 24 21 10 19 32 15 
- 25  8 27  -  - 16  - 18 
- 28  -  2  -  - 11 14 33 
-  1 26  7 12  5 34 17  - 
-  -  - 36  3  - 13  -  - 
-  -  -  -  6 35  4  -  - 
+Found a tour after first move (4, 2) in 0.010491 seconds:
+  -  - 30 23 20  -  -  -
+  -  -  9  - 31 22  -  -
+  - 29 24 21 10 19 32 15
+ 25  8 27  -  - 16  - 18
+ 28  -  2  -  - 11 14 33
+  1 26  7 12  5 34 17  -
+  -  - 36  3  - 13  -  -
+  -  -  -  6 35  4  -  -
 
-Found a tour after first move (3, 1) in 0.048164 seconds: 
-  -  - 28 11 14  -  -  - 
-  -  - 13  -  9 30  -  - 
-  - 27 10 29 12 15 18 31 
- 23  2 25  -  -  8  - 16 
- 26  - 22  -  - 17 32 19 
-  1 24  3 34  5 20  7  - 
-  -  - 36 21  - 33  -  - 
-  -  -  -  4 35  6  -  - 
+Found a tour after first move (3, 1) in 0.048164 seconds:
+  -  - 28 11 14  -  -  -
+  -  - 13  -  9 30  -  -
+  - 27 10 29 12 15 18 31
+ 23  2 25  -  -  8  - 16
+ 26  - 22  -  - 17 32 19
+  1 24  3 34  5 20  7  -
+  -  - 36 21  - 33  -  -
+  -  -  -  4 35  6  -  -
 
-Finding a tour for a 13x13 problem... 
-Found a tour after first move (2, 6) in 78.827185 seconds: 
-  -  -  -  -  -  1  - 21  -  -  -  -  - 
-  -  -  -  -  - 22  -  6  -  -  -  -  - 
-  -  -  -  -  4  7  2 23 20  -  -  -  - 
-  -  -  -  -  - 24  5  8  -  -  -  -  - 
-  -  - 34  -  -  3  - 19  -  - 56  -  - 
- 35 30 37 28 25  -  -  -  9 18 11 16 13 
-  -  - 26 33  -  -  -  -  - 55 14  -  - 
- 31 36 29 38 27  -  -  - 53 10 17 12 15 
-  -  - 32  -  - 39  - 45  -  - 54  -  - 
-  -  -  -  -  - 46 49 52  -  -  -  -  - 
-  -  -  -  - 40 51 42 47 44  -  -  -  - 
-  -  -  -  -  - 48  - 50  -  -  -  -  - 
-  -  -  -  -  - 41  - 43  -  -  -  -  - 
+Finding a tour for a 13x13 problem...
+Found a tour after first move (2, 6) in 78.827185 seconds:
+  -  -  -  -  -  1  - 21  -  -  -  -  -
+  -  -  -  -  - 22  -  6  -  -  -  -  -
+  -  -  -  -  4  7  2 23 20  -  -  -  -
+  -  -  -  -  - 24  5  8  -  -  -  -  -
+  -  - 34  -  -  3  - 19  -  - 56  -  -
+ 35 30 37 28 25  -  -  -  9 18 11 16 13
+  -  - 26 33  -  -  -  -  - 55 14  -  -
+ 31 36 29 38 27  -  -  - 53 10 17 12 15
+  -  - 32  -  - 39  - 45  -  - 54  -  -
+  -  -  -  -  - 46 49 52  -  -  -  -  -
+  -  -  -  - 40 51 42 47 44  -  -  -  -
+  -  -  -  -  - 48  - 50  -  -  -  -  -
+  -  -  -  -  - 41  - 43  -  -  -  -  -
 
-Found a tour after first move (2, 4) in 100.327934 seconds: 
-  -  -  -  -  -  1  - 23  -  -  -  -  - 
-  -  -  -  -  - 24  - 20  -  -  -  -  - 
-  -  -  -  -  2 19  4 25 22  -  -  -  - 
-  -  -  -  -  - 26 21 18  -  -  -  -  - 
-  -  - 36  -  -  3  -  5  -  - 12  -  - 
- 37 32 39 30 27  -  -  - 17  6 15  8 13 
-  -  - 28 35  -  -  -  -  - 11 56  -  - 
- 33 38 31 40 29  -  -  - 55 16  7 14  9 
-  -  - 34  -  - 41  - 47  -  - 10  -  - 
-  -  -  -  -  - 48 51 54  -  -  -  -  - 
-  -  -  -  - 42 53 44 49 46  -  -  -  - 
-  -  -  -  -  - 50  - 52  -  -  -  -  - 
-  -  -  -  -  - 43  - 45  -  -  -  -  - 
+Found a tour after first move (2, 4) in 100.327934 seconds:
+  -  -  -  -  -  1  - 23  -  -  -  -  -
+  -  -  -  -  - 24  - 20  -  -  -  -  -
+  -  -  -  -  2 19  4 25 22  -  -  -  -
+  -  -  -  -  - 26 21 18  -  -  -  -  -
+  -  - 36  -  -  3  -  5  -  - 12  -  -
+ 37 32 39 30 27  -  -  - 17  6 15  8 13
+  -  - 28 35  -  -  -  -  - 11 56  -  -
+ 33 38 31 40 29  -  -  - 55 16  7 14  9
+  -  - 34  -  - 41  - 47  -  - 10  -  -
+  -  -  -  -  - 48 51 54  -  -  -  -  -
+  -  -  -  - 42 53 44 49 46  -  -  -  -
+  -  -  -  -  - 50  - 52  -  -  -  -  -
+  -  -  -  -  - 43  - 45  -  -  -  -  -
 
-Found a tour after first move (1, 7) in 1443.340089 seconds: 
-  -  -  -  -  -  1  - 21  -  -  -  -  - 
-  -  -  -  -  - 22  -  2  -  -  -  -  - 
-  -  -  -  - 18  3 16 23 20  -  -  -  - 
-  -  -  -  -  - 24 19  4  -  -  -  -  - 
-  -  - 34  -  - 17  - 15  -  - 56  -  - 
- 35 30 37 28 25  -  -  -  5 14  7 12  9 
-  -  - 26 33  -  -  -  -  - 55 10  -  - 
- 31 36 29 38 27  -  -  - 53  6 13  8 11 
-  -  - 32  -  - 39  - 45  -  - 54  -  - 
-  -  -  -  -  - 46 49 52  -  -  -  -  - 
-  -  -  -  - 40 51 42 47 44  -  -  -  - 
-  -  -  -  -  - 48  - 50  -  -  -  -  - 
-  -  -  -  -  - 41  - 43  -  -  -  -  - 
+Found a tour after first move (1, 7) in 1443.340089 seconds:
+  -  -  -  -  -  1  - 21  -  -  -  -  -
+  -  -  -  -  - 22  -  2  -  -  -  -  -
+  -  -  -  - 18  3 16 23 20  -  -  -  -
+  -  -  -  -  - 24 19  4  -  -  -  -  -
+  -  - 34  -  - 17  - 15  -  - 56  -  -
+ 35 30 37 28 25  -  -  -  5 14  7 12  9
+  -  - 26 33  -  -  -  -  - 55 10  -  -
+ 31 36 29 38 27  -  -  - 53  6 13  8 11
+  -  - 32  -  - 39  - 45  -  - 54  -  -
+  -  -  -  -  - 46 49 52  -  -  -  -  -
+  -  -  -  - 40 51 42 47 44  -  -  -  -
+  -  -  -  -  - 48  - 50  -  -  -  -  -
+  -  -  -  -  - 41  - 43  -  -  -  -  -
 ```
 
 
@@ -3473,11 +3473,11 @@ sub solveboard($board) {
     my @known;
     my @neigh;
     my @degree;
- 
+
     @grid = $board.lines.map: -> $line {
         [ $line.words.map: { /^_/ ?? 0 !! /^\./ ?? Rat !! $_ } ]
     }
- 
+
     sub neighbors($y,$x --> List) {
         eager gather for @adjacent {
             my $y1 = $y + .[0];
@@ -3545,7 +3545,7 @@ sub solveboard($board) {
         @grid[$y][$x] = $old;             # undo grid value conjecture
         return False;
     }
-     
+
     say "$tries tries";
 }
 ```
@@ -3649,7 +3649,7 @@ procedure holyknight(sequence s)
 integer y, ch, sx, sy
     s = split(s,'\n')
     size = length(s)
-    nchars = length(sprintf(" %d",size*size))   
+    nchars = length(sprintf(" %d",size*size))
     fmt = sprintf(" %%%dd",nchars-1)
     blank = repeat(' ',nchars)
     board = repeat(repeat(' ',size*nchars),size)
@@ -3819,28 +3819,28 @@ find_solution(".....s.x..........x.x.........xxxxx.........xxx.......x..x.x..x..
 {{out}}
 ```txt
 
-    17 14 29            
-    28    18 15         
+    17 14 29
+    28    18 15
     13 16 27 30 19 32 07
  25 02 11       06    20
  12    26       31 08 33
- 01 24 03 10 05 34 21   
-       36 23    09      
-          04 35 22 
-     
-                01    05               
-                10    12               
-             02 13 04 09 06            
-                08 11 14               
-       36       03    07       16      
+ 01 24 03 10 05 34 21
+       36 23    09
+          04 35 22
+
+                01    05
+                10    12
+             02 13 04 09 06
+                08 11 14
+       36       03    07       16
  35 42 33 44 37          15 20 27 22 25
-       38 41                17 24      
+       38 41                17 24
  39 34 43 32 45          19 28 21 26 23
-       40       31    29       18      
-                46 51 56               
-             52 55 30 47 50            
-                48    54               
-                53    49               
+       40       31    29       18
+                46 51 56
+             52 55 30 47 50
+                48    54
+                53    49
 
 ```
 
@@ -3929,11 +3929,11 @@ It solves the tasked problem, as well as the "extra credit" from [[#Ada]].
 
 ## REXX
 
-This REXX program is essentially a modified   ''knight's tour''   REXX program with support to place pennies on the chessboard. 
+This REXX program is essentially a modified   ''knight's tour''   REXX program with support to place pennies on the chessboard.
 
 Also supported is the specification of the size of the chessboard and the placement of the knight (initial position).
 
-This is an   ''open tour''   solution.   (See this task's   ''discussion''   page for an explanation   [in the first section]). 
+This is an   ''open tour''   solution.   (See this task's   ''discussion''   page for an explanation   [in the first section]).
 
 ```rexx
 /*REXX program solves the  holy knight's tour  problem for a (general)  NxN  chessboard.*/
@@ -4002,7 +4002,7 @@ move: procedure expose @. Kr. Kf. target; parse arg #,rank,file /*obtain move,ra
      return 0                                                   /*tour isn't possible.  */
 ```
 
-'''output'''   when the following is used for input: 
+'''output'''   when the following is used for input:
 
 <tt> , 3 1 /1,1 3 /1,7 2 /2,1 2 /2,5 /2,7 2 /3,8 /4,2 /4,4 2 /5,4 2 /5,7 /6,1 /7,1 /7,3 /7,6 3 /8,1  /8,5 4 </tt>
 
@@ -4031,7 +4031,7 @@ A solution for the holy knight's tour on a  8x8  chessboard:
 
 ```
 
-'''output'''   when the following   (for a "cleaner" chessboard, no pennies are shown)   is used for input: 
+'''output'''   when the following   (for a "cleaner" chessboard, no pennies are shown)   is used for input:
 
 <tt> , 3 1 /1,1 3 /1,7 2 /2,1 2 /2,5 /2,7 2 /3,8 /4,2 /4,4 2 /5,4 2 /5,7 /6,1 /7,1 /7,3 /7,6 3 /8,1  /8,5 4 // </tt>
 
@@ -4093,24 +4093,24 @@ Which produces:
 ```txt
 
 Problem:
-        0  0  0         
-        0     0  0      
+        0  0  0
+        0     0  0
      0  0  0  0  0  0  0
   0  0  0        0     0
   0     0        0  0  0
-  1  0  0  0  0  0  0   
-        0  0     0      
-           0  0  0      
+  1  0  0  0  0  0  0
+        0  0     0
+           0  0  0
 
 Solution:
-        8 33 14         
-       13     7 32      
+        8 33 14
+       13     7 32
      9 34 31 22 15  6 29
  35 12 21       30    16
  10    36       23 28  5
-  1 20 11 24 27  4 17   
-        2 19    25      
-          26  3 18      
+  1 20 11 24 27  4 17
+        2 19    25
+          26  3 18
 
  0.005 sec
 
@@ -4208,8 +4208,8 @@ proc showPuzzle {grid name} {
 }
 
 set puzzle [parsePuzzle {
-  0 0 0 
-  0   0 0 
+  0 0 0
+  0   0 0
   0 0 0 0 0 0 0
 0 0 0     0   0
 0   0     0 0 0
@@ -4228,23 +4228,23 @@ showPuzzle [hkt solution] "Output"
 ```txt
 
 Input with 36 cells
-     __ __ __            
-     __    __ __         
+     __ __ __
+     __    __ __
      __ __ __ __ __ __ __
   __ __ __       __    __
   __    __       __ __ __
-   1 __ __ __ __ __ __   
-        __ __    __      
-           __ __ __      
+   1 __ __ __ __ __ __
+        __ __    __
+           __ __ __
 Output with 36 cells
-     13  6 15            
-      8    12 31         
+     13  6 15
+      8    12 31
       5 14  7 16 27 32 29
    9  2 11       30    26
    4    22       17 28 33
-   1 10  3 18 21 34 25   
-        36 23    19      
-           20 35 24      
+   1 10  3 18 21 34 25
+        36 23    19
+           20 35 24
 
 ```
 

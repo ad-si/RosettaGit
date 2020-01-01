@@ -1140,13 +1140,13 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 Translation of: Visual Basic .NET
 (Cleaned up)
 
 
-```csharp
+```c#
 
     public partial class Form1 : Form
     {

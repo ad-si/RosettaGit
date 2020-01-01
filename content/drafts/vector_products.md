@@ -591,9 +591,9 @@ Output:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Windows.Media.Media3D;
 

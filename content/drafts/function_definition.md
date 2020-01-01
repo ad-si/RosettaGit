@@ -772,9 +772,9 @@ x = ((x + z) * (y));
 
 Another advantage of macros is that they work with all types alike. For example, the above macro can be used both to multiply double values (like the function above), and to multiply int values (giving an int, which the function doesn't).
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 static double multiply(double a, double b)
 {
     return a * b;
@@ -783,7 +783,7 @@ static double multiply(double a, double b)
 
 Anonymous function:
 
-```csharp
+```c#
 Func<double, double, double> multiply = ((a,b) => a*b);
 ```
 

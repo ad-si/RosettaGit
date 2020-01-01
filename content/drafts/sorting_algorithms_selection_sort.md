@@ -636,7 +636,7 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 This is a generic implementation that works with any type that implements the IComparable interface
 
 
@@ -666,7 +666,7 @@ This is a generic implementation that works with any type that implements the IC
 
 Example of usage:
 
-```csharp
+```c#
 String[] str = { "this", "is", "a", "test", "of", "generic", "selection", "sort" };
 
 SelectionSort<String> mySort = new SelectionSort<string>();

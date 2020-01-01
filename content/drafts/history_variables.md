@@ -11,28 +11,28 @@ tags = []
 +++
 
 {{task}}
-''Storing the history of objects in a program is a common task. 
+''Storing the history of objects in a program is a common task.
 Maintaining the history of an object in a program has traditionally required programmers either to write specific code for handling the historical data, or to use a library which supports history logging.''
 
 ''History variables are variables in a programming language which store not only their current value, but also the values they have contained in the past. Some existing languages do provide support for history variables. However these languages typically have many limits and restrictions on use of history variables.
-'' 
+''
 
-[http://www.bod.com/index.php?id=3435&objk_id=148050 "History Variables: 
-The Semantics, Formal Correctness, and Implementation of History Variables 
+[http://www.bod.com/index.php?id=3435&objk_id=148050 "History Variables:
+The Semantics, Formal Correctness, and Implementation of History Variables
 in an Imperative Programming Language" by Mallon and Takaoka]
 
 Concept also discussed on [http://lambda-the-ultimate.org/node/3111 LtU] and [http://www.patents.com/us-7111283.html Patents.com].
 
-;Task: 
-Demonstrate History variable support: 
-* enable history variable support (if needed) 
+;Task:
+Demonstrate History variable support:
+* enable history variable support (if needed)
 * define a history variable
 * assign three values
 * non-destructively display the history
-* recall the three values. 
+* recall the three values.
 
 
-For extra points, if the language of choice does not support history variables, 
+For extra points, if the language of choice does not support history variables,
 demonstrate how this might be implemented.
 
 
@@ -42,11 +42,11 @@ demonstrate how this might be implemented.
 ## Ada
 
 
-Ada does not natively support history variables -- we have to implement them. 
+Ada does not natively support history variables -- we have to implement them.
 
-Furthermore, Ada is a strongly typed language -- that means, we would need 
-to write a history variable type for every basic item type. 
-Instead, we write a single generic package "History_Variables" that works for any item type. 
+Furthermore, Ada is a strongly typed language -- that means, we would need
+to write a history variable type for every basic item type.
+Instead, we write a single generic package "History_Variables" that works for any item type.
 
 
 ===Generic Package "History_Variables"===
@@ -229,7 +229,7 @@ end Test_History;
 {{out}}
 
 ```txt
-one oneone three 
+one oneone three
  14
 ```
 
@@ -437,7 +437,7 @@ class HistoryVariable {
 
 
 
-## C sharp
+## C#
 
 
 ```c sharp
@@ -524,7 +524,7 @@ foobar <- foo <- 5
 
 ## Clojure
 
-Clojure does not have history variables, but it can be accomplished 
+Clojure does not have history variables, but it can be accomplished
 via a watcher function that can track changes on a variable.
 
 
@@ -566,7 +566,7 @@ In Lisp the list is a natural and simple data structure for representing variabl
 
 
 ```lisp
-(defmacro make-hvar (value) 
+(defmacro make-hvar (value)
   `(list ,value))
 
 (defmacro get-hvar (hvar)
@@ -697,12 +697,12 @@ No native support. We implement an anonymous stack associated with the variable,
 (define-syntax-rule (make-h-var name) (define name (stack (gensym))))
 (define-syntax-rule (h-get name) (stack-top name))
 (define-syntax-rule (h-set name value) (push name value))
-(define-syntax-rule (h-undo name) 
+(define-syntax-rule (h-undo name)
 	(begin
 	(pop name)
 	(when ( stack-empty? name) (error "no more values" 'name))
 	(stack-top name)))
-						
+
 (define-syntax-rule (h-values name) (stack->list name))
 ;; usage
 (make-h-var x)→ x
@@ -729,27 +729,27 @@ import extensions;
 import system'collections;
 import system'routines;
 import extensions'routines;
- 
+
 class HistoryVariable
 {
     Stack  previous := new Stack();
     object value;
- 
+
     prop Value
     {
         get() = value;
-        
+
         set(value)
         {
             if ((this value) != nil)
             {
                 previous.push(this value)
             };
-            
+
             this value := value
         }
     }
- 
+
     undo()
     {
         ifnot (previous.isEmpty())
@@ -761,25 +761,25 @@ class HistoryVariable
             value := nil
         }
     }
- 
+
     enumerator() => previous;
- 
+
     get string Printable() => this value;
 }
- 
+
 public program()
 {
     var o := new HistoryVariable();
     o.Value := 5;
     o.Value := "foo";
     o.Value := o.Value + "bar";
- 
+
     console.printLine(o);
- 
+
     o.forEach:printingLn;
- 
+
     o.undo().undo().undo();
- 
+
     console.printLine(o.Value ?? "nil")
 }
 ```
@@ -813,7 +813,7 @@ If we consider the usage of history variables, like not losing the old value by 
 "123qwe"
 4> V3 = V2 ++ "ASD".
 "123qweASD"
-5> V1. 
+5> V1.
 "123"
 6> V2.
 "123qwe"
@@ -921,13 +921,13 @@ type hset struct {
 // newHistory creates a history variable
 func newHistory(ts tsFunc) history {
     return history{ts, []hset{{t: ts()}}}
-}   
-    
+}
+
 // int returns the current value
 func (h history) int() int {
     return h.hs[len(h.hs)-1].int
 }
-    
+
 // set does what you expect and returns the timestamp recorded for the event
 func (h *history) set(x int) time.Time {
     t := h.timestamp()
@@ -940,8 +940,8 @@ func (h history) dump() {
     for _, hs := range h.hs {
         fmt.Println(hs.t.Format(time.StampNano), hs.int)
     }
-}   
-    
+}
+
 // recall recalls the value stored in the history variable at time t.
 // if the variable had not been created yet, ok is false.
 func (h history) recall(t time.Time) (int, /*ok*/ bool) {
@@ -998,7 +998,7 @@ func main() {
     ref := []time.Time{h.set(3), h.set(1), h.set(4)}
     // non-destructively display history
     fmt.Println("History of variable h:")
-    h.dump() 
+    h.dump()
     // recall the three values.  (this is non-destructive as well, but
     // different than the dump in that values are recalled by time.)
     fmt.Println("Recalling values:")
@@ -1502,7 +1502,7 @@ Module CheckHistoryVariables {
       Public:
             Group Count {
                   Value {
-                        link parent myvalue to m 
+                        link parent myvalue to m
                         =Len(m)
                   }
             }
@@ -1542,18 +1542,18 @@ Module CheckHistoryVariables {
             Operator "-=" (x) {
                   Stack .myvalue {
                         Push stackitem()-x
-                  }       
+                  }
             }
             Operator "/=" (x){
                   if x==0 then error "division by zero"
                   Stack .myvalue {
                         Push stackitem()/x
-                  } 
+                  }
             }
             Operator "*=" (x){
                   Stack .myvalue {
                         Push stackitem()*x
-                  }             
+                  }
             }
             Value {
                   =StackItem(.myvalue)
@@ -1566,7 +1566,7 @@ Module CheckHistoryVariables {
                   If Match("N") then Read x : Stack .myvalue { Push x}
             }
       }
-      
+
       N=History()
       N=1
       N=2
@@ -1614,7 +1614,7 @@ Module CheckStringHistoryVariables {
       Public:
             Group Count {
                   Value {
-                        link parent myvalue to m 
+                        link parent myvalue to m
                         =Len(m)
                   }
             }
@@ -1691,32 +1691,32 @@ TYPE
 		Show: PROCEDURE(o:Object);
 		AsString: PROCEDURE(o: Object; VAR str: ARRAY OF CHAR);
 	END;
-	
+
 	(* Integers *)
 	Integer = POINTER TO IntegerDesc;
 	IntegerDesc = RECORD (ObjectDesc)
 		val: INTEGER;
 	END;
-	
+
 	(* Chars *)
 	Char = POINTER TO CharDesc;
 	CharDesc = RECORD (ObjectDesc)
 		val: CHAR;
 	END;
-	
+
 	Node = POINTER TO NodeDesc;
 	NodeDesc = RECORD
 		val: Object;
 		next: Node;
 	END;
-	
+
 	(* History Variable *)
 	HVar* = POINTER TO HVarDesc;
 	HVarDesc = RECORD
 		first, last: Node;
 		size-: INTEGER;
 	END;
-	
+
 	PROCEDURE CharAsString(o:Object; VAR dst: ARRAY OF CHAR);
 	BEGIN
 		IF LEN(dst) >= 2 THEN
@@ -1724,22 +1724,22 @@ TYPE
 		END;
 		dst[0] := o(Char)^.val
 	END CharAsString;
-	
+
 	PROCEDURE IntAsString(o:Object; VAR dst: ARRAY OF CHAR);
 	BEGIN
 		Conv.ConvInt(o(Integer)^.val,dst);
 	END IntAsString;
-	
+
 	PROCEDURE ShowInt(o:Object);
 	BEGIN
 		Out.Int(o(Integer)^.val,10);
 	END ShowInt;
-	
+
 	PROCEDURE ShowChar(o:Object);
 	BEGIN
 		Out.Char(o(Char)^.val);
 	END ShowChar;
-	
+
 	PROCEDURE BoxChar(val: CHAR): Char;
 	VAR
 		c: Char;
@@ -1750,18 +1750,18 @@ TYPE
 		c^.AsString := CharAsString;
 		RETURN c;
 	END BoxChar;
-	
+
 	PROCEDURE BoxInt(val:INTEGER): Integer;
 	VAR
 		i: Integer;
 	BEGIN
-		NEW(i); 
+		NEW(i);
 		i^.val := val;
 		i^.Show := ShowInt;
 		i^.AsString := IntAsString;
 		RETURN i;
 	END BoxInt;
-	
+
 	PROCEDURE InitNode(): Node;
 	VAR
 		l: Node;
@@ -1771,7 +1771,7 @@ TYPE
 		l.next := NIL;
 		RETURN l;
 	END InitNode;
-	
+
 	PROCEDURE InitHVar(): HVar;
 	VAR
 		hv: HVar;
@@ -1782,12 +1782,12 @@ TYPE
 		hv.size := 0;
 		RETURN hv;
 	END InitHVar;
-	
+
 	PROCEDURE (v: HVar) Value(): Object;
 	BEGIN
 		RETURN v^.first^.val;
 	END Value;
-	
+
 	PROCEDURE (v: HVar) Set(o: Object);
 	VAR
 		l: Node;
@@ -1808,9 +1808,9 @@ TYPE
 			INC(v^.size);
 		END
 	END Set;
-	
+
 	PROCEDURE (v: HVar) Undo(): Object;
-	VAR 
+	VAR
 		o: Object;
 	BEGIN
 		IF (v^.first = v^.last) & (v^.first = NIL) THEN
@@ -1827,7 +1827,7 @@ TYPE
 		END;
 		RETURN o;
 	END Undo;
-	
+
 	PROCEDURE (v: HVar) Print();
 	VAR
 		iter : Node;
@@ -1839,7 +1839,7 @@ TYPE
 		END;
 		Out.Ln;
 	END Print;
-	
+
 	PROCEDURE ShowVal(val: Object);
 	VAR
 		s: ARRAY 128 OF CHAR;
@@ -1849,7 +1849,7 @@ TYPE
 	END ShowVal;
 VAR
 	history: HVar;
-	
+
 BEGIN
 	history := InitHVar();
 	history.Set(BoxChar(64X));
@@ -1901,7 +1901,7 @@ History entry:     4
 History entry:   111
 42
 4
-111 
+111
 
 ```
 
@@ -1972,7 +1972,7 @@ for i=hv.count()-1 to 0 step -1
   pr+=i tab sv.x tab sv.y tab sv.z cr
 next
 
-print pr 'result '9,90,900 : 8,80,800 ... 
+print pr 'result '9,90,900 : 8,80,800 ...
 
 del hv
 
@@ -2002,16 +2002,16 @@ sin(Pi)
 
 
 ```sgml>Turn history on <@ DEFHST
-__on</@> 
-Notify Protium we are interested in the variable mv 
-<@ DEFHST>mv</@> 
-Assign a value: <@ LETVARLIT>mv|first value</@><@ SAYVAR>mv</@> 
-Reassign the value: <@ LETVARLIT>mv|second value</@><@ SAYVAR>mv</@> 
-Reassign the value: <@ LETVARLIT>mv|third value</@><@ SAYVAR>mv</@> 
-Dump history <@ SAYDMPHSTVAR>mv</@> 
+__on</@>
+Notify Protium we are interested in the variable mv
+<@ DEFHST>mv</@>
+Assign a value: <@ LETVARLIT>mv|first value</@><@ SAYVAR>mv</@>
+Reassign the value: <@ LETVARLIT>mv|second value</@><@ SAYVAR>mv</@>
+Reassign the value: <@ LETVARLIT>mv|third value</@><@ SAYVAR>mv</@>
+Dump history <@ SAYDMPHSTVAR>mv</@>
 Current value: <@ SAYVAR>mv</@>
-Undo once: <@ ACTUNDVAR>mv</@><@ SAYVAR>mv</@> 
-Undo twice: <@ ACTUNDVAR>mv</@><@ SAYVAR>mv</@> 
+Undo once: <@ ACTUNDVAR>mv</@><@ SAYVAR>mv</@>
+Undo twice: <@ ACTUNDVAR>mv</@><@ SAYVAR>mv</@>
 Turn history off <@ DEFHST>__off</@>
 ```
 
@@ -2019,34 +2019,34 @@ Turn history off <@ DEFHST>__off</@>
 Same code, Simplified Chinese dialect
 
 ```sgml
-Turn history on <# 定义变量史>__on</#> 
-Notify Protium we are interested in the variable mv 
-<# 定义变量史>mv</#> 
-Assign a value: <# 指定变量字串>mv|first value</#><# 显示变量>mv</#> 
-Reassign the value: <# 指定变量字串>mv|second value</#><# 显示变量>mv</#> 
-Reassign the value: <# 指定变量字串>mv|third value</#><# 显示变量>mv</#> 
-Dump history <# 显示全内容变量史变量>mv</#> 
+Turn history on <# 定义变量史>__on</#>
+Notify Protium we are interested in the variable mv
+<# 定义变量史>mv</#>
+Assign a value: <# 指定变量字串>mv|first value</#><# 显示变量>mv</#>
+Reassign the value: <# 指定变量字串>mv|second value</#><# 显示变量>mv</#>
+Reassign the value: <# 指定变量字串>mv|third value</#><# 显示变量>mv</#>
+Dump history <# 显示全内容变量史变量>mv</#>
 Current value: <# 显示变量>mv</#>
-Undo once: <# 运行撤消变量>mv</#><# 显示变量>mv</#> 
-Undo twice: <# 运行撤消变量>mv</#><# 显示变量>mv</#> 
-Turn history off <# 定义变量史>__off</#> 
+Undo once: <# 运行撤消变量>mv</#><# 显示变量>mv</#>
+Undo twice: <# 运行撤消变量>mv</#><# 显示变量>mv</#>
+Turn history off <# 定义变量史>__off</#>
 ```
 
 
 {{out}}
 
 ```txt
-Turn history on  
-Notify Protium we are interested in the variable mv 
- 
-Assign a value: first value 
-Reassign the value: second value 
-Reassign the value: third value 
-Dump history third value^second value^first value^ 
+Turn history on
+Notify Protium we are interested in the variable mv
+
+Assign a value: first value
+Reassign the value: second value
+Reassign the value: third value
+Dump history third value^second value^first value^
 Current value: third value
-Undo once: second value 
-Undo twice: first value 
-Turn history off  
+Undo once: second value
+Undo twice: first value
+Turn history off
 
 ```
 
@@ -2076,7 +2076,7 @@ sub STORE {
 }
 
 sub get(\$) { @{tied ${+shift}} }
-sub on(\$) { tie ${+shift}, __PACKAGE__ } 
+sub on(\$) { tie ${+shift}, __PACKAGE__ }
 sub off(\$) { untie ${+shift} }
 sub undo(\$) { pop @{tied ${+shift}} }
 
@@ -2294,14 +2294,14 @@ EndStructure
 
 Procedure SetInt (*var.historyint, val.i)
     AddElement(*var\value())
-    
+
     If (ListSize(*var\value()) = 1)
         *var\value() = 0
         AddElement(*var\value())
 
     EndIf
-    
-    *var\value() = val  
+
+    *var\value() = val
 EndProcedure
 
 Procedure ShowHistory (*var.historyint)
@@ -2314,8 +2314,8 @@ Procedure UndoInt (*var.historyint)
     If (ListSize(*var\value()) = 1)
         ProcedureReturn
     EndIf
-    
-    DeleteElement(*var\value())  
+
+    DeleteElement(*var\value())
 EndProcedure
 
 ;----------------------------------------------
@@ -2456,7 +2456,7 @@ The REXX language doesn't support histories, but can be coded with little troubl
 
 The history list part of the &nbsp' '''varSet'''   subroutine could be separated into its
 
-own if you wanted to keep the subroutine's function pure. 
+own if you wanted to keep the subroutine's function pure.
 
 ```rexx
 /*REXX program demonstrates a method to track history of assignments to a REXX variable.*/
@@ -2637,7 +2637,7 @@ Scala doesn't have a native support for history variables, but it's quite easy t
 class HVar[A](initialValue: A) extends Proxy {
   override def self = !this
   override def toString = "HVar(" + !this + ")"
-  
+
   def history = _history
 
   private var _history = List(initialValue)
@@ -2737,9 +2737,9 @@ The following implementation is portable and in the spirit of the Lisp implement
 
 ```smalltalk
 Object subclass:'HVar'
-    instanceVariableNames:'values' 
-    classVariableNames:'' 
-    poolDictionaries:'' 
+    instanceVariableNames:'values'
+    classVariableNames:''
+    poolDictionaries:''
     category:'example'.
 !
 
@@ -2766,11 +2766,11 @@ history
 
 x := HVar new.
 x <-- 1.
-x value.  
+x value.
 x <-- 2.
 x <-- (x value + 1).
-x value.  
-x history. 
+x value.
+x history.
 
 ```
 
@@ -2803,24 +2803,24 @@ plug this code into a Playground to see the output
 
 
 struct History <T> {
-    
+
     private var _history = [T]()
     var history : [T] {
         return _history
     }
-    
+
     var now : T {
         return history.last!
     }
-    
+
     init(_ firstValue:T) {
         _history = [firstValue]
     }
-    
+
     mutating func set(newValue:T) {
         _history.append(newValue)
     }
-    
+
     mutating func undo() -> T {
         guard _history.count > 1 else { return _history.first! }
         _history.removeLast()
@@ -2926,7 +2926,7 @@ No native support, here is a something that can be done with a class:
 class HistoryVar{
    var [private] _v, _history=List(), maxSz;
    fcn init(v,maxEntries=3){ maxSz=maxEntries; set(v) }
-   fcn set(v){ 
+   fcn set(v){
       _v=v; _history.append(T(Time.Clock.time,v));
       if(_history.len()>maxSz) _history.del(0);
       self
@@ -2934,7 +2934,7 @@ class HistoryVar{
    fcn get(n=0){  // look back into history
       z:=_history.len();
       n=(if(n>=z) 0 else z-n-1);
-      _history[n][1] 
+      _history[n][1]
    }
    var [proxy] v=fcn{ _v };
    var [proxy] history=

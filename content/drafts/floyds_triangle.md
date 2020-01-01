@@ -1543,11 +1543,11 @@ Floyd's Triangle - 14 rows
 
 
 
-## C sharp
+## C#
 
 {{Trans|Perl}}
 
-```csharp
+```c#
 using System;
 using System.Text;
 

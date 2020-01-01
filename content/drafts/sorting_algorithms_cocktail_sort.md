@@ -698,9 +698,9 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 public static void cocktailSort(int[] A)
     {
         bool swapped;

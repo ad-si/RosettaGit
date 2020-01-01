@@ -22,10 +22,10 @@ Demonstrate by:
 
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -673,7 +673,7 @@ function makereducedlatinsquares(n)
             newrows = filter_permuted(collect(row[:] for row in eachrow(mat)), r, n)
             newmat = zeros(Int, r, n)
             newmat[1:r-1, :] .= mat
-            append!(newmatarray, 
+            append!(newmatarray,
                 [deepcopy(begin newmat[i, :] .= row; newmat end) for row in newrows])
         end
         matarray = newmatarray
@@ -689,11 +689,11 @@ function testlatinsquares()
     end
     for i in 1:6
         squares, count = makereducedlatinsquares(i)
-        println("Order $i: Size ", rpad(count, 5), "* $(i)! * $(i - 1)! = ", 
-            count * factorial(i) * factorial(i - 1)) 
+        println("Order $i: Size ", rpad(count, 5), "* $(i)! * $(i - 1)! = ",
+            count * factorial(i) * factorial(i - 1))
     end
 end
-    
+
 testlatinsquares()
 
 ```
@@ -925,7 +925,7 @@ include "lsRF.mzn";
           if j == 4 then
               if i != 4 then "\n"
               else "" endif
-          else "" endif  
+          else "" endif
           | i,j in 1..4 ] ++ ["\n"];
 
 ```
@@ -1022,7 +1022,7 @@ p = array2d(1..6, 1..6, [1, 2, 3, 4, 5, 6, 2, 1, 4, 6, 3, 5, 3, 4, 5, 2, 6, 1, 4
 
 ```
 
-The only way to complete the tasks requirement to produce a table is with another language. Ruby has the ability to run an external program, capture the output, and text handling ability to format it to this tasks requirements. Othe scripting languages are available. 
+The only way to complete the tasks requirement to produce a table is with another language. Ruby has the ability to run an external program, capture the output, and text handling ability to format it to this tasks requirements. Othe scripting languages are available.
 
 ## Phix
 
@@ -1032,7 +1032,7 @@ aside: in phix here is no difference between res[r][c] and res[r,c]. I mixed the
 
 ```Phix
 string aleph = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
- 
+
 function rfls(integer n, bool count_only=true)
     if n>length(aleph) then ?9/0 end if -- too big...
     if n=1 then return iff(count_only?1:{{1}}) end if
@@ -1074,7 +1074,7 @@ function rfls(integer n, bool count_only=true)
         if found then
             if r=n and c=n then
                 if count_only then
-                    result += 1 
+                    result += 1
                 else
                     result = append(result,res)
                 end if
@@ -1083,7 +1083,7 @@ function rfls(integer n, bool count_only=true)
                 c = 2
                 r += 1
             else
-                c += 1  
+                c += 1
             end if
         else
             -- backtrack
@@ -1097,7 +1097,7 @@ function rfls(integer n, bool count_only=true)
     end while
     return result
 end function
- 
+
 procedure reduced_form_latin_squares(integer n)
     sequence res = rfls(n,false)
     for k=1 to length(res) do

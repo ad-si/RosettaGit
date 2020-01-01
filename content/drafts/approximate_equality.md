@@ -13,19 +13,19 @@ tags = []
 {{task}}
 
 Sometimes, when testing whether the solution to a task (for example, here on Rosetta Code) is correct, the
-difference in floating point calculations between different language implementations becomes significant. 
+difference in floating point calculations between different language implementations becomes significant.
 
-For example, a difference between '''32''' bit and '''64''' bit floating point calculations may appear by 
+For example, a difference between '''32''' bit and '''64''' bit floating point calculations may appear by
 about the 8th significant digit in base 10 arithmetic.
 
 
 ;Task:
-Create a function which returns true if two floating point numbers are approximately equal. 
+Create a function which returns true if two floating point numbers are approximately equal.
 
 
-The function should allow for differences in the magnitude of numbers, so that, for example, 
+The function should allow for differences in the magnitude of numbers, so that, for example,
 
-'''100000000000000.01'''   may be approximately equal to   '''100000000000000.011''', 
+'''100000000000000.01'''   may be approximately equal to   '''100000000000000.011''',
 
 even though   '''100.01'''   is not approximately equal to   '''100.011'''.
 
@@ -49,10 +49,10 @@ Answers should be true for the first example and false in the second, so that ju
 __TOC__
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 public static class Program
@@ -198,15 +198,15 @@ func main() {
 
 ```txt
 
-   100000000000000.01 ≈  100000000000000.011 
-               100.01 ≉  100.011             
-   1000000000.0000001 ≈  1000000000.0000001  
-                0.001 ≉  0.0010000001        
-             1.01e-22 ≉  0                   
- 2.000000000000000273 ≈  2                   
--2.000000000000000273 ≈ -2                   
-   100000000000000003 ≈  100000000000000004  
- 3.141592653589793239 ≈  3.14159265358979324 
+   100000000000000.01 ≈  100000000000000.011
+               100.01 ≉  100.011
+   1000000000.0000001 ≈  1000000000.0000001
+                0.001 ≉  0.0010000001
+             1.01e-22 ≉  0
+ 2.000000000000000273 ≈  2
+-2.000000000000000273 ≈ -2
+   100000000000000003 ≈  100000000000000004
+ 3.141592653589793239 ≈  3.14159265358979324
 
 ```
 
@@ -214,7 +214,7 @@ func main() {
 
 ## Julia
 
-Julia has an infix operator, ≈, which corresponds to Julia's buitin isapprox() function. 
+Julia has an infix operator, ≈, which corresponds to Julia's buitin isapprox() function.
 {{trans|Python}}
 
 ```julia
@@ -573,7 +573,7 @@ exact:
 
 Since the REXX language uses decimal digits (characters) for floating point numbers (and integers),   it's just a matter of
 
-choosing the   ''number''   of decimal digits for the precision to be used for arithmetic   (in this case, fifteen decimal digits). 
+choosing the   ''number''   of decimal digits for the precision to be used for arithmetic   (in this case, fifteen decimal digits).
 
 ```rexx
 /*REXX program mimics an  "approximately equal to"  for comparing floating point numbers*/
@@ -790,7 +790,7 @@ and tolerance. If the tolerance is >=0, comparison is absolute.
 If tolerance is <0 (and x!=0 and y!=0), the comparison is relative.
 
 ```zkl
-testValues:=T( 
+testValues:=T(
    T(100000000000000.01,100000000000000.011),
    T(100.01, 100.011),
    T(10000000000000.001 / 10000.0, 1000000000.0000001),
@@ -799,9 +799,9 @@ testValues:=T(
    T(  (2.0).sqrt()*(2.0).sqrt(),  2.0),
    T( -(2.0).sqrt()*(2.0).sqrt(), -2.0),
    T(100000000000000003.0, 100000000000000004.0),
-   T(3.14159265358979323846, 3.14159265358979324) 
+   T(3.14159265358979323846, 3.14159265358979324)
 );
- 
+
 tolerance:=-1e-9;	// <0 for relative comparison
 foreach x,y in (testValues){
    maybeNot:=( if(x.closeTo(y,tolerance)) " \u2248" else "!\u2248" );

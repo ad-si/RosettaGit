@@ -971,9 +971,9 @@ int main(void)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 string str = "Hello,How,Are,You,Today";
 // or Regex.Split ( "Hello,How,Are,You,Today", "," );
 // (Regex is in System.Text.RegularExpressions namespace)

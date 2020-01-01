@@ -415,10 +415,10 @@ Approximate length of A - B is 2.07587
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode.SetOfRealNumbers
@@ -456,7 +456,7 @@ namespace RosettaCode.SetOfRealNumbers
 
 Test:
 
-```csharp
+```c#
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RosettaCode.SetOfRealNumbers;
 

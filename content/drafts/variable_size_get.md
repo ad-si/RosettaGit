@@ -260,9 +260,9 @@ printf("An int contains %u bytes.\n", sizeof(int));
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 class Program
 {

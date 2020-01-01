@@ -468,10 +468,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 This code finds all 8 possible circles touching the three given circles.
 
-```csharp
+```c#
 
 using System;
 

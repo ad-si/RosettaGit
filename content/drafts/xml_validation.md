@@ -12,7 +12,7 @@ tags = []
 
 {{draft task}}
 
-Given an XML document and an XSD schema definition validate that the document follows the schema described. 
+Given an XML document and an XSD schema definition validate that the document follows the schema described.
 
 Sample XML and XSD for tests can be found on [https://www.w3schools.com/xml/schema_example.asp this W3 Schools page].
 
@@ -32,7 +32,7 @@ int main(int argC, char** argV)
 		printf("Usage: %s <XML Document Name> <XSD Document Name>\n", argV[0]);
 		return 0;
 	}
-	
+
 	xmlDocPtr doc;
 	xmlSchemaPtr schema = NULL;
 	xmlSchemaParserCtxtPtr ctxt;
@@ -60,7 +60,7 @@ int main(int argC, char** argV)
 		ctxt = xmlSchemaNewValidCtxt(schema);
 		xmlSchemaSetValidErrors(ctxt, (xmlSchemaValidityErrorFunc) fprintf, (xmlSchemaValidityWarningFunc) fprintf, stderr);
 		ret = xmlSchemaValidateDoc(ctxt, doc);
-		
+
 		if (ret == 0){
 			printf("%s validates\n", XMLFileName);
 		}
@@ -98,10 +98,10 @@ shiporder.xml validates
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
 using System;
 using System.Xml;
@@ -122,11 +122,11 @@ public class Test
 		// Create the XmlReader object.
 		XmlReader reader = XmlReader.Create("http://venus.eas.asu.edu/WSRepository/xml/Courses.xml", settings);
 		// Parse the file.
-		while (reader.Read()); 
+		while (reader.Read());
 		// will call event handler if invalid
 		Console.WriteLine("The XML file is valid for the given xsd file");
 	}
-	
+
 	// Display any validation errors.
 	private static void ValidationCallBack(object sender, ValidationEventArgs e) {
 		Console.WriteLine("Validation Error: {0}", e.Message);
@@ -219,7 +219,7 @@ Validation error: The 'an-attribute' element is invalid - The value 'wrong' is i
 
 ```
 
-<p>Changing <code>wrong</code> to a boolean, e. g. <code>true</code>, The result (without -w) is 
+<p>Changing <code>wrong</code> to a boolean, e. g. <code>true</code>, The result (without -w) is
 ```txt
 [[Error, 0]]
 ```
@@ -428,7 +428,7 @@ linkerOpts = -L/usr/lib/x86_64-linux-gnu -lxml2
 
 ```
 
-Next, you need to compile the following Kotlin program, linking against libxml_schemas.klib. 
+Next, you need to compile the following Kotlin program, linking against libxml_schemas.klib.
 
 ```scala
 // Kotlin Native v0.6
@@ -655,7 +655,7 @@ Element 'a': Element content is not allowed, because the type definition is simp
 
 ## Scala
 
-  
+
 ```Scala
 import java.net.URL
 

@@ -27,7 +27,7 @@ resulting mathematical expression adds up to a
 particular sum    (in this iconic case,   '''100''').
 
 
-Example:   
+Example:
          <b> <big>  123 + 4 - 5 + 67 - 89   =   100  </big> </b>
 
 Show all output here.
@@ -55,19 +55,19 @@ An example of a sum that can't be expressed (within the rules of this task) is: 
 
 ===The Package Sum_To===
 
-Between any two consecutive digits, there can be a "+", a "-", or no operator. E.g., the digits "4" and "5" occur in the string as either of the following three substrings: "4+5", "4-5", or "45". For the first digit, we only have two choices: "+1" (written as "1"), and "-1". This makes 2*3^8 (two times (three to the power of eight)) different strings. Essential is the generic function Eval in the package Sum_To calls the procedure Callback for each such string Str, with the number Int holding the sum corresponding to the evaluation of Str. The second generic procedure Print is for convenience. If the Sum fits the condition, i.e., if Print_If(Sum, Number), then Print writes Sum = Str to the output. 
+Between any two consecutive digits, there can be a "+", a "-", or no operator. E.g., the digits "4" and "5" occur in the string as either of the following three substrings: "4+5", "4-5", or "45". For the first digit, we only have two choices: "+1" (written as "1"), and "-1". This makes 2*3^8 (two times (three to the power of eight)) different strings. Essential is the generic function Eval in the package Sum_To calls the procedure Callback for each such string Str, with the number Int holding the sum corresponding to the evaluation of Str. The second generic procedure Print is for convenience. If the Sum fits the condition, i.e., if Print_If(Sum, Number), then Print writes Sum = Str to the output.
 
 
 ```Ada
 package Sum_To is
-   
+
    generic
       with procedure Callback(Str: String; Int: Integer);
    procedure Eval;
-   
+
    generic
       Number: Integer;
-      with function Print_If(Sum, Number: Integer) return Boolean; 
+      with function Print_If(Sum, Number: Integer) return Boolean;
    procedure Print(S: String; Sum: Integer);
 
 end Sum_To;
@@ -81,42 +81,42 @@ The implementation of Eval follows the observation above: Eval calls Rec_Eval wi
 with Ada.Text_IO, Ada.Containers.Ordered_Maps;
 
 package body Sum_To is
-   
+
    procedure Eval is
-   
+
       procedure Rec_Eval(Str: String; Previous, Current, Next: Integer) is
-	 Next_Image: String := Integer'Image(Next); 
+	 Next_Image: String := Integer'Image(Next);
 	 -- Next_Image(1) holds a blank, Next_Image(2) a digit
-	 
-	 function Sign(N: Integer) return Integer is 
+
+	 function Sign(N: Integer) return Integer is
 	    (if N<0 then -1 elsif N>0 then 1 else 0);
-	 
+
       begin
 	 if Next = 10 then -- end of recursion
 	    Callback(Str, Previous+Current);
 	 else -- Next < 10
-	    Rec_Eval(Str & Next_Image(2), -- concatenate current and Next 
+	    Rec_Eval(Str & Next_Image(2), -- concatenate current and Next
 		 Previous, Sign(Current)*(10*abs(Current)+Next), Next+1);
-	    Rec_Eval(Str & "+" & Next_Image(2), -- add Next 
+	    Rec_Eval(Str & "+" & Next_Image(2), -- add Next
 		 Previous+Current, Next, Next+1);
-	    Rec_Eval(Str & "-" & Next_Image(2), -- subtract Next 
+	    Rec_Eval(Str & "-" & Next_Image(2), -- subtract Next
 		 Previous+Current, -Next, Next+1);
 	 end if;
       end Rec_Eval;
-      
+
    begin -- Eval
       Rec_Eval("1", 0, 1, 2);  -- unary "+", followed by "1"
       Rec_Eval("-1", 0, -1, 2); -- unary "-", followed by "1"
    end Eval;
-   
+
    procedure Print(S: String; Sum: Integer) is
       -- print solution (S,N), if N=Number
    begin
-      if Print_If(Sum, Number) then 
+      if Print_If(Sum, Number) then
 	 Ada.Text_IO.Put_Line(Integer'Image(Sum) & " = " & S & ";");
       end if;
    end Print;
-   
+
 end Sum_To;
 ```
 
@@ -129,13 +129,13 @@ Given the package Sum_To, the solution to the first subtask (print all solution 
 
 
 ```Ada
-with Sum_To; 
+with Sum_To;
 
 procedure Sum_To_100 is
-   
+
    procedure Print_100 is new Sum_To.Print(100, "=");
    procedure Eval_100 is new Sum_To.Eval(Print_100);
-   
+
 begin
    Eval_100;
 end Sum_To_100;
@@ -162,7 +162,7 @@ end Sum_To_100;
 
 ===The other subtasks (including the extra credit)===
 
-For the three other subtasks, we maintain an ordered map of sums (as the keys) and counters for the number of solutions (as the elements). The procedure Generate_Map generates the Map by calling the procedure Insert_Solution for all 2*3^8 solutions. Finding (1) the sum with the maximal number of solutions, (2) the first sum>=0 without a solution and (3) the ten largest sums with a solution (extra credit) are done by iterating this map.  
+For the three other subtasks, we maintain an ordered map of sums (as the keys) and counters for the number of solutions (as the elements). The procedure Generate_Map generates the Map by calling the procedure Insert_Solution for all 2*3^8 solutions. Finding (1) the sum with the maximal number of solutions, (2) the first sum>=0 without a solution and (3) the ten largest sums with a solution (extra credit) are done by iterating this map.
 
 
 ```Ada
@@ -170,14 +170,14 @@ with Sum_To, Ada.Containers.Ordered_Maps, Ada.Text_IO;
 use Ada.Text_IO;
 
 procedure Three_Others is
-   
+
    package Num_Maps is new Ada.Containers.Ordered_Maps
      (Key_Type => Integer, Element_Type => Positive);
    use Num_Maps;
-   
+
    Map: Num_Maps.Map;
    -- global Map stores how often a sum did occur
-   
+
    procedure Insert_Solution(S: String; Sum: Integer) is
       -- inserts a solution into global Map
       use Num_Maps;
@@ -191,15 +191,15 @@ procedure Three_Others is
 			     New_Item => (Element(Position))+1);
       end if;
    end Insert_Solution;
-   
-   procedure Generate_Map is new Sum_To.Eval(Insert_Solution); 
-   
+
+   procedure Generate_Map is new Sum_To.Eval(Insert_Solution);
+
    Current: Cursor; -- Points into Map
    Sum: Integer;    -- current Sum of interest
-   Max: Natural; 
+   Max: Natural;
 begin
    Generate_Map;
-   
+
    -- find Sum >= 0  with maximum number of solutions
    Max := 0; -- number of solutions for Sum (so far, none)
    Current := Map.Ceiling(0); -- first element in Map with Sum >= 0
@@ -211,10 +211,10 @@ begin
       Next(Current);
    end loop;
    Put_Line("Most frequent result:" & Integer'Image(Sum));
-   Put_Line("Frequency of" & Integer'Image(Sum) & ":" & 
+   Put_Line("Frequency of" & Integer'Image(Sum) & ":" &
 	      Integer'Image(Max));
    New_Line;
-   
+
    -- find smallest Sum >= 0 with no solution
    Sum := 0;
    while Map.Find(Sum) /= No_Element loop
@@ -222,15 +222,15 @@ begin
    end loop;
    Put_Line("Smallest nonnegative impossible sum:" & Integer'Image(Sum));
    New_Line;
-   
-   -- find ten highest numbers with a solution 
+
+   -- find ten highest numbers with a solution
    Current := Map.Last; -- highest element in Map with a solution
    Put_Line("Highest sum:" & Integer'Image(Key(Current)));
    Put("Next nine:");
    for I in 1 .. 9 loop -- 9 steps backward
       Previous(Current);
       Put(Integer'Image(Key(Current)));
-   end loop; 
+   end loop;
    New_Line;
 end Three_others;
 ```
@@ -538,7 +538,7 @@ on asSum(xs)
             end if
         end |λ|
     end script
-    
+
     set rec to foldr(result, {digits:{}, n:0}, xs)
     set ds to digits of rec
     if length of ds > 0 then
@@ -565,7 +565,7 @@ on asString(xs)
             end if
         end |λ|
     end script
-    
+
     foldl(result, "", xs)
 end asString
 
@@ -587,10 +587,10 @@ on mostCommonSum()
         set intSum to asSum(nthPermutationWithRepn(pSigns, 9, i))
         if intSum ≥ 0 then set end of plstSums to intSum
     end repeat
-    
+
     set plstSumsSorted to sort(plstSums)
     set plstSumGroups to group(plstSumsSorted)
-    
+
     script groupLength
         on |λ|(a, b)
             set intA to length of a
@@ -604,7 +604,7 @@ on mostCommonSum()
             end if
         end |λ|
     end script
-    
+
     set lstMaxSum to maximumBy(groupLength, plstSumGroups)
     intercalate(linefeed, ¬
         {"Most common sum: " & item 1 of lstMaxSum, ¬
@@ -615,7 +615,7 @@ end mostCommonSum
 -- TEST ----------------------------------------------------------------------
 on run
     return sumsTo100()
-    
+
     -- Also returns a value, but slow:
     -- mostCommonSum()
 end run
@@ -627,13 +627,13 @@ end run
 on nthPermutationWithRepn(xs, groupSize, iIndex)
     set intBase to length of xs
     set intSetSize to intBase ^ groupSize
-    
+
     if intBase < 1 or iIndex > intSetSize then
         {}
     else
         set baseElems to inBaseElements(xs, iIndex)
         set intZeros to groupSize - (length of baseElems)
-        
+
         if intZeros > 0 then
             replicate(intZeros, item 1 of xs) & baseElems
         else
@@ -645,15 +645,15 @@ end nthPermutationWithRepn
 -- inBaseElements :: [a] -> Int -> [String]
 on inBaseElements(xs, n)
     set intBase to length of xs
-    
+
     script nextDigit
         on |λ|(residue)
             set {divided, remainder} to quotRem(residue, intBase)
-            
+
             {valid:divided > 0, value:(item (remainder + 1) of xs), new:divided}
         end |λ|
     end script
-    
+
     reverse of unfoldr(nextDigit, n)
 end inBaseElements
 
@@ -663,7 +663,7 @@ on sort(lst)
         sortedArrayUsingSelector:"compare:") as list
 end sort
 
--- maximumBy :: (a -> a -> Ordering) -> [a] -> a 
+-- maximumBy :: (a -> a -> Ordering) -> [a] -> a
 on maximumBy(f, xs)
     set cmp to mReturn(f)
     script max
@@ -675,7 +675,7 @@ on maximumBy(f, xs)
             end if
         end |λ|
     end script
-    
+
     foldl(max, missing value, xs)
 end maximumBy
 
@@ -686,14 +686,14 @@ on group(xs)
             a = b
         end |λ|
     end script
-    
+
     groupBy(eq, xs)
 end group
 
 -- groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
 on groupBy(f, xs)
     set mf to mReturn(f)
-    
+
     script enGroup
         on |λ|(a, x)
             if length of (active of a) > 0 then
@@ -701,7 +701,7 @@ on groupBy(f, xs)
             else
                 set h to missing value
             end if
-            
+
             if h is not missing value and mf's |λ|(h, x) then
                 {active:(active of a) & x, sofar:sofar of a}
             else
@@ -709,7 +709,7 @@ on groupBy(f, xs)
             end if
         end |λ|
     end script
-    
+
     if length of xs > 0 then
         set dct to foldl(enGroup, {active:{item 1 of xs}, sofar:{}}, tail(xs))
         if length of (active of dct) > 0 then
@@ -750,7 +750,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -799,7 +799,7 @@ end unfoldr
 on |until|(p, f, x)
     set mp to mReturn(p)
     set v to x
-    
+
     tell mReturn(f)
         repeat until mp's |λ|(v)
             set v to |λ|(v)
@@ -821,7 +821,7 @@ on map(f, xs)
 end map
 
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -857,9 +857,9 @@ Sums to 100:
 
 ## AutoHotkey
 
-{{incomplete|AutoHotkey| 
+{{incomplete|AutoHotkey|
 
- The output is incomplete, please address the 2<sup>nd</sup> and 3<sup>rd</sup> task requirements. 
+ The output is incomplete, please address the 2<sup>nd</sup> and 3<sup>rd</sup> task requirements.
 
 }}
 
@@ -878,7 +878,7 @@ AllPossibilities100(n:=0,  S:="") {
 		AllPossibilities100(n+1, n)				; Recurse
 	else if (n < 10){
 		AllPossibilities100(n+1, 	S ",-" n)		; Recurse. Concatenate S, ",-" and n
-		AllPossibilities100(n+1, 	S ",+" n)		; Recurse. Concatenate S, ",+" and n 
+		AllPossibilities100(n+1, 	S ",+" n)		; Recurse. Concatenate S, ",+" and n
 		AllPossibilities100(n+1, 	S n)			; Recurse. Concatenate S and n
 	} else 	{							; 10th level recursion
 		Loop, Parse, S, CSV					; Total the values of S and check if equal to 100
@@ -920,7 +920,7 @@ Outputs:
 Awk is a weird language: there are no integers, no switch-case (in the standard language version), programs are controlled by data flow, the interpreter speed is moderate. The advantage of Awk are associative arrays, used here for counting how many times we get the same sum as the result of calculations.
 
 ```AWK
-# 
+#
 # RossetaCode: Sum to 100, AWK.
 #
 # Find solutions to the "sum to one hundred" puzzle.
@@ -941,14 +941,14 @@ function evaluate(code)
         } else if (op == 1 ) {
             value = value - number
             number = 0
-            power = 1 
+            power = 1
         } else if ( op == 2) {
             power = power * 10
         } else {
         }
         code = int(code / 3);
     }
-    return value;    
+    return value;
 }
 
 function show(code)
@@ -956,16 +956,16 @@ function show(code)
     s = ""
     a = 19683
     b = 6561
-    
+
     for ( k = 1; k <= 9; k++ )
-    {   
+    {
         op = int( (code % a) / b )
-        if ( op == 0 && k > 1 ) 
+        if ( op == 0 && k > 1 )
             s = s "+"
         else if ( op == 1 )
             s = s "-"
         else {
-        }      
+        }
         a = b
         b = int(b / 3)
         s = s  k
@@ -980,7 +980,7 @@ BEGIN {
     print
     print "Show all solutions that sum to 100"
     print
-    for ( i = 0; i < nexpr; i++ ) if ( evaluate(i) == 100 ) show(i);   
+    for ( i = 0; i < nexpr; i++ ) if ( evaluate(i) == 100 ) show(i);
 
     print
     print "Show the sum that has the maximum number of solutions"
@@ -990,32 +990,32 @@ BEGIN {
         if ( sum >= 0 )
             stat[sum]++;
     }
-    best = (-1);  
-    for ( sum in stat ) 
-        if ( best < stat[sum] ) { 
-            best = stat[sum] 
-            bestSum = sum 
+    best = (-1);
+    for ( sum in stat )
+        if ( best < stat[sum] ) {
+            best = stat[sum]
+            bestSum = sum
         }
     delete stat
     printf "%d has %d solutions\n", bestSum, best
-    
+
     print
     print "Show the lowest positive number that can't be expressed"
-    print    
+    print
     for ( i = 0; i <= 123456789; i++ ){
-        for ( j = 0; j < nexpr; j++ ) 
-            if ( i == evaluate(j) ) 
-                break; 
-        if ( i != evaluate(j) ) 
+        for ( j = 0; j < nexpr; j++ )
+            if ( i == evaluate(j) )
+                break;
+        if ( i != evaluate(j) )
             break;
     }
     printf "%d\n",i
-    
+
     print
     print "Show the ten highest numbers that can be expressed"
     print
     limit = 123456789 + 1;
-    for ( i = 1; i <= 10; i++ ) 
+    for ( i = 1; i <= 10; i++ )
     {
         best = 0;
         for ( j = 0; j < nexpr; j++ )
@@ -1074,20 +1074,20 @@ Show the ten highest numbers that can be expressed
 ## C
 
 
-###  Optimized for speed 
+###  Optimized for speed
 
 {{Works with|GCC|5.1}}
 {{Works with|Microsoft Visual Studio|2015}}
 Warning: '''this version requires at least four byte integers.'''
 
 ```C
-/* 
+/*
  * RossetaCode: Sum to 100, C99, an algorithm using ternary numbers.
  *
  * Find solutions to the "sum to one hundred" puzzle.
  */
 
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 
 /*
@@ -1098,11 +1098,11 @@ Warning: '''this version requires at least four byte integers.'''
 enum OP { ADD, SUB, JOIN };
 typedef int (*cmp)(const void*, const void*);
 
-// Replacing struct Expression and struct CountSum by a tuple like 
+// Replacing struct Expression and struct CountSum by a tuple like
 // struct Pair { int first; int last; } is possible but would make the source
 // code less readable.
 
-struct Expression{ 
+struct Expression{
     int sum;
     int code;
 }expressions[NUMBER_OF_EXPRESSIONS];
@@ -1111,9 +1111,9 @@ int compareExpressionBySum(const struct Expression* a, const struct Expression* 
     return a->sum - b->sum;
 }
 
-struct CountSum{ 
-    int counts; 
-    int sum; 
+struct CountSum{
+    int counts;
+    int sum;
 }countSums[NUMBER_OF_EXPRESSIONS];
 int countSumsLength = 0;
 int compareCountSumsByCount(const struct CountSum* a, const struct CountSum* b){
@@ -1131,12 +1131,12 @@ int evaluate(int code){
         }
         code /= 3;
     }
-    return value;    
+    return value;
 }
 
 void print(int code){
     static char s[19]; char* p = s;
-    int a = 19683, b = 6561;        
+    int a = 19683, b = 6561;
     for ( int k = 1; k <= 9; k++ ){
         switch((code % a) / b){
             case ADD: if ( k > 1 ) *p++ = '+'; break;
@@ -1154,7 +1154,7 @@ void comment(char* string){
     printf("\n\n%s\n\n", string);
 }
 
-void init(void){   
+void init(void){
     for ( int i = 0; i < NUMBER_OF_EXPRESSIONS; i++ ){
         expressions[i].sum = evaluate(i);
         expressions[i].code = i;
@@ -1170,7 +1170,7 @@ void init(void){
             j++;
             countSums[j].counts = 1;
             countSums[j].sum = expressions[i].sum;
-        }       
+        }
         else
             countSums[j].counts++;
     }
@@ -1182,7 +1182,7 @@ int main(void){
 
     init();
 
-    comment("Show all solutions that sum to 100");            
+    comment("Show all solutions that sum to 100");
     const int givenSum = 100;
     struct Expression ex = { givenSum, 0 };
     struct Expression* found;
@@ -1198,7 +1198,7 @@ int main(void){
     int maxSumIndex = countSumsLength - 1;
     while( countSums[maxSumIndex].sum < 0 )
         maxSumIndex--;
-    printf("%d has %d solutions\n", 
+    printf("%d has %d solutions\n",
         countSums[maxSumIndex].sum, countSums[maxSumIndex].counts);
 
     comment("Show the lowest positive number that can't be expressed");
@@ -1214,7 +1214,7 @@ int main(void){
     comment("Show the ten highest numbers that can be expressed");
     for ( int i = expressionsLength-1; i >= expressionsLength-10; i-- )
         print(expressions[i].code);
-    
+
     return 0;
 }
 ```
@@ -1266,27 +1266,27 @@ Show the ten highest numbers that can be expressed
 
 
 
-### Optimized for memory consumption 
+### Optimized for memory consumption
 
 {{trans | Fortran 95}}
 {{Works with|GCC|5.1}}
 Warning: '''this program needs at least four byte integers'''.
 
 ```C
-/* 
+/*
  * RossetaCode: Sum to 100, C11, MCU friendly.
  *
  * Find solutions to the "sum to one hundred" puzzle.
  *
  * We optimize algorithms for size. Therefore we don't use arrays, but recompute
- * all values again and again. It is a little surprise that the time efficiency 
+ * all values again and again. It is a little surprise that the time efficiency
  * is quite acceptable.
  */
 
 #include <stdio.h>
- 
+
 enum OP { ADD, SUB, JOIN };
- 
+
 int evaluate(int code){
     int value  = 0, number = 0, power  = 1;
     for ( int k = 9; k >= 1; k-- ){
@@ -1298,12 +1298,12 @@ int evaluate(int code){
         }
         code /= 3;
     }
-    return value;    
+    return value;
 }
 
 void print(int code){
     static char s[19]; char* p = s;
-    int a = 19683, b = 6561;        
+    int a = 19683, b = 6561;
     for ( int k = 1; k <= 9; k++ ){
         switch((code % a) / b){
             case ADD: if ( k > 1 ) *p++ = '+'; break;
@@ -1318,14 +1318,14 @@ void print(int code){
 }
 
 int main(void){
-    
+
     int i,j;
     const int nexpr = 13122;
-#define LOOP(K) for (K = 0; K < nexpr; K++)    
+#define LOOP(K) for (K = 0; K < nexpr; K++)
 
     puts("\nShow all solutions that sum to 100\n");
     LOOP(i) if ( evaluate(i) == 100 ) print(i);
-    
+
     puts("\nShow the sum that has the maximum number of solutions\n");
     int best, nbest = (-1);
     LOOP(i){
@@ -1340,11 +1340,11 @@ int main(void){
 
     puts("\nShow the lowest positive number that can't be expressed\n");
     for ( i = 0; i <= 123456789; i++ ){
-        LOOP(j) if ( i == evaluate(j) ) break; 
+        LOOP(j) if ( i == evaluate(j) ) break;
         if ( i != evaluate(j) ) break;
     }
     printf("%d\n",i);
- 
+
     puts("\nShow the ten highest numbers that can be expressed\n");
     int limit = 123456789 + 1;
     for ( i = 1; i <= 10; i++ ) {
@@ -1356,7 +1356,7 @@ int main(void){
         LOOP(j) if ( evaluate(j) == best ) print(j);
         limit = best;
     }
-    
+
     return 0;
 }
 ```
@@ -1411,8 +1411,8 @@ Show the ten highest numbers that can be expressed
 For each expression of sum s, there is at least one expression whose sum is -s. If the sum s can be represented by n expressions, the sum -s can also be represented by n expressions. The change of all signs in an expression change the sign of the sum of this expression. For example, -1+23-456+789 has the opposite sign than +1-23+456-789. Therefore only the positive sum with the maximum number of solutions is shown. The program does not check uniqueness of this sum. We can easily check (modifying the program) that: sum 9 has 46 solutions; sum -9 has 46 solutions; any other sum has less than 46 solutions.
 
 ```Cpp
-/* 
- * RossetaCode: Sum to 100, C++, STL, OOP. 
+/*
+ * RossetaCode: Sum to 100, C++, STL, OOP.
  * Works with: MSC 16.0 (MSVS2010); GCC 5.1 (use -std=c++11 or -std=c++14 etc.).
  *
  * Find solutions to the "sum to one hundred" puzzle.
@@ -1439,9 +1439,9 @@ class Expression{
         }
         Expression& operator++(int){ // post incrementation
             for ( int i = 0; i < NUMBER_OF_DIGITS; i++ )
-                if ( ++code[i] > JOIN ) code[i] = ADD; 
+                if ( ++code[i] > JOIN ) code[i] = ADD;
                 else break;
-            return *this;        
+            return *this;
         }
         operator int() const{
             int value = 0, number = 0, sign = (+1);
@@ -1469,7 +1469,7 @@ const int Expression::NUMBER_OF_EXPRESSIONS = 2 * 3*3*3*3 * 3*3*3*3;
 
 ostream& operator<< (ostream& os, Expression& ex){
     ios::fmtflags oldFlags(os.flags());
-    os << setw(9) << right << static_cast<int>(ex)    << " = " 
+    os << setw(9) << right << static_cast<int>(ex)    << " = "
        << setw(0) << left  << static_cast<string>(ex) << endl;
     os.flags(oldFlags);
     return os;
@@ -1490,7 +1490,7 @@ struct Stat{
 void print(int givenSum){
     Expression expression;
     for ( int i = 0; i < Expression::NUMBER_OF_EXPRESSIONS; i++, expression++ )
-        if ( expression == givenSum ) 
+        if ( expression == givenSum )
             cout << expression;
 }
 
@@ -1507,12 +1507,12 @@ int main(){
 
     comment( "Show the sum that has the maximum number of solutions" );
     auto maxi = max_element(stat.sumCount.begin(),stat.sumCount.end());
-    auto it = maxi->second.begin(); 
+    auto it = maxi->second.begin();
     while ( *it < 0 ) it++;
     cout << static_cast<int>(*it) << " has " << maxi->first << " solutions" << endl;
 
     comment( "Show the lowest positive number that can't be expressed" );
-    int value = 0; 
+    int value = 0;
     while(stat.countSum.count(value) != 0) value++;
     cout << value << endl;
 
@@ -1567,9 +1567,9 @@ Show the ten highest numbers that can be expressed
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1617,7 +1617,7 @@ public class Expression
     ///             with 3 possibilities for each gap: plus, minus, or join
     public int Value; // What this expression sums up to
     protected int _one;
-    
+
     public Expression(int serial, int one)
     {
         _one = one;
@@ -2009,7 +2009,7 @@ defmodule Sum do
     |> Enum.filter(fn {v, _s} -> v==val end)
     |> Enum.each(&IO.inspect &1)
   end
-  
+
   def max_solve do
     generate
     |> Enum.group_by(&eval &1)
@@ -2017,14 +2017,14 @@ defmodule Sum do
     |> Enum.max
     |> fn {len,sum} -> IO.puts "sum of #{sum} has the maximum number of solutions : #{len}" end.()
   end
-  
+
   def min_solve do
     solve = generate |> Enum.group_by(&eval &1)
     Stream.iterate(1, &(&1+1))
     |> Enum.find(fn n -> solve[n]==nil end)
     |> fn sum -> IO.puts "lowest positive sum that can't be expressed : #{sum}" end.()
   end
-  
+
   def  highest_sums(n\\10) do
     IO.puts "highest sums :"
     generate
@@ -2034,13 +2034,13 @@ defmodule Sum do
     |> Enum.take(n)
     |> IO.inspect
   end
-  
+
   defp generate do
     x = ["+", "-", ""]
     for a <- ["-", ""], b <- x, c <- x, d <- x, e <- x, f <- x, g <- x, h <- x, i <- x,
         do: "#{a}1#{b}2#{c}3#{d}4#{e}5#{f}6#{g}7#{h}8#{i}9"
   end
-  
+
   defp eval(str), do: Code.eval_string(str) |> elem(0)
 end
 
@@ -2097,13 +2097,13 @@ CREATE STATS 123456790 ALLOT  STATS 123456790 ERASE
 
 : inc ( c-addr c-lim u -- t|f)
    1- tuck + >r swap dup rot + ( addr a-addr) ( R: l-addr)
-   BEGIN dup C@ 1+ dup r@ C@ = 
-     IF drop 2dup = 
+   BEGIN dup C@ 1+ dup r@ C@ =
+     IF drop 2dup =
        IF 2drop FALSE rdrop EXIT   \ no inc, contents invalid
        ELSE 0 over C! 1-  r> 1- >r  \ reset and carry
        THEN
-     ELSE swap C! drop TRUE rdrop EXIT 
-     THEN 
+     ELSE swap C! drop TRUE rdrop EXIT
+     THEN
    AGAIN ;
 : INDX+   INDX LIMITS 9 inc 0= ;
 : SYNTH   B0  [CHAR] 0 B,  9 0 DO
@@ -2123,7 +2123,7 @@ CREATE STATS 123456790 ALLOT  STATS 123456790 ERASE
    WHILE  dup c@ IF dup STATS - .  r> 1+ >r THEN  1-
    REPEAT  r> drop ;
 : .   0 <# #S #> TYPE ;
-: .INFX   cr 4 spaces  9 0 DO 
+: .INFX   cr 4 spaces  9 0 DO
      INDX I + C@  OPS I cells + @ + C@
      dup  [char] # <> IF emit ELSE drop THEN  I 1+ .
    LOOP ;
@@ -2163,7 +2163,7 @@ Solutions that sum to 100:
 Sum that has the maximum number of solutions
     9 has 46 solutions
 Lowest positive sum that can't be expressed
-    211 
+    211
 Ten highest numbers that can be expressed
     123456789 23456790 23456788 12345687 12345669 3456801 3456792 3456790 3456788 3456786
 ```
@@ -2174,7 +2174,7 @@ Ten highest numbers that can be expressed
 
 
 
-###  Fortran IV 
+###  Fortran IV
 
 {{trans|Fortran 95}}
 {{works with|gfortran|5.1}}
@@ -2183,7 +2183,7 @@ The program below is written in Fortran IV. Nevertheless, Fortran IV had a varie
 ```txt
 C ROSSETACODE: SUM TO 100, FORTRAN IV
 C FIND SOLUTIONS TO THE "SUM TO ONE HUNDRED" PUZZLE
-C 
+C
 ### ===========================================
 
 
@@ -2213,7 +2213,7 @@ C
 
       WRITE(6,130)
  130  FORMAT(1X/1X,
-     155HSHOW THE LOWEST POSITIVE NUMBER THAT CAN'T BE EXPRESSED/)     
+     155HSHOW THE LOWEST POSITIVE NUMBER THAT CAN'T BE EXPRESSED/)
       DO 50 I = 0,123456789
       DO 40 J = 0,NEXPRM1
   40  IF ( I .EQ. IEVAL(J) ) GOTO 50
@@ -2317,7 +2317,7 @@ SHOW ALL SOLUTIONS THAT SUM TO 100
 
 
 
-###  Fortran 95 
+###  Fortran 95
 
 {{works with|gfortran|5.1}}
 
@@ -2327,13 +2327,13 @@ SHOW ALL SOLUTIONS THAT SUM TO 100
 ! Find solutions to the 'sum to one hundred' puzzle.
 !
 ! We optimize algorithms for size. Therefore we don't use arrays, but recompute
-! all values again and again. It is a little surprise that the time efficiency 
+! all values again and again. It is a little surprise that the time efficiency
 ! is quite acceptable. Actually the code is more compact than the implementation
 ! in C++ (STL maps and sets). We purposely break DRY and use magic values.
 ! Nevertheless, it is Fortran 95, free form lines, do-endo etc.
 
 program sumto100
-    
+
     parameter (nexpr = 13122)
 
     print *
@@ -2342,12 +2342,12 @@ program sumto100
     do i = 0, nexpr-1
         if ( ievaluate(i) .eq. 100 ) then
             call printexpr(i)
-        endif    
+        endif
     enddo
-    
+
     print *
     print *, 'Show the sum that has the maximum number of solutions'
-    print *    
+    print *
     ibest = -1
     nbest = -1
     do i = 0, nexpr-1
@@ -2367,10 +2367,10 @@ program sumto100
     enddo
     print *, ibest, ' has ', nbest, ' solutions'
     print *
-!   do i = 0, nexpr-1    
+!   do i = 0, nexpr-1
 !       if ( ievaluate(i) .eq. ibest ) then
 !           call printexpr(i)
-!       endif    
+!       endif
 !   enddo
 
     print *
@@ -2385,7 +2385,7 @@ program sumto100
         exit
     enddo loop
     print *, i
- 
+
     print *
     print *, 'Show the ten highest numbers that can be expressed'
     print *
@@ -2398,15 +2398,15 @@ program sumto100
                 ibest = itest
             endif
         enddo
-        do j = 0, nexpr-1    
+        do j = 0, nexpr-1
             if ( ievaluate(j) .eq. ibest ) then
                 call printexpr(j)
-            endif    
+            endif
         enddo
         ilimit = ibest - 1;
     enddo
-       
-end 
+
+end
 
 function ievaluate(icode)
     ic = icode
@@ -2427,9 +2427,9 @@ function ievaluate(icode)
             case ( 2 )
                 ip = ip * 10
         end select
-        ic = ic / 3                
+        ic = ic / 3
     enddo
-end 
+end
 
 subroutine printexpr(icode)
     character(len=32) s
@@ -2501,7 +2501,7 @@ end
 
 ### Batch processing
 
-By the simple expedient of storing all evaluations in an array (which is not so large) and then sorting the array, the required results appear in a blink. The source is essentially F77 except for the usage of an array assignment of OP = -1, writing out the highest ten results via an array expression instead of a DO-loop, array OPNAME extending from -1 to +1, a CYCLE statement rather than a GO TO, and the use of the I0 format code. Subroutine DEBLANK is straightforward, and omitted. It was only to remove spaces from the text of the expression. Reading the expression from right to left is about as picky as left-to-right. 
+By the simple expedient of storing all evaluations in an array (which is not so large) and then sorting the array, the required results appear in a blink. The source is essentially F77 except for the usage of an array assignment of OP = -1, writing out the highest ten results via an array expression instead of a DO-loop, array OPNAME extending from -1 to +1, a CYCLE statement rather than a GO TO, and the use of the I0 format code. Subroutine DEBLANK is straightforward, and omitted. It was only to remove spaces from the text of the expression. Reading the expression from right to left is about as picky as left-to-right.
 ```Fortran
       INTEGER NDIGITS,TARGET	!Document the shape.
       PARAMETER (NDIGITS = 9, TARGET = 100)
@@ -2714,7 +2714,7 @@ for i = size-10 to size-1
 1 + 2 + 3 - 4 + 5 + 6 + 78 + 9
 -1 + 2 - 3 + 4 + 5 + 6 + 78 + 9
 
-Maximum count is 46 at: 9 -9 
+Maximum count is 46 at: 9 -9
 Lowest non-representable positive sum is 211
 
 Highest representable numbers:
@@ -3165,7 +3165,7 @@ ss =: +/"1 s2
 '100=';<'bp<+>' 8!:2 (I.100=ss){s2
 pos =: (0<ss)#ss =: /:~ss
 ({.;'times';{:)>{.\:~(#,{.) each </.~ ss
-'Ten largest:';,.(->:i.10){ss 
+'Ten largest:';,.(->:i.10){ss
 'First not expressible:';>:pos{~ 1 i.~ 1<|2-/\pos
 
 ```
@@ -3219,8 +3219,8 @@ pos =: (0<ss)#ss =: /:~ss
 For each expression of sum s, there is at least one expression whose sum is -s. If the sum s can be represented by n expressions, the sum -s can also be represented by n expressions. The change of all signs in an expression change the sign of the sum of this expression. For example, -1+23-456+789 has the opposite sign than +1-23+456-789. Therefore only the positive sum with the maximum number of solutions is shown. The program does not check uniqueness of this sum. We can easily check (modifying the program) that: sum 9 has 46 solutions; sum -9 has 46 solutions; any other sum has less than 46 solutions.
 
 ```Java
-/* 
- * RossetaCode: Sum to 100, Java 8. 
+/*
+ * RossetaCode: Sum to 100, Java 8.
  *
  * Find solutions to the "sum to one hundred" puzzle.
  */
@@ -3944,25 +3944,25 @@ First positive integer not expressible as a sum of this kind:
 SumTo100();
 
 function SumTo100()
-{           
-    var 
-        ADD  = 0, 
-        SUB  = 1, 
+{
+    var
+        ADD  = 0,
+        SUB  = 1,
         JOIN = 2;
-        
-    var 
-        nexpr = 13122; 
 
-    function out(something)  
-    { 
-        WScript.Echo(something); 
+    var
+        nexpr = 13122;
+
+    function out(something)
+    {
+        WScript.Echo(something);
     }
 
     function evaluate(code)
     {
-        var 
-            value  = 0, 
-            number = 0, 
+        var
+            value  = 0,
+            number = 0,
             power  = 1;
 
         for ( var k = 9; k >= 1; k-- )
@@ -3976,17 +3976,17 @@ function SumTo100()
             }
             code = Math.floor(code/3);
         }
-        return value;    
+        return value;
     }
 
     function print(code)
     {
-        var 
+        var
             s = "";
-        var 
+        var
             a = 19683,
-            b = 6561;        
-            
+            b = 6561;
+
         for ( var k = 1; k <= 9; k++ )
         {
             switch( Math.floor(  (code % a) / b  ) ){
@@ -3996,23 +3996,23 @@ function SumTo100()
             a = b;
             b = Math.floor(b/3);
             s = s + String.fromCharCode(0x30+k);
-        }  
+        }
         out(evaluate(code) + " = " + s);
     }
-    
+
     function comment(commentString)
     {
         out("");
         out(commentString);
-        out("");        
+        out("");
     }
-    
+
     comment("Show all solutions that sum to 100");
-    for ( var i = 0; i < nexpr; i++)     
-        if ( evaluate(i) == 100 ) 
-            print(i);        
-        
-    comment("Show the sum that has the maximum number of solutions"); 
+    for ( var i = 0; i < nexpr; i++)
+        if ( evaluate(i) == 100 )
+            print(i);
+
+    comment("Show the sum that has the maximum number of solutions");
     var stat = {};
     for ( var i = 0; i < nexpr; i++ )
     {
@@ -4022,7 +4022,7 @@ function SumTo100()
         else
             stat[sum] = 1;
     }
-    
+
     var best = 0;
     var nbest = -1;
     for ( var i = 0; i < nexpr; i++ )
@@ -4031,37 +4031,37 @@ function SumTo100()
         if ( sum > 0 )
             if ( stat[sum] > nbest )
             {
-                best = i;            
+                best = i;
                 nbest = stat[sum];
             }
     }
     out("" + evaluate(best) + " has " + nbest + " solutions");
-    
+
     comment("Show the lowest positive number that can't be expressed");
     for ( var i = 0; i <= 123456789; i++ )
     {
-        for ( var j = 0; j < nexpr; j++) 
-            if ( i == evaluate(j) ) break; 
+        for ( var j = 0; j < nexpr; j++)
+            if ( i == evaluate(j) ) break;
         if ( i != evaluate(j) ) break;
     }
     out(i);
-    
+
     comment("Show the ten highest numbers that can be expressed");
     var limit = 123456789 + 1;
-    for ( i = 1; i <= 10; i++ ) 
+    for ( i = 1; i <= 10; i++ )
     {
         var best = 0;
         for ( var j = 0; j < nexpr; j++)
         {
             var test = evaluate(j);
-            if ( test < limit && test > best ) 
+            if ( test < limit && test > best )
                 best = test;
         }
         for ( var j = 0; j < nexpr; j++)
             if ( evaluate(j) == best ) print(j);
         limit = best;
     }
-    
+
 }
 
 ```
@@ -4118,7 +4118,7 @@ For ease of understanding, the problems will be solved separately, using the mac
 # Generate a "sum" in the form:  [I, 1, X, 2, X, 3, ..., X, n] where I is "-" or "", and X is "+", "-", or ""
 def generate(n):
   def pm: ["+"], ["-"], [""];
- 
+
   if n == 1 then (["-"], [""]) + [1]
   else generate(n-1) + pm +  [n]
   end;
@@ -4166,7 +4166,7 @@ generate(9) | select(addup == 100) | pp
 '''Helper Functions'''
 
 For brevity, we define an efficient function for computing a histogram in the form of a JSON object, and
-a helper function for identifying the values with the n highest frequencies. 
+a helper function for identifying the values with the n highest frequencies.
 
 ```jq
 def histogram(s): reduce s as $x ({}; ($x|tostring) as $k | .[$k] += 1);
@@ -4177,7 +4177,7 @@ def greatest(n):
   | map( [.key, .value] )
   | sort_by(.[1])
   | .[(length-n):]
-  | reverse ; 
+  | reverse ;
 ```
 
 
@@ -4187,7 +4187,7 @@ def greatest(n):
 histogram(generate(9) | addup | select(.>0)) | greatest(1)
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 [["9",46]]
@@ -4200,7 +4200,7 @@ histogram(generate(9) | addup | select(.>0)) | greatest(1)
 histogram(generate(9) | addup | select(.>0)) | greatest(1)
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 [["9",46],["27",44],["1",43],["21",43],["15",43],["45",42],["3",41],["5",40],["7",39],["17",39]]
@@ -4660,10 +4660,10 @@ Defining all possible sums:
 
 
 ```Mathematica
-operations = 
+operations =
   DeleteCases[Tuples[{"+", "-", ""}, 9], {x_, y__} /; x == "+"];
 
-sums = 
+sums =
   Map[StringJoin[Riffle[#, CharacterRange["1", "9"]]] &, operations];
 ```
 
@@ -4672,7 +4672,7 @@ Sums to 100:
 
 
 ```Mathematica
- TableForm@Select[sums, ToExpression@# == 100 &] 
+ TableForm@Select[sums, ToExpression@# == 100 &]
 ```
 
 {{out}}
@@ -4696,13 +4696,13 @@ Sums to 100:
 Maximum number of solutions:
 
 ```Mathematica
- MaximalBy[Counts@ToExpression@sums, Identity] 
+ MaximalBy[Counts@ToExpression@sums, Identity]
 ```
 
 {{out}}
 
 ```txt
- <|9 -> 46, -9 -> 46|> 
+ <|9 -> 46, -9 -> 46|>
 ```
 
 
@@ -4710,7 +4710,7 @@ First unsolvable:
 
 ```Mathematica
  pos = Cases[ToExpression@sums, _?Positive];
-n = 1; While[MemberQ[pos, n], ++n]; 
+n = 1; While[MemberQ[pos, n], ++n];
 ```
 
 {{out}}
@@ -4723,7 +4723,7 @@ n = 1; While[MemberQ[pos, n], ++n];
 Ten largest sums:
 
 ```Mathematica
- {#, ToExpression@#}&/@TakeLargestBy[sums, ToExpression, 10]//TableForm 
+ {#, ToExpression@#}&/@TakeLargestBy[sums, ToExpression, 10]//TableForm
 ```
 
 {{out}}
@@ -4738,7 +4738,7 @@ Ten largest sums:
 1+2+3456789	3456792
 -1+2+3456789	3456790
 1-2+3456789	3456788
--1-2+3456789	3456786 
+-1-2+3456789	3456786
 ```
 
 
@@ -4940,7 +4940,7 @@ var
   tot: array[1..123456789, int]
   pG: int
   plusGrandes: array[1..10, string]
-  
+
 let
   ope: array[0..3, string] = ["-",""," +"," -"]
   aAtteindre = 100
@@ -4950,9 +4950,9 @@ proc calcul(li: string): int =
   liS = split(li," ")
   for i in liS:
     result += parseInt(i)
-    
+
 echo "Valeur à atteindre : ",aAtteindre
-  
+
 while opera[1]<2:
   ligne.add(ope[opera[1]])
   ligne.add("1")
@@ -4991,7 +4991,7 @@ var
   min0: int = 0
   max: int = 0
   valmax: int = 0
-  
+
 for i in 1..123456789:
   if tot[i]==0 and min0 == 0:
     min0 = i
@@ -5054,7 +5054,7 @@ Plus grandes valeurs pouvant être atteintes :
 
   Find solutions to the "sum to one hundred" puzzle.
 
-  We don't use arrays, but recompute all values again and again. 
+  We don't use arrays, but recompute all values again and again.
   It is a little surprise that the time efficiency is quite acceptable. }
 
 program sumto100;
@@ -5467,7 +5467,7 @@ string res = ""
     for i=1 to length(s) do
         if s[i]!=NOP then
             res &= ','-s[i]
-        end if          
+        end if
         res &= '0'+i
     end for
     puts(1,res&" = ")
@@ -5638,7 +5638,7 @@ Highest Sums: [123456789, 23456790, 23456788, 12345687, 12345669, 3456801, 34567
 
 
 
-###  Alternate solution 
+###  Alternate solution
 
 Mostly the same algorithm, but both shorter and faster.
 
@@ -5741,7 +5741,7 @@ Ten highest sums
   (define (get-solutions nmbrs acc chain k)
     (match nmbrs
       [(list)
-       (kons (cons acc (let ((niahc (reverse chain)))             
+       (kons (cons acc (let ((niahc (reverse chain)))
                          (if (eq? '+ (car niahc)) (cdr niahc) niahc)))
              k)]
       [(cons a d)
@@ -5759,18 +5759,18 @@ Ten highest sums
   (define S (force sum-to-ns/hash-promise))
   (displayln "Show all solutions that sum to 100")
   (pretty-print (hash-ref S 100))
-  
+
   (displayln "Show the sum that has the maximum number of solutions (from zero to infinity*)")
   (let-values (([k-max v-max]
                 (for/fold ((k-max #f) (v-max 0))
                           (([k v] (in-hash S)) #:when (> (length v) v-max))
                   (values k (length v)))))
     (printf "~a has ~a solutions~%" k-max v-max))
-  
+
   (displayln "Show the lowest positive sum that can't be expressed (has no solutions),
  using the rules for this task")
   (for/first ((n (in-range 1 (add1 123456789))) #:unless (hash-has-key? S n)) n)
-  
+
   (displayln "Show the ten highest numbers that can be expressed using the rules for this task")
   (take (sort (hash-keys S) >) 10))
 
@@ -5888,7 +5888,7 @@ solution:  100  ◄───►  123-45-67+89
        12 solutions found for 100
 
 ```
- 
+
 {{out|output|text=  when the following input is used:   <tt> 00 </tt>}}
 
 ```txt
@@ -5976,12 +5976,12 @@ object SumTo100 {
   def main(args: Array[String]): Unit = {
     val exps = expressions(9).map(str => (str, eval(str)))
     val sums = exps.map(_._2).sortWith(_>_)
-  
+
     val s1 = exps.filter(_._2 == 100)
     val s2 = sums.distinct.map(s => (s, sums.count(_ == s))).maxBy(_._2)
     val s3 = sums.distinct.reverse.filter(_>0).zipWithIndex.dropWhile{case (n, i) => n == i + 1}.head._2 + 1
     val s4 = sums.distinct.take(10)
-  
+
     println(s"""All ${s1.size} solutions that sum to 100:
                |${s1.sortBy(_._1.length).map(p => s"${p._2} = ${p._1.tail}").mkString("\n")}
                |
@@ -5989,16 +5989,16 @@ object SumTo100 {
                |Lowest unreachable sum: $s3
                |Highest 10 sums: ${s4.mkString(", ")}""".stripMargin)
   }
-  
+
   def expressions(l: Int): LazyList[String] = configurations(l).map(p => p.zipWithIndex.map{case (op, n) => s"${opChar(op)}${n + 1}"}.mkString)
   def configurations(l: Int): LazyList[Vector[Int]] = LazyList.range(0, math.pow(3, l).toInt).map(config(l)).filter(_.head != 0)
   def config(l: Int)(num: Int): Vector[Int] = Iterator.iterate((num%3, num/3)){case (_, n) => (n%3, n/3)}.map(_._1 - 1).take(l).toVector
-  
+
   def eval(exp: String): Int = (exp.headOption, exp.tail.takeWhile(_.isDigit), exp.tail.dropWhile(_.isDigit)) match{
     case (Some(op), n, str) => doOp(op, n.toInt) + eval(str)
     case _ => 0
   }
-  
+
   def doOp(sel: Char, n: Int): Int = if(sel == '-') -n else n
   def opChar(sel: Int): String = sel match{
     case -1 => "-"
@@ -6241,7 +6241,7 @@ Function firstMiss(loi As List(Of Integer))
     Return middle + If(loi(middle) = middle, 1, 0)
 End Function
 
-' Iterates through all possible operations, 
+' Iterates through all possible operations,
 '  uses a pair of List (of Integer) to tabulate solutions.
 Sub Solve100(Optional terms As String = "123456789",
              Optional targSum As Integer = 100,

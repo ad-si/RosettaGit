@@ -282,13 +282,13 @@ CloseHandle( mutex );
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### Using a TCP Port
 
 
 
-```csharp
+```c#
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -314,7 +314,7 @@ class Program {
 ### Using a mutex
 
 
-```csharp
+```c#
 
 // Use this class in your process to guard against multiple instances
 //

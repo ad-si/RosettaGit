@@ -11,32 +11,32 @@ tags = []
 +++
 
 {{task|Encryption}}
-ISAAC is a cryptographically secure pseudo-random number generator (CSPRNG) and stream cipher. It was developed by Bob Jenkins from 1993 (http://burtleburtle.net/bob/rand/isaac.html) and placed in the Public Domain. ISAAC is fast - especially when optimised - and portable to most architectures in nearly all programming and scripting languages. 
-It is also simple and succinct, using as it does just two 256-word arrays for its state. 
+ISAAC is a cryptographically secure pseudo-random number generator (CSPRNG) and stream cipher. It was developed by Bob Jenkins from 1993 (http://burtleburtle.net/bob/rand/isaac.html) and placed in the Public Domain. ISAAC is fast - especially when optimised - and portable to most architectures in nearly all programming and scripting languages.
+It is also simple and succinct, using as it does just two 256-word arrays for its state.
 
-ISAAC stands for "Indirection, Shift, Accumulate, Add, and Count" which are the principal bitwise operations employed. 
-To date - and that's after more than 20 years of existence - ISAAC has not been broken (unless GCHQ or NSA did it, but they wouldn't be telling). 
+ISAAC stands for "Indirection, Shift, Accumulate, Add, and Count" which are the principal bitwise operations employed.
+To date - and that's after more than 20 years of existence - ISAAC has not been broken (unless GCHQ or NSA did it, but they wouldn't be telling).
 ISAAC thus deserves a lot more attention than it has hitherto received and it would be salutary to see it more universally implemented.
 
 
 ;Task:
-Translate ISAAC's reference C or Pascal code into your language of choice. 
+Translate ISAAC's reference C or Pascal code into your language of choice.
 
-The RNG should then be seeded with the string "this is my secret key" and 
-finally the message "a Top Secret secret" should be encrypted on that key. 
-Your program's output cipher-text will be a string of hexadecimal digits. 
+The RNG should then be seeded with the string "this is my secret key" and
+finally the message "a Top Secret secret" should be encrypted on that key.
+Your program's output cipher-text will be a string of hexadecimal digits.
 
-Optional: Include a decryption check by re-initializing ISAAC and performing 
-the same encryption pass on the cipher-text. 
+Optional: Include a decryption check by re-initializing ISAAC and performing
+the same encryption pass on the cipher-text.
 
 Please use the C or Pascal as a reference guide to these operations.
 
-Two encryption schemes are possible: 
-(1) XOR (Vernam) or 
-(2) Caesar-shift mod 95 (Vigenère). 
-XOR is the simplest; C-shifting offers greater security. 
+Two encryption schemes are possible:
+(1) XOR (Vernam) or
+(2) Caesar-shift mod 95 (Vigenère).
+XOR is the simplest; C-shifting offers greater security.
 
-You may choose either scheme, or both, but please specify which you used. 
+You may choose either scheme, or both, but please specify which you used.
 Here are the alternative sample outputs for checking purposes:
 
 
@@ -52,8 +52,8 @@ MOD dcr: a Top Secret secret
 ```
 
 
-No official seeding method for ISAAC has been published, but for this task 
-we may as well just inject the bytes of our key into the randrsl array, 
+No official seeding method for ISAAC has been published, but for this task
+we may as well just inject the bytes of our key into the randrsl array,
 padding with zeroes before mixing, like so:
 
 
@@ -66,7 +66,7 @@ m := High(seed);
 // inject the seed
 FOR i:= 0 TO 255 DO BEGIN
 	// in case seed[] has less than 256 elements.
-	IF i>m THEN randrsl[i]:=0  
+	IF i>m THEN randrsl[i]:=0
 		ELSE randrsl[i]:=seed[i];
 END;
 // initialize ISAAC with seed
@@ -75,7 +75,7 @@ RandInit(true);
 ```
 
 
-ISAAC can of course also be initialized with a single 32-bit unsigned integer in the manner of traditional RNGs, and indeed used as such for research and gaming purposes. 
+ISAAC can of course also be initialized with a single 32-bit unsigned integer in the manner of traditional RNGs, and indeed used as such for research and gaming purposes.
 But building a strong and simple ISAAC-based stream cipher - replacing the irreparably broken RC4 - is our goal here: ISAAC's intended purpose.
 
 
@@ -84,7 +84,7 @@ But building a strong and simple ISAAC-based stream cipher - replacing the irrep
 
 ## C
 
-At the top is Bob Jenkins' reference code for ISAAC. 
+At the top is Bob Jenkins' reference code for ISAAC.
 Below and in main() is the task's complete solution for XOR and MOD.
 
 ```C
@@ -209,7 +209,7 @@ ub4 iRandom()
 
 // Get a random character in printable ASCII range
 char iRandA()
-{	
+{
 	return iRandom() % 95 + 32;
 }
 
@@ -236,7 +236,7 @@ void iSeed(char *seed, int flag)
 #define START 32
 // cipher modes for Caesar
 enum ciphermode {
-	mEncipher, mDecipher, mNone 
+	mEncipher, mDecipher, mNone
 };
 
 
@@ -249,12 +249,12 @@ char* Vernam(char *msg)
 		// zeroise v
 		memset(v,'\0',l+1);
 		// XOR message
-		for (i=0; i<l; i++) 
+		for (i=0; i<l; i++)
 			v[i] = iRandA() ^ msg[i];
 		return v;
 	}
 
-	
+
 // Caesar-shift a printable character
 char Caesar(enum ciphermode m, char ch, char shift, char modulo, char start)
 	{
@@ -265,7 +265,7 @@ char Caesar(enum ciphermode m, char ch, char shift, char modulo, char start)
 		if (n<0) n += modulo;
 		return start+n;
 	}
-	
+
 // Caesar-shift a string on a pseudo-random stream
 char c[MAXMSG];
 char* CaesarStr(enum ciphermode m, char *msg, char modulo, char start)
@@ -275,12 +275,12 @@ char* CaesarStr(enum ciphermode m, char *msg, char modulo, char start)
 		// zeroise c
 		memset(c,'\0',l+1);
 		// Caesar-shift message
-		for (i=0; i<l; i++) 
+		for (i=0; i<l; i++)
 			c[i] = Caesar(m, msg[i], iRandA(), modulo, start);
 		return c;
 	}
 
-	
+
 int main()
 {
 	register ub4 n,l;
@@ -345,7 +345,7 @@ MOD dcr: a Top Secret secret
 ```cpp
 
 #include <iomanip>
-#include <iostream> 
+#include <iostream>
 #include <sstream>
 using namespace std;
 
@@ -356,14 +356,14 @@ uint32_t randRsl[256];
 uint32_t randCnt;
 
 // Internal state
-uint32_t mm[256]; 
+uint32_t mm[256];
 uint32_t aa = 0, bb = 0, cc = 0;
 
 void isaac()
-{   
+{
     ++cc;  // cc just gets incremented once per 256 results
     bb += cc; // then combined with bb
-   
+
     for (uint32_t i = 0; i < 256; ++i)
     {
         uint32_t x, y;
@@ -371,11 +371,11 @@ void isaac()
         x = mm[i];
         switch (i % 4)
         {
-            case 0: 
-                aa = aa ^ (aa << 13); 
+            case 0:
+                aa = aa ^ (aa << 13);
                 break;
             case 1:
-                aa = aa ^ (aa >> 6); 
+                aa = aa ^ (aa >> 6);
                 break;
             case 2:
                 aa = aa ^ (aa << 2);
@@ -388,13 +388,13 @@ void isaac()
         y = mm[(x >> 2) % 256] + aa + bb;
         mm[i] = y;
         bb = mm[(y >> 10) % 256] + x;
-        randRsl[i] = bb; 
+        randRsl[i] = bb;
     }
-    randCnt = 0; // Prepare to use the first set of results. 
+    randCnt = 0; // Prepare to use the first set of results.
 }
 
 void mix(uint32_t a[])
-{  
+{
     a[0] = a[0] ^ a[1] << 11; a[3] += a[0]; a[1] += a[2];
     a[1] = a[1] ^ a[2] >>  2; a[4] += a[1]; a[2] += a[3];
     a[2] = a[2] ^ a[3] <<  8; a[5] += a[2]; a[3] += a[4];
@@ -402,18 +402,18 @@ void mix(uint32_t a[])
     a[4] = a[4] ^ a[5] << 10; a[7] += a[4]; a[5] += a[6];
     a[5] = a[5] ^ a[6] >>  4; a[0] += a[5]; a[6] += a[7];
     a[6] = a[6] ^ a[7] <<  8; a[1] += a[6]; a[7] += a[0];
-    a[7] = a[7] ^ a[0] >>  9; a[2] += a[7]; a[0] += a[1];  
+    a[7] = a[7] ^ a[0] >>  9; a[2] += a[7]; a[0] += a[1];
 }
 
 void randInit(bool flag)
 {
     uint32_t a[8];
     aa = bb = cc = 0;
-   
-    a[0] = 2654435769UL; // 0x9e3779b9: the golden ratio 
+
+    a[0] = 2654435769UL; // 0x9e3779b9: the golden ratio
     for (uint32_t j = 1; j < 8; ++j)
         a[j] = a[0];
-   
+
     for (uint32_t i = 0; i < 4; ++i) // Scramble it.
         mix(a);
     for (uint32_t i = 0; i < 256; i += 8) // Fill in mm[] with messy stuff.
@@ -425,7 +425,7 @@ void randInit(bool flag)
         for (uint32_t j = 0; j < 8; ++j)
             mm[i + j] = a[j];
     }
-   
+
     if (flag)
     {   // Do a second pass to make all of the seed affect all of mm.
         for (uint32_t i = 0; i < 256; i += 8)
@@ -436,7 +436,7 @@ void randInit(bool flag)
             for (uint32_t j = 0; j < 8; ++j)
                 mm[i + j] = a[j];
         }
-    }   
+    }
     isaac(); // Fill in the first set of results.
     randCnt = 0; // Prepare to use the first set of results.
 }
@@ -470,7 +470,7 @@ uint32_t getRandom32Bit()
 
 // Get a random character in printable ASCII range
 char getRandomChar()
-{       
+{
     return getRandom32Bit() % 95 + 32;
 }
 
@@ -479,9 +479,9 @@ string ascii2hex(string source)
 {
     uint32_t sourceLength = source.length();
     stringstream ss;
-    for (uint32_t i = 0; i < sourceLength; i++) 
+    for (uint32_t i = 0; i < sourceLength; i++)
         ss << setfill ('0') << setw(2) << hex << (int) source[i];
-    return ss.str(); 
+    return ss.str();
 }
 
 // XOR encrypt on random stream.
@@ -489,11 +489,11 @@ string vernam(string msg)
 {
     uint32_t msgLength = msg.length();
     string destination = msg;
-    for (uint32_t i = 0; i < msgLength; i++) 
+    for (uint32_t i = 0; i < msgLength; i++)
         destination[i] = getRandomChar() ^ msg[i];
-    return destination;    
+    return destination;
 }
-        
+
 // Caesar-shift a character <shift> places: Generalized Vigenere
 char caesar(CipherMode m, char ch, char shift, char modulo, char start)
 {
@@ -502,32 +502,32 @@ char caesar(CipherMode m, char ch, char shift, char modulo, char start)
         shift = -shift;
     n = (ch - start) + shift;
     n %= modulo;
-    if (n < 0) 
+    if (n < 0)
         n += modulo;
     return start + n;
 }
-        
+
 // Vigenere mod 95 encryption & decryption.
 string vigenere(string msg, CipherMode m)
 {
     uint32_t msgLength = msg.length();
     string destination = msg;
     // Caesar-shift message
-    for (uint32_t i = 0; i < msgLength; ++i) 
+    for (uint32_t i = 0; i < msgLength; ++i)
         destination[i] = caesar(m, msg[i], getRandomChar(), 95, ' ');
-    return destination; 
+    return destination;
 }
-        
+
 int main()
 {
-    // TASK globals 
+    // TASK globals
     string msg = "a Top Secret secret";
     string key = "this is my secret key";
     string xorCipherText, modCipherText, xorPlainText, modPlainText;
-    
+
     // (1) Seed ISAAC with the key
     seedIsaac(key, true);
-    // (2) Encryption 
+    // (2) Encryption
     // (a) XOR (Vernam)
     xorCipherText = vernam(msg);
     // (b) MOD (Vigenere)
@@ -564,7 +564,7 @@ MOD dcr: a Top Secret secret
 
 
 
-## C sharp
+## C#
 
 XOR with decryption check.
 
@@ -576,18 +576,18 @@ namespace cipher {
 
 static class Cipher {
 
-// external results 
+// external results
 static uint[] randrsl = new uint[256];
 static uint randcnt;
-// internal state 
+// internal state
 static uint[] mm = new uint[256];
 static uint aa=0, bb=0, cc=0;
 
 
 static void isaac() {
    uint i,x,y;
-   cc++;    // cc just gets incremented once per 256 results 
-   bb+=cc;   // then combined with bb 
+   cc++;    // cc just gets incremented once per 256 results
+   bb+=cc;   // then combined with bb
 
    for (i=0; i<=255; i++) {
      x = mm[i];
@@ -599,17 +599,17 @@ static void isaac() {
      }
      aa = mm[(i+128) & 255] + aa;
      y  = mm[(x >> 2) & 255] + aa + bb;
-     mm[i] = y; 	
-     bb = mm[(y >> 10) & 255] + x; 
-     randrsl[i]= bb; 
+     mm[i] = y;
+     bb = mm[(y >> 10) & 255] + x;
+     randrsl[i]= bb;
    }
 }
 
 
-// if (flag==TRUE), then use the contents of randrsl[] to initialize mm[]. 
+// if (flag==TRUE), then use the contents of randrsl[] to initialize mm[].
 static void mix(ref uint a, ref uint b, ref uint c, ref uint d, ref uint e, ref uint f, ref uint g, ref uint h) {
-   a = a ^ b << 11; d+=a; b+=c; 
-   b = b ^ c >> 2;  e+=b; c+=d; 
+   a = a ^ b << 11; d+=a; b+=c;
+   b = b ^ c >> 2;  e+=b; c+=d;
    c = c ^ d << 8;  f+=c; d+=e;
    d = d ^ e >> 16; g+=d; e+=f;
    e = e ^ f << 10; h+=e; f+=g;
@@ -623,19 +623,19 @@ static void Init(bool flag) {
   short i; uint a,b,c,d,e,f,g,h;
 
    aa=0; bb=0; cc=0;
-   a=0x9e3779b9; b=a; c=a; d=a; 
-   e=a; f=a; g=a; h=a; 
+   a=0x9e3779b9; b=a; c=a; d=a;
+   e=a; f=a; g=a; h=a;
 
-   for (i=0; i<=3; i++)           // scramble it 
+   for (i=0; i<=3; i++)           // scramble it
         mix(ref a,ref b,ref c,ref d,ref e,ref f,ref g,ref h);
-   
+
    i=0;
-   do  { // fill in mm[] with messy stuff  
-          if (flag) {     // use all the information in the seed 
+   do  { // fill in mm[] with messy stuff
+          if (flag) {     // use all the information in the seed
             a+=randrsl[i  ]; b+=randrsl[i+1]; c+=randrsl[i+2]; d+=randrsl[i+3];
             e+=randrsl[i+4]; f+=randrsl[i+5]; g+=randrsl[i+6]; h+=randrsl[i+7];
           } // if flag
-     
+
       mix(ref a,ref b,ref c,ref d,ref e,ref f,ref g,ref h);
       mm[i  ]=a; mm[i+1]=b; mm[i+2]=c; mm[i+3]=d;
       mm[i+4]=e; mm[i+5]=f; mm[i+6]=g; mm[i+7]=h;
@@ -644,7 +644,7 @@ static void Init(bool flag) {
    while (i<255);
 
    if (flag) {
-   // do a second pass to make all of the seed affect all of mm 
+   // do a second pass to make all of the seed affect all of mm
      i=0;
      do {
       a+=mm[i  ]; b+=mm[i+1]; c+=mm[i+2]; d+=mm[i+3];
@@ -656,8 +656,8 @@ static void Init(bool flag) {
         }
      while (i<255);
    }
-   isaac();           // fill in the first set of results 
-   randcnt=0;       // prepare to use the first set of results 
+   isaac();           // fill in the first set of results
+   randcnt=0;       // prepare to use the first set of results
 }
 
 
@@ -674,7 +674,7 @@ static void Seed(string seed, bool flag) {
 }
 
 
-// Get a random 32-bit value 
+// Get a random 32-bit value
 static uint Random() {
     uint result = randrsl[randcnt];
     randcnt++;
@@ -686,7 +686,7 @@ static uint Random() {
 
 
 // Get a random character in printable ASCII range
-static byte RandA() {	
+static byte RandA() {
 	return (byte)(Random() % 95 + 32);
 }
 
@@ -700,11 +700,11 @@ static byte[] Vernam(string msg)
 		// XOR message
 		for (n=0; n<l; n++) {
 			v[n] = (byte) (RandA() ^ (byte)msg[n]);
-		}	
+		}
 		return v;
 	}
 
-	
+
 	public static void Main() {
 		string msg = "a Top Secret secret";
 		string key = "this is my secret key";
@@ -1206,12 +1206,12 @@ VAR msg : STRING = 'a Top Secret secret';
 VAR key : STRING = 'this is my secret key';
 VAR xctx: STRING = ''; // XOR ciphertext
 VAR mctx: STRING = ''; // MOD ciphertext
-	
+
 // ISAAC globals
-// external results 
+// external results
 VAR randrsl: ARRAY[0..256] OF CARDINAL;
 VAR randcnt: cardinal;
-// internal state 
+// internal state
 VAR mm: ARRAY[0..256] OF CARDINAL;
 VAR aa: CARDINAL=0; bb: CARDINAL=0; cc: CARDINAL=0;
 
@@ -1219,8 +1219,8 @@ VAR aa: CARDINAL=0; bb: CARDINAL=0; cc: CARDINAL=0;
 PROCEDURE Isaac;
 VAR i,x,y: CARDINAL;
 BEGIN
-   cc := cc + 1;    // cc just gets incremented once per 256 results 
-   bb := bb + cc;   // then combined with bb 
+   cc := cc + 1;    // cc just gets incremented once per 256 results
+   bb := bb + cc;   // then combined with bb
 
    FOR i := 0 TO 255 DO BEGIN
      x := mm[i];
@@ -1232,16 +1232,16 @@ BEGIN
      END;
      aa := mm[(i+128) mod 256] + aa;
 	 y  := mm[(x shr 2) mod 256] + aa + bb;
-     mm[i] := y; 	
-     bb := mm[(y shr 10) mod 256] + x; 
-     randrsl[i]:= bb; 
+     mm[i] := y;
+     bb := mm[(y shr 10) mod 256] + x;
+     randrsl[i]:= bb;
    END;
    // this reset was not in original readable.c!
-   randcnt:=0;  // prepare to use the first set of results 
+   randcnt:=0;  // prepare to use the first set of results
 END; {Isaac}
 
 
-// if (flag==TRUE), then use the contents of randrsl[] to initialize mm[]. 
+// if (flag==TRUE), then use the contents of randrsl[] to initialize mm[].
 PROCEDURE mix(VAR a,b,c,d,e,f,g,h: CARDINAL);
 BEGIN
 	a := a xor b shl 11; d:=d+a; b:=b+c;
@@ -1260,19 +1260,19 @@ VAR i,a,b,c,d,e,f,g,h: CARDINAL;
 BEGIN
    aa:=0; bb:=0; cc:=0;
    a:=$9e3779b9; 	// the golden ratio
-   
-   b:=a; c:=a; d:=a; e:=a; f:=a; g:=a; h:=a; 
 
-   FOR i := 0 TO 3 DO          // scramble it 
+   b:=a; c:=a; d:=a; e:=a; f:=a; g:=a; h:=a;
+
+   FOR i := 0 TO 3 DO          // scramble it
         mix(a,b,c,d,e,f,g,h);
-   
+
    i:=0;
-   REPEAT  // fill in mm[] with messy stuff 
-	IF flag THEN BEGIN     // use all the information in the seed 
+   REPEAT  // fill in mm[] with messy stuff
+	IF flag THEN BEGIN     // use all the information in the seed
        a:=a+randrsl[i  ]; b:=b+randrsl[i+1]; c:=c+randrsl[i+2]; d:=d+randrsl[i+3];
        e:=e+randrsl[i+4]; f:=f+randrsl[i+5]; g:=g+randrsl[i+6]; h:=h+randrsl[i+7];
     END;
-     
+
     mix(a,b,c,d,e,f,g,h);
     mm[i  ]:=a; mm[i+1]:=b; mm[i+2]:=c; mm[i+3]:=d;
     mm[i+4]:=e; mm[i+5]:=f; mm[i+6]:=g; mm[i+7]:=h;
@@ -1280,7 +1280,7 @@ BEGIN
    UNTIL i>255;
 
    IF (flag) THEN BEGIN
-   // do a second pass to make all of the seed affect all of mm 
+   // do a second pass to make all of the seed affect all of mm
      i:=0;
      REPEAT
       a:=a+mm[i  ]; b:=b+mm[i+1]; c:=c+mm[i+2]; d:=d+mm[i+3];
@@ -1289,10 +1289,10 @@ BEGIN
       mm[i  ]:=a; mm[i+1]:=b; mm[i+2]:=c; mm[i+3]:=d;
       mm[i+4]:=e; mm[i+5]:=f; mm[i+6]:=g; mm[i+7]:=h;
       i:=i+8;
-     UNTIL i>255; 
+     UNTIL i>255;
    END;
-   isaac();           // fill in the first set of results 
-   randcnt:=0;       // prepare to use the first set of results 
+   isaac();           // fill in the first set of results
+   randcnt:=0;       // prepare to use the first set of results
 END; {randinit}
 
 
@@ -1305,7 +1305,7 @@ BEGIN
 	m := Length(seed)-1;
 	FOR i:= 0 TO 255 DO BEGIN
 	// in case seed has less than 256 elements
-        IF i>m THEN randrsl[i]:=0  
+        IF i>m THEN randrsl[i]:=0
 			// Pascal strings are 1-based
 			ELSE randrsl[i]:=ord(seed[i+1]);
 	END;
@@ -1332,7 +1332,7 @@ FUNCTION iRandA: BYTE;
 		result := iRandom mod 95 + 32;
 	END;
 
-	
+
 { convert an ASCII string to a hexadecimal string }
 FUNCTION ascii2hex(s: STRING): STRING;
 	VAR i,l: CARDINAL;
@@ -1354,7 +1354,7 @@ FUNCTION Vernam(msg: STRING): STRING;
 	result := ascii2hex(result);
 	END;
 
-	
+
 { Get position of the letter in chosen alphabet }
 FUNCTION letternum(letter, start: CHAR): byte;
 	BEGIN
@@ -1381,13 +1381,13 @@ FUNCTION Vigenere(msg: STRING): STRING;
 		result := ascii2hex(result);
 	END;
 
-	
+
 BEGIN
 	// 1) seed ISAAC with the key
 	iSeed(key,true);
 	// 2) Vernam XOR encryption
 	xctx := Vernam(msg);
-	// 3) MOD encryption 
+	// 3) MOD encryption
 	mctx := Vigenere(msg);
 	// program output
 	Writeln('Message: ',msg);
@@ -1549,7 +1549,7 @@ decrypted: a Top Secret secret
 
 ## FreeBASIC
 
-{{trans|C}} 
+{{trans|C}}
 
 ```freebasic
 ' version 03-11-2016
@@ -2098,11 +2098,11 @@ XOR dcr: a Top Secret secret
 
 ## Haxe
 
-Used a signed type rather then unsigned as unsigned 32bit type 
-is not part of the default library. 
-The effect of all operations with the exception of compare and mod 
-are identical anyways. 
-It is possible in Haxe to create your own 32bit unsigned type, 
+Used a signed type rather then unsigned as unsigned 32bit type
+is not part of the default library.
+The effect of all operations with the exception of compare and mod
+are identical anyways.
+It is possible in Haxe to create your own 32bit unsigned type,
 but that is outside this exercise.
 
 ```Haxe
@@ -2120,16 +2120,16 @@ enum Ciphermode {
 	mNone;
 }
 
-class Isaac 
+class Isaac
 {
 	public var randrsl = new Vector<Ub4>(256);
 	public var randcnt:Ub4;
-	
+
 	var mm = new Vector<Ub4>(256);
 	var aa:Ub4 = 0;
 	var bb:Ub4 = 0;
 	var cc:Ub4 = 0;
-	
+
 	public function isaac():Void {
 		var x, y;
 		cc++;
@@ -2148,7 +2148,7 @@ class Isaac
 			randrsl[i] = bb = mm[(y >>> 10) % 256] + x;
 		}
 	}
-	
+
 	macro static function mix(a:ExprOf<Ub4>, b:ExprOf<Ub4>, c:ExprOf<Ub4>, d:ExprOf<Ub4>,
 	                          e:ExprOf<Ub4>, f:ExprOf<Ub4>, g:ExprOf<Ub4>, h:ExprOf<Ub4>) {
 		return macro {
@@ -2162,7 +2162,7 @@ class Isaac
 			$h ^= $a >>> 9; $c += $h; $a += $b;
 		};
 	}
-	
+
 	public function randinit(flag:Bool):Void {
 		var a, b, c, d, e, f, g, h, i;
 		aa = bb = cc = (0:Ub4);
@@ -2195,7 +2195,7 @@ class Isaac
 		isaac();
 		randcnt = 0;
 	}
-	
+
 	public function iRandom():Ub4 {
 		var r = randrsl[randcnt];
 		++randcnt;
@@ -2205,27 +2205,27 @@ class Isaac
 		}
 		return r;
 	}
-	
+
 	public function iRandA():Int32 {
 		return cast(cast(iRandom(),UInt) % 95 + 32,Int32);
 	}
-	
+
 	public function iSeed(seed:String, flag:Bool):Void {
 		var m=seed.length-1;
 		for (i in 0...256) mm[i] = 0;
 		for (i in 0...256) if (i > m) randrsl[i] = 0; else randrsl[i] = seed.charCodeAt(i);
 		randinit(flag);
 	}
-	
+
 	inline static var modC = 95;
 	inline static var startC = 32;
-	
+
 	public function vernam (msg:String):String {
 		var v="";
 		for (i in 0...msg.length) v += String.fromCharCode(iRandA() ^ msg.charCodeAt(i));
 		return v;
 	}
-	
+
 	public function caesar(m:Ciphermode, ch:Int32, shift:Int32,
 	                       modulo:Int32, start:Int32):String {
 		var n:Int32;
@@ -2235,14 +2235,14 @@ class Isaac
 		if (n < 0) n += modulo;
 		return String.fromCharCode(start + cast(n,Ub4));
 	}
-	
+
 	public function caesarStr(m:Ciphermode, msg:String, modulo:Int32, start:Int32):String {
 		var c = "";
 		for (i in 0...msg.length)
 			c += caesar(m,msg.charCodeAt(i),iRandA(),modulo,start);
 		return c;
 	}
-	
+
 	static public function main():Void {
 		var msg = "a Top Secret secret";
 		var key = "this is my secret key";
@@ -2251,11 +2251,11 @@ class Isaac
 		cIsaac.iSeed(key, true);
 		vctx = cIsaac.vernam(msg);
 		cctx = cIsaac.caesarStr(mEncipher, msg, modC, startC);
-		
+
 		cIsaac.iSeed(key, true);
 		vptx = cIsaac.vernam(vctx);
 		cptx = cIsaac.caesarStr(mDecipher, cctx, modC, startC);
-		
+
 		Sys.println("Message: " + msg);
 		Sys.println("Key    : " + key);
 		var hex = "";
@@ -2303,35 +2303,35 @@ import java.util.Random;
 
 
 public class IsaacRandom extends Random {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private final int[] randResult = new int[256];    // output of last generation
 	private int valuesUsed;                           // the number of values already used up from randResult
-	
+
 	// internal generator state
 	private final int[] mm = new int[256];
 	private int aa, bb, cc;
-	
+
 	public IsaacRandom() {
 		super(0);
 		init(null);
 	}
-	
+
 	public IsaacRandom(int[] seed) {
 		super(0);
 		setSeed(seed);
 	}
-	
+
 	public IsaacRandom(String seed) {
 		super(0);
 		setSeed(seed);
 	}
-	
+
 	private void generateMoreResults() {
 		cc++;
 		bb += cc;
-		
+
 		for (int i=0; i<256; i++) {
 			int x = mm[i];
 			switch (i&3) {
@@ -2352,10 +2352,10 @@ public class IsaacRandom extends Random {
 			int y = mm[i] = mm[(x>>>2) & 0xFF] + aa + bb;
 			randResult[i] = bb = mm[(y>>>10) & 0xFF] + x;
 		}
-		
+
 		valuesUsed = 0;
 	}
-	
+
 	private static void mix(int[] s) {
 		   s[0]^=s[1]<<11;  s[3]+=s[0]; s[1]+=s[2];
 		   s[1]^=s[2]>>>2;  s[4]+=s[1]; s[2]+=s[3];
@@ -2366,7 +2366,7 @@ public class IsaacRandom extends Random {
 		   s[6]^=s[7]<<8;   s[1]+=s[6]; s[7]+=s[0];
 		   s[7]^=s[0]>>>9;  s[2]+=s[7]; s[0]+=s[1];
 	}
-	
+
 	private void init(int[] seed) {
 		if (seed != null && seed.length != 256) {
 			seed = Arrays.copyOf(seed, 256);
@@ -2374,11 +2374,11 @@ public class IsaacRandom extends Random {
 		aa = bb = cc = 0;
 		int[] initState = new int[8];
 		Arrays.fill(initState, 0x9e3779b9);	// the golden ratio
-		
+
 		for (int i=0; i<4; i++) {
 			mix(initState);
 		}
-		
+
 		for (int i=0; i<256; i+=8) {
 			if (seed != null) {
 				for (int j=0; j<8; j++) {
@@ -2390,24 +2390,24 @@ public class IsaacRandom extends Random {
 				mm[i+j] = initState[j];
 			}
 		}
-		
+
 		if (seed != null) {
 			for (int i=0; i<256; i+=8) {
 				for (int j=0; j<8; j++) {
 					initState[j] += mm[i+j];
 				}
-				
+
 				mix(initState);
-				
+
 				for (int j=0; j<8; j++) {
 					mm[i+j] = initState[j];
 				}
 			}
 		}
-		
+
 		valuesUsed = 256;	// Make sure generateMoreResults() will be called by the next next() call.
 	}
-	
+
 	@Override
 	protected int next(int bits) {
 		if (valuesUsed == 256) {
@@ -2418,7 +2418,7 @@ public class IsaacRandom extends Random {
 		valuesUsed++;
 		return value >>> (32-bits);
 	}
-	
+
 	@Override
 	public synchronized void setSeed(long seed) {
 		super.setSeed(0);
@@ -2433,12 +2433,12 @@ public class IsaacRandom extends Random {
 		arraySeed[1] = (int) (seed >>> 32);
 		init(arraySeed);
 	}
-	
+
 	public synchronized void setSeed(int[] seed) {
 		super.setSeed(0);
 		init(seed);
 	}
-	
+
 	public synchronized void setSeed(String seed) {
 		super.setSeed(0);
 		char[] charSeed = seed.toCharArray();
@@ -2448,14 +2448,14 @@ public class IsaacRandom extends Random {
 		}
 		init(intSeed);
 	}
-	
+
 	public int randomChar() {
 		long unsignedNext = nextInt() & 0xFFFFFFFFL;	// The only way to force unsigned modulo behavior in Java is to convert to a long and mask off the copies of the sign bit.
 		return (int) (unsignedNext % 95 + 32);		    // nextInt(95) + 32 would yield a more equal distribution, but then we would be incompatible with the original C code
 	}
-	
+
 	public enum CipherMode { ENCIPHER, DECIPHER, NONE };
-	
+
 	public byte[] vernamCipher(byte[] input) {
 		byte[] result = new byte[input.length];
 		for (int i=0; i<input.length; i++) {
@@ -2463,7 +2463,7 @@ public class IsaacRandom extends Random {
 		}
 		return result;
 	}
-	
+
 	private static byte caesarShift(CipherMode mode, byte ch, int shift, byte modulo, byte start) {
 		if (mode == CipherMode.DECIPHER) {
 			shift = -shift;
@@ -2475,7 +2475,7 @@ public class IsaacRandom extends Random {
 		}
 		return (byte) (start + n);
 	}
-	
+
 	public byte[] caesarCipher(CipherMode mode, byte[] input, byte modulo, byte start) {
 		byte[] result = new byte[input.length];
 		for (int i=0; i<input.length; i++) {
@@ -2483,7 +2483,7 @@ public class IsaacRandom extends Random {
 		}
 		return result;
 	}
-	
+
 	private static String toHexString(byte[] input) {
 		// NOTE: This method prefers simplicity over performance.
 		StringBuilder sb = new StringBuilder(input.length*2);
@@ -2492,14 +2492,14 @@ public class IsaacRandom extends Random {
 		}
 		return sb.toString();
 	}
-	
+
 	public static void main(String[] args) {
 		final byte MOD = 95;
 		final byte START = 32;
-		
+
 		String secret = "a Top Secret secret";
 		String key = "this is my secret key";
-		
+
 		IsaacRandom random = new IsaacRandom(key);
 		byte[] vernamResult;
 		byte[] caesarResult;
@@ -2736,7 +2736,7 @@ XOR dcr: a Top Secret secret
 /* external results */
 val randrsl = IntArray(256)
 var randcnt = 0
- 
+
 /* internal state */
 val mm = IntArray(256)
 var aa = 0
@@ -2746,8 +2746,8 @@ var cc = 0
 const val GOLDEN_RATIO = 0x9e3779b9.toInt()
 
 fun isaac() {
-    cc++       // cc just gets incremented once per 256 results 
-    bb += cc   // then combined with bb 
+    cc++       // cc just gets incremented once per 256 results
+    bb += cc   // then combined with bb
     for (i in 0..255) {
         val x = mm[i]
         when (i % 4) {
@@ -2759,7 +2759,7 @@ fun isaac() {
         aa += mm[(i + 128) % 256]
         val y = mm[(x ushr 2) % 256] + aa + bb
         mm[i] = y
-        bb = mm[(y ushr 10) % 256] + x  
+        bb = mm[(y ushr 10) % 256] + x
         randrsl[i] = bb
     }
     randcnt = 0
@@ -2773,7 +2773,7 @@ fun mix(n: IntArray) {
     n[3] = n[3] xor (n[4] ushr 16); n[6] += n[3]; n[4] += n[5]
     n[4] = n[4] xor (n[5]  shl 10); n[7] += n[4]; n[5] += n[6]
     n[5] = n[5] xor (n[6] ushr  4); n[0] += n[5]; n[6] += n[7]
-    n[6] = n[6] xor (n[7]  shl  8); n[1] += n[6]; n[7] += n[0] 
+    n[6] = n[6] xor (n[7]  shl  8); n[1] += n[6]; n[7] += n[0]
     n[7] = n[7] xor (n[0] ushr  9); n[2] += n[7]; n[0] += n[1]
 }
 
@@ -2782,7 +2782,7 @@ fun randinit(flag: Boolean) {
     bb = 0
     cc = 0
     val n = IntArray(8) { GOLDEN_RATIO }
-    for (i in 0..3) mix(n)      // scramble the array 
+    for (i in 0..3) mix(n)      // scramble the array
 
     for (i in 0..255 step 8) {  // fill in mm with messy stuff
         if (flag) {             // use all the information in the seed
@@ -2792,8 +2792,8 @@ fun randinit(flag: Boolean) {
         for (j in 0..7) mm[i + j] = n[j]
     }
 
-    if (flag) {  
-        /* do a second pass to make all of the seed affect all of mm */ 
+    if (flag) {
+        /* do a second pass to make all of the seed affect all of mm */
         for (i in 0..255 step 8) {
             for (j in 0..7) n[j] += mm[i + j]
             mix(n)
@@ -2802,22 +2802,22 @@ fun randinit(flag: Boolean) {
     }
 
     isaac()       // fill in the first set of results
-    randcnt = 0  // prepare to use the first set of results 
+    randcnt = 0  // prepare to use the first set of results
 }
 
-/* As Kotlin doesn't (yet) support unsigned types, we need to use 
+/* As Kotlin doesn't (yet) support unsigned types, we need to use
    Long here to get a random value in the range of a UInt */
 fun iRandom(): Long {
     val r = randrsl[randcnt++]
     if (randcnt > 255) {
         isaac()
         randcnt = 0
-    } 
+    }
     return r.toLong() and 0xFFFFFFFFL
 }
 
 /* Get a random character (as Int) in printable ASCII range */
-fun iRandA() = (iRandom() % 95 + 32).toInt()  
+fun iRandA() = (iRandom() % 95 + 32).toInt()
 
 /* Seed ISAAC with a string */
 fun iSeed(seed: String, flag: Boolean) {
@@ -2834,8 +2834,8 @@ fun iSeed(seed: String, flag: Boolean) {
 /* XOR cipher on random stream. Output: ASCII string */
 fun vernam(msg: String) : String {
     val len = msg.length
-    val v = ByteArray(len) 
-    for (i in 0 until len) {      
+    val v = ByteArray(len)
+    for (i in 0 until len) {
         v[i] = (iRandA() xor msg[i].toInt()).toByte()
     }
     return v.toString(charset("ASCII"))
@@ -2847,8 +2847,8 @@ const val START = 32
 
 /* cipher modes for Caesar */
 enum class CipherMode {
-    ENCIPHER, DECIPHER, NONE 
-} 
+    ENCIPHER, DECIPHER, NONE
+}
 
 /* Caesar-shift a printable character */
 fun caesar(m: CipherMode, ch: Int, shift: Int, modulo: Int, start: Int): Char {
@@ -2870,9 +2870,9 @@ fun caesarStr(m: CipherMode, msg: String, modulo: Int, start: Int): String {
 }
 
 fun String.toHexByteString() =
-    this.map { "%02X".format(it.toInt()) }.joinToString("") 
-        
-fun main(args: Array<String>) {    
+    this.map { "%02X".format(it.toInt()) }.joinToString("")
+
+fun main(args: Array<String>) {
     val msg = "a Top Secret secret"
     val key = "this is my secret key"
 
@@ -2880,12 +2880,12 @@ fun main(args: Array<String>) {
     iSeed(key, true)
     val vctx = vernam(msg)
     val cctx = caesarStr(CipherMode.ENCIPHER, msg,  MOD, START)
- 
+
     // Vernam & Caesar plaintext
-    iSeed(key, true) 
+    iSeed(key, true)
     val vptx = vernam(vctx)
     val cptx = caesarStr(CipherMode.DECIPHER, cctx, MOD, START)
- 
+
     // Program output
     println("Message : $msg")
     println("Key     : $key")
@@ -3435,8 +3435,8 @@ MOD dcr: a Top Secret secret
 
 Perl has had an ISAAC module for a few years, and it is the recommended way to use ISAAC.  This example uses [https://metacpan.org/pod/Math::Random::ISAAC Math::Random::ISAAC] which is a pure Perl implementation, but will also allow faster operation if the [https://metacpan.org/pod/Math::Random::ISAAC::XS Math::Random::ISAAC::XS] module is installed.
 
-Since ISAAC does not do its own seeding, the [https://metacpan.org/pod/Bytes::Random::Secure Bytes::Random::Secure] module is recommended 
-for general use as it includes ISAAC plus a portable way to get good entropy, 
+Since ISAAC does not do its own seeding, the [https://metacpan.org/pod/Bytes::Random::Secure Bytes::Random::Secure] module is recommended
+for general use as it includes ISAAC plus a portable way to get good entropy,
 as well as additional convenience functions.
 
 
@@ -3493,7 +3493,7 @@ XOR dcr: a Top Secret secret
 ```perl6
 #!/usr/bin/env perl6
 
-use v6.d; 
+use v6.d;
 
 my uint32 (@mm, @randrsl, $randcnt, $aa, $bb, $cc);
 my \ϕ := 2654435769; constant MOD = 95; constant START = 32;
@@ -3502,11 +3502,11 @@ constant MAXINT = uint.Range.max;
 enum CipherMode < ENCIPHER DECIPHER NONE >;
 
 sub mix (\n) {
-   sub mix1 (\i, \v) { 
-      n[i] +^= v;  
+   sub mix1 (\i, \v) {
+      n[i] +^= v;
       n[(i+3)%8] += n[i];
       n[(i+1)%8] += n[(i+2)%8];
-   } 
+   }
    mix1 0, n[1]+<11; mix1 1, n[2]+>2; mix1 2, n[3]+<8; mix1 3, n[4]+>16;
    mix1 4, n[5]+<10; mix1 5, n[6]+>4; mix1 6, n[7]+<8; mix1 7, n[0]+>9 ;
 }
@@ -3514,12 +3514,12 @@ sub mix (\n) {
 sub randinit(\flag) {
    $aa = $bb = $cc = 0;
    my uint32 @n = [^8].map({ ϕ });
-   for ^4 { mix @n };    
-   for 0,8 … 255 -> $i { 
-      { for (0..7) { @n[$^j] += @randrsl[$i + $^j] } } if flag; 
+   for ^4 { mix @n };
+   for 0,8 … 255 -> $i {
+      { for (0..7) { @n[$^j] += @randrsl[$i + $^j] } } if flag;
       mix @n;
       for (0..7) { @mm[$i + $^j] = @n[$^j] }
-   }   
+   }
    if flag {
       for 0,8 … 255 -> $i {
          for ^8 { @n[$^j] += @mm[$i + $^j] };
@@ -3527,13 +3527,13 @@ sub randinit(\flag) {
          for ^8 { @mm[$i + $^j] = @n[$^j] };
       }
    }
-   isaac;       
-   $randcnt = 0;  
+   isaac;
+   $randcnt = 0;
 }
 
 sub isaac() {
-   $cc++;      
-   $bb += $cc;  
+   $cc++;
+   $bb += $cc;
    for ^256 -> $i {
       my $x = @mm[$i];
       given ($i % 4) {
@@ -3570,10 +3570,10 @@ sub iSeed(\seed, \flag) {
 sub iRandA { return iRandom() % MOD + START };
 
 sub vernam(\M) { ( map { (iRandA() +^ .ord ).chr }, M.comb ).join };
- 
+
 sub caesar(CipherMode \m, \ch, $shift is copy, \Modulo, \Start) {
-    $shift = -$shift if m == DECIPHER; 
-    my $n = (ch.ord - Start) + $shift; 
+    $shift = -$shift if m == DECIPHER;
+    my $n = (ch.ord - Start) + $shift;
     $n %= Modulo;
     $n += Modulo if $n < 0;
     return (Start + $n).chr;
@@ -3586,11 +3586,11 @@ sub caesarStr(CipherMode \m, \msg, \Modulo, \Start) {
    }
    return $sb;
 }
- 
-multi MAIN () {    
+
+multi MAIN () {
    my \msg = "a Top Secret secret";
    my \key = "this is my secret key";
- 
+
    iSeed key, True ;
    my $vctx = vernam msg;
    my $cctx = caesarStr ENCIPHER, msg,  MOD, START;
@@ -3599,7 +3599,7 @@ multi MAIN () {
    my $vptx = vernam $vctx;
    my $cptx = caesarStr DECIPHER, $cctx, MOD, START;
 
-   my $vctx2hex = ( map { .ord.fmt('%02X') }, $vctx.comb ).join('');  
+   my $vctx2hex = ( map { .ord.fmt('%02X') }, $vctx.comb ).join('');
    my $cctx2hex = ( map { .ord.fmt('%02X') }, $cctx.comb ).join('');
 
    say "Message : ", msg;
@@ -3639,7 +3639,7 @@ integer randcnt
 
 sequence mm
 atom aa,bb,cc
- 
+
 function r32(object a)
     if sequence(a) then
         for i=1 to length(a) do
@@ -3660,8 +3660,8 @@ function shr(atom v, integer bits)
 end function
 
 procedure Isaac()
-    cc += 1;    -- cc just gets incremented once per 256 results 
-    bb += cc;   -- then combined with bb 
+    cc += 1;    -- cc just gets incremented once per 256 results
+    bb += cc;   -- then combined with bb
     for i=1 to 256 do
         atom x = mm[i]
         switch mod(i-1,4) do
@@ -3672,13 +3672,13 @@ procedure Isaac()
         end switch
         aa = r32(mm[xor_bits(i-1,#80)+1]+aa)
         atom y := mm[and_bits(shr(x,2),#FF)+1]+aa+bb
-        mm[i] := y;     
+        mm[i] := y;
         bb := r32(mm[and_bits(shr(y,10),#FF)+1] + x)
-        randrsl[i]:= bb; 
+        randrsl[i]:= bb;
     end for
     randcnt = 1
 end procedure
- 
+
 function mix(sequence a8)
     atom {a,b,c,d,e,f,g,h} = a8
     a = xor_bits(a,shl(b,11));  {d,b} = r32({d+a,b+c});
@@ -3696,9 +3696,9 @@ end function
 procedure iRandInit()
     {aa,bb,cc} = {0,0,0}
     sequence a8 = repeat(#9e3779b9,8)   -- the golden ratio
-    for i=1 to 4 do        -- scramble it 
+    for i=1 to 4 do        -- scramble it
         a8 = mix(a8)
-    end for 
+    end for
     for i=1 to 255 by 8 do
         a8 = mix(sq_add(a8,randrsl[i..i+7]))
         mm[i..i+7] = a8
@@ -3707,25 +3707,25 @@ procedure iRandInit()
         a8 = mix(r32(sq_add(a8,mm[i..i+7])))
         mm[i..i+7] = a8
     end for
-    Isaac()         -- fill in the first set of results 
+    Isaac()         -- fill in the first set of results
 end procedure
- 
+
 procedure iSeed(string seed)
     mm = repeat(0,256)
     randrsl = repeat(0,256)
     randrsl[1..min(length(seed),256)] = seed
     iRandInit()
 end procedure
- 
+
 function randch()
     atom res = mod(randrsl[randcnt],95)+32
     randcnt += 1
     if randcnt>256 then
         Isaac()
     end if
-    return res 
+    return res
 end function
- 
+
 function Vernam(string msg)
     string res = ""
     for i=1 to length(msg) do
@@ -3736,8 +3736,8 @@ end function
 
 function Caesar(integer ch, shift)
     return ' '+mod(ch-' '+shift,95)
-end function 
- 
+end function
+
 enum ENCRYPT = +1,
      DECRYPT = -1
 
@@ -3748,7 +3748,7 @@ function Vigenere(string msg, integer mode)
     end for
     return res
 end function
- 
+
 constant string msg = "a Top Secret secret",
                 key = "this is my secret key"
 
@@ -3764,7 +3764,7 @@ function ascii2hex(string s)
     string res = ""
     for i=1 to length(s) do
         res &= sprintf("%02x",s[i])
-    end for 
+    end for
     return res
 end function
 
@@ -3928,7 +3928,7 @@ class IsaacRandom(random.Random):
     def seed(self, seed=None):
         """
         Initialize internal state.
-        
+
         The seed, if given, can be a string, an integer, or an iterable that contains
         integers only. If no seed is given, a fixed default state is set up; unlike
         our superclass, this class will not attempt to randomize the seed from outside sources.
@@ -3942,7 +3942,7 @@ class IsaacRandom(random.Random):
             init_state[5] ^=  (init_state[6]>>4 )          ; init_state[0] += init_state[5]; init_state[0] &= INT_MASK; init_state[6] += init_state[7]; init_state[6] &= INT_MASK
             init_state[6] ^= ((init_state[7]<<8 )&INT_MASK); init_state[1] += init_state[6]; init_state[1] &= INT_MASK; init_state[7] += init_state[0]; init_state[7] &= INT_MASK
             init_state[7] ^=  (init_state[0]>>9 )          ; init_state[2] += init_state[7]; init_state[2] &= INT_MASK; init_state[0] += init_state[1]; init_state[0] &= INT_MASK
-        
+
         super().seed(0) # give a chance for the superclass to reset its state - the actual seed given to it doesn't matter
         if seed is not None:
             if isinstance(seed, str):
@@ -3957,20 +3957,20 @@ class IsaacRandom(random.Random):
                     val >>= 32
             else:
                 raise TypeError('Seed must be string, integer or iterable of integer')
-            
+
             # make sure the seed list is exactly 256 elements long
             if len(seed)>256:
                 del seed[256:]
             elif len(seed)<256:
                 seed.extend([0]*(256-len(seed)))
-                
+
         self.aa = self.bb = self.cc = 0
         self.mm = []
         init_state = [0x9e3779b9]*8
-        
+
         for _ in range(4):
             mix()
-        
+
         for i in range(0, 256, 8):
             if seed is not None:
                 for j in range(8):
@@ -3978,7 +3978,7 @@ class IsaacRandom(random.Random):
                     init_state[j] &= INT_MASK
             mix()
             self.mm += init_state
-                
+
         if seed is not None:
             for i in range(0, 256, 8):
                 for j in range(8):
@@ -3987,23 +3987,23 @@ class IsaacRandom(random.Random):
                 mix()
                 for j in range(8):
                     self.mm[i+j] = init_state[j]
-                
+
         self.rand_count = 256
         self.rand_result = [0]*256
-        
+
     def getstate(self):
         return super().getstate(), self.aa, self.bb, self.cc, self.mm, self.rand_count, self.rand_result
-    
+
     def setstate(self, state):
         super().setstate(state[0])
-        _, self.aa, self.bb, self.cc, self.mm, self.rand_count, self.rand_result = state 
-        
+        _, self.aa, self.bb, self.cc, self.mm, self.rand_count, self.rand_result = state
+
     def _generate(self):
         # Generate 256 random 32-bit values and save them in an internal field.
         # The actual random functions will dish out these values to callers.
         self.cc = (self.cc + 1) & INT_MASK
         self.bb = (self.bb + self.cc) & INT_MASK
-        
+
         for i in range(256):
             x = self.mm[i]
             mod = i & 3
@@ -4018,9 +4018,9 @@ class IsaacRandom(random.Random):
             self.aa = (self.mm[i^128] + self.aa) & INT_MASK
             y = self.mm[i] = (self.mm[(x>>2) & 0xFF] + self.aa + self.bb) & INT_MASK
             self.rand_result[i] = self.bb = (self.mm[(y>>10) & 0xFF] + x) & INT_MASK
-            
+
         self.rand_count = 0
-        
+
     def next_int(self):
         """Return a random integer between 0 (inclusive) and 2**32 (exclusive)."""
         if self.rand_count == 256:
@@ -4028,7 +4028,7 @@ class IsaacRandom(random.Random):
         result = self.rand_result[self.rand_count]
         self.rand_count += 1
         return result
-        
+
     def getrandbits(self, k):
         """Return a random integer between 0 (inclusive) and 2**k (exclusive)."""
         result = 0
@@ -4044,29 +4044,29 @@ class IsaacRandom(random.Random):
             ints_used += ints_to_take
         result &= ((1<<k)-1)    # mask off extra bits, if any
         return result
-    
+
     def random(self):
         """Return a random float between 0 (inclusive) and 1 (exclusive)."""
         # A double stores 53 significant bits, so scale a 53-bit integer into the [0..1) range.
         return self.getrandbits(53) * (2**-53)
-    
+
     def rand_char(self):
         """Return a random integer from the printable ASCII range [32..126]."""
         return self.next_int() % 95 + 32
-    
+
     def vernam(self, msg):
         """
         Encrypt/decrypt the given bytes object with the XOR algorithm, using the current generator state.
-        
+
         To decrypt an encrypted string, restore the state of the generator to the state it had
         during encryption, then call this method with the encrypted string.
         """
         return bytes((self.rand_char() & 0xFF) ^ x for x in msg)
-    
+
     # Constants for selecting Caesar operation modes.
     ENCIPHER = 'encipher'
     DECIPHER = 'decipher'
-    
+
     @staticmethod
     def _caesar(ciphermode, ch, shift, modulo, start):
         if ciphermode == IsaacRandom.DECIPHER:
@@ -4075,27 +4075,27 @@ class IsaacRandom(random.Random):
         if n<0:
             n += modulo
         return start+n
-    
+
     def caesar(self, ciphermode, msg, modulo, start):
         """
         Encrypt/decrypt a string using the Caesar algorithm.
-        
+
         For decryption to work, the generator must be in the same state it was during encryption,
         and the same modulo and start parameters must be used.
-        
+
         ciphermode must be one of IsaacRandom.ENCIPHER or IsaacRandom.DECIPHER.
         """
         return bytes(self._caesar(ciphermode, ch, self.rand_char(), modulo, start) for ch in msg)
-        
+
 if __name__=='__main__':
     import binascii
-    
+
     def hexify(b):
         return binascii.hexlify(b).decode('ascii').upper()
-    
+
     MOD = 95
     START = 32
-    
+
     msg = 'a Top Secret secret'
     key = 'this is my secret key'
     isaac_random = IsaacRandom(key)
@@ -4104,7 +4104,7 @@ if __name__=='__main__':
     isaac_random.seed(key)
     vernam_decoded = isaac_random.vernam(vernam_encoded).decode('ascii')
     caesar_decoded = isaac_random.caesar(IsaacRandom.DECIPHER, caesar_encoded, MOD, START).decode('ascii')
-    
+
     print('Message:', msg)
     print('Key    :', key)
     print('XOR    :', hexify(vernam_encoded))
@@ -4122,9 +4122,9 @@ if __name__=='__main__':
 - Imperative version: {{trans|C}}
 - Vigenère:           {{trans|Pascal}}
 
-In the Pascal (and reference version) of the Vigenère encryption, 
-the state engine is not reset after having been used for the XOR version. 
-There are two sets of MOD results below... one with the state engine 
+In the Pascal (and reference version) of the Vigenère encryption,
+the state engine is not reset after having been used for the XOR version.
+There are two sets of MOD results below... one with the state engine
 left from after the XOR, and one with a cleanly reseeded state engine.
 
 
@@ -4203,28 +4203,28 @@ left from after the XOR, and one with a cleanly reseeded state engine.
       (u4->bytes! M (_++ m) y)
       (set! b (u4-truncate (+ (ind M (u4>> y RANDSIZL)) x)))
       (u4->bytes! R (_++ r) b)))
-  
+
   (define a (randctx-a C))
-  
+
   (set-randctx-c! C (add1 (randctx-c C)))
-  
+
   (define b (u4-truncate (+ (randctx-b C) (randctx-c C))))
-  
+
   (define m mm)
   (define m2 (+ m (/ RANDSIZ 2)))
   (define mend m2)
-  
+
   (define-syntax-rule (4-step-loop variant)
     (let loop ()
       (when (< variant mend)
         (rng-step (u4<< a 13)) (rng-step (u4>> a 6))
         (rng-step (u4<< a  2)) (rng-step (u4>> a 16))
         (loop))))
-  
+
   (4-step-loop m)
   (set! m2 mm)
   (4-step-loop m2)
-  
+
   (set-randctx-b! C b)
   (set-randctx-a! C a))
 
@@ -4245,26 +4245,26 @@ left from after the XOR, and one with a cleanly reseeded state engine.
   (set-randctx-a! C 0)
   (set-randctx-b! C 0)
   (set-randctx-c! C 0)
-  
+
   ;; seed-ctx should set these up (with the seed!):
   ;;   (set-ctx-rsl! C (make-bytes (* 4 RANDSIZ) 0))
-  ;;   (set-ctx-mem! C (make-bytes (* 4 RANDSIZ) 0))  
+  ;;   (set-ctx-mem! C (make-bytes (* 4 RANDSIZ) 0))
   (define R (randctx-rsl C))
-  (define M (randctx-mem C))  
-  
+  (define M (randctx-mem C))
+
   (define φ #x9e3779b9) ; the golden ratio
   (match-define (list a b c d e f g h) (make-list 8 φ))
-  
+
   (for ((_ 4)) (mix a b c d e f g h)) ; scramble it
-  
+
   (define-syntax-rule (mix-and-assign i M2)
     (begin
-      (mix a b c d e f g h)       
+      (mix a b c d e f g h)
       (u4->bytes! M2 (+ i 0) a) (u4->bytes! M2 (+ i 1) b)
       (u4->bytes! M2 (+ i 2) c) (u4->bytes! M2 (+ i 3) d)
       (u4->bytes! M2 (+ i 4) e) (u4->bytes! M2 (+ i 5) f)
       (u4->bytes! M2 (+ i 6) g) (u4->bytes! M2 (+ i 7) h)))
-  
+
   (define-syntax-rule (mix-with-mem M1 M2)
     (for ((i (in-range 0 RANDSIZ 8)))
       (a . u4+= . (bytes->u4 M1 (+ i 0))) (b . u4+= . (bytes->u4 M1 (+ i 1)))
@@ -4272,14 +4272,14 @@ left from after the XOR, and one with a cleanly reseeded state engine.
       (e . u4+= . (bytes->u4 M1 (+ i 4))) (f . u4+= . (bytes->u4 M1 (+ i 5)))
       (g . u4+= . (bytes->u4 M1 (+ i 6))) (h . u4+= . (bytes->u4 M1 (+ i 7)))
       (mix-and-assign i M2)))
-  
+
   (cond
     [flag? ; initialize using the contents of r[] as the seed
-     (mix-with-mem R M)          
-     (mix-with-mem M M)] ; do a second pass to make all of the seed affect all of m    
+     (mix-with-mem R M)
+     (mix-with-mem M M)] ; do a second pass to make all of the seed affect all of m
     [else ; fill in m[] with messy stuff
      (for ((i (in-range 0 RANDSIZ 8))) (mix-and-assign i M))])
-  
+
   (isaac C)  ; fill in the first set of results
   (set-randctx-cnt! C 0)) ; prepare to use the first set of results
 
@@ -4316,7 +4316,7 @@ left from after the XOR, and one with a cleanly reseeded state engine.
 (define ((Caesar mod-n start) encrypt? shift ch)
   (define (letter-num letter/byte)
     (- letter/byte (char->integer start)))
-  
+
   (define shift-fn (if encrypt? + -))
   (+ (char->integer start) (modulo (shift-fn (letter-num ch) shift) mod-n)))
 
@@ -4346,7 +4346,7 @@ left from after the XOR, and one with a cleanly reseeded state engine.
   (define vigen-at-seed.msg (Vigenère #t (i-rand-a C) message))
   (seed-ctx C key)
   (define unvigen-at-seed.msg (Vigenère #f (i-rand-a C) vigen-at-seed.msg))
-  
+
   (printf #<<EOS
 Message:            [~a]
 Key:                [~a]

@@ -28,9 +28,9 @@ result.push(dictionary[w]);
 expects the string stored in variable ''w'' is in the dictionary, which is wrong.--[[User:ArtyomShegeda|ArtyomShegeda]] ([[User talk:ArtyomShegeda|talk]]) 17:28, 28 October 2015 (UTC)
 
 ==C# Decompression function==
-I'm not sure if it would be acceptable to just post the decompression, so I'm posting it here. Since I'm lazy, and only need decomp (which seems to be easier anyway), I only wrote that. 
+I'm not sure if it would be acceptable to just post the decompression, so I'm posting it here. Since I'm lazy, and only need decomp (which seems to be easier anyway), I only wrote that.
 
-```csharp
+```c#
 
     class LZWDecompress
     {
@@ -94,24 +94,24 @@ Again, terrible code.  Depends on 4 other badly written files, so it's incovenie
 ```cpp
 
 //GIF flavored LZW based on:
-//rosettacode.org/wiki/LZW_compression#C	
+//rosettacode.org/wiki/LZW_compression#C
 //encode_t dictionary[4096];
 struct encode_t{ short next[256]; };
 static std::vector<encode_t> dictionary;
-static std::vector<char> encoded;	
+static std::vector<char> encoded;
 template<class T> size_t encode(T in)
-{	
+{
 	//2-color must use 2
-	const int colorbits = 8; 		
-	enum{cc=2<<(colorbits-1),eoi,c0}; 
-	auto &out = encoded; out.clear();	 		
-		
-	int next_code = c0;
-	int next_shift = 2<<colorbits;				
-	dictionary.resize(next_shift); 	
+	const int colorbits = 8;
+	enum{cc=2<<(colorbits-1),eoi,c0};
+	auto &out = encoded; out.clear();
 
-	int len = in.size();		
-	int o = 0, o_bits = 0;		
+	int next_code = c0;
+	int next_shift = 2<<colorbits;
+	dictionary.resize(next_shift);
+
+	int len = in.size();
+	int o = 0, o_bits = 0;
 	int c_bits = colorbits+1;
 	unsigned c,nc, code = cc; do
 	{
@@ -121,33 +121,33 @@ template<class T> size_t encode(T in)
 			o|=code<<o_bits;
 			for(o_bits+=c_bits;o_bits>=8;o>>=8)
 			{
-				o_bits-=8; out.push_back(o&0xFF);					
-			}	 
-			if(next_code>=next_shift) 
+				o_bits-=8; out.push_back(o&0xFF);
+			}
+			if(next_code>=next_shift)
 			{
 				if(++c_bits>12) //12 is GIF's limit
-				{	
+				{
 					c_bits = 12; //13? spec is unclear
 
-					next_code = c0;	
-					next_shift = 2<<colorbits;							
+					next_code = c0;
+					next_shift = 2<<colorbits;
 					dictionary.clear();
-					dictionary.resize(next_shift); 
+					dictionary.resize(next_shift);
 					code = cc; goto cc;
-				} 
-				else dictionary.resize(next_shift*=2); 
+				}
+				else dictionary.resize(next_shift*=2);
 			}
 			if(code!=cc)
-			nc = dictionary[code].next[c] = next_code++;									
+			nc = dictionary[code].next[c] = next_code++;
 			else if(c_bits>=12) c_bits = colorbits+1;
 			code = c;
 		}
 		else code = nc;
-			
+
 	}while(--len>0); switch(len)
 	{
 	case  0: goto cc; //truncate
-	case -1: code = eoi; goto cc; 
+	case -1: code = eoi; goto cc;
 	case -2: c_bits = 8; if(o_bits) goto cc;
 	}
 	dictionary.clear();

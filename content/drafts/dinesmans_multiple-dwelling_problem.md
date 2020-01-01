@@ -505,7 +505,7 @@ For this program, to change conditions, one needs to edit content between BEGIN 
 Those could even be setup in an external file and gets <code>#include</code>d if need be.
 
 
-## C sharp
+## C#
 
 
 ### Constraints as functions solution
@@ -516,7 +516,7 @@ Each tenant is considered an integer from 0 to count.
 For each solution, it will output an array of integers that represent the tenants ordered by floor number, from the bottom floor to the top.
 
 
-```csharp
+```c#
 public class Program
 {
     public static void Main()
@@ -601,7 +601,7 @@ Smith Cooper Baker Fletcher Miller
 This challenge is badly stated. It is trivial to state/add any variant as a where clause (and to the enum) in the Linq query. Need more information in order to automatically parse such statements and there is no specification of this in the challenge.
 {{works with|C sharp|C#|7}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using static System.Linq.Enumerable;

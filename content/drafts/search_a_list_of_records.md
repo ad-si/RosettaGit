@@ -641,9 +641,9 @@ Khartoum-Omdurman
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

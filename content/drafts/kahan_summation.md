@@ -370,9 +370,9 @@ Kahan sum    = 1
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace KahanSummation {

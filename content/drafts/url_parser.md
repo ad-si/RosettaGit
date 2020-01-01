@@ -27,22 +27,22 @@ Note:   this task has nothing to do with [[URL encoding]] or [[URL decoding]].
 
 According to the standards, the characters:
 ::::   <big><big>    ! * ' ( ) ; : @ & = + $ , / ? % # [ ]    </big></big>
-only need to be percent-encoded   ('''%''')   in case of possible confusion. 
+only need to be percent-encoded   ('''%''')   in case of possible confusion.
 
 Also note that the '''path''', '''query''' and '''fragment''' are case sensitive, even if the '''scheme''' and '''domain''' are not.
 
-The way the returned information is provided (set of variables, array, structured, record, object,...) 
+The way the returned information is provided (set of variables, array, structured, record, object,...)
 is language-dependent and left to the programmer, but the code should be clear enough to reuse.
 
 Extra credit is given for clear error diagnostics.
 
-*   Here is the official standard:     https://tools.ietf.org/html/rfc3986, 
+*   Here is the official standard:     https://tools.ietf.org/html/rfc3986,
 *   and here is a simpler   BNF:     http://www.w3.org/Addressing/URL/5_URI_BNF.html.
 
 
 ;Test cases:
 According to T. Berners-Lee
- 
+
 '''<nowiki>foo://example.com:8042/over/there?name=ferret#nose</nowiki>'''     should parse into:
 ::*   scheme = foo
 ::*   domain = example.com
@@ -58,7 +58,7 @@ According to T. Berners-Lee
 
 
 '''other URLs that must be parsed include:'''
-:*   <nowiki> jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true </nowiki> 
+:*   <nowiki> jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true </nowiki>
 :*   <nowiki> ftp://ftp.is.co.za/rfc/rfc1808.txt                                      </nowiki>
 :*   <nowiki> http://www.ietf.org/rfc/rfc2396.txt#header1                             </nowiki>
 :*   <nowiki> ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two               </nowiki>
@@ -231,10 +231,10 @@ log $(getUrlComponents url)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace RosettaUrlParse
@@ -864,7 +864,7 @@ https://bob:pass@example.com/place
   scheme = https
   user-info = bob:pass
   domain = example.com
-  port = 
+  port =
   path = place
 
 foo://example.com:8042/over/there?name=ferret#nose
@@ -887,20 +887,20 @@ jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
 ftp://ftp.is.co.za/rfc/rfc1808.txt
   scheme = ftp
   domain = ftp.is.co.za
-  port = 
+  port =
   path = rfc/rfc1808.txt
 
 http://www.ietf.org/rfc/rfc2396.txt#header1
   scheme = http
   domain = www.ietf.org
-  port = 
+  port =
   path = rfc/rfc2396.txt
   fragment = header1
 
 ldap://[2001:db8::7]/c=GB?objectClass?one
   scheme = ldap
   domain = [2001:db8::7]
-  port = 
+  port =
   path = c=GB
   query = objectClass?one
 
@@ -920,7 +920,7 @@ telnet://192.0.2.16:80/
   scheme = telnet
   domain = 192.0.2.16
   port = :80
-  path = 
+  path =
 
 urn:oasis:names:specification:docbook:dtd:xml:4.1.2
   scheme = urn
@@ -944,18 +944,18 @@ Implementation:
 split=:1 :0
   ({. ; ] }.~ 1+[)~ i.&m
 )
- 
+
 uriparts=:3 :0
   'server fragment'=. '#' split y
   'sa query'=. '?' split server
   'scheme authpath'=. ':' split sa
   scheme;authpath;query;fragment
 )
- 
+
 queryparts=:3 :0
   (0<#y)#<;._1 '?',y
 )
- 
+
 authpathparts=:3 :0
   if. '//' -: 2{.y do.
     split=. <;.1 y
@@ -964,7 +964,7 @@ authpathparts=:3 :0
     '';y
   end.
 )
- 
+
 authparts=:3 :0
   if. '@' e. y do.
     'userinfo hostport'=. '@' split y
@@ -979,7 +979,7 @@ authparts=:3 :0
      (':' split userinfo),':' split hostport
   end.
 )
- 
+
 taskparts=:3 :0
   'scheme authpath querystring fragment'=. uriparts y
   'auth path'=. authpathparts authpath
@@ -1219,7 +1219,7 @@ Parsing urn:example:animal:ferret:nose
 ## JavaScript
 
 
-As JavaScript is (at the time of writing) still the native language of the DOM, the simplest first-pass approach will be to set the ''href'' property of  a DOM element, and read off the various components of the DOM parse from that element. 
+As JavaScript is (at the time of writing) still the native language of the DOM, the simplest first-pass approach will be to set the ''href'' property of  a DOM element, and read off the various components of the DOM parse from that element.
 
 Here is an example, tested against the JavaScript engines of current versions of Chrome and Safari, of taking this 'Gordian knot' approach to the task:
 
@@ -1443,7 +1443,7 @@ function detailview(uri::URI, indentlen::Int=4)
     end
     join(s, "\n")
 end
-    
+
 test = ["foo://example.com:8042/over/there?name=ferret#nose",
         "urn:example:animal:ferret:nose",
         "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
@@ -1628,23 +1628,23 @@ fun parseUrl(url: String) {
     var scheme: String
     try {
         u = URL(url)
-        scheme = u.protocol 
+        scheme = u.protocol
     }
     catch (ex: MalformedURLException) {
         val index = url.indexOf(':')
         scheme = url.take(index)
         u = URL("http" + url.drop(index))
     }
-    println("Parsing $url")  
-    println("  scheme   =  $scheme") 
- 
-    with(u) { 
-        if (userInfo != null) println("  userinfo =  $userInfo")        
+    println("Parsing $url")
+    println("  scheme   =  $scheme")
+
+    with(u) {
+        if (userInfo != null) println("  userinfo =  $userInfo")
         if (!host.isEmpty())  println("  domain   =  $host")
         if (port != -1)       println("  port     =  $port")
         if (!path.isEmpty())  println("  path     =  $path")
         if (query != null)    println("  query    =  $query")
-        if (ref != null)      println("  fragment =  $ref") 
+        if (ref != null)      println("  fragment =  $ref")
     }
     println()
 }
@@ -1665,7 +1665,7 @@ fun main(args: Array<String>){
         "ssh://alice@example.com",
         "https://bob:pass@example.com/place",
         "http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64"
-    )  
+    )
     for (url in urls) parseUrl(url)
 }
 ```
@@ -1869,7 +1869,7 @@ Module checkit {
       any=lambda (z$)->{=lambda z$ (a$)->instr(z$,a$)>0}
       one=lambda (z$)->{=lambda z$ (a$)->z$=a$}
       number$="0123456789"
-      
+
       series=Lambda  -> {
                   func=Array([])
                   =lambda  func (&line$, &res$)->{
@@ -1885,13 +1885,13 @@ Module checkit {
                         =ok
                   }
       }
-      
+
       is_any=lambda series, any  (c$) ->series(any(c$))
       is_one=lambda series, one  (c$) ->series(one(c$))
       Is_Alpha=series(lambda (a$)-> a$ ~ "[a-zA-Z]")
       Is_digit=series(any(number$))
       Is_hex=any(number$+"abcdefABCDEF")
-      
+
       optionals=Lambda  -> {
                   func=Array([])
                   =lambda  func (&line$, &res$)->{
@@ -1917,7 +1917,7 @@ Module checkit {
                         =ok
                   }
       }
-      
+
       oneAndoptional=lambda (func1, func2) -> {
             =lambda  func1, func2 (&line$, &res$)->{
                               def ok as boolean, a$
@@ -1925,7 +1925,7 @@ Module checkit {
                               if not func1(&line$,&res$) then exit
                               if func2(&line$,&a$) then res$+=a$
                               =True
-                        }      
+                        }
       }
       many=Lambda  -> {
                   func=Array([])
@@ -1934,7 +1934,7 @@ Module checkit {
                         def p=0,ok as boolean, acc$
                         oldline$=line$
                         while k  {
-                              ok=false 
+                              ok=false
                               res$=""
                               if line$="" then exit
                               f=array(k)
@@ -1970,7 +1970,7 @@ Module checkit {
       is_path=repeated(oneAndoptional(is_void(is_xpalphas), series(one("/"))))
       is_uri=oneAndoptional(many(is_scheme, series(one(":")), is_path), many(series(one("?")),is_search))
       is_fragmentaddress=oneAndoptional(is_uri, many(series(one("#")),is_fragmentid ))
-      
+
       data "foo://example.com:8042/over/there?name=ferret#nose"
       data "urn:example:animal:ferret:nose"
       data "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true "
@@ -1981,11 +1981,11 @@ Module checkit {
       data "tel:+1-816-555-1212"
       data "telnet://192.0.2.16:80/"
       data "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
-      
+
       while not empty {
             read What$
             pen 15 {
-                  Print What$ 
+                  Print What$
             }
             a$=""
             If is_scheme(&What$, &a$) Then  Print "Scheme=";a$ : What$=mid$(What$,2)
@@ -2000,9 +2000,9 @@ Module checkit {
                   } else.if  left$(What$,1) =":" then {
                         Print "path:";a$+What$: What$=""
                   } Else Print  "Data:"; a$
-                  
+
             }
-      
+
             if left$(What$,1) =":" then {
                   is_number=repeated(is_digit)
                   What$=mid$(What$,2): If is_number(&What$, &a$) Then Print "Port:";a$
@@ -2028,7 +2028,7 @@ Module checkit {
             Print "fragment:";a$
             }
             if What$<>"" Then Print "Data:"; What$
-      }     
+      }
 }
 Checkit
 
@@ -2046,9 +2046,9 @@ fragment:nose
 urn:example:animal:ferret:nose
 Scheme=urn
 path:example:animal:ferret:nose
-jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true 
+jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
 Scheme=jdbc
-path:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true 
+path:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
 ftp://ftp.is.co.za/rfc/rfc1808.txt
 Scheme=ftp
 Domain:ftp.is.co.za
@@ -2295,8 +2295,8 @@ URLParse["foo://example.com:8042/over/there?name=ferret#nose"]
 {{out}}
 
 ```txt
-<|"Scheme" -> "foo", "User" -> None, "Domain" -> "example.com", 
- "Port" -> 8042, "Path" -> {"", "over", "there"}, 
+<|"Scheme" -> "foo", "User" -> None, "Domain" -> "example.com",
+ "Port" -> 8042, "Path" -> {"", "over", "there"},
  "Query" -> {"name" -> "ferret"}, "Fragment" -> "nose"|>
 ```
 
@@ -2436,7 +2436,7 @@ class Test {
   function : Main(args : String[]) ~ Nil {
     urls := [
       "foo://example.com:8042/over/there?name=ferret#nose",
-      "urn:example:animal:ferret:nose",      
+      "urn:example:animal:ferret:nose",
       "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
       "ftp://ftp.is.co.za/rfc/rfc1808.txt",
       "http://www.ietf.org/rfc/rfc2396.txt#header1",
@@ -2920,7 +2920,7 @@ mailto:John.Doe@example.com
 news:comp.infosystems.www.servers.unix
 tel:+1-816-555-1212
 telnet://192.0.2.16:80/
-urn:oasis:names:specification:docbook:dtd:xml:4.1.2 
+urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 '@ -split [Environment]::NewLine
 
 $parsedUrls = $urls | Get-ParsedUrl
@@ -2935,17 +2935,17 @@ $parsedUrls | Select-Object -Property Scheme, Port, Domain, Path, Query, Fragmen
 
 Scheme Port Domain        Path                                               Query                            Fragment
 ------ ---- ------        ----                                               -----                            --------
-foo    8042 example.com   /over/there                                        ?name=ferret                     #nose   
-urn      -1               example:animal:ferret:nose                                                                  
-jdbc     -1               mysql://test_user:ouupppssss@localhost:3306/sakila ?profileSQL=true                         
-ftp      21 ftp.is.co.za  /rfc/rfc1808.txt                                                                            
+foo    8042 example.com   /over/there                                        ?name=ferret                     #nose
+urn      -1               example:animal:ferret:nose
+jdbc     -1               mysql://test_user:ouupppssss@localhost:3306/sakila ?profileSQL=true
+ftp      21 ftp.is.co.za  /rfc/rfc1808.txt
 http     80 www.ietf.org  /rfc/rfc2396.txt                                                                    #header1
-ldap    389 [2001:db8::7] /c=GB                                              ?objectClass=one&objectClass=two         
-mailto   25 example.com                                                                                               
-news     -1               comp.infosystems.www.servers.unix                                                           
-tel      -1               +1-816-555-1212                                                                             
-telnet   80 192.0.2.16    /                                                                                           
-urn      -1               oasis:names:specification:docbook:dtd:xml:4.1.2                                             
+ldap    389 [2001:db8::7] /c=GB                                              ?objectClass=one&objectClass=two
+mailto   25 example.com
+news     -1               comp.infosystems.www.servers.unix
+tel      -1               +1-816-555-1212
+telnet   80 192.0.2.16    /
+urn      -1               oasis:names:specification:docbook:dtd:xml:4.1.2
 
 ```
 
@@ -3031,73 +3031,73 @@ for (an_url in urls) {
 
 ```txt
 
-foo://example.com:8042/over/there?name=ferret#nose 
-scheme 	: foo 
-domain 	: example.com 
-port 	: 8042 
-path 	: over/there 
-parameter 	: name=ferret 
-fragment 	: nose 
+foo://example.com:8042/over/there?name=ferret#nose
+scheme 	: foo
+domain 	: example.com
+port 	: 8042
+path 	: over/there
+parameter 	: name=ferret
+fragment 	: nose
 
-urn:example:animal:ferret:nose 
-domain 	: urn 
-port 	: example:animal:ferret:nose 
+urn:example:animal:ferret:nose
+domain 	: urn
+port 	: example:animal:ferret:nose
 
-jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true 
-scheme 	: jdbc:mysql 
-domain 	: localhost 
-port 	: 3306 
-path 	: sakila 
-parameter 	: profileSQL=true 
+jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
+scheme 	: jdbc:mysql
+domain 	: localhost
+port 	: 3306
+path 	: sakila
+parameter 	: profileSQL=true
 
-ftp://ftp.is.co.za/rfc/rfc1808.txt 
-scheme 	: ftp 
-domain 	: ftp.is.co.za 
-path 	: rfc/rfc1808.txt 
+ftp://ftp.is.co.za/rfc/rfc1808.txt
+scheme 	: ftp
+domain 	: ftp.is.co.za
+path 	: rfc/rfc1808.txt
 
-http://www.ietf.org/rfc/rfc2396.txt#header1 
-scheme 	: http 
-domain 	: www.ietf.org 
-path 	: rfc/rfc2396.txt 
-fragment 	: header1 
+http://www.ietf.org/rfc/rfc2396.txt#header1
+scheme 	: http
+domain 	: www.ietf.org
+path 	: rfc/rfc2396.txt
+fragment 	: header1
 
-ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two 
-scheme 	: ldap 
-path 	: c=GB 
-parameter 	: objectClass=one&objectClass=two 
+ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two
+scheme 	: ldap
+path 	: c=GB
+parameter 	: objectClass=one&objectClass=two
 
-mailto:John.Doe@example.com 
-domain 	: example.com 
+mailto:John.Doe@example.com
+domain 	: example.com
 
-news:comp.infosystems.www.servers.unix 
-domain 	: news 
-port 	: comp.infosystems.www.servers.unix 
+news:comp.infosystems.www.servers.unix
+domain 	: news
+port 	: comp.infosystems.www.servers.unix
 
-tel:+1-816-555-1212 
-domain 	: tel 
-port 	: +1-816-555-1212 
+tel:+1-816-555-1212
+domain 	: tel
+port 	: +1-816-555-1212
 
-telnet://192.0.2.16:80/ 
-scheme 	: telnet 
-domain 	: 192.0.2.16 
-port 	: 80 
+telnet://192.0.2.16:80/
+scheme 	: telnet
+domain 	: 192.0.2.16
+port 	: 80
 
-urn:oasis:names:specification:docbook:dtd:xml:4.1.2 
-domain 	: urn 
-port 	: oasis:names:specification:docbook:dtd:xml:4.1.2 
+urn:oasis:names:specification:docbook:dtd:xml:4.1.2
+domain 	: urn
+port 	: oasis:names:specification:docbook:dtd:xml:4.1.2
 
-ssh://alice@example.com 
-scheme 	: ssh 
-domain 	: example.com 
+ssh://alice@example.com
+scheme 	: ssh
+domain 	: example.com
 
-https://bob:pass@example.com/place 
-scheme 	: https 
-domain 	: example.com 
-path 	: place 
+https://bob:pass@example.com/place
+scheme 	: https
+domain 	: example.com
+path 	: place
 
-http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64 
-scheme 	: http 
-domain 	: example.com 
+http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
+scheme 	: http
+domain 	: example.com
 parameter 	: a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
 
 ```
@@ -3127,7 +3127,7 @@ Links: [http://docs.racket-lang.org/net/url.html?q=url#%28def._%28%28lib._net%2F
   (printf "path  bits:     ~s~%" pas)
   ;; prms will often be a list of lists. this will print iff
   ;; one of the inner lists is not null
-  (when (memf pair? prms) 
+  (when (memf pair? prms)
     (printf "param bits:     ~s [interleaved with path bits]~%" prms))
   (unless (null? q) (printf "query:          ~s~%" q))
   (when f           (printf "fragment:       ~s~%" f))
@@ -3431,7 +3431,7 @@ set tests {
     news:comp.infosystems.www.servers.unix
     tel:+1-816-555-1212
     telnet://192.0.2.16:80/
-    urn:oasis:names:specification:docbook:dtd:xml:4.1.2 
+    urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 }
 
 foreach uri $tests {
@@ -3533,18 +3533,18 @@ Function parse_url(url)
 			If InStr(cred(1),":") Then
 				host = Mid(cred(1),1,InStr(1,cred(1),":")-1)
 				port = Mid(cred(1),InStr(1,cred(1),":")+1,Len(cred(1))-InStr(1,cred(1),":"))
-				parse_url = parse_url & vbCrLf & "Domain: " & host & vbCrLf & "Port: " & port 
+				parse_url = parse_url & vbCrLf & "Domain: " & host & vbCrLf & "Port: " & port
 			Else
 				parse_url = parse_url & vbCrLf & "Domain: " & cred(1)
 			End If
 		ElseIf InStr(domain(0),":") And Instr(domain(0),"[") = False And Instr(domain(0),"]") = False Then
 				host = Mid(domain(0),1,InStr(1,domain(0),":")-1)
 				port = Mid(domain(0),InStr(1,domain(0),":")+1,Len(domain(0))-InStr(1,domain(0),":"))
-				parse_url = parse_url & vbCrLf & "Domain: " & host & vbCrLf & "Port: " & port 
+				parse_url = parse_url & vbCrLf & "Domain: " & host & vbCrLf & "Port: " & port
 		ElseIf Instr(domain(0),"[") And Instr(domain(0),"]:") Then
 			host = Mid(domain(0),1,InStr(1,domain(0),"]"))
 			port = Mid(domain(0),InStr(1,domain(0),"]")+2,Len(domain(0))-(InStr(1,domain(0),"]")+1))
-			parse_url = parse_url & vbCrLf & "Domain: " & host & vbCrLf & "Port: " & port 
+			parse_url = parse_url & vbCrLf & "Domain: " & host & vbCrLf & "Port: " & port
 		Else
 			parse_url = parse_url & vbCrLf & "Domain: " & domain(0)
 		End If
@@ -3571,7 +3571,7 @@ Function parse_url(url)
 					path = path & domain(i)
 				End If
 			Next
-			parse_url = parse_url & vbCrLf & "Path: " & path 
+			parse_url = parse_url & vbCrLf & "Path: " & path
 		End If
 	ElseIf InStr(url,":") Then
 		scheme = Mid(url,1,InStr(1,url,":")-1)
@@ -3663,7 +3663,7 @@ URL: telnet://192.0.2.16:80/
 Scheme: telnet
 Domain: 192.0.2.16
 Port: 80
-Path: 
+Path:
 -------------------------------
 URL: urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 Scheme: urn

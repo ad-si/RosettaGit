@@ -21,18 +21,18 @@ Tarjan's algorithm is an algorithm in graph theory for finding the strongly conn
 ;References:
 * The article on [[wp:Tarjan's_strongly_connected_components_algorithm|Wikipedia]].
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
 class Node
 {
 	public int LowLink { get; set; }
-	public int Index { get; set; }	
+	public int Index { get; set; }
 	public int N { get; }
-	
+
 	public Node(int n)
 	{
 		N = n;
@@ -95,7 +95,7 @@ class Graph
 		foreach (var v in V)
 			if (v.Index < 0)
 				StrongConnect(v);
-	}	
+	}
 }
 ```
 
@@ -234,7 +234,7 @@ import java.util.Stack
 
 typealias Nodes = List<Node>
 
-class Node(val n: Int) {    
+class Node(val n: Int) {
     var index   = -1  // -1 signifies undefined
     var lowLink = -1
     var onStack = false
@@ -248,15 +248,15 @@ fun tarjan(g: DirectedGraph): List<Nodes> {
     val sccs = mutableListOf<Nodes>()
     var index = 0
     val s = Stack<Node>()
-    
-    fun strongConnect(v: Node) {       
+
+    fun strongConnect(v: Node) {
         // Set the depth index for v to the smallest unused index
         v.index = index
         v.lowLink = index
-        index++ 
+        index++
         s.push(v)
-        v.onStack = true 
-      
+        v.onStack = true
+
         // consider successors of v
         for (w in g.es[v]!!) {
             if (w.index < 0) {
@@ -277,7 +277,7 @@ fun tarjan(g: DirectedGraph): List<Nodes> {
                 val w = s.pop()
                 w.onStack = false
                 scc.add(w)
-            } 
+            }
             while (w != v)
             sccs.add(scc)
         }
@@ -285,10 +285,10 @@ fun tarjan(g: DirectedGraph): List<Nodes> {
 
     for (v in g.vs) if (v.index < 0) strongConnect(v)
     return sccs
-} 
+}
 
 fun main(args: Array<String>) {
-    val vs = (0..7).map { Node(it) }   
+    val vs = (0..7).map { Node(it) }
     val es = mapOf(
         vs[0] to listOf(vs[1]),
         vs[2] to listOf(vs[0]),
@@ -301,7 +301,7 @@ fun main(args: Array<String>) {
     )
     val g = DirectedGraph(vs, es)
     val sccs = tarjan(g)
-    println(sccs.joinToString("\n"))   
+    println(sccs.joinToString("\n"))
 }
 ```
 
@@ -570,7 +570,7 @@ tarjan(g,routine_id("emit"))
 
 
 
-###  Manual implementation 
+###  Manual implementation
 
 
 {{trans|Kotlin}}
@@ -625,7 +625,7 @@ tarjan(g,routine_id("emit"))
 (define (make-graph xs)
   (define store (make-hash))
   (define (make-node v) (hash-ref! store v (thunk (node v #f #f #f))))
-  
+
   ;; it's important that we use hasheq instead of hash so that we compare
   ;; reference instead of actual value. Had we use the actual value,
   ;; the key would be a mutable value, which causes undefined behavior
@@ -653,7 +653,7 @@ tarjan(g,routine_id("emit"))
 
 
 
-###  With the graph library 
+###  With the graph library
 
 
 
@@ -775,7 +775,7 @@ class Tarjan{
    // Ick: class holds global state for strongConnect(), otherwise inert
    const INDEX=0, LOW_LINK=1, ON_STACK=2;
    fcn init(graph){
-      var index=0, stack=List(), components=List(), 
+      var index=0, stack=List(), components=List(),
           G=List.createLong(graph.len(),0);
 
       // convert graph to ( (index,lowlink,onStack),(id,links)), ...)

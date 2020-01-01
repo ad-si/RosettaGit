@@ -1215,7 +1215,7 @@ Bye
 See [[24 game/C]]
 
 
-## C sharp
+## C#
 
 See [[24 game/CSharp]]
 

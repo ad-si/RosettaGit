@@ -936,7 +936,7 @@ puts(1,fix_tags(test))
 lorem ipsum
 ```c>some c code</lang
 dolor sit amet,
-```csharp
+```c#
 some
 csharp code
 ```
@@ -1371,7 +1371,7 @@ lorem ipsum
 some c code
 ```
 dolor sit amet,
-```csharp
+```c#
 some
 csharp code
 ```

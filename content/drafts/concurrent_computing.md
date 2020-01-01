@@ -345,12 +345,12 @@ Rosetta
 ```
 
 
-=={{header|c sharp|C#}}==
+## C#
 
 ### With Threads
 
 
-```csharp
+```c#
 
 static Random tRand = new Random();
 
@@ -392,7 +392,7 @@ Rosetta
 
 {{works with|C sharp|7.1}}
 
-```csharp
+```c#
 using System;
 using System.Threading.Tasks;
 
@@ -412,7 +412,7 @@ public class Program
 ### With a parallel loop
 
 
-```csharp
+```c#
 using System;
 using System.Threading.Tasks;
 

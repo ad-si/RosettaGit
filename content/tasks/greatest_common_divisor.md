@@ -770,7 +770,7 @@ The greatest common divisor of 12 and 18 is 6!
 ### Iterative
 
 
-```csharp
+```c#
 static void Main()
 {
 	Console.WriteLine("GCD of {0} and {1} is {2}", 1, 1, gcd(1, 1));
@@ -823,7 +823,7 @@ GCD of 36 and 35 is 1
 
 ### Recursive
 
-```csharp
+```c#
 static void Main(string[] args)
 {
 	Console.WriteLine("GCD of {0} and {1} is {2}", 1, 1, gcd(1, 1));

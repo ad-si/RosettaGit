@@ -563,10 +563,10 @@ Terms up to a[328002] are needed to generate 0 to 1000
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Kotlin}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

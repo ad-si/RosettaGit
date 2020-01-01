@@ -526,7 +526,7 @@ take 3.5kg of 3.7 kg of welt
 ## C#
 
 
-```csharp
+```c#
 using System;  //4790@3.6
 class Program
 {
@@ -565,7 +565,7 @@ class Program
 Sorting three times is expensive,
 an alternative is sorting once, with an indices array.
 
-```csharp
+```c#
 using System;
 class Program
 {

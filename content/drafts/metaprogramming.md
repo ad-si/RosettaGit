@@ -12,7 +12,7 @@ tags = []
 
 {{task}}{{omit from|BBC BASIC}}
 
-Name and briefly demonstrate any support your language has for metaprogramming. Your demonstration may take the form of cross-references to other tasks on Rosetta Code. When possible, provide links to relevant documentation. 
+Name and briefly demonstrate any support your language has for metaprogramming. Your demonstration may take the form of cross-references to other tasks on Rosetta Code. When possible, provide links to relevant documentation.
 
 For the purposes of this task, "support for metaprogramming" means any way the user can effectively modify the language's syntax that's built into the language (like Lisp macros) or that's conventionally used with the language (like the C preprocessor). Such facilities need not be very powerful: even user-defined infix operators count. On the other hand, in general, neither operator overloading nor <code>eval</code> count. The task author acknowledges that what qualifies as metaprogramming is largely a judgment call.
 
@@ -175,7 +175,7 @@ kXXc some
 ## C
 
 
-C preprocessor can be used to extend language to some extent. 
+C preprocessor can be used to extend language to some extent.
 
 It's possible to create [http://stackoverflow.com/questions/3385515/static-assert-in-c static assertions]
 
@@ -189,10 +189,10 @@ It's possible to create [http://stackoverflow.com/questions/3385515/static-asser
 #define COMPILE_TIME_ASSERT2(X,L) COMPILE_TIME_ASSERT3(X,L)
 #define COMPILE_TIME_ASSERT(X)    COMPILE_TIME_ASSERT2(X,__LINE__)
 
-COMPILE_TIME_ASSERT(sizeof(long)==8); 
+COMPILE_TIME_ASSERT(sizeof(long)==8);
 int main()
 {
-    COMPILE_TIME_ASSERT(sizeof(int)==4); 
+    COMPILE_TIME_ASSERT(sizeof(int)==4);
 }
 
 ```
@@ -265,12 +265,12 @@ Calculate mean, and sample variance and sample standard deviation of some number
         (return
           (let* ((mean (/ sum count))
                  (spl-var (- (* count sum-of-squares) (* sum sum)))
-                 (spl-dev (sqrt (/ spl-var (1- count))))) 
-            (values mean spl-var spl-dev)))) 
+                 (spl-dev (sqrt (/ spl-var (1- count)))))
+            (values mean spl-var spl-dev))))
 ```
 
 
-=> 
+=>
 ```txt
 5/2 ;
 105 ;
@@ -286,7 +286,7 @@ Here is what CLISP makes of the above, by investigating the macro expansion usin
 
 ```lisp
 
-[5]>    
+[5]>
   (macroexpand'
      (loop for count from 1
            for x in '(1 2 3 4 5)
@@ -328,12 +328,12 @@ Next, we can leave ANSI behind and call CLISP's internal code walker to expand t
 
 
 ```lisp
-(system::expand-form 
+(system::expand-form
     '(loop for count from 1
            for x in '(1 2 3 4 5)
            summing x into sum
            summing (* x x) into sum-of-squares
-           finally                            
+           finally
              (return
                (let* ((mean (/ sum count))
                       (spl-var (- (* count sum-of-squares) (* sum sum)))
@@ -374,13 +374,13 @@ We can use Lisp macros, and other features, to add support to Lisp for monads, w
 ;;
 (comprehend 'list-monad (cons x y) (x '(1 2 3)) (y '(A B C)))
 
-     -> ((1 . A) (1 . B) (1 . C) 
-         (2 . A) (2 . B) (2 . C) 
+     -> ((1 . A) (1 . B) (1 . C)
+         (2 . A) (2 . B) (2 . C)
          (3 . A) (3 . B) (3 . C))
 ```
 
 
-As you can see, the comprehension processes all combinations of X and Y from both sets, and collects the application of (CONS X Y) to these elements. 
+As you can see, the comprehension processes all combinations of X and Y from both sets, and collects the application of (CONS X Y) to these elements.
 
 In other words {&forall;x&forall;y:(cons x y) | x &isin; { 1, 2 ,3 } &and; y &isin; { A, B, C }}
 
@@ -400,7 +400,7 @@ Another example, using the identity monad. With the identity monad, the comprehe
 
 ```
 
-I.e. combine the values X, Y and Z into a triplet list, were X is 1, Y is 3X, and Z is X + Y. 
+I.e. combine the values X, Y and Z into a triplet list, were X is 1, Y is 3X, and Z is X + Y.
 
 To see the original version of this code with lengthy comments, have a look in the Lisp Pastebin. http://paste.lisp.org/display/71196
 
@@ -415,37 +415,37 @@ To see the original version of this code with lengthy comments, have a look in t
 (defmacro comprehend (monad-instance expr &rest clauses)
   (let ((monad-var (gensym "CLASS-")))
     (cond
-      ((null clauses) `(multiple-value-call #'monadic-unit 
+      ((null clauses) `(multiple-value-call #'monadic-unit
                          ,monad-instance ,expr))
       ((rest clauses) `(let ((,monad-var ,monad-instance))
-                         (multiple-value-call #'monadic-join ,monad-var 
+                         (multiple-value-call #'monadic-join ,monad-var
                            (comprehend ,monad-var
                              (comprehend ,monad-var ,expr ,@(rest clauses))
                              ,(first clauses)))))
       (t (destructuring-bind (var &rest container-exprs) (first clauses)
            (cond
              ((and var (symbolp var))
-              `(funcall (monadic-map ,monad-instance (lambda (,var) ,expr)) 
+              `(funcall (monadic-map ,monad-instance (lambda (,var) ,expr))
                         ,(first container-exprs)))
              ((and (consp var) (every #'symbolp var))
-              `(multiple-value-call (monadic-map ,monad-instance 
-                                                 (lambda (,@var) ,expr)) 
+              `(multiple-value-call (monadic-map ,monad-instance
+                                                 (lambda (,@var) ,expr))
                                      ,@container-exprs))
              (t (error "COMPREHEND: bad variable specification: ~s" vars))))))))
 
-(defmacro define-monad (class-name 
+(defmacro define-monad (class-name
                         &key comprehension
                              (monad-param (gensym "MONAD-"))
                              bases slots initargs
-                              ((:map ((map-param) 
+                              ((:map ((map-param)
                                       &body map-body)))
-                              ((:join ((join-param 
-                                        &optional 
+                              ((:join ((join-param
+                                        &optional
                                           (j-rest-kw '&rest)
                                           (j-rest (gensym "JOIN-REST-")))
                                         &body join-body)))
-                              ((:unit ((unit-param 
-                                        &optional 
+                              ((:unit ((unit-param
+                                        &optional
                                           (u-rest-kw '&rest)
                                           (u-rest (gensym "UNIT-REST-")))
                                        &body unit-body))))
@@ -456,7 +456,7 @@ To see the original version of this code with lengthy comments, have a look in t
      (defmethod monadic-map ((,monad-param ,class-name) ,map-param)
        (declare (ignorable ,monad-param))
        ,@map-body)
-     (defmethod monadic-join ((,monad-param ,class-name) 
+     (defmethod monadic-join ((,monad-param ,class-name)
                               ,join-param &rest ,j-rest)
        (declare (ignorable ,monad-param ,j-rest))
        ,@join-body)
@@ -466,7 +466,7 @@ To see the original version of this code with lengthy comments, have a look in t
        ,@unit-body)
      ,@(if comprehension
          `((defmacro ,comprehension (expr &rest clauses)
-             `(comprehend (monadic-instance ',',class-name) 
+             `(comprehend (monadic-instance ',',class-name)
                           ,expr  ,@clauses))))))
 
 (defmethod monadic-map ((monad symbol) function)
@@ -492,17 +492,17 @@ To see the original version of this code with lengthy comments, have a look in t
 
 (define-monad state-xform-monad
   :comprehension state-xform-comp
-  :map ((f) 
-          (lambda (xformer) 
+  :map ((f)
+          (lambda (xformer)
             (lambda (s)
-               (identity-comp (values (funcall f x) new-state) 
+               (identity-comp (values (funcall f x) new-state)
                               ((x new-state) (funcall xformer s))))))
   :join ((nested-xformer)
            (lambda (s)
              (identity-comp (values x new-state)
-                            ((embedded-xformer intermediate-state) 
+                            ((embedded-xformer intermediate-state)
                              (funcall nested-xformer s))
-                            ((x new-state) 
+                            ((x new-state)
                              (funcall embedded-xformer intermediate-state)))))
   :unit ((x) (lambda (s) (values x s))))
 ```
@@ -629,13 +629,13 @@ Simple Usage Examples
 
 <LANG> : CHARSET    [CHAR] ~  [CHAR] ! DO  I EMIT LOOP ;
 
-: >DIGIT ( n -- c) DUP 9 > IF  7 +  THEN [CHAR] 0 + ;  
+: >DIGIT ( n -- c) DUP 9 > IF  7 +  THEN [CHAR] 0 + ;
 
 : -TRAILING  ( adr len -- adr len')  \ remove trailing blanks (spaces)
-             BEGIN  
+             BEGIN
                 2DUP + 1- C@ BL =    \ test if last char = blank
-             WHILE  
-                1-                   \ dec. length  
+             WHILE
+                1-                   \ dec. length
              REPEAT ;</LANG>
 
 
@@ -650,17 +650,17 @@ For example, we can create a 'forall' loop to iterate through the characters of 
 ' FB 1.05.0 Win64
 
 #Macro ForAll(C, S)
-For _i as integer = 0 To Len(s) 
+For _i as integer = 0 To Len(s)
 #Define C (Chr(s[_i]))
 #EndMacro
- 
+
 #Define In ,
- 
+
 Dim s As String = "Rosetta"
 ForAll(c in s)
   Print c; " ";
 Next
- 
+
 Print
 Sleep
 ```
@@ -670,7 +670,7 @@ Sleep
 
 ```txt
 
-R o s e t t a 
+R o s e t t a
 
 ```
 
@@ -680,7 +680,7 @@ R o s e t t a
 
 Although Go has a relatively small number of keywords (25), it also has 39 predeclared identifiers many of which would be considered to be keywords in other languages. The latter include:
 
-1. The names of the basic types such as int, float64, bool and string. 
+1. The names of the basic types such as int, float64, bool and string.
 
 2. Constants such as true, false and nil.
 
@@ -715,7 +715,7 @@ func main() {
     is := []int{1, 2, 3}
     it := make([]int, 3)
     copy(it, is)
-    */ 
+    */
 }
 ```
 
@@ -763,10 +763,10 @@ J's [http://www.jsoftware.com/help/dictionary/d310n.htm explicit definitions] mi
 
 ## Julia
 
-Julia's metaprogramming features are descibed in the online documentation at 
+Julia's metaprogramming features are descibed in the online documentation at
 https://docs.julialang.org/en/v1/manual/metaprogramming/index.html
 
-Here is an example of metaprogramming. Julia in base form does not have C's do { } while() statement. 
+Here is an example of metaprogramming. Julia in base form does not have C's do { } while() statement.
 
 Using metaprogramming, the do/while can be somewhat emulated:
 
@@ -780,7 +780,7 @@ macro dowhile(condition, block)
             end
         end
     end
-end 
+end
 
 macro dountil(condition, block)
     quote
@@ -791,7 +791,7 @@ macro dountil(condition, block)
             end
         end
     end
-end 
+end
 
 using Primes
 
@@ -879,8 +879,8 @@ For example:
 
 class "foo" : inherits "bar"
 {
-  
-} 
+
+}
 
 ```
 
@@ -899,11 +899,11 @@ Module Meta {
             =x**2
       }
       Code3$="}"
-      
+
       Inline code1$+code2$+code3$
-      
+
       Print Function(FunName$, 4)=16
-      
+
 }
 Meta
 
@@ -947,13 +947,13 @@ You can define your own infix operators:
 proc `^`*[T: SomeInteger](base, exp: T): T =
   var (base, exp) = (base, exp)
   result = 1
- 
+
   while exp != 0:
     if (exp and 1) != 0:
       result *= base
     exp = exp shr 1
     base *= base
- 
+
 echo 2 ^ 10 # 1024
 ```
 
@@ -1238,7 +1238,7 @@ Some builtins can be overridden, but the language reserves the right to reject s
 
 One of the core principles of phix is that code should be utterly intuitive and easy to read.
 === compile-time assertions ===
-The #isginfo{}, #isinit{}, and #istype{} directives instruct the compiler to perform various type-inference and legal value ranges checks. 
+The #isginfo{}, #isinit{}, and #istype{} directives instruct the compiler to perform various type-inference and legal value ranges checks.
 Primarily for compiler development use, rather than end user applications. No code is generated, but compilation will abort if they fail.
 Some static assertions can be performed with #isginfo{}, eg:
 
@@ -1256,12 +1256,12 @@ A compile-time error occurs if say either 7 is changed to 6 (but not both).
 
 Note that you only get that error for "p -c test", not "p test".
 
-###  symbol table hacking 
+###  symbol table hacking
 
 See builtins\VM\prtnidN.e for details of how to locate and process the symbol table. Again I would not recommend it,
 but that would allow you to modify variables and invoke code fragments at will, in a metaprogrammy sort of way.
 
-###  modifying the compiler 
+###  modifying the compiler
 
 see [[Extend_your_language#Phix]]
 
@@ -1270,9 +1270,9 @@ see [[Extend_your_language#Phix]]
 
 As in any Lisp, metaprogramming is an essential aspect of PicoLisp.
 In most cases normal functions are used to extend the language
-(see [[Extend your language#PicoLisp]]), 
+(see [[Extend your language#PicoLisp]]),
 [http://software-lab.de/doc/ref.html#macro-io read-macros] operate on
-the source level, and also runtime 
+the source level, and also runtime
 [http://software-lab.de/doc/refM.html#macro macros] are used occasionally.
 
 
@@ -1456,7 +1456,7 @@ syntax A = "a";
 syntax B = "b";
 start syntax C = "c" | A C B;
 
-layout Whitespace = [\ \t\n]*;            
+layout Whitespace = [\ \t\n]*;
 lexical Integer = [0-9]+;
 start syntax E1 = Integer
                | E "*" E
@@ -1492,16 +1492,16 @@ Where the abstract syntax is defined as follows
 ```rascal
 public data TYPE =
 	  natural() | string();
-	  
+
 public alias PicoId = str;
-	  
+
 public data PROGRAM =
   program(list[DECL] decls, list[STATEMENT] stats);
 
 public data DECL =
   decl(PicoId name, TYPE tp);
 
-public data EXP = 
+public data EXP =
       id(PicoId name)
     | natCon(int iVal)
     | strCon(str sVal)
@@ -1509,7 +1509,7 @@ public data EXP =
     | sub(EXP left, EXP right)
     | conc(EXP left, EXP right)
     ;
-    
+
 public data STATEMENT =
   asgStat(PicoId name, EXP exp)
 | ifElseStat(EXP exp, list[STATEMENT] thenpart, list[STATEMENT] elsepart)
@@ -1525,7 +1525,7 @@ public data STATEMENT =
 ### Pico in Rascal
 
 
-This is part of the Pico syntax expressed in Rascal. 
+This is part of the Pico syntax expressed in Rascal.
 
 
 ```rascal
@@ -1539,35 +1539,35 @@ lexical String = "\"" ![\"]*  "\"";
 
 layout Layout = WhitespaceAndComment* !>> [\ \t\n\r%];
 
-lexical WhitespaceAndComment 
+lexical WhitespaceAndComment
    = [\ \t\n\r]
    | @category="Comment" "%" ![%]+ "%"
    | @category="Comment" "%%" ![\n]* $
    ;
 
-start syntax Program 
+start syntax Program
    = program: "begin" Declarations decls {Statement  ";"}* body "end" ;
 
-syntax Declarations 
-   = "declare" {Declaration ","}* decls ";" ;  
- 
+syntax Declarations
+   = "declare" {Declaration ","}* decls ";" ;
+
 syntax Declaration = decl: Id id ":" Type tp;
 
-syntax Type 
-   = natural:"natural" 
-   | string :"string" 
+syntax Type
+   = natural:"natural"
+   | string :"string"
    ;
 
-syntax Statement 
-   = asgStat: Id var ":="  Expression val 
+syntax Statement
+   = asgStat: Id var ":="  Expression val
    | ifElseStat: "if" Expression cond "then" {Statement ";"}*  thenPart "else" {Statement ";"}* elsePart "fi"
    | ifThenStat: "if" Expression cond "then" {Statement ";"}*  thenPart "fi"
    | whileStat: "while" Expression cond "do" {Statement ";"}* body "od"
    | doUntilStat: "do" {Statement ";"}* body "until" Expression cond "od"
    | unlessStat: Statement "unless" Expression cond
-  ;  
-     
-syntax Expression 
+  ;
+
+syntax Expression
    = id: Id name
    | strCon: String string
    | natCon: Natural natcon
@@ -1584,7 +1584,7 @@ public start[Program] program(str s) {
 
 public start[Program] program(str s, loc l) {
   return parse(#start[Program], s, l);
-} 
+}
 ```
 
 
@@ -1668,7 +1668,7 @@ Class point
 The next example presents how to create a class that defines two instructions
 The first instruction is : I want window
 The second instruction is : Window title = Expression
-Also keywords that can be ignored like the ‘the’ keyword 
+Also keywords that can be ignored like the ‘the’ keyword
 
 
 ```ring
@@ -1730,16 +1730,16 @@ An rudimentary example of metaprogramming is presented in this simple identifica
 
 ```ruby
 class IDVictim
-  
+
   # Create elements of this man, woman, or child's identification.
   attr_accessor :name, :birthday, :gender, :hometown
-  
+
   # Allows you to put in a space for anything which is not covered by the
   # preexisting elements.
   def self.new_element(element)
     attr_accessor element
   end
-  
+
 end
 ```
 
@@ -2258,8 +2258,8 @@ text, any text, inside #<<<# pairs is ignored
 ```zkl
 string:=
 #<<<
-"here docs: 
-all text in #<<< pairs is collected into one [long] line and passed 
+"here docs:
+all text in #<<< pairs is collected into one [long] line and passed
 verbatim to the tokenizer. Illustrated here as quoted (\") strings
 can not span lines.";
 #<<<

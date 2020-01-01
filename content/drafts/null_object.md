@@ -464,10 +464,10 @@ if (p){
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 As with Java, any reference type may be null, and testing for nullity uses ordinary boolean operators.
 
-```csharp
+```c#
 if (foo == null)
     Console.WriteLine("foo is null");
 ```
@@ -477,7 +477,7 @@ C# 2.0 introduced nullable types for situations in which even primitive value ty
 
 {{works with|C sharp|C#|2.0+}}
 
-```csharp
+```c#
 int? x = 12;
 x = null;
 ```
@@ -487,7 +487,7 @@ Also new in C# 2.0 was the null coalescing operator, '??', which is simply synta
 
 {{works with|C sharp|C#|2.0+}}
 
-```csharp
+```c#
 Console.WriteLine(name ?? "Name not specified");
 
 //Without the null coalescing operator, this would instead be written as:

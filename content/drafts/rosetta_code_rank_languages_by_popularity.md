@@ -1283,10 +1283,10 @@ void sort_arrays(page *pages, int *size) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Sorting only programming languages.
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1344,7 +1344,7 @@ class Program
      . . .
 ===Object-oriented solution===
 
-```csharp
+```c#
 using System;
 using System.Net;
 using System.Linq;

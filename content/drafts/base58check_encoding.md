@@ -14,13 +14,13 @@ tags = []
 [[Category:Encodings]]
 [[Category:Checksums]]
 
-The popular encoding of small and medium-sized [[:Category:Checksums|checksums]] is [[wp:base16|base16]], that is more compact than usual base10 and is human readable... For checksums resulting in ''hash digests'' bigger than ~100 bits, the base16 is too long: [[wp:base58|base58]] is shorter and (when using good alphabet) preserves secure human readability.  The most popular alphabet of base58 is the variant used in  bitcoin address (see [[Bitcoin/address validation]]), so it is the "default base58 alphabet". 
+The popular encoding of small and medium-sized [[:Category:Checksums|checksums]] is [[wp:base16|base16]], that is more compact than usual base10 and is human readable... For checksums resulting in ''hash digests'' bigger than ~100 bits, the base16 is too long: [[wp:base58|base58]] is shorter and (when using good alphabet) preserves secure human readability.  The most popular alphabet of base58 is the variant used in  bitcoin address (see [[Bitcoin/address validation]]), so it is the "default base58 alphabet".
 
 Write a program that takes a checksum (resultant hash digest) ''integer binary'' representation as argument, and converts (encode it) into base58 with the standard Bitcoin alphabet &mdash; which uses an alphabet of the characters 0 .. 9, A ..Z, a .. z, but without the four characters:
 :::*   '''O'''         the uppercase letter "oh",
 :::*   '''I'''    the uppercase letter "eye",
 :::*   '''l'''    the lowercase letter "ell",   and
-:::*   '''0'''         the digit zero. 
+:::*   '''0'''         the digit zero.
 
 
 The ''reference algorithm'' is at [https://en.bitcoin.it/wiki/Base58Check_encoding#Base58_symbol_chart the Bitcoin's Base58Check page].
@@ -28,10 +28,10 @@ The ''reference algorithm'' is at [https://en.bitcoin.it/wiki/Base58Check_encodi
 
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -635,7 +635,7 @@ fun convertToBase58(hash: String, base: Int = 16): String {
     while (x > big0) {
         val r = (x % big58).toInt()
         sb.append(ALPHABET[r])
-        x = x / big58  
+        x = x / big58
     }
     return sb.toString().reversed()
 }
@@ -752,7 +752,7 @@ sub encode_Base58 ( Int $x ) {
     return @codes[ $x.polymod( 58 xx * ) ].join.flip;
 }
 
-my @tests = 
+my @tests =
     25420294593250030202636073700053352635053786165627414518 => '6UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM',
     0x61                    => '2g',
     0x626262                => 'a3gV',
@@ -781,7 +781,7 @@ Includes leading zeroes, if you don't want that just comment out the three lines
 
 ```Phix
 constant b58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
- 
+
 function base58(string s)
 string out = ""
 integer lz = length(s)
@@ -1167,7 +1167,7 @@ o=o||substr(s,1,1)
 Say reverse(o)
 ```
 
-{{out}}   
+{{out}}
 
 ```txt
 16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM
@@ -1229,11 +1229,11 @@ found   : Rt5zm
 
 ### version 3
 
-This REXX version handles a null input. 
+This REXX version handles a null input.
 
 It also handles the case of the hash digest that contain leading 1's (ones)   which are translated to leading 0's (zeros).
 
-The algorithm used doesn't need to   ''reverse''   the residual string   (it uses   ''prepend''   instead of   ''append''). 
+The algorithm used doesn't need to   ''reverse''   the residual string   (it uses   ''prepend''   instead of   ''append'').
 
 ```rexx
 /*REXX pgm encodes a checksum (hash digest) into Base58 (the standard Bitcoin alphabet).*/
@@ -1298,7 +1298,7 @@ nums =  [25420294593250030202636073700053352635053786165627414518,
          0xecac89cad93923c02321,
          0x10c8511e]
 
-puts nums.map{|n| n.digits(58).reverse.map{|i| ALPHABET[i]}.join}        
+puts nums.map{|n| n.digits(58).reverse.map{|i| ALPHABET[i]}.join}
 
 ```
 
@@ -1326,7 +1326,7 @@ Rt5zm
 
 ```Scala
 import java.math.BigInteger
- 
+
 object Base58 extends App {
   private val codeString = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
   private val (big0, big58) = (BigInt(0), BigInteger.valueOf(58))
@@ -1568,7 +1568,7 @@ println("OkobppXBkab(58)-->",  # 10687460092462769069(10)
 	"OkobppXBkab".translate(src,dst),"\n");
 
 ns:=T(BN("25420294593250030202636073700053352635053786165627414518"),
-      0x61, 0x626262, 0x636363, 
+      0x61, 0x626262, 0x636363,
       "73696d706c792061206c6f6e6720737472696e67",
       0x516b6fcd0f, "bf4f89001e670274dd", 0x572e4794,
       "ecac89cad93923c02321", 0x10c8511e);

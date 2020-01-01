@@ -452,10 +452,10 @@ int main(int argc, char* argv[])
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 public class Program
 {
     static void Main()

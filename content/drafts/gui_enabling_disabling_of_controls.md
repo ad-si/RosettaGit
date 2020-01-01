@@ -609,11 +609,11 @@ int main( int argc, char *argv[ ] ) {
 
 
 
-## C sharp
+## C#
 
 Using Windows Forms; compile with csc -t:winexe Program.cs (on MS.NET) or gmcs -t:winexe Program.cs (on Mono)
 
-```csharp
+```c#
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;

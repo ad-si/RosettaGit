@@ -212,7 +212,7 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 In C# it's important to see the difference between reference and value types. For reference types (class instances) there is <code>null</code> as a general undefined reference.
 
 ```csharp>string foo = null;</lang
@@ -225,7 +225,7 @@ This can't be used normally for value types (<code>int</code>, <code>double</cod
 
 With .NET 2.0 there is an additional <code>Nullable<T></code> structure which enables those semantics for value types as well:
 
-```csharp
+```c#
 int? answer = null;
 if (answer == null) {
     answer = 42;

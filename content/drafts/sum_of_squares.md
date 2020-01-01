@@ -762,10 +762,10 @@ double vec_add_squares(std::vector<double>& v)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

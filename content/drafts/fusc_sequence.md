@@ -335,9 +335,9 @@ Index-------Value
 
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -386,15 +386,15 @@ static class program
 
 ```txt
 First 61 numbers in the fusc sequence:
-0 1 1 2 1 3 2 3 1 4 3 5 2 5 3 4 1 5 4 7 3 8 5 7 2 7 5 8 3 7 4 5 1 6 5 9 4 11 7 10 3 11 8 13 5 12 7 9 2 9 7 12 5 13 8 11 3 10 7 11 4 
+0 1 1 2 1 3 2 3 1 4 3 5 2 5 3 4 1 5 4 7 3 8 5 7 2 7 5 8 3 7 4 5 1 6 5 9 4 11 7 10 3 11 8 13 5 12 7 9 2 9 7 12 5 13 8 11 3 10 7 11 4
 Points in the sequence where an item has more digits than any previous items:
-     Index\  /Value   
-          0  0        
-         37  11       
-      1,173  108      
-     35,499  1,076    
-    699,051  10,946   
- 19,573,419  103,682 
+     Index\  /Value
+          0  0
+         37  11
+      1,173  108
+     35,499  1,076
+    699,051  10,946
+ 19,573,419  103,682
 ```
 
 
@@ -508,17 +508,17 @@ MAIN: fusc-demo
 ```txt
 
 First 61 fusc numbers:
-0 1 1 2 1 3 2 3 1 4 3 5 2 5 3 4 1 5 4 7 3 8 5 7 2 7 5 8 3 7 4 5 1 6 5 9 4 11 7 10 3 11 8 13 5 12 7 9 2 9 7 12 5 13 8 11 3 10 7 11 4 
+0 1 1 2 1 3 2 3 1 4 3 5 2 5 3 4 1 5 4 7 3 8 5 7 2 7 5 8 3 7 4 5 1 6 5 9 4 11 7 10 3 11 8 13 5 12 7 9 2 9 7 12 5 13 8 11 3 10 7 11 4
 
 Fusc numbers with more digits than all previous ones:
 Value   Index
 
 ### ===  ====
 
-0       0      
-11      37     
-108     1,173  
-1,076   35,499 
+0       0
+11      37
+108     1,173
+1,076   35,499
 10,946  699,051
 
 ```
@@ -620,7 +620,7 @@ func fusc(n int) []int {
     }
     if n == 1 {
         return []int{0}
-    }    
+    }
     res := make([]int, n)
     res[0] = 0
     res[1] = 1
@@ -758,7 +758,7 @@ fusc =: (, fusc_term)@:]^:[ 0 1"_
    NB. show the first 61 fusc numbers (starting at zero) in a horizontal format.
    61 {. fusc 70
 0 1 1 2 1 3 2 3 1 4 3 5 2 5 3 4 1 5 4 7 3 8 5 7 2 7 5 8 3 7 4 5 1 6 5 9 4 11 7 10 3 11 8 13 5 12 7 9 2 9 7 12 5 13 8 11 3 10 7 11 4
-   
+
    9!:17]2 2 NB. specify bottom right position in box
 
    FUSC =: fusc 99999
@@ -770,7 +770,7 @@ fusc =: (, fusc_term)@:]^:[ 0 1"_
 ├─────┼─┼──┼────┼─────┤
 │value│0│11│ 108│ 1076│
 └─────┴─┴──┴────┴─────┘
-   
+
 
 ```
 
@@ -1034,7 +1034,7 @@ sequence number : fusc value
           1,173 : 108
          35,499 : 1,076
         699,051 : 10,946
-     19,573,419 : 103,682 
+     19,573,419 : 103,682
 
 ```
 
@@ -1190,7 +1190,7 @@ procedure OutHeader(base:NativeInt);
 begin
   writeln('Fusc numbers with more digits in base ',base,' than all previous ones:');
   writeln('Value':10,'Index':10,'  IndexNum/IndexNumBefore');
-  writeln('======':10,' 
+  writeln('======':10,'
 ### =
 ':14);
 end;
@@ -1249,7 +1249,7 @@ First 61 fusc numbers:
 0 1 1 2 1 3 2 3 1 4 3 5 2 5 3 4 1 5 4 7 3 8 5 7 2 7 5 8 3 7 4 5 1 6 5 9 4 11 7 10 3 11 8 13 5 12 7 9 2 9 7 12 5 13 8 11 3 10 7 11 4
 Fusc numbers with more digits in base 10 than all previous ones:
      Value     Index  IndexNum/IndexNumBefore
-    
+
 ### ===       ====
 
          1             1
@@ -1262,7 +1262,7 @@ Fusc numbers with more digits in base 10 than all previous ones:
 
 Fusc numbers with more digits in base 11 than all previous ones:
      Value     Index  IndexNum/IndexNumBefore
-    
+
 ### ===       ====
 
          1             1
@@ -1305,7 +1305,7 @@ my $i =  0;
 my $l = -1;
 while ($l < 5) {
     my $v = stern_diatomic($i);
-    printf("%15s : %s\n", comma($i), comma($v)) and $l = length $v if length $v > $l; 
+    printf("%15s : %s\n", comma($i), comma($v)) and $l = length $v if length $v > $l;
     $i++;
 }
 ```
@@ -1415,8 +1415,8 @@ Elements with more digits than any previous items:
 ## Python
 
 By composition of pure functions, for better reliability, ease and speed of refactoring, and for higher levels of code reuse,
- 
-with type comments for the reader (not for the compiler). 
+
+with type comments for the reader (not for the compiler).
 
 
 ```python
@@ -1538,7 +1538,7 @@ First 61 terms:
 (define (memoize f)
   (define table (make-hash))
   (λ args (hash-ref! table args (thunk (apply f args)))))
- 
+
 (define fusc
   (memoize
    (λ (n)
@@ -1674,9 +1674,9 @@ see "Index Value" + nl
 see " 0     0" + nl
 d = 10
 for i = 1 to 36000
-    if fusc[i] >= d 
+    if fusc[i] >= d
         see " " + i + "   " + fusc[i] + nl
-        if d = 0 
+        if d = 0
            d = 1
         ok
         d = d*10
@@ -1684,13 +1684,13 @@ for i = 1 to 36000
 next
 see "done..." + nl
 
-func fuscseq(max) 
+func fuscseq(max)
      for n = 2 to 36000
-         if n%2 = 1 
+         if n%2 = 1
             fusc[n] = fusc[(n-1)/2] + fusc[(n+1)/2]
-         but n%2 = 0 
+         but n%2 = 0
              fusc[n] = fusc[n/2]
-         ok   
+         ok
      next
 
 ```
@@ -1855,15 +1855,15 @@ End Module
 
 ```txt
 First 61 numbers in the fusc sequence:
-0 1 1 2 1 3 2 3 1 4 3 5 2 5 3 4 1 5 4 7 3 8 5 7 2 7 5 8 3 7 4 5 1 6 5 9 4 11 7 10 3 11 8 13 5 12 7 9 2 9 7 12 5 13 8 11 3 10 7 11 4 
+0 1 1 2 1 3 2 3 1 4 3 5 2 5 3 4 1 5 4 7 3 8 5 7 2 7 5 8 3 7 4 5 1 6 5 9 4 11 7 10 3 11 8 13 5 12 7 9 2 9 7 12 5 13 8 11 3 10 7 11 4
 Points in the sequence where an item has more digits than any previous items:
-     Index\  /Value   
-          0  0        
-         37  11       
-      1,173  108      
-     35,499  1,076    
-    699,051  10,946   
- 19,573,419  103,682  
+     Index\  /Value
+          0  0
+         37  11
+      1,173  108
+     35,499  1,076
+    699,051  10,946
+ 19,573,419  103,682
 
 ```
 

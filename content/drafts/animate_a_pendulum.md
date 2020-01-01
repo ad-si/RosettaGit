@@ -664,14 +664,14 @@ can be download from [https://github.com/orbitcowboy/wxPendulum github].
 [[File:WxPendulumScreenshot.png]]
 
 
-## C sharp
+## C#
 
 {{libheader|Windows Forms}}
 
 {{libheader|GDI (System.Drawing)}}
 
 
-```csharp
+```c#
 
 using System;
 using System.Drawing;

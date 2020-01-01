@@ -24,7 +24,7 @@ According to RFC 6238, the reference implementation is as follows:
 * Agree upon an epoch, T0, and an interval, TI, which will be used to calculate the value of the counter C (defaults are the Unix epoch as T0 and 30 seconds as TI)
 * Agree upon a cryptographic hash method (default is SHA-1)
 * Agree upon a token length, N (default is 6)
-	
+
 Although RFC 6238 allows different parameters to be used, the Google implementation of the authenticator app does not support T0, TI values, hash methods and token lengths different from the default. It also expects the K secret key to be entered (or supplied in a QR code) in base-32 encoding according to RFC 3548.
 
 * [https://itunes.apple.com/gb/app/google-authenticator/id388497605 Google Authenticator App (Apple iOS)]
@@ -43,19 +43,19 @@ ClassMethod GetOTP(b32secret As %String) As %String
 {
 	// convert base32 secret into string
 	Set key=..B32ToStr(b32secret)
-	
+
 	// get the unix time, divide by 30 and convert into eight-byte string
 	Set epoch=..GetUnixTime()
 	Set val=$Reverse($ZQChar(epoch\30))
-	
+
 	// compute the HMAC SHA-1 hash and get the last nibble...
 	Set hmac=$System.Encryption.HMACSHA1(val, key)
 	Set last=$ASCII($Extract(hmac, *))
-	
+
 	// calculate the offset and get one-time password string
 	Set offset=$ZBoolean(last, $Char(15), 1)  // logical 'AND' operation
 	Set otpstr=$ZBoolean($Extract(hmac, offset+1, offset+4), $Char(127,255,255,255), 1)
-	
+
 	// convert string into decimal and return last six digits
 	Set otpdec=$ZLASCII($Reverse(otpstr))
 	Quit ..LeftPad(otpdec, 6)
@@ -110,12 +110,12 @@ ClassMethod GenerateSecret() As %String
 {
 	// initialise base 32 string and alphabet
 	Set b32str="", b32alp="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
-	
+
 	// build a large base 32 string
 	For pass=1:1:4 {
 		Set b32str=b32str_..ConvertBase10ToN($System.Encryption.GenCryptToken(), 32, b32alp)
 	}
-	
+
 	// return randomly generated password
 	Quit ..LeftPad(b32str, 16)
 }
@@ -144,9 +144,9 @@ M4AKQBFI252H4BWO
 
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Security.Cryptography;
 
@@ -356,7 +356,7 @@ use Digest::HMAC;
 use Digest::SHA;
 
 sub totp (Str \secret, DateTime \counter, Int \T0=0, Int \T1=30 --> Str) {
-   my \key = ( counter - DateTime.new(T0) ).Int div T1;   
+   my \key = ( counter - DateTime.new(T0) ).Int div T1;
    return hmac-hex(key.Str, secret, &sha1).substr(0,6) # first 6 chars of sha1
 }
 
@@ -370,7 +370,7 @@ loop (my $t = 2177452800 ; $t < 2177452900 ; $t+= 17 ) { # Y2038 safe
 say "Current time output at ", DateTime.new(now), " with random checks,";
 loop (my $n = 0 ; $n < 6 ; $n++, sleep (13..23).roll ) {
    say totp $message, DateTime.new(now);
-} 
+}
 
 ```
 
@@ -482,7 +482,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
     (define offset (&& #b1111 (bytes-ref b 19)))
     (define P/32 (subbytes b offset (+ offset 4)))
     (+ (<< (bytes-ref P/32 3) 0) (<< (bytes-ref P/32 2) 8) (<< (bytes-ref P/32 1) 16)
-       (<< (&& #b01111111 (bytes-ref P/32 0)) 24)))  
+       (<< (&& #b01111111 (bytes-ref P/32 0)) 24)))
   (define s-bits (DT sha1-bytes))
   (modulo s-bits (expt 10 Digit)))
 
@@ -544,7 +544,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
   (require racket/date)
   ;; my secret, as stuck on a postit note on my monitor
   (define Tims-K #"Super Secret Password Key 88!")
-  
+
   (define ((pseudo-time-now (offset 0))) (+ 1413976828 offset))
   (define totp #f)
   (parameterize ((T0 (pseudo-time-now)))
@@ -552,16 +552,16 @@ This includes BASE32 encoding, token based authentication and other such stuff.
     (set! totp (TOTP (base32-encode-bytes Tims-K)))
     (printf "My TOTP is: ~a~%" totp)
     (printf "sent to authentication service...~%"))
-  
+
   ;; as stored on authenticator
   (define K/base32 (base32-encode-bytes Tims-K))
   (printf "K/base32: ~a~%" K/base32)
-  
+
   (parameterize ((T0 (pseudo-time-now 1)))
     (printf "1 second later... authentication service checks against: ~a~%" totp)
     (define auth-totp (TOTP K/base32))
     (printf "~a is the same? ~a~%" auth-totp (= totp auth-totp)))
-  
+
   (parameterize ((T0 (pseudo-time-now 3)))
     (printf "but 3 seconds later... authentication service checks against: ~a~%" totp)
     (define auth-totp (TOTP K/base32))
@@ -579,7 +579,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
           #x50 #xef #x7f #x19 #xda #x8e #x94 #x5b #x55 #x5a)
          6)
    => 872921
-   
+
    (pad-needed 0) => 0
    (pad-needed 2) => 3
    (pad-needed 4) => 1
@@ -587,7 +587,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
    (pad-needed 8) => 2
    (pad-needed 10) => 0
    (pad-needed 12) => 3
-   
+
    ;; http://commons.apache.org/proper/commons-codec/xref-test/org/apache/commons/codec/binary/Base32Test.html
    (base32-encode-bytes #"")       => #""
    (base32-encode-bytes #"f")      => #"MY======"
@@ -596,7 +596,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
    (base32-encode-bytes #"foob")   => #"MZXW6YQ="
    (base32-encode-bytes #"fooba")  => #"MZXW6YTB"
    (base32-encode-bytes #"foobar") => #"MZXW6YTBOI======"
-   
+
    (base32-decode-bytes #"")                 => #""
    (base32-decode-bytes #"MY======")         => #"f"
    (base32-decode-bytes #"MZXQ====")         => #"fo"
@@ -604,7 +604,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
    (base32-decode-bytes #"MZXW6YQ=")         => #"foob"
    (base32-decode-bytes #"MZXW6YTB")         => #"fooba"
    (base32-decode-bytes #"MZXW6YTBOI======") => #"foobar"
-   
+
    (base32-encode-bytes #"Super Secret Password Key 88!")
    => #"KN2XAZLSEBJWKY3SMV2CAUDBONZXO33SMQQEWZLZEA4DQII="
    ))
@@ -658,7 +658,7 @@ namespace eval ::totp {
             }
             if {$window % $interval} {
                 throw {TOTP BADARGS} "$window is not a multiple of $interval"
-            } 
+            }
             set window [expr {$window / $interval}]
             set Secret $secret
             set Interval $interval
@@ -718,7 +718,7 @@ Uses the MsgHash dll, which includes SHA-1, SHA-256 hashes and HMAC routines for
 
 ```zkl
 var [const] MsgHash = Import.lib("zklMsgHash");
- 
+
 // OneTimePassword stores the configuration values relevant to HOTP/TOTP calculations.
 class OneTimePassword{
    fcn init(Digit,TimeStep,BaseTime,HMAC){
@@ -735,11 +735,11 @@ class OneTimePassword{
    }
    fcn truncate(hs)  // pick off bottom digit digits
       { dt(hs) % (10).pow(digit) }
-   fcn dt(hs){ 
+   fcn dt(hs){
       hs[-1].bitAnd(0xf) : // bottom 4 bits (0-15) of LSB of hash to index
       hs.toBigEndian(_,4)  // 4 bytes of hash to 32 bit unsigned int
    }
- 
+
    // Simple returns a new OneTimePassword with the specified HTOP code length,
    // SHA-1 as the HMAC hash algorithm, the Unix epoch as the base time, and
    // 30 seconds as the step length.
@@ -809,21 +809,21 @@ fcn overTime{
 
 ```txt
 
-   0:  53454 
-  10:  53454 
+   0:  53454
+  10:  53454
   20:   2947  (should change)
-  30:   2947 
+  30:   2947
   40: 287972  (should change)
-  50: 287972 
+  50: 287972
 ...
- 220: 510180 
+ 220: 510180
  230:    207  (should change)
  240: 380959  (should change)
- 250: 380959 
+ 250: 380959
 
 ```
 
-{{out|HMAC code}} 
+{{out|HMAC code}}
 The MsgHash HMAC routines are pretty simple (the hash code is C), included here for completeness:
 
 ```zkl

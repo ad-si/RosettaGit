@@ -19,9 +19,9 @@ A '''narcissist''' (or '''Narcissus program''') is the decision-problem version 
 A quine, when run, takes no input, but produces a copy of its own source code at its output. In contrast, a narcissist reads a string of symbols from its input, and produces no output except a "1" or "accept" if that string matches its own source code, or a "0" or "reject" if it does not.
 </blockquote>
 
-For concreteness, in this task we shall assume that symbol = character. 
+For concreteness, in this task we shall assume that symbol = character.
 
-The narcissist should be able to cope with any finite input, whatever its length. 
+The narcissist should be able to cope with any finite input, whatever its length.
 
 Any form of output is allowed, as long as the program always halts, and "accept", "reject" and "not yet finished" are distinguishable.
 
@@ -117,10 +117,10 @@ extern void*stdin;main(){ char*p = "extern void*stdin;main(){ char*p = %c%s%c,a[
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
 using System;
 using System.IO;
@@ -135,13 +135,13 @@ namespace Narcisisst
 			const string path = @"E:\Narcisisst";
 			string[] thisFile = Directory.GetFiles(path , "Program.cs");
 			StringBuilder sb = new StringBuilder();
-			
+
 				foreach (string readLine in File.ReadLines(thisFile[0]))
 				{
 					sb.Append(readLine);
 					sb.Append("\n");
 				}
-				
+
 			Console.WriteLine(sb);
 			string input =String.Empty;
 			       	input = Console.ReadLine();
@@ -324,7 +324,7 @@ Example use:
 
 <lang>$ ./narcissist.ijs <narcissist.ijs
 1
-   
+
 ```
 
 
@@ -410,7 +410,7 @@ if (0 === WScript.Arguments.UnNamed.Count) {
 	WScript.Quit();
 }
 
-// first read self 
+// first read self
 var self = readfile(WScript.ScriptFullName);
 // read whatever file is given on commmand line
 var whatever = readfile(WScript.Arguments.UnNamed(0));
@@ -495,7 +495,7 @@ NOTE: You have to manually type in ALL of the code since the Input statement wil
 ```lb
 
  s$ = "s$ = Input a$ : Print (a$ = Left$(s$, 5) + chr$(34) + s$ + chr$(34) + Mid$(s$, 14, 3) + Mid$(s$, 6, 100)) + Mid$(s$, 23, 3)" : Input a$ : Print (a$ = Left$(s$, 5) + chr$(34) + s$ + chr$(34) + Mid$(s$, 14, 3) + Mid$(s$, 6, 100))
- 
+
 ```
 
 
@@ -506,7 +506,7 @@ NOTE: You have to manually type in ALL of the code since the Input statement wil
 
 ```Mathematica
 prog = "prog = ``;\nPrint[InputString[] == \n   ToString[StringForm[prog, ToString[prog, InputForm]]]];";
-Print[InputString[] == 
+Print[InputString[] ==
    ToString[StringForm[prog, ToString[prog, InputForm]]]];
 ```
 
@@ -572,7 +572,7 @@ EVAL my $self = q{say slurp() eq q[EVAL my $self = q{]~$self~q[}]~10.chr ?? q{Be
 $ narcissist='EVAL my $self = q{say slurp() eq q[EVAL my $self = q{]~$self~q[}]~10.chr ?? q{Beautiful!} !! q{Not my type.}}'
 $ perl6 -e "$narcissist" <<<"$narcissist"
 Beautiful!
-$ perl6 -e "$narcissist" <<<"$narcissist # a comment ruining it all" 
+$ perl6 -e "$narcissist" <<<"$narcissist # a comment ruining it all"
 Not my type.
 
 ```
@@ -624,7 +624,7 @@ Else { 'Reject' }
 ```PowerShell
 
 Narcissist 'Banana'
- 
+
 Narcissist @'
 
 Param ( [string]$String )
@@ -907,9 +907,9 @@ Since zkl is [usually] compile-when-run, we just compare the contents of source 
 
 ```txt
 
-$ zkl narcissist.zkl <narcissist.zkl 
+$ zkl narcissist.zkl <narcissist.zkl
 input matches narcissist.zkl
-$ zkl narcissist.zkl <narcissist3.zkl 
+$ zkl narcissist.zkl <narcissist3.zkl
 No match
 
 ```

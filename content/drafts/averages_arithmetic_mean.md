@@ -761,10 +761,10 @@ mean[] = -nan
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -780,7 +780,7 @@ class Program
 
 Alternative version (not using the built-in function):
 
-```csharp
+```c#
 using System;
 
 class Program

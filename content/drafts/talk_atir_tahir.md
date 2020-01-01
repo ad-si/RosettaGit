@@ -13,7 +13,7 @@ tags = []
 == Too much like an ad, not enough like a task ==
 
 
-Rosetta Code is not an advertising platform for a commercial service. I didn't delete this outright since it ''could'' be turned into a task, but as it stands, it reads too much like an ad.  --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 13:53, 19 September 2019 (UTC)  
+Rosetta Code is not an advertising platform for a commercial service. I didn't delete this outright since it ''could'' be turned into a task, but as it stands, it reads too much like an ad.  --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 13:53, 19 September 2019 (UTC)
 
 
 == Secure your documents programmatically ==
@@ -26,12 +26,12 @@ There are few APIs/tools that provide facility to secure a lot of file formats. 
 
 '''.NET Code Snippet'''
 
-```C#
+```c#
 string sourceFile = (@"D:/Data/sample.pdf");
-string password = "iamironman"; 
-Stream openFile = new FileStream(sourceFile, FileMode.Open); 
-DocumentResult result = new DocumentHandler().AddPassword(openFile, password); 
-Stream documentStream = result.Stream; 
+string password = "iamironman";
+Stream openFile = new FileStream(sourceFile, FileMode.Open);
+DocumentResult result = new DocumentHandler().AddPassword(openFile, password);
+Stream documentStream = result.Stream;
 var fileStream = File.Create(@"D:/Data/Output.pdf");
 documentStream.CopyTo(fileStream);
 documentStream.Close();

@@ -18,13 +18,13 @@ Don't worry about tiebreakers as they can get complicated. We are basically look
 
 <small>''Hint: there should be no possible way to end up in second place with less than two points as well as no way to end up in first with less than three. Oddly enough, there is no way to get 8 points at all.''</small>
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Python}}
 {{works with|C sharp|C#|7+}}
 <!-- By Martin Freedman, 17/01/2018 -->
 Unlike the Python solution, this does not use a library for combinations and cartesian products but provides 4 1-liner Linq methods.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +48,7 @@ namespace WorldCupGroupStage
 
             foreach (var results in Range(0, 3).CartesianProduct(6))
             {
-                var points = new int[4]; 
+                var points = new int[4];
 
                 foreach (var (result, teams) in results.Zip(teamCombos, (r, t) => (r, t)))
                 {
@@ -60,19 +60,19 @@ namespace WorldCupGroupStage
                     _histogram[i][p]++;
             }
         }
-      
+
        // https://gist.github.com/martinfreedman/139dd0ec7df4737651482241e48b062f
-       
-       static IEnumerable<IEnumerable<T>> CartesianProduct<T>(this IEnumerable<IEnumerable<T>> seqs) => 
+
+       static IEnumerable<IEnumerable<T>> CartesianProduct<T>(this IEnumerable<IEnumerable<T>> seqs) =>
             seqs.Aggregate(Empty<T>().ToSingleton(), (acc, sq) => acc.SelectMany(a => sq.Select(s => a.Append(s))));
-        
-       static IEnumerable<IEnumerable<T>> CartesianProduct<T>(this IEnumerable<T> seq, int repeat = 1) => 
+
+       static IEnumerable<IEnumerable<T>> CartesianProduct<T>(this IEnumerable<T> seq, int repeat = 1) =>
             Repeat(seq, repeat).CartesianProduct();
 
-       static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> seq) => 
+       static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> seq) =>
             seq.Aggregate(Empty<T>().ToSingleton(), (a, b) => a.Concat(a.Select(x => x.Append(b))));
 
-       static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> seq, int numItems) => 
+       static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> seq, int numItems) =>
             seq.Combinations().Where(s => s.Count() == numItems);
 
         private static IEnumerable<T> ToSingleton<T>(this T item) { yield return item; }
@@ -129,30 +129,30 @@ Fourth place: 108 306 184 125 6   0   0   0   0   0
 {{works with|SBCL|1.4.9}}
 
 ```lisp
-(defun histo ()    
+(defun histo ()
   (let ((scoring (vector 0 1 3))
         (histo (list (vector 0 0 0 0 0 0 0 0 0 0) (vector 0 0 0 0 0 0 0 0 0 0)
-                     (vector 0 0 0 0 0 0 0 0 0 0) (vector 0 0 0 0 0 0 0 0 0 0)))          
+                     (vector 0 0 0 0 0 0 0 0 0 0) (vector 0 0 0 0 0 0 0 0 0 0)))
         (team-combs (vector '(0 1) '(0 2) '(0 3) '(1 2) '(1 3) '(2 3)))
         (single-tupel)
         (sum))
        ; six nested dotimes produces the tupels of the cartesian product of
-       ; six lists like '(0 1 2), but without to store all tuples in a list         
-       (dotimes (x0 3) (dotimes (x1 3) (dotimes (x2 3) 
-       (dotimes (x3 3) (dotimes (x4 3) (dotimes (x5 3)         
+       ; six lists like '(0 1 2), but without to store all tuples in a list
+       (dotimes (x0 3) (dotimes (x1 3) (dotimes (x2 3)
+       (dotimes (x3 3) (dotimes (x4 3) (dotimes (x5 3)
            (setf single-tupel (vector x0 x1 x2 x3 x4 x5))
            (setf sum (vector 0 0 0 0))
            (dotimes (i (length single-tupel))
                (setf (elt sum (first (elt team-combs i)))
-                     (+ (elt sum (first (elt team-combs i))) 
+                     (+ (elt sum (first (elt team-combs i)))
                         (elt scoring (elt single-tupel i))))
 
                (setf (elt sum (second (elt team-combs i)))
                      (+ (elt sum (second (elt team-combs i)))
                         (elt scoring (- 2 (elt single-tupel i))))))
-         
+
            (dotimes (i (length (sort sum #'<)))
-               (setf (elt (nth i histo) (elt sum i)) 
+               (setf (elt (nth i histo) (elt sum i))
                      (1+ (elt (nth i histo) (elt sum i)))))
        ))))))
        (reverse histo)))
@@ -168,10 +168,10 @@ Fourth place: 108 306 184 125 6   0   0   0   0   0
 
 ```txt
 
-  0   0   0   1  14 148 152 306   0 108 
-  0   0   4  33 338 172 164  18   0   0 
-  0  18 136 273 290   4   8   0   0   0 
-108 306 184 125   6   0   0   0   0   0 
+  0   0   0   1  14 148 152 306   0 108
+  0   0   4  33 338 172 164  18   0   0
+  0  18 136 273 290   4   8   0   0   0
+108 306 184 125   6   0   0   0   0   0
 
 ```
 
@@ -253,10 +253,10 @@ void main() nothrow @nogc {
 {{out}}
 
 ```txt
-0 0 0 1 14 148 152 306 0 108 
-0 0 4 33 338 172 164 18 0 0 
-0 18 136 273 290 4 8 0 0 0 
-108 306 184 125 6 0 0 0 0 0 
+0 0 0 1 14 148 152 306 0 108
+0 0 4 33 338 172 164 18 0 0
+0 18 136 273 290 4 8 0 0 0
+108 306 184 125 6 0 0 0 0 0
 ```
 
 
@@ -269,33 +269,33 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public singleton program
 {
     static games := new string[]::("12", "13", "14", "23", "24", "34");
- 
+
     static results := "000000";
- 
+
     nextResult()
     {
         var s := results;
- 
+
         if (results=="222222") { ^ false };
- 
+
         results := (results.toInt(3) + 1).toString(3).padLeft($48, 6);
- 
+
         ^ true
     }
- 
+
     closure()
     {
         var points := new IntMatrix(4, 10);
- 
-        int counter := 0;        
+
+        int counter := 0;
         do
         {
             var records := new int[]::(0,0,0,0);
- 
+
             for(int i := 0, i < 6, i += 1)
             {
                 var r := results[i];
@@ -307,21 +307,21 @@ public singleton program
                     }
                     "0" { records[games[i][1].toInt() - 49] := records[games[i][1].toInt() - 49] + 3 };
             };
- 
+
             records := records.ascendant();
- 
-            for(int i := 0, i <= 3, i += 1) 
-                { 
-                    points[i][records[i]] := points[i][records[i]] + 1 
+
+            for(int i := 0, i <= 3, i += 1)
+                {
+                    points[i][records[i]] := points[i][records[i]] + 1
                 }
         }
         while:(program.nextResult());
- 
+
         new Range(0, 4).zipForEach(new string[]::("1st", "2nd", "3rd", "4th"), (i,l)
         {
             console.printLine(l,": ", points[3 - i].toArray())
         });
-    }    
+    }
 }
 ```
 
@@ -358,19 +358,19 @@ defmodule World_Cup do
       end
     end
   end
- 
+
   defp combos(1, list), do: (for x <- list, do: [x])
   defp combos(k, list) when k == length(list), do: [list]
   defp combos(k, [h|t]) do
     (for subcombos <- combos(k-1, t), do: [h | subcombos]) ++ (combos(k, t))
   end
- 
+
   defp combinations([h],list2), do: (for item <- list2, do: [{h,item}])
   defp combinations([h|t],list2) do
     for item <- list2, comb <- combinations(t,list2), do: [{h,item} | comb]
   end
 end
- 
+
 format = String.duplicate("~4w", 10) <> "~n"
 :io.format(format, Enum.to_list(0..9))
 IO.puts String.duplicate(" ---", 10)
@@ -395,7 +395,7 @@ Enum.each(World_Cup.group_stage, fn x -> :io.format(format, x) end)
 
 ## Erlang
 
-This solution take advantage of the expressiveness power of the list comprehensions expressions. Function ''combos'' is copied from  [http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/ panduwana blog]. 
+This solution take advantage of the expressiveness power of the list comprehensions expressions. Function ''combos'' is copied from  [http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/ panduwana blog].
 
 
 ```erlang
@@ -408,22 +408,22 @@ group_stage() ->
 	Results = [[3,0],[1,1],[0,3]],
 	Teams = [1,2,3,4],
 	Matches = combos(2,Teams),
-	AllResults = 
+	AllResults =
 		combinations(Matches,Results),
-	AllPoints = 
+	AllPoints =
 		[lists:flatten([lists:zip(L1,L2) || {L1,L2} <- L]) || L <- AllResults],
-	TotalPoints = 
+	TotalPoints =
 		[ [ {T,lists:sum([Points || {T_,Points} <- L, T_ == T])} || T <- Teams] || L <- AllPoints],
-	SortedTotalPoints = 
+	SortedTotalPoints =
 		[ lists:sort(fun({_,A},{_,B}) -> A > B end,L) || L <- TotalPoints],
-	PointsPosition = 
+	PointsPosition =
 		[ [element(2,lists:nth(N, L))|| L <- SortedTotalPoints ] || N <- Teams],
-	[ [length(lists:filter(fun(Points_) -> Points_ == Points end,lists:nth(N, PointsPosition) )) 
+	[ [length(lists:filter(fun(Points_) -> Points_ == Points end,lists:nth(N, PointsPosition) ))
 		|| Points <- lists:seq(0,9)] || N <- Teams].
 
-combos(1, L) -> 
+combos(1, L) ->
 	[[X] || X <- L];
-combos(K, L) when K == length(L) -> 
+combos(K, L) when K == length(L) ->
 	[L];
 combos(K, [H|T]) ->
     [[H | Subcombos] || Subcombos <- combos(K-1, T)]
@@ -518,10 +518,10 @@ func main() {
 
 POINTS       0    1    2    3    4    5    6    7    8    9
 -------------------------------------------------------------
-1st place    0    0    0    1    14   148  152  306  0    108  
-2nd place    0    0    4    33   338  172  164  18   0    0    
-3rd place    0    18   136  273  290  4    8    0    0    0    
-4th place    108  306  184  125  6    0    0    0    0    0 
+1st place    0    0    0    1    14   148  152  306  0    108
+2nd place    0    0    4    33   338  172  164  18   0    0
+3rd place    0    18   136  273  290  4    8    0    0    0
+4th place    108  306  184  125  6    0    0    0    0    0
 
 ```
 
@@ -574,7 +574,7 @@ Some standings can be attained two different ways, some three different ways, so
 ```
 
 
-That's where every team gets 4 standing. 
+That's where every team gets 4 standing.
 
 How about outcomes which can be achieved four different ways?
 
@@ -626,7 +626,7 @@ This example codes results as a 6-digit number in base 3. Each digit is a game. 
 
 ```java5
 import java.util.Arrays;
- 
+
 public class GroupStage{
     //team left digit vs team right digit
     static String[] games = {"12", "13", "14", "23", "24", "34"};
@@ -772,7 +772,7 @@ fun main(args: Array<String>) {
     }
     while(nextResult())
     println("POINTS       0    1    2    3    4    5    6    7    8    9")
-    println("-------------------------------------------------------------") 
+    println("-------------------------------------------------------------")
     val places = arrayOf("1st", "2nd", "3rd", "4th")
     for (i in 0..3) {
         print("${places[i]} place    ")
@@ -789,10 +789,10 @@ fun main(args: Array<String>) {
 
 POINTS       0    1    2    3    4    5    6    7    8    9
 -------------------------------------------------------------
-1st place    0    0    0    1    14   148  152  306  0    108  
-2nd place    0    0    4    33   338  172  164  18   0    0    
-3rd place    0    18   136  273  290  4    8    0    0    0    
-4th place    108  306  184  125  6    0    0    0    0    0    
+1st place    0    0    0    1    14   148  152  306  0    108
+2nd place    0    0    4    33   338  172  164  18   0    0
+3rd place    0    18   136  273  290  4    8    0    0    0
+4th place    108  306  184  125  6    0    0    0    0    0
 
 ```
 
@@ -886,13 +886,13 @@ Some credit is due to the Kotlin entry for inspiring some of the innermost code.
 function game_combinations(sequence res, integer pool, needed, sequence chosen={})
     if needed=0 then
         res = append(res,chosen) -- collect the full sets
-    else    
+    else
         for i=iff(length(chosen)=0?1:chosen[$]+1) to pool do
             res = game_combinations(res,pool,needed-1,append(chosen,i))
         end for
     end if
     return res
-end function            
+end function
 
 constant games = game_combinations({},4,2) -- ie {{1,2},{1,3},{1,4},{2,3},{2,4},{3,4}}
 
@@ -917,7 +917,7 @@ procedure result_combinations(integer pool, needed, sequence chosen={})
             result_combinations(pool,needed-1,append(chosen,i))
         end for
     end if
-end procedure           
+end procedure
 
 -- accumulate the results of all possible outcomes (1..3) of 6 games:
 result_combinations(3,6)    -- (the result ends up in points)
@@ -1019,13 +1019,13 @@ for x in reversed(histo):
         (for*/fold ((mn mn-pts) (mx mx-pts)) ((pts (in-hash-keys rw)))
           (values (min* pts mn) (max pts mx))))
       (values (min* mn-psn psn) (max mx-psn psn) min-pts max-pts)))
-  
+
   (define H
     (let ((lbls-row# (for/hash ((i (in-range points-mn (add1 points-mx)))) (values i i))))
       (hash-set hstgrm# 'thead lbls-row#)))
-  
+
   (define cap-col-width (for/fold ((m 0)) ((v (in-hash-values captions))) (max m (string-length v))))
-  
+
   (for ((plc (in-sequences
               (in-value 'thead)
               (in-range position-mn (add1 position-mx)))))
@@ -1036,7 +1036,7 @@ for x in reversed(histo):
             (string-join cnts "  "))))
 
 (define captions
-  (hash 'thead "POINTS:" 
+  (hash 'thead "POINTS:"
         1 "1st Place:"
         2 "2nd Place:"
         3 "Sack the manager:"
@@ -1049,11 +1049,11 @@ for x in reversed(histo):
 {{out}}
 
 ```txt
-POINTS:            0    1    2    3    4    5    6    7    8    9 
+POINTS:            0    1    2    3    4    5    6    7    8    9
 1st Place:         0    0    0    1   14   148  152  306   0   108
-2nd Place:         0    0    4   33   338  172  164  18    0    0 
-Sack the manager:  0   18   136  273  290   4    8    0    0    0 
-Sack the team!    108  306  184  125   6    0    0    0    0    0 
+2nd Place:         0    0    4   33   338  172  164  18    0    0
+Sack the manager:  0   18   136  273  290   4    8    0    0    0
+Sack the team!    108  306  184  125   6    0    0    0    0    0
 ```
 
 
@@ -1159,7 +1159,7 @@ This REXX version allows the number of teams to be specified to be used in the c
 also generates the character string used for
 the   ''list of games''   to be played   (game sets).
 
-This REXX version can also simulate a Cricket World Cup   (by specifying   '''2'''   for the   '''win'''   variable). 
+This REXX version can also simulate a Cricket World Cup   (by specifying   '''2'''   for the   '''win'''   variable).
 <!-- ........................................................................................................
 Programming notes:  these are some of the changes from REXX version 1:
 :::*   the number of teams that are playing can be specified from the command line.
@@ -1337,13 +1337,13 @@ places_histogram = Array.new(4) {Array.new(10,0)}
 # possible outcomes
 outcomes.repeated_permutation(6).each do |outcome|
   results = Hash.new(0)
-  
+
   # combine this outcomes with the matches, and generate the points table
   outcome.zip(matches).each do |decision, (team1, team2)|
     results[team1] += gains[decision][0]
     results[team2] += gains[decision][1]
-  end 
-  
+  end
+
   # accumulate the results
   results.values.sort.reverse.each_with_index do |points, place|
     places_histogram[place][points] += 1
@@ -1481,7 +1481,7 @@ result$ = "000000"
 
 sub ParseInt(number$, base)
     local x, i, pot, digits
-    
+
     digits = len(number$)
 
     for i = digits to 1 step -1
@@ -1506,7 +1506,7 @@ sub Format$(decimal, base)
     return conv$
 end sub
 
- 
+
 sub nextResult()
     if result$ = "222222" return false
     res = ParseInt(result$, 3)
@@ -1518,10 +1518,10 @@ end sub
 
 sub Sort(array())
     local n, i, t, sw
-    
+
     n = arraysize(array(), 1)
 
-    repeat  
+    repeat
         sw = false
         for i = 0 to n - 1
             if array(i) > array(i + 1) then
@@ -1534,12 +1534,12 @@ sub Sort(array())
     until(not sw)
 end sub
 
- 
+
 dim points(4, 10)
 
 sub compute()
     local records(4), i, t
-    
+
     for i = 1 to arraysize(game$(), 1)
         switch mid$(result$, i, 1)
         case "2":
@@ -1595,7 +1595,7 @@ next
 combos :=Utils.Helpers.pickNFrom(2,T(0,1,2,3)); // ( (0,1),(0,2) ... )
 scoring:=T(0,1,3);
 histo  :=(0).pump(4,List().write,(0).pump(10,List().write,0).copy); //[4][10] of zeros
- 
+
 foreach r0,r1,r2,r3,r4,r5 in ([0..2],[0..2],[0..2],[0..2],[0..2],[0..2]){
    s:=L(0,0,0,0);
    foreach i,r in (T(r0,r1,r2,r3,r4,r5).enumerate()){
@@ -1604,7 +1604,7 @@ foreach r0,r1,r2,r3,r4,r5 in ([0..2],[0..2],[0..2],[0..2],[0..2],[0..2]){
       s[g[1]]+=scoring[2 - r];
    }
    foreach h,v in (histo.zip(s.sort())){ h[v]+=1; }
-} 
+}
 foreach h in (histo.reverse()){ println(h.apply("%3d ".fmt).concat()) }
 ```
 
@@ -1612,10 +1612,10 @@ foreach h in (histo.reverse()){ println(h.apply("%3d ".fmt).concat()) }
 
 ```txt
 
-  0   0   0   1  14 148 152 306   0 108 
-  0   0   4  33 338 172 164  18   0   0 
-  0  18 136 273 290   4   8   0   0   0 
-108 306 184 125   6   0   0   0   0   0 
+  0   0   0   1  14 148 152 306   0 108
+  0   0   4  33 338 172 164  18   0   0
+  0  18 136 273 290   4   8   0   0   0
+108 306 184 125   6   0   0   0   0   0
 
 ```
 

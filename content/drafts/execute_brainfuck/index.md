@@ -1531,7 +1531,7 @@ This is due to the limitation that Burlesque does not have actual I/O.
 
 [[/C|Implementation in C]].
 
-=={{header|C sharp|C#}}==
+## C#
 
 [[/Csharp|Implementation in C#]].
 

@@ -484,9 +484,9 @@ double f(double x)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 class Program
 {
     static void Main(string[] args)
@@ -512,7 +512,7 @@ class Program
 An alternative approach using Enumerable.Range() to generate the numbers.
 
 
-```csharp
+```c#
 class Program
 {
     static void Main(string[] args)

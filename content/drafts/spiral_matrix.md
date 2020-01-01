@@ -921,10 +921,10 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Solution based on the [[#J|J]] hints:
 
-```csharp
+```c#
 public int[,] Spiral(int n) {
     int[,] result = new int[n, n];
 
@@ -967,7 +967,7 @@ public void PrintArray(int[,] array) {
 
 Translated proper C++ solution:
 
-```csharp
+```c#
 
 
 //generate spiral matrix for given N
@@ -1000,7 +1000,7 @@ void Print(int[,] matrix) {
 
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

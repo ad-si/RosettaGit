@@ -997,9 +997,9 @@ ROMER:       60
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace TemperatureConversion

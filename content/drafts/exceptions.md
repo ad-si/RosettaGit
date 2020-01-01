@@ -863,12 +863,12 @@ catch (...)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Visual Studio|2005}}
 
 '''Defining exceptions'''
 
-```csharp
+```c#
 public class MyException : Exception
 {
   // data with info about exception
@@ -878,7 +878,7 @@ public class MyException : Exception
 
 '''Throw exceptions'''
 
-```csharp
+```c#
 void foo()
 {
   throw MyException();
@@ -888,7 +888,7 @@ void foo()
 
 '''Catching exceptions'''
 
-```csharp
+```c#
 try {
   foo();
 }

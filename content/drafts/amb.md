@@ -17,7 +17,7 @@ The Amb operator expresses nondeterminism. This doesn't refer to randomness (as 
 
 The Amb operator takes a variable number of expressions (or values if that's simpler in the language) and yields a correct one which will satisfy a constraint in some future computation, thereby avoiding failure.
 
-Problems whose solution the Amb operator naturally expresses can be approached with other tools, such as explicit nested iterations over data sets, or with pattern matching. By contrast, the Amb operator appears integrated into the language. Invocations of Amb are not wrapped in any visible loops or other search patterns; they appear to be independent. 
+Problems whose solution the Amb operator naturally expresses can be approached with other tools, such as explicit nested iterations over data sets, or with pattern matching. By contrast, the Amb operator appears integrated into the language. Invocations of Amb are not wrapped in any visible loops or other search patterns; they appear to be independent.
 
 Essentially Amb(x, y, z) splits the computation into three possible futures: a future in which the value x is yielded, a future in which the value y is yielded and a future in which the value z is yielded. The future which leads to a successful subsequent computation is chosen. The other "parallel universes" somehow go away.   Amb called with no arguments fails.
 
@@ -123,10 +123,10 @@ procedure Test_Amb is
 
    type Amb (Count : Positive) is record
       This : Positive := 1;
-      Left : access Amb; 
+      Left : access Amb;
       List : Alternatives (1..Count);
    end record;
-   
+
    function Image (L : Amb) return String is
    begin
       return To_String (L.List (L.This));
@@ -139,7 +139,7 @@ procedure Test_Amb is
       Append (Result.List (2), R);
       return Result;
    end "/";
-   
+
    function "/" (L : Amb; R : String) return Amb is
       Result : Amb (L.Count + 1);
    begin
@@ -153,7 +153,7 @@ procedure Test_Amb is
    begin
       return Element (Left, Length (Left)) = Element (R.List (R.This), 1);
    end "=";
-   
+
    procedure Failure (L : in out Amb) is
    begin
       loop
@@ -187,10 +187,10 @@ begin
 end Test_Amb;
 ```
 
-The type Amb is implemented with the operations "/" to construct it from strings. 
-Each instance keeps its state. 
-The operation Failure performs back tracing. Join connects two elements into a chain. 
-The implementation propagates Constraint_Error when matching fails. 
+The type Amb is implemented with the operations "/" to construct it from strings.
+Each instance keeps its state.
+The operation Failure performs back tracing. Join connects two elements into a chain.
+The implementation propagates Constraint_Error when matching fails.
 {{out}}
 
 ```txt
@@ -213,16 +213,16 @@ MODE PAGE = FLEX[0]STRING;
 MODE YIELDPAGE = PROC(PAGE)VOID;
 MODE ITERPAGE = PROC(YIELDPAGE)VOID;
 
-OP INITITERPAGE = (PAGE self)ITERPAGE: 
+OP INITITERPAGE = (PAGE self)ITERPAGE:
   (YIELDPAGE yield)VOID: # scope violation #
     FOR i TO UPB self DO
       yield(self[i])
     OD;
-      
+
 OP + = (ITERPAGE for strings, PAGE b)ITERPAGE:
   (YIELDPAGE yield)VOID: # scope violation #
     for strings((PAGE amb)VOID:(
-      [UPB amb + 1]STRING joined; 
+      [UPB amb + 1]STRING joined;
       joined[:UPB amb] := amb;
       STRING last string := amb[UPB amb];
       CHAR last char := last string[UPB last string];
@@ -236,7 +236,7 @@ OP + = (ITERPAGE for strings, PAGE b)ITERPAGE:
 
 OP + = (PAGE a, PAGE b)ITERPAGE: INITITERPAGE a + b;
 
-ITERPAGE gen amb := 
+ITERPAGE gen amb :=
    PAGE("the", "that", "a") +
    PAGE("frog", "elephant", "thing") +
    PAGE("walked", "treaded", "grows") +
@@ -397,21 +397,21 @@ implement main0 () =
 Source: [http://www.autohotkey.com/forum/topic45454.html AMB - Ambiguous selector] by infogulch
 
 ```autohotkey
-set1 := "the that a" 
-set2 := "frog elephant thing" 
-set3 := "walked treaded grows" 
-set4 := "slowly quickly" 
+set1 := "the that a"
+set2 := "frog elephant thing"
+set3 := "walked treaded grows"
+set4 := "slowly quickly"
 
-MsgBox % amb( "", set1, set2, set3, set4 ) 
-; this takes a total of 17 iterations to complete 
+MsgBox % amb( "", set1, set2, set3, set4 )
+; this takes a total of 17 iterations to complete
 
-amb( char = "", set1 = "", set2 = "", set3 = "", set4 = "" ) 
-{ ; original call to amb must leave char param blank 
-  Loop, Parse, set1, %A_Space% 
-    If (char = (idxchar := SubStr(A_LoopField, 1, 1)) && set2 = "" 
-    || (char = idxchar || char = "") && ((retval:= amb(SubStr(A_LoopField, 0, 1), set2, set3, set4)) != "")) 
-      Return A_LoopField " " retval 
-  Return "" 
+amb( char = "", set1 = "", set2 = "", set3 = "", set4 = "" )
+{ ; original call to amb must leave char param blank
+  Loop, Parse, set1, %A_Space%
+    If (char = (idxchar := SubStr(A_LoopField, 1, 1)) && set2 = ""
+    || (char = idxchar || char = "") && ((retval:= amb(SubStr(A_LoopField, 0, 1), set2, set3, set4)) != ""))
+      Return A_LoopField " " retval
+  Return ""
 }
 ```
 
@@ -463,19 +463,19 @@ amb_t amb(size_t argc, ...)
   amb_t *choices;
   va_list ap;
   int i;
-  
+
   if(argc) {
     choices = malloc(argc*sizeof(amb_t));
     va_start(ap, argc);
     i = 0;
     do { choices[i] = va_arg(ap, amb_t); } while(++i < argc);
     va_end(ap);
-    
+
     i = 0;
     do { TRY(choices[i]); } while(++i < argc);
     free(choices);
   }
-  
+
   FAIL;
 }
 
@@ -483,29 +483,29 @@ int joins(const char *left, const char *right) { return left[strlen(left)-1] == 
 
 int _main() {
   const char *w1,*w2,*w3,*w4;
-  
+
   w1 = amb(3, "the", "that", "a");
   w2 = amb(3, "frog", "elephant", "thing");
   w3 = amb(3, "walked", "treaded", "grows");
   w4 = amb(2, "slowly", "quickly");
-  
+
   if(!joins(w1, w2)) amb(0);
   if(!joins(w2, w3)) amb(0);
   if(!joins(w3, w4)) amb(0);
-  
+
   printf("%s %s %s %s\n", w1, w2, w3, w4);
-  
+
   return EXIT_SUCCESS;
 }
 ```
 
 
 
-## C sharp
+## C#
 
 The implementation of the Amb class
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -663,7 +663,7 @@ public class AmbException : Exception
 
 Usage:
 
-```csharp
+```c#
     // original problem
     using (Amb amb = new Amb())
     {
@@ -696,15 +696,15 @@ Usage:
     }
 ```
 
-The following is a more idiomatic and not (or less) idiosyncratic C# version of Amb. The above uses a clever but unorthodox use of Dispose() to launch the backtracking (and a few other interesting quirks). Interesting but it can throw an exception in Dispose() which is strongly discouraged in C#. 
+The following is a more idiomatic and not (or less) idiosyncratic C# version of Amb. The above uses a clever but unorthodox use of Dispose() to launch the backtracking (and a few other interesting quirks). Interesting but it can throw an exception in Dispose() which is strongly discouraged in C#.
 
-The following was written independently but borrows some ideas/help from the previous solution. There are still limitations compared to the spirit of Amb, requiring an explicit run (called Disambiguate() normally but RequireFinal() - which calls Disambiguate() internally -is used to get closer to the spirit here) but, compared to many other language solutions here, it does have the explicit Require, meaning it is  a general solution, not tied to the specific example in this task.(I suggest the task description is updated to ensure that a general amb operator is provided rather than a custom one for the single provided example). It uses a ToString override to return Value.ToString(), again to help in the spirit of things, but if the variables were used directly, one would have to be use the Value property instead. 
+The following was written independently but borrows some ideas/help from the previous solution. There are still limitations compared to the spirit of Amb, requiring an explicit run (called Disambiguate() normally but RequireFinal() - which calls Disambiguate() internally -is used to get closer to the spirit here) but, compared to many other language solutions here, it does have the explicit Require, meaning it is  a general solution, not tied to the specific example in this task.(I suggest the task description is updated to ensure that a general amb operator is provided rather than a custom one for the single provided example). It uses a ToString override to return Value.ToString(), again to help in the spirit of things, but if the variables were used directly, one would have to be use the Value property instead.
 
-Also the internal algorithm allows manual external tuning minimising the verification steps required. This is shown in the ordering of the choices and requirements in the problem to be solved. This, I think, is closer to the spirit of Amb, as defined here, although really this is quite different to McCarthy's class of ambiguous functions.     
+Also the internal algorithm allows manual external tuning minimising the verification steps required. This is shown in the ordering of the choices and requirements in the problem to be solved. This, I think, is closer to the spirit of Amb, as defined here, although really this is quite different to McCarthy's class of ambiguous functions.
 {{works with|C sharp|C#|7.1}}
 <!-- By Martin Freedman, 17/01/2018 -->
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -775,7 +775,7 @@ namespace Amb
             {
                 throw new Exception("Success");
             }
-                
+
             for (var i = 0; i < _itemsChoices[itemsTracked].Length; i++)
             {
                  _itemsChoices[itemsTracked].Index = i;
@@ -810,7 +810,7 @@ namespace Amb
 
 Usage:
 
-```csharp
+```c#
 using System.Linq;
 using static System.Console;
 
@@ -825,10 +825,10 @@ namespace Amb
 
             var set1 = amb.Choose("the", "that", "a");
             var set2 = amb.Choose("frog", "elephant", "thing");
-            amb.Require(() => set1.Value.Last() == set2.Value[0]);            
+            amb.Require(() => set1.Value.Last() == set2.Value[0]);
             var set3 = amb.Choose("walked", "treaded", "grows");
             amb.Require(() => set2.Value.Last() == set3.Value[0]);
-            var set4 = amb.Choose("slowly", "quickly");            
+            var set4 = amb.Choose("slowly", "quickly");
             amb.RequireFinal(() => set3.Value.Last() == set4.Value[0]);
 
             WriteLine($"{set1} {set2} {set3} {set4}");
@@ -1102,7 +1102,7 @@ def [amb, unamb] := { # block hides internals
       return [[obj, decisions]]
     }
   }
-  
+
   /** Construct an amb object with remembered decisions */
   def ambDec(choices :List[Choice]) {
     def serial := (counter += 1)
@@ -1142,7 +1142,7 @@ def [amb, unamb] := { # block hides internals
     }
     return ambObj
   }
-  
+
   /** Construct an amb object with no remembered decisions. (public interface) */
   def amb(choices) {
     return ambDec(accum [] for c in choices { _.with([c, [].asMap()]) })
@@ -1152,7 +1152,7 @@ def [amb, unamb] := { # block hides internals
   def unamb(ambObj) {
     return accum [] for [c,_] in getChoices(ambObj, [].asMap()) { _.with(c) }
   }
-  
+
   [amb, unamb]
 }
 ```
@@ -1165,7 +1165,7 @@ def join(a, b) {
   # false.pick(x, y) returns y and true.pick(x, y) returns x; we protect the amb([]) from causing
   # unconditional failure by putting both options in functions.
   # <=> is the comparison operator that happens to be message-based.
-  return (a.last() <=> b[0]).pick(fn { 
+  return (a.last() <=> b[0]).pick(fn {
     a + " " + b
   }, fn {
     amb([])
@@ -1220,14 +1220,14 @@ This can be compared with the Haskell use of lists as a monad to represent choic
 ```ela
 open list core
 
-amb xs = x where 
+amb xs = x where
   (Some x) = & join xs ""
   join (x::xs) = amb' x (join xs)
   join [] = \_ -> Some ""
   eq' [] x = true
   eq' w x  = last w == head x
   amb' [] _ _ = None
-  amb' (x::xs) n w 
+  amb' (x::xs) n w
     | eq' w x =
     match n x with
           Some v = Some (x ++ " " ++ v)
@@ -1272,12 +1272,12 @@ dispatcher =
     {
         ^ f(a[0], a[1],a[2])
     }
-    
+
     eval(object a, Func4 f)
     {
         ^ f(a[0],a[1],a[2],a[3])
     }
-    
+
     eval(object a, Func5 f)
     {
         ^ f(a[0],a[1],a[2],a[3],a[4])
@@ -1287,7 +1287,7 @@ dispatcher =
 class AmbValueCollection
 {
     object theCombinator;
-    
+
     constructor new(params object[] args)
     {
         theCombinator := SequentialEnumerator.new(params args)
@@ -1299,13 +1299,13 @@ class AmbValueCollection
 
         theCombinator.seekEach:(v => dispatcher.eval(v,cond))
     }
-    
+
     do(f)
     {
         var result := theCombinator.get();
         if (nil != result)
         {
-            dispatcher.eval(result,f) 
+            dispatcher.eval(result,f)
         }
         else
         {
@@ -1324,8 +1324,8 @@ public program()
 {
     try
     {
-        ambOperator 
-            .for(new::("the","that","a"),new::("frog", "elephant", "thing"),new::("walked", "treaded", "grows"), 
+        ambOperator
+            .for(new::("the","that","a"),new::("frog", "elephant", "thing"),new::("walked", "treaded", "grows"),
                  new::("slowly", "quickly"))
             .seek:(a,b,c,d => joinable(a,b) && joinable(b,c) && joinable(c,d) )
             .do:(a,b,c,d) { console.printLine(a," ",b," ",c," ",d) }
@@ -1334,7 +1334,7 @@ public program()
     {
         console.printLine:"AMB is angry"
     };
-        
+
     console.readChar()
 }
 ```
@@ -1646,7 +1646,7 @@ exampleBind =
                                   else [])
                           else [])
                   else []))
-                  
+
 -- Second desugaring (still dropping the do notation)
 -- in terms of the concatMap, which is >>= with its arguments flipped
 
@@ -1731,12 +1731,12 @@ joins left right = last left == head right
 example :: [String]
 example =
   [ unwords [w1, w2, w3, w4]
-  | w1 <- ["the", "that", "a"] 
-  , w2 <- ["frog", "elephant", "thing"] 
-  , w3 <- ["walked", "treaded", "grows"] 
-  , w4 <- ["slowly", "quickly"] 
-  , joins w1 w2 
-  , joins w2 w3 
+  | w1 <- ["the", "that", "a"]
+  , w2 <- ["frog", "elephant", "thing"]
+  , w3 <- ["walked", "treaded", "grows"]
+  , w4 <- ["slowly", "quickly"]
+  , joins w1 w2
+  , joins w2 w3
   , joins w3 w4 ]
 
 main :: IO ()
@@ -1880,12 +1880,12 @@ A structured derivation of amb follows:
 
 ```j
    NB. Dynamic programming method...
-   
+
    o=. @:                NB. Composing verbs
    success=. {:o[ = {.o] NB. Is the last letter of the left word equal to the first of the right?
    join=. [ , ' ' , ]    NB. Joining the left and right words
    cp=. {@(,&<)          NB. Cartesian product
-   
+
    amb=. join&>/&.> o ((success&>/ &> # ]) o , o cp)f.
    amb NB. Showing the point-free code...
 ([ , ' ' , ])&>/&.>@:((({:@:[ = {.@:])&>/&> # ])@:,@:({@(,&<)))
@@ -2009,7 +2009,7 @@ Defining amb as the list monad bind/inject operator:
         );
     };
 
-    // GENERIC FUNCTIONS ----------------------------------  
+    // GENERIC FUNCTIONS ----------------------------------
 
     // last :: [a] -> a
     const last = xs =>
@@ -2040,12 +2040,12 @@ Two solutions are given. The first follows the style of the Prolog example.  The
 
 ```jq
 def amb: .[];
- 
+
 def joins:
   (.[0][-1:]) as $left
   | (.[1][0:1]) as $right
   | if $left == $right then true else empty end;
- 
+
 ```
 
 '''Example''':
@@ -2077,7 +2077,7 @@ jq -n -f amb.jq
 
 ```jq
 def amb(condition): .[] | select(condition);
- 
+
 def joins:
   (.[0][-1:]) as $left
   | (.[1][0:1]) as $right
@@ -2179,14 +2179,14 @@ fun main(args: Array<String>) = amb {
     val b = amb("frog", "elephant", "thing")
     val c = amb("walked", "treaded", "grows")
     val d = amb("slowly", "quickly")
-    
+
     if (a[a.lastIndex] != b[0]) amb()
     if (b[b.lastIndex] != c[0]) amb()
     if (c[c.lastIndex] != d[0]) amb()
-    
+
     println(listOf(a, b, c, d))
-    
-    
+
+
     val x = amb(1, 2, 3)
     val y = amb(7, 6, 4, 5)
     if (x * y != 8) amb()
@@ -2200,15 +2200,15 @@ data class AmbPair<T>(val cont: Continuation<T>, val valuesLeft: MutableList<T>)
 @RestrictsSuspension
 class AmbEnvironment {
     val ambList = mutableListOf<AmbPair<*>>()
-    
-    suspend fun <T> amb(value: T, vararg rest: T): T = suspendCoroutineOrReturn { cont -> 
+
+    suspend fun <T> amb(value: T, vararg rest: T): T = suspendCoroutineOrReturn { cont ->
         if (rest.size > 0) {
             ambList.add(AmbPair(clone(cont), mutableListOf(*rest)))
         }
-        
+
         value
     }
-    
+
     suspend fun amb(): Nothing = suspendCoroutine<Nothing> { }
 }
 
@@ -2216,17 +2216,17 @@ class AmbEnvironment {
 fun <R> amb(block: suspend AmbEnvironment.() -> R): R {
     var result: R? = null
     var toThrow: Throwable? = null
-    
+
     val dist = AmbEnvironment()
     block.startCoroutine(receiver = dist, completion = object : Continuation<R> {
         override val context: CoroutineContext get() = EmptyCoroutineContext
         override fun resume(value: R) { result = value }
         override fun resumeWithException(exception: Throwable) { toThrow = exception }
     })
-    
+
     while (result == null && toThrow == null && !dist.ambList.isEmpty()) {
         val last = dist.ambList.run { this[lastIndex] }
-        
+
         if (last.valuesLeft.size == 1) {
             dist.ambList.removeAt(dist.ambList.lastIndex)
             last.apply {
@@ -2237,7 +2237,7 @@ fun <R> amb(block: suspend AmbEnvironment.() -> R): R {
             (clone(last.cont) as Continuation<Any?>).resume(value)
         }
     }
-    
+
     if (toThrow != null)
     {
         throw toThrow!!
@@ -2246,7 +2246,7 @@ fun <R> amb(block: suspend AmbEnvironment.() -> R): R {
     {
         return result!!
     }
-    else 
+    else
     {
         throw AmbException()
     }
@@ -2493,9 +2493,9 @@ Results:
 
 ```
 
-Note:  the output of the input is truncated (columns three and four), 
-but the results are correct for the data specified, 
-but not for the input as specified for this task 
+Note:  the output of the input is truncated (columns three and four),
+but the results are correct for the data specified,
+but not for the input as specified for this task
 (ditto for the PL/I example and the REXX version 2 example).
 
 length corrected. thanks. extraneous input: intentional and harmless !?!
@@ -2545,14 +2545,14 @@ that thing grows slowly
 
 
 =={{Header|OCaml}}==
-There is no Amb operator in OCaml. So below are two solutions to solve the same task. 
+There is no Amb operator in OCaml. So below are two solutions to solve the same task.
 The first one is the more idiomatic for OCaml (and is similar to the Haskell solution), it builds all possible combinations and then take the good result in it.
 
-The second solution tries to be closer to the way of solving the problem of Amb. 
+The second solution tries to be closer to the way of solving the problem of Amb.
 It does not build and accumulate the combinations, it iterates over these with a higher order function and it stops when it finds a solution that matches the predicate.
 
 
-###  Filtering possible combinations 
+###  Filtering possible combinations
 
 
 ```ocaml
@@ -2598,7 +2598,7 @@ let () =
 We can take all the good results with List.filter or just take the first one with List.find.
 
 
-###  Higher order function 
+###  Higher order function
 
 Here the function comb_search replaces the function combs and uses arrays instead of lists. This function takes successively all the possible results by their indicies (with the array nx). When a result satisfies the predicate p, it is returned
 
@@ -2616,7 +2616,7 @@ let comb_search p aa =
   let rec loop() =
     let res = Array.mapi (fun i j -> aa.(i).(j)) nx in
     if p res then (res)
-    else    
+    else
     ( nx.(0) <- nx.(0) + 1;
       if nx.(0) < lx.(0)
       then loop()
@@ -2624,7 +2624,7 @@ let comb_search p aa =
       ( nx.(0) <- 0;
         let rec roll n =
           if n >= la then raise Not_found
-          else 
+          else
           ( nx.(n) <- nx.(n) + 1;
             if nx.(n) >= lx.(n)
             then ( nx.(n) <- 0; roll (n+1) )
@@ -2636,7 +2636,7 @@ let comb_search p aa =
     )
   in
   loop()
-  
+
 let last s = s.[pred(String.length s)]
 let joined a b = (last a = b.[0])
 
@@ -2661,14 +2661,14 @@ let () =
 =={{Header|OpenEdge/Progress}}==
 
 ```OpenEdge/Progress
-DEF VAR cset AS CHAR EXTENT 4 INIT [   
+DEF VAR cset AS CHAR EXTENT 4 INIT [
    "the,that,a",
-   "frog,elephant,thing", 
+   "frog,elephant,thing",
    "walked,treaded,grows",
    "slowly,quickly"
 ].
 
-FUNCTION getAmb RETURNS CHARACTER ( 
+FUNCTION getAmb RETURNS CHARACTER (
    i_cwords AS CHAR,
    i_iset   AS INT
 ):
@@ -2680,7 +2680,7 @@ FUNCTION getAmb RETURNS CHARACTER (
    DO ii = 1 TO NUM-ENTRIES( cset [ i_iset ] ) WHILE NUM-ENTRIES( cresult, " " ) < EXTENT( cset ):
 
       cword = ENTRY( ii, cset[ i_iset ] ).
-      IF i_cwords = "" OR 
+      IF i_cwords = "" OR
          SUBSTRING( i_cwords, LENGTH( i_cwords ), 1 ) = SUBSTRING( cword, 1, 1 )
       THEN DO:
          IF i_iset = EXTENT ( cset ) THEN
@@ -2709,14 +2709,14 @@ Message
 ---------------------------
  that thing grows slowly
 ---------------------------
-OK   
+OK
 ---------------------------
 
 ```
 
 
 =={{Header|Oz}}==
-Oz is, among other things, a logic programming language and has a choice operator. 
+Oz is, among other things, a logic programming language and has a choice operator.
 Using recursion we can easily build an Amb operator with it.
 
 ```oz
@@ -2947,12 +2947,12 @@ that thing grows slowly
 
 Junctions are a construct that behave similarly to the wanted Amb operator. The only difference is, that they don't preserve the state that was True inside any control structure (like an if).
 
-There is currently a trick, how you only get the "true" values from a Junction for any test: return from a subroutine. Because of DeMorgans Law, you'll have to switch and and or, since you want to return on falseness. Just look at 'all' in combination with the sub(){return unless test} as the amb operator. 
+There is currently a trick, how you only get the "true" values from a Junction for any test: return from a subroutine. Because of DeMorgans Law, you'll have to switch and and or, since you want to return on falseness. Just look at 'all' in combination with the sub(){return unless test} as the amb operator.
 
 
 ```perl6
 
-#| an array of four words, that have more possible values. 
+#| an array of four words, that have more possible values.
 #| Normally we would want `any' to signify we want any of the values, but well negate later and thus we need `all'
 my @a =
 (all «the that a»),
@@ -3354,7 +3354,7 @@ if            trots
 
 --> the elephant trots slowly
 --> that thing grows slowly
---> if frog grows slowly     
+--> if frog grows slowly
 
 ```
 
@@ -3416,12 +3416,12 @@ If OpenConsole()
   Dim Set2.s(2)
   Dim Set3.s(2)
   Dim Set4.s(1)
-  
+
   Set1(0)="the":    set1(1)="that":     set1(2)="a"
-  Set2(0)="frog":   set2(1)="elephant": set2(2)="thing" 
-  Set3(0)="walked": set3(1)="treaded":  set3(2)="grows" 
+  Set2(0)="frog":   set2(1)="elephant": set2(2)="thing"
+  Set3(0)="walked": set3(1)="treaded":  set3(2)="grows"
   Set4(0)="slowly": set4(1)="quickly"
-  
+
   text=Amb(set1(),set2(),Set3(),set4())
   If Text<>""
     PrintN("Correct sentence would be,"+#CRLF$+Text)
@@ -3448,18 +3448,18 @@ can be done in what appears to be a [[wp:Declarative programming|declarative]] m
 
 ```python
 import itertools as _itertools
- 
+
 class Amb(object):
     def __init__(self):
         self._names2values   = {}       # set of values for each global name
         self._func           = None     # Boolean constraint function
         self._valueiterator  = None     # itertools.product of names values
         self._funcargnames   = None     # Constraint parameter names
- 
+
     def __call__(self, arg=None):
-        if hasattr(arg, '__code__'):                
+        if hasattr(arg, '__code__'):
             ##
-            ## Called with a constraint function. 
+            ## Called with a constraint function.
             ##
             globls = arg.__globals__ if hasattr(arg, '__globals__') else arg.func_globals
             # Names used in constraint
@@ -3486,7 +3486,7 @@ class Amb(object):
             ## blank call tries to return next solution
             ##
             return self._nextinsearch()
- 
+
     def _nextinsearch(self):
         arg = self._func
         globls = arg.__globals__
@@ -3501,50 +3501,50 @@ class Amb(object):
                 break
         if not found: raise StopIteration
         return values
- 
+
     def __iter__(self):
         return self
- 
+
     def __next__(self):
         return self()
     next = __next__ # Python 2
- 
+
 if __name__ == '__main__':
     if True:
         amb = Amb()
- 
+
         print("\nSmall Pythagorean triples problem:")
         x = amb(range(1,11))
         y = amb(range(1,11))
         z = amb(range(1,11))
- 
+
         for _dummy in amb( lambda x, y, z: x*x + y*y == z*z ):
             print ('%s %s %s' % (x, y, z))
- 
- 
+
+
     if True:
         amb = Amb()
- 
+
         print("\nRosetta Code Amb problem:")
         w1 = amb(["the", "that", "a"])
         w2 = amb(["frog", "elephant", "thing"])
         w3 = amb(["walked", "treaded", "grows"])
         w4 = amb(["slowly", "quickly"])
- 
+
         for _dummy in amb( lambda w1, w2, w3, w4: \
                              w1[-1] == w2[0] and \
                              w2[-1] == w3[0] and \
                              w3[-1] == w4[0] ):
             print ('%s %s %s %s' % (w1, w2, w3, w4))
- 
+
     if True:
         amb = Amb()
- 
+
         print("\nAmb problem from "
             "http://www.randomhacks.net/articles/2005/10/11/amb-operator:")
         x = amb([1, 2, 3])
         y = amb([4, 5, 6])
- 
+
         for _dummy in amb( lambda x, y: x * y != 8 ):
             print ('%s %s' % (x, y))
 ```
@@ -3651,7 +3651,7 @@ def unwords(xs):
 if __name__ == '__main__':
     main()
 ```
- 
+
 {{Out}}
 
 ```txt
@@ -3827,11 +3827,11 @@ checkSentence <- function(sentence){
   for (index in 1:(length(sentence)-1)){
     first.word  <- sentence[index]
     second.word <- sentence[index+1]
-    
+
     last.letter  <- substr(first.word, nchar(first.word), nchar(first.word))
     first.letter <- substr(second.word, 1, 1)
-    
-    if (last.letter != first.letter){ return(FALSE) } 
+
+    if (last.letter != first.letter){ return(FALSE) }
   }
   return(TRUE)
 }
@@ -4049,8 +4049,8 @@ Output: identical to PL/I's
 # Project : Amb
 
 set1 = ["the","that","a"]
-set2 = ["frog","elephant","thing"] 
-set3 = ["walked","treaded","grows"] 
+set2 = ["frog","elephant","thing"]
+set3 = ["walked","treaded","grows"]
 set4 = ["slowly","quickly"]
 text = amb(set1,set2,set3,set4)
 if text != ""
@@ -4064,7 +4064,7 @@ func wordsok(string1, string2)
           return true
        ok
        return false
- 
+
 func amb(a,b,c,d)
        for a2 = 1 to len(a)
             for b2 =1 to len(b)
@@ -4077,7 +4077,7 @@ func amb(a,b,c,d)
                  next
             next
        next
-       return ""  
+       return ""
 
 ```
 
@@ -4085,7 +4085,7 @@ Output:
 
 ```txt
 
-Correct sentence would be: 
+Correct sentence would be:
 that thing grows slowly
 
 ```
@@ -4229,28 +4229,28 @@ object Amb {
 =={{Header|Scheme}}==
 
 ```scheme
-(define fail 
-  (lambda () 
-    (error "Amb tree exhausted"))) 
+(define fail
+  (lambda ()
+    (error "Amb tree exhausted")))
 
-(define-syntax amb 
-  (syntax-rules () 
-    ((AMB) (FAIL))                      ; Two shortcuts. 
-    ((AMB expression) expression) 
- 
-    ((AMB expression ...) 
-     (LET ((FAIL-SAVE FAIL)) 
-       ((CALL-WITH-CURRENT-CONTINUATION ; Capture a continuation to 
-          (LAMBDA (K-SUCCESS)           ;   which we return possibles. 
-            (CALL-WITH-CURRENT-CONTINUATION 
-              (LAMBDA (K-FAILURE)       ; K-FAILURE will try the next 
-                (SET! FAIL K-FAILURE)   ;   possible expression. 
-                (K-SUCCESS              ; Note that the expression is 
-                 (LAMBDA ()             ;   evaluated in tail position 
-                   expression))))       ;   with respect to AMB. 
-            ... 
-            (SET! FAIL FAIL-SAVE)      ; Finally, if this is reached, 
-            FAIL-SAVE)))))))            ;   we restore the saved FAIL. 
+(define-syntax amb
+  (syntax-rules ()
+    ((AMB) (FAIL))                      ; Two shortcuts.
+    ((AMB expression) expression)
+
+    ((AMB expression ...)
+     (LET ((FAIL-SAVE FAIL))
+       ((CALL-WITH-CURRENT-CONTINUATION ; Capture a continuation to
+          (LAMBDA (K-SUCCESS)           ;   which we return possibles.
+            (CALL-WITH-CURRENT-CONTINUATION
+              (LAMBDA (K-FAILURE)       ; K-FAILURE will try the next
+                (SET! FAIL K-FAILURE)   ;   possible expression.
+                (K-SUCCESS              ; Note that the expression is
+                 (LAMBDA ()             ;   evaluated in tail position
+                   expression))))       ;   with respect to AMB.
+            ...
+            (SET! FAIL FAIL-SAVE)      ; Finally, if this is reached,
+            FAIL-SAVE)))))))            ;   we restore the saved FAIL.
 
 
 (let ((w-1 (amb "the" "that" "a"))
@@ -4326,7 +4326,7 @@ const proc: main is func
 
 ```txt
 
-that thing grows slowly 
+that thing grows slowly
 
 ```
 
@@ -4550,7 +4550,7 @@ And some test code:
 
 
 ```txt
-$ txr -i amb.tl 
+$ txr -i amb.tl
 1> (amb-scope
      (let ((w1 (amb "the" "that" "a"))
            (w2 (amb "frog" "elephant" "thing"))
@@ -4628,12 +4628,12 @@ Then code is:
 
 
 ```txt
-$ ./txr amb.txr 
+$ ./txr amb.txr
 that thing grows slowly
 ```
 
 
-As you can see, this has the "nondeterministic flavor" of Amb. 
+As you can see, this has the "nondeterministic flavor" of Amb.
 The <code>@(skip)</code> directives"magically" skip over the lines of input that do not succeed.
 
 This example naturally handles empty strings, since the <code>first_last</code> function simply does not match such inputs.
@@ -4683,7 +4683,7 @@ class ambiguous
 	public property let rule( x )
 		sRule = x
 	end property
-	
+
 	public default function amb(p1, p2)
 		amb = eval(sRule)
 	end function
@@ -4731,7 +4731,7 @@ that thing grows slowly
 zkl doesn't support dynamic scoping so no variable update (without using reflection, which is not a good thing).
 
 These solutions assume that the solution space is ordered: the possibilities in a always precede those in b, etc.
- 
+
 Some constraints on the constraint to make the task easier: it is a function of two strings rather than n items. All solutions are returned, empty list otherwise.
 
 ```zkl
@@ -4745,7 +4745,7 @@ amb(joins,
    T("the","that","a"),
    T("frog","elephant","thing"),
    T("walked","treaded","grows"),
-   T("slowly","quickly") 
+   T("slowly","quickly")
 ).println();
 ```
 
@@ -4760,7 +4760,7 @@ Or, we can defer the computations (the future method starts a worker thread, the
 a:=amb.future(joins,T("the","that","a"),T("frog","elephant","thing"));
 b:=amb.future(joins,T("walked","treaded","grows"),T("slowly","squacking"));
 c:=amb.future(joins,a,b);  // a future of futures
-println(a,b,c); 
+println(a,b,c);
 c=c.noop();  // trigger the landslide, referencing c forces a result for a,b,c
 println(a.noop(),b.noop(),c); // even though a has a result, it doesn't know it until we force it
 ```
@@ -4800,7 +4800,7 @@ fcn amb(f,a,b,c,etc){ Walker.cproduct(vm.pasteArgs(1)).filter1(f) }
    // [()] notation unpacks parameter list: f((1,2,3))-->a=1,b=2,c=3
 fcn f([(a,b,c,d)]){ joins(a,b) and joins(b,c) and joins(c,d) }
 amb(f, T("the","that","a"), T("frog","elephant","thing"),
-    T("walked","treaded","grows"), T("slowly","quickly") 
+    T("walked","treaded","grows"), T("slowly","quickly")
 ).println();
 ```
 

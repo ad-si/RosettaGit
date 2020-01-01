@@ -182,7 +182,7 @@ There is no built-in function in C ''language''.  <code>stdlib</code> which come
 
 C++ standard library's [http://www.sgi.com/tech/stl/sort.html std::sort()] function is not guaranteed stable. The stable analog of it is the [http://www.sgi.com/tech/stl/stable_sort.html std::stable_sort()] function. In addition, [http://www.sgi.com/tech/stl/List.html std::list]'s <tt>sort()</tt> method is guaranteed stable.
 
-=={{header|C sharp|C#}}==
+## C#
 The .NET library documentation for <tt>Array.Sort()</tt> says that it uses quicksort and is unstable.[http://msdn.microsoft.com/en-us/library/kwx6zbd4.aspx#remarksToggle]
 
 
@@ -327,7 +327,7 @@ New to Go 1.2 is the function Stable() in the sort package and is documented to 
 
 Groovy's [http://groovy.codehaus.org/groovy-jdk/java/util/Collection.html#sort() Collection.sort()], Object[].[http://groovy.codehaus.org/groovy-jdk/java/lang/Object%5b%5d.html#sort() sort()], [http://groovy.codehaus.org/groovy-jdk/java/util/Map.html#sort() Map.sort()], and their various and sundry overloads all use the same stable sort algorithm.
 
-Example: 
+Example:
 {{trans|Java}}
 {{works with|Groovy|1.8.1}}
 
@@ -561,8 +561,8 @@ julia> sort(A, by=x -> x[2])
 4-element Array{(ASCIIString,ASCIIString),1}:
  ("US","Birmingham")
  ("UK","Birmingham")
- ("UK","London")    
- ("US","New York") 
+ ("UK","London")
+ ("US","New York")
 
 ```
 
@@ -607,11 +607,11 @@ Arrays can be sorted in two “built in" ways in Lasso:
 //Single param array:
 array->sort
 
-//An array of pairs, order by the right hand element of the pair: 
+//An array of pairs, order by the right hand element of the pair:
 with i in array order by #i->second do => { … }
 
 //The array can also be ordered by multiple values:
-with i in array order by #i->second, #i->first do => { … } 
+with i in array order by #i->second, #i->first do => { … }
 ```
 
 
@@ -656,8 +656,8 @@ US - New York
 
 ## Liberty BASIC
 
-LB has build-in SORT routine. 
-Documentation does not says if it's stable or not. 
+LB has build-in SORT routine.
+Documentation does not says if it's stable or not.
 Example from RC keeps order.
 
 Here's an example showing that SORT indeed unstable.
@@ -753,7 +753,7 @@ Here is the stable sort
 ```M2000 Interpreter
 
 Module Stable {
-      Inventory queue alfa 
+      Inventory queue alfa
       Stack New {
             Data "UK", "London","US", "New York","US", "Birmingham", "UK","Birmingham"
             While not empty {
@@ -791,7 +791,7 @@ We can sort in on key only. Lets make keys with two fields (based on fields leng
 ```M2000 Interpreter
 
 Module Stable1 {
-      Inventory queue alfa 
+      Inventory queue alfa
       Stack New {
             Data "UK London","US New York","US Birmingham", "UK Birmingham"
             While not empty {
@@ -826,7 +826,7 @@ Now second column is sorting (but it is one column all, no two columns). So lets
 ```M2000 Interpreter
 
 Module Stable2 {
-      Inventory alfa 
+      Inventory alfa
       Stack New {
             Data "UK London","US New York","US Birmingham", "UK Birmingham"
             While not empty {
@@ -1144,7 +1144,7 @@ UK	Birmingham
 UK	London
 US	New York
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -1379,7 +1379,7 @@ sort/skip/compare blk 2 func [a b] [either a < b [-1] [either a > b [1] [0]]]
 
 ## REXX
 
-Classic REXX has no built-in routines for sorting, so this programming example uses a classic ''bubble sort''   (which is stable). 
+Classic REXX has no built-in routines for sorting, so this programming example uses a classic ''bubble sort''   (which is stable).
 
 ```rexx
 /*REXX program  sorts  a (stemmed)  array  using a  (stable)   bubble─sort   algorithm. */
@@ -1541,7 +1541,7 @@ fn main() {
 ```
 
 
-Output: 
+Output:
 ```txt
 Original:
 UK London
@@ -1668,7 +1668,7 @@ fcn sortByColumn(list,col)
 
 ```zkl
 cities:=List(
-   T("UK",  "London"), T("US",  "New York"), 
+   T("UK",  "London"), T("US",  "New York"),
    T("US",  "Birmingham"),T("UK",  "Birmingham"), );
 sortByColumn(cities,0).concat("\n").println("\n------");
 sortByColumn(cities,1).concat("\n").println();

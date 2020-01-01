@@ -147,7 +147,7 @@ Computation time was 25.9016 milliseconds
 {{trans|Visual Basic .NET}}
 Based on the Visual Basic .NET version, plus it shortcuts some of the ''allIn()'' checks.  When the numbers checked are below a threshold, not every digit needs to be checked, saving a little time.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Numerics;

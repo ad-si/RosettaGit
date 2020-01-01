@@ -13,9 +13,9 @@ tags = []
 {{task}} [[Category:Branches]] [[Category:Simple]]
 [[Imperative programming|Imperative programs]] like to jump around, but some languages restrict these jumps. Many structured languages restrict their [[conditional structures]] and [[loops]] to ''local jumps'' within a function. Some assembly languages limit certain jumps or branches to a small range.
 
-This task is demonstrate a local jump and a global jump and the various other types of jumps that the language supports. 
-For the purpose of this task, the jumps need not be used for a single purpose and you have the freedom to use these jumps for different purposes. 
-You may also defer to more specific tasks, like [[Exceptions]] or [[Generator]]. 
+This task is demonstrate a local jump and a global jump and the various other types of jumps that the language supports.
+For the purpose of this task, the jumps need not be used for a single purpose and you have the freedom to use these jumps for different purposes.
+You may also defer to more specific tasks, like [[Exceptions]] or [[Generator]].
 This task provides a "grab bag" for several types of jumps. There are ''non-local jumps'' across function calls, or ''long jumps'' to anywhere within a program. Anywhere means not only to the tops of functions!
 
 * Some languages can ''go to'' any global label in a program.
@@ -23,16 +23,16 @@ This task provides a "grab bag" for several types of jumps. There are ''non-loca
 * Some languages can save a ''continuation''. The program can later continue from the same place. So you can jump anywhere, but only if you have a previous visit there (to save the continuation).
 
 
-These jumps are not all alike. 
-A simple ''goto'' never touches the call stack. 
+These jumps are not all alike.
+A simple ''goto'' never touches the call stack.
 A continuation saves the call stack, so you can continue a function call after it ends.
 
 
 ;Task:
-Use your language to demonstrate the various types of jumps that it supports. 
+Use your language to demonstrate the various types of jumps that it supports.
 
-Because the possibilities vary by language, this task is not specific. 
-You have the freedom to use these jumps for different purposes. 
+Because the possibilities vary by language, this task is not specific.
+You have the freedom to use these jumps for different purposes.
 You may also defer to more specific tasks, like [[Exceptions]] or [[Generator]].
 
 
@@ -58,8 +58,8 @@ begin
    Stuff;
 
    -- Ada does not permit any of the following
-   goto Jail; 
-   goto The_Sewer; 
+   goto Jail;
+   goto The_Sewer;
    goto The_Morgue;
 
    Stuff;
@@ -107,7 +107,7 @@ function()
 {
 	MsgBox, Start
 	gosub jump
-	
+
 	free:
 	MsgBox, Success
 }
@@ -272,7 +272,7 @@ danger: /* unless you jumped here with i set to a proper value */
 ```
 
 For unwrapping call stack and go back up to a caller, see [[Exceptions#C|longjmp example]]; more powerful, but more expensive and complicated, is POSIX [[Exceptions/Catch an exception thrown in a nested call#C|ucontext]].
-The best application for goto is error handling, this simplifies the resource clean up of a large function. 
+The best application for goto is error handling, this simplifies the resource clean up of a large function.
 This is used in the linux kernel.
 
 
@@ -288,21 +288,21 @@ This is used in the linux kernel.
    if(str == NULL) {
      return;
    }
-    
-   
+
+
    fp=fopen("c:\\test.csv", "r");
    if(fp== NULL) {
      free(str );
      return;
    }
-   
+
    array = (int *) malloc(15);
    if(array==NULL)   if(fp== NULL) {
      free(str );
      fclose(fp);
      return;
    }
-     
+
    ...// read in the csv file and convert to integers
 
 
@@ -318,13 +318,13 @@ This is used in the linux kernel.
   FILE *fp;
 
    str = (char *) malloc(100);
-   if(str == NULL) 
+   if(str == NULL)
     goto:  exit;
-   
+
    fp=fopen("c:\\test.csv", "r");
-   if(fp== NULL) 
+   if(fp== NULL)
       goto:  clean_up_str;
-   
+
    array = (int *) malloc(15);
    if(array==NULL)
      goto: clean_up_file;
@@ -342,10 +342,10 @@ This is used in the linux kernel.
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Like C, C# also has a <code>goto LABEL</code> keyword. This section is partly copied from the section on C, since both languages share common syntax.
 
-```csharp
+```c#
 if (x > 0) goto positive;
     else goto negative;
 
@@ -361,14 +361,14 @@ both:
 
 The label must be literal, not computed at run time.  This won't work:
 
-```csharp
+```c#
 goto (x > 0 ? positive : negative);
 ```
 
 
 You can <code>goto</code> ''almost'' anywhere inside the same method, but can't go across method boundaries.  It's sometimes used to break out of nested loops:
 
-```csharp
+```c#
 for (i = 0; ...) {
     for (j = 0; ...) {
         if (condition_met) goto finish;
@@ -377,7 +377,7 @@ for (i = 0; ...) {
 ```
 although you can (not that you ''should'') jump into a loop, too:
 
-```csharp
+```c#
 goto danger;
 for (i = 0; i < 10; i++) {
     danger: /* unless you jumped here with i set to a proper value */
@@ -388,7 +388,7 @@ for (i = 0; i < 10; i++) {
 
 In C#, you can also <code>goto</code> a label from within any section of a try .. catch .. finally block:
 
-```csharp
+```c#
 
 int i = 0;
 tryAgain:
@@ -610,7 +610,7 @@ after second occurrence of jump
 after second occurrence of jump
  Interrupt
 
-$ 
+$
 ```
 
 Same thing but with verify (tracing) on
@@ -1263,21 +1263,21 @@ and implement famous Euclid's algorithm as an imperative program:
 gcdProg = runProgram $ callCC $ \exit ->          -- <--------+
   do                                              --          |
     start <- label                                -- <-----+  |
-    output "Enter two integers, or zero to exit"  --       |  | 
-    nr <- readInt                                 --       |  | 
-    n <- get nr                                   --       |  | 
-    when (n == 0) $                               --       |  | 
-      do output "Exiting"                         --       |  | 
+    output "Enter two integers, or zero to exit"  --       |  |
+    nr <- readInt                                 --       |  |
+    n <- get nr                                   --       |  |
+    when (n == 0) $                               --       |  |
+      do output "Exiting"                         --       |  |
          exit ()                                  -- ---------+
     mr <- readInt                                 --       |
-    loop <- label                                 -- <--+  | 
-    n <- get nr                                   --    |  | 
-    m <- get mr                                   --    |  | 
-    when (n == m) $                               --    |  | 
-      do output ("GCD: " ++ show n)               --    |  | 
+    loop <- label                                 -- <--+  |
+    n <- get nr                                   --    |  |
+    m <- get mr                                   --    |  |
+    when (n == m) $                               --    |  |
+      do output ("GCD: " ++ show n)               --    |  |
          goto start                               -- ------+
-    when (n > m) $ set nr (n - m)                 --    | 
-    when (m > n) $ set mr (m - n)                 --    | 
+    when (n > m) $ set nr (n - m)                 --    |
+    when (m > n) $ set mr (m - n)                 --    |
     goto loop                                     -- ---+
 ```
 
@@ -1313,7 +1313,7 @@ gcdFProg = start
           putStrLn $ "GCD: " ++ show (loop n m)
           start
 
-loop n m 
+loop n m
   | n == m = n
   | n < m  = loop n (m-n)
   | n > m  = loop (n-m) m
@@ -1354,10 +1354,10 @@ concept there() {
 software {
 	loop {
 		break //This breaks the loop, the code after the loop block will be executed next.
-		
+
 		print("This will never print")
 	}
-	
+
 	loop {
 		loop {
 			loop {
@@ -1368,10 +1368,10 @@ software {
 		}
 		print("This will not print")
 	}
-	
-	
+
+
 	//Move to the code contained in the 'there' function.
-	there() 
+	there()
 }
 ```
 
@@ -1521,7 +1521,7 @@ For example, the above problem can be solved more succinctly and transparently u
 
 
 ## Julia
- 
+
 
 Julia provides the @goto and @label macros for goto within functions but these cannot be used at the global level or to jump from one function to another. The macros can however be used for a typical use of @goto -- jumping out to a specific level from nested loops within a function.
 
@@ -1600,7 +1600,7 @@ fun main(args: Array<String>) {
 on foo
   abort()
 end
-  
+
 on bar ()
   foo()
   put "This will never be printed"
@@ -1634,7 +1634,7 @@ Jumps are limited to [[Exceptions]].
 
 ## Lua
 
-Lua 5.2 introduced a <code>goto</code> statement along with labels. It was somewhat controversially implemented instead of a <code>continue</code> keyword, but it is more flexible and supports other types of jumps as well. <code>goto</code> only supports statically-defined labels. 
+Lua 5.2 introduced a <code>goto</code> statement along with labels. It was somewhat controversially implemented instead of a <code>continue</code> keyword, but it is more flexible and supports other types of jumps as well. <code>goto</code> only supports statically-defined labels.
 
 ```lua
 -- Forward jump
@@ -1703,7 +1703,7 @@ Module Checkit {
             70 For I=1 to 10
             80 if i>5 then exit for 120
             90 Gosub 110
-            100 Next i 
+            100 Next i
             110 On A Goto 150,  500
             120 Print "This is the End ?"
             130 Return
@@ -1735,12 +1735,12 @@ Checkit
 
 ```M2000 Interpreter
 
-Module LikeRunBasic { 
+Module LikeRunBasic {
       for i = 1 to 10
       if i = 5 then goto label5
       next i
       end
-       
+
       label5:
       print i
       while i < 10 {
@@ -1748,12 +1748,12 @@ Module LikeRunBasic {
             i = i + 1
       }
       end
-       
+
       label6:
       print i
       if i = 6 then goto finish
       print "Why am I here"
-       
+
       finish:
       print "done"
 }
@@ -1800,7 +1800,7 @@ Module LikeGo {
                  loop
             }
             loop
-      } 
+      }
       break_outer:
       k = 3
       if k == 3 Then Goto later
@@ -1820,8 +1820,8 @@ Module LikeGo {
                   if i+j == 5 then goto break_outer
                   print i+j
             }
-            outer:            
-      } 
+            outer:
+      }
       break_outer:
       k = 3
       if k == 3 Then Goto later
@@ -1839,8 +1839,8 @@ Module LikeGo_No_Labels {
                   if i+j== 4 then exit ' exit breaks only one block
                   if i+j == 5 then break ' break breaks all blocks, but not the Module's block.
                   print i+j
-            }         
-      } 
+            }
+      }
       k = 3
       if k == 3 Else {
             Print k  \\ never executed
@@ -1922,8 +1922,8 @@ $print("end\n")
 ```
 
 
-The NekoVM keeps exception and call stacks in sync when jumping across boundaries to code blocks, but may not include some initiating side effects.  For instance, jumping past a '''try''' phrase into the middle of the code block (where the try is not evaluated) will not catch the '''catch''' of the try catch pair.  There are other cases where '''$goto()''' can cross semantic boundaries; a practice best avoided. 
- 
+The NekoVM keeps exception and call stacks in sync when jumping across boundaries to code blocks, but may not include some initiating side effects.  For instance, jumping past a '''try''' phrase into the middle of the code block (where the try is not evaluated) will not catch the '''catch''' of the try catch pair.  There are other cases where '''$goto()''' can cross semantic boundaries; a practice best avoided.
+
 
 ## Nim
 
@@ -2068,7 +2068,7 @@ Continuations in Perl 6 are currently limited to use in generators via the gathe
             take $i;
         }
     }
-    
+
     say @list[5];
 ```
 
@@ -2129,12 +2129,12 @@ However, an exception can `.resume` in order to jump back to the failure point (
       say "Dividing by $i";
       1/$i.Num + 0; # Fighting hard to make this fail
   }
-  
+
   for ^10 -> $n {
       my $recip = foo($n);
       say "1/{$n} = {$recip.perl}";
   }
-  
+
   CATCH {
       when ~$_ ~~ m:s/Are you sure/ { .resume; #`(yes, I'm sure) }
   }
@@ -2146,7 +2146,7 @@ This code raises an exception on a zero input, but then resumes execution, divid
   Attempt to divide 1 by zero using /
     in sub foo at fail.p6 line 6
     in block <unit> at fail.p6 line 10
-  
+
   Actually thrown at:
     in sub foo at fail.p6 line 6
     in block <unit> at fail.p6 line 10
@@ -2154,7 +2154,7 @@ This code raises an exception on a zero input, but then resumes execution, divid
 
 ## Phix
 
-In Phix, when absolutely necessary, gotos and labels can be implemented using inline assembly. 
+In Phix, when absolutely necessary, gotos and labels can be implemented using inline assembly.
 Using this 'baroque' syntax is viewed as an effective means of dissuading novices from adopting goto as a weapon of choice.
 
 ```Phix
@@ -2179,7 +2179,7 @@ Phix also supports anonymous local labels
 ```Phix
 #ilASM{ jmp @f
         ...
-      @@: 
+      @@:
         ...
         jle @b }
 ```
@@ -2203,10 +2203,10 @@ There are also optional (global) labels:
           ret }
 ```
 
-These are obviously more useful when the reference and declaration are in separate files: if the file containing the declaration is not included, the reference quietly resolves to 0. 
-The above code shows how to duplicate the return address and discard on return, so that execution carries on at the next instruction if the definition is not present. 
+These are obviously more useful when the reference and declaration are in separate files: if the file containing the declaration is not included, the reference quietly resolves to 0.
+The above code shows how to duplicate the return address and discard on return, so that execution carries on at the next instruction if the definition is not present.
 Optional labels are most heavily used as part of the run-time diagnostics, for example pDiagN.e contains lines such as <code>cmp edx,:!opXore92a</code> which checks to see whether an
-invalid memory access wants mapping to a "variable has not been assigned a value" error (and retrieve the correct return address for any error that occurs at that specific location); 
+invalid memory access wants mapping to a "variable has not been assigned a value" error (and retrieve the correct return address for any error that occurs at that specific location);
 if <code>xor</code> is not used/included, the instruction quietly resolves to cmp edx,0.
 
 Lastly (for completeness) there are init labels, defined using
@@ -2247,7 +2247,7 @@ This is 'foo'
 
 ## PL/I
 
-The <code>goto</code> statement causes control to be transferred to a labeled statement in the current or any outer procedure. 
+The <code>goto</code> statement causes control to be transferred to a labeled statement in the current or any outer procedure.
 
 A <code>goto</code> statement cannot transfer control:
 * Into an inactive <code>begin</code> block.
@@ -2273,7 +2273,7 @@ DECLARE
 BEGIN
     DBMS_OUTPUT.put_line( 'startLoop' );
     <<startLoop>>
-        BEGIN    
+        BEGIN
             if i = 0 then
                 raise divide_by_zero;
             end if;
@@ -2286,7 +2286,7 @@ BEGIN
             GOTO finally;
         END;
     <<endLoop>>
-    DBMS_OUTPUT.put_line( 'endLoop' );    
+    DBMS_OUTPUT.put_line( 'endLoop' );
 
     <<finally>>
     DBMS_OUTPUT.put_line( 'Finally' );
@@ -2322,27 +2322,27 @@ label in a While loop):
 
 ```
 
-The label is a colon followed by a name that you assign. The label must be 
-the first token in a statement, and it must be followed by the looping 
+The label is a colon followed by a name that you assign. The label must be
+the first token in a statement, and it must be followed by the looping
 keyword, such as While.
- 
 
-In Windows PowerShell, only loop keywords, such as Foreach, For, and While 
+
+In Windows PowerShell, only loop keywords, such as Foreach, For, and While
 can have a label.
 
 
-Break moves execution out of the labeled loop. In embedded loops, this has 
-a different result than the Break keyword has when it is used by itself. 
+Break moves execution out of the labeled loop. In embedded loops, this has
+a different result than the Break keyword has when it is used by itself.
 This schematic example has a While statement with a For statement:
- 
+
 
 ```PowerShell
 
-    :myLabel while (<condition 1>) 
+    :myLabel while (<condition 1>)
     {
-        for ($item in $items) 
-        { 
-            if (<condition 2>) { break myLabel } 
+        for ($item in $items)
+        {
+            if (<condition 2>) { break myLabel }
             $item = $x   # A statement inside the For-loop
         }
     }
@@ -2353,9 +2353,9 @@ This schematic example has a While statement with a For statement:
 
 If condition 2 evaluates to True, the execution of the script skips down
 to the statement after the labeled loop. In the example, execution starts
-again with the statement "$a = $c". 
+again with the statement "$a = $c".
 
-You can nest many labeled loops, as shown in the following schematic 
+You can nest many labeled loops, as shown in the following schematic
 example.
 
 ```PowerShell
@@ -2378,15 +2378,15 @@ example.
 
 ```
 
-If the $b variable evaluates to True, execution of the script resumes 
-after the loop that is labeled "red". If the $c variable evaluates to 
-True, execution of the script control resumes after the loop that is 
+If the $b variable evaluates to True, execution of the script resumes
+after the loop that is labeled "red". If the $c variable evaluates to
+True, execution of the script control resumes after the loop that is
 labeled "yellow".
 
 If the $a variable evaluates to True, execution resumes after the innermost
 loop. No label is needed.
 
-Windows PowerShell does not limit how far labels can resume execution. The 
+Windows PowerShell does not limit how far labels can resume execution. The
 label can even pass control across script and function call boundaries.
 
 
@@ -2413,7 +2413,7 @@ Print("drei ")
 label4:
 While i<3
   i+1
-  Gosub label1 
+  Gosub label1
   Gosub label2
 Wend
 Print("- ")
@@ -2498,11 +2498,11 @@ Where we generate elements of a list one at a time:
   ;; (-> X u 'you-fell-off-the-end-off-the-list)
   ;; this is the actual generator, producing one item from a-list at a time
   (define (generator)
-     (call/cc control-state)) 
+     (call/cc control-state))
   ;; [CONTINUATION X] -> EMPTY
   ;; hand the next item from a-list to "return" (or an end-of-list marker)'
   (define (control-state return)
-     (for-each 
+     (for-each
         (lambda (an-element-from-a-list)
            (set! return ;; fixed
              (call/cc
@@ -2536,9 +2536,9 @@ When executed, the stack will contain 20; control does not return to the '''foo'
 
 Note: some REXXes don't allow jumping into a '''DO''' loop, although the language specificiations appear to allow it,
 
-as long as the '''END''' or the '''DO''' loop isn't executed. 
+as long as the '''END''' or the '''DO''' loop isn't executed.
 
-The following used PC/REXX to illustrate this example. 
+The following used PC/REXX to illustrate this example.
 
 ```rexx
 /*REXX pgm demonstrates various jumps (GOTOs).  In REXX, it's a SIGNAL. */
@@ -2585,64 +2585,64 @@ and here we are at cJump.
 ### compared to PL/I goto
 
 After a rather longwinded discussion on the subject I offer here my view:
-Whereas PL/I disallows the use of GOTO to jump to anywhere 
+Whereas PL/I disallows the use of GOTO to jump to anywhere
 
 ```txt
 
-Compiler Messages                                                    
-Message       Line.File Message Description                          
-IBM1847I S     212.0    GOTO target is inside a (different) DO loop. 
+Compiler Messages
+Message       Line.File Message Description
+IBM1847I S     212.0    GOTO target is inside a (different) DO loop.
 
 ```
 
-Rexx is very liberal as to the use of Signal. 
+Rexx is very liberal as to the use of Signal.
    As mentioned above some implementations may have restrictions on that.
 This Signal jumps into a Do loop inside a Procedure:
 
 ```rexx
-i=13                            
-signal label                    
-say 'This is never executed'    
-sub: Procedure Expose i         
-  Do i=1 To 10;                 
-label:                          
-    Say 'label reached, i='i    
-    Signal real_start           
+i=13
+signal label
+say 'This is never executed'
+sub: Procedure Expose i
+  Do i=1 To 10;
+label:
+    Say 'label reached, i='i
+    Signal real_start
     End
-  Return                        
+  Return
  real_start:
 ```
 
-Without the 'Signal real_start' which leads us out of the control structure the program would end with a syntax error when encountering the End correponding to the Do.  
+Without the 'Signal real_start' which leads us out of the control structure the program would end with a syntax error when encountering the End correponding to the Do.
 
 I recommend to use Signal only for condition handling and 'global' jumps to labels that are not within some structured constructs such as Do...End
 An example:
 
 ```rexx
-/* REXX *************************************************************** 
-* 12.12.2012 Walter Pachl                                               
-**********************************************************************/ 
-Signal On Syntax                                                        
-Parse Upper Arg part                                                    
-If part<>'' Then                                                        
-  Interpret 'Signal' part                                               
-  Say 'Executing default part'                                          
-  Signal eoj                                                                  
-a:Say 'executing part A'                                                
-  Signal eoj                                                
-b:Say 'executing part B'                                                
-  Signal eoj                                                                             
-Syntax:                                                                 
+/* REXX ***************************************************************
+* 12.12.2012 Walter Pachl
+**********************************************************************/
+Signal On Syntax
+Parse Upper Arg part
+If part<>'' Then
+  Interpret 'Signal' part
+  Say 'Executing default part'
+  Signal eoj
+a:Say 'executing part A'
+  Signal eoj
+b:Say 'executing part B'
+  Signal eoj
+Syntax:
   Say 'argument must be a or b or omitted'
   Exit
 eoj: say 'here we could print statistics'
 ```
-   
+
 This can be useful when the different parts of the program span a few pages.
 Also a Signal eoj in order to Exit from any point in the program to some final activities can be useful.
 
 == {{header|Ring}} ==
-Ring has no labels and goto statements. The exit statements allows leave the current loop and doesn't contain any label where to go. 
+Ring has no labels and goto statements. The exit statements allows leave the current loop and doesn't contain any label where to go.
 
 
 ## Robotic

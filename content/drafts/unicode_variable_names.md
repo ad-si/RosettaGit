@@ -13,12 +13,12 @@ tags = []
 {{task|Unicode}}
 # Describe, and give a pointer to documentation on your languages use of characters ''beyond'' those of the ASCII character set in the naming of variables.
 # Show how to:
-:* Set a variable with a name including the 'Δ', (delta ''character''), to 1 
+:* Set a variable with a name including the 'Δ', (delta ''character''), to 1
 :* Increment it
 :* Print its value.
 
 
-;Related task: 
+;Related task:
 * [[Case-sensitivity of identifiers]]
 
 
@@ -31,7 +31,7 @@ tags = []
 
 ''To make the programmer’s task easier, 8th not only lets you actually enter any UTF-8 text, it also lets you use special “escapes” in your text to make it easier to enter obscure characters. Thus, for example, this string: "qu\u00e9" results in this: qué.
 
-''The words (e.g. “functions”) 8th provides to do string manipulation are also UTF-8 aware, which means you don’t have to worry about creating an invalid bit of UTF-8 encoded text (unless you deliberately do so).'' 
+''The words (e.g. “functions”) 8th provides to do string manipulation are also UTF-8 aware, which means you don’t have to worry about creating an invalid bit of UTF-8 encoded text (unless you deliberately do so).''
 
 -- [http://8th-dev.com/local.html Writing localized applications with 8th]
 
@@ -82,7 +82,7 @@ Unless you have made it a default, GNAT would require the -gnatW8 flag to unders
 ```Ada
 with Ada.Text_IO;
 procedure main is
-   Δ : Integer; 
+   Δ : Integer;
 begin
    Δ := 41;
    Δ := Δ + 1;
@@ -165,7 +165,7 @@ PRINT Δ
 user@host $ bacon prog
 Converting 'prog.bac'... done, 10 lines were processed in 0.008 seconds.
 Compiling 'prog.bac'... clang  -c prog.bac.c
-clang -o prog prog.bac.o -lbacon -lm 
+clang -o prog prog.bac.o -lbacon -lm
 Done, program 'prog' ready.
 user@host $ ./prog
 2
@@ -207,11 +207,11 @@ C has limited support for Unicode in variable names, see Annex D of the [http://
 
 int main() {
     int Δ = 1;
-    
+
     Δ++;
-    
+
     printf("%d",Δ);
-    
+
     return 0;
 }
 
@@ -226,17 +226,17 @@ Output:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Section 2.4.2 of the [http://go.microsoft.com/fwlink/?LinkId=199552 C# Language Specification] gives rules for identifiers. They correspond exactly to those recommended by the [http://unicode.org/reports/tr31/ Unicode Standard Annex 31], except that underscore is allowed as an initial character (as is traditional in the C programming language), Unicode escape sequences are permitted in identifiers, and the "@" character is allowed as a prefix to enable keywords to be used as identifiers.
 
-```csharp
+```c#
 class Program
 {
     static void Main()
     {
         var Δ = 1;
         Δ++;
-        System.Console.WriteLine(Δ);        
+        System.Console.WriteLine(Δ);
     }
 }
 ```
@@ -251,9 +251,9 @@ class Program
 
 ## Clojure
 
-According to the current [http://clojure.org/reader documentation], one should stick to naming with alphanumeric characters and *, +, !, -, _, and ? to avoid possible problems if future versions of Clojure decide to apply special meaning to a character. 
+According to the current [http://clojure.org/reader documentation], one should stick to naming with alphanumeric characters and *, +, !, -, _, and ? to avoid possible problems if future versions of Clojure decide to apply special meaning to a character.
 
-That being said, it is not currently enforced, so while you probably shouldn't, you technically can.  
+That being said, it is not currently enforced, so while you probably shouldn't, you technically can.
 
 
 ```clojure
@@ -390,7 +390,7 @@ public program()
 {
     var Δ := 1;
     Δ := Δ + 1;
- 
+
     console.writeLine:Δ
 }
 ```
@@ -452,7 +452,7 @@ variable ∆
 
 ## FreeBASIC
 
-FreeBASIC does not allow non-ASCII characters in variable names or identifiers generally. 
+FreeBASIC does not allow non-ASCII characters in variable names or identifiers generally.
 
 The only ASCII characters allowed are numerals (0-9), letters (a-z, A-Z) and the underscore(_).
 
@@ -588,7 +588,7 @@ console.log([ᾩ, ĦĔĽĻŎ, 〱〱〱〱, जावास्क्रिप्
 
 ## jq
 
-Apart from the initial "$", the characters allowed in so-called "$ variables" in jq are restricted to alphanumeric characters and the underscore: [A-Za-z0-9_].  
+Apart from the initial "$", the characters allowed in so-called "$ variables" in jq are restricted to alphanumeric characters and the underscore: [A-Za-z0-9_].
 
 However, in practice, the keys of JSON objects can also be used as variable names.  For example, in the following expression, "Δ" is in effect set to 1 and then its value is retrieved in the environment in which "Δ" has been set:
 
@@ -597,11 +597,11 @@ However, in practice, the keys of JSON objects can also be used as variable name
 ```
 
 
-In jq 1.5 and later, 
+In jq 1.5 and later,
 ```jq
 .["Δ"]
 ```
- can be abbreviated to 
+ can be abbreviated to
 ```jq
 ."Δ"
 ```
@@ -717,7 +717,7 @@ VISIBLE SRS ":[GREEK CAPITAL LETTER DELTA]"
 
 ## Lua
 
-Lua 5.3 supports UTF-8 encoding as documented here: https://www.lua.org/manual/5.3/manual.html#6.5 . 
+Lua 5.3 supports UTF-8 encoding as documented here: https://www.lua.org/manual/5.3/manual.html#6.5 .
 However, this support is not strictly necessary for this task so long as the Lua script is edited using a UTF-8 enabled text editor.
 
 ```Lua
@@ -851,7 +851,7 @@ echo(Δ)
 
 ## Objeck
 
-As of 3.2, Objeck supports UTF-8 encoded I/O and stores characters in the runtime's native Unicode format. 
+As of 3.2, Objeck supports UTF-8 encoded I/O and stores characters in the runtime's native Unicode format.
 
 ```objeck
 
@@ -880,8 +880,8 @@ PARI supports Unicode variable names only insofar as [[#C|C]] does.
 
 {{incomplete|Peloton}}
 1. (working on it)
-  
-2. 
+
+2.
 
 ```sgml><@ LETVARLIT
 Δ|1</@>
@@ -964,7 +964,7 @@ $Δ++;
 say $Δ;
 ```
 
-Function and subroutine names can also use Unicode characters: (as can methods, classes, packages, whatever...) 
+Function and subroutine names can also use Unicode characters: (as can methods, classes, packages, whatever...)
 
 ```perl6
 my @ᐁ = (0, 45, 60, 90);
@@ -1111,7 +1111,7 @@ Identifiers are unlimited in length. Case is significant.
 >>> Δx += 1
 >>> print(Δx)
 2
->>> 
+>>>
 ```
 
 
@@ -1183,7 +1183,7 @@ Function and variable names are stored as strings, and UTF-8 is usable, as long 
 {{works with|ROO REXX}}
 
 
-Note:   this REXX program   ''only''   works with the   '''R4'''   or   '''ROO'''   REXX interpreter under DOS or DOS under Windows.  
+Note:   this REXX program   ''only''   works with the   '''R4'''   or   '''ROO'''   REXX interpreter under DOS or DOS under Windows.
 
 This REXX program works because the   '''R4'''   and   '''ROO'''   REXX interpreters supports an extended character set.
 
@@ -1241,7 +1241,7 @@ puts Δ  # => 2
 
 ## Rust
 
-Rust source encoding is [https://doc.rust-lang.org/reference.html#input-format specified] to be UTF-8. [https://doc.rust-lang.org/reference.html#identifiers Identifiers] must begin with a character that has Unicode XID_start property and remaining characters must have the XID_Continue property. (Which means that [https://github.com/mozilla/rust/issues/7048#issuecomment-19254166 ╯°□°╯︵┻━┻] is not permitted under current specification) 
+Rust source encoding is [https://doc.rust-lang.org/reference.html#input-format specified] to be UTF-8. [https://doc.rust-lang.org/reference.html#identifiers Identifiers] must begin with a character that has Unicode XID_start property and remaining characters must have the XID_Continue property. (Which means that [https://github.com/mozilla/rust/issues/7048#issuecomment-19254166 ╯°□°╯︵┻━┻] is not permitted under current specification)
 
 <b>Non-ASCII identifiers are [https://github.com/mozilla/rust/pull/10605 feature gated] since version 0.9</b>
 

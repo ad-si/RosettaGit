@@ -109,7 +109,7 @@ OD;
 # the average of prev prime and next prime is not an integer                  #
 IF   REAL avg = ( prev prime + next prime ) / 2;
      curr prime > avg THEN primes[ curr prime ] := strong
-ELIF curr prime < avg THEN primes[ curr prime ] := weak  
+ELIF curr prime < avg THEN primes[ curr prime ] := weak
 FI;
 # classify the rest of the primes                                             #
 FOR p FROM next prime + 1 WHILE curr prime <= max number DO
@@ -119,7 +119,7 @@ FOR p FROM next prime + 1 WHILE curr prime <= max number DO
         next prime := p;
         IF   INT avg = ( prev prime + next prime ) OVER 2;
              curr prime > avg THEN primes[ curr prime ] := strong
-        ELIF curr prime < avg THEN primes[ curr prime ] := weak  
+        ELIF curr prime < avg THEN primes[ curr prime ] := weak
         FI
     FI
 OD;
@@ -165,11 +165,11 @@ first 37   weak primes:
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using static System.Console;
 using static System.Linq.Enumerable;
 using System;
@@ -187,7 +187,7 @@ public static class StrongAndWeakPrimes
         WriteLine($"There are {weakPrimes.TakeWhile(p => p < 1_000_000).Count():N0} weak primes below {1_000_000:N0}");
         WriteLine($"There are {weakPrimes.TakeWhile(p => p < 10_000_000).Count():N0} weak primes below {1_000_000:N0}");
     }
-   
+
 }
 ```
 
@@ -390,11 +390,11 @@ The number of weak primes below 10,000,000 is 321,750
    NB. tally of strong primes less than one and ten million
    +/ STRONG_PRIMES </ 1e6 * 1 10
 37723 320991
-   
+
 
    weakQ =: 1&{ < [: average {. , {:
    weaklings =: (0, 0,~ 3&(weakQ\))Filter PRIMES
-   NB. first 37 weak primes   
+   NB. first 37 weak primes
    37 {. weaklings
 3 7 13 19 23 31 43 47 61 73 83 89 103 109 113 131 139 151 167 181 193 199 229 233 241 271 283 293 313 317 337 349 353 359 383 389 401
    NB. tally of weak primes less than one and ten million
@@ -423,7 +423,7 @@ function parseprimelist()
         x = (primelist[n - 1] + primelist[n + 1]) / 2
         if x > p
             push!(weaks, p)
-        elseif x < p 
+        elseif x < p
             push!(strongs, p)
         else
             push!(balanceds, p)
@@ -431,19 +431,19 @@ function parseprimelist()
     end
     println("The first 36 strong primes are: ", strongs[1:36])
     println("There are ", format(sum(map(x -> x < 1000000, strongs)), commas=true), " stromg primes less than 1 million.")
-    println("There are ", format(length(strongs), commas=true), " strong primes less than 10 million.")    
+    println("There are ", format(length(strongs), commas=true), " strong primes less than 10 million.")
     println("The first 37 weak primes are: ", weaks[1:37])
     println("There are ", format(sum(map(x -> x < 1000000, weaks)), commas=true), " weak primes less than 1 million.")
-    println("There are ", format(length(weaks), commas=true), " weak primes less than 10 million.")    
+    println("There are ", format(length(weaks), commas=true), " weak primes less than 10 million.")
     println("The first 28 balanced primes are: ", balanceds[1:28])
     println("There are ", format(sum(map(x -> x < 1000000, balanceds)), commas=true), " balanced primes less than 1 million.")
-    println("There are ", format(length(balanceds), commas=true), " balanced primes less than 10 million.")    
+    println("There are ", format(length(balanceds), commas=true), " balanced primes less than 10 million.")
 end
 
 parseprimelist()
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 The first 36 strong primes are: [11, 17, 29, 37, 41, 59, 67, 71, 79, 97, 101, 107, 127, 137, 149, 163, 179, 191, 197, 223, 227, 239, 251, 269, 277, 281, 307, 311, 331, 347, 367, 379, 397, 419, 431, 439]
@@ -488,13 +488,13 @@ end
 -- Return a boolean indicating whether prime p is strong
 function isStrong (p)
   if p == 1 or p == #prime then return false end
-  return prime[p] > (prime[p-1] + prime[p+1]) / 2 
+  return prime[p] > (prime[p-1] + prime[p+1]) / 2
 end
 
 -- Return a boolean indicating whether prime p is weak
 function isWeak (p)
   if p == 1 or p == #prime then return false end
-  return prime[p] < (prime[p-1] + prime[p+1]) / 2 
+  return prime[p] < (prime[p-1] + prime[p+1]) / 2
 end
 
 -- Main procedure
@@ -544,42 +544,42 @@ There are 321750 weak primes below ten million.
 
 
 ```maple
-isStrong := proc(n::posint) local holder; 
-holder := false; 
-if isprime(n) and 1/2*prevprime(n) + 1/2*nextprime(n) < n then 
-   holder := true; 
-end if; 
-return holder; 
+isStrong := proc(n::posint) local holder;
+holder := false;
+if isprime(n) and 1/2*prevprime(n) + 1/2*nextprime(n) < n then
+   holder := true;
+end if;
+return holder;
 end proc:
 
-isWeak := proc(n::posint) local holder; 
-holder := false; 
-if isprime(n) and n < 1/2*prevprime(n) + 1/2*nextprime(n) then 
-   holder := true; 
-end if; 
-return holder; 
+isWeak := proc(n::posint) local holder;
+holder := false;
+if isprime(n) and n < 1/2*prevprime(n) + 1/2*nextprime(n) then
+   holder := true;
+end if;
+return holder;
 end proc
 
-findStrong := proc(n::posint) local count, list, k; 
-count := 0; list := []; 
-for k from 3 while count < n do 
-  if isStrong(k) then count := count + 1; 
-    list := [op(list), k]; 
-  end if; 
-end do; 
-return list; 
+findStrong := proc(n::posint) local count, list, k;
+count := 0; list := [];
+for k from 3 while count < n do
+  if isStrong(k) then count := count + 1;
+    list := [op(list), k];
+  end if;
+end do;
+return list;
 end proc:
 
-findWeak := proc(n::posint) local count, list, k; 
-count := 0; 
-list := []; 
-for k from 3 while count < n do 
-  if isWeak(k) then 
-     count := count + 1; 
-     list := [op(list), k]; 
-  end if; 
-end do; 
-return list; 
+findWeak := proc(n::posint) local count, list, k;
+count := 0;
+list := [];
+for k from 3 while count < n do
+  if isWeak(k) then
+     count := count + 1;
+     list := [op(list), k];
+  end if;
+end do;
+return list;
 end proc:
 
 findStrong(36)
@@ -590,7 +590,7 @@ countWeak(1000000)
 countWeak(10000000)
 ```
 
-{{Out}}  
+{{Out}}
 
 ```txt
 [11, 17, 29, 37, 41, 59, 67, 71, 79, 97, 101, 107, 127, 137, 149, 163, 179, 191, 197, 223, 227, 239, 251, 269, 277, 281, 307, 311, 331, 347, 367, 379, 397, 419, 431, 439]
@@ -608,7 +608,7 @@ countWeak(10000000)
 Converting the primes into deltaPrime, so that its easy to check the strong- /weakness.
 Startprime 2 +1 -> (3)+2-> (5)+2 ->(7) +4-> (11)+2 .... 1,2,2,4,2,4,2,4,6,2,....
 By using only odd primes startprime is 3 and delta -> delta/2
- 
+
 If deltaAfter < deltaBefore than a strong prime is found.
 
 ```pascal
@@ -620,18 +620,18 @@ const
   PrimeLimit = 1000*1000*1000;//must be >= 2*3;
 type
   tLimit = 0..(PrimeLimit-1) DIV 2;
-  tPrimCnt = 0..51*1000*1000;  
+  tPrimCnt = 0..51*1000*1000;
   tWeakStrong = record
                    strong,
                    balanced,
                    weak : NativeUint;
-                end;   
+                end;
 var
   primes: array [tLimit] of byte; //always initialized with 0 at startup
   delta : array [tPrimCnt] of byte;
-  cntWS : tWeakStrong;  
+  cntWS : tWeakStrong;
   deltaCnt :NativeUint;
-  
+
 procedure sieveprimes;
 //Only odd numbers, minimal count of strikes
 var
@@ -659,17 +659,17 @@ begin
     end;
     inc(spIdx);
   until false;
-end;  
+end;
 { Not neccessary for this small primes.
 procedure EmergencyStop(i:NativeInt);
 Begin
   Writeln( 'STOP at ',i,'.th prime');
   HALT(i);
-end;    
+end;
 }
 function GetDeltas:NativeUint;
-//Converting prime positions into distance  
-var 
+//Converting prime positions into distance
+var
   i,j,last : NativeInt;
 Begin
   j :=0;
@@ -684,113 +684,113 @@ Begin
       inc(j);
    end;
    GetDeltas := j;
-end;  
- 
+end;
+
 procedure OutHeader;
 Begin
   writeln('Limit':12,'Strong':10,'balanced':12,'weak':10);
-end;     
+end;
 
 procedure OutcntWS (const cntWS : tWeakStrong;Lmt:NativeInt);
 Begin
   with cntWS do
     writeln(lmt:12,Strong:10,balanced:12,weak:10);
-end;     
+end;
 
 procedure CntWeakStrong10(var Out:tWeakStrong);
-// Output a table of values for strang/balanced/weak for 10^n 
+// Output a table of values for strang/balanced/weak for 10^n
 var
   idx,diff,prime,lmt :NativeInt;
-begin 
+begin
   OutHeader;
   lmt := 10;
   fillchar(Out,SizeOf(Out),#0);
   idx := 0;
   prime:=3;
   repeat
-    dec(prime,2*delta[idx]);  
-    while idx < deltaCnt do   
+    dec(prime,2*delta[idx]);
+    while idx < deltaCnt do
     Begin
       inc(prime,2*delta[idx]);
-      IF prime > lmt then 
+      IF prime > lmt then
          BREAK;
-         
+
       diff := delta[idx] - delta[idx+1];
-      if diff>0 then 
+      if diff>0 then
         inc(Out.strong)
-      else  
-        if diff< 0 then 
+      else
+        if diff< 0 then
           inc(Out.weak)
         else
           inc(Out.balanced);
-          
-      inc(idx);            
-    end; 
+
+      inc(idx);
+    end;
     OutcntWS(Out,Lmt);
     lmt := lmt*10;
-  until Lmt >  PrimeLimit; 
+  until Lmt >  PrimeLimit;
 end;
 
 procedure WeakOut(cnt:NativeInt);
-var   
+var
   idx,prime : NativeInt;
-begin 
+begin
   Writeln('The first ',cnt,' weak primes');
-  prime:=3;      
+  prime:=3;
   idx := 0;
   repeat
-    inc(prime,2*delta[idx]);  
+    inc(prime,2*delta[idx]);
     if delta[idx] - delta[idx+1]< 0 then
-    Begin 
+    Begin
       write(prime,' ');
       dec(cnt);
       IF cnt <=0 then
         BREAK;
-    end; 
-    inc(idx);   
+    end;
+    inc(idx);
   until idx >= deltaCnt;
   Writeln;
 end;
 
 procedure StrongOut(cnt:NativeInt);
-var   
+var
   idx,prime : NativeInt;
-begin 
+begin
   Writeln('The first ',cnt,' strong primes');
-  prime:=3;      
+  prime:=3;
   idx := 0;
   repeat
-    inc(prime,2*delta[idx]);  
+    inc(prime,2*delta[idx]);
     if delta[idx] - delta[idx+1]> 0 then
-    Begin 
+    Begin
       write(prime,' ');
       dec(cnt);
       IF cnt <=0 then
         BREAK;
-    end; 
-    inc(idx);   
+    end;
+    inc(idx);
   until idx >= deltaCnt;
   Writeln;
 end;
 
 begin
   sieveprimes;
-  deltaCnt := GetDeltas;  
-  
+  deltaCnt := GetDeltas;
+
   StrongOut(36);
   WeakOut(37);
   CntWeakStrong10(CntWs);
 end.
 ```
 
-{{Out}}  
+{{Out}}
 
 ```txt
 
 The first 36 strong primes
-11 17 29 37 41 59 67 71 79 97 101 107 127 137 149 163 179 191 197 223 227 239 251 269 277 281 307 311 331 347 367 379 397 419 431 439 
+11 17 29 37 41 59 67 71 79 97 101 107 127 137 149 163 179 191 197 223 227 239 251 269 277 281 307 311 331 347 367 379 397 419 431 439
 The first 37 weak primes
-3 7 13 19 23 31 43 47 61 73 83 89 103 109 113 131 139 151 167 181 193 199 229 233 241 271 283 293 313 317 337 349 353 359 383 389 401 
+3 7 13 19 23 31 43 47 61 73 83 89 103 109 113 131 139 151 167 181 193 199 229 233 241 271 283 293 313 317 337 349 353 359 383 389 401
        Limit    Strong    balanced      weak
           10         0           1         2
          100        10           2        12
@@ -848,17 +848,17 @@ for ([\@strong,   'strong',   36, 1e6, 1e7],
 ```txt
 
 First 36 strong primes:
-11 17 29 37 41 59 67 71 79 97 101 107 127 137 149 163 179 191 197 223 227 239 251 269 277 281 307 311 331 347 367 379 397 419 431 439 
+11 17 29 37 41 59 67 71 79 97 101 107 127 137 149 163 179 191 197 223 227 239 251 269 277 281 307 311 331 347 367 379 397 419 431 439
 Count of strong primes <=  1,000,000:  37,723
 Count of strong primes <= 10,000,000: 320,991
 
 First 37 weak primes:
-3 7 13 19 23 31 43 47 61 73 83 89 103 109 113 131 139 151 167 181 193 199 229 233 241 271 283 293 313 317 337 349 353 359 383 389 401 
+3 7 13 19 23 31 43 47 61 73 83 89 103 109 113 131 139 151 167 181 193 199 229 233 241 271 283 293 313 317 337 349 353 359 383 389 401
 Count of weak primes <=  1,000,000:  37,780
 Count of weak primes <= 10,000,000: 321,750
 
 First 28 balanced primes:
-5 53 157 173 211 257 263 373 563 593 607 653 733 947 977 1,103 1,123 1,187 1,223 1,367 1,511 1,747 1,753 1,907 2,287 2,417 2,677 2,903 
+5 53 157 173 211 257 263 373 563 593 607 653 733 947 977 1,103 1,123 1,187 1,223 1,367 1,511 1,747 1,753 1,907 2,287 2,417 2,677 2,903
 Count of balanced primes <=  1,000,000:  2,994
 Count of balanced primes <= 10,000,000: 21,837
 
@@ -978,11 +978,11 @@ def primesfrom2to(n):
     return np.r_[2,3,((3*np.nonzero(sieve)[0]+1)|1)]
 
 p = primes10m   = primesfrom2to(10_000_000)
-s = strong10m   = [t for s, t, u in zip(p, p[1:], p[2:]) 
+s = strong10m   = [t for s, t, u in zip(p, p[1:], p[2:])
                    if t > (s + u) / 2]
-w = weak10m     = [t for s, t, u in zip(p, p[1:], p[2:]) 
+w = weak10m     = [t for s, t, u in zip(p, p[1:], p[2:])
                    if t < (s + u) / 2]
-b = balanced10m = [t for s, t, u in zip(p, p[1:], p[2:]) 
+b = balanced10m = [t for s, t, u in zip(p, p[1:], p[2:])
                    if t == (s + u) / 2]
 
 print('The first   36   strong primes:', s[:36])
@@ -1202,7 +1202,7 @@ object StrongWeakPrimes {
           |Weak Primes < 1,000,000: ${weakPrimes.takeWhile(_ < bnd).size}%,d
           |Weak Primes < 10,000,000: ${weakPrimes.takeWhile(_ < 10*bnd).size}%,d""".stripMargin)
   }
-  
+
   def weakPrimes: LazyList[Int] = primeTrips.filter{case a +: b +: c +: _ => b < (a + c)/2.0}.map(_(1)).to(LazyList)
   def strongPrimes: LazyList[Int] = primeTrips.filter{case a +: b +: c +: _ => b > (a + c)/2}.map(_(1)).to(LazyList)
   def primeTrips: Iterator[LazyList[Int]] = primes.sliding(3)

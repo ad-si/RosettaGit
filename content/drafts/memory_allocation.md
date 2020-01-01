@@ -363,10 +363,10 @@ void funcC(int a)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 C# is a managed language, so memory allocation is usually not done manually.  However, in unsafe code it is possible to declare and operate on pointers.
 
-```csharp
+```c#
 using System;
 using System.Runtime.InteropServices;
 

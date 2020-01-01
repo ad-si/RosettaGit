@@ -279,10 +279,10 @@ repeat(example, 4);
  repeat([]{std::cout << "Example\n";}, 4);
 ```
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace Repeat {

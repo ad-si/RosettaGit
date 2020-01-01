@@ -561,11 +561,11 @@ int strings_are_in_ascending_order(char * * strings, int nstrings)
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 public static (bool lexicallyEqual, bool strictlyAscending) CompareAListOfStrings(List<string> strings) =>
     strings.Count < 2 ? (true, true) :
     (

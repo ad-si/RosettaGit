@@ -944,13 +944,13 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{works with|C sharp|C#|3+}}
 
 Actual Workhorse code
 
-```csharp
+```c#
 
 using System;
 using System.Collections;
@@ -984,7 +984,7 @@ namespace RosettaCodeTasks
 
 Method showing population of arraylist and usage of flatten method
 
-```csharp
+```c#
 
 using System;
 using System.Collections;
@@ -1034,7 +1034,7 @@ namespace RosettaCodeTasks
 {{works with|C sharp|C#|4+}}
 
 
-```csharp
+```c#
 
 	public static class Ex {
 		public static List<object> Flatten(this List<object> list) {

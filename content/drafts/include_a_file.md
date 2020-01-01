@@ -50,12 +50,12 @@ Some remarks are necessary here.
 Ada does not define how the source code is stored in files. The language rather talks about compilation units. A compilation unit "imports" another compilation unit by using context clauses - these have the syntax "with CU1, CU2, ...;". All compilers I know of require in their standard mode exactly one compilation unit per file; also file naming conventions vary. However GNAT e.g. has a mode that can deal with files holding several compilation units and any file name conventions.
 
 ```Ada
-with Ada.Text_IO, Another_Package; use Ada.Text_IO;    
-  -- the with-clause tells the compiler to include the Text_IO package from the Ada standard 
-  -- and Another_Package. Subprograms from these packages may be called as follows: 
+with Ada.Text_IO, Another_Package; use Ada.Text_IO;
+  -- the with-clause tells the compiler to include the Text_IO package from the Ada standard
+  -- and Another_Package. Subprograms from these packages may be called as follows:
   --               Ada.Text_IO.Put_Line("some text");
-  --               Another_Package.Do_Something("some text"); 
-  -- The use-clause allows the program author to write a subprogram call shortly as 
+  --               Another_Package.Do_Something("some text");
+  -- The use-clause allows the program author to write a subprogram call shortly as
   --               Put_Line("some text");
 ```
 
@@ -65,9 +65,9 @@ with Ada.Text_IO, Another_Package; use Ada.Text_IO;
 
 The formal definition of Algol68 make numerous references to the standard '''prelude''' and '''postlude'''.
 
-At the time the language was formally defined it was typical for code to be stored on decks of [[wp:Punched card|punched cards]] (or [[wp:Punched tape|paper tape]]). 
-Possibly because storing code on [[wp:Hard disk drive|disk]] (or [[wp:Drum memory|drum]]) was expensive.  
-Similarly card decks can be read sequentially from ''just'' one [[wp:Punched card input/output|card reader]].  
+At the time the language was formally defined it was typical for code to be stored on decks of [[wp:Punched card|punched cards]] (or [[wp:Punched tape|paper tape]]).
+Possibly because storing code on [[wp:Hard disk drive|disk]] (or [[wp:Drum memory|drum]]) was expensive.
+Similarly card decks can be read sequentially from ''just'' one [[wp:Punched card input/output|card reader]].
 It appears the Algol68 "standard" assumed all cards could be simply stacked before and after the actual ''source code'', hence the references "prelude" and "postlude" in the formal standard.
 
 =
@@ -98,7 +98,7 @@ BEGIN
 # -*- coding: utf-8 -*- #
 # Block teardown code:  #
   printf(($"Postlude test."l$))
-EXIT 
+EXIT
 # Exception code: #
   value error not mended: SKIP
 END
@@ -126,7 +126,7 @@ Postlude test.
 
 '''Other implementations: e.g. [[ALGOL 68RS]] and [[ALGOL 68G]]'''
 
-Note that actual ''source code'' inclusion with parsing can be avoided because of a more generalised separate compilation method storing declaration specifications in a ''[[wp:data dictionary|data dictionary]]''.  
+Note that actual ''source code'' inclusion with parsing can be avoided because of a more generalised separate compilation method storing declaration specifications in a ''[[wp:data dictionary|data dictionary]]''.
 Different to '''#include''' found in [[C]] where the include file needs to be parsed for each source file that includes it.
 
 =
@@ -281,40 +281,40 @@ sDeci:     .space 15,' '
            .asciz "\n"
 .text
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                       @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                    @ so here r2 contains the length of the message 
-    mov r1,r0                                       @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                            @ restaur des  2 registres */ 
-    bx lr                                           @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                       @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                    @ so here r2 contains the length of the message
+    mov r1,r0                                       @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                            @ restaur des  2 registres */
+    bx lr                                           @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -327,17 +327,17 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
-    bx lr     
+    pop {r1-r4,lr}                                    @ restaur registres
+    bx lr
 /***************************************************/
 /*  Converting a register to a signed decimal      */
 /***************************************************/
@@ -346,7 +346,7 @@ conversion10S:
     push {r0-r4,lr}       @ save registers
     mov r2,r1             @ debut zone stockage
     mov r3,#'+'           @ par defaut le signe est +
-    cmp r0,#0             @ negative number ? 
+    cmp r0,#0             @ negative number ?
     movlt r3,#'-'         @ yes
     mvnlt r0,r0           @ number inversion
     addlt r0,#1
@@ -357,9 +357,9 @@ conversion10S:
     strb r1,[r2,r4]       @ store digit on area
     sub r4,r4,#1          @ previous position
     cmp r0,#0             @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]       @ store signe 
+    strb r3,[r2,r4]       @ store signe
     subs r4,r4,#1         @ previous position
     blt  100f             @ if r4 < 0 -> end
 
@@ -368,15 +368,15 @@ conversion10S:
     strb r1,[r2,r4]       @store byte space
     subs r4,r4,#1         @ previous position
     bge 2b                @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}        @ restaur registers
-    bx lr  
- 
+    bx lr
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -384,12 +384,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   display error message                        */
@@ -410,12 +410,12 @@ displayError:
     bl affichageMess
 100:
     pop {r0-r2,lr}                          @ restaur registers
-    bx lr                                   @ return 
+    bx lr                                   @ return
 iAdrszMessErr:                 .int szMessErr
 iAdrsHexa:                     .int sHexa
 iAdrsDeci:                     .int sDeci
 /******************************************************************/
-/*     Converting a register to hexadecimal                      */ 
+/*     Converting a register to hexadecimal                      */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion16:
@@ -425,9 +425,9 @@ conversion16:
     mov r3,r0                                          @ save entry value
 1:                                                     @ start loop
     and r0,r3,r4                                       @value register and mask
-    lsr r0,r2                                          @ move right 
+    lsr r0,r2                                          @ move right
     cmp r0,#10                                         @ compare value
-    addlt r0,#48                                       @ <10  ->digit	
+    addlt r0,#48                                       @ <10  ->digit
     addge r0,#55                                       @ >10  ->letter A-F
     strb r0,[r1],#1                                    @ store digit on area and + 1 in area address
     lsr r4,#4                                          @ shift mask 4 positions
@@ -435,7 +435,7 @@ conversion16:
     bge 1b                                             @  no -> loop
 
 100:
-    pop {r1-r4,lr}                                     @ restaur registers 
+    pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @return
 /***************************************************/
 /* integer division unsigned                       */
@@ -450,14 +450,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -475,7 +475,7 @@ szMessageOK:        .asciz "Hello \n"
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                                   @ entry of program
     push {fp,lr}                        @ saves registers
     ldr r0,iAdrszMessageOK
@@ -662,10 +662,10 @@ In C and C++, inclusion of other files is achieved via a preprocessor. The <code
 Although it is often conventional and idiomatic for a project to use its own headers in the style described on the second line above, it's also possible to tell most compilers using various flags (e. g. GCC and Clang accept <tt>-I</tt>) to treat an arbitrary directory as a system/library include folder, thereby allowing any contained files to be included using the angle bracket syntax.
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 /* The C# language specification does not give a mechanism for 'including' one source file within another,
  * likely because there is no need - all code compiled within one 'assembly' (individual IDE projects
  * are usually compiled to separate assemblies) can 'see' all other code within that assembly.
@@ -679,7 +679,7 @@ Although it is often conventional and idiomatic for a project to use its own hea
 The inclusion of other files is achieved via a preprocessor. The <code>#include</code> preprocessor directive tells the compiler to incorporate code from the included file. This is normally used near the top of a source file and is usually used to tell the compiler to include header files for the function libraries.
 
 ```clipper
-  #include "inkey.ch" 
+  #include "inkey.ch"
 ```
 
 
@@ -1198,7 +1198,7 @@ There is an unofficial tag, but this will be ignored by most browsers:
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-Include another file of source code using the preprocessor statement: 
+Include another file of source code using the preprocessor statement:
 ```Icon
 $include "filename.icn"
 ```
@@ -1530,7 +1530,7 @@ To include a header file myheader.lua:
 
 
 ```lua
- require "myheader" 
+ require "myheader"
 ```
 
 
@@ -1623,18 +1623,18 @@ read "somefile":
 
 
 ```Mathematica
- Get["myfile.m"] 
+ Get["myfile.m"]
 ```
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-MATLAB and Octave look for functions in *.m and *.mex included in the "path". 
+MATLAB and Octave look for functions in *.m and *.mex included in the "path".
 New functions can be included, either by storing a new function in an existing path, or by extending the existing path to a new directory. When two functions have the same name, the function found first in the path takes precedence. The later is shown here:
 
 
 ```MATLAB
   % add a new directory at the end of the path
-  path(path,newdir);  
+  path(path,newdir);
   addpath(newdir,'-end');  % same as before
 
   % add a new directory at the beginning
@@ -1678,7 +1678,7 @@ To include classes, static methods etc. from other namespaces, include those nam
 ```Nemerle>using System.Console;</lang
 
 <tt>using</tt> is for accessing code that has already been compiled into libraries. Nemerle also allows for creating
-<tt>partial</tt> classes (and structs), the source code of which may be split amongst several files as long as the class is 
+<tt>partial</tt> classes (and structs), the source code of which may be split amongst several files as long as the class is
 marked as <tt>partial</tt> in each place that part of it is defined. An interesting feature of partial classes in
 Nemerle is that some parts of partial classes may be written in C# while others are written in Nemerle.
 
@@ -1743,14 +1743,14 @@ include Name_of_a_module
 ## Oforth
 
 
-In order to load a file with name filename : 
+In order to load a file with name filename :
 
 ```Oforth
 "filename" load
 ```
 
 
-In order to load a package with name pack : 
+In order to load a package with name pack :
 
 ```Oforth>import: pack</lang
 
@@ -1758,7 +1758,7 @@ In order to load a package with name pack :
 
 ## ooRexx
 
-ooRexx has a package system and no ability for textual inclusion of other text files.  Importing of other packages is done via the ::requires directive. 
+ooRexx has a package system and no ability for textual inclusion of other text files.  Importing of other packages is done via the ::requires directive.
 
 ```ooRexx
    ::requires "regex.cls"
@@ -1995,7 +1995,7 @@ consult('filename').
 
 ## PureBasic
 
-IncludeFile will include the named source file at the current place in the code. 
+IncludeFile will include the named source file at the current place in the code.
 
 ```PureBasic
 IncludeFile "Filename"
@@ -2008,8 +2008,8 @@ XIncludeFile "Filename"
 ```
 
 
-IncludeBinary will include a named file of any type at the current place in the code. 
-IncludeBinary don't have to, but should preferably be done inside a [http://www.purebasic.com/documentation/reference/data.html data block]. 
+IncludeBinary will include a named file of any type at the current place in the code.
+IncludeBinary don't have to, but should preferably be done inside a [http://www.purebasic.com/documentation/reference/data.html data block].
 
 ```PureBasic
 IncludeBinary "Filename"
@@ -2028,7 +2028,7 @@ Python supports the use of [http://docs.python.org/library/functions.html#execfi
 includes the content of mymodule.py
 
 Names in this module can be accessed as attributes:
- 
+
 
 ```Python>mymodule.variable</lang
 
@@ -2084,7 +2084,7 @@ $INCLUDE "RAPIDQ.INC"
 
 {{works with|CMS and TSO REXX compiler}}
 
-The REXX language does not include any directives to include source code from other files. A workaround is to use a preprocessor that take the source and the included modules and builds a temporary file containing all the necessary code, which then gets run by the interpreter. 
+The REXX language does not include any directives to include source code from other files. A workaround is to use a preprocessor that take the source and the included modules and builds a temporary file containing all the necessary code, which then gets run by the interpreter.
 
 Some variants of REXX may provide implementation specific solutions.
 
@@ -2121,7 +2121,7 @@ exit 0
 
 ```
 
-Note:   due to the way most REXX interpreters work, functions and jumps (SIGNALs) inside an INTERPRETED program won't work.   Neither are   ''labels''   recognized, which would then exclude the use of those subroutines/functions. 
+Note:   due to the way most REXX interpreters work, functions and jumps (SIGNALs) inside an INTERPRETED program won't work.   Neither are   ''labels''   recognized, which would then exclude the use of those subroutines/functions.
 
 There are also other restrictions such as multi-line statements and comments (more than one line).
 
@@ -2173,7 +2173,7 @@ If a REXX interpreter finds a function call, it first looks in the current progr
 
       // shortest one, the same library and file:
       /include member
-      
+
       // and alternative:
       /copy library/file,member
 
@@ -2290,7 +2290,7 @@ there is no such thing as source-file inclusion in Smalltalk. However, in a REPL
 or:
 
 ```smalltalk>Smalltalk fileIn: aFilename</lang
- 
+
 In Smalltalk/X, which supports binary code loading, aFilename may either be sourcecode or a dll containing a precompiled class library.
 
 
@@ -2456,27 +2456,27 @@ End Function
 
 
 ```verbexx
-/******************************************************************************* 
-*   /#   @INCLUDE file:"filename.filetype"     
-*        - file: is just the filename 
-*        - actual full pathname is VERBEXX_INCLUDE_PATH\filename.filetype  
+/*******************************************************************************
+*   /#   @INCLUDE file:"filename.filetype"
+*        - file: is just the filename
+*        - actual full pathname is VERBEXX_INCLUDE_PATH\filename.filetype
 *          where VERBEXX_INCLUDE_PATH is the contents of an environment variable
 *
 *   /#   @INCLUDE file:"E:\xxx\xxx\xxx\filename.filetype"
 *        - file: specifies the complete pathname of file to include
-*   
-*   @INCLUDE verb can appear only in pre-processor code (after /#  /{  etc.) 
+*
+*   @INCLUDE verb can appear only in pre-processor code (after /#  /{  etc.)
 *******************************************************************************/
 
 /{  //////////////////////////////////////////////// start of pre-processor code
 
-    @IF (@IS_VAR include_counter) 
+    @IF (@IS_VAR include_counter)
         else:{@VAR include_counter global: = 0};  // global, so all code sees it
 
-    include_counter++; 
-    @SAY "    In pre-processor -- include counter = " include_counter; 
-   
-    @IF (include_counter < 3) 
+    include_counter++;
+    @SAY "    In pre-processor -- include counter = " include_counter;
+
+    @IF (include_counter < 3)
         then:{@INCLUDE file:"rosetta\include_a_file.txt"};     // include self
 
 }/  ////////////////////////////////////////////////// end of pre-processor code
@@ -2485,8 +2485,8 @@ End Function
 /]
 Output:      In preprocessor -- include_counter = 1
              In preprocessor -- include_counter = 2
-             In preprocessor -- include_counter = 3 
-         Not in preprocessor -- include_counter = 3 
+             In preprocessor -- include_counter = 3
+         Not in preprocessor -- include_counter = 3
          Not in preprocessor -- include_counter = 3
          Not in preprocessor -- include_counter = 3
 ```
@@ -2552,7 +2552,7 @@ It is possible to include the contents of another program using the merge comman
 9950 REM Merge in our module
 9955 MERGE "MODULE"
 9960 REM Jump to the merged code. Pray it has the right line numbers!
-9965 GO TO 5000 
+9965 GO TO 5000
 ```
 
 

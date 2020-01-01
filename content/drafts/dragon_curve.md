@@ -904,10 +904,10 @@ int main( int argc, char* argv[] )
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Drawing;

@@ -1267,9 +1267,9 @@ happens. */
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 // Non-Generic Stack
 System.Collections.Stack stack = new System.Collections.Stack();
 stack.Push( obj );

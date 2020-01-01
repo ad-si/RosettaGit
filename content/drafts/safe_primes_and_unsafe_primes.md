@@ -43,11 +43,11 @@ Show all output here.
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using static System.Console;
 using System;
 using System.Collections;
@@ -463,18 +463,18 @@ func main() {
 ```txt
 
 The first 35 safe primes are:
- [5 7 11 23 47 59 83 107 167 179 227 263 347 359 383 467 479 503 563 587 719 839 863 887 983 1019 1187 1283 1307 1319 1367 1439 1487 1523 1619] 
+ [5 7 11 23 47 59 83 107 167 179 227 263 347 359 383 467 479 503 563 587 719 839 863 887 983 1019 1187 1283 1307 1319 1367 1439 1487 1523 1619]
 
-The number of safe primes below 1,000,000 is 4,324 
+The number of safe primes below 1,000,000 is 4,324
 
-The number of safe primes below 10,000,000 is 30,657 
+The number of safe primes below 10,000,000 is 30,657
 
 The first 40 unsafe primes are:
- [2 3 13 17 19 29 31 37 41 43 53 61 67 71 73 79 89 97 101 103 109 113 127 131 137 139 149 151 157 163 173 181 191 193 197 199 211 223 229 233] 
+ [2 3 13 17 19 29 31 37 41 43 53 61 67 71 73 79 89 97 101 103 109 113 127 131 137 139 149 151 157 163 173 181 191 193 197 199 211 223 229 233]
 
-The number of unsafe primes below 1,000,000 is 74,174 
+The number of unsafe primes below 1,000,000 is 74,174
 
-The number of unsafe primes below 10,000,000 is 633,922 
+The number of unsafe primes below 10,000,000 is 633,922
 
 ```
 
@@ -509,35 +509,35 @@ The number of unsafe primes below 10,000,000 is 633,922
    NB. first thirty-five safe primes
    (32+3) {. SAFE
 5 7 11 23 47 59 83 107 167 179 227 263 347 359 383 467 479 503 563 587 719 839 863 887 983 1019 1187 1283 1307 1319 1367 1439 1487 1523 1619
-   
+
 
    NB. first forty unsafe primes
    (33+7) {. PRIMES -. SAFE
    2 3 13 17 19 29 31 37 41 43 53 61 67 71 73 79 89 97 101 103 109 113 127 131 137 139 149 151 157 163 173 181 191 193 197 199 211 223 229 233
-   
+
 
    NB. tally of safe primes less than ten million
    # SAFE
 30657
-   
+
 
    NB. tally of safe primes below a million
    # 1000000&>Filter SAFE
 4324
-   
+
 
    NB. tally of perilous primes below ten million
    UNSAFE =: PRIMES -. SAFE
 
    # UNSAFE
 633922
-   
+
 
    NB. tally of these below one million
    K =: 1 : 'm * 1000'
    +/ UNSAFE < 1 K K
 74174
-   
+
 
 ```
 
@@ -546,7 +546,7 @@ Essentially we have
 ```J
 
 primeQ =: 1&p:
-safeQ =: primeQ@:-:@:<: 
+safeQ =: primeQ@:-:@:<:
 Filter =: (#~`)(`:6)
 K =: adverb def 'm * 1000'
 PRIMES =: i.&.:(p:inv) 10 K K
@@ -578,7 +578,7 @@ public class SafePrimes {
                 isComposite[i] = true;
             }
         }
-        
+
         int oldSafePrimeCount = 0;
         int oldUnsafePrimeCount = 0;
         int safePrimeCount = 0;
@@ -617,14 +617,14 @@ public class SafePrimes {
                 safePrimeCount++;
             }
         }
-        
+
         System.out.println("First " + safePrimesStrCount + " safe primes: " + safePrimes.toString());
         System.out.println("Number of safe primes below 1,000,000: " + oldSafePrimeCount);
         System.out.println("Number of safe primes below 10,000,000: " + safePrimeCount);
         System.out.println("First " + unsafePrimesStrCount + " unsafe primes: " + unsafePrimes.toString());
         System.out.println("Number of unsafe primes below 1,000,000: " + oldUnsafePrimeCount);
         System.out.println("Number of unsafe primes below 10,000,000: " + unsafePrimeCount);
-        
+
         return;
     }
 }
@@ -662,7 +662,7 @@ function parseprimelist()
     end
     println("The first 35 unsafe primes are: ", safeprimes[1:35])
     println("There are ", format(sum(map(x -> x < 1000000, safeprimes)), commas=true), " safe primes less than 1 million.")
-    println("There are ", format(length(safeprimes), commas=true), " safe primes less than 10 million.")    
+    println("There are ", format(length(safeprimes), commas=true), " safe primes less than 10 million.")
     println("The first 40 unsafe primes are: ", unsafeprimes[1:40])
     println("There are ", format(sum(map(x -> x < 1000000, unsafeprimes)), commas=true), " unsafe primes less than 1 million.")
     println("There are ", format(length(unsafeprimes), commas=true), " unsafe primes less than 10 million.")
@@ -671,7 +671,7 @@ end
 parseprimelist()
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 The first 35 unsafe primes are: [5, 7, 11, 23, 47, 59, 83, 107, 167, 179, 227, 263, 347, 359, 383, 467, 479, 503, 563, 587, 719, 839, 863, 887, 983, 1019, 1187, 1283, 1307, 1319, 1367, 1439, 1487, 1523, 1619]
@@ -785,16 +785,16 @@ The number of unsafe primes below 10,000,000 is 633,922
 
 
 ## Maple
-           
+
 
 ```Maple
-showSafePrimes := proc(n::posint) 
-local prime_list, k; 
-prime_list := [5]; 
-for k to n - 1 do 
-  prime_list := [op(prime_list), NumberTheory:-NextSafePrime(prime_list[-1])]; 
-end do; 
-return prime_list; 
+showSafePrimes := proc(n::posint)
+local prime_list, k;
+prime_list := [5];
+for k to n - 1 do
+  prime_list := [op(prime_list), NumberTheory:-NextSafePrime(prime_list[-1])];
+end do;
+return prime_list;
 end proc;
 
 showUnsafePrimes := proc(n::posint)
@@ -806,26 +806,26 @@ end do;
 return remove(x -> member(x, showSafePrimes(n)), prime_num);
 end proc:
 
-countSafePrimes := proc(n::posint) 
-local counts, prime; 
-counts := 0; 
-prime := 5; 
-while prime < n do prime := NumberTheory:-NextSafePrime(prime); 
-  counts := counts + 1; 
-end do; 
-return counts; 
+countSafePrimes := proc(n::posint)
+local counts, prime;
+counts := 0;
+prime := 5;
+while prime < n do prime := NumberTheory:-NextSafePrime(prime);
+  counts := counts + 1;
+end do;
+return counts;
 end proc;
 
 countUnsafePrimes := proc(n::posint)
-local safe_counts, total; 
-safe_counts := countSafePrimes(n); 
-total := NumberTheory:-PrimeCounting(n); 
-return total - safe_counts; 
+local safe_counts, total;
+safe_counts := countSafePrimes(n);
+total := NumberTheory:-PrimeCounting(n);
+return total - safe_counts;
 end proc;
 
 showSafePrimes(35);
 showUnsafePrimes(40);
-countSafePrimes(1000000);                        
+countSafePrimes(1000000);
 countSafePrimes(10000000);
 countUnsafePrimes(1000000);
 countUnsafePrimes(10000000);
@@ -858,9 +858,9 @@ program Sophie;
   http://wolfgang-ehrhardt.de/mp_intro.html }
 {$APPTYPE CONSOLE}
 uses
- mp_prime,sysutils; 
+ mp_prime,sysutils;
 var
-  pS0,pS1:TSieve;  
+  pS0,pS1:TSieve;
 procedure SafeOrNoSavePrimeOut(totCnt:NativeInt;CntSafe:boolean);
 var
   cnt,pr,pSG,testPr : NativeUint;
@@ -870,9 +870,9 @@ begin
   cnt := 0;
 // memorize prime of the sieve, because sometimes prime_sieve_next(pS1) is to far ahead.
   testPr := prime_sieve_next(pS1);
-  IF CntSafe then  
+  IF CntSafe then
   Begin
-    writeln('First ',totCnt,' safe primes');  
+    writeln('First ',totCnt,' safe primes');
     repeat
       pr := prime_sieve_next(pS0);
       pSG := 2*pr+1;
@@ -882,12 +882,12 @@ begin
       begin
         write(pSG,',');
         inc(cnt);
-      end; 
+      end;
     until cnt >= totCnt
-  end  
+  end
   else
   Begin
-    writeln('First ',totCnt,' unsafe primes');  
+    writeln('First ',totCnt,' unsafe primes');
     repeat
       pr := prime_sieve_next(pS0);
       pSG := (pr-1) DIV 2;
@@ -897,11 +897,11 @@ begin
       begin
         write(pr,',');
         inc(cnt);
-      end; 
-    until cnt >= totCnt; 
-  end;  
-  writeln(#8,#32);  
-end; 
+      end;
+    until cnt >= totCnt;
+  end;
+  writeln(#8,#32);
+end;
 
 function CountSafePrimes(Limit:NativeInt):NativeUint;
 var
@@ -918,9 +918,9 @@ begin
       testPr := prime_sieve_next(pS1);
     if pSG = testPr then
       inc(cnt);
-  until pSG >= Limit; 
+  until pSG >= Limit;
   CountSafePrimes := cnt;
-end; 
+end;
 
 procedure CountSafePrimesOut(Limit:NativeUint);
 Begin
@@ -940,24 +940,24 @@ end;
 var
   T1,T0 : INt64;
 begin
-  T0 :=gettickcount64; 
+  T0 :=gettickcount64;
   prime_sieve_init(pS0,1);
   prime_sieve_init(pS1,1);
-//Find and display (on one line) the first  35  safe primes.  
+//Find and display (on one line) the first  35  safe primes.
   SafeOrNoSavePrimeOut(35,true);
-//Find and display the  count  of the safe primes below  1,000,000. 
+//Find and display the  count  of the safe primes below  1,000,000.
   CountSafePrimesOut(1000*1000);
-//Find and display the  count  of the safe primes below 10,000,000.  
-  CountSafePrimesOut(10*1000*1000);  
-//Find and display (on one line) the first  40  unsafe primes.  
+//Find and display the  count  of the safe primes below 10,000,000.
+  CountSafePrimesOut(10*1000*1000);
+//Find and display (on one line) the first  40  unsafe primes.
   SafeOrNoSavePrimeOut(40,false);
 //Find and display the  count  of the unsafe primes below  1,000,000.
   CountUnSafePrimesOut(1000*1000);
-//Find and display the  count  of the unsafe primes below 10,000,000.  
+//Find and display the  count  of the unsafe primes below 10,000,000.
   CountUnSafePrimesOut(10*1000*1000);
   writeln;
-  CountSafePrimesOut(1000*1000*1000);        
-  T1 :=gettickcount64; 
+  CountSafePrimesOut(1000*1000*1000);
+  T1 :=gettickcount64;
   writeln('runtime ',T1-T0,' ms');
 end.
 ```
@@ -1030,7 +1030,7 @@ The number of unsafe primes up to 10,000,000: 633,922
 ## Perl 6
 
 {{works with|Rakudo|2018.08}}
-Perl 6 has a built-in method .is-prime to test for prime numbers. It's great for testing individual numbers or to find/filter a few thousand numbers, but when you are looking for millions, it becomes a drag. No fear, the Perl 6 ecosystem has a fast prime sieve module available which can produce 10 million primes in a few seconds. Once we have the primes, it is just a small matter of filtering and formatting them appropriately.   
+Perl 6 has a built-in method .is-prime to test for prime numbers. It's great for testing individual numbers or to find/filter a few thousand numbers, but when you are looking for millions, it becomes a drag. No fear, the Perl 6 ecosystem has a fast prime sieve module available which can produce 10 million primes in a few seconds. Once we have the primes, it is just a small matter of filtering and formatting them appropriately.
 
 
 ```perl6
@@ -1154,11 +1154,11 @@ print('There are '+str(len(usp))+' safe primes below 10,000,000')
 
 {{out}}
 <pre style="font-size: 11px">
-First 35 safe primes: 
+First 35 safe primes:
 [5,7,11,23,47,59,83,107,167,179,227,263,347,359,383,467,479,503,563,587,719,839,863,887,983,1019,1187,1283,1307,1319,1367,1439,1487,1523,1619]
 There are 4,234 safe primes below 1,000,000
 There are 30,657 safe primes below 10,000,000
-First 40 unsafe primes: 
+First 40 unsafe primes:
 [2,3,13,17,19,29,31,37,41,43,53,61,67,71,73,79,89,97,101,103,109,113,127,131,137,139,149,151,157,163,173,181,191,193,197,199,211,223,229,233]
 There are 74,174 unsafe primes below 1,000,000
 There are 633,922 unsafe primes below 10,000,000
@@ -1223,7 +1223,7 @@ safeUnsafe: ?= (j-1) % 2                         /*obtain the other part of KIND
                                         else return 0             /*not  "   "      "   */
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine 
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine
 the screen width (or linesize) of the terminal (console).   Some REXXes don't have this BIF.
 
 The   '''LINESIZE.REX'''   REXX program is included here   ───►   [[LINESIZE.REX]].
@@ -1307,7 +1307,7 @@ end
 
 puts "First 35 safe-primes:"
 p Prime.each.lazy.select(&:safe_prime?).take(35).to_a
-puts format_parts(1_000_000), "\n" 
+puts format_parts(1_000_000), "\n"
 
 puts "First 40 unsafe-primes:"
 p Prime.each.lazy.reject(&:safe_prime?).take(40).to_a
@@ -1597,7 +1597,7 @@ Namespace safety
 End Namespace
 ```
 
-If not using the latest version of the '''System.Linq''' namespace, you can implement the ''Enumerable.ToHashSet()'' method by adding 
+If not using the latest version of the '''System.Linq''' namespace, you can implement the ''Enumerable.ToHashSet()'' method by adding
 ```vbnet>Imports System.Runtime.CompilerServices</lang
  to the top and this module inside the '''safety''' namespace:
 ```vbnet
@@ -1639,8 +1639,8 @@ fcn safePrime(p){ ((p-1)/2).probablyPrime() } // p is a BigInt prime
 
 fcn safetyList(sN,nsN){
    p,safe,notSafe := BI(2),List(),List();
-   do{ 
-      if(safePrime(p)) safe.append(p.toInt()) else notSafe.append(p.toInt()); 
+   do{
+      if(safePrime(p)) safe.append(p.toInt()) else notSafe.append(p.toInt());
       p.nextPrime();
    }while(safe.len()<sN or notSafe.len()<nsN);
    println("The first %d   safe primes are: %s".fmt(sN,safe[0,sN].concat(",")));
@@ -1672,7 +1672,7 @@ Time to count:
 
 ```zkl
 fcn safetyCount(N,s=0,ns=0,p=BI(2)){
-   do{ 
+   do{
       if(safePrime(p)) s+=1; else ns+=1;
       p.nextPrime()
    }while(p<N);

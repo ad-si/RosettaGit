@@ -657,41 +657,41 @@ int main() {
 If you use [[GLib]], simply use <code>g_strnfill ( gsize length, gchar fill_char )</code> function.
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 string s = "".PadLeft(5, 'X').Replace("X", "ha");
 ```
 
 or (with .NET 2+)
 
-```csharp
+```c#
 string s = new String('X', 5).Replace("X", "ha");
 ```
 
 or (with .NET 2+)
 
-```csharp
+```c#
 string s = String.Join("ha", new string[5 + 1]);
 ```
 
 or (with .NET 4+)
 
-```csharp
+```c#
 string s = String.Concat(Enumerable.Repeat("ha", 5));
 ```
 
 
 To repeat a single character:
 
-```csharp
+```c#
 string s = "".PadLeft(5, '*');
 ```
 
 or (with .NET 2+)
 
-```csharp
+```c#
 string s = new String('*', 5);
 ```
 

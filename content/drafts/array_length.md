@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task}}  
+{{task}}
 [[Category:Simple]]
 
 ;Task:
@@ -217,7 +217,7 @@ number of items in theList
 
 No context or goal is provided for this task – sometimes for example, we may simply want to take the last member of an array, and counting the length to derive an index might well not be the best route.
 
-More generally, we may learn more about AppleScript by defining '''length()''' ourselves. There are two basic functional approaches to doing that – we can write a simple recursive definition, or, if we have a higher order '''fold'''/'''reduce''' function (see [[Catamorphism]]) we can derive length() as: 
+More generally, we may learn more about AppleScript by defining '''length()''' ourselves. There are two basic functional approaches to doing that – we can write a simple recursive definition, or, if we have a higher order '''fold'''/'''reduce''' function (see [[Catamorphism]]) we can derive length() as:
 
 
 ```txt
@@ -228,14 +228,14 @@ fold (λx n -> 1 + n)  0
 
 ```AppleScript
 on run
-    
+
     set xs to ["alpha", "beta", "gamma", "delta", "epsilon", ¬
         "zeta", "eta", "theta", "iota", "kappa", "lambda", "mu"]
-    
+
     {_length(xs), fold(xs, succ, 0), item 12 of xs, item -1 of xs}
-    
+
     --> {12, 12, "mu", "mu"}
-    
+
 end run
 
 -- TWO FUNCTIONAL DEFINITIONS OF LENGTH
@@ -262,7 +262,7 @@ on fold(xs, f, startValue)
     script mf
         property lambda : f
     end script
-    
+
     set v to startValue
     repeat with x in xs
         set v to mf's lambda(v, x)
@@ -310,27 +310,27 @@ ptOranges:   .int szString2
 ptVoid:		.int 0
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
-    ldr r1,iAdrtablesPoi  @ begin pointer table 
+    ldr r1,iAdrtablesPoi  @ begin pointer table
     mov r0,#0    @ counter
 1:              @ begin loop
     ldr r2,[r1,r0,lsl #2]    @ read string pointer address item r0 (4 bytes by pointer)
     cmp r2,#0                @ is null ?
     addne r0,#1             @ no increment counter
     bne 1b                  @ and loop
- 
+
     ldr r1,iAdrsZoneconv   @ conversion decimal
     bl conversion10S
     ldr r0,iAdrszMessLenArea
     bl affichageMess
-	
+
 2:
 
 100:   /* standard end of the program */
@@ -343,11 +343,11 @@ iAdrszMessLenArea:  .int szMessLenArea
 iAdrsZoneconv:		.int  sZoneconv
 iAdrszCarriageReturn:  .int  szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -361,7 +361,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
 /***************************************************/
@@ -380,36 +380,36 @@ conversion10S:
     mov r4,#10   /* longueur de la zone */
 1: /* debut de boucle de conversion */
     bl divisionpar10 /* division  */
-    add r1,#48        /* ajout de 48 au reste pour conversion ascii */	
+    add r1,#48        /* ajout de 48 au reste pour conversion ascii */
     strb r1,[r2,r4]  /* stockage du byte en début de zone r5 + la position r4 */
     sub r4,r4,#1      /* position précedente */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* boucle si quotient different de zéro */
     strb r5,[r2,r4]  /* stockage du signe à la position courante */
     subs r4,r4,#1   /* position précedente */
     blt  100f         /* si r4 < 0  fin  */
     /* sinon il faut completer le debut de la zone avec des blancs */
-    mov r3,#' '   /* caractere espace */	
+    mov r3,#' '   /* caractere espace */
 2:
     strb r3,[r2,r4]  /* stockage du byte  */
     subs r4,r4,#1   /* position précedente */
     bge 2b        /* boucle si r4 plus grand ou egal a zero */
 100:  /* fin standard de la fonction  */
     pop {r0-r5,lr}   /*restaur desregistres */
-    bx lr   
+    bx lr
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save registers  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -513,9 +513,9 @@ aArray[1] = 'Orange'
 
 <!-- http://ideone.com/qhJQ6g -->
 
-The main use of the length()-function is to determine the length of a string. 
+The main use of the length()-function is to determine the length of a string.
 
-When used on an array, it returns the number of elements. 
+When used on an array, it returns the number of elements.
 
 Another method to count the elements of the array is by using a variant of for().
 
@@ -530,10 +530,10 @@ function countElements(array) {
 
 BEGIN {
   array[1] = "apple"
-  array[2] = "orange" 
+  array[2] = "orange"
 
   print "Array length :", length(array), countElements(array)
-  
+
   print "String length:", array[1], length(array[1])
 }
 ```
@@ -678,7 +678,7 @@ For static arrays:
 #include <stdio.h>
 
 int main()
-{    
+{
     const char *fruit[2] = { "apples", "oranges" };
 
     // Acquire the length of the array by dividing the size of all elements (found
@@ -713,10 +713,10 @@ A C pre-processor macro may be created for ease of use:
 Note that these arrays become pointers when passed as a parameter to a function.
 Thus, the length of an array parameter may not be required directly - a dedicated length parameter would be required.
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 
 using System;
 
@@ -735,7 +735,7 @@ class Program
 Note that any of the following array declarations could be used:
 
 
-```csharp
+```c#
 
 var fruit = new[] { "apple", "orange" };
 var fruit = new string[] { "apple", "orange" };
@@ -749,11 +749,11 @@ string[] fruit = { "apple", "orange" };
 A shorter variant could also have been used:
 
 
-```csharp
+```c#
 
 using static System.Console;
 
-class Program 
+class Program
 {
     public static void Main()
     {
@@ -779,7 +779,7 @@ However, C++ has an additional std::array type (amongst other collections) in it
 #include <iostream>
 #include <string>
 
-int main() 
+int main()
 {
     std::array<std::string, 2> fruit { "apples", "oranges" };
     std::cout << fruit.size();
@@ -826,7 +826,7 @@ shared void run() {
 ```Clipper/XBase++
 /*
  * nizchka: March - 2016
- * This is a Clipper/XBase++ of RosettaCode Array_Length  
+ * This is a Clipper/XBase++ of RosettaCode Array_Length
  */
 
 PROCEDURE MAIN()
@@ -989,7 +989,7 @@ TYPE
 	String = POINTER TO ARRAY OF CHAR;
 VAR
 	a: ARRAY 16 OF String;
-	
+
 PROCEDURE NewString(s: ARRAY OF CHAR): String;
 VAR
 	str: String;
@@ -1115,12 +1115,12 @@ sizeOf(arr)
 
 
 ```dragon
-select "std" 
+select "std"
 
 a = ["apple","orange"]
-b = length(a) 
+b = length(a)
 
-show b   
+show b
 
 ```
 
@@ -1214,7 +1214,7 @@ import Array
 import Html
 
 main : Html.Html
-main = 
+main =
     ["apple", "orange"]
       |> Array.fromList
       |> Array.length
@@ -1277,8 +1277,8 @@ Or:
 
 ## Forth
 
-The philosophy of Chuck Moore, the creator of Forth was that he did not want to write code for something he may never use. His solution was to distill his language into a large set of very simple routines that control the hardware directly. 
-This demonstration must build "arrays" from scratch. In Forth, like in Assembler, you can do this any way you want. This demonstration adds new words to Forth that make a syntax to create simple variable length string arrays. Each string is a counted string with no trailing zero. 
+The philosophy of Chuck Moore, the creator of Forth was that he did not want to write code for something he may never use. His solution was to distill his language into a large set of very simple routines that control the hardware directly.
+This demonstration must build "arrays" from scratch. In Forth, like in Assembler, you can do this any way you want. This demonstration adds new words to Forth that make a syntax to create simple variable length string arrays. Each string is a counted string with no trailing zero.
 
 The code is commented to explain what is going on for those unfamiliar with Forth.
 
@@ -1308,7 +1308,7 @@ The code is commented to explain what is going on for those unfamiliar with Fort
              {NEXT}
           REPEAT
           DROP
-          R> ;      \ return counter to data stack 
+          R> ;      \ return counter to data stack
 ```
 
 Test code at Forth console
@@ -1323,7 +1323,7 @@ CREATE Q { " Apples" " Oranges" }   q {len} . 2  ok
 
 Early fortrans offered no protocol for ascertaining the length (or dimensionality) of arrays, though the compiler has this information. Thus a statement such as <code>PRINT A</code> would print all the elements of a variable <code>A</code> according to its definition. A subprogram that received a parameter would have no access to these details, so its parameter might be declared as <code>A(12345)</code> simply to signify that it was an array (rather than an ordinary variable) and the programmer would rely on other data to know the upper bound to employ, for instance via an additional parameter. ''Any mistakes would cause crashes!'' On the other hand, with heavy computational tasks, it was common to take advantage of the opportunities. Thus, a subprogram might regard its array parameter as one-dimensional even though the actual parameter was not. Carefully-programmed routines might thusly process a sequence of elements via 1-D indexing, far faster than the 2-D or higher order indexing of the original. Success at this game required understanding how array elements were arranged in multidimensional arrays.
 
-Later fortrans allowed <code>A(*)</code> to signify an array parameter of unstated upper bound, but there was still a problem with higher dimensions. All but the last dimension has to be stated correctly if a multi-dimensional array parameter is to be indexed correctly - Fortran stores array elements in [[Array#Fortran|column-major]] order. 
+Later fortrans allowed <code>A(*)</code> to signify an array parameter of unstated upper bound, but there was still a problem with higher dimensions. All but the last dimension has to be stated correctly if a multi-dimensional array parameter is to be indexed correctly - Fortran stores array elements in [[Array#Fortran|column-major]] order.
 
 With Fortran 90, a new protocol was introduced, whereby the parameter might be declared as <code>A(:)</code> signifying an array of one dimension, of bounds unstated. A 2-D array would have <code>A(:,:)</code> and so on. Further, arrays could have arbitrary lower bounds as well, as in <code>A(-7:12)</code> but if no colon appeared for a dimension, the lower bound would be assumed to be one so <code>A(2)</code> means an array of two elements, as before. And as before, in a subprogram a bound could be explicitly stated, perhaps via an explicit parameter such as <code>N</code>, but now with the <code>:</code> scheme, the compiler is passing secret additional parameters to the subprogram giving the bounds of the array, and these can be accessed via the library functions LBOUND and UBOUND. For multi-dimensional arrays there are multiple bounds, and an invocation might be <code>UBOUND(A,DIM = 2)</code> but in the example only a one-dimensional array is involved. These facilities are available only if the new MODULE protocol is employed.
 
@@ -1622,9 +1622,9 @@ For the list array example given, the result appears to be the same. The differe
 
 This might be a clearer concept with a few more examples. Here's an array with two dimensions:
 
-```j>   
+```j>
 'apple';'orange'
-apple 
+apple
 orange
    $>'apple';'orange'
 2 6
@@ -1813,7 +1813,7 @@ println: ["apple", "orange"] length.
 ## Liberty BASIC
 
 
-When a one or two dimensional array, A$, with subscript(s) of 10 or less is referenced (either by assigning or reading), the compiler does an implicit DIM A$(10) or DIM A$(10,10). Before referencing an array with any subscript numbered higher than 10, or arrays of three dimensions or more, the programmer must first issue an explicit DIM statement. 
+When a one or two dimensional array, A$, with subscript(s) of 10 or less is referenced (either by assigning or reading), the compiler does an implicit DIM A$(10) or DIM A$(10,10). Before referencing an array with any subscript numbered higher than 10, or arrays of three dimensions or more, the programmer must first issue an explicit DIM statement.
 
 There is no function in Liberty Basic to directly read the size of an array. This program uses error trapping loops to, first, determine the number of dimensions of the array. Then, second, again uses error trapping loops to determine the number of elements in each dimension. Finally, it prints the DIM statement that was used to define the array.
 
@@ -1829,7 +1829,7 @@ FruitList$(1)="orange"
 dimension=dimension(FruitList$()) 'first get the dimension of the array
 if dimension>3 then
     print "Sorry, program only written for array dimensions of 3 or less."
-    end 
+    end
 end if
 call elements FruitList$(), dimension 'next get the size of each dimension
 end
@@ -1929,11 +1929,11 @@ sub elements array$(), dimension
             print "dimension 3 has "; elements; " elements (cells), "_
                     "numbered 0 to "; ArraySize(3)
     end select
-   'print the explicit or implied DIMension statement for this array 
+   'print the explicit or implied DIMension statement for this array
     print "DIM array$("; a-1;
     if b>0 then print ","; b-1;
     if c>0 then print ","; c-1;
-    print ")" 
+    print ")"
 end sub
 
 ```
@@ -2258,7 +2258,7 @@ The length of the fruit array is 2
 ```oberon2
 
 MODULE ArrayLength;
-IMPORT 
+IMPORT
   Strings,
   Out;
 TYPE
@@ -2416,7 +2416,7 @@ END.
 
 ```txt
 
-./ArrayLength.pas 
+./ArrayLength.pas
 Length of Fruits by function : 2
 Length of Fruits by bounds : 2
 
@@ -2683,7 +2683,7 @@ yes
 ```PureBasic
 
 EnableExplicit
-Define Dim fruit$(1); defines array with 2 elements at indices 0 and 1 
+Define Dim fruit$(1); defines array with 2 elements at indices 0 and 1
 fruit$(0) = "apple"
 fruit$(1) = "orange"
 Define length = ArraySize(fruit$()) + 1; including the element at index 0
@@ -2705,7 +2705,7 @@ EndIf
 ```python>>>
  print(len(['apple', 'orange']))
 2
->>> 
+>>>
 ```
 
 
@@ -2797,7 +2797,7 @@ Element 2: orange
 
 
 ```ring
-See len(['apple', 'orange']) # output = 2 
+See len(['apple', 'orange']) # output = 2
 ```
 
 
@@ -3039,7 +3039,7 @@ end;
 String data may be stored either in a Stata dataset or in a Mata matrix, not in a Stata matrix, which may hold only numeric data. A list of strings may also be stored in a Stata macro.
 
 
-###  Dimensions of a dataset 
+###  Dimensions of a dataset
 
 
 ```stata
@@ -3055,7 +3055,7 @@ di c(N) " " c(k)
 
 
 
-###  Length of a macro list 
+###  Length of a macro list
 
 
 Use either the '''[https://www.stata.com/help.cgi?macrolists sizeof]''' macro list function or the '''[https://www.stata.com/help.cgi?extended_fcn word count]''' extended macro function. Notice that the argument of the former is the macro ''name'', while the argument of the latter is the macro ''contents''.
@@ -3069,7 +3069,7 @@ di `: word count `fruits''
 
 
 
-###  Mata 
+###  Mata
 
 For a Mata array, use '''[https://www.stata.com/help.cgi?mf_rows rows]''' and similar functions:
 
@@ -3184,7 +3184,7 @@ echo "${#array[@]}"
 2
 > out (size "test string") endl console
 11
-> 
+>
 ```
 
 
@@ -3210,7 +3210,7 @@ Array Length: 2
 
 ```vb
 arr = Array("apple","orange")
-WScript.StdOut.WriteLine UBound(arr) - LBound(arr) + 1 
+WScript.StdOut.WriteLine UBound(arr) - LBound(arr) + 1
 ```
 
 
@@ -3241,14 +3241,14 @@ End Function
 ' somewhere in the programm
 ' example 1
   Dim arr As Variant
-  
+
   arr = Array("apple", "orange")
-  
+
   Debug.Print LengthOfArray(arr) ' prints 2 as result
 
 ' example 2
   Dim arr As Variant
-  
+
   ReDim arr(-2 To -1)
   arr(-2) = "apple"
   arr(-1) = "orange"
@@ -3324,7 +3324,7 @@ zkl doesn't support arrays natively, use lists instead.
 
 ```zkl
 List("apple", "orange").len().println() //-->2, == L("apple", "orange")
-T("apple", "orange").len().println() //-->2, read only list (ROList) 
+T("apple", "orange").len().println() //-->2, read only list (ROList)
 ```
 
 

@@ -368,7 +368,7 @@ The <code>#S</code> indicates we get a structure, so we can access the x positio
 =={{header|c_sharp|C#}}==
 Writes the absolute Mouse Position of the Screen into the Console
 
-```csharp
+```c#
 
 using System;
 using System.Windows.Forms;

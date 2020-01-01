@@ -338,7 +338,7 @@ First 20 prime Brazillian numbers:
 =={{header|C#|CSharp}}==
 {{trans|Go}}
 
-```csharp
+```c#
 using System;
 class Program {
 
@@ -417,7 +417,7 @@ Regarding the 100,000th number, there is a wee discrepancy here with the '''F#''
 
 Based on the Pascal version, with some shortcuts.  Can calculate to one billion in under 4 1/2 seconds (on a core i7).  This is faster than the Pascal version because the sieve is an array of '''SByte''' (8 bits) and not a '''NativeUInt''' (32 bits).  Also this code does not preserve the base of each Brazilain number in the array, so the Pascal version is more flexible if desiring to quickly verify a quantity of Brazilian numbers.
 
-```csharp
+```c#
 using System;
 
 class Program

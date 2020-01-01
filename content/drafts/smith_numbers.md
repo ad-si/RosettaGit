@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-{{task}} 
-[[wp:Smith numbers|Smith numbers]] are numbers such that the [[Sum_digits_of_an_integer|sum of the decimal digits of the integers]] that make up that number is the same as the sum of the decimal digits of its prime factors excluding 1. 
+{{task}}
+[[wp:Smith numbers|Smith numbers]] are numbers such that the [[Sum_digits_of_an_integer|sum of the decimal digits of the integers]] that make up that number is the same as the sum of the decimal digits of its prime factors excluding 1.
 
 By definition, all primes are ''excluded'' as they (naturally) satisfy this condition!
 
@@ -36,9 +36,9 @@ Write a program to find all Smith numbers ''below'' 10000.
 
 ;See also
 * from Wikipedia:   [[https://en.wikipedia.org/wiki/Smith_number Smith number]].
-* from MathWorld:   [[http://mathworld.wolfram.com/SmithNumber.html Smith number]]. 
+* from MathWorld:   [[http://mathworld.wolfram.com/SmithNumber.html Smith number]].
 * from OEIS A6753:   [[https://oeis.org/A006753 OEIS sequence A6753]].
-* from OEIS A104170:   [[https://oeis.org/A104170 Number of Smith numbers below 10^n]]. 
+* from OEIS A104170:   [[https://oeis.org/A104170 Number of Smith numbers below 10^n]].
 * from The Prime pages:   [[http://primes.utm.edu/glossary/xpage/SmithNumber.html Smith numbers]].
 
 
@@ -104,7 +104,7 @@ SMITHNUM CSECT
 *------- ----   ----------------------------------------
 SUMD     EQU    *                  sumd(x)
          SR     R0,R0              s=0
-       DO WHILE=(LTR,R1,NZ,R1)     do while x<>0 
+       DO WHILE=(LTR,R1,NZ,R1)     do while x<>0
          LR     R2,R1                x
          SRDA   R2,32                ~
          D      R2,=F'10'            x/10
@@ -182,7 +182,7 @@ EWHILEJ  L      R4,ZZ              z
        IF C,R9,LT,=F'2' THEN       if f<2 then
          SR     R8,R8                mm=0
        ENDIF    ,                  endif
-         LR     R0,R8              return m 
+         LR     R0,R8              return m
          L      R14,SAVER14        restore r14
          BR     R14                return
 SAVER14  DS     A                  save r14
@@ -244,27 +244,27 @@ with Ada.Text_IO;
 procedure smith is
   type Vector is array (natural range <>) of Positive;
   empty_vector : constant Vector(1..0):= (others=>1);
-  
-  function digits_sum (n : Positive) return Positive is 
+
+  function digits_sum (n : Positive) return Positive is
   (if n < 10 then n else n mod 10 + digits_sum (n / 10));
 
-  function prime_factors (n : Positive; d : Positive := 2) return Vector is 
+  function prime_factors (n : Positive; d : Positive := 2) return Vector is
   (if n = 1 then empty_vector elsif n mod d = 0 then prime_factors (n / d, d) & d
    else prime_factors (n, d + (if d=2 then 1 else 2)));
-  
-  function vector_digits_sum (v : Vector) return Natural is 
+
+  function vector_digits_sum (v : Vector) return Natural is
   (if v'Length = 0 then 0 else digits_sum (v(v'First)) + vector_digits_sum (v(v'First+1..v'Last)));
-  
+
 begin
   for n in 1..10000 loop
-    declare 
+    declare
       primes : Vector := prime_factors (n);
     begin
-      if  primes'Length > 1 and then vector_digits_sum (primes) = digits_sum (n) then 
+      if  primes'Length > 1 and then vector_digits_sum (primes) = digits_sum (n) then
         Ada.Text_IO.put (n'img);
       end if;
     end;
-  end loop; 
+  end loop;
 end smith;
 
 ```
@@ -278,7 +278,7 @@ end smith;
 # sieve of Eratosthene: sets s[i] to TRUE if i is prime, FALSE otherwise #
 PROC sieve = ( REF[]BOOL s )VOID:
      BEGIN
-        # start with everything flagged as prime                             # 
+        # start with everything flagged as prime                             #
         FOR i TO UPB s DO s[ i ] := TRUE OD;
         # sieve out the non-primes                                           #
         s[ 1 ] := FALSE;
@@ -301,7 +301,7 @@ OP DIGITSUM = ( INT n )INT:
            sum +:= rest MOD 10;
            rest OVERAB 10
        OD;
-       sum 
+       sum
    END # DIGITSUM # ;
 
 # returns TRUE if n is a Smith number, FALSE otherwise                       #
@@ -554,8 +554,8 @@ void listAllSmithNumbers(unsigned x) {
         int numfactors = numPrimeFactors(a);
         arr = (unsigned*)malloc(numfactors * sizeof(unsigned));
         if (numfactors < 2)
-            continue;	
-        primeFactors(a, arr);	
+            continue;
+        primeFactors(a, arr);
         if (sumDigits(a) == sumFactors(arr,numfactors))
             printf("%4u ",a);
         free(arr);
@@ -577,27 +577,27 @@ int main(int argc, char* argv[]) {
 All the Smith Numbers < 10000 are:
    4   22   27   58   85   94  121  166  202  265  274  319  346  355  378  382
  391  438  454  483  517  526  535  562  576  588  627  634  636  645  648  654
- 663  666  690  706  728  729  762  778  825  852  861  895  913  915  922  958 
- 985 1086 1111 1165 1219 1255 1282 1284 1376 1449 1507 1581 1626 1633 1642 1678 
-1736 1755 1776 1795 1822 1842 1858 1872 1881 1894 1903 1908 1921 1935 1952 1962 
-1966 2038 2067 2079 2155 2173 2182 2218 2227 2265 2286 2326 2362 2366 2373 2409 
-2434 2461 2475 2484 2515 2556 2576 2578 2583 2605 2614 2679 2688 2722 2745 2751 
-2785 2839 2888 2902 2911 2934 2944 2958 2964 2965 2970 2974 3046 3091 3138 3168 
-3174 3226 3246 3258 3294 3345 3366 3390 3442 3505 3564 3595 3615 3622 3649 3663 
-3690 3694 3802 3852 3864 3865 3930 3946 3973 4054 4126 4162 4173 4185 4189 4191 
-4198 4209 4279 4306 4369 4414 4428 4464 4472 4557 4592 4594 4702 4743 4765 4788 
-4794 4832 4855 4880 4918 4954 4959 4960 4974 4981 5062 5071 5088 5098 5172 5242 
-5248 5253 5269 5298 5305 5386 5388 5397 5422 5458 5485 5526 5539 5602 5638 5642 
-5674 5772 5818 5854 5874 5915 5926 5935 5936 5946 5998 6036 6054 6084 6096 6115 
-6171 6178 6187 6188 6252 6259 6295 6315 6344 6385 6439 6457 6502 6531 6567 6583 
-6585 6603 6684 6693 6702 6718 6760 6816 6835 6855 6880 6934 6981 7026 7051 7062 
-7068 7078 7089 7119 7136 7186 7195 7227 7249 7287 7339 7402 7438 7447 7465 7503 
-7627 7674 7683 7695 7712 7726 7762 7764 7782 7784 7809 7824 7834 7915 7952 7978 
-8005 8014 8023 8073 8077 8095 8149 8154 8158 8185 8196 8253 8257 8277 8307 8347 
-8372 8412 8421 8466 8518 8545 8568 8628 8653 8680 8736 8754 8766 8790 8792 8851 
-8864 8874 8883 8901 8914 9015 9031 9036 9094 9166 9184 9193 9229 9274 9276 9285 
-9294 9296 9301 9330 9346 9355 9382 9386 9387 9396 9414 9427 9483 9522 9535 9571 
-9598 9633 9634 9639 9648 9657 9684 9708 9717 9735 9742 9760 9778 9840 9843 9849 
+ 663  666  690  706  728  729  762  778  825  852  861  895  913  915  922  958
+ 985 1086 1111 1165 1219 1255 1282 1284 1376 1449 1507 1581 1626 1633 1642 1678
+1736 1755 1776 1795 1822 1842 1858 1872 1881 1894 1903 1908 1921 1935 1952 1962
+1966 2038 2067 2079 2155 2173 2182 2218 2227 2265 2286 2326 2362 2366 2373 2409
+2434 2461 2475 2484 2515 2556 2576 2578 2583 2605 2614 2679 2688 2722 2745 2751
+2785 2839 2888 2902 2911 2934 2944 2958 2964 2965 2970 2974 3046 3091 3138 3168
+3174 3226 3246 3258 3294 3345 3366 3390 3442 3505 3564 3595 3615 3622 3649 3663
+3690 3694 3802 3852 3864 3865 3930 3946 3973 4054 4126 4162 4173 4185 4189 4191
+4198 4209 4279 4306 4369 4414 4428 4464 4472 4557 4592 4594 4702 4743 4765 4788
+4794 4832 4855 4880 4918 4954 4959 4960 4974 4981 5062 5071 5088 5098 5172 5242
+5248 5253 5269 5298 5305 5386 5388 5397 5422 5458 5485 5526 5539 5602 5638 5642
+5674 5772 5818 5854 5874 5915 5926 5935 5936 5946 5998 6036 6054 6084 6096 6115
+6171 6178 6187 6188 6252 6259 6295 6315 6344 6385 6439 6457 6502 6531 6567 6583
+6585 6603 6684 6693 6702 6718 6760 6816 6835 6855 6880 6934 6981 7026 7051 7062
+7068 7078 7089 7119 7136 7186 7195 7227 7249 7287 7339 7402 7438 7447 7465 7503
+7627 7674 7683 7695 7712 7726 7762 7764 7782 7784 7809 7824 7834 7915 7952 7978
+8005 8014 8023 8073 8077 8095 8149 8154 8158 8185 8196 8253 8257 8277 8307 8347
+8372 8412 8421 8466 8518 8545 8568 8628 8653 8680 8736 8754 8766 8790 8792 8851
+8864 8874 8883 8901 8914 9015 9031 9036 9094 9166 9184 9193 9229 9274 9276 9285
+9294 9296 9301 9330 9346 9355 9382 9386 9387 9396 9414 9427 9483 9522 9535 9571
+9598 9633 9634 9639 9648 9657 9684 9708 9717 9735 9742 9760 9778 9840 9843 9849
 9861 9880 9895 9924 9942 9968 9975 9985
 
 ```
@@ -664,16 +664,16 @@ int main( int argc, char* argv[] ) {
    4   22   27   58   85   94  121  166  202  265  274  319  346  355  378  382
  391  438  454  483  517  526  535  562  576  627  634  636  645  663  666  690
 ...
-9301 9330 9346 9355 9382 9386 9387 9396 9427 9483 9535 9571 9598 9633 9634 9639 
+9301 9330 9346 9355 9382 9386 9387 9396 9427 9483 9535 9571 9598 9633 9634 9639
 9648 9657 9684 9708 9717 9735 9742 9760 9778 9843 9849 9861 9880 9895 9975 9985
 
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -824,7 +824,7 @@ namespace SmithNumbers {
 
 ```txt
 
-(4 22 27 58 85 94 121 166 202 265 274 319 346 355 378 382 391 
+(4 22 27 58 85 94 121 166 202 265 274 319 346 355 378 382 391
  ...
  9760 9778 9840 9843 9849 9861 9880 9895 9924 9942 9968 9975 9985)
 
@@ -947,12 +947,12 @@ defmodule Smith do
     d = decomposition(n)
     length(d)>1 and sum_digits(n) == Enum.map(d, &sum_digits/1) |> Enum.sum
   end
-  
+
   defp sum_digits(n) do
     Integer.digits(n) |> Enum.sum
   end
-  
-  defp decomposition(n, k\\2, acc\\[])  
+
+  defp decomposition(n, k\\2, acc\\[])
   defp decomposition(n, k, acc) when n < k*k, do: [n | acc]
   defp decomposition(n, k, acc) when rem(n, k) == 0, do: decomposition(div(n, k), k, [k | acc])
   defp decomposition(n, k, acc), do: decomposition(n, k+1, acc)
@@ -1049,7 +1049,7 @@ Similarly, initial attempts foundered before I realised that the sum of the digi
 
 The factorisation is represented in a data aggregate, which is returned by function FACTOR. This is a facility introduced with F90, and before that one would have to use a collection of ordinary arrays to identify the list of primes and powers of a factorisation because functions could only return simple variables. Also, earlier compilers did not allow the use of the function's name as a variable within the function, or might allow this but produce incorrect results. However, modern facilities are not always entirely beneficial. Here, the function returns a full set of data for type FACTORED, even though often only the first few elements of the arrays will be needed and the rest could be ignored. It is possible to declare the arrays of type FACTORED to be "allocatable" with their size being determined at run time for each invocation of function FACTOR, at the cost of a lot of additional syntax and statements, plus the common annoyance of not knowing "how big" until ''after'' the list has been produced. Alas, such arrangements incur a performance penalty with ''every'' reference to the allocatable entities. See for example [[Sequence_of_primorial_primes#Run-time_allocation]]
 
-For layout purposes, the numbers found were stashed in a line buffer rather than attempt to mess with the latter-day facilities of "non-advancing" output. This should be paramaterised for documentation purposes with say <code>MBUF = 20</code> rather than just using the magic constant of 20, however getting that into the FORMAT statement would require <code>FORMAT(<MBUF>I6)</code> and this <n> facility may not be recognised. Alternatively, one could put <code>FORMAT(666I6)</code> and hope that MBUF would never exceed 666. 
+For layout purposes, the numbers found were stashed in a line buffer rather than attempt to mess with the latter-day facilities of "non-advancing" output. This should be paramaterised for documentation purposes with say <code>MBUF = 20</code> rather than just using the magic constant of 20, however getting that into the FORMAT statement would require <code>FORMAT(<MBUF>I6)</code> and this <n> facility may not be recognised. Alternatively, one could put <code>FORMAT(666I6)</code> and hope that MBUF would never exceed 666.
 ```Fortran
       MODULE FACTORISE	!Produce a little list...
        USE PRIMEBAG		!This is a common need.
@@ -1250,11 +1250,11 @@ Sub getPrimeFactors(factors() As UInteger, n As UInteger)
       If n = 1 Then Return
     Else
       ' non-prime factors will always give a remainder > 0 as their own factors have already been removed
-      ' so it's not worth checking that the next potential factor is prime  
-      factor += 1  
-    End If    
+      ' so it's not worth checking that the next potential factor is prime
+      factor += 1
+    End If
   Loop
-End Sub 
+End Sub
 
 Function sumDigits(n As UInteger) As UInteger
   If n < 10 Then Return n
@@ -1282,7 +1282,7 @@ Print "The Smith numbers below 10000 are : "
 Print
 Dim count As UInteger = 0
 For i As UInteger = 2 To 9999
-  If isSmith(i) Then  
+  If isSmith(i) Then
     Print Using "#####"; i;
     count += 1
   End If
@@ -1502,7 +1502,7 @@ Implementation:
 ```J
 digits=: 10&#.inv
 sumdig=: +/@,@digits
-notprime=: -.@(1&p:) 
+notprime=: -.@(1&p:)
 smith=: #~  notprime * (=&sumdig q:)every
 ```
 
@@ -2045,7 +2045,7 @@ Seems silly to paste in all 376 numbers but rest assured the output agrees with 
 
 We make a 80X40 console, and prints 376 smith numbers, using 5 character column width, $(,5) leave first argument and pass second as column width. Using $(4,5) we can print proportional in columns (by default is 0, prints any font as monospaced font). In console we can mix any kind of text, bold, italics, colored and graphics too. Console is bitmap type, Text prints with transparent background, so to print over text, we have to clear first. This happen automatic with scrolling for last line (can be scroll reverse too). There are some variants for print statement and here we use Print Over to clear the line before, and we can make some temporary changes too.
 
-We handle refresh from module (set fast! is for maximum speed), using refresh statement. We use Euler's Sieve, it is 10 times faster than Eratosthenes Sieve. 
+We handle refresh from module (set fast! is for maximum speed), using refresh statement. We use Euler's Sieve, it is 10 times faster than Eratosthenes Sieve.
 
 variable i used for For { } and change inside block, but structure For use own counter,so we get the right i (the next value), when block start again.
 
@@ -2065,7 +2065,7 @@ Module Checkit {
                   def long sum
                   For i=1 to len(a$) {sum+=val(mid$(a$,i, 1)) }
                   =sum
-            }      
+            }
                   x=max
                   \\ Euler's Sieve
                         Dim r(x+1)=1
@@ -2092,7 +2092,7 @@ Module Checkit {
                         smith2=0
                         do {
                               ii=int(sqrt(i))+1
-                              do {  ii-- :   while r(ii)<>1 {ii--} } until i mod ii=0 
+                              do {  ii-- :   while r(ii)<>1 {ii--} } until i mod ii=0
                                if ii<2 then smith2+=sumdigit(str$(i)):exit
                                smith3=sumdigit(str$(ii))
                               do {
@@ -2122,19 +2122,19 @@ Checkit
 
 
 ```Maple
-isSmith := proc(n::posint) 
-local factors, sumofDigits, sumofFactorDigits, x; 
-if isprime(n) then 
-  return false; 
-else 
-  sumofDigits := add(x, x = convert(n, base, 10)); 
-  sumofFactorDigits := add(map(x -> op(convert(x, base, 10)), [op(NumberTheory:-PrimeFactors(n))])); 
-  return evalb(sumofDigits = sumofFactorDigits); 
-end if; 
+isSmith := proc(n::posint)
+local factors, sumofDigits, sumofFactorDigits, x;
+if isprime(n) then
+  return false;
+else
+  sumofDigits := add(x, x = convert(n, base, 10));
+  sumofFactorDigits := add(map(x -> op(convert(x, base, 10)), [op(NumberTheory:-PrimeFactors(n))]));
+  return evalb(sumofDigits = sumofFactorDigits);
+end if;
 end proc:
 
-findSmith := proc(n::posint) 
-return select(isSmith, [seq(1 .. n - 1)]); 
+findSmith := proc(n::posint)
+return select(isSmith, [seq(1 .. n - 1)]);
 end proc:
 
 findSmith(10000);
@@ -2152,7 +2152,7 @@ findSmith(10000);
 
 
 ```Mathematica
-smithQ[n_] := Not[PrimeQ[n]] && 
+smithQ[n_] := Not[PrimeQ[n]] &&
             Total[IntegerDigits[n]] == Total[IntegerDigits /@ Flatten[ConstantArray @@@ FactorInteger[n]],2];
 
 Select[Range[2, 10000], smithQ]
@@ -2248,42 +2248,42 @@ class Test {
         each(i : factors) {
           sum -= SumDigits(factors->Get(i));
         };
-        
+
         if(sum = 0) {
           n->PrintLine();
         };
       };
     };
   }
-  
+
   function : PrimeFactors(n : Int) ~ IntVector {
     result := IntVector->New();
- 
+
     for(i := 2; n % i = 0; n /= i;) {
       result->AddBack(i);
     };
- 
+
     for(i := 3; i * i <= n; i += 2;) {
       while(n % i = 0) {
         result->AddBack(i);
         n /= i;
       };
     };
- 
+
     if(n <> 1) {
       result->AddBack(n);
     };
-    
+
     return result;
   }
-  
+
   function : SumDigits(n : Int) ~ Int {
     sum := 0;
     while(n > 0) {
       sum += (n % 10);
       n /= 10;
     };
-    
+
     return sum;
   }
 }
@@ -2696,17 +2696,17 @@ say $t;
 
 ```perl6
 constant @primes = 2, |(3, 5, 7 ... *).grep: *.is-prime;
- 
+
 multi factors ( 1 ) { 1 }
 multi factors ( Int $remainder is copy ) {
   gather for @primes -> $factor {
- 
+
     # if remainder < factor², we're done
     if $factor * $factor > $remainder {
       take $remainder if $remainder > 1;
       last;
     }
- 
+
     # How many times can we divide by this prime?
     while $remainder %% $factor {
         take $factor;
@@ -2829,29 +2829,29 @@ DisableDebugger
 #ECHO=#True ; #True: Print all results
 Global NewList f.i()
 
-Procedure.i ePotenz(Wert.i)  
-  Define.i var=Wert, i  
+Procedure.i ePotenz(Wert.i)
+  Define.i var=Wert, i
   While var
     i+1
-    var/10    
-  Wend  
-  ProcedureReturn i  
+    var/10
+  Wend
+  ProcedureReturn i
 EndProcedure
 
-Procedure.i n_Element(Wert.i,Stelle.i=1)  
+Procedure.i n_Element(Wert.i,Stelle.i=1)
   If Stelle>0
-    ProcedureReturn (Wert%Int(Pow(10,Stelle))-Wert%Int(Pow(10,Stelle-1)))/Int(Pow(10,Stelle-1))    
+    ProcedureReturn (Wert%Int(Pow(10,Stelle))-Wert%Int(Pow(10,Stelle-1)))/Int(Pow(10,Stelle-1))
   Else
-    ProcedureReturn 0    
-  EndIf  
+    ProcedureReturn 0
+  EndIf
 EndProcedure
 
-Procedure.i qSumma(Wert.i)  
-  Define.i sum, pos  
+Procedure.i qSumma(Wert.i)
+  Define.i sum, pos
   For pos=1 To ePotenz(Wert)
-    sum+ n_Element(Wert,pos)    
-  Next pos  
-  ProcedureReturn sum  
+    sum+ n_Element(Wert,pos)
+  Next pos
+  ProcedureReturn sum
 EndProcedure
 
 Procedure.b IsPrime(n.i)
@@ -2864,13 +2864,13 @@ Procedure.b IsPrime(n.i)
     i+2
     If n%i=0 : ProcedureReturn #False : EndIf
     i+4
-  Wend  
+  Wend
   ProcedureReturn #True
 EndProcedure
 
 Procedure PFZ(n.i,pf.i=2)
   If n>1 And n<>pf
-    If n%pf=0      
+    If n%pf=0
       AddElement(f()) : f()=pf
       PFZ(n/pf,pf)
     Else
@@ -2879,7 +2879,7 @@ Procedure PFZ(n.i,pf.i=2)
     EndIf
   ElseIf n=pf
     AddElement(f()) : f()=pf
-  EndIf   
+  EndIf
 EndProcedure
 
 OpenConsole("Smith numbers")
@@ -2898,7 +2898,7 @@ Smith_loop:
       CompilerIf #ECHO : Print(Str(F())+~"\t") : CompilerEndIf
       qs+qSumma(f())
     Next
-    If ListSize(f())>1 And qSumma(i)=qs 
+    If ListSize(f())>1 And qSumma(i)=qs
       CompilerIf #ECHO : Print("SMITH-NUMBER") : CompilerEndIf
       sn+1
     EndIf
@@ -3254,7 +3254,7 @@ sumFactr: procedure;  parse arg z;       $=0;    f=0             /*obtain the Z 
 8864 8874 8883 8901 8914 9015 9031 9036 9094 9166 9184 9193 9229 9274 9276 9285 9294 9296 9301 9330 9346 9355 9382 9386 9387 9396 9414 9427 9483 9522 9535 9571 9598 9633 9634 9639 9648 9657 9684 9708
 9717 9735 9742 9760 9778 9840 9843 9849 9861 9880 9895 9924 9942 9968 9975 9985
 
-376  Smith numbers found  ≤  9999. 
+376  Smith numbers found  ≤  9999.
 
 ```
 
@@ -3264,7 +3264,7 @@ sumFactr: procedure;  parse arg z;       $=0;    f=0             /*obtain the Z 
 
 This REXX version uses a faster version of the   '''sumFactr'''   function;   it's over   '''20'''   times faster than the
 
-unoptimized version using a (negative) one million for   '''N'''. 
+unoptimized version using a (negative) one million for   '''N'''.
 
 ```rexx
 /*REXX program  finds  (and maybe displays)  Smith  (or joke)  numbers up to a given  N.*/
@@ -3320,9 +3320,9 @@ sumFactr: procedure;  parse arg z;      $=0;   f=0           /*obtain  Z  number
 ## Ring
 
 
-{{incorrect|Ring| 
+{{incorrect|Ring|
 
- This program does not find   (nor show)   all the Smith numbers <big> &lt; </big> 10,000. 
+ This program does not find   (nor show)   all the Smith numbers <big> &lt; </big> 10,000.
 
 }}
 
@@ -3347,7 +3347,7 @@ for prime = 1 to 1000
        next
     ok
     if sum1 = sum2
-       see "" + prime + " " 
+       see "" + prime + " "
     ok
 next
 
@@ -3362,7 +3362,7 @@ func decomp nr
                      add(decmp, i)
                   else
                      exit
-                  ok 
+                  ok
             end
          ok
      next
@@ -3377,7 +3377,7 @@ func isPrime num
 
 func sumDigits n
      sum = 0
-     while n > 0.5 
+     while n > 0.5
            m = floor(n / 10)
            digit = n - m * 10
            sum = sum + digit
@@ -3392,7 +3392,7 @@ Output:
 ```txt
 
 All the Smith Numbers < 1000 are:
-4 22 27 58 85 94 121 166 202 265 274 319 346 355 378 382 391 438 454 483 517 526 535 562 576 588 627 634 636 645 648 654 663 666 690 706 728 729 762 778 825 852 861 895 913 915 922 958 985 
+4 22 27 58 85 94 121 166 202 265 274 319 346 355 378 382 391 438 454 483 517 526 535 562 576 588 627 634 636 645 648 654 663 666 690 706 728 729 762 778 825 852 861 895 913 915 922 958 985
 
 ```
 
@@ -3403,19 +3403,19 @@ All the Smith Numbers < 1000 are:
 
 ```ruby
 require "prime"
- 
+
 class Integer
- 
+
   def smith?
     return false if prime?
     digits.sum == prime_division.map{|pr,n| pr.digits.sum * n}.sum
   end
- 
+
 end
- 
+
 n   = 10_000
 res = 1.upto(n).select(&:smith?)
- 
+
 puts "#{res.size} smith numbers below #{n}:
 #{res.first(5).join(", ")},... #{res.last(5).join(", ")}"
 ```
@@ -3456,7 +3456,7 @@ fn main () {
         //Avoid the prime numbers
         if prime_factors.len() < 2 { continue; }
         //Check the smith number definition
-        if prime_factors.iter().fold(0, |n,x| n + x.to_string().chars().map(|d| d.to_digit(10).unwrap()).fold(0, |n,x| n + x))  
+        if prime_factors.iter().fold(0, |n,x| n + x.to_string().chars().map(|d| d.to_digit(10).unwrap()).fold(0, |n,x| n + x))
             == i.to_string().chars().map(|d| d.to_digit(10).unwrap()).fold(0, |n,x| n + x) {
             solution.push(i);
         }
@@ -3728,9 +3728,9 @@ Uses the code (primeFactors) from [[Prime decomposition#zkl]].
 
 ```zkl
 fcn smithNumbers(N=0d10_000){ // -->(Smith numbers to N)
-   [2..N].filter(fcn(n){ 
+   [2..N].filter(fcn(n){
       (pfs:=primeFactors(n)).len()>1 and
-      n.split().sum(0)==primeFactors(n).apply("split").flatten().sum(0) 
+      n.split().sum(0)==primeFactors(n).apply("split").flatten().sum(0)
    })
 }
 ```

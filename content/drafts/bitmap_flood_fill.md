@@ -799,14 +799,14 @@ bool FloodFillAlgorithm::insideImage(Point p) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C#|3.0}}
 {{libheader|System.Drawing}}
 
 This implementation matches exact colours only. Since the example image has grey pixels around the edges of the circles, these will remain grey after the interiors are filled.
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

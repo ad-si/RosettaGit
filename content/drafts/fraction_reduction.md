@@ -23,7 +23,7 @@ numerator and the denominator.   An example is:
         <big>64</big>                                                  <big><b><strike>6</strike></b>4</big>
 resulting in:
          <big>1</big>
-        ───    
+        ───
          <big>4</big>
 
 
@@ -72,7 +72,7 @@ Show all output here, on this page.
 
 
 ;Somewhat related task:
-:*   [https://rosettacode.org/wiki/Farey_sequence Farey sequence]       (It concerns fractions.) 
+:*   [https://rosettacode.org/wiki/Farey_sequence Farey sequence]       (It concerns fractions.)
 
 
 
@@ -83,10 +83,10 @@ Show all output here, on this page.
 
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Kotlin}}
 
-```csharp
+```c#
 using System;
 
 namespace FractionReduction {
@@ -1471,7 +1471,7 @@ output [show(n)++"/"++show(i)++" becomes "++show(e)++"/"++show(g)++" when "++sho
 
 ### The Tasks
 
-;Displaying 12 solutions 
+;Displaying 12 solutions
 ;minizinc --num-solutions 12 -DS=2
 {{out}}
 
@@ -1890,7 +1890,7 @@ function to_n(sequence digits, integer remove_digit=0)
 end function
 
 function ndigits(integer n)
--- generate numbers with unique digits efficiently 
+-- generate numbers with unique digits efficiently
 -- and store them in an array for multiple re-use,
 -- along with an array of the removed-digit values.
     sequence res = {},

@@ -425,9 +425,9 @@ int main(){
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 class Program {

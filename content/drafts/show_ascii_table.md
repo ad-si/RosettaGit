@@ -597,10 +597,10 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using static System.Console;
 using static System.Linq.Enumerable;
 

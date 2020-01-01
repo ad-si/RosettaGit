@@ -68,11 +68,11 @@ main(void)
 }
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|3.0}}
 
 
-```csharp
+```c#
 
 using System;
 using System.Net;

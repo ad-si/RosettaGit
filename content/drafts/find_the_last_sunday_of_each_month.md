@@ -44,7 +44,7 @@ Example of an expected output:
 
 ## 360 Assembly
 
-The program uses one ASSIST macro (XPRNT) to keep the code as short as possible. 
+The program uses one ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Last Sunday of each month 31/01/2017
@@ -102,19 +102,19 @@ LOOPM    C      R6,=F'12'          do m=1 to 12
          SR     R2,R4              days(m)-k//7
          LR     R9,R2              d=days(m)-k//7
          L      R1,YEAR            year
-         CVD    R1,DW              year: binary to packed 
+         CVD    R1,DW              year: binary to packed
          OI     DW+7,X'0F'           zap sign
          UNPK   PG(4),DW             unpack (ZL4)
-         CVD    R6,DW              m : binary to packed 
+         CVD    R6,DW              m : binary to packed
          OI     DW+7,X'0F'           zap sign
          UNPK   PG+5(2),DW           unpack (ZL2)
-         CVD    R9,DW              d: binary to packed 
+         CVD    R9,DW              d: binary to packed
          OI     DW+7,X'0F'           zap sign
          UNPK   PG+8(2),DW           unpack (ZL2)
          XPRNT  PG,L'PG            print buffer
          LA     R6,1(R6)           m=m+1
          B      LOOPM
-ELOOPM   L      R13,4(0,R13)       epilog 
+ELOOPM   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -152,7 +152,7 @@ DW       DS     D                  packed (PL8) 15num
 ## Ada
 
 
-The program from [[http://rosettacode.org/wiki/Last_Friday_of_each_month#Ada]] solves this task, as well. 
+The program from [[http://rosettacode.org/wiki/Last_Friday_of_each_month#Ada]] solves this task, as well.
 
 {{out}}
 
@@ -183,49 +183,49 @@ The program from [[http://rosettacode.org/wiki/Last_Friday_of_each_month#Ada]] s
 
 --  lastSundaysOfYear :: Int -> [Date]
 on lastSundaysOfYear(y)
-    
+
     -- lastWeekDaysOfYear :: Int -> Int -> [Date]
     script lastWeekDaysOfYear
         on |λ|(intYear, iWeekday)
-            
+
             -- lastWeekDay :: Int -> Int -> Date
             script lastWeekDay
                 on |λ|(iLastDay, iMonth)
                     set iYear to intYear
-                    
+
                     calendarDate(iYear, iMonth, iLastDay - ¬
                         (((weekday of calendarDate(iYear, iMonth, iLastDay)) as integer) + ¬
                             (7 - (iWeekday))) mod 7)
                 end |λ|
             end script
-            
+
             map(lastWeekDay, lastDaysOfMonths(intYear))
         end |λ|
-        
+
         -- isLeapYear :: Int -> Bool
         on isLeapYear(y)
             (0 = y mod 4) and (0 ≠ y mod 100) or (0 = y mod 400)
         end isLeapYear
-        
+
         -- lastDaysOfMonths :: Int -> [Int]
         on lastDaysOfMonths(y)
             {31, cond(isLeapYear(y), 29, 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
         end lastDaysOfMonths
     end script
-    
+
     lastWeekDaysOfYear's |λ|(y, Sunday as integer)
 end lastSundaysOfYear
 
 
 -- TEST ----------------------------------------------------------------------
 on run argv
-    
+
     intercalate(linefeed, ¬
         map(isoRow, ¬
             transpose(map(lastSundaysOfYear, ¬
                 apply(cond(class of argv is list and argv ≠ {}, ¬
                     singleYearOrRange, fiveCurrentYears), argIntegers(argv))))))
-    
+
 end run
 
 -- ARGUMENT HANDLING ---------------------------------------------------------
@@ -233,7 +233,7 @@ end run
 -- Up to two optional command line arguments: [yearFrom], [yearTo]
 -- (Default range in absence of arguments: from two years ago, to two years ahead)
 
--- ~ $ osascript ~/Desktop/lastSundays.scpt 
+-- ~ $ osascript ~/Desktop/lastSundays.scpt
 -- ~ $ osascript ~/Desktop/lastSundays.scpt 2013
 -- ~ $ osascript ~/Desktop/lastSundays.scpt 2013 2016
 
@@ -332,7 +332,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -358,11 +358,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 ```
@@ -486,15 +486,15 @@ Uses  day of week, last day of month and  leapyear routines
 
 @echo off
 setlocal enabledelayedexpansion
-set /p yr= Enter year: 
+set /p yr= Enter year:
 echo.
-call:monthdays %yr% list 
+call:monthdays %yr% list
 set mm=1
 for %%i in (!list!) do (
   call:calcdow !yr! !mm! %%i dow
   set/a lsu=%%i-dow
   set mf=0!mm!
-  echo !yr!-!mf:~-2!-!lsu! 
+  echo !yr!-!mf:~-2!-!lsu!
   set /a mm+=1
 )
 pause
@@ -522,7 +522,7 @@ exit /b
 
 ```
 
-    
+
 {{out}}
 
 ```txt
@@ -671,9 +671,9 @@ class lastSunday
 public:
     lastSunday()
     {
-	m[0]  = "JANUARY:   "; m[1]  = "FEBRUARY:  "; m[2]  = "MARCH:     "; m[3]  = "APRIL:     "; 
-	m[4]  = "MAY:       "; m[5]  = "JUNE:      "; m[6]  = "JULY:      "; m[7]  = "AUGUST:    "; 
-	m[8]  = "SEPTEMBER: "; m[9]  = "OCTOBER:   "; m[10] = "NOVEMBER:  "; m[11] = "DECEMBER:  "; 
+	m[0]  = "JANUARY:   "; m[1]  = "FEBRUARY:  "; m[2]  = "MARCH:     "; m[3]  = "APRIL:     ";
+	m[4]  = "MAY:       "; m[5]  = "JUNE:      "; m[6]  = "JULY:      "; m[7]  = "AUGUST:    ";
+	m[8]  = "SEPTEMBER: "; m[9]  = "OCTOBER:   "; m[10] = "NOVEMBER:  "; m[11] = "DECEMBER:  ";
     }
 
     void findLastSunday( int y )
@@ -748,7 +748,7 @@ int main( int argc, char* argv[] )
     while( true )
     {
 	system( "cls" );
-	cout << "Enter the year( yyyy ) --- ( 0 to quit ): "; 
+	cout << "Enter the year( yyyy ) --- ( 0 to quit ): ";
 	cin >> y;
 	if( !y ) return 0;
 
@@ -797,7 +797,7 @@ int main( int argc , char* argv[ ] ) {
 
    int year =  std::atoi( argv[ 1 ] ) ;
    for ( int i = 1 ; i < 13 ; i++ ) {
-      try { 
+      try {
 	 date d( year , i , 1  ) ;
 	 d = d.end_of_month( ) ;
 	 day_iterator d_itr ( d ) ;
@@ -832,9 +832,9 @@ int main( int argc , char* argv[ ] ) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace LastSundayOfEachMonth
@@ -1110,7 +1110,7 @@ defmodule RC do
       sunday = lastday - rem(daynum, 7)
       {year, month, sunday}
     end)
-  end  
+  end
 end
 
 y = String.to_integer(hd(System.argv))
@@ -1334,7 +1334,7 @@ Having already functions that calculate a daynumber from a date and the reverse,
 
 Their routine is not only fast, but flexible, in particular allowing Month + 1 so that DAYNUM(Y,M + 1,0) gives the last day of month M for M = 1 to 12, with no agony over which month has what last day and leap years or not. If W is the day of week desired, all that remains is to use MOD(D - W,7) to determine the offset back to the desired day of the week and make that shift. There is a problem with the MOD function when negative numbers are involved: it may or may not (depending on computer, compiler, language) return a negative result; by adding 7 and taking a MOD again, this variation is suppressed.
 
-The source uses the MODULE protocol for convenience in its usage in larger projects (which contain a calculation for Easter, daylight savings changeover dates, solar azimuth and altitude, etc. which have been removed here), but requires only F77 features, except for the annoyance of the MUNYAD function returning a TYPE(DATEBAG) result to get the three parts. This is an example where a palindromic programming protocol would be so much better. One would write 
+The source uses the MODULE protocol for convenience in its usage in larger projects (which contain a calculation for Easter, daylight savings changeover dates, solar azimuth and altitude, etc. which have been removed here), but requires only F77 features, except for the annoyance of the MUNYAD function returning a TYPE(DATEBAG) result to get the three parts. This is an example where a palindromic programming protocol would be so much better. One would write
 ```Fortran
       D = DAYNUM(Y,M,D)    !Daynumber from date.
       DAYNUM(Y,M,D) = D    !Date parts from a day number.
@@ -1758,7 +1758,7 @@ sYear = InputBox("Input year", "Last Sunday of each month")                     
 Print "Last Sundays in " & sYear                                                'Print a heading
 
 For siMonth = 1 To 12                                                           'Loop for each month
-  For siDay = 31 DownTo 23                                                      'Count backwards from 31 to 23 (Sunday 23rd February 1930) 
+  For siDay = 31 DownTo 23                                                      'Count backwards from 31 to 23 (Sunday 23rd February 1930)
     siWeekday = 7                                                               'Set the Weekday to Saturday in case of error in the next line
     Try siWeekday = WeekDay(Date(Val(sYear), siMonth, siDay))                   'TRY and get the Weekday. If there is an error it will be ignored e.g. 31 February
     If siWeekday = 0 Then                                                       'If Weekday is Sunday then..
@@ -1808,11 +1808,11 @@ import (
 )
 
 func main() {
-	
+
 	var year int
 	var t time.Time
 	var lastDay = [12]int { 31,29,31,30,31,30,31,31,30,31,30,31 }
-	
+
 	for {
 		fmt.Print("Please select a year: ")
 		_, err := fmt.Scanf("%d", &year)
@@ -1996,7 +1996,7 @@ and works in both languages:
 procedure main(A)
 every write(lastsundays(!A))
 end
- 
+
 procedure lastsundays(year)
 every m := 1 to 12 do {
    d := case m of {
@@ -2004,14 +2004,14 @@ every m := 1 to 12 do {
       4|6|9|11 : 30
       default  : 31
       }                          # last day of month
- 
-   z := 0  
+
+   z := 0
    j := julian(m,d,year) + 1     # first day of next month
    until (j-:=1)%7 = 6 do z -:=1 # backup to last sunday (6)
    suspend sprintf("%d-%d-%d",year,m,d+z)
    }
 end
- 
+
 link datetime, printf
 ```
 
@@ -2087,17 +2087,17 @@ Example use:
 ```java
 import java.util.Scanner;
 
-public class LastSunday 
+public class LastSunday
 {
 	static final String[] months={"January","February","March","April","May","June","July","August","September","October","November","December"};
-	
+
 	public static int[] findLastSunday(int year)
 	{
 		boolean isLeap = isLeapYear(year);
-		
+
 		int[] days={31,isLeap?29:28,31,30,31,30,31,31,30,31,30,31};
 		int[] lastDay=new int[12];
-		
+
 		for(int m=0;i<12;i++)
 		{
 			int d;
@@ -2105,10 +2105,10 @@ public class LastSunday
 				;
 			lastDay[m]=d;
 		}
-		
+
 		return lastDay;
 	}
-	
+
 	private static boolean isLeapYear(int year)
 	{
 		if(year%4==0)
@@ -2120,40 +2120,40 @@ public class LastSunday
 		}
 		return false;
 	}
-	
+
 	private static int getWeekDay(int y, int m, int d)
 	{
 		int f=y+d+3*m-1;
 		m++;
-		
+
 		if(m<3)
 			y--;
 		else
 			f-=(int)(0.4*m+2.3);
-		
+
 		f+=(int)(y/4)-(int)((y/100+1)*0.75);
 		f%=7;
-		
+
 		return f;
 	}
-	
+
 	private static void display(int year, int[] lastDay)
 	{
 		System.out.println("\nYEAR: "+year);
 		for(int m=0;i<12;i++)
 			System.out.println(months[m]+": "+lastDay[m]);
 	}
-	
+
 	public static void main(String[] args) throws Exception
 	{
 		System.out.print("Enter year: ");
 		Scanner s=new Scanner(System.in);
-		
+
 		int y=Integer.parseInt(s.next());
-		
+
 		int[] lastDay = findLastSunday(y);
 		display(y, lastDay);
-		
+
 		s.close();
 	}
 }
@@ -2462,7 +2462,7 @@ def until(cond; next):
 
 # Use Zeller's Congruence to determine the day of the week, given
 # year, month and day as integers in the conventional way.
-# If iso == "iso" or "ISO", then emit an integer in 1 -- 7 where 
+# If iso == "iso" or "ISO", then emit an integer in 1 -- 7 where
 # 1 represents Monday, 2 Tuesday, etc;
 # otherwise emit 0 for Saturday, 1 for Sunday, etc.
 #
@@ -2472,7 +2472,7 @@ def day_of_week(year; month; day; iso):
   else
     [year, month, day]
   end
-  | .[2] + (13*(.[1] + 1)/5|floor) 
+  | .[2] + (13*(.[1] + 1)/5|floor)
     +  (.[0]%100)       + ((.[0]%100)/4|floor)
     +  (.[0]/400|floor) - 2*(.[0]/100|floor)
   | if iso == "iso" or iso == "ISO" then 1 + ((. + 5) % 7)
@@ -2483,7 +2483,7 @@ def day_of_week(year; month; day; iso):
 '''findLastSundays'''
 
 ```jq
-# year and month are numbered conventionally 
+# year and month are numbered conventionally
 def findLastSunday(year; month):
   def isLeapYear:
     year%4 == 0 and ( year%100!=0 or year%400==0 ) ;
@@ -2502,7 +2502,7 @@ def findLastSundays:
     ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   . as $year
   | "YEAR: \(.)",
-    (range(0;12) | "\(months[.]) \(findLastSunday($year; .+1))") ; 
+    (range(0;12) | "\(months[.]) \(findLastSunday($year; .+1))") ;
 
 $year|tonumber|findLastSundays
 
@@ -2590,7 +2590,7 @@ Year> 2013
 Year> this year
 Sorry, but that does not compute as a year.
 
-Year> 
+Year>
 
 ```
 
@@ -2773,7 +2773,7 @@ function NthDayOfMonth(yyyy, mm, nda$)
 ' nda$ is a two-part code. The first character, n, denotes
 ' first, second, third, fourth, and last by 1, 2, 3, 4, or L.
 ' The last two characters, da, denote the day of the week by
-' mo, tu, we, th, fr, sa, or su. For example: 
+' mo, tu, we, th, fr, sa, or su. For example:
 ' the nda$ for the second Monday of a month is "2mo";
 ' the nda$ for the last Thursday of a month is "Lth".
     if yyyy<1900 or yyyy>2099 or mm<1 or mm>12 then
@@ -2787,14 +2787,14 @@ function NthDayOfMonth(yyyy, mm, nda$)
         NthDayOfMonth=0: exit function
     end if
     NthDayOfMonth=1
-    mm$=str$(mm): if mm<10 then mm$="0"+mm$ 
+    mm$=str$(mm): if mm<10 then mm$="0"+mm$
     db$=DayOfDate$(str$(yyyy)+mm$+"01")
     if da$<>db$ then
         x=instr(daC$,db$): y=instr(daC$,da$,x): NthDayOfMonth=1+(y-x)/2
     end if
     dim MD(12)
-    MD(1)=31: MD(2)=28: MD(3)=31: MD(4)=30: MD(5)=31: MD(6)=30 
-    MD(7)=31: MD(8)=31: MD(9)=30: MD(10)=31: MD(11)=30: MD(12)=31 
+    MD(1)=31: MD(2)=28: MD(3)=31: MD(4)=30: MD(5)=31: MD(6)=30
+    MD(7)=31: MD(8)=31: MD(9)=30: MD(10)=31: MD(11)=30: MD(12)=31
     if yyyy mod 4 = 0 then MD(2)=29
     if n$<>"1" then
         if n$<>"l" then
@@ -2964,7 +2964,7 @@ sundays := proc(year)
 	for i to 12 do
 		dt := Date(year, i, last_days[i]);
 		change := 0;
-		if not(Calendar:-DayOfWeek(dt) = 1) then 
+		if not(Calendar:-DayOfWeek(dt) = 1) then
 			change := -Calendar:-DayOfWeek(dt) + 1;
 		end if;
 		dt := Calendar:-AdjustDateField(dt, "date", change);
@@ -2997,10 +2997,10 @@ sundays(2013);
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
-LastSundays[year_] := 
+LastSundays[year_] :=
  Table[Last@
-   DayRange[{year, i}, 
-    DatePlus[{year, i}, {{1, "Month"}, {-1, "Day"}}], Sunday], {i, 
+   DayRange[{year, i},
+    DatePlus[{year, i}, {{1, "Month"}, {-1, "Day"}}], Sunday], {i,
    12}]
 LastSundays[2013]
 ```
@@ -3009,7 +3009,7 @@ LastSundays[2013]
 
 ```txt
 {{2013, 1, 27}, {2013, 2, 24}, {2013, 3, 31}, {2013, 4, 28}, {2013, 5,
-   26}, {2013, 6, 30}, {2013, 7, 28}, {2013, 8, 25}, {2013, 9, 
+   26}, {2013, 6, 30}, {2013, 7, 28}, {2013, 8, 25}, {2013, 9,
   29}, {2013, 10, 27}, {2013, 11, 24}, {2013, 12, 29}}
 ```
 
@@ -3059,8 +3059,8 @@ Sample usage:
 ```OCaml
 
 let is_leap_year y =
-  (* See OCaml solution on Rosetta Code for 
-     determing if it's a leap year *) 
+  (* See OCaml solution on Rosetta Code for
+     determing if it's a leap year *)
   if (y mod 100) = 0
     then (y mod 400) = 0
     else (y mod 4) = 0;;
@@ -3081,7 +3081,7 @@ let get_day_of_week y m d =
   let m_shifted = float_of_int ( ((m + 9) mod 12) + 1) in
   let m_factor = int_of_float (2.6 *. m_shifted -. 0.2) in
   let leap_factor = 5 * (y mod 4) + 3 * (y mod 7) + 5 * (c mod 4) in
-  (d + m_factor + leap_factor) mod 7;; 
+  (d + m_factor + leap_factor) mod 7;;
 
 let get_shift y m last_day =
   get_day_of_week y m last_day;;
@@ -3096,7 +3096,7 @@ let print_last_sundays y =
   let months = [1;2;3;4;5;6;7;8;9;10;11;12] in
   List.iter (print_last_sunday y) months;;
 
-match (Array.length Sys.argv ) with 
+match (Array.length Sys.argv ) with
   2 -> print_last_sundays( int_of_string (Sys.argv.(1)));
  |_ -> invalid_arg "Please enter a year";
 
@@ -3221,7 +3221,7 @@ use warnings ;
 use DateTime ;
 
 for my $i( 1..12 ) {
-   my $date = DateTime->last_day_of_month( year => $ARGV[ 0 ] , 
+   my $date = DateTime->last_day_of_month( year => $ARGV[ 0 ] ,
 	 month => $i ) ;
    while ( $date->dow != 7 ) {
       $date = $date->subtract( days => 1 ) ;
@@ -3650,12 +3650,12 @@ Return the <code>[DateTime]</code> objects as strings (specifying the string for
 Procedure LastSundayOfEachMonth(yyyy.i,List lfem.i())
   Define dv.i=ParseDate("%yyyy",Str(yyyy)), mv.i=1
   NewList d.i()
-  For d=1 To 365 
+  For d=1 To 365
     dv=AddDate(dv,#PB_Date_Day,1)
     If DayOfWeek(dv)=0
       AddElement(d()) : d()=dv
-    EndIf    
-  Next 
+    EndIf
+  Next
   dv=0
   For mv=1 To 12
     ForEach d()
@@ -3782,7 +3782,7 @@ for month in range(1, 13):
 
 (define (prev-day d)
   (time-utc->date
-   (subtract-duration 
+   (subtract-duration
     (date->time-utc d) 24hours)))
 
 (define (prev-sunday d)
@@ -3863,11 +3863,11 @@ foreach sunday last-sundays-of-year to-integer system/script/args [print sunday]
 ## REXX
 
 This REXX example is an exact replication of the Rosetta Code
-* ''find last Fridays of each month for any year'' 
-except for the innards of the first '''DO''' loop. 
+* ''find last Fridays of each month for any year''
+except for the innards of the first '''DO''' loop.
 
 
-The   '''lastDOW'''   subroutine can be used for any day-of-the-week for any month for any year. 
+The   '''lastDOW'''   subroutine can be used for any day-of-the-week for any month for any year.
 
 ```rexx
 /*REXX program displays dates of last Sundays of each month for any year*/
@@ -3975,7 +3975,7 @@ return date('weekday',_,"B") date(,_,'B')            /*return the answer*/
 
 ```ring
 
-see "What year to calculate (yyyy) : " 
+see "What year to calculate (yyyy) : "
 give year
 see "Last Sundays in " + year + " are on :" + nl
 month = list(12)
@@ -3988,7 +3988,7 @@ for n = 1 to 12
 next
 for n = 1 to 12
     for i = (mon[n] - 6) to mon[n]
-        x = (month[n] + i) % 7 
+        x = (month[n] + i) % 7
         if  n < 10 strn = "0" + string(n) else strn = string(n) ok
         if x = 4 see year + "-" + strn + "-" + string(i) + nl ok
     next
@@ -4062,7 +4062,7 @@ Results before the year 1581 may differ from other languages - the Date library 
 
 ```runbasic
 input "What year to calculate (yyyy) : ";year
-print "Last Sundays in ";year;" are:" 
+print "Last Sundays in ";year;" are:"
 dim month(12)
 mo$ = "4 0 0 3 5 1 3 6 2 4 0 2"
 mon$ = "31 28 31 30 31 30 31 31 30 31 30 31"
@@ -4075,7 +4075,7 @@ for n = 1 to 12
 next
 for n = 1 to 12
     for i = (val(word$(mon$,n)) - 6) to val(word$(mon$,n))
-        x = (month(n) + i) mod 7 
+        x = (month(n) + i) mod 7
         if x = 4 then print year ; "-";right$("0"+str$(n),2);"-" ; i
     next
 next
@@ -4144,7 +4144,7 @@ object FindTheLastSundayOfEachMonth extends App {
 
 Uses the libraries [http://seed7.sourceforge.net/libraries/time.htm time.s7i] and
 [http://seed7.sourceforge.net/libraries/duration.htm duration.s7i].
-Applicable to any day of the week, cf. [[http://rosettacode.org/wiki/Last_Friday_of_each_month#Seed7]]. 
+Applicable to any day of the week, cf. [[http://rosettacode.org/wiki/Last_Friday_of_each_month#Seed7]].
 
 
 ```seed7
@@ -4255,9 +4255,9 @@ Pharo Smalltalk
 [ :yr | | firstDay firstSunday |
   firstDay := Date year: yr month: 1 day: 1.
   firstSunday := firstDay addDays: (1 - firstDay dayOfWeek).
-    (0 to: 53) 
+    (0 to: 53)
       collect: [ :each | firstSunday addDays: (each * 7) ]
-      thenSelect: [ :each | 
+      thenSelect: [ :each |
         (((Date daysInMonth: each monthIndex forYear: yr) - each dayOfMonth) <= 6) and: [ each year = yr ] ] ]
 
 ```
@@ -4315,25 +4315,25 @@ last_sundays 2013
 import Foundation
 
 func lastSundays(of year: Int) -> [Date] {
-	
+
 	let calendar = Calendar.current
 	var dates = [Date]()
-	
+
 	for month in 1...12 {
-		
+
 		var dateComponents = DateComponents(calendar: calendar,
 		                                    year: year,
 		                                    month: month + 1,
 		                                    day: 0,
 		                                    hour: 12)
-		
+
 		let date = calendar.date(from: dateComponents)!
 		let weekday = calendar.component(.weekday, from: date)
 
 		if weekday != 1 {
 			dateComponents.day! -= weekday - 1
 		}
-		
+
 		dates.append(calendar.date(from: dateComponents)!)
 	}
 	return dates
@@ -4428,7 +4428,7 @@ Next
 ## zkl
 
 
-The program from [[http://rosettacode.org/wiki/Last_Friday_of_each_month#zkl]] solves this task, as well. 
+The program from [[http://rosettacode.org/wiki/Last_Friday_of_each_month#zkl]] solves this task, as well.
 
 {{out}}
 

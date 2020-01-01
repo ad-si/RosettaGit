@@ -298,11 +298,11 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Tested with [[Write ppm file#C.23|this solution.]]
 
 
-```csharp
+```c#
 using System.IO;
 class PPMReader
 {

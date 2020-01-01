@@ -380,9 +380,9 @@ void main() {
 
 For Unix-likes, changing the above <code>system("cls");</code> to <code>system("clear");</code> usually works, however the <code>getchar();</code> perhaps doesn't always work as expected if you press anything other than return. This is because of the raw vs. cooked terminal mode thing.
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 System.Console.Clear();
 ```
 

@@ -218,13 +218,13 @@ int main(void)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{trans|Python}} {{trans|C}}
 (this requires a System.Numerics registry reference)
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

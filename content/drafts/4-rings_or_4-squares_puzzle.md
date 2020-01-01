@@ -204,7 +204,7 @@ end run
 on rings(u, digits)
     set ds to reverse_(sort(digits))
     set h to head(ds)
-    
+
     -- QUEEN -------------------------------------------------------------------
     script queen
         on |λ|(q)
@@ -219,7 +219,7 @@ on rings(u, digits)
             else
                 set bs to ds
             end if
-            
+
             -- LEFT BISHOP and its ROOK-----------------------------------------
             script leftBishop
                 on |λ|(lb)
@@ -232,7 +232,7 @@ on rings(u, digits)
                         else
                             set rbs to ds
                         end if
-                        
+
                         -- RIGHT BISHOP and its ROOK ---------------------------
                         script rightBishop
                             on |λ|(rb)
@@ -247,12 +247,12 @@ on rings(u, digits)
                                     else
                                         set ks to ds
                                     end if
-                                    
+
                                     -- KNIGHTS LEFT AND RIGHT ------------------
                                     script knights
                                         on |λ|(k)
                                             set k2 to k + rookDelta
-                                            
+
                                             if elem(k2, ks) and ((not u) or ¬
                                                 notElem(k2, ¬
                                                     {lRook, k, lb, q, rb, rRook})) then
@@ -262,21 +262,21 @@ on rings(u, digits)
                                             end if
                                         end |λ|
                                     end script
-                                    
+
                                     concatMap(knights, ks)
                                 end if
                             end |λ|
                         end script
-                        
+
                         concatMap(rightBishop, rbs)
                     end if
                 end |λ|
             end script
-            
+
             concatMap(leftBishop, bs)
         end |λ|
     end script
-    
+
     concatMap(queen, ds)
 end rings
 
@@ -298,7 +298,7 @@ end concatMap
 on delete_(x, xs)
     set mbIndex to elemIndex(x, xs)
     set lng to length of xs
-    
+
     if mbIndex is not missing value then
         if lng > 1 then
             if mbIndex = 1 then
@@ -328,7 +328,7 @@ on difference(xs, ys)
             end if
         end except
     end script
-    
+
     foldl(except of mf, xs, ys)
 end difference
 
@@ -419,7 +419,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -454,7 +454,7 @@ on show(e)
                 show(v)
             end |λ|
         end script
-        
+
         "[" & intercalate(", ", map(serialized, e)) & "]"
     else if c = record then
         script showField
@@ -463,7 +463,7 @@ on show(e)
                 "\"" & k & "\":" & show(ev)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", ¬
             map(showField, zip(allKeys(e), allValues(e)))) & "}"
     else if c = date then
@@ -532,7 +532,7 @@ length(rings(false, enumFromTo(0, 9)))
 
 /* ARM assembly Raspberry PI  */
 /*  program square4.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -571,7 +571,7 @@ sMessCounter:     .fill 11, 1, ' '            @ size => 11
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 .align 4
 iValues_a:                .skip 4 * NBBOX
 iValues_b:                .skip 4 * NBBOX - 1
@@ -585,8 +585,8 @@ iCounterSol:              .skip 4
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
     mov r0,#1
     mov r1,#7
     mov r2,#3                                     @ 0 = rien 1 = display 2 = count 3 = les deux
@@ -600,15 +600,15 @@ main:                                             @ entry of program
     mov r2,#2                                     @ 0 = rien 1 = display 2 = count 3 = les deux
     bl prepSearchNU
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrszCarriageReturn:            .int szCarriageReturn
 
 /******************************************************************/
-/*     search problèm  value not unique                           */ 
+/*     search problèm  value not unique                           */
 /******************************************************************/
 /* r0 contains start digit */
 /* r1 contains end digit */
@@ -680,13 +680,13 @@ prepSearchNU:
     bl affichageMess
 
 100:
-    pop {r3-r12,lr}                                 @ restaur registers 
+    pop {r3-r12,lr}                                 @ restaur registers
     bx lr                                           @return
 iAdrsMessCounter:                .int sMessCounter
 iAdrsMessNbSolution:             .int sMessNbSolution
 
 /******************************************************************/
-/*     search problem  unique solution                            */ 
+/*     search problem  unique solution                            */
 /******************************************************************/
 /* r0 contains start digit */
 /* r1 contains end digit */
@@ -712,7 +712,7 @@ searchPb:
     ldr r0,iAdriValues_a                              @ area value a
     ldr r1,iAdriValues_b                              @ area value b
     mov r2,r12                                        @ indice  a
-    mov r3,#NBBOX                                     @ number of origin values 
+    mov r3,#NBBOX                                     @ number of origin values
     bl prepValues
     mov r11,#-1
 3:
@@ -797,7 +797,7 @@ searchPb:
     ldr r0,[r0,r7,lsl #2]
     ldr r1,iAdriValues_g
     ldr r1,[r1,r6,lsl #2]
-    add r3,r0,r1                               @ f +g 
+    add r3,r0,r1                               @ f +g
     cmp r4,r3                                  @ equal first square ?
     bne 8b
     add r5,#1                                  @ increment counter
@@ -835,7 +835,7 @@ searchPb:
     ldr r0,iAdrsMessDeb
     bl affichageMess
 9:
-    b 8b    @ suite 
+    b 8b    @ suite
 
 90:
     ldr r0,[sp,#8]                                @ load action for two parameter in stack
@@ -847,7 +847,7 @@ searchPb:
     ldr r0,iAdrsMessNbSolution
     bl affichageMess
 100:
-    pop {r0-r12,lr}                               @ restaur registers 
+    pop {r0-r12,lr}                               @ restaur registers
     bx lr                                         @return
 iAdriValues_a:                   .int iValues_a
 iAdriValues_b:                   .int iValues_b
@@ -867,7 +867,7 @@ iAdrsMessValeur_g:               .int sMessValeur_g
 iAdrsMessDeb:                    .int sMessDeb
 iAdriCounterSol:                 .int iCounterSol
 /******************************************************************/
-/*     copy value area  and substract value of indice             */ 
+/*     copy value area  and substract value of indice             */
 /******************************************************************/
 /* r0 contains the address of values origin */
 /* r1 contains the address of values destination */
@@ -888,43 +888,43 @@ prepValues:
    cmp r4,r3                                       @ end ?
    blt 1b
 100:
-    pop {r1-r6,lr}                                 @ restaur registres 
+    pop {r1-r6,lr}                                 @ restaur registres
     bx lr                                          @return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -937,18 +937,18 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -959,12 +959,12 @@ divisionpar10U:
     push {r2,r3,r4, lr}
     mov r4,r0                                          @ save value
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -1374,7 +1374,7 @@ std::list<std::vector<int>> filter_unique(int from, int to)
     {
         bool repetition = false;
 
-        //If some element is repeated, repetition becomes true 
+        //If some element is repeated, repetition becomes true
         for (auto x : *subrange)
             repetition |= has_non_unique_values(*subrange, x);
 
@@ -1409,7 +1409,7 @@ int main()
     std::cout << "\nUnique-numbers combinations in range 3-9:\n";
     auto solution2 = filter_unique(3,10);
     print_range(solution2);
-    std::cout << "\nNumber of combinations in range 0-9: " 
+    std::cout << "\nNumber of combinations in range 0-9: "
               << combinations(0, 10).size() << "." << std::endl;
 
     return 0;
@@ -1443,10 +1443,10 @@ Number of combinations in range 0-9: 2860.
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1602,7 +1602,7 @@ nil
                  (when (apply func (reverse cur))
                    (push cur results))
                  (dotimes (i (- max min))
-                   (when (or (not unique) 
+                   (when (or (not unique)
                              (not (member (+ i min) cur)))
                      (inner (append (list (+ i min)) cur)))))))
       (inner nil))
@@ -1613,7 +1613,7 @@ nil
 
 (defun display-solutions ()
   (let ((letters '((a b c d e f g))))
-    (format t "Low 1, High 7, unique letters: ~%~{~{~3A~}~%~}~%" 
+    (format t "Low 1, High 7, unique letters: ~%~{~{~3A~}~%~}~%"
             (append letters (four-rings-solutions 1 7 t)))
     (format t "Low 3, High 9, unique letters: ~%~{~{~3A~}~%~}~%"
             (append letters (four-rings-solutions 3 9 t)))
@@ -1627,23 +1627,23 @@ Output:
 ```txt
 
 CL-USER> (four-rings:display-solutions)
-Low 1, High 7, unique letters: 
-A  B  C  D  E  F  G  
-6  4  1  5  2  3  7  
-4  5  3  1  6  2  7  
-3  7  2  1  5  4  6  
-7  3  2  5  1  4  6  
-4  7  1  3  2  6  5  
-5  6  2  3  1  7  4  
-7  2  6  1  3  5  4  
-6  4  5  1  2  7  3  
+Low 1, High 7, unique letters:
+A  B  C  D  E  F  G
+6  4  1  5  2  3  7
+4  5  3  1  6  2  7
+3  7  2  1  5  4  6
+7  3  2  5  1  4  6
+4  7  1  3  2  6  5
+5  6  2  3  1  7  4
+7  2  6  1  3  5  4
+6  4  5  1  2  7  3
 
-Low 3, High 9, unique letters: 
-A  B  C  D  E  F  G  
-7  8  3  4  5  6  9  
-8  7  3  5  4  6  9  
-9  6  4  5  3  7  8  
-9  6  5  4  3  8  7  
+Low 3, High 9, unique letters:
+A  B  C  D  E  F  G
+7  8  3  4  5  6  9
+8  7  3  5  4  6  9
+9  6  4  5  3  7  8
+9  6  5  4  3  8  7
 
 Number of solutions for Low 0, High 9 non-unique:
 2860
@@ -1789,8 +1789,8 @@ There are 2860 non-unique solutions in [0,9]
 (* A simple function to generate the sequence
    Nigel Galloway: January 31st., 2017 *)
 type G = {d:int;x:int;b:int;f:int}
-let N n g = 
-  {(max (n-g) n) .. (min (g-n) g)} |> Seq.collect(fun d->{(max (d+n+n) (n+n))..(min (g+g) (d+g+g))}           |> Seq.collect(fun x -> 
+let N n g =
+  {(max (n-g) n) .. (min (g-n) g)} |> Seq.collect(fun d->{(max (d+n+n) (n+n))..(min (g+g) (d+g+g))}           |> Seq.collect(fun x ->
   seq{for a in n .. g do for b in n .. g do if (a+b) = x then for c in n .. g do if (b+c+d) = x then yield b} |> Seq.collect(fun b ->
   seq{for f in n .. g do for G in n .. g do if (f+G) = x then for e in n .. g do if (f+e+d) = x then yield f} |> Seq.map(fun f -> {d=d;x=x;b=b;f=f}))))
 
@@ -1818,8 +1818,8 @@ printfn "%d" (Seq.length (N 0 9))
 (* A simple function to generate the sequence with unique values
    Nigel Galloway: January 31st., 2017 *)
 type G = {d:int;x:int;b:int;f:int}
-let N n g = 
-  {(max (n-g) n) .. (min (g-n) g)} |> Seq.filter(fun d -> d <> 0) |> Seq.collect(fun d->{(max (d+n+n) (n+n)) .. (min (g+g) (d+g+g))} |> Seq.collect(fun x -> 
+let N n g =
+  {(max (n-g) n) .. (min (g-n) g)} |> Seq.filter(fun d -> d <> 0) |> Seq.collect(fun d->{(max (d+n+n) (n+n)) .. (min (g+g) (d+g+g))} |> Seq.collect(fun x ->
   seq{for a in n .. g do if a <> d then for b in n .. g do if (a+b) = x && b <> a && b <> d then for c in n .. g do if (b+c+d) = x && c <> d && c <> a && c <> b then yield b} |> Seq.collect(fun b ->
   seq{for f in n .. g do if f <> d && f <> b && f <> (x-b) && f <> (x-d-b) then for G in n .. g do if (f+G) = x && G <> d && G <> b && G <> f && G <> (x-b) && G <> (x-d-b) then for e in n .. g do if (f+e+d) = x && e <> d && e <> b && e <> f && e <> G && e <> (x-b) && e <> (x-d-b) then yield f} |> Seq.map(fun f -> {d=d;x=x;b=b;f=f}))))
 
@@ -1893,11 +1893,11 @@ IN: rosetta-code.4-rings
         unique? [ p all-unique? and ] when
         must-be-true p
     ] bag-of ;
-    
+
 : report ( lo hi unique? -- )
     3dup 4-rings over [ dup . ] when length swap "" "non-" ?
     "In [%d, %d] there are %d %sunique solutions.\n" printf ;
-    
+
 1 7 t report
 3 9 t report
 0 9 f report
@@ -1933,17 +1933,17 @@ In [0, 9] there are 2860 non-unique solutions.
 
 ## Fortran
 
-This uses the facility standardised in F90 whereby DO-loops can have text labels attached (not in the usual label area) so that the END DO statement can have the corresponding label, and any CYCLE statements can use it also. Similarly, the subroutine's END statement bears the name of the subroutine. This is just syntactic decoration. Rather more useful is extended syntax for dealing with arrays and especially the function ANY for making multiple tests without having to enumerate them in the code. To gain this convenience, the EQUIVALENCE statement makes variables A, B, C, D, E, F, and G occupy the same storage as <code>INTEGER V(7)</code>, an array. 
+This uses the facility standardised in F90 whereby DO-loops can have text labels attached (not in the usual label area) so that the END DO statement can have the corresponding label, and any CYCLE statements can use it also. Similarly, the subroutine's END statement bears the name of the subroutine. This is just syntactic decoration. Rather more useful is extended syntax for dealing with arrays and especially the function ANY for making multiple tests without having to enumerate them in the code. To gain this convenience, the EQUIVALENCE statement makes variables A, B, C, D, E, F, and G occupy the same storage as <code>INTEGER V(7)</code>, an array.
 
-One could abandon the use of the named variables in favour of manipulating the array equivalent, and indeed develop code which performs the nested loops via messing with the array, but for simplicity, the individual variables are used. However, tempting though it is to write a systematic sequence of seven nested DO-loops, the variables are not in fact all independent: some are fixed once others are chosen. Just cycling through all the notional possibilities when one only is in fact possible is a bit too much brute-force-and-ignorance, though other problems with other constraints, may encourage such exhaustive stepping. As a result, the code is more tightly bound to the specific features of the problem. 
+One could abandon the use of the named variables in favour of manipulating the array equivalent, and indeed develop code which performs the nested loops via messing with the array, but for simplicity, the individual variables are used. However, tempting though it is to write a systematic sequence of seven nested DO-loops, the variables are not in fact all independent: some are fixed once others are chosen. Just cycling through all the notional possibilities when one only is in fact possible is a bit too much brute-force-and-ignorance, though other problems with other constraints, may encourage such exhaustive stepping. As a result, the code is more tightly bound to the specific features of the problem.
 
-Also standardised in F90 is the $ format code, which specifies that the output line is not to end with the WRITE statement. The problem here is that Fortran does not offer an IF ...FI bracketing construction inside an expression, that would allow something like 
+Also standardised in F90 is the $ format code, which specifies that the output line is not to end with the WRITE statement. The problem here is that Fortran does not offer an IF ...FI bracketing construction inside an expression, that would allow something like
 ```Fortran
 WRITE(...) FIRST,LAST,IF (UNIQUE) THEN "Distinct values only" ELSE "Repeated values allowed" FI // "."
 ```
  so that the correct alternative will be selected. Further, an array (that would hold those two texts) can't be indexed by a LOGICAL variable, and playing with EQUIVALENCE won't help, because the numerical values revealed thereby for .TRUE. and .FALSE. may not be 1 and 0. And anyway, parameters are not allowed to be accessed via EQUIVALENCE to another variable.
 
-So, a two-part output, and to reduce the blather, two IF-statements. 
+So, a two-part output, and to reduce the blather, two IF-statements.
 ```Fortran
       SUBROUTINE FOURSHOW(FIRST,LAST,UNIQUE)	!The "Four Rings" or "Four Squares" puzzle.
 Choose values such that A+B = B+C+D = D+E+F = F+G, all being integers in FIRST:LAST...
@@ -1992,7 +1992,7 @@ Choose values such that A+B = B+C+D = D+E+F = F+G, all being integers in FIRST:L
       CALL FOURSHOW(3,9,.TRUE.)
       CALL FOURSHOW(0,9,.FALSE.)
 
-      END  
+      END
 ```
 
 Output: not in a neat order because the first variable is not determined first.
@@ -2395,9 +2395,9 @@ combs 0 _ = [[]]
 combs n xs = [ x:xr | x <- xs, xr <- combs (n-1) xs ]
 
 ringCheck :: [Int] -> Bool
-ringCheck [x0, x1, x2, x3, x4, x5, x6] = 
-          v == x1+x2+x3 
-       && v == x3+x4+x5 
+ringCheck [x0, x1, x2, x3, x4, x5, x6] =
+          v == x1+x2+x3
+       && v == x3+x4+x5
        && v == x5+x6
     where v = x0 + x1
 
@@ -2411,11 +2411,11 @@ fourRings low high allowRepeats verbose = do
 
     when verbose $ mapM_ print solutions
 
-    putStrLn $    show (length solutions)  
+    putStrLn $    show (length solutions)
                ++ (if allowRepeats then " non" else "")
-               ++ " unique solutions for " 
-               ++ show low 
-               ++ " to " 
+               ++ " unique solutions for "
+               ++ show low
+               ++ " to "
                ++ show high
 
     putStrLn ""
@@ -3656,23 +3656,23 @@ a b c d e f g
 ```Picat
 import cp.
 
-main => 
+main =>
   puzzle_all(1, 7, true, Sol1),
   foreach(Sol in Sol1) println(Sol) end,
   nl,
-  
+
   puzzle_all(3, 9, true, Sol2),
   foreach(Sol in Sol2) println(Sol) end,
   nl,
-  
+
   puzzle_all(0, 9, false, Sol3),
   println(len=Sol3.len),
   nl.
 
-puzzle_all(Min, Max, Distinct, LL) => 
+puzzle_all(Min, Max, Distinct, LL) =>
     L = [A,B,C,D,E,F,G],
     L :: Min..Max,
-    if Distinct then 
+    if Distinct then
       all_different(L)
     else
       true
@@ -3795,7 +3795,7 @@ foursquares(0,9,False,False)
 ```plsql
 
 create table allints (v number);
-create table results 
+create table results
 (
 a number,
 b number,
@@ -3816,8 +3816,8 @@ as
     f number;
     g number;
     out_line varchar2(2000);
-   
-    cursor results_cur is 
+
+    cursor results_cur is
     select
        a,
        b,
@@ -3828,11 +3828,11 @@ as
        g
     from
         results
-    order by 
+    order by
         a,b,c,d,e,f,g;
 
     results_rec results_cur%rowtype;
-    
+
     solutions number;
     uorn varchar2(2000);
 begin
@@ -3843,7 +3843,7 @@ begin
         insert into allints values (i);
     end loop;
     commit;
-    
+
     if uniq = TRUE then
         insert into results
             select
@@ -3867,7 +3867,7 @@ begin
                 a.v = c.v + d.v and
                 g.v = d.v + e.v and
                 b.v = e.v + f.v - c.v
-            order by 
+            order by
                 a,b,c,d,e,f,g;
         uorn := ' unique solutions in ';
     else
@@ -3887,8 +3887,8 @@ begin
                 a.v = c.v + d.v and
                 g.v = d.v + e.v and
                 b.v = e.v + f.v - c.v
-            order by 
-                a,b,c,d,e,f,g;   
+            order by
+                a,b,c,d,e,f,g;
         uorn := ' non-unique solutions in ';
     end if;
     commit;
@@ -3904,7 +3904,7 @@ begin
         e := results_rec.e;
         f := results_rec.f;
         g := results_rec.g;
-        
+
         solutions := solutions + 1;
         if show = TRUE then
             out_line := to_char(a) || ' ';
@@ -3915,14 +3915,14 @@ begin
             out_line := out_line || ' ' || to_char(f) ||' ';
             out_line := out_line || ' ' || to_char(g);
         end if;
-        
+
         dbms_output.put_line(out_line);
     end loop;
     close results_cur;
     out_line := to_char(solutions) || uorn;
     out_line := out_line || to_char(lo) || ' to ' || to_char(hi);
     dbms_output.put_line(out_line);
-   
+
 end;
 /
 
@@ -3933,29 +3933,29 @@ Output
 ```txt
 
 SQL> execute foursquares(1,7,TRUE,TRUE);
-3  7  2  1  5  4  6                                                             
-4  5  3  1  6  2  7                                                             
-4  7  1  3  2  6  5                                                             
-5  6  2  3  1  7  4                                                             
-6  4  1  5  2  3  7                                                             
-6  4  5  1  2  7  3                                                             
-7  2  6  1  3  5  4                                                             
-7  3  2  5  1  4  6                                                             
-8 unique solutions in 1 to 7                                                    
+3  7  2  1  5  4  6
+4  5  3  1  6  2  7
+4  7  1  3  2  6  5
+5  6  2  3  1  7  4
+6  4  1  5  2  3  7
+6  4  5  1  2  7  3
+7  2  6  1  3  5  4
+7  3  2  5  1  4  6
+8 unique solutions in 1 to 7
 
 PL/SQL procedure successfully completed.
 
 SQL> execute foursquares(3,9,TRUE,TRUE);
-7  8  3  4  5  6  9                                                             
-8  7  3  5  4  6  9                                                             
-9  6  4  5  3  7  8                                                             
-9  6  5  4  3  8  7                                                             
-4 unique solutions in 3 to 9                                                    
+7  8  3  4  5  6  9
+8  7  3  5  4  6  9
+9  6  4  5  3  7  8
+9  6  5  4  3  8  7
+4 unique solutions in 3 to 9
 
 PL/SQL procedure successfully completed.
 
 SQL> execute foursquares(0,9,FALSE,FALSE);
-2860 non-unique solutions in 0 to 9                                             
+2860 non-unique solutions in 0 to 9
 
 PL/SQL procedure successfully completed.
 
@@ -4046,7 +4046,7 @@ def foursquares(lo,hi,unique,show):
     else:
         uorn = "non-unique"
         citer =  itertools.combinations_with_replacement(range(lo,hi+1),7)
-                    
+
     for c in citer:
             for p in set(itertools.permutations(c)):
                 if all_equal(*p):
@@ -4097,9 +4097,9 @@ def foursquares(lo,hi,unique,show):
 
     def acd_iter():
         """
-        Iterates through all the possible valid values of 
+        Iterates through all the possible valid values of
         a, c, and d.
-        
+
         a = c + d
         """
         for c in range(lo,hi+1):
@@ -4109,12 +4109,12 @@ def foursquares(lo,hi,unique,show):
                     if a >= lo and a <= hi:
                         if (not unique) or (c <> 0 and d <> 0):
                             yield (a,c,d)
-                            
+
     def ge_iter():
         """
-        Iterates through all the possible valid values of 
+        Iterates through all the possible valid values of
         g and e.
-        
+
         g = d + e
         """
         for e in range(lo,hi+1):
@@ -4123,12 +4123,12 @@ def foursquares(lo,hi,unique,show):
                 if g >= lo and g <= hi:
                     if (not unique) or (g not in (a,c,d,e)):
                         yield (g,e)
-                        
+
     def bf_iter():
         """
-        Iterates through all the possible valid values of 
+        Iterates through all the possible valid values of
         b and f.
-        
+
         b = e + f - c
         """
         for f in range(lo,hi+1):
@@ -4138,8 +4138,8 @@ def foursquares(lo,hi,unique,show):
                     if (not unique) or (b not in (a,c,d,g,e,f)):
                         yield (b,f)
 
-    solutions = 0                    
-    acd_itr = acd_iter()              
+    solutions = 0
+    acd_itr = acd_iter()
     for acd in acd_itr:
         a,c,d = acd
         ge_itr = ge_iter()
@@ -4155,7 +4155,7 @@ def foursquares(lo,hi,unique,show):
         uorn = "unique"
     else:
         uorn = "non-unique"
-               
+
     print str(solutions)+" "+uorn+" solutions in "+str(lo)+" to "+str(hi)
     print
 ```
@@ -4505,8 +4505,8 @@ align: parse arg a1,a2,a3,a4,a5,a6,a7
 
 This REXX version is slower than the faster version   (because of the multiple   <big> '''if''' </big>   clauses.
 
-Note that the REXX language doesn't have short-circuits   (when executing multiple clauses 
-in   <big> '''if''' </big>   (and other)   statements. 
+Note that the REXX language doesn't have short-circuits   (when executing multiple clauses
+in   <big> '''if''' </big>   (and other)   statements.
 
 ```rexx
 /*REXX pgm solves the 4-rings puzzle,  where letters represent unique (or not) digits). */
@@ -4553,7 +4553,7 @@ align: parse arg a1,a2,a3,a4,a5,a6,a7
        return
 ```
 
-{{out|output|text=  is identical to the faster REXX version.}} 
+{{out|output|text=  is identical to the faster REXX version.}}
 
 
 
@@ -5124,7 +5124,7 @@ CREATE TABLE RESULTS (
   F INTEGER,
   G INTEGER
 )@
- 
+
 CREATE OR REPLACE PROCEDURE FOUR_SQUARES(
   IN LO INTEGER,
   IN HI INTEGER,
@@ -5142,7 +5142,7 @@ CREATE OR REPLACE PROCEDURE FOUR_SQUARES(
   DECLARE G INTEGER;
   DECLARE OUT_LINE VARCHAR(2000);
   DECLARE I SMALLINT;
- 
+
   DECLARE SOLUTIONS INTEGER;
   DECLARE UORN VARCHAR(2000);
 
@@ -5155,7 +5155,7 @@ CREATE OR REPLACE PROCEDURE FOUR_SQUARES(
    SET I = I + 1;
   END WHILE;
   COMMIT;
- 
+
   -- Computes unique solutions.
   IF (UNIQ = 0) THEN
   --IF (UNIQ = TRUE) THEN
@@ -5175,7 +5175,7 @@ CREATE OR REPLACE PROCEDURE FOUR_SQUARES(
       AND A.V = C.V + D.V
       AND G.V = D.V + E.V
       AND B.V = E.V + F.V - C.V
-     ORDER BY 
+     ORDER BY
       A, B, C, D, E, F, G;
    SET UORN = ' unique solutions in ';
   ELSE
@@ -5190,18 +5190,18 @@ CREATE OR REPLACE PROCEDURE FOUR_SQUARES(
           A.V = C.V + D.V
       AND G.V = D.V + E.V
       AND B.V = E.V + F.V - C.V
-     ORDER BY 
+     ORDER BY
       A, B, C, D, E, F, G;
    SET UORN = ' non-unique solutions in ';
   END IF;
   COMMIT;
- 
+
   -- Counts the possible solutions.
   FOR v AS c CURSOR FOR
     SELECT
      A, B, C, D, E, F, G
     FROM RESULTS
-    ORDER BY 
+    ORDER BY
      A, B, C, D, E, F, G
     DO
    SET SOLUTIONS = SOLUTIONS + 1;
@@ -5528,25 +5528,25 @@ End Sub
 
 ```txt
 
-4  7  1  3  2  6  5 
-6  4  1  5  2  3  7 
-3  7  2  1  5  4  6 
-5  6  2  3  1  7  4 
-7  3  2  5  1  4  6 
-4  5  3  1  6  2  7 
-6  4  5  1  2  7  3 
-7  2  6  1  3  5  4 
+4  7  1  3  2  6  5
+6  4  1  5  2  3  7
+3  7  2  1  5  4  6
+5  6  2  3  1  7  4
+7  3  2  5  1  4  6
+4  5  3  1  6  2  7
+6  4  5  1  2  7  3
+7  2  6  1  3  5  4
 
-8  unique solutions in 1 to 7 
+8  unique solutions in 1 to 7
 
-7  8  3  4  5  6  9 
-8  7  3  5  4  6  9 
-9  6  4  5  3  7  8 
-9  6  5  4  3  8  7 
+7  8  3  4  5  6  9
+8  7  3  5  4  6  9
+9  6  4  5  3  7  8
+9  6  5  4  3  8  7
 
-4  unique solutions in 3 to 9 
+4  unique solutions in 3 to 9
 
-2860  non-unique solutions in 0 to 9 
+2860  non-unique solutions in 0 to 9
 
 ```
 
@@ -5649,33 +5649,33 @@ fourSquare(1,7,true,true)
 fourSquare(3,9,true,true)
 fourSquare(0,9,false,false)
 
- 
+
 sub fourSquare(low, high, unique, prin)
     local count, a, b, c, d, e, f, g, fp
- 
+
     if (prin) print "a b c d e f g"
 
     for a = low to high
         for b = low to high
             if (not valid(unique, a, b)) continue
- 
+
             fp = a+b
             for c = low to high
                 if (not valid(unique, c, a, b)) continue
                 for d = low to high
                     if (not valid(unique, d, a, b, c)) continue
                     if (fp <> b+c+d) continue
- 
+
                     for e = low to high
                         if (not valid(unique, e, a, b, c, d)) continue
                         for f = low to high
                             if (not valid(unique, f, a, b, c, d, e)) continue
                             if (fp <> d+e+f) continue
- 
+
                             for g = low to high
                                 if (not valid(unique, g, a, b, c, d, e, f)) continue
                                 if (fp <> f+g) continue
- 
+
                                 count = count + 1
                                 if (prin) print a," ",b," ",c," ",d," ",e," ",f," ",g
                             next
@@ -5691,10 +5691,10 @@ sub fourSquare(low, high, unique, prin)
         print "There are ", count, " non-unique solutions in [",low,",",high,"]"
     end if
 end sub
- 
+
 sub valid(unique, needle, n1, n2, n3, n4, n5, n6)
     local i
-    
+
     if (unique) then
         for i = 1 to numparams - 2
             switch i
@@ -5785,32 +5785,32 @@ println(fourSquaresPuzzle(0,9,False).len(),	// 10^7 possibilities
 ```txt
 
 8 unique (1-7) solutions found:
- a b c d e f g 
+ a b c d e f g
 ---------------
- 3 7 2 1 5 4 6 
- 4 5 3 1 6 2 7 
- 4 7 1 3 2 6 5 
- 5 6 2 3 1 7 4 
- 6 4 1 5 2 3 7 
- 6 4 5 1 2 7 3 
- 7 2 6 1 3 5 4 
- 7 3 2 5 1 4 6 
+ 3 7 2 1 5 4 6
+ 4 5 3 1 6 2 7
+ 4 7 1 3 2 6 5
+ 5 6 2 3 1 7 4
+ 6 4 1 5 2 3 7
+ 6 4 5 1 2 7 3
+ 7 2 6 1 3 5 4
+ 7 3 2 5 1 4 6
 
 4 unique (3-9) solutions found:
- a b c d e f g 
+ a b c d e f g
 ---------------
- 7 8 3 4 5 6 9 
- 8 7 3 5 4 6 9 
- 9 6 4 5 3 7 8 
- 9 6 5 4 3 8 7 
+ 7 8 3 4 5 6 9
+ 8 7 3 5 4 6 9
+ 9 6 4 5 3 7 8
+ 9 6 5 4 3 8 7
 
 4 unique (5-12) solutions found:
-  a  b  c  d  e  f  g 
+  a  b  c  d  e  f  g
 ----------------------
- 11  9  6  5  7  8 12 
- 11 10  6  5  7  9 12 
- 12  8  7  5  6  9 11 
- 12  9  7  5  6 10 11 
+ 11  9  6  5  7  8 12
+ 11 10  6  5  7  9 12
+ 12  8  7  5  6  9 11
+ 12  9  7  5  6 10 11
 
 2860 non-unique (0-9) solutions found.
 

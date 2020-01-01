@@ -1207,11 +1207,11 @@ int main()
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using static System.Linq.Enumerable;
 using static System.String;
 using static System.Console;

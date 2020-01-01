@@ -13,8 +13,8 @@ languages = [
   "autohotkey",
   "bbc_basic",
   "c",
-  "c#",
-  "c++",
+  "csharp",
+  "cpp",
   "common_lisp",
   "d",
   "delphi",
@@ -659,7 +659,7 @@ int main( int argc, char* argv[] )
 
 Works with C# 3.0
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 

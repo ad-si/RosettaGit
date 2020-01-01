@@ -473,11 +473,11 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Uses the generic version of the node type located [[Singly-linked_list/Element_definition#C#|here]].
 
 
-```csharp
+```c#
 var current = [head of list to traverse]
 while(current != null)
 {
@@ -490,7 +490,7 @@ while(current != null)
 
 Alternatively, as a for loop:
 
-```csharp
+```c#
 for (var current = [head of list to traverse]; current != null; current = current.Next)
 {
     // Do something with current.Value.

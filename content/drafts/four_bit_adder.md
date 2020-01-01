@@ -920,11 +920,11 @@ int main()
 
 See [[Four bit adder/C++]]
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{works with|C sharp|C#|3+}}
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

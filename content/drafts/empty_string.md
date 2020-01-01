@@ -607,10 +607,10 @@ if (str == "") { ... }
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 class Program {
@@ -631,7 +631,7 @@ class Program {
 Note: implementation information provided in comments was obtained reflecting .NET libraries and viewing the .NET Core reference source and may not be correct or remain relevant as time passes.
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

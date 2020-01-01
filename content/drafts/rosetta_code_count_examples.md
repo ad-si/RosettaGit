@@ -400,12 +400,12 @@ list=
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 Object-oriented solution.
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

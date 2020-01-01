@@ -746,11 +746,11 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 C# represents strings and characters internally as Unicode,
 so casting a char to an int returns its Unicode character encoding.
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode.CharacterCode

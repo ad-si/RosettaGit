@@ -234,10 +234,10 @@ prepended tomy string
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace PrependString

@@ -527,12 +527,12 @@ int main( )
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|3.0}}
 
 
-```csharp
+```c#
 using System.IO;
 
 class Program

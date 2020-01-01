@@ -12,25 +12,25 @@ tags = []
 
 {{task|Object oriented}} [[Category:Type System]]
 
-'''Constrained genericity''' or '''bounded quantification''' means 
-that a parametrized type or function (see [[parametric polymorphism]]) 
-can only be instantiated on types fulfilling some conditions, 
+'''Constrained genericity''' or '''bounded quantification''' means
+that a parametrized type or function (see [[parametric polymorphism]])
+can only be instantiated on types fulfilling some conditions,
 even if those conditions are not used in that function.
 
-Say a type is called "eatable" if you can call the function <tt>eat</tt> on it. 
-Write a generic type <tt>FoodBox</tt> which contains a collection of objects of 
-a type given as parameter, but can only be instantiated on eatable types. 
-The FoodBox shall not use the function eat in any way (i.e. without the explicit restriction, it could be instantiated on any type). 
-The specification of a type being eatable should be as generic as possible 
-in your language (i.e. the restrictions on the implementation of eatable types 
-should be as minimal as possible). 
-Also explain the restrictions, if any, on the implementation of eatable types, 
+Say a type is called "eatable" if you can call the function <tt>eat</tt> on it.
+Write a generic type <tt>FoodBox</tt> which contains a collection of objects of
+a type given as parameter, but can only be instantiated on eatable types.
+The FoodBox shall not use the function eat in any way (i.e. without the explicit restriction, it could be instantiated on any type).
+The specification of a type being eatable should be as generic as possible
+in your language (i.e. the restrictions on the implementation of eatable types
+should be as minimal as possible).
+Also explain the restrictions, if any, on the implementation of eatable types,
 and show at least one example of an eatable type.
 
 
 ## Ada
 
-Ada allows various constraints to be specified in parameters of generics. 
+Ada allows various constraints to be specified in parameters of generics.
 A formal type constrained to be derived from certain base is one of them:
 
 ```ada
@@ -119,23 +119,23 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
-In C#, type constraints are made on the type hierarchy, so here we make <code>IEatable</code> an interface, with an <code>Eat</code> method. 
-Types which are eatable would have to implement the 
+## C#
+In C#, type constraints are made on the type hierarchy, so here we make <code>IEatable</code> an interface, with an <code>Eat</code> method.
+Types which are eatable would have to implement the
 <code>IEatable</code> interface and provide an <code>Eat</code> method.
 
-```csharp
+```c#
 interface IEatable
 {
     void Eat();
 }
 ```
 
-Type constraints in type parameters can be made via the <code>where</code> keyword, which allows us to qualify T. 
-In this case, we indicate that the type argument must be a type 
+Type constraints in type parameters can be made via the <code>where</code> keyword, which allows us to qualify T.
+In this case, we indicate that the type argument must be a type
 that is a subtype of <code>IEatable</code>.
 
-```csharp
+```c#
 using System.Collections.Generic;
 
 class FoodBox<T> where T : IEatable
@@ -146,7 +146,7 @@ class FoodBox<T> where T : IEatable
 
 For example, an eatable Apple:
 
-```csharp
+```c#
 class Apple : IEatable
 {
     public void Eat()
@@ -158,7 +158,7 @@ class Apple : IEatable
 
 C# also has the interesting functionality of being able to require that a generic type have a default constructor. This means that the generic type can actually instantiate the objects without ever knowing the concrete type. To do so, we constrain the where clause with an additional term "new()". This must come after any other constraints. In this example, any type with a default constructor that implements IEatable is allowed.
 
-```csharp
+```c#
 using System.Collections.Generic
 
 class FoodMakingBox<T> where T : IEatable, new()
@@ -182,22 +182,22 @@ class FoodMakingBox<T> where T : IEatable, new()
 
 The technique used here is like that in the [[Abstract type]] task.
 
-The task says that this task is only for statically typed languages, 
-and Common Lisp is dynamically typed.  
-However, there are many places where type declarations can be provided 
-to the compiler, and there is user access to the type system 
-(e.g., a user can ask whether an object is of a particular type).  
-Via the latter mechanism, one could write a class containing a collection 
-such that the insert method checked that the object to be inserted 
+The task says that this task is only for statically typed languages,
+and Common Lisp is dynamically typed.
+However, there are many places where type declarations can be provided
+to the compiler, and there is user access to the type system
+(e.g., a user can ask whether an object is of a particular type).
+Via the latter mechanism, one could write a class containing a collection
+such that the insert method checked that the object to be inserted
 is of an appropriate type.
 
-In this example, we define a class <code>food</code>, and two subclasses, <code>inedible-food</code> and <code>edible-food</code>.  
-We define a generic function <code>eat</code>, 
-and specialize it only for <code>edible-food</code>.  
-We then define a predicate <code>eatable-p</code> which returns true only on objects for which <code>eat</code> methods have been defined.  
-Then, using <code>[http://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm deftype]</code> with a <code>[http://www.lispworks.com/documentation/HyperSpec/Body/t_satisf.htm satisfies]</code> type specifier, we define a type <code>eatable</code> to which only objects satisfying <code>eatable-p</code> belong.  Finally, we define a function <code>make-food-box</code> which takes, in addition to typical array creation arguments, a type specifier.  
-The array is declared to have elements of the type that is the intersection of <code>food</code> and the provided type.  
-<code>make-eatable-food-box</code> simply calls <code>make-food-box</code> 
+In this example, we define a class <code>food</code>, and two subclasses, <code>inedible-food</code> and <code>edible-food</code>.
+We define a generic function <code>eat</code>,
+and specialize it only for <code>edible-food</code>.
+We then define a predicate <code>eatable-p</code> which returns true only on objects for which <code>eat</code> methods have been defined.
+Then, using <code>[http://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm deftype]</code> with a <code>[http://www.lispworks.com/documentation/HyperSpec/Body/t_satisf.htm satisfies]</code> type specifier, we define a type <code>eatable</code> to which only objects satisfying <code>eatable-p</code> belong.  Finally, we define a function <code>make-food-box</code> which takes, in addition to typical array creation arguments, a type specifier.
+The array is declared to have elements of the type that is the intersection of <code>food</code> and the provided type.
+<code>make-eatable-food-box</code> simply calls <code>make-food-box</code>
 with the type <code>eatable</code>.
 
 The only shortcoming here is that the compiler isn't required to enforce the type specifications for the arrays.  A custom insert function, however, could remember the specified type for the collection, and assert that inserted elements are of that type.
@@ -339,7 +339,7 @@ void main() {
 
 ## E
 
-It is surely arguable whether this constitutes an implementation 
+It is surely arguable whether this constitutes an implementation
 of the above task:
 
 ```e
@@ -364,12 +364,12 @@ def makeFoodBox() {
 ## Eiffel
 
 
-Eiffel has included support for constrained genericty since its earliest implementations (as shown in Bertrand Meyer's paper from OOPSLA '86, available [http://se.inf.ethz.ch/old/people/meyer/publications/acm/geninh.pdf online].) 
+Eiffel has included support for constrained genericty since its earliest implementations (as shown in Bertrand Meyer's paper from OOPSLA '86, available [http://se.inf.ethz.ch/old/people/meyer/publications/acm/geninh.pdf online].)
 
-The "eatable" characteristic is modeled by a deferred class (deferred classes are similar to abstract classes in some other languages). 
+The "eatable" characteristic is modeled by a deferred class (deferred classes are similar to abstract classes in some other languages).
 
 
-```eiffel 
+```eiffel
 
 deferred class
     EATABLE
@@ -388,7 +388,7 @@ end
 Class <code lang="eiffel">EATABLE</code> can then be inherited by any other class, with the understanding that the inheriting class will have to provide an implementation for the procedure <code lang="eiffel">eat</code>. Here are two such classes, <code lang="eiffel">APPLE</code> and <code lang="eiffel">PEAR</code>:
 
 
-```eiffel 
+```eiffel
 
 class
     APPLE
@@ -410,7 +410,7 @@ end
 
 
 
-```eiffel 
+```eiffel
 
 class
     PEAR
@@ -461,7 +461,7 @@ So, any declaration of type <code lang="eiffel">FOOD_BOX</code> can constrain it
 
 The entity <code lang="eiffel">my_apple_box</code> is declared as a <code lang="eiffel">FOOD_BOX</code> which can contain only apples.
 
-Of course, constraining a particular <code lang="eiffel">FOOD_BOX</code> to all types which are eatable is also allowed, and could be appropriate in certain cases, such as: 
+Of course, constraining a particular <code lang="eiffel">FOOD_BOX</code> to all types which are eatable is also allowed, and could be appropriate in certain cases, such as:
 
 
 ```eiffel
@@ -474,7 +474,7 @@ Of course, constraining a particular <code lang="eiffel">FOOD_BOX</code> to all 
 Here's a small application that uses a <code lang="eiffel">FOOD_BOX</code> constrained to contain only apples:
 
 
-```eiffel 
+```eiffel
 
 class
     APPLICATION
@@ -514,7 +514,7 @@ end
 ```
 
 
-Notice that an instance of <code lang="eiffel">PEAR</code> is also created, and a line of code is present as a comment which would attempt to place the pear in the apple box: 
+Notice that an instance of <code lang="eiffel">PEAR</code> is also created, and a line of code is present as a comment which would attempt to place the pear in the apple box:
 
 
 ```eiffel
@@ -527,8 +527,8 @@ Notice that an instance of <code lang="eiffel">PEAR</code> is also created, and 
 If the comment mark "--" were removed from this line of code, an compile error would occur because of the attempt to violate <code lang="eiffel">my_apple_bos</code>'s constraint.
 
 =={{header|F_Sharp|F#}}==
-It is possible to constrain type parameters in a number of ways, 
-including inheritance relationships and interface implementation. 
+It is possible to constrain type parameters in a number of ways,
+including inheritance relationships and interface implementation.
 But for this task, the natural choice is an explicit member constraint.
 
 ```fsharp
@@ -561,39 +561,39 @@ include FMS-SILib.f
 :class Eatable
    :m eat ." successful eat " ;m
 ;class
- 
+
 \ FoodBox is defined without inspecting for the eat message
 :class FoodBox
   object-list eatable-types
   :m init: eatable-types init: ;m
   :m add: ( obj -- )
-     dup is-kindOf Eatable 
+     dup is-kindOf Eatable
      if   eatable-types add:
-     else drop ." not an eatable type " 
+     else drop ." not an eatable type "
      then ;m
-  :m test 
+  :m test
      begin eatable-types each:
      while eat
      repeat ;m
 ;class
- 
-FoodBox aFoodBox 
-Eatable aEatable 
+
+FoodBox aFoodBox
+Eatable aEatable
 aEatable aFoodBox add:  \ add the e1 object to the object-list
 aFoodBox test  \ => successful eat
 
 :class brick
- :m eat cr ." successful eat " ;m 
+ :m eat cr ." successful eat " ;m
 ;class
 
-brick abrick  \ create an object that is not eatable 
-abrick aFoodBox add: \ => not an eatable type 
+brick abrick  \ create an object that is not eatable
+abrick aFoodBox add: \ => not an eatable type
 
 :class apple <super Eatable
-;class 
+;class
 
-apple anapple  
-anapple aFoodBox add: 
+apple anapple
+anapple aFoodBox add:
 aFoodBox test  \ => successful eat successful eat
 
 ```
@@ -608,21 +608,21 @@ In Fortran all checkes are done at compile time, in particular a dummy argument 
 
 module cg
     implicit none
-    
+
     type, abstract :: eatable
     end type eatable
-    
+
     type, extends(eatable) :: carrot_t
     end type carrot_t
-    
+
     type :: brick_t; end type brick_t
-    
+
     type :: foodbox
 	class(eatable), allocatable :: food
     contains
         procedure, public :: add_item => add_item_fb
     end type foodbox
-    
+
 contains
 
     subroutine add_item_fb(this, f)
@@ -636,17 +636,17 @@ end module cg
 program con_gen
     use cg
     implicit none
-    
+
     type(carrot_t) :: carrot
     type(brick_t)  :: brick
     type(foodbox)  :: fbox
-    
+
     ! Put a carrot into the foodbox
     call fbox%add_item(carrot)
-    
+
     ! Try to put a brick in - results in a compiler error
     call fbox%add_item(brick)
-    
+
 end program con_gen
 
 
@@ -679,7 +679,7 @@ Error: Type mismatch in argument 'f' at (1); passed TYPE(brick_t) to CLASS(eatab
 
 ## Go
 
-Go's interfaces do exactly what this task wants.  
+Go's interfaces do exactly what this task wants.
 Eatable looks like this:
 
 ```go
@@ -688,8 +688,8 @@ type eatable interface {
 }
 ```
 
-And the following is all it takes to define foodbox as a slice of eatables.  
-The result is that an object of type foodbox can hold objects of any type that implements the eat method (with the function signature specified in eatable.)  
+And the following is all it takes to define foodbox as a slice of eatables.
+The result is that an object of type foodbox can hold objects of any type that implements the eat method (with the function signature specified in eatable.)
 The definition of foodbox though, doesn't even need to enumerate the functions of eatable, much less call them.  Whatever is in the interface is okay.
 
 ```go
@@ -817,7 +817,7 @@ end
 
 class FoodBox(A)
 initially
-    every item := !A do if "Eatable" == item.Type() then next else bad := "yes" 
+    every item := !A do if "Eatable" == item.Type() then next else bad := "yes"
     return /bad
 end
 
@@ -894,8 +894,8 @@ And here is a quicky demo of the above:
 ## Java
 
 {{works with|Java|5}}
-In Java type constraints are made on the type hierarchy, so here we make <code>Eatable</code> an interface, with an <code>eat</code> method. 
-Types which are Eatable would have to implement the 
+In Java type constraints are made on the type hierarchy, so here we make <code>Eatable</code> an interface, with an <code>eat</code> method.
+Types which are Eatable would have to implement the
 <code>Eatable</code> interface and provide an <code>eat</code> method.
 
 ```java5
@@ -1012,9 +1012,9 @@ class FoodBox<T: Eatable> {
 
     fun add(food: T) {
         foodList.add(food)
-    } 
+    }
 
-    override fun toString() = foodList.toString()   
+    override fun toString() = foodList.toString()
 }
 
 fun main(args: Array<String>) {
@@ -1073,14 +1073,14 @@ struct FoodBox
     var food: T[];
 }
 
-struct Carrot 
+struct Carrot
 {
     func eat(): void {}
 }
 
 struct Car {}
 
-func main(): void 
+func main(): void
 {
     var carrotBox: FoodBox< Carrot >;   // OK
     carrotBox.food ~= Carrot();        // Adds a carrot
@@ -1098,8 +1098,8 @@ func main(): void
 
 
 ```morfa
-interface IEdible 
-{ 
+interface IEdible
+{
     public func eat(): void;
 }
 
@@ -1110,17 +1110,17 @@ struct FoodBox
     var food: T[];
 }
 
-class Carrot: IEdible 
+class Carrot: IEdible
 {
     public override func eat(): void {}
 }
 
 class Car {}
 
-func main(): void 
+func main(): void
 {
     var carrotBox: FoodBox< Carrot >;   // OK
-    
+
     // var carBox: FoodBox< Car >;      // Not allowed
     static assert( not trait(compiles, func() { var carBox: FoodBox< Car >; } ));
 }
@@ -1143,19 +1143,19 @@ class FoodBox[T] : IEnumerable[T]
   where T : IEatable
 {
     private _foods : list[T] = [];
-    
+
     public this() {}
-    
+
     public this(items : IEnumerable[T])
     {
         this._foods = $[food | food in items];
     }
-    
+
     public Add(food : T) : FoodBox[T]
     {
         FoodBox(food::_foods);
     }
-    
+
     public GetEnumerator() : IEnumerator[T]
     {
         _foods.GetEnumerator();
@@ -1165,7 +1165,7 @@ class FoodBox[T] : IEnumerable[T]
 class Apple : IEatable
 {
     public this() {}
-    
+
     public Eat() : void
     {
         System.Console.WriteLine("nom..nom..nom");
@@ -1251,8 +1251,8 @@ for f in fs:
 
 =={{header|Objective-C}}==
 {{works with|Xcode|7}}
-Type constraints are made on the type hierarchy, so here we make <code>Eatable</code> a protocol, with an <code>eat</code> method. 
-Types which are Eatable would have to implement the 
+Type constraints are made on the type hierarchy, so here we make <code>Eatable</code> a protocol, with an <code>eat</code> method.
+Types which are Eatable would have to implement the
 <code>Eatable</code> protocol and provide an <code>eat</code> method.
 
 ```objc
@@ -1285,7 +1285,7 @@ end
 
 We just require that module instances of this module type describe a type <tt>t</tt> and implement a function <tt>eat</tt> which takes in the type and returns nothing.
 
-The <tt>FoodBox</tt> generic type could be implemented as a ''functor'' 
+The <tt>FoodBox</tt> generic type could be implemented as a ''functor''
 (something which takes a module as an argument and returns another module):
 
 ```ocaml
@@ -1328,19 +1328,19 @@ let my_box = BananaBox.make_box_from_list [Foo]
 let your_box = FloatBox.make_box_from_list [2.3; 4.5]
 ```
 
-Unfortunately, it is kind of cumbersome in that, for every type parameter 
-we want to use for this generic type, we will have to explicitly create a module 
-for the resulting type (i.e. <tt>BananaBox</tt>, <tt>FloatBox</tt>). 
-And the operations on that resulting type (i.e. <tt>make_box_from_list</tt>) 
+Unfortunately, it is kind of cumbersome in that, for every type parameter
+we want to use for this generic type, we will have to explicitly create a module
+for the resulting type (i.e. <tt>BananaBox</tt>, <tt>FloatBox</tt>).
+And the operations on that resulting type (i.e. <tt>make_box_from_list</tt>)
 are tied to each specific module.
 
 
 ## ooRexx
 
-ooRexx methods, routines, and collections are all untyped, 
-so there are no language-level checks for type matches.  
-Tests for identity need to be performed at runtime using mechanisms 
-such as the object isA method. 
+ooRexx methods, routines, and collections are all untyped,
+so there are no language-level checks for type matches.
+Tests for identity need to be performed at runtime using mechanisms
+such as the object isA method.
 
 ```ooRexx
 call dinnerTime "yogurt"
@@ -1546,14 +1546,14 @@ say $foodbox.perl;
 ```txt
 $384320489 -- Object is not eatable
 
-? (show Box)          
+? (show Box)
 $384320487 (+FoodBox)
    obj $384320488
 
 ? (show Box 'obj)
 $384320488 (+Eatable)
 
-? (show NoEat)   
+? (show NoEat)
 $384320489 (+Bla)
 ```
 
@@ -1562,8 +1562,8 @@ $384320489 (+Bla)
 ## Racket
 
 
-<code>edible&lt;%></code> objects simply need to state that they implement 
-the interface in the second argument to <code>class*</code>. 
+<code>edible&lt;%></code> objects simply need to state that they implement
+the interface in the second argument to <code>class*</code>.
 By doing so they will be forced to implement <code>eat</code>.
 
 
@@ -1604,53 +1604,53 @@ By doing so they will be forced to implement <code>eat</code>.
   (generic-box-mixin (and/c (is-a?/c edible<%>) (is-a?/c T%))))
 
 (module+ test
-  
+
   (define integer-box% ((generic-box-mixin integer?) object%))
   (define integer-box  (new integer-box%))
-  
+
   (define apple%
     (class* object% (edible<%>)
       (super-new)
       (define/public (eat)
         (displayln "nom!"))))
-  
+
   (define banana%
     (class* object% (edible<%>)
       (super-new)
       (define/public (eat)
         (displayln "peel.. peel... nom... nom!"))))
-  
+
   (define semolina%
     (class* object% () ; <-- empty interfaces clause
       (super-new)
       ;; you can call eat on it... but it's not explicitly (or even vaguely)
       ;; edible<%>
       (define/public (eat) (displayln "blech!"))))
-  
+
   ;; this will take any object that is edible<%> and edible<%> (therefore all
   ;; edible<%> objects)
   (define any-food-box (new ((food-box-mixin edible<%>) object%)))
-  
+
   ;; this will take any object that is edible and an apple<%>
   ;; (therefore only apple<%>s)
   (define apple-food-box (new ((food-box-mixin apple%) object%)))
-  
+
   (test
    ;; Test generic boxes
    (send integer-box insert 22)
    (send integer-box insert "a string") =error> exn:fail:contract?
-   
+
    ;; Test the food box that takes any edible<%>
    (send any-food-box insert (new apple%))
    (send any-food-box insert (new banana%))
    (send any-food-box insert (new semolina%)) =error> exn:fail:contract?
-   
+
    ;; Test the food box that takes any apple%
    (send apple-food-box insert (new apple%))
    (send apple-food-box insert (new banana%)) =error> exn:fail:contract?
    (send apple-food-box insert (new semolina%)) =error> exn:fail:contract?
    (send apple-food-box count) => 1
-   
+
    ;; Show that you cannot make a food-box from the non-edible<%> semolina cannot
    (implementation? semolina% edible<%>) => #f
    (new ((food-box-mixin semolina%) object%)) =error> exn:fail:contract?))
@@ -1809,8 +1809,8 @@ The GNU Sather compiler v1.2.3 let the "box2" pass, even though it shouldn't. Re
 
 ## Scala
 
-Scala can constrain types in many different ways. 
-This specific constrain, for the type to contain a particular method, 
+Scala can constrain types in many different ways.
+This specific constrain, for the type to contain a particular method,
 can be written as this:
 
 ```scala
@@ -1827,7 +1827,7 @@ case class Fish(name: String) {
 val foodBox = new FoodBox(List(new Fish("salmon")))
 ```
 
-A more extensive discussion on genericity in Scala and some of the constrains 
+A more extensive discussion on genericity in Scala and some of the constrains
 that can be imposed can be found on [[Parametric Polymorphism]].
 
 
@@ -1848,8 +1848,8 @@ say FoodBox(Apple(), "foo")         #!> ERROR: class `FoodBox` !~ (Apple, String
 
 ## Swift
 
-Here we make <code>Eatable</code> a protocol, with an <code>eat</code> method. 
-Types which are Eatable would have to conform to the <code>Eatable</code> protocol 
+Here we make <code>Eatable</code> a protocol, with an <code>eat</code> method.
+Types which are Eatable would have to conform to the <code>Eatable</code> protocol
 and provide an <code>eat</code> method.
 
 ```swift
@@ -1858,7 +1858,7 @@ protocol Eatable {
 }
 ```
 
-Type constraints in type parameters can be made via the <code>:</code> syntax, indicating in this case that the type argument must be a type that is 
+Type constraints in type parameters can be made via the <code>:</code> syntax, indicating in this case that the type argument must be a type that is
 a subtype of <code>Eatable</code>.
 
 ```swift>struct FoodBox<T: Eatable

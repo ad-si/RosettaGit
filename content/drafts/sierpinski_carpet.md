@@ -1180,11 +1180,11 @@ int APIENTRY _tWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpC
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Ruby}}
 {{works with|C sharp|C#|3.0+}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

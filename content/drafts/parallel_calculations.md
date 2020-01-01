@@ -335,9 +335,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -385,7 +385,7 @@ class Program
 Another version, using Parallel.For:
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -917,7 +917,7 @@ int main(void)
 
 == {{header|C sharp}} ==
 
-```csharp
+```c#
 namespace CatalanNumbers
 {
     /// <summary>

@@ -734,11 +734,11 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 Simple Linq 1 liner solution
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -758,7 +758,7 @@ abcdefghijklmnopqrstuvwxyz
 
 Old style Property and enumerable based solution
 
-```csharp
+```c#
 namespace RosettaCode.GenerateLowerCaseASCIIAlphabet
 {
     using System;

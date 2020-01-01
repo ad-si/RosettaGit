@@ -260,7 +260,7 @@ int main(){
 ```
 
 
-## C sharp
+## C#
 
 "My Printer" should be replaced with the friendly name of the printer.
 This is to avoid the extra step of locating the default printer,

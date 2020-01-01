@@ -306,12 +306,12 @@ int main(void)
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

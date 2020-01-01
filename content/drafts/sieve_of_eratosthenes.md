@@ -1787,10 +1787,10 @@ int main(int argc, char *argv[])
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|C#|2.0+}}
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1848,7 +1848,7 @@ namespace SieveOfEratosthenes
 
 To show that C# code can be written in somewhat functional paradigms, the following in an implementation of the Richard Bird sieve from the Epilogue of [Melissa E. O'Neill's definitive article](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf) in Haskell:
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1899,7 +1899,7 @@ using PrimeT = System.UInt32;
 
 The above code can easily be converted to "'''odds-only'''" and a infinite tree-like folding scheme with the following minor changes:
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1960,7 +1960,7 @@ The above code runs over ten times faster than the original Richard Bird algorit
 
 First, an implementation of a Min Heap Priority Queue is provided as extracted from the entry at [http://rosettacode.org/wiki/Priority_queue#C.23 RosettaCode], with only the necessary methods duplicated here:
 
-```csharp
+```c#
 namespace PriorityQ {
   using KeyT = System.UInt32;
   using System;
@@ -2024,7 +2024,7 @@ namespace PriorityQ {
 
 The following code implements an improved version of the '''odds-only''' O'Neil algorithm, which provides the improvements of only adding base prime composite number streams to the queue when the sieved number reaches the square of the base prime (saving a huge amount of memory and considerable execution time, including not needing as wide a range of a type for the internal prime numbers) as well as minimizing stream processing using fusion:
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -2070,7 +2070,7 @@ The above code is at least about 2.5 times faster than the Tree Folding version.
 
 The above code adds quite a bit of overhead in having to provide a version of a Priority Queue for little advantage over a Dictionary (hash table based) version as per the code below:
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -2114,7 +2114,7 @@ The above code runs in about three quarters of the time as the above Priority Qu
 
 All of the above unbounded versions are really just an intellectual exercise as with very little extra lines of code above the fastest Dictionary based version, one can have an bit-packed page-segmented array based version as follows:
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -2185,7 +2185,7 @@ Note that all of these gains in speed are not due to C# other than it compiles t
 
 All of the above unbounded code can be tested by the following "main" method (replace the name "PrimesXXX" with the name of the class to be tested):
 
-```csharp
+```c#
     static void Main(string[] args) {
       Console.WriteLine(PrimesXXX().ElementAt(1000000 - 1)); // zero based indexing...
     }

@@ -703,10 +703,10 @@ Set [1000,1025] :
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Ruby}}
 
-```csharp
+```c#
 
 class Program
 {

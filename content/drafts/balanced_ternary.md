@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task}}
-[[wp:Balanced ternary|Balanced ternary]] is a way of representing numbers.  Unlike the prevailing binary representation, a balanced ternary integer is in base 3, and each digit can have the values 1, 0, or −1.  
+[[wp:Balanced ternary|Balanced ternary]] is a way of representing numbers.  Unlike the prevailing binary representation, a balanced ternary integer is in base 3, and each digit can have the values 1, 0, or −1.
 
 
 ;Examples:
@@ -42,7 +42,7 @@ Implement balanced ternary representation of integers with the following:
 
 ## ALGOL 68
 
-See also: 
+See also:
 * [[Generalised floating point addition#ALGOL 68|Generalised floating point addition]]
 * [[Generalised floating point multiplication#ALGOL 68|Generalised floating point multiplication]]
 
@@ -55,24 +55,24 @@ Specifications (bt.ads):
 with Ada.Finalization;
 
 package BT is
-   
+
    type Balanced_Ternary is private;
-   
+
    -- conversions
    function To_Balanced_Ternary (Num : Integer) return Balanced_Ternary;
    function To_Balanced_Ternary (Str : String)  return Balanced_Ternary;
    function To_Integer (Num : Balanced_Ternary)  return Integer;
    function To_string (Num : Balanced_Ternary)   return String;
-     
+
    -- Arithmetics
    -- unary minus
    function "-" (Left : in Balanced_Ternary)
 		return Balanced_Ternary;
-   
+
    -- subtraction
    function "-" (Left, Right : in Balanced_Ternary)
 		return Balanced_Ternary;
-   
+
    -- addition
    function "+" (Left, Right : in Balanced_Ternary)
 		return Balanced_Ternary;
@@ -80,24 +80,24 @@ package BT is
    function "*" (Left, Right : in Balanced_Ternary)
 		return Balanced_Ternary;
 
-private   
-   -- a balanced ternary number is a unconstrained array of (1,0,-1) 
+private
+   -- a balanced ternary number is a unconstrained array of (1,0,-1)
    -- dinamically allocated, least significant trit leftmost
    type Trit is range -1..1;
    type Trit_Array is array (Positive range <>) of Trit;
    pragma Pack(Trit_Array);
-   
+
    type Trit_Access is access Trit_Array;
-   
+
    type Balanced_Ternary is new Ada.Finalization.Controlled
      with record
 	Ref : Trit_access;
    end record;
-   
+
    procedure Initialize (Object : in out Balanced_Ternary);
    procedure Adjust     (Object : in out Balanced_Ternary);
    procedure Finalize   (Object : in out Balanced_Ternary);
-   
+
 end BT;
 ```
 
@@ -108,7 +108,7 @@ Implementation (bt.adb):
 with Ada.Unchecked_Deallocation;
 
 package body BT is
-   
+
    procedure Free is new Ada.Unchecked_Deallocation (Trit_Array, Trit_Access);
 
    -- Conversions
@@ -124,12 +124,12 @@ package body BT is
 	    when '-' => Tmp (J) := -1;
 	    when '0' => Tmp (J) := 0;
 	    when others => raise Constraint_Error;
-	 end case;      
+	 end case;
 	 J := J + 1;
       end loop;
       return (Ada.Finalization.Controlled with Ref => Tmp);
    end To_Balanced_Ternary;
-   
+
    -- Integer to BT
    function To_Balanced_Ternary (Num: Integer) return Balanced_Ternary is
       K      : Integer := 0;
@@ -191,7 +191,7 @@ package body BT is
 
    -- addition --
    Carry : Trit;
-   
+
    function Add (Left, Right : in Trit)
 		return Trit is
    begin
@@ -204,10 +204,10 @@ package body BT is
       end if;
    end Add;
    pragma Inline (Add);
-   
+
    function "+" (Left, Right : in Trit_Array)
 		return Balanced_Ternary is
-      Max_Size : constant Integer := 
+      Max_Size : constant Integer :=
 	Integer'Max(Left'Last, Right'Last);
       Tmp_Left, Tmp_Right : Trit_Array(1..Max_Size) := (others => 0);
       Result : Trit_Array(1..Max_Size+1) := (others => 0);
@@ -230,13 +230,13 @@ package body BT is
       return (Ada.Finalization.Controlled
 		with Ref => new Trit_Array'(1 => 0));
    end "+";
-   
+
    function "+" (Left, Right : in Balanced_Ternary)
 		return Balanced_Ternary is
    begin
       return Left.Ref.all + Right.Ref.all;
    end "+";
-   
+
    -- Subtraction
    function "-" (Left, Right : in Balanced_Ternary)
 		return Balanced_Ternary is
@@ -248,7 +248,7 @@ package body BT is
    function "*" (Left, Right : in Balanced_Ternary)
 		return Balanced_Ternary is
       A, B : Trit_Access;
-      Result : Balanced_Ternary;   
+      Result : Balanced_Ternary;
    begin
       if Left.Ref.all'Length > Right.Ref.all'Length then
 	 A := Right.Ref; B := Left.Ref;
@@ -302,13 +302,13 @@ begin
    A := To_Balanced_Ternary("+-0++0+");
    B := To_Balanced_Ternary(-436);
    C := To_Balanced_Ternary("+-++-");
-   
+
    Result := A * (B - C);
-   
+
    Put("a = "); Put(To_integer(A), 4); New_Line;
    Put("b = "); Put(To_integer(B), 4); New_Line;
    Put("c = "); Put(To_integer(C), 4); New_Line;
-   Put("a * (b - c) = "); Put(To_integer(Result), 4); 
+   Put("a * (b - c) = "); Put(To_integer(Result), 4);
    Put_Line (" " & To_String(Result));
 end TestBT;
 ```
@@ -666,7 +666,7 @@ public:
 		}
 
 		bool neg = n < 0;
-		if (neg) 
+		if (neg)
 			n = -n;
 
 		value = "";
@@ -848,9 +848,9 @@ e = +++++++++++++++++++++++++++++++++++++++++ is too big to fit in a long long
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Text;
 using System.Collections.Generic;
@@ -914,7 +914,7 @@ public class BalancedTernary
 		List<BalancedTernaryDigit> value = new List<BalancedTernaryDigit>();
 		int sign = Math.Sign(l);
 		l = Math.Abs(l);
-		
+
 		while (l != 0)
 		{
 			byte rem = (byte)(l % 3);
@@ -1039,7 +1039,7 @@ public class BalancedTernary
 			{
 				carry = BalancedTernaryDigit.ZERO;
 			}
-			
+
 			if (i < b.value.Length)
 			{
 				resultValue[i] = Add(resultValue[i], b.value[i]);
@@ -1101,11 +1101,11 @@ a * (b - c): ----0+--0++0 = -262023
 ```lisp
 ;;; balanced ternary
 ;;; represented as a list of 0, 1 or -1s, with least significant digit first
- 
+
 ;;; convert ternary to integer
 (defun bt-integer (b)
   (reduce (lambda (x y) (+ x (* 3 y))) b :from-end t :initial-value 0))
- 
+
 ;;; convert integer to ternary
 (defun integer-bt (n)
   (if (zerop n) nil
@@ -1113,13 +1113,13 @@ a * (b - c): ----0+--0++0 = -262023
       (0 (cons  0 (integer-bt (/ n 3))))
       (1 (cons  1 (integer-bt (floor n 3))))
       (2 (cons -1 (integer-bt (floor (1+ n) 3)))))))
- 
+
 ;;; convert string to ternary
 (defun string-bt (s)
   (loop with o = nil for c across s do
 	  (setf o (cons (case c (#\+ 1) (#\- -1) (#\0 0)) o))
 	  finally (return o)))
- 
+
 ;;; convert ternary to string
 (defun bt-string (bt)
   (if (not bt) "0"
@@ -1130,15 +1130,15 @@ a * (b - c): ----0+--0++0 = -262023
 		    (case b (-1 #\-) (0 #\0) (1 #\+))))
 	    bt)
       s)))
- 
+
 ;;; arithmetics
 (defun bt-neg (a) (map 'list #'- a))
 (defun bt-sub (a b) (bt-add a (bt-neg b)))
- 
+
 (let ((tbl #((0 -1) (1 -1) (-1 0) (0 0) (1 0) (-1 1) (0 1))))
   (defun bt-add-digits (a b c)
     (values-list (aref tbl (+ 3 a b c)))))
- 
+
 (defun bt-add (a b &optional (c 0))
   (if (not (and a b))
     (if (zerop c) (or a b)
@@ -1149,7 +1149,7 @@ a * (b - c): ----0+--0++0 = -262023
 	;; trim leading zeros
 	(if (or res (not (zerop d)))
 	  (cons d res))))))
- 
+
 (defun bt-mul (a b)
   (if (not (and a b))
     nil
@@ -1158,7 +1158,7 @@ a * (b - c): ----0+--0++0 = -262023
 		( 0 nil)
 		( 1 b))
 	    (cons 0 (bt-mul (cdr a) b)))))
- 
+
 ;;; division with quotient/remainder, for completeness
 (defun bt-truncate (a b)
   (let ((n (- (length a) (length b)))
@@ -1169,7 +1169,7 @@ a * (b - c): ----0+--0++0 = -262023
 	 (multiple-value-bind (quo rem)
 	   (if (plusp x) (recur a (cons 0 b) (1- x))
 	     (values nil a))
- 
+
 	   (loop with g = (car (last rem))
 		 with quo = (cons 0 quo)
 		 while (= (length rem) (length b)) do
@@ -1179,9 +1179,9 @@ a * (b - c): ----0+--0++0 = -262023
 					  quo (bt-add '(-1) quo))))
 		 (setf x (car (last rem)))
 		 finally (return (values quo rem))))))
- 
+
 	(recur a b n)))))
- 
+
 ;;; test case
 (let* ((a (string-bt "+-0++0+"))
        (b (integer-bt -436))
@@ -1370,32 +1370,32 @@ a * (b - c): -262023 ----0+--0++0
 ```elixir
 defmodule Ternary do
   def to_string(t), do: ( for x <- t, do: to_char(x) ) |> List.to_string
-  
+
   def from_string(s), do: ( for x <- to_char_list(s), do: from_char(x) )
-  
+
   defp to_char(-1), do: ?-
   defp to_char(0), do: ?0
   defp to_char(1), do: ?+
-  
+
   defp from_char(?-), do: -1
   defp from_char(?0), do: 0
   defp from_char(?+), do: 1
-  
+
   def to_ternary(n) when n > 0, do: to_ternary(n,[])
   def to_ternary(n), do: neg(to_ternary(-n))
-  
+
   defp to_ternary(0,acc), do: acc
   defp to_ternary(n,acc) when rem(n, 3) == 0, do: to_ternary(div(n, 3), [0|acc])
   defp to_ternary(n,acc) when rem(n, 3) == 1, do: to_ternary(div(n, 3), [1|acc])
   defp to_ternary(n,acc), do: to_ternary(div((n+1), 3), [-1|acc])
-  
+
   def from_ternary(t), do: from_ternary(t,0)
-  
+
   defp from_ternary([],acc), do: acc
   defp from_ternary([h|t],acc), do: from_ternary(t, acc*3 + h)
-  
+
   def mul(a,b), do: mul(b,a,[])
-  
+
   defp mul(_,[],acc), do: acc
   defp mul(b,[a|as],acc) do
     bp = case a do
@@ -1406,23 +1406,23 @@ defmodule Ternary do
     a = add(bp, acc ++ [0])
     mul(b,as,a)
   end
-  
+
   defp neg(t), do: ( for h <- t, do: -h )
-  
+
   def sub(a,b), do: add(a,neg(b))
-  
+
   def add(a,b) when length(a) < length(b),
     do: add(List.duplicate(0, length(b)-length(a)) ++ a, b)
   def add(a,b) when length(a) > length(b), do: add(b,a)
   def add(a,b), do: add(Enum.reverse(a), Enum.reverse(b), 0, [])
-  
+
   defp add([],[],0,acc), do: acc
   defp add([],[],c,acc), do: [c|acc]
   defp add([a|as],[b|bs],c,acc) do
     [c1,d] = add_util(a+b+c)
     add(as,bs,c1,[d|acc])
   end
-  
+
   defp add_util(-3), do: [-1,0]
   defp add_util(-2), do: [-1,1]
   defp add_util(-1), do: [0,-1]
@@ -1575,118 +1575,118 @@ ok
 
 ```txt
 
-ОТДЕЛ Сетунь+; 
-ИСПОЛЬЗУЕТ 
-  Параметр ИЗ "...\Отделы\Обмен\", 
-  Текст ИЗ "...\Отделы\Числа\", 
-  Вывод ИЗ "...\Отделы\Обмен\"; 
+ОТДЕЛ Сетунь+;
+ИСПОЛЬЗУЕТ
+  Параметр ИЗ "...\Отделы\Обмен\",
+  Текст ИЗ "...\Отделы\Числа\",
+  Вывод ИЗ "...\Отделы\Обмен\";
 
-ПЕР 
-  зч: РЯД 10 ИЗ ЗНАК; 
-  счпоз: ЦЕЛ; 
-  число: ЦЕЛ; 
+ПЕР
+  зч: РЯД 10 ИЗ ЗНАК;
+  счпоз: ЦЕЛ;
+  число: ЦЕЛ;
   память: ДОСТУП К НАБОР
     ячейки: РЯД 20 ИЗ ЦЕЛ;
     размер: УЗКЦЕЛ;
     отрицательное: КЛЮЧ
-  КОН; 
+  КОН;
 
-ЗАДАЧА СоздатьПамять; 
-УКАЗ 
-  СОЗДАТЬ(память); 
-  память.размер := 0; 
-  память.отрицательное := ОТКЛ 
-КОН СоздатьПамять; 
+ЗАДАЧА СоздатьПамять;
+УКАЗ
+  СОЗДАТЬ(память);
+  память.размер := 0;
+  память.отрицательное := ОТКЛ
+КОН СоздатьПамять;
 
-ЗАДАЧА ДобавитьВПамять(что: ЦЕЛ); 
-УКАЗ 
-  память.ячейки[память.размер] := что; 
-  УВЕЛИЧИТЬ(память.размер) 
-КОН ДобавитьВПамять; 
+ЗАДАЧА ДобавитьВПамять(что: ЦЕЛ);
+УКАЗ
+  память.ячейки[память.размер] := что;
+  УВЕЛИЧИТЬ(память.размер)
+КОН ДобавитьВПамять;
 
-ЗАДАЧА ОбратитьПамять; 
-ПЕР 
-  зчсл: ЦЕЛ; 
-  сч: ЦЕЛ; 
-УКАЗ 
-  ОТ сч := 0 ДО память.размер ДЕЛИТЬ 2 - 1 ВЫП 
-    зчсл := память.ячейки[сч]; 
-    память.ячейки[сч] := память.ячейки[память.размер-сч-1]; 
-    память.ячейки[память.размер-сч-1] := зчсл 
-  КОН 
-КОН ОбратитьПамять; 
+ЗАДАЧА ОбратитьПамять;
+ПЕР
+  зчсл: ЦЕЛ;
+  сч: ЦЕЛ;
+УКАЗ
+  ОТ сч := 0 ДО память.размер ДЕЛИТЬ 2 - 1 ВЫП
+    зчсл := память.ячейки[сч];
+    память.ячейки[сч] := память.ячейки[память.размер-сч-1];
+    память.ячейки[память.размер-сч-1] := зчсл
+  КОН
+КОН ОбратитьПамять;
 
-ЗАДАЧА ВывестиПамять; 
-ПЕР 
-  сч: ЦЕЛ; 
-УКАЗ  
-  ОТ сч := 0 ДО память.размер-1 ВЫП 
+ЗАДАЧА ВывестиПамять;
+ПЕР
+  сч: ЦЕЛ;
+УКАЗ
+  ОТ сч := 0 ДО память.размер-1 ВЫП
     ЕСЛИ память.ячейки[сч] < 0 ТО
       Вывод.Цепь("-")
     АЕСЛИ память.ячейки[сч] > 0 ТО
       Вывод.Цепь("+")
-    ИНАЧЕ Вывод.Цепь("0") КОН 
-  КОН 
-КОН ВывестиПамять; 
+    ИНАЧЕ Вывод.Цепь("0") КОН
+  КОН
+КОН ВывестиПамять;
 
-ЗАДАЧА УдалитьПамять; 
-УКАЗ 
-  память := ПУСТО 
-КОН УдалитьПамять; 
+ЗАДАЧА УдалитьПамять;
+УКАЗ
+  память := ПУСТО
+КОН УдалитьПамять;
 
-ЗАДАЧА Перевести(число: ЦЕЛ); 
-ПЕР 
-  о: ЦЕЛ; 
-  з: КЛЮЧ; 
-  ЗАДАЧА ВПамять(что: ЦЕЛ); 
-  УКАЗ 
-    ЕСЛИ память.отрицательное ТО 
+ЗАДАЧА Перевести(число: ЦЕЛ);
+ПЕР
+  о: ЦЕЛ;
+  з: КЛЮЧ;
+  ЗАДАЧА ВПамять(что: ЦЕЛ);
+  УКАЗ
+    ЕСЛИ память.отрицательное ТО
       ЕСЛИ что < 0 ТО ДобавитьВПамять(1)
       АЕСЛИ что > 0 ТО ДобавитьВПамять(-1)
-      ИНАЧЕ ДобавитьВПамять(0) КОН 
-    ИНАЧЕ 
-      ДобавитьВПамять(что) 
-    КОН 
-  КОН ВПамять; 
-УКАЗ 
-  ЕСЛИ число < 0 ТО память.отрицательное := ВКЛ КОН; 
-  число := МОДУЛЬ(число); 
-  з := ОТКЛ; 
-  ПОКА число > 0 ВЫП 
-    о := число ОСТАТОК 3; 
-    число := число ДЕЛИТЬ 3; 
-    ЕСЛИ з ТО 
-      ЕСЛИ о = 2 ТО ВПамять(0) АЕСЛИ о = 1 ТО ВПамять(-1) ИНАЧЕ ВПамять(1); з := ОТКЛ КОН 
-    ИНАЧЕ 
-      ЕСЛИ о = 2 ТО ВПамять(-1); з := ВКЛ ИНАЧЕ ВПамять(о) КОН 
-    КОН 
-  КОН; 
-  ЕСЛИ з ТО ВПамять(1) КОН; 
-  ОбратитьПамять; 
-  ВывестиПамять(ВКЛ); 
-КОН Перевести; 
+      ИНАЧЕ ДобавитьВПамять(0) КОН
+    ИНАЧЕ
+      ДобавитьВПамять(что)
+    КОН
+  КОН ВПамять;
+УКАЗ
+  ЕСЛИ число < 0 ТО память.отрицательное := ВКЛ КОН;
+  число := МОДУЛЬ(число);
+  з := ОТКЛ;
+  ПОКА число > 0 ВЫП
+    о := число ОСТАТОК 3;
+    число := число ДЕЛИТЬ 3;
+    ЕСЛИ з ТО
+      ЕСЛИ о = 2 ТО ВПамять(0) АЕСЛИ о = 1 ТО ВПамять(-1) ИНАЧЕ ВПамять(1); з := ОТКЛ КОН
+    ИНАЧЕ
+      ЕСЛИ о = 2 ТО ВПамять(-1); з := ВКЛ ИНАЧЕ ВПамять(о) КОН
+    КОН
+  КОН;
+  ЕСЛИ з ТО ВПамять(1) КОН;
+  ОбратитьПамять;
+  ВывестиПамять(ВКЛ);
+КОН Перевести;
 
-ЗАДАЧА ВЧисло(): ЦЕЛ; 
-ПЕР 
-  сч, мн: ЦЕЛ; 
-  результат: ЦЕЛ; 
-УКАЗ 
-  результат := 0; 
-  мн := 1; 
-  ОТ сч := 0 ДО память.размер-1 ВЫП 
-    УВЕЛИЧИТЬ(результат, память.ячейки[память.размер-сч-1]*мн); 
-    мн := мн * 3 
-  КОН; 
-  ВОЗВРАТ результат 
-КОН ВЧисло; 
+ЗАДАЧА ВЧисло(): ЦЕЛ;
+ПЕР
+  сч, мн: ЦЕЛ;
+  результат: ЦЕЛ;
+УКАЗ
+  результат := 0;
+  мн := 1;
+  ОТ сч := 0 ДО память.размер-1 ВЫП
+    УВЕЛИЧИТЬ(результат, память.ячейки[память.размер-сч-1]*мн);
+    мн := мн * 3
+  КОН;
+  ВОЗВРАТ результат
+КОН ВЧисло;
 
-УКАЗ 
-  Параметр.Текст(1, зч); счпоз := 0; 
-  число := Текст.ВЦел(зч, счпоз); 
-  СоздатьПамять; 
-  Перевести(число); 
-  Вывод.ЧЦел(" = %d.", ВЧисло(), 0, 0, 0); 
-  УдалитьПамять 
+УКАЗ
+  Параметр.Текст(1, зч); счпоз := 0;
+  число := Текст.ВЦел(зч, счпоз);
+  СоздатьПамять;
+  Перевести(число);
+  Вывод.ЧЦел(" = %d.", ВЧисло(), 0, 0, 0);
+  УдалитьПамять
 
 КОН Сетунь.
 
@@ -1739,7 +1739,7 @@ END Invert.Memory;
 PROC Withdraw.Memory;
 VAR
   account: INT;
-BEGIN 
+BEGIN
   FOR cq := 0 TO memory.size-1 DO
     IF memory.cells[cq] < 0 THEN
       Output.Append("-")
@@ -1923,19 +1923,19 @@ func (b bt) Int() (r int, ok bool) {
 }
 
 // R4: negation, addition, and multiplication
-    
+
 func (z *bt) Neg(b *bt) *bt {
     if z != b {
         if cap(*z) < len(*b) {
             *z = make(bt, len(*b))
         } else {
             *z = (*z)[:len(*b)]
-        } 
+        }
     }
     for i, d := range *b {
         (*z)[i] = -d
     }
-    return z 
+    return z
 }
 
 func (z *bt) Add(a, b *bt) *bt {
@@ -1944,7 +1944,7 @@ func (z *bt) Add(a, b *bt) *bt {
     }
     r := *z
     r = r[:cap(r)]
-    var carry int8 
+    var carry int8
     for i, da := range *a {
         if i == len(r) {
             n := make(bt, len(*a)+4)
@@ -1964,8 +1964,8 @@ func (z *bt) Add(a, b *bt) *bt {
         case sum < -1:
             sum += 3
             carry--
-        } 
-        r[i] = sum 
+        }
+        r[i] = sum
     }
     last := len(*a)
     if carry != 0 {
@@ -2026,11 +2026,11 @@ func main() {
     a, _ := btString("+-0++0+")
     b := btInt(-436)
     c, _ := btString("+-++-")
-    show("a:", a) 
+    show("a:", a)
     show("b:", b)
     show("c:", c)
     show("a(b-c):", a.Mul(a, b.Add(b, c.Neg(c))))
-}   
+}
 
 func show(label string, b *bt) {
     fmt.Printf("%7s %12v ", label, b)
@@ -2089,12 +2089,12 @@ enum T {
 
 
 class BalancedTernaryInteger {
-    
+
     static final MINUS = new BalancedTernaryInteger(T.m)
     static final ZERO  = new BalancedTernaryInteger(T.z)
     static final PLUS  = new BalancedTernaryInteger(T.p)
     private static final LEADING_ZEROES = /^0+/
-    
+
     final String value
 
     BalancedTernaryInteger(String bt) {
@@ -2255,7 +2255,7 @@ Output:
 a * (b-c) = ----0+--0++0  -262023
 
 Demonstrate failure:
-Caught: Assertion failed: 
+Caught: Assertion failed:
 
 assert (a * (b-c)) == a
         | |  |||   |  |
@@ -2519,31 +2519,31 @@ _262023
 ```java
 
 /*
- * Test case 
+ * Test case
  * With balanced ternaries a from string "+-0++0+", b from native integer -436, c "+-++-":
  * Write out a, b and c in decimal notation;
- * Calculate a × (b − c), write out the result in both ternary and decimal notations. 
+ * Calculate a × (b − c), write out the result in both ternary and decimal notations.
  */
-public class BalancedTernary 
+public class BalancedTernary
 {
 	public static void main(String[] args)
 	{
  		BTernary a=new BTernary("+-0++0+");
 		BTernary b=new BTernary(-436);
 		BTernary c=new BTernary("+-++-");
-		
+
 		System.out.println("a="+a.intValue());
 		System.out.println("b="+b.intValue());
 		System.out.println("c="+c.intValue());
 		System.out.println();
-		
+
 		//result=a*(b-c)
 		BTernary result=a.mul(b.sub(c));
-		
+
 		System.out.println("result= "+result+" "+result.intValue());
 	}
-	
-	
+
+
 	public static class BTernary
 	{
 		String value;
@@ -2559,7 +2559,7 @@ public class BalancedTernary
 			this.value="";
 			this.value=convertToBT(v);
 		}
-		
+
 		private String convertToBT(int v)
 		{
 			if(v<0)
@@ -2596,7 +2596,7 @@ public class BalancedTernary
 			v=v%3;
 			return (v+3)%3;
 		}
-		
+
 		public int intValue()
 		{
 			int sum=0;
@@ -2613,22 +2613,22 @@ public class BalancedTernary
 			}
 			return sum;
 		}
-		
-		
+
+
 		public BTernary add(BTernary that)
 		{
 			String a=this.value;
 			String b=that.value;
-			
+
 			String longer=a.length()>b.length()?a:b;
 			String shorter=a.length()>b.length()?b:a;
-			
+
 			while(shorter.length()<longer.length())
 				shorter=0+shorter;
-			
+
 			a=longer;
 			b=shorter;
-			
+
 			char carry='0';
 			String sum="";
 			for(int i=0;i<a.length();i++)
@@ -2642,7 +2642,7 @@ public class BalancedTernary
 				sum=digisum.charAt(digisum.length()-1)+sum;
 			}
 			sum=carry+sum;
-			
+
 			return new BTernary(sum);
 		}
 		private String addDigits(char a,char b,char carry)
@@ -2679,23 +2679,23 @@ public class BalancedTernary
 			}
 			return sum;
 		}
-		
+
 		public BTernary neg()
 		{
 			return new BTernary(flip(this.value));
 		}
-		
+
 		public BTernary sub(BTernary that)
 		{
 			return this.add(that.neg());
 		}
-		
+
 		public BTernary mul(BTernary that)
 		{
 			BTernary one=new BTernary(1);
 			BTernary zero=new BTernary(0);
 			BTernary mul=new BTernary(0);
-			
+
 			int flipflag=0;
 			if(that.compareTo(zero)==-1)
 			{
@@ -2704,12 +2704,12 @@ public class BalancedTernary
 			}
 			for(BTernary i=new BTernary(1);i.compareTo(that)<1;i=i.add(one))
 				mul=mul.add(this);
-			
+
 			if(flipflag==1)
 				mul=mul.neg();
 			return mul;
 		}
-		
+
 		public boolean equals(BTernary that)
 		{
 			return this.value.equals(that.value);
@@ -2722,7 +2722,7 @@ public class BalancedTernary
 				return 0;
 			 return -1;
 		}
-		
+
 		public String toString()
 		{
 			return value;
@@ -3033,7 +3033,7 @@ tt$="-0+"   '-1 0 1; +2 -> 1 2 3, instr
 
 a$="+-0++0+"
 a=deci(a$)
-print "a",a, a$ 
+print "a",a, a$
 
 b=-436
 b$=ternary$(b)
@@ -3057,7 +3057,7 @@ function deci(s$)
     pow = 1
     for i = len(s$) to 1 step -1
         c$ = mid$(s$,i,1)
-        'select case c$ 
+        'select case c$
         '    case "+":sign= 1
         '    case "-":sign=-1
         '    case "0":sign= 0
@@ -3101,7 +3101,7 @@ function multTernary$(a$, b$)
         c$ = addTernary$(c$, t$+shift$)
 
         shift$ = shift$ +"0"
-    'print d, t$, c$ 
+    'print d, t$, c$
     next
     multTernary$ = c$
 end function
@@ -3182,27 +3182,27 @@ a * (b - c)   -262023
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
-frombt = FromDigits[StringCases[#, {"+" -> 1, "-" -> -1, "0" -> 0}], 
+frombt = FromDigits[StringCases[#, {"+" -> 1, "-" -> -1, "0" -> 0}],
     3] &;
-tobt = If[Quotient[#, 3, -1] == 0, 
-     "", #0@Quotient[#, 3, -1]] <> (Mod[#, 
+tobt = If[Quotient[#, 3, -1] == 0,
+     "", #0@Quotient[#, 3, -1]] <> (Mod[#,
        3, -1] /. {1 -> "+", -1 -> "-", 0 -> "0"}) &;
 btnegate = StringReplace[#, {"+" -> "-", "-" -> "+"}] &;
 btadd = StringReplace[
     StringJoin[
-     Fold[Sort@{#1[[1]], 
-          Sequence @@ #2} /. {{x_, x_, x_} :> {x, 
-           "0" <> #1[[2]]}, {"-", "+", x_} | {x_, "-", "+"} | {x_, 
+     Fold[Sort@{#1[[1]],
+          Sequence @@ #2} /. {{x_, x_, x_} :> {x,
+           "0" <> #1[[2]]}, {"-", "+", x_} | {x_, "-", "+"} | {x_,
             "0", "0"} :> {"0", x <> #1[[2]]}, {"+", "+", "0"} -> {"+",
-            "-" <> #1[[2]]}, {"-", "-", "0"} -> {"-", 
-           "+" <> #1[[2]]}} &, {"0", ""}, 
-      Reverse@Transpose@PadLeft[Characters /@ {#1, #2}] /. {0 -> 
+            "-" <> #1[[2]]}, {"-", "-", "0"} -> {"-",
+           "+" <> #1[[2]]}} &, {"0", ""},
+      Reverse@Transpose@PadLeft[Characters /@ {#1, #2}] /. {0 ->
          "0"}]], StartOfString ~~ "0" .. ~~ x__ :> x] &;
 btsubtract = btadd[#1, btnegate@#2] &;
-btmultiply = 
-  btadd[Switch[StringTake[#2, -1], "0", "0", "+", #1, "-", 
-     btnegate@#1], 
-    If[StringLength@#2 == 1, 
+btmultiply =
+  btadd[Switch[StringTake[#2, -1], "0", "0", "+", #1, "-",
+     btnegate@#1],
+    If[StringLength@#2 == 1,
      "0", #0[#1, StringDrop[#2, -1]] <> "0"]] &;
 ```
 
@@ -3322,34 +3322,34 @@ a * (b - c) = ----0+--0++0 = -262023
 
 
 ```perl
-use strict; 
-use warnings; 
+use strict;
+use warnings;
 
-my @d = qw( 0 + - ); 
-my @v = qw( 0 1 -1 ); 
+my @d = qw( 0 + - );
+my @v = qw( 0 1 -1 );
 
-sub to_bt { 
-  my $n = shift; 
-  my $b = ''; 
-  while( $n ) { 
-    my $r = $n%3; 
-    $b .= $d[$r]; 
-    $n -= $v[$r]; 
-    $n /= 3; 
-  } 
-  return scalar reverse $b; 
-} 
+sub to_bt {
+  my $n = shift;
+  my $b = '';
+  while( $n ) {
+    my $r = $n%3;
+    $b .= $d[$r];
+    $n -= $v[$r];
+    $n /= 3;
+  }
+  return scalar reverse $b;
+}
 
-sub from_bt { 
-  my $n = 0; 
-  for( split //, shift ) { # Horner 
-    $n *= 3; 
-    $n += "${_}1" if $_; 
-  } 
-  return $n; 
-} 
+sub from_bt {
+  my $n = 0;
+  for( split //, shift ) { # Horner
+    $n *= 3;
+    $n += "${_}1" if $_;
+  }
+  return $n;
+}
 
-my %addtable = ( 
+my %addtable = (
                 '-0' => [ '-', '' ],
                 '+0' => [ '+', '' ],
                 '+-' => [ '0', '' ],
@@ -3392,9 +3392,9 @@ my $a = "+-0++0+";
 my $b = to_bt( -436 );
 my $c = "+-++-";
 my $d = mult( $a, subtract( $b, $c ) );
-printf "      a: %14s %10d\n", $a, from_bt( $a ); 
-printf "      b: %14s %10d\n", $b, from_bt( $b ); 
-printf "      c: %14s %10d\n", $c, from_bt( $c ); 
+printf "      a: %14s %10d\n", $a, from_bt( $a );
+printf "      b: %14s %10d\n", $b, from_bt( $b );
+printf "      c: %14s %10d\n", $c, from_bt( $c );
 printf "a*(b-c): %14s %10d\n", $d, from_bt( $d );
 
 ```
@@ -3493,7 +3493,7 @@ a × (b − c) == ----0+--0++0 == -262023
 
 ## Phix
 
-Using strings to represent balanced ternary. Note that as implemented dec2bt and bt2dec are limited to Phix integers (~+/-1,000,000,000), 
+Using strings to represent balanced ternary. Note that as implemented dec2bt and bt2dec are limited to Phix integers (~+/-1,000,000,000),
 but it would probably be pretty trivial (albeit quite a bit slower) to replace them with (say) ba2bt and bt2ba which use/yield bigatoms.
 
 ```Phix
@@ -3578,7 +3578,7 @@ integer ch
         end if
         pos = pos&'0'
         neg = neg&'0'
-    end for 
+    end for
     return res
 end function
 
@@ -3600,8 +3600,8 @@ string res = bt_mul(a,bt_add(b,negate(c)))
 ```
 
 Proof of arbitrary large value support is provided by calculating 1000! and 999! and using a naive subtraction loop to effect division.
-The limit for factorials that can be held in native integers is a mere 12, and for atoms 170, mind you, inaccurate above 22. The timings 
-show it manages a 5000+digit multiplication and subtraction in about 0.2s, which I say is "reasonable", given that I didn't try very hard, 
+The limit for factorials that can be held in native integers is a mere 12, and for atoms 170, mind you, inaccurate above 22. The timings
+show it manages a 5000+digit multiplication and subtraction in about 0.2s, which I say is "reasonable", given that I didn't try very hard,
 as evidenced by that daft addition lookup table!
 
 ```Phix
@@ -3672,7 +3672,7 @@ It took 1000 subtractions to reach 0. (9.30s)
                   (unless (= C "0") ((intern C) M))
                   (setq M (* 3 M)) ) )
             (flip (chop X)) ) ) ) )
-               
+
 # For robots
 (de neg (L)
    (mapcar
@@ -3709,9 +3709,9 @@ It took 1000 subtractions to reach 0. (9.30s)
          '((L1 L2)
             (let R
                (get
-                  *G 
+                  *G
                   (+ 4 (+ (car L1) (car L2) C)) )
-               (ifn (cdr L1) 
+               (ifn (cdr L1)
                   R
                   (setq C (cadr R))
                   (cons (car R)) ) ) )
@@ -3721,27 +3721,27 @@ It took 1000 subtractions to reach 0. (9.30s)
 (de mul (D1 D2)
    (ifn (and D1 D2)
       0
-      (add 
+      (add
          (case (car D1)
             (0 0)
             (1 D2)
             (-1 (neg D2)) )
          (cons 0 (mul (cdr D1) D2) ) ) ) )
- 
+
 (de sub (D1 D2)
    (add D1 (neg D2)) )
 
 # Random testing
 (let (X 0  Y 0  C 2048)
    (do C
-      (setq 
+      (setq
          X (rand (- C) C)
          Y (rand (- C) C) )
       (test X (trih (trih X)))
       (test X (tri (tri X)))
       (test
          (+ X Y)
-         (tri (add (tri X) (tri Y))) ) 
+         (tri (add (tri X) (tri Y))) )
       (test
          (- X Y)
          (tri (sub (tri X) (tri Y))) )
@@ -3752,9 +3752,9 @@ It took 1000 subtractions to reach 0. (9.30s)
 (println 'A (trih 523) (trih "+-0++0+"))
 (println 'B (trih -436) (trih "-++-0--"))
 (println 'C (trih 65) (trih "+-++-"))
-(let R 
+(let R
    (tri
-      (mul 
+      (mul
          (tri (trih "+-0++0+"))
          (sub (tri -436) (tri (trih "+-++-"))) ) )
    (println 'R (trih R) R) )
@@ -3847,7 +3847,7 @@ convert(N, C, LC, LF) :-
 ```
 
 
-'''The addition.''' 
+'''The addition.'''
 
 The same predicate is used for addition and substraction.
 
@@ -3978,7 +3978,7 @@ strip_nombre(L) -->
 
 ```
 
-'''The multiplication.''' 
+'''The multiplication.'''
 
 We give a predicate '''euclide(?A, +B, ?Q, ?R)''' which computes both the multiplication and the division, but it is very inefficient.
 
@@ -4128,7 +4128,7 @@ mult(AIn, BIn, QIn, RIn) :-
 
 	% is R instancied ?
 	( nonvar(R) -> R1 = R; true),
-	% multiplication ? we add B to A and substract 1 (digit '-') to Q 
+	% multiplication ? we add B to A and substract 1 (digit '-') to Q
 	(   nonvar(Q) -> BC = BP, Ajout = [45],
 	    (	nonvar(R) ->  bt_add1(BC, R, AP) ; AP = BC)
 	% division ? we substract B to A and add 1 (digit '+') to Q
@@ -4307,7 +4307,7 @@ a * (b - c): -262023 ----0+--0++0
 ;;       the string-rep starts with the most significsnt tert.
 
 (define (bt->integer t)
-  (if (null? t) 
+  (if (null? t)
       0
       (+ (first t) (* 3 (bt->integer (rest t))))))
 
@@ -4323,20 +4323,20 @@ a * (b - c): -262023 ----0+--0++0
 (define (bt->string t)
   (define (strip-leading-zeroes a)
     (if (or (null? a) (not (= (first a) 0))) a (strip-leading-zeroes (rest a))))
-  (string-join (map (λ (u) 
-                      (case u 
-                        [(1) "+"] 
-                        [(-1) "-"] 
-                        [(0) "0"])) 
+  (string-join (map (λ (u)
+                      (case u
+                        [(1) "+"]
+                        [(-1) "-"]
+                        [(0) "0"]))
                     (strip-leading-zeroes (reverse t))) ""))
 
 (define (string->bt s)
   (reverse
-   (map (λ (c) 
-          (case c 
-            [(#\+) 1] 
-            [(#\-) -1] 
-            [(#\0) 0])) 
+   (map (λ (c)
+          (case c
+            [(#\+) 1]
+            [(#\-) -1]
+            [(#\0) 0]))
         (string->list s))))
 
 (define (bt-negate t)
@@ -4362,7 +4362,7 @@ a * (b - c): -262023 ----0+--0++0
                         [(0) null]
                         [(1) b])
                       (cons 0 (bt-multiply (rest a) b)))]))
- 
+
 ; test case
 (let* ([a (string->bt "+-0++0+")]
        [b (integer->bt -436)]
@@ -4447,7 +4447,7 @@ btSub:  return btAdd(arg(1), btNeg(arg(2)))                      /*subtract two 
 btShow: say center(arg(1),9) right(arg(2),20) @@ right(bt2d(arg(2)),9) @;           return
 ```
 
-{{out|output|text=  when using the default input:}} 
+{{out|output|text=  when using the default input:}}
 
 ```txt
 
@@ -4473,7 +4473,7 @@ class BalancedTernary
     end
     @digits = trim0(str)
   end
-   
+
   I2BT = {0 => ["0",0], 1 => ["+",0], 2 => ["-",1]}
   def self.from_int(value)
     n = value.to_i
@@ -4486,7 +4486,7 @@ class BalancedTernary
     end
     new(digits)
   end
-  
+
   BT2I = {"-" => -1, "0" => 0, "+" => 1}
   def to_int
     @digits.chars.inject(0) do |sum, char|
@@ -4494,16 +4494,16 @@ class BalancedTernary
     end
   end
   alias :to_i :to_int
-  
+
   def to_s
     @digits.dup                 # String is mutable
   end
   alias :inspect :to_s
-  
+
   def <=>(other)
     to_i <=> other.to_i
   end
-  
+
   ADDITION_TABLE = {
     "---" => ["-","0"], "--0" => ["-","+"], "--+" => ["0","-"],
     "-0-" => ["-","+"], "-00" => ["0","-"], "-0+" => ["0","0"],
@@ -4515,7 +4515,7 @@ class BalancedTernary
     "+0-" => ["0","0"], "+00" => ["0","+"], "+0+" => ["+","-"],
     "++-" => ["0","+"], "++0" => ["+","-"], "+++" => ["+","0"],
   }
-  
+
   def +(other)
     maxl = [to_s.length, other.to_s.length].max
     a = pad0_reverse(to_s, maxl)
@@ -4527,13 +4527,13 @@ class BalancedTernary
     end
     self.class.new(carry + sum)
   end
-  
+
   MULTIPLICATION_TABLE = {
     "-" => "+0-",
     "0" => "000",
     "+" => "-0+",
   }
-  
+
   def *(other)
     product = self.class.new
     other.to_s.each_char do |bdigit|
@@ -4543,38 +4543,38 @@ class BalancedTernary
     end
     product >> 1
   end
-  
+
   # negation
   def -@()
     self.class.new(@digits.tr('-+','+-'))
   end
- 
+
   # subtraction
   def -(other)
     self + (-other)
   end
-  
+
   # shift left
   def <<(count)
     @digits = trim0(@digits + "0"*count)
     self
   end
-  
+
   # shift right
   def >>(count)
     @digits[-count..-1] = "" if count > 0
     @digits = trim0(@digits)
     self
   end
-  
+
   private
-  
+
   def trim0(str)
     str = str.sub(/^0+/, "")
     str = "0" if str.empty?
     str
   end
-  
+
   def pad0_reverse(str, len)
     str.rjust(len, "0").reverse.chars
   end
@@ -4614,8 +4614,8 @@ object TernaryBit {
     val P = TernaryBit(+1)
     val M = TernaryBit(-1)
     val Z = TernaryBit( 0)
-    
-  implicit def asChar(t: TernaryBit): Char = t.charValue 
+
+  implicit def asChar(t: TernaryBit): Char = t.charValue
   implicit def valueOf(c: Char): TernaryBit = {
     c match {
       case '0' => 0
@@ -4629,9 +4629,9 @@ object TernaryBit {
 }
 
 case class TernaryBit(val intValue: Int) {
-  
+
     def inverse: TernaryBit = TernaryBit(-intValue)
-    
+
     def charValue = intValue match {
       case  0 => '0'
       case  1 => '+'
@@ -4640,51 +4640,51 @@ case class TernaryBit(val intValue: Int) {
 }
 
 class Ternary(val bits: List[TernaryBit]) {
-  
+
   def + (b: Ternary) = {
     val sumBits: List[Int] = bits.map(_.intValue).zipAll(b.bits.map(_.intValue), 0, 0).map(p => p._1 + p._2)
-    
+
     // normalize
     val iv: Tuple2[List[Int], Int] = (List(), 0)
     val (revBits, carry) = sumBits.foldLeft(iv)((accu: Tuple2[List[Int], Int], e: Int) => {
       val s = e + accu._2
       (((s + 1 + 3 * 100) % 3 - 1) :: accu._1 , (s + 1 + 3 * 100) / 3 - 100)
     })
-    
+
     new Ternary(( TernaryBit(carry) :: revBits.map(TernaryBit(_))).reverse )
   }
-  
+
   def - (b: Ternary) = {this + (-b)}
   def <<<(a: Int): Ternary = { List.fill(a)(TernaryBit.Z) ++ bits}
   def >>>(a: Int): Ternary = { bits.drop(a) }
   def unary_- = { bits.map(_.inverse) }
 
-  def ** (b: TernaryBit): Ternary = { 
+  def ** (b: TernaryBit): Ternary = {
     b match {
       case TernaryBit.P => this
       case TernaryBit.M => - this
       case TernaryBit.Z => 0
     }
   }
-  
+
   def * (mul: Ternary): Ternary = {
     // might be done more efficiently - perform normalize only once
     mul.bits.reverse.foldLeft(new Ternary(Nil))((a: Ternary, b: TernaryBit) => (a <<< 1) + (this ** b))
   }
-  
+
   def intValue = bits.foldRight(0)((c, a) => a*3 + c.intValue)
-  
-  override def toString = new String(bits.reverse.map(_.charValue).toArray) 
+
+  override def toString = new String(bits.reverse.map(_.charValue).toArray)
 }
 
 object Ternary {
 
   implicit def asString(t: Ternary): String = t.toString()
   implicit def valueOf(s: String): Ternary = new Ternary(s.toList.reverse.map(TernaryBit.valueOf(_)))
-  
+
   implicit def asBits(t: Ternary): List[TernaryBit] = t.bits
   implicit def valueOf(l: List[TernaryBit]): Ternary = new Ternary(l)
-  
+
   implicit def asInt(t: Ternary): BigInt = t.intValue
   // XXX not tail recursive
   implicit def valueOf(i: BigInt): Ternary = {
@@ -4744,7 +4744,7 @@ object TernarySpecification extends Properties("Ternary") {
     val bt: Ternary = b
     (at+bt).intValue == (at.intValue + bt.intValue)
   }
-  
+
   property("multiply") = forAll { (a: Int, b: Int) =>
     val at: Ternary = a
     val bt: Ternary = b

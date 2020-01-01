@@ -461,7 +461,7 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 <lang [C sharp|C#]>
 using System;
 using System.Collections.Generic;

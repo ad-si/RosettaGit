@@ -644,10 +644,10 @@ int main( int argc, char* argv[] )
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Diagnostics;
 using System.Drawing;

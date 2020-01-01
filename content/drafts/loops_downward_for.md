@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Iteration}} 
+{{task|Iteration}}
 [[Category:Simple]]
 
 ;Task:
@@ -44,7 +44,7 @@ Use of BXLE and BCT opcodes.
 
 ```360asm
 *        Loops/Downward for        27/07/2015
-LOOPDOWN CSECT                    
+LOOPDOWN CSECT
          USING  LOOPDOWN,R12
          LR     R12,R15            set base register
 BEGIN    EQU    *
@@ -54,7 +54,7 @@ BEGIN    EQU    *
          LH     R5,=H'-1'          to 0    (R5=-1)
 LOOPI    BXLE   R2,R4,ELOOPI       R2=R2+R4 if R2<=R5 goto ELOOPI
          XDECO  R2,BUFFER          edit R2
-         XPRNT  BUFFER,L'BUFFER    print    
+         XPRNT  BUFFER,L'BUFFER    print
          B      LOOPI
 ELOOPI   EQU    *
 *        second loop with a BCT    BCT: Branch on CounT
@@ -67,15 +67,15 @@ ELOOPJ   BCT    R3,LOOPJ           R3=R3-1 if R3<>0 goto LOOPI
 RETURN   XR     R15,R15            set return code
          BR     R14                return to caller
 BUFFER   DC     CL80' '
-         YREGS  
+         YREGS
          END    LOOPDOWN
 ```
 
 
 
 ## 6502 Assembly
- 
-Code is called as a subroutine (i.e. JSR Start).  
+
+Code is called as a subroutine (i.e. JSR Start).
 Printing routines are only partially coded here, specific OS/hardware routines for printing are left unimplemented.
 
 ```6502asm
@@ -84,12 +84,12 @@ Printing routines are only partially coded here, specific OS/hardware routines f
 Send 		= 	$9000		;routine not implemented here
 PrintNewLine	=	$9050		;routine not implemented here
 
-  		*= 	$8000		;set base address 
+  		*= 	$8000		;set base address
 Start		PHA			;push Accumulator and Y register onto stack
 		TYA
 		PHA
 		LDY 	#10		;set Y register to loop start value
-		TYA			;place loop value in the Accumulator 
+		TYA			;place loop value in the Accumulator
 Loop		JSR	PrintTwoDigits
 		JSR   PrintNewLine
 		DEY			;decrement loop value
@@ -98,25 +98,25 @@ Loop		JSR	PrintTwoDigits
 		TAY
 		PLA
 		RTS			;exit
-				
+
 ;Print value in Accumulator as two hex digits
 PrintTwoDigits
-		PHA 
-		LSR 
-		LSR 
-		LSR 
-		LSR 
+		PHA
+		LSR
+		LSR
+		LSR
+		LSR
 		JSR     PrintDigit
-		PLA 
+		PLA
 		AND     #$0F
 		JSR     PrintDigit
-		RTS 
-				
+		RTS
+
 ;Convert value in Accumulator to an Ascii hex digit
 PrintDigit
 		ORA	#$30
 		JSR	Send		;routine not implemented here
-		RTS 
+		RTS
 ```
 
 
@@ -149,7 +149,7 @@ od
 '''Based on the 1962 Revised Repport on ALGOL''':
   '''begin'''
     '''integer''' i;
-    '''for''' i:=10 '''step''' -1 '''until''' 0 '''do''' 
+    '''for''' i:=10 '''step''' -1 '''until''' 0 '''do'''
       outinteger(i)
   '''end'''
 {{works with|ALGOL 60|OS/360}}
@@ -157,7 +157,7 @@ od
 ```algol60
 'BEGIN' 'COMMENT' Loops/Downward for - Algol60 - 23/06/2018;
   'INTEGER' I;
-  'FOR' I := 10 'STEP' -1 'UNTIL' 0 'DO' 
+  'FOR' I := 10 'STEP' -1 'UNTIL' 0 'DO'
     OUTINTEGER(1,I)
 'END'
 ```
@@ -168,8 +168,8 @@ od
 ## ALGOL 68
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
 ```algol68
 FOR i FROM 10 BY -1 TO 0 DO
@@ -177,8 +177,8 @@ FOR i FROM 10 BY -1 TO 0 DO
 OD
 ```
 
-As a common extension the DOWNTO is sometimes included to optimise 
-the loop termination logic.  The DOWNTO is available in Marcel's 
+As a common extension the DOWNTO is sometimes included to optimise
+the loop termination logic.  The DOWNTO is available in Marcel's
 [[ALGOL 68G]] and [[Cambridge ALGOL 68C]].
 
 ```algol68
@@ -252,16 +252,16 @@ sMessValeur:   .fill 12, 1, ' '
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}      @ saves 2 registers 
+.global main
+main:                @ entry of program
+    push {fp,lr}      @ saves 2 registers
     mov r4,#10
-1:    @ begin loop 
+1:    @ begin loop
     mov r0,r4
     ldr r1,iAdrsMessValeur     @ display value
     bl conversion10             @ call function with 2 parameter (r0,r1)
@@ -270,7 +270,7 @@ main:                @ entry of program
     subs r4,#1                   @ decrement counter
     bge 1b                      @ loop if greather
 
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -279,65 +279,65 @@ main:                @ entry of program
 iAdrsMessValeur:          .int sMessValeur
 iAdrszMessResult:         .int szMessResult
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}      @ save  registres
-    mov r2,#0                  @ counter length 
-1:      @ loop length calculation 
-    ldrb r1,[r0,r2]           @ read octet start position + index 
-    cmp r1,#0                  @ if 0 its over 
-    addne r2,r2,#1            @ else add 1 in the length 
-    bne 1b                    @ and loop 
-                                @ so here r2 contains the length of the message 
-    mov r1,r0        			@ address message in r1 
-    mov r0,#STDOUT      		@ code to write to the standard output Linux 
-    mov r7, #WRITE             @ code call system "write" 
-    svc #0                      @ call systeme 
-    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */ 
-    bx lr                       @ return  
+    mov r2,#0                  @ counter length
+1:      @ loop length calculation
+    ldrb r1,[r0,r2]           @ read octet start position + index
+    cmp r1,#0                  @ if 0 its over
+    addne r2,r2,#1            @ else add 1 in the length
+    bne 1b                    @ and loop
+                                @ so here r2 contains the length of the message
+    mov r1,r0        			@ address message in r1
+    mov r0,#STDOUT      		@ code to write to the standard output Linux
+    mov r7, #WRITE             @ code call system "write"
+    svc #0                      @ call systeme
+    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */
+    bx lr                       @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion10:
-    push {r1-r4,lr}    @ save registers 
+    push {r1-r4,lr}    @ save registers
     mov r3,r1
     mov r2,#10
 
 1:	   @ start loop
     bl divisionpar10 @ r0 <- dividende. quotient ->r0 reste -> r1
-    add r1,#48        @ digit	
+    add r1,#48        @ digit
     strb r1,[r3,r2]  @ store digit on area
     sub r2,#1         @ previous position
     cmp r0,#0         @ stop if quotient = 0 */
     bne 1b	          @ else loop
     @ and move spaces in first on area
-    mov r1,#' '   @ space	
-2:	
+    mov r1,#' '   @ space
+2:
     strb r1,[r3,r2]  @ store space in area
     subs r2,#1       @ @ previous position
-    bge 2b           @ loop if r2 >= zéro 
+    bge 2b           @ loop if r2 >= zéro
 
-100:	
-    pop {r1-r4,lr}    @ restaur registres 
+100:
+    pop {r1-r4,lr}    @ restaur registres
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}   /* save registers  */
-    mov r4,r0 
+    mov r4,r0
     mov r3,#0x6667   @ r3 <- magic_number  lower
     movt r3,#0x6666  @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
     mov r1, r0, LSR #31    /* r1 <- r0 >> 31 */
     add r0, r2, r1         /* r0 <- r2 + r1 */
@@ -457,7 +457,7 @@ FOR i = 10 DOWNTO 0 : PRINT i : NEXT
 
 ```basic
 10 FOR I = 10 TO 0 STEP -1
-20 PRINT I 
+20 PRINT I
 30 NEXT
 ```
 
@@ -550,10 +550,10 @@ for(int i = 10; i >= 0; --i)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 for (int i = 10; i >= 0; i--)
 {
    Console.WriteLine(i);
@@ -576,7 +576,7 @@ for (i in 10..0) {
 ## Clojure
 
 
-```csharp
+```c#
 (doseq [x (range 10 -1 -1)] (println x))
 ```
 
@@ -623,7 +623,7 @@ procedure division.
 
 ## CoffeeScript
 
-This could be written either in the array comprehension style, 
+This could be written either in the array comprehension style,
 or in "regular" for loop style.
 
 ```coffeescript
@@ -853,7 +853,7 @@ for i in (0..10).descending() { println(i) }
 
 (for ((longtemps-je-me-suis-couché-de-bonne-heure (in-range 10 -1 -1)))
      (write longtemps-je-me-suis-couché-de-bonne-heure))
-    → 10 9 8 7 6 5 4 3 2 1 0 
+    → 10 9 8 7 6 5 4 3 2 1 0
 
 ```
 
@@ -865,7 +865,7 @@ Including a full routine to print integers in decimal would probably be overkill
 
 ```edsac
 [ Loop with downward counter
-  
+
 ### ====================
 
 
@@ -963,17 +963,17 @@ iex(1)> Enum.each(10..0, fn i -> IO.puts i end)
 %% Implemented by Arjun Sunel
 -module(downward_loop).
 -export([main/0]).
- 
+
 main() ->
-	for_loop(10).    
- 
+	for_loop(10).
+
  for_loop(N) ->
  	if N > 0 ->
 		io:format("~p~n",[N] ),
 		for_loop(N-1);
 	true ->
 		io:format("~p~n",[N])
-	end.	
+	end.
 
 ```
 
@@ -1162,7 +1162,7 @@ C If you were to leave off STEP, it would default to positive one.
 For i As Integer = 10 To 0 Step -1
   Print i; " ";
 Next
-Print 
+Print
 Sleep
 ```
 
@@ -1290,7 +1290,7 @@ Output:
 ## Go
 
 
-```go>for i := 10; i 
+```go>for i := 10; i
 = 0; i-- {
   fmt.Println(i)
 }
@@ -1347,7 +1347,7 @@ main = forM_ [10,9 .. 0] print
 ## hexiscript
 
 
-```hexiscript>for let i 10; i 
+```hexiscript>for let i 10; i
 = 0; i--
   println i
 endfor
@@ -1388,7 +1388,7 @@ for i=10,0,-1 do print,i
 ```
 
 
-But in IDL one would rarely use loops (for anything) since practically everything can be done with vectors/arrays. 
+But in IDL one would rarely use loops (for anything) since practically everything can be done with vectors/arrays.
 
 The "IDL way of doing things" for the countdown requested in the task would probably be this:
 
@@ -1437,7 +1437,7 @@ J is array-oriented, so there is very little need for loops.  For example, one c
 
    ,. i. -11
 
-J does support loops for those times they can't be avoided (just like many languages support gotos for those time they can't be avoided).  
+J does support loops for those times they can't be avoided (just like many languages support gotos for those time they can't be avoided).
 
 ```j
 3 : 0 ] 11
@@ -1497,7 +1497,7 @@ Alternatively, remaining for the moment within an imperative idiom of JavaScript
 ```JavaScript
 for (var i = 11; i--;) console.log(i);
 ```
- 
+
 
 and it sometimes might be more natural, especially at scales at which optimisation becomes an issue, to go one step further and express the same computation with the more economical while statement.
 
@@ -1506,7 +1506,7 @@ and it sometimes might be more natural, especially at scales at which optimisati
 var i = 11;
 while (i--) console.log(i);
 ```
- 
+
 
 In a functional idiom of JavaScript, however, we need an expression with a value (which can be composed within superordinate expressions), rather than a statement, which produces a side-effect but returns no information-bearing value.
 
@@ -1528,7 +1528,7 @@ range(0, 10).reverse().forEach(
   }
 );
 ```
- 
+
 
 
 but this is still a statement with side-effects, rather than a composable expression with a value.
@@ -1545,7 +1545,7 @@ console.log(
   ).join('\n')
 );
 ```
- 
+
 
 but in this case, we are simply mapping an identity function over the values, so the expression simplifies down to:
 
@@ -1653,7 +1653,7 @@ end repeat
 ```Lisaac
 10.downto 0 do { i : INTEGER;
   i.println;
-  
+
 };
 ```
 
@@ -1665,9 +1665,9 @@ Livecode's repeat "for" variant does not have a "down to" form, in a function yo
 
 ```LiveCode
 local x=10
-repeat for 10 times                                                                                                   
-  put x & return                                                                                                        
-  add -1 to x                                                                                                           
+repeat for 10 times
+  put x & return
+  add -1 to x
 end repeat
 ```
 
@@ -1805,8 +1805,8 @@ seq(print(i),i=10..0,-1)
 
 ## Mathematica
 
-Mathematica provides several ways to iterate over a range of numbers, 
-small subtle differences are amongst them. 
+Mathematica provides several ways to iterate over a range of numbers,
+small subtle differences are amongst them.
 3 possible implementations are (exactly the same output):
 
 Using For:
@@ -1834,7 +1834,7 @@ Scan[Print, Range[10, 0, -1]]
 ```Matlab
     for k = 10:-1:0,
         printf('%d\n',k)
-    end; 
+    end;
 ```
 
 
@@ -1842,7 +1842,7 @@ A vectorized version of the code is
 
 
 ```Matlab
-  printf('%d\n',10:-1:0);  
+  printf('%d\n',10:-1:0);
 ```
 
 
@@ -2309,7 +2309,7 @@ for i in xrange(10, -1, -1):
 
 
 
-###  List comprehension 
+###  List comprehension
 
 
 
@@ -2415,7 +2415,7 @@ Hurrumph!  Hurrumph!
 
 ### version 4
 
-This example isn't compliant to the task, 
+This example isn't compliant to the task,
 but it shows that the increment/decrement can be a non-integer:
 
 ```rexx
@@ -2606,7 +2606,7 @@ END
 
 
 ```smalltalk
-10 to: 1 by: -1 do:[:aNumber | 
+10 to: 1 by: -1 do:[:aNumber |
   aNumber display.
   Character space display.
 ]
@@ -2641,7 +2641,7 @@ END
 ## Sparkling
 
 
-```sparkling>for var i = 10; i 
+```sparkling>for var i = 10; i
 = 0; i-- {
     print(i);
 }
@@ -2771,7 +2771,7 @@ for i in reverse(0 ... 10) {
 
 Alternately (removed in Swift 3):
 
-```swift>for var i = 10; i 
+```swift>for var i = 10; i
 = 0; i-- {
   println(i)
 }
@@ -2861,7 +2861,7 @@ done | tail -r
 ```
 
 
-This pipe uses several nonstandard commands: <code>cat -n</code> and <code>tail -r</code> might not work with some systems. 
+This pipe uses several nonstandard commands: <code>cat -n</code> and <code>tail -r</code> might not work with some systems.
 If there is no <code>tail -r</code>, try <code>tac</code>.
 
 
@@ -2920,7 +2920,7 @@ end for
 
 
 ```v
-10 
+10
 [0 >]
   [dup puts pred]
 while

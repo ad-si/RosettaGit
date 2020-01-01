@@ -319,9 +319,9 @@ D8Yw.827$]
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Linq;
 

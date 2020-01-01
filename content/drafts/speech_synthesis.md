@@ -177,10 +177,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 You need to 'Add Reference' to the COM "Microsoft Speech Object Library" in your Preferences.
 
-```csharp
+```c#
 using SpeechLib;
 
 namespace Speaking_Computer

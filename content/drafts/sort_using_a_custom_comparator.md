@@ -644,7 +644,7 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{incorrect}}
 Wrong compare. Because can't find "a" < "A"
@@ -653,7 +653,7 @@ Wrong compare. Because can't find "a" < "A"
 C# allows you to specify a custom compare to the built in sort method on a list
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -742,7 +742,7 @@ Has not the case of equal in lower case and then make them in order using the ex
 
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

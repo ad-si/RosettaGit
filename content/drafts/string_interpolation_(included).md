@@ -262,11 +262,11 @@ string interpolate( const S& orig , const Args&... args)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 This is called [http://msdn.microsoft.com/en-us/library/txafckwd.aspx "composite formatting"] in MSDN.
 
 
-```csharp
+```c#
 class Program
 {
     static void Main()

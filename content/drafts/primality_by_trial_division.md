@@ -801,9 +801,9 @@ bool is_prime(unsigned int n)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 static bool isPrime(int n)
         {
             if (n <= 1) return false;

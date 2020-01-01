@@ -728,9 +728,9 @@ The Binomial Coefficient of 5, and 3, is equal to: 10
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace BinomialCoefficients

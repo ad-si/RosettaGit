@@ -1951,13 +1951,13 @@ Enter your move ( 1 - 9 )
 
 
 
-## C sharp
+## C#
 
 This implementation is purposely wordy because Tic-Tac-Toe is often a starting level program.<br/>
 It tries to show a number of C# code features while still keeping each function small and understandable.
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -20,7 +20,7 @@ Find, through brute force, the five-letter passwords corresponding with the foll
  2. 3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b
  3. 74e1bb62f8dabb8125a58852b63bdf6eaef667cb56ac7f7cdba6d7305c50a22f
 
-Your program should naively iterate through all possible passwords consisting only of five lower-case ASCII English letters.  It should use concurrent or parallel processing, if your language supports that feature.  You may calculate SHA-256 hashes by calling a library or through a custom implementation. Print each matching password, along with its SHA-256 hash. 
+Your program should naively iterate through all possible passwords consisting only of five lower-case ASCII English letters.  It should use concurrent or parallel processing, if your language supports that feature.  You may calculate SHA-256 hashes by calling a library or through a custom implementation. Print each matching password, along with its SHA-256 hash.
 
 Related task:  [[SHA-256]]
 
@@ -176,10 +176,10 @@ zyzzx => 1115dd800feaacefdf481f1f9070374a2a81e27880f187396db67958b207cbad
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
  
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Text;
@@ -481,7 +481,7 @@ zyzzx <=> 1115dd80feaacefdf481f1f9070374a2a81e27880f187396db67958b27cbad
 (*
 Nigel Galloway February 21st., 2017
 *)
-let N n i g e l = 
+let N n i g e l =
   let G = function
     |"3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b"->Some(string n+string i+string g+string e+string l)
     |"74e1bb62f8dabb8125a58852b63bdf6eaef667cb56ac7f7cdba6d7305c50a22f"->Some(string n+string i+string g+string e+string l)
@@ -778,7 +778,7 @@ fun main(args: Array<String>) {
         val pwd = ByteArray(5)
         pwd[0] = it
         for (i1 in range) {
-            pwd[1] = i1.toByte()    
+            pwd[1] = i1.toByte()
             for (i2 in range) {
                 pwd[2] = i2.toByte()
                 for (i3 in range) {
@@ -787,7 +787,7 @@ fun main(args: Array<String>) {
                         pwd[4] = i4.toByte()
                         val ba = md.digest(pwd)
                         for (j in 0..2) {
-                            if (ba.matches(byteHashes[j])) {          
+                            if (ba.matches(byteHashes[j])) {
                                 val password = pwd.toString(Charsets.US_ASCII)
                                 println("$password => ${stringHashes[j]}")
                                 break
@@ -819,7 +819,7 @@ zyzzx => 1115dd800feaacefdf481f1f9070374a2a81e27880f187396db67958b207cbad
 
 
 ```Mathematica
-testPassword[pass_String] := 
+testPassword[pass_String] :=
  If[MemberQ[{16^^1115dd800feaacefdf481f1f9070374a2a81e27880f187396db67958b207cbad,
     16^^3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b,
     16^^74e1bb62f8dabb8125a58852b63bdf6eaef667cb56ac7f7cdba6d7305c50a22f},
@@ -1120,7 +1120,7 @@ Each thread processes one start letter at a time, until they are all done.
 ```Phix
 include builtins\sha256.e
 include builtins\VM\pThreadN.e -- (shd not be rqd on 0.8.1+)
- 
+
 function asHex(string s)
 string res = ""
     for i=1 to length(s) do
@@ -1128,7 +1128,7 @@ string res = ""
     end for
     return res
 end function
- 
+
 sequence starts
 constant start_cs = init_cs(),      -- critical section
          hashes = {x"1115dd800feaacefdf481f1f9070374a2a81e27880f187396db67958b207cbad",
@@ -1336,7 +1336,7 @@ the single threaded version.
    (hex-string->bytes "74e1bb62f8dabb8125a58852b63bdf6eaef667cb56ac7f7cdba6d7305c50a22f")
    #"t\341\273b\370\332\273\201%\245\210R\266;\337n\256\366g\313V\254\177|\333\246\3270\\P\242/"
    "This is the raw value we'll be hashing to")
-  
+
   (define m-idx (char->integer #\m))
   (define m-idx+ (add1 m-idx))
   (check-equal?
@@ -1552,10 +1552,10 @@ object EncryptionCracker {
     val hash1 = "1115dd800feaacefdf481f1f9070374a2a81e27880f187396db67958b207cbad"
     val hash2 = "3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b"
     val hash3 = "74e1bb62f8dabb8125a58852b63bdf6eaef667cb56ac7f7cdba6d7305c50a22f"
-    
+
     val charSet = ('a' to 'z').toVector
     val num = 5
-    
+
     for(tmp <- List(hash1, hash2, hash3)){
       println(tmp)
       crack(tmp, charSet, num) match{
@@ -1564,16 +1564,16 @@ object EncryptionCracker {
       }
     }
   }
-  
+
   def crack(hash: String, charSet: Vector[Char], num: Int): Option[String] = {
     val perms = charSet
       .flatMap(c => Vector.fill(num)(c)).combinations(num)  //Generate distinct sets of letters
       .to(ParVector)                                        //Convert to ParVector
       .flatMap(_.permutations.map(_.mkString))              //Finish generating candidates
-    
+
     perms.find(str => getHash(str).equalsIgnoreCase(hash))  //Search for a matching string
   }
-  
+
   def getHash(str: String): String = {
     val digester = MessageDigest.getInstance("SHA-256")
     digester.digest(str.getBytes("UTF-8")).map("%02x".format(_)).mkString
@@ -1600,11 +1600,11 @@ object EncryptionCracker {
     val hash1 = "1115dd800feaacefdf481f1f9070374a2a81e27880f187396db67958b207cbad"
     val hash2 = "3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b"
     val hash3 = "74e1bb62f8dabb8125a58852b63bdf6eaef667cb56ac7f7cdba6d7305c50a22f"
-    
+
     val charSet = ('a' to 'z').toVector
     val len = 5
     val num = 1000000
-    
+
     for(tmp <- List(hash1, hash2, hash3)){
       println(tmp)
       crackLazy(tmp, charSet, len, num) match{
@@ -1613,7 +1613,7 @@ object EncryptionCracker {
       }
     }
   }
-  
+
   def crackLazy(hash: String, charSet: Vector[Char], len: Int, num: Int): Option[String] = {
     @tailrec
     def getMatch(lst: LazyList[String]): Option[String] = {
@@ -1625,15 +1625,15 @@ object EncryptionCracker {
         case None => None
       }
     }
-    
+
     def perms = charSet
       .flatMap(Vector.fill(len)(_))
       .combinations(len)
       .flatMap(_.permutations.map(_.mkString)).to(LazyList)
-    
+
     getMatch(perms)
   }
-  
+
   def getHash(str: String): String = {
     val digester = MessageDigest.getInstance("SHA-256")
     digester.digest(str.getBytes("UTF-8")).map("%02x".format(_)).mkString
@@ -1655,9 +1655,9 @@ object EncryptionCracker {
     val hash1 = "1115dd800feaacefdf481f1f9070374a2a81e27880f187396db67958b207cbad"
     val hash2 = "3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b"
     val hash3 = "74e1bb62f8dabb8125a58852b63bdf6eaef667cb56ac7f7cdba6d7305c50a22f"
-    
+
     val cracker: String => Option[String] = crackLazy('a' to 'z', 5, 1000000)
-    
+
     for(tmp <- Seq(hash2, hash1, hash3)){
       println(s"$tmp")
       cracker(tmp) match{
@@ -1666,12 +1666,12 @@ object EncryptionCracker {
       }
     }
   }
-  
+
   def getHash(str: String): String = MessageDigest
     .getInstance("SHA-256")
     .digest(str.getBytes("UTF-8"))
     .map("%02x".format(_)).mkString
-  
+
   def crackLazy(charSet: Seq[Char], len: Int, num: Int)(hash: String): Option[String] = charSet
     .flatMap(Vector.fill(len)(_))                           //Duplicate characters so they can be used any number of times
     .combinations(len)                                      //Generate distinct sets of characters
@@ -1726,7 +1726,7 @@ fcn crack(c,n,hashes){	// thread
    bytes,hash := Data(),Data().howza(0); // byte buckets to reduce garbage production
    firstLtrs:=(c+CHR_a).walker(n);
    ltrs:=CHR_a.walker;	// iterator starting at 97/"a"
-   foreach a,b,c,d,e in (firstLtrs,ltrs(26),ltrs(26),ltrs(26),ltrs(26)){ 
+   foreach a,b,c,d,e in (firstLtrs,ltrs(26),ltrs(26),ltrs(26),ltrs(26)){
       if(not hashes2go) return(); // all cracked, stop, not really needed
       bytes.clear(a,b,c,d,e);     // recycle Data, faster than creating Strings
       sha256(bytes,1,hash);	  // put hash in hash
@@ -1750,8 +1750,8 @@ hashes:=hashes.apply(hex2binary);
 hashes2go.set(hashes.len());	// number of codes to crack
 num,xtra := 26/THREADS, 26%THREADS; // try for the most even spread over threads
 s:=0; do(THREADS){  // start threads
-   n:=num + ((xtra-=1)>=0); 
-   crack.launch(s.toInt(),n,hashes); 
+   n:=num + ((xtra-=1)>=0);
+   crack.launch(s.toInt(),n,hashes);
    s+=n;
 }
 hashes2go.waitFor(0);	// wait until all cracked, just exit, OS kills threads

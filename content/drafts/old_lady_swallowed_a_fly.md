@@ -568,9 +568,9 @@ She's dead of course
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace OldLady

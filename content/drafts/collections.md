@@ -800,13 +800,13 @@ m.insert(5);              // insert a second 5 (now m contains two 5s, followed 
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
 ### Arrays
 
 
-```csharp
+```c#
 
 // Creates and initializes a new integer Array
 int[] intArray = new int[5] { 1, 2, 3, 4, 5 };
@@ -827,7 +827,7 @@ stringArr[0] = "string";
 
 The size of ArrayList is dynamically increased as required. ArrayLists are zero-based.
 
-```csharp
+```c#
 
 //Create and initialize ArrayList
 ArrayList myAl = new ArrayList { "Hello", "World", "!" };
@@ -845,7 +845,7 @@ ArrayList myAL = new ArrayList();
 The List class is the generic equivalent of the ArrayList class.
 A List is a strongly typed list of objects that can be accessed by index ( zero-based again).
 
-```csharp
+```c#
 
 //Create and initialize List
 List<string> myList = new List<string> { "Hello", "World", "!" };
@@ -865,7 +865,7 @@ List<string> myList2 = new List<string>();
 Hashtables represent a collection of key/value pairs that are organized based on the hash code of the key.
 Keys must be unique.
 
-```csharp
+```c#
 
 //Create an initialize Hashtable
 Hashtable myHt = new Hashtable() { { "Hello", "World" }, { "Key", "Value" } };
@@ -879,7 +879,7 @@ Hashtable myHt2 = new Hashtable();
 
 Dictionary is a generic class.It represents a collection of key/value pairs. Keys must be unique.
 
-```csharp
+```c#
 
 //Create an initialize Dictionary
 Dictionary<string, string> dict = new Dictionary<string, string>() { { "Hello", "World" }, { "Key", "Value" } };

@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 '''Tonelli–Shanks algorithm'''
- 
+
 In computational number theory, the [https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm  Tonelli–Shanks algorithm] is a technique for solving an equation of the form:
 
 <big><big>
@@ -22,7 +22,7 @@ In computational number theory, the [https://en.wikipedia.org/wiki/Tonelli%E2%80
 ─── where   '''n'''   is an integer which is a quadratic residue (mod p),   '''p'''   is an odd prime,   and
 
 <big><big>
-:::          x,n   Є   Fp = {0, 1, ... p-1} 
+:::          x,n   Є   Fp = {0, 1, ... p-1}
 </big></big>
 
 
@@ -36,7 +36,7 @@ Legendre symbol
 * The Legendre symbol ( a | p) denotes the value of  a ^ ((p-1)/2) (mod p)
 * (a | p) ≡    1      if a is a square (mod p)
 * (a | p) ≡        -1      if a is not a square (mod p)
-* (a | p) ≡    0      if a ≡ 0 
+* (a | p) ≡    0      if a ≡ 0
 
 
 ;Algorithm pseudo-code: (copied from Wikipedia):
@@ -60,20 +60,20 @@ All   ≡   are taken to mean   (mod p)   unless stated otherwise.
 
 
 ;Task:
-Implement the above. 
+Implement the above.
 
-Find solutions (if any) for 
+Find solutions (if any) for
 * n = 10 p = 13
 * n = 56 p = 101
 * n = 1030 p = 10009
 * n = 1032 p = 10009
-* n = 44402 p = 100049  
- 
+* n = 44402 p = 100049
+
 
 ;Extra credit:
-* n  =    665820697     p  =   1000000009      
-* n  =   881398088036     p   =  1000000000039    
-* n  =  41660815127637347468140745042827704103445750172002   p  = 10^50 + 577   	
+* n  =    665820697     p  =   1000000009
+* n  =   881398088036     p   =  1000000000039
+* n  =  41660815127637347468140745042827704103445750172002   p  = 10^50 + 577
 
 
 ;See also:
@@ -83,10 +83,10 @@ Find solutions (if any) for
 
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -315,19 +315,19 @@ root2 = 67897014630059379150258016012699961096274733366069
 ```
 
 {{out}}
-n:    10 p: 13 
+n:    10 p: 13
 	roots:     7     6
-n:    56 p: 101 
+n:    56 p: 101
 	roots:    37    64
-n:  1030 p: 10009 
+n:  1030 p: 10009
 	roots:  1632  8377
-n: 44402 p: 100049 
+n: 44402 p: 100049
 	roots: 30468 69581
-n: 665820697 p: 1000000009 
+n: 665820697 p: 1000000009
 	roots: 378633312 621366697
-n: 881398088036 p: 1000000000039 
+n: 881398088036 p: 1000000000039
 	roots: 791399408049 208600591990
-n: 41660815127637347468140745042827704103445750172002 p: 100000000000000000000000000000000000000000000000577 
+n: 41660815127637347468140745042827704103445750172002 p: 100000000000000000000000000000000000000000000000577
 	roots: 32102985369940620849741983987300038903725266634508 67897014630059379150258016012699961096274733366069
 
 
@@ -511,13 +511,13 @@ root2 = 67897014630059379150258016012699961096274733366069
 
 (require 'bigint)
 ;; test equality mod p
-(define-syntax-rule (mod= a b p) 
+(define-syntax-rule (mod= a b p)
 	 (zero?  (% (- a b) p)))
 ;; assign mod p
 (define-syntax-rule (mod:≡ s v p)
 	(set! s (% v p)))
 
-(define (Legendre a p)  
+(define (Legendre a p)
 	 (powmod a (/ (1- p) 2) p))
 
 (define (Tonelli n p)
@@ -529,8 +529,8 @@ root2 = 67897014630059379150258016012699961096274733366069
 		(++ s))
 	(if (= s 1) (powmod n (/ (1+ p) 4) p)
 	(begin
-	(define z   
-		(for ((z (in-range 2 p)))  
+	(define z
+		(for ((z (in-range 2 p)))
 		  #:break (= (1- p)  (Legendre z p)) => z ))
 
 	(define c (powmod z q p))
@@ -540,15 +540,15 @@ root2 = 67897014630059379150258016012699961096274733366069
 	(define t2 0)
 	(while #t
 		#:break (mod= 1  t p) => r
-		(mod:≡ t2 (* t t) p) 
-		(define i 
+		(mod:≡ t2 (* t t) p)
+		(define i
 			(for ((i (in-range 1 m)))
 				#:break (mod= t2 1 p) => i
 				(mod:≡ t2 (* t2 t2) p)))
 		(define b (powmod c (expt 2 (- m i 1)) p))
-		(mod:≡ r (* r b) p) 
-		(mod:≡ c (* b b) p) 
-		(mod:≡ t (* t c) p) 
+		(mod:≡ r (* r b) p)
+		(mod:≡ c (* b b) p)
+		(mod:≡ t (* t c) p)
 		(set! m i)))))
 
 ```
@@ -557,12 +557,12 @@ root2 = 67897014630059379150258016012699961096274733366069
 
 ```txt
 
-(define ttest 
-	`((10 13) (56 101) (1030 10009) (44402 100049)  
-	(665820697 1000000009) 
+(define ttest
+	`((10 13) (56 101) (1030 10009) (44402 100049)
+	(665820697 1000000009)
 	(881398088036  1000000000039)
-	(41660815127637347468140745042827704103445750172002  ,(+ 1e50 577))))  
-	     	
+	(41660815127637347468140745042827704103445750172002  ,(+ 1e50 577))))
+
 (define (task ttest)
 	(for ((test ttest))
 		(define n (first test))
@@ -585,9 +585,9 @@ n = 665820697 p = 1000000009
   roots : 378633312 621366697
 n = 881398088036 p = 1000000000039
   roots : 791399408049 208600591990
-n = 41660815127637347468140745042827704103445750172002 
+n = 41660815127637347468140745042827704103445750172002
 p = 100000000000000000000000000000000000000000000000577
-  roots : 32102985369940620849741983987300038903725266634508    
+  roots : 32102985369940620849741983987300038903725266634508
   67897014630059379150258016012699961096274733366069
 (Tonelli 1032 10009)
 ❌ error: not a square (mod p) (1032 10009)
@@ -1204,7 +1204,7 @@ tosh=:dyad define
   assert. 1=x leg y [ 'x must be square mod y'
   pow=. y&|@^
   if. 1=m=. {.1 q: y-1 do.
-    r=. x pow (y+1)%4 
+    r=. x pow (y+1)%4
   else.
     z=. 1x while. 1>: z leg y do. z=.z+1 end.
     c=. z pow q=. (y-1)%2^m
@@ -1506,7 +1506,7 @@ TonelliShanks.solve(@big_str("41660815127637347468140745042827704103445750172002
 import java.math.BigInteger
 
 data class Solution(val root1: BigInteger, val root2: BigInteger, val exists: Boolean)
- 
+
 val bigZero = BigInteger.ZERO
 val bigOne  = BigInteger.ONE
 val bigTwo  = BigInteger.valueOf(2L)
@@ -1564,8 +1564,8 @@ fun ts(n: BigInteger, p: BigInteger): Solution {
 
 fun main(args: Array<String>) {
     val pairs = listOf<Pair<Long, Long>>(
-        10L to 13L, 
-        56L to 101L, 
+        10L to 13L,
+        56L to 101L,
         1030L to 10009L,
         1032L to 10009L,
         44402L to 100049L,
@@ -1595,7 +1595,7 @@ fun main(args: Array<String>) {
         println("root1 = $broot1")
         println("root2 = $broot2")
     }
-    else println("No solution exists")    
+    else println("No solution exists")
 }
 ```
 
@@ -1650,22 +1650,22 @@ root2 = 67897014630059379150258016012699961096274733366069
 ## Nim
 
 
-Based algorithm pseudo-code, referencing python 3. 
+Based algorithm pseudo-code, referencing python 3.
 
 
 ```Nim
 
-proc pow*[T:SomeInteger](x,n,p:T):T = 
-  var t = x mod p 
-  var e = n 
-  result = 1 
-  while e > 0: 
-    if (e and 1) == 1: 
-      result = result * t mod p 
-    t = t * t mod p 
-    e = e shr 1 
+proc pow*[T:SomeInteger](x,n,p:T):T =
+  var t = x mod p
+  var e = n
+  result = 1
+  while e > 0:
+    if (e and 1) == 1:
+      result = result * t mod p
+    t = t * t mod p
+    e = e shr 1
 
-proc legendre*[T:SomeInteger](a,p:T):T = pow(a, (p-1) shr 1, p) 
+proc legendre*[T:SomeInteger](a,p:T):T = pow(a, (p-1) shr 1, p)
 
 proc tonelliShanks*[T:SomeInteger](n,p:T): T =
   # Check that n is indeed a square
@@ -1677,38 +1677,38 @@ proc tonelliShanks*[T:SomeInteger](n,p:T): T =
   var s = 0
   while (q and 1) == 0:
     s += 1
-    q = q shr 1 
+    q = q shr 1
 
-  if s == 1: 
+  if s == 1:
     return pow(n, (p+1) shr 2, p)
-    
+
   # Select a non-square z such as (z | p) = -1
-  var z = 2 
-  while legendre(z,p) != p - 1: 
+  var z = 2
+  while legendre(z,p) != p - 1:
     z += 1
 
-  var 
+  var
     c = pow(z, q, p)
     t = pow(n, q, p)
     m = s
   result = pow(n, (q+1) shr 1, p)
   while t != 1:
-    var 
+    var
       i = 1
-      z = t * t mod p 
+      z = t * t mod p
     while z != 1 and i < m-1:
       i += 1
-      z = z * z mod p 
+      z = z * z mod p
 
     var b = pow(c, 1 shl (m-i-1), p)
-    c = b * b mod p 
-    t = t * c mod p 
-    m = i 
-    result = result * b mod p 
+    c = b * b mod p
+    t = t * c mod p
+    m = i
+    result = result * b mod p
 
-when isMainModule: 
-  proc run(n,p:SomeInteger) = 
-    try: 
+when isMainModule:
+  proc run(n,p:SomeInteger) =
+    try:
       let r = tonelliShanks(n,p)
       echo r, " ", p-r
     except ArithmeticError:
@@ -1718,7 +1718,7 @@ when isMainModule:
   run(56,101)
   run(1030, 10009)
   run(1032, 10009)
-  run(44402, 100049) 
+  run(44402, 100049)
   run(665820697, 1000000009)
 
 ```
@@ -1903,7 +1903,7 @@ Roots of 41660815127637347468140745042827704103445750172002 are (321029853699406
 
 ```Phix
 include mpfr.e
- 
+
 function ts(string ns, ps)
     mpz n = mpz_init(ns),
         p = mpz_init(ps),
@@ -1965,7 +1965,7 @@ function ts(string ns, ps)
     mpz_sub(p,p,r)
     return mpz_get_str(r)&" and "&mpz_get_str(p)
 end function
- 
+
 constant tests = {{"10","13"},
                   {"56","101"},
                   {"1030","10009"},
@@ -1975,9 +1975,9 @@ constant tests = {{"10","13"},
                   {"881398088036","1000000000039"},
                   {"41660815127637347468140745042827704103445750172002",
                    sprintf("1%s577",repeat('0',47))}} -- 10^50+577
- 
+
 for i=1 to length(tests) do
-    string {p1,p2} = tests[i]   
+    string {p1,p2} = tests[i]
     printf(1,"For n = %s and p = %s, %s\n",{p1,p2,ts(p1,p2)})
 end for
 ```
@@ -1993,7 +1993,7 @@ For n = 1032 and p = 10009, No solution exists
 For n = 44402 and p = 100049, 30468 and 69581
 For n = 665820697 and p = 1000000009, 378633312 and 621366697
 For n = 881398088036 and p = 1000000000039, 791399408049 and 208600591990
-For n = 41660815127637347468140745042827704103445750172002 and p = 100000000000000000000000000000000000000000000000577, 
+For n = 41660815127637347468140745042827704103445750172002 and p = 100000000000000000000000000000000000000000000000577,
         32102985369940620849741983987300038903725266634508 and 67897014630059379150258016012699961096274733366069
 
 ```
@@ -2175,9 +2175,9 @@ n = 41660815127637347468140745042827704103445750172002 p = 100000000000000000000
 
 (require math/number-theory)
 
-(define (Legendre a p)  
+(define (Legendre a p)
   (modexpt a (quotient (sub1 p) 2)))
- 
+
 (define (Tonelli n p (err (λ (n p) (error "not a square (mod p)" (list n p)))))
   (with-modulus p
     (unless (= 1 (Legendre n p)) (err n p))
@@ -2187,12 +2187,12 @@ n = 41660815127637347468140745042827704103445750172002 p = 100000000000000000000
         (if (even? q)
             (even?-q-loop (quotient q 2) (add1 s))
             (values q s))))
-    
+
     (cond
       [(= s 1)
        (modexpt n (/ (add1 p) 4))]
       [else
-       (define z (for/first ((z (in-range 2 p)) #:when (= (sub1 p) (Legendre z p))) z)) 
+       (define z (for/first ((z (in-range 2 p)) #:when (= (sub1 p) (Legendre z p))) z))
        (let loop ((c (modexpt z q))
                   (r (modexpt n (quotient (add1 q) 2)))
                   (t (modexpt n q))
@@ -2211,15 +2211,15 @@ n = 41660815127637347468140745042827704103445750172002 p = 100000000000000000000
 (module+ test
   (require rackunit)
 
-  (define ttest 
+  (define ttest
     `((10 13)
       (56 101)
       (1030 10009)
-      (44402 100049)  
-      (665820697 1000000009) 
+      (44402 100049)
+      (665820697 1000000009)
       (881398088036  1000000000039)
       (41660815127637347468140745042827704103445750172002
-       ,(+ #e1e50 577))))  
+       ,(+ #e1e50 577))))
 
   (define (task ttest)
     (for ((test ttest))
@@ -2575,7 +2575,7 @@ root2 = 67897014630059379150258016012699961096274733366069
 var BN=Import("zklBigNum");
 fcn modEq(a,b,p) { (a-b)%p==0 }
 fcn legendre(a,p){ a.powm((p - 1)/2,p) }
- 
+
 fcn tonelli(n,p){ //(BigInt,Int|BigInt)
    _assert_(legendre(n,p)==1, "not a square (mod p)"+vm.arglist);
    q,s:=p-1,0;
@@ -2628,7 +2628,7 @@ n=41660815127637347468140745042827704103445750172002 p=1000000000000000000000000
 VM#1 caught this unhandled exception:
    AssertionError : not a square (mod p)L(1032,10009)
 Stack trace for VM#1 ():
-   bbb.assert addr:13  args(2) reg(0) 
+   bbb.assert addr:13  args(2) reg(0)
    bbb.tonelli addr:29  args(2) reg(10) R
 ...
 

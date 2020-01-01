@@ -61,7 +61,7 @@ L(i) 1 .. n
 For maximum compatibility, this program uses only the basic instruction set.
 
 ```360asm
-CATALAN  CSECT                         
+CATALAN  CSECT
          USING  CATALAN,R13,R12
 SAVEAREA B      STM-SAVEAREA(R15)
          DC     17F'0'
@@ -77,22 +77,22 @@ STM      STM    R14,R12,12(R13)
          ST     R0,T            t(1)=1
          LA     R4,0            ix:i=1
          LA     R6,1            by 1
-         LH     R7,N            to n 
+         LH     R7,N            to n
 LOOPI    BXH    R4,R6,ENDLOOPI  loop i
          LR     R5,R4           ix:j=i+1
          LA     R5,2(R5)        i+2
          LA     R8,0
-         BCTR   R8,0            by -1 
+         BCTR   R8,0            by -1
          LA     R9,1            to 2
 LOOP1J   BXLE   R5,R8,ENLOOP1J  loop j
          LR     R10,R5          j
          BCTR   R10,0
          SLA    R10,2
-         L      R2,T(R10)       r2=t(j)  
+         L      R2,T(R10)       r2=t(j)
          LR     R1,R10          j
          SH     R1,=H'4'
          L      R3,T(R1)        r3=t(j-1)
-         AR     R2,R3           r2=r2+r3 
+         AR     R2,R3           r2=r2+r3
          ST     R2,T(R10)       t(j)=t(j)+t(j-1)
          B      LOOP1J
 ENLOOP1J EQU    *
@@ -105,17 +105,17 @@ ENLOOP1J EQU    *
          LR     R5,R4           ix:j=i+2
          LA     R5,3(R5)        i+3
          LA     R8,0
-         BCTR   R8,0            by -1 
+         BCTR   R8,0            by -1
          LA     R9,1            to 2
 LOOP2J   BXLE   R5,R8,ENLOOP2J  loop j
          LR     R10,R5          j
          BCTR   R10,0
          SLA    R10,2
-         L      R2,T(R10)       r2=t(j)  
+         L      R2,T(R10)       r2=t(j)
          LR     R1,R10          j
          SH     R1,=H'4'
          L      R3,T(R1)        r3=t(j-1)
-         AR     R2,R3           r2=r2+r3 
+         AR     R2,R3           r2=r2+r3
          ST     R2,T(R10)       t(j)=t(j)+t(j-1)
          B      LOOP2J
 ENLOOP2J EQU    *
@@ -126,12 +126,12 @@ ENLOOP2J EQU    *
          LA     R1,4(R1)
          L      R3,T(R1)        t(i+1)
          SR     R3,R2
-         CVD    R3,P            
+         CVD    R3,P
          UNPK   Z,P
          MVC    C,Z
          OI     C+L'C-1,X'F0'
          MVC    WTOBUF(8),C+8
-         WTO    MF=(E,WTOMSG)		  
+         WTO    MF=(E,WTOMSG)
          B      LOOPI
 ENDLOOPI EQU    *
 *        ----   END CODE
@@ -150,7 +150,7 @@ WTOMSG   DS     0F
          DC     H'80'
          DC     H'0'
 WTOBUF   DC     CL80' '
-         YREGS  
+         YREGS
          END
 ```
 
@@ -184,10 +184,10 @@ Uses package Pascal from the Pascal triangle solution[[http://rosettacode.org/wi
 with Ada.Text_IO, Pascal;
 
 procedure Catalan is
-   
-   Last: Positive := 15;   
+
+   Last: Positive := 15;
    Row: Pascal.Row := Pascal.First_Row(2*Last+1);
-   
+
 begin
    for I in 1 .. Last loop
       Row := Pascal.Next_Row(Row);
@@ -319,7 +319,7 @@ Loop, 31 ; every odd row is taken for calculating catalan number as such to obta
 		{
 			StringSplit, res, line, %A_Space%
 			ans := res0//2, ans_1 := ans++
-			result := result . res%ans_1% - res%ans% " " 
+			result := result . res%ans_1% - res%ans% " "
 		}
 	line :=
 	ini++
@@ -387,7 +387,7 @@ for /L %%i in (1,1,%n%) do (
         set /A jm=%%j-1
 	    set /A t.%%j=t.%%j+t.!jm!
 	)
-    set /A t.!ip!=t.%%i	  
+    set /A t.!ip!=t.%%i
     for /L %%j in (!ip!,-1,1) do (
         set /A jm=%%j-1
 	    set /A t.%%j=t.%%j+t.!jm!
@@ -428,7 +428,7 @@ pause
 //Formula used:
 //  __n__
 //   | |  (n + k) / k  n>0
-//   k=2  
+//   k=2
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -460,7 +460,7 @@ int main()
             den *= k;
             catalan = num /den;
         }
-        
+
         //output
         printf("%d ", catalan);
     }
@@ -515,11 +515,11 @@ int main() {
 
 
 
-## C Sharp
+## C#
 
 {{trans|C++}}
 
-```csharp
+```c#
 
 int n = 15;
 List<int> t = new List<int>() { 0, 1 };
@@ -566,20 +566,20 @@ for (int i = 1; i <= n; i++)
 
 
 ```txt
-1 
-2 
-5 
-14 
-42 
-132 
-429 
-1430 
-4862 
-16796 
-58786 
-208012 
-742900 
-2674440 
+1
+2
+5
+14
+42
+132
+429
+1430
+4862
+16796
+58786
+208012
+742900
+2674440
 9694845
 ```
 
@@ -612,7 +612,7 @@ void main() {
 {{out}}
 
 ```txt
-1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 ```
 
 
@@ -631,11 +631,11 @@ void main() {
 (define (T n)
 	(define i (modulo n dim))
 	(define j (quotient n dim))
-	(cond 
+	(cond
 		((zero? i) 1) ;; left column = 1
 		((= i j) (T (Tidx (1- i) j))) ;; diagonal value = left value
 		(else (+ (T (Tidx (1- i) j)) (T (Tidx i (1- j)))))))
-	
+
 (remember 'T #(1))
 
 ```
@@ -647,7 +647,7 @@ void main() {
 ;; take elements on diagonal = Catalan numbers
 (for ((i (in-range 0 16))) (write (T (Tidx i i))))
 
- → 1 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+ → 1 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 
 ```
 
@@ -666,7 +666,7 @@ defmodule Catalan do
     end)
     Enum.reverse(result)
   end
-  
+
   defp numbers(0, t), do: t
   defp numbers(n, t), do: numbers(n-1, put_elem(t, n, elem(t, n-1) + elem(t, n)))
 end
@@ -691,7 +691,7 @@ IO.inspect Catalan.numbers(15)
 
 -module(catalin).
 -compile(export_all).
-mul(N,D,S,S)-> 
+mul(N,D,S,S)->
 	N2=N*(S+S),
 	D2=D*S,
 	K = N2 div D2 ;
@@ -699,7 +699,7 @@ mul(N,D,S,L)->
 	N2=N*(S+L),
 	D2=D*L,
 	K = mul(N2,D2,S,L+1).
-	
+
 catl(Ans,16) -> Ans;
 catl(D,S)->
 	C=mul(1,1,S,2),
@@ -814,7 +814,7 @@ IN: rosetta-code.catalan-pascal
 
 : next-row ( seq -- seq' )
     2 clump [ sum ] map 1 prefix 1 suffix ;
-    
+
 : pascal ( n -- seq )
     1 - { { 1 } } swap [ dup last next-row suffix ] times ;
 
@@ -829,7 +829,7 @@ IN: rosetta-code.catalan-pascal
 
 ```txt
 
-1 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 
+1 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440
 
 ```
 
@@ -868,18 +868,18 @@ Dim As ULongInt triangle(1 To size, 1 To size)
 
 pascal_triangle(size, triangle())
 
-'  1   1   1   1   1   1  
-'  1   2   3   4   5   6  
-'  1   3   6  10  15  21  
-'  1   4  10  20  35  56  
-'  1   5  15  35  70 126  
-'  1   6  21  56 126 252  
+'  1   1   1   1   1   1
+'  1   2   3   4   5   6
+'  1   3   6  10  15  21
+'  1   4  10  20  35  56
+'  1   5  15  35  70 126
+'  1   6  21  56 126 252
 ' The Pascal triangle is rotated 45 deg.
 ' to find the Catalan number we need to follow the diagonal
-' for top left to bottom right 
+' for top left to bottom right
 ' take the number on diagonal and subtract the number in de cell
-' one up and one to right 
-' 1 (2 - 1), 2 (6 - 4), 5 (20 - 15) ... 
+' one up and one to right
+' 1 (2 - 1), 2 (6 - 4), 5 (20 - 15) ...
 
 
 Print "The first 15 Catalan numbers are" : print
@@ -993,11 +993,11 @@ class Catalan
                  {
                     num = num*(n+k);
                     den = den*k;
-                    catalan = num/den; 
+                    catalan = num/den;
                  }
             print(" " + catalan);
           }
-    
+
   }
 }
 ​
@@ -1105,8 +1105,8 @@ Sample run:
 
 ```j
    Catalan 15
-1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845   
- 
+1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
+
 ```
 
 
@@ -1114,7 +1114,7 @@ A structured derivation of Catalan follows:
 
 
 ```j
-   o=. @: NB. Composition of verbs (functions) 
+   o=. @: NB. Composition of verbs (functions)
    ( PascalTriangle=. i. ((+/\@]^:[)) #&1 ) 5
 1 1  1  1  1
 1 2  3  4  5
@@ -1125,10 +1125,10 @@ A structured derivation of Catalan follows:
 1 2 6 20 70
    ( AdjacentLeft=.   MiddleDiagonal o (2&|.) ) o PascalTriangle 5
 1 4 15 1 5
-   
+
    ( Catalan=. }: o (}. o MiddleDiagonal - }: o AdjacentLeft) o PascalTriangle o (2&+) f. ) 5
 1 2 5 14 42
-   
+
    Catalan
 }:@:(}.@:((<0 1)&|:) - }:@:((<0 1)&|:@:(2&|.)))@:(i. +/\@]^:[ #&1)@:(2&+)
 ```
@@ -1192,7 +1192,7 @@ for (var t = [0, 1], i = 1; i <= n; i++) {
 
 ```txt
 
-1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, 208012, 742900, 2674440, 9694845 
+1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, 208012, 742900, 2674440, 9694845
 
 ```
 
@@ -1288,7 +1288,7 @@ The first identity (C(2n,n) - C(2n, n-1)) given in the reference is used in acco
 so the algorithm used here for Catalan numbers loses precision for n > 30 and fails completely for n > 510.
 
 ```jq
-def binomial(n; k): 
+def binomial(n; k):
   if k > n / 2 then binomial(n; n-k)
   else reduce range(1; k+1) as $i (1; . * (n - $i + 1) / $i)
   end;
@@ -1380,11 +1380,11 @@ fun pascal(n: Int, k: Int): BigInteger {
 fun catalanFromPascal(n: Int) {
     for (i in 1 until n step 2) {
         val mi = i / 2 + 1
-        val catalan = pascal(i, mi) - pascal(i, mi - 2) 
+        val catalan = pascal(i, mi) - pascal(i, mi - 2)
         println("${"%2d".format(mi)} : $catalan")
     }
 }
- 
+
 fun main(args: Array<String>) {
     val n = 15
     catalanFromPascal(n * 2)
@@ -1418,7 +1418,7 @@ fun main(args: Array<String>) {
 
 ## Lua
 
-For each line of odd-numbered length from Pascal's triangle, print the middle number minus the one immediately to its right.  
+For each line of odd-numbered length from Pascal's triangle, print the middle number minus the one immediately to its right.
 This solution is heavily based on the Lua code to generate Pascal's triangle from the page for that task.
 
 ```Lua
@@ -1428,7 +1428,7 @@ function nextrow (t)
     for i = 1, #t do ret[i] = t[i - 1] + t[i] end
     return ret
 end
- 
+
 function catalans (n)
     local t, middle = {1}
     for i = 1, n do
@@ -1465,21 +1465,21 @@ We use & to pass by reference, here anarray, to sub, but because a sub can see a
 Module CatalanNumbers {
       Def Integer count, t_row, size=31
       Dim triangle(1 to size, 1 to size)
-       
+
       \\ call sub
       pascal_triangle(size, &triangle())
-      
-       
+
+
       Print "The first 15 Catalan numbers are"
       count = 1% : t_row = 2%
-      
+
       Do {
             Print  Format$("{0:0:-3}:{1:0:-15}", count, triangle(t_row, t_row) - triangle(t_row +1, t_row -1))
             t_row++
             count++
       } Until count > 15
       End
-      
+
       Sub pascal_triangle(rows As Integer, &Pas_tri())
           Local x=0%, y=0%
           For x = 1 To rows
@@ -1533,7 +1533,7 @@ nextrow[lastrow_] := Module[{output},
    , {i, 1, Length[lastrow] - 1}];
   output
   ]
-pascaltriangle[size_] := NestList[nextrow, {1}, size]  
+pascaltriangle[size_] := NestList[nextrow, {1}, size]
 catalannumbers[length_] := Module[{output, basetriangle},
   basetriangle = pascaltriangle[2 length];
   list1 = basetriangle[[# *2 + 1, # + 1]] & /@ Range[length];
@@ -1602,7 +1602,7 @@ for i in 1..n:
 {{Out}}
 
 ```txt
-1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 ```
 
 
@@ -1645,7 +1645,7 @@ OUTPUT:
 ```Oforth
 import: mapping
 
-: pascal( n -- [] )  
+: pascal( n -- [] )
    [ 1 ] n #[ dup [ 0 ] + [ 0 ] rot + zipWith( #+ ) ] times ;
 
 : catalan( n -- m )
@@ -1849,47 +1849,47 @@ end for
 
 ```
 
-Explanatory comments to accompany the above 
+Explanatory comments to accompany the above
 
 ```Phix
 -- FreeBASIC said:
---'  1   1   1   1   1   1  
---'  1   2   3   4   5   6  
---'  1   3   6  10  15  21  
---'  1   4  10  20  35  56  
---'  1   5  15  35  70 126  
---'  1   6  21  56 126 252  
+--'  1   1   1   1   1   1
+--'  1   2   3   4   5   6
+--'  1   3   6  10  15  21
+--'  1   4  10  20  35  56
+--'  1   5  15  35  70 126
+--'  1   6  21  56 126 252
 --' The Pascal triangle is rotated 45 deg.
 --' to find the Catalan number we need to follow the diagonal
---' for top left to bottom right 
+--' for top left to bottom right
 --' take the number on diagonal and subtract the number in de cell
---' one up and one to right 
---' 1 (2 - 1), 2 (6 - 4), 5 (20 - 15) ... 
+--' one up and one to right
+--' 1 (2 - 1), 2 (6 - 4), 5 (20 - 15) ...
 --
--- The first thing that struck me was it is twice as big as it needs to be, 
+-- The first thing that struck me was it is twice as big as it needs to be,
 --  something like this would do...
---    1   1   1   1   1   1  
---        2   3   4   5   6  
---            6  10  15  21  
---               20  35  56  
---                   70 126  
---                      252  
--- It is more obvious from the upper square that the diagonal on that, which is 
---  that same as column 1 on this, is twice the previous, which on the second 
---  diagram is in column 2. Further, once we have calculated the value for column 
---  one above, we can use it immediately to calculate the next catalan number and 
---  do not need to store it. Lastly we can overwrite row 1 with row 2 etc in situ, 
+--    1   1   1   1   1   1
+--        2   3   4   5   6
+--            6  10  15  21
+--               20  35  56
+--                   70 126
+--                      252
+-- It is more obvious from the upper square that the diagonal on that, which is
+--  that same as column 1 on this, is twice the previous, which on the second
+--  diagram is in column 2. Further, once we have calculated the value for column
+--  one above, we can use it immediately to calculate the next catalan number and
+--  do not need to store it. Lastly we can overwrite row 1 with row 2 etc in situ,
 --  and the following shows what we need for subsequent rounds:
 --    1   1   1   1   1
---    3   4   5   6  
---   10  15  21  
---   35  56  
+--    3   4   5   6
+--   10  15  21
+--   35  56
 --  126  (unused)
 ```
 
 
 
-###  gmp version 
+###  gmp version
 
 {{libheader|mpfr}}
 
@@ -1911,7 +1911,7 @@ mpz p1 = mpz_init(1)
     end for
     return catalan[n]
 end function
- 
+
 printf(1,"%d: %s (%s)\n",{100,mpz_get_str(catalanB(100))})
 printf(1,"%d: %s (%s)\n",{250,mpz_get_str(catalanB(250))})
 ```
@@ -1925,14 +1925,14 @@ printf(1,"%d: %s (%s)\n",{250,mpz_get_str(catalanB(250))})
 
 ```
 
-The above is significantly faster than the equivalent(s) on [[Catalan_numbers#Phix|Catalan_numbers]], 
+The above is significantly faster than the equivalent(s) on [[Catalan_numbers#Phix|Catalan_numbers]],
 a quick comparison showing the latter getting exponentially worse (then again I memoised the slowest recursive version):
 
 ```txt
 
             800 2000  4000 8000
 catalanB:  0.6s 3.5s 14.5s  64s
-catalan2m: 0.7s 7.0s 64.9s 644s 
+catalan2m: 0.7s 7.0s 64.9s 644s
 
 ```
 
@@ -1949,7 +1949,7 @@ catalan2m: 0.7s 7.0s 64.9s 644s
       (/
          (f N)
          (* (f (- N K)) (f K)) ) ) )
-             
+
 (for N 15
   (println
      (-
@@ -1978,9 +1978,9 @@ EndIf
 
 Procedure catalan()
   Define k.i, n.i, num.d, den.d, cat.d
-  
+
   Print("1 ")
-  
+
   For n=2 To #MAXNUM
     num=1 : den =1
     For k=2 To n
@@ -2019,9 +2019,9 @@ EndProcedure
 	for j in range(i + 1, 1, -1): t[j] += t[j - 1]
 	print(t[i+1] - t[i], end=' ')
 
-	
-1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
->>> 
+
+1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
+>>>
 ```
 
 
@@ -2033,9 +2033,9 @@ def catalan_number(n):
     for k in range(2, n+1):
       nm, dm = ( nm*(n+k), dm*k )
     return nm/dm
- 
+
 print [catalan_number(n) for n in range(1, 16)]
- 
+
 [1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, 208012, 742900, 2674440, 9694845]
 ```
 
@@ -2221,7 +2221,7 @@ if __name__ == '__main__':
 
 ### explicit subscripts
 
-All of the REXX program examples can handle arbitrary large numbers. 
+All of the REXX program examples can handle arbitrary large numbers.
 
 ```rexx
 /*REXX program  obtains and displays  Catalan numbers  from  a  Pascal's triangle.      */
@@ -2280,7 +2280,7 @@ exit                                             /*stick a fork in it,  we're al
 @:  parse arg !;   return @.!                    /*return the value of   @.[arg(1)]     */
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> version. 
+'''output'''   is the same as the 1<sup>st</sup> version.
 
 
 ### using binomial coefficients
@@ -2302,7 +2302,7 @@ comb: procedure; parse arg x,y;        if x=y  then return 1;   if y>x  then ret
       if x-y<y  then y=x-y;     _=1;   do j=x-y+1  to x;  _=_*j;  end;       return _/!(y)
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> version. 
+'''output'''   is the same as the 1<sup>st</sup> version.
 
 ===binomial coefficients, memoized===
 This REXX version uses memoization for the calculation of factorials.
@@ -2325,7 +2325,7 @@ comb: procedure expose !.;  parse arg x,y;   if x=y  then return 1;  if y>x  the
       if x-y<y  then y=x-y;     _=1;   do j=x-y+1  to x;  _=_*j;  end;       return _/!(y)
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> version. 
+'''output'''   is the same as the 1<sup>st</sup> version.
 
 
 
@@ -2337,9 +2337,9 @@ comb: procedure expose !.;  parse arg x,y;   if x=y  then return 1;  if y>x  the
 
 n=15
 cat = list(n+2)
-cat[1]=1                        
+cat[1]=1
 for i=1 to n
-    for j=i+1 to 2 step -1 
+    for j=i+1 to 2 step -1
         cat[j]=cat[j]+cat[j-1]
     next
     cat[i+1]=cat[i]
@@ -2406,7 +2406,7 @@ next i
 {{out}}
 
 ```txt
-1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 ```
 
 
@@ -2427,7 +2427,7 @@ fn main()
 	j=i;
 	loop{
 	    if j==1{
-		      break; 
+		      break;
 		}
 		t[j]=t[j] + t[j-1];
 		j=j-1;
@@ -2450,7 +2450,7 @@ fn main()
 {{out}}
 
 ```txt
-1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 ```
 
 
@@ -2472,9 +2472,9 @@ def catalan(n: Int): Int =
 
 <lang>n=15
 t=zeros(1,n+2)
-t(1)=1                        
+t(1)=1
 for i=1:n
-  for j=i+1:-1:2 
+  for j=i+1:-1:2
     t(j)=t(j)+t(j-1)
   end
   t(i+1)=t(i)
@@ -2486,21 +2486,21 @@ end
 ```
 
 {{out}}
-<pre style="height:20ex">    1.  
-    2.  
-    5.  
-    14.  
-    42.  
-    132.  
-    429.  
-    1430.  
-    4862.  
-    16796.  
-    58786.  
-    208012.  
-    742900.  
-    2674440.  
-    9694845.  
+<pre style="height:20ex">    1.
+    2.
+    5.
+    14.
+    42.
+    132.
+    429.
+    1430.
+    4862.
+    16796.
+    58786.
+    208012.
+    742900.
+    2674440.
+    9694845.
 ```
 
 
@@ -2537,7 +2537,7 @@ const proc: main is func
 
 ```txt
 
-1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 
 ```
 
@@ -2639,22 +2639,22 @@ End
 {{out}}
 
 ```txt
-               1 
-               2 
-               5 
-              14 
-              42 
-             132 
-             429 
-            1430 
-            4862 
-           16796 
-           58786 
-          208012 
-          742900 
-         2674440 
-         9694845 
-            Done 
+               1
+               2
+               5
+              14
+              42
+             132
+             429
+            1430
+            4862
+           16796
+           58786
+          208012
+          742900
+         2674440
+         9694845
+            Done
 ```
 
 
@@ -2670,16 +2670,16 @@ if Wscript.arguments.count=1 then
 else
   n=15
 end if
-redim t(n+1)   
+redim t(n+1)
 't(*)=0
-t(1)=1                          
+t(1)=1
 for i=1 to n
   ip=i+1
-  for j = i to 1 step -1 
+  for j = i to 1 step -1
     t(j)=t(j)+t(j-1)
   next 'j
   t(i+1)=t(i)
-  for j = i+1 to 1 step -1 
+  for j = i+1 to 1 step -1
     t(j)=t(j)+t(j-1)
   next 'j
   Wscript.echo t(i+1)-t(i)
@@ -2716,21 +2716,21 @@ End Sub 'catalan
 
 {{Out}}
 <pre style="height:20ex">
- 1 
- 2 
- 5 
- 14 
- 42 
- 132 
- 429 
- 1430 
- 4862 
- 16796 
- 58786 
- 208012 
- 742900 
- 2674440 
- 9694845 
+ 1
+ 2
+ 5
+ 14
+ 42
+ 132
+ 429
+ 1430
+ 4862
+ 16796
+ 58786
+ 208012
+ 742900
+ 2674440
+ 9694845
 
 ```
 

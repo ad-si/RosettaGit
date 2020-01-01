@@ -77,11 +77,11 @@ example.this_does_not_exist "at all"  #Prints "this_does_not_exist was called wi
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|4.0}}
 
 
-```csharp
+```c#
 using System;
 using System.Dynamic;
 

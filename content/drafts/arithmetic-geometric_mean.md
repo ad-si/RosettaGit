@@ -712,10 +712,10 @@ The Arithmetic-Geometric Mean of 1.0 and 2.0 is 1.456791031046906770285431775846
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 namespace RosettaCode.ArithmeticGeometricMean
 {
     using System;
@@ -809,7 +809,7 @@ Output:
 {{Libheader|System.Numerics}}
 Even though the System.Numerics library directly supports only '''BigInteger''' (and not big rationals or big floating point numbers), it can be coerced into making this calculation.  One just has to keep track of the decimal place and multiply by a very large constant.
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

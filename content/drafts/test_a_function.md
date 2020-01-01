@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Testing}}{{omit from|BBC BASIC}}
-Using a well-known testing-specific library/module/suite for your language, write some tests for your language's entry in [[Palindrome]]. If your language does not have a testing specific library well known to the language's community then state this or omit the language. 
+Using a well-known testing-specific library/module/suite for your language, write some tests for your language's entry in [[Palindrome]]. If your language does not have a testing specific library well known to the language's community then state this or omit the language.
 
 
 ## ACL2
@@ -90,7 +90,7 @@ procedure Test_Function is
 begin
    begin
       pragma Assert(False); -- raises an exception if assertions are switched on
-      Ada.Text_IO.Put_Line("Skipping the test! Please compile with assertions switched on!"); 
+      Ada.Text_IO.Put_Line("Skipping the test! Please compile with assertions switched on!");
    exception
       when others => -- assertions are switched on -- perform the tests
          pragma Assert (Palindrome (str1) = True,  "Assertion on str1 failed");
@@ -105,10 +105,10 @@ Ada 2012 introduced a new way to specify functions and test their correctness: P
 
 
 ```Ada
-   function Palindrome (Text : String) return Boolean 
-     with Post => Palindrome'Result = 
-     (Text'Length < 2 or else 
-	((Text(Text'First) = Text(Text'Last)) and then 
+   function Palindrome (Text : String) return Boolean
+     with Post => Palindrome'Result =
+     (Text'Length < 2 or else
+	((Text(Text'First) = Text(Text'Last)) and then
 	   Palindrome(Text(Text'First+1 .. Text'Last-1))));
 ```
 
@@ -116,7 +116,7 @@ Ada 2012 introduced a new way to specify functions and test their correctness: P
 
 ## AutoHotkey
 
-there is no "well known" testing library, but here is a simple testing framework: 
+there is no "well known" testing library, but here is a simple testing framework:
 
 test library: assert.ahk
 
@@ -136,7 +136,7 @@ assert(a, b="blank", test=0)
     else
     msgbox % test . ":`n" . a . "`nexpected:`n" . b
 }
-  
+
 !r::reload
 
 ;; equal_list(a, b, delimiter)
@@ -161,15 +161,15 @@ equal_list(a, b, delimiter)
 }
 ```
 
-test example: 
+test example:
 
 ```AutoHotkey
 assert(isPalindrome("in girum imus nocte et consumimur igni"), 1
 , "palindrome test")
 assert(broken("in girum imus nocte et consumimur igni"), "works"
-, "broken test")  
+, "broken test")
 /*
-output: 
+output:
 ---------------------------
 testPalindrome.ahk
 ---------------------------
@@ -195,9 +195,9 @@ return "broken"
 ```brat
 include :assert
 
-palindrome? = { str | 
+palindrome? = { str |
   str = str.downcase.sub /\s+/ ""
-  str == str.reverse 
+  str == str.reverse
 }
 
 setup name: "palindrome test" {
@@ -226,7 +226,7 @@ Output:
 ```txt
 Loading tests...
 Running palindrome test...
-(4/4) this test fails                         
+(4/4) this test fails
 Test failure(s):
 
         1. 'this test fails': assert failed
@@ -271,13 +271,13 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
 First, using the VisualStudio TestTools for unit tests.  I'm testing both of the methods for palindrome detection created in the article.
 
 
-```Csharp
+```c#
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PalindromeDetector.ConsoleApp;
@@ -318,7 +318,7 @@ namespace PalindromeDetector.VisualStudioTests
 
 Second, NUnit tests.  Couldn't test these because of namespace issues with NUnit, but I'm sure they work.
 
-```Csharp
+```c#
 
 using NUnit.Framework;
 using PalindromeDetector.ConsoleApp;
@@ -410,7 +410,7 @@ The standard testing tool in E is Updoc, a system which takes test scripts forma
 ? def isPalindrome(string :String) {
 >   def upper := string.toUpperCase()
 >   def last := upper.size() - 1
->   for i => c ? (upper[last - i] != c) in upper(0, upper.size() // 2) { 
+>   for i => c ? (upper[last - i] != c) in upper(0, upper.size() // 2) {
 >     return false
 >   }
 >   return true
@@ -535,8 +535,8 @@ test_report()
 let palindrome (s : string) =
     let a = s.ToUpper().ToCharArray()
     Array.rev a = a
- 
- 
+
+
 open NUnit.Framework
 
 [<TestFixture>]
@@ -544,7 +544,7 @@ type TestCases() =
     [<Test>]
     member x.Test01() =
         Assert.IsTrue(palindrome "radar")
- 
+
     [<Test>]
     member x.Test02() =
         Assert.IsFalse(palindrome "hello")
@@ -693,7 +693,7 @@ instance Arbitrary Char where
 --                                            |      /------------------ the constraint on the test values
 --                                            |      |                /- the condition which should be true
 --                                            v      v                v
-main = do 
+main = do
   putStr "Even palindromes: " >> quickCheck (\s   ->                  isPalindrome (s ++ reverse s))
   putStr "Odd palindromes:  " >> quickCheck (\s   -> not (null s) ==> isPalindrome (s ++ (tail.reverse) s))
   putStr "Non-palindromes:  " >> quickCheck (\i s -> not (null s) && 0 <= i && i < length s && i*2 /= length s
@@ -917,7 +917,7 @@ $ mocha --harmony
 
   3 passing (18ms)
 
-$ 
+$
 
 ```
 
@@ -937,7 +937,7 @@ Comment-lines (lines beginning with #) and blank lines may be inserted between t
 
 A test case can include jq function definitions, but each test case is executed in isolation.
 
-Here is an example of a file with four test case triplets: 
+Here is an example of a file with four test case triplets:
 
 ```sh
 # Test case 1:
@@ -1276,7 +1276,7 @@ non-palindromes |    3      3
 
 
 ## Kotlin
-  
+
 Kotlin can use various JVM testing frameworks including its own kotlin-test module. However, for simple cases, it is easier to use the 'assert' function built into its standard library which will throw an AssertionError if the condition is false and assertions are enabled using java's -ea option when the application is run:
 
 ```scala
@@ -1317,14 +1317,14 @@ The following example uses the [https://bitbucket.org/bfad/lspec/ LSpec Library]
 ```lasso
 // Taken from the Lasso entry in Palindrome page
 define isPalindrome(text::string) => {
- 
+
     local(_text = string(#text)) // need to make copy to get rid of reference issues
- 
+
     #_text -> replace(regexp(`(?:$|\W)+`), -ignorecase)
- 
+
     local(reversed = string(#_text))
     #reversed -> reverse
- 
+
     return #_text == #reversed
 }
 
@@ -1432,7 +1432,7 @@ method except signals RuntimeException
 method main(args = String[]) public constant
 
   testResult = org.junit.runner.JUnitCore.runClasses([RCTestAFunction.class])
- 
+
   secs = Rexx testResult.getRunTime / 1000.0
 
   if testResult.wasSuccessful then say 'Tests successful'
@@ -1577,7 +1577,7 @@ let _ =
 
 ## Oforth
 
-Unit tests are a built-in functionality. If Oforth is run using --t option, all tests are checked. Otherwise, tests are not checked : 
+Unit tests are a built-in functionality. If Oforth is run using --t option, all tests are checked. Otherwise, tests are not checked :
 
 ```Oforth
 test: [ "abcd" isPalindrome ]
@@ -1680,7 +1680,7 @@ To find those 'not ok' lines, one can run a TAP harness. The "prove" program is 
 
 ```txt
 $ prove ptest.t
-ptest.t .. ok     
+ptest.t .. ok
 All tests successful.
 Files=1, Tests=24,  0 wallclock secs ( 0.00 usr  0.02 sys +  0.01 cusr  0.00 csys =  0.03 CPU)
 Result: PASS
@@ -1706,11 +1706,11 @@ ok 5
 
 
 ```txt
-$ prove ptest.t                                                                
+$ prove ptest.t
 ptest.t .. 1/24 # Test 4 got: "" (ptest.t at line 36)
 #   Expected: "1" (palindrome_e: "" should be a palindrome.)
 #  ptest.t line 36 is:     ok palindrome_e == $expect, 1, "palindrome_e: $note";
-ptest.t .. Failed 1/24 subtests 
+ptest.t .. Failed 1/24 subtests
 
 Test Summary Report
 -------------------
@@ -1779,9 +1779,9 @@ built into PicoLisp.
 
 ## Prolog
 
-SWI-Prolog has an inbuilt unit test functionality which is run automatically when building. 
+SWI-Prolog has an inbuilt unit test functionality which is run automatically when building.
 
-It can also be run by using the run_tests predicate. 
+It can also be run by using the run_tests predicate.
 
 
 ```Prolog
@@ -1869,7 +1869,7 @@ def is_palindrome(s):
         True
         >>> len(x+xreversed)
         131072
-        >>> 
+        >>>
     '''
     return s == s[::-1]
 
@@ -2022,8 +2022,8 @@ needs hash'
 : palindrome? ( $-f ) dup ^hash'hash [ ^strings'reverse ^hash'hash ] dip = ;
 
 with assertion'
-: t0 ( - ) "hello" palindrome? 0 assert=  ; assertion 
-: t1 ( - ) "ingirumimusnocteetconsumimurigni" palindrome? -1 assert=  ; assertion 
+: t0 ( - ) "hello" palindrome? 0 assert=  ; assertion
+: t1 ( - ) "ingirumimusnocteetconsumimurigni" palindrome? -1 assert=  ; assertion
 : test ( - ) t0 t1 ;
 test
 ```
@@ -2197,14 +2197,14 @@ This example uses Minitest, which comes with Ruby 1.9. (But if you have Ruby 1.8
 def palindrome?(s)
   s == s.reverse
 end
- 
+
 require 'minitest/spec'
 require 'minitest/autorun'
 describe "palindrome? function" do
   it "returns true if arg is a palindrome" do
     (palindrome? "aba").must_equal true
   end
- 
+
   it "returns false if arg is not a palindrome" do
     palindrome?("ab").must_equal false
   end
@@ -2226,7 +2226,7 @@ end
 
 
 ```txt
-$ ruby19 palindrome.rb 
+$ ruby19 palindrome.rb
 Loaded suite palindrome
 Started
 ..F..
@@ -2260,16 +2260,16 @@ import Gen._
 object PalindromeCheck extends Properties("Palindrome") {
   property("A string concatenated with its reverse is a palindrome") =
     forAll { s: String => isPalindrome(s + s.reverse) }
-    
+
   property("A string concatenated with any character and its reverse is a palindrome") =
     forAll { (s: String, c: Char) => isPalindrome(s + c + s.reverse) }
-    
+
   property("If the first half of a string is equal to the reverse of its second half, it is a palindrome") =
     forAll { (s: String) => s.take(s.length / 2) != s.drop((s.length + 1) / 2).reverse || isPalindrome(s) }
-    
+
   property("If the first half of a string is different than the reverse of its second half, it isn't a palindrome") =
     forAll { (s: String) => s.take(s.length / 2) == s.drop((s.length + 1) / 2).reverse || !isPalindrome(s) }
-    
+
 }
 ```
 
@@ -2332,7 +2332,7 @@ CREATE OR REPLACE PROCEDURE TEST_MY_TEST()
     SET ACTUAL = 1+1;
     CALL DB2UNIT.ASSERT_INT_EQUALS('Same value', EXPECTED, ACTUAL);
   END @
- 
+
 ```
 
 Output:
@@ -2345,15 +2345,15 @@ db2 => CALL DB2UNIT.RUN_SUITE('DB2UNIT_EXAMPLE');
   Result set 1
   --------------
 
-  TEST             FINAL_STATE MICROSECONDS MESSAGE                                                         
+  TEST             FINAL_STATE MICROSECONDS MESSAGE
   ---------------- ----------- ------------ ----------------------------------------------------------------
-  Before Suite     -                      - Starting execution                                              
-  TEST_MY_TEST     Passed             29585 Executing TEST_MY_TEST                                          
-  After Suite      -                      - Finishing execution                                             
-                   -                      - 1 tests were executed                                           
-                   -                      - 1 tests passed                                                  
-                   -                      - 0 tests failed                                                  
-                   -                      - 0 tests with errors                                             
+  Before Suite     -                      - Starting execution
+  TEST_MY_TEST     Passed             29585 Executing TEST_MY_TEST
+  After Suite      -                      - Finishing execution
+                   -                      - 1 tests were executed
+                   -                      - 1 tests passed
+                   -                      - 0 tests failed
+                   -                      - 0 tests with errors
 
   7 record(s) selected.
 
@@ -2361,12 +2361,12 @@ db2 => CALL DB2UNIT.RUN_SUITE('DB2UNIT_EXAMPLE');
   Result set 2
   --------------
 
-  TIME     EXECUTION_ID STATUS                MESSAGE                                                       
+  TIME     EXECUTION_ID STATUS                MESSAGE
   -------- ------------ --------------------- --------------------------------------------------------------
-  20:43:47        52613 Initialization        db2unit is licensed under the terms of the GPL v3             
-  20:43:47        52613 Initialization        Execution of DB2UNIT_EXAMPLE with ID 52613                             
-  20:43:47        52613 Prepare Report        The reports table created: DB2UNIT_EXAMPLE.REPORT_TESTS                
-  20:43:48        52613 Calculating time      Total execution time is: 0 seconds                            
+  20:43:47        52613 Initialization        db2unit is licensed under the terms of the GPL v3
+  20:43:47        52613 Initialization        Execution of DB2UNIT_EXAMPLE with ID 52613
+  20:43:47        52613 Prepare Report        The reports table created: DB2UNIT_EXAMPLE.REPORT_TESTS
+  20:43:48        52613 Calculating time      Total execution time is: 0 seconds
 
   4 record(s) selected.
 
@@ -2384,16 +2384,16 @@ import Cocoa
 import XCTest
 
 class PalindromTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
-        
+
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
+
     func testPalindrome() {
         // This is an example of a functional test case.
         XCTAssert(isPalindrome("abcba"), "Pass")
@@ -2404,7 +2404,7 @@ class PalindromTests: XCTestCase {
         XCTAssert(isPalindrome("aa"), "Pass")
         XCTAssert(isPalindrome("abcdba"), "Pass") // Fail
     }
-    
+
     func testPalindromePerformance() {
         // This is an example of a performance test case.
         self.measureBlock() {

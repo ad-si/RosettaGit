@@ -1480,14 +1480,14 @@ Whee.  Well, with some extra work, we calculated <i>one more</i> n value, big de
 But see, <code>A(4, 2) = A(3, A(4, 1)) = A(3, 65533) = A(2, A(3, 65532)) = ...</code> you can see how fast it blows up.  In fact, no amount of caching will help you calculate large m values;  on the machine I use A(4, 2) segfaults because the recursions run out of stack space--not a whole lot I can do about it.  At least it runs out of stack space <i>quickly</i>, unlike the first solution...
 
 
-## C sharp
+## C#
 
 
 
 ### Basic Version
 
 
-```csharp
+```c#
 using System;
 class Program
 {
@@ -1554,7 +1554,7 @@ Ackermann(3, 4) = 125
 ### Efficient Version
 
 
-```csharp
+```c#
 
 using System;
 using System.Numerics;

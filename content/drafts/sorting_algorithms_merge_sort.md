@@ -904,10 +904,10 @@ template<typename RandomAccessIterator>
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|C#|3.0+}}
 
-```csharp
+```c#
 namespace Sort {
   using System;
 
@@ -1037,7 +1037,7 @@ namespace Sort {
 
 '''Example''':
 
-```csharp
+```c#
   using Sort;
   using System;
 

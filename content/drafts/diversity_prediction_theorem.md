@@ -81,20 +81,20 @@ Accepts inputs from command line, prints out usage on incorrect invocation.
 float mean(float* arr,int size){
 	int i = 0;
 	float sum = 0;
-	
+
 	while(i != size)
 		sum += arr[i++];
-	
+
 	return sum/size;
 }
 
 float variance(float reference,float* arr, int size){
 	int i=0;
 	float* newArr = (float*)malloc(size*sizeof(float));
-	
+
 	for(;i<size;i++)
 		newArr[i] = (reference - arr[i])*(reference - arr[i]);
-	
+
 	return mean(newArr,size);
 }
 
@@ -102,24 +102,24 @@ float* extractData(char* str, int *len){
 	float* arr;
 	int i=0,count = 1;
 	char* token;
-	
+
 	while(str[i]!=00){
 		if(str[i++]==',')
 			count++;
 	}
-	
+
 	arr = (float*)malloc(count*sizeof(float));
 	*len = count;
-	
+
 	token = strtok(str,",");
-	
+
 	i = 0;
-	
+
 	while(token!=NULL){
 		arr[i++] = atof(token);
 		token = strtok(NULL,",");
 	}
-	
+
 	return arr;
 }
 
@@ -131,16 +131,16 @@ int main(int argC,char* argV[])
 		printf("Usage : %s <reference value> <observations separated by commas>");
 	else{
 		arr = extractData(argV[2],&len);
-		
+
 		reference = atof(argV[1]);
-		
+
 		meanVal = mean(arr,len);
 
 		printf("Average Error : %.9f\n",variance(reference,arr,len));
 		printf("Crowd Error : %.9f\n",(reference - meanVal)*(reference - meanVal));
 		printf("Diversity : %.9f",variance(meanVal,arr,len));
 	}
-	
+
 	return 0;
 }
 
@@ -226,9 +226,9 @@ diversity: 10.5
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 using System;
 using System.Linq;
@@ -247,7 +247,7 @@ public class MainClass {
 crowd-error: {Square(truth - average)}
 diversity: {AverageSquareDiff(average, predictions)}");
     }
-	
+
     public static void Main() {
 	DiversityTheorem(49, new []{48d,47,51});
     	DiversityTheorem(49, new []{48d,47,51,42});
@@ -511,11 +511,11 @@ From Typescript entry.
 function sum(arr:array):number {
     return arr.reduce(function(acc, cur, idx, arr) { return acc + cur; });
 }
- 
+
 function square(x:number):number {
     return x * x;
 }
- 
+
 function mean(arr:array):number {
     return sum(arr) / arr.length;
 }
@@ -605,7 +605,7 @@ diversity     : 10.5
 
 fun square(d: Double) = d * d
 
-fun averageSquareDiff(d: Double, predictions: DoubleArray) = 
+fun averageSquareDiff(d: Double, predictions: DoubleArray) =
     predictions.map { square(it - d) }.average()
 
 fun diversityTheorem(truth: Double, predictions: DoubleArray): String {
@@ -745,7 +745,7 @@ function diversity_theorem(atom reference, sequence observations)
             {"crowd_error",crowd_error},
             {"diversity",diversity}}
 end function
- 
+
 procedure test(atom reference, sequence observations)
     sequence res = diversity_theorem(reference, observations)
     for i=1 to length(res) do
@@ -1240,13 +1240,13 @@ console.log(diversityTheorem(49, [48,47,51,42]))
 
 ```zkl
 fcn avgError(m,v){ v.apply('wrap(n){ (n - m).pow(2) }).sum(0.0)/v.len() }
- 
+
 fcn diversityCalc(truth,pred){  //(Float,List of Float)
    ae,cp := avgError(truth,pred), pred.sum(0.0)/pred.len();
    ce,pd := (cp - truth).pow(2),  avgError(cp, pred);
    return(ae,ce,pd)
 }
- 
+
 fcn diversityFormat(stats){  // ( (averageError,crowdError,diversity) )
    T("average-error","crowd-error","diversity").zip(stats)
    .pump(String,Void.Xplode,"%13s :%7.3f\n".fmt)

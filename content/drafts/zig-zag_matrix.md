@@ -1229,11 +1229,11 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
 
-```csharp
+```c#
 public static int[,] ZigZag(int n)
 {
     int[,] result = new int[n, n];

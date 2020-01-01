@@ -278,10 +278,10 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Inside a function:
 
-```csharp
+```c#
 // the simple version:
 System.Console.Write("\a"); // will beep
 System.Threading.Thread.Sleep(1000); // will wait for 1 second

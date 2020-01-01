@@ -1837,9 +1837,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1901,7 +1901,7 @@ Number < 100000 with longest Hailstone seq.: 77031 with length of 351
 
 As with the [[#C|C example]], much faster if you want to go over a million or so.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

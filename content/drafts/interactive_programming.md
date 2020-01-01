@@ -11,9 +11,9 @@ tags = []
 +++
 
 {{task|Basic language learning}}
-Many language implementations come with an ''interactive mode''. 
+Many language implementations come with an ''interactive mode''.
 
-This is a [[wp:command-line interpreter|command-line interpreter]] that reads lines from the user and evaluates these lines as statements or expressions. 
+This is a [[wp:command-line interpreter|command-line interpreter]] that reads lines from the user and evaluates these lines as statements or expressions.
 
 An interactive mode may also be known as a ''command mode'',   a ''[[wp:read-eval-print loop|read-eval-print loop]]'' (REPL),   or a ''shell''.
 
@@ -25,9 +25,9 @@ Then, as a small example of its use, interactively create a function of two stri
 
 
 ;Example:
-            <big>  f('Rosetta',  'Code',  ':')  </big> 
+            <big>  f('Rosetta',  'Code',  ':')  </big>
 should return
-            <big>  'Rosetta::Code'              </big> 
+            <big>  'Rosetta::Code'              </big>
 
 
 ;Note:
@@ -44,7 +44,7 @@ This task is   ''not''   about creating your own interactive mode.
 ```txt
  $ 8th
 8th 1.0.2 Linux 64 (f1b7a8c2)
-ok> 
+ok>
 
 ```
 
@@ -234,7 +234,7 @@ Step 2. I define a helper function <tt>d()</tt> to count the number of digits in
 Step 3. I define <tt>f()</tt> and call it.
 
  '''&raquo;define f(a, b, c) {'''
- '''&raquo;  auto d, e, f '''      
+ '''&raquo;  auto d, e, f '''
  '''&raquo;  d = d(b)'''
  '''&raquo;  e = d + d(c)'''
  '''&raquo;  f = e + d(c)'''
@@ -251,7 +251,7 @@ Step 4. I quit. (Control-D also works.)
 
 ## Bracmat
 
-Running Bracmat without arguments starts the program in interactive mode. The prompt is <code>{?}</code>. After evaluation, Bracmat prints <code>{!}</code> followed by the result. Input can extend over multiple lines, but is terminated by a new line if all parentheses are balanced (<code>()</code> or <code>{}</code>) and any string introduced with <code>"</code> also is closed with <code>"</code>. The number of needed closing parentheses is indicated at the start of a new input line. Provided the file <code>help</code> is in the current working directory, the user can get interactive help by entering <code>get$help</code>. The program is closed by entering an extra closing parenthesis, followed by a confirming <code>y</code>.  
+Running Bracmat without arguments starts the program in interactive mode. The prompt is <code>{?}</code>. After evaluation, Bracmat prints <code>{!}</code> followed by the result. Input can extend over multiple lines, but is terminated by a new line if all parentheses are balanced (<code>()</code> or <code>{}</code>) and any string introduced with <code>"</code> also is closed with <code>"</code>. The number of needed closing parentheses is indicated at the start of a new input line. Provided the file <code>help</code> is in the current working directory, the user can get interactive help by entering <code>get$help</code>. The program is closed by entering an extra closing parenthesis, followed by a confirming <code>y</code>.
 
 
 ```txt
@@ -311,7 +311,7 @@ blsq )
 
 
 
-## C sharp
+## C#
 
 {{works with|Visual Studio|2=>= 2015 Update 1}}
 
@@ -424,7 +424,7 @@ The interactive interpreter provides <code>.</code> as a shortcut for <code>!.</
 $ vu
 <1:1> f str1 str2 sep:
 <1:2>     join sep [ str2 "" str1 ]
-<1:3> 
+<1:3>
 <2:1> . f "Rosetta" "Code" ":"
 "Rosetta::Code"
 ```
@@ -541,7 +541,7 @@ ELISP> (defun my-join (str1 str2 sep)
 my-join
 ELISP> (my-join "Rosetta" "Code" ":")
 "Rosetta::Code"
-ELISP> 
+ELISP>
 ```
 
 
@@ -578,8 +578,8 @@ from main menu do Utilità --> Dos Shell and then from command prompt RCODE <Ent
 
 ```
 
-Type 
- system 
+Type
+ system
 to return to command prompt.
 
 
@@ -619,7 +619,7 @@ Rosetta::Code
 
 {{works with|GNU Forth}}
 
-All Forth systems come with an interpreter. On embedded systems, the interpreter functions as a monitor or lightweight operating system. 
+All Forth systems come with an interpreter. On embedded systems, the interpreter functions as a monitor or lightweight operating system.
 
 ```forth
 $ gforth
@@ -645,7 +645,7 @@ Rosetta::Code ok
 
 FreeBASIC is a compiler rather than an interpreter and doesn't have an interactive mode as such.
 
-However, as simple programs can be written in a few lines and compile and execute very quickly, I think it's fair to say that the lack of an interpreter is not considered much of a drawback by most FB developers. 
+However, as simple programs can be written in a few lines and compile and execute very quickly, I think it's fair to say that the lack of an interpreter is not considered much of a drawback by most FB developers.
 
 For example, the current task can be coded as follows and compiles/runs instantly :
 
@@ -699,41 +699,41 @@ val it : string = "Rosetta::Code"
 
 ```gap
 ~% gap
-    
-            #########           ######         ###########           ###  
-         #############          ######         ############         ####  
-        ##############         ########        #############       #####  
-       ###############         ########        #####   ######      #####  
-      ######         #         #########       #####    #####     ######  
-     ######                   ##########       #####    #####    #######  
-     #####                    ##### ####       #####   ######   ########  
-     ####                    #####  #####      #############   ###  ####  
-     #####     #######       ####    ####      ###########    ####  ####  
-     #####     #######      #####    #####     ######        ####   ####  
+
+            #########           ######         ###########           ###
+         #############          ######         ############         ####
+        ##############         ########        #############       #####
+       ###############         ########        #####   ######      #####
+      ######         #         #########       #####    #####     ######
+     ######                   ##########       #####    #####    #######
+     #####                    ##### ####       #####   ######   ########
+     ####                    #####  #####      #############   ###  ####
+     #####     #######       ####    ####      ###########    ####  ####
+     #####     #######      #####    #####     ######        ####   ####
      #####     #######      #####    #####     #####         #############
       #####      #####     ################    #####         #############
       ######     #####     ################    #####         #############
-      ################    ##################   #####                ####  
-       ###############    #####        #####   #####                ####  
-         #############    #####        #####   #####                ####  
-          #########      #####          #####  #####                ####  
-                                                                          
+      ################    ##################   #####                ####
+       ###############    #####        #####   #####                ####
+         #############    #####        #####   #####                ####
+          #########      #####          #####  #####                ####
+
      Information at:  http://www.gap-system.org
      Try '?help' for help. See also  '?copyright' and  '?authors'
-    
+
    Loading the library. Please be patient, this may take a while.
 GAP4, Version: 4.4.12 of 17-Dec-2008, x86_64-unknown-linux-gnu-gcc
-Components:  small 2.1, small2 2.0, small3 2.0, small4 1.0, small5 1.0, small6 1.0, small7 1.0, small8 1.0, 
-             small9 1.0, small10 0.2, id2 3.0, id3 2.1, id4 1.0, id5 1.0, id6 1.0, id9 1.0, id10 0.1, trans 1.0, 
+Components:  small 2.1, small2 2.0, small3 2.0, small4 1.0, small5 1.0, small6 1.0, small7 1.0, small8 1.0,
+             small9 1.0, small10 0.2, id2 3.0, id3 2.1, id4 1.0, id5 1.0, id6 1.0, id9 1.0, id10 0.1, trans 1.0,
              prim 2.1  loaded.
-Packages:    AClib 1.1, Polycyclic 2.6, Alnuth 2.2.5, AutPGrp 1.4, CrystCat 1.1.3, Cryst 4.1.6, CRISP 1.3.2, 
-             CTblLib 1.1.3, TomLib 1.1.4, FactInt 1.5.2, GAPDoc 1.2, FGA 1.1.0.1, IRREDSOL 1.1.2, LAGUNA 3.5.0, 
+Packages:    AClib 1.1, Polycyclic 2.6, Alnuth 2.2.5, AutPGrp 1.4, CrystCat 1.1.3, Cryst 4.1.6, CRISP 1.3.2,
+             CTblLib 1.1.3, TomLib 1.1.4, FactInt 1.5.2, GAPDoc 1.2, FGA 1.1.0.1, IRREDSOL 1.1.2, LAGUNA 3.5.0,
              Sophus 1.23, Polenta 1.2.7, ResClasses 2.5.3  loaded.
-gap> join := function(a, b, sep) 
+gap> join := function(a, b, sep)
 >   return Concatenation(a, sep, sep, b);
 > end;
 function( a, b, sep ) ... end
-gap> 
+gap>
 gap> join("Rosetta", "Code", ":");
 "Rosetta::Code"
 gap>
@@ -818,7 +818,7 @@ Prelude> f "Rosetta" "Code" ":"
 
 ## HicEst
 
-Start HicEst e.g. with: 
+Start HicEst e.g. with:
 
 "c:\Program Files\HicEst\HicEst.exe E:\Rosetta\Interactive_programming.hic f('Rosetta', 'Code', ':')"
 
@@ -848,7 +848,7 @@ $ io
 Io 20110905
 Io> f := method(str1,str2,sep,
 ... str1 .. sep .. sep .. str2)
-==> method(str1, str2, sep, 
+==> method(str1, str2, sep,
     str1 .. sep .. sep .. str2
 )
 Io> f("Rosetta","Code",":")
@@ -857,7 +857,7 @@ Io> writeln("I am going to exit now")
 I am going to exit now
 ==> nil
 Io> exit
-$ 
+$
 ```
 
 The function could have been written on one line but I wanted to show multi-line input with the continuation prompt <code>...</code>.  The result of the expression that is entered appears after <code>==></code> and any output or error message appears before.
@@ -969,7 +969,7 @@ julia>
 $ rlwrap k
 K Console - Enter \ for help
   f:{x,z,z,y}
-  f["Rosetta";"Code";":"] 
+  f["Rosetta";"Code";":"]
 "Rosetta::Code"
 ```
 
@@ -1195,13 +1195,13 @@ f["Rosetta","Code",":"]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 (Has been tested only with MATLAB)
 
 Define an anonymous function in the Command Window
 
 ```Matlab
- 
+
 >> f = @(str1, str2, delim) [str1, delim, delim, str2];
 
 ```
@@ -1342,7 +1342,7 @@ octave:3>
 ## Oforth
 
 
-Oforth interpreter is started using --i command line parameter : 
+Oforth interpreter is started using --i command line parameter :
 
 
 ```Oforth
@@ -1350,7 +1350,7 @@ oforth --i
 ```
 
 
-Into the interpreter, you can create functions : 
+Into the interpreter, you can create functions :
 
 
 ```Oforth
@@ -1368,13 +1368,13 @@ ok
 Alternatively you don't need the local variables
 
 
-```Oforth> 
+```Oforth>
  : x   dup rot + + + ;
 ok
 > "Rosetta" "Code" ";" x .s
 [1] (String) Rosetta::Code
 ok
-> 
+>
 ```
 
 
@@ -1421,7 +1421,7 @@ say sigl
   ........................................... rexxtry.rex on WindowsNT
 say sourceline(12)
 /* Redistribution and use in source and binary forms, with or                 */
-  ........................................... rexxtry.rex on WindowsNT  
+  ........................................... rexxtry.rex on WindowsNT
 exit
 
 D:\>
@@ -1624,7 +1624,7 @@ true.
 Rosetta::Code
 true.
 
-3 ?- 
+3 ?-
 
 ```
 
@@ -1757,7 +1757,7 @@ exit                                             /*stick a fork in it,  we're al
 f:  return arg(1) || copies(arg(3),2) || arg(2)  /*return the required string to invoker*/
 ```
 
-'''output'''   when using the (internal) default strings: 
+'''output'''   when using the (internal) default strings:
 
 ```txt
 
@@ -1866,7 +1866,7 @@ slsh> define f(s1, s2, sep) {<Enter>
 slsh> f("Rosetta", "Code", ":");<Enter>
 Rosetta::Code
 slsh> quit<Enter>
-> 
+>
 ```
 
 
@@ -1920,7 +1920,7 @@ scala> "rosetta".+(":")
 res1: java.lang.String = rosetta:
 ```
 
-One can use `object`, `class`, `trait`, `case object`, 
+One can use `object`, `class`, `trait`, `case object`,
 `case class`, `def`, `val` and `var` definitions at any point. However,
 `package` and `package object` definitions are not allowed.
 
@@ -1991,7 +1991,7 @@ scala> println(res8)
 [I@383244
 ```
 
-There are many other features, such as the ability to add new jars to 
+There are many other features, such as the ability to add new jars to
 the class path, executing commands on the shell, retrieving the last
 exception thrown, etc.
 
@@ -2053,14 +2053,14 @@ $ sidef -i
 f
 >>> f('Rosetta', 'Code', ':')
 "Rosetta::Code"
->>> 
+>>>
 ```
 
 
 
 ## Slate
 
- 
+
 
 ```slate
 slate[1]> s@(String traits) rosettaWith: s2@(String traits) and: s3@(String traits) [s ; s3 ; s3 ; s2].
@@ -2222,7 +2222,7 @@ Rosetta::Code
 ```es
 $ es
 ; fn concat a b s { result $a$s$s$b }
-; echo <={concat Rosetta Code :} 
+; echo <={concat Rosetta Code :}
 Rosetta::Code
 ;
 ```
@@ -2238,7 +2238,7 @@ cygnus/x ursa v0.76 (default, release 1)
 [Oracle Corporation JVM 1.8.0_91 on Linux 3.16.0-4-686-pae i386]
 > def f (string s1, string s2, string sep)
 ..	return (+ s1 sep sep s2)
-..end 
+..end
 > out (f "Rosetta" "Code" ":") endl console
 Rosetta::Code
 > _
@@ -2280,7 +2280,7 @@ F
 [2] (f "Rosetta" "Code" ":")
 
 "Rosetta::Code"
-[3] 
+[3]
 ```
 
 
@@ -2296,7 +2296,7 @@ zkl: fcn f(a,b,c){String(a,c,c,b)}
 Void
 zkl: f("Rosetta", "Code", ":")
 Rosetta::Code
-zkl: 
+zkl:
 
 ```
 

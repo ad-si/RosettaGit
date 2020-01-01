@@ -721,9 +721,9 @@ if (mpz_odd_p(x))  { /* x is odd */ }
 
 The macros evaluate <code>x</code> more than once, so it should not be something with side effects.
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 namespace RosettaCode
 {
     using System;

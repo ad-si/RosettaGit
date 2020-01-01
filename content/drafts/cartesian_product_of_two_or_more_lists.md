@@ -129,14 +129,14 @@ on run
             cartProd({3, 4}, {1, 2}), ¬
             cartProd({1, 2}, {}), ¬
             cartProd({}, {1, 2})]))
-    
+
     set naryA to unlines(map(show, ¬
         cartProdNary([{1776, 1789}, {7, 12}, {4, 14, 23}, {0, 1}])))
-    
+
     set naryB to show(cartProdNary([{1, 2, 3}, {30}, {500, 100}]))
-    
+
     set naryC to show(cartProdNary([{1, 2, 3}, {}, {500, 100}]))
-    
+
     intercalate(linefeed & linefeed, {baseExamples, naryA, naryB, naryC})
 end run
 
@@ -187,7 +187,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -208,7 +208,7 @@ on show(e)
                 show(v)
             end |λ|
         end script
-        
+
         "[" & intercalate(", ", map(serialized, e)) & "]"
     else if c = record then
         script showField
@@ -217,7 +217,7 @@ on show(e)
                 "\"" & k & "\":" & show(ev)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", ¬
             map(showField, zip(allKeys(e), allValues(e)))) & "}"
     else if c = date then
@@ -295,7 +295,7 @@ Recursive implementation for computing the Cartesian product of lists. In the pu
 
 void cartesianProduct(int** sets, int* setLengths, int* currentSet, int numSets, int times){
 	int i,j;
-	
+
 	if(times==numSets){
 		printf("(");
 		for(i=0;i<times;i++){
@@ -313,9 +313,9 @@ void cartesianProduct(int** sets, int* setLengths, int* currentSet, int numSets,
 
 void printSets(int** sets, int* setLengths, int numSets){
 	int i,j;
-	
+
 	printf("\nNumber of sets : %d",numSets);
-	
+
 	for(i=0;i<numSets+1;i++){
 		printf("\nSet %d : ",i+1);
 		for(j=0;j<setLengths[i];j++){
@@ -327,29 +327,29 @@ void printSets(int** sets, int* setLengths, int numSets){
 void processInputString(char* str){
 	int **sets, *currentSet, *setLengths, setLength, numSets = 0, i,j,k,l,start,counter=0;
 	char *token,*holder,*holderToken;
-	
+
 	for(i=0;str[i]!=00;i++)
 		if(str[i]=='x')
 			numSets++;
-		
+
 	if(numSets==0){
 			printf("\n%s",str);
 			return;
 	}
-		
+
 	currentSet = (int*)calloc(sizeof(int),numSets + 1);
-	
+
 	setLengths = (int*)calloc(sizeof(int),numSets + 1);
-	
+
 	sets = (int**)malloc((numSets + 1)*sizeof(int*));
-	
+
 	token = strtok(str,"x");
-	
+
 	while(token!=NULL){
 		holder = (char*)malloc(strlen(token)*sizeof(char));
-		
+
 		j = 0;
-		
+
 		for(i=0;token[i]!=00;i++){
 			if(token[i]>='0' && token[i]<='9')
 				holder[j++] = token[i];
@@ -357,26 +357,26 @@ void processInputString(char* str){
 				holder[j++] = ' ';
 		}
 		holder[j] = 00;
-		
+
 		setLength = 0;
-		
+
 		for(i=0;holder[i]!=00;i++)
 			if(holder[i]==' ')
 				setLength++;
-			
+
 		if(setLength==0 && strlen(holder)==0){
 			printf("\n{}");
 			return;
 		}
-		
+
 		setLengths[counter] = setLength+1;
-		
+
 		sets[counter] = (int*)malloc((1+setLength)*sizeof(int));
-		
+
 		k = 0;
-		
+
 		start = 0;
-		
+
 		for(l=0;holder[l]!=00;l++){
 			if(holder[l+1]==' '||holder[l+1]==00){
 				holderToken = (char*)malloc((l+1-start)*sizeof(char));
@@ -385,15 +385,15 @@ void processInputString(char* str){
 				start = l+2;
 			}
 		}
-		
+
 		counter++;
 		token = strtok(NULL,"x");
 	}
-	
+
 	printf("\n{");
 	cartesianProduct(sets,setLengths,currentSet,numSets + 1,0);
 	printf("\b}");
-	
+
 }
 
 int main(int argC,char* argV[])
@@ -402,7 +402,7 @@ int main(int argC,char* argV[])
 		printf("Usage : %s <Set product expression enclosed in double quotes>",argV[0]);
 	else
 		processInputString(argV[1]);
-	
+
 	return 0;
 }
 
@@ -461,7 +461,7 @@ void print(const std::vector<std::vector<int>>& v) {
 
 auto product(const std::vector<std::vector<int>>& lists) {
   std::vector<std::vector<int>> result;
-  if (std::find_if(std::begin(lists), std::end(lists), 
+  if (std::find_if(std::begin(lists), std::end(lists),
     [](auto e) -> bool { return e.size() == 0; }) != std::end(lists)) {
     return result;
   }
@@ -516,10 +516,10 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 public class Program
 {
@@ -535,7 +535,7 @@ public class Program
         int[] list7 = { 1, 2, 3 };
         int[] list8 = { 30 };
         int[] list9 = { 500, 100 };
-        
+
         foreach (var sequenceList in new [] {
             new [] { list1, list2 },
             new [] { list2, list1 },
@@ -581,7 +581,7 @@ public static class Extensions
 
 If the number of lists is known, LINQ provides an easier solution:
 
-```csharp
+```c#
 public static void Main()
 {
     ///...
@@ -590,7 +590,7 @@ public static void Main()
         from b in list2
         select (a, b); // C# 7.0 tuple
     Console.WriteLine($"{{{string.Join(", ", cart1)}}}");
-        
+
     var cart2 =
         from a in list7
         from b in list8
@@ -653,7 +653,7 @@ NIL
   (if (null l)
       (list nil)
       (loop for x in (car l)
-            nconc (loop for y in (n-cartesian-product (cdr l))  
+            nconc (loop for y in (n-cartesian-product (cdr l))
                         collect (cons x y)))))
 ```
 
@@ -776,7 +776,7 @@ cP [[1776;1789];[7;12];[4;14;23];[0;1]] -> [[1776; 7; 4; 0]; [1776; 7; 4; 1]; [1
                                             [1776; 7; 23; 0]; [1776; 7; 23; 1]; [1776; 12; 4; 0]; [1776; 12; 4; 1];
                                             [1776; 12; 14; 0]; [1776; 12; 14; 1]; [1776; 12; 23; 0]; [1776; 12; 23; 1];
                                             [1789; 7; 4; 0]; [1789; 7; 4; 1]; [1789; 7; 14; 0]; [1789; 7; 14; 1];
-                                            [1789; 7; 23; 0]; [1789; 7; 23; 1]; [1789; 12; 4; 0]; [1789; 12; 4; 1];                                                                                                        
+                                            [1789; 7; 23; 0]; [1789; 7; 23; 1]; [1789; 12; 4; 0]; [1789; 12; 4; 1];
                                             [1789; 12; 14; 0]; [1789; 12; 14; 1]; [1789; 12; 23; 0]; [1789; 12; 23; 1]]
 cP [[1;2;3];[30];[500;100]] -> [[1; 30; 500]; [1; 30; 100]; [2; 30; 500]; [2; 30; 100]; [3; 30; 500]; [3; 30; 100]]
 cP [[1;2;3];[];[500;100]] -> []
@@ -1096,7 +1096,7 @@ For the product of two lists we could write:
 cartProd :: [a] -> [b] -> [(a, b)]
 cartProd xs ys =
   [ (x, y)
-  | x <- xs 
+  | x <- xs
   , y <- ys ]
 ```
 
@@ -1187,7 +1187,7 @@ testing any of these with something like:
 ```haskell
 main :: IO ()
 main = do
-  mapM_ print $ 
+  mapM_ print $
     cartProdN [[1776, 1789], [7,12], [4, 14, 23], [0,1]]
   putStrLn ""
   print $ cartProdN [[1,2,3], [30], [500, 100]]
@@ -1820,7 +1820,7 @@ fun main(args: Array<String>) {
 []     x [1, 2] = []
 [1, a] x [2, b] = [[1, 2], [1, b], [a, 2], [a, b]]
 
-[1776, 1789] x [7, 12] x [4, 14, 23] x [0, 1] = 
+[1776, 1789] x [7, 12] x [4, 14, 23] x [0, 1] =
 [
     [1776, 7, 4, 0]
     [1776, 7, 4, 1]
@@ -1848,7 +1848,7 @@ fun main(args: Array<String>) {
     [1789, 12, 23, 1]
 ]
 
-[1, 2, 3] x [30] x [500, 100] = 
+[1, 2, 3] x [30] x [500, 100] =
 [
     [1, 30, 500]
     [1, 30, 100]
@@ -1858,12 +1858,12 @@ fun main(args: Array<String>) {
     [3, 30, 100]
 ]
 
-[1, 2, 3] x [] x [500, 100] = 
+[1, 2, 3] x [] x [500, 100] =
 [
-    
+
 ]
 
-[1, 2, 3] x [30] x [a, b] = 
+[1, 2, 3] x [30] x [a, b] =
 [
     [1, 30, a]
     [1, 30, b]
@@ -1880,7 +1880,7 @@ fun main(args: Array<String>) {
 ## Lua
 
 
-###  Functional 
+###  Functional
 
 An iterator is created to output the product items.
 
@@ -1891,8 +1891,8 @@ An iterator is created to output the product items.
   local function attachIdx(f)-- one-time-off function modifier
     local idx = 0
     return function(e)idx=idx+1 ; return f(e,idx)end
-  end  
-  
+  end
+
   local function reduce(t,acc,f)
     for i=1,t.n or #t do acc=f(acc,t[i])end
     return acc
@@ -1912,19 +1912,19 @@ An iterator is created to output the product items.
     return function()
       if cnt>=max then return end -- no more output
       if cnt==0 then -- skip for 1st
-        cnt = cnt + 1 
+        cnt = cnt + 1
       else
-        cnt, idx[#idx] = cnt + 1, idx[#idx] + 1 
+        cnt, idx[#idx] = cnt + 1, idx[#idx] + 1
         for i=#idx,2,-1 do -- update index list
-          if idx[i]<=limit[i] then 
+          if idx[i]<=limit[i] then
             break -- no further update need
           else -- propagate limit overflow
             idx[i],idx[i-1] = 1, idx[i-1]+1
-          end        
-        end        
+          end
+        end
       end
       return cnt,imap(ts,attachIdx(ret)):u()
-    end    
+    end
   end
 --- test
   for i,a,b in prod({1,2},{3,4}) do
@@ -1953,7 +1953,7 @@ An iterator is created to output the product items.
 
 
 
-###  Using coroutines 
+###  Using coroutines
 
 I have not benchmarked this, but I believe that this should run faster than the functional implementation and also likely the imperative implementation, it has significantly fewer function calls per iteration, and only the stack changes during iteration (no garbage collection during iteration). On the other hand due to avoiding garbage collection, result is reused between returns, so mutating the returned result is unsafe.
 
@@ -1965,7 +1965,7 @@ local function cartesian_product(sets)
   local set_count = #sets
 --[[ I believe that this should make the below go very slightly faster, because it doesn't need to lookup yield in coroutine each time it
      yields, though perhaps the compiler optimises the lookup away? ]]
-  local yield = coroutine.yield 
+  local yield = coroutine.yield
   local function descend(depth)
     if depth == set_count then
       for k,v in pairs(sets[depth]) do
@@ -2013,7 +2013,7 @@ end
 
 
 
-###  Imperative iterator 
+###  Imperative iterator
 
 The functional implementation restated as an imperative iterator, also adjusted to not allocate a new result table on each iteration; this saves time, but makes mutating the returned table unsafe.
 
@@ -2024,7 +2024,7 @@ local function cartesian_product(sets)
   local results = {}
   local set_count = #sets
   local combination_count = 1
-  
+
   for set_index=set_count, 1, -1 do
     local set = sets[set_index]
     local item_count = #set
@@ -2033,16 +2033,16 @@ local function cartesian_product(sets)
     results[set_index] = set[1]
     combination_count = combination_count * item_count
   end
-  
+
   local combination_index = 0
-  
+
   return function()
     if combination_index >= combination_count then return end -- no more output
 
     if combination_index == 0 then goto skip_update end -- skip first index update
-    
+
     indices[set_count] = indices[set_count] + 1
-    
+
     for set_index=set_count, 1, -1 do -- update index list
       local set = sets[set_index]
       local index = indices[set_index]
@@ -2057,11 +2057,11 @@ local function cartesian_product(sets)
         end
       end
     end
-    
+
     ::skip_update::
-    
+
     combination_index = combination_index + 1
-    
+
     return combination_index, results
   end
 end
@@ -2105,7 +2105,7 @@ cartmulti := proc ()
  local m, v;
  if [] in {args} then
  return [];
- else 
+ else
 m := Iterator:-CartesianProduct(args);
  for v in m do
  printf("%{}a\n", v);
@@ -2189,7 +2189,7 @@ Naive but more readable version
 
 ```ocaml
 
-let rec product l1 l2 = 
+let rec product l1 l2 =
     match l1, l2 with
     | [], _ | _, [] -> []
     | h1::t1, h2::t2 -> (h1,h2)::(product [h1] t2)@(product t1 l2)
@@ -2211,11 +2211,11 @@ Implementation with a bit more tail-call optimization, inroducing a helper funct
 
 ```ocaml
 
-let product' l1 l2 = 
-    let rec aux ~acc l1' l2' = 
+let product' l1 l2 =
+    let rec aux ~acc l1' l2' =
         match l1', l2' with
         | [], _ | _, [] -> acc
-        | h1::t1, h2::t2 -> 
+        | h1::t1, h2::t2 ->
             let acc = (h1,h2)::acc in
             let acc = aux ~acc t1 l2' in
             aux ~acc [h1] t2
@@ -2253,12 +2253,12 @@ Extra credit function. Since in OCaml a function can return only one type, and b
 
 ```ocaml
 
-let rec product'' l = 
+let rec product'' l =
     (* We need to do the cross product of our current list and all the others
      * so we define a helper function for that *)
     let rec aux ~acc l1 l2 = match l1, l2 with
     | [], _ | _, [] -> acc
-    | h1::t1, h2::t2 -> 
+    | h1::t1, h2::t2 ->
         let acc = (h1::h2)::acc in
         let acc = (aux ~acc t1 l2) in
         aux ~acc [h1] t2
@@ -2305,7 +2305,7 @@ product'' [[1; 2; 3];[];[500; 100]];;
 
 
 
-###  Better type 
+###  Better type
 
 
 In the latter example, our function has this signature:
@@ -2379,7 +2379,7 @@ sub product {
     $tuples . "\n";
 }
 
-print 
+print
 product([[1, 2],      [3, 4]                  ], '%1d %1d'        ).
 product([[3, 4],      [1, 2]                  ], '%1d %1d'        ).
 product([[1, 2],      []                      ], '%1d %1d'        ).
@@ -2444,7 +2444,7 @@ NestedLoops([[1,2,3],[qw/a b c/],[qw/@ $ !/]], sub { say "@_"; });
 ## Perl 6
 
 {{works with|Rakudo|2017.06}}
-The cross meta operator X will return the cartesian product of two lists. To apply the cross meta-operator to a variable number of lists, use the reduce cross meta operator [X]. 
+The cross meta operator X will return the cartesian product of two lists. To apply the cross meta-operator to a variable number of lists, use the reduce cross meta operator [X].
 
 
 ```perl6
@@ -2493,7 +2493,7 @@ sequence res = {}
     end for
     return res
 end function
- 
+
 ?cart({{1,2},{3,4}})
 ?cart({{3,4},{1,2}})
 ?cart({{1,2},{}})
@@ -2583,7 +2583,7 @@ def cp(lsts):
 
 if __name__ == '__main__':
     from pprint import pprint as pp
-    
+
     for lists in [[[1,2],[3,4]], [[3,4],[1,2]], [[], [1, 2]], [[1, 2], []],
                   ((1776, 1789),  (7, 12), (4, 14, 23), (0, 1)),
                   ((1, 2, 3), (30,), (500, 100)),
@@ -3003,7 +3003,7 @@ Racket has a built-in "cartesian-product" function:
 
 ### version 1
 
-This REXX version isn't limited by the number of lists or the number of sets within a list. 
+This REXX version isn't limited by the number of lists or the number of sets within a list.
 
 ```rexx
 /*REXX program  calculates  the   Cartesian product   of two  arbitrary-sized  lists.   */
@@ -3177,7 +3177,7 @@ output:
 {1, 2, 3} x {} x {500, 100}
 {}
 ```
-  
+
 
 
 ## Ring
@@ -3225,13 +3225,13 @@ Output:
 "product" is a method of arrays. It takes one or more arrays as argument and results in the Cartesian product:
 
 ```ruby
-p [1, 2].product([3, 4]) 
+p [1, 2].product([3, 4])
 p [3, 4].product([1, 2])
 p [1, 2].product([])
-p [].product([1, 2]) 
+p [].product([1, 2])
 p [1776, 1789].product([7, 12], [4, 14, 23], [0, 1])
-p [1, 2, 3].product([30], [500, 100]) 
-p [1, 2, 3].product([], [500, 100]) 
+p [1, 2, 3].product([30], [500, 100])
+p [1, 2, 3].product([], [500, 100])
 
 ```
 
@@ -3341,7 +3341,7 @@ fn main() {
 
 ## Scala
 
-Function returning the n-ary product of an arbitrary number of lists, each of arbitrary length: 
+Function returning the n-ary product of an arbitrary number of lists, each of arbitrary length:
 
 
 ```scala
@@ -3383,7 +3383,7 @@ and usage:
 cartesianProduct(List(1, 2), List(3, 4))
   .map(_.mkString("(", ", ", ")")).mkString("{",", ","}")
 ```
- 
+
 {{out}}
 
 ```txt
@@ -3396,7 +3396,7 @@ cartesianProduct(List(1, 2), List(3, 4))
 cartesianProduct(List(3, 4), List(1, 2))
   .map(_.mkString("(", ", ", ")")).mkString("{",", ","}")
 ```
- 
+
 {{out}}
 
 ```txt
@@ -3409,7 +3409,7 @@ cartesianProduct(List(3, 4), List(1, 2))
 cartesianProduct(List(1, 2), List.empty)
   .map(_.mkString("(", ", ", ")")).mkString("{",", ","}")
 ```
- 
+
 {{out}}
 
 ```txt
@@ -3422,7 +3422,7 @@ cartesianProduct(List(1, 2), List.empty)
 cartesianProduct(List.empty, List(1, 2))
   .map(_.mkString("(", ", ", ")")).mkString("{",", ","}")
 ```
- 
+
 {{out}}
 
 ```txt
@@ -3435,7 +3435,7 @@ cartesianProduct(List.empty, List(1, 2))
 cartesianProduct(List(1776, 1789), List(7, 12), List(4, 14, 23), List(0, 1))
   .map(_.mkString("(", ", ", ")")).mkString("{",", ","}")
 ```
- 
+
 {{out}}
 
 ```txt
@@ -3448,7 +3448,7 @@ cartesianProduct(List(1776, 1789), List(7, 12), List(4, 14, 23), List(0, 1))
 cartesianProduct(List(1, 2, 3), List(30), List(500, 100))
   .map(_.mkString("(", ", ", ")")).mkString("{",", ","}")
 ```
- 
+
 {{out}}
 
 ```txt
@@ -4018,12 +4018,12 @@ puts "result: [cartesianNaryProduct {{1 2 3} {} {500 100}}]"
 simple
 result: {1 3} {1 4} {2 3} {2 4}
 result: {3 1} {3 2} {4 1} {4 2}
-result: 
-result: 
+result:
+result:
 n-ary
 result: {1776 7 4 0} {1776 7 4 1} {1776 7 14 0} {1776 7 14 1} {1776 7 23 0} {1776 7 23 1} {1776 12 4 0} {1776 12 4 1} {1776 12 14 0} {1776 12 14 1} {1776 12 23 0} {1776 12 23 1} {1789 7 4 0} {1789 7 4 1} {1789 7 14 0} {1789 7 14 1} {1789 7 23 0} {1789 7 23 1} {1789 12 4 0} {1789 12 4 1} {1789 12 14 0} {1789 12 14 1} {1789 12 23 0} {1789 12 23 1}
 result: {1 30 500} {1 30 100} {2 30 500} {2 30 100} {3 30 500} {3 30 100}
-result: 
+result:
 
 ```
 
@@ -4090,7 +4090,7 @@ End Module
 
 ## zkl
 
-Cartesian product is build into iterators or can be done with nested 
+Cartesian product is build into iterators or can be done with nested
 loops.
 
 ```zkl

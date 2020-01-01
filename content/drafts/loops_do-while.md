@@ -10,12 +10,12 @@ categories = []
 tags = []
 +++
 
-{{task|Iteration}} 
-[[Category:Conditional loops]] 
+{{task|Iteration}}
+[[Category:Conditional loops]]
 [[Category:Simple]]
 
-Start with a value at 0. Loop while value mod 6 is not equal to 0. 
-Each time through the loop, add 1 to the value then print it. 
+Start with a value at 0. Loop while value mod 6 is not equal to 0.
+Each time through the loop, add 1 to the value then print it.
 The loop must execute at least once.
 
 
@@ -51,32 +51,32 @@ The WTO macro is in SYS1.MACLIB, which needs to be in the SYSLIB concatenation a
 
 ```360asm
 *        Do-While
-DOWHILE CSECT  ,                  This program's control section 
-         BAKR  14,0               Caller's registers to linkage stack 
-         LR    12,15              load entry point address into Reg 12 
-        USING  DOWHILE,12         tell assembler we use Reg 12 as base 
-         XR    9,9                clear Reg 9 - divident value 
-         LA    6,6                load divisor value 6 in Reg 6 
-         LA    8,WTOLEN           address of WTO area in Reg 8 
-LOOP     DS    0H 
-         LA    9,1(,9)            add 1 to divident Reg 9 
-         ST    9,FW2              store it 
-         LM    4,5,FDOUBLE        load into even/odd register pair 
-         STH   9,WTOTXT           store divident in text area 
-         MVI   WTOTXT,X'F0'       first of two bytes zero 
-         OI    WTOTXT+1,X'F0'     make second byte printable 
-        WTO    TEXT=(8)           print it (Write To Operator macro) 
-         DR    4,6                divide Reg pair 4,5 by Reg 6 
-         LTR   5,5                test quotient (remainder in Reg 4) 
-         BNZ   RETURN             if one: 6 iterations, exit loop. 
-         B     LOOP               if zero: loop again. 
-RETURN   PR    ,                  return to caller. 
-FDOUBLE  DC    0FD 
-         DC    F'0' 
-FW2      DC    F'0' 
-WTOLEN   DC    H'2'               fixed WTO length of two 
-WTOTXT   DC    CL2' ' 
-         END   DOWHILE 
+DOWHILE CSECT  ,                  This program's control section
+         BAKR  14,0               Caller's registers to linkage stack
+         LR    12,15              load entry point address into Reg 12
+        USING  DOWHILE,12         tell assembler we use Reg 12 as base
+         XR    9,9                clear Reg 9 - divident value
+         LA    6,6                load divisor value 6 in Reg 6
+         LA    8,WTOLEN           address of WTO area in Reg 8
+LOOP     DS    0H
+         LA    9,1(,9)            add 1 to divident Reg 9
+         ST    9,FW2              store it
+         LM    4,5,FDOUBLE        load into even/odd register pair
+         STH   9,WTOTXT           store divident in text area
+         MVI   WTOTXT,X'F0'       first of two bytes zero
+         OI    WTOTXT+1,X'F0'     make second byte printable
+        WTO    TEXT=(8)           print it (Write To Operator macro)
+         DR    4,6                divide Reg pair 4,5 by Reg 6
+         LTR   5,5                test quotient (remainder in Reg 4)
+         BNZ   RETURN             if one: 6 iterations, exit loop.
+         B     LOOP               if zero: loop again.
+RETURN   PR    ,                  return to caller.
+FDOUBLE  DC    0FD
+         DC    F'0'
+FW2      DC    F'0'
+WTOLEN   DC    H'2'               fixed WTO length of two
+WTOTXT   DC    CL2' '
+         END   DOWHILE
 ```
 
 ;Structured Macros
@@ -87,13 +87,13 @@ Structured macros (DO ENDDO) weren't in the 1963 standard of Assembler 360, but 
 *        Do-While                  27/06/2016
 DOWHILE  CSECT
          USING DOWHILE,12          set base register
-         LR    12,15               init base register 
+         LR    12,15               init base register
          SR    6,6                 v=0
          LA    4,1                 init reg 4
          DO UNTIL=(LTR,4,Z,4)      do until v mod 6=0
          LA    6,1(6)                v=v+1
          STC   6,WTOTXT              v
-         OI    WTOTXT,X'F0'          make editable 
+         OI    WTOTXT,X'F0'          make editable
          WTO   MF=(E,WTOMSG)         display v
          LR    4,6                   v
          SRDA  4,32                  shift dividend to reg 5
@@ -110,7 +110,7 @@ WTOTXT   DS    C                   one char
 
 
 ## 6502 Assembly
- 
+
 Code is called as a subroutine (i.e. JSR DoWhileSub).  Specific OS/hardware routines for printing are left unimplemented.
 
 ```6502asm
@@ -141,7 +141,7 @@ Modulus:	SBC #6
 
 ```actionscript
 var val:int = 0;
-do 
+do
 {
     trace(++val);
 } while (val % 6);
@@ -238,7 +238,7 @@ LAB:
 ```algol68
 FOR value WHILE
   print(value);
-# WHILE # value MOD 6 /= 0 DO 
+# WHILE # value MOD 6 /= 0 DO
   SKIP
 OD
 ```
@@ -303,16 +303,16 @@ sMessValeur:   .fill 12, 1, ' '
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}      @ saves 2 registers 
+.global main
+main:                @ entry of program
+    push {fp,lr}      @ saves 2 registers
     mov r4,#0
-1:    @ begin loop 
+1:    @ begin loop
     mov r0,r4
 
     ldr r1,iAdrsMessValeur     @ display value
@@ -326,7 +326,7 @@ main:                @ entry of program
     cmp r3,#0              @ remainder = zéro ?
     bne 1b                @ no ->begin loop one
 
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -335,65 +335,65 @@ main:                @ entry of program
 iAdrsMessValeur:          .int sMessValeur
 iAdrszMessResult:         .int szMessResult
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}      @ save  registres
-    mov r2,#0                  @ counter length 
-1:      @ loop length calculation 
-    ldrb r1,[r0,r2]           @ read octet start position + index 
-    cmp r1,#0                  @ if 0 its over 
-    addne r2,r2,#1            @ else add 1 in the length 
-    bne 1b                    @ and loop 
-                                @ so here r2 contains the length of the message 
-    mov r1,r0        			@ address message in r1 
-    mov r0,#STDOUT      		@ code to write to the standard output Linux 
-    mov r7, #WRITE             @ code call system "write" 
-    svc #0                      @ call systeme 
-    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */ 
-    bx lr                       @ return  
+    mov r2,#0                  @ counter length
+1:      @ loop length calculation
+    ldrb r1,[r0,r2]           @ read octet start position + index
+    cmp r1,#0                  @ if 0 its over
+    addne r2,r2,#1            @ else add 1 in the length
+    bne 1b                    @ and loop
+                                @ so here r2 contains the length of the message
+    mov r1,r0        			@ address message in r1
+    mov r0,#STDOUT      		@ code to write to the standard output Linux
+    mov r7, #WRITE             @ code call system "write"
+    svc #0                      @ call systeme
+    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */
+    bx lr                       @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion10:
-    push {r1-r4,lr}    @ save registers 
+    push {r1-r4,lr}    @ save registers
     mov r3,r1
     mov r2,#10
 
 1:	   @ start loop
     bl divisionpar10 @ r0 <- dividende. quotient ->r0 reste -> r1
-    add r1,#48        @ digit	
+    add r1,#48        @ digit
     strb r1,[r3,r2]  @ store digit on area
     sub r2,#1         @ previous position
     cmp r0,#0         @ stop if quotient = 0 */
     bne 1b	          @ else loop
     @ and move spaces in first on area
-    mov r1,#' '   @ space	
-2:	
+    mov r1,#' '   @ space
+2:
     strb r1,[r3,r2]  @ store space in area
     subs r2,#1       @ @ previous position
-    bge 2b           @ loop if r2 >= zéro 
+    bge 2b           @ loop if r2 >= zéro
 
-100:	
-    pop {r1-r4,lr}    @ restaur registres 
+100:
+    pop {r1-r4,lr}    @ restaur registres
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}   /* save registers  */
-    mov r4,r0 
+    mov r4,r0
     mov r3,#0x6667   @ r3 <- magic_number  lower
     movt r3,#0x6666  @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
     mov r1, r0, LSR #31    /* r1 <- r0 >> 31 */
     add r0, r2, r1         /* r0 <- r2 + r1 */
@@ -414,14 +414,14 @@ division:
     mov r3, #0                @ init remainder
     mov r4, #32               @ init counter bits
     b 2f
-1:          @ loop 
+1:          @ loop
     movs r0, r0, LSL #1     @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3           @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1               @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1        @ if r3 >= r1 (C=1) then r3 ? r3 - r1 
-    adc r2, r2, r2           @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3           @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1               @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1        @ if r3 >= r1 (C=1) then r3 ? r3 - r1
+    adc r2, r2, r2           @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1          @ r4 <- r4 - 1 
+    subs r4, r4, #1          @ r4 <- r4 - 1
     bpl 1b                  @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -486,7 +486,7 @@ loop while a mod 6 <> 0
 =
 ## BaCon
 =
- 
+
 
 ```freebasic
 
@@ -516,7 +516,7 @@ UNTIL a MOD 6 = 0
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 LET I=0
-110 DO 
+110 DO
 120   LET I=I+1
 130   PRINT I
 140 LOOP UNTIL MOD(I,6)=0
@@ -601,10 +601,10 @@ do{
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 int a = 0;
 
 do
@@ -705,7 +705,7 @@ loop
   {
     value += 1;
     writeOutput( value );
-  } while( value % 6 != 0 );			
+  } while( value % 6 != 0 );
 </cfscript>
 ```
 
@@ -765,7 +765,7 @@ void main() {
 {{out}}
 
 ```txt
-1 2 3 4 5 6 
+1 2 3 4 5 6
 ```
 
 
@@ -907,7 +907,7 @@ __loop(fn {
 open monad io
 
 loop n | n % 6 == 0 = do return ()
-       | else = do 
+       | else = do
           putStrLn (show n)
           loop (n+1)
 
@@ -957,7 +957,7 @@ The condition form for <code>while</code> can be a <code>progn</code> to evaluat
 
 do() ->
 	do(0).
-	
+
 do(0) ->
 	io:fwrite( "0 " ),
         do( 1 );
@@ -1104,7 +1104,7 @@ class Main
 
 ```fortran
 INTEGER :: i = 0
-DO 
+DO
   i = i + 1
   WRITE(*, *) i
   IF (MOD(i, 6) == 0) EXIT
@@ -1140,7 +1140,7 @@ C difficult to simulate it using GOTO, however:
    10 CONTINUE
         IVALUE=IVALUE+1
         WRITE(6,301) IVALUE
-  301   FORMAT(I5)          
+  301   FORMAT(I5)
       IF(MOD(IVALUE,6).NE.0) GOTO 10
       END
 ```
@@ -1152,7 +1152,7 @@ C difficult to simulate it using GOTO, however:
       IVALUE = 0
    10 IVALUE=IVALUE+1
       WRITE 301,IVALUE
-  301 FORMAT(I5)          
+  301 FORMAT(I5)
       IF(IVALUE-IVALUE/6*6) 10,20,10
    20 STOP
       END
@@ -1438,7 +1438,7 @@ Equivalent using <code>GOTO</code>:
 10 LET I% = 0
 20  PRINT I%
 30  LET I% = I% + 1
-40  IF I% MOD 6 <> 0 THEN GOTO 20 
+40  IF I% MOD 6 <> 0 THEN GOTO 20
 
 ```
 
@@ -1493,8 +1493,8 @@ main :: IO ()
 main =
   mapM_ print . reverse $
   until
-    (\(x:_) -> (x > 0) && (mod x 6 == 0)) 
-    (\xs@(x:_) -> succ x : xs) 
+    (\(x:_) -> (x > 0) && (mod x 6 == 0))
+    (\xs@(x:_) -> succ x : xs)
     [0]
 ```
 
@@ -1513,7 +1513,7 @@ main =
 ```
 
 
-###  With mutable references 
+###  With mutable references
 
 Using iterateWhile from monad-loops package
 
@@ -1566,15 +1566,15 @@ J is array-oriented, so there is very little need for loops.  For example, one c
 
    ,. ([^:(0=6|])>:)^:a: 0
 
-J does support loops for those times they can't be avoided (just like many languages support gotos for those time they can't be avoided).  
+J does support loops for those times they can't be avoided (just like many languages support gotos for those time they can't be avoided).
 
 ```j
 3 : 0 ] 0
 
          NB.  The 'st' in 'whilst' stands for 'skip test'
 
-         whilst. 0 ~: 6 | y do.  
-             y 1!:2 ]2 
+         whilst. 0 ~: 6 | y do.
+             y 1!:2 ]2
              y =. y+1
          end.
 
@@ -1649,7 +1649,7 @@ console.log(
   ).join('\n')
 );
 ```
- 
+
 
 Output:
 
@@ -1661,7 +1661,7 @@ Output:
 5
 6
 ```
- 
+
 
 Alternatively, if we assume instead that the unstated problem was not to produce repetitive computation, but to derive the '''membership of a set''' we could interpret the task as a request for a JavaScript implementation of the '''takeWhile''' function – a familiar staple of functional list processing.
 
@@ -1677,18 +1677,18 @@ function range(m, n) {
     }
   );
 }
- 
+
 function takeWhile(lst, fnTest) {
  'use strict';
   var varHead = lst.length ? lst[0] : null;
- 
+
   return varHead ? (
     fnTest(varHead) ? [varHead].concat(
       takeWhile(lst.slice(1), fnTest)
     ) : []
   ) : []
 }
- 
+
 console.log(
   takeWhile(
     range(1, 100),
@@ -1698,7 +1698,7 @@ console.log(
   ).join('\n')
 );
 ```
- 
+
 
 Output:
 
@@ -1762,7 +1762,7 @@ A process or value of this kind might be better expressed (in functionally compo
             xs: []
         }
     ).xs;
-    
+
     return [result1, result2];
 })();
 
@@ -1827,7 +1827,7 @@ we shall define a control structure: "do_while(action; condition)" as follows:
 
 ```jq
 # Perform the action, then check the condition, etc
-def do_while( action; condition ): 
+def do_while( action; condition ):
   def w: action | if (condition | not) then empty else ., w end;
   w;
 ```
@@ -2096,8 +2096,8 @@ Module checkit {
       Do {
             x++
             Print x
-      } Until x mod 6=0 
-     
+      } Until x mod 6=0
+
       x=0
       {
             \\ when enter to block the loop flag change to false
@@ -2167,12 +2167,12 @@ While[
 
 
 ```Matlab
-   a=0; 
-   while (1) 
-      a = a+1; 
+   a=0;
+   while (1)
+      a = a+1;
       disp(a);
-   if (~mod(a,6)) break; end; 	
-   end; 
+   if (~mod(a,6)) break; end;
+   end;
 ```
 
 
@@ -2241,9 +2241,9 @@ i = 0
 loopStart:
 TextWindow.WriteLine(i)
 i = i + 1
-If Math.Remainder(i, 6) <> 0 Then 
+If Math.Remainder(i, 6) <> 0 Then
   Goto loopStart
-EndIf  
+EndIf
 
 ```
 
@@ -2256,8 +2256,8 @@ EndIf
 ```mips
 
 	.text
-main:	li 	$s0, 0		# start at 0. 
-	li	$s1, 6 
+main:	li 	$s0, 0		# start at 0.
+	li	$s1, 6
 loop:	addi	$s0, $s0, 1	# add 1 to $s0
 	div	$s0, $s1	# divide $s0 by $s1. Result is in the multiplication/division registers
 	mfhi	$s3		# copy the remainder from the higher multiplication register to $s3
@@ -2265,7 +2265,7 @@ loop:	addi	$s0, $s0, 1	# add 1 to $s0
 	li	$v0, 1		# 1 must be in $v0 to tell the assembler to print an integer
 	syscall			# print the integer in $a0
 	bnez	$s3, loop	# if $s3 is not 0, jump to loop
-	
+
 	li	$v0, 10
 	syscall			# syscall to end the program
 
@@ -2329,16 +2329,16 @@ e brematura anche, se <expr> # exit if <expr> is false
 
 ```MUMPS
 DOWHILELOOP
-    set val = 0    
+    set val = 0
     do {
         set val = val + 1
         write val,!
     } while ((val # 6) '= 0)
-    
+
     quit
 ```
 
-	
+
 {{out}}
 ```txt
 
@@ -2404,7 +2404,7 @@ do
 
 ## NetRexx
 
-In NetRexx the '''do&ndash;while''' construct is implemented via the <code>until ''expru''</code> conditional clause of the <code>loop</code> instruction.  The expression ''expru'' in the <code>until ''expru''</code> clause is evaluated at the end of the loop, guaranteeing that the loop will be executed at least once. 
+In NetRexx the '''do&ndash;while''' construct is implemented via the <code>until ''expru''</code> conditional clause of the <code>loop</code> instruction.  The expression ''expru'' in the <code>until ''expru''</code> clause is evaluated at the end of the loop, guaranteeing that the loop will be executed at least once.
 
 ```NetRexx
 /* NetRexx */
@@ -2443,7 +2443,7 @@ template doWhile(a, b: untyped): untyped =
   b
   while a:
     b
- 
+
 var val = 1
 doWhile val mod 6 != 0:
   val += 1
@@ -2457,7 +2457,7 @@ Works with oo2c Version 2
 ```oberon2
 
 MODULE LoopDoWhile;
-IMPORT  
+IMPORT
   Out;
 
 PROCEDURE Do();
@@ -2467,7 +2467,7 @@ BEGIN
   i := 0;
   REPEAT
     Out.LongInt(i,0);Out.Ln;
-    INC(i)    
+    INC(i)
   UNTIL (i MOD 6 = 0);
 END Do;
 
@@ -2560,7 +2560,7 @@ i := 0;
 do {
    i += 1;
    i->PrintLine();
-} 
+}
 while (i % 6 <> 0);
 
 ```
@@ -2607,7 +2607,7 @@ END.
 
 ## Oz
 
-Normal  Oz variables are single-assignment only. So we use a "cell", which is a one-element mutable container. 
+Normal  Oz variables are single-assignment only. So we use a "cell", which is a one-element mutable container.
 
 ```oz
 declare
@@ -2813,15 +2813,15 @@ int main(){
 
 ```pli
 
-dcl value fixed bin (31) init (0);     
-do forever;                            
-  value = value + 1;                   
-                                       
-  if mod(value, 6) = 0 then            
-    leave;                             
-                                       
-  put list (value);                    
-end;                                   
+dcl value fixed bin (31) init (0);
+do forever;
+  value = value + 1;
+
+  if mod(value, 6) = 0 then
+    leave;
+
+  put list (value);
+end;
 
 ```
 
@@ -2845,7 +2845,7 @@ or shorter:
              3
              4
              5
-             6     
+             6
 
 ```
 
@@ -2905,7 +2905,7 @@ wloop :-
 
 ## PureBasic
 
-{{works with|PureBasic|4.41}} 
+{{works with|PureBasic|4.41}}
 
 ```PureBasic
 x=0
@@ -3050,7 +3050,7 @@ i: 5
 
 ## REXX
 
-In the '''DO UNTIL''' construct, the expression is evaluated at the end of the '''DO''' loop, 
+In the '''DO UNTIL''' construct, the expression is evaluated at the end of the '''DO''' loop,
 
 even though it is written at the beginning.
 
@@ -3058,11 +3058,11 @@ This insures that the '''DO UNTIL''' loop will execute at least once (as coded b
 
 
 
-In contrast, a '''DO WHILE''' construct, the expression would be evaluated at the beginning of the '''DO''' loop, and 
+In contrast, a '''DO WHILE''' construct, the expression would be evaluated at the beginning of the '''DO''' loop, and
 
-may cause the '''DO WHILE''' loop to not execute at all. 
+may cause the '''DO WHILE''' loop to not execute at all.
 
-This necessitates the use of '''DO UNTIL''' instead of '''DO WHILE'''. 
+This necessitates the use of '''DO UNTIL''' instead of '''DO WHILE'''.
 
 ### version 1
 
@@ -3131,7 +3131,7 @@ The <tt>while</tt> statement modifier normally checks the condition before enter
 ! while
 ! until
 |-
-| 
+|
 ```ruby
 val = 0
 begin
@@ -3140,7 +3140,7 @@ begin
 end while val % 6 != 0
 ```
 
-| 
+|
 ```ruby
 val = 0
 begin
@@ -3157,7 +3157,7 @@ During November 2005, Yukihiro Matsumoto, the creator of Ruby, [http://blade.nag
 ! break unless
 ! break if
 |-
-| 
+|
 ```ruby
 val = 0
 loop do
@@ -3167,7 +3167,7 @@ loop do
 end
 ```
 
-| 
+|
 ```ruby
 val = 0
 loop do
@@ -3327,7 +3327,7 @@ printf("\n")
 {{out}}
 
 ```txt
- 1  2  3  4  5  6 
+ 1  2  3  4  5  6
 ```
 
 
@@ -3386,7 +3386,7 @@ do {
 ```smalltalk
 |val|
 val := 0.
-[ 
+[
   val := val + 1.
   val displayNl.
 ] doWhile: [ (val rem: 6) ~= 0 ]
@@ -3397,7 +3397,7 @@ val := 0.
 ```smalltalk
 |val|
 val := 0.
-[ 
+[
   val := val + 1.
   val displayNl.
 ] doUntil: [ (val rem: 6) == 0 ]
@@ -3411,7 +3411,7 @@ To simulate the do-while construct, we can use the
 ```smalltalk
 |val|
 val := 0.
-[ 
+[
   val := val + 1.
   val displayNl.
   (val rem: 6) ~= 0
@@ -3465,7 +3465,7 @@ pub main | n
 {{out}}
 
 ```txt
-1 2 3 4 5 6 
+1 2 3 4 5 6
 ```
 
 
@@ -3526,7 +3526,7 @@ while 1 {
 
 
 
-###  Mata 
+###  Mata
 
 Mata has a '''[https://www.stata.com/help.cgi?m2_do do/while]''' loop:
 
@@ -3728,7 +3728,7 @@ End Sub
 ```
 {{out}}
 ```txt
- 1  2  3  4  5  6 
+ 1  2  3  4  5  6
 ```
 
 
@@ -3751,10 +3751,10 @@ do {
 ```verbexx
 //  Basic @LOOP until: verb
 
-@LOOP init:{@VAR n = 0} until:(n % 6 == 0) 
+@LOOP init:{@VAR n = 0} until:(n % 6 == 0)
 {
      n++;
-     @SAY n; 
+     @SAY n;
 };
 ```
 

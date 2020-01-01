@@ -657,10 +657,10 @@ The first abundant odd number above one billion is:
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using static System.Console;
 using System.Collections.Generic;
 using System.Linq;

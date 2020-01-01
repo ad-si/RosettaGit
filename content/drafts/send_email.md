@@ -13,7 +13,7 @@ tags = []
 {{task|Networking and Web Interaction}}
 
 ;Task:
-Write a function to send an email. 
+Write a function to send an email.
 
 The function should have parameters for setting From, To and Cc addresses; the Subject, and the message text, and optionally fields for the server name and login details.
 * If appropriate, explain what notifications of problems/success are given.
@@ -79,7 +79,7 @@ sTo   := "whomitmayconcern"
 sServer   := "smtp.gmail.com" ; specify your SMTP server
 nPort     := 465 ; 25
 bTLS      := True ; False
-inputbox, sUsername, Username 
+inputbox, sUsername, Username
 inputbox, sPassword, password
 
 COM_Init()
@@ -118,40 +118,40 @@ COM_Term()
 
 ```bbcbasic
       INSTALL @lib$+"SOCKLIB"
-      
+
       Server$ = "smtp.gmail.com"
       From$   = "sender@somewhere"
       To$     = "recipient@elsewhere"
       CC$     = "another@nowhere"
       Subject$ = "Rosetta Code"
       Message$ = "This is a test of sending email."
-      
+
       PROCsendmail(Server$, From$, To$, CC$, "", Subject$, "", Message$)
       END
-      
+
       DEF PROCsendmail(smtp$,from$,to$,cc$,bcc$,subject$,replyto$,body$)
       LOCAL D%, S%, skt%, reply$
       DIM D% LOCAL 31, S% LOCAL 15
-      
+
       SYS "GetLocalTime", S%
       SYS "GetDateFormat", 0, 0, S%, "ddd, dd MMM yyyy ", D%, 18
       SYS "GetTimeFormat", 0, 0, S%, "HH:mm:ss +0000", D%+17, 15
       D%?31 = 13
-      
+
       PROC_initsockets
       skt% = FN_tcpconnect(smtp$,"mail")
       IF skt% <= 0 skt% = FN_tcpconnect(smtp$,"25")
       IF skt% <= 0 ERROR 100, "Failed to connect to SMTP server"
       IF FN_readlinesocket(skt%, 1000, reply$)
       WHILE FN_readlinesocket(skt%, 10, reply$) > 0 : ENDWHILE
-      
+
       PROCsend(skt%,"HELO "+FN_gethostname)
       PROCmail(skt%,"MAIL FROM: ",from$)
       IF to$<>"" PROClist(skt%,to$)
       IF cc$<>"" PROClist(skt%,cc$)
       IF bcc$<>"" PROClist(skt%,bcc$)
       PROCsend(skt%, "DATA")
-      
+
       IF FN_writelinesocket(skt%, "Date: "+$D%)
       IF FN_writelinesocket(skt%, "From: "+from$)
       IF FN_writelinesocket(skt%, "To: "+to$)
@@ -160,16 +160,16 @@ COM_Term()
       IF replyto$<>"" IF FN_writelinesocket(skt%, "Reply-To: "+replyto$)
       IF FN_writelinesocket(skt%, "MIME-Version: 1.0")
       IF FN_writelinesocket(skt%, "Content-type: text/plain; charset=US-ASCII")
-      
+
       IF FN_writelinesocket(skt%, "")
       IF FN_writelinesocket(skt%, body$)
       IF FN_writelinesocket(skt%, ".")
-      
+
       PROCsend(skt%,"QUIT")
-      
+
       PROC_exitsockets
       ENDPROC
-      
+
       DEF PROClist(skt%,list$)
       LOCAL comma%
       REPEAT
@@ -183,7 +183,7 @@ COM_Term()
         ENDIF
       UNTIL comma% = 0
       ENDPROC
-      
+
       DEF PROCmail(skt%,cmd$,mail$)
       LOCAL I%,J%
       I% = INSTR(mail$,"<")
@@ -194,7 +194,7 @@ COM_Term()
         PROCsend(skt%, cmd$+"<"+mail$+">")
       ENDIF
       ENDPROC
-      
+
       DEF PROCsend(skt%,cmd$)
       LOCAL reply$
       IF FN_writelinesocket(skt%,cmd$) < 0 THEN ERROR 100, "Send failed"
@@ -221,7 +221,7 @@ Sends mail via the GMail SMTP server, requires [https://curl.haxx.se/libcurl/ li
 #define from    "<sender@duniya.com>"
 #define to      "<addressee@gmail.com>"
 #define cc      "<info@example.org>"
- 
+
 static const char *payload_text[] = {
   "Date: Mon, 13 Jun 2018 11:30:00 +0100\r\n",
   "To: " to "\r\n",
@@ -239,42 +239,42 @@ static const char *payload_text[] = {
   "That is the question.\r\n",
   NULL
 };
- 
+
 struct upload_status {
   int lines_read;
 };
- 
+
 static size_t payload_source(void *ptr, size_t size, size_t nmemb, void *userp)
 {
   struct upload_status *upload_ctx = (struct upload_status *)userp;
   const char *data;
- 
+
   if((size == 0) || (nmemb == 0) || ((size*nmemb) < 1)) {
     return 0;
   }
- 
+
   data = payload_text[upload_ctx->lines_read];
- 
+
   if(data) {
     size_t len = strlen(data);
     memcpy(ptr, data, len);
     upload_ctx->lines_read++;
- 
+
     return len;
   }
- 
+
   return 0;
 }
- 
+
 int main(void)
 {
   CURL *curl;
   CURLcode res = CURLE_OK;
   struct curl_slist *recipients = NULL;
   struct upload_status upload_ctx;
- 
+
   upload_ctx.lines_read = 0;
- 
+
   curl = curl_easy_init();
   if(curl) {
 
@@ -284,7 +284,7 @@ int main(void)
     curl_easy_setopt(curl, CURLOPT_URL, "smtp://smtp.gmail.com:465");
 
     curl_easy_setopt(curl, CURLOPT_USE_SSL, (long)CURLUSESSL_ALL);
- 
+
     curl_easy_setopt(curl, CURLOPT_CAINFO, "/path/to/certificate.pem");
 
     curl_easy_setopt(curl, CURLOPT_MAIL_FROM, from);
@@ -308,7 +308,7 @@ int main(void)
 
     curl_easy_cleanup(curl);
   }
- 
+
   return (int)res;
 }
 
@@ -385,11 +385,11 @@ since mail.example.com does not exist.  To get it to work, you'll need to fill i
 
 This version does not do authentication.  However, the login() method can accept a username and password for authentication.  Also, newer versions of POCO provide SecureSMTPClientSession, for doing STARTTLS.
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Mono|1.2}}
 {{works with|Visual C sharp|Visual C#|2003}}
 
-```csharp
+```c#
 
 static void Main(string[] args)
 {
@@ -423,7 +423,7 @@ static void Main(string[] args)
 
 {{libheader|postal}}
 
-[https://github.com/drewr/postal Postal] wraps JavaMail to make sending emails simple and platform independent. 
+[https://github.com/drewr/postal Postal] wraps JavaMail to make sending emails simple and platform independent.
 
 ```clojure
 (require '[postal.core :refer [send-message]])
@@ -544,7 +544,7 @@ This one uses the build-in SMTP vocabulary. Note that 'to' and 'cc' need to be a
 
 
 ```Factor
- 
+
 USING: accessors io.sockets locals namespaces smtp ;
 IN: scratchpad
 :: send-mail ( f t c s b -- )
@@ -616,7 +616,7 @@ program sendmail
     use msoutl
     implicit none
     integer(4) :: app, status, msg
-    
+
     call cominitialize(status)
     call comcreateobject("Outlook.Application", app, status)
     msg = $Application_CreateItem(app, olMailItem, status)
@@ -812,49 +812,49 @@ From [http://www.jedox.com/en/send-email-using-javamail-groovy-script/]  we can 
 
 import javax.mail.*
 import javax.mail.internet.*
- 
+
 public static void simpleMail(String from, String password, String to,
     String subject, String body) throws Exception {
- 
+
     String host = "smtp.gmail.com";
     Properties props = System.getProperties();
     props.put("mail.smtp.starttls.enable",true);
     /* mail.smtp.ssl.trust is needed in script to avoid error "Could not convert socket to TLS"  */
     props.setProperty("mail.smtp.ssl.trust", host);
-    props.put("mail.smtp.auth", true);      
+    props.put("mail.smtp.auth", true);
     props.put("mail.smtp.host", host);
     props.put("mail.smtp.user", from);
     props.put("mail.smtp.password", password);
     props.put("mail.smtp.port", "587");
- 
+
     Session session = Session.getDefaultInstance(props, null);
     MimeMessage message = new MimeMessage(session);
     message.setFrom(new InternetAddress(from));
- 
+
     InternetAddress toAddress = new InternetAddress(to);
- 
+
     message.addRecipient(Message.RecipientType.TO, toAddress);
- 
+
     message.setSubject(subject);
     message.setText(body);
- 
+
     Transport transport = session.getTransport("smtp");
- 
+
     transport.connect(host, from, password);
- 
+
     transport.sendMessage(message, message.getAllRecipients());
     transport.close();
 }
- 
+
 /* Set email address sender */
 String s1 = "example@gmail.com";
- 
+
 /* Set password sender */
 String s2 = "";
- 
+
 /* Set email address sender */
 String s3 = "example@gmail.com"
- 
+
 /*Call function */
 simpleMail(s1, s2 , s3, "TITLE", "TEXT");
 
@@ -938,7 +938,7 @@ public class Mail
 
  /**
   * Mail constructor.
-  * 
+  *
   * @param host Host
   */
  public Mail(String host)
@@ -1072,36 +1072,36 @@ This example leverages Lasso's built in Email_Send method.
 
 ```Lasso
 // with a lot of unneeded params.
-// sends plain text and html in same email 
+// sends plain text and html in same email
 // simple usage is below
 email_send(
-	-host = 'mail.example.com', 
-	-port = 25, 
-	-timeout = 100, 
-	-username = 'user.name', 
-	-password = 'secure_password', 
-	-priority = 'immediate', 
-	-to = 'joe@average.com', 
-	-cc = 'jane@average.com', 
-	-bcc = 'me@too.com', 
-	-from = 'lasso@example.com', 
-	-replyto = 'lassorocks@example.com', 
-	-sender = 'lasso@example.com', 
-	-subject = 'Lasso is awesome', 
-	-body = 'Lasso is awesome, you should try it!', 
-	-html = '<p>Lasso is <b>awesome</b>, you should try it!</p>', 
+	-host = 'mail.example.com',
+	-port = 25,
+	-timeout = 100,
+	-username = 'user.name',
+	-password = 'secure_password',
+	-priority = 'immediate',
+	-to = 'joe@average.com',
+	-cc = 'jane@average.com',
+	-bcc = 'me@too.com',
+	-from = 'lasso@example.com',
+	-replyto = 'lassorocks@example.com',
+	-sender = 'lasso@example.com',
+	-subject = 'Lasso is awesome',
+	-body = 'Lasso is awesome, you should try it!',
+	-html = '<p>Lasso is <b>awesome</b>, you should try it!</p>',
 	-attachments = '/path/to/myFile.txt'
 )
 
 // simple usage
 // sends plan text email
 email_send(
-	-host = 'mail.example.com', 
-	-username = 'user.name', 
-	-password = 'secure_password', 
-	-to = 'joe@average.com', 
-	-from = 'lasso@example.com', 
-	-subject = 'Lasso is awesome', 
+	-host = 'mail.example.com',
+	-username = 'user.name',
+	-password = 'secure_password',
+	-to = 'joe@average.com',
+	-from = 'lasso@example.com',
+	-subject = 'Lasso is awesome',
 	-body = 'Lasso is awesome, you should try it!'
 )
 
@@ -1143,7 +1143,7 @@ end
 
 ```
 
- 
+
 
 ## Lingo
 
@@ -1163,19 +1163,19 @@ Lingo has no built-in support for sending email. But this can be achieved e.g. b
 -- @return {bool} success
 ----------------------------------------
 on sendEmail (fromAddr, toAddr, subject, message, cc, bcc, serverProps)
-  
+
   sx = xtra("Shell").new()
-  
+
   -- senditquiet.exe in folder "bin" relative to current movie
   sx.shell_setcurrentdir(_movie.path&"bin")
-  
+
   -- defaults
   host = "smtp.gmail.com"
   protocol = "ssl"
   port = 587
   user = "johndoe"
   pass = "foobar"
-  
+
   -- if propList 'serverProps' was passed, overwrite defaults
   if ilk(serverProps)=#propList then
     repeat with i = 1 to serverProps.count
@@ -1189,20 +1189,20 @@ on sendEmail (fromAddr, toAddr, subject, message, cc, bcc, serverProps)
   put " -port "&port after cmd
   put " -u "&user after cmd
   put " -p "&pass after cmd
-  
+
   put " -f "&QUOTE&fromAddr&QUOTE after cmd
   put " -t "&QUOTE&toAddr&QUOTE after cmd
   put " -subject "&QUOTE&subject&QUOTE after cmd
   put " -body "&QUOTE&message&QUOTE after cmd
-  
+
   -- optional args
   if not voidP(cc) then put " -cc "&QUOTE&cc&QUOTE after cmd
   if not voidP(bcc) then put " -bcc "&QUOTE&bcc&QUOTE after cmd
 
   put " 1>nul 2>nul & if errorlevel 1 echo ERROR" after cmd
-  
+
   res = sx.shell_cmd(cmd)
-  return not(res contains "ERROR")  
+  return not(res contains "ERROR")
 end
 ```
 
@@ -1248,7 +1248,7 @@ Using [http://w3.impa.br/~diego/software/luasocket/smtp.html LuaSocket's SMTP mo
 local smtp = require("socket.smtp")
 
 -- Connects to server "localhost" and sends a message to users
--- "fulano@example.com",  "beltrano@example.com", 
+-- "fulano@example.com",  "beltrano@example.com",
 -- and "sicrano@example.com".
 -- Note that "fulano" is the primary recipient, "beltrano" receives a
 -- carbon copy and neither of them knows that "sicrano" received a blind
@@ -1272,7 +1272,7 @@ mesgt = {
 
 r, e = smtp.send{
   from = from,
-  rcpt = rcpt, 
+  rcpt = rcpt,
   source = smtp.message(mesgt)
 }
 
@@ -1285,8 +1285,8 @@ r, e = smtp.send{
 Mathematica has the built-in function SendMail, example:
 
 ```Mathematica
-SendMail["From" -> "from@email.com", "To" -> "to@email.com", 
- "Subject" -> "Sending Email from Mathematica", "Body" -> "Hello world!", 
+SendMail["From" -> "from@email.com", "To" -> "to@email.com",
+ "Subject" -> "Sending Email from Mathematica", "Body" -> "Hello world!",
  "Server" -> "smtp.email.com"]
 ```
 
@@ -1319,7 +1319,7 @@ Possible options for EncryptionProtocol are: "SSL","StartTLS" and "TLS". This fu
 * using library smtp.lsp
 
 ```NewLISP
-(module "smtp.lsp") 
+(module "smtp.lsp")
 (SMTP:send-mail "user@asite.com" "somebody@isp.com" "Greetings" "How are you today? - john doe -" "smtp.asite.com" "user" "password")
 ```
 
@@ -1537,7 +1537,7 @@ Obviously, USER/PWD/URL/etc. would all need altering for your details.
 For gmail, make sure you enable https://myaccount.google.com/lesssecureapps
 
 ```Phix
-include builtins\libcurl.e 
+include builtins\libcurl.e
 
 constant USER = "you@gmail.com",
          PWD = "secret",
@@ -1595,7 +1595,7 @@ curl_easy_setopt(curl, CURLOPT_UPLOAD, true)
 res = curl_easy_perform(curl)
 if res!=CURLE_OK then
     printf(2, "curl_easy_perform() failed: %d (%s)\n",{res,curl_easy_strerror(res)})
-end if 
+end if
 curl_slist_free_all(slist_recipients)
 curl_easy_cleanup(curl)
 curl_global_cleanup()
@@ -1638,7 +1638,7 @@ int main(){
    string subject    = "Hello There.";
    string from       = "me@myaddr.ess";
    string msg        = "Hello there! :)";
-   
+
    Protocols.SMTP.Client()->simple_mail(to,subject,from,msg);
 }
 ```
@@ -1663,7 +1663,7 @@ The parameters are splatted with a hashtable:
     SMTPServer = "smtp.gmail.com"
     SMTPPort = "587"
     UseSsl = $true
-    ErrorAction = "SilentlyContinue" 
+    ErrorAction = "SilentlyContinue"
 }
 
 Send-MailMessage @mailMessage
@@ -1685,7 +1685,7 @@ SetMailBody(0, "Hello   " + Chr(10) + "This is a mail !")
 AddMailRecipient(0, "test@yourdomain.com", #PB_Mail_To)
 
 AddMailRecipient(0, "test2@yourdomain.com", #PB_Mail_Cc)
-    
+
 If SendMail(0, "smtp.mail.com")
     MessageRequester("Information", "Mail correctly sent !")
 Else
@@ -1700,7 +1700,7 @@ EndIf
 
 ### Python: POSIX
 
-The function returns a dict of any addresses it could not forward to; 
+The function returns a dict of any addresses it could not forward to;
 other connection problems raise [http://docs.python.org/library/smtplib.html?highlight=smtplib#smtplib.SMTP.sendmail errors].
 
 Tested on Windows, it should work on all [[wp:POSIX|POSIX]] platforms.
@@ -1718,7 +1718,7 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
     header += 'Cc: %s\n' % ','.join(cc_addr_list)
     header += 'Subject: %s\n\n' % subject
     message = header + message
-    
+
     server = smtplib.SMTP(smtpserver)
     server.starttls()
     server.login(login,password)
@@ -1731,12 +1731,12 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
 Example use:
 
 ```python
-sendemail(from_addr    = 'python@RC.net', 
+sendemail(from_addr    = 'python@RC.net',
           to_addr_list = ['RC@gmail.com'],
-          cc_addr_list = ['RC@xx.co.uk'], 
-          subject      = 'Howdy', 
-          message      = 'Howdy from a python function', 
-          login        = 'pythonuser', 
+          cc_addr_list = ['RC@xx.co.uk'],
+          subject      = 'Howdy',
+          message      = 'Howdy from a python function',
+          login        = 'pythonuser',
           password     = 'XXXXX')
 ```
 
@@ -1829,7 +1829,7 @@ Racket has a built-in library for sending e-mails:
 
 ;; and using smtp (and adding more headers here):
 (require net/head net/smtp)
-(smtp-send-message 
+(smtp-send-message
  "192.168.0.1"
  "Sender <sender@somewhere.com>"
  '("Recipient <recipient@elsewhere.com>")
@@ -1856,7 +1856,7 @@ send user@host.dom "My message"
 
 ## REXX
 
-There is a REXX program to send email via REXX,   I'm trying to locate the author to get permission to include it here on Rosetta Code. 
+There is a REXX program to send email via REXX,   I'm trying to locate the author to get permission to include it here on Rosetta Code.
 
 
 

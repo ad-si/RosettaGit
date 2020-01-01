@@ -51,7 +51,7 @@ BEGIN
             INT     y := x;
             INT     z := 1;
             INT     r := 2*x;
-            BIGPAIR e := BIGPAIR( 1, 0 ); 
+            BIGPAIR e := BIGPAIR( 1, 0 );
             BIGPAIR f := BIGPAIR( 0, 1 );
             BIGINT  a := 0;
             BIGINT  b := 0;
@@ -94,7 +94,7 @@ x^2 - 277 * y^2 = 1 for x = 159150073798980475849 and y =   9562401173878027020
 
 {{trans|Sidef}}
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 
@@ -217,7 +217,7 @@ USING: formatting kernel locals math math.functions sequences ;
     0 0 :> ( a! b! )
 
     [ a sq b sq n * - 1 = ] [
-        
+
         r z * y - y!
         n y sq - z / floor z!
         x y + z / floor r!
@@ -280,7 +280,7 @@ Dim As Integer n(0 To 3) = {61, 109, 181, 277}
 For i = 0 To 3 ''n In {61, 109, 181, 277}
     SolvePell(n(i), x, y)
     Print Using "x^2 - ### * y^2 = 1 for x = ##################### and y = #####################"; n(i); x; y
-Next i 
+Next i
 
 ```
 
@@ -654,11 +654,11 @@ end procedure
 
 function SolvePell(integer n)
 integer x = floor(sqrt(n)), y = x, z = 1, r = x*2
-mpz e1 = mpz_init(1), e2 = mpz_init(), 
+mpz e1 = mpz_init(1), e2 = mpz_init(),
     f1 = mpz_init(),  f2 = mpz_init(1),
     t = mpz_init(0),   u = mpz_init(),
     a = mpz_init(1),   b = mpz_init(0)
-    if x*x!=n then 
+    if x*x!=n then
         while mpz_cmp_si(t,1)!=0 do
             y = r*z - y
             z = floor((n-y*y)/z)
@@ -676,7 +676,7 @@ mpz e1 = mpz_init(1), e2 = mpz_init(),
     end if
     return {a, b}
 end function
- 
+
 sequence ns = {4, 61, 109, 181, 277, 8941}
 for i=1 to length(ns) do
     integer n = ns[i]
@@ -958,7 +958,7 @@ fcn solve_pell(n){
    reg t;	// a,b = c,d is a=c; b=d
    do(30_000){  // throttle this in case of screw up
       y,z,r = (r*z - y),  (n - y*y)/z,  (x + y)/z;
- 
+
       t,e2,e1 = e2,  r*e2 + e1,  t;
       t,f2,f1 = f2,  r*f2 + f1,  t;
 

@@ -983,10 +983,10 @@ Stablility:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 (This is a straight-up translation of the Objective-C version.)
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

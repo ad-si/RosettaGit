@@ -15,13 +15,13 @@ This task is about coding a Text Generator using Markov Chain algorithm.
 
 A Markov chain algorithm basically determines the next most probable suffix word for a given prefix.
 
-To do this, a Markov chain program typically breaks an input text (training text) into a series of words, 
-then by sliding along them in some fixed sized window, storing the first N words as a prefix and then 
+To do this, a Markov chain program typically breaks an input text (training text) into a series of words,
+then by sliding along them in some fixed sized window, storing the first N words as a prefix and then
 the N + 1 word as a member of a set to choose from randomly for the suffix.
 
 As an example, take this text with N = 2:
 
-now he is gone she said he is gone for good 
+now he is gone she said he is gone for good
 
 this would build the following table:
 
@@ -58,7 +58,7 @@ gone she said he is gone she said
 
 ```
 
-The bigger the training text, the better the results. 
+The bigger the training text, the better the results.
 You can try this text here: [http://paulo-jorente.de/text/alice_oz.txt alice_oz.txt]
 
 Create a program that is able to handle keys of any size (I guess keys smaller than 2 words would be
@@ -136,7 +136,7 @@ private:
             pos = fileBuffer.find_first_of( 32, next );
             w1 = fileBuffer.substr( next, pos - next );
             if( w1.size() < 1 ) break;
-            if( std::find( dictionary[key].begin(), dictionary[key].end(), w1 ) == dictionary[key].end() ) 
+            if( std::find( dictionary[key].begin(), dictionary[key].end(), w1 ) == dictionary[key].end() )
                 dictionary[key].push_back( w1 );
             key = key.substr( key.find_first_of( 32 ) + 1 ) + " " + w1;
         }
@@ -157,28 +157,28 @@ int main( int argc, char* argv[] ) {
 
 ```txt
 
-March Hare had just upset the milk-jug into his plate. Alice did not dare to 
-disobey, though she felt sure it would all come wrong, and she went on. Her 
-listeners were perfectly quiet till she got to the part about her repeating 
-'You are old, Father William,' said the Caterpillar. 'Well, I've tried to say 
-How doth the little crocodile Improve his shining tail, And pour the waters of 
-the Nile On every golden scale! 'How cheerfully he seems to grin, How neatly 
-spread his claws, And welcome little fishes in With gently smiling jaws!' 
-'I'm sure those are not the right words,' said poor Alice, and her eyes filled 
-with tears again as she went slowly after it: 'I never was so small as this before, 
-never! And I declare it's too bad, that it is!' As she said this she looked 
-down into its face in some alarm. This time there were three gardeners at it, 
-busily painting them red. Alice thought this a very difficult game indeed. 
-The players all played at once without waiting for the end of me. But the 
-tinsmith happened to come along, and he made me a body of tin, fastening my 
+March Hare had just upset the milk-jug into his plate. Alice did not dare to
+disobey, though she felt sure it would all come wrong, and she went on. Her
+listeners were perfectly quiet till she got to the part about her repeating
+'You are old, Father William,' said the Caterpillar. 'Well, I've tried to say
+How doth the little crocodile Improve his shining tail, And pour the waters of
+the Nile On every golden scale! 'How cheerfully he seems to grin, How neatly
+spread his claws, And welcome little fishes in With gently smiling jaws!'
+'I'm sure those are not the right words,' said poor Alice, and her eyes filled
+with tears again as she went slowly after it: 'I never was so small as this before,
+never! And I declare it's too bad, that it is!' As she said this she looked
+down into its face in some alarm. This time there were three gardeners at it,
+busily painting them red. Alice thought this a very difficult game indeed.
+The players all played at once without waiting for the end of me. But the
+tinsmith happened to come along, and he made me a body of tin, fastening my
 tin arms and
 
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -615,7 +615,7 @@ setstats=:dyad define
   pairs=. (prefixes i. plen{."1 ngrams),. suffixes i. plen}."1 ngrams
   stats=: (#/.~pairs) (<"1~.pairs)} (prefixes ,&# suffixes)$0
   weights=: +/\"1 stats
-  totals=: (+/"1 stats),0 
+  totals=: (+/"1 stats),0
   i.0 0
 )
 
@@ -1077,7 +1077,7 @@ string suffix
         end if
         setd(key,append(data,suffix),dict)
     end for
-    integer start = rand(length(words)-n)       
+    integer start = rand(length(words)-n)
     key = words[start..start+n-1]
     res = key
     for i=1 to m do
@@ -1100,9 +1100,9 @@ from the alice_oz.txt file:
 ```txt
 
 "serve me a heart, said the Gryphon. \'Then, you know,\' Alice gently remarked; \'they\'d have been ill.\' \'So they were,\' said the
-Lion. One would almost suspect you had been running too long. They found the way to send me back to the imprisoned Lion; but every day 
-she came upon a green velvet counterpane. There was a long sleep you\'ve had!\' \'Oh, I\'ve had such a capital one for catching mice-oh, 
-I beg your pardon!\' cried Alice hastily, afraid that she was shrinking rapidly; so she felt lonely among all these strange people. Her 
+Lion. One would almost suspect you had been running too long. They found the way to send me back to the imprisoned Lion; but every day
+she came upon a green velvet counterpane. There was a long sleep you\'ve had!\' \'Oh, I\'ve had such a capital one for catching mice-oh,
+I beg your pardon!\' cried Alice hastily, afraid that she was shrinking rapidly; so she felt lonely among all these strange people. Her
 tears seemed to Alice a good dinner."
 
 ```
@@ -1137,7 +1137,7 @@ def makerule(data, context):
     rule = {}
     words = data.split(' ')
     index = context
-    
+
     for word in words[index:]:
         key = ' '.join(words[index-context:index])
         if key in rule:
@@ -1149,11 +1149,11 @@ def makerule(data, context):
     return rule
 
 
-def makestring(rule, length):    
+def makestring(rule, length):
     '''Use a given rule to make a string.'''
     oldwords = random.choice(list(rule.keys())).split(' ') #random starting words
     string = ' '.join(oldwords) + ' '
-    
+
     for i in range(length):
         try:
             key = ' '.join(oldwords)
@@ -1633,35 +1633,35 @@ func makeRule(input: String, keyLength: Int) -> [String: [String]] {
   let words = input.components(separatedBy: " ")
   var rules = [String: [String]]()
   var i = keyLength
-  
+
   for word in words[i...] {
     let key = words[i-keyLength..<i].joined(separator: " ")
-    
+
     rules[key, default: []].append(word)
-    
+
     i += 1
   }
-  
+
   return rules
 }
 
 func makeString(rule: [String: [String]], length: Int) -> String {
   var oldWords = rule.keys.randomElement()!.components(separatedBy: " ")
   var string = oldWords.joined(separator: " ") + " "
-  
+
   for _ in 0..<length {
     let key = oldWords.joined(separator: " ")
     guard let newWord = rule[key]?.randomElement() else { return string }
-    
+
     string += newWord + " "
-    
+
     for ii in 0..<oldWords.count {
       oldWords[ii] = oldWords[(ii + 1) % oldWords.count]
     }
-    
+
     oldWords[oldWords.index(before: oldWords.endIndex)] = newWord
   }
-  
+
   return string
 }
 

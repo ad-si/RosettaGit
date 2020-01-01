@@ -784,10 +784,10 @@ f(10) = 0
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 

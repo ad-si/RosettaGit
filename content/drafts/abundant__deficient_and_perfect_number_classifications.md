@@ -659,10 +659,10 @@ There are 15043 deficient, 4 perfect, 4953 abundant numbers between 1 and 20000.
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 

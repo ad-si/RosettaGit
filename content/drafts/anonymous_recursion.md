@@ -441,10 +441,10 @@ double fib(double n)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 The inner recursive function (delegate/lambda) has to be named.
 
-```csharp
+```c#
 
 static int Fib(int n)
 {

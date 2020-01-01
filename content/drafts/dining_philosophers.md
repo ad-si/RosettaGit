@@ -1355,7 +1355,7 @@ Dinner is over
 
 </div>
 
-=={{header|C sharp|C#}}==
+## C#
 
 ```C sharp
 

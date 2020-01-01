@@ -527,7 +527,7 @@ Without first and last letter: remier Leagu !
 </PRE>
 
 
-## C sharp
+## C#
 
 
 ```C sharp

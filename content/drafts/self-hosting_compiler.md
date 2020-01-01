@@ -26,7 +26,7 @@ The Algol 68 to C compiler available here: [http://www.poenikatu.co.uk/src/] or 
 BaCon is a BASIC to C converter and it is implemented in itself. Also it can compile itself since version 0.110. Source code can be downloaded from [https://basic-converter.org/ here].
 
 
-## C sharp
+## C#
 
 The official (Microsoft) C# compiler became self-hosting in 2011 and can be found (along with the self-hosting VB.NET compiler) at [https://github.com/dotnet/roslyn].
 
@@ -61,7 +61,7 @@ Go hang a salami imalas a gnah oG
 
 ## Kotlin
 
-The Kotlin compiler is partly self-hosted (the rest is written in Java) and the current version (1.1.2), released in April 2017, is the culmination of about 7 years of development by a large team of people at JetBrains and open source contributors. 
+The Kotlin compiler is partly self-hosted (the rest is written in Java) and the current version (1.1.2), released in April 2017, is the culmination of about 7 years of development by a large team of people at JetBrains and open source contributors.
 
 Any one who is interested can view the code for the compiler at https://github.com/jetbrains/kotlin.
 
@@ -134,7 +134,7 @@ The official (Microsoft) VB.NET compiler became self-hosting in 2011 and can be 
 
 ## ZED
 
-Source -> 
+Source ->
 Compiled -> http://ideone.com/UHMQco
 
 ```zed
@@ -176,8 +176,8 @@ comment:
 (add-between!) "item" "list" "collect"
 comment:
 #true
-(add-between!) "item" 
-               (002) "cdr" "list" 
+(add-between!) "item"
+               (002) "cdr" "list"
                (003) "cons" "item" (003) "cons" (002) "car" "list" "collect"
 
 (add-between) "item" "list"
@@ -193,25 +193,25 @@ comment:
 (alpha)
 comment:
 #true
-(write-all) (rd) nil 
-                 "append" 
-                 (rd) nil "append" (newlines) 
-                                    (by-four) 
-                                     (function-sort) 
-                                      (sentences) 
-                                       (leading-newline) 
-                                        (space-newline) 
-                                         (tab-replace) 
+(write-all) (rd) nil
+                 "append"
+                 (rd) nil "append" (newlines)
+                                    (by-four)
+                                     (function-sort)
+                                      (sentences)
+                                       (leading-newline)
+                                        (space-newline)
+                                         (tab-replace)
                                           (newline-space-tab-repeats)
-                                           (newline-space) 
-                                            (filter) not-return? 
+                                           (newline-space)
+                                            (filter) not-return?
                                                      (replace-trailing-white-space) (read-all)
 
 (application?) "expression"
 comment:
 #true
-(004) "and" (002) "not" (002) "null?" "expression" 
-            (002) "pair?" (002) "car" "expression" 
+(004) "and" (002) "not" (002) "null?" "expression"
+            (002) "pair?" (002) "car" "expression"
             (002) "null?" (002) "cdar" "expression"
 
 (arity) "arity-hash" "function"
@@ -237,11 +237,11 @@ comment:
 (by-four!) "sentences" "collect"
 comment:
 #true
-(by-four!) (002) "cddddr" "sentences" 
-           (003) "cons" (005) "list" 
+(by-four!) (002) "cddddr" "sentences"
+           (003) "cons" (005) "list"
                               (002) "car" "sentences"
-                              (002) "cadr" "sentences" 
-                              (002) "caddr" "sentences" 
+                              (002) "cadr" "sentences"
+                              (002) "caddr" "sentences"
                               (002) "cadddr" "sentences"
                         "collect"
 
@@ -258,10 +258,10 @@ comment:
 (by-three!) "sentences" "collect"
 comment:
 #true
-(by-three!) (002) "cdddr" "sentences" 
-            (003) "cons" (004) "list" 
+(by-three!) (002) "cdddr" "sentences"
+            (003) "cons" (004) "list"
                                (002) "car" "sentences"
-                               (002) "cadr" "sentences" 
+                               (002) "cadr" "sentences"
                                (002) "caddr" "sentences"
                          "collect"
 
@@ -338,14 +338,14 @@ comment:
 (combine-clauses) "clause1" "clause2"
 comment:
 #true
-(003) "cons" (clause-name-agree) "clause1" "clause2" 
-             (003) "cons" (clause-arguments-agree) "clause1" "clause2" 
+(003) "cons" (clause-name-agree) "clause1" "clause2"
+             (003) "cons" (clause-arguments-agree) "clause1" "clause2"
                           (003) "append" (clause-body) "clause1" (clause-body) "clause2"
 
 (combine-head-clauses) "program"
 comment:
 #true
-(003) "cons" (combine-clauses) (002) "car" "program" (002) "cadr" "program" 
+(003) "cons" (combine-clauses) (002) "car" "program" (002) "cadr" "program"
              (002) "cddr" "program"
 
 (combine-program-clauses) "program"
@@ -358,15 +358,15 @@ comment:
 #true
 (comp!a) (combine-program-clauses)
           (by-three)
-           (read-sentences) 
-            (discard-comments) 
-             (function-sort) 
-              (sentences) 
-               (leading-newline) 
+           (read-sentences)
+            (discard-comments)
+             (function-sort)
+              (sentences)
+               (leading-newline)
                 (space-newline)
                  (tab-replace)
-                  (newline-space-tab-repeats) 
-                   (newline-space) 
+                  (newline-space-tab-repeats)
+                   (newline-space)
                     (filter) not-return? (replace-trailing-white-space) (read-all)
 
 (comp!a) "combined"
@@ -435,9 +435,9 @@ comment:
 (discard-comments!) "program" "collect"
 comment:
 #true
-(discard-comments!) (002) "cddddr" "program" 
-                    (003) "cons" (002) "cadddr" "program" 
-                                 (003) "cons" (002) "caddr" "program" 
+(discard-comments!) (002) "cddddr" "program"
+                    (003) "cons" (002) "cadddr" "program"
+                                 (003) "cons" (002) "caddr" "program"
                                               (003) "cons" (002) "car" "program" "collect"
 
 (discard-comments) "program"
@@ -583,18 +583,18 @@ comment:
 (functionize) "clause" "arity-hash"
 comment:
 #true
-(004) "list" 
-      "'define" 
-      (003) "cons" (clause-name) "clause" (clause-arguments) "clause" 
-      (003) "cons" "'cond" (003) "append" (condefy) (map-with) schemefy 
+(004) "list"
+      "'define"
+      (003) "cons" (clause-name) "clause" (clause-arguments) "clause"
+      (003) "cons" "'cond" (003) "append" (condefy) (map-with) schemefy
                                                                (clause-body) "clause"
-                                                               "arity-hash" 
+                                                               "arity-hash"
                                           (002) "list" (003) "list" "'else" err
 
 (gather-count?!) "candidate"
 comment:
 #true
-(008) "and" 
+(008) "and"
       (003) "=" 6 (002) "length" "candidate"
       (003) "eqv?" #Z (002) "car" "candidate"
       (003) "eqv?" #E (002) "cadr" "candidate"
@@ -731,7 +731,7 @@ comment:
 #true
 (map-with!) "function"
             (002) "cdr" "list"
-            "extra" 
+            "extra"
             (003) "cons" (003) "function" (002) "car" "list" "extra"
                          "collect"
 
@@ -1089,7 +1089,7 @@ comment:
 (read-sentence!b) "list" "output-string"
 comment:
 #true
-(003) "begin" (003) "display" "list" "output-string" 
+(003) "begin" (003) "display" "list" "output-string"
               (read-sentence!ba) "output-string" (002) "get-output-string" "output-string"
 
 (read-sentence!ba) "output-string" "get-output-string"
@@ -1419,7 +1419,7 @@ zkl is written in zkl. The compiler is big. The VM has a compiled (C) image of t
 
 ```txt
 
-$ zkl --package Src/Compiler/compiler.zkl  
+$ zkl --package Src/Compiler/compiler.zkl
 Compiling asm
 Compiling parser
 Compiling tokenizer
@@ -1432,7 +1432,7 @@ Wad header
   Number of objects: 4
   Data size:         106,072 bytes
   Run list:          5444
-  Flags:             
+  Flags:
   Class Name                                         Offset    Size  Run
   ----- ----                                         ------    ----  ---
   Compiler.Compiler                                       0  28,930   5

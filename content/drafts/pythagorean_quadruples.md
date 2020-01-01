@@ -520,10 +520,10 @@ The values of d <= 2200 which can't be represented:
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace PythagoreanQuadruples {

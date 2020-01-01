@@ -254,10 +254,10 @@ int main() {
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Kotlin}}
 
-```csharp
+```c#
 using System;
 
 namespace FeigenbaumConstant {

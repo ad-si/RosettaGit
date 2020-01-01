@@ -1506,9 +1506,9 @@ int main(int argc, char **argv) //not sure if argv counts as input stream... cer
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1523,7 +1523,7 @@ class Program
 
 Another way (not recommended since it does not work with more than two numbers):
 
-```csharp
+```c#
 using System;
 
 class Program

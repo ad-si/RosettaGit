@@ -850,10 +850,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 '''The challange'''
 
-```csharp
+```c#
 using System;
 
 namespace Tests_With_Framework_4

@@ -32,15 +32,15 @@ Create a program that takes an [[wp:Reverse Polish notation|RPN]] representation
 :{| class="wikitable"
 
 ! operator !! [[wp:Order_of_operations|precedence]] !! [[wp:Operator_associativity|associativity]] !! operation
-|- || align="center" 
+|- || align="center"
 |                   <big><big> ^ </big></big>  ||  4  ||  right  ||  exponentiation
-|- || align="center" 
+|- || align="center"
 |                   <big><big> * </big></big>  ||  3  ||   left  ||  multiplication
-|- || align="center" 
+|- || align="center"
 |                   <big><big> / </big></big>  ||  3  ||   left  ||     division
-|- || align="center" 
+|- || align="center"
 |                   <big><big> + </big></big>  ||  2  ||   left  ||     addition
-|- || align="center" 
+|- || align="center"
 |                   <big><big> - </big></big>  ||  2  ||   left  ||   subtraction
 |}
 
@@ -85,7 +85,7 @@ Using the solution of the task [[stack]]:
             Append (Result.Expression, '(');
             Append (Result.Expression, Left.Expression);
             Append (Result.Expression, ')');
-         else  
+         else
             Append (Result.Expression, Left.Expression);
          end if;
          Append (Result.Expression, ' ');
@@ -95,7 +95,7 @@ Using the solution of the task [[stack]]:
             Append (Result.Expression, '(');
             Append (Result.Expression, Right.Expression);
             Append (Result.Expression, ')');
-         else  
+         else
             Append (Result.Expression, Right.Expression);
          end if;
          Push (Result, Arguments);
@@ -168,9 +168,9 @@ should produce the following output
 
 ```txt
 
-3 4 2 * 1 5 - 2 3 ^ ^ / + = 
+3 4 2 * 1 5 - 2 3 ^ ^ / + =
 3 + 4 * 2 / (1 - 5) ^ (2 ^ 3)
-1 2 + 3 4 + ^ 5 6 + ^ = 
+1 2 + 3 4 + ^ 5 6 + ^ =
 ((1 + 2) ^ (3 + 4)) ^ (5 + 6)
 
 ```
@@ -255,7 +255,7 @@ BEGIN
         skip spaces;
 
         print( ( ( "parsing "
-                 + operand name 
+                 + operand name
                  + " from: "
                  + IF at end THEN "" ELSE rpn[ LWB rpn : rpn pos ] FI
                  )
@@ -374,7 +374,7 @@ BEGIN
             CASE left OF operand
             IN ( REF NODE o ): "Error: String expected: (" + TOSTRING o + ")"
             ,  ( STRING   s ): s
-            ESAC            
+            ESAC
         ELSE
             # general operand #
             ( possible parenthesis( op OF operand, left(    operand ) )
@@ -482,7 +482,7 @@ main: (
 
 Slavishly (mostly) follows TCL example, but instead of lists it uses strings. Except for the stack, which uses an array, of course.
 
-The kludge is prepending the precedence on the front of the expressions stored on the stack. This shows up when the tail() function is used, and when 'x' is prepended as a placeholder when adding parenthesis. 
+The kludge is prepending the precedence on the front of the expressions stored on the stack. This shows up when the tail() function is used, and when 'x' is prepended as a placeholder when adding parenthesis.
 
 
 ```awk
@@ -593,47 +593,47 @@ function stackToStr(    s, i, t, p) {
 
 
 Output:
- 
+
  Postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / +
-     3 -> {9 3} 
-     4 -> {9 3} {9 4} 
-     2 -> {9 3} {9 4} {9 2} 
-     * -> {9 3} {3 {4 * 2}} 
-     1 -> {9 3} {3 {4 * 2}} {9 1} 
-     5 -> {9 3} {3 {4 * 2}} {9 1} {9 5} 
-     - -> {9 3} {3 {4 * 2}} {2 {1 - 5}} 
-     2 -> {9 3} {3 {4 * 2}} {2 {1 - 5}} {9 2} 
-     3 -> {9 3} {3 {4 * 2}} {2 {1 - 5}} {9 2} {9 3} 
-     ^ -> {9 3} {3 {4 * 2}} {2 {1 - 5}} {4 {2 ^ 3}} 
-     ^ -> {9 3} {3 {4 * 2}} {4 {(1 - 5) ^ 2 ^ 3}} 
-     / -> {9 3} {3 {4 * 2 / (1 - 5) ^ 2 ^ 3}} 
-     + -> {2 {3 + 4 * 2 / (1 - 5) ^ 2 ^ 3}} 
+     3 -> {9 3}
+     4 -> {9 3} {9 4}
+     2 -> {9 3} {9 4} {9 2}
+     * -> {9 3} {3 {4 * 2}}
+     1 -> {9 3} {3 {4 * 2}} {9 1}
+     5 -> {9 3} {3 {4 * 2}} {9 1} {9 5}
+     - -> {9 3} {3 {4 * 2}} {2 {1 - 5}}
+     2 -> {9 3} {3 {4 * 2}} {2 {1 - 5}} {9 2}
+     3 -> {9 3} {3 {4 * 2}} {2 {1 - 5}} {9 2} {9 3}
+     ^ -> {9 3} {3 {4 * 2}} {2 {1 - 5}} {4 {2 ^ 3}}
+     ^ -> {9 3} {3 {4 * 2}} {4 {(1 - 5) ^ 2 ^ 3}}
+     / -> {9 3} {3 {4 * 2 / (1 - 5) ^ 2 ^ 3}}
+     + -> {2 {3 + 4 * 2 / (1 - 5) ^ 2 ^ 3}}
  Infix: 3 + 4 * 2 / (1 - 5) ^ 2 ^ 3
-  
+
  Postfix: 1 2 + 3 4 + ^ 5 6 + ^
-     1 -> {9 1} 
-     2 -> {9 1} {9 2} 
-     + -> {2 {1 + 2}} 
-     3 -> {2 {1 + 2}} {9 3} 
-     4 -> {2 {1 + 2}} {9 3} {9 4} 
-     + -> {2 {1 + 2}} {2 {3 + 4}} 
-     ^ -> {4 {(1 + 2) ^ (3 + 4)}} 
-     5 -> {4 {(1 + 2) ^ (3 + 4)}} {9 5} 
-     6 -> {4 {(1 + 2) ^ (3 + 4)}} {9 5} {9 6} 
-     + -> {4 {(1 + 2) ^ (3 + 4)}} {2 {5 + 6}} 
-     ^ -> {4 {((1 + 2) ^ (3 + 4)) ^ (5 + 6)}} 
+     1 -> {9 1}
+     2 -> {9 1} {9 2}
+     + -> {2 {1 + 2}}
+     3 -> {2 {1 + 2}} {9 3}
+     4 -> {2 {1 + 2}} {9 3} {9 4}
+     + -> {2 {1 + 2}} {2 {3 + 4}}
+     ^ -> {4 {(1 + 2) ^ (3 + 4)}}
+     5 -> {4 {(1 + 2) ^ (3 + 4)}} {9 5}
+     6 -> {4 {(1 + 2) ^ (3 + 4)}} {9 5} {9 6}
+     + -> {4 {(1 + 2) ^ (3 + 4)}} {2 {5 + 6}}
+     ^ -> {4 {((1 + 2) ^ (3 + 4)) ^ (5 + 6)}}
  Infix: ((1 + 2) ^ (3 + 4)) ^ (5 + 6)
- 
+
  Postfix: moon stars mud + * fire soup * ^
-    moon -> {9 moon} 
-    stars -> {9 moon} {9 stars} 
-    mud -> {9 moon} {9 stars} {9 mud} 
-    + -> {9 moon} {2 {stars + mud}} 
-    * -> {3 {moon * (stars + mud)}} 
-    fire -> {3 {moon * (stars + mud)}} {9 fire} 
-    soup -> {3 {moon * (stars + mud)}} {9 fire} {9 soup} 
-    * -> {3 {moon * (stars + mud)}} {3 {fire * soup}} 
-    ^ -> {4 {(moon * (stars + mud)) ^ (fire * soup)}} 
+    moon -> {9 moon}
+    stars -> {9 moon} {9 stars}
+    mud -> {9 moon} {9 stars} {9 mud}
+    + -> {9 moon} {2 {stars + mud}}
+    * -> {3 {moon * (stars + mud)}}
+    fire -> {3 {moon * (stars + mud)}} {9 fire}
+    soup -> {3 {moon * (stars + mud)}} {9 fire} {9 soup}
+    * -> {3 {moon * (stars + mud)}} {3 {fire * soup}}
+    ^ -> {4 {(moon * (stars + mud)) ^ (fire * soup)}}
  Infix: (moon * (stars + mud)) ^ (fire * soup)
 
 
@@ -748,9 +748,9 @@ void inorder(tree t){
 		}
 		else
 			inorder(t->left);
-	
+
 		printf(" %s ",t->data);
-	
+
 		if(t->right!=NULL && isOperator(t->right->data[0])==1 && (precedenceCheck(t->data[0],t->right->data[0])==1 || (precedenceCheck(t->data[0],t->right->data[0])==0 && t->data[0]!='^'))){
 			printf("(");
 			inorder(t->right);
@@ -771,12 +771,12 @@ char* getNextString(){
 
 tree buildTree(char* obj,char* trace){
 	tree t = (tree)malloc(sizeof(node));
-	
+
 	strcpy(t->data,obj);
-	
+
 	t->right = (isOperator(obj[0])==1)?buildTree(getNextString(),trace):NULL;
 	t->left = (isOperator(obj[0])==1)?buildTree(getNextString(),trace):NULL;
-	
+
 	if(trace!=NULL){
 			printf("\n");
 			inorder(t);
@@ -787,10 +787,10 @@ tree buildTree(char* obj,char* trace){
 
 int checkRPN(){
 	int i, operSum = 0, numberSum = 0;
-	
+
 	if(isOperator(components[counter][0])==0)
 		return 0;
-	
+
 	for(i=0;i<=counter;i++)
 		(isOperator(components[i][0])==1)?operSum++:numberSum++;
 
@@ -800,17 +800,17 @@ int checkRPN(){
 void buildStack(char* str){
 	int i;
 	char* token;
-	
+
 	for(i=0;str[i]!=00;i++)
 		if(str[i]==' ')
 			counter++;
-		
+
 	components = (char**)malloc((counter + 1)*sizeof(char*));
-	
+
 	token = strtok(str," ");
-	
+
 	i = 0;
-	
+
 	while(token!=NULL){
 		components[i] = (char*)malloc(strlen(token)*sizeof(char));
 		strcpy(components[i],token);
@@ -822,23 +822,23 @@ void buildStack(char* str){
 int main(int argC,char* argV[]){
 	int i;
 	tree t;
-	
+
 	if(argC==1)
 		printf("Usage : %s <RPN expression enclosed by quotes> <optional parameter to trace the build process>",argV[0]);
 	else{
 		buildStack(argV[1]);
-		
+
 		if(checkRPN()==0){
 			printf("\nInvalid RPN !");
 			return 0;
 		}
-		
+
 		t = buildTree(getNextString(),argV[2]);
-		
+
 		printf("\nFinal infix expression : ");
 		inorder(t);
 	}
-	
+
 	return 0;
 }
 
@@ -893,7 +893,7 @@ Final infix expression : (( 1  +  2 ) ^ ( 3  +  4 )) ^ ( 5  +  6 )
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1042,15 +1042,15 @@ Very primitive implementation, doesn't use any parsing libraries which would sho
 #include <string>
 #include <map>
 #include <set>
- 
+
 using namespace std;
- 
+
 struct Entry_
 {
 	string expr_;
 	string op_;
 };
- 
+
 bool PrecedenceLess(const string& lhs, const string& rhs, bool assoc)
 {
 	static const map<string, int> KNOWN({ { "+", 1 }, { "-", 1 }, { "*", 2 }, { "/", 2 }, { "^", 3 } });
@@ -1062,7 +1062,7 @@ void Parenthesize(Entry_* old, const string& token, bool assoc)
 	if (!old->op_.empty() && PrecedenceLess(old->op_, token, assoc))
 		old->expr_ = '(' + old->expr_ + ')';
 }
- 
+
 void AddToken(stack<Entry_>* stack, const string& token)
 {
 	if (token.find_first_of("0123456789") != string::npos)
@@ -1080,8 +1080,8 @@ void AddToken(stack<Entry_>* stack, const string& token)
 		stack->top().op_ = token;
 	}
 }
- 
- 
+
+
 string ToInfix(const string& src)
 {
 	stack<Entry_> stack;
@@ -1100,7 +1100,7 @@ string ToInfix(const string& src)
 		cout<<"Incomplete expression";
 	return stack.top().expr_;
 }
- 
+
 int main(void)
 {
 	try
@@ -1162,25 +1162,25 @@ Tested on ABCL.
       (if (assoc (char tok 0) OPERATORS) ; operator?
           (push (make-node :opr (char tok 0) :infix (infix (char tok 0) (pop stack) (pop stack))) stack)
           (push tok stack))
-      
+
       ;; print stack at each token
       (format t "~3,A" tok)
       (dotimes (i (length stack)) (format t "~8,T[~D] ~A~%" i (nth i stack))))
-    
+
     ;; print final infix expression
     (if (= (length stack) 1)
-        (format nil "~A" (node-infix (first stack))) 
+        (format nil "~A" (node-infix (first stack)))
         (format nil "syntax error in ~A" expr))))
 
 ;;; (char,node,node)->string
 (defun infix (operator rightn leftn)
-  
+
   ;; (char,node[,boolean]->string
   (defun string-node (operator anode &optional (left-node-p nil))
     (if (stringp anode) anode
         (if (higher-p operator (node-opr anode) left-node-p)
             (format nil "( ~A )" (node-infix anode)) (node-infix anode))))
-  
+
   (concatenate 'string
                (string-node operator leftn t)
                (format nil " ~A " operator)
@@ -1543,7 +1543,7 @@ For convenience, modularity, reusability, and the fun of it,  we split the task 
 (define (^ a b ) (expt a b)) ;; add this not-native function
 (define-syntax-rule (r-assoc? op) (= op  "^"))
 (define-syntax-rule (l-assoc? op) (not ( = op "^" )))
-(define PRECEDENCES (list->hash 
+(define PRECEDENCES (list->hash
 	'(("+" . 2) ("-" . 2) ("*" . 3) ("/" . 3) ("//" . 3) ("^" . 4))
 	(make-hash)))
 
@@ -1554,7 +1554,7 @@ For convenience, modularity, reusability, and the fun of it,  we split the task 
 	(if (procedure? token)
 		(let [(op2 (pop S)) (op1 (pop S))]
 			(unless (and op1 op2)   (error "cannot translate expression" rpn))
-	    	(push S (list op1 token op2)) 
+	    	(push S (list op1 token op2))
 	    	)
 	    (push S token ))
 	(writeln 'token (string token) 'stack (stack->list S)))
@@ -1562,7 +1562,7 @@ For convenience, modularity, reusability, and the fun of it,  we split the task 
 		(pop S) ;; return (top S)
 		(unless (stack-empty? S) (error "ill-formed rpn" rpn)))
 	)
-	
+
 ;; a node  tree is (left op right) or a  number
 (define-syntax-id _.left (first _)) ; mynode.left expands to (first mynode)
 (define-syntax-id _.right (third _))
@@ -1577,7 +1577,7 @@ For convenience, modularity, reusability, and the fun of it,  we split the task 
 		 	(r-assoc? node.op)
 		 	(= (precedence node.left) (precedence node))) #t]
 	[else #f]))
-	
+
 (define (right-par? node)
 	(cond
 	[(number? node.right) #f]
@@ -1586,12 +1586,12 @@ For convenience, modularity, reusability, and the fun of it,  we split the task 
 		 	(l-assoc? node.op)
 		 	(= (precedence node.right) (precedence node))) #t]
 	[else #f]))
-	
-;; infix tree -> char string 
+
+;; infix tree -> char string
 (define (infix->string node)
 	(cond
 	[(number? node) (string node)]
-	[else (let 
+	[else (let
 		[(lhs (infix->string node.left))
 		(rhs (infix->string node.right))]
 		(when (left-par? node) (set! lhs (string-append "(" lhs ")")))
@@ -1605,39 +1605,39 @@ For convenience, modularity, reusability, and the fun of it,  we split the task 
 ```txt
 
 (infix->string (rpn->infix #(3 4 2 * 1 5 - 2 3 ^ ^ / +)))
-token     3     stack     (3)    
-token     4     stack     (3 4)    
-token     2     stack     (3 4 2)    
-token     *     stack     (3 (4 #* 2))    
-token     1     stack     (3 (4 #* 2) 1)    
-token     5     stack     (3 (4 #* 2) 1 5)    
-token     -     stack     (3 (4 #* 2) (1 #- 5))    
-token     2     stack     (3 (4 #* 2) (1 #- 5) 2)    
-token     3     stack     (3 (4 #* 2) (1 #- 5) 2 3)    
-token     ^     stack     (3 (4 #* 2) (1 #- 5) (2 ^ 3))    
-token     ^     stack     (3 (4 #* 2) ((1 #- 5) ^ (2 ^ 3)))    
-token     /     stack     (3 ((4 #* 2) #/ ((1 #- 5) ^ (2 ^ 3))))    
-token     +     stack     ((3 #+ ((4 #* 2) #/ ((1 #- 5) ^ (2 ^ 3)))))    
+token     3     stack     (3)
+token     4     stack     (3 4)
+token     2     stack     (3 4 2)
+token     *     stack     (3 (4 #* 2))
+token     1     stack     (3 (4 #* 2) 1)
+token     5     stack     (3 (4 #* 2) 1 5)
+token     -     stack     (3 (4 #* 2) (1 #- 5))
+token     2     stack     (3 (4 #* 2) (1 #- 5) 2)
+token     3     stack     (3 (4 #* 2) (1 #- 5) 2 3)
+token     ^     stack     (3 (4 #* 2) (1 #- 5) (2 ^ 3))
+token     ^     stack     (3 (4 #* 2) ((1 #- 5) ^ (2 ^ 3)))
+token     /     stack     (3 ((4 #* 2) #/ ((1 #- 5) ^ (2 ^ 3))))
+token     +     stack     ((3 #+ ((4 #* 2) #/ ((1 #- 5) ^ (2 ^ 3)))))
     → 3 + 4 * 2 / (1 - 5) ^ 2 ^ 3
 
 (infix->string (rpn->infix #(1 2 + 3 4 + ^ 5 6 + ^)))
-token     1     stack     (1)    
-token     2     stack     (1 2)    
-token     +     stack     ((1 #+ 2))    
-token     3     stack     ((1 #+ 2) 3)    
-token     4     stack     ((1 #+ 2) 3 4)    
-token     +     stack     ((1 #+ 2) (3 #+ 4))    
-token     ^     stack     (((1 #+ 2) ^ (3 #+ 4)))    
-token     5     stack     (((1 #+ 2) ^ (3 #+ 4)) 5)    
-token     6     stack     (((1 #+ 2) ^ (3 #+ 4)) 5 6)    
-token     +     stack     (((1 #+ 2) ^ (3 #+ 4)) (5 #+ 6))    
-token     ^     stack     ((((1 #+ 2) ^ (3 #+ 4)) ^ (5 #+ 6)))    
+token     1     stack     (1)
+token     2     stack     (1 2)
+token     +     stack     ((1 #+ 2))
+token     3     stack     ((1 #+ 2) 3)
+token     4     stack     ((1 #+ 2) 3 4)
+token     +     stack     ((1 #+ 2) (3 #+ 4))
+token     ^     stack     (((1 #+ 2) ^ (3 #+ 4)))
+token     5     stack     (((1 #+ 2) ^ (3 #+ 4)) 5)
+token     6     stack     (((1 #+ 2) ^ (3 #+ 4)) 5 6)
+token     +     stack     (((1 #+ 2) ^ (3 #+ 4)) (5 #+ 6))
+token     ^     stack     ((((1 #+ 2) ^ (3 #+ 4)) ^ (5 #+ 6)))
     → ((1 + 2) ^ (3 + 4)) ^ (5 + 6)
 
 (infix->string (rpn->infix #( 5 6 * * + +)))
-token     5     stack     (5)    
-token     6     stack     (5 6)    
-token     *     stack     ((5 #* 6))    
+token     5     stack     (5)
+token     6     stack     (5 6)
+token     *     stack     ((5 #* 6))
 ⛔️ error: cannot translate expression #( 5 6 #* #* #+ #+)
 
 ```
@@ -1686,8 +1686,8 @@ let rec infix p x  =
     }
 
 [<EntryPoint>]
-let main argv = 
-    let (tree, rest) = 
+let main argv =
+    let (tree, rest) =
         argv |> Array.rev |> Seq.toList |> parse
     match rest with
     | [] -> printfn "%A" tree
@@ -2059,10 +2059,10 @@ Output:
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()  
-every rpn := ![       
+procedure main()
+every rpn := ![
    "3 4 2 * 1 5 - 2 3 ^ ^ / +",  # reqd
-   "1 2 + 3 4 + 5 6 + ^ ^",  
+   "1 2 + 3 4 + 5 6 + ^ ^",
    "1 2 + 3 4 + 5 6 + ^ ^",
    "1 2 + 3 4 + ^ 5 6 + ^"       # reqd
    ] do {
@@ -2077,51 +2077,51 @@ link printf
 procedure RPN2Infix(expr,show)            #: RPN to Infix conversion
 static oi
 initial {
-   oi := table([9,"'"])                   # precedence & associativity  
+   oi := table([9,"'"])                   # precedence & associativity
    every oi[!"+-"]   := [2,"l"]             # 2L
    every oi[!"*/"]   := [3,"l"]             # 3L
    oi["^"]           := [4,"r"]             # 4R
    }
-   
+
    show := if /show then printf else 1    # to show inner workings or not
    stack := []
    expr ? until pos(0) do {               # Reformat as a tree
       tab(many(' '))                         # consume previous seperator
       token := tab(upto(' ')|0)              # get token
       if token := numeric(token) then {      # ... numeric
-         push(stack,oi[token]|||[token])                   
+         push(stack,oi[token]|||[token])
          show("pushed numeric   %i : %s\n",token,list2string(stack))
          }
       else {                                 # ... operator
          every b|a := pop(stack)             # pop & reverse operands
          pr := oi[token,1]
          as := oi[token,2]
-         if a[1] < pr | (a[1] = pr & oi[token,2] == "r") then        
-            a[3] := sprintf("( %s )",a[3]) 
-         if b[1] < pr | (b[1] == pr & oi[token,2] == "l") then  
-            b[3] := sprintf("( %s )",b[3]) 
-         s := sprintf("%s %s %s",a[3],token,b[3])         
+         if a[1] < pr | (a[1] = pr & oi[token,2] == "r") then
+            a[3] := sprintf("( %s )",a[3])
+         if b[1] < pr | (b[1] == pr & oi[token,2] == "l") then
+            b[3] := sprintf("( %s )",b[3])
+         s := sprintf("%s %s %s",a[3],token,b[3])
          push(stack,[pr,as,s])               # stack [prec, assoc, expr]
          show("applied operator %s : %s\n",token,list2string(stack))
          }
    }
-   
-   if *stack ~= 1 then stop("Parser failure") 
+
+   if *stack ~= 1 then stop("Parser failure")
    return stack[1,3]
 end
 
 procedure list2string(L)                  #: format list as a string
-   s := "[ " 
-   every x := !L do 
-      s ||:= ( if type(x) == "list" then list2string(x) 
-               else x) || " "    
+   s := "[ "
+   every x := !L do
+      s ||:= ( if type(x) == "list" then list2string(x)
+               else x) || " "
    return s || "]"
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 Output:
 ```txt
@@ -2684,7 +2684,7 @@ Infix : ((1 + 2) ^ (3 + 4)) ^ (5 + 6)
 
 ```M2000 Interpreter
 
-Module Rpn_2_Infix {  
+Module Rpn_2_Infix {
 	Rem Form 80,60
 	function rpn_to_infix$(a$) {
 		def m=0
@@ -3117,7 +3117,7 @@ integer lprec,rprec
     string res = stack[1][2]
     printf(1,"Infix result: %s [%s]\n", {res,iff(res=expected?"ok","**ERROR**")})
 end procedure
- 
+
 parseRPN("3 4 2 * 1 5 - 2 3 ^ ^ / +","3 + 4 * 2 / (1 - 5) ^ 2 ^ 3")
 show_workings = 0
 parseRPN("1 2 + 3 4 + ^ 5 6 + ^","((1 + 2) ^ (3 + 4)) ^ (5 + 6)")
@@ -3348,7 +3348,7 @@ Outputs:
 
 ```txt
 
-The original Reverse Polish expression = 3 4 2 * 1 5 - 2 3 ^ ^ / + 
+The original Reverse Polish expression = 3 4 2 * 1 5 - 2 3 ^ ^ / +
 INPUT=/ STACK=/+              OUTPUT=
 INPUT=^ STACK=^/+             OUTPUT=
 INPUT=^ STACK=^(^/+           OUTPUT=)
@@ -3360,10 +3360,10 @@ INPUT=1 STACK=/+              OUTPUT=/(1-5)^(2^3)
 INPUT=* STACK=*/+             OUTPUT=/(1-5)^(2^3)
 INPUT=2 STACK=*/+             OUTPUT=*2/(1-5)^(2^3)
 INPUT=4 STACK=+               OUTPUT=+4*2/(1-5)^(2^3)
-ALGEBRAIC EXPRESSION=   3+4*2/(1-5)^(2^3) 
+ALGEBRAIC EXPRESSION=   3+4*2/(1-5)^(2^3)
 
 
-The original Reverse Polish expression = 1 2+ 3 4 + ^ 5 6 + ^ 
+The original Reverse Polish expression = 1 2+ 3 4 + ^ 5 6 + ^
 INPUT=+ STACK=+(^             OUTPUT=)
 INPUT=6 STACK=+(^             OUTPUT=+6)
 INPUT=5 STACK=^               OUTPUT=^(5+6)
@@ -3373,7 +3373,7 @@ INPUT=4 STACK=+(^(^           OUTPUT=+4))^(5+6)
 INPUT=3 STACK=^(^             OUTPUT=^(3+4))^(5+6)
 INPUT=+ STACK=+(^(^           OUTPUT=)^(3+4))^(5+6)
 INPUT=2 STACK=+(^(^           OUTPUT=+2)^(3+4))^(5+6)
-ALGEBRAIC EXPRESSION=   ((1+2)^(3+4))^(5+6) 
+ALGEBRAIC EXPRESSION=   ((1+2)^(3+4))^(5+6)
 
 ```
 
@@ -3401,7 +3401,7 @@ end show_stack;
 
 ```python
 
- 
+
 """
 >>> # EXAMPLE USAGE
 >>> result = rpn_to_infix('3 4 2 * 1 5 - 2 3 ^ ^ / +', VERBOSE=True)
@@ -3423,14 +3423,14 @@ TOKEN  STACK
 
 prec_dict =  {'^':4, '*':3, '/':3, '+':2, '-':2}
 assoc_dict = {'^':1, '*':0, '/':0, '+':0, '-':0}
- 
+
 class Node:
     def __init__(self,x,op,y=None):
         self.precedence = prec_dict[op]
         self.assocright = assoc_dict[op]
         self.op = op
         self.x,self.y = x,y
- 
+
     def __str__(self):
         """
         Building an infix string that evaluates correctly is easy.
@@ -3440,13 +3440,13 @@ class Node:
         # easy case, Node is unary
         if self.y == None:
             return '%s(%s)'%(self.op,str(self.x))
- 
+
         # determine left side string
         str_y = str(self.y)
         if  self.y < self or \
             (self.y == self and self.assocright) or \
             (str_y[0] is '-' and self.assocright):
- 
+
             str_y = '(%s)'%str_y
         # determine right side string and operator
         str_x = str(self.x)
@@ -3460,22 +3460,22 @@ class Node:
         elif self.x < self or \
              (self.x == self and not self.assocright and \
               getattr(self.x, 'op', 1) != getattr(self, 'op', 2)):
- 
+
             str_x = '(%s)'%str_x
         return ' '.join([str_y, str_op, str_x])
- 
+
     def __repr__(self):
         """
         >>> repr(Node('3','+','4')) == repr(eval(repr(Node('3','+','4'))))
         True
         """
         return 'Node(%s,%s,%s)'%(repr(self.x), repr(self.op), repr(self.y))
- 
+
     def __lt__(self, other):
         if isinstance(other, Node):
             return self.precedence < other.precedence
         return self.precedence < prec_dict.get(other,9)
- 
+
     def __gt__(self, other):
         if isinstance(other, Node):
             return self.precedence > other.precedence
@@ -3485,29 +3485,29 @@ class Node:
         if isinstance(other, Node):
             return self.precedence == other.precedence
         return self.precedence > prec_dict.get(other,9)
- 
- 
- 
+
+
+
 def rpn_to_infix(s, VERBOSE=False):
     """
-    
+
     converts rpn notation to infix notation for string s
- 
+
     """
     if VERBOSE : print('TOKEN  STACK')
- 
+
     stack=[]
     for token in s.replace('^','^').split():
         if token in prec_dict:
             stack.append(Node(stack.pop(),token,stack.pop()))
         else:
             stack.append(token)
- 
+
         # can't use \t in order to make global docstring pass doctest
-        if VERBOSE : print(token+' '*(7-len(token))+repr(stack)) 
- 
+        if VERBOSE : print(token+' '*(7-len(token))+repr(stack))
+
     return str(stack[0])
-  
+
 strTest = "3 4 2 * 1 5 - 2 3 ^ ^ / +"
 strResult = rpn_to_infix(strTest, VERBOSE=False)
 print ("Input: ",strTest)
@@ -3549,8 +3549,8 @@ Output: ((1 + 2) ^ (3 + 4)) ^ (5 + 6)
   (define-values (res _)
     (for/fold ([stack '()] [prec '()]) ([t expr])
       (show t stack prec)
-      (cond 
-        [(dict-has-key? operators t)         
+      (cond
+        [(dict-has-key? operators t)
          (match-define (list pt at) (dict-ref operators t))
          (match-define (list y x ss ...) stack)
          (match-define (list py px ps ...) prec)
@@ -3583,41 +3583,41 @@ Output:
 ```txt
 
 -> (RPN->infix '(3 4 2 * 1 5 - 2 3 ^ ^ / +))
-3	
-4	[3] 
-2	[4] [3] 
-*	[2] [4] [3] 
-1	[4 * 2 {3}] [3] 
-5	[1] [4 * 2 {3}] [3] 
--	[5] [1] [4 * 2 {3}] [3] 
-2	[1 - 5 {2}] [4 * 2 {3}] [3] 
-3	[2] [1 - 5 {2}] [4 * 2 {3}] [3] 
-^	[3] [2] [1 - 5 {2}] [4 * 2 {3}] [3] 
-^	[2 ^ 3 {4}] [1 - 5 {2}] [4 * 2 {3}] [3] 
-/	[(1 - 5) ^ 2 ^ 3 {4}] [4 * 2 {3}] [3] 
-+	[4 * 2 / (1 - 5) ^ 2 ^ 3 {3}] [3] 
+3
+4	[3]
+2	[4] [3]
+*	[2] [4] [3]
+1	[4 * 2 {3}] [3]
+5	[1] [4 * 2 {3}] [3]
+-	[5] [1] [4 * 2 {3}] [3]
+2	[1 - 5 {2}] [4 * 2 {3}] [3]
+3	[2] [1 - 5 {2}] [4 * 2 {3}] [3]
+^	[3] [2] [1 - 5 {2}] [4 * 2 {3}] [3]
+^	[2 ^ 3 {4}] [1 - 5 {2}] [4 * 2 {3}] [3]
+/	[(1 - 5) ^ 2 ^ 3 {4}] [4 * 2 {3}] [3]
++	[4 * 2 / (1 - 5) ^ 2 ^ 3 {3}] [3]
 "3 + 4 * 2 / (1 - 5) ^ 2 ^ 3"
 
 -> (RPN->infix '(1 2 + 3 4 + ^))
-1	
-2	[1] 
-+	[2] [1] 
-3	[1 + 2 {2}] 
-4	[3] [1 + 2 {2}] 
-+	[4] [3] [1 + 2 {2}] 
-^	[3 + 4 {2}] [1 + 2 {2}] 
+1
+2	[1]
++	[2] [1]
+3	[1 + 2 {2}]
+4	[3] [1 + 2 {2}]
++	[4] [3] [1 + 2 {2}]
+^	[3 + 4 {2}] [1 + 2 {2}]
 "(1 + 2) ^ (3 + 4)"
 
 -> (RPN->infix '(moon stars mud + * fire soup * ^))
-moon	
-stars	[moon] 
-mud	[stars] [moon] 
-+	[mud] [stars] [moon] 
-*	[stars + mud {2}] [moon] 
-fire	[moon * (stars + mud) {3}] 
-soup	[fire] [moon * (stars + mud) {3}] 
-*	[soup] [fire] [moon * (stars + mud) {3}] 
-^	[fire * soup {3}] [moon * (stars + mud) {3}] 
+moon
+stars	[moon]
+mud	[stars] [moon]
++	[mud] [stars] [moon]
+*	[stars + mud {2}] [moon]
+fire	[moon * (stars + mud) {3}]
+soup	[fire] [moon * (stars + mud) {3}]
+*	[soup] [fire] [moon * (stars + mud) {3}]
+^	[fire * soup {3}] [moon * (stars + mud) {3}]
 "(moon * (stars + mud)) ^ (fire * soup)"
 
 ```
@@ -3628,9 +3628,9 @@ soup	[fire] [moon * (stars + mud) {3}]
 
 {{trans|AWK}}
 {{trans|Tcl}}
-A Yen symbol   '''¥'''   was used instead of a   '''9'''   to make it apparenet that it's just a placeholder.  
+A Yen symbol   '''¥'''   was used instead of a   '''9'''   to make it apparenet that it's just a placeholder.
 
-The same reasoning was used for the ''operator associations''   (the left   ◄   and right   ►   arrow symbols). 
+The same reasoning was used for the ''operator associations''   (the left   ◄   and right   ►   arrow symbols).
 
 ```rexx
 /*REXX program converts Reverse Polish Notation (RPN) ──► infix notation*/
@@ -3916,7 +3916,7 @@ Output:
 
 This solution is a little long because it works by translating RPN to fully parenthesized prefix (Lisp notation).
 
-Also, it improves upon the problem slightly. Note that for the operators <code>*</code> and <code>+</code>, the associativity is configured as<code>nil</code> ("no associativity") rather than left-to-right. This is because these operators obey the associative property: <code>(a + b) + c</code> is <code>a + (b + c)</code>, and so we usually write <code>a + b + c or a * b * c</code> without any parentheses, leaving it ambiguous which addition is done first. Associativity is not important for these operators. 
+Also, it improves upon the problem slightly. Note that for the operators <code>*</code> and <code>+</code>, the associativity is configured as<code>nil</code> ("no associativity") rather than left-to-right. This is because these operators obey the associative property: <code>(a + b) + c</code> is <code>a + (b + c)</code>, and so we usually write <code>a + b + c or a * b * c</code> without any parentheses, leaving it ambiguous which addition is done first. Associativity is not important for these operators.
 
 The <code>lisp-to-infix</code> filter then takes advantage of this non-associativity in minimizing the parentheses.
 
@@ -3975,7 +3975,7 @@ The <code>lisp-to-infix</code> filter then takes advantage of this non-associati
     (else            `@lisp`)))
 
 (defun string-to-rpn (str)
-  (debug-print "rpn" 
+  (debug-print "rpn"
     (mapcar (do if (int-str @1) (int-str @1) (intern @1))
             (tok-str str #/[^ \t]+/))))
 
@@ -4255,16 +4255,16 @@ Infix : ((1 + 2) ^ (3 + 4)) ^ (5 + 6)
 
 ```zkl
 tests:=T("3 4 2 * 1 5 - 2 3 ^ ^ / +","1 2 + 3 4 + ^ 5 6 + ^");
- 
+
 var opa=D(
    "^",T(4, True),
-   "*",T(3, False), "/",T(3, False), 
+   "*",T(3, False), "/",T(3, False),
    "+",T(2, False), "-",T(2, False) );
 
 const nPrec = 9;
 
 foreach t in (tests) { parseRPN(t) }
- 
+
 fcn parseRPN(e){
    println("\npostfix:", e);
    stack:=L();

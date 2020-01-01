@@ -126,10 +126,10 @@ typedef struct elem{
 typedef cell* list;
 
 list addToList(list a,int num){
-	
+
 	list iter, temp;
 	int i=0;
-	
+
 	if(a==NULL){
 		a = (list)malloc(sizeof(cell));
 		a->data = num;
@@ -137,34 +137,34 @@ list addToList(list a,int num){
 	}
 	else{
 		iter = a;
-		
+
 		while(iter->next!=NULL){
 			iter = iter->next;
 		}
-		
+
 		temp = (list)malloc(sizeof(cell));
 		temp->data = num;
 		temp->next = NULL;
-		
+
 		iter->next = temp;
-	}	
+	}
 	return a;
 }
 
 list deleteFromList(list a,int pos){
-	
+
 	int i=1;
 	list temp,iter;
-	
+
 	if(a!=NULL){
 		iter = a;
-		
+
 		if(pos==1){
 			a = a->next;
 			iter->next = NULL;
 			free(iter);
 		}
-		
+
 		else{
 			while(i++!=pos-1)
 				iter = iter->next;
@@ -179,9 +179,9 @@ list deleteFromList(list a,int pos){
 
 void printList(list a){
 	list temp = a;
-	
+
 	printf("List contains following elements : \n");
-	
+
 	while(temp!=NULL){
 		printf("%d ",temp->data);
 		temp = temp->next;
@@ -192,20 +192,20 @@ int main(int argC,char* argV[])
 {
 	list a = NULL;
 	int i;
-	
+
 	if(argC == 1)
 		printf("Usage : %s <list of integers to be inserted into the list>",argV[0]);
 	else{
 		for(i=2;i<=argC;i++)
 			a = addToList(a,atoi(argV[i-1]));
-		
+
 		printList(a);
-		
+
 		do{
 			printf("\nEnter position of element to be removed (1-%d) : ",argC-1);
-			
+
 			scanf("%d",&i);
-			
+
 			if(i>0 && i<=argC-1){
 				a = deleteFromList(a,i);
 				printList(a);
@@ -232,7 +232,7 @@ List contains following elements :
 
 
 
-## C sharp
+## C#
 
 
 ===Tasteful & unsafe===
@@ -240,7 +240,7 @@ List contains following elements :
 Semantically identical translation of Torvalds' tasteful C version using C# unsafe pointers:
 
 
-```csharp
+```c#
 using System;
 using System.Runtime.InteropServices;
 
@@ -309,13 +309,13 @@ after removing second node:  1
 
 ## Fortran
 
-This sort of thing has long been done in Fortran via the standard trick of fiddling with arrays, and using array indices as the equivalent of the memory addresses of nodes. The task makes no mention of there being any content associated with the links of the linked-list; this would be supplied via auxiliary arrays or disc file records, ''etc''. With F90 and later, one can define compound data aggregates, so something like LL.NEXT would hold the link to the next element and LL.STUFF would hold the cargo, with LL being an array of such a compound entity rather than separate simple arrays such as LLNEXT and LLSTUFF. 
+This sort of thing has long been done in Fortran via the standard trick of fiddling with arrays, and using array indices as the equivalent of the memory addresses of nodes. The task makes no mention of there being any content associated with the links of the linked-list; this would be supplied via auxiliary arrays or disc file records, ''etc''. With F90 and later, one can define compound data aggregates, so something like LL.NEXT would hold the link to the next element and LL.STUFF would hold the cargo, with LL being an array of such a compound entity rather than separate simple arrays such as LLNEXT and LLSTUFF.
 
 F90 offers further opportunities, whereby instead of LL being an array of some size defined before it is used, it would instead consist of single items each containing the cargo for one item plus a link to the address of another item, with items allocated as the need arises. This however involves a lot of additional syntax and lengthy words such as ALLOCATE, all distracting from the exhibition of a solution, which is simple...
 
 For convenience, rather than have the "head" pointer to the first or head element of the linked list be a separate variable, it is found as element zero of the LIST array that holds the links. Because this element is accessible in the same way as the other links in the array representing the linked-list, no special code is needed when it is the head entry that is to be removed and thus it is the pointer to it that must be changed. However, defining arrays starting at index zero is a feature of F90, and having subroutines recognise that their array parameter starts at index zero requires the MODULE protocol. Previously, arrays started with index one, and the code would just have to recognise this with the appropriate offsets, thus, the first element available for an item would be at index two, not one, and so forth. On the other hand, the zero element just needs its link, and any associated cargo would represented wasted storage. If that cargo were to be held in a disc file there would be no such waste, as record numbers start with one, not zero. But, if the linked-list is to be stored entirely in a disc file, the first record has to be reserved to hold the link to the head record and the first available storage record is number two, just as with an array starting at one, not zero. Indeed, a more comprehensive solution would probably reserve the first record as a header, containing a finger to the start of the linked-list, another finger to the start of the "available" (i.e. deleted and thus reusable) linked-list of records, and a record counter to identify the last record in the file so that if the "available" list is empty, the file can be extended by one record to hold a new entry.
 
-Having a value of zero signify that there is no follower is the obvious choice for ending a linked-list. When addresses are being tossed about, this might be dressed up via words such as NULL rather than a literal zero just in case a "null address" does not manifest as a zero value. 
+Having a value of zero signify that there is no follower is the obvious choice for ending a linked-list. When addresses are being tossed about, this might be dressed up via words such as NULL rather than a literal zero just in case a "null address" does not manifest as a zero value.
 ```Fortran
       MODULE SIMPLELINKEDLIST	!Play with an array. Other arrays might hold content.
        CONTAINS			!Demonstration only!
@@ -404,7 +404,7 @@ Although in this example the linked-list is held in an array, and array elements
 
 In messing with linked-lists, one must give close attention to just how an element is identified. Is element X (for removal) the X'th element in sequence along the linked list (first, second, third, etc.), or, is it the element at at a specified memory address or index position X in the LIST array (as here), or, is it the element whose cargo matches X?
 
-The code involves repeated mention of <code>LINK(IT)</code> and for those who do not have total faith in the brilliance of code generated by a compiler, one could try 
+The code involves repeated mention of <code>LINK(IT)</code> and for those who do not have total faith in the brilliance of code generated by a compiler, one could try
 ```Fortran
           IT = 0		!This list element fingers the start of the list..
     1     NEXT = LINK(IT)	!This is the node of interest.
@@ -421,7 +421,7 @@ The code involves repeated mention of <code>LINK(IT)</code> and for those who do
 
 The introduction of a mnemonic "NEXT" might help the interpretation of the code, but one must be careful about phase: NEXT is the "nextness" for IT which fingers node NEXT which is the candidate for matching against X, not IT. Alternatively, use "FROM" for IT and "IT" for NEXT, being careful to keep it straight.
 
-And ... there is a blatant GO TO (aside from the equivalent concealed via RETURN) but using a WHILE-loop would require a repetition of NEXT = LINK(IT). If Fortran were to enable assignment within an expression (as in Algol) then 
+And ... there is a blatant GO TO (aside from the equivalent concealed via RETURN) but using a WHILE-loop would require a repetition of NEXT = LINK(IT). If Fortran were to enable assignment within an expression (as in Algol) then
 ```Fortran
       IT = 0		!This list element fingers the start of the list..
       DO WHILE((NEXT = LINK(IT)).GT.0)	!Finger the follower of IT.
@@ -667,7 +667,7 @@ Extending <tt>class Cell</tt> from [[Singly-linked_list/Element_definition#Perl_
         my $prev = Nil;
         my $cell = self;
         my $new-head = self;
-        
+
         while $cell {
             my $next = $cell.next;
             if $cell.value == $value {
@@ -680,7 +680,7 @@ Extending <tt>class Cell</tt> from [[Singly-linked_list/Element_definition#Perl_
             }
             $cell = $next;
         }
-        
+
         return $new-head;
     }
 ```
@@ -747,7 +747,7 @@ procedure insert_inorder(object data)
         end while
     end if
 end procedure
- 
+
 procedure remove_item(object data)
     integer idx = sll_head, prev
     while idx do
@@ -787,7 +787,7 @@ procedure test(integer mode, sequence list)
             remove_item(list[i])
         end if
         show()
-    end for 
+    end for
 end procedure
 
 sequence list = {"1","2","3","4"}
@@ -834,7 +834,7 @@ This is written entirely in terms of car and cdr (the linked list/pair primitive
         (let recur ((l-rev (rev l)) (acc m))
           (if (null? l-rev)
               acc
-              (recur (cdr l-rev) (cons (car l-rev) acc))))))  
+              (recur (cdr l-rev) (cons (car l-rev) acc))))))
 
 (define (remove-at l i (acc null))
   (cond
@@ -865,7 +865,7 @@ This is written entirely in terms of car and cdr (the linked list/pair primitive
 
 The contract requirement for these functions is:
 
-- that the entry to be removed is not Nothing 
+- that the entry to be removed is not Nothing
 - the entry is present in the list.
 - the list Head is not Nothing
 

@@ -31,135 +31,135 @@ Honeycomb class:
 ```ActionScript3
 
 package  {
-	
+
     import flash.display.GraphicsPathCommand;
     import flash.display.Sprite;
     import flash.text.TextField;
     import flash.text.TextFieldAutoSize;
     import flash.text.TextFormat;
-	
+
     /**
      * A honeycomb.
      */
     public class Honeycomb extends Sprite {
-        
+
         /**
          * The sine of 60 degrees.
-         * 
+         *
          * @private
          */
         private static const SIN_60:Number = Math.sin(Math.PI / 3);
-        
+
         /**
          * The cosine of 60 degrees.
-         * 
+         *
          * @private
          */
         private static const COS_60:Number = Math.cos(Math.PI / 3);
-        
+
         /**
          * The drawing commands to be passed to Graphics.drawPath()
-         * 
+         *
          * @private
          */
         private static var _gCommands:Vector.<int> = new Vector.<int>(7, true);
-        
+
         /**
          * The coordinates to be passed to Graphics.drawPath()
-         * 
+         *
          * @private
          */
         private static var _gCoords:Vector.<Number> = new Vector.<Number>(14, true);
-        
+
         /**
          * The side length of the last honeycomb created.
          */
         private static var _lastSide:Number;
-        
+
         /**
          * The horizontal space difference (between the leftmost and topmost vertex) of the last hexagon drawn.
-         * 
+         *
          * @private
          */
         private static var _lastHSpace:Number;
-        
+
         /**
          * The heightof the last hexagon drawn.
-         * 
+         *
          * @private
          */
         private static var _lastHeight:Number;
-        
+
         {
             _staticInit();
         }
-        
+
         /**
          * Initialises the Honeycomb class.
-         * 
+         *
          * @private
          */
         private static function _staticInit():void {
             _gCommands[0] = GraphicsPathCommand.MOVE_TO;
             _gCommands[1] = _gCommands[2] = _gCommands[3] = _gCommands[4] = _gCommands[5] = _gCommands[6] = GraphicsPathCommand.LINE_TO;
         }
-        
+
         /**
          * Calculates the points of the hexagon for a given side length.
-         * 
+         *
          * @param side The length of the side.
          */
         private static function _calculatePoints(side:Number):void {
-            
+
             var height:Number = side * SIN_60 * 2;
             var hSpace:Number = side * COS_60;
-            
+
             _gCoords[0] = _gCoords[12] = 0;
             _gCoords[2] = _gCoords[10] = hSpace;
             _gCoords[4] = _gCoords[8] = hSpace + side;
             _gCoords[6] = side + hSpace * 2;
-            
+
             _gCoords[1] = _gCoords[7] = _gCoords[13] = height / 2;
             _gCoords[3] = _gCoords[5] = height;
             _gCoords[9] = _gCoords[11] = 0;
-            
+
             _lastSide = side;
             _lastHSpace = hSpace;
             _lastHeight = height;
-            
+
         }
-        
+
         /**
          * The side length of the honeycomb.
-         * 
+         *
          * @private
          */
         private var _side:Number;
-        
+
         /**
          * The text field displaying the character in the honeycomb.
-         * 
+         *
          * @private
          */
         private var _text:TextField;
-        
+
         /**
          * The character code of the character in the honeycomb.
-         * 
+         *
          * @private
          */
         private var _charCode:uint;
-        
+
         /**
          * Whether the honeycomb has been activated (i.e. the activate() method has been called).
-         * 
+         *
          * @private
          */
         private var _activated:Boolean = false;
-        
+
         /**
          * Creates a new Honeycomb object.
-         * 
+         *
          * @param side The length of the side of the honeycomb.
          * @param fill The honeycomb's fill colour.
          * @param letter The character code of the letter to be displayed in the honeycomb.
@@ -168,79 +168,79 @@ package  {
         public function Honeycomb(side:Number, fill:uint, letter:uint, textColour:uint) {
             _init(side, fill, letter, textColour);
         }
-        
+
         /**
          * Initialises the Honeycomb object.
-         * 
+         *
          * @param side The length of the side of the honeycomb.
          * @param fill The honeycomb's fill colour.
          * @param letter The character code of the letter to be displayed in the honeycomb.
          * @param textColour The colour of the letter displayed inside the honeycomb.
          */
         private function _init(side:Number, fill:uint, letter:uint, textColour:uint):void {
-            
+
             mouseChildren = false;
             buttonMode = true;
             useHandCursor = false;
-            
+
             graphics.beginFill(fill);
             graphics.lineStyle(3, 0x000000);
-            
+
             if ( side != _lastSide )
                 _calculatePoints(side);
-                
+
             _side = side;
             _charCode = letter;
-            
+
             graphics.drawPath(_gCommands, _gCoords);
-            
+
             _text = new TextField();
             _text.autoSize = TextFieldAutoSize.CENTER;
             _text.defaultTextFormat = new TextFormat('_sans', side * 1.2, textColour, true);
             _text.text = String.fromCharCode(letter);
             _text.x = (side + _lastHSpace * 2 - _text.width) / 2;
             _text.y = (_lastHeight - _text.height) / 2;
-            
+
             addChild(_text);
-            
+
         }
-        
+
         /**
          * The character code of the character in the honeycomb.
          */
         public function get charCode():uint {
             return _charCode;
         }
-        
+
         /**
          * Whether the honeycomb has been activated (i.e. the activate() method has been called).
          */
         public function get activated():Boolean {
             return _activated;
         }
-        
+
         /**
          * Activates the honeycomb and changes its colour.
-         * 
+         *
          * @param backColour The new fill colour of the honeycomb.
          * @param textColour The new text colour of the honeycomb.
          */
         public function activate(backColour:uint, textColour:uint):void {
-            
+
             if ( _side != _lastSide )
                 _calculatePoints(_side);
-            
+
             graphics.beginFill(backColour);
             graphics.drawPath(_gCommands, _gCoords);
-            
+
             var textFormat:TextFormat = _text.getTextFormat();
             textFormat.color = textColour;
             _text.setTextFormat(textFormat);
-            
+
             _activated = true;
-            
+
         }
-        
+
     }
 
 }
@@ -253,7 +253,7 @@ Document (main) class:
 ```ActionScript3
 
 package  {
-	
+
     import flash.display.Sprite;
     import flash.events.Event;
     import flash.events.KeyboardEvent;
@@ -262,54 +262,54 @@ package  {
     import flash.text.TextFieldAutoSize;
     import flash.text.TextFormat;
     import flash.utils.Dictionary;
-	
+
     /**
      * The Honeycomb game.
      */
     public class Main extends Sprite {
-        
+
         /**
          * The fill colour for unselected honeycombs.
-         * 
+         *
          * @private
          */
         private static const FILL_COLOUR1:uint = 0xFFFF00;
-        
+
         /**
          * The text colour for unselected honeycombs.
-         * 
+         *
          * @private
          */
         private static const FILL_COLOUR2:uint = 0xFF00FF;
-        
+
         /**
          * The fill colour for selected honeycombs.
-         * 
+         *
          * @private
          */
         private static const TEXT_COLOUR1:uint = 0xFF0000;
-        
+
         /**
          * The text colour for selected honeycombs.
-         * 
+         *
          * @private
          */
         private static const TEXT_COLOUR2:uint = 0x000000;
-        
+
         /**
          * The honeycombs being displayed. They can be accesses using their character code as the key.
-         * 
+         *
          * @private
          */
         private var _honeycombs:Dictionary = new Dictionary();
-        
+
         /**
          * The text field showing the selected letters.
-         * 
+         *
          * @private
          */
         private var _selectedLettersOutputField:TextField;
-        
+
         /**
          * Entry point of the application.
          */
@@ -317,52 +317,52 @@ package  {
             if ( stage ) init();
             else addEventListener(Event.ADDED_TO_STAGE, init)
         }
-        
+
         /**
          * Initialises the Main object when it is added to the stage.
-         * 
+         *
          * @private
          */
         private function init(e:Event = null):void {
-            
+
             removeEventListener(Event.ADDED_TO_STAGE, init);
-            
+
             var side:uint = 35;
             var hSpace:Number = side * Math.cos(Math.PI / 3);
             var height:Number = side * Math.sin(Math.PI / 3) * 2;
-            
+
             var i:uint, j:uint, comb:Honeycomb, colX:Number = 0, rowY:Number = 0, char:uint;
             var usedCodes:Vector.<uint> = new Vector.<uint>();
-            
+
             for ( i = 0; i < 5; i++ ) {
                 for ( j = 0; j < 4; j++ ) {
-                    
+
                     // Select a character to display. If it is already used, repeat this process until an unused
                     // character is found.
-                    
+
                     do
                         char = uint(Math.random() * 26) + 0x41;
                     while ( usedCodes.indexOf(char) != -1 );
-                    
+
                     usedCodes[usedCodes.length] = char;
-                    
+
                     comb = new Honeycomb(side, FILL_COLOUR1, char, TEXT_COLOUR1);
                     comb.x = colX + 30;
                     comb.y = rowY + 30 + height * j;
                     addChild(comb);
-                    
+
                     _honeycombs[char] = comb;
-                    
+
                 }
-                
+
                 if ( rowY == 0 )
                     rowY = height / 2;
                 else
                     rowY = 0;
-                    
+
                 colX += side + hSpace;
             }
-            
+
             _selectedLettersOutputField = new TextField();
             _selectedLettersOutputField.x = 30;
             _selectedLettersOutputField.y = 30 + height * 5;
@@ -370,35 +370,35 @@ package  {
             _selectedLettersOutputField.multiline = true;
             _selectedLettersOutputField.autoSize = TextFieldAutoSize.LEFT;
             _selectedLettersOutputField.text = "Selected letters:\n";
-            
+
             addChild(_selectedLettersOutputField);
-            
+
             // Since the MouseEvent.CLICK event bubbles, it is sufficient to add the listener to the Main object
             // itself rather than to each honeycomb individually, and the event's target property will always
             // be the clicked honeycomb.
-            
+
             addEventListener(MouseEvent.CLICK, _onMouseClick);
             stage.addEventListener(KeyboardEvent.KEY_DOWN, _onKeyDown);
-            
+
         }
-        
+
         /**
          * Function called when a honeycomb is clicked.
-         * 
+         *
          * @private
          */
         private function _onMouseClick(e:MouseEvent):void {
             var comb:Honeycomb = e.target as Honeycomb;
-            
+
             if ( comb && ! comb.activated ) {
                 comb.activate(FILL_COLOUR2, TEXT_COLOUR2);
                 _selectedLettersOutputField.appendText(String.fromCharCode(comb.charCode));
             }
         }
-        
+
         /**
          * Function called when a keyboard key is pressed.
-         * 
+         *
          * @private
          */
         private function _onKeyDown(e:KeyboardEvent):void {
@@ -406,15 +406,15 @@ package  {
             if ( char > 0x60 )
                 // Convert lowercase to uppercase
                 char -= 0x20;
-                
+
             var comb:Honeycomb = _honeycombs[char] as Honeycomb;
-            
+
             if ( comb && ! comb.activated ) {
                 comb.activate(FILL_COLOUR2, TEXT_COLOUR2);
                 _selectedLettersOutputField.appendText(String.fromCharCode(char));
             }
         }
-        
+
     }
 
 }
@@ -432,13 +432,13 @@ package  {
       ALTERNATE = 1
       VDU 23,22,252;252;8,16,16,128
       *FONT Arial,24,B
-      
+
       Letters$ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
       Letters% = !^Letters$
       FOR i% = 0 TO 24
         SWAP Letters%?i%, Letters%?(i%+RND(26-i%)-1)
       NEXT
-      
+
       DIM xpos%(20), ypos%(20), hrgn%(20)
       C% = 1
       FOR Y% = 36 TO 192 STEP 52
@@ -453,20 +453,20 @@ package  {
           C% += 1
         NEXT
       NEXT
-      
+
       REM Plot the hexagons:
       FOR C% = 1 TO 20
         hrgn%(C%) = FNplothexagon(xpos%(C%), ypos%(C%), &00FFFF, \
         \           MID$(Letters$,C%,1), &0000FF)
       NEXT
       SYS "InvalidateRect", @hwnd%, 0, 0
-      
+
       REM Initialise word selected:
       Word$ = ""
-      
+
       REM Monitor mouse clicks:
       ON MOUSE PROCmouse(@wparam%,@lparam%) : RETURN
-      
+
       REM Monitor keypresses:
       REPEAT
         key$ = INKEY$(1)
@@ -475,7 +475,7 @@ package  {
         IF C% IF C%<21 IF hrgn%(C%) PROCselect(C%)
       UNTIL FALSE
       END
-      
+
       REM Select a hexagon with the keyboard or mouse:
       DEF PROCselect(C%)
       hrgn%(C%) = 0 * FNplothexagon(xpos%(C%), ypos%(C%), &FF00FF, \
@@ -484,7 +484,7 @@ package  {
       Word$ += MID$(Letters$, C%, 1)
       SYS "SetWindowText", @hwnd%, Word$
       ENDPROC
-      
+
       DEF PROCmouse(W%, L%)
       LOCAL C%, R%
       IF W%<>1 ENDPROC
@@ -493,7 +493,7 @@ package  {
         IF R% PROCselect(C%)
       NEXT
       ENDPROC
-      
+
       DEF FNplothexagon(x%, y%, hcol%, text$, tcol%)
       LOCAL brush%, pen%, hrgn%, pt%(), size{}
       DIM pt%(5,1), size{dx%,dy%}
@@ -601,7 +601,7 @@ static void initialize_hexagons(NGON*hs,size_t n) {
   fputc('\n',stderr);
   g_queue_free(shuffler);
   if (broken)
-    g_rand_free(random_numbers);  
+    g_rand_free(random_numbers);
 }
 
 static void add_loop(cairo_t*cr,NGON*hs,int select) {
@@ -662,7 +662,7 @@ static gboolean draw(GtkWidget*widget,cairo_t*cr,gpointer data) {
 
   /* all outlines gray, background shows through, fun fun! */
   cairo_set_line_width (cr, 3.0);
-  cairo_set_source_rgba(cr,0.7,0.7,0.7,0.7); 
+  cairo_set_source_rgba(cr,0.7,0.7,0.7,0.7);
   add_loop(cr,(NGON*)data,0);
   cairo_stroke(cr);
 
@@ -798,10 +798,10 @@ int main(int argc,char*argv[]) {
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1308,7 +1308,7 @@ There is no hexagonal widget in the Icon Graphics library so a custom widget was
 
 The HexWidgetData record carries around alot of data about each widget including drawing coordinates, label, a routine to know if it's been selected and helper data, and coordinates for drawing neighboring cells (down and upper/lower right).
 
-Label selection is straight forward.  Mouse selection first determines if x,y is within the widgets rectangular outer bounds.  The x,y point is then reflected into the north west quadrant of the cell and the helper data is used to calculate an abbreviated cross-product (x and y will always be 0).  The direction of the resultant z indicates if the point is inside or outside of the widgets inner bounds. 
+Label selection is straight forward.  Mouse selection first determines if x,y is within the widgets rectangular outer bounds.  The x,y point is then reflected into the north west quadrant of the cell and the helper data is used to calculate an abbreviated cross-product (x and y will always be 0).  The direction of the resultant z indicates if the point is inside or outside of the widgets inner bounds.
 
 ```Icon
 link printf
@@ -1317,7 +1317,7 @@ procedure main(A)
    h := (0 < integer(\A[1])) | 4             # cells high
    w := (0 < integer(\A[2])) | 5             # cells wide
    u := (10 < integer(\A[3])) | 30           # length of cell side
-   HoneyComb(h,w,u)                 
+   HoneyComb(h,w,u)
 end
 
 $define INACTIVE "light yellow"
@@ -1327,27 +1327,27 @@ procedure HoneyComb(h,w,u)                   #: run HoneyComb demo
 
    wb := u/2                                 # window border
    wmsg := 10                                # . message space
-   ww := 2*wb + u*(3*w+1)/2                  # . width 
-   wh := 2*wb+wmsg+integer((h+1)*u*sqrt(3.)) # . height  
+   ww := 2*wb + u*(3*w+1)/2                  # . width
+   wh := 2*wb+wmsg+integer((h+1)*u*sqrt(3.)) # . height
 
    chosen := sprintf("black,%d",wb)
    fine   := sprintf("black,%d",wmsg)
-   
+
    wparms := [ title := sprintf("HoneyComb-%dx%d",h,w),
                "g","bg=white","fg=black",
                sprintf("size=%d,%d",ww,wh) ]
    &window := open!wparms | stop("Unable to open window")
 
    alpha := &ucase                           # per original spec
-   if h*w > *alpha then alpha ++:= &lcase    # more 
+   if h*w > *alpha then alpha ++:= &lcase    # more
    if h*w > *alpha then alpha ++:= &digits   # more again
-   if h*w > *alpha then 
+   if h*w > *alpha then
       stop("More than ",*alpha," cells.")    # choke
 
    every put(letters := [],!string(alpha))
    every !letters :=: ?letters               # randomize
-   
-   Widgets := []                             # prepare widgets 
+
+   Widgets := []                             # prepare widgets
    every c := 1 to w do {                    # layout grid of cells
       if /top then                           # start at top left
          x := y := wb
@@ -1357,28 +1357,28 @@ procedure HoneyComb(h,w,u)                   #: run HoneyComb demo
          }
       put(Widgets,W := top := HexWidget(x,y,u,get(letters)))
       every 2 to h do                        # fill in rest of column
-         put(Widgets,W := HexWidget(x := W.dx,y := W.dy,u,get(letters)))      
-      }   
-    
+         put(Widgets,W := HexWidget(x := W.dx,y := W.dy,u,get(letters)))
+      }
+
    activated := ""
    until *activated = *Widgets do {          # process widgets
       e := Event()
-      every W := !Widgets do                          # select widget by 
+      every W := !Widgets do                          # select widget by
          if ((e == &lpress) & W.inside(W,&x,&y)) |    # mouse (left press) or
-            (e == W.s) then                           # label character 
-               if not find(W.s,activated) then        # activate if new 
-                  break activated ||:= ( DrawCell(W,ACTIVE), W.s)     
+            (e == W.s) then                           # label character
+               if not find(W.s,activated) then        # activate if new
+                  break activated ||:= ( DrawCell(W,ACTIVE), W.s)
       Font(chosen)
       DrawString(wb,wh-wb-wmsg,"Chosen: "||activated) # update selected list
-      }    
+      }
    WriteImage(sprintf("%s-%d.gif",title,&now))        # save file
    Font(fine)                                         # tell how to quit
    DrawString(wb,wh-wmsg,"Right click to exit")
-   until Event() == &rpress            
+   until Event() == &rpress
    close(&window)
 end
 
-record HexWidgetData(s,u,w,h,ax,ay,cx,cy,poly,xx,xy,dx,dy,rx,ry0,ry1,inside) 
+record HexWidgetData(s,u,w,h,ax,ay,cx,cy,poly,xx,xy,dx,dy,rx,ry0,ry1,inside)
 
 procedure HexWidget(ax,ay,u,s)               #: create widget s @ x,y & side u
 /u := 20.                                    # side
@@ -1388,8 +1388,8 @@ u := integer(1 <= u)  | runerr(205,u)        # 1 is minimal if ridiculous
 h := integer(sqrt(3./4) * (w := 2 * u))      # h,w
 W := HexWidgetData(s,u,w,h,                  # string, side, width and height
                   ax,ay,                     # absolute x,y
-                  ax+w/2,ay+h/2,             # center x,y 
-                  [ax+u/2,ay, ax+(3*u)/2,ay, ax+2*u,ay+h/2, 
+                  ax+w/2,ay+h/2,             # center x,y
+                  [ax+u/2,ay, ax+(3*u)/2,ay, ax+2*u,ay+h/2,
                    ax+(3*u)/2,ay+h, ax+u/2,ay+h, ax,ay+h/2],  # to draw polygon
                    -u/2,h/2,                 # const for z of cross product
                    x,ay+h,                   # next cell down
@@ -1402,7 +1402,7 @@ procedure DrawCell(W,colour)                 #: Draw the (general) Widget
    Fg(colour)
    FillPolygon!W.poly                        # can draw any polygon
    Fg("black")
-   DrawPolygon!W.poly 
+   DrawPolygon!W.poly
    Font(sprintf("Helvetica,%d",integer(W.h/2.)))
    DrawString(W.cx - TextWidth(W.s)/2,
                W.cy + (WAttrib("ascent") - WAttrib("descent"))/2 + 1,W.s)
@@ -1422,7 +1422,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 
@@ -1990,38 +1990,38 @@ End Function
 Two players, 5 by 4.
 
 ```Mathematica
-hexagon[{x_, y_}] := 
-  Polygon[Transpose[{{1/2, 1/4, -1/4, -1/2, -1/4, 1/4} + 
+hexagon[{x_, y_}] :=
+  Polygon[Transpose[{{1/2, 1/4, -1/4, -1/2, -1/4, 1/4} +
       x, {0, Sqrt[3]/4, Sqrt[3]/4, 0, -Sqrt[3]/4, -Sqrt[3]/4} + y}]];
-off = Transpose[{ConstantArray[0, 20], {0, 0, 0, 0, Sqrt[3]/4, 
-     Sqrt[3]/4, Sqrt[3]/4, Sqrt[3]/4, 0, 0, 0, 0, Sqrt[3]/4, 
+off = Transpose[{ConstantArray[0, 20], {0, 0, 0, 0, Sqrt[3]/4,
+     Sqrt[3]/4, Sqrt[3]/4, Sqrt[3]/4, 0, 0, 0, 0, Sqrt[3]/4,
      Sqrt[3]/4, Sqrt[3]/4, Sqrt[3]/4, 0, 0, 0, 0}}];
-DynamicModule[{letters = RandomSample[CharacterRange["A", "Z"], 20], 
-  blue = False, cols = {}, 
-  locs = Tuples[{Range[1, 4, 3/4], 
-      Range[1, 1 + (3 Sqrt[3])/2, Sqrt[3]/2]}] - off}, 
+DynamicModule[{letters = RandomSample[CharacterRange["A", "Z"], 20],
+  blue = False, cols = {},
+  locs = Tuples[{Range[1, 4, 3/4],
+      Range[1, 1 + (3 Sqrt[3])/2, Sqrt[3]/2]}] - off},
  EventHandler[
-  Dynamic[Graphics[{EdgeForm[{Thick, Black}], LightGray, 
-     hexagon /@ locs, {#[[1]], hexagon[#[[2]]]} & /@ cols, Black, 
+  Dynamic[Graphics[{EdgeForm[{Thick, Black}], LightGray,
+     hexagon /@ locs, {#[[1]], hexagon[#[[2]]]} & /@ cols, Black,
      MapThread[
-      Text, {Style[#, FontSize -> Large] & /@ letters, locs}], Red, 
+      Text, {Style[#, FontSize -> Large] & /@ letters, locs}], Red,
      Text[Style[
        StringJoin[
-        letters[[FirstPosition[locs, #[[2]]][[1]]]] & /@ 
-         Cases[cols, {Red, _}][[All, 2]]], 
-       FontSize -> 40], {5/2, -1/2}, {Right, Center}], Blue, 
+        letters[[FirstPosition[locs, #[[2]]][[1]]]] & /@
+         Cases[cols, {Red, _}][[All, 2]]],
+       FontSize -> 40], {5/2, -1/2}, {Right, Center}], Blue,
      Text[Style[
        StringJoin[
-        letters[[FirstPosition[locs, #[[2]]][[1]]]] & /@ 
-         Cases[cols, {Blue, _}][[All, 2]]], 
-       FontSize -> 40], {5/2, -1/2}, {Left, Center}]}, 
-    PlotRange -> {{-1, 6}, Automatic}, 
-    ImageSize -> Large]], {"MouseClicked" :> 
-    If[! MemberQ[cols[[All, 2]], 
-       Nearest[locs, MousePosition["Graphics"]][[1]]], 
+        letters[[FirstPosition[locs, #[[2]]][[1]]]] & /@
+         Cases[cols, {Blue, _}][[All, 2]]],
+       FontSize -> 40], {5/2, -1/2}, {Left, Center}]},
+    PlotRange -> {{-1, 6}, Automatic},
+    ImageSize -> Large]], {"MouseClicked" :>
+    If[! MemberQ[cols[[All, 2]],
+       Nearest[locs, MousePosition["Graphics"]][[1]]],
      AppendTo[
-      cols, {If[blue, Blue, Red], 
-       Nearest[locs, MousePosition["Graphics"]][[1]]}]; 
+      cols, {If[blue, Blue, Red],
+       Nearest[locs, MousePosition["Graphics"]][[1]]}];
      blue = ! blue]}]]
 ```
 
@@ -2229,14 +2229,14 @@ string chosen = ""
 constant main = create(Window, "honeycomb", 0, 0, 20, 20, 520, 540, 0),
          mainDC = getPrivateDC(main),
          viewDC = c_func(xCreateCompatibleDC, {NULL}),
-         pSize = allocate_Point() 
+         pSize = allocate_Point()
 
 integer ls,         -- length of a single side
         dx, dy,     -- bounding rectangle of a sloping side
         ox, oy,     -- offsets needed to center things
         lw          -- line width (10% of ls, tweaked)
 
--- The total bounding rectange of a completed N by M honeycomb is N*(ls+dx)+dx by (2*M+1)*dy. 
+-- The total bounding rectange of a completed N by M honeycomb is N*(ls+dx)+dx by (2*M+1)*dy.
 --  However, as space for the chosen letters, pretend there is an extra row at the bottom.
 -- Use that to determine the best ls, and hence dx and dy, as the window is resized.
 
@@ -2283,7 +2283,7 @@ sequence points
     setPenColor(iff(k?iff(mod(k,2)?cChosen:cPlayr2):iff(x=mx and y=my?cHover:cLetter)))
     drawPolygonh(viewDC,points)
     setPenColor(cLines)
-    drawLinesh(viewDC,points)   
+    drawLinesh(viewDC,points)
     {} = c_func(xGetTextExtentPoint32,{viewDC,s,1,pSize})
     x0 += dx+ls/2-peek4u(pSize)/2 -- centre-width/2
     y0 -= peek4u(pSize+4)/2       -- (centre)-height/2
@@ -2658,22 +2658,22 @@ Prototype hexEvent_prt(*h.honeycomb, hexID)
 Procedure inpoly(*p.POINT, List poly.POINT())
   ;returns 1 if point is inside the polygon defined by poly(), otherwise returns 0
   Protected new.POINT, old.POINT, lp.POINT, rp.POINT, i, inside, *poly
-  If ListSize(poly()) < 3: ProcedureReturn 0: EndIf 
+  If ListSize(poly()) < 3: ProcedureReturn 0: EndIf
   LastElement(poly()): old = poly()
   ForEach poly()
     ;find leftmost endpoint 'lp' and the rightmost endpoint 'rp' based on x value
-    If poly()\x > old\x 
+    If poly()\x > old\x
       lp = old
       rp = poly()
     Else
       lp = poly()
       rp = old
-    EndIf 
+    EndIf
     If lp\x < *p\x And *p\x <= rp\x And (*p\y - lp\y) * (rp\x - lp\x) < (rp\y - lp\y) * (*p\x - lp\x)
       inside = ~inside
-    EndIf 
+    EndIf
     old = poly()
-  Next 
+  Next
   ProcedureReturn inside & 1
 EndProcedure
 
@@ -2683,11 +2683,11 @@ Procedure drawhex(*h.honeycomb, hexID)
     Protected p.POINT
     If LastElement(\shape())
       p = \shape()
-    EndIf 
+    EndIf
     ForEach \shape()
       LineXY(p\x, p\y, \shape()\x, \shape()\y, RGB(0, 0, 0)) ;black
       p = \shape()
-    Next 
+    Next
     DrawingMode(#PB_2DDrawing_Transparent)
     DrawingFont(FontID(0))
     If \Status
@@ -2696,7 +2696,7 @@ Procedure drawhex(*h.honeycomb, hexID)
     Else
       FillArea(\center\x + 1, \center\y + 1, RGB(0, 0, 0), RGB($FF, $FF, 0)) ;yellow
       DrawText(\center\x - TextWidth(\text) / 2, \center\y - TextHeight(\text) / 2, \text, RGB($FF, 0, 0)) ;red
-    EndIf 
+    EndIf
   EndWith
 EndProcedure
 
@@ -2712,7 +2712,7 @@ Procedure selectHex(*h.honeycomb, hexID)
       DrawText(0, *h\textY + 20, "The user chose letter " + *h\hexGadgets(hexID)\text + ".  ")
     StopDrawing()
     ProcedureReturn 1
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure hexKey(*h.honeycomb, hexID)
@@ -2727,12 +2727,12 @@ Procedure hexMouse(*h.honeycomb, hexID)
   mPos\y = GetGadgetAttribute(*h\gadgetID, #PB_Canvas_MouseY)
   If inpoly(mPos,*h\hexGadgets(hexID)\shape())
     ProcedureReturn selectHex(*h, hexID)
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure honeycombEvents(*h.honeycomb)
   If Len(*h\chosen) >= *h\maxLength: ProcedureReturn: EndIf
-  
+
   Protected event = EventType(), *eventFunction.hexEvent_prt
   Select event
     Case #PB_EventType_Input
@@ -2742,14 +2742,14 @@ Procedure honeycombEvents(*h.honeycomb)
     Case #PB_EventType_LostFocus
       SetActiveGadget(*h\gadgetID)
   EndSelect
-  
+
   If *eventFunction
     For hexID = 0 To ArraySize(*h\hexGadgets())
       If *eventFunction(*h, hexID)
         Break ;event successfully handled
-      EndIf 
-    Next 
-  EndIf 
+      EndIf
+    Next
+  EndIf
 EndProcedure
 
 Procedure createHexGadget(*h.honeycomb, hexID, x, y, dx, dy)
@@ -2758,31 +2758,31 @@ Procedure createHexGadget(*h.honeycomb, hexID, x, y, dx, dy)
       Protected letterNum = Random(Len(*h\unusedLetters) - 1) + 1
       \text = Mid(*h\unusedLetters, letterNum, 1)
       *h\unusedLetters = ReplaceString(*h\unusedLetters, \text, "")
-    EndIf 
+    EndIf
     \center\x = x: \center\y = y
     AddElement(\shape()): \shape()\x = x - dx:     \shape()\y = y
     AddElement(\shape()): \shape()\x = x - dx / 2: \shape()\y = y + dy
     AddElement(\shape()): \shape()\x = x + dx / 2: \shape()\y = y + dy
     AddElement(\shape()): \shape()\x = x + dx:     \shape()\y = y
     AddElement(\shape()): \shape()\x = x + dx / 2: \shape()\y = y - dy
-    AddElement(\shape()): \shape()\x = x - dx / 2: \shape()\y = y - dy 
+    AddElement(\shape()): \shape()\x = x - dx / 2: \shape()\y = y - dy
   EndWith
 EndProcedure
 
 Procedure initHoneycomb(*h.honeycomb, posX, posY, dx = 30, dy = 25, marginX = 10, marginY = 5)
   Protected i, sx, sy, hCols = 5, hRows = 4, hexGadgetCount = hCols * hRows - 1
   If Not *h: ProcedureReturn 0: EndIf
-  
-  *h\unusedLetters.s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"    
+
+  *h\unusedLetters.s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   *h\chosen = ""
   *h\maxLength = 20
-  
+
   Dim *h\hexGadgets(hexGadgetCount)
   ;calculate size width, height and create honeycomb with margins
   sx = Round(dx * (0.5 + hCols * 1.5), #PB_Round_Nearest) + 1 + 2 * marginX
   sy = dy * (2 * hRows + 1) + 1 + 2 * marginY + 2 * 20 ;includes room for hex, margins, and text
   *h\textY = sy - 2 * 20
-  
+
   ;create hexes
   Protected hexID, column, row, x, y, baseX, baseY, majorOffsetY = dy
   baseX = dx + marginX
@@ -2795,10 +2795,10 @@ Procedure initHoneycomb(*h.honeycomb, posX, posY, dx = 30, dy = 25, marginX = 10
       createHexGadget(*h, hexID, x, y, dx, dy)
       baseY + dy * 2
       hexID + 1
-    Next 
+    Next
     baseX + dx * 1.5
-  Next 
-  
+  Next
+
   ;draw honeycomb
   *h\gadgetID = CanvasGadget(#PB_Any, posX, posY, sx, sy, #PB_Canvas_Keyboard | #PB_Canvas_ClipMouse)
   If *h\gadgetID = 0: ProcedureReturn 0: EndIf ;failed to created honeycomb
@@ -2807,7 +2807,7 @@ Procedure initHoneycomb(*h.honeycomb, posX, posY, dx = 30, dy = 25, marginX = 10
   StartDrawing(CanvasOutput(*h\gadgetID))
     For i = 0 To ArraySize(*h\hexGadgets())
       drawhex(*h, i)
-    Next 
+    Next
     Box(0, *h\textY, sx, 40, RGB(0, 0, 0)) ;draw black text box
   StopDrawing()
   ProcedureReturn 1
@@ -2829,12 +2829,12 @@ If OpenWindow(0, 0, 0, 400, 400, "PureBasic - Honeycombs", #PB_Window_SystemMenu
           If Len(honeycomb\chosen) = honeycomb\maxLength
             MessageRequester("Exit", "You chose: " + honeycomb\chosen + ".")
             quit = 1
-          EndIf 
+          EndIf
         EndIf
       Case #PB_Event_CloseWindow
         quit = 1
     EndSelect
-    
+
   Until quit = 1
   FreeGadget(honeycomb\gadgetID)
   CloseWindow(0)
@@ -2928,21 +2928,21 @@ Shoes.app(title: "Honeycombs", height: 700, width: 700) do
   S = Math::sin(Math::PI/3)
   Radius = 60.0
   letters = [
-    %w[L A R N D 1 2], 
-    %w[G U I Y T 3 4], 
-    %w[P C F E B 5 6], 
+    %w[L A R N D 1 2],
+    %w[G U I Y T 3 4],
+    %w[P C F E B 5 6],
     %w[V S O M K 7 8],
     %w[Q X J Z H 9 0],
   ]
-  
+
   def highlight(hexagon)
     hexagon.style(fill: magenta)
   end
-  
+
   def unhighlight(hexagon)
     hexagon.style(fill: yellow)
   end
-  
+
   def choose(hexagon)
     hexagon.choose
     highlight hexagon
@@ -2951,19 +2951,19 @@ Shoes.app(title: "Honeycombs", height: 700, width: 700) do
       @chosen.text = 'Every hexagon has been chosen.'
     else
       @chosen.text = "Chosen: #{chosen.sort.join(',')}\n" +
-                     "Last Chosen: #{hexagon.letter}" 
+                     "Last Chosen: #{hexagon.letter}"
     end
   end
-  
+
   width = 20 + (Radius*(7*letters[0].size - 3)/4.0).ceil
   height = 60 + (Radius*(1 + 2*S*letters.size)).ceil
   @hexagons = []
   letter_to_hex = {}
-  
+
   # create the GUI
   stack(height: height, width: width) do
     @chosen = para("Chosen:\nLast chosen:")
-    
+
     # draw the hexagrams
     letters.each_index do |row|
       letters[0].each_index do |column|
@@ -2979,7 +2979,7 @@ Shoes.app(title: "Honeycombs", height: 700, width: 700) do
           line_to(x-Radius,   y)
           line_to(x-C*Radius, y-S*Radius)
         end
-        
+
         # add some attributes and methods to the shape
         class << h
           attr_accessor :x, :y, :state, :letter
@@ -3006,35 +3006,35 @@ Shoes.app(title: "Honeycombs", height: 700, width: 700) do
             %q(<%s,"%s",%s,%d@%d>) % [self.class, letter, chosen?, x, y]
           end
         end
-        
+
         h.x = x + x - Radius
         h.y = y + y - S*Radius
         h.letter = letters[row][column]
         unhighlight h
-        
+
         @hexagons << h
         letter_to_hex[h.letter.downcase] = h
         letter_to_hex[h.letter.upcase] = h
-        
+
         # add the letter to the hexagon
         para(h.letter).style(size:56, stroke:red) \
                       .move(h.x - C*Radius, h.y - S*Radius)
       end
     end
-    
+
     # highlight the hexagon under the mouse
     hex_over = nil
     motion do |x, y|
       hex = @hexagons.find {|h| h.contains?(x,y)}
       unless hex.nil? or hex.chosen?
-        highlight hex 
+        highlight hex
       end
       unless hex_over == hex or hex_over.nil? or hex_over.chosen?
-        unhighlight hex_over 
+        unhighlight hex_over
       end
       hex_over = hex
     end
-    
+
     # handle mouse clicks
     click do |button, x, y|
       info("button #{button} clicked at (#{x}, #{y})")
@@ -3044,9 +3044,9 @@ Shoes.app(title: "Honeycombs", height: 700, width: 700) do
         choose hexagon
       end
     end
-    
+
     # handle keystrokes
-    keypress do |key| 
+    keypress do |key|
       if key == "\x11"  # control-Q
         exit
       elsif key == "?"

@@ -593,11 +593,11 @@ plain	plain
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|PHP}}
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;
@@ -677,7 +677,7 @@ plain plain
 
 Recursive version
 
-```csharp
+```c#
 
 using System;
 class MultiCombination

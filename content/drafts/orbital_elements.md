@@ -258,7 +258,7 @@ Speed    : (-0.552771, 0.957427, 0)
 
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 
 namespace OrbitalElements {

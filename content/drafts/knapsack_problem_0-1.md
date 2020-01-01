@@ -1027,7 +1027,7 @@ The total weight of all items is 396 !
 =={{header|C_sharp}}==
 All combinations, eight treads, break when weight is to large.
 
-```csharp
+```c#
 using System;  // 4790@3.6
 using System.Threading.Tasks;
 class Program
@@ -1083,7 +1083,7 @@ class Program
 
 A dynamic version.
 
-```csharp
+```c#
 using System
 class program
 {
@@ -1131,11 +1131,11 @@ class program
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{libheader|System}}
 {{libheader|System.Collections.Generic}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

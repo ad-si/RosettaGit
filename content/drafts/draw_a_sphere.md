@@ -1586,7 +1586,7 @@ int main(int c, char** v)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|C}}
 
 ```java

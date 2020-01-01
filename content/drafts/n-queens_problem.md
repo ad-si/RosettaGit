@@ -2700,7 +2700,7 @@ int main( int argc, char* argv[] )
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 === Roger Hui (1981) Algorithm ===
 From Hui, Roger, The N Queens Problem, APL Quote-Quad, Volume 11, Number 3, 1981-03:-
 
@@ -2712,7 +2712,7 @@ If two queens occupy the same diagonal, the line connecting them has slope 1 or 
 {{works with|C sharp|C#|7}}
 <!-- By Martin Freedman, 13/02/2018 -->
 
-```csharp
+```c#
 using System.Collections.Generic;
 using static System.Linq.Enumerable;
 using static System.Console;
@@ -2772,7 +2772,7 @@ First Solution: 0 4 7 5 2 6 1 3
 
 Compare this to the Hettinger solution used in the first Python answer. The logic is similar but the diagonal calculation is different and more expensive computationally (Both suffer from being unable to eliminate permutation prefixes that are invalid e.g.  0 1 ...)
 
-```csharp
+```c#
 
 using System.Collections.Generic;
 using static System.Linq.Enumerable;
@@ -2821,7 +2821,7 @@ This uses the second version of the [https://rosettacode.org/wiki/Amb#C.23 Amb C
 {{works with|C sharp|C#|7.1}}
 <!-- By Martin Freedman, 9/02/2018 -->
 
-```csharp
+```c#
 using static System.Linq.Enumerable;
 using static System.Console;
 

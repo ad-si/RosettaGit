@@ -922,10 +922,10 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace PriorityQueue
@@ -994,7 +994,7 @@ namespace PriorityQueue
 {{works with|C sharp|C#|3.0+/DotNet 3.5+}}
 The above code is not really a true Priority Queue as it does not allow duplicate keys; also, the SortedList on which it is based does not have O(log n) insertions and removals for random data as a true Priority Queue does.  The below code implements a true Min Heap Priority Queue:
 
-```csharp
+```c#
 namespace PriorityQ {
   using KeyT = UInt32;
   using System;
@@ -1140,7 +1140,7 @@ Note that the Key type "KeyT" is not generic in order to give better comparison 
 
 The above code can be tested as per the page specification by the following code:
 
-```csharp
+```c#
     static void Main(string[] args) {
       Tuple<uint, string>[] ins = { new Tuple<uint,string>(3u, "Clear drains"),
                                     new Tuple<uint,string>(4u, "Feed cat"),

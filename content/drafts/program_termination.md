@@ -495,9 +495,9 @@ The function <tt>std::terminate</tt> is what is automatically called when certai
 
 Note that returning a value from main is mostly equivalent to calling <tt>std::exit</tt> with the returned value, except that automatic variables are correctly destructed. If one wants to return from an inner function, while still doing complete cleanup, a solution is to throw an exception caught in main (this will call the destructors of non-main local variables during stack unwinding), and to then return normally from main (which will destruct all automatic objects in main, and then do the cleanup like <tt>std::exit</tt>.
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 if (problem)
 {
    Environment.Exit(1);

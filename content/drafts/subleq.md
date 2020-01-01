@@ -11,19 +11,19 @@ tags = []
 +++
 
 {{task}}
-[[eso:Subleq|Subleq]] is an example of a [[wp:One_instruction_set_computer|One-Instruction Set Computer (OISC)]]. 
+[[eso:Subleq|Subleq]] is an example of a [[wp:One_instruction_set_computer|One-Instruction Set Computer (OISC)]].
 
-It is named after its only instruction, which is '''SU'''btract and '''B'''ranch if '''L'''ess than or '''EQ'''ual to zero.  
+It is named after its only instruction, which is '''SU'''btract and '''B'''ranch if '''L'''ess than or '''EQ'''ual to zero.
 
 ;Task
 Your task is to create an interpreter which emulates a SUBLEQ machine.
 
 The machine's memory consists of an array of signed integers.   These integers may be interpreted in three ways:
-::::*   simple numeric values 
-::::*   memory addresses 
+::::*   simple numeric values
+::::*   memory addresses
 ::::*   characters for input or output
 
-Any reasonable word size that accommodates all three of the above uses is fine. 
+Any reasonable word size that accommodates all three of the above uses is fine.
 
 The program should load the initial contents of the emulated machine's memory, set the instruction pointer to the first address (which is defined to be address 0), and begin emulating the machine, which works as follows:
 :#   Let '''A''' be the value in the memory location identified by the instruction pointer;   let '''B''' and '''C''' be the values stored in the next two consecutive addresses in memory.
@@ -33,11 +33,11 @@ The program should load the initial contents of the emulated machine's memory, s
 :#   Otherwise, both '''A''' and '''B''' are treated as addresses.   The number contained in address '''A''' is subtracted from the number in address '''B'''    (and the result stored back in address '''B''').   If the result is zero or negative, the number in '''C''' becomes the new instruction pointer.
 :#   If the instruction pointer becomes negative, execution halts.
 
-Your solution should accept as input a program to execute on the machine, separately from the input fed to the emulated machine once it is running. 
+Your solution should accept as input a program to execute on the machine, separately from the input fed to the emulated machine once it is running.
 
 This program should be in the form of raw subleq "machine code" - whitespace-separated decimal numbers, with no symbolic names or other assembly-level extensions, to be loaded into memory starting at address   '''0'''   (zero).
 
-For purposes of this task, show the output of your solution when fed the below   "Hello, world!"   program. 
+For purposes of this task, show the output of your solution when fed the below   "Hello, world!"   program.
 
 As written, the example assumes ASCII or a superset of it, such as any of the Latin-N character sets or Unicode;   you may translate the numbers representing characters into another character set if your implementation runs in a non-ASCII-compatible environment.
 
@@ -74,18 +74,18 @@ message: "Hello, world!\n\0"
 with Ada.Text_IO;
 
 procedure Subleq is
-   
+
    Storage_Size: constant Positive := 2**8; -- increase or decrease memory
    Steps: Natural := 999; -- "emergency exit" to stop endless loops
- 
+
    subtype Address is Integer range -1 .. (Storage_Size-1);
    subtype Memory_Location is Address range 0 .. Address'Last;
- 
+
    type Storage is array(Memory_Location) of Integer;
- 
+
    package TIO renames Ada.Text_IO;
    package IIO is new TIO.Integer_IO(Integer);
- 
+
    procedure Read_Program(Mem: out Storage) is
       Idx: Memory_Location := 0;
    begin
@@ -93,10 +93,10 @@ procedure Subleq is
 	 IIO.Get(Mem(Idx));
  	 Idx := Idx + 1;
       end loop;
-   exception 
-      when others => TIO.Put_Line("Reading program: Something went wrong!"); 
+   exception
+      when others => TIO.Put_Line("Reading program: Something went wrong!");
    end Read_Program;
- 
+
    procedure Execute_Program(Mem: in out Storage) is
       PC: Integer := 0; -- program counter
       function Source return Integer is (Mem(PC));
@@ -119,7 +119,7 @@ procedure Subleq is
 	    PC := Next;
 	 else -- subtract and branch if less or equal
 	    Mem(Dest) := Mem(Dest) - Mem(Source);
-	    if Mem(Dest) <= 0 then  
+	    if Mem(Dest) <= 0 then
 	       PC := Branch;
 	    else
 	       PC := Next;
@@ -128,23 +128,23 @@ procedure Subleq is
       end loop;
       TIO.Put_Line(if PC >= 0 then "Emergency exit: program stopped!" else "");
     exception
-      when others => TIO.Put_Line("Failure when executing Program"); 
+      when others => TIO.Put_Line("Failure when executing Program");
    end Execute_Program;
- 
+
    Memory: Storage := (others => 0); -- no initial "junk" in memory!
- 
+
 begin
- 
+
    Read_Program(Memory);
    Execute_Program(Memory);
- 
+
 end Subleq;
 ```
 
 
 
 ```txt
->./subleq 
+>./subleq
 15 17 -1 17 -1 -1 16 1 -1 16 3 -1 15 15 0 0 -1 72 101 108 108 111 44 32 119 111 114 108 100 33 10 0
 Hello, world!
 
@@ -301,7 +301,7 @@ Hello, world!
 =={{Header|BBC BASIC}}==
 The BBC BASIC implementation reads the machine code program as a string from standard input and stores it in an array of signed 32-bit integers. The default size of the array is 256, but other values could easily be substituted. No attempt is made to handle errors arising from invalid Subleq programs.
 
-```bbcbasic>REM 
+```bbcbasic>REM
 subleq
 DIM memory%(255)
 counter% = 0
@@ -381,13 +381,13 @@ Takes the subleq instruction file as input, prints out usage on incorrect invoca
 void subleq(int* code){
 	int ip = 0, a, b, c, nextIP,i;
 	char ch;
-	
+
 	while(0<=ip){
 		nextIP = ip + 3;
 		a = code[ip];
 		b = code[ip+1];
 		c = code[ip+2];
-		
+
 		if(a==-1){
 			scanf("%c",&ch);
 			code[b] = (int)ch;
@@ -406,18 +406,18 @@ void subleq(int* code){
 
 void processFile(char* fileName){
 	int *dataSet, i, num;
-	
+
 	FILE* fp = fopen(fileName,"r");
-	
+
 	fscanf(fp,"%d",&num);
-	
+
 	dataSet = (int*)malloc(num*sizeof(int));
-	
+
 	for(i=0;i<num;i++)
 		fscanf(fp,"%d",&dataSet[i]);
-	
+
 	fclose(fp);
-	
+
 	subleq(dataSet);
 }
 
@@ -517,10 +517,10 @@ Hello, world!
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace Subleq {
@@ -660,7 +660,7 @@ subtraction-paragraph.
 
 ```txt
 READING SUBLEQ PROGRAM... 0032 WORDS READ.
-BEGINNING RUN... 
+BEGINNING RUN...
 
 Hello, world!
 
@@ -1031,7 +1031,7 @@ Hello, world!
 {{works with|jq|1.4}}
 
 The subleq function defined here emulates the subleq OSIC; it
-produces a stream of characters.  
+produces a stream of characters.
 
 The program as presented here can
 be used with jq 1.4, but to see the stream of characters it produces
@@ -1070,14 +1070,14 @@ def subleq(a):
               end )
   | .[3] | select(.) | [.] | implode;
 
-subleq([15, 17, -1, 17, -1, -1, 16, 1, -1, 16, 3, -1, 15, 15,  0, 0, -1, 
+subleq([15, 17, -1, 17, -1, -1, 16, 1, -1, 16, 3, -1, 15, 15,  0, 0, -1,
         72, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100, 33, 10, 0])
 ```
 
 {{out}}
 
 ```sh
-$ jq -r -j -n -f subleq.jq 
+$ jq -r -j -n -f subleq.jq
 Hello, world!
 ```
 
@@ -1174,16 +1174,16 @@ fun subleq(program: String) {
             print("Enter a character : ")
             words[b] = readLine()!![0].toInt()
         }
-        else if (b < 0) { 
+        else if (b < 0) {
             sb.append(words[a].toChar())
         }
         else {
             words[b] -= words[a]
-            if (words[b] <= 0) ip = c 
-            if (ip < 0) break                
+            if (words[b] <= 0) ip = c
+            if (ip < 0) break
         }
     }
-    print(sb) 
+    print(sb)
 }
 
 fun main(args: Array<String>) {
@@ -1234,7 +1234,7 @@ to run_subleq
     cond [
      [[less? :a 0]  setitem :b :memory ascii readchar ]
      [[less? :b 0]  type char item :a :memory ]
-     [else 
+     [else
         local "av make "av item :a :memory
         local "bv make "bv item :b :memory
         local "diff make "diff difference :bv :av
@@ -1304,7 +1304,7 @@ process = function(address)
     B = memory[address + 1].val
     C = memory[address + 2].val
     nextAddress = address + step
-    
+
     if A == -1 then
         memory[B] = input
     else if B == -1 then
@@ -1413,7 +1413,7 @@ class Sublet {
       3, -1, 15, 15, 0, 0, -1, 72, 101, 108,
       108, 111, 44, 32, 119, 111, 114, 108, 100, 33,
       10, 0];
- 
+
     instructionPointer := 0;
 
     do {
@@ -1438,7 +1438,7 @@ class Sublet {
           instructionPointer += 3;
         };
       };
-    } 
+    }
     while (instructionPointer >= 0);
   }
 }
@@ -1473,7 +1473,7 @@ Hello, world!
       program put(b 1+, newb)
       newb 0 <= ifTrue: [ c ->ip ]
       ] ;
- 
+
 [15, 17, -1, 17, -1, -1, 16, 1, -1, 16, 3, -1, 15, 15, 0, 0, -1, 72, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100, 33, 10, 0 ]
 subleq
 ```
@@ -1697,7 +1697,7 @@ while ($ip >= 0 && $ip < @memory) {
  } else {
     if (($memory[$b] -= $memory[$a]) <= 0) {
      $ip = $c;
-   } 
+   }
  }
 }
 ```
@@ -1728,7 +1728,7 @@ while $ip >= 0 && $ip < @memory {
    } else {
        if (@memory[$b] -= @memory[$a]) <= 0 {
            $ip = $c;
-       } 
+       }
    }
 }
 ```
@@ -1763,7 +1763,7 @@ procedure subleq(sequence code)
         end if
     end while
 end procedure
- 
+
 subleq({15, 17,  -1,  17,  -1,  -1, 16,  1,  -1,  16,   3,  -1,
         15, 15,   0,   0,  -1,  72, 101, 108, 108, 111, 44, 32,
         119, 111, 114, 108, 100, 33, 10, 0})
@@ -1908,13 +1908,13 @@ subleq([15, 17, -1, 17, -1, -1, 16, 1, -1, 16, 3, -1, 15, 15,
 
 ```rsplus
 
-mem <- c(15, 17, -1, 17, -1, -1, 16, 1, 
-         -1, 16, 3, -1, 15, 15, 0, 0, 
-         -1, 72, 101, 108, 108, 111, 44, 
-         32, 119, 111, 114, 108, 100, 
+mem <- c(15, 17, -1, 17, -1, -1, 16, 1,
+         -1, 16, 3, -1, 15, 15, 0, 0,
+         -1, 72, 101, 108, 108, 111, 44,
+         32, 119, 111, 114, 108, 100,
          33, 10, 0)
 
-getFromMemory <- function(addr) { mem[[addr + 1]] } # because first element in mem is mem[[1]] 
+getFromMemory <- function(addr) { mem[[addr + 1]] } # because first element in mem is mem[[1]]
 setMemory <- function(addr, value) { mem[[addr + 1]] <<- value }
 subMemory <- function(x, y) { setMemory(x, getFromMemory(x) - getFromMemory(y)) }
 
@@ -1961,7 +1961,7 @@ Hello, world!
     (when (>= ip 0)
       (define m0 (mem ip))
       (define m1 (mem (add1 ip)))
-      (cond 
+      (cond
         [(< m0 0) (mem-set! m1 (read-byte))
                   (loop (+ ip 3))]
         [(< m1 0) (write-byte (mem m0))
@@ -1990,7 +1990,7 @@ Hello, world!
 
 ## REXX
 
-The REXX version supports   '''ASCII'''   and   '''EBCDIC'''   integer (glyphs)   for the message text. 
+The REXX version supports   '''ASCII'''   and   '''EBCDIC'''   integer (glyphs)   for the message text.
 
 The REXX language has no concept of a   ''word'',   but for storing numbers, the default is nine decimal digits.
 
@@ -2020,7 +2020,7 @@ exit                                             /*stick a fork in it,  we're al
 halt:  say 'The One─Instruction Set Computer simulation pgm was halted by user.';   exit 1
 ```
 
-{{out|output|text=  when using the default input:}} 
+{{out|output|text=  when using the default input:}}
 
 ```txt
 
@@ -2080,7 +2080,7 @@ subleq = Computer.new ARGV
 subleq.run
 ```
 
-'''Sample usage:''' 
+'''Sample usage:'''
 
 ```txt
 
@@ -2219,7 +2219,7 @@ HELLO, WORLD.
 ```swift
 func subleq(_ inst: inout [Int]) {
   var i = 0
-  
+
   while i >= 0 {
     if inst[i] == -1 {
       inst[inst[i + 1]] = Int(readLine(strippingNewline: true)!.unicodeScalars.first!.value)
@@ -2227,13 +2227,13 @@ func subleq(_ inst: inout [Int]) {
       print(String(UnicodeScalar(inst[inst[i]])!), terminator: "")
     } else {
       inst[inst[i + 1]] -= inst[inst[i]]
-      
+
       if inst[inst[i + 1]] <= 0 {
         i = inst[i + 2]
         continue
       }
     }
-    
+
     i += 3
   }
 }

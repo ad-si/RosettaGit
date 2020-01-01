@@ -12,7 +12,7 @@ tags = []
 
 {{task|Basic language learning}}
 
-Programming languages have different ways of expressing floating-point literals. 
+Programming languages have different ways of expressing floating-point literals.
 
 
 ;Task:
@@ -35,7 +35,7 @@ You may want to include a regular expression or BNF/ABNF/EBNF defining allowable
 
 ```360asm
 XS4      DC  E'1.23456E-4'       short floating-point
- 
+
 XDPI     DC  D'3.141592653589793' long floating-point
 XD1      DC  D'0'                 long floating-point
 XD2      DC  D'1'                 long floating-point
@@ -48,7 +48,7 @@ XQPI     DC  L'3.14159265358979323846264338327950' extended
 * long     floating-point -  64 bits -  8 bytes : 16 decimal digits
 * extended floating-point - 128 bits - 16 bytes : 33 decimal digits
 
-* absolute approximate range: 5e-79 to 7e75 
+* absolute approximate range: 5e-79 to 7e75
 ```
 
 
@@ -234,12 +234,12 @@ There are some mathematical operators in Axe that operate specifically on fixed-
 ```bbcbasic
       REM Floating-point literal syntax:
       REM  [-]{digit}[.]{digit}[E[-]{digit}]
-      
+
       REM Examples:
       PRINT -123.456E-1
       PRINT 1000.0
       PRINT 1E-5
-      
+
       REM Valid but non-standard examples:
       PRINT 67.
       PRINT 8.9E
@@ -266,7 +266,7 @@ There are some mathematical operators in Axe that operate specifically on fixed-
 ## bc
 
 A literal floating point number can be written as <code>.NUMBER</code>, <code>NUMBER.</code> or <code>NUMBER.NUMBER</code> where <code>NUMBER</code> consists of the hexadecimal digits <code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</code>. If digits in the number are greater than or equal to the current value of <code>ibase</code> (i.e. the input number radix) the behaviour is undefined.
-Examples: 
+Examples:
 ```txt
 12.34   .34   99.   ABC.DEF
 ```
@@ -292,11 +292,11 @@ Why does 6.4.4.2 seem to disallow negative floats?  Clearly this isn't the inten
 -->
 
 
-## C sharp
+## C#
 
 Floating point suffixes are not case-sensitive.
 
-```csharp
+```c#
 double d = 1;
 d = 1d;
 d = 1D;
@@ -365,8 +365,8 @@ The grammar for floating point literals in EBNF (ISO/IEC 14977):
 
 ```txt
 
-float = [ sign ], { decimal-digit }, decimal-point, decimal-digit, { decimal-digit }, [exponent]  
-      | [ sign ], decimal-digit, { decimal-digit }, [ decimal-point, { decimal-digit } ], exponent ;   
+float = [ sign ], { decimal-digit }, decimal-point, decimal-digit, { decimal-digit }, [exponent]
+      | [ sign ], decimal-digit, { decimal-digit }, [ decimal-point, { decimal-digit } ], exponent ;
 exponent = exponent-marker, [ sign ], decimal-digit, { decimal-digit } ;
 sign = "+" | "-" ;
 decimal-point = "." ;
@@ -375,11 +375,11 @@ exponent-marker = "e" | "E" | "s" | "S" | "d" | "D" | "f" | "F" | "l" | "L" ;
 ```
 
 
-Common Lisp implementations can provide up to 4 different float subtypes: short-float, single-float, double-float and long-float. The exponent marker specifies the type of the literal. "e"/"E" denotes the default floating point subtype (it is initially single-float but you can set it with the global variable <code>*READ-DEFAULT-FLOAT-FORMAT*</code> to any of the other subtypes). 
+Common Lisp implementations can provide up to 4 different float subtypes: short-float, single-float, double-float and long-float. The exponent marker specifies the type of the literal. "e"/"E" denotes the default floating point subtype (it is initially single-float but you can set it with the global variable <code>*READ-DEFAULT-FLOAT-FORMAT*</code> to any of the other subtypes).
 The standard only recommends a minimum precision and exponent size for each subtype and an implementation doesn't have to provide all of them:
 
 ```txt
-Format       | Minimum Precision | Minimum Exponent Size  
+Format       | Minimum Precision | Minimum Exponent Size
 --------------------------------------------------
 Short (s/S)  |    13 bits        |      5 bits
 Single (f/F) |    24 bits        |      8 bits
@@ -440,8 +440,8 @@ EBNF grammar for the floating point number is as follows:
 
 ```txt
 float  = "." digit { digit } [ ("e"|"E") [ "+" | "-" ] digit { digit } ]
-    | digit { digit } 
-    ( 
+    | digit { digit }
+    (
         "." digit { digit } [ ( "e" | "E" ) ["+" | "-" ] digit { digit } ]
         | ( "e" | "E") ["+" | "-" ] digit { digit }
     ).
@@ -594,9 +594,9 @@ These are examples of valid representations of floating-point numbers in program
 
 ## Fortran
 
-Floating-point literals involve a decimal point, otherwise they're integers. The rule is <sign><digits><.><digits><exponent> with each optional - except that there must be ''some'' digits! Spaces are irrelevant in source files, so 3 .141 159 would be acceptable, however when data are read, internal spaces are not allowed so "- 3.14" would be rejected - at least for free-format (or "list") style input. With formatted input, spaces are considered to be zeroes and a data field lacking a decimal point can have one assumed so that "  31" read by F4.1 would yield 3.1. There is no requirement that there be digits before the decimal point, nor digits after the decimal point (if there are digits before), so .5 and 5. are both acceptable. 
+Floating-point literals involve a decimal point, otherwise they're integers. The rule is <sign><digits><.><digits><exponent> with each optional - except that there must be ''some'' digits! Spaces are irrelevant in source files, so 3 .141 159 would be acceptable, however when data are read, internal spaces are not allowed so "- 3.14" would be rejected - at least for free-format (or "list") style input. With formatted input, spaces are considered to be zeroes and a data field lacking a decimal point can have one assumed so that "  31" read by F4.1 would yield 3.1. There is no requirement that there be digits before the decimal point, nor digits after the decimal point (if there are digits before), so .5 and 5. are both acceptable.
 
-The status of the sign is delicate, being a matter of context. In a DATA statement or in an assignment such as x = -5.5, the sign is a part of the number, but not in an arithmetic expression such as y = x*-5.5 which has two operators in a row and is rejected. x*(-5.5) is accepted and the sign is a part of the number. 
+The status of the sign is delicate, being a matter of context. In a DATA statement or in an assignment such as x = -5.5, the sign is a part of the number, but not in an arithmetic expression such as y = x*-5.5 which has two operators in a row and is rejected. x*(-5.5) is accepted and the sign is a part of the number.
 
 The exponent part signifies a power of ten and if present, has the form <E or D><sign><integer>, the sign optional, where E signifies a single-precision number and D a double-precision number, irrespective of the number of digits offered in the number. Thus, a constant 3.14159265 will be double-precision only if there follows a D, presumably with a zero exponent. As a result, 1.0D0 is not the same as 1.0E0, even though they are equal, and a calculation such as 4*atan(1.0) will be in single precision unless it is 4*atan(1.0D0) or similar. Some compilers offer an option to regard all constants as being in double precision irrespective of E or D, but in the absence of that, 1.15 or 1.15E0 will ''not'' equal 1.15D0 because most decimal fractions are recurring sequences in binary, and if such constants were assigned to suitable variables and printed with one decimal digit, then on common computers, the double-precision value will come out as 10.2 because with 53-bit precision its value is (exactly) 10·1500000000000003552713678800500929355621337890625, which rounds up, while in single precision it is (exactly) 10·1499996185302734375, which rounds down.
 
@@ -753,8 +753,8 @@ end
 
 
 The function write will cause the real values to be coerced as string constants.  Icon/Unicon will format these as it sees fit resorting to exponent forms only where needed.
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf The IPL library routine printf provides a broader range of formatting choices.] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf The IPL library routine printf provides a broader range of formatting choices.]
 
 
 ## J
@@ -772,7 +772,7 @@ numeric-constant ::= number-constant | number-constant whitespace numeric-consta
 whitespace ::= whitespacecharacter | whitespacecharacter whitespace
 whitespacecharacter ::= ' ' | TAB
 TAB is ascii 9
-number-constant ::= arbitrary-constant | arbitrary-constant base-token base-constant 
+number-constant ::= arbitrary-constant | arbitrary-constant base-token base-constant
 base-token ::= 'b' | 'b-'
 base-constant ::= base-digits | base-digits '.' base-digits
 base-digits ::= base-digit | base-digit base-digits
@@ -1037,19 +1037,19 @@ Whether a given float is a software or hardware float can be determined by using
 
 
 ```Mathematica
-These numbers are given in the default output format. Large numbers are given in scientific notation. 
+These numbers are given in the default output format. Large numbers are given in scientific notation.
 {6.7^-4,6.7^6,6.7^8}
 {0.00049625,90458.4,4.06068*10^6}
 
-This gives all numbers in scientific notation. 
+This gives all numbers in scientific notation.
 ScientificForm[%]
 {4.9625*10^(-4),9.04584*10^(4),4.06068*10^(6)}
 
-This gives the numbers in engineering notation, with exponents arranged to be multiples of three. 
+This gives the numbers in engineering notation, with exponents arranged to be multiples of three.
 EngineeringForm[%]
 {496.25*10^(-6),90.4584*10^(3),4.06068*10^(6)}
 
-In accounting form, negative numbers are given in parentheses, and scientific notation is never used. 
+In accounting form, negative numbers are given in parentheses, and scientific notation is never used.
 AccountingForm[{5.6,-6.7,10.^7}]
 {5.6,(6.7),10000000.}
 ```
@@ -1193,31 +1193,31 @@ method normalize(fv) private constant
 
 ```txt
 
-Sample using objects of type "Rexx" (default): 
-                 1.5 ==                  1.5 
-                -1.5 ==                 -1.5 
-               15e-1 ==                  1.5 
-               3e-12 ==                3E-12 
-               3e+12 ==        3000000000000 
-            17.3E-12 ==             1.73E-11 
-            17.3E+12 ==       17300000000000 
-            17.3E+40 ==             1.73E+41 
-            0.033e+9 ==             33000000 
-            0.033e-9 ==              3.3E-11 
- 
-Sample using primitive type "float": 
-               15e-1 ==                  1.5 
-            17.3E-12 ==             1.73E-11 
-            17.3E+12 ==       17300000000000 
-            0.033E+9 ==             33000000 
-            0.033E-9 ==              3.3E-11 
- 
-Sample using primitive type "double": 
-               15e-1 ==                  1.5 
-            17.3E-12 ==             1.73E-11 
-            17.3E+12 ==       17300000000000 
-            17.3E+40 ==             1.73E+41 
-            0.033E+9 ==             33000000 
+Sample using objects of type "Rexx" (default):
+                 1.5 ==                  1.5
+                -1.5 ==                 -1.5
+               15e-1 ==                  1.5
+               3e-12 ==                3E-12
+               3e+12 ==        3000000000000
+            17.3E-12 ==             1.73E-11
+            17.3E+12 ==       17300000000000
+            17.3E+40 ==             1.73E+41
+            0.033e+9 ==             33000000
+            0.033e-9 ==              3.3E-11
+
+Sample using primitive type "float":
+               15e-1 ==                  1.5
+            17.3E-12 ==             1.73E-11
+            17.3E+12 ==       17300000000000
+            0.033E+9 ==             33000000
+            0.033E-9 ==              3.3E-11
+
+Sample using primitive type "double":
+               15e-1 ==                  1.5
+            17.3E-12 ==             1.73E-11
+            17.3E+12 ==       17300000000000
+            17.3E+40 ==             1.73E+41
+            0.033E+9 ==             33000000
             0.033E-9 ==              3.3E-11
 
 ```
@@ -1282,7 +1282,7 @@ Here are some examples:
 ## Oforth
 
 
-A literal floating point number is written with a . and with or without an exponential notation : 
+A literal floating point number is written with a . and with or without an exponential notation :
 
 
 ```Oforth
@@ -1390,9 +1390,9 @@ It is not necessary for a digit to precede a decimal point, but one must follow 
 In the 32-bit version, integers outside -1,073,741,824 to +1,073,741,823 must be stored as atoms.
 In the 64-bit version the limits of integers are -4,611,686,018,427,387,904 to +4,611,686,018,427,387,903.
 
-On a 32-bit architecture floats can range from approximately -1e308 to +1e308 with 15 decimal digits, 
+On a 32-bit architecture floats can range from approximately -1e308 to +1e308 with 15 decimal digits,
 and on a 64-bit architecture they can range from approximately -1e4932 to +1e4932 with 19 decimal digits.
- 
+
 The included bigatom library allows working with extremely large integers and floats with arbitrary precision. In the following, '?x' is the Phix shorthand for 'print(1,x)', plus \n
 
 ```Phix
@@ -1597,7 +1597,7 @@ say format(something,,,,0)
 
 The last invocation of   '''format'''   (above,   with the 5th parameter equal to zero)   forces exponential notation,   unless the exponent is   '''0'''   (zero),   then exponential notation won't be used.
 
-There are other options for the   '''format'''   BIF to force any number of digits before and/or after the decimal point,   and/or specifying the number of digits in the exponent. 
+There are other options for the   '''format'''   BIF to force any number of digits before and/or after the decimal point,   and/or specifying the number of digits in the exponent.
 
 
 
@@ -1630,7 +1630,7 @@ As all values in Scala, values are boxed with wrapper classes. The compiler will
 
 ```Scala
 1. //Double equal to 1.0
-1.0 //Double, a 64-bit IEEE-754 floating point number (equivalent to Java's double primitive type) 
+1.0 //Double, a 64-bit IEEE-754 floating point number (equivalent to Java's double primitive type)
 2432311.7567374 //Double
 1.234E-10 //Double
 1.234e-10 //Double
@@ -1720,22 +1720,22 @@ say 12.34e5;
 
 
 ```smalltalk
-2.0       
-45e6      
-45e+6     
-78e-9     
+2.0
+45e6
+45e+6
+78e-9
 1.2E34
 ```
-  
+
 
 base 2 mantissa:
 
 ```smalltalk
-2r1010.0  -> 10.0  
-2r0.01      -> 0.25    
+2r1010.0  -> 10.0
+2r0.01      -> 0.25
 2r1010e5 -> 320.0
 ```
-   
+
 
 base 2 mantissa and base 2 exponent:
 
@@ -1795,7 +1795,7 @@ Cygnus/X Ursa (the standard Ursa interpreter) is written in Java and supports Ja
 
 ```ursa
 1.
-1.0 
+1.0
 2432311.7567374
 1.234E-10
 1.234e-10
@@ -1813,9 +1813,9 @@ Cygnus/X Ursa (the standard Ursa interpreter) is written in Java and supports Ja
 
 
 ```verbexx
-//    Floating-point Literals: 
+//    Floating-point Literals:
 //
-//    If present,the exponent must be of the form: 
+//    If present,the exponent must be of the form:
 //
 //         eNNN...N
 //         ENNN...N
@@ -1832,23 +1832,23 @@ Cygnus/X Ursa (the standard Ursa interpreter) is written in Java and supports Ja
 //         fd    Fd   fD   FD    (FLOATD_T) -- boost::multiprecision::
 //                                             cpp_dec_float<100, int64_t>
 //
-//    The presence of "." "E" "e" "F" or "f" indicates a floating point literal. 
-// 
-//    A literal can start with "-"  "."  or a decimal digit, but not "+" or "_". 
+//    The presence of "." "E" "e" "F" or "f" indicates a floating point literal.
+//
+//    A literal can start with "-"  "."  or a decimal digit, but not "+" or "_".
 //    There must be at least one digit, so forms like ".F" ".e+11_f32" or just "."
 //    are not recognized as floating point literals.
 //
-//    Floating-point literal examples: 
-                                           
+//    Floating-point literal examples:
+
 @SAY   0.       .0       0.0      1.        .1       123.123                         ;// FLOAT64_T
 @SAY  -0.      -.0      -0.0     -1.       -.1      -123.123                         ;// FLOAT64_T
-                                                                                     
+
 @SAY  -0.E1    .0e0     0.0E6    -1.e6     -.1E8     12.12e44     -0E0     1e20      ;// FLOAT64_T
 @SAY  -0.e+1   .0E+0    0.0e+6   -1.E+6    -.1e+8    12.12E+44    -0e+0    1E+20     ;// FLOAT64_T
 @SAY  -0.E-1   .0e-0    0.0E-6   -1.e-6    -.1E-8    12.12e-44    -0E-0    1e-20     ;// FLOAT64_T
-@SAY  -0E9999999999999999  .0e+9999999999  0.E-999999999999999999                    ;// FLOAT64_T 
-@SAY  -8e0000000000000299  .6E+0000000299  5.e-000000000000000299                    ;// FLOAT64_T  
-                                                                                     
+@SAY  -0E9999999999999999  .0e+9999999999  0.E-999999999999999999                    ;// FLOAT64_T
+@SAY  -8e0000000000000299  .6E+0000000299  5.e-000000000000000299                    ;// FLOAT64_T
+
 @SAY   0f   -0f   0F   -0f   .0F   -1234f     12.F     12.34f                        ;// FLOAT64_T
 @SAY   0F32 -0f32 0f32 -0f32 .0f32 -1234F32   12.f32   12.34F32                      ;// FLOAT32_T
 @SAY   0f64 -0f64 0F64 -0f64 .0F64 -1234f64   12.F64   12.34f64                      ;// FLOAT64_T
@@ -1857,14 +1857,14 @@ Cygnus/X Ursa (the standard Ursa interpreter) is written in Java and supports Ja
 @SAY  -0.E1f    .0e0F    0.0E6f64  -1.e6F64  -.1E8f    12.12e44f64  -0E0F    1e20f64 ;// FLOAT64_T
 @SAY  -0.e+1f32 .0E+0F32 0.0e+6f32 -1.E+6F32 -.1e+8f32 12.12E+34F32 -0e+0f32 1E+20F32;// FLOAT32_T
 @SAY  -0.E-1fd  .0e-0fD  0.0E-6Fd  -1.e-6FD  -.1E-8fd  12.12e-44fD  -0E-0Fd  1e-20FD ;// FLOATD_T
-@SAY  -0E9999999999999999f32 .0e+9999999999F32    0.E-999999999999999999f32          ;// FLOAT32_T 
-@SAY  -8e0000000000000299f   .6E+0000000299f64    5.e-00000000000000000000299F64     ;// FLOAT64_T 
-@SAY  -8e9999999999999999fD  .6E+99999999999fD    5.e-12345678987654321FD            ;// FLOATD_T  
+@SAY  -0E9999999999999999f32 .0e+9999999999F32    0.E-999999999999999999f32          ;// FLOAT32_T
+@SAY  -8e0000000000000299f   .6E+0000000299f64    5.e-00000000000000000000299F64     ;// FLOAT64_T
+@SAY  -8e9999999999999999fD  .6E+99999999999fD    5.e-12345678987654321FD            ;// FLOATD_T
 
-//  note: _ (underscores) can appear in the main numeric part of the literal 
-//        after the first digit and before any length suffix: 
+//  note: _ (underscores) can appear in the main numeric part of the literal
+//        after the first digit and before any length suffix:
 
-@SAY   -10_000__f    1__0._55__    -1__.__   .0___44    1_._2__E-23F32 debug:;    
+@SAY   -10_000__f    1__0._55__    -1__.__   .0___44    1_._2__E-23F32 debug:;
 
 //        Underscores can also appear in the exponent, after the first digit:
 

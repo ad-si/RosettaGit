@@ -1399,7 +1399,7 @@ Implementation of S-expression serializer & deserializer in C# 6.0 language.
 Git repository with code and tests can be found here: https://github.com/ichensky/SExpression/tree/rosettacode
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;
@@ -1451,7 +1451,7 @@ using System.Text;
 ```
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;
@@ -1641,7 +1641,7 @@ namespace SExpression
 ```
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;

@@ -355,7 +355,7 @@ int main() {
 ## C#
 
 
-```csharp
+```c#
 string MakeList(string separator)
 {
     int counter = 1;
@@ -371,7 +371,7 @@ Console.WriteLine(MakeList(". "));
 '''Update'''<br/>
 As of C#7, we can nest actual methods inside other methods instead of creating delegate instances. They can even be declared after the return statement.
 
-```csharp
+```c#
 string MakeList2(string separator)
 {
     int counter = 1;

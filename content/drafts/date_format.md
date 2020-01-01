@@ -546,9 +546,9 @@ Thursday, May 14, 2009
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode.DateFormat

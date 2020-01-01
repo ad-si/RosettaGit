@@ -196,47 +196,47 @@ Interactive code which asks the side length of the starting triangle and number 
 #define pi M_PI
 
 int main(){
-	
+
 	time_t t;
 	double side, vertices[3][3],seedX,seedY,windowSide;
 	int i,iter,choice;
-	
+
 	printf("Enter triangle side length : ");
 	scanf("%lf",&side);
-	
+
 	printf("Enter number of iterations : ");
 	scanf("%d",&iter);
-	
+
 	windowSide = 10 + 2*side;
 
 	initwindow(windowSide,windowSide,"Sierpinski Chaos");
-	
+
 	for(i=0;i<3;i++){
 		vertices[i][0] = windowSide/2 + side*cos(i*2*pi/3);
 		vertices[i][1] = windowSide/2 + side*sin(i*2*pi/3);
 		putpixel(vertices[i][0],vertices[i][1],15);
 	}
-	
+
 	srand((unsigned)time(&t));
-	
+
 	seedX = rand()%(int)(vertices[0][0]/2 + (vertices[1][0] + vertices[2][0])/4);
 	seedY = rand()%(int)(vertices[0][1]/2 + (vertices[1][1] + vertices[2][1])/4);
-	
+
 	putpixel(seedX,seedY,15);
-	
+
 	for(i=0;i<iter;i++){
 		choice = rand()%3;
-		
+
 		seedX = (seedX + vertices[choice][0])/2;
 		seedY = (seedY + vertices[choice][1])/2;
-		
+
 		putpixel(seedX,seedY,15);
 	}
-	
+
 	getch();
-	
+
 	closegraph();
-	
+
 	return 0;
 }
 ```
@@ -245,7 +245,7 @@ int main(){
 
 ## C++
 
-This program will generate the Sierpinski Triangle and save it to your hard drive. 
+This program will generate the Sierpinski Triangle and save it to your hard drive.
 
 ```cpp
 
@@ -253,7 +253,7 @@ This program will generate the Sierpinski Triangle and save it to your hard driv
 #include <ctime>
 #include <string>
 #include <iostream>
- 
+
 const int BMP_SIZE = 600;
 
 class myBitmap {
@@ -272,15 +272,15 @@ public:
         bi.bmiHeader.biPlanes      = 1;
         bi.bmiHeader.biWidth       =  w;
         bi.bmiHeader.biHeight      = -h;
- 
+
         HDC dc = GetDC( GetConsoleWindow() );
         bmp = CreateDIBSection( dc, &bi, DIB_RGB_COLORS, &pBits, NULL, 0 );
         if( !bmp ) return false;
- 
+
         hdc = CreateCompatibleDC( dc );
         SelectObject( hdc, bmp );
         ReleaseDC( GetConsoleWindow(), dc );
- 
+
         width = w; height = h;
         return true;
     }
@@ -303,14 +303,14 @@ public:
         BITMAPINFO       infoheader;
         BITMAP           bitmap;
         DWORD            wb;
- 
+
         GetObject( bmp, sizeof( bitmap ), &bitmap );
         DWORD* dwpBits = new DWORD[bitmap.bmWidth * bitmap.bmHeight];
- 
+
         ZeroMemory( dwpBits, bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD ) );
         ZeroMemory( &infoheader, sizeof( BITMAPINFO ) );
         ZeroMemory( &fileheader, sizeof( BITMAPFILEHEADER ) );
- 
+
         infoheader.bmiHeader.biBitCount = sizeof( DWORD ) * 8;
         infoheader.bmiHeader.biCompression = BI_RGB;
         infoheader.bmiHeader.biPlanes = 1;
@@ -318,19 +318,19 @@ public:
         infoheader.bmiHeader.biHeight = bitmap.bmHeight;
         infoheader.bmiHeader.biWidth = bitmap.bmWidth;
         infoheader.bmiHeader.biSizeImage = bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD );
- 
+
         fileheader.bfType    = 0x4D42;
         fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
         fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
- 
+
         GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
- 
+
         HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL );
         WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
         WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
         WriteFile( file, dwpBits, bitmap.bmWidth * bitmap.bmHeight * 4, &wb, NULL );
         CloseHandle( file );
- 
+
         delete [] dwpBits;
     }
     HDC getDC() const     { return hdc; }
@@ -387,7 +387,7 @@ private:
         colors[1] = RGB( 0, 255, 0 );
         colors[2] = RGB( 0, 0, 255 );
     }
-    
+
     myBitmap bmp;
     POINT myPoints[3];
     COLORREF colors[3];
@@ -401,10 +401,10 @@ int main( int argc, char* argv[] ) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System.Diagnostics;
 using System.Drawing;
 
@@ -738,7 +738,7 @@ set terminal png font arial 12 size 640,640
 set print dfn append
 set output ofn
 unset border; unset xtics; unset ytics; unset key;
-set size square 
+set size square
 set title ttl font "Arial:Bold,12"
 lim=30000; max=100; x=y=xw=yw=p=0;
 randgp(top) = floor(rand(0)*top)
@@ -748,7 +748,7 @@ do for [i=1:lim] {
   if (v==0) {x=x/2; y=y/2}
   if (v==1) {x=sz1+(sz1-x)/2; y=sz2-(sz2-y)/2}
   if (v==2) {x=sz-(sz-x)/2; y=y/2}
-  xf=floor(x); yf=floor(y); 
+  xf=floor(x); yf=floor(y);
   if(!(xf<1||xf>sz||yf<1||yf>sz)) {print xf," ",yf};
 }
 plot dfn using 1:2 with points  pt 7 ps 0.5 lc @clr
@@ -761,7 +761,7 @@ unset print
 
 ```txt
 
-File: ChGS3Gnu1.png 
+File: ChGS3Gnu1.png
 
 ```
 
@@ -820,7 +820,7 @@ main = do x <- getRandomR (0,1)
           pts <- gameOfChaos 500000 triangle (x,y)
           display window white $ foldMap point pts
             where window = InWindow "Game of Chaos" (400,400) (0,0)
-                  point (x,y) = translate (100*x) (100*y) $ circle 0.02 
+                  point (x,y) = translate (100*x) (100*y) $ circle 0.02
 ```
 
 
@@ -1040,7 +1040,7 @@ using Luxor
 width  = 1000;
 height = 1000;
 Drawing(width, height, "./chaos.png");
-t = Turtle(0, 0, true, 0, (0., 0., 0.)); 
+t = Turtle(0, 0, true, 0, (0., 0., 0.));
 
 x = rand(1:width);
 y = rand(1:height);
@@ -1214,7 +1214,7 @@ colors, orig = { { 255, 0, 0 }, { 0, 255, 0 }, { 0, 0, 255 } }, {}
 
 function love.load()
     wid, hei = love.graphics.getWidth(), love.graphics.getHeight()
-    
+
     orig[1] = { wid / 2, 3 }
     orig[2] = { 3, hei - 3 }
     orig[3] = { wid - 3, hei - 3 }
@@ -1222,7 +1222,7 @@ function love.load()
     if math.random() < .5 then w = -w end
     if math.random() < .5 then h = -h end
     orig[4] = { wid / 2 + w, hei / 2 + h }
-    
+
     canvas = love.graphics.newCanvas( wid, hei )
     love.graphics.setCanvas( canvas ); love.graphics.clear()
     love.graphics.setColor( 255, 255, 255 )
@@ -1237,7 +1237,7 @@ function love.draw()
             pt = 1
         elseif r == 2 or r == 5 then
             pt = 2
-        else 
+        else
             pt = 3
         end
         local x, y = ( orig[4][1] + orig[pt][1] ) / 2, ( orig[4][2] + orig[pt][2] ) / 2
@@ -1258,7 +1258,7 @@ end
 
 
 ```Mathematica
-  
+
 
 points = 5000;
 a = {0, 0};
@@ -1266,8 +1266,8 @@ b = {1, 0};
 c = {0.5, 1};
 d = {.7, .3};
 S = {};
-For[i = 1, i < points, i++, t = RandomInteger[2]; 
- If[t == 0, d = Mean[{a, d}], 
+For[i = 1, i < points, i++, t = RandomInteger[2];
+ If[t == 0, d = Mean[{a, d}],
   If[t == 1, d = Mean[{b, d}], d = Mean[{c, d}]]]; AppendTo[S, d]]
 Graphics[Point[S]]
 
@@ -1372,7 +1372,7 @@ plotmat(M);
 pChaosGameS3(600,30000); \\ SierpTri1.png
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -1825,7 +1825,7 @@ Note: Find plotmat() here on RosettaCode Wiki.
 
 # Chaos Game  (Sierpinski triangle) 2/15/17 aev
 # pChaosGameS3(size, lim, clr, fn, ttl)
-# Where: size - defines matrix and picture size; lim - limit of the dots; 
+# Where: size - defines matrix and picture size; lim - limit of the dots;
 #   fn - file name (.ext will be added); ttl - plot title;
 pChaosGameS3 <- function(size, lim, clr, fn, ttl)
 {
@@ -1844,20 +1844,20 @@ pChaosGameS3 <- function(size, lim, clr, fn, ttl)
   }
   plotmat(M, fn, clr, ttl, 0, size);
   cat(" *** END:",date(),"\n");
-}  
+}
 pChaosGameS3(600, 30000, "red", "SierpTriR1", "Sierpinski triangle")
 
 ```
- 
+
 {{Output}}
 
 ```txt
 
 > pChaosGameS3(600, 30000, "red", "SierpTriR1", "Sierpinski triangle")
- *** START: Wed Feb 15 21:40:48 2017 size= 600 lim= 30000 clr= red 
+ *** START: Wed Feb 15 21:40:48 2017 size= 600 lim= 30000 clr= red
  *** Matrix( 600 x 600 ) 15442 DOTS
- *** END: Wed Feb 15 21:40:51 2017 
- 
+ *** END: Wed Feb 15 21:40:51 2017
+
 ```
 
 
@@ -2185,7 +2185,7 @@ load "guilib.ring"
 
 paint = null
 
-new qapp 
+new qapp
        {
        win1 = new qwidget() {
                   setwindowtitle("Archimedean spiral")
@@ -2221,15 +2221,15 @@ func draw
        y = floor(random(10/10) * 173)
        for i = 1 to 20000
            v = floor(random(10)/10 * 3) + 1
-	   if v = 1 
+	   if v = 1
 	      x = x/2
 	      y = y/2
 	   ok
-	   if v = 2 
+	   if v = 2
 	      x = 100 + (100-x)/2
 	      y = 173 - (173-y)/2
 	   ok
-	   if v = 3 
+	   if v = 3
 	      x = 200 - (200-x)/2
 	      y = y/2
 	   ok
@@ -2438,10 +2438,10 @@ i = 2;
 while i <= n_steps
     random=grand(1,'prm',[1:n_sides]'); //sort vertices randomly
     random=random(1);                   //choose the first random vertices
-        
+
     points(i) = ( vertices(random) - points(i-1) ) * (1-ratio) + points(i-1);
-    
-    i = i + 1;  
+
+    i = i + 1;
 end
 time=toc();
 disp('Time: '+string(time)+'s.');
@@ -2652,16 +2652,16 @@ Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_al
 w,h:=640,640;
 bitmap:=PPM(w,h,0xFF|FF|FF);  // White background
 colors:=T(0xFF|00|00,0x00|FF|00,0x00|00|FF);   // red,green,blue
- 
+
 margin,size:=60, w - 2*margin;
 points:=T(T(w/2, margin), T(margin,size), T(margin + size,size) );
 N,done:=Atomic.Int(0),Atomic.Bool(False);
- 
+
 Thread.HeartBeat('wrap(hb){  // a thread
    var a=List(-1,-1);
 
    if(N.inc()<50){
-      do(500){ 
+      do(500){
 	 colorIndex:=(0).random(3);  // (0..2)
 	 b,p:=points[colorIndex], halfwayPoint(a,b);
 	 x,y:=p;
@@ -2672,7 +2672,7 @@ Thread.HeartBeat('wrap(hb){  // a thread
    }
    else{ hb.cancel(); done.set(); }  // stop thread and signal done
 },2).go();     // run every 2 seconds, starting now
- 
+
 fcn halfwayPoint([(ax,ay)], [(bx,by)]){ T((ax + bx)/2, (ay + by)/2) }
 
 done.wait();  // don't exit until thread is done

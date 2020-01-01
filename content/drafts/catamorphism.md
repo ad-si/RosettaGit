@@ -488,10 +488,10 @@ nums_other: 30
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 var nums = Enumerable.Range(1, 10);
 
 int summation = nums.Aggregate((a, b) => a + b);

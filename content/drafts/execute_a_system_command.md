@@ -514,10 +514,10 @@ system("pause");
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Using Windows / .NET:
 
-```csharp
+```c#
 using System.Diagnostics;
 
 namespace Execute
@@ -535,7 +535,7 @@ namespace Execute
 
 {{works with|MCS|1.2.3.1}}
 
-```csharp
+```c#
 using System;
 
   class Execute {

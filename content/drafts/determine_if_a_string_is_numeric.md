@@ -1072,11 +1072,11 @@ bool isNumeric(const std::string& input) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 '''Framework:''' [[.NET]] 2.0+
 
 
-```csharp
+```c#
 public static bool IsNumeric(string s)
 {
     double Result;
@@ -1094,7 +1094,7 @@ if (IsNumeric(value))
 '''Framework:''' [[.NET]] 1.0+
 
 
-```csharp
+```c#
 public static bool IsNumeric(string s)
 {
   try

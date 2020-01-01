@@ -823,9 +823,9 @@ int Hofstadter::M(int n)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 namespace RosettaCode {
     class Hofstadter {
         static public int F(int n) {

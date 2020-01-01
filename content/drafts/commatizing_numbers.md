@@ -17,7 +17,7 @@ tags = []
 
 ;Task:
 Write a function that takes a string as an argument with optional arguments or parameters (the format of parameters/options is left to the programmer) that in general, adds commas (or some
-other characters, including blanks or tabs) to the first numeric part of a string (if it's suitable for commatizing as per the rules below), and returns that newly commatized string. 
+other characters, including blanks or tabs) to the first numeric part of a string (if it's suitable for commatizing as per the rules below), and returns that newly commatized string.
 
 Some of the commatizing rules (specified below) are arbitrary, but they'll be a part of this task requirements, if only to make the results consistent amongst national preferences and other disciplines.
 
@@ -42,7 +42,7 @@ The original string is never changed   ''except''   by the addition of commas   
 To wit, the following should be preserved:
 
 ::*   leading signs ('''+''', '''-''')       ── even superfluous signs
-::*   leading/trailing/embedded blanks, tabs, and other whitespace 
+::*   leading/trailing/embedded blanks, tabs, and other whitespace
 ::*   the case (upper/lower) of the exponent indicator, e.g.:   4.8903d-002
 
 
@@ -94,7 +94,7 @@ where the penultimate string has three leading blanks   (real blanks are to be u
 
 
 ;Also see:
-* The Wiki entry:   [http://en.wikipedia.org/wiki/Eddington_number Arthur Eddington's number of protons in the universe]. 
+* The Wiki entry:   [http://en.wikipedia.org/wiki/Eddington_number Arthur Eddington's number of protons in the universe].
 
 
 
@@ -215,7 +215,7 @@ Arthur Eddington wrote: I believe there are 15,747,724,136,275,002,577,605,653,9
 ## C#
 
 
-```csharp
+```c#
 
 static string[] inputs = {
 	"pi=3.14159265358979323846264338327950288419716939937510582097494459231",
@@ -242,9 +242,9 @@ string Commatize(string text, int startPosition, int interval, string separator)
 string Commatize(Match match, int interval, string separator, string original)
 {
 	if (match.Length <= interval)
-		return original.Substring(match.Index, 
+		return original.Substring(match.Index,
                 match.Index == original.Length ? 0 : Math.Max(match.Length, 1));
-	
+
 	return string.Join(separator, match.Value.Split(interval));
 }
 
@@ -254,13 +254,13 @@ public static class Extension
 	{
 		return SplitImpl(source, interval).ToArray();
 	}
-	
+
 	static IEnumerable<string>SplitImpl(string source, int interval)
 	{
 		for	(int i = 1; i < source.Length; i++)
 		{
 			if (i % interval != 0) continue;
-			
+
 			yield return source.Substring(i - interval, interval);
 		}
 	}
@@ -308,7 +308,7 @@ unittest {
     // An attempted solution may have one or more of the following errors:
     //    ignoring a number that has only zero before its decimal point
     assert("0.0123456".commatize == "0.012,345,6");
-    //    commatizing numbers other than the first 
+    //    commatizing numbers other than the first
     assert("1000 2.3000".commatize == "1,000 2.3000");
     //    only commatizing in one direction from the decimal point
     assert("0001123.456789".commatize == "0001,123.456,789");
@@ -319,7 +319,7 @@ unittest {
     //    ignoring the start value, or confusing base 0 (used here) with base 1
     assert("1 77000".commatize(1) == "1 77,000");
     //    ignoring a number that begins with a point, or treating it as integer
-    assert(" .0104004".commatize == " .010,400,4");   
+    assert(" .0104004".commatize == " .010,400,4");
 }
 
 void main() {
@@ -617,7 +617,7 @@ for tst in input
 end
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 pi=3.14159 26535 89793 23846 26433 83279 50288 41971 69399 37510 58209 74944 59231
@@ -650,14 +650,14 @@ fun String.commatize(startIndex: Int = 0, period: Int = 3, sep: String = ","): S
     if (m == null) return this
     val splits = m.value.split('.')
     var ip = splits[0]
-    if (ip.length > period) {       
+    if (ip.length > period) {
         val sb = StringBuilder(ip.reversed())
         for (i in (ip.length - 1) / period * period downTo period step period) {
             sb.insert(i, sep)
         }
         ip = sb.toString().reversed()
     }
-    if ('.' in m.value) { 
+    if ('.' in m.value) {
         var dp = splits[1]
         if (dp.length > period) {
             val sb2 = StringBuilder(dp)
@@ -667,7 +667,7 @@ fun String.commatize(startIndex: Int = 0, period: Int = 3, sep: String = ","): S
             dp = sb2.toString()
         }
         ip += "." + dp
-    } 
+    }
     return this.take(startIndex) + this.drop(startIndex).replaceFirst(m.value, ip)
 }
 
@@ -684,16 +684,16 @@ fun main(args: Array<String>) {
         "The land area of the earth is 57268900(29% of the surface) square miles.",
         "Ain't no numbers in this here words, nohow, no way, Jose.",
         "James was never known as 0000000007",
-        "Arthur Eddington wrote: I believe there are " + 
-        "15747724136275002577605653961181555468044717914527116709366231425076185631031296" +     
+        "Arthur Eddington wrote: I believe there are " +
+        "15747724136275002577605653961181555468044717914527116709366231425076185631031296" +
         " protons in the universe.",
         "   $-140000±100 millions.",
-        "6/9/1946 was a good year for some."        
+        "6/9/1946 was a good year for some."
     )
 
     println(tests[0].commatize(period = 2, sep = "*"))
     println(tests[1].commatize(period = 3, sep = "-"))
-    println(tests[2].commatize(period = 4, sep = "__"))   
+    println(tests[2].commatize(period = 4, sep = "__"))
     println(tests[3].commatize(period = 5, sep = " "))
     println(tests[4].commatize(sep = "."))
     for (test in tests.drop(5)) println(test.commatize())
@@ -815,7 +815,7 @@ for ('pi=3.14159265358979323846264338327950288419716939937510582097494459231', {
         say "Before: ", .[0];
         say " After: ", .[1] ?? .[0].&commatize( |.[1] ) !! .&commatize;
     }
- 
+
 sub commatize($s, :$at = 0, :$ins = ',', :$by = 3) {
     $s.subst: :continue($at), :1st, / <[1..9]> <[0..9]>* /,
         *.flip.comb(/<{ ".**1..$by" }>/).join($ins).flip;
@@ -976,7 +976,7 @@ All tests pass (so it's as good as Perl, I guess).
 
 (define (commatize s #:start (start 0) #:comma (comma ",") #:step (step 3))
   (define ins-comms (insert-commas comma step)) ; specific to our comma and step
-  
+
   (define split-into-numbers
     (match-lambda
       [(regexp
@@ -998,44 +998,44 @@ All tests pass (so it's as good as Perl, I guess).
          (substring num start))                       ; do the match on the unskipped bit
        (string-append pre skip n d post-number post)] ; stitch it back together
       [else else]))                                   ; if it doesn't match leave as is
-  
+
   ;; kick it off
   (split-into-numbers s))
 
 (module+ test
   (require tests/eli-tester)
-  
+
   (test
    (commatize "pi=3.14159265358979323846264338327950288419716939937510582097494459231"
               #:start 6 #:comma " " #:step 5)
    =>"pi=3.14159 26535 89793 23846 26433 83279 50288 41971 69399 37510 58209 74944 59231"
-   
+
    (commatize "The author has two Z$100000000000000 Zimbabwe notes (100 trillion)." #:comma ".")
    =>"The author has two Z$100.000.000.000.000 Zimbabwe notes (100 trillion)."
-   
+
    (commatize "-in Aus$+1411.8millions")
    =>"-in Aus$+1,411.8millions"
-   
+
    (commatize "===US$0017440 millions=== (in 2000 dollars)")
    =>"===US$0017,440 millions=== (in 2,000 dollars)"
-   
+
    (commatize "123.e8000 is pretty big.")
    =>"123.e8000 is pretty big."
-   
+
    (commatize "The land area of the earth is  57268900(29% of the surface)  square miles.")
    =>"The land area of the earth is  57,268,900(29% of the surface)  square miles."
-   
+
    (commatize "Ain't no numbers in this here words, nohow, no way, Jose.")
    =>"Ain't no numbers in this here words, nohow, no way, Jose."
-   
+
    (commatize "James was never known as  0000000007")
    =>"James was never known as  0000000007"
-   
+
    (commatize "Arthur Eddington wrote: I believe there are 15747724136275002577605653961181555468044717914527116709366231425076185631031296 protons in the universe.")
    =>"Arthur Eddington wrote: I believe there are 15,747,724,136,275,002,577,605,653,961,181,555,468,044,717,914,527,116,709,366,231,425,076,185,631,031,296 protons in the universe."
-   
+
    (commatize "   $-140000±100  millions.")
-   
+
    =>"   $-140,000±100  millions."
    (commatize "6/9/1946 was a good year for some.")
    =>"6/9/1946 was a good year for some."))

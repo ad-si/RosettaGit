@@ -1274,7 +1274,7 @@ The middle three digits of 1234567890 are 456.
 
 =={{header|C_sharp|C#}}==
 
-```csharp
+```c#
 using System;
 
 namespace RosettaCode

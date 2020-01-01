@@ -16,7 +16,7 @@ tags = []
 There is a highly organized city that has decided to assign a number to each of their departments:
 ::*   police department
 ::*   sanitation department
-::*   fire department 
+::*   fire department
 
 
 Each department can have a number between '''1''' and '''7'''   (inclusive).
@@ -32,7 +32,7 @@ Write a program which outputs all valid combinations.
 
 Possible output:
 
-1 2 9 
+1 2 9
 
 5 3 4
 
@@ -230,15 +230,15 @@ on run
                             end if
                         end |λ|
                     end script
-                    
+
                     concatMap(result, {12 - (x + y)}) --Z
                 end |λ|
             end script
-            
+
             concatMap(result, {1, 2, 3, 4, 5, 6, 7}) --Y
         end |λ|
     end script
-    
+
     unlines(concatMap(result, {2, 4, 6})) --X
 end run
 
@@ -265,7 +265,7 @@ on intercalate(strText, lstText)
     return strJoined
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -313,7 +313,7 @@ Or more generally:
 -- options :: Int -> Int -> Int -> [(Int, Int, Int)]
 on options(lo, hi, total)
     set ds to enumFromTo(lo, hi)
-    
+
     script Xeven
         on |λ|(x)
             script Ydistinct
@@ -327,21 +327,21 @@ on options(lo, hi, total)
                             end if
                         end |λ|
                     end script
-                    
+
                     concatMap(ZinRange, {total - (x + y)}) -- Z IS IN RANGE
                 end |λ|
             end script
-            
+
             script notX
                 on |λ|(d)
                     d ≠ x
                 end |λ|
             end script
-            
+
             concatMap(Ydistinct, filter(notX, ds)) -- Y IS NOT X
         end |λ|
     end script
-    
+
     concatMap(Xeven, filter(my even, ds)) -- X IS EVEN
 end options
 
@@ -349,7 +349,7 @@ end options
 -- TEST -----------------------------------------------------------------------
 on run
     set xs to options(1, 7, 12)
-    
+
     intercalate("\n\n", ¬
         {"(Police, Sanitation, Fire)", ¬
             unlines(map(show, xs)), ¬
@@ -428,7 +428,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -449,7 +449,7 @@ on show(e)
                 show(v)
             end |λ|
         end script
-        
+
         "[" & intercalate(", ", map(serialized, e)) & "]"
     else if c = record then
         script showField
@@ -458,7 +458,7 @@ on show(e)
                 "\"" & k & "\":" & show(ev)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", ¬
             map(showField, zip(allKeys(e), allValues(e)))) & "}"
     else if c = date then
@@ -513,9 +513,9 @@ Number of options: 14
 
 
 ```AutoHotkey
-perm(elements, n, opt:="", Delim:="", str:="", res:="", j:=0, dup:="") {	
+perm(elements, n, opt:="", Delim:="", str:="", res:="", j:=0, dup:="") {
 	res := IsObject(res) ? res : [], dup := IsObject(dup) ? dup : []
-	if (n > j) 
+	if (n > j)
 		Loop, parse, elements, % Delim
 			res := !(InStr(str, A_LoopField) && !(InStr(opt, "rep"))) ? perm(elements, n, opt, Delim, trim(str Delim A_LoopField, Delim), res, j+1, dup) : res
 	else if !(dup[x := perm_sort(str, Delim)] && (InStr(opt, "comb")))
@@ -671,7 +671,7 @@ POLICE SANITATION FIRE
 =
 {{trans|ALGOL 68}}
 
-```bbcbasic>REM 
+```bbcbasic>REM
 deptnums
 max_dept_num% = 7
 dept_sum% = 12
@@ -720,10 +720,10 @@ Weird that such a simple task was still not implemented in C, would be great to 
 int main()
 {
 	int police,sanitation,fire;
-	
+
 	printf("Police     Sanitation         Fire\n");
 	printf("----------------------------------");
-	
+
 	for(police=2;police<=6;police+=2){
 		for(sanitation=1;sanitation<=7;sanitation++){
 			for(fire=1;fire<=7;fire++){
@@ -733,7 +733,7 @@ int main()
 			}
 		}
 	}
-	
+
 	return 0;
 }
 
@@ -764,10 +764,10 @@ Police     Sanitation         Fire
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 public class Program
 {
@@ -824,8 +824,8 @@ int main( int argc, char* argv[] ) {
         for( int p = 1; p < 8; p++ ) {
             for( int s = 1; s < 8; s++ ) {
                 if( f != p && f != s && p != s && !( p & 1 ) && ( f + s + p == 12 ) ) {
-                std::cout << "SOLUTION #" << std::setw( 2 ) << sol++ << std::setw( 2 ) 
-                << ":\t" << std::setw( 2 ) << f << "\t\t " << std::setw( 3 ) << p 
+                std::cout << "SOLUTION #" << std::setw( 2 ) << sol++ << std::setw( 2 )
+                << ":\t" << std::setw( 2 ) << f << "\t\t " << std::setw( 3 ) << p
                 << "\t\t" << std::setw( 6 ) << s << "\n";
                 }
             }
@@ -939,7 +939,7 @@ SOLUTION #10:	 5		  6		     1
 SOLUTION #11:	 6		  2		     4
 SOLUTION #12:	 6		  4		     2
 SOLUTION #13:	 7		  2		     3
-SOLUTION #14:	 7		  4		     1  
+SOLUTION #14:	 7		  4		     1
 
 ```
 
@@ -1054,7 +1054,7 @@ The method is just to generate all the possibilities, discarding those that fail
 
 Since the modernisers of Fortran made a point of specifying that it does not specify the manner of evaluation of compound boolean expressions, specifically, that there is to be no reliance on [[Short-circuit_evaluation]], both parts of the compound expression of the line labelled 5 "may" be evaluated even though the first may have determined the result. Prior to the introduction of LOGICAL variables with F66, one employed integer arithmetic as is demonstrated in the arithmetic-IF test of the line labelled 6. On the B6700, this usage ran faster than the corresponding boolean expression - possibly because there was no test for short-circuiting the expression when the first part of a multiply was zero...
 
-Note that the syntax enables ''two'' classes of labels: the old-style numerical label in columns one to five, and the special label-like prefix of a DO-loop that is not in columns one to five. And yes, a line can have both. 
+Note that the syntax enables ''two'' classes of labels: the old-style numerical label in columns one to five, and the special label-like prefix of a DO-loop that is not in columns one to five. And yes, a line can have both.
 ```Fortran
       INTEGER P,S,F	!Department codes for Police, Sanitation, and Fire. Values 1 to 7 only.
     1  PP:DO P = 2,7,2	!The police demand an even number. They're special and use violence.
@@ -1127,20 +1127,20 @@ End
 ```txt
 police fire sanitation
 ----------------------
-   2     3       7 
-   2     4       6 
-   2     6       4 
-   2     7       3 
-   4     1       7 
-   4     2       6 
-   4     3       5 
-   4     5       3 
-   4     6       2 
-   4     7       1 
-   6     1       5 
-   6     2       4 
-   6     4       2 
-   6     5       1 
+   2     3       7
+   2     4       6
+   2     6       4
+   2     7       3
+   4     1       7
+   4     2       6
+   4     3       5
+   4     5       3
+   4     6       2
+   4     7       1
+   6     1       5
+   6     2       4
+   6     4       2
+   6     5       1
 ```
 
 
@@ -1283,9 +1283,9 @@ main =
   mapM_
     print
     [ (x, y, z)
-    | x <- [2, 4, 6] 
-    , y <- [1 .. 7] 
-    , z <- [12 - (x + y)] 
+    | x <- [2, 4, 6]
+    , y <- [1 .. 7]
+    , z <- [12 - (x + y)]
     , y /= z && 1 <= z && z <= 7 ]
 ```
 
@@ -1376,9 +1376,9 @@ options :: Int -> Int -> Int -> [(Int, Int, Int)]
 options lo hi total =
   let ds = [lo .. hi]
   in [ (x, y, z)
-     | x <- filter even ds 
-     , y <- filter (/= x) ds 
-     , let z = total - (x + y) 
+     | x <- filter even ds
+     , y <- filter (/= x) ds
+     , let z = total - (x + y)
      , y /= z && lo <= z && z <= hi ]
 ```
 
@@ -1418,7 +1418,7 @@ options lo hi total =
 (6,4,2)
 (6,5,1)
 
-Number of options: 
+Number of options:
 14
 ```
 
@@ -1832,16 +1832,16 @@ Number of options: 14
 
 ## jq
 
-In this section, we present three solutions. 
+In this section, we present three solutions.
 
 The first illustrates how a straightforward generate-and-test algorithm using familiar for-loops can be translated into jq.
 
 The second illustrates how essentially the same algorithm can be written in a more economical way, without sacrificing comprehensibility.
 
 The third illustrates how the first can easily be made more efficient by adding some pruning.
- 
+
 The solutions in all cases are presented as a stream of JSON objects such as:
- 
+
     {"fire":1,"police":4,"sanitation":7}
 
 as these are self-explanatory, though it would be trivial to present them in another format. For brevity, the solutions are omitted here.
@@ -2100,7 +2100,7 @@ Select[Permutations[Range[7], {3}], Total[#] == 12 && EvenQ[First[#]] &]
 {{out}}
 
 ```txt
-{{2, 3, 7}, {2, 4, 6}, {2, 6, 4}, {2, 7, 3}, {4, 1, 7}, {4, 2, 6}, {4, 3, 5}, {4, 5, 3}, 
+{{2, 3, 7}, {2, 4, 6}, {2, 6, 4}, {2, 7, 3}, {4, 1, 7}, {4, 2, 6}, {4, 3, 5}, {4, 5, 3},
 {4, 6, 2}, {4, 7, 1}, {6, 1, 5}, {6, 2, 4}, {6, 4, 2}, {6, 5, 1}}
 ```
 
@@ -2124,7 +2124,7 @@ class Program {
           };
         };
       };
-    };  
+    };
   }
 }
 ```
@@ -2251,7 +2251,7 @@ for (1..7)
     push @even_numbers, $_;
   }
 }
-	
+
 print "Police\tFire\tSanitation\n";
 
 foreach my $police_number (@even_numbers)
@@ -2260,15 +2260,15 @@ foreach my $police_number (@even_numbers)
   {
     for my $sanitation_number (1..7)
     {
-      if ( $police_number + $fire_number + $sanitation_number == 12 && 
-           $police_number != $fire_number && 
-           $fire_number != $sanitation_number && 
+      if ( $police_number + $fire_number + $sanitation_number == 12 &&
+           $police_number != $fire_number &&
+           $fire_number != $sanitation_number &&
            $sanitation_number != $police_number)
       {
         print "$police_number\t$fire_number\t$sanitation_number\n";
       }
     }
-  }	
+  }
 }
 
 ```
@@ -2421,7 +2421,7 @@ Police  Sanitation  Fire
 
 ```python
 from itertools import permutations
- 
+
 def solve():
     c, p, f, s = "\\,Police,Fire,Sanitation".split(',')
     print(f"{c:>3}  {p:^6} {f:^4} {s:^10}")
@@ -2430,7 +2430,7 @@ def solve():
         if p + s + f == 12 and p % 2 == 0:
             print(f"{c:>3}: {p:^6} {f:^4} {s:^10}")
             c += 1
- 
+
 if __name__ == '__main__':
     solve()
 ```
@@ -2440,20 +2440,20 @@ if __name__ == '__main__':
 
 ```txt
   \  Police Fire Sanitation
-  1:   2     3       7     
-  2:   2     4       6     
-  3:   2     6       4     
-  4:   2     7       3     
-  5:   4     1       7     
-  6:   4     2       6     
-  7:   4     3       5     
-  8:   4     5       3     
-  9:   4     6       2     
- 10:   4     7       1     
- 11:   6     1       5     
- 12:   6     2       4     
- 13:   6     4       2     
- 14:   6     5       1     
+  1:   2     3       7
+  2:   2     4       6
+  3:   2     6       4
+  4:   2     7       3
+  5:   4     1       7
+  6:   4     2       6
+  7:   4     3       5
+  8:   4     5       3
+  9:   4     6       2
+ 10:   4     7       1
+ 11:   6     1       5
+ 12:   6     2       4
+ 13:   6     4       2
+ 14:   6     5       1
 ```
 
 
@@ -2665,7 +2665,7 @@ if __name__ == '__main__':
 (6, 4, 2)
 (6, 5, 1)
 
-No. of options: 14 
+No. of options: 14
 ```
 
 
@@ -2835,10 +2835,10 @@ for police = 2 to 7 step 2
            loop
         ok
         sanitation = 12 - police - fire
-        if sanitation = fire or sanitation = police 
+        if sanitation = fire or sanitation = police
            loop
-        ok  
-        if sanitation >= 1 and sanitation <= 7 
+        ok
+        if sanitation >= 1 and sanitation <= 7
            see "   " + police + "      " + fire + "       " + sanitation + nl
         ok
     next
@@ -3228,7 +3228,7 @@ proc crossProduct {listOfLists} {
   return $result
 }
 
-# Procedure named "filter" filters list elements by using a 
+# Procedure named "filter" filters list elements by using a
 # condition λ (lambda) expression
 proc filter {l condition} {
   return [lmap el $l {
@@ -3343,7 +3343,7 @@ L(L(1,4,7),L(1,5,6),L(2,3,7),L(2,4,6),L(3,4,5))
 
 ```
 
-Note: The sum of three odd numbers is odd, so a+b+c=12 means at least one even 
+Note: The sum of three odd numbers is odd, so a+b+c=12 means at least one even
 nmber (1 even, two odd or 3 even). Futher, 2a+b=12, a,b in (2,4,6) has one
 solution: a=2,b=4
 

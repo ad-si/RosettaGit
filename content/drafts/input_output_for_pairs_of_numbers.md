@@ -292,10 +292,10 @@ Run as per given input
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using static System.Linq.Enumerable;
 

@@ -60,7 +60,7 @@ According to [[wp:Fixed point combinator]], and [http://ttic.uchicago.edu/~pl/cl
 A quick glance over the different implementations shows that most of them define the Z combinator. But that is the closest you can get in applicative-order languages. The Z combinator is just one eta-conversion away from the Y combinator. So in lambda calculus these are basically the same: "two functions are the same if and only if they give the same result for all arguments". [[Special:Contributions/131.155.116.18|131.155.116.18]] 17:28, 30 November 2009 (UTC)
 
 
-###  Ruby has not the Y combinator 
+###  Ruby has not the Y combinator
 
 The current solution for [[Ruby]] is not a Y combinator.
 
@@ -144,7 +144,7 @@ The D example is a good way, I think, of adding content even though it does not 
 --[[User:Paddy3118|Paddy3118]] 05:52, 20 May 2009 (UTC)
 
 : I first would analyze why the code author wrote «The usual version» about the recursion one. Maybe it's more natural to Haskell (or functional languages in general)? --[[User:ShinTakezou|ShinTakezou]] 09:34, 20 May 2009 (UTC)
-::Hi ShinTakezou, The idea behind the Y combinator is to create recursion without explicit recursion. It is akin to asking for a Bogosort and getting back some other sort. It isn't what the task has asked for. 
+::Hi ShinTakezou, The idea behind the Y combinator is to create recursion without explicit recursion. It is akin to asking for a Bogosort and getting back some other sort. It isn't what the task has asked for.
 ::Just as it would be pointless to actually use Bogosort in the real world, it is missing the point to show a recursive fibonacci generator when a Y-combinator one was asked for. --[[User:Paddy3118|Paddy3118]] 20:19, 20 May 2009 (UTC)
 
 ==Slate entry incomplete?==
@@ -174,7 +174,7 @@ Actually, there is a way to implement the Y combinator in Scheme:
 
 ```
 
-but you have to call the function with 
+but you have to call the function with
 ```scheme
 (force f)
 ```
@@ -220,7 +220,7 @@ and then call it as
 ==Is the C++ a combinator or just recursion "macro"?==
 I was concerned as the definition of Y explicitely depends on Y, which I thought is the kind of thing the Y combinator was trying to dodge! Mind you, my knowledge of this C++ esoteria comes down to reading [http://msdn.microsoft.com/en-us/library/bb982702.aspx this]. --[[User:Paddy3118|Paddy3118]] 06:48, 10 April 2011 (UTC)
 
-Isn't the operator() defined within the const struct : RecursiveFunc calling itself in the line 
+Isn't the operator() defined within the const struct : RecursiveFunc calling itself in the line
 return (s->operator()(f, s))(x);
 ?
 
@@ -255,7 +255,7 @@ For most languages it seems that this task is a joke, as the real use of the Y c
 
 These languages may require something much more ugly such as follows (C# syntax):
 
-```csharp
+```c#
   T rv = default(T); // (or other initial condition of the recursion)
   rv = new Lazy(() => rv) // note: gets the '''future value''' (by reference) of rv
   rv = new Lazy(f(rv)); // note: f must be a function from a Lazy<T> to produce T
@@ -269,10 +269,10 @@ So, to break the infinite recursion when implementing a Y or Z combinator, most 
 
 ```haskell
 newtype Mu a = Roll { unroll :: Mu a -> a }
- 
+
 fix :: (a -> a) -> a
 fix = \f -> (\x -> f (unroll x x)) $ Roll (\x -> f (unroll x x))
- 
+
 fac :: Integer -> Integer
 fac = fix $ \f n -> if (n <= 0) then 1 else n * f (n - 1)
 ```
@@ -350,7 +350,7 @@ type LazyList struct {
 	head  *big.Int
 	tail  *Lazy // Lazy of LazyList; should not be accessed directly only through method
 }
- 
+
 func (oll *LazyList ) rest() *LazyList {
 	return oll.tail.force()
 }
@@ -363,9 +363,9 @@ or optionally combine the Lazy and the LazyList
 type LazyList struct {
 	head  *big.Int
 	tail  *LazyList // should not be accessed directly only through method
-	contf func() *LazyList 
+	contf func() *LazyList
 }
- 
+
 func (oll *LazyList ) Rest() *LazyList {
 	if oll.contf != nil { // not thread-safe
 		oll.tail = oll.contf()
@@ -419,16 +419,16 @@ The first non function recursive implementation of the Y-combinator <code>fix</c
 Simplifier ticks exhausted
   When trying UnfoldingDone x_s3FU
   To increase the limit, use -fsimpl-tick-factor=N (default 100).
-   
+
   If you need to increase the limit substantially, please file a
   bug report and indicate the factor you needed.
-   
+
   If GHC was unable to complete compilation even with a very large factor
   (a thousand or more), please consult the "Known bugs or infelicities"
   section in the Users Guide before filing a report. There are a
   few situations unlikely to occur in practical programs for which
   simplifier non-termination has been judged acceptable.
-   
+
   To see detailed counts use -ddump-simpl-stats
   Total ticks: 11445
 ```

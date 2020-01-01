@@ -12,8 +12,8 @@ tags = []
 
 {{task}} [[Category:Checksums]]
 
-Find the MD4 message digest of a string of [[octet]]s. 
-Use the ASCII encoded string “<tt>Rosetta Code</tt>” (without quotes). 
+Find the MD4 message digest of a string of [[octet]]s.
+Use the ASCII encoded string “<tt>Rosetta Code</tt>” (without quotes).
 You may either call an MD4 library, or implement MD4 in your language.
 
 '''MD4''' is an obsolete hash function that computes a 128-bit message digest that sometimes appears in obsolete protocols.
@@ -31,7 +31,7 @@ MsgBox, % "String:`n" (str) "`n`nMD4:`n" MD4(str)
 
 
 
-; MD4 
+; MD4
 ### =========================================================================
 
 MD4(string, encoding = "utf-8")
@@ -39,7 +39,7 @@ MD4(string, encoding = "utf-8")
     return CalcStringHash(string, 0x8002, encoding)
 }
 
-; CalcAddrHash 
+; CalcAddrHash
 ### ================================================================
 
 CalcAddrHash(addr, length, algid, byref hash = 0, byref hashlength = 0)
@@ -73,7 +73,7 @@ CalcAddrHash(addr, length, algid, byref hash = 0, byref hashlength = 0)
     return o
 }
 
-; CalcStringHash 
+; CalcStringHash
 ### ==============================================================
 
 CalcStringHash(string, algid, encoding = "utf-8", byref hash = 0, byref hashlength = 0)
@@ -366,9 +366,9 @@ a52bcfc6a0d0d300cdc5ddbfbefe478b
 
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -451,9 +451,9 @@ a52bcfc6a0d0d300cdc5ddbfbefe478b
 
 ```lisp
 (ql:quickload 'ironclad)
-(defun md4 (str)                                           
+(defun md4 (str)
   (ironclad:byte-array-to-hex-string
-    (ironclad:digest-sequence :md4 
+    (ironclad:digest-sequence :md4
                               (ironclad:ascii-string-to-byte-array str))))
 
 (md4 "Rosetta Code")
@@ -580,7 +580,7 @@ Rosetta Code => A52BCFC6A0D0D300CDC5DDBFBEFE478B
 ' compile with: fbc -s console
 
 Function MD4(test_str As String) As String
-  
+
   Dim As String message = test_str ' string are passed as ByRef
 
   ' some macro's
@@ -595,18 +595,18 @@ Function MD4(test_str As String) As String
   #Macro H(X, Y, Z)
     ((X) Xor (Y) Xor (Z))
   #EndMacro
-  
+
   ' a little piece of inline asm to do a rotate left on a 32bit variable
   #Macro ROtate_Left(x, n) ' rotate left
     Asm
       rol dword Ptr [x], n
     End Asm
   #EndMacro
-  
+
   ' #Macro ROtate_left(x, n)
     ' x = x Shl n + x Shr (32 - n)
   ' #EndMacro
-  
+
   Dim As Long i
   Dim As String answer, s1
 
@@ -643,7 +643,7 @@ Function MD4(test_str As String) As String
     ' x point to 64 byte block inside the string message
     Dim As UInteger<32> Ptr x = Cast(UInteger<32> Ptr, @message[i*64])
 
-    ' round 1               
+    ' round 1
     A = A + F(B, C, D) + x[ 0] : ROtate_Left(A,  3)
     D = D + F(A, B, C) + x[ 1] : ROtate_Left(D,  7)
     C = C + F(D, A, B) + x[ 2] : ROtate_Left(C, 11)
@@ -1107,7 +1107,7 @@ class MD4() : MessageDigest("MD4"), Cloneable {
     private var count = 0L
     private var buffer = ByteArray(blockLength)
     private var x = IntArray(16)
-  
+
     init {
         engineReset()
     }
@@ -1116,13 +1116,13 @@ class MD4() : MessageDigest("MD4"), Cloneable {
         context = md.context.clone()
         buffer = md.buffer.clone()
         count = md.count
-    } 
+    }
 
     override fun clone(): Any = MD4(this)
 
     override fun engineReset() {
         context[0] = 0x67452301
-        context[1] = 0xefcdab89.toInt() 
+        context[1] = 0xefcdab89.toInt()
         context[2] = 0x98badcfe.toInt()
         context[3] = 0x10325476
         count = 0L
@@ -1131,7 +1131,7 @@ class MD4() : MessageDigest("MD4"), Cloneable {
 
     override fun engineUpdate(b: Byte) {
         val i = (count % blockLength).toInt()
-        count++                                 
+        count++
         buffer[i] = b
         if (i == blockLength - 1) transform(buffer, 0)
     }
@@ -1140,7 +1140,7 @@ class MD4() : MessageDigest("MD4"), Cloneable {
         if (offset < 0 || len < 0 || offset.toLong() + len > input.size.toLong())
             throw ArrayIndexOutOfBoundsException()
         var bufferNdx = (count % blockLength).toInt()
-        count += len                                    
+        count += len
         val partLen = blockLength - bufferNdx
         var i = 0
         if (len >= partLen) {
@@ -1173,7 +1173,7 @@ class MD4() : MessageDigest("MD4"), Cloneable {
 
     private fun transform (block: ByteArray, offset: Int) {
         var offset2 = offset
-        for (i in 0..15) 
+        for (i in 0..15)
             x[i] = ((block[offset2++].toInt() and 0xff)       ) or
                    ((block[offset2++].toInt() and 0xff) shl 8 ) or
                    ((block[offset2++].toInt() and 0xff) shl 16) or
@@ -1252,10 +1252,10 @@ class MD4() : MessageDigest("MD4"), Cloneable {
     }
 
     private fun hh(a: Int, b: Int, c: Int, d: Int, x: Int, s: Int): Int {
-        val t = a + (b xor c xor d) + x + 0x6ed9eba1 
+        val t = a + (b xor c xor d) + x + 0x6ed9eba1
         return (t shl s) or (t ushr (32 - s))
     }
-} 
+}
 
 fun main(args: Array<String>) {
     val text  = "Rosetta Code"
@@ -1263,7 +1263,7 @@ fun main(args: Array<String>) {
     val md: MessageDigest = MD4()
     val digest = md.digest(bytes)
     for (byte in digest) print("%02x".format(byte))
-    println() 
+    println()
 }
 ```
 
@@ -1288,7 +1288,7 @@ cipher_digest('Rosetta Code', -digest='MD4')->encodeHex->asString
 {{out}}
 
 ```txt
- A52BCFC6A0D0D300CDC5DDBFBEFE478B 
+ A52BCFC6A0D0D300CDC5DDBFBEFE478B
 ```
 
 
@@ -1398,7 +1398,7 @@ Load plugin from your home directory into PARI:
 ```parigp
 install("plug_md4", "s", "MD4", "~/libmd4.so");
 
-MD4("Rosetta Code") 
+MD4("Rosetta Code")
 ```
 
 
@@ -1504,15 +1504,15 @@ sub md4($str) {
     sub pack-le (@a) {
         gather for @a -> $a,$b,$c,$d { take $d +< 24 + $c +< 16 + $b +< 8 + $a }
     }
- 
+
     my ($a, $b, $c, $d) = 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476;
- 
+
     my $term = False;
     my $last = False;
     my $off = 0;
     repeat until $last {
         my @block = @buf[$off..$off+63]:v; $off += 64;
- 
+
         my @x;
         given +@block {
 	    when 64 {
@@ -1528,7 +1528,7 @@ sub md4($str) {
 	        @block.push($term ?? 0 !! 0x80);
 	        @block.push(slip 0 xx 55 - $_);
 	        @x = pack-le @block;
-	 
+
 	        my $bit_len = $buflen +< 3;
 	        @x.push: $bit_len +& mask, $bit_len +> 32;
 	        $last = True;
@@ -1537,7 +1537,7 @@ sub md4($str) {
 	        die "oops";
 	    }
 	}
-     
+
 	my ($aa, $bb, $cc, $dd) = $a, $b, $c, $d;
 	for 0, 4, 8, 12 -> \i {
 	    $a = r($a + f($b, $c, $d) + @x[ i+0 ],  3);
@@ -1562,7 +1562,7 @@ sub md4($str) {
 	$c = ($c + $cc) +& mask;
 	$d = ($d + $dd) +& mask;
     }
- 
+
     sub b2l($n is copy) {
 	my $x = 0;
 	for ^4 {
@@ -1578,7 +1578,7 @@ sub md4($str) {
     b2l($c) +< 32 +
     b2l($d);
 }
- 
+
 sub MAIN {
     my $str = 'Rosetta Code';
     say md4($str).base(16).lc;
@@ -1601,7 +1601,7 @@ a52bcfc6a0d0d300cdc5ddbfbefe478b
 ```Phix
 --
 -- demo\rosetta\md4.exw
--- 
+--
 ### ==============
 
 --
@@ -1633,9 +1633,9 @@ function md4(sequence data)
     if bytes_to_add=64 then bytes_to_add = 0 end if
     data = data&#80&repeat(0,bytes_to_add)&
            int_to_bytes(length(data)*8,8)
- 
+
     atom a = 0x67452301, b = 0xefcdab89, c = 0x98badcfe, d = 0x10325476
- 
+
     atom m64 = allocate(64,true)
     integer i
     for x=1 to length(data)-1 by 64 do
@@ -1668,7 +1668,7 @@ function md4(sequence data)
     end for
     poke4(m64,{a,b,c,d})
     return peek({m64,16})
-end function 
+end function
 
 function hexify(sequence s)
     for i=1 to length(s) do
@@ -1705,16 +1705,16 @@ Library and implementation.
 
 (de mod32 (N)
    (& N `(hex "FFFFFFFF")) )
- 
+
 (de not32 (N)
    (x| N `(hex "FFFFFFFF")) )
- 
+
 (de add32 @
    (mod32 (pass +)) )
-   
+
 (de leftRotate (X C)
    (| (mod32 (>> (- C) X)) (>> (- 32 C) X)) )
-   
+
 (de md4 (Str)
    (let Len (length Str)
       (setq Str
@@ -1734,7 +1734,7 @@ Library and implementation.
       (H0 `(hex "67452301")
          H1 `(hex "EFCDAB89")
          H2 `(hex "98BADCFE")
-         H3 `(hex "10325476") 
+         H3 `(hex "10325476")
          R2 `(hex "5A827999")
          R3 `(hex "6ED9EBA1") )
       (while Str
@@ -1776,7 +1776,7 @@ Library and implementation.
                   ((>= 8 I)
                      (setq
                         A (leftRotate
-                             (add32 
+                             (add32
                                 A
                                 (|
                                    (& B (| C D))
@@ -1791,19 +1791,19 @@ Library and implementation.
                                    (& A (| B C))
                                    (& B C) )
                                 (get W (pop '*Md4-W))
-                                R2 )       
+                                R2 )
                              (pop '*Md4-R2) )
                         C (leftRotate
-                             (add32 
+                             (add32
                                 C
                                 (|
                                    (& D (| A B))
-                                   (& A B) ) 
+                                   (& A B) )
                                 (get W (pop '*Md4-W))
                                 R2 )
                              (pop '*Md4-R2) )
                         B (leftRotate
-                             (add32 
+                             (add32
                                 B
                                 (|
                                    (& C (| D A))
@@ -1835,7 +1835,7 @@ Library and implementation.
                                 R3 )
                              (pop '*Md4-R3) )
                         B (leftRotate
-                             (add32 
+                             (add32
                                 B
                                 (x| C D A)
                                 (get W (pop '*Md4-W))
@@ -1851,8 +1851,8 @@ Library and implementation.
             (do 4
                (link (& N 255))
                (setq N (>> 8 N)) ) ) ) ) )
-  
-(let Str "Rosetta Code" 
+
+(let Str "Rosetta Code"
    (println
       (pack
          (mapcar
@@ -1862,7 +1862,7 @@ Library and implementation.
       (pack
          (mapcar
             '((B) (pad 2 (hex B)))
-            (native 
+            (native
                "libcrypto.so"
                "MD4"
                '(B . 16)
@@ -1952,27 +1952,27 @@ def md4(string)
   g = proc {|x, y, z| x & y | x & z | y & z}
   h = proc {|x, y, z| x ^ y ^ z}
   r = proc {|v, s| (v << s).&(mask) | (v.&(mask) >> (32 - s))}
- 
+
   # initial hash
   a, b, c, d = 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476
- 
+
   bit_len = string.size << 3
   string += "\x80"
   while (string.size % 64) != 56
     string += "\0"
   end
   string = string.force_encoding('ascii-8bit') + [bit_len & mask, bit_len >> 32].pack("V2")
- 
+
   if string.size % 64 != 0
     fail "failed to pad to correct length"
   end
- 
+
   io = StringIO.new(string)
   block = ""
- 
+
   while io.read(64, block)
     x = block.unpack("V16")
-    
+
     # Process this block.
     aa, bb, cc, dd = a, b, c, d
     [0, 4, 8, 12].each {|i|
@@ -1998,7 +1998,7 @@ def md4(string)
     c = (c + cc) & mask
     d = (d + dd) & mask
   end
- 
+
   [a, b, c, d].pack("V4")
 end
 

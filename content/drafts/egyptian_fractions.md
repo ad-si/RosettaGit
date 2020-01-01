@@ -12,11 +12,11 @@ tags = []
 
 {{task}}
 
-An   [[wp:Egyptian fraction|<u>Egyptian fraction</u>]]   is the sum of distinct unit fractions such as: 
+An   [[wp:Egyptian fraction|<u>Egyptian fraction</u>]]   is the sum of distinct unit fractions such as:
 
 :::: <big><big> <math> \tfrac{1}{2} + \tfrac{1}{3} + \tfrac{1}{16} \,(= \tfrac{43}{48})</math> </big></big>
 
-Each fraction in the expression has a numerator equal to   '''1'''   (unity)   and a denominator that is a positive integer,   and all the denominators are distinct   (i.e., no repetitions).  
+Each fraction in the expression has a numerator equal to   '''1'''   (unity)   and a denominator that is a positive integer,   and all the denominators are distinct   (i.e., no repetitions).
 
 Fibonacci's   [[wp:Greedy algorithm for Egyptian fractions|<u>Greedy algorithm for Egyptian fractions</u>]]   expands the fraction   <big> <math> \tfrac{x}{y} </math> </big>   to be represented by repeatedly performing the replacement
 
@@ -26,15 +26,15 @@ Fibonacci's   [[wp:Greedy algorithm for Egyptian fractions|<u>Greedy algorithm f
 (simplifying the 2<sup>nd</sup> term in this replacement as necessary, and where   <big> <math> \lceil x \rceil </math> </big>   is the   ''ceiling''   function).
 
 <!--
-This Rosetta Code task will be using the Fibonacci greedy algorithm for computing Egyptian fractions; however, if different method is used instead, please note which method is being employed.   Having all the programming examples use the Fibonacci greedy algorithm will make for easier comparison and compatible results. 
+This Rosetta Code task will be using the Fibonacci greedy algorithm for computing Egyptian fractions; however, if different method is used instead, please note which method is being employed.   Having all the programming examples use the Fibonacci greedy algorithm will make for easier comparison and compatible results.
 -->
 
 For this task,   [[wp:Fraction (mathematics)#Simple.2C_common.2C_or_vulgar_fractions|<u>Proper and improper fractions</u>]]   must be able to be expressed.
 
 
-Proper  fractions   are of the form   <big> <math>\tfrac{a}{b}</math> </big>   where   <big> <math>a</math> </big>   and   <big> <math>b</math> </big>   are positive integers, such that   <big> <math>a < b</math></big>,     and 
+Proper  fractions   are of the form   <big> <math>\tfrac{a}{b}</math> </big>   where   <big> <math>a</math> </big>   and   <big> <math>b</math> </big>   are positive integers, such that   <big> <math>a < b</math></big>,     and
 
-improper fractions are of the form   <big> <math>\tfrac{a}{b}</math> </big>   where   <big> <math>a</math> </big>   and   <big> <math>b</math> </big>   are positive integers, such that   <big> <span style="font-family:times">''a'' ≥ ''b''</span></big>. 
+improper fractions are of the form   <big> <math>\tfrac{a}{b}</math> </big>   where   <big> <math>a</math> </big>   and   <big> <math>b</math> </big>   are positive integers, such that   <big> <span style="font-family:times">''a'' ≥ ''b''</span></big>.
 
 
 (See the [[#REXX|REXX programming example]] to view one method of expressing the whole number part of an improper fraction.)
@@ -56,10 +56,10 @@ For improper fractions, the integer part of any improper fraction should be firs
 
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Visual Basic .NET}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -371,7 +371,7 @@ IN: rosetta-code.egyptian-fractions
 
 :: proper ( x y -- a b )
     y x / ceiling :> d1 1 d1 / y neg x rem y d1 * / ;
-    
+
 : expand ( a -- b c )
     >fraction 2dup > [ improper ] [ proper ] if ;
 
@@ -714,13 +714,13 @@ mod(A, M) ->
 ok
 
 ```
-     
+
 
 
 ## Go
 
 {{trans|Kotlin}}
-... except that Go already has support for arbitrary precision rational numbers in its standard library. 
+... except that Go already has support for arbitrary precision rational numbers in its standard library.
 
 ```go
 package main
@@ -931,16 +931,16 @@ task21 n =
   maximumBy
     (comparing snd)
     [ (a % b, length $ egyptianFraction (a % b))
-    | a <- [1 .. n] 
-    , b <- [1 .. n] 
+    | a <- [1 .. n]
+    , b <- [1 .. n]
     , a < b ]
 
 task22 n =
   maximumBy
     (comparing snd)
     [ (a % b, maximum $ map denominator $ egyptianFraction (a % b))
-    | a <- [1 .. n] 
-    , b <- [1 .. n] 
+    | a <- [1 .. n]
+    , b <- [1 .. n]
     , a < b ]
 ```
 
@@ -968,11 +968,11 @@ task22 n =
 
 '''Solution''':
 ```j
-   ef   =: [: (}.~ 0={.) [: (, r2ef)/ 0 1 #: x: 
+   ef   =: [: (}.~ 0={.) [: (, r2ef)/ 0 1 #: x:
    r2ef =: (<(<0);0) { ((] , -) >:@:<.&.%)^:((~:<.)@:%)@:{:^:a:
 ```
 
-   
+
 '''Examples''' (''required''):
 ```j
    (; ef)&> 43r48 5r121 2014r59
@@ -1003,7 +1003,7 @@ task22 n =
 8 97
    _80 ]\ ": % <./ ef 8r97
 57950458706754280171310319185991860825103029195219542358352935765389941868634236
-0361798689053273749372615043661810228371898539583862011424993909789665          
+0361798689053273749372615043661810228371898539583862011424993909789665
 
    NB. ef for all 1-,2-, and 3-digit fractions
    EF3  =:  ef :: _1:&.> (</~ * %/~) i. 10^3x
@@ -1053,7 +1053,7 @@ task22 n =
 69421231196329080023952364788544301495422061066036911772385739659997665503832444
 52971354428695554831016616883788904614906129646105943223862160217972480951002477
 21274970802584016949299731051848322146227856796515503684655248210628598374099075
-38269572622296774545103747438431266995525592705                                 
+38269572622296774545103747438431266995525592705
 ```
 
 
@@ -1493,11 +1493,11 @@ class Frac : Comparable<Frac> {
         else {
             toEgyptian(num, denom, fracs)
         }
-        return fracs     
+        return fracs
     }
 
     private tailrec fun toEgyptian(
-        n: BigInteger, 
+        n: BigInteger,
         d: BigInteger,
         fracs: MutableList<Frac>
     ) {
@@ -1574,7 +1574,7 @@ fun main(args: Array<String>) {
                        k++
                    }
                 }
-            }            
+            }
         }
         println("  largest number of items = $maxSize")
         println("  fraction(s) with this number : $maxSizeFracs")
@@ -1616,17 +1616,17 @@ For proper fractions with 1, 2 or 3 digits:
 
 ```Mathematica
 frac[n_] /; IntegerQ[1/n] := frac[n] = {n};
-frac[n_] := 
-  frac[n] = 
-   With[{p = Numerator[n], q = Denominator[n]}, 
+frac[n_] :=
+  frac[n] =
+   With[{p = Numerator[n], q = Denominator[n]},
     Prepend[frac[Mod[-q, p]/(q Ceiling[1/n])], 1/Ceiling[1/n]]];
-disp[f_] := 
+disp[f_] :=
   StringRiffle[
-    SequenceCases[f, 
-     l : {_, 1 ...} :> 
-      If[Length[l] == 1 && l[[1]] < 1, ToString[l[[1]], InputForm], 
-       "[" <> ToString[Length[l]] <> "]"]], " + "] <> " = " <> 
-   ToString[Numerator[Total[f]]] <> "/" <> 
+    SequenceCases[f,
+     l : {_, 1 ...} :>
+      If[Length[l] == 1 && l[[1]] < 1, ToString[l[[1]], InputForm],
+       "[" <> ToString[Length[l]] <> "]"]], " + "] <> " = " <>
+   ToString[Numerator[Total[f]]] <> "/" <>
    ToString[Denominator[Total[f]]];
 Print[disp[frac[43/48]]];
 Print[disp[frac[5/121]]];
@@ -1689,7 +1689,7 @@ Small Basic but large (not huge) integers.
       n=ret
       x=i/n
       y=j/n
-    EndWhile 
+    EndWhile
   EndIf
   TextWindow.WriteLine(xx+"/"+yy+"="+Text.GetSubTextToEnd(tt,2))
 
@@ -1699,7 +1699,7 @@ Sub modulo
     wr=wr+v
   EndWhile
   ret=wr
-EndSub 
+EndSub
 
 Sub gcd
   wx=i
@@ -1709,9 +1709,9 @@ Sub gcd
     wr=Math.Remainder(wx,wy)
     wx=wy
     wy=wr
-  EndWhile 
+  EndWhile
   ret=wx
-EndSub 
+EndSub
 ```
 
 {{out}}
@@ -1799,7 +1799,7 @@ isEgyption($nrI,$deI);
 
 ```txt
 
-Egyptian Fraction Representation of 2014/59 is: 
+Egyptian Fraction Representation of 2014/59 is:
 34 + 1/8 + 1/95 + 1/14947 + 1/670223480
 
 ```
@@ -1826,8 +1826,8 @@ role Egyptian {
 say .nude.join('/'), " = ", $_ but Egyptian for 43/48, 5/121, 2014/59;
 
 my @sample = map { $_ => .denominators },
-    grep * < 1, 
-        map {$_ but Egyptian}, 
+    grep * < 1,
+        map {$_ but Egyptian},
             (2 .. 99 X/ 2 .. 99);
 
 say .key.nude.join("/"),
@@ -1866,7 +1866,7 @@ role Egyptian {
 	}
     }
 }
- 
+
 say 5/4 but Egyptian;
 ```
 
@@ -1904,7 +1904,7 @@ function egyptian(integer num, denom)
     {n,d} = mpz_free({n,d})
     return result
 end function
- 
+
 procedure efrac(integer num, denom)
     string fraction = sprintf("%d/%d",{num,denom}),
            prefix = ""
@@ -1916,12 +1916,12 @@ procedure efrac(integer num, denom)
     string e = join(egyptian(num, denom)," + ")
     printf(1,"%s -> %s%s\n",{fraction,prefix,e})
 end procedure
- 
+
 efrac(43,48)
 efrac(5,121)
 efrac(2014,59)
- 
-integer maxt = 0, 
+
+integer maxt = 0,
         maxd = 0
 string maxts = "",
        maxds = "",
@@ -2018,7 +2018,7 @@ def ef(fr):
 if __name__ == '__main__':
     for fr in [Fr(43, 48), Fr(5, 121), Fr(2014, 59)]:
         print('%r ─► %s' % (fr, ' '.join(str(x) for x in ef(fr))))
-    lenmax = denommax = (0, None) 
+    lenmax = denommax = (0, None)
     for fr in set(Fr(a, b) for a in range(1,100) for b in range(1, 100)):
         e = ef(fr)
         #assert sum((f[0] if type(f) is list else f) for f in e) == fr, 'Whoops!'
@@ -2048,7 +2048,7 @@ Denominator max is 8/97 with 150 digits 57950...89665
 
 ### Composition of pure functions
 
-The derivation of a sequence of unit fractions from a single fraction is a classic case of an anamorphism or '''unfold''' abstraction – dual to a fold or catamorphism. Rather than reducing, collapsing or summarizing a structure '''to''' a single value, it builds a structure '''from''' a single value. 
+The derivation of a sequence of unit fractions from a single fraction is a classic case of an anamorphism or '''unfold''' abstraction – dual to a fold or catamorphism. Rather than reducing, collapsing or summarizing a structure '''to''' a single value, it builds a structure '''from''' a single value.
 
 See the '''unfoldr''' function below:
 {{Works with|Python|3.7}}
@@ -2252,7 +2252,7 @@ maxDenominator -> [36/457, 529/914] -> 83901882683345018663678152000701199926982
       (define l (length e.f))
       (define d (denominator (last e.f)))
       (values (max max-l l) (if (> l max-l) f max-l-f)
-              (max max-d d) (if (> d max-d) f max-d-f))))  
+              (max max-d d) (if (> d max-d) f max-d-f))))
   (printf #<<EOS
 max #terms: ~a has ~a
 [~.a]
@@ -2434,9 +2434,9 @@ p:  return word(arg(1),1)
 
 
 The following is a driver program to address the requirements to find
-the largest number of terms for a 
+the largest number of terms for a
 
-1- or 2-digit integer, and the largest denominator. 
+1- or 2-digit integer, and the largest denominator.
 
 Also, the same program is used for the 1-, 2-, and 3-digit extra credit task.
 
@@ -2477,7 +2477,7 @@ largest denominator in the Egyptian fractions is 150 digits is for 8/97
 
 ```
 
-'''output'''   for all 1-, 2-, and 3-digit integers when using for input:   <tt> -999 </tt> 
+'''output'''   for all 1-, 2-, and 3-digit integers when using for input:   <tt> -999 </tt>
 
 ```txt
 

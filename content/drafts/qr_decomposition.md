@@ -1115,12 +1115,12 @@ A == Q * R ? yes
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{libheader|Math.Net}}
 
 
-```csharp
+```c#
 using System;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;

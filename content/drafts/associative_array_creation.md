@@ -968,11 +968,11 @@ int main()
 
 
 
-## C sharp
+## C#
 
 '''Platform:''' [[.NET]] 1.x
 
-```csharp
+```c#
 System.Collections.HashTable map = new System.Collections.HashTable();
 map["key1"] = "foo";
 ```
@@ -980,7 +980,7 @@ map["key1"] = "foo";
 
 '''Platform:''' [[.NET]] 2.0
 
-```csharp
+```c#
 Dictionary<string, string> map = new Dictionary<string,string>();
 map[ "key1" ] = "foo";
 ```
@@ -988,7 +988,7 @@ map[ "key1" ] = "foo";
 
 {{works with|C sharp|C#|3.0+}}
 
-```csharp
+```c#
 var map = new Dictionary<string, string> {{"key1", "foo"}};
 ```
 

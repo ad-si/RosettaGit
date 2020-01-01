@@ -622,7 +622,7 @@ Base 5
 
 
 
-## C sharp
+## C#
 
 
 This is based on the C version.<br/>
@@ -632,7 +632,7 @@ Note that the iterator returns a generic Tuple
 whose items are the numerator and denominator for the item.
 
 
-```CSharp
+```c#
 
 using System;
 using System.Collections.Generic;

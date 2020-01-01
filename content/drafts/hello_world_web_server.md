@@ -404,9 +404,9 @@ int main()
 ## C++
 
 C version compiles as C++ (known for G++ on Linux)
-=={{header|C sharp|C#}}==
+## C#
 
-```CSharp
+```c#
 using System.Text;
 using System.Net.Sockets;
 using System.Net;
@@ -437,7 +437,7 @@ namespace WebServer
 ```
 
 {{works with|NancyFX}}
-```CSharp
+```c#
 namespace Webserver
 {
   using System;

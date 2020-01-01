@@ -235,9 +235,9 @@ int main(int argc, char* argv[])
 
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 System.IO.Directory.CreateDirectory(path)
 ```
 

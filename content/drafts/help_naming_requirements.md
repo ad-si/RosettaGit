@@ -21,7 +21,7 @@ For now, all pages and links to C# and J# should be written "C sharp" and "J sha
 
 ```txt
 <nowiki>
-=={{header|C sharp|C#}}==
+## C#
 </nowiki>
 ```
 

@@ -1648,9 +1648,9 @@ result:<lang>'': True
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1710,7 +1710,7 @@ Sample output:
 ```
 
 
-```csharp
+```c#
 
                        // simple solution
                        string input = Console.ReadLine();

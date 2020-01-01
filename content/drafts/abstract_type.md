@@ -580,10 +580,10 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 abstract class Class1
 {
    public abstract void method1();

@@ -233,7 +233,7 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 <lang C sharp|C#>
 public static class PermutationSorter
 {

@@ -406,12 +406,12 @@ main( int argc, char* argv[] )
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{libheader|Windows Forms}}
 {{uses from|library|.NET Framework|component1=System.Windows.Forms|component2=System.Windows.Forms.Window|component3=System.Windows.Forms.Form|component4=System.Windows.Forms.Application}}
 
-```csharp
+```c#
 using System;
 using System.Windows.Forms;
 

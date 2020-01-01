@@ -175,13 +175,13 @@ main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 The C# console has several properties to take note of.
 BufferHeight and BufferWidth are the valid writing area, the cursor can print anywhere within these bounds. This can be considered the actual terminal.
 WindowHeight and WindowWidth are simply the size of the window, it only represents the active viewing area which may be larger or more commonly smaller than the size of the buffer.
 
 
-```csharp
+```c#
 
 static void Main(string[] args)
 {

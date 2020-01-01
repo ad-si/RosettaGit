@@ -871,9 +871,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 string s = "12345";
 s = (int.Parse(s) + 1).ToString();
 ```

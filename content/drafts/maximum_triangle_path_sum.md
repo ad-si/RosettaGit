@@ -24,8 +24,8 @@ Starting from the top of a pyramid of numbers like this, you can walk down going
 ```
 
 
-One of such walks is 55 - 94 - 30 - 26. 
-You can compute the total of the numbers you have seen in such walk, 
+One of such walks is 55 - 94 - 30 - 26.
+You can compute the total of the numbers you have seen in such walk,
 in this case it's 205.
 
 Your problem is to find the maximum total among all possible paths from the top to the bottom row of the triangle. In the little example above it's 321.
@@ -71,7 +71,7 @@ This task is derived from the [http://projecteuler.net/problem=18 Euler Problem 
 
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
- 
+
 procedure Max_Sum is
 
    Triangle : array (Positive range <>) of integer :=
@@ -200,39 +200,39 @@ print( ( triangle[1][1], newline ) )
 
 -- maxPathSum :: [[Int]] -> Int
 on maxPathSum(xss)
-    
+
     -- With the last row as the initial accumulator,
     -- folding from the penultimate line,
     -- towards the top of the triangle:
-    
+
     -- sumWithRowBelow :: [Int] -> [Int] -> [Int]
     script sumWithRowBelow
         on |λ|(row, accum)
-            
+
             -- plusGreaterOfTwoBelow :: Int -> Int -> Int -> Int
             script plusGreaterOfTwoBelow
                 on |λ|(x, intLeft, intRight)
                     x + max(intLeft, intRight)
                 end |λ|
             end script
-            
+
             -- The accumulator, zipped with the tail of the
             -- accumulator, yields pairs of adjacent sums so far.
-            
+
             zipWith3(plusGreaterOfTwoBelow, row, accum, tail(accum))
         end |λ|
     end script
-    
+
     -- A list of lists folded down to a list of just one remaining integer.
     -- Head returns that integer from the list.
-    
+
     head(foldr1(sumWithRowBelow, xss))
 end maxPathSum
 
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     maxPathSum({¬
         {55}, ¬
         {94, 48}, ¬
@@ -253,8 +253,8 @@ on run
         {6, 71, 28, 75, 94, 48, 37, 10, 23, 51, 6, 48, 53, 18, 74, 98, 15}, ¬
         {27, 2, 92, 23, 8, 71, 76, 84, 15, 52, 92, 63, 81, 10, 44, 10, 69, 93} ¬
             })
-    
-    --> 1320    
+
+    --> 1320
 end run
 
 
@@ -315,7 +315,7 @@ on min(x, y)
     end if
 end min
 
--- minimum :: [a] -> a 
+-- minimum :: [a] -> a
 on minimum(xs)
     script min
         on |λ|(a, x)
@@ -326,11 +326,11 @@ on minimum(xs)
             end if
         end |λ|
     end script
-    
+
     foldl(min, missing value, xs)
 end minimum
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -418,7 +418,7 @@ let test = [
 Examples:
 ```AutoHotkey
 data :=[
-(join ltrim 
+(join ltrim
                  55,
                 94,48,
                95,30,96,
@@ -598,7 +598,7 @@ int main(void)
 
 int main( int argc, char* argv[] )
 {
-    int triangle[] = 
+    int triangle[] =
     {
 	55,
 	94, 48,
@@ -641,10 +641,10 @@ Maximum total: 1320
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 
 using System;
 
@@ -780,21 +780,21 @@ Maximum total: 1320
 
 ```lisp
 (defun find-max-path-sum (s)
-  (let ((triangle (loop for line = (read-line s NIL NIL) 
-                        while line 
-                        collect (with-input-from-string (str line) 
-                                  (loop for n = (read str NIL NIL) 
-                                        while n 
+  (let ((triangle (loop for line = (read-line s NIL NIL)
+                        while line
+                        collect (with-input-from-string (str line)
+                                  (loop for n = (read str NIL NIL)
+                                        while n
                                         collect n)))))
     (flet ((get-max-of-pairs (xs)
-             (maplist (lambda (ys) 
+             (maplist (lambda (ys)
                         (and (cdr ys) (max (car ys) (cadr ys))))
                       xs)))
-      (car (reduce (lambda (xs ys) 
+      (car (reduce (lambda (xs ys)
                      (mapcar #'+ (get-max-of-pairs xs) ys))
                    (reverse triangle))))))
 
-(defparameter *small-triangle* 
+(defparameter *small-triangle*
   "    55
      94 48
     95 30 96
@@ -846,7 +846,7 @@ ELENA 4.1 :
 import system'routines;
 import extensions;
 import extensions'math;
- 
+
 string input =               "55
                             94 48
                           95 30 96
@@ -865,11 +865,11 @@ string input =               "55
       85 32 25 85 57 48 84 35 47 62 17 01 01 99 89 52
      06 71 28 75 94 48 37 10 23 51 06 48 53 18 74 98 15
    27 02 92 23 08 71 76 84 15 52 92 63 81 10 44 10 69 93";
- 
+
 public program()
 {
     var list := new IntMatrix(18,19);
- 
+
     int i := 0;
     int j := 0;
     input.split(forward newLine).forEach:(string line)
@@ -878,13 +878,13 @@ public program()
         line.trim().split(" ").forEach:(string num)
         {
             list[i][j] := num.toInt();
- 
+
             j += 1
         };
- 
+
         i += 1
     };
- 
+
     for(int i := 16, i >= 0, i-=1)
     {
         for(int j := 0, j < 18, j += 1)
@@ -892,7 +892,7 @@ public program()
             list[i][j] := max(list[i][j] + list[i+1][j], list[i][j] + list[i+1][j+1])
         }
     };
- 
+
     console.printLine("Maximum total: ", list[0][0])
 }
 ```
@@ -1331,10 +1331,10 @@ For x = size - 1 To 1 Step - 1
     Next
 Next
 
-Print 
+Print
 Print "  maximum triangle path sum ="; matrix(1, 1)
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -1692,7 +1692,7 @@ function maximumTrianglePathSum(triangle) {
       );
     triangle.push(aboveLine);
   }
-  
+
   do {
     distilLastLine();
   } while (triangle.length > 1);
@@ -1838,16 +1838,16 @@ the outer loop is implemented using <tt>reduce</tt>.
 The input array is identical to that in the Javascript section and is therefore omitted here.
 ```jq
 # Usage: TRIANGLE | solve
-def solve: 
+def solve:
 
   # update(next) updates the input row of maxima:
   def update(next):
     . as $maxima
     | [ range(0; next|length)
        | next[.] + ([$maxima[.], $maxima[. + 1]] | max) ];
-  
+
   . as $in
-  | reduce range(length -2; -1; -1) as $i 
+  | reduce range(length -2; -1; -1) as $i
       ($in[-1];  update( $in[$i] ) ) ;
 ```
 
@@ -2304,7 +2304,7 @@ while @rows > 1 {
 put @rows;
 
 
-# Here's a more FPish version. We define our own operator and the use it in the reduction metaoperator form, [op], which turns any infix into a list operator. 
+# Here's a more FPish version. We define our own operator and the use it in the reduction metaoperator form, [op], which turns any infix into a list operator.
 sub infix:<op>(@a,@b) { (@a Zmax @a[1..*]) Z+ @b }
 put [op] $triangle.lines.reverse.map: { [.words] }
 
@@ -2348,7 +2348,7 @@ sequence tri = {{55},
                 { 6, 71, 28, 75, 94, 48, 37, 10, 23, 51,  6, 48, 53, 18, 74, 98, 15},
                 {27,  2, 92, 23,  8, 71, 76, 84, 15, 52, 92, 63, 81, 10, 44, 10, 69, 93}}
 
--- update each row from last but one upwards, with the larger 
+-- update each row from last but one upwards, with the larger
 --  child, so the first step is to replace 6 with 6+27 or 6+2.
 for r=length(tri)-1 to 1 by -1 do
     for c=1 to length(tri[r]) do
@@ -2696,7 +2696,7 @@ print(
 
 The method used is very efficient and performs very well for triangles that have thousands of rows (lines).
 
-For an expanded discussion of the program method's efficiency, see the discussion page.   
+For an expanded discussion of the program method's efficiency, see the discussion page.
 
 ```rexx
 /*REXX program finds the  maximum sum  of a  path of numbers  in a pyramid of numbers.  */
@@ -2770,12 +2770,12 @@ ln[15] = "    44 25 67 84 71 67 11 61 40 57 58 89 40 56 36"
 ln[16] = "   85 32 25 85 57 48 84 35 47 62 17 01 01 99 89 52"
 ln[17] = "  06 71 28 75 94 48 37 10 23 51 06 48 53 18 74 98 15"
 ln[18] = " 27 02 92 23 08 71 76 84 15 52 92 63 81 10 44 10 69 93"
-ln[19] = "end"  
- 
+ln[19] = "end"
+
 matrix = newlist(20,20)
 x = 1
 size = 0
- 
+
 for n = 1 to len(ln) - 1
      ln2 = ln[n]
      ln2 = trim(ln2)
@@ -2788,19 +2788,19 @@ for n = 1 to len(ln) - 1
      x = x + 1
      size = size + 1
 next
- 
+
 for x = size - 1 to 1 step - 1
      for y = 1 to x
           s1 = matrix[x+1][y]
           s2 = matrix[x+1][y+1]
-          if s1 > s2 
+          if s1 > s2
              matrix[x][y] = matrix[x][y] + s1
           else
              matrix[x][y] = matrix[x][y] + s2
           ok
      next
 next
- 
+
 see "maximum triangle path sum = " + matrix[1][1]
 
 ```
@@ -2819,7 +2819,7 @@ maximum triangle path sum = 1320
 
 
 ```ruby
-triangle = 
+triangle =
 "                         55
                         94 48
                        95 30 96
@@ -2857,21 +2857,21 @@ puts ar.inject([]){|res,x|
 use std::cmp::max;
 
 fn max_path(vector: &mut Vec<Vec<u32>>) -> u32 {
-    
+
     while vector.len() > 1 {
-        
+
         let last = vector.pop().unwrap();
         let ante = vector.pop().unwrap();
-        
+
         let mut new: Vec<u32> = Vec::new();
-        
+
         for (i, value) in ante.iter().enumerate() {
             new.push(max(last[i], last[i+1]) + value);
         };
-        
+
         vector.push(new);
     };
-    
+
     vector[0][0]
 }
 
@@ -2897,9 +2897,9 @@ fn main() {
 
     let mut vector = data.split("\n").map(|x| x.split(" ").map(|s: &str| s.parse::<u32>().unwrap())
         .collect::<Vec<u32>>()).collect::<Vec<Vec<u32>>>();
-    
+
     let max_value = max_path(&mut vector);
-    
+
     println!("{}", max_value);
     //=> 7273
 }
@@ -2920,7 +2920,7 @@ object MaximumTrianglePathSum extends App {
         ).head
 
     // Tests:
-    def triangle = """   
+    def triangle = """
                           55
                         94 48
                        95 30 96
@@ -3086,7 +3086,7 @@ puts [maxTrianglePathSum {
 Set objfso = CreateObject("Scripting.FileSystemObject")
 Set objinfile = objfso.OpenTextFile(objfso.GetParentFolderName(WScript.ScriptFullName) &_
 	"\triangle.txt",1,False)
-	
+
 row = Split(objinfile.ReadAll,vbCrLf)
 
 For i = UBound(row) To 0 Step -1
@@ -3099,7 +3099,7 @@ For i = UBound(row) To 0 Step -1
 				row(i)(j) = CInt(row(i)(j)) + CInt(row(i+1)(j+1))
 			End If
 		Next
-	End If	
+	End If
 Next
 
 WScript.Echo row(0)(0)
@@ -3155,7 +3155,7 @@ tri:=File("triangle.txt").pump(List,fcn(s){ s.strip().split(" ").apply("toInt") 
 while(tri.len()>1){
    t0:=tri.pop();
    t1:=tri.pop();
-   tri.append( [[(it); t1.enumerate(); 
+   tri.append( [[(it); t1.enumerate();
 	'wrap([(i,t)]){ t + t0[i].max(t0[i+1]) }]])
 }
 tri[0][0].println();

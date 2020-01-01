@@ -229,11 +229,11 @@ int main()
 
 
 
-## C sharp
+## C#
 
 {{trans|JavaScript}}
 
-```csharp
+```c#
 
 private static double randomNormal()
 {
@@ -245,7 +245,7 @@ private static double randomNormal()
 
 Then the methods in [[Random numbers#Metafont]] are used to calculate the average and the Standard Deviation:
 
-```csharp
+```c#
 
 static Random tRand = new Random();
 

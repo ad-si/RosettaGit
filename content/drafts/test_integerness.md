@@ -49,7 +49,7 @@ In other words:
 | rowspan=2 | real numbers '''Z'''
 <small>''(approximated)''</small>
 | [[wp:Fixed-point arithmetic|fixed-point]]
-| 
+|
 | ...if it has no non-zero digits after the decimal point
 |-
 | [[wp:Floating point|floating-point]]
@@ -84,16 +84,16 @@ This is useful in practice, because when dealing with approximate numeric types 
 | rowspan=3 | decimal
 | <code>25.000000</code>
 | colspan=2 | true
-| 
+|
 |-
 | <code>24.999999</code>
 | false
 | true
-| 
+|
 |-
 | <code>25.000100</code>
 | colspan=2 | false
-| 
+|
 |-
 | rowspan=4 | floating-point
 | <code>-2.1e120</code>
@@ -103,11 +103,11 @@ It is, nonetheless, mathematically an integer, and your code should identify it 
 |-
 | <code>-5e-2</code>
 | colspan=2 | false
-| 
+|
 |-
 | <code>NaN</code>
 | colspan=2 | false
-| 
+|
 |-
 | <code>Inf</code>
 | colspan=2 | false
@@ -116,11 +116,11 @@ It is, nonetheless, mathematically an integer, and your code should identify it 
 | rowspan=2 | complex
 | <code>5.0+0.0i</code>
 | colspan=2 | true
-| 
+|
 |-
 | <code>5-5i</code>
 | colspan=2 | false
-| 
+|
 |}
 
 (The types and notations shown in these tables are merely examples &ndash; you should use the native data types and number literals of your programming language and standard library. Use a different set of test-cases, if this one doesn't demonstrate all relevant behavior.)
@@ -509,27 +509,27 @@ namespace Test_integerness
 			Console.WriteLine(" *                                                 *");
 			Console.WriteLine(" ***************************************************");
 			Console.WriteLine();
-			
+
 			ConsoleKeyInfo key = new ConsoleKeyInfo('Y',ConsoleKey.Y,true,true,true);
-			
+
 			while(key.Key == ConsoleKey.Y)
 			{
 				// Get number value from keyboard
 				Console.Write(" Enter number value : ");
-				
+
 				string LINE = Console.ReadLine();
-				
+
 				// Get tolerance value from keyboard
 				Console.Write(" Enter tolerance value : ");
-				
+
 				double TOLERANCE = double.Parse(Console.ReadLine());
-				
-				
+
+
 				// Resolve entered number format and set NUMBER value
 				double NUMBER = 0;
-				
+
 				string [] N;
-				
+
 				// Real number value
 				if(!double.TryParse(LINE, out NUMBER))
 				{
@@ -537,7 +537,7 @@ namespace Test_integerness
 					if(LINE.Contains("/"))
 					{
 						N = LINE.Split('/');
-						
+
 						NUMBER = double.Parse(N[0]) / double.Parse(N[1]);
 					}
 					// Inf value
@@ -550,12 +550,12 @@ namespace Test_integerness
 					{
 						// Delete letter i
 						LINE = LINE.ToUpper().Replace("I","");
-						
+
 						string r = string.Empty; // real part
 						string i = string.Empty; // imaginary part
-						
+
 						int s = 1; // sign offset
-						
+
 						// Get sign
 						if(LINE[0]=='+' || LINE[0]=='-')
 						{
@@ -564,7 +564,7 @@ namespace Test_integerness
 							s--;
 						}
 						// Get real part
-						foreach (char element in LINE) 
+						foreach (char element in LINE)
 						{
 							if(element!='+' && element!='-')
 								r+=element.ToString();
@@ -573,54 +573,54 @@ namespace Test_integerness
 						}
 						// get imaginary part
 						i = LINE.Substring(LINE.Length-(r.Length+s));
-						
+
 						NUMBER = double.Parse(i);
 						if(NUMBER==0)
 							NUMBER = double.Parse(r);
 						else
 							NUMBER = double.NaN;
-						
+
 					}
 					// NaN value
 					else
 						NUMBER = double.NaN;
 				}
-				
-				
+
+
 				// Test
 				bool IS_INTEGER = false;
 				bool IS_INTEGER_T = false;
-				
+
 				if(double.IsNaN(NUMBER))
 					IS_INTEGER=false;
-				
+
 				else if(Math.Round(NUMBER,0).ToString() == NUMBER.ToString())
 					IS_INTEGER = true;
-				
+
 				else if((decimal)TOLERANCE >= (decimal)Math.Abs( (decimal)Math.Round(NUMBER,0) - (decimal)NUMBER ))
 					IS_INTEGER_T = true;
 
-				
-				
+
+
 				if(IS_INTEGER)
 					Console.WriteLine(" Is exact integer " + IS_INTEGER);
-				
+
 				else
 				{
 					Console.WriteLine( " Is exact integer " + IS_INTEGER );
 					Console.WriteLine( " Is integer with tolerance " + IS_INTEGER_T );
 				}
-				
-				
+
+
 				Console.WriteLine();
 				Console.Write(" Another test < Y /N > . . . ");
 				key  = Console.ReadKey(true);
 				Console.WriteLine();
 				Console.WriteLine();
 			}
-			
+
 		}
-		
+
 	}
 }
 
@@ -632,7 +632,7 @@ namespace Test_integerness
 ```txt
 
 
- 
+
  ***************************************************
  *                                                 *
  *              Integerness test                   *
@@ -926,7 +926,7 @@ GENERIC: integral? ( n -- ? )
 
 M: real integral? [ ] [ >integer ] bi number= ;
 M: complex integral? >rect [ integral? ] [ 0 number= ] bi* and ;
-    
+
 GENERIC# fuzzy-int? 1 ( n tolerance -- ? )
 
 M: real fuzzy-int? [ dup round - abs ] dip <= ;
@@ -986,7 +986,7 @@ C{ 5 -5 }                                 f           f
 
 ### Straightforward
 
-The issue is a little delicate, because a number such as 3E120 is integral, but, cannot be represented in an ordinary integer variable. If the idea slides towards whether the value can be represented exactly by an integer variable then the task become easy. The following code takes advantage of the availability of INTEGER*8 variables, and an associated function KIDINT(x) that deals with double precision values and returns a 64-bit integer result. This function truncates - if it were to round then it might want to round up to one beyond the maximum possible integer of that sign. There is a bewildering variety of these truncation and rounding functions, some of which are generic and some not, and if only INTEGER*4 were available, different choices would have to be made. 
+The issue is a little delicate, because a number such as 3E120 is integral, but, cannot be represented in an ordinary integer variable. If the idea slides towards whether the value can be represented exactly by an integer variable then the task become easy. The following code takes advantage of the availability of INTEGER*8 variables, and an associated function KIDINT(x) that deals with double precision values and returns a 64-bit integer result. This function truncates - if it were to round then it might want to round up to one beyond the maximum possible integer of that sign. There is a bewildering variety of these truncation and rounding functions, some of which are generic and some not, and if only INTEGER*4 were available, different choices would have to be made.
 
 The MODULE protocol of F90 is used, merely to save on the need to define the types of the function in each routine that uses them, since there is no default type for LOGICAL. Otherwise, this is F77 style.
 
@@ -1046,7 +1046,7 @@ To determine the number of digits of precision, one probes somewhat as follows:
       IF (D .EQ. 1) GO TO 10
 ```
 
-Or alternatively, compare 1 + ''eps'' to 1, successively dividing ''eps'' by BASE. 
+Or alternatively, compare 1 + ''eps'' to 1, successively dividing ''eps'' by BASE.
 
 The difficulties include the risk that a compiler might wrongly apply the axia of mathematics to floating-point arithmetic and deduce that D was always one. Similarly, after assigning the result of X + 1 to Y, it may notice that the register could retain that value and so there would be no need to load Y's value to calculate Y - X: if the register was of greater precision than the variable, the probe will err. Producing output can help. As well as being interesting, otherwise a compiler might deduce that there is no need to calculate something because it is not used to produce output nor affects something that does lead to output.
 
@@ -1308,51 +1308,51 @@ func main() {
 
 Using Float64IsInt with float64:
                       Input  IsInt  Type
-                          0  true   float64 
-                         -0  true   float64 
-                         -2  true   float64 
-         -2.000000000000001  false  float64 
-                          5  true   float64 
-          7.333333333333333  false  float64 
-          3.141592653589793  false  float64 
-     -9.223372036854776e+18  true   float64 
-     1.8446744073709552e+19  true   float64 
-                     5e-324  false  float64 
-    1.7976931348623157e+308  true   float64 
-                        NaN  false  float64 
-                       +Inf  false  float64 
-                       -Inf  false  float64 
+                          0  true   float64
+                         -0  true   float64
+                         -2  true   float64
+         -2.000000000000001  false  float64
+                          5  true   float64
+          7.333333333333333  false  float64
+          3.141592653589793  false  float64
+     -9.223372036854776e+18  true   float64
+     1.8446744073709552e+19  true   float64
+                     5e-324  false  float64
+    1.7976931348623157e+308  true   float64
+                        NaN  false  float64
+                       +Inf  false  float64
+                       -Inf  false  float64
 
 Using Complex128IsInt with complex128:
                       Input  IsInt  Type
-                     (3+0i)  true   complex128 
-                     (0+1i)  false  complex128 
-                     (0+0i)  true   complex128 
-                   (3.4+0i)  false  complex128 
+                     (3+0i)  true   complex128
+                     (0+1i)  false  complex128
+                     (0+0i)  true   complex128
+                   (3.4+0i)  false  complex128
 
 Using reflection:
                       Input  IsInt  Type
-                      hello  false  string 
-    1.7976931348623157e+308  true   float64 
-                      9e100  true   string 
-                          0  true   *big.Float 
-                    1e-3000  false  *big.Float 
+                      hello  false  string
+    1.7976931348623157e+308  true   float64
+                      9e100  true   string
+                          0  true   *big.Float
+                    1e-3000  false  *big.Float
                      (4+0i)  false  string (complex strings not parsed)
-                     (4+0i)  true   complex128 
+                     (4+0i)  true   complex128
                         167  true   int32 or rune
                          65  true   uint8 or byte
-                       5200  true   main.intbased 
-                     (5+0i)  true   main.complexbased 
-                     (5+1i)  false  main.complexbased 
-               842350779352  true   uintptr 
-                -2147483648  true   int 
-       18446744073709551615  true   uint64 
-  9999999999999999999999999  true   *big.Int 
-                        0/1  true   *big.Rat 
-                        2/3  false  *big.Rat 
-1111111111111111111111111/1  true   *big.Rat 
-                    12345/5  true   string 
-                        <…>  true   *main.customIntegerType 
+                       5200  true   main.intbased
+                     (5+0i)  true   main.complexbased
+                     (5+1i)  false  main.complexbased
+               842350779352  true   uintptr
+                -2147483648  true   int
+       18446744073709551615  true   uint64
+  9999999999999999999999999  true   *big.Int
+                        0/1  true   *big.Rat
+                        2/3  false  *big.Rat
+1111111111111111111111111/1  true   *big.Rat
+                    12345/5  true   string
+                        <…>  true   *main.customIntegerType
 
 ```
 
@@ -1502,7 +1502,7 @@ pithagoreanTriangles =
    isInt =:  (= <.) *. (= {.@+.)
 ```
 
-'''Alternative solution''' (remainder after diving by 1?): 
+'''Alternative solution''' (remainder after diving by 1?):
 ```j
    isInt=:  (0 = 1&|) *. (0 = {:@+.)
 ```
@@ -1665,7 +1665,7 @@ def is_integral:
   elif type == "array" then
        length == 2 and .[1] == 0 and (.[0] | is_integral)
   else type == "object"
-       and .type == "rational" 
+       and .type == "rational"
        and  .q != 0
        and (.q | is_integral)
        and ((.p / .q) | is_integral)
@@ -1689,10 +1689,10 @@ $ jq -r -n -f is_integral.jq
 -1 => integral
 [3,0] => integral
 {"p":4,"q":2,"type":"rational"} => integral
-1.1 => 
--1.1 => 
-[3,1] => 
-{"p":5,"q":2,"type":"rational"} => 
+1.1 =>
+-1.1 =>
+[3,1] =>
+{"p":5,"q":2,"type":"rational"} =>
 ```
 
 
@@ -1734,7 +1734,7 @@ isinteger(complex(5, 5)) = false
 
 ## Kotlin
 
-As Kotlin doesn't have built in rational or complex number classes, we create 'bare bones' classes for the purposes of this task: 
+As Kotlin doesn't have built in rational or complex number classes, we create 'bare bones' classes for the purposes of this task:
 
 ```scala
 // version 1.1.2
@@ -1745,7 +1745,7 @@ import java.math.BigDecimal
 fun Double.isLong(tolerance: Double = 0.0) =
     (this - Math.floor(this)) <= tolerance || (Math.ceil(this) - this) <= tolerance
 
-fun BigDecimal.isBigInteger() = 
+fun BigDecimal.isBigInteger() =
     try {
         this.toBigIntegerExact()
         true
@@ -1756,27 +1756,27 @@ fun BigDecimal.isBigInteger() =
 
 class Rational(val num: Long, val denom: Long) {
     fun isLong() = num % denom == 0L
-   
+
     override fun toString() = "$num/$denom"
 }
-    
+
 class Complex(val real: Double, val imag: Double) {
     fun isLong() = real.isLong() && imag == 0.0
 
-    override fun toString() = 
+    override fun toString() =
         if (imag >= 0.0)
             "$real + ${imag}i"
         else
             "$real - ${-imag}i"
 }
-    
+
 fun main(args: Array<String>) {
     val da = doubleArrayOf(25.000000, 24.999999, 25.000100)
     for (d in da) {
         val exact = d.isLong()
         println("${"%.6f".format(d)} is ${if (exact) "an" else "not an"} integer")
     }
-    val tolerance = 0.00001 
+    val tolerance = 0.00001
     println("\nWith a tolerance of ${"%.5f".format(tolerance)}:")
     for (d in da) {
         val fuzzy = d.isLong(tolerance)
@@ -1784,13 +1784,13 @@ fun main(args: Array<String>) {
     }
 
     println()
-    val fa = doubleArrayOf(-2.1e120, -5e-2, Double.NaN, Double.POSITIVE_INFINITY) 
+    val fa = doubleArrayOf(-2.1e120, -5e-2, Double.NaN, Double.POSITIVE_INFINITY)
     for (f in fa) {
-        val exact = if (f.isNaN() || f.isInfinite()) false 
+        val exact = if (f.isNaN() || f.isInfinite()) false
                     else BigDecimal(f.toString()).isBigInteger()
         println("$f is ${if (exact) "an" else "not an"} integer")
     }
-    
+
     println()
     val ca = arrayOf(Complex(5.0, 0.0), Complex(5.0, -5.0))
     for (c in ca) {
@@ -1959,7 +1959,7 @@ return real'+'imaginary'i'                  /* format as real+imaginaryi      */
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 The built-in function IntegerQ performs the required test
 
 ```Mathematica
@@ -2000,12 +2000,12 @@ use Math::Complex;
 
 sub is_int {
     my $number = shift;
-    
+
     if (ref $number eq 'Math::Complex') {
         return 0 if $number->Im != 0;
         $number = $number->Re;
     }
-    
+
     return int($number) == $number;
 }
 
@@ -2065,14 +2065,14 @@ for 25.000000, 24.999999, 25.000100, -2.1e120, -5e-2, Inf, NaN, 5.0+0.0i, 5-5i {
 
 ```txt
 
-Rat      25         True   True 
-Rat      24.999999  False  True 
+Rat      25         True   True
+Rat      24.999999  False  True
 Rat      25.0001    False  False
-Num      -2.1e+120  True   True 
+Num      -2.1e+120  True   True
 Num      -0.05      False  False
 Num      Inf        False  False
 Num      NaN        False  False
-Complex  5+0i       True   True 
+Complex  5+0i       True   True
 Complex  5-5i       False  False
 
 ```
@@ -2132,14 +2132,14 @@ Pico Lisp scaled fixed-point numbers. Every number is stored an an Integer and  
 (de integer? (N)
   (and (= N (* 1.0 (/ N 1.0))) N)) #returns value of N or NIL
 
-(scl 4) #-> 4 # *Scl the global which holds 
+(scl 4) #-> 4 # *Scl the global which holds
 1.0 #-> 10000
 (int? 1.0) #-> T
 (int? 1) #-> NIL # 1 with a scale of 4 is same as 0.0001 which is not an Integer
 (int? -1.0) #-> T
 (int? -0.0) #-> T
 (int? "RE") #-> "RE" -- Number expected
-(int? (*/ 2.0 1.0 3.0)) #-> NIL # 6667 is not an integer of the scale of 4, use of */ because of the scale 
+(int? (*/ 2.0 1.0 3.0)) #-> NIL # 6667 is not an integer of the scale of 4, use of */ because of the scale
 
 ```
 
@@ -2203,7 +2203,7 @@ Parameter was not a number.
 
 
 ```python>>>
- def isint(f): 
+ def isint(f):
     return complex(f).imag == 0 and complex(f).real.is_integer()
 
 >>> [isint(f) for f in (1.0, 2, (3.0+0.0j), 4.1, (3+4j), (5.6+0j))]
@@ -2255,7 +2255,7 @@ See [http://docs.racket-lang.org/reference/number-types.html?q=integer%3F#%28def
  (integer?   1234879378539875943875937598379587539875498792424323432432343242423432432) => #t
  (integer?  -1234879378539875943875937598379587539875498792424323432432343242423432432) => #t
  (integer?  #xff) => #t
- 
+
  ;; - as inexacts
  (integer? -1.) => #t
  (integer?  0.) => #t
@@ -2264,7 +2264,7 @@ See [http://docs.racket-lang.org/reference/number-types.html?q=integer%3F#%28def
  (integer?  #xff.0) => #t
  ;; - but without a decimal fractional part
  (integer? -1.1) => #f
- 
+
  ;; - fractional representation
  (integer? -42/3) => #t
  (integer?   0/1) => #t
@@ -2273,19 +2273,19 @@ See [http://docs.racket-lang.org/reference/number-types.html?q=integer%3F#%28def
  (integer?  #b11111111/1111) => #t
  ;; - but obviously not fractions
  (integer? 5/7) => #f
- 
+
  ; - as scientific
  (integer?  1.23e2) => #t
  (integer?  1.23e120) => #t
  ; - but not with a small exponent
  (integer?  1.23e1) => #f
- 
+
  ; - complex representations with 0 imaginary component
  ;   ℤ is a subset of the sets of rational and /real/ numbers and
  (integer? 1+0i) => #t
  (integer? (sqr 0+1i)) => #t
  (integer? 0+1i) => #f
- 
+
  ;; oh, there's so much else that isn't an integer:
  (integer? "woo") => #f
  (integer? "100") => #f
@@ -2437,7 +2437,7 @@ Call testi 25.000000
 Call testi 24.999999
 Call testi 25.000100
 Call testi  0.9999999
-Call testi -0.9999999 
+Call testi -0.9999999
 Exit
 
 testi:
@@ -2469,13 +2469,13 @@ Return
 
 ### version 2
 
-This REXX version handles an exponent indicator of   '''E''',   '''D''',   or   '''Q'''   (either lower or uppercase),   and 
+This REXX version handles an exponent indicator of   '''E''',   '''D''',   or   '''Q'''   (either lower or uppercase),   and
 
 it also supports a trailing   '''I'''   or   '''J'''   imaginary indicator.
 
-('''E''',   '''D''',   and   '''Q'''   indicate an exponent for a single precision, double precision, and quad precision numbers, respectively.) 
+('''E''',   '''D''',   and   '''Q'''   indicate an exponent for a single precision, double precision, and quad precision numbers, respectively.)
 
-This version also handles numbers   larger   than can be stored (within REXX) as simple integers within the limits of   '''numeric digits'''. 
+This version also handles numbers   larger   than can be stored (within REXX) as simple integers within the limits of   '''numeric digits'''.
 
 Also, most REXXes have a limit on the minimum/maximum value of the power in exponentiated numbers.
 
@@ -2663,13 +2663,13 @@ class Numeric
     self == self.to_i rescue false
    end
 end
- 
+
 # Demo
 ar = [25.000000, 24.999999, 25.000100, -2.1e120, -5e-2,  # Floats
       Float::NAN, Float::INFINITY,                       # more Floats
-      2r, 2.5r,                                          # Rationals 
+      2r, 2.5r,                                          # Rationals
       2+0i, 2+0.0i, 5-5i]                                # Complexes
- 
+
 ar.each{|num| puts "#{num} integer? #{num.to_i?}" }
 
 ```
@@ -2754,14 +2754,14 @@ func is_int (n, tolerance=0) {
 
 ```txt
 
-25.000000   true      true 
-24.999999   false     true 
+25.000000   true      true
+24.999999   false     true
 25.000100   false     false
--2.1e120    true      true 
+-2.1e120    true      true
 -5e-2       false     false
 Inf         false     false
 NaN         false     false
-5.0+0.0i    true      true 
+5.0+0.0i    true      true
 5-5i        false     false
 
 ```
@@ -2831,7 +2831,7 @@ True
 
 ## zkl
 
-No complex type. 
+No complex type.
 
 ```zkl
 T(1, 2.0,4.1,"nope",self).apply((1).isType)

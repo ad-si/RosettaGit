@@ -34,8 +34,8 @@ languages = [
   "bbc_basic",
   "bracmat",
   "c",
-  "c++",
-  "c_sharp",
+  "cpp",
+  "csharp",
   "regex",
   "ceylon",
   "clojure",
@@ -2181,7 +2181,7 @@ CONFUSE: true.
 ```
 
 
-## C sharp
+## C#
 
 ### Regex
 
@@ -2190,7 +2190,7 @@ Given that n = length of blocks string and
 m = length of word string,
 then CheckWord's time complexity comes out to about m * (n - (m-1)/2).
 
-```csharp
+```c#
 using System;
 using System.IO;
 // Needed for the method.
@@ -2237,7 +2237,7 @@ CONFUSE: True
 
 '''Unoptimized'''
 
-```csharp
+```c#
 using System.Collections.Generic;
 using System.Linq;
 

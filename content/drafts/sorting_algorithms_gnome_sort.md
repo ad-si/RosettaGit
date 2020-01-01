@@ -414,10 +414,10 @@ void gnome_sort(int *a, int n)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 
         public static void gnomeSort(int[] anArray)
         {

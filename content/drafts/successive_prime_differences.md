@@ -15,15 +15,15 @@ The series of increasing prime numbers begins: <code>2, 3, 5, 7, 11, 13, 17, 19,
 
 The task applies a filter to the series returning groups of ''successive'' primes, (s'primes),  that differ from the next by a given value or values.
 
-'''Example 1:''' Specifying that the difference between s'primes be <code>2</code> leads to the groups: 
-:<code>(3, 5), (5, 7), (11, 13), (17, 19), (29, 31), ...</code> 
+'''Example 1:''' Specifying that the difference between s'primes be <code>2</code> leads to the groups:
+:<code>(3, 5), (5, 7), (11, 13), (17, 19), (29, 31), ...</code>
 
 (Known as [[wp:Twin prime|Twin primes]] or [https://oeis.org/A077800 Prime pairs])
 
-'''Example 2:''' Specifying more than one difference ''between'' s'primes leads to groups of size one greater than the number of differences. Differences of <code>2, 4</code> leads to the groups: 
-:<code>(5, 7, 11), (11, 13, 17), (17, 19, 23), (41, 43, 47), ...</code>. 
+'''Example 2:''' Specifying more than one difference ''between'' s'primes leads to groups of size one greater than the number of differences. Differences of <code>2, 4</code> leads to the groups:
+:<code>(5, 7, 11), (11, 13, 17), (17, 19, 23), (41, 43, 47), ...</code>.
 
-In the first group 7 is two more than 5 and 11 is four more than 7; as well as 5, 7, and 11 being ''successive'' primes. 
+In the first group 7 is two more than 5 and 11 is four more than 7; as well as 5, 7, and 11 being ''successive'' primes.
 Differences are checked in the order of the values given, (differences of <code>4, 2</code> would give different groups entirely).
 
 ;Task:
@@ -45,10 +45,10 @@ Note: Generation of a list of primes is a secondary aspect of the task. Use of a
 :#https://www.primepuzzles.net/puzzles/puzz_011.htm
 :#https://matheplanet.de/matheplanet/nuke/html/viewtopic.php?topic=232720&start=0
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using static System.Linq.Enumerable;
@@ -157,7 +157,7 @@ IN: rosetta-code.successive-prime-differences
         { 4 2 }
         { 6 4 2 }
     } [ show ] with each ;
-    
+
 MAIN: successive-prime-differences
 ```
 
@@ -430,7 +430,7 @@ say "Groups of successive primes <= $limit";
 for my $diffs ([2], [1], [2,2], [2,4], [4,2], [6,4,2]) {
     my $n = -1;
     my @offsets = grep {$_} each_cons @$diffs, @intervals, sub { $n++; $n if @_ ~~ @$diffs };
-    printf "%10s has %5d sets: %15s … %s\n", 
+    printf "%10s has %5d sets: %15s … %s\n",
        '(' . join(' ',@$diffs) . ')',
         scalar @offsets,
         join(' ', @primes[$offsets[ 0]..($offsets[ 0]+@$diffs)]),
@@ -636,15 +636,15 @@ def nsuccprimes(count, mx):
 
 def check_value_diffs(diffs, values):
     "Differences between successive values given by successive items in diffs?"
-    return all(v[1] - v[0] == d 
+    return all(v[1] - v[0] == d
                for d, v in zip(diffs, zip(values, values[1:])))
 
 def successive_primes(offsets=(2, ), primes_max=1_000_000):
-    return (sp for sp in nsuccprimes(len(offsets) + 1, primes_max) 
+    return (sp for sp in nsuccprimes(len(offsets) + 1, primes_max)
             if check_value_diffs(offsets, sp))
 
 if __name__ == '__main__':
-    for offsets, mx in [((2,),      1_000_000), 
+    for offsets, mx in [((2,),      1_000_000),
                         ((1,),      1_000_000),
                         ((2, 2),    1_000_000),
                         ((2, 4),    1_000_000),
@@ -822,7 +822,7 @@ object SuccessivePrimeDiffs {
     val d24 = primesByDiffs(2, 4)(1000000)
     val d42 = primesByDiffs(4, 2)(1000000)
     val d642 = primesByDiffs(6, 4, 2)(1000000)
-    
+
     if(true) println(
       s"""|Diffs: (First), (Last), Count
           |2:     (${d2.head.mkString(", ")}), (${d2.last.mkString(", ")}), ${d2.size}
@@ -833,14 +833,14 @@ object SuccessivePrimeDiffs {
           |6-4-2: (${d642.head.mkString(", ")}), (${d642.last.mkString(", ")}), ${d642.size}
           |""".stripMargin)
   }
-  
+
   def primesByDiffs(diffs: Int*)(max: Int): LazyList[Vector[Int]] = {
     primesSliding(diffs.size + 1)
       .takeWhile(_.last <= max)
       .filter{vec => diffs.zip(vec.init).map{case (a, b) => a + b} == vec.tail}
       .to(LazyList)
   }
-  
+
   def primesSliding(len: Int): Iterator[Vector[Int]] = primes.sliding(len).map(_.toVector)
   def primes: LazyList[Int] = 2 #:: LazyList.from(3, 2).filter(n => !Iterator.range(3, math.sqrt(n).toInt + 1, 2).exists(n%_ == 0))
 }
@@ -903,7 +903,7 @@ Groups of successive primes <= 1,000,000:
 ## zkl
 
 {{libheader|GMP}} GNU Multiple Precision Arithmetic Library
-Using GMP ( probabilistic primes), 
+Using GMP ( probabilistic primes),
 because it is easy and fast to generate primes.
 
 [[Extensible prime generator#zkl]] could be used instead.
@@ -921,7 +921,7 @@ fcn primeWindows(m,deltas){ // eg (6,4,2)
    n,r := 0,List();
    ds:=deltas.len().pump(List,'wrap(n){ deltas[0,n+1].sum(0) });  // (6,10,12)
    sp:=Data(Void,"1" + "0"*deltas.sum(0));
-   foreach n in (ds){ sp[n]="1" } // "1000001000101" 
+   foreach n in (ds){ sp[n]="1" } // "1000001000101"
    while(n=primeBitMap.find(sp,n+1)){ r.append(n) }  //  (31, 61, 271,...)
    r.apply('wrap(n){ T(n).extend(ds.apply('+(n))) }) //( (31,37,41,43), (61,67,71,73), (271,277,281,283) ...)
 }

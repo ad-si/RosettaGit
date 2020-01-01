@@ -460,9 +460,9 @@ result = 933204586
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 
 public class SubtractiveGenerator {
     public static int MAX = 1000000000;

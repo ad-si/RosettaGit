@@ -1853,7 +1853,7 @@ olleH
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Recursive Linq
 {{works with|C sharp|C#|7}}
 
@@ -1910,7 +1910,7 @@ A recursive Iterator. Runs under C#2 (VS2005), i.e. no `var`, no lambdas,...
 
 Usage:
 
-```csharp
+```c#
 namespace Permutations_On_RosettaCode
 {
     class Program
@@ -1933,7 +1933,7 @@ namespace Permutations_On_RosettaCode
 
 Recursive version
 
-```csharp
+```c#
 using System;
 class Permutations
 {
@@ -1968,7 +1968,7 @@ class Permutations
 Alternate recursive version
 
 
-```csharp
+```c#
 
 using System;
 class Permutations

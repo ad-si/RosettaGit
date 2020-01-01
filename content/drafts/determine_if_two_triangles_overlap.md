@@ -404,9 +404,9 @@ int main()
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

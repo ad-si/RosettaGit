@@ -549,9 +549,9 @@ stack_trace_test.c:19: END outer[0x80487b4], stack(depth:1, size:60)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Diagnostics;
 

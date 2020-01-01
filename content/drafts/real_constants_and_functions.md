@@ -660,10 +660,10 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 class Program {

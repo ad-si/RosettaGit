@@ -11,23 +11,23 @@ tags = []
 +++
 
 {{task|Encryption}}
-Given an [[wp:RSA|RSA]] key (n,e,d), construct a program to encrypt and decrypt plaintext messages strings. 
+Given an [[wp:RSA|RSA]] key (n,e,d), construct a program to encrypt and decrypt plaintext messages strings.
 
 '''Background'''
 
-RSA code is used to encode secret messages. It is named after Ron Rivest, Adi Shamir, and Leonard Adleman who published it at MIT in 1977. The advantage of this type of encryption is that you can distribute the number “<math>n</math>” and “<math>e</math>” (which makes up the Public Key used for encryption) to everyone. The Private Key used for decryption “<math>d</math>” is kept secret, so that only the recipient can read the encrypted plaintext. 
+RSA code is used to encode secret messages. It is named after Ron Rivest, Adi Shamir, and Leonard Adleman who published it at MIT in 1977. The advantage of this type of encryption is that you can distribute the number “<math>n</math>” and “<math>e</math>” (which makes up the Public Key used for encryption) to everyone. The Private Key used for decryption “<math>d</math>” is kept secret, so that only the recipient can read the encrypted plaintext.
 
-The process by which this is done is that a message, for example “Hello World” is encoded as numbers (This could be encoding as ASCII or as a subset of characters <math>a=01,b=02,...,z=26</math>). This yields a string of numbers, generally referred to as "numerical plaintext", “<math>P</math>”. For example, “Hello World” encoded with a=1,...,z=26 by hundreds would yield <math>0805 1212 1523 1518 1204</math>. 
+The process by which this is done is that a message, for example “Hello World” is encoded as numbers (This could be encoding as ASCII or as a subset of characters <math>a=01,b=02,...,z=26</math>). This yields a string of numbers, generally referred to as "numerical plaintext", “<math>P</math>”. For example, “Hello World” encoded with a=1,...,z=26 by hundreds would yield <math>0805 1212 1523 1518 1204</math>.
 
-The plaintext must also be split into blocks so that the numerical plaintext is smaller than <math>n</math> otherwise the decryption will fail. 
+The plaintext must also be split into blocks so that the numerical plaintext is smaller than <math>n</math> otherwise the decryption will fail.
 
 The ciphertext, <math>C</math>, is then computed by taking each block of <math>P</math>, and computing
 : <math>C \equiv  P^e \mod n</math>
 Similarly, to decode, one computes
-: <math>P \equiv  C^d \mod n</math> 
+: <math>P \equiv  C^d \mod n</math>
 
-To generate a key, one finds 2 (ideally large) primes <math>p</math> and <math>q</math>. the value “<math>n</math>” is simply: <math>n = p \times q</math>. 
-One must then choose an “<math>e</math>” such that <math>\gcd(e, (p-1)\times(q-1) ) = 1</math>. That is to say, <math>e</math> and <math>(p-1)\times(q-1)</math> are relatively prime to each other. 
+To generate a key, one finds 2 (ideally large) primes <math>p</math> and <math>q</math>. the value “<math>n</math>” is simply: <math>n = p \times q</math>.
+One must then choose an “<math>e</math>” such that <math>\gcd(e, (p-1)\times(q-1) ) = 1</math>. That is to say, <math>e</math> and <math>(p-1)\times(q-1)</math> are relatively prime to each other.
 
 The decryption value <math>d</math> is then found by solving
 : <math>d\times e \equiv  1 \mod (p-1)\times(q-1)</math>
@@ -36,9 +36,9 @@ The security of the code is based on the secrecy of the Private Key (decryption 
 
 '''Summary of the task requirements:'''
 
-*  Encrypt and Decrypt a short message or two using RSA with a demonstration key.  
+*  Encrypt and Decrypt a short message or two using RSA with a demonstration key.
 *  Implement RSA do not call a library.
-*  Encode and decode the message using any reversible method of your choice (ASCII or a=1,..,z=26 are equally fine). 
+*  Encode and decode the message using any reversible method of your choice (ASCII or a=1,..,z=26 are equally fine).
 *  Either support blocking or give an error if the message would require blocking)
 *  Demonstrate that your solution could support real keys by using a non-trivial key that requires large integer support (built-in or libraries).  There is no need to include library code but it must be referenced unless it is built into the language. The following keys will be meet this requirement;however, they are NOT long enough to be considered secure:
 :: n = 9516311845790656153499716760847001433441357
@@ -85,10 +85,10 @@ BEGIN
    Mpz_Init (M_D);
    Mpz_Import (M, Plain_Text'Length + 1, 1, 1, 0, 0, To_C (Plain_Text));
    Mpz_Powm (M_C, M, +E, +N);
-   Mpz_Powm (M_D, M_C, +D, +N);   
+   Mpz_Powm (M_D, M_C, +D, +N);
    Put_Line ("Encoded plain text: " & Image_Cleared (M));
    DECLARE Decrypted : Char_Array (1 .. Mpz_Sizeinbase (M_C, 256));
-   BEGIN      
+   BEGIN
       Put_Line ("Encryption of this encoding: " & Image_Cleared (M_C));
       Mpz_Export (Decrypted, NULL, 1, 1, 0, 0, M_D);
       Put_Line ("Decryption of the encoding: " & Image_Cleared (M_D));
@@ -260,12 +260,12 @@ As String: Rossetta Code
 
 
 
-=={{header|C sharp|C#}}==
+## C#
  
 {{libheader|System.Numerics}}
 
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 using System.Text;
@@ -309,7 +309,7 @@ As ASCII: Hello, Rosetta!
 
 ## Common Lisp
 
-In this example, the functions encode-string and decode-string are responsible for converting the string to an integer (which can be encoded) and back. They are not very important to the RSA algorithm, which happens in encode-rsa, decode-rsa, and mod-exp. 
+In this example, the functions encode-string and decode-string are responsible for converting the string to an integer (which can be encoded) and back. They are not very important to the RSA algorithm, which happens in encode-rsa, decode-rsa, and mod-exp.
 
 The string is encoded as follows: each character is converted into 2 digits based on ASCII value (subtracting 32, so that SPACE=00, and so on.) To decode we simply read every 2 digits from the given integer in order, adding 32 and converting back into characters.
 
@@ -320,32 +320,32 @@ The string is encoded as follows: each character is converted into 2 digits base
 (defparameter *d* 5617843187844953170308463622230283376298685)
 
 ;; magic
-(defun encode-string (message) 
+(defun encode-string (message)
   (parse-integer (reduce #'(lambda (x y) (concatenate 'string x y))
      (loop for c across message collect (format nil "~2,'0d" (- (char-code c) 32))))))
 
 ;; sorcery
-(defun decode-string (message) (coerce (loop for (a b) on 
-  (loop for char across (write-to-string message) collect char) 
+(defun decode-string (message) (coerce (loop for (a b) on
+  (loop for char across (write-to-string message) collect char)
     by #'cddr collect (code-char (+ (parse-integer (coerce (list a b) 'string)) 32))) 'string))
 
 ;; ACTUAL RSA ALGORITHM STARTS HERE ;;
 
 ;; fast modular exponentiation: runs in O(log exponent)
 ;; acc is initially 1 and contains the result by the end
-(defun mod-exp (base exponent modulus acc) 
-  (if (= exponent 0) acc 
-    (mod-exp (mod (* base base) modulus) (ash exponent -1) modulus 
+(defun mod-exp (base exponent modulus acc)
+  (if (= exponent 0) acc
+    (mod-exp (mod (* base base) modulus) (ash exponent -1) modulus
 	     (if (= (mod exponent 2) 1) (mod (* acc base) modulus) acc))))
 
-;; to encode a message, we first convert it to its integer form. 
+;; to encode a message, we first convert it to its integer form.
 ;; then, we raise it to the *e* power, modulo *n*
-(defun encode-rsa (message) 
+(defun encode-rsa (message)
   (mod-exp (encode-string message) *e* *n* 1))
 
 ;; to decode a message, we raise it to *d* power, modulo *n*
 ;; and then convert it back into a string
-(defun decode-rsa (message) 
+(defun decode-rsa (message)
   (decode-string (mod-exp message *d* *n* 1)))
 
 ```
@@ -360,7 +360,7 @@ T
 * (encode-rsa "Rosetta Code")
 
 4330737636866106722999010287941987299297557
-* (decode-rsa 4330737636866106722999010287941987299297557) 
+* (decode-rsa 4330737636866106722999010287941987299297557)
 
 "Rosetta Code"
 
@@ -584,7 +584,7 @@ Decoded number as text: Rosetta Code
 
 
 ```Haskell
-module RSAMaker 
+module RSAMaker
    where
 import Data.Char ( chr )
 
@@ -598,7 +598,7 @@ rsa_decode :: Integer -> Integer -> [Integer] -> [Integer]
 rsa_decode d n ciphers = map (\c -> mod ( c ^ d ) n ) ciphers
 
 decode :: [Integer] -> String
-decode encoded = map ( chr . fromInteger ) encoded 
+decode encoded = map ( chr . fromInteger ) encoded
 
 divisors :: Integer -> [Integer]
 divisors n = [m | m <- [1..n] , mod n m == 0 ]
@@ -607,7 +607,7 @@ isPrime :: Integer -> Bool
 isPrime n = divisors n == [1,n]
 
 totient :: Integer -> Integer -> Integer
-totient prime1 prime2 = (prime1 - 1 ) * ( prime2 - 1 ) 
+totient prime1 prime2 = (prime1 - 1 ) * ( prime2 - 1 )
 
 myE :: Integer -> Integer
 myE tot = head [n | n <- [2..tot - 1] , gcd n tot == 1]
@@ -615,7 +615,7 @@ myE tot = head [n | n <- [2..tot - 1] , gcd n tot == 1]
 myD :: Integer -> Integer -> Integer  -> Integer
 myD e n phi = head [d | d <- [1..n] , mod ( d * e ) phi == 1]
 
-main = do 
+main = do
    putStrLn "Enter a test text!"
    text <- getLine
    let primes = take 90 $ filter isPrime [1..]
@@ -623,12 +623,12 @@ main = do
        p2     = last $ init primes
        tot    = totient p1 p2
        e      =  myE tot
-       n   = p1  * p2 
+       n   = p1  * p2
        rsa_encoded  =  rsa_encode n e $ encode text
        d  =  myD e n tot
        encrypted = concatMap show rsa_encoded
-       decrypted = decode $ rsa_decode d n rsa_encoded 
-   putStrLn ("Encrypted: " ++ encrypted ) 
+       decrypted = decode $ rsa_decode d n rsa_encoded
+   putStrLn ("Encrypted: " ++ encrypted )
    putStrLn ("And now decrypted: " ++ decrypted )
 ```
 
@@ -649,15 +649,15 @@ Please read talk pages.
 
 ```Icon
 procedure main()  # rsa demonstration
-   
+
     n := 9516311845790656153499716760847001433441357
     e := 65537
     d := 5617843187844953170308463622230283376298685
-    b := 2^integer(log(n,2))   # for blocking 
+    b := 2^integer(log(n,2))   # for blocking
     write("RSA Demo using\n   n = ",n,"\n   e = ",e,"\n   d = ",d,"\n   b = ",b)
 
-    every m := !["Rosetta Code", "Hello Word!", 
-                 "This message is too long.", repl("x",*decode(n+1))] do {  
+    every m := !["Rosetta Code", "Hello Word!",
+                 "This message is too long.", repl("x",*decode(n+1))] do {
        write("\nMessage = ",image(m))
        write(  "Encoded = ",m := encode(m))
        if m := rsa(m,e,n) then {               # unblocked
@@ -668,21 +668,21 @@ procedure main()  # rsa demonstration
           every put(C := [], rsa(!block(m,b),e,n))
           writes("Encrypt = ") ; every writes(!C," ") ; write()
           every put(P := [], rsa(!C,d,n))
-          writes("Decrypt = ") ; every writes(!P," ") ; write()                 
-          write("Unblocked = ",m := unblock(P,b))          
+          writes("Decrypt = ") ; every writes(!P," ") ; write()
+          write("Unblocked = ",m := unblock(P,b))
           }
-       write(  "Decoded = ",image(decode(m)))  
-       }    
+       write(  "Decoded = ",image(decode(m)))
+       }
 end
 
-procedure mod_power(base, exponent, modulus)   # fast modular exponentation 
+procedure mod_power(base, exponent, modulus)   # fast modular exponentation
    result := 1
    while exponent > 0 do {
-      if exponent % 2 = 1 then 
+      if exponent % 2 = 1 then
          result := (result * base) % modulus
-      exponent /:= 2   
+      exponent /:= 2
       base := base ^ 2 % modulus
-      }  
+      }
    return result
 end
 
@@ -697,7 +697,7 @@ end
 
 procedure decode(message)  # numerically decode int to ascii text
    text := ""
-   while text ||:= char((0 < message) % 256) do 
+   while text ||:= char((0 < message) % 256) do
       message /:= 256
    return reverse(text)
 end
@@ -708,7 +708,7 @@ procedure block(m,b)   # break lg int into blocks of size b
       m /:= b
    return M
 end
-     
+
 procedure unblock(M,b)  # reassemble blocks of size b into lg int
    every (m := 0) := !M + b * m
    return m
@@ -740,15 +740,15 @@ Decoded = "Hello Word!"
 
 Message = "This message is too long."
 Encoded = 529836718428469753460978059376661024804668788418205881100078
-Encrypt = 3376966937987363040878203966915676619521252 7002174816151673360605669161609885530980579 
-Decrypt = 95034800624219541 4481988526688939374478063610382714873472814 
+Encrypt = 3376966937987363040878203966915676619521252 7002174816151673360605669161609885530980579
+Decrypt = 95034800624219541 4481988526688939374478063610382714873472814
 Unblocked = 529836718428469753460978059376661024804668788418205881100078
 Decoded = "This message is too long."
 
 Message = "xxxxxxxxxxxxxxxxxx"
 Encoded = 10494468328720293243075632128305111296931960
-Encrypt = 1 829820657892505002815717051746917810425013 
-Decrypt = 1 4919282029087637457691702560143020920436856 
+Encrypt = 1 829820657892505002815717051746917810425013
+Decrypt = 1 4919282029087637457691702560143020920436856
 Unblocked = 10494468328720293243075632128305111296931960
 Decoded = "xxxxxxxxxxxxxxxxxx"
 ```
@@ -765,7 +765,7 @@ Note, for an implementation with blocking (and a much smaller key) see [http://r
    N=: 9516311845790656153499716760847001433441357x
    E=: 65537x
    D=: 5617843187844953170308463622230283376298685x
-   
+
    ] text=: 'Rosetta Code'
 Rosetta Code
    ] num=: 256x #. a.i.text
@@ -887,7 +887,7 @@ fun main(args: Array<String>) {
 
     val dec = enc.modPow(d, n)
     println("Decoded   : $dec")
- 
+
     val decText = dec.toByteArray().toString(c)
     println("As text   : $decText")
 }
@@ -914,7 +914,7 @@ Does not support blocking.
 <lang>toNumPlTxt[s_] := FromDigits[ToCharacterCode[s], 256];
 fromNumPlTxt[plTxt_] := FromCharacterCode[IntegerDigits[plTxt, 256]];
 enc::longmess = "Message '``' is too long for n = ``.";
-enc[n_, _, mess_] /; 
+enc[n_, _, mess_] /;
    toNumPlTxt[mess] >= n := (Message[enc::longmess, mess, n]; $Failed);
 enc[n_, e_, mess_] := PowerMod[toNumPlTxt[mess], e, n];
 dec[n_, d_, en_] := fromNumPlTxt[PowerMod[en, d, n]];
@@ -979,7 +979,7 @@ message: "Rosetta Code"
 ```
 
 
-If inttext is equal or greater than ''b = 2^(log(n)/log(2)\1)'' use ''block = inttext % b; inttext /= b;'' to break inttext into blocks and encode piece by piece. Decode in reverse order. 
+If inttext is equal or greater than ''b = 2^(log(n)/log(2)\1)'' use ''block = inttext % b; inttext /= b;'' to break inttext into blocks and encode piece by piece. Decode in reverse order.
 
 As a check: it's easy to crack this weak encrypted message without knowing secret key 'd'
 
@@ -1090,9 +1090,9 @@ No blocking here.  Algorithm doesn't really work if either red or black text beg
 constant $n = 9516311845790656153499716760847001433441357;
 constant $e = 65537;
 constant $d = 5617843187844953170308463622230283376298685;
- 
+
 my $secret-message = "ROSETTA CODE";
- 
+
 package Message {
     my @alphabet = slip('A' .. 'Z'), ' ';
     my $rad = +@alphabet;
@@ -1111,10 +1111,10 @@ package Message {
 	].join.flip;
     }
 }
- 
+
 use Test;
 plan 1;
- 
+
 say "Secret message is $secret-message";
 say "Secret message in integer form is $_" given
     my $numeric-message = Message::encode $secret-message;
@@ -1122,14 +1122,14 @@ say "After exponentiation with public exponent we get: $_" given
     my $numeric-cipher = expmod $numeric-message, $e, $n;
 say "This turns into the string $_" given
     my $text-cipher = Message::decode $numeric-cipher;
- 
+
 say "If we re-encode it in integer form we get $_" given
     my $numeric-cipher2 = Message::encode $text-cipher;
 say "After exponentiation with SECRET exponent we get: $_" given
     my $numeric-message2 = expmod $numeric-cipher2, $d, $n;
 say "This turns into the string $_" given
     my $secret-message2 = Message::decode $numeric-message2;
- 
+
 is $secret-message, $secret-message2, "the message has been correctly decrypted";
 ```
 
@@ -1163,27 +1163,27 @@ mpz n = mpz_init("9516311845790656153499716760847001433441357"),
     d = mpz_init("5617843187844953170308463622230283376298685"),
     pt = mpz_init(),
     ct = mpz_init()
- 
+
 string plaintext = "Rossetta Code" -- matches C/zkl
 --                 "Rosetta Code" -- matches D/FreeBasic/Go/Icon/J/Kotlin/Seed7.
 
 mpz_import(pt, length(plaintext), 1, 1, 0, 0, plaintext)
- 
+
 if mpz_cmp(pt, n)>0 then ?9/0 end if
- 
+
 mpz_powm(ct, pt, e, n);
 printf(1,"Encoded:   %s\n", {mpz_get_str(ct)})
- 
+
 mpz_powm(pt, ct, d, n);
 printf(1,"Decoded:   %s\n", {mpz_get_str(pt)})
- 
+
 integer size =floor((mpz_sizeinbase(pt,2)+7)/8)
 atom pMem = allocate(size,true)
 integer count = mpz_export(pMem, 1, 1, 0, 0, pt)
 if count>size then ?9/0 end if
 
 printf(1,"As String: %s\n", {peek({pMem,count})})
- 
+
 {pt, ct, n, e, d} = mpz_free({pt, ct, n, e, d})
 ```
 
@@ -1388,7 +1388,7 @@ print('encrypted text integer  ', encrypted_text)
 decrypted_text = pow(encrypted_text, d, n)
 print('decrypted text integer  ', decrypted_text)
 
-print('message                 ', binascii.unhexlify(hex(decrypted_text)[2:]).decode())     # [2:] slicing, to strip the 0x part 
+print('message                 ', binascii.unhexlify(hex(decrypted_text)[2:]).decode())     # [2:] slicing, to strip the 0x part
 
 
 ```
@@ -1456,7 +1456,7 @@ Cutting messages into blocks has not been done.
     (define start-number (big-random (/ 1024 32)))
     (log-debug "got large (possibly non-prime) number, finding next prime")
     (next-prime (match start-number ((? odd? o) o) ((app add1 e) e))))
-  
+
   ;; [1] Choose two distinct prime numbers p and q.
   (log-debug "generating p")
   (define p (big-random-prime))
@@ -1465,18 +1465,18 @@ Cutting messages into blocks has not been done.
   (define q (big-random-prime))
   (log-debug "q generated")
   (log-info "primes generated")
-  
+
   ;; [2] Compute n = pq.
   (define n (* p q))
-  
+
   ;; [3] Compute φ(n) = φ(p)φ(q) = (p − 1)(q − 1) = n - (p + q -1),
   ;;                    where φ is Euler's totient function.
   (define φ (- n (+ p q -1)))
-  
+
   ;; [4] Choose an integer e such that 1 < e < φ(n) and gcd(e, φ(n)) = 1; i.e., e and φ(n) are
   ;;     coprime. ... most commonly 2^16 + 1 = 65,537 ...
   (define e (+ (expt 2 16) 1))
-  
+
   ;; [5] Determine d as d ≡ e−1 (mod φ(n)); i.e., d is the multiplicative inverse of e (modulo φ(n)).
   (log-debug "generating d")
   (define d (modular-inverse e φ))
@@ -1484,9 +1484,9 @@ Cutting messages into blocks has not been done.
   (values n e d))
 
 ;; -| GIVE A USABLE SET OF PRIVATE STUFF TO A USER |--------------------------------------------------
-;; six values: the public (encrypt) function (numeric) 
+;; six values: the public (encrypt) function (numeric)
 ;;             the private (decrypt) function (numeric)
-;;             the public (encrypt) function (bytes) 
+;;             the public (encrypt) function (bytes)
 ;;             the private (decrypt) function (bytes)
 ;;             private (list n e d)
 ;;             public (list n e)
@@ -1749,7 +1749,7 @@ object RSA_saket{
         if(q==0)            BigInt(1)
         else if(q==1)       p
         else if(q%2 == 1)   pow_mod(p,q-1,n)*p % n
-        else                pow_mod(p*p % n,q/2,n)    
+        else                pow_mod(p*p % n,q/2,n)
     }
     def gettxt(num:String) = {
         if(num.size%3==2)
@@ -1761,7 +1761,7 @@ object RSA_saket{
         println(f"Original String \t: "+text)
         val msg = getmsg(text)
         println(f"Converted Signal \t: "+msg)
-        val enc_sig = encode(msg) 
+        val enc_sig = encode(msg)
         println("Encoded Signal \t\t: "+ enc_sig)
         val dec_sig = decode(enc_sig)
         println("Decoded String \t\t: "+ dec_sig)
@@ -2028,7 +2028,7 @@ d:=BN("5617843187844953170308463622230283376298685");
 const plaintext="Rossetta Code";
 pt:=BN(Data(Int,0,plaintext));  // convert string (as stream of bytes) to big int
 if(pt>n) throw(Exception.ValueError("Message is too large"));
- 
+
 println("Plain text: ",plaintext);
 println("As Int:     ",pt);
 ct:=pt.powm(e,n);  println("Encoded:    ",ct);

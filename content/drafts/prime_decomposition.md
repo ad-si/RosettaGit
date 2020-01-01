@@ -1061,9 +1061,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -1118,7 +1118,7 @@ This version a translation from Java of the sample presented by Robert C. Martin
 Although this three-line algorithm does not mention anything about primes, the fact that factors are taken out of the number <code>n</code> in ascending order garantees the list will only contain primes.
 
 
-```csharp
+```c#
 using System.Collections.Generic;
 
 namespace PrimeDecomposition

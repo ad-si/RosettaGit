@@ -1377,9 +1377,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 class Program
 {
 public void FizzBuzzGo()
@@ -1416,7 +1416,7 @@ public void FizzBuzzGo()
 ```
 
 
-```csharp
+```c#
 class Program
 {
     static void Main()
@@ -1437,7 +1437,7 @@ class Program
 ```
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -1458,7 +1458,7 @@ namespace FizzBuzz
 ```
 
 
-```csharp
+```c#
 using System;
 using System.Globalization;
 using System.Linq;
@@ -1486,7 +1486,7 @@ namespace FizzBuzz
 
 
 
-```csharp
+```c#
 using System;
 
 namespace FizzBuzz
@@ -1521,7 +1521,7 @@ namespace FizzBuzz
 
 
 
-```csharp
+```c#
 using System;
 using System.Globalization;
 
@@ -1556,7 +1556,7 @@ namespace Rosettacode
 
 TDD using delegates.
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1644,7 +1644,7 @@ namespace FizzBuzz
 
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 

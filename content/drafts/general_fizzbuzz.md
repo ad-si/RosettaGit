@@ -10,14 +10,14 @@ categories = []
 tags = []
 +++
 
-{{task|Classic CS problems and programs}} 
-[[Category:Iteration]] 
-[[Category:Recursion]] 
+{{task|Classic CS problems and programs}}
+[[Category:Iteration]]
+[[Category:Recursion]]
 
 ;Task:
-Write a generalized version of [[FizzBuzz]] that works for any list of factors, along with their words. 
+Write a generalized version of [[FizzBuzz]] that works for any list of factors, along with their words.
 
-This is basically a "fizzbuzz" implementation where the user supplies the parameters. 
+This is basically a "fizzbuzz" implementation where the user supplies the parameters.
 
 The user will enter the max number, then they will enter the factors to be calculated along with the corresponding word to be printed.
 
@@ -36,12 +36,12 @@ For example, given:
 ```
 
 
-In other words: For this example, print the numbers '''1''' through '''20''', replacing every multiple of '''3''' with "Fizz", every multiple of '''5''' with "Buzz", and every multiple of '''7''' with "Baxx". 
+In other words: For this example, print the numbers '''1''' through '''20''', replacing every multiple of '''3''' with "Fizz", every multiple of '''5''' with "Buzz", and every multiple of '''7''' with "Baxx".
 
-In the case where a number is a multiple of at least two factors, print each of the words associated with those factors in the order of least to greatest factor. 
+In the case where a number is a multiple of at least two factors, print each of the words associated with those factors in the order of least to greatest factor.
 
 For instance, the number '''15''' is a multiple of both '''3''' and '''5'''; print "FizzBuzz".
- 
+
 If the max number was '''105''' instead of '''20''', you would print "FizzBuzzBaxx" because it's a multiple of '''3''', '''5''', and '''7'''.
 
 {{out}}
@@ -86,35 +86,35 @@ Buzz
 
 -- fizz :: [[Int, String]] -> Int -> String
 on fizz(lstRules, intMax)
-    
+
     -- fizzLine :: String -> Int -> String
     script fizzline
         on |λ|(strSeries, n)
-            
+
             -- Multiple rule matches ->  single or concatenated words
             -- wordIfRuleMatch :: String -> (Int, String) -> String
             script wordIfRuleMatch
                 on |λ|(str, rulePair)
                     set {factor, noiseWord} to rulePair
-                    
+
                     cond(n mod factor > 0, str, str & noiseWord)
                 end |λ|
             end script
-            
+
             set strPhrase to foldl(wordIfRuleMatch, "", lstRules)
-            
+
             strSeries & cond(strPhrase ≠ "", strPhrase, n as string) & linefeed
         end |λ|
     end script
-    
+
     foldl(fizzline, "", enumFromTo(1, intMax))
 end fizz
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     fizz([[3, "Fizz"], [5, "Buzz"], [7, "Baxx"]], 20)
-    
+
 end run
 
 -- GENERIC FUNCTIONS ---------------------------------------------------------
@@ -154,7 +154,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -197,7 +197,7 @@ Buzz
 ## AWK
 
 This is a two-step solution:
-* First, we get the parameters, and 
+* First, we get the parameters, and
 ** generate a file with the list of numbers (writing directly to that file)
 ** generate a custom awk-program for that special case (redirecting standard-output)
 * the custom program is run, and does the actual work to output the desired result
@@ -336,7 +336,7 @@ Press any key to continue . . .
 
 This implementation (unlike some of the ones given on this page...) fully obeys the specification, in that it prompts the user for the parameters at run time. It also allows users to specify as many factors as they want, rather than limiting them to three.
 
-```bbcbasic>REM 
+```bbcbasic>REM
 genfizzb
 INPUT "Maximum number: " max%
 INPUT "Number of factors: " n%
@@ -555,24 +555,24 @@ Buzz
 
 
 
-## C sharp
+## C#
 
 Not extremely clever and doesn't use anything too fancy.
 
-```csharp
+```c#
 
 using System;
 
 public class GeneralFizzBuzz
 {
-    public static void Main() 
+    public static void Main()
     {
         int i;
         int j;
         int k;
-        
+
         int limit;
-        
+
         string iString;
         string jString;
         string kString;
@@ -631,22 +631,22 @@ public class GeneralFizzBuzz
     for i=1:1:+MAX {
         set j = 1
         set descr = ""
-        
+
         ; assumes NUMBERS parameter is comma-delimited
         while (j <= $length(NUMBERS,",")) {
             if ((i # $piece(NUMBERS,",",j,j)) = 0) {
-                
+
                 ; build descriptor string, again assuming comma-delimited WORDS parameter
                 set descr = descr_$piece(WORDS,",",j,j)
             }
-            
+
             set j = j + 1
         }    ; check list of numbers
-        
+
         ; output values to screen
         write " "_$case(descr,"":i,:descr)
     }    ; next value until MAX
-    
+
     quit
 ```
 
@@ -655,7 +655,7 @@ public class GeneralFizzBuzz
 {{out}}
 ```txt
 SAMPLES>do ^GENFIZBUZZ(12,"FIN,FANG,FOOM","2,3,4")
- 1 FIN FANG FINFOOM 5 FINFANG 7 FINFOOM FANG FIN 11 FINFANGFOOM  
+ 1 FIN FANG FINFOOM 5 FINFANG 7 FINFOOM FANG FIN 11 FINFANGFOOM
 ```
 
 
@@ -665,9 +665,9 @@ SAMPLES>do ^GENFIZBUZZ(12,"FIN,FANG,FOOM","2,3,4")
 
 ```ceylon
 shared void run() {
-	
+
 	print("enter the max value");
-	assert(exists maxLine = process.readLine(), 
+	assert(exists maxLine = process.readLine(),
 		exists max = parseInteger(maxLine));
 
 	print("enter your number/word pairs
@@ -682,8 +682,8 @@ shared void run() {
 			break;
 		}
 		value pair = line.trimmed.split().sequence();
-		if(exists first = pair.first, 
-			exists integer = parseInteger(first), 
+		if(exists first = pair.first,
+			exists integer = parseInteger(first),
 			exists word = pair[1]) {
 			divisorsToWords = divisorsToWords.patch(map {integer -> word});
 		}
@@ -1034,7 +1034,7 @@ fizzbuzz(N, Factors, Result) ->
         0 -> [Output|Result];
         _ -> Result
     end,
-    
+
     fizzbuzz(N, FactorsRest, NextResult).
 
 run(N, Factors) ->
@@ -1103,11 +1103,11 @@ IN: rosetta-code.general-fizzbuzz
 : get-input ( -- assoc n )
     prompt string>number [1,b] [ get-factor ] thrice
     { } 3sequence swap ;
-    
+
 : fizzbuzz ( assoc n -- )
     swap dupd [ drop swap mod 0 = ] with assoc-filter
     dup empty? [ drop . ] [ nip values concat print ] if ;
-    
+
 : main ( -- ) get-input [ fizzbuzz ] with each ;
 
 MAIN: main
@@ -1149,7 +1149,7 @@ Buzz
 ## Forth
 
 Uses GForth specific words ']]' and '[['.
-If your forth does not have them: Sequence ']] A B C .. [['  is equivalent with 'postpone A postpone B postpone C ..' 
+If your forth does not have them: Sequence ']] A B C .. [['  is equivalent with 'postpone A postpone B postpone C ..'
 
 ```Forth
 \ gfb.fs - generalized fizz buzz
@@ -1185,9 +1185,9 @@ If your forth does not have them: Sequence ']] A B C .. [['  is equivalent with 
 ```txt
 
 gforth gfb.fs --evaluate '1 fb[ ]fb 40 times drop cr bye'
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
 gforth gfb.fs --evaluate '1 fb[ 3 s" F" ]+[ 5 s" B" ]+[ 7 s" G" ]+[ ]fb 40 times drop cr bye'
-1 2 F 4 B F G 8 F B 11 F 13 G FB 16 17 F 19 B FG 22 23 F B 26 F G 29 FB 31 32 F 34 BG F 37 38 F B 
+1 2 F 4 B F G 8 F B 11 F 13 G FB 16 17 F 19 B FG 22 23 F B 26 F G 29 FB 31 32 F 34 BG F 37 38 F B
 
 ```
 
@@ -1496,26 +1496,26 @@ Example use:
 
 ```J
    3 5 7 ('Fizz';'Buzz';'Baxx')genfb 20
-1       
-2       
-Fizz    
-4       
-Buzz    
-Fizz    
-Baxx    
-8       
-Fizz    
-Buzz    
-11      
-Fizz    
-13      
-Baxx    
+1
+2
+Fizz
+4
+Buzz
+Fizz
+Baxx
+8
+Fizz
+Buzz
+11
+Fizz
+13
+Baxx
 FizzBuzz
-16      
-17      
-Fizz    
-19      
-Buzz    
+16
+17
+Fizz
+19
+Buzz
 ```
 
 
@@ -1644,7 +1644,7 @@ function fizz(lstRules, lngMax) {
                     }, ''
                 ) || n.toString()
             ) + '\n';
-            
+
         }, ''
     );
 }
@@ -1909,7 +1909,7 @@ genFizz(param)
 
 
 
-###  Without modulo 
+###  Without modulo
 
 {{trans|Python}}
 
@@ -1964,13 +1964,13 @@ end
 >> }
 > fizzbuzz(8, mods)
 1
-broccoli 
-cheese sauce 
-broccoli 
+broccoli
+cheese sauce
+broccoli
 5
-cheese broccoli sauce 
+cheese broccoli sauce
 7
-broccoli 
+broccoli
 ```
 
 
@@ -2358,13 +2358,13 @@ for(my $i = 1; $i <= $max; $i++)
 
 ```txt
 
-Please enter the maximum possible multiple. 
+Please enter the maximum possible multiple.
 20
-Now enter the first factor and its associated word. Ex: 3 Fizz 
+Now enter the first factor and its associated word. Ex: 3 Fizz
 3 Fizz
-Now enter the second factor and its associated word. Ex: 5 Buzz 
+Now enter the second factor and its associated word. Ex: 5 Buzz
 5 Buzz
-Now enter the third factor and its associated word. Ex: 7 Baxx 
+Now enter the third factor and its associated word. Ex: 7 Baxx
 7 Baxx
 1
 2
@@ -2575,7 +2575,7 @@ $limit = 20
 $data  = @("3 Fizz","5 Buzz","7 Baxx")
 	#An array with whitespace as the delimiter
 	#Between the factor and the word
- 
+
 for ($i = 1;$i -le $limit;$i++){
 	$outP = ""
 	foreach ($x in $data){
@@ -2752,21 +2752,21 @@ if __name__ == '__main__':
 ... ]
 >>> print(fizzbuzz(16, mods))
 1
-Two 
+Two
 3
-Four Two 
+Four Two
 5
 six Two HA! SIX!
 7
-Four Two eight... 
+Four Two eight...
 9
-Two 
+Two
 11
 Four six Two HA! SIX!
 13
-Two 
+Two
 15
-Four Two eight... 
+Four Two eight...
 
 ```
 
@@ -2822,7 +2822,7 @@ Buzz
 ```python
 n = 20
 mappings = {3: "Fizz", 5: "Buzz", 7: "Baxx"}
-for i in range(1, n+1): print(''.join(word*(i%key==0) for  key, word in mappings.items()) or i) 
+for i in range(1, n+1): print(''.join(word*(i%key==0) for  key, word in mappings.items()) or i)
 ```
 
 
@@ -2837,7 +2837,7 @@ for i in range(1, n+1): print(''.join(word*(i%key==0) for  key, word in mappings
 (define (get-matches num factors/words)
   (for*/list ([factor/word (in-list factors/words)]
               [factor (in-value (car factor/word))]
-              [word (in-value (cadr factor/word))] 
+              [word (in-value (cadr factor/word))]
               #:when (zero? (remainder num factor)))
     word))
 
@@ -2951,7 +2951,7 @@ factors=words($) % 2                             /*determine number of factors t
     end                  /*j*/                   /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   is identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is identical to the 1<sup>st</sup> REXX version.
 
 
 
@@ -3323,7 +3323,7 @@ Buzz
 ```tailspin
 
 def input: {N: 110, words: [ { mod: 3, word: 'Fizz' }, { mod: 5, word: 'Buzz'}, {mod:7, word: 'Baxx'}]};
- 
+
 templates sayWords
   def i: $;
   templates maybeSay
@@ -3332,7 +3332,7 @@ templates sayWords
   end maybeSay
   $input.words... -> maybeSay !
 end sayWords
- 
+
 [ 1..$input.N -> '$->sayWords;' ] -> [i](<''> $i ! <> $ !) -> '$;
 ' -> !OUT::write
 
@@ -3351,7 +3351,7 @@ end sayWords
 ## Tcl
 
 
-Tcl excels at metaprogramming, so this task is trivial.  
+Tcl excels at metaprogramming, so this task is trivial.
 For fun, the below implementation is a compatible extension of [[FizzBuzz#Tcl]]:
 
 
@@ -3503,49 +3503,49 @@ Max : 120;
 7 : Baxx
 
 ```txt
- 1 
- 2 
+ 1
+ 2
 Fizz
- 4 
+ 4
 Buzz
 Fizz
 Baxx
- 8 
+ 8
 Fizz
 Buzz
- 11 
+ 11
 Fizz
- 13 
+ 13
 Baxx
 FizzBuzz
- 16 
- 17 
+ 16
+ 17
 Fizz
- 19 
+ 19
 Buzz
 FizzBaxx
- 22 
- 23 
+ 22
+ 23
 ......
 Buzz
- 101 
+ 101
 Fizz
- 103 
- 104 
+ 103
+ 104
 FizzBuzzBaxx
- 106 
- 107 
+ 106
+ 107
 Fizz
- 109 
+ 109
 Buzz
 Fizz
 Baxx
- 113 
+ 113
 Fizz
 Buzz
- 116 
+ 116
 Fizz
- 118 
+ 118
 Baxx
 FizzBuzz
 ```
@@ -3567,7 +3567,7 @@ Function FizzBuzz(range, mapping)
         map = Split(temp(i), " ")
         data(i, 0) = map(0)
         data(i, 1) = map(1)
-    Next    
+    Next
 
     'Do the loop
     For i = 1 to range
@@ -3697,7 +3697,7 @@ Buzz
 
 ```zkl
 stop:=ask("Count: ").toInt();
-fizzBuzzers:=List(); 
+fizzBuzzers:=List();
 do(3){ n,txt:=ask(">").split(); fizzBuzzers.append(T(n.toInt(),txt)) }
 foreach n in ([1..stop]){
    s:=fizzBuzzers.filter('wrap([(fb,txt)]){ n%fb==0 }).apply("get",1).concat();
@@ -3711,7 +3711,7 @@ foreach n in ([1..stop]){
 
 $ zkl bbb
 Count: 20
->3 Fizz 
+>3 Fizz
 >5 Buzz
 >7 Baxx
 1
@@ -3756,7 +3756,7 @@ Buzz
 100 IF FN m(i,f(j))=0 THEN LET matched=1: PRINT w$(j);
 110 NEXT j
 120 IF NOT matched THEN PRINT ;i: GO TO 140
-130 PRINT 
+130 PRINT
 140 NEXT i
 150 DEF FN m(a,b)=a-INT (a/b)*b
 ```

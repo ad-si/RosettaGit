@@ -12,12 +12,12 @@ tags = []
 
 {{Task|Basic language learning}}
 [[Category:Object oriented]] [[Category:Type System]]
-Multiple inheritance allows to specify that one [[classes | class]] is a subclass of several other classes. 
-Some languages allow multiple [[inheritance]] for arbitrary classes, 
+Multiple inheritance allows to specify that one [[classes | class]] is a subclass of several other classes.
+Some languages allow multiple [[inheritance]] for arbitrary classes,
 others restrict it to interfaces, some don't allow it at all.
 
-Write two classes (or interfaces) <tt>Camera</tt> and <tt>MobilePhone</tt>, 
-then write a class <tt>CameraPhone</tt> which is both a <tt>Camera</tt> and 
+Write two classes (or interfaces) <tt>Camera</tt> and <tt>MobilePhone</tt>,
+then write a class <tt>CameraPhone</tt> which is both a <tt>Camera</tt> and
 a <tt>MobilePhone</tt>.
 
 There is no need to implement any functions for those classes.
@@ -61,13 +61,13 @@ class Camera_Phone implements Camera, Mobile_Phone {
 
 ```bbcbasic
       INSTALL @lib$+"CLASSLIB"
-      
+
       DIM Camera{TakePicture}
       PROC_class(Camera{})
-      
+
       DIM MobilePhone{MakeCall}
       PROC_class(MobilePhone{})
-      
+
       DIM CameraPhone{methods}
       PROC_inherit(CameraPhone{}, Camera{})
       PROC_inherit(CameraPhone{}, MobilePhone{})
@@ -99,15 +99,15 @@ class CameraPhone:
 ```
 
 
-=={{header|C sharp|C#}}==
-In C# you may inherit from only one class, but you can inherit 
-from multiple interfaces. 
-Also, in C# it is standard practice to start all interface names 
-with a capital 'I' so I have altered the name of the interface. 
+## C#
+In C# you may inherit from only one class, but you can inherit
+from multiple interfaces.
+Also, in C# it is standard practice to start all interface names
+with a capital 'I' so I have altered the name of the interface.
 In the example we inherit from a class and an interface.
 
 
-```csharp
+```c#
 interface ICamera {
     // ...
 }
@@ -145,18 +145,18 @@ class CameraPhone: ICamera, MobilePhone {
        CLASS-ID. Camera.
            *> ...
        END CLASS Camera.
-       
+
        CLASS-ID. Mobile-Phone.
            *> ...
        END CLASS Mobile-Phone.
-       
-       CLASS-ID. Camera-Phone INHERITS Camera, Mobile-Phone.    
+
+       CLASS-ID. Camera-Phone INHERITS Camera, Mobile-Phone.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        REPOSITORY.
            CLASS Camera
            CLASS Mobile-Phone.
-           
+
            *> ...
        END CLASS Camera-Phone.
 ```
@@ -250,11 +250,11 @@ class C : A {
 
 unittest {
     import std.stdio : writeln;
-    
+
     auto c = new C();
     A a = c;
     B b = c;
-    
+
     writeln(a.foo());
     writeln(b.foo());
 }
@@ -323,13 +323,13 @@ See [[Inheritance/Multiple#Delphi|Delphi]].
 ## E
 
 
-E does not have multiple inheritance as a built-in feature. 
-In fact, E only has inheritance at all as a light syntactic sugar over delegation (message forwarding). 
+E does not have multiple inheritance as a built-in feature.
+In fact, E only has inheritance at all as a light syntactic sugar over delegation (message forwarding).
 However, using that facility it is possible to implement multiple inheritance.
 
-This is a quick simple implementation of multiple inheritance. 
-It simply searches (depth-first and inefficiently) the inheritance tree for a method; 
-it does not do anything about [[wp:Diamond inheritance|diamond inheritance]]. 
+This is a quick simple implementation of multiple inheritance.
+It simply searches (depth-first and inefficiently) the inheritance tree for a method;
+it does not do anything about [[wp:Diamond inheritance|diamond inheritance]].
 These shortcomings could be fixed if more powerful multiple inheritance were needed.
 
 
@@ -406,25 +406,25 @@ And testing that it works as intended:
 
 Having two class—one for CAMERA and the other for a MOBILE_PHONE ...
 
-```eiffel 
+```eiffel
 class
     CAMERA
 end
 ```
 
 
-```eiffel 
+```eiffel
 class
     MOBILE_PHONE
 end
 ```
 
 
-###  Now Multiple Inherit 
+###  Now Multiple Inherit
 
 We can create a new CAMERA_PHONE, which inherits directly from both CAMERA and MOBILE_PHONE.
 
-```eiffel 
+```eiffel
 class
     CAMERA_PHONE
 inherit
@@ -446,22 +446,22 @@ singleton CameraFeature
     cameraMsg
         = "camera";
 }
- 
+
 class MobilePhone
 {
     mobileMsg
         = "phone";
 }
- 
+
 class CameraPhone : MobilePhone
 {
     dispatch() => CameraFeature;
 }
- 
+
 public program()
 {
    var cp := new CameraPhone();
- 
+
    console.writeLine(cp.cameraMsg);
    console.writeLine(cp.mobileMsg)
 }
@@ -514,10 +514,10 @@ UNION: camera-phone camera mobile-phone ;
 ## Fantom
 
 
-Fantom only permits inheritance from one parent class.  
-However, Fantom supports 'mixins': a mixin is a collection 
-of implemented methods to be added to the child class.  
-Any number of mixins can be added to any given child class.  
+Fantom only permits inheritance from one parent class.
+However, Fantom supports 'mixins': a mixin is a collection
+of implemented methods to be added to the child class.
+Any number of mixins can be added to any given child class.
 It is an error for method names to conflict.
 
 
@@ -565,11 +565,11 @@ class Main
 ' FB 1.05.0 Win64
 
 ' FB does not currently support multiple inheritance. Composition has to be used instead if one wants
-' to (effectively) inherit from more than one class. In some cases, this might arguably be a better 
+' to (effectively) inherit from more than one class. In some cases, this might arguably be a better
 ' solution anyway.
 
 Type Camera Extends Object  ' if virtual methods etc needed
-  ' ...  
+  ' ...
 End Type
 
 Type Phone Extends Object
@@ -596,7 +596,7 @@ type Camera =
 
 // an interface that inherits multiple interfaces
 type Camera2 =
-  inherits System.ComponentModel.INotifyPropertyChanged 
+  inherits System.ComponentModel.INotifyPropertyChanged
   inherits Camera
 
 // a class with an abstract method with a default implementation
@@ -737,9 +737,9 @@ class (Camera a, MobilePhone a) => CameraPhone a
 
 ==Icon and {{header|Unicon}}==
 {{omit from|Icon}}
-Icon does not support classes or inheritance. 
-An intermediate language called Idol was developed as proof of concept 
-for extending Icon. 
+Icon does not support classes or inheritance.
+An intermediate language called Idol was developed as proof of concept
+for extending Icon.
 This became one of the major addons contributing to Unicon.
 
 
@@ -826,18 +826,18 @@ create=: verb define
   NB. creation details specific to a camera phone go here
 )
 
-destroy=: codestroy 
+destroy=: codestroy
 
 NB. additional camera-phone methods go here
 ```
 
-The adverb Fix (f.) is needed as shown so the superclass constructors 
+The adverb Fix (f.) is needed as shown so the superclass constructors
 get executed in the object, not in the superclass.
 
 
 ## Java
 
-Java does not allow multiple inheritance, but you can "implement" multiple interfaces. All methods in interfaces are abstract (they don't have an implementation). 
+Java does not allow multiple inheritance, but you can "implement" multiple interfaces. All methods in interfaces are abstract (they don't have an implementation).
 When you implement an interface you need to implement the specified methods.
 
 ```java
@@ -890,8 +890,8 @@ struct kodak
 end
 
 struct CellPhone <: Phone
-    book::Dict{String,String}    
-    roll::Vector{AbstractVector}    
+    book::Dict{String,String}
+    roll::Vector{AbstractVector}
 end
 
 function dialnumber(phone::CellPhone)
@@ -938,7 +938,7 @@ interface Camera {
 
 interface MobilePhone {
     fun charge(n : Int) {
-        if (n >= 0) 
+        if (n >= 0)
             battery_level = (battery_level + n).coerceAtMost(100)
     }
 
@@ -977,9 +977,9 @@ TwinLensCamera(numberOfLenses=2)
 
 ## Lasso
 
-Lasso only allow single inheritance. 
-But it supports the use of multiple traits 
-and trays hand down the methods it has implemented provided that the type 
+Lasso only allow single inheritance.
+But it supports the use of multiple traits
+and trays hand down the methods it has implemented provided that the type
 fulfills the requirements for the trait. [http://lassoguide.com/language/traits.html http://lassoguide.com/language/traits.html]
 
 ```Lasso
@@ -1108,9 +1108,9 @@ put cp.ringtone
 
 ## Logtalk
 
-Logtalk supports multiple inheritance. 
-There is no "class" keyword in Logtalk; 
-an "object" keyword is used instead (Logtalk objects play the role of classes, meta-classes, instances, or prototypes depending on the relations with other objects). 
+Logtalk supports multiple inheritance.
+There is no "class" keyword in Logtalk;
+an "object" keyword is used instead (Logtalk objects play the role of classes, meta-classes, instances, or prototypes depending on the relations with other objects).
 
 ```logtalk
 :- object(camera,
@@ -1142,8 +1142,8 @@ an "object" keyword is used instead (Logtalk objects play the role of classes, m
 
 ## Lua
 
-Lua is prototype-based. A table cannot have more than one metatable, 
-but it can reference more than one in its __index metamethod, 
+Lua is prototype-based. A table cannot have more than one metatable,
+but it can reference more than one in its __index metamethod,
 by making it a closure.
 
 
@@ -1175,7 +1175,7 @@ Module CheckIt {
             IamCamera
       }
       Class MobilePhone {
-            IamMobilePhone      
+            IamMobilePhone
       }
       Class CameraPhone {
             Module CameraPhone {
@@ -1199,18 +1199,18 @@ CheckIt
 
 ## Nemerle
 
-Like C#, Nemerle only allows pseudo-multiple inheritance through interfaces. 
+Like C#, Nemerle only allows pseudo-multiple inheritance through interfaces.
 In Nemerle, the base class must be listed before any interfaces.
 
 ```nemerle
 interface ICamera {
     // ...
 }
- 
+
 class MobilePhone {
     // ...
 }
- 
+
 class CameraPhone: MobilePhone, ICamera {
     // ...
 }
@@ -1220,11 +1220,11 @@ class CameraPhone: MobilePhone, ICamera {
 
 ## NetRexx
 
-Like [[Java]], NetRexx doesn't allow true multiple inheritance but instead restricts that capability to interfaces.  
-NetRexx permits the ''implementation'' of multiple interfaces. 
+Like [[Java]], NetRexx doesn't allow true multiple inheritance but instead restricts that capability to interfaces.
+NetRexx permits the ''implementation'' of multiple interfaces.
 All methods in interfaces are implicitly abstract, thus when you implement an interface you must implement its specified methods.
 
-In this sample the class/interface names are augmented over those required in the task to prevent namespace pollution.  
+In this sample the class/interface names are augmented over those required in the task to prevent namespace pollution.
 The sample also provides a complete working implementation to demonstrate the capability.
 
 ```NetRexx
@@ -1269,7 +1269,7 @@ class RInheritMultiple_CameraPhone private -
     RInheritMultiple_MobilePhone
   method RInheritMultiple_CameraPhone() public
     return
-  -- method implementations follow 
+  -- method implementations follow
   method snap() public
     return shutter
   method call() public
@@ -1288,12 +1288,12 @@ ring...
 
 
 =={{header|Objective-C}}==
-Like Java, Objective-C does not allow multiple inheritance, 
-but a class can "conform to" multiple protocols. 
-All methods in protocols are abstract (they don't have an implementation). 
+Like Java, Objective-C does not allow multiple inheritance,
+but a class can "conform to" multiple protocols.
+All methods in protocols are abstract (they don't have an implementation).
 When you conform to a protocol you need to implement the specified methods.
 
-If you simply want to combine the functionality (method implementations) 
+If you simply want to combine the functionality (method implementations)
 of multiple classes, you can use message forwarding to mimic the functionality of those classes without actually inheriting them, as described in [http://support.apple.com/kb/TA45894 this guide]:
 
 
@@ -1347,14 +1347,14 @@ of multiple classes, you can use message forwarding to mimic the functionality o
 -(BOOL)respondsToSelector:(SEL)aSelector {
   return [camera respondsToSelector:aSelector]
   || [phone respondsToSelector:aSelector]
-  || [super respondsToSelector:aSelector];  
+  || [super respondsToSelector:aSelector];
 }
 
 @end
 ```
 
 
-Caveat: the CameraPhone class will still technically not inherit from 
+Caveat: the CameraPhone class will still technically not inherit from
 either the Camera or MobilePhone classes, so testing a CameraPhone object with <code>-isKindOfClass:</code> with the Camera or MobilePhone classes will still fail.
 
 
@@ -1394,10 +1394,10 @@ class camera_phone =
 
 Oforth does not implement multiple inheritance. It allows only one parent class.
 
-Oforth implements properties (like Comparable, Indexable, ...). A property can have attributes and methods. 
+Oforth implements properties (like Comparable, Indexable, ...). A property can have attributes and methods.
 A class can have multiple properties.
 
-If Camera and MobilePhone are designed as properties, we can write : 
+If Camera and MobilePhone are designed as properties, we can write :
 
 
 ```Oforth
@@ -1413,9 +1413,9 @@ CameraPhone is: MobilePhone
 
 ## ooRexx
 
-ooRexx classes have a single superclass and can inherit from multiple mixins.  
-Mixins are more than just interfaces.  
-They can contain concrete method implementations and also create instance variables (scoped as private variables to the mixin methods). 
+ooRexx classes have a single superclass and can inherit from multiple mixins.
+Mixins are more than just interfaces.
+They can contain concrete method implementations and also create instance variables (scoped as private variables to the mixin methods).
 
 ```ooRexx
 
@@ -1566,8 +1566,8 @@ CameraPhone() Camera() MobilePhone() Any() Mu()
 ```
 
 
-The <tt>.^mro</tt> is not an ordinary method call, 
-but a call to the object's metaobject 
+The <tt>.^mro</tt> is not an ordinary method call,
+but a call to the object's metaobject
 that returns the method resolution order for this type.
 
 
@@ -1665,7 +1665,7 @@ class CameraPhone(Camera, MobilePhone):
 ## Racket
 
 
-Racket allows multiple inheritance with interfaces, but not classes. 
+Racket allows multiple inheritance with interfaces, but not classes.
 Mixins can be used to achieve some of the benefits of multiple inheritance.
 
 
@@ -1693,21 +1693,21 @@ Mixins can be used to achieve some of the benefits of multiple inheritance.
 
 mergemethods(:CameraPhone,:MobilePhone)
 
-o1 = new CameraPhone 
+o1 = new CameraPhone
 ? o1
 ? o1.testCamera()
 ? o1.testMobilePhone()
 
 func AddParentClassAttributes oObject,cClass
-    # Add Attributes 
-        cCode = "oTempObject = new " + cClass 
+    # Add Attributes
+        cCode = "oTempObject = new " + cClass
         eval(cCode)
         for cAttribute in Attributes(oTempObject)
             AddAttribute(oObject,cAttribute)
             cCode = "oObject." + cAttribute + " = oTempObject." + cAttribute
             eval(cCode)
-        next 
-            
+        next
+
 
 class Camera
     Name = "Camera"
@@ -1716,12 +1716,12 @@ class Camera
 
 class MobilePhone
     Type = "Android"
-    func testMobilePhone 
+    func testMobilePhone
         ? "Message from MobilePhone"
 
-class CameraPhone from Camera 
+class CameraPhone from Camera
 
-    # Add MobilePhone Attributes 
+    # Add MobilePhone Attributes
         AddParentClassAttributes(self,:MobilePhone)
 
 ```
@@ -1782,7 +1782,7 @@ class CameraPhone extends Camera with MobilePhone
 
 ## Self
 
-Self is a class-free, object-oriented language, and as such, it uses prototypal inheritance instead of classical inheritance. This is an example of the relevant excerpts from a Self transporter fileout. Normally the object tree would be built and navigated within the graphical Self environment. 
+Self is a class-free, object-oriented language, and as such, it uses prototypal inheritance instead of classical inheritance. This is an example of the relevant excerpts from a Self transporter fileout. Normally the object tree would be built and navigated within the graphical Self environment.
 
 ```self
 camera = ()
@@ -1813,7 +1813,7 @@ class CameraPhone << Camera, MobilePhone {};
 
 ## Slate
 
- 
+
 
 ```slate
 define: #Camera.
@@ -1828,15 +1828,15 @@ Like Objective-C, Swift does not allow multiple inheritance. However, you can co
 
 ```Swift
 protocol Camera {
-    
+
 }
 
 protocol Phone {
-    
+
 }
 
 class CameraPhone: Camera, Phone {
-    
+
 }
 ```
 

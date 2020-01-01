@@ -748,14 +748,14 @@ Parsing numbers to long long or double...
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|3.0}}
 
 This uses the [http://msdn.microsoft.com/en-us/library/system.web.script.serialization.javascriptserializer(v=VS.90).aspx JavaScriptSerializer] class which was shipped with .NET 3.5.
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;

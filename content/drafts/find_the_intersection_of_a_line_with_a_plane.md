@@ -159,9 +159,9 @@ The ray intersects the plane at (0, -5, 5)
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace FindIntersection {

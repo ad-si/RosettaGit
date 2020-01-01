@@ -564,7 +564,7 @@ Output:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 <lang C sharp|C#>
 public static class PancakeSorter
 {

@@ -1093,7 +1093,7 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ```csharp>public static void KnuthShuffle<T
 (T[] array)

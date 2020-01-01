@@ -374,10 +374,10 @@ OPS(mul, x*s);OPS(div, x/s);OPS(add, x+s);OPS(sub, x-s);OPS(pow, pow(x, s));
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

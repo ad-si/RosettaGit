@@ -16,7 +16,7 @@ The   [[wp:Sattolo's algorithm|Sattolo cycle]]   is an algorithm for randomly sh
 
 {{task heading}}
 
-Implement the Sattolo cycle for an integer array (or, if possible, an array of any type). 
+Implement the Sattolo cycle for an integer array (or, if possible, an array of any type).
 
 {{task heading|Specification}}
 
@@ -94,15 +94,15 @@ TableNumber:	     .int   4,6,7,10,11,15,22,30,35
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                           @ entry of program 
+.global main
+main:                                           @ entry of program
     ldr r0,iAdrTableNumber                      @ address number table
-    mov r1,#NBELEMENTS                          @ number of élements 
+    mov r1,#NBELEMENTS                          @ number of élements
     bl satShuffle
     ldr r2,iAdrTableNumber
     mov r3,#0
@@ -117,10 +117,10 @@ main:                                           @ entry of program
     ble 1b
 
     ldr r0,iAdrszCarriageReturn
-    bl affichageMess   
+    bl affichageMess
     /*    2e shuffle             */
     ldr r0,iAdrTableNumber                     @ address number table
-    mov r1,#NBELEMENTS                         @ number of élements 
+    mov r1,#NBELEMENTS                         @ number of élements
     bl satShuffle
     ldr r2,iAdrTableNumber
     mov r3,#0
@@ -134,7 +134,7 @@ main:                                           @ entry of program
     cmp r3,#NBELEMENTS - 1
     ble 2b
 
-100:                                           @ standard end of the program 
+100:                                           @ standard end of the program
     mov r0, #0                                 @ return code
     mov r7, #EXIT                              @ request to exit program
     svc #0                                     @ perform the system call
@@ -145,7 +145,7 @@ iAdrsMessResult:          .int sMessResult
 iAdrTableNumber:          .int TableNumber
 
 /******************************************************************/
-/*     Sattolo Shuffle                                  */ 
+/*     Sattolo Shuffle                                  */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements */
@@ -168,36 +168,36 @@ satShuffle:
 
 100:
     pop {r2-r6,lr}
-    bx lr                                               @ return 
+    bx lr                                               @ return
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 
@@ -205,7 +205,7 @@ conversion10:
     bl divisionpar10U                               @unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b	                                    @ and loop
                                                     @ and move digit from left of area
@@ -218,7 +218,7 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                     @ and move spaces in end on area
-    mov r0,r4                                       @ result length 
+    mov r0,r4                                       @ result length
     mov r1,#' '                                     @ space
 3:
     strb r1,[r3,r4]                                 @ store space in area
@@ -227,14 +227,14 @@ conversion10:
     ble 3b                                          @ loop if r4 <= area size
 
 100:
-    pop {r1-r4,lr}                                  @ restaur registres 
+    pop {r1-r4,lr}                                  @ restaur registres
     bx lr                                           @return
 
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -242,40 +242,40 @@ divisionpar10U:
     //mov r3,#0xCCCD                                @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                               @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                             @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                            @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                            @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                              @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                            @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                            @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                            @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                           @ leave function 
+    bx lr                                           @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   Generation random number                  */
 /***************************************************/
 /* r0 contains limit  */
 genereraleas:
-    push {r1-r4,lr}                                  @ save registers 
+    push {r1-r4,lr}                                  @ save registers
     ldr r4,iAdriGraine
     ldr r2,[r4]
     ldr r3,iNbDep1
     mul r2,r3,r2
     ldr r3,iNbDep1
     add r2,r2,r3
-    str r2,[r4]                                      @ maj de la graine pour l appel suivant 
+    str r2,[r4]                                      @ maj de la graine pour l appel suivant
     cmp r0,#0
     beq 100f
     mov r1,r0                                        @ divisor
     mov r0,r2                                        @ dividende
     bl division
     mov r0,r3                                        @ résult = remainder
-  
+
 100:                                                 @ end function
     pop {r1-r4,lr}                                   @ restaur registers
     bx lr                                            @ return
 /*****************************************************/
-iAdriGraine: .int iGraine	
+iAdriGraine: .int iGraine
 iNbDep1: .int 0x343FD
-iNbDep2: .int 0x269EC3 
+iNbDep2: .int 0x269EC3
 /***************************************************/
 /* integer division unsigned                       */
 /***************************************************/
@@ -289,14 +289,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -323,7 +323,7 @@ This is generic to the extreme, although the function is technically being fed s
 void sattoloCycle(void** arr,int count){
 	int i,j;
 	void* temp;
-	
+
 	if(count<2)
 		return;
 	for(i=count-1;i>=1;i--){
@@ -337,13 +337,13 @@ void sattoloCycle(void** arr,int count){
 int main(int argC,char* argV[])
 {
 	int i;
-	
+
 	if(argC==1)
 		printf("Usage : %s <array elements separated by a space each>",argV[0]);
 	else{
                 srand((unsigned)time(NULL));
 		sattoloCycle((void*)(argV + 1),argC-1);
-		
+
 		for(i=1;i<argC;i++)
 			printf("%s ",argV[i]);
 	}
@@ -390,7 +390,7 @@ Same code but with hardcoded integer arrays as in the task to show that the func
 void sattoloCycle(void** arr,int count){
 	int i,j;
 	void* temp;
-	
+
 	if(count<2)
 		return;
 	for(i=count-1;i>=1;i--){
@@ -404,7 +404,7 @@ void sattoloCycle(void** arr,int count){
 int main()
 {
 	int i;
-	
+
 	int a[] = {};
 	int b[] = {10};
 	int c[] = {10, 20};
@@ -413,31 +413,31 @@ int main()
 
 	srand((unsigned)time(NULL));
 	sattoloCycle((void*)a,0);
-		
+
 	printf("\nShuffled a = ");
 	for(i=0;i<0;i++)
 		printf("%d ",a[i]);
-		
+
 	sattoloCycle((void*)b,1);
-		
+
 	printf("\nShuffled b = ");
 	for(i=0;i<1;i++)
 		printf("%d ",b[i]);
-			
+
 	sattoloCycle((void*)c,2);
-		
+
 	printf("\nShuffled c = ");
 	for(i=0;i<2;i++)
 		printf("%d ",c[i]);
-	
+
 	sattoloCycle((void*)d,3);
-		
+
 	printf("\nShuffled d = ");
 	for(i=0;i<3;i++)
 		printf("%d ",d[i]);
-		
+
 	sattoloCycle((void*)e,12);
-		
+
 	printf("\nShuffled e = ");
 	for(i=0;i<12;i++)
 		printf("%d ",e[i]);
@@ -538,9 +538,9 @@ original: 11 12 13 14 15 16 17 18 19 20 21 22
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 private static readonly Random Rand = new Random();
 
 void sattoloCycle<T>(IList<T> items) {
@@ -615,7 +615,7 @@ IN: rosetta-code.sattolo-cycle
 : (sattolo) ( seq -- seq' )
     dup dup length 1 - 1 [a,b]
     [ dup iota random rot exchange ] with each ;
-    
+
 : sattolo ( seq -- seq/seq' )
     dup length 1 > [ (sattolo) ] when ;
 
@@ -736,7 +736,7 @@ For i = 1 To 52
 Next : Print : Print
 
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -851,7 +851,7 @@ main = do
 
 ```txt
 
-$ ./sattolo 
+$ ./sattolo
 original: []
   cycled: []
 original: [10]
@@ -1357,7 +1357,7 @@ function sattoloCycle($items) {
         $tmp = $items[$i];
         $items[$i] = $items[$j];
         $items[$j] = $tmp;
-    } 
+    }
     return $items;
 }
 
@@ -1406,14 +1406,14 @@ after (4 1 12 6 2 13 9 11 8 5 3 14 7 15 10)
 		j = randrange(i)  # 0 <= j <= i-1
 		items[j], items[i] = items[i], items[j]
 
-		
+
 >>> # Tests
 >>> for _ in range(10):
 	lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 	sattoloCycle(lst)
 	print(lst)
 
-	
+
 [5, 8, 1, 2, 6, 4, 3, 9, 10, 7]
 [5, 9, 8, 10, 4, 3, 6, 2, 1, 7]
 [10, 5, 8, 3, 9, 1, 4, 2, 6, 7]
@@ -1424,7 +1424,7 @@ after (4 1 12 6 2 13 9 11 8 5 3 14 7 15 10)
 [3, 10, 7, 2, 9, 5, 8, 4, 1, 6]
 [2, 6, 5, 3, 9, 8, 10, 7, 1, 4]
 [3, 6, 2, 5, 10, 4, 1, 9, 7, 8]
->>> 
+>>>
 ```
 
 
@@ -1466,7 +1466,7 @@ after (4 1 12 6 2 13 9 11 8 5 3 14 7 15 10)
   (define v′ (sattolo-shuffle (vector 11 12 13 14 15 16 17 18 19 20 21)))
 
   v′
-  
+
   (check-true (derangement-of? #(11 12 13 14 15 16 17 18 19 20 21) v′)))
 ```
 
@@ -1482,7 +1482,7 @@ after (4 1 12 6 2 13 9 11 8 5 3 14 7 15 10)
 ## REXX
 
 
-###  version 1 
+###  version 1
 
 This REXX example uses a zero-based array;   (to match the pseudo-code).
 
@@ -1507,8 +1507,8 @@ say  ' Sattolo:'        strip($)                 /*stick a fork in it,  we're al
 
 ```txt
 
-original: 
- Sattolo: 
+original:
+ Sattolo:
 
 ```
 
@@ -1525,7 +1525,7 @@ original: 10
 
 ```txt
 
-original: 10 20 
+original: 10 20
  Sattolo: 20 10
 
 ```
@@ -1559,7 +1559,7 @@ original: -1 0 00 one 2.7 /\ [] +6e1 ~~~
 
 
 
-###  version 2 
+###  version 2
 
 
 ```rexx
@@ -1594,7 +1594,7 @@ Return
  pre  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 post  3  4  8 18 14 21 20 13 10  1 25  7  2 24 12 23  5 11  6 22 16 19  9  0 15 17
 ```
-         
+
 
 
 ## Ring
@@ -1606,24 +1606,24 @@ post  3  4  8 18 14 21 20 13 10  1 25  7  2 24 12 23  5 11  6 22 16 19  9  0 15 
 
 a = "123456789abcdefghijklmnopqrstuvwxyz"
 n = len(a)
-sit = list(n)    
- 
-for i = 1 to n			
+sit = list(n)
+
+for i = 1 to n
     sit[i] = substr(a, i, 1)
-next 
-showsit()			
+next
+showsit()
 for i = n to 1 step -1
     j = floor(i * random(9)/10) + 1
     h = sit[i]
     sit[i] = sit[j]
     sit[j] = h
-next  
+next
 showsit()
-			
+
 func showsit
      for i = 1 to n
          see sit[i] + " "
-     next 
+     next
      see nl
 
 ```
@@ -1632,8 +1632,8 @@ Output:
 
 ```txt
 
-1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z 
-i v 3 c 7 x 6 5 4 n a b r t e f g 2 8 u m o p w q l j h 9 s d y k z 1 
+1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z
+i v 3 c 7 x 6 5 4 n a b r t e f g 2 8 u m o p w q l j h 9 s d y k z 1
 
 ```
 
@@ -1712,7 +1712,7 @@ end sub
 ```txt
 Output:
 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z
-d c 5 e v 3 n 7 8 h r p 2 y j l s x q 6 f 9 o a u i w 4 1 m g z t k b 
+d c 5 e v 3 n 7 8 h r p 2 y j l s x q 6 f 9 o a u i w 4 1 m g z t k b
 ```
 
 
@@ -1932,17 +1932,17 @@ End Sub
 {{out}}
 ```txt
 Before:
-After: 
-Before: 10 
-After:  10 
-Before: 10  20 
-After:  20  10 
-Before: 10  20  30 
-After:  20  10  30 
-Before: 11  12  13  14  15  16  17  18  19  20  21  22 
-After:  16  18  19  17  12  20  22  14  11  13  15  21 
+After:
+Before: 10
+After:  10
+Before: 10  20
+After:  20  10
+Before: 10  20  30
+After:  20  10  30
+Before: 11  12  13  14  15  16  17  18  19  20  21  22
+After:  16  18  19  17  12  20  22  14  11  13  15  21
 Before:This is a test
-After: testa is This 
+After: testa is This
 
 ```
 
@@ -1954,9 +1954,9 @@ After: testa is This
 ```Yabasic
 sub sattolo$(l$)
     local i, j, items$(1), n, t$
-    
+
     n = token(l$, items$(), ",")
-    
+
     for i = n to 2 step -1
         j = int(ran(i - 1)) + 1
         t$ = items$(i)
@@ -1970,7 +1970,7 @@ sub sattolo$(l$)
     next
     return left$(t$, len(t$) - 1)
 end sub
- 
+
 data "", "10", "10,20", "10,20,30", "11,12,13,14,15,16,17,18,19,20,21,22"
 
 for n = 1 to 5

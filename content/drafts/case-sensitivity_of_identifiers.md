@@ -406,7 +406,7 @@ The three dogs are named Benjamin, Samba, and Bernie
 
 
 
-## C sharp
+## C#
 
 C# is case sensitive
 

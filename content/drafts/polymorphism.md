@@ -30,33 +30,33 @@ package
     {
         protected var _x:Number;
         protected var _y:Number;
-        
+
         public function Point(x:Number = 0, y:Number = 0)
         {
             _x = x;
             _y = y;
         }
-        
+
         public function getX():Number
         {
             return _x;
         }
-        
+
         public function setX(x:Number):void
         {
             _x = x;
         }
-        
+
         public function getY():Number
         {
             return _y;
         }
-        
+
         public function setY(y:Number):void
         {
             _x = y;
         }
-        
+
         public function print():void
         {
             trace("Point");
@@ -71,23 +71,23 @@ package {
     public class Circle extends Point
     {
         private var r:Number;
-        
+
         public function Circle(x:Number=0, y:Number=0, r:Number=0)
         {
             super(x, y);
             this.r = r;
         }
-        
+
         public function getR():Number
         {
             return r;
         }
-        
+
         public function setR(r:Number):void
         {
             this.r = r;
         }
-        
+
         public override function print():void
         {
             trace("Circle");
@@ -113,7 +113,7 @@ package Shapes is
    function Create return Point;
    function Create(X : Integer) return Point;
    function Create(X, Y : Integer) return Point;
-  
+
 private
    type Point is tagged record
       X : Integer := 0;
@@ -516,10 +516,10 @@ MyCircle.SetX(2)	;Assignment method
 MyCircle.y := 3		;Direct assignment
 MyCircle.Print()
 MyCircle2.Print()
-MyCircle.SetX(100), MyCircle.SetY(1000), MyCircle.r := 10000 
+MyCircle.SetX(100), MyCircle.SetY(1000), MyCircle.r := 10000
 MsgBox, % MyCircle.__Class
 	. "`n`nx:`t" MyCircle.GetX()
-	. "`ny:`t" MyCircle.y 
+	. "`ny:`t" MyCircle.y
 	. "`nr:`t" MyCircle.GetR()
 return
 
@@ -544,8 +544,8 @@ class Point
 	}
 	Print()
 	{
-		MsgBox, % this.__Class 
-			. "`n`nx:`t" this.x 
+		MsgBox, % this.__Class
+			. "`n`nx:`t" this.x
 			. "`ny:`t" this.y
 	}
 	SetX(aValue)
@@ -571,9 +571,9 @@ class Circle extends Point
 	}
 	Print()
 	{
-		MsgBox, % this.__Class 
-			. "`n`nx:`t" this.x 
-			. "`ny:`t" this.y 
+		MsgBox, % this.__Class
+			. "`n`nx:`t" this.x
+			. "`ny:`t" this.y
 			. "`nr:`t" this.r
 	}
 	SetR(aValue)
@@ -596,11 +596,11 @@ class Circle extends Point
 
 ```bbcbasic
       INSTALL @lib$ + "CLASSLIB"
-      
+
       REM Create parent class with void 'doprint' method:
       DIM PrintableShape{doprint}
       PROC_class(PrintableShape{})
-      
+
       REM Create derived class for Point:
       DIM Point{x#, y#, setxy, retx, rety, @constructor, @@destructor}
       PROC_inherit(Point{}, PrintableShape{})
@@ -611,7 +611,7 @@ class Circle extends Point
       DEF Point.@@destructor : ENDPROC
       DEF Point.doprint : PRINT Point.x#, Point.y# : ENDPROC
       PROC_class(Point{})
-      
+
       REM Create derived class for Circle:
       DIM Circle{x#, y#, r#, setxy, setr, retx, rety, retr, @con, @@des}
       PROC_inherit(Circle{}, PrintableShape{})
@@ -624,7 +624,7 @@ class Circle extends Point
       DEF Circle.@@des : ENDPROC
       DEF Circle.doprint : PRINT Circle.x#, Circle.y#, Circle.r# : ENDPROC
       PROC_class(Circle{})
-      
+
       REM Test the polymorphic 'doprint' function:
       PROC_new(mypoint{}, Point{})
       PROC(mypoint.doprint)
@@ -707,7 +707,7 @@ int main()
   Point* p = new Point();
   Point* c = new Circle();
   p->print();
-  c->print();     
+  c->print();
   return 0;
 }
 ```
@@ -787,9 +787,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 class Point
 {
@@ -813,7 +813,7 @@ public class Circle : Point
   public Circle(int x, int y, int r) : base(x,y) { this.r = r; }
   public int R { get { return r; } set { r = value; } }
   public override void print() { System.Console.WriteLine("Circle"); }
- 
+
   public static void main(String args[])
   {
     Point p = new Point();
@@ -877,7 +877,7 @@ shared void run() {
         Point(), Point(1), Point(1, 2), Point {y = 3;}, Point.copy(Point(4, 5)),
         Circle(), Circle(1), Circle(2, 3), Circle(4, 5, 6), Circle {y = 7; r = 8;}, Circle.copy(Circle(9, 10, 11))
     ];
-    
+
     for(shape in shapes) {
         shape.print();
     }
@@ -893,22 +893,22 @@ Clojure 1.2.
 
 
 ```lisp
-(defprotocol Printable 
+(defprotocol Printable
   (print-it [this] "Prints out the Printable."))
- 
+
 (deftype Point [x y]
   Printable
   (print-it [this] (println (str "Point: " x " " y))))
- 
-(defn create-point 
+
+(defn create-point
   "Redundant constructor function."
   [x y] (Point. x y))
 
 (deftype Circle [x y r]
   Printable
   (print-it [this] (println (str "Circle: " x " " y " " r))))
- 
-(defn create-circle 
+
+(defn create-circle
   "Redundant consturctor function."
   [x y r] (Circle. x y r))
 ```
@@ -1198,7 +1198,7 @@ println(c)
 ;;Copy
 (print (copy (Circle 3 3 )))
     →  ⭕️ center:[3 3] radius:1
-    
+
 ;;Assignment (to a variable)
 (define my-point (Point 7 8))
 
@@ -1211,9 +1211,9 @@ println(c)
 ;;Initializer procedure
 (struct Circle ((x 0) (y 0) (r 1) d) #:initialize circle-init)
 (define (circle-init Circle:c) (set-Circle-d! c (* 2 PI c.r)))
-(define-method (print Circle:c) 
+(define-method (print Circle:c)
     (printf "⭕️ center:[%d %d] radius:%d diameter:%d" c.x c.y c.r c.d))
-    
+
 (print (Circle 0 0 10))
     → ⭕️ center:[0 0] radius:10 diameter:62.83185307179586
 
@@ -1225,7 +1225,7 @@ println(c)
 
 
 
-```eiffel 
+```eiffel
 class
     POINT
 inherit
@@ -1295,7 +1295,7 @@ end
 
 
 
-```eiffel 
+```eiffel
 class
     CIRCLE
 
@@ -1382,7 +1382,7 @@ end
 
 
 
-```eiffel 
+```eiffel
 class
     APPLICATION
 
@@ -1436,43 +1436,43 @@ Circle:  x = 20   y = 25   r = 35
 
 Notes:
 
-The Eiffel example varies slightly from the problem description. 
-The polymorphic feature is <code lang="eiffel">out</code> rather than <code lang="eiffel">print</code>. Both <code lang="eiffel">out</code> and <code lang="eiffel">print</code> are inherited by every Eiffel class from class <code lang="eiffel">ANY</code>. 
-However, it is customary in Eiffel to redefine the query <code lang="eiffel">out</code> to provide a string describing an instance, versus redefining <code lang="eiffel">print</code>. 
+The Eiffel example varies slightly from the problem description.
+The polymorphic feature is <code lang="eiffel">out</code> rather than <code lang="eiffel">print</code>. Both <code lang="eiffel">out</code> and <code lang="eiffel">print</code> are inherited by every Eiffel class from class <code lang="eiffel">ANY</code>.
+However, it is customary in Eiffel to redefine the query <code lang="eiffel">out</code> to provide a string describing an instance, versus redefining <code lang="eiffel">print</code>.
 So, this example is written to reflect the Eiffel convention.
 
 
 ## Ela
 
 
-Solution of this problem in Ela is similar to Haskell, as soon as Ela shares with Haskell the same features - namely, classes (typeclasses) and algebraic types. 
+Solution of this problem in Ela is similar to Haskell, as soon as Ela shares with Haskell the same features - namely, classes (typeclasses) and algebraic types.
 
 
 ```ela
 type Point = Point x y
- 
+
 instance Show Point where
   show (Point x y) = "Point " ++ (show x) ++ " " ++ (show y)
- 
+
 instance Name Point where
   getField nm (Point x y)
     | nm == "x" = x
     | nm == "y" = y
     | else = fail "Undefined name."
   isField nm _ = nm == "x" || nm == "y"
- 
+
 pointX = flip Point 0
- 
+
 pointY = Point 0
- 
+
 pointEmpty = Point 0 0
- 
+
 type Circle = Circle x y z
- 
+
 instance Show Circle where
-  show (Circle x y z) = 
+  show (Circle x y z) =
     "Circle " ++ (show x) ++ " " ++ (show y) ++ " " ++ (show z)
- 
+
 instance Name Circle where
   getField nm (Circle x y z)
     | nm == "x" = x
@@ -1480,17 +1480,17 @@ instance Name Circle where
     | nm == "z" = z
     | else = fail "Undefined name."
   isField nm _ = nm == "x" || nm == "y" || nm == "z"
- 
+
 circleXZ = flip Circle 0
- 
+
 circleX x = Circle x 0 0
- 
+
 circleYZ = Circle 0
- 
+
 circleY y = Circle 0 y 0
- 
+
 circleZ = Circle 0 0
- 
+
 circleEmpty = Circle 0 0 0
 ```
 
@@ -1512,48 +1512,48 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 class Point
 {
     prop int X;
     prop int Y;
- 
+
     constructor(int x, int y)
     {
         X := x;
         Y := y
     }
- 
+
     constructor()
         <= (0,0);
- 
-    print() { console.printLine("Point") }        
+
+    print() { console.printLine("Point") }
 }
- 
+
 class Circle : Point
 {
     prop int R;
- 
+
     constructor()
         <= (0);
- 
+
     constructor(int r)
         <= (0, 0, r);
- 
+
     constructor(int x, int y, int r)
         <= (x, y)
     {
         R := r
     }
- 
+
     print() { console.printLine("Circle") }
 }
- 
+
 public program()
 {
     Point p := new Point();
     Point c := new Circle();
- 
+
     p.print();
     c.print()
 }
@@ -1698,7 +1698,7 @@ http://soton.mpeforth.com/flag/fms/index.html
 ```forth
 include FMS-SI.f
 
-:class point 
+:class point
   ivar x  \ instance variable
   ivar y
   :m print x ? y ? ;m  \ define print method
@@ -1706,22 +1706,22 @@ include FMS-SI.f
   :m put ( x y -- ) y ! x ! ;m
   :m copy ( -- point-obj2 )
      self get heap> point dup >r put r> ;m
-;class 
-  
+;class
+
 point p1  \ instantiate object p1
-23 5 p1 put 
-p1 print 
+23 5 p1 put
+p1 print
 p1 copy value p2 \ copy constructor
-p2 print 
+p2 print
 p2 <free  \ destructor
- 
+
 .. p1.x ?   \ print just x
 .. p1.y ?   \ print just y
 8 .. p1.x ! \ change just x
 9 .. p1.y ! \ change just y
 
 
-:class circle 
+:class circle
   point center  \ re-use point class for instance variable
   ivar radius
   :m print center print radius ? ;m  \ send print message to instance variable
@@ -1732,12 +1732,12 @@ p2 <free  \ destructor
   :m copy ( -- circle-obj2 )
      self get heap> circle dup >r put r> ;m
 ;class
- 
-circle c1  
+
+circle c1
 4 5 2 c1 put
-c1 print 
-c1 copy value c2 
-c2 print 
+c1 print
+c1 copy value c2
+c2 print
 c2 <free
 
 .. c1.center print \ print just center
@@ -1745,7 +1745,7 @@ c2 <free
 .. c1.center.y ?   \ print just y
 .. c1.radius ?     \ print just radius
 p1 get .. c1.center put \ change just center using a point
-100 .. c1.radius ! \ change just radius 
+100 .. c1.radius ! \ change just radius
 ```
 
 
@@ -1961,7 +1961,7 @@ func main() {
 
 // Accessors are not idiomatic in Go.  Instead, simply access struct
 // fields directly.  To allow access from another package, you "export"
-// the field by capitalizing the field name. 
+// the field by capitalizing the field name.
 func (p *point) getX() float64  { return p.x }
 func (p *point) getY() float64  { return p.y }
 func (p *point) setX(v float64) { p.x = v }
@@ -2140,7 +2140,7 @@ Polymorphism is achieved through the type class Show
 data Point = Point Integer Integer
 instance Show Point where
     show (Point x y) = "Point at "++(show x)++","++(show y)
-    
+
 -- Constructor that sets y to 0
 ponXAxis = flip Point 0
 
@@ -2153,7 +2153,7 @@ porigin = Point 0 0
 data Circle = Circle Integer Integer Integer
 instance Show Circle where
     show (Circle x y r) = "Circle at "++(show x)++","++(show y)++" with radius "++(show r)
-    
+
 -- Constructor that sets y to 0
 conXAxis = flip Circle 0
 
@@ -2350,7 +2350,7 @@ public class test {
     Point p = new Point();
     Point c = new Circle();
     p.print();
-    c.print();     
+    c.print();
   }
 }
 ```
@@ -2374,10 +2374,10 @@ function Point() {
         this.x = arg1.x;
         this.y = arg1.y;
     }
-    else { 
+    else {
         this.x = arg1 == null ? 0 : arg1;
         this.y = arg2 == null ? 0 : arg1;
-    } 
+    }
 
     this.set_x = function(_x) {this.x = _x;}
     this.set_y = function(_y) {this.y = _y;}
@@ -2409,11 +2409,11 @@ function Circle() {
         this.y = arg1.y;
         this.r = arg2 == null ? 0 : arg2;
     }
-    else { 
+    else {
         this.x = arg1 == null ? 0 : arg1;
         this.y = arg2 == null ? 0 : arg2;
         this.r = arg3 == null ? 0 : arg3;
-    } 
+    }
 
     this.set_x = function(_x) {this.x = _x;}
     this.set_y = function(_y) {this.y = _y;}
@@ -2454,14 +2454,14 @@ def print:
 
 In practice, it's unlikely one would want to write accessors, as .x will retrieve "x", etc; similar remarks apply to setters (.x = VALUE). `.` will copy, and `empty` could serve as a kind of destructor, in that `Point(0;0) | empty` produces the empty stream.
 
-For the sake of illustration, one could define a polymorphic "setter" as follows: 
+For the sake of illustration, one could define a polymorphic "setter" as follows:
 
 
 ```jq
 
 # keyname should be (or evaluate to) a string
-def set(keyname; value): 
-  if type == "object" and .type and has(keyname) then .[keyname] = value 
+def set(keyname; value):
+  if type == "object" and .type and has(keyname) then .[keyname] = value
   else error("set: invalid type: \(.)")
   end;
 
@@ -2479,7 +2479,7 @@ Circle(0;1;2) | .x = 1 | print
 
 ## Julia
 
-There is no obvious inheritance hierarchy here to get polymorphism. Julia has multiple dispatch, so the appropriate implementation of the show function will be called at runtime depending on the type of the arguments provided. The declaration of Base.show is done to implicitly import the show function from the Base module and create new methods. 
+There is no obvious inheritance hierarchy here to get polymorphism. Julia has multiple dispatch, so the appropriate implementation of the show function will be called at runtime depending on the type of the arguments provided. The declaration of Base.show is done to implicitly import the show function from the Base module and create new methods.
 
 It would not be idiomatic to define setters and getters for a type like this in Julia. One would just access the fields directly. There is no need to explicitly define a constructor since that is automatically provided. You only roll your own if you need more elaborate initialization or you need to set default values.
 
@@ -2522,11 +2522,11 @@ Base.show(io::IO, c::Circle) = print(io, "Circle($(c.x), $(c.y), $(c.r))")
 
 Kotlin only has properties, not fields though the latter may be created by the compiler 'under the hood'. A 'get' accessor is automatically created for 'val' (read-only) properties and both get() and set() accessors for a 'var' (read/write) property though these may be overridden where appropriate.
 
-Kotlin has the notion of a 'primary constructor' which is declared in the class header itself. It's also posible to create any number of 'secondary constructors' provided these delegate (directly or indirectly) to the primary constructor. 
+Kotlin has the notion of a 'primary constructor' which is declared in the class header itself. It's also posible to create any number of 'secondary constructors' provided these delegate (directly or indirectly) to the primary constructor.
 
 Although Kotlin supports operator overloading, it is not possible to overload the assignment operator ('=') itself.
 
-In the JVM version of Kotlin, it is possible to declare a destructor in the guise of a 'finalize' method though there is no guarantee that this will actually be called by the garbage collector (or, if it is called, when this will be) and consequently many programmers feel it is more trouble than its worth.   
+In the JVM version of Kotlin, it is possible to declare a destructor in the guise of a 'finalize' method though there is no guarantee that this will actually be called by the garbage collector (or, if it is called, when this will be) and consequently many programmers feel it is more trouble than its worth.
 
 ```scala
 // version 1.1.2
@@ -2676,7 +2676,7 @@ We see polymorphism for print method (module in M2000), and for operator "=". Al
 
 0~ is single zero. So x, y and r get first value as single type, and stay that. Numeric types can be double (default, no symbol), Decimal (@),Currency(#),Long(&),Integer(%). For Strings we have to use $ in names, for variables and functions. There are groups which have both names, numeric and string, when they return string value. We can make a string property, and interpreter make a group which return/get string. We can add modules/functions to properties, using Group x {...}, inside a group definition (a class has a group definition also).
 
-A Class: label direct interpreter to not include any after in the returned group, a float group, which return a Class function. 
+A Class: label direct interpreter to not include any after in the returned group, a float group, which return a Class function.
 A class function is global by default, except in a class definition which is a member of group.
 In following examples there is a block for temporary objects. We make a MM as a group, and at the exit of the block, group erased, so next time we make a new one.
 Syntax:
@@ -2699,7 +2699,7 @@ For This {
 ```M2000 Interpreter
 
 Class PointA {
-      Property x=0~ 
+      Property x=0~
       Property Y=0~
       Operator "=" (n1) {
             n=group(n1)
@@ -2707,7 +2707,7 @@ Class PointA {
             push false
       }
       Module Print  {
-             Print "Point" , .x, .y    
+             Print "Point" , .x, .y
       }
 Class:
       Module PointA {
@@ -2715,7 +2715,7 @@ Class:
             Read  ? .[x], .[y]
       }
 }
-Class Circle {  
+Class Circle {
       Property R=300~   ' type single
       Operator "=" (n1) {
             n=group(n1)
@@ -2737,17 +2737,17 @@ Class:
             } Else M=PointA()
             M=This
 \\            If match("N") then Read M.r   \\ check if a number is in top of stack
-\\            Read  ? M.r     \\ optionally 
+\\            Read  ? M.r     \\ optionally
             Read M.r   \\ for this example, r has value, so this used if stack is empty.
             This=M
       }
 }
 A=PointA(10,3)
 C=Circle(20,10,5)
-D=Circle(A, 100) 
+D=Circle(A, 100)
 B=A
 K=PointA()
-Z=Circle(A) 
+Z=Circle(A)
 P=PointA(600,700)
 
 \\ N is a pointer to array
@@ -2786,19 +2786,19 @@ Changes for PointA, we use variables, for Circle R has a limit of 1000. We use S
 Class PointA {
       X=0~, Y=0~
       Module Print  {
-             Print "Point" , .x, .y    
+             Print "Point" , .x, .y
       }
 Class:
       Module PointA {
             Read  ? .x, .y
       }
 }
-Class Circle {  
+Class Circle {
       Property R {
             Value,
             Set {
                   If Value>1000 then Value=1000
-            }            
+            }
       }=300~
       Module Print {
             Print "Circle", .x, .y, .r
@@ -2818,10 +2818,10 @@ Class:
 }
 A=PointA(10,3)
 C=Circle(20,10,5)
-D=Circle(A, 100) 
+D=Circle(A, 100)
 B=A
 K=PointA()
-Z=Circle(A) 
+Z=Circle(A)
 P=PointA(600,700)
 
  \\ N is a pointer to stack
@@ -3049,43 +3049,43 @@ bundle Default {
     @x : Int;
     @y : Int;
 
-    New() { 
+    New() {
       @x := 0;
       @y := 0;
     }
 
-    New(x : Int, y : Int) { 
+    New(x : Int, y : Int) {
       @x := x;
       @y := y;
     }
 
-    New(p : Point) { 
+    New(p : Point) {
       @x := p->GetX();
       @y := p->GetY();
     }
 
-    method : public : GetX() ~ Int { 
-      return @x; 
-    }
-    
-    method : public : GetY() ~ Int { 
-      return @y; 
+    method : public : GetX() ~ Int {
+      return @x;
     }
 
-    method : public : SetX(x : Int) ~ Nil { 
-      @x := x; 
-    }
-    
-    method : public : SetY(y : Int) ~ Nil { 
-      @y := y; 
+    method : public : GetY() ~ Int {
+      return @y;
     }
 
-    method : public : Print() ~ Nil { 
+    method : public : SetX(x : Int) ~ Nil {
+      @x := x;
+    }
+
+    method : public : SetY(y : Int) ~ Nil {
+      @y := y;
+    }
+
+    method : public : Print() ~ Nil {
       "Point"->PrintLine();
     }
   }
-   
-  
+
+
   class Circle from Point {
     @r : Int;
 
@@ -3094,35 +3094,35 @@ bundle Default {
       @r := 0;
     }
 
-    New(p : Point) { 
-      Parent(p); 
+    New(p : Point) {
+      Parent(p);
       @r := 0;
     }
-    
+
     New(c : Circle) {
-      Parent(c->GetX(), c->GetY()); 
+      Parent(c->GetX(), c->GetY());
       @r := c->GetR();
     }
-    
-    method : public : GetR() ~ Int { 
-      return @r; 
+
+    method : public : GetR() ~ Int {
+      return @r;
     }
 
-    method : public : SetR(r : Int) ~ Nil { 
-      @r := r; 
-    }    
+    method : public : SetR(r : Int) ~ Nil {
+      @r := r;
+    }
 
-    method : public : Print() ~ Nil { 
+    method : public : Print() ~ Nil {
       "Circle"->PrintLine();
-    } 
+    }
   }
-  
+
   class Poly {
     function : Main(args : String[]) ~ Nil {
       p := Point->New();
       c := Circle->New();
       p->Print();
-      c->Print();  
+      c->Print();
     }
   }
 }
@@ -3188,7 +3188,7 @@ bundle Default {
 
 int main(int argc, const char *argv[]) {
   @autoreleasepool {
-  
+
     NSLog(@"%@", [[RCPoint alloc] init]);
     NSLog(@"%@", [[RCPoint alloc] initWithX:3]);
     NSLog(@"%@", [[RCPoint alloc] initWithX:3 andY:4]);
@@ -3196,13 +3196,13 @@ int main(int argc, const char *argv[]) {
     NSLog(@"%@", [[RCCircle alloc] initWithX:3]);
     NSLog(@"%@", [[RCCircle alloc] initWithX:3 andY:4]);
     NSLog(@"%@", [[RCCircle alloc] initWithX:3 andY:4 andRadius:7]);
-    RCPoint *p = [[RCPoint alloc] initWithX:1 andY:2];  
+    RCPoint *p = [[RCPoint alloc] initWithX:1 andY:2];
     NSLog(@"%@", [[RCCircle alloc] initWithPoint:p]);
     NSLog(@"%@", [[RCCircle alloc] initWithCenter:p andRadius:7]);
     NSLog(@"%d", p.x); // 1
     p.x = 8;
     NSLog(@"%d", p.x); // 8
-  
+
   }
   return 0;
 }
@@ -3217,7 +3217,7 @@ int main(int argc, const char *argv[]) {
 class point ?(x=0.0) ?(y=0.0) () = (* extra () used to erase the optional parameters *)
 object (self)
   val mutable x = x
-  val mutable y = y 
+  val mutable y = y
 
   method x = x
   method y = y
@@ -3254,7 +3254,7 @@ let () =
 ## Oforth
 
 
-A Circle should not inherit from a Point (perhap's have a Point attribute as its center). 
+A Circle should not inherit from a Point (perhap's have a Point attribute as its center).
 
 Let's just have x and y as Circle attributes.
 
@@ -3287,7 +3287,7 @@ Circle classMethod: newFromPoint(aPoint, r)  self new(aPoint _x, aPoint _y, r) ;
 ```
 
 
-Usage : 
+Usage :
 
 ```Oforth
 : testPoly
@@ -3295,7 +3295,7 @@ Usage :
    Point new(3, 4) ->p
    p println
    System.Out "Attributes of this point are : " << p _x << " and " << p _y << cr
-   Circle new(5, 6, 7.1) ->c 
+   Circle new(5, 6, 7.1) ->c
    c println
    System.Out "Attributes of this circle are : " << c _x << ",  " << c _y << " and " << c _r << cr
    Circle newFromPoint(p, 2) println ;
@@ -3318,7 +3318,7 @@ Attributes of this circle are : 5,  6 and 7.1
 
 ## ooRexx
 
-ooRexx supports traditional class-based polymorphism.  The polymorphic methods can be part of the main class sequence or brought in using mixins for multiple inheritance situations.  Here is a simple example using point and circle classes in a hierarchy. 
+ooRexx supports traditional class-based polymorphism.  The polymorphic methods can be part of the main class sequence or brought in using mixins for multiple inheritance situations.  Here is a simple example using point and circle classes in a hierarchy.
 
 
 ```ooRexx
@@ -3361,13 +3361,13 @@ c~print
 ```txt
 
 A point at location (3,2)
-A circle of radius 6 centered at location (0,2) 
+A circle of radius 6 centered at location (0,2)
 
 ```
 
 
 
-Method binding in ooRexx is late and dynamic.  In many situations, polymorphism can be achieved merely by providing an expected method.  It is not necessary for an object to be of a particular class hierarchy.  In the example below, both point and circle implement a print method, but there is no class relationship between these classes other than what they inherit from the object class. 
+Method binding in ooRexx is late and dynamic.  In many situations, polymorphism can be achieved merely by providing an expected method.  It is not necessary for an object to be of a particular class hierarchy.  In the example below, both point and circle implement a print method, but there is no class relationship between these classes other than what they inherit from the object class.
 
 
 ```ooRexx
@@ -3411,7 +3411,7 @@ c~print
 ```txt
 
 A point at location (3,2)
-A circle of radius 6 centered at location (0,2) 
+A circle of radius 6 centered at location (0,2)
 
 ```
 
@@ -3508,7 +3508,7 @@ class Point
    feat
       x
       y
-      
+
    meth init(x:X<=0.0 y:Y<=0.0)
       self.x = X
       self.y = Y
@@ -3527,7 +3527,7 @@ class Circle
    feat
       center
       r
-      
+
    meth init(center:C<={New Point init} r:R<=1.0)
       self.center = C
       self.r = R
@@ -3560,48 +3560,48 @@ What polymorphic function means in the context of Perl is as clear as mud. subs 
      package Point;
      use Class::Spiffy -base;
      use Clone qw(clone);
- 
+
      sub _print {
          my %self = %{shift()};
          while (my ($k,$v) = each %self) {
              print "$k: $v\n";
          }
      }
- 
+
      sub members {
          no strict;
          grep {
              1 == length and defined *$_{CODE}
          } keys %{*{__PACKAGE__."\::"}};
      }
- 
+
      sub new {
          my $class = shift;
          my %param = @_;
          $param{$_} = 0 for grep {!defined $param{$_}} members;
          bless \%param, $class;
      }
- 
+
      sub copy_constructor {
          clone shift;
      }
- 
+
      sub copy_assignment {
          my $self = shift;
          my $from = shift;
          $self->$_($from->$_) for $from->members;
      }
- 
+
      field 'x';
      field 'y';
 }
- 
+
 {
      package Circle;
      use base qw(Point);
      field 'r';
 }
- 
+
 {
      package main;
      $_->_print, print "\n" for (
@@ -3611,23 +3611,23 @@ What polymorphic function means in the context of Perl is as clear as mud. subs 
         Point->new(x => 8, y => -5),
      );
      my $p1 = Point->new(x => 8, y => -5);
- 
+
      my $p2 = $p1->copy_constructor;
      print "we are really different objects, not just references ".
            "to the same instance\n" unless \$p1 eq \$p2;
- 
+
      # accessors autogenerated
      $p1->x(1);
      $p1->y(2);
      print $p1->x, "\n";
      print $p1->y, "\n";
- 
+
      $p2->copy_assignment($p1);
      print $p2->x, "\n";
      print $p2->y, "\n";
      print "we now have the same values, but we are still ".
            "different objects\n" unless \$p1 eq \$p2;
- 
+
      $_->_print, print "\n" for (
         Circle->new,
         Circle->new(x => 1),
@@ -3638,7 +3638,7 @@ What polymorphic function means in the context of Perl is as clear as mud. subs 
         Circle->new(y => 8, r => 9),
         Circle->new(x => 1, y => 2, r => 3),
      );
- 
+
      my $c = Circle->new(r => 4);
      print $c->r, "\n"; # accessor autogenerated
 }
@@ -3674,9 +3674,9 @@ $c.r   = (0..10).pick;
 say $c;
 ```
 
-In this case we define the Str coercion method polymorphically, which is used by say or print to format the contents of the object.  
-We could also have defined print methods directly.  
-We could have factored this method out to a common role and composed it into each class. 
+In this case we define the Str coercion method polymorphically, which is used by say or print to format the contents of the object.
+We could also have defined print methods directly.
+We could have factored this method out to a common role and composed it into each class.
 We could also have defined multi subs outside of the class, like this:
 
 ```perl6
@@ -3688,7 +3688,7 @@ multi print (Circle $c) { $c.perl.print }
 
 ## Phix
 
-Phix is not object orientated, but naturally polymorphic. 
+Phix is not object orientated, but naturally polymorphic.
 
 Destructors are not required, though you can use delete_routine if needed.
 
@@ -3742,7 +3742,7 @@ circle c1 = new_circle(p,6),
 
 'print' is a reserved keyword in PHP so the method to print is called 'output'. Alternatively the Point and Circle objects can be converted to a string representation by simply printing / echo'ing the object because the objects implement the magic '__toString' method.
 
-Point class definition. 
+Point class definition.
 
 
 ```PHP
@@ -3752,7 +3752,7 @@ class Point
   protected $_x;
 
   protected $_y;
-  
+
   public function __construct()
   {
     switch( func_num_args() )
@@ -3771,48 +3771,48 @@ class Point
         throw new InvalidArgumentException( 'expecting one (Point) argument or two (numeric x and y) arguments' );
     }
   }
-  
+
   public function setFromPoint( Point $point )
   {
     $this->setX( $point->getX() );
     $this->setY( $point->getY() );
   }
-  
+
   public function getX()
   {
     return $this->_x;
   }
-  
+
   public function setX( $x )
   {
     if( !is_numeric( $x ) )
     {
       throw new InvalidArgumentException( 'expecting numeric value' );
     }
-    
+
     $this->_x = (float) $x;
   }
-  
+
   public function getY()
   {
     return $this->_y;
   }
-  
+
   public function setY( $y )
   {
     if( !is_numeric( $y ) )
     {
       throw new InvalidArgumentException( 'expecting numeric value' );
     }
-    
+
     $this->_y = (float) $y;
   }
-  
+
   public function output()
   {
     echo $this->__toString();
   }
-  
+
   public function __toString()
   {
     return 'Point [x:' . $this->_x . ',y:' . $this->_y . ']';
@@ -3830,7 +3830,7 @@ Circle class definition.
 class Circle extends Point
 {
   private $_radius;
-  
+
   public function __construct()
   {
     switch( func_num_args() )
@@ -3857,34 +3857,34 @@ class Circle extends Point
         throw new InvalidArgumentException( 'expecting one (Circle) argument or two (Point and numeric radius) or three (numeric x, y and radius) arguments' );
     }
   }
-  
+
   public function setFromCircle( Circle $circle )
   {
     $this->setX( $circle->getX() );
     $this->setY( $circle->getY() );
     $this->setRadius( $circle->getRadius() );
   }
-  
+
   public function getPoint()
   {
     return new Point( $this->getX(), $this->getY() );
   }
-  
+
   public function getRadius()
   {
     return $this->_radius;
   }
-  
+
   public function setRadius( $radius )
   {
     if( !is_numeric( $radius ) )
     {
       throw new InvalidArgumentException( 'expecting numeric value' );
     }
-    
+
     $this->_radius = (float) $radius;
   }
-  
+
   public function __toString()
   {
     return 'Circle [' . $this->getPoint() . ',radius:' . $this->_radius . ']';
@@ -3917,7 +3917,7 @@ echo $circle;
 
 Will result in:
 
-Point [x:1,y:5] 
+Point [x:1,y:5]
 
 Circle [Point [x:1,y:5],radius:6]
 
@@ -3968,7 +3968,7 @@ Circle 10,10,5
 
 ## Pop11
 
-When a class is defined in Pop11, it automatically defines default constructors, slot accessors and copy operations. 
+When a class is defined in Pop11, it automatically defines default constructors, slot accessors and copy operations.
 So it is enough to define classes and the print method.
 
 
@@ -4015,32 +4015,32 @@ Using the open-source precompiler [http://www.development-lounge.de/viewtopic.ph
 
 ```PureBasic
 Class MyPoint
-  
+
   BeginProtect
     x.i
     y.i
   EndProtect
-  
+
   Public Method GetX()
     MethodReturn This\X
   EndMethod
-  
+
   Public Method GetY()
     MethodReturn This\Y
   EndMethod
-  
+
   Public Method SetX(n)
     This\X=n
   EndMethod
-  
+
   Public Method SetY(n)
     This\Y=n
   EndMethod
-  
+
   Public Method Print()
     PrintN("Point")
   EndMethod
-  
+
   Public Method Init(x=0,y=0)
     This\x=x
     This\y=y
@@ -4048,30 +4048,30 @@ Class MyPoint
 EndClass
 
 Class Circle Extends MyPoint
-  
+
   Protect  Radie.i
-  
+
   Public Method Circel(x=0, y=0, r=0)
     This\X  = x
     This\y  = y
     This\Radie=r
   EndMethod
-  
+
   Public Method GetRadie()
     MethodReturn This\Radie
   EndMethod
-  
+
   Public Method SetRadie(n)
     This\Radie = n
   EndMethod
-  
+
   Public Method Print()
     PrintN("Circle: "+ _
     " X= "+Str(This\X)+ _
     " Y= "+Str(This\Y)+ _
     " R= "+Str(This\Radie))
   EndMethod
-  
+
 EndClass
 ```
 
@@ -4093,9 +4093,9 @@ EndIf
 
 ## Python
 
-Multiple constructors are not needed because Python supports default values for arguments. 
-Accessors are not needed because Python attributes are public. 
-It is possible to add managed attributes later without changing the interface and existing client code. 
+Multiple constructors are not needed because Python supports default values for arguments.
+Accessors are not needed because Python attributes are public.
+It is possible to add managed attributes later without changing the interface and existing client code.
 For the print function, use the standard __repr__ methods, used when printing an object. Destructors are not needed of course.
 
 
@@ -4220,7 +4220,7 @@ Usage example:
 
 ### Mutability
 
-The task calls for the creation of mutable types i.e. that you are allowed to change the values of x, y, or r of a Point or Circle after they have been created. 
+The task calls for the creation of mutable types i.e. that you are allowed to change the values of x, y, or r of a Point or Circle after they have been created.
 If this is not needed, then the Python namedtuple is a good way to create immutable classes with named fields such as these.
 
 ```python>>>
@@ -4229,12 +4229,12 @@ If this is not needed, then the Python namedtuple is a good way to create immuta
 	def __new__( _cls, x=0, y=0 ):
 		return super().__new__(_cls, x, y)
 
-	
+
 >>> class Circle(namedtuple('Circle', 'x y r')):
 	def __new__( _cls, x=0, y=0, r=0 ):
 		return super().__new__(_cls, x, y, r)
 
-	
+
 >>> Point(), Point(x=1), Point(y=2), Point(3, 4)
 (Point(x=0, y=0), Point(x=1, y=0), Point(x=0, y=2), Point(x=3, y=4))
 >>> Circle(), Circle(r=2), Circle(1, 2, 3)
@@ -4247,7 +4247,7 @@ Traceback (most recent call last):
   File "<pyshell#27>", line 1, in <module>
     p.x = 10.81
 AttributeError: can't set attribute
->>> 
+>>>
 ```
 
 
@@ -4260,15 +4260,15 @@ And if you don't need default arguments, this becomes:
 Point(x=3, y=4)
 >>> Circle(x=1, y=2, r=3)
 Circle(x=1, y=2, r=3)
->>> 
+>>>
 ```
 
 
 
 ## R
 
-Only the S4 class system is considered here.  
-Copy constructors are not needed, since objects are copied by value.  
+Only the S4 class system is considered here.
+Copy constructors are not needed, since objects are copied by value.
 Neither are destructors needed (just use the rm function).
 
 ```R
@@ -4279,19 +4279,19 @@ setClass("point",
    prototype(
       x=0,
       y=0))
-      
+
 # Instantiate class with some arguments
-p1 <- new("point", x=3)   
+p1 <- new("point", x=3)
 # Access some values
 p1@x    # 3
 # Define a print method
 setMethod("print", signature("point"),
    function(x, ...)
    {
-      cat("This is a point, with location, (", x@x, ",", x@y, ").\n") 
+      cat("This is a point, with location, (", x@x, ",", x@y, ").\n")
    })
 print(p1)
-      
+
 # Define a circle class
 setClass("circle",
    representation(
@@ -4317,7 +4317,7 @@ print(circS4)
 
 ## Racket
 
-All arguments have default values provided, so every possible constructor is implicitly defined.  
+All arguments have default values provided, so every possible constructor is implicitly defined.
 "Fields" come with accessors and mutators for free.
 
 
@@ -4365,8 +4365,8 @@ All arguments have default values provided, so every possible constructor is imp
 
 ## Ruby
 
-We use <tt>attr_accessor</tt> to provide all the accessor and assignment operations. Default arguments eliminate the need for multiple constructors. 
-The built-in <tt>puts</tt> uses the object's <tt>to_s</tt> method. 
+We use <tt>attr_accessor</tt> to provide all the accessor and assignment operations. Default arguments eliminate the need for multiple constructors.
+The built-in <tt>puts</tt> uses the object's <tt>to_s</tt> method.
 The <tt>Kernel#dup</tt> method can be used as a copy constructor.
 
 
@@ -4546,24 +4546,24 @@ We create four named objects, two of which we put in the traits namespace and tw
 
 ```self
 traits point = (|
-  parent* = traits clonable. 
+  parent* = traits clonable.
   printString = ('Point(', x asString, ':', y asString, ')').
   |)
 
-point = (| 
-  parent* = traits point. 
-  x <- 0. 
+point = (|
+  parent* = traits point.
+  x <- 0.
   y <- 0
   |)
 
-traits circle = (| 
-  parent* = traits clonable. 
+traits circle = (|
+  parent* = traits clonable.
   printString = ('Circle(', center asString, ',', r asString, ')').
   |)
 
-circle = (| 
-  parent* = traits circle. 
-  center <- point copy. 
+circle = (|
+  parent* = traits circle.
+  center <- point copy.
   r <- 0
   |)
 ```
@@ -4613,11 +4613,11 @@ pp(d);                      # => Circle at 4,5 with radius 7.5
 
 ## SIMPOL
 
-In [[SIMPOL]] any type can be declared to be tagged with a name. 
-That name can then be used to define a variable that can hold a reference to any type tagged with the same name. 
-Multiple constructors are not needed, since all the parameters can be provided in the same constructor call. 
-Types embedded in other types resolve according to the rules in SIMPOL such that if a property name is used that is not present in the actual type definition, then a depth first search starting at the beginning of the type definition will resolve a matching property or method name of an embedded type. 
-This resolution is not performed on properties defined as <code>reference</code> are not used in the extended dot operator resolution mechanism unless they are also assigned the <code>resolve</code> keyword. 
+In [[SIMPOL]] any type can be declared to be tagged with a name.
+That name can then be used to define a variable that can hold a reference to any type tagged with the same name.
+Multiple constructors are not needed, since all the parameters can be provided in the same constructor call.
+Types embedded in other types resolve according to the rules in SIMPOL such that if a property name is used that is not present in the actual type definition, then a depth first search starting at the beginning of the type definition will resolve a matching property or method name of an embedded type.
+This resolution is not performed on properties defined as <code>reference</code> are not used in the extended dot operator resolution mechanism unless they are also assigned the <code>resolve</code> keyword.
 The <code>embed</code> keyword in the type definition states that the type itself can be embedded in another type (any type can be placed as a reference in another type).
 
 
@@ -4627,7 +4627,7 @@ type mypoint(mypoint) embed export
   integer x
   integer y
 
-  reference  
+  reference
   function copy
   function print
 end type
@@ -4698,8 +4698,8 @@ end function result
 ```
 
 
-[[SIMPOL]] does not currently have access to stdin, stdout, and stderr, 
-so to return a value from the program to a console, 
+[[SIMPOL]] does not currently have access to stdin, stdout, and stderr,
+so to return a value from the program to a console,
 it must be as part of the return value.
 
 
@@ -4848,8 +4848,8 @@ println(p.x) // 8
 
 {{works with|Tcl|8.6}} or {{libheader|TclOO}}
 
-Since Tcl's objects have their methods invoked by sending a (potentially-interceptable) message to them, allowing them to even respond to method calls that are not explicitly declared on them, there is no need for the objects to be formally related. 
-We only do so here for convenience. 
+Since Tcl's objects have their methods invoked by sending a (potentially-interceptable) message to them, allowing them to even respond to method calls that are not explicitly declared on them, there is no need for the objects to be formally related.
+We only do so here for convenience.
 In addition, Tcl's arguments to commands, procedures and methods are all fully polymorphic by default.
 
 ```tcl
@@ -4970,7 +4970,7 @@ Written for brevity
 ```zkl
 class Point{var x,y;
    fcn init(xyOrPoint=0,_=0){
-      if(Point.isInstanceOf(xyOrPoint)) set(xyOrPoint); 
+      if(Point.isInstanceOf(xyOrPoint)) set(xyOrPoint);
       else x,y=vm.arglist.apply("toFloat")}
    fcn set(p){x=p.x;y=p.y}
    fcn toString{"(%d,%d)".fmt(x,y)}

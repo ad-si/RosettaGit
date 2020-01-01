@@ -12,8 +12,8 @@ languages = [
   "algol_68",
   "autohotkey",
   "c",
-  "c#",
-  "c++",
+  "csharp",
+  "cpp",
   "cobol",
   "d",
   "elena",
@@ -454,11 +454,11 @@ z = 77444
 
 
 
-## C sharp
+## C#
 
 Works with C sharp|7.0
 
-```csharp
+```c#
 using System;
 public class Program
 {

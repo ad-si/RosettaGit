@@ -730,11 +730,11 @@ int APIENTRY _tWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpC
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Max 185 FPS on .NET 4.0/Windows 7 64-bit on Athlon II X4 620 - ATI Radeon X1200.
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

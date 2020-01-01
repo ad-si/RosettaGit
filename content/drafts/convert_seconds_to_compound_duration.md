@@ -67,7 +67,7 @@ Demonstrate that it passes the following three test-cases:
 |-
 | second
 | <code style="background:#eee">sec</code>
-| 
+|
 |}
 </li>
 
@@ -112,26 +112,26 @@ print(duration(6000000))
 with Ada.Text_IO;
 
 procedure Convert is
-  
+
    type Time is range 0 .. 10_000*356*20*60*60; -- at most 10_000 years
    subtype Valid_Duration is Time range 1  .. 10_000*356*20*60*60;
    type Units is (WK, D, HR, MIN, SEC);
-      
+
    package IO renames Ada.Text_IO;
-   
+
    Divide_By: constant array(Units) of Time := (1_000*53, 7, 24, 60, 60);
    Split: array(Units) of Time;
    No_Comma: Units;
    X: Time;
-   
+
    Test_Cases: array(Positive range <>) of Valid_Duration :=
      (6, 60, 3659, 7_259, 86_400, 6_000_000, 6_001_200, 6_001_230, 600_000_000);
-   
+
 begin
   for Test_Case of Test_Cases loop
      IO.Put(Time'Image(Test_Case) & " SECONDS =");
      X := Test_Case;
-	
+
      -- split X up into weeks, days, ..., seconds
      No_Comma := Units'First;
      for Unit in reverse Units loop -- Unit = SEC, ..., WK (in that order)
@@ -141,11 +141,11 @@ begin
 	   No_Comma := Unit;
 	end if;
      end loop;
-	
+
      -- ouput weeks, days, ..., seconds
      for Unit in Units loop -- Unit =  WK, .., SEC (in that order)
 	if Split(Unit) > 0 then
-	   IO.Put(Time'Image(Split(Unit)) & " " & Units'Image(Unit) & 
+	   IO.Put(Time'Image(Split(Unit)) & " " & Units'Image(Unit) &
 		    (if No_Comma > Unit then "," else ""));
 	end if;
      end loop;
@@ -366,7 +366,7 @@ end weekParts
 
 -- localCompoundDuration :: Int -> String
 on localCompoundDuration(localNames, intSeconds)
-    
+
     -- [String] -> (Int, String) -> [String]
     script formatted
         on |λ|(lstPair, a)
@@ -378,7 +378,7 @@ on localCompoundDuration(localNames, intSeconds)
             end if
         end |λ|
     end script
-    
+
     intercalate(", ", ¬
         foldr(formatted, [], ¬
             zip(weekParts(intSeconds), localNames)))
@@ -392,7 +392,7 @@ on unitParts(intTotal, unitList)
     script partList
         on |λ|(x, a)
             set intRest to remaining of a
-            
+
             if x is not missing value then
                 set intMod to intRest mod x
                 set d to x
@@ -400,11 +400,11 @@ on unitParts(intTotal, unitList)
                 set intMod to intRest
                 set d to 1
             end if
-            
+
             {remaining:(intRest - intMod) div d, parts:{intMod} & parts of a}
         end |λ|
     end script
-    
+
     parts of foldr(partList, ¬
         {remaining:intTotal, parts:[]}, unitList)
 end unitParts
@@ -453,7 +453,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -546,7 +546,7 @@ data=
 
 loop, parse, data, `n, `r
 	res .= A_LoopField "`t: " duration(A_LoopField) "`n"
-MsgBox % res 
+MsgBox % res
 return
 ```
 
@@ -674,7 +674,7 @@ exit/b 0
 ```gwbasic
 10 REM CONVERT SECONDS TO COMPOUND DURATION
 20 REM ADAPTED FROM RUN BASIC VERSION
-30 REM 
+30 REM
 ### =========================================================
 
 40 PRINT CHR$(14)
@@ -685,7 +685,7 @@ exit/b 0
 90 SEC = 6000000
 100 GOSUB 1000
 110 END
-120 REM 
+120 REM
 ### ========================================================
 
 1000 WK  = INT(SEC/60/60/24/7)
@@ -709,17 +709,17 @@ exit/b 0
 1170 IF (SC > 0) AND F THEN PRINT ",";SC;"SEC" : GOTO 1200
 1180 IF (SC = 0) AND F THEN 1200
 1190 PRINT SC;"SEC"
-1200 PRINT 
+1200 PRINT
 1210 RETURN
 ```
 
 {{out}}
  7259 sec
   = 2 hr, 59 sec
- 
+
  85400 sec
   = 23 hr, 43 min, 20 sec
- 
+
  6000000 sec
   = 9 wk, 6 dy, 10 hr, 40 min
 
@@ -727,7 +727,7 @@ exit/b 0
 ## BBC BASIC
 =
 
-```bbcbasic>REM 
+```bbcbasic>REM
 compduration
 PRINT FN_convert(7259)
 PRINT FN_convert(86400)
@@ -774,8 +774,8 @@ NEXT
 190     LET UNIT=INT(SEC/UN(I)):LET SEC=MOD(SEC,UN(I))
 200     PRINT UNIT;T$(I);
 210     IF I<4 AND SEC>0 THEN PRINT ",";
-220   END IF 
-230 NEXT 
+220   END IF
+230 NEXT
 240 PRINT
 ```
 
@@ -786,7 +786,7 @@ NEXT
 
 
 ```beeswax>#
-%f# #>%f#  #f%<##>%f#         
+%f# #>%f#  #f%<##>%f#
 pq":X~7~ :X@~++8~8@:X:X@~-~4~.+~8@T_
     ##    ##        ####          #`K0[`}`D2[`}BF3<         <
 >{` wk, `>g?"p{` d, `>g?"p{` hr, `>g?"p{` min, `>g"b{` sec, `b
@@ -866,7 +866,7 @@ v-7*"l~"/7\"d"\%7:/*83\+*:"xD"\%*83:/"<"<
  * Converting the number of seconds in a human-readable string.
  * It is worth noting that direct output to stdout would be even simpler.
  */
-char* seconds2string(unsigned long seconds) 
+char* seconds2string(unsigned long seconds)
 {
     int i;
 
@@ -889,7 +889,7 @@ char* seconds2string(unsigned long seconds)
         seconds = seconds % coeff[i];
         if ( value )
         {
-            if ( ptr != buffer ) 
+            if ( ptr != buffer )
                 ptr += sprintf(ptr, ", ");
             ptr += sprintf(ptr,"%lu %s",value,units[i]);
         }
@@ -905,7 +905,7 @@ int main(int argc, char argv[])
 {
     unsigned long seconds;
 
-    if ( (argc <  2) && scanf( "%lu", &seconds ) 
+    if ( (argc <  2) && scanf( "%lu", &seconds )
     ||   (argc >= 2) && sscanf( argv[1], "%lu", & seconds ) )
     {
         printf( "%s\n", seconds2string(seconds) );
@@ -948,7 +948,7 @@ int main(int argc, char *argv[])
 {
     uintmax_t input;
     char *a;
-    
+
     if(argc<2) {
         printf("usage: %s #seconds\n", argv[0]);
         return 1;
@@ -963,19 +963,19 @@ int main(int argc, char *argv[])
     a = format_sec(input);
     printf(a);
     free(a);
-    
+
     return 0;
 }
 
-/* note: must free memory 
+/* note: must free memory
  * after using this function */
 char *format_sec(uintmax_t input)
 {
     int i;
     bool first;
-    uintmax_t weeks, days, hours, mins; 
+    uintmax_t weeks, days, hours, mins;
     /*seconds kept in input*/
-    
+
     char *retval;
     FILE *stream;
     size_t size;
@@ -993,7 +993,7 @@ char *format_sec(uintmax_t input)
     input = input - hour_to_sec(hours);
 
     mins = sec_to_min(input);
-    input = input - min_to_sec(mins); 
+    input = input - min_to_sec(mins);
     /* input now has the remaining seconds */
 
     /* open stream */
@@ -1040,7 +1040,7 @@ uintmax_t sec_to_hour(uintmax_t seconds)
 }
 
 uintmax_t sec_to_min(uintmax_t seconds)
-{ 
+{
     return seconds/60;
 }
 
@@ -1055,12 +1055,12 @@ uintmax_t day_to_sec(uintmax_t days)
 }
 
 uintmax_t hour_to_sec(uintmax_t hours)
-{ 
+{
     return min_to_sec(hours*60);
 }
 
 uintmax_t min_to_sec(uintmax_t minutes)
-{ 
+{
     return minutes*60;
 }
 
@@ -1072,7 +1072,7 @@ uintmax_t min_to_sec(uintmax_t minutes)
 ```txt
 
 Number entered: 7259
-2 hr, 59 sec 
+2 hr, 59 sec
 
 Number entered: 86400
 1 d
@@ -1084,14 +1084,14 @@ Number entered: 6000000
 
 
 
-## C sharp
+## C#
 
 
 
 ### C#: Standard method
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1109,19 +1109,19 @@ namespace ConvertSecondsToCompoundDuration
 
         if ( !isValid     ) { Console.Error.WriteLine( "ERROR: Not an integer: {0}"           , arg ) ; }
         if ( duration < 0 ) { Console.Error.WriteLine( "ERROR: duration must be non-negative" , arg ) ; }
-        
+
         Console.WriteLine();
         Console.WriteLine( "{0:#,##0} seconds ==> {1}" , duration , FormatAsDuration(duration) ) ;
-        
+
       }
     }
-    
+
     private static string FormatAsDuration( int duration )
     {
       if ( duration < 0 ) throw new ArgumentOutOfRangeException("duration") ;
       return string.Join( ", " , GetDurationParts(duration)  ) ;
     }
-    
+
     private static IEnumerable<string> GetDurationParts( int duration )
     {
       var parts = new[]
@@ -1132,17 +1132,17 @@ namespace ConvertSecondsToCompoundDuration
         new { Name="m"  , Length =         60*1 , } ,
         new { Name="s"  , Length =            1 , } ,
       } ;
-      
+
       foreach ( var part in parts )
       {
         int n = Math.DivRem( duration , part.Length , out duration ) ;
         if ( n > 0 ) yield return string.Format( "{0} {1}" , n , part.Name ) ;
       }
-      
+
     }
-    
+
   }
-  
+
 }
 ```
 
@@ -1168,7 +1168,7 @@ namespace ConvertSecondsToCompoundDuration
 {{libheader|System.Linq}}
 {{works with|C sharp|6}}
 
-```csharp
+```c#
 private static string ConvertToCompoundDuration(int seconds)
 {
     if (seconds < 0) throw new ArgumentOutOfRangeException(nameof(seconds));
@@ -1533,7 +1533,7 @@ defmodule Convert do
   @day    @hour*24
   @week   @day*7
   @divisor [@week, @day, @hour, @minute, 1]
-  
+
   def sec_to_str(sec) do
     {_, [s, m, h, d, w]} =
         Enum.reduce(@divisor, {sec,[]}, fn divisor,{n,acc} ->
@@ -1567,9 +1567,9 @@ end)
 
 {{trans|Haskell}}
 
-Function ''mapaccumr/3'' is adapted from  [http://lpaste.net/edit/47875 here]. 
+Function ''mapaccumr/3'' is adapted from  [http://lpaste.net/edit/47875 here].
 
-Function ''intercalate/2'' is copied from  [https://github.com/tim/erlang-oauth/blob/master/src/oauth.erl a Tim Fletcher's GitHub repository]. 
+Function ''intercalate/2'' is copied from  [https://github.com/tim/erlang-oauth/blob/master/src/oauth.erl a Tim Fletcher's GitHub repository].
 
 
 ```erlang
@@ -1585,39 +1585,39 @@ test() ->
 convert(Seconds) ->
 	io:format(
 		"~7s seconds = ~s\n",
-		[integer_to_list(Seconds), compoundDuration(Seconds)] ). 
+		[integer_to_list(Seconds), compoundDuration(Seconds)] ).
 
 % Compound duration of t seconds.  The argument is assumed to be positive.
 compoundDuration(Seconds) ->
 	intercalate(
-		", ", 
+		", ",
 		lists:map(
 			fun({D,L}) -> io_lib:format("~p ~s",[D, L]) end,
 			compdurs(Seconds) ) ).
 
 % Time broken down into non-zero durations and their labels.
 compdurs(T) ->
-	Ds = 
+	Ds =
 		reduceBy(
-			T, 
+			T,
 			lists:map(
-				fun(Dl) -> element(1,Dl) end, 
+				fun(Dl) -> element(1,Dl) end,
 				tl(durLabs()) ) ),
 	lists:filter(
 			fun(Dl) -> element(1,Dl) /= 0 end,
 			lists:zip(
-				Ds, 
+				Ds,
 				lists:map(
-					fun(Dl) -> element(2,Dl) end, 
+					fun(Dl) -> element(2,Dl) end,
 					durLabs() ) ) ).
 
 % Duration/label pairs.
 durLabs() ->
 	[
-		{undefined, "wk"}, 
-		{7, "d"}, 
-		{24, "hr"}, 
-		{60, "min"}, 
+		{undefined, "wk"},
+		{7, "d"},
+		{24, "hr"},
+		{60, "min"},
 		{60, "sec"}
 	].
 
@@ -1632,16 +1632,16 @@ quotRem(X1, X2) ->
 % Adapted from http://lpaste.net/edit/47875
 % **************************************************
 
-mapaccuml(_,I,[]) -> 
+mapaccuml(_,I,[]) ->
 	{I, []};
-mapaccuml(F,I,[H|T]) -> 
-	{Accum, NH} = F(I,H), 
+mapaccuml(F,I,[H|T]) ->
+	{Accum, NH} = F(I,H),
 	{FAccum, NT} = mapaccuml(F,Accum,T),
 	{FAccum, [NH | NT]}.
 
-mapaccumr(_,I,[]) -> 
+mapaccumr(_,I,[]) ->
 	{I, []};
-mapaccumr(F,I,L) -> 
+mapaccumr(F,I,L) ->
 	{Acc, Ys} = mapaccuml(F,I,lists:reverse(L)),
 	{Acc, lists:reverse(Ys)}.
 
@@ -1689,7 +1689,7 @@ let convert seconds =
     let parts =
         [(wk, "wk"); (day, "day"); (span.Hours, "hr"); (span.Minutes, "min"); (span.Seconds, "sec")]
     let result =
-        List.foldBack (fun (n, u) acc -> 
+        List.foldBack (fun (n, u) acc ->
                     (if n > 0 then n.ToString() + " " + u else "")
                     + (if n > 0 && acc.Length > 0 then ", " else "")
                     + acc
@@ -1697,7 +1697,7 @@ let convert seconds =
     if result.Length > 0 then result else "0 sec"
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     argv
     |> Seq.map (fun str -> let sec = UInt32.Parse str in (sec, convert sec))
     |> Seq.iter (fun (s, v) -> printfn "%10i = %s" s v)
@@ -1728,10 +1728,10 @@ CONSTANT: units qw{ wk d hr min sec }
 : convert ( seconds -- {wk,d,hr,min,sec} )
     60 /mod swap 60 /mod swap 24 /mod swap 7 /mod swap
     5 narray reverse ;
-    
+
 : .compound ( n -- ) convert [ number>string ] map units zip
 [ first "0" = not ] filter [ " " join ] map ", " join print ;
-    
+
 { 7259 86400 6000000 } [ .compound ] each
 ```
 
@@ -1752,7 +1752,7 @@ CONSTANT: units qw{ wk d hr min sec }
 {{works with|Gforth|0.7.3}}
 
 ```Forth
-CREATE C 0 ,    
+CREATE C 0 ,
 : .,   C @ IF ." , " THEN  1 C ! ;
 : .TIME ( n --)
    [ 60 60 24 7 * * * ]L /MOD ?DUP-IF ., . ." wk" THEN
@@ -1854,7 +1854,7 @@ Sub Show(m As Long)
                 m=m-c(n)
             Loop Until m<c(n)
         End If
-    Next n 
+    Next n
     For n As Long=1 To Ubound(s)
         For m As Long=1 To 5
             If s(n)=c(m) Then b(m)+=1
@@ -1862,7 +1862,7 @@ Sub Show(m As Long)
     Next n
     Print m2;" seconds = ";
     For n As Long=1 To 5
-        If b(n) Then: comma=Iif(n<5 Andalso b(n+1),","," and"):flag+=1 
+        If b(n) Then: comma=Iif(n<5 Andalso b(n+1),","," and"):flag+=1
         If flag=1 Then comma=""
         Print comma;b(n);g(n);
     End If
@@ -2193,7 +2193,7 @@ public class CompoundDuration {
     // angloDuration :: Int -> String
     function angloDuration(intSeconds) {
         return zip(
-                weekParts(intSeconds), 
+                weekParts(intSeconds),
                 ['wk', 'd', 'hr', 'min','sec']
             )
             .reduce(function (a, x) {
@@ -2203,8 +2203,8 @@ public class CompoundDuration {
             }, [])
             .join(', ');
     }
-    
-    
+
+
 
     // weekParts :: Int -> [Int]
     function weekParts(intSeconds) {
@@ -2224,7 +2224,7 @@ public class CompoundDuration {
             })
             .parts
     }
-    
+
     // GENERIC ZIP
 
     // zip :: [a] -> [b] -> [(a,b)]
@@ -2235,7 +2235,7 @@ public class CompoundDuration {
             })
         ) : undefined;
     }
-    
+
     // TEST
 
     return [7259, 86400, 6000000]
@@ -2476,7 +2476,7 @@ select case years
 end select
 select case weeks
     case 0
-    case 1  
+    case 1
         if years then
             if LastFound$="weeks" then print " and "; else print ", ";
         end if
@@ -2489,7 +2489,7 @@ select case weeks
 end select
 select case days
     case 0
-    case 1  
+    case 1
         if years or weeks then
             if LastFound$="days" then print " and "; else print ", ";
         end if
@@ -2502,7 +2502,7 @@ select case days
 end select
 select case hours
     case 0
-    case 1  
+    case 1
         if years or weeks or days then
             if LastFound$="hours" then print " and "; else print ", ";
         end if
@@ -2515,7 +2515,7 @@ select case hours
 end select
 select case minutes
     case 0
-    case 1  
+    case 1
         if years or weeks or days or hours then
             if LastFound$="minutes" then print " and "; else print ", ";
         end if
@@ -2528,7 +2528,7 @@ select case minutes
 end select
 select case seconds
     case 0
-    case 1  
+    case 1
         if years or weeks or days or hours or minutes then
             if LastFound$="seconds" then print " and "; else print ", ";
         end if
@@ -2575,7 +2575,7 @@ function duration (secs)
             secs = secs % v
         end
     end
-    if secs == 0 then 
+    if secs == 0 then
         return dur:sub(1, -3)
     else
         return dur .. secs .. " sec"
@@ -2599,8 +2599,8 @@ tim := proc (s) local weeks, days, hours, minutes, seconds;
  days := trunc((1/86400)*s)-7*weeks;
  hours := trunc((1/3600)*s)-24*days-168*weeks;
  minutes := trunc((1/60)*s)-60*hours-1440*days-10080*weeks;
- seconds := s-60*minutes-3600*hours-86400*days-604800*weeks; 
-printf("%s", cat(`if`(0 < weeks, cat(weeks, "wk, "), NULL), `if`(0 < days, cat(days, "d, "), NULL), `if`(0 < hours, cat(hours, "hr, "), NULL), `if`(0 < minutes, cat(minutes, "min, "), NULL), `if`(0 < seconds, cat(seconds, "sec"), NULL))) 
+ seconds := s-60*minutes-3600*hours-86400*days-604800*weeks;
+printf("%s", cat(`if`(0 < weeks, cat(weeks, "wk, "), NULL), `if`(0 < days, cat(days, "d, "), NULL), `if`(0 < hours, cat(hours, "hr, "), NULL), `if`(0 < minutes, cat(minutes, "min, "), NULL), `if`(0 < seconds, cat(seconds, "sec"), NULL)))
 end proc;
 
 ```
@@ -2612,17 +2612,17 @@ end proc;
 
 ```Mathematica
 
-compoundDuration[x_Integer] := 
+compoundDuration[x_Integer] :=
  StringJoin @@ (Riffle[
-     ToString /@ ((({Floor[x/604800], 
-             Mod[x, 604800]} /. {a_, b_} -> {a, Floor[b/86400], 
-              Mod[b, 86400]}) /. {a__, b_} -> {a, Floor[b/3600], 
-            Mod[b, 3600]}) /. {a__, b_} -> {a, Floor[b/60], 
-          Mod[b, 60]}), {" wk, ", " d, ", " hr, ", " min, ", 
+     ToString /@ ((({Floor[x/604800],
+             Mod[x, 604800]} /. {a_, b_} -> {a, Floor[b/86400],
+              Mod[b, 86400]}) /. {a__, b_} -> {a, Floor[b/3600],
+            Mod[b, 3600]}) /. {a__, b_} -> {a, Floor[b/60],
+          Mod[b, 60]}), {" wk, ", " d, ", " hr, ", " min, ",
       " sec"}] //. {a___, "0", b_, c___} -> {a, c})
 
-Grid[Table[{n, "secs =", 
-   compoundDuration[n]}, {n, {7259, 86400, 6000000}}], 
+Grid[Table[{n, "secs =",
+   compoundDuration[n]}, {n, {7259, 86400, 6000000}}],
  Alignment -> {Left, Baseline}]
 
 
@@ -2634,8 +2634,8 @@ Grid[Table[{n, "secs =",
 ```txt
 
 7259	secs =	2 hr, 59 sec
-86400	secs =	1 d, 
-6000000	secs =	9 wk, 6 d, 10 hr, 40 min, 
+86400	secs =	1 d,
+6000000	secs =	9 wk, 6 d, 10 hr, 40 min,
 
 ```
 
@@ -2696,7 +2696,7 @@ let pretty_print dur =
  * Not sure what to do with 0... *)
 let compound = function
   | n when n > 0 -> compute_duration n |> pretty_print
-  | n when n = 0 -> string_of_int 0 ^ "..." 
+  | n when n = 0 -> string_of_int 0 ^ "..."
   | _ -> invalid_arg "Number of seconds must be positive"
 
 
@@ -2757,7 +2757,7 @@ print(secs2compdur(6000000));
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -2780,7 +2780,7 @@ print(secs2compdur(6000000));
 sub compound_duration {
     my $sec = shift;
     no warnings 'numeric';
-    
+
     return join ', ', grep { $_ > 0 }
         int($sec/60/60/24/7)    . " wk",
         int($sec/60/60/24) % 7  . " d",
@@ -3084,7 +3084,7 @@ function Get-Time
             'Time' { $timeSpan = New-TimeSpan -Days $Days -Hours $Hours -Minutes $Minutes -Seconds $Seconds }
         }
 
-        $weeks = [System.Math]::DivRem($timeSpan.Days, 7, [ref]$remainingDays)        
+        $weeks = [System.Math]::DivRem($timeSpan.Days, 7, [ref]$remainingDays)
 
         $timeObject.Weeks             = $weeks
         $timeObject.RemainingDays     = $remainingDays
@@ -3248,31 +3248,31 @@ Procedure.s ConvertSeconds(NbSeconds)
   divisor / 60 ; seconds in a minute
   minutes = remainder / divisor
   seconds = remainder % divisor
-  
+
   If weeks > 0
     duration$ + Str(weeks) + " wk, "
   EndIf
-  
+
   If days > 0
     duration$ + Str(days) + " d, "
   EndIf
-  
+
   If hours > 0
     duration$ + Str(hours) + " hr, "
   EndIf
-  
+
   If minutes > 0
     duration$ + Str(minutes) + " min, "
   EndIf
-  
+
   If seconds > 0
     duration$ + Str(seconds) + " sec"
   EndIf
-  
+
   If Right(duration$, 2) = ", "
     duration$ = Mid(duration$, 0, Len(duration$) - 2)
   EndIf
-  
+
   ProcedureReturn duration$
 EndProcedure
 
@@ -3322,11 +3322,11 @@ EndIf
 >>> for seconds in [7259, 86400, 6000000]:
 	print("%7d sec = %s" % (seconds, duration(seconds)))
 
-	
+
    7259 sec = 2 hr, 59 sec
   86400 sec = 1 d
 6000000 sec = 9 wk, 6 d, 10 hr, 40 min
->>> 
+>>>
 ```
 
 
@@ -3338,8 +3338,8 @@ EndIf
  def duration(seconds, _maxweeks=99999999999):
     return ', '.join('%d %s' % (num, unit)
 		     for num, unit in zip([(seconds // d) % m
-					   for d, m in ((604800, _maxweeks), 
-                                                        (86400, 7), (3600, 24), 
+					   for d, m in ((604800, _maxweeks),
+                                                        (86400, 7), (3600, 24),
                                                         (60, 60), (1, 60))],
 					  ['wk', 'd', 'hr', 'min', 'sec'])
 		     if num)
@@ -3347,15 +3347,15 @@ EndIf
 >>> for seconds in [7259, 86400, 6000000]:
 	print("%7d sec = %s" % (seconds, duration(seconds)))
 
-	
+
    7259 sec = 2 hr, 59 sec
   86400 sec = 1 d
 6000000 sec = 9 wk, 6 d, 10 hr, 40 min
->>> 
+>>>
 ```
 
 
-Or, composing a solution from pure curried functions, including the '''mapAccumL''' abstraction (a combination of of '''map''' and '''reduce''', implemented in a variety of languages and functional libraries, in which a new list is derived by repeated application of the same function, as an accumulator (here, a remainder) passes from left to right): 
+Or, composing a solution from pure curried functions, including the '''mapAccumL''' abstraction (a combination of of '''map''' and '''reduce''', implemented in a variety of languages and functional libraries, in which a new list is derived by repeated application of the same function, as an accumulator (here, a remainder) passes from left to right):
 
 
 ```python
@@ -3478,7 +3478,7 @@ if __name__ == '__main__':
   (check-equal? (seconds->compound-durations 7259)    (list 0 0  2  0 59))
   (check-equal? (seconds->compound-durations 86400)   (list 0 1  0  0  0))
   (check-equal? (seconds->compound-durations 6000000) (list 9 6 10 40  0))
-  
+
   (check-equal? (seconds->compound-duration-string 7259)    "2 hr, 59 sec")
   (check-equal? (seconds->compound-duration-string 86400)   "1 d")
   (check-equal? (seconds->compound-duration-string 6000000) "9 wk, 6 d, 10 hr, 40 min"))
@@ -3554,7 +3554,7 @@ split: Procedure
 9 wk, 6 d, 10 hr, 40 min
 2 min, 3.5 sec
 2 min, 3 sec
-0 sec        
+0 sec
 ```
 
 
@@ -3615,14 +3615,14 @@ timeU:   parse arg u,$;   _= x%u;   if _==0  then return '';   x= x - _*u;   ret
 
 sec = 6000005
 week = floor(sec/60/60/24/7)
-if week > 0 see sec 
+if week > 0 see sec
    see " seconds is " + week + " weeks " ok
 day = floor(sec/60/60/24) % 7
 if day > 0 see day
-   see " days " ok 
+   see " days " ok
 hour = floor(sec/60/60) % 24
 if hour > 0 see hour
-   see " hours " ok 
+   see " hours " ok
 minute = floor(sec/60) % 60
 if minute > 0 see minute
    see " minutes " ok
@@ -3678,9 +3678,9 @@ hour	= int(sec/60/60) mod 24
 minute	= int(sec/60) mod 60
 second	= sec mod 60
 
-print sec;" seconds is "; 
+print sec;" seconds is ";
 if week > 0 then print week;" weeks ";
-if day > 0 then print day;" days "; 
+if day > 0 then print day;" days ";
 if hour > 0 then print hour;" hours ";
 if minute > 0 then print minute;" minutes ";
 if second > 0 then print second;" seconds"
@@ -3728,7 +3728,7 @@ impl CompoundTime {
 
 impl fmt::Display for CompoundTime {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}w {}d {}h {}m {}s", 
+        write!(f, "{}w {}d {}h {}m {}s",
                self.w, self.d, self.h, self.m, self.s)
     }
 }
@@ -3751,24 +3751,24 @@ fn main() {
 
 object seconds{
 	def main( args:Array[String] ){
-		
+
 		println("Enter the no.")
 		val input = scala.io.StdIn.readInt()
-		
+
 		var week_r:Int = input % 604800
 		var week:Int = (input - week_r)/604800
-		
+
 		var day_r:Int = week_r % 86400
 		var day:Int = (week_r - day_r)/86400
-		
+
 		var hour_r:Int = day_r % 3600
 		var hour:Int = (day_r - hour_r)/3600
-		
+
 		var minute_r:Int = hour_r % 60
 		var minute:Int = (hour_r - minute_r)/60
-		
+
 		var sec:Int = minute_r % 60
-		
+
 		println("Week = " + week)
 		println("Day = " + day)
 		println("Hour = " + hour)
@@ -3808,10 +3808,10 @@ This version uses delete from SRFI 1 and string-join from SRFI 13:
                 ((hours hr-remainder) (floor/ dy-remainder *seconds-in-hour*))
                 ((minutes mn-remainder) (floor/ hr-remainder *seconds-in-minute*)))
                (string-join (delete ""
-                                    (list (format weeks "wk") 
-                                          (format days "d") 
-                                          (format hours "hr") 
-                                          (format minutes "min") 
+                                    (list (format weeks "wk")
+                                          (format days "d")
+                                          (format hours "hr")
+                                          (format minutes "min")
                                           (format mn-remainder "sec"))
                                     string=?) ", ")))
 
@@ -4160,7 +4160,7 @@ foreach s in (T(7259,86400,6000000)){
 180 IF s$<>"" THEN IF s$(LEN s$-1)="," THEN LET s$=s$( TO LEN s$-2)
 190 PRINT s$
 200 NEXT i
-210 STOP 
+210 STOP
 220 DEF FN m(a,b)=a-INT (a/b)*b
 ```
 

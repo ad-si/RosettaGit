@@ -546,11 +546,11 @@ denom <= 16777216: 47627751/15160384
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{trans|C}}
 
-```csharp
+```c#
 using System;
 using System.Text;
 

@@ -13,7 +13,7 @@ tags = []
 {{task|Object oriented}}
 
 ;Task:
-Invoke an object method where the name of the method to be invoked can be generated at run time. 
+Invoke an object method where the name of the method to be invoked can be generated at run time.
 
 
 ;Related tasks:
@@ -86,9 +86,9 @@ The sea
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 class Example
@@ -105,7 +105,7 @@ class Program
     {
         var example = new Example();
         var method = "foo";
-        
+
         var result = (int)example.GetType().GetMethod(method).Invoke(example, new object[]{ 5 });
         Console.WriteLine("{0}(5) = {1}", method, result);
     }
@@ -197,21 +197,21 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 class Example
 {
     foo(x)
         = x + 42;
 }
- 
+
 public program()
 {
     var example := new Example();
     var methodSignature := "foo";
- 
+
     var invoker := new MessageName(methodSignature);
     var result := invoker(example,5);
- 
+
     console.printLine(methodSignature,"(",5,") = ",result)
 }
 ```
@@ -264,9 +264,9 @@ var x  \ instantiate a class var object named x
 
 \ Use a standard Forth string and evaluate it.
 \ This is equivalent to sending the !: message to object x
-42 x  s" !:"  evaluate  
+42 x  s" !:"  evaluate
 
-x p: 42     \ send the print message ( p: ) to x to verify the contents 
+x p: 42     \ send the print message ( p: ) to x to verify the contents
 
 
 ```
@@ -360,7 +360,7 @@ Example clone perform(name,5) println  // prints "47"
 ## J
 
 
-'''Solution''': There are multiple ways to evoke code at runtime. The most common is '''<tt>". y</tt>''' (''eval''uate the code in the string y, producing a noun), but there's also <tt>'name'~ </tt> (which will modify J's stack by replacing the two tokens '''<tt>'name'</tt>''' and <tt>~</tt> with the named object) as well as '''<tt>x 128!:2 y</tt>''' (''apply'' the verb described by <tt>x</tt> to the noun <tt>y</tt>).  
+'''Solution''': There are multiple ways to evoke code at runtime. The most common is '''<tt>". y</tt>''' (''eval''uate the code in the string y, producing a noun), but there's also <tt>'name'~ </tt> (which will modify J's stack by replacing the two tokens '''<tt>'name'</tt>''' and <tt>~</tt> with the named object) as well as '''<tt>x 128!:2 y</tt>''' (''apply'' the verb described by <tt>x</tt> to the noun <tt>y</tt>).
 
 There are other methods as well, e.g., '''<tt>@.</tt>''','''<tt>`:</tt>''', and '''<tt>^:</tt>''', though these are designed to consume gerunds (pre-parsed ASTs) rather than strings (though, of course, a pre-processor can always be provided to convert strings into ASTs before feeding them to these operators).
 
@@ -483,7 +483,7 @@ fun main(args: Array<String>) {
 
 ```txt
 
-foo called 
+foo called
 
 ```
 
@@ -628,7 +628,7 @@ int main (int argc, const char *argv[]) {
     id example = [[Example alloc] init];
     SEL selector = @selector(foo); // or = NSSelectorFromString(@"foo");
     NSLog(@"%@", [example performSelector:selector]);
-  
+
   }
   return 0;
 }
@@ -646,13 +646,13 @@ A method object can be retrieved from its name using asMethod.
 16 "sqrt" asMethod perform
 ```
 
-   
-Others : 
+
+Others :
    asFuntion  : retrieve a function
    asClass    : retrieve a class
    asProperty : retrieve a property
 
-A generic way to search a word into the dictionary in to use find method : 
+A generic way to search a word into the dictionary in to use find method :
 
 ```Oforth
 16 "sqrt" Word find perform
@@ -834,7 +834,7 @@ getattr(Example(), name)(5)      # => 47
 
 ```racket
 
-#lang racket 
+#lang racket
 (define greeter
   (new (class object% (super-new)
          (define/public (hello name)

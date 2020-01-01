@@ -613,10 +613,10 @@ result: 'BarBaz'
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 
 namespace TextBetween {

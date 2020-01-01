@@ -683,11 +683,11 @@ Original word order reversed : reversal phrase code rosetta
 
 
 
-## C sharp
+## C#
 
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 namespace ConsoleApplication

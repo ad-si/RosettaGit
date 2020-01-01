@@ -381,7 +381,7 @@ Run it:
  ./helloworld
 
 
-=={{header|C sharp|C#}}==
+## C#
 C# is an ECMA-standardized language with open-source implementations, though development of the language is dominated by Microsoft.  C# compilers and IDEs are available on most operating systems.
 
 

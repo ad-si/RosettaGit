@@ -236,9 +236,9 @@ After update:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System.Data.Sql;
 using System.Data.SqlClient;
 

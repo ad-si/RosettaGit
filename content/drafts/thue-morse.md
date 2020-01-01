@@ -546,7 +546,7 @@ int main( int argc, char* argv[] ) {
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 using System.Text;
 

@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Object oriented}}
-A Global Singleton is a class of which only one instance exists within a program. 
+A Global Singleton is a class of which only one instance exists within a program.
 
 Any attempt to use non-static members of the class involves performing operations on this one instance.
 
@@ -29,11 +29,11 @@ package
     {
 
         private static var instance:Singleton;
-        
+
         // ActionScript does not allow private or protected constructors.
         public function Singleton(enforcer:SingletonEnforcer) {
-        
-        }    
+
+        }
 
         public static function getInstance():Singleton {
             if (instance == null) instance = new Singleton(new SingletonEnforcer());
@@ -180,13 +180,13 @@ msgbox % "b1.datum is b2.datum ? " (b1.datum == b2.datum)
 return
 
 
-borg(){ 
+borg(){
    static borg
-   If !borg 
+   If !borg
       borg := Object("__Set", "Borg_Set"
                    , "__Get", "Borg_Get")
    return object(1, borg, "base", borg)
-} 
+}
 
 
 Borg_Get(brg, name)
@@ -277,8 +277,8 @@ class singleton
 protected:
 	static Self*
 		sentry;
-public:	
-	static Self& 
+public:
+	static Self&
 		instance()
 	{
 		return *sentry;
@@ -296,7 +296,7 @@ public:
 	}
 };
 template <typename Self>
-Self* 
+Self*
 	singleton<Self>::sentry = 0;
 
 /*
@@ -306,7 +306,7 @@ Self*
 #include <iostream>
 #include <string>
 
-using namespace 
+using namespace
 	std;
 
 class controller : public singleton<controller>
@@ -343,7 +343,7 @@ int
 	delete first;
 /*
 	No problem, our first controller no longer exists...
-*/	
+*/
 	controller
 		second("second");
 	controller::instance().work();
@@ -358,7 +358,7 @@ int
 	}
 	catch(exception const& error)
 	{
-		cout << error.what() << endl; 
+		cout << error.what() << endl;
 	}
 	controller::instance().work();
 /*
@@ -372,17 +372,17 @@ int
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 ===First attempt at thread-safety using locking.===
 Performance suffers because the lock is acquired every time Instance is accessed.<br />
 This implementation is extremely slow and should not be used (but is seen often).
 
-```csharp
+```c#
 public sealed class Singleton1 //Lazy: Yes ||| Thread-safe: Yes ||| Uses locking: Yes
 {
     private static Singleton1 instance;
     private static readonly object lockObj = new object();
-    
+
     public static Singleton1 Instance {
         get {
             lock(lockObj) {
@@ -400,7 +400,7 @@ public sealed class Singleton1 //Lazy: Yes ||| Thread-safe: Yes ||| Uses locking
 ===Fixes excessive locking by double-checking for null.===
 Still uses locking and implementation is ugly and verbose.
 
-```csharp
+```c#
 public sealed class Singleton2 //Lazy: Yes ||| Thread-safe: Yes ||| Uses locking: Yes, but only once
 {
     private static Singleton2 instance;
@@ -427,11 +427,11 @@ public sealed class Singleton2 //Lazy: Yes ||| Thread-safe: Yes ||| Uses locking
 
 It still is not completely lazy. If there are other static members, accessing any of those will still cause initialization.
 
-```csharp
+```c#
 public sealed class Singleton3 //Lazy: Yes, but not completely ||| Thread-safe: Yes ||| Uses locking: No
 {
     private static Singleton3 Instance { get; } = new Singleton3();
-    
+
     static Singleton3() { }
 }
 ```
@@ -442,15 +442,15 @@ public sealed class Singleton3 //Lazy: Yes, but not completely ||| Thread-safe: 
 
 This version is completely lazy but the code looks more complicated than it needs to be.
 
-```csharp
+```c#
 public sealed class Singleton4 //Lazy: Yes ||| Thread-safe: Yes ||| Uses locking: No
 {
     public static Singleton4 Instance => SingletonHolder.instance;
-    
+
     private class SingletonHolder
     {
         static SingletonHolder() { }
-        
+
         internal static readonly Singleton4 instance = new Singleton4();
     }
 }
@@ -463,11 +463,11 @@ public sealed class Singleton4 //Lazy: Yes ||| Thread-safe: Yes ||| Uses locking
 C# has a dedicated type for lazy initialization: Lazy<T>.<br />
 It makes implementing a Singleton really easy. Recommended.
 
-```csharp
+```c#
 public sealed class Singleton5 //Lazy: Yes ||| Thread-safe: Yes ||| Uses locking: No
 {
     private static readonly Lazy<Singleton5> lazy = new Lazy<Singleton5>(() => new Singleton5());
-    
+
     public static Singleton5 Instance => lazy.Value;
 }
 ```
@@ -480,24 +480,24 @@ In Caché, each job runs in a self-contained execution environment (i.e. a separ
 
 ```cos
 
-/// The <CLASS>Singleton</CLASS> class represents a global singleton object that can 
-/// be instantiated by multiple processes.  The 'Get' class method is used to obtain 
+/// The <CLASS>Singleton</CLASS> class represents a global singleton object that can
+/// be instantiated by multiple processes.  The 'Get' class method is used to obtain
 /// an in-memory object reference and the 'Set' method is used to save any changes to
 /// state.  See below for an example.
-/// 
+///
 /// <EXAMPLE>
 /// Set one=##class(Singleton).Get(,.sc)
 /// Set one.GlobalProperty="Some Value"
 /// Set sc=one.Set()
 /// </EXAMPLE>
-/// 
+///
 /// This class can also be extended.
 Class User.Singleton Extends %SerialObject
 {
 
 Property GlobalProperty As %String;
 
-/// Refer to <LINK href=/AboutConcurrency.html>About Concurrency</LINK> for more details 
+/// Refer to <LINK href=/AboutConcurrency.html>About Concurrency</LINK> for more details
 /// on the optional <var>pConcurrency</var> argument.
 ClassMethod Get(pConcurrency As %Integer = -1, Output pStatus As %Status = {$$$OK}) As Singleton [ Final ]
 {
@@ -508,14 +508,14 @@ ClassMethod Get(pConcurrency As %Integer = -1, Output pStatus As %Status = {$$$O
 		If oRef.%ClassName(1) = ..%ClassName(1) Quit
 	}
 	If $IsObject(oRef) Quit oRef
-	
+
 	// determine what lock needs to be applied
 	If '$IsValidNum(pConcurrency, 0, -1, 4) {
 		Set pStatus = $$$ERROR($$$LockTypeInvalid, pConcurrency)
 		Quit $$$NULLOREF
 	}
 	If pConcurrency = -1 Set pConcurrency = $Xecute("Quit "_..#DEFAULTCONCURRENCY)
-	
+
 	// acquire lock for global singleton object
 	Set lockTO = $ZUtil(115,4), lockOK = 1
 	If pConcurrency<4, pConcurrency {
@@ -531,17 +531,17 @@ ClassMethod Get(pConcurrency As %Integer = -1, Output pStatus As %Status = {$$$O
 		}
 		Quit $$$NULLOREF
 	}
-	
+
 	// retrieve global singleton object and deserialise
 	Set oId = $Get(^CacheTempUser("Singleton", ..%ClassName(1)))
 	Set oRef = ..%Open(oId)  //,, .pStatus)
 	If '$IsObject(oRef) Set pStatus = $$$ERROR($$$GeneralError, "Failed to load singleton object.")
-	
+
 	// release temporary lock
 	If (pConcurrency = 1) || (pConcurrency = 2) {
 		Lock -^CacheTempUser("Singleton", ..%ClassName(1))#"S"
 	}
-	
+
 	// singleton object failed to load
 	If $$$ISERR(pStatus) {
 		// release retained lock
@@ -553,7 +553,7 @@ ClassMethod Get(pConcurrency As %Integer = -1, Output pStatus As %Status = {$$$O
 		}
 		Quit $$$NULLOREF
 	}
-	
+
 	// store concurrency state and return in-memory object reference
 	Set oRef.Concurrency = pConcurrency
 	Quit oRef
@@ -569,16 +569,16 @@ Method Set() As %Status [ Final ]
 		Set ..Version = ..Version + 1
 	} Else {
 		Quit $$$ERROR($$$ConcurrencyVersionMismatch, ..%ClassName(1))
-	}		
-	
+	}
+
 	// serialise local singleton object and check status code
 	Set sc = ..%GetSwizzleObject(,.oId) If $$$ISERR(sc) Quit sc
-	
+
 	// acquire exclusive lock on global singleton object
 	Set lockTO = $ZUtil(115,4)
 	Lock +^CacheTempUser("Singleton", ..%ClassName(1)):lockTO
 	If '$Test Quit $$$ERROR($$$LockFailedToAcquireExclusive, ..%ClassName(1))
-		
+
 	// update global singleton object and release lock
 	Set ^CacheTempUser("Singleton", ..%ClassName(1)) = oId
 	Lock -^CacheTempUser("Singleton", ..%ClassName(1))
@@ -680,14 +680,14 @@ class Dealer {
     writefln("   Calling Dealer... ") ;
     if(me is null) // Double Checked Lock
       synchronized  // this part of code can only be executed by one thread a time
-        if(me is null) 
-          me = new Dealer ;     
+        if(me is null)
+          me = new Dealer ;
     return me ;
   }
   private static string[] str = ["(1)Enjoy", "(2)Rosetta", "(3)Code"] ;
   private int state ;
-  private this() { 
-    for(int i = 0 ; i < 3 ; i++) { 
+  private this() {
+    for(int i = 0 ; i < 3 ; i++) {
       writefln("...calling Dealer... ") ;
       msleep(rand() & 2047) ;
     }
@@ -699,7 +699,7 @@ class Dealer {
       state = (state + 1) % str.length ;
     return this ;
   }
-  string toString() { return str[state] ; }   
+  string toString() { return str[state] ; }
 }
 
 class Coder : Thread {
@@ -718,16 +718,16 @@ class Coder : Thread {
   }
 }
 
-void main() { 
-  Coder x = new Coder ; 
-  Coder y = new Coder ; 
-  Coder z = new Coder ; 
-  
+void main() {
+  Coder x = new Coder ;
+  Coder y = new Coder ;
+  Coder z = new Coder ;
+
   x.hasName("Peter").start() ;
   y.hasName("Paul").start() ;
-  z.hasName("Mary").start() ; 
+  z.hasName("Mary").start() ;
 
-  x.wait ;  y.wait ;  z.wait ;  
+  x.wait ;  y.wait ;  z.wait ;
 }
 ```
 
@@ -869,7 +869,7 @@ singleton Singleton
 
 ```
 
-Normal singleton 
+Normal singleton
 
 ```elena
 class Singleton
@@ -892,9 +892,9 @@ Erlang is not object-oriented, so there is no such thing as a singleton class. T
 -module(singleton).
 
 -export([get/0, set/1, start/0]).
- 
+
 -export([loop/1]).
-  
+
 % spec singleton:get() -> {ok, Value::any()} | not_set
 get() ->
      ?MODULE ! {get, self()},
@@ -902,11 +902,11 @@ get() ->
 	{ok, not_set} -> not_set;
         Answer -> Answer
      end.
- 
+
 % spec singleton:set(Value::any()) -> ok
 set(Value) ->
     ?MODULE ! {set, self(), Value},
-    receive 
+    receive
         ok -> ok
     end.
 
@@ -939,7 +939,7 @@ ok
 ok
 5> singleton:get().
 {ok,"Pear"}
-6> singleton:set(42).         
+6> singleton:set(42).
 ok
 7> singleton:get().
 {ok,42}
@@ -973,9 +973,9 @@ http://soton.mpeforth.com/flag/fms/index.html
 
 ```forth
 include FMS-SI.f
- 
+
 \ A singleton is created by using normal Forth data
-\ allocation words such as value or variable as instance variables.  
+\ allocation words such as value or variable as instance variables.
 \ Any number of instances of a singleton class may be
 \ instantiated but messages will all operate on the same shared data
 \ so it is the same as if only one object has been created.
@@ -1452,9 +1452,9 @@ Lasso supports singletons on two levels.
 
 
 ```Lasso
-// Define the thread if it doesn't exist 
+// Define the thread if it doesn't exist
 // New definition supersede any current threads.
- 
+
 not ::serverwide_singleton->istype
 ? define serverwide_singleton => thread {
     data public switch = 'x'
@@ -1858,7 +1858,7 @@ In other words, here the class object serves as the singleton object. The "singl
 
 Oforth does not have global variables, class attributes or some kind of shared mutable memory that can be updated by different tasks.
 
-In Oforth, singleton is an anti-pattern because it needs synchronisation in order to be safe between parallel tasks. 
+In Oforth, singleton is an anti-pattern because it needs synchronisation in order to be safe between parallel tasks.
 
 If the goal is to keep and update a value in a safe way, a channel can be used.
 
@@ -1867,7 +1867,7 @@ For instance, this Sequence class creates instances that increment an integer an
 
 ```Oforth
 Object Class new: Sequence(channel)
-Sequence method: initialize(initialValue) 
+Sequence method: initialize(initialValue)
    Channel newSize(1) := channel
    @channel send(initialValue) drop ;
 
@@ -2109,7 +2109,7 @@ Every instance of the Borg class will share the same state:
 		self.__dict__ = self.__state
 	# Any other class names/methods
 
-	
+
 >>> b1 = Borg()
 >>> b2 = Borg()
 >>> b1 is b2
@@ -2141,13 +2141,13 @@ class Singleton(object):
     Singleton class implementation
     """
     __metaclass__ = abc.ABCMeta
-    
+
     state = 1 #class attribute to be used as the singleton's attribute
-    
+
     @abc.abstractmethod
     def __init__(self):
         pass #this prevents instantiation!
-    
+
     @classmethod
     def printSelf(cls):
         print cls.state #prints out the value of the singleton's state
@@ -2230,22 +2230,22 @@ Thread safe version.
 ```PureBasic
 Global SingletonSemaphore=CreateSemaphore(1)
 
-Interface OO_Interface    ; Interface for any value of this type 
-  Get.i()        
-  Set(Value.i) 
+Interface OO_Interface    ; Interface for any value of this type
+  Get.i()
+  Set(Value.i)
   Destroy()
-EndInterface 
+EndInterface
 
-Structure OO_Structure ; The *VTable structure  
+Structure OO_Structure ; The *VTable structure
   Get.i
   Set.i
   Destroy.i
-EndStructure 
+EndStructure
 
-Structure OO_Var  
+Structure OO_Var
   *VirtualTable.OO_Structure
-  Value.i 
-EndStructure 
+  Value.i
+EndStructure
 
 Procedure OO_Get(*Self.OO_Var)
   ProcedureReturn *Self\Value
@@ -2289,23 +2289,23 @@ Singleton Class Demo
     Name$
     X.i
   EndPrivate
-  
+
   Public Method Init(Name$)
     This\Name$ = Name$
   EndMethod
-  
+
   Public Method GetX()
     MethodReturn This\X
   EndMethod
-  
+
   Public Method SetX(n)
     This\X = n
   EndMethod
-  
+
   Public Method Hello()
     MessageRequester("Hello!", "I'm "+This\Name$)
   EndMethod
-  
+
 EndClass
 ```
 
@@ -2403,7 +2403,7 @@ say s1.name;                #=> 'bar'
 
 ## Slate
 
-Clones of Oddball themselves may not be cloned. 
+Clones of Oddball themselves may not be cloned.
 Methods and slots may still be defined on them:
 
 ```slate
@@ -2533,7 +2533,7 @@ public class Singleton : Object {
 
     // Private constructor
     Singleton() {
-        
+
     }
 
     // Public constructor
@@ -2558,7 +2558,7 @@ void main() {
 
 ## zkl
 
-A class declared static only has one instance, ever. 
+A class declared static only has one instance, ever.
 However, a class with the same name & structure could be created in another scope.
 
 ```zkl

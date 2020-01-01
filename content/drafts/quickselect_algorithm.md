@@ -301,12 +301,12 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Two different implementations - one that returns only one element from the array (Nth smallest element) and
 second implementation that returns IEnumnerable that enumerates through element until Nth smallest element.
 
 
-```csharp
+```c#
 // ----------------------------------------------------------------------------------------------
 //
 //  Program.cs - QuickSelect

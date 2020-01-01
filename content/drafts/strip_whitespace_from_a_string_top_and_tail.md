@@ -589,9 +589,9 @@ Trimmed on the left side :There are unwanted blanks here!
 Trimmed on the right side :    There are unwanted blanks here!
 Trimmed on both sides :There are unwanted blanks here!</PRE>
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 public class TrimExample

@@ -12,11 +12,11 @@ tags = []
 
 {{task|GUI}}{{requires|Graphics}}
 
-The task is to determine the maximum height and width of a window that can fit within the physical display area of the screen without scrolling. 
+The task is to determine the maximum height and width of a window that can fit within the physical display area of the screen without scrolling.
 
-This is effectively the screen size (not the total desktop area, which could be bigger than the screen display area) in pixels minus any adjustments for window decorations and menubars. 
+This is effectively the screen size (not the total desktop area, which could be bigger than the screen display area) in pixels minus any adjustments for window decorations and menubars.
 
-The idea is to determine the physical display parameters for the maximum height and width of the usable display area in pixels (without scrolling). 
+The idea is to determine the physical display parameters for the maximum height and width of the usable display area in pixels (without scrolling).
 
 The values calculated should represent the usable desktop area of a window maximized to fit the the screen.
 
@@ -91,7 +91,7 @@ Loop, %MonitorCount%
     SysGet, MonitorName, MonitorName, %A_Index%
     SysGet, Monitor, Monitor, %A_Index%
     SysGet, MonitorWorkArea, MonitorWorkArea, %A_Index%
-    MsgBox, % "Monitor:`t#" A_Index 
+    MsgBox, % "Monitor:`t#" A_Index
             . "`nName:`t" MonitorName
             . "`nLeft:`t" MonitorLeft "(" MonitorWorkAreaLeft " work)"
             . "`nTop:`t" MonitorTop " (" MonitorWorkAreaTop " work)"
@@ -175,7 +175,7 @@ Dimensions of the screen are (w x h) : 1536 x 864 pixels
 
 
 
-## C sharp
+## C#
 
 {{trans|Visual Basic .NET}}
 '''Compiler:''' Roslyn C# (language version >= 6)
@@ -188,7 +188,7 @@ Must be referenced:
 Bounds are the screen's dimensions; working area is the is the region that excludes "taskbars, docked windows, and docked tool bars" (from Framework documentation).
 
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -218,7 +218,7 @@ Primary screen working area:  1714x1103
 Alternatively, use the dimensions of a borderless form with WindowState set to FormWindowState.Maximized (i.e. a full-screen window that is shown above the taskbar).
 
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -320,9 +320,9 @@ ExternalType Browser type JavaScriptObject{
 }
 
 	function getViewportWidth() returns (int);
-	
+
 	function getViewportHeight() returns (int);
-	
+
 end
 
 ```
@@ -431,13 +431,13 @@ Maximum usable desktop area :  W 1366 x H 728 pixels
 == {{header|Gambas}} ==
 
 
-###  Overview 
+###  Overview
 
 
 In gambas, the trick to determining the maximum window size that will fit on the screen is to create a form that is maximized and then query its dimensions from within a Form_Resize() event. Note that the form can be invisible during this process, and typically we would use the main modal window (FMain in this example).
 
 
-###  Creating the form 
+###  Creating the form
 
 
 From with the project create a form (FMain) with the following properties set:
@@ -464,7 +464,7 @@ END
 
 
 
-###  Adding the form resize event 
+###  Adding the form resize event
 
 
 We can now add a Form_Resize() event to the class file with the necessary code to obtain the screen dimensions as follows:
@@ -472,7 +472,7 @@ We can now add a Form_Resize() event to the class file with the necessary code t
 
 ```gambas
 PUBLIC SUB Form_Resize()
-  PRINT "The maximum window size that can be used without scrolling is "; FMain.Width; " x "; FMain.Height  
+  PRINT "The maximum window size that can be used without scrolling is "; FMain.Width; " x "; FMain.Height
 END
 ```
 
@@ -728,7 +728,7 @@ destroy(win)
 
 ```
 
-{{output}} 
+{{output}}
 ```txt
 
 1920 1080
@@ -829,7 +829,7 @@ Module CheckAllMonitors {
       For i=0 to Len(Scrx())-1 {
             Print "Monitor:", i, "left top (";ScrLeft(i);",";ScrTop(i);") size: (";Scrx(i);",";ScrY(i);")"
       }
-      
+
       A=ScrLeft(0)
       B=ScrTop(0)
       LeftMargin=A
@@ -856,13 +856,13 @@ Module CheckAllMonitors {
       Print "Width, Height", RightMargin-LeftMargin, BottomMargin-TopMargin
       Declare Form1 Form
       \\ After 100ms Form1 expand to all monitors
-      After 100  { 
+      After 100  {
             Method Form1,"Move", LeftMargin, TopMargin, RightMargin-LeftMargin, BottomMargin-TopMargin
       }
       \\ After 2000-100ms Form1 move to montior ChooseMonitor,  and has same width and height
       After 2000 {
                   Try {
-                        Method Form1,"Move", ScrLeft(ChooseMonitor),ScrTop(ChooseMonitor), Scrx(ChooseMonitor), Scry(ChooseMonitor) 
+                        Method Form1,"Move", ScrLeft(ChooseMonitor),ScrTop(ChooseMonitor), Scrx(ChooseMonitor), Scry(ChooseMonitor)
                   }
       }
       \\ after 4000 ms from other threads, form1 close
@@ -983,7 +983,7 @@ get_size returns (1425,870) here.
 ## Perl 6
 
 {{works with|Rakudo|2018.12}}
-This is kind-of a silly task. The maximum window size is going to depend on your OS, hardware, display server and graphics toolkit, not your programming language. Taken at face value, using a Linux system running an X11 display server, the maximum displayable window size is the resolution of your monitor. Basically, the size of your desktop viewport. The Perl 6 module X11::libxdo returns the desktop viewport size for get-desktop-dimensions which is the effective maximum window size. 
+This is kind-of a silly task. The maximum window size is going to depend on your OS, hardware, display server and graphics toolkit, not your programming language. Taken at face value, using a Linux system running an X11 display server, the maximum displayable window size is the resolution of your monitor. Basically, the size of your desktop viewport. The Perl 6 module X11::libxdo returns the desktop viewport size for get-desktop-dimensions which is the effective maximum window size.
 
 
 ```perl6
@@ -1011,19 +1011,19 @@ Desktop viewport dimensions: (maximum-fullscreen size) 1920 x 1080
 
 ```Phix
 include pGUI.e
- 
+
 IupOpen()
- 
+
 string scrnFullSize = IupGetGlobal("FULLSIZE")
 string scrnSize = IupGetGlobal("SCREENSIZE")
 string scrnMInfo = IupGetGlobal("MONITORSINFO")
 string scrnVScreen = IupGetGlobal("VIRTUALSCREEN")
- 
+
 Ihandle dlg = IupDialog(NULL,"SIZE=FULL")
 string scrnXSize = IupGetAttribute(dlg,"MAXSIZE")
- 
+
 ?{scrnFullSize, scrnSize, scrnMInfo, scrnVScreen, scrnXSize}
- 
+
 IupClose()
 ```
 
@@ -1153,7 +1153,7 @@ Output:
 ## Run BASIC
 
 Run Basic uses javaScript to return the width of the browser window.
-IE browser uses different functions than everyone else. 
+IE browser uses different functions than everyone else.
 So you write code for the world, and also for IE
 
 ```runbasic
@@ -1272,7 +1272,7 @@ On this system, that returns <code>1440 836</code>. Further discussion of relate
 == {{header|Visual Basic}} ==
 
 
-###  Method 1 
+###  Method 1
 
 
 The first method involves querying the screen dimensions and then subtracting pixels used by the frame and desktop bars:
@@ -1298,7 +1298,7 @@ syswindow.screenheight=Screen.Height / Screen.TwipsPerPixelY
 
 
 
-###  Method 2 
+###  Method 2
 
 
 The alternative method is to create a form that is maximized and then query its dimensions (similar to the method used in gambas).

@@ -562,11 +562,11 @@ void complex_ops(void)
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|4.0}}
 
-```csharp
+```c#
 namespace RosettaCode.Arithmetic.Complex
 {
     using System;
@@ -588,7 +588,7 @@ namespace RosettaCode.Arithmetic.Complex
 
 {{works with|C sharp|1.2}}
 
-```csharp
+```c#
 using System;
 
 public struct ComplexNumber

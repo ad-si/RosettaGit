@@ -1003,9 +1003,9 @@ Decoded : 596F7572206C6970732061726520736D6F6F74686572207468616E20766173656C696E
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.IO;
 using System.Security.Cryptography;

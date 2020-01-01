@@ -13,7 +13,7 @@ tags = []
 == Code ==
 
 
-```csharp
+```c#
 
 // Finite Ordered Sets - 4State - Balanced
 
@@ -58,7 +58,7 @@ public class Node
         Parent = p;
         Balance = State.Balanced;
     }
-    
+
     public bool IsHeader
     { get { return Balance == State.Header; } }
 }
@@ -68,7 +68,7 @@ public class SetNode<T> : Node
     public T Data;
 
     public SetNode() { }
-    
+
     public SetNode(T dataType, Node Parent) : base(Parent)
     {
         Data = dataType;

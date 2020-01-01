@@ -125,9 +125,9 @@ main ()
 int main()
 {
   bool showCursor = false;
-  
+
   HANDLE std_out = GetStdHandle(STD_OUTPUT_HANDLE); // Get standard output
-  CONSOLE_CURSOR_INFO cursorInfo;                   // 
+  CONSOLE_CURSOR_INFO cursorInfo;                   //
   GetConsoleCursorInfo(out, &cursorInfo);           // Get cursorinfo from output
   cursorInfo.bVisible = showCursor;                 // Set flag visible.
   SetConsoleCursorInfo(out, &cursorInfo);           // Apply changes
@@ -136,11 +136,11 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Mono|1.2}}
 {{works with|Visual C sharp|Visual C#|2003}}
 
-```csharp
+```c#
 static void Main(string[] args)
 {
     Console.Write("At the end of this line you will see the cursor, process will sleep for 5 seconds.");
@@ -293,7 +293,7 @@ smoutput SHOWCURSOR
 const ESC = "\u001B" # escape code
 print("$ESC[?25l")                       # hide the cursor
 print("Enter anything, press RETURN: ")  # prompt shown
-input = readline()                       # but no cursor 
+input = readline()                       # but no cursor
 print("$ESC[0H$ESC[0J$ESC[?25h")         # reset, visible again
 sleep(3)
 println()
@@ -409,7 +409,7 @@ stdout.showCursor()
 ```perl
 print "\e[?25l";                        # hide the cursor
 print "Enter anything, press RETURN: "; # prompt shown
-$input = <>;                            # but no cursor 
+$input = <>;                            # but no cursor
 print "\e[0H\e[0J\e[?25h";              # reset, visible again
 ```
 
@@ -466,7 +466,7 @@ If OpenConsole()
       ConsoleCursor(height)
     EndIf
   ForEver
-EndIf 
+EndIf
 ```
 
 
@@ -475,18 +475,18 @@ Tested with <b>PB v5.60</b>
 
 ```PureBasic
 Procedure HideCursor ()
- ConsoleCursor(0) 
+ ConsoleCursor(0)
 EndProcedure
 
 Procedure ShowCursor (CursorHeight.b = 1)
  If CursorHeight > 10 : CursorHeight = 10 : EndIf
  If CursorHeight < 1  : CursorHeight = 1  : EndIf
  ConsoleCursor(CursorHeight)
-EndProcedure 
+EndProcedure
 
 Procedure NL (NoL.b = 1)
  For i = 1 To NoL : PrintN("") : Next
-EndProcedure 
+EndProcedure
 
 If OpenConsole()
  EnableGraphicalConsole(1)
@@ -562,7 +562,7 @@ say 'showing of the cursor is now on'  /*inform that the cursor is now showing*/
                                        /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''  
+'''output'''
 
 ```txt
 
@@ -582,7 +582,7 @@ showing of the cursor is now on
 # Project : Terminal control/Hiding the cursor
 
 load "stdlib.ring"
-# Linux 
+# Linux
 ? "Hide Cursor using tput utility"
 system("tput civis")     # Invisible
 sleep(10)

@@ -1386,11 +1386,11 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|2.0+, works for numbers between 0 and 999,999,999}}
 
 
-```csharp
+```c#
 using System;
 
 class NumberNamer {

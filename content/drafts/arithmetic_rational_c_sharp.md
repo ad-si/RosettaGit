@@ -12,7 +12,7 @@ tags = []
 
 <noinclude>{{collection|Rational Arithmetic}}</noinclude>
 
-```csharp
+```c#
 using System;
 
 struct Fraction : IEquatable<Fraction>, IComparable<Fraction>
@@ -192,7 +192,7 @@ struct Fraction : IEquatable<Fraction>, IComparable<Fraction>
 
 Test program:
 
-```csharp
+```c#
 using System;
 
 static class Program

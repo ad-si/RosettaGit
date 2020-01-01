@@ -214,12 +214,12 @@ Range(0, 0, 0) -> [0 0 0 0 0 0 0 0 0 0]
 
 
 
-## C sharp
+## C#
 
 {{trans|Visual Basic .NET}}
 Behavior for naïve translation is different from VB.NET (and identical to C), as it does not handle an "overshot" iteration variable when the increment is negative.
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -293,7 +293,7 @@ Start equal stop equal zero: zero increment ------  0  0  0  0  0  0  0  0  0  0
 {{trans|C|version=287385}}
 Just for fun; some strictly unnecessary changes made to be closer to idiomatic C#.
 
-```csharp
+```c#
 using System;
 
 static class Program {

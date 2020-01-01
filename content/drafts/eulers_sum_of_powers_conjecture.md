@@ -838,10 +838,10 @@ bool DPFind(int how_many)
 
 Thanks, EchoLisp guys!
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace EulerSumOfPowers {
@@ -879,7 +879,7 @@ namespace EulerSumOfPowers {
 ===Paired Powers, Mod 30, etc...===
 {{trans|vbnet}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

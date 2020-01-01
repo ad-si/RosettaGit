@@ -1241,9 +1241,9 @@ int main() {
  elan, lane, lean, lena, neal,
  evil, levi, live, veil, vile,
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.IO;
 using System.Linq;

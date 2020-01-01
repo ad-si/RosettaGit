@@ -193,7 +193,7 @@ $ ./a.out 2&>/dev/null
 ## C#
 
 
-```csharp
+```c#
 using Mpir.NET;  // 0.4.0
 using System;   // 4790@3.6
 using System.Collections.Generic;

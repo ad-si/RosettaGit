@@ -27,7 +27,7 @@ Given the wheel
 : <code>A: 1 2 3</code>
 the number 1 is first generated, then 2, then 3, 1, 2, 3, 1, ...
 
-'''Note:''' When more than one wheel is defined as a set of intersecting wheels then the 
+'''Note:''' When more than one wheel is defined as a set of intersecting wheels then the
 first named wheel is assumed to be the one that values are generated from.
 
 ;Examples:
@@ -38,34 +38,34 @@ The series of numbers generated starts:
     1, 3, 2, 1, 4, 2, 1, 3, 2, 1, 4, 2, 1, 3, 2...
 
 The intersections of number wheels can be more complex, (and might loop forever),
-and wheels may be multiply connected. 
+and wheels may be multiply connected.
 
 
-'''Note:''' If a named wheel is referenced more than 
-once by one or many other wheels, then there is only one position of the wheel 
+'''Note:''' If a named wheel is referenced more than
+once by one or many other wheels, then there is only one position of the wheel
 that is advanced by each and all references to it.
 
 E.g.
   A:  1 D D
   D:  6 7 8
   Generates:
-    1 6 7 1 8 6 1 7 8 1 6 7 1 8 6 1 7 8 1 6 ...    
+    1 6 7 1 8 6 1 7 8 1 6 7 1 8 6 1 7 8 1 6 ...
 
 ;Task:
-Generate and show the first twenty terms of the sequence of numbers generated 
+Generate and show the first twenty terms of the sequence of numbers generated
 from these groups:
 
     Intersecting Number Wheel group:
       A:  1 2 3
-    
+
     Intersecting Number Wheel group:
       A:  1 B 2
       B:  3 4
-    
+
     Intersecting Number Wheel group:
       A:  1 D D
       D:  6 7 8
-    
+
     Intersecting Number Wheel group:
       A:  1 B C
       B:  3 4
@@ -167,10 +167,10 @@ First 20 values from the Intersecting Number Wheels:
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -350,7 +350,7 @@ void main() {
 
 ```fsharp
 
-// Wheels within wheels. Nigel Galloway: September 30th., 2019. 
+// Wheels within wheels. Nigel Galloway: September 30th., 2019.
 let N(n)=fun()->n
 let wheel(n:(unit->int)[])=let mutable g= -1 in (fun()->g<-(g+1)%n.Length; n.[g]())
 let A1=wheel[|N(1);N(2);N(3)|]
@@ -476,7 +476,7 @@ B: 3 4
 C: 5 B
 ;
 
-[ 
+[
     "Intersecting number wheel group:" print
     [ . ] [ "Generates:" print 20 swap .take nl ] bi
 ] 4 napply
@@ -645,7 +645,7 @@ Intersecting Number Wheel group:
 ## Haskell
 
 
-Defining a unit movement of the interlocking wheels as a recursive descent, 
+Defining a unit movement of the interlocking wheels as a recursive descent,
 terminating at the first digit found, and printing a map-accumulation of that recursion over a list of given length but arbitrary content.
 
 
@@ -1088,9 +1088,9 @@ class INW():
 
     def __init__(self, **wheels):
         self._wheels = wheels
-        self.isect = {name: self._wstate(name, wheel) 
+        self.isect = {name: self._wstate(name, wheel)
                       for name, wheel in wheels.items()}
-    
+
     def _wstate(self, name, wheel):
         "Wheel state holder"
         assert all(val in self._wheels for val in wheel if type(val) == str), \
@@ -1100,14 +1100,14 @@ class INW():
         while True:
             nxt, pos = wheel[pos % ln], pos + 1
             yield next(self.isect[nxt]) if type(nxt) == str else nxt
-                
+
     def __iter__(self):
         base_wheel_name = next(self.isect.__iter__())
         yield from self.isect[base_wheel_name]
-        
+
     def __repr__(self):
         return f"{self.__class__.__name__}({self._wheels})"
-    
+
     def __str__(self):
         txt = "Intersecting Number Wheel group:"
         for name, wheel in self._wheels.items():
@@ -1174,7 +1174,7 @@ def nextfrom(w, name):
         if '0' <= nxt[0] <= '9':
             return nxt
         name = nxt
-            
+
 if __name__ == '__main__':
     for group in '''
 A: 1 2 3
@@ -1229,7 +1229,7 @@ Input is just a list of Python dicts, and depends on c-python dicts being odered
 def nextfromr(w, name):
     nxt, w[name] = w[name][0], w[name][1:] + w[name][:1]
     return nxt if '0' <= nxt[0] <= '9' else nextfromr(w, nxt)
-            
+
 if __name__ == '__main__':
     for group in [{'A': '123'},
                   {'A': '1B2', 'B': '34'},
@@ -1271,7 +1271,7 @@ Intersecting Number Wheel group:
 ### Python: Functional composition
 
 Defining a unit rotation of the wheel-set as a recursive descent, and taking
-a map-accumulation of this recursion 
+a map-accumulation of this recursion
 over a list of specific length and arbitrary content.
 {{Trans|Haskell}}
 {{Works with|Python|3.7}}
@@ -1521,7 +1521,7 @@ fcn intersectingNumberWheelsW(wheels){ // ("A":(a,b,"C"), "C":(d,e) ...)
       while(1){
 	 w=wheels[w].next();	// increment wheel w
 	 if(Int.isType(w)) return(w);
-      }      
+      }
    }.fp("A",ws))	// assume wheel A exists and is always first
 }
 ```

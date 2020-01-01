@@ -871,10 +871,10 @@ std::ostream& operator<<(std::ostream& dst, const Accumulator_& acc)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|4.0}}
 
-```csharp
+```c#
 using System;
 
 class Program

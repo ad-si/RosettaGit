@@ -23,10 +23,10 @@ The goal is to get the methods of an object, as names, values or both.
 Some languages offer [[Respond to an unknown method call|dynamic methods]], which in general can only be inspected if a class' public API includes a way of listing them.
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Reflection;
 
@@ -42,16 +42,16 @@ public class Rosetta
         foreach (var method in typeof(TestForMethodReflection).GetMethods(flags))
             Console.WriteLine(method);
     }
-    
+
     class TestForMethodReflection
     {
         public void MyPublicMethod() {}
         private void MyPrivateMethod() {}
-        
+
         public static void MyPublicStaticMethod() {}
         private static void MyPrivateStaticMethod() {}
     }
-    
+
 }
 ```
 
@@ -85,7 +85,7 @@ System.Object MemberwiseClone()
 => (keys (ns-interns 'clojure.set))
 (union map-invert join select intersection superset? index bubble-max-key subset? rename rename-keys project difference)
 
-; Only public: 
+; Only public:
 => (keys (ns-publics 'clojure.set))
 (union map-invert join select intersection superset? index subset? rename rename-keys project difference)
 ```
@@ -159,18 +159,18 @@ ELENA 4.x :
 import system'routines;
 import system'dynamic;
 import extensions;
- 
+
 class MyClass
 {
     myMethod1() {}
- 
+
     myMethod2(x) {}
 }
- 
+
 public program()
 {
     var o := new MyClass();
- 
+
     o.__getClass().__getMessages().forEach:(p)
     {
         console.printLine("o.",p)
@@ -350,37 +350,37 @@ Sub    func(image.Point, image.Point) image.Point     func(image.Point) image.Po
    cocurrent 'base'
 
    names_Stack_''      NB. all names
-create  destroy pop     push    top     
+create  destroy pop     push    top
 
    'p' names_Stack_ 3  NB. verbs that start with p
-pop  push 
+pop  push
 
 
    NB. make an object.  The dyadic definition of cownew invokes the create verb
    S =: conew~ 'Stack'
 
    names__S''          NB. object specific names
-COCREATOR items     
-   
+COCREATOR items
+
 
    pop__S              NB. introspection: get the verbs definition
 3 : 0
- a =. top 0       
+ a =. top 0
  items =: }: items
- a                
+ a
 )
-   
+
 
    NB. get the search path of object S
    copath S
 ┌─────┬─┐
 │Stack│z│
 └─────┴─┘
-   
+
 
    names__S 0         NB. get the object specific data
-COCREATOR items     
-   
+COCREATOR items
+
 
 ```
 
@@ -400,7 +400,7 @@ public class ListMethods {
     private boolean examplePrivateInstanceMethod(String s) {
         return true;
     }
-    
+
     public static void main(String[] args) {
         Class clazz = ListMethods.class;
 
@@ -949,21 +949,21 @@ import inspect
 class Super(object):
   def __init__(self, name):
     self.name = name
-  
+
   def __str__(self):
     return "Super(%s)" % (self.name,)
-  
+
   def doSup(self):
     return 'did super stuff'
-  
+
   @classmethod
   def cls(cls):
     return 'cls method (in sup)'
-  
+
   @classmethod
   def supCls(cls):
     return 'Super method'
-  
+
   @staticmethod
   def supStatic():
     return 'static method'
@@ -977,7 +977,7 @@ class Sub(Other, Super):
     super(Sub, self).__init__(name);
     self.rest = args;
     self.methods = {}
-  
+
   def __dir__(self):
     return list(set( \
         sum([dir(base) for base in type(self).__bases__], []) \
@@ -985,7 +985,7 @@ class Sub(Other, Super):
         + self.__dict__.keys() \
         + self.methods.keys() \
       ))
-  
+
   def __getattr__(self, name):
     if name in self.methods:
       if callable(self.methods[name]) and self.methods[name].__code__.co_argcount > 0:
@@ -995,21 +995,21 @@ class Sub(Other, Super):
           return self.methods[name].__get__(type(self), type)
       return self.methods[name]
     raise AttributeError("'%s' object has no attribute '%s'" % (type(self).__name__, name))
-  
+
   def __str__(self):
     return "Sub(%s)" % self.name
-  
+
   def doSub():
     return 'did sub stuff'
-  
+
   @classmethod
   def cls(cls):
     return 'cls method (in Sub)'
-  
+
   @classmethod
   def subCls(cls):
     return 'Sub method'
-  
+
   @staticmethod
   def subStatic():
     return 'Sub method'
@@ -1024,7 +1024,7 @@ sub.methods['strs'] = lambda self, x: str(self) * x
 # instance methods
 [method for method in dir(sub) if callable(getattr(sub, method)) and hasattr(getattr(sub, method), '__self__') and getattr(sub, method).__self__ == sub]
 #['__dir__', '__getattr__', '__init__', '__str__', 'doSub', 'doSup', 'otherMethod', 'strs']
-# class methods 
+# class methods
 [method for method in dir(sub) if callable(getattr(sub, method)) and hasattr(getattr(sub, method), '__self__') and getattr(sub, method).__self__ == type(sub)]
 #['__subclasshook__', 'cls', 'subCls', 'supCls']
 # static & free dynamic methods
@@ -1094,31 +1094,31 @@ Dynamic methods can be listed by overriding these methods. Ancestor methods can 
 # Sample classes for reflection
 class Super
   CLASSNAME = 'super'
-  
+
   def initialize(name)
     @name = name
     def self.superOwn
       'super owned'
     end
   end
-  
+
   def to_s
     "Super(#{@name})"
   end
-  
+
   def doSup
     'did super stuff'
   end
-  
+
   def self.superClassStuff
     'did super class stuff'
   end
-  
+
   protected
   def protSup
     "Super's protected"
   end
-  
+
   private
   def privSup
     "Super's private"
@@ -1134,9 +1134,9 @@ end
 class Sub < Super
   CLASSNAME = 'sub'
   attr_reader :dynamic
-  
+
   include Other
-  
+
   def initialize(name, *args)
     super(name)
     @rest = args;
@@ -1145,11 +1145,11 @@ class Sub < Super
       'sub owned'
     end
   end
-  
+
   def methods(regular=true)
     super + @dynamic.keys
   end
-  
+
   def method_missing(name, *args, &block)
     return super unless @dynamic.member?(name)
     method = @dynamic[name]
@@ -1170,32 +1170,32 @@ class Sub < Super
       method.call
     end
   end
-  
+
   def public_methods(all=true)
     super + @dynamic.keys
   end
-  
+
   def respond_to?(symbol, include_all=false)
     @dynamic.member?(symbol) || super
   end
-  
+
   def to_s
     "Sub(#{@name})"
   end
-  
+
   def doSub
     'did sub stuff'
   end
-  
+
   def self.subClassStuff
     'did sub class stuff'
   end
-  
+
   protected
   def protSub
     "Sub's protected"
   end
-  
+
   private
   def privSub
     "Sub's private"
@@ -1295,7 +1295,7 @@ Every object has a "methods" method, which returns a list of method names [for t
 ```zkl
 methods:=List.methods;
 methods.println();
-List.method(methods[0]).println();  // == .Method(name) == .BaseClass(name) 
+List.method(methods[0]).println();  // == .Method(name) == .BaseClass(name)
 ```
 
 {{out}}

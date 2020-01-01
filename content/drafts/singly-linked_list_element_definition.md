@@ -467,10 +467,10 @@ struct link
 
 Note that the generic version works for any type, not only integral types.
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 class LinkedListNode
 {
     public int Value { get; set; }
@@ -505,7 +505,7 @@ A generic version:
 
 The most C-like possible version is basically C.
 
-```csharp
+```c#
 unsafe struct link {
     public link* next;
     public int data;

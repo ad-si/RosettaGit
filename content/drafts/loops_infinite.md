@@ -621,10 +621,10 @@ while (true);
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 while (true)
 {
     Console.WriteLine("SPAM");

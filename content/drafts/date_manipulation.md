@@ -490,9 +490,9 @@ int main()
 
 Note: <code>ctime</code> treats the date as local, so that it is like the timezone information were discarded (to see the passage to daylight saving time I must change the date into March 28... no matter the timezone specified)
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 class Program
 {
     static void Main(string[] args)

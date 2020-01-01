@@ -345,14 +345,14 @@ int main() {
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|D}}
 
 
 ###  Base 10
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

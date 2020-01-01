@@ -13,7 +13,7 @@ tags = []
 {{task|Sound}} {{requires|Sound}} [[Category:Temporal media]]
 {{omit from|ML/I}}
 
-[[wp:Morse_code|Morse code]] is one of the simplest and most versatile methods of telecommunication in existence. 
+[[wp:Morse_code|Morse code]] is one of the simplest and most versatile methods of telecommunication in existence.
 It has been in use for more than 160 years — longer than any other electronic encoding system.
 
 
@@ -21,8 +21,8 @@ It has been in use for more than 160 years — longer than any other electronic 
 Send a string as audible Morse code to an audio device   (e.g., the PC speaker).
 
 
-As the standard Morse code does not contain all possible characters, 
-you may either ignore unknown characters in the file, 
+As the standard Morse code does not contain all possible characters,
+you may either ignore unknown characters in the file,
 or indicate them somehow   (e.g. with a different pitch).
 
 
@@ -111,7 +111,7 @@ cl_demo_output=>new(
 
 ## Ada
 
-Conforms to Ada95. 
+Conforms to Ada95.
 Works for Windows 32 XP , not for Vista since Beep is no longer effective.
 
 Specification of the package :
@@ -401,7 +401,7 @@ MorseBeep(passedString)
 
 ## AWK
 
-AWK cannot play sounds by itself, 
+AWK cannot play sounds by itself,
 so here we just translate text to dits and dots:
 
 ```AWK
@@ -410,17 +410,17 @@ BEGIN { FS="";
  m="A.-B-...C-.-.D-..E.F..-.G--.H....I..J.---K-.-L.-..M--N-.";
  m=m "O---P.--.Q--.-R.-.S...T-U..-V...-W.--X-..-Y-.--Z--..  ";
 }
-                                                                                
+
 { for(i=1; i<=NF; i++)
   {
     c=toupper($i); n=1; b=".";
-                                                                               
+
     while((c!=b)&&(b!=" ")) { b=substr(m,n,1); n++; }
-                                                                                
+
     b=substr(m,n,1);
-                                                                                
+
     while((b==".")||(b=="-")) { printf("%s",b); n++; b=substr(m,n,1); }
- 
+
     printf("|");
   }
   printf("\n");
@@ -533,10 +533,10 @@ END SUB
       *TEMPO 8
       DIM morse$(63)
       FOR char% = 0 TO 63 : READ morse$(char%) : NEXT char%
-      
+
       PROCmorse("The five boxing wizards jump quickly.")
       END
-      
+
       DEF PROCmorse(text$)
       LOCAL element%, index%, char&, morse$
       FOR index% = 1 TO LEN(text$)
@@ -551,7 +551,7 @@ END SUB
         SOUND 1, -15, 0, 2
       NEXT index%
       ENDPROC
-      
+
       DATA 00,313133,131131,6,1113113,6,13111,133331,31331,313313,6,13131,331133,311113,131313,31131
       DATA 33333,13333,11333,11133,11113,11111,31111,33111,33311,33331,333111,313131,6,31113,6,113311
       DATA 133131,13,3111,3131,311,1,1131,331,1111,11,1333,313,1311,33,31,333
@@ -576,9 +576,9 @@ END SUB
 230       FOR J=1 TO LEN(TONE$(C))
 240         SOUND PITCH 48,DURATION(ORD(TONE$(C)(J))-45)^3+4
 250         SOUND PITCH 126,DURATION 8
-260       NEXT 
+260       NEXT
 270     ELSE
-280       PRINT 
+280       PRINT
 290       SOUND PITCH 126,DURATION 16
 300     END IF
 310     SOUND PITCH 126,DURATION 16
@@ -733,7 +733,7 @@ int main(int argc, char *argv[])
     int xx=0;
     int size = inpt.length();
     cout<<"Length:"<<size<<endl;
-   
+
     xx=0;
     while(xx<inpt.length())
     {
@@ -742,7 +742,7 @@ int main(int argc, char *argv[])
                          while(!working)
                          {
                                   if(ascii[x] != inpt[xx]&&lwcAscii[x] != inpt[xx])
-                                  {      
+                                  {
                                         x++;
                                   }
                                   else
@@ -750,18 +750,18 @@ int main(int argc, char *argv[])
                                         working = !working;
                                   }
                          }
-                         
+
                          cout<<morse[x];
                          outpt = outpt + morse[x];
                          xx++;
     }
-    
+
     xx=0;
     while(xx<outpt.length()+1)
     {
                          if(outpt[xx] == '.')
                          {
-                                   Beep(1000,250);   
+                                   Beep(1000,250);
                          }
                          else
                          {
@@ -774,10 +774,10 @@ int main(int argc, char *argv[])
                                  if(outpt[xx] == ' ')
                                  {
                                               Sleep(500);
-                                 }   
-                             }    
+                                 }
+                             }
                          }
-                         xx++; 
+                         xx++;
     }
     system("PAUSE");
     return EXIT_SUCCESS;
@@ -786,9 +786,9 @@ int main(int argc, char *argv[])
 
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 
-```CSharp
+```c#
 using System;
 using System.Collections.Generic;
 
@@ -801,15 +801,15 @@ namespace Morse
             string word = "sos";
             Dictionary<string, string> Codes = new Dictionary<string, string>
             {
-                {"a", ".-   "}, {"b", "-... "}, {"c", "-.-. "}, {"d", "-..  "}, 
+                {"a", ".-   "}, {"b", "-... "}, {"c", "-.-. "}, {"d", "-..  "},
                 {"e", ".    "}, {"f", "..-. "}, {"g", "--.  "}, {"h", ".... "},
                 {"i", "..   "}, {"j", ".--- "}, {"k", "-.-  "}, {"l", ".-.. "},
-                {"m", "--   "}, {"n", "-.   "}, {"o", "---  "}, {"p", ".--. "}, 
-                {"q", "--.- "}, {"r", ".-.  "}, {"s", "...  "}, {"t", "-    "}, 
-                {"u", "..-  "}, {"v", "...- "}, {"w", ".--  "}, {"x", "-..- "}, 
-                {"y", "-.-- "}, {"z", "--.. "}, {"0", "-----"}, {"1", ".----"}, 
-                {"2", "..---"}, {"3", "...--"}, {"4", "....-"}, {"5", "....."}, 
-                {"6", "-...."}, {"7", "--..."}, {"8", "---.."}, {"9", "----."}    
+                {"m", "--   "}, {"n", "-.   "}, {"o", "---  "}, {"p", ".--. "},
+                {"q", "--.- "}, {"r", ".-.  "}, {"s", "...  "}, {"t", "-    "},
+                {"u", "..-  "}, {"v", "...- "}, {"w", ".--  "}, {"x", "-..- "},
+                {"y", "-.-- "}, {"z", "--.. "}, {"0", "-----"}, {"1", ".----"},
+                {"2", "..---"}, {"3", "...--"}, {"4", "....-"}, {"5", "....."},
+                {"6", "-...."}, {"7", "--..."}, {"8", "---.."}, {"9", "----."}
             };
 
             foreach (char c in word.ToCharArray())
@@ -877,7 +877,7 @@ namespace Morse
 	:element-gap (note 0 sample-rate (* 1 ms))
 	:letter-gap (note 0 sample-rate (* 3 ms))
 	\space (note 0 sample-rate (* 1 ms))})) ;includes letter-gap on either side
-	
+
 (defn convert-letter [letter]
   (->> (get morse-codes letter "")
        (map sounds ,)
@@ -936,7 +936,7 @@ class Morse
     @gain.gain.linearRampToValueAtTime 1, stop - @unit / 16
     @gain.gain.linearRampToValueAtTime 0, stop
 
-  send : (text) -> 
+  send : (text) ->
     osci = @cont.createOscillator()
     osci.frequency.value = @freq
     @gain = @cont.createGain()
@@ -1108,12 +1108,12 @@ end.
 ## EasyLang
 
 <lang>abc$[] = str_split "abcdefghijklmnopqrstuvwxyz "
-mc$[] = [ ".-" "-..." "-.-." "-.." "." "..-." 
-          "--." "...." ".---" ".---" "-.-" 
-          ".-.." "--" "-." "---" ".--." "--.-" 
-          ".-." "..." "-" "..-" "...-" ".--" 
+mc$[] = [ ".-" "-..." "-.-." "-.." "." "..-."
+          "--." "...." ".---" ".---" "-.-"
+          ".-.." "--" "-." "---" ".--." "--.-"
+          ".-." "..." "-" "..-" "...-" ".--"
           "-..-" "-.--" "--.." " " ]
-# 
+#
 func letter c$ . .
   j = 0
   while j < len abc$[] and abc$[j] <> c$
@@ -1143,7 +1143,7 @@ func letter c$ . .
   .
   sleep 0.4
 .
-# 
+#
 txt$[] = str_split "sos sos"
 for i range len txt$[]
   call letter txt$[i]
@@ -1162,7 +1162,7 @@ for i range len txt$[]
 (require 'timer)
 
 ;; json table from RUBY
-(define morse-alphabet 
+(define morse-alphabet
 #'{"0":"-----","1":".----","2":"..---","3":"...--","4":"....-","5":".....","6":"-....","7":"--...","8":"---..","9":"----.","!":"---.","$":"...-..-","'":".----.","(":"-.--.",")":"-.--.-","+":".-.-.",",":"--..--","-":"-....-",".":".-.-.-","/":"-..-.",":":"---...",";":"-.-.-.","=":"-...-","?":"..--..","@":".--.-.","A":".-","B":"-...","C":"-.-.","D":"-..","E":".","F":"..-.","G":"--.","H":"....","I":"..","J":".---","K":"-.-","L":".-..","M":"--","N":"-.","O":"---","P":".--.","Q":"--.-","R":".-.","S":"...","T":"-","U":"..-","V":"...-","W":".--","X":"-..-","Y":"-.--","Z":"--..","[":"-.--.","]":"-.--.-","_":"..--.-"," ":"|"}'#)
 
 (define MORSE (json->hash (string->json morse-alphabet)))
@@ -1174,7 +1174,7 @@ for i range len txt$[]
 	(for/list [(a (string-diacritics str))]
 		(string-append
 		(or (hash-ref morse (string-upcase a)) "?") "|")))))
-	
+
 (define (play-morse)
 	(when EMIT ;; else return #f which stops (at-every)
 		(case  (first EMIT)
@@ -1191,7 +1191,7 @@ for i range len txt$[]
 
 (define EMIT (string->morse "Longtemps je me suis couché de bônne heure" MORSE))
 
-    → ("." "-" "." "." "|" "-"  "." "-" "-" "." " [ ... ] "-" "." "|" "-" "." "|" "." "|" "|" "|" "." 
+    → ("." "-" "." "." "|" "-"  "." "-" "-" "." " [ ... ] "-" "." "|" "-" "." "|" "." "|" "|" "|" "."
 "." "." "." "|" "." "|" "." "." "-" "|" "." "-" "." "|" "." "|")
 
 ;; speakers ON
@@ -1213,7 +1213,7 @@ defmodule Morse do
            "4" => "....-",      "5" => ".....",      "6" => "-....",      "7" => "--...",
            "8" => "---..",      "9" => "----.",
            ":" => "---...",     ";" => "-.-.-.",     "=" => "-...-",      "?" => "..--..",
-           "@" => ".--.-.", 
+           "@" => ".--.-.",
            "A" => ".-",         "B" => "-...",       "C" => "-.-.",       "D" => "-..",
            "E" => ".",          "F" => "..-.",       "G" => "--.",        "H" => "....",
            "I" => "..",         "J" => ".---",       "K" => "-.-",        "L" => ".-..",
@@ -1333,12 +1333,12 @@ MORSE DEFINITIONS                      \ the following definitions go into MORSE
 : 6  - . . . . ;     : 7  - - . . . ;
 : 8  - - - . . ;     : 9  - - - - . ;
 
-: '  - . . - . ;     
-: \  . - - - . ;    
+: '  - . . - . ;
+: \  . - - - . ;
 : !  . - . - . ;
-: ?  . . - - . . ;    
+: ?  . . - - . . ;
 : ,  - - . . - - ;
-: /   _ . . - . ;     
+: /   _ . . - . ;
 : .  . - . - . - ;
 
  PREVIOUS DEFINITIONS                   \ go back to previous namespace
@@ -1349,7 +1349,7 @@ MORSE DEFINITIONS                      \ the following definitions go into MORSE
 Test at the Forth console
 
 ```txt
-S" CQ CQ CQ DE VE3CFW VE3CFW  K " TRANSMIT 
+S" CQ CQ CQ DE VE3CFW VE3CFW  K " TRANSMIT
 CQ CQ CQ DE VE3CFW VE3CFW  K  ok
 MORSE  A B C D E F G  PREVIOUS ok
 ```
@@ -1399,10 +1399,10 @@ Dim morse(0 To 35) As String => _
    "---",   _  '' o
    ".--.",  _  '' p
    "--.-",  _  '' q
-   ".-.",   _  '' r 
+   ".-.",   _  '' r
    "...",   _  '' s
    "-",     _  '' t
-   "..-",   _  '' u 
+   "..-",   _  '' u
    "...-",  _  '' v
    ".--",   _  '' w
    "-..-",  _  '' x
@@ -1410,10 +1410,10 @@ Dim morse(0 To 35) As String => _
    "--..",  _  '' z
    "-----", _  '' 0
    ".----", _  '' 1
-   "..---", _  '' 2 
-   "...--", _  '' 3 
+   "..---", _  '' 2
+   "...--", _  '' 3
    "....-", _  '' 4
-   ".....", _  '' 5 
+   ".....", _  '' 5
    "-....", _  '' 6
    "--...", _  '' 7
    "---..", _  '' 8
@@ -1509,7 +1509,7 @@ Dim siCount, siLoop As Short
 Dim bTrigger As Boolean
 Dim fDelay As Float = 0.4
 
-If Not Exist("/tmp/dot.ogg") Then Copy "../dot.ogg" To "/tmp/dot.ogg"     'Sounds downloaded from 
+If Not Exist("/tmp/dot.ogg") Then Copy "../dot.ogg" To "/tmp/dot.ogg"     'Sounds downloaded from
 If Not Exist("/tmp/dash.ogg") Then Copy "../dash.ogg" To "/tmp/dash.ogg"  'https://en.wikipedia.org/wiki/Morse_code#Letters.2C_numbers.2C_punctuation.2C_prosigns_for_Morse_code_and_non-English_variants
 
 For Each sTemp In Split(sFile, gb.NewLine)
@@ -1523,7 +1523,7 @@ For siCount = 1 To Len(sMessage)
       sOutPut.Add(sMorse[siLoop])
       bTrigger = True
       Break
-    End If 
+    End If
   Next
   If bTrigger = False Then sOutPut.Add(" ")
   bTrigger = False
@@ -1539,7 +1539,7 @@ For siCount = 0 To Len(sMessage) - 1
       Wait fDelay
     Else If Mid(sOutPut[siCount], siLoop + 1, 1) = "-" Then
       Music.Load("/tmp/dash.ogg")
-      Music.Play 
+      Music.Play
       Wait fDelay
     Else
       Wait fDelay
@@ -1761,7 +1761,7 @@ import qualified Data.Map as M
 type Morse = [MSym]
 data MSym = Dot | Dash | SGap | CGap | WGap deriving (Show)
 
--- Based on the table of International Morse Code letters and numerals at 
+-- Based on the table of International Morse Code letters and numerals at
 -- http://en.wikipedia.org/wiki/Morse_code.
 dict = M.fromList
        [('a', m ".-"   ), ('b', m "-..." ), ('c', m "-.-." ), ('d', m "-.."  ),
@@ -1770,8 +1770,8 @@ dict = M.fromList
         ('m', m "--"   ), ('n', m "-."   ), ('o', m "---"  ), ('p', m ".--." ),
         ('q', m "--.-" ), ('r', m ".-."  ), ('s', m "..."  ), ('t', m "-"    ),
         ('u', m "..-"  ), ('v', m "...-" ), ('w', m ".--"  ), ('x', m "-..-" ),
-        ('y', m "-.--" ), ('z', m "--.." ), ('1', m ".----"), ('2', m "..---"), 
-        ('3', m "...--"), ('4', m "....-"), ('5', m "....."), ('6', m "-...."), 
+        ('y', m "-.--" ), ('z', m "--.." ), ('1', m ".----"), ('2', m "..---"),
+        ('3', m "...--"), ('4', m "....-"), ('5', m "....."), ('6', m "-...."),
         ('7', m "--..."), ('8', m "---.."), ('9', m "----."), ('0', m "-----")]
     where m = intersperse SGap . map toSym
           toSym '.' = Dot
@@ -1823,7 +1823,7 @@ rep :: Float -> Samples -> Samples
 rep dur = take n . cycle
     where n = round (dur * fromIntegral rate)
 
--- Convert Morse symbols to samples.  Durations are in seconds, based on 
+-- Convert Morse symbols to samples.  Durations are in seconds, based on
 -- http://en.wikipedia.org/wiki/Morse_code#Representation.2C_timing_and_speeds.
 toSamples :: MSym -> Samples
 toSamples Dot  = rep 0.1 sine
@@ -1876,7 +1876,7 @@ Note that playmorse takes an optional left argument (wpm).  However, the current
 
 (If wpm were a part of the task spec, it might be worthwhile doing away with wavnote and generating sound samples directly.  However, currently this task has no such requirement so merely documenting this issue should be sufficient.)
 
-The long sequence of numbers in the definition of "morse" are meant to be interpreted as base 3 numbers, where a 1 digit represents a dot and a 2 digit represents a dash and a 0 digit represents a pause. The first of these numbers corresponds to the character <code>!</code> and the last of the numbers corresponds to the character <code>_</code> .  To convert morse text to base 3 use: <code>3&#.@i.~&' .-'&></code>.  
+The long sequence of numbers in the definition of "morse" are meant to be interpreted as base 3 numbers, where a 1 digit represents a dot and a 2 digit represents a dash and a 0 digit represents a pause. The first of these numbers corresponds to the character <code>!</code> and the last of the numbers corresponds to the character <code>_</code> .  To convert morse text to base 3 use: <code>3&#.@i.~&' .-'&></code>.
 
 <code>3&#.@i.~&' .-'&></code>, on the international morse for printable ascii characters, one character per line, with blank lines for the missing characters, was how that big long numeric list was originally generated.  To recover that list you can use <code>morse ::(<nowiki>''</nowiki>"_)"1,.a.</code>, but note that this will include blank lines for every missing ascii character.  If you instead use <code>morse ::('*'"_)"1,.a.</code>, you will get asterisks for the ascii characters after the final representable character.
 
@@ -1939,14 +1939,14 @@ public class MorseCode {
 
 
 ```txt
-sos 
-... --- ... 
+sos
+... --- ...
 
-   Hello     World! 
-.... . .-.. .-.. --- / .-   - --- .-. .-.. -.. 
+   Hello     World!
+.... . .-.. .-.. --- / .-   - --- .-. .-.. -..
 
-Rosetta Code 
-.-. --- ... . - - .- / -.-. --- -.. . 
+Rosetta Code
+.-. --- ... . - - .- / -.-. --- -.. .
 ```
 
 
@@ -2085,7 +2085,7 @@ char2morse = Dict[
       "Q" => "--.-", "R" => ".-.", "S" => "...", "T" => "-", "U" => "..-",
       "V" => "...-", "W" => ".--", "X" => "-..-", "Y" => "-.--", "Z" => "--..",
       "[" => "-.--.", "]" => "-.--.-", "_" => "..--.-"]
- 
+
 function sendmorsesound(freq, duration)
 cpause() = sleep(0.080)
 wpause = sleep(0.400)
@@ -2234,7 +2234,7 @@ Function TranslateToMorse$(string$)
     Data ":", "---...", "/", "-..-.", "-", "-....-", "'", ".----.", "+", ".-.-.", "", ".-..-."
     Data "@", ".--.-.", "(", "-.--.", ")", "-.--.-", "_", "..--.-", "$", "...-..-", "&", ".-..."
     Data "=", "-...-", "!", "..--.", " ", " ", "End", ""
-End Function 
+End Function
 ```
 
 
@@ -2362,7 +2362,7 @@ function [morseText,morseSound] = text2morse(string,playSound)
 %% Translate AlphaNumeric Text to Morse Text
 
     string = lower(string);
-    
+
     %Defined such that the ascii code of the characters in the string map
     %to the indecies of the dictionary.
     morseDictionary = {{' ',' '},{'',''},{'',''},{'',''},...
@@ -2385,19 +2385,19 @@ function [morseText,morseSound] = text2morse(string,playSound)
                        {'q','--.-'},{'r','.-.'},{'s','...'},{'t','-'},...
                        {'u','..-'},{'v','...-'},{'w','.--'},{'x','-..-'},...
                        {'y','-.--'},{'z','--..'}};
-    
+
     %Iterates through each letter in the string and converts it to morse
     %code
     morseText = arrayfun(@(x)[morseDictionary{x}{2} '|'],(string - 31),'UniformOutput',false);
-    
+
     %The output of the previous operation is a cell array, we want it to be
     %a string. This line accomplishes that.
     morseText = cell2mat(morseText);
-    
+
     morseText(end) = []; %delete extra pipe
-    
+
 %% Translate Morse Text to Morse Audio
-    
+
     %Generate the tones for each element of the code
     SamplingFrequency = 8192; %Hz
     ditLength = .1; %s
@@ -2422,11 +2422,11 @@ function [morseText,morseSound] = text2morse(string,playSound)
     end
 
     morseSound(end-length(silent):end) = []; %Delete the extra silent tone at the end
-    
+
     if(playSound)
         sound(morseSound,SamplingFrequency); %Play sound
     end
-    
+
 end %text2morse
 ```
 
@@ -2446,10 +2446,10 @@ ans =
 
 ## Mathematica
 
-A Morse "codec" based on replacement rule programming. 
-Replacement rules also translate the text Morse code into audible Morse code. 
-The dots and dashes become clarinet middle-C notes of different lengths. 
-Unknown characters encode into "?" in Morse text and clarinet F# in Morse audio. 
+A Morse "codec" based on replacement rule programming.
+Replacement rules also translate the text Morse code into audible Morse code.
+The dots and dashes become clarinet middle-C notes of different lengths.
+Unknown characters encode into "?" in Morse text and clarinet F# in Morse audio.
 The function, sonicMorse[s_String], plays the Morse code audio translation of a string.
 
 
@@ -2476,12 +2476,12 @@ Tones = {
    SoundNote[None, shortgap],
    {SoundNote["C", mark, "Clarinet"], SoundNote[None, gap]},
    {SoundNote["C", longmark, "Clarinet"], SoundNote[None, gap]},
-   {SoundNote["F#", mark, "Clarinet"], SoundNote[None, gap]}  (* Use F# short mark to denote unrecognized character *)
+   {SoundNote["fsharp", mark, "Clarinet"], SoundNote[None, gap]}  (* Use F# short mark to denote unrecognized character *)
    };
 
 codeRules = MapThread[Rule, {Dictionary, MorseDictionary}];
 decodeRules = MapThread[Rule, {MorseDictionary, Dictionary}];
-soundRules = MapThread[Rule, {{"  ", " ", ".", "-", "?"}, Tones}]; 
+soundRules = MapThread[Rule, {{"  ", " ", ".", "-", "?"}, Tones}];
 (* The order of the rules here is important. Otherwise medium gaps and short gaps get confounded *)
 
 morseCode[s_String] := StringReplace[ToLowerCase@s, codeRules~Join~{x_ /; FreeQ[Flatten@{Dictionary, " "}, x] -> "? "}]
@@ -2698,7 +2698,7 @@ Morse("...---...")
 ## Pascal
 
 
-Free Pascal in Delphi mode. 
+Free Pascal in Delphi mode.
 This program uses OpenAL for cross-platform PCM audio.
 
 
@@ -2712,9 +2712,9 @@ USES 	OpenAL, HRTimer;
 
 		// Intl. Morse codes in ASCII order
 CONST  	Morse: ARRAY [32..95] OF STRING = (' ','-.-.--','.-..-.','#','...-..-','%','.-...','.----.','-.--.','-.--.-','*','.-.-.','--..--','-....-','.-.-.-','-..-.','-----','.----','..---','...--','....-','.....','-....','--...','---..','----.','---...','-.-.-.','>','-...-','<','..--..','.--.-.','.-','-...','-.-.','-..','.','..-.','--.','....','..','.---','-.-','.-..','--','-.','---','.--.','--.-','.-.','...','-','..-','...-','.--','-..-','-.--','--..','-.--.','\','-.--.-','~','..--.-');
-		// lengthen dah by this fraction of dit: 
+		// lengthen dah by this fraction of dit:
 		// best = 0.4; also lengthens pauses
-		doh = 0.4;  
+		doh = 0.4;
 		// an 0.05 sec dit is around 26 wpm
 		dit = 0.05;
 		dah = 3 * dit + doh * dit;
@@ -2739,23 +2739,23 @@ VAR 	// OpenAL variables
 		// http://www.wolfgang-ehrhardt.de/misc_en.html
 		t		: THRTimer;
 		msg		: STRING = 'the quick brown fox jumps over the lazy dog.';
-	
+
 
 	PROCEDURE PlayS(s: Extended);
 		BEGIN
 			StartTimer(t);
-			AlSourcePlay(source);			
-			WHILE readseconds(t) < s DO BEGIN END; 
+			AlSourcePlay(source);
+			WHILE readseconds(t) < s DO BEGIN END;
 			IF rewind THEN AlSourceRewind(source);
 			AlSourceStop(source);
 		END;
-		
+
 	PROCEDURE Pause(s: Extended);
 		BEGIN
 			StartTimer(t);
-			WHILE readseconds(t) < s DO BEGIN END; 
+			WHILE readseconds(t) < s DO BEGIN END;
 		END;
-		
+
 	PROCEDURE doDit;
 		BEGIN
 			PlayS(dit);
@@ -2767,7 +2767,7 @@ VAR 	// OpenAL variables
 			PlayS(dah);
 			Pause(dit);
 		END;
-		
+
 	// ASCII char to Morse CW
 	FUNCTION AtoM(ch: CHAR): STRING;
 		VAR i: Integer;
@@ -2786,40 +2786,40 @@ VAR 	// OpenAL variables
 			IF u = ' ' THEN Write('  ');
 		END;
 
-	// ASCII string to Morse CW	
+	// ASCII string to Morse CW
 	PROCEDURE StoM(s: STRING);
 		VAR i: Integer;
 		BEGIN
 			FOR i := 1 TO Length(s) DO AtoM(s[i]);
 		END;
-				
+
 BEGIN
 	// OpenAL preparation
 	InitOpenAL;
 	AlutInit(nil,argv);
-	
+
 	AlGenBuffers(1, @buffer);
 	// load the 500 Hz 1 sec sine-wave file
 	// get it from http://audiocheck.net
 	AlutLoadWavFile('audiocheck.net_sin_500Hz_-3dBFS_1s.wav', format, data, size, freq, loop);
 	AlBufferData(buffer, format, data, size, freq);
 	AlutUnloadWav(format, data, size, freq);
-	
+
 	AlGenSources(1, @source);
 	AlSourcei ( source, AL_BUFFER, buffer);
 	AlSourcef ( source, AL_PITCH, 1.0 );
 	AlSourcef ( source, AL_GAIN, 1.0 );
 	AlSourcefv ( source, AL_POSITION, @sourcepos);
 	AlSourcefv ( source, AL_VELOCITY, @sourcevel);
-	AlSourcei ( source, AL_LOOPING, AL_TRUE);	
-	
+	AlSourcei ( source, AL_LOOPING, AL_TRUE);
+
 	// Sound and print the Morse
 	StoM(msg);
 	Pause(1.0);
-	
+
 	AlSourceRewind(source);
 	AlSourceStop(source);
-	
+
 	// Clean up
 	AlDeleteBuffers(1, @buffer);
 	AlDeleteSources(1, @source);
@@ -2863,8 +2863,8 @@ Some known problems on UNIX:
 ## Perl 6
 
 {{works with|rakudo|2015-09-24}}
-Here we use the user as the audio device.  
-Just read the output, leaving extra pauses where indicated 
+Here we use the user as the audio device.
+Just read the output, leaving extra pauses where indicated
 by either whitespace or underscore.
 
 ```perl6
@@ -3024,8 +3024,8 @@ object code
 string line = ""
 
     puts(1,"enter text, return to play/rebuild, escape to quit\n")
-    while 1 do 
-        key = wait_key() 
+    while 1 do
+        key = wait_key()
         if key = 27 then exit end if    -- escape
         if key = 13 then                -- return
             playAndRebuild(line)
@@ -3036,9 +3036,9 @@ string line = ""
                 code &= ' '
                 puts(1,code)
                 line &= code
-            end if 
+            end if
         end if
-    end while 
+    end while
     puts(1,EOM)
 end procedure
 main()
@@ -3193,7 +3193,7 @@ function Send-MorseCode
             y = "-.--" ; z = "--.." ; 0 = "-----"; 1 = ".----"
             2 = "..---"; 3 = "...--"; 4 = "....-"; 5 = "....."
             6 = "-...."; 7 = "--..."; 8 = "---.."; 9 = "----."
-        }    
+        }
     }
     Process
     {
@@ -3316,17 +3316,17 @@ Procedure.s TextToMorse(InString$)
       Read.s s1
       If s1="Done"
         s2+s1+" " ; failed to find this coding
-        Break 
+        Break
       ElseIf Not s1=CurrStr$
         Continue
       EndIf
       Read.s s2
       result+s2
       If s2<>" "
-        result+","  
+        result+","
       EndIf
     ForEver
-  ForEver 
+  ForEver
   ProcedureReturn result
 EndProcedure
 
@@ -3406,22 +3406,22 @@ EndDataSection
 ```python
 import time, winsound #, sys
 
-char2morse = {          
-          "!": "---.",      "\"": ".-..-.",     "$": "...-..-",    "'": ".----.",  
-          "(": "-.--.",      ")": "-.--.-",     "+": ".-.-.",      ",": "--..--", 
-          "-": "-....-",     ".": ".-.-.-",     "/": "-..-.", 
-          "0": "-----",      "1": ".----",      "2": "..---",      "3": "...--", 
-          "4": "....-",      "5": ".....",      "6": "-....",      "7": "--...", 
-          "8": "---..",      "9": "----.", 
-          ":": "---...",     ";": "-.-.-.",     "=": "-...-",      "?": "..--..", 
-          "@": ".--.-.", 
-          "A": ".-",         "B": "-...",       "C": "-.-.",       "D": "-..", 
-          "E": ".",          "F": "..-.",       "G": "--.",        "H": "....", 
-          "I": "..",         "J": ".---",       "K": "-.-",        "L": ".-..", 
-          "M": "--",         "N": "-.",         "O": "---",        "P": ".--.", 
-          "Q": "--.-",       "R": ".-.",        "S": "...",        "T": "-", 
-          "U": "..-",        "V": "...-",       "W": ".--",        "X": "-..-", 
-          "Y": "-.--",       "Z": "--..", 
+char2morse = {
+          "!": "---.",      "\"": ".-..-.",     "$": "...-..-",    "'": ".----.",
+          "(": "-.--.",      ")": "-.--.-",     "+": ".-.-.",      ",": "--..--",
+          "-": "-....-",     ".": ".-.-.-",     "/": "-..-.",
+          "0": "-----",      "1": ".----",      "2": "..---",      "3": "...--",
+          "4": "....-",      "5": ".....",      "6": "-....",      "7": "--...",
+          "8": "---..",      "9": "----.",
+          ":": "---...",     ";": "-.-.-.",     "=": "-...-",      "?": "..--..",
+          "@": ".--.-.",
+          "A": ".-",         "B": "-...",       "C": "-.-.",       "D": "-..",
+          "E": ".",          "F": "..-.",       "G": "--.",        "H": "....",
+          "I": "..",         "J": ".---",       "K": "-.-",        "L": ".-..",
+          "M": "--",         "N": "-.",         "O": "---",        "P": ".--.",
+          "Q": "--.-",       "R": ".-.",        "S": "...",        "T": "-",
+          "U": "..-",        "V": "...-",       "W": ".--",        "X": "-..-",
+          "Y": "-.--",       "Z": "--..",
           "[": "-.--.",      "]": "-.--.-",     "_": "..--.-",
  }
 
@@ -3462,7 +3462,7 @@ def windowsmorse(text):
 # Outputs its own source file as Morse. An audible quine!
 #with open(sys.argv[0], 'r') as thisfile:
 #    windowsmorse(thisfile.read())
-    
+
 while True:
     windowsmorse(input('A string to change into morse: '))
 
@@ -3523,17 +3523,17 @@ Using MIDI on Windows for the beeps.
 
 ## Red
 
-The code must be compiled, because it contains red system code that is needed for the winapi calls 
+The code must be compiled, because it contains red system code that is needed for the winapi calls
 so use "red.exe -c morse.red " from command line to compile with red runtime.dll
-or "red.exe -r morse.red " to compile to single .exe file 
+or "red.exe -r morse.red " to compile to single .exe file
 
 each character will be printed with its corresponding code before played
 
 ```Red
-Red [ 
+Red [
   file: %morse.red   ;; filename, could be ommited
 ]
-; ";" is character for comment, i use double ones for better readability 
+; ";" is character for comment, i use double ones for better readability
 
 DIT: 100 ;; constant : 100 ms for short Beep
 FREQ: 700 ;; frequency for Beep
@@ -3545,27 +3545,27 @@ FREQ: 700 ;; frequency for Beep
 ;; ( caution, u must use "str: copy ..."  if code ist to be executed multiple times ! )
 str: "A.-B-...C-.-.D-..E.F..-.G--.H....I..J.---K-.-L.-..M--N-."
 append str "O---P.--.Q--.-R.-.S...T-U..-V...-W.--X-..-Y-.--Z--.."
- 
+
  delim: charset [#"A" - #"Z"]
- 
+
  ;; use of parse to generate "mc" morse code series / array containing codes for A - Z
  ;; use characters only as delimiter for each code
  mc:  parse str [ thru "A"  collect some [ keep copy result to [delim | end ] skip ] ]
- 
-  ;;-------------------------------------------- 
- send-code: func ["function to play morse code for character " 
- ;;-------------------------------------------- 
-           chr [char!]  ;; character A .. Z 
+
+  ;;--------------------------------------------
+ send-code: func ["function to play morse code for character "
+ ;;--------------------------------------------
+           chr [char!]  ;; character A .. Z
       ][
       sleep 500           ;; short break so u can read the character first
       ind:   to-integer chr - 64 ;; calculate index for morse array
       foreach sym mc/:ind [     ;; foreach symbol of code for character ...
         prin sym                  ;; prin(t) "." or "-"
         either sym = #"." [     ;; short beep
-          beep FREQ DIT 
+          beep FREQ DIT
       ][
         beep FREQ 3 * DIT     ;; or long beep = 3 x short
-      ] 
+      ]
       sleep DIT                   ;; short break after each character
     ]
 ]
@@ -3573,21 +3573,21 @@ append str "O---P.--.Q--.-R.-.S...T-U..-V...-W.--X-..-Y-.--Z--.."
  morse-text: func ["extract valid characters from sentence"
  ;;----------------------------------------------
         msg [string!]
-][      
+][
  foreach chr uppercase msg [
     prin  chr prin " "    ;; print character
   ;; valid character  A-Z ?
-   either   (chr >= #"A") and (chr <= #"Z") [   
-      send-code chr  
+   either   (chr >= #"A") and (chr <= #"Z") [
+      send-code chr
     ] [          ;; ... "else" word gap or unknown
       sleep 6 * DIT   ;; pause after word
     ]
     prin newline    ;; equal to :  print """ ,( prin prints without crlf )
-  ]  
+  ]
   sleep 6 * DIT  ;; pause after sentence
  ]
  ;;----------------------------------
- 
+
 morse-text "rosetta code"
 morse-text "hello world"
 
@@ -3608,16 +3608,16 @@ Red/System [
           return: [integer!]
        ]
          wsleep: "Sleep" [ dur [integer!]  ]
-] ] ] 
+] ] ]
 
-beep: routine [ 
+beep: routine [
         freq [integer!]
-        duration [integer!] 
+        duration [integer!]
         return: [integer!]
       ]  [ wbeep freq duration  ]
 
-sleep: routine [ 
-        duration [integer!] 
+sleep: routine [
+        duration [integer!]
       ]  [ wsleep duration  ]
 ;;----------------------------------------------
 
@@ -3630,9 +3630,9 @@ sleep: routine [
 The   '''$MORSE.REX'''   REXX program is included here   ──►   [[$MORSE.REX]].
 
 
-This program supports the   ''International Morse code''   as well as the   ''USA Morse code''   (the later being primarily used by the North American Railroads). 
+This program supports the   ''International Morse code''   as well as the   ''USA Morse code''   (the later being primarily used by the North American Railroads).
 
-Some translation is done for unsupported characters such as braces   '''{'''   '''}''', brackets   '''['''   ''']'''   and the like.  
+Some translation is done for unsupported characters such as braces   '''{'''   '''}''', brackets   '''['''   ''']'''   and the like.
 
 This REXX program normally shows Morse code words one word to a line before sounding.
 
@@ -3669,42 +3669,42 @@ This REXX programs only works for Regina and PC/REXX, but other REXXes (specific
 ```ring
 
 
- 
- morsecode = [["a", ".-"], 
-                      ["b", "-..."], 
-                      ["c", "-.-."], 
-                      ["d", "-.."], 
-                      ["e", "."], 
-                      ["f", "..-."], 
-                      ["g", "--."], 
-                      ["h", "...."], 
-                      ["i", ".."], 
-                      ["j", ".---"], 
-                      ["k", "-.-"], 
-                      ["l", ".-.."], 
-                      ["m", "--"], 
-                      ["n", "-."], 
-                      ["o", "---"], 
-                      ["p", ".--."], 
-                      ["q", "--.-"], 
-                      ["r", ".-."], 
-                      ["s", "..."], 
-                      ["t", "-"], 
-                      ["u", "..-"], 
-                      ["v", "...-"], 
-                      ["w", ".--"], 
-                      ["x", "-..-"], 
-                      ["y", "-.--"], 
-                      ["z", "--.."], 
-                      ["0", "-----"], 
-                      ["1", ".----"], 
-                      ["2", "..---"], 
-                      ["3", "...--"], 
-                      ["4", "....-"], 
-                      ["5", "....."], 
-                      ["6", "-...."], 
-                      ["7", "--..."], 
-                      ["8", "---.."], 
+
+ morsecode = [["a", ".-"],
+                      ["b", "-..."],
+                      ["c", "-.-."],
+                      ["d", "-.."],
+                      ["e", "."],
+                      ["f", "..-."],
+                      ["g", "--."],
+                      ["h", "...."],
+                      ["i", ".."],
+                      ["j", ".---"],
+                      ["k", "-.-"],
+                      ["l", ".-.."],
+                      ["m", "--"],
+                      ["n", "-."],
+                      ["o", "---"],
+                      ["p", ".--."],
+                      ["q", "--.-"],
+                      ["r", ".-."],
+                      ["s", "..."],
+                      ["t", "-"],
+                      ["u", "..-"],
+                      ["v", "...-"],
+                      ["w", ".--"],
+                      ["x", "-..-"],
+                      ["y", "-.--"],
+                      ["z", "--.."],
+                      ["0", "-----"],
+                      ["1", ".----"],
+                      ["2", "..---"],
+                      ["3", "...--"],
+                      ["4", "....-"],
+                      ["5", "....."],
+                      ["6", "-...."],
+                      ["7", "--..."],
+                      ["8", "---.."],
                       ["9", "----."]]
 strmorse = ""
 str = "this is a test text"
@@ -4053,7 +4053,7 @@ Example:
 
 ```bash
 
-$ echo hello world! | ./morse.sed 
+$ echo hello world! | ./morse.sed
 .... . .-.. .-.. ---  .-- --- .-. .-.. -.. !
 ```
 
@@ -4066,7 +4066,7 @@ $ echo hello world! | ./morse.sed
 ```tcl
 # This uses the GUI-free part of the Snack library
 package require sound
- 
+
 # A simple pause while running the event loop, in terms of basic time units
 proc pause n {
     global t
@@ -4088,7 +4088,7 @@ proc beep n {
 # The dits and the dahs are just beeps of different lengths
 interp alias {} dit {} beep 1
 interp alias {} dah {} beep 3
- 
+
 set MORSE_CODE {
     "!" "---."	 "\"" ".-..-."	"$" "...-..-"	"'" ".----."
     "(" "-.--."	 ")" "-.--.-"	"+" ".-.-."	"," "--..--"
@@ -4122,9 +4122,9 @@ proc morse {str wpm} {
     return
 }
 
-# We'll play at a fairly high pitch 
+# We'll play at a fairly high pitch
 set frequency 700
- 
+
 morse "Morse code with Tcl and Snack." 20
 ```
 
@@ -4189,7 +4189,7 @@ HEAR your morsecode !
 Please enter your sentence >SOS
 SEE your morsecode !
 ...---...
-HEAR your morsecode ! 
+HEAR your morsecode !
 
 ```
 
@@ -4385,10 +4385,10 @@ The [[#VBA]] example works in VB6 as well, without any change.
 
 ## XPL0
 
-This uses the Sound intrinsic, which has a minimum duration 
-of one system tick (about 1/18th of a second) for a dit (.). 
-The result is Morse code sent at about 20 words per minute. 
-The Sound intrinsic also provides the delay for sound gaps 
+This uses the Sound intrinsic, which has a minimum duration
+of one system tick (about 1/18th of a second) for a dit (.).
+The result is Morse code sent at about 20 words per minute.
+The Sound intrinsic also provides the delay for sound gaps
 when its volume parameter is set to zero.
 
 
@@ -4441,8 +4441,8 @@ Morse("Hello, world!");
 
 ```txt
 
-S... O--- S...       S... O--- S...       S... O--- S...       
-H.... e. l.-.. l.-.. o--- ,--..--       w.-- o--- r.-. l.-.. d-.. !.-.-.. 
+S... O--- S...       S... O--- S...       S... O--- S...
+H.... e. l.-.. l.-.. o--- ,--..--       w.-- o--- r.-. l.-.. d-.. !.-.-..
 
 ```
 

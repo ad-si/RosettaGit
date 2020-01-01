@@ -25,54 +25,54 @@ c.f. [[Colour_pinstripe/Display]]
 ```ActionScript3
 
 package  {
-    
+
     import flash.display.Bitmap;
     import flash.display.BitmapData;
     import flash.display.Sprite;
     import flash.events.Event;
-    
+
     public class Pinstripe extends Sprite {
-        
+
         public function Pinstripe():void {
             if (stage) init();
             else addEventListener(Event.ADDED_TO_STAGE, init);
         }
-        
+
         private function init(e:Event = null):void {
-            
+
             var data:BitmapData = new BitmapData(stage.stageWidth, stage.stageHeight, false, 0xFFFFFFFF);
             data.lock();
-            
+
             var w:uint = data.width, h:uint = data.height / 4;
             var x:uint, y:uint = 0, i:uint, px:uint, colour:uint, maxy:uint = h;
-            
+
             for ( i = 1; i <= 4; i++ ) {
-                
+
                 for ( ; y < maxy; y++ ) {
                     colour = 0xFF000000;
                     px = 1;
-                    
+
                     for ( x = 0; x < w; x++ ) {
-                        
+
                         if ( px == i ) {
                             colour = (colour == 0xFF000000) ? 0xFFFFFFFF : 0xFF000000;
                             px = 1;
                         }
                         else px++;
-                        
+
                         data.setPixel32(x, y, colour);
-                        
+
                     }
                 }
-                
+
                 maxy += h;
-                
+
             }
-            
+
             data.unlock();
             addChild(new Bitmap(data));
         }
-        
+
     }
 
 }
@@ -94,13 +94,13 @@ hdc	:= CreateCompatibleDC()
 hbm	:= CreateDIBSection(w, h)
 obm	:= SelectObject(hdc, hbm)
 G	:= Gdip_GraphicsFromHDC(hdc)
- 
+
 OnExit, Exit
- 
+
 Gui -Caption +E0x80000 +LastFound +OwnDialogs +Owner +AlwaysOnTop
 Gui Show, NA
 hwnd	:= WinExist()
- 
+
 pBrushB := Gdip_BrushCreateSolid(0xFF000000)
 pBrushW := Gdip_BrushCreateSolid(0xFFFFFFFF)
 Loop 4
@@ -111,18 +111,18 @@ Loop 4
 		,Gdip_FillRectangle(G, pBrush%BorW%
 				    , A_Index*n-n, (n-1)*h/4, n, h/4)
 }
- 
+
 UpdateLayeredWindow(hwnd, hdc, 0, 0, W, H)
- 
+
 Gdip_DeleteBrush(pBrushB)
 Gdip_DeleteBrush(pBrushW)
- 
+
 SelectObject(hdc, obm)
 DeleteObject(hbm)
 DeleteDC(hdc)
 Gdip_DeleteGraphics(G)
 Return
- 
+
 Escape::
 Exit:
 Gdip_Shutdown(pToken)
@@ -147,7 +147,7 @@ ExitApp
       \                    WS_CLIPCHILDREN + WS_CLIPSIBLINGS
       SYS "SetWindowPos", @hwnd%, HWND_TOPMOST, 0, 0, xscreen%, yscreen%, 0
       VDU 26
-      
+
       FOR X% = 0 TO xscreen%*4-4 STEP 4
         RECTANGLE FILL X%,yscreen%*3/2,2,yscreen%/2
       NEXT
@@ -300,7 +300,7 @@ HWND InitAll( HINSTANCE hInstance )
     wcex.hbrBackground = ( HBRUSH )( COLOR_WINDOW + 1 );
     wcex.lpszClassName = "_BW_PS_";
 
-    RegisterClassEx( &wcex ); 
+    RegisterClassEx( &wcex );
     return CreateWindow( "_BW_PS_", ".: Pinstripe -- PJorente :.", WS_POPUP, CW_USEDEFAULT, 0, 200, 200, NULL, NULL, hInstance, NULL );
 }
 //--------------------------------------------------------------------------------------------------
@@ -319,7 +319,7 @@ int APIENTRY _tWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpC
     RECT rc = { 0, 0, mw, mh };
 
     AdjustWindowRectEx( &rc, WS_POPUP, FALSE, 0 );
-    int w = rc.right  - rc.left, 
+    int w = rc.right  - rc.left,
 	h = rc.bottom - rc.top;
 
     int posX = ( GetSystemMetrics( SM_CXSCREEN ) >> 1 ) - ( w >> 1 ),
@@ -347,13 +347,13 @@ int APIENTRY _tWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpC
 
 
 
-## C sharp
+## C#
 
 
 Using System.Drawing, and writing the output to a file.
 
 
-```csharp
+```c#
 
 using System.Drawing;
 
@@ -369,18 +369,18 @@ public class Pinstripe
     {
         var image = new Bitmap(width, height);
         var quarterHeight = height / 4;
-        
+
         for (var y = 0; y < height; y++)
         {
             var stripeWidth = (y / quarterHeight) + 1;
-            
+
             for (var x = 0; x < width; x++)
             {
                 var color = ((x / stripeWidth) % 2) == 0 ? Color.White : Color.Black;
                 image.SetPixel(x, y, color);
             }
         }
-        
+
         return image;
     }
 }
@@ -400,7 +400,7 @@ Dim As UInteger ps, col, h, w, x, y1, y2
 ScreenInfo w, h
 
 ' create display size window, 8bit color (palette), no frame
-ScreenRes w, h, 8,, 8 
+ScreenRes w, h, 8,, 8
 ' vga palette black = 0 and white = 15
 
 h = h \ 4 : y2 = h -1
@@ -414,7 +414,7 @@ For ps = 1 To 4
     y1 += h : y2 += h
 Next
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 'Print : Print "hit any key to end program"
 Sleep
@@ -434,7 +434,7 @@ Public Sub Form_Open()
 Dim iColour As Integer[] = [Color.Black, Color.white]
 Dim hPanel As Panel
 Dim siCount, siCounter, siSet As Short
- 
+
 With Me
   .Arrangement = Arrange.Row
   .Border = False
@@ -442,8 +442,8 @@ With Me
   .Width = Desktop.Width
   .Fullscreen = True
 End With
- 
-For siCounter = 1 To 4 
+
+For siCounter = 1 To 4
   For siCount = 1 To Desktop.Width Step siCounter
     hpanel = New Panel(Me)
     hpanel.Width = siCounter
@@ -453,7 +453,7 @@ For siCounter = 1 To 4
     If siSet > 1 Then siSet = 0
   Next
 Next
- 
+
 End
 ```
 
@@ -473,7 +473,7 @@ import "github.com/fogleman/gg"
 
 var palette = [2]string{
     "FFFFFF", // white
-    "000000", // black    
+    "000000", // black
 }
 
 func pinstripe(dc *gg.Context) {
@@ -511,16 +511,16 @@ Icon and Unicon can't access the screen directly, so this pinstripe is produced 
 
 ```Icon
 link graphics
- 
+
 procedure main()  # pinstripe
- 
+
    WOpen("canvas=hidden")                   # hide for query
    height := WAttrib("displayheight") - 45  # adjust for ...
    width  := WAttrib("displaywidth") - 20   # ... window 7 borders
    WClose(&window)
 
-   W := WOpen("size="||width||","||height,"bg=black","fg=white") | 
-        stop("Unable to open window")   
+   W := WOpen("size="||width||","||height,"bg=black","fg=white") |
+        stop("Unable to open window")
 
    maxbands := 4                             # bands to draw
    bandheight := height / maxbands           # height of each band
@@ -528,7 +528,7 @@ procedure main()  # pinstripe
          top   := 1 + bandheight * (bands-1) # .. top of band
          step  := 2^bands                    # .. number of steps (width)
          lines := step / 2                   # .. number (width) of stripes
-         every c := 1 to width by step & l := 0 to lines-1 do 
+         every c := 1 to width by step & l := 0 to lines-1 do
             DrawLine(c+l,top,c+l,top+bandheight-1)
          }
    WDone(W)                                  # q to exit
@@ -536,7 +536,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn supports graphics]
 
 
@@ -656,15 +656,15 @@ class ColourPinstripeDisplay(): JPanel() {
         super.paintComponent(g)
         for (b in 1..bands) {
             var colIndex = 0
-            val h = height / bands 
+            val h = height / bands
             for (x in 0 until width step b) {
-                g.color = palette[colIndex % palette.size]                  
+                g.color = palette[colIndex % palette.size]
                 g.fillRect(x, (b - 1) * h, b, h)
                 colIndex++
             }
         }
     }
-}  
+}
 
 fun main(args: Array<String>) {
     SwingUtilities.invokeLater {
@@ -675,7 +675,7 @@ fun main(args: Array<String>) {
         f.pack()
         f.setLocationRelativeTo(null)
         f.setVisible(true)
-    }      
+    }
 }
 ```
 
@@ -754,7 +754,7 @@ wait
 
 ```lua
 
-function love.load()	
+function love.load()
     WIDTH = love.window.getWidth()
     ROW_HEIGHT = math.floor(love.window.getHeight()/4)
     love.graphics.setBackgroundColor({0,0,0})
@@ -782,14 +782,14 @@ end
 
 ```Mathematica
 color[y_] := {White, Black}[[Mod[y, 2] + 1]];
-Graphics[Join[{Thickness[1/408]}, 
-  Flatten[{color[#], Line[{{# - 1/2, 408}, {# - 1/2, 307}}]} & /@ 
-    Range[408]], {Thickness[1/204]}, 
-  Flatten[{color[#], Line[{{2 # - 1, 306}, {2 # - 1, 205}}]} & /@ 
-    Range[204]], {Thickness[1/136]}, 
-  Flatten[{color[#], Line[{{3 # - 3/2, 204}, {3 # - 3/2, 103}}]} & /@ 
-    Range[136]], {Thickness[1/102]}, 
-  Flatten[{color[#], Line[{{4 # - 2, 102}, {4 # - 2, 1}}]} & /@ 
+Graphics[Join[{Thickness[1/408]},
+  Flatten[{color[#], Line[{{# - 1/2, 408}, {# - 1/2, 307}}]} & /@
+    Range[408]], {Thickness[1/204]},
+  Flatten[{color[#], Line[{{2 # - 1, 306}, {2 # - 1, 205}}]} & /@
+    Range[204]], {Thickness[1/136]},
+  Flatten[{color[#], Line[{{3 # - 3/2, 204}, {3 # - 3/2, 103}}]} & /@
+    Range[136]], {Thickness[1/102]},
+  Flatten[{color[#], Line[{{4 # - 2, 102}, {4 # - 2, 1}}]} & /@
     Range[102]]], ImageSize -> {408, 408}]
 ```
 
@@ -893,7 +893,7 @@ Procedure PinstripeDisplay(width, height)
   imgID = CreateImage(#PB_Any, width, height)
   If imgID
     StartDrawing(ImageOutput(imgID))
-      Repeat 
+      Repeat
         x = 0
         Repeat
           Box(x, psTop, psWidth, psHeight, #White)
@@ -902,7 +902,7 @@ Procedure PinstripeDisplay(width, height)
         psWidth + 1
         horzBand + 1
         psTop = horzBand * height / 4  ;move to the top of next horizontal band of image
-      Until psTop >= height 
+      Until psTop >= height
     StopDrawing()
   EndIf
   ProcedureReturn imgID
@@ -913,7 +913,7 @@ If OpenWindow(0, 0, 0, 1, 1,"PureBasic Pinstripe", #PB_Window_Maximize | #PB_Win
   PicID = PinstripeDisplay(WindowWidth(0), WindowHeight(0))
   ImageGadget(0, 0, 0, WindowWidth(0), WindowHeight(0), ImageID(PicID))
   While WaitWindowEvent() <> #PB_Event_CloseWindow
-  Wend  
+  Wend
 EndIf
 ```
 
@@ -924,7 +924,7 @@ EndIf
 
 ```Python
 
-#Python task for Pinstripe/Display 
+#Python task for Pinstripe/Display
 #Tested for Python2.7 by Benjamin Curutchet
 
 #Import PIL libraries
@@ -941,7 +941,7 @@ im = Image.new('RGB',(x_size, y_size))
 draw = ImageDraw.Draw(im)
 
 #RGB code for the White Color
-White  = (255,255,255) 
+White  = (255,255,255)
 
 #First loop in order to create four distinct lines
 y_delimiter_list = []
@@ -960,24 +960,24 @@ for x in range(1,x_size-1,4):
 	for y in range(y_delimiter_list[1],y_delimiter_list[2],1):
 		draw.point((x,y),White)
 		draw.point((x+1,y),White)
-		
+
 for x in range(1,x_size-2,6):
 	for y in range(y_delimiter_list[2],y_delimiter_list[3],1):
 		draw.point((x,y),White)
 		draw.point((x+1,y),White)
 		draw.point((x+2,y),White)
-		
+
 for x in range(1,x_size-3,8):
 	for y in range(y_delimiter_list[3],y_size,1):
 		draw.point((x,y),White)
 		draw.point((x+1,y),White)
 		draw.point((x+2,y),White)
 		draw.point((x+3,y),White)
-	
-				
-		
+
+
+
 #Save the picture under a name as a jpg file.
-print "Your picture is saved"		
+print "Your picture is saved"
 im.save('PictureResult.jpg')
 
 
@@ -1036,7 +1036,7 @@ load "guilib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Pinstripe/Display")
@@ -1073,7 +1073,7 @@ func draw
         color = new qcolor()
         color.setrgb(0,0,0,255)
         mybrush = new qbrush() {setstyle(1) setcolor(color)}
-        setbrush(mybrush) 
+        setbrush(mybrush)
         for x = 0 to xscreen*4-4 step 4
              drawrect(x,yscreen*3/2,2,yscreen/2)
         next
@@ -1175,7 +1175,7 @@ Screenshot [http://www.edmundgriffiths.com/zx81pinstripe.jpg here].
 ```tcl
 package require Tcl 8.5
 package require Tk 8.5
- 
+
 wm attributes . -fullscreen 1
 pack [canvas .c -highlightthick 0] -fill both -expand 1
 set colors {black white}

@@ -542,7 +542,7 @@ void swap(T &lhs, T &rhs){
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### C#: Using a generic method
 
@@ -570,7 +570,7 @@ are more strongly typed and arguably easier to work with.
 Usage:
 
 
-```csharp
+```c#
 int a = 1;
 int b = 2;
 Swap(ref a, ref b); // Type parameter is inferred.
@@ -583,7 +583,7 @@ Swap(ref a, ref b); // Type parameter is inferred.
 {{works with|C sharp|C#|7.0+}}
 C# 7.0 introduced language support for tuples, which are implemented using the <code>ValueTuple</code> family of structs. The example below creates a tuple with the values of <code>b</code> and <code>a</code> and uses deconstructing assignment to assign the members of the tuple back to the variables.
 
-```csharp
+```c#
 int a = 1;
 int b = 2;
 (a, b) = (b, a);

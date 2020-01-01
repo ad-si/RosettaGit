@@ -231,10 +231,10 @@ The attractive numbers up to and including 120 are:
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 
 namespace AttractiveNumbers {

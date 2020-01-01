@@ -834,9 +834,9 @@ true or true = true
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 class Program

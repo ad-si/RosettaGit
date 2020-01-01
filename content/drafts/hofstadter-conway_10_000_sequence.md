@@ -812,11 +812,11 @@ maximum of a(n)/n between 2^19 (524288) and 2^20 (1048576) is 0.533779
 
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C#|3.0}}
 
 
-```csharp
+```c#
 
 using System;
 using System.Linq;

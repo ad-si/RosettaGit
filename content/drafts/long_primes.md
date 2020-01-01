@@ -175,11 +175,11 @@ The number of long primes up to:
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

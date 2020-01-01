@@ -11,9 +11,9 @@ tags = []
 +++
 
 {{task}}
-Numbrix puzzles are similar to [[Solve a Hidato puzzle|Hidato]]. 
-The most important difference is that it is only possible to move 1 node left, right, up, or down (sometimes referred to as the [[wp:Von Neumann neighborhood|Von Neumann neighborhood]]). 
-Published puzzles also tend not to have holes in the grid and may not always indicate the end node. 
+Numbrix puzzles are similar to [[Solve a Hidato puzzle|Hidato]].
+The most important difference is that it is only possible to move 1 node left, right, up, or down (sometimes referred to as the [[wp:Von Neumann neighborhood|Von Neumann neighborhood]]).
+Published puzzles also tend not to have holes in the grid and may not always indicate the end node.
 Two examples follow:
 
 ;Example 1
@@ -83,8 +83,8 @@ Solution.
 ```
 
 ;Task
-Write a program to solve puzzles of this ilk, 
-demonstrating your program by solving the above examples. 
+Write a program to solve puzzles of this ilk,
+demonstrating your program by solving the above examples.
 Extra credit for other interesting examples.
 
 
@@ -112,11 +112,11 @@ SolveNumbrix(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 		Grid[R, C] := ">" num 					; place num in current neighbor and mark it visited ">"
 		row:=R, col:=C						; move to current neighbor
 	}
- 
+
 	num++								; increment num
 	if (num=max)							; if reached end
 		return map(Grid)					; return solution
- 
+
 	if locked[num]							; if current num is a locked value
 	{
 		row := StrSplit((StrSplit(locked[num], ",").1) , ":").1	; find row of num
@@ -130,7 +130,7 @@ SolveNumbrix(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 		{
 			R := StrSplit(value, ":").1
 			C := StrSplit(value, ":").2
- 
+
 			if (Grid[R,C] = "")				; a hole or out of bounds
 			|| InStr(Grid[R, C], ">")			; visited
 			|| Locked[num+1] && !(Locked[num+1]~= "\b" R ":" C "\b") ; not neighbor of locked[num+1]
@@ -138,7 +138,7 @@ SolveNumbrix(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 			|| Locked[num]					; locked value
 			|| Locked[Grid[R, C]]				; locked cell
 				continue
- 
+
 			if SolveNumbrix(Grid, Locked, Max, row, col, num, R, C)	; solve for current location, neighbor and value
 				return map(Grid)			; if solved, return solution
 		}
@@ -163,7 +163,7 @@ map(Grid){
 	for i, row in Grid
 	{
 		for j, element in row
-			line .= (A_Index > 1 ? "`t" : "") . element 
+			line .= (A_Index > 1 ? "`t" : "") . element
 		map .= (map<>""?"`n":"") line
 		line := ""
 	}
@@ -184,7 +184,7 @@ Grid := [[0,	0,	0,	0,	0,	0,	0,	0,	0]
 	,[0,	0,	24,	21,	0,	1,	2,	0,	0]
 	,[0,	0,	0,	0,	0,	0,	0,	0,	0]]
 ;--------------------------------
-; find locked cells, find row and col of first value "1" and max value 
+; find locked cells, find row and col of first value "1" and max value
 Locked := []
 max := 1
 for i, line in Grid
@@ -195,7 +195,7 @@ for i, line in Grid
 			row :=i , col := j
 		if (element > 0)
 			Locked[element] := i ":" j "," Neighbor(i, j)	; save locked elements position and neighbors
-			
+
 	}
 ;--------------------------------
 MsgBox, 262144, ,% SolveNumbrix(Grid, Locked, Max, row, col)
@@ -248,7 +248,7 @@ public:
 	void solve(vector<string>& puzz, int max_wid)
 	{
 		if (puzz.size() < 1) return;
-		wid = max_wid; 
+		wid = max_wid;
 		hei = static_cast<int>(puzz.size()) / wid;
 		max = wid * hei;
 		int len = max, c = 0;
@@ -287,7 +287,7 @@ private:
 				{
 					int a = x + dx[d], b = y + dy[d];
 					if (arr[a + b * wid].val == w)
-						if (search(a, b, w + dr, dr)) 
+						if (search(a, b, w + dr, dr))
 							return true;
 				}
 			}
@@ -302,7 +302,7 @@ private:
 				if (arr[a + b * wid].val == 0)
 				{
 					arr[a + b * wid].val = w;
-					if (search(a, b, w + dr, dr)) 
+					if (search(a, b, w + dr, dr))
 						return true;
 					arr[a + b * wid].val = 0;
 				}
@@ -317,7 +317,7 @@ private:
 		for (int xx = 0; xx < 4; xx++)
 		{
 			int a = x + dx[xx], b = y + dy[xx];
-			if (a < 0 || b < 0 || a >= wid || b >= hei) 
+			if (a < 0 || b < 0 || a >= wid || b >= hei)
 				continue;
 			if (arr[a + b * wid].val > -1)
 				retval.set(xx);
@@ -420,14 +420,14 @@ int main(int argc, char* argv[])
 
 
 
-## C sharp
+## C#
 
 The same solver can solve Hidato, Holy Knight's Tour, Hopido and Numbrix puzzles.<br/>
 The input can be an array of strings if each cell is one character. The length of the first row must be the number of columns in the puzzle.<br/>
 Any non-numeric value indicates a no-go.<br/>
 If there are cells that require more characters, then a 2-dimensional array of ints must be used. Any number < 0 indicates a no-go.
 
-```csharp
+```c#
 using System.Collections;
 using System.Collections.Generic;
 using static System.Console;
@@ -441,7 +441,7 @@ public class Solver
         numbrixMoves = {(1,0),(0,1),(-1,0),(0,-1)};
 
     private (int dx, int dy)[] moves;
-        
+
     public static void Main()
     {
         var numbrixSolver = new Solver(numbrixMoves);
@@ -863,9 +863,9 @@ This solution uses HLPsolver from [[Solve_a_Hidato_puzzle#Elixir | here]]
 
 ```elixir
 # require HLPsolver
- 
+
 adjacent = [{-1, 0}, {0, -1}, {0, 1}, {1, 0}]
- 
+
 board1 = """
  0  0  0  0  0  0  0  0  0
  0  0 46 45  0 55 74  0  0
@@ -878,7 +878,7 @@ board1 = """
  0  0  0  0  0  0  0  0  0
 """
 HLPsolver.solve(board1, adjacent)
- 
+
 board2 = """
  0  0  0  0  0  0  0  0  0
  0 11 12 15 18 21 62 61  0
@@ -1079,27 +1079,27 @@ func main() {
 
 Solution for example 1:
 
-49 50 51 52 53 54 75 76 81 
-48 47 46 45 44 55 74 77 80 
-37 38 39 40 43 56 73 78 79 
-36 35 34 41 42 57 72 71 70 
-31 32 33 14 13 58 59 68 69 
-30 17 16 15 12 61 60 67 66 
-29 18 19 20 11 62 63 64 65 
-28 25 24 21 10  1  2  3  4 
-27 26 23 22  9  8  7  6  5 
+49 50 51 52 53 54 75 76 81
+48 47 46 45 44 55 74 77 80
+37 38 39 40 43 56 73 78 79
+36 35 34 41 42 57 72 71 70
+31 32 33 14 13 58 59 68 69
+30 17 16 15 12 61 60 67 66
+29 18 19 20 11 62 63 64 65
+28 25 24 21 10  1  2  3  4
+27 26 23 22  9  8  7  6  5
 
 Solution for example 2:
 
- 9 10 13 14 19 20 63 64 65 
- 8 11 12 15 18 21 62 61 66 
- 7  6  5 16 17 22 59 60 67 
-34 33  4  3 24 23 58 57 68 
-35 32 31  2 25 54 55 56 69 
-36 37 30  1 26 53 74 73 70 
-39 38 29 28 27 52 75 72 71 
-40 43 44 47 48 51 76 77 78 
-41 42 45 46 49 50 81 80 79 
+ 9 10 13 14 19 20 63 64 65
+ 8 11 12 15 18 21 62 61 66
+ 7  6  5 16 17 22 59 60 67
+34 33  4  3 24 23 58 57 68
+35 32 31  2 25 54 55 56 69
+36 37 30  1 26 53 74 73 70
+39 38 29 28 27 52 75 72 71
+40 43 44 47 48 51 76 77 78
+41 42 45 46 49 50 81 80 79
 
 ```
 
@@ -1208,54 +1208,54 @@ end
 
 ->numbrix <numbrix1.in
 Input with 81 cells:
-                                 
-     _  _  _  _  _  _  _  _  _   
-     _  _ 46 45  _ 55 74  _  _   
-     _ 38  _  _ 43  _  _ 78  _   
-     _ 35  _  _  _  _  _ 71  _   
-     _  _ 33  _  _  _ 59  _  _   
-     _ 17  _  _  _  _  _ 67  _   
-     _ 18  _  _ 11  _  _ 64  _   
-     _  _ 24 21  _  1  2  _  _   
-     _  _  _  _  _  _  _  _  _   
-                                 
+
+     _  _  _  _  _  _  _  _  _
+     _  _ 46 45  _ 55 74  _  _
+     _ 38  _  _ 43  _  _ 78  _
+     _ 35  _  _  _  _  _ 71  _
+     _  _ 33  _  _  _ 59  _  _
+     _ 17  _  _  _  _  _ 67  _
+     _ 18  _  _ 11  _  _ 64  _
+     _  _ 24 21  _  1  2  _  _
+     _  _  _  _  _  _  _  _  _
+
 Output with 81 cells:
-                                 
-    49 50 51 52 53 54 75 76 81   
-    48 47 46 45 44 55 74 77 80   
-    37 38 39 40 43 56 73 78 79   
-    36 35 34 41 42 57 72 71 70   
-    31 32 33 14 13 58 59 68 69   
-    30 17 16 15 12 61 60 67 66   
-    29 18 19 20 11 62 63 64 65   
-    28 25 24 21 10  1  2  3  4   
-    27 26 23 22  9  8  7  6  5   
-                                 
+
+    49 50 51 52 53 54 75 76 81
+    48 47 46 45 44 55 74 77 80
+    37 38 39 40 43 56 73 78 79
+    36 35 34 41 42 57 72 71 70
+    31 32 33 14 13 58 59 68 69
+    30 17 16 15 12 61 60 67 66
+    29 18 19 20 11 62 63 64 65
+    28 25 24 21 10  1  2  3  4
+    27 26 23 22  9  8  7  6  5
+
 ->numbrix <numbrix2.in
 Input with 81 cells:
-                                 
-     _  _  _  _  _  _  _  _  _   
-     _ 11 12 15 18 21 62 61  _   
-     _  6  _  _  _  _  _ 60  _   
-     _ 33  _  _  _  _  _ 57  _   
-     _ 32  _  _  _  _  _ 56  _   
-     _ 37  _  1  _  _  _ 73  _   
-     _ 38  _  _  _  _  _ 72  _   
-     _ 43 44 47 48 51 76 77  _   
-     _  _  _  _  _  _  _  _  _   
-                                 
+
+     _  _  _  _  _  _  _  _  _
+     _ 11 12 15 18 21 62 61  _
+     _  6  _  _  _  _  _ 60  _
+     _ 33  _  _  _  _  _ 57  _
+     _ 32  _  _  _  _  _ 56  _
+     _ 37  _  1  _  _  _ 73  _
+     _ 38  _  _  _  _  _ 72  _
+     _ 43 44 47 48 51 76 77  _
+     _  _  _  _  _  _  _  _  _
+
 Output with 81 cells:
-                                 
-     9 10 13 14 19 20 63 64 65   
-     8 11 12 15 18 21 62 61 66   
-     7  6  5 16 17 22 59 60 67   
-    34 33  4  3 24 23 58 57 68   
-    35 32 31  2 25 54 55 56 69   
-    36 37 30  1 26 53 74 73 70   
-    39 38 29 28 27 52 75 72 71   
-    40 43 44 47 48 51 76 77 78   
-    41 42 45 46 49 50 81 80 79   
-                                 
+
+     9 10 13 14 19 20 63 64 65
+     8 11 12 15 18 21 62 61 66
+     7  6  5 16 17 22 59 60 67
+    34 33  4  3 24 23 58 57 68
+    35 32 31  2 25 54 55 56 69
+    36 37 30  1 26 53 74 73 70
+    39 38 29 28 27 52 75 72 71
+    40 43 44 47 48 51 76 77 78
+    41 42 45 46 49 50 81 80 79
+
 ->
 
 ```
@@ -1363,15 +1363,15 @@ public class Numbrix {
 
 
 ```txt
-49 50 51 52 53 54 75 76 81 
-48 47 46 45 44 55 74 77 80 
-37 38 39 40 43 56 73 78 79 
-36 35 34 41 42 57 72 71 70 
-31 32 33 14 13 58 59 68 69 
-30 17 16 15 12 61 60 67 66 
-29 18 19 20 11 62 63 64 65 
-28 25 24 21 10  1  2  3  4 
-27 26 23 22  9  8  7  6  5 
+49 50 51 52 53 54 75 76 81
+48 47 46 45 44 55 74 77 80
+37 38 39 40 43 56 73 78 79
+36 35 34 41 42 57 72 71 70
+31 32 33 14 13 58 59 68 69
+30 17 16 15 12 61 60 67 66
+29 18 19 20 11 62 63 64 65
+28 25 24 21 10  1  2  3  4
+27 26 23 22  9  8  7  6  5
 ```
 
 
@@ -1564,7 +1564,7 @@ val example2 = listOf(
 
 val moves = listOf(1 to 0, 0 to 1, -1 to 0, 0 to -1)
 
-lateinit var board: List<String>   
+lateinit var board: List<String>
 lateinit var grid: List<IntArray>
 lateinit var clues: IntArray
 var totalToFill = 0
@@ -1635,27 +1635,27 @@ fun main(args: Array<String>) {
 
 Solution for example 1:
 
-49 50 51 52 53 54 75 76 81 
-48 47 46 45 44 55 74 77 80 
-37 38 39 40 43 56 73 78 79 
-36 35 34 41 42 57 72 71 70 
-31 32 33 14 13 58 59 68 69 
-30 17 16 15 12 61 60 67 66 
-29 18 19 20 11 62 63 64 65 
-28 25 24 21 10  1  2  3  4 
-27 26 23 22  9  8  7  6  5 
+49 50 51 52 53 54 75 76 81
+48 47 46 45 44 55 74 77 80
+37 38 39 40 43 56 73 78 79
+36 35 34 41 42 57 72 71 70
+31 32 33 14 13 58 59 68 69
+30 17 16 15 12 61 60 67 66
+29 18 19 20 11 62 63 64 65
+28 25 24 21 10  1  2  3  4
+27 26 23 22  9  8  7  6  5
 
 Solution for example 2:
 
- 9 10 13 14 19 20 63 64 65 
- 8 11 12 15 18 21 62 61 66 
- 7  6  5 16 17 22 59 60 67 
-34 33  4  3 24 23 58 57 68 
-35 32 31  2 25 54 55 56 69 
-36 37 30  1 26 53 74 73 70 
-39 38 29 28 27 52 75 72 71 
-40 43 44 47 48 51 76 77 78 
-41 42 45 46 49 50 81 80 79 
+ 9 10 13 14 19 20 63 64 65
+ 8 11 12 15 18 21 62 61 66
+ 7  6  5 16 17 22 59 60 67
+34 33  4  3 24 23 58 57 68
+35 32 31  2 25 54 55 56 69
+36 37 30  1 26 53 74 73 70
+39 38 29 28 27 52 75 72 71
+40 43 44 47 48 51 76 77 78
+41 42 45 46 49 50 81 80 79
 
 ```
 
@@ -2242,7 +2242,7 @@ of problems is here.
     [(? sequence? s)
      (define (max-n-digits p)
        (and p (add1 (order-of-magnitude (* (vector-length p) (vector-length (vector-ref p 0)))))))
-     (define min-width (or w (max-n-digits p)))     
+     (define min-width (or w (max-n-digits p)))
      (string-join
       (for/list ((r s))
         (string-join
@@ -2254,16 +2254,16 @@ of problems is here.
   (define board# (puzzle->hash board))
   ;; reverse mapping, will only take note of positive values
   (define targets# (for/hash ([(k v) (in-hash board#)] #:when (positive? v)) (values v k)))
-  
+
   (define (neighbours r.c)
     (for/list ((r+.c+ neighbour-offsets))
       (match-define (list r+ c+) r+.c+)
       (match-define (cons r  c ) r.c)
       (cons (+ r r+) (+ c c+))))
-  
+
   ;; Count the moves, rather than check for "no more zeros" in puzzle
   (define last-move (length (filter number? (hash-values board#))))
-  
+
   ;; Depth first solution of the puzzle (we have to go deep, it's where the solutions are!
   (define (inr-solve-pzl b# move r.c)
     (cond
@@ -2275,16 +2275,16 @@ of problems is here.
             #:when (equal? (hash-ref targets# move r.c) r.c) ; we're where we should be!
             #:when (match (hash-ref b# r.c+ -1) (0 #t) ((== m++) #t) (_ #f)))
          (inr-solve-pzl (hash-set b# r.c+ m++) m++ r.c+))]))
-  
+
   (define (solution-starting-at n)
     (define start-r.c (for/first (((k v) (in-hash board#)) #:when (= n v)) k))
-    (and start-r.c (inr-solve-pzl board# n start-r.c)))  
-  
+    (and start-r.c (inr-solve-pzl board# n start-r.c)))
+
   (define sltn
     (cond [(solution-starting-at 1) => values]
           ;; next clause starts from 0 for hopido
           [(solution-starting-at 0) => values]))
-  
+
   (and sltn (hash->puzzle sltn)))
 ```
 
@@ -2419,7 +2419,7 @@ show: if maxR<1 | maxC<1  then call err  'no legal cell was specified.'
       say;    return
 ```
 
-'''output'''   when using the input of: 
+'''output'''   when using the input of:
 
 <tt> 1 1 . . . . . . . . ./2 1 . . 24 21 . 1 2 . ./3 1 . 18 . . 11 . . 64 ./4 1 . 17 . . . . . 67 ./5 1 . . 33 . . . 59 . ./6 1 . 35 . . . . . 71 ./7 1 . 38 . . 43 . . 78 ./8 1 . . 46 45 . 55 74 . ./9 1 . . . . . . . . . </tt>
 
@@ -2450,7 +2450,7 @@ A solution for the Numbrix puzzle exists.
 
 ```
 
-'''output'''   when using the input of: 
+'''output'''   when using the input of:
 
 <tt> 1 1 . . . . . . . . .\2 1 . 43 44 47 48 51 76 77 .\3 1 . 38 . . . . . 72 .\4 1 . 37 . 1 . . . 73 .\5 1 . 32 . . . . . 56 .\6 1 . 33 . . . . . 57 .\7 1 . 6 . . . . . 60 .\8 1 . 11 12 15 18 21 62 61 .\9 1 . . . . . . . . . </tt>
 
@@ -2628,13 +2628,13 @@ class NumbrixSolver;
   constraint f_seq {
     foreach(solvedBoard[i])foreach(solvedBoard[i][j])
       (solvedBoard[i][j] == (numCells)) ||
-      (solvedBoard[(i < solvedBoard.size-1) ? (i+1): i][j]    == 
+      (solvedBoard[(i < solvedBoard.size-1) ? (i+1): i][j]    ==
                                          solvedBoard[i][j]+1) ||
-      (solvedBoard[i][(j < solvedBoard[i].size - 1) ? j+1: j] == 
+      (solvedBoard[i][(j < solvedBoard[i].size - 1) ? j+1: j] ==
                                          solvedBoard[i][j]+1) ||
-      (solvedBoard[(i > 0) ? i-1: i][j]                       == 
+      (solvedBoard[(i > 0) ? i-1: i][j]                       ==
                                          solvedBoard[i][j]+1) ||
-      (solvedBoard[i][(j > 0)? j-1:j]                         == 
+      (solvedBoard[i][(j > 0)? j-1:j]                         ==
                                          solvedBoard[i][j]+1);
   }
 
@@ -2674,12 +2674,12 @@ program SolveNumbrix;
       '{0,  0,  0,  0,  0,  0,  0,  0,  0}};
     if(board.randomize()) begin
       $display("Solution for the Example 1");
-      board.printSolvedBoard();    
+      board.printSolvedBoard();
     end
     else begin
       $display("Failed to solve Example 1");
     end
-    
+
     board.fixedBoard = '{
        {0,  0,  0,  0,  0,  0,  0,  0,  0},
        {0, 11, 12, 15, 18, 21, 62, 61,  0},
@@ -2693,7 +2693,7 @@ program SolveNumbrix;
 
     if(board.randomize()) begin
       $display("Solution for the Example 2");
-      board.printSolvedBoard();    
+      board.printSolvedBoard();
     end
     else begin
       $display("Failed to solve Example 2");
@@ -3105,46 +3105,46 @@ foreach hi in (T(hi1,hi2)){
 ```txt
 
 Number of cells = 81
-__ __ __ __ __ __ __ __ __ 
-__ __ 46 45 __ 55 74 __ __ 
-__ 38 __ __ 43 __ __ 78 __ 
-__ 35 __ __ __ __ __ 71 __ 
-__ __ 33 __ __ __ 59 __ __ 
-__ 17 __ __ __ __ __ 67 __ 
-__ 18 __ __ 11 __ __ 64 __ 
-__ __ 24 21 __  1  2 __ __ 
-__ __ __ __ __ __ __ __ __ 
+__ __ __ __ __ __ __ __ __
+__ __ 46 45 __ 55 74 __ __
+__ 38 __ __ 43 __ __ 78 __
+__ 35 __ __ __ __ __ 71 __
+__ __ 33 __ __ __ 59 __ __
+__ 17 __ __ __ __ __ 67 __
+__ 18 __ __ 11 __ __ 64 __
+__ __ 24 21 __  1  2 __ __
+__ __ __ __ __ __ __ __ __
 
-49 50 51 52 53 54 75 76 81 
-48 47 46 45 44 55 74 77 80 
-37 38 39 40 43 56 73 78 79 
-36 35 34 41 42 57 72 71 70 
-31 32 33 14 13 58 59 68 69 
-30 17 16 15 12 61 60 67 66 
-29 18 19 20 11 62 63 64 65 
-28 25 24 21 10  1  2  3  4 
-27 26 23 22  9  8  7  6  5 
+49 50 51 52 53 54 75 76 81
+48 47 46 45 44 55 74 77 80
+37 38 39 40 43 56 73 78 79
+36 35 34 41 42 57 72 71 70
+31 32 33 14 13 58 59 68 69
+30 17 16 15 12 61 60 67 66
+29 18 19 20 11 62 63 64 65
+28 25 24 21 10  1  2  3  4
+27 26 23 22  9  8  7  6  5
 
 Number of cells = 81
-__ __ __ __ __ __ __ __ __ 
-__ 11 12 15 18 21 62 61 __ 
-__  6 __ __ __ __ __ 60 __ 
-__ 33 __ __ __ __ __ 57 __ 
-__ 32 __ __ __ __ __ 56 __ 
-__ 37 __  1 __ __ __ 73 __ 
-__ 38 __ __ __ __ __ 72 __ 
-__ 43 44 47 48 51 76 77 __ 
-__ __ __ __ __ __ __ __ __ 
+__ __ __ __ __ __ __ __ __
+__ 11 12 15 18 21 62 61 __
+__  6 __ __ __ __ __ 60 __
+__ 33 __ __ __ __ __ 57 __
+__ 32 __ __ __ __ __ 56 __
+__ 37 __  1 __ __ __ 73 __
+__ 38 __ __ __ __ __ 72 __
+__ 43 44 47 48 51 76 77 __
+__ __ __ __ __ __ __ __ __
 
- 9 10 13 14 19 20 63 64 65 
- 8 11 12 15 18 21 62 61 66 
- 7  6  5 16 17 22 59 60 67 
-34 33  4  3 24 23 58 57 68 
-35 32 31  2 25 54 55 56 69 
-36 37 30  1 26 53 74 73 70 
-39 38 29 28 27 52 75 72 71 
-40 43 44 47 48 51 76 77 78 
-41 42 45 46 49 50 81 80 79 
+ 9 10 13 14 19 20 63 64 65
+ 8 11 12 15 18 21 62 61 66
+ 7  6  5 16 17 22 59 60 67
+34 33  4  3 24 23 58 57 68
+35 32 31  2 25 54 55 56 69
+36 37 30  1 26 53 74 73 70
+39 38 29 28 27 52 75 72 71
+40 43 44 47 48 51 76 77 78
+41 42 45 46 49 50 81 80 79
 
 ```
 

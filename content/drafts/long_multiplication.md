@@ -1881,13 +1881,13 @@ int main(int argc, char* argv[])
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{incorrect|F#|The problem is to implement long multiplication, not to demonstrate bignum support.}}
 
 <code>System.Numerics.BigInteger</code> was added with C# 4.
 {{works with|C sharp|C#|4+}}
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

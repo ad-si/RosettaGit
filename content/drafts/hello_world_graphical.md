@@ -643,7 +643,7 @@ MessageBox(NULL, _T("Goodbye, World!"), _T("Rosettacode"), MB_OK | MB_ICONINFORM
 {{libheader|Windows Forms}}
 
 
-```csharp
+```c#
 using System;
 using System.Windows.Forms;
 
@@ -659,7 +659,7 @@ class Program {
 {{libheader|GTK}}
 
 
-```csharp
+```c#
 using Gtk;
 using GtkSharp;
 

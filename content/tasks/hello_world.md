@@ -76,9 +76,9 @@ languages = [
   "brlcad",
   "burlesque",
   "c",
-  "c#",
-  "c++",
-  "c++_cli",
+  "csharp",
+  "cpp",
+  "cpp_cli",
   "c1r",
   "cat",
   "cduce",
@@ -146,7 +146,7 @@ languages = [
   "euler_math_toolbox",
   "extended_brainfuck",
   "ezhil",
-  "f#",
+  "fsharp",
   "factor",
   "falcon",
   "false",
@@ -1509,7 +1509,7 @@ int main()
 Works with Mono|1.2
 Works with Visual C sharp|Visual C#|2003
 
-```csharp
+```c#
 namespace HelloWorld
 {
     class Program

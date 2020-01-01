@@ -1365,10 +1365,10 @@ Produces:
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

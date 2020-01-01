@@ -628,10 +628,10 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
     // Adapted from http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/
     class Program

@@ -19,10 +19,10 @@ Nonoblock is a chip off the old [[Nonogram solver|Nonogram]] puzzle.
 * The size of each, (space separated), connected block of cells to fit in the row, in left-to right order.
 
 
-;Task: 
-* show all possible positions. 
-* show the number of positions of the blocks for the following cases within the row. 
-* show all output on this page. 
+;Task:
+* show all possible positions.
+* show the number of positions of the blocks for the following cases within the row.
+* show all output on this page.
 * use a "neat" diagram of the block positions.
 
 
@@ -48,7 +48,7 @@ And would expand to the following 3 possible rows of block positions:
 
 Note how the sets of blocks are always separated by a space.
 
-Note also that it is not necessary for each block to have a separate letter. 
+Note also that it is not necessary for each block to have a separate letter.
 Output approximating
 
 This:
@@ -67,7 +67,7 @@ This would also work:
 * The leftmost cell can legitimately be placed in all positions from the LHS up to a RH position that allows enough room for the rest of the blocks.
 * for each position of the LH block recursively compute the position of the rest of the blocks in the ''remaining'' space to the right of the current placement of the LH block.
 
-(This is the algorithm used in the [[Nonoblock#Python]] solution).    
+(This is the algorithm used in the [[Nonoblock#Python]] solution).
 
 
 ;Reference:
@@ -109,7 +109,7 @@ public:
             std::string b( ( *i ).first, '-' );
             solve( *i, b, 0 );
             std::cout << "\n\n";
-        } 
+        }
     }
 
 private:
@@ -163,7 +163,7 @@ private:
 int main( int argc, char* argv[] )
 {
     std::vector<puzzle> problems;
-    std::vector<int> blocks; 
+    std::vector<int> blocks;
     blocks.push_back( 2 ); blocks.push_back( 1 );
     problems.push_back( std::make_pair( 5, blocks ) );
     blocks.clear();
@@ -237,11 +237,11 @@ int main( int argc, char* argv[] )
 
 
 
-## C sharp
+## C#
 
 This solution uses a StringBuilder. Spaces are moved from right to left and the problem is then solved recursively.
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Text;
@@ -536,16 +536,16 @@ object.Exception @nonoblock.d(17): Those blocks cannot fit in those cells.
 (define (nonoblock size blocks into: cells)
 (cond
 	((and (empty? blocks) (= 0 size)) (print-cells (stack->list cells)))
-	
+
 	((<= size 0) #f) ;; no hope - cut search
 	((> (apply + blocks) size)  #f) ;; no hope - cut search
-	
+
 	(else
 		(push cells 0) ;; space
 		(nonoblock (1- size) blocks  cells)
 		(pop cells)
 
-	(when (!empty? blocks) 
+	(when (!empty? blocks)
 		(when (stack-empty? cells) ;; first one (no space is allowed)
 		(push cells (first blocks))
 		(nonoblock  (- size (first blocks)) (rest blocks) cells)
@@ -556,29 +556,29 @@ object.Exception @nonoblock.d(17): Those blocks cannot fit in those cells.
 		(nonoblock  (- size (first blocks) 1) (rest blocks) cells)
 		(pop cells)
 		(pop cells)))))
-	
+
 (string-delimiter "")
 (define block-symbs #( ?  📦 💣 💊  🍒 🌽 📘 📙 💰 🍯 ))
 
 (define (print-cells cells)
 	(writeln (string-append "|"
-		(for/string ((cell cells)) 
-			(if (zero? cell) "_"  
+		(for/string ((cell cells))
+			(if (zero? cell) "_"
 				(for/string ((i cell)) [block-symbs cell]))) "|")))
-	
+
 (define (task  nonotest)
-	(for ((test nonotest)) 
+	(for ((test nonotest))
 		(define size (first test))
 		(define blocks (second test))
 		(printf "\n size:%d blocks:%d" size blocks)
 		(if
-			(> (+ (apply + blocks)(1- (length blocks))) size) 
+			(> (+ (apply + blocks)(1- (length blocks))) size)
 				(writeln "❌ no solution for" size blocks)
 			    (nonoblock size blocks (stack 'cells)))))
 
 ```
 
-			    
+
 {{out}}
 
 ```txt
@@ -587,40 +587,40 @@ object.Exception @nonoblock.d(17): Those blocks cannot fit in those cells.
 (task nonotest)
 
     size:5 blocks:(2 1)
-    |💣💣__📦|    
-    |💣💣_📦_|    
-    |_💣💣_📦|    
+    |💣💣__📦|
+    |💣💣_📦_|
+    |_💣💣_📦|
 
     size:5 blocks:()
-    |_____|    
+    |_____|
 
     size:10 blocks:(8)
-    |__💰💰💰💰💰💰💰💰|    
-    |💰💰💰💰💰💰💰💰__|    
-    |_💰💰💰💰💰💰💰💰_|    
+    |__💰💰💰💰💰💰💰💰|
+    |💰💰💰💰💰💰💰💰__|
+    |_💰💰💰💰💰💰💰💰_|
 
     size:15 blocks:(2 3 2 3)
-    |__💣💣_💊💊💊_💣💣_💊💊💊|    
-    |💣💣___💊💊💊_💣💣_💊💊💊|    
-    |💣💣__💊💊💊__💣💣_💊💊💊|    
-    |💣💣__💊💊💊_💣💣__💊💊💊|    
-    |💣💣__💊💊💊_💣💣_💊💊💊_|    
-    |💣💣_💊💊💊___💣💣_💊💊💊|    
-    |💣💣_💊💊💊__💣💣__💊💊💊|    
-    |💣💣_💊💊💊__💣💣_💊💊💊_|    
-    |💣💣_💊💊💊_💣💣___💊💊💊|    
-    |💣💣_💊💊💊_💣💣__💊💊💊_|    
-    |💣💣_💊💊💊_💣💣_💊💊💊__|    
-    |_💣💣__💊💊💊_💣💣_💊💊💊|    
-    |_💣💣_💊💊💊__💣💣_💊💊💊|    
-    |_💣💣_💊💊💊_💣💣__💊💊💊|    
-    |_💣💣_💊💊💊_💣💣_💊💊💊_|    
+    |__💣💣_💊💊💊_💣💣_💊💊💊|
+    |💣💣___💊💊💊_💣💣_💊💊💊|
+    |💣💣__💊💊💊__💣💣_💊💊💊|
+    |💣💣__💊💊💊_💣💣__💊💊💊|
+    |💣💣__💊💊💊_💣💣_💊💊💊_|
+    |💣💣_💊💊💊___💣💣_💊💊💊|
+    |💣💣_💊💊💊__💣💣__💊💊💊|
+    |💣💣_💊💊💊__💣💣_💊💊💊_|
+    |💣💣_💊💊💊_💣💣___💊💊💊|
+    |💣💣_💊💊💊_💣💣__💊💊💊_|
+    |💣💣_💊💊💊_💣💣_💊💊💊__|
+    |_💣💣__💊💊💊_💣💣_💊💊💊|
+    |_💣💣_💊💊💊__💣💣_💊💊💊|
+    |_💣💣_💊💊💊_💣💣__💊💊💊|
+    |_💣💣_💊💊💊_💣💣_💊💊💊_|
 
     size:5 blocks:(2 3)
-    ❌ no solution for     5     (2 3)  
+    ❌ no solution for     5     (2 3)
 
 ```
-  
+
 
 
 ## Elixir
@@ -637,7 +637,7 @@ defmodule Nonoblock do
       nblocks(cell, blocks, "")
     end
   end
-  
+
   defp nblocks(cell, _, position) when cell<=0, do:
     display(String.slice(position, 0..cell-1))
   defp nblocks(cell, blocks, position) when length(blocks)==0 or hd(blocks)==0, do:
@@ -649,12 +649,12 @@ defmodule Nonoblock do
       acc + nblocks(cell-i-bl-1, brest, position <> String.duplicate(".", i) <> String.duplicate("#",bl) <> ".")
     end)
   end
-  
+
   defp display(str) do
     IO.puts nonocell(str)
     1                           # number of positions
   end
-  
+
   def nonocell(str) do                  # "##.###..##" -> "|A|A|_|B|B|B|_|_|C|C|"
     slist = String.to_char_list(str) |> Enum.chunk_by(&(&1==?.)) |> Enum.map(&List.to_string(&1))
     chrs = Enum.map(?A..?Z, &List.to_string([&1]))
@@ -663,7 +663,7 @@ defmodule Nonoblock do
              |> String.split("") |> Enum.join("|")
     "|" <> result
   end
-  
+
   defp nonocell_replace([], _, result), do: result
   defp nonocell_replace([h|t], chrs, result) do
     if String.first(h) == "#" do
@@ -1003,20 +1003,20 @@ No solution
 ```julia
 minsized(arr) = join(map(x->"#"^x, arr), ".")
 minlen(arr) = sum(arr) + length(arr) - 1
- 
+
 function sequences(blockseq, numblanks)
     if isempty(blockseq)
         return ["." ^ numblanks]
     elseif minlen(blockseq) == numblanks
         return minsized(blockseq)
-    else    
+    else
         result = Vector{String}()
         allbuthead = blockseq[2:end]
         for leftspace in 0:(numblanks - minlen(blockseq))
             header = "." ^ leftspace * "#" ^ blockseq[1] * "."
             rightspace = numblanks - length(header)
             if isempty(allbuthead)
-                push!(result, rightspace <= 0 ? header[1:numblanks] : header * "." ^ rightspace)            
+                push!(result, rightspace <= 0 ? header[1:numblanks] : header * "." ^ rightspace)
             elseif minlen(allbuthead) == rightspace
                 push!(result, header * minsized(allbuthead))
             else
@@ -1039,7 +1039,7 @@ nonoblocks([2, 3, 2, 3], 15)
 nonoblocks([2, 3], 5)
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
  With blocks [2, 1] and 5 cells:
@@ -1168,10 +1168,10 @@ No solution
 Module NonoBlock {
       Form 80,40
       Flush
-      Print "Nonoblock" 
+      Print "Nonoblock"
       Data 5, (2, 1)
       Data 5, (,)
-      Data 10, (8,) 
+      Data 10, (8,)
       Data 15, (2,3,2,3)
       Data 5, (2,3)
       Def BLen(a$)=(Len(a$)-1)/2
@@ -1205,7 +1205,7 @@ Module NonoBlock {
             Local TotalBlocksLength=0, Sep_Spaces=-1
             Local Block=Each(Blocks), block$
             While Block {
-                  Block$=Array$(Block)    
+                  Block$=Array$(Block)
                   TotalBlocksLength+=Blen(Block$)
                   Sep_Spaces++
             }
@@ -1227,17 +1227,17 @@ NonoBlock
 {{out}}
 <pre style="height:30ex;overflow:scroll">
 Nonoblock
-1.    Cells=5 |A|A| |B| 
+1.    Cells=5 |A|A| |B|
   1 |A|A|_|B|_|
   2 |A|A|_|_|B|
   3 |_|A|A|_|B|
 2.    Cells=5 Empty
   1 |_|_|_|_|_|
-3.    Cells=10 |A|A|A|A|A|A|A|A| 
+3.    Cells=10 |A|A|A|A|A|A|A|A|
   1 |A|A|A|A|A|A|A|A|_|_|
   2 |_|A|A|A|A|A|A|A|A|_|
   3 |_|_|A|A|A|A|A|A|A|A|
-4.    Cells=15 |A|A| |B|B|B| |C|C| |D|D|D| 
+4.    Cells=15 |A|A| |B|B|B| |C|C| |D|D|D|
   1 |A|A|_|B|B|B|_|C|C|_|D|D|D|_|_|
   2 |A|A|_|B|B|B|_|C|C|_|_|D|D|D|_|
   3 |A|A|_|B|B|B|_|C|C|_|_|_|D|D|D|
@@ -1253,7 +1253,7 @@ Nonoblock
  13 |_|A|A|_|B|B|B|_|_|C|C|_|D|D|D|
  14 |_|A|A|_|_|B|B|B|_|C|C|_|D|D|D|
  15 |_|_|A|A|_|B|B|B|_|C|C|_|D|D|D|
-5.    Cells=5 |A|A| |B|B|B| 
+5.    Cells=5 |A|A| |B|B|B|
  Impossible
 
 </pre >
@@ -1266,7 +1266,7 @@ Nonoblock
 Module Nonoblock (n, m) {
       Print "Cells:",n," Blocks:",m
       Dim n(1 to n), m(1 to m), sp(1 to m*2), sk(1 to m*2), part(1 to m)
-      queue=0      
+      queue=0
       If m>0 Then {
             Print "Block Size:",
             For i=1 to m {
@@ -1274,7 +1274,7 @@ Module Nonoblock (n, m) {
                   Print m(i),
             }
             Print
-            part(m)=m(m)      
+            part(m)=m(m)
             If m>1 Then {
                   For i=m-1 to 1 {
                         part(i)=m(i)+part(i+1)+1
@@ -1282,7 +1282,7 @@ Module Nonoblock (n, m) {
             }
       }
       If part(1)>n Then {
-          Print "Impossible"  
+          Print "Impossible"
       } Else {
             p1=0
             l=0
@@ -1339,7 +1339,7 @@ Module Nonoblock (n, m) {
                                        }
                                     }
                                     flag=False
-                              } 
+                              }
                         }
                   } Until flag
                   p1++
@@ -1662,7 +1662,7 @@ def nonoblocks(blocks, cells):
                 yield [(bpos, blength)]
             else:
                 # More blocks to the right so create a *sub-problem* of placing
-                # the brest blocks in the cells one space to the right of the RHS of 
+                # the brest blocks in the cells one space to the right of the RHS of
                 # this block.
                 offset = bpos + blength +1
                 nonoargs = (brest, cells - offset)  # Pre-compute arguments to nonoargs
@@ -1694,7 +1694,7 @@ if __name__ == '__main__':
            # ([3, 1], 10),
             ([2, 3], 5),
             ):
-        print('\nConfiguration:\n    %s # %i cells and %r blocks' % (pblock([], cells), cells, blocks))        
+        print('\nConfiguration:\n    %s # %i cells and %r blocks' % (pblock([], cells), cells, blocks))
         print('  Possibilities:')
         for i, vector in enumerate(nonoblocks(blocks, cells)):
             print('   ', pblock(vector, cells))
@@ -1787,9 +1787,9 @@ Also, the blocks are not identified. I suppose they could be easily enough, but 
 (define (nonoblock cells blocks)
   (match* ((- cells (apply + (length blocks) -1 blocks)) #| padding available on both sides |# blocks)
     [(_ (list)) (list (list cells))] ; generates an empty list of padding
-    
+
     [((? negative?) _) null] ; impossible to satisfy
-    
+
     [((and avp
            ;; use add1 with in-range because we actually want from 0 to available-padding
            ;; without add1, in-range iterates from 0 to (available-padding - 1)
@@ -1798,7 +1798,7 @@ Also, the blocks are not identified. I suppose they could be easily enough, but 
      (for/list ((l-pad (in-range 0 avp+1)))
        (define r-pad (- avp l-pad)) ; what remains goes to right
        (list l-pad block r-pad))]
-    
+
     [((app add1 avp+1) (list block more-blocks ...))
      (for*/list ((l-pad (in-range 0 avp+1))
                  (cells-- (in-value (- cells block l-pad 1)))
@@ -2090,11 +2090,11 @@ class NonoBlock
     @result = []
     nonoblocks(cell, blocks, '')
   end
-  
+
   def result(correct=true)
     correct ? @result.map(&:nonocell) : @result
   end
-  
+
   private
   def nonoblocks(cell, blocks, position)
     if cell <= 0
@@ -2487,7 +2487,7 @@ fcn nonoblocks(blocks,cells){
 	    vm.yield(T(T(bpos,blength)));
 	 else{
 	    # More blocks to the right so create a *sub-problem* of placing
-	    # the brest blocks in the cells one space to the right of the RHS of 
+	    # the brest blocks in the cells one space to the right of the RHS of
 	    # this block.
 	    offset:=bpos + blength +1;
 	    # recursive call to nonoblocks yields multiple sub-positions

@@ -15,9 +15,9 @@ tags = []
 ;Task:
 Implement the classic children's game [[wp:Rock-paper-scissors|Rock-paper-scissors]], as well as a simple predictive   '''AI'''   (<u>a</u>rtificial <u>i</u>ntelligence)   player.
 
-Rock Paper Scissors is a two player game. 
+Rock Paper Scissors is a two player game.
 
-Each player chooses one of rock, paper or scissors, without knowing the other player's choice. 
+Each player chooses one of rock, paper or scissors, without knowing the other player's choice.
 
 The winner is decided by a set of rules:
 
@@ -29,7 +29,7 @@ The winner is decided by a set of rules:
 
 If both players choose the same thing, there is no winner for that round.
 
-For this task, the computer will be one of the players. 
+For this task, the computer will be one of the players.
 
 The operator will select Rock, Paper or Scissors and the computer will keep a record of the choice frequency, and use that information to make a [[Probabilistic choice|weighted random choice]] in an attempt to defeat its opponent.
 
@@ -56,7 +56,7 @@ procedure Rock_Paper_Scissors is
    type Choice is (Rock, Paper, Scissors);
 
    Cnt: array (Choice) of Natural := (1, 1, 1);
-     -- for the initialization: pretend that each of Rock, Paper, 
+     -- for the initialization: pretend that each of Rock, Paper,
      -- and Scissors, has been played once by the human
      -- else the first computer choice would be deterministic
 
@@ -160,7 +160,7 @@ First and last few lines of the output of a game, where the human did permanentl
 
 
 ```txt
-./rock_paper_scissors 
+./rock_paper_scissors
 enter "r" for Rock, "p" for Paper, or "s" for Scissors"!
 or enter "q" to Quit the game
 r
@@ -404,7 +404,7 @@ Loop
 MakeChoice(cR, cP, cS){
 	; parameters are number of times user has chosen each item
 	total := cR + cP + cS
-	
+
 	Random, rand, 0.0, 1.0
 	if (rand >= 0 and rand <= cR / total)
 		return "Paper"
@@ -618,20 +618,20 @@ A sample game:
  You chose rock and I chose paper. I won!
  Rock, paper, or scissors [1 = rock, 2 = paper, 3 = scissors, 0 to quit]? 1
  You chose rock and I chose scissors. You won!
- 
+
  [... 56 more times choosing "rock"...]
- 
+
  Rock, paper, or scissors [1 = rock, 2 = paper, 3 = scissors, 0 to quit]? 1
  You chose rock and I chose paper. I won!
  Rock, paper, or scissors [1 = rock, 2 = paper, 3 = scissors, 0 to quit]? 1
  You chose rock and I chose paper. I won!
  Rock, paper, or scissors [1 = rock, 2 = paper, 3 = scissors, 0 to quit]? 3
  You chose scissors and I chose paper. You won!
- Rock, paper, or scissors [1 = rock, 2 = paper, 3 = scissors, 0 to quit]? 
+ Rock, paper, or scissors [1 = rock, 2 = paper, 3 = scissors, 0 to quit]?
  Some useless statistics:
  You won  5 times, and I won  54 times;  2 ties.
                rock          paper         scissors
- You chose:     60            0             1 
+ You chose:     60            0             1
    I chose:     2             55            4
 
 
@@ -841,7 +841,7 @@ Thanks for playing!
 
 #include <stdio.h>
 #include <stdlib.h>
-#define LEN 3 
+#define LEN 3
 
 /* pick a random index from 0 to n-1, according to probablities listed
    in p[] which is assumed to have a sum of 1. The values in the probablity
@@ -862,18 +862,18 @@ int main()
 	char str[2];
 	const char *winner[] = { "We tied.", "Meself winned.", "You win." };
 	double  p[LEN] = { 1./3, 1./3, 1./3 };
- 
+
 	while (1) {
 		my_action = rand_idx(p,LEN);
- 
+
 		printf("\nYour choice [1-3]:\n"
 			"  1. Rock\n  2. Paper\n  3. Scissors\n> ");
- 
+
 		/* scanf is a terrible way to do input.  should use stty and keystrokes */
 		if (!scanf("%d", &user_action)) {
 			scanf("%1s", str);
 			if (*str == 'q') {
-				printf("Your choices [rock : %d , paper :  %d , scissors %d] ",user_rec[0],user_rec[1], user_rec[2]); 
+				printf("Your choices [rock : %d , paper :  %d , scissors %d] ",user_rec[0],user_rec[1], user_rec[2]);
 				return 0;
 			}
 			continue;
@@ -886,7 +886,7 @@ int main()
 		printf("You chose %s; I chose %s. %s\n",
 			names[user_action], names[my_action],
 			winner[(my_action - user_action + 3) % 3]);
- 
+
 		user_rec[user_action]++;
 	}
 }
@@ -905,7 +905,7 @@ Here's another code: (Does it using a while loop)
 
 //This should add weighted random function to "The Elite Noob"'s code, stolen from above code because it does calculation so well
 //closest I could make it to original but without pointless attempt to make code look smaller than above code by putting code on the same lines
- 
+
 int rand_i(int n)
 {
 	int rand_max = RAND_MAX - (RAND_MAX % n);
@@ -913,13 +913,13 @@ int rand_i(int n)
 	while ((ret = rand()) >= rand_max);
 	return ret/(rand_max / n);
 }
- 
+
 int weighed_rand(int *tbl, int len)
 {
 	int i, sum, r;
 	for (i = 0, sum = 0; i < len; sum += tbl[i++]);
 	if (!sum) return rand_i(len);
- 
+
 	r = rand_i(sum) + 1;
 	for (i = 0; i < len && (r -= tbl[i]) > 0; i++);
 	return i;
@@ -940,12 +940,12 @@ mainloop:
 		printf("\n\nPlease type in 1 for Rock, 2 For Paper, 3 for Scissors, 4 to quit\n");
 		srand(time(NULL));
 		comp = (weighed_rand(tbl, tbllen) + 1) % 3;
-		fgets(line, sizeof(line), stdin);	
+		fgets(line, sizeof(line), stdin);
 		while(sscanf(line, "%d", &user) != 1) //1 match of defined specifier on input line
-		{ 
+		{
   			printf("You have not entered an integer.\n");
 			fgets(line, sizeof(line), stdin);
-		}				
+		}
 		if( (user > 4) || (user < 1) )
 		{
 			printf("Please enter a valid number!\n");
@@ -989,7 +989,7 @@ mainloop:
 		if( (user+1)%3 == comp )
 		{
 			printf("Comp Played: %s\nYou Played: %s\nSorry, You Lost!\n", cmove, umove);
-		}	
+		}
 		else if(comp == user)
 		{
 			printf("Comp Played: %s\nYou Played: %s\nYou Tied :p\n", cmove, umove);
@@ -1139,16 +1139,16 @@ public:
 		r = checker[p][m];
 		switch( r )
 		{
-		    case DRAW: 
-		        cout << endl << "DRAW!" << endl << endl; 
+		    case DRAW:
+		        cout << endl << "DRAW!" << endl << endl;
 		        statistics.draw();
 		    break;
-		    case COMPUTER: 
-			cout << endl << "I WIN!" << endl << endl;  
+		    case COMPUTER:
+			cout << endl << "I WIN!" << endl << endl;
 			statistics.win( COMPUTER );
 		    break;
-		    case PLAYER: 
-			cout << endl << "YOU WIN!" << endl << endl; 
+		    case PLAYER:
+			cout << endl << "YOU WIN!" << endl << endl;
 			statistics.win( PLAYER );
 
 		}
@@ -1176,7 +1176,7 @@ int main( int argc, char* argv[] )
 ```
 
 
-Sample output: 
+Sample output:
 
 ```txt
 
@@ -1216,7 +1216,7 @@ I WIN!
 
 
 
-## C sharp
+## C#
 
 
 ```c sharp
@@ -1307,7 +1307,7 @@ namespace RockPaperScissors
                 throw new Exception("No winner found.");
             }
 
-            /* 
+            /*
              * Return weapons that the provided weapon beats.
              * The are calculated in the following way:
              * If the index of the weapon is even, then all even indices less than it,
@@ -1323,7 +1323,7 @@ namespace RockPaperScissors
                 // If weapon is odd and the final index in the set, then return the first item in the set as a victory.
                 if (index % 2 != 0 && index == weapons.Length - 1)
                     yield return weapons[0];
-                
+
                 for (int i = index - 2; i >= 0; i -= 2)
                     yield return weapons[i];
 
@@ -1482,7 +1482,7 @@ Code:
     (let [term (Terminal/getTerminal)
           rps (key->rps (.readCharacter term System/in))]
       (if-not (nil? rps)
-        (do 
+        (do
           (battle rps (what-beats (weighted freqs)))
           (recur (assoc freqs rps (inc (rps freqs)))))
         (println "Game Over Man!  Game Over!"))))
@@ -1722,7 +1722,7 @@ rock, paper or scissors?
 ```elixir
 defmodule Rock_paper_scissors do
   def play, do: loop([1,1,1])
-  
+
   defp loop([r,p,s]=odds) do
     IO.gets("What is your move? (R,P,S,Q) ") |> String.upcase |> String.first
     |> case do
@@ -1746,17 +1746,17 @@ defmodule Rock_paper_scissors do
               loop(odds)
        end
   end
-  
+
   defp beats("R","S"), do: true
   defp beats("P","R"), do: true
   defp beats("S","P"), do: true
   defp beats(x,x), do: :draw
   defp beats(_,_), do: false
-  
+
   defp play_to_string("R"), do: "Rock"
   defp play_to_string("P"), do: "Paper"
   defp play_to_string("S"), do: "Scissors"
- 
+
   defp select_play([r,p,s]) do
     n = :rand.uniform(r+p+s)
     cond do
@@ -1861,7 +1861,7 @@ function weighted_rand(sequence table)
     for i = 1 to length(table) do
         sum += table[i]
     end for
-    
+
     r = rand(sum)
     for i = 1 to length(table)-1 do
         r -= table[i]
@@ -1898,7 +1898,7 @@ while 1 do
         { names[user_action],
           names[my_action],
           winner[win+1] })
-    
+
     if win then
         score[win] += 1
     end if
@@ -2101,7 +2101,7 @@ Please find an example run in a GNU/linux system along with compilation instruct
 ! Who's keeping score anyway???
 !  0.5  1.5
 ! you won!
-!$ 
+!$
 
 
 
@@ -2184,7 +2184,7 @@ rock, paper, scissors?  scoring computer choice (r) and your choice (s)
  I'm bored out of my skull
  Who's keeping score anyway???
  26.5  3.5
-$ 
+$
 
 ```
 
@@ -2334,7 +2334,7 @@ My play:   p.  Paper covers rock.  My point.
 My play:   r.  Tie.
 1:1  Play: r
 My play:   p.  Paper covers rock.  My point.
-1:2  Play: 
+1:2  Play:
 
 ```
 
@@ -2463,7 +2463,7 @@ func parse(m map[string]interface{}) (title string, f fIndex, d decision) {
             }
         }
     }
-    for fm := range f { 
+    for fm := range f {
         if _, ok := d[fm]; !ok {
             log.Println("note,", fm, "always loses!")
         }
@@ -2479,10 +2479,10 @@ func parse(m map[string]interface{}) (title string, f fIndex, d decision) {
         log.Print("note, game is unbalanced")
     }
     return title, f, d
-}   
-    
+}
+
 var r = regexp.MustCompile(`[(].*[)]`)
-    
+
 func (d decision) parseList(kw string, l []interface{}) {
     var ww string
     for _, e := range l {
@@ -2687,7 +2687,7 @@ scissors cut paper.  Your point.
 1:1  Play: well
 My play:   paper.
 paper covers well.  My point.
-1:2  Play: 
+1:2  Play:
 
 > rps rps7
 
@@ -2698,7 +2698,7 @@ Running score shown as <your wins>:<my wins>
 Play: air
 My play: water.
 air evaporates water.  Your point.
-1:0  Play: 
+1:0  Play:
 
 ```
 
@@ -2782,9 +2782,9 @@ procedure main()
 printf("Welcome to Rock, Paper, Scissors.\n_
         Rock beats scissors, Scissors beat paper, and Paper beats rock.\n\n")
 
-historyP := ["rock","paper","scissors"]      # seed player history  
+historyP := ["rock","paper","scissors"]      # seed player history
 winP := winC := draws := 0                   # totals
-   
+
 beats := ["rock","scissors","paper","rock"]  # what beats what 1 apart
 
 repeat {
@@ -2798,29 +2798,29 @@ repeat {
       }
 
    turnC := beats[(?historyP == beats[i := 2 to *beats],i-1)]  # choose move
-      
-   put(historyP,turnP)                       # record history
-   printf("You chose %s, computer chose %s",turnP,turnC)   
 
-   (beats[p := 1 to *beats] == turnP) & 
+   put(historyP,turnP)                       # record history
+   printf("You chose %s, computer chose %s",turnP,turnC)
+
+   (beats[p := 1 to *beats] == turnP) &
       (beats[c := 1 to *beats] == turnC) & (abs(p-c) <= 1)  # rank play
-     
+
    if p = c then
       printf(" - draw (#%d)\n",draws +:= 1 )
-   else if p > c then   
-      printf(" - player win(#%d)\n",winP +:= 1)        
-   else 
-      printf(" - computer win(#%d)\n",winC +:= 1)    
+   else if p > c then
+      printf(" - player win(#%d)\n",winP +:= 1)
+   else
+      printf(" - computer win(#%d)\n",winC +:= 1)
    }
 
 printf("\nResults:\n %d rounds\n %d Draws\n %d Computer wins\n %d Player wins\n",
-   winP+winC+draws,draws,winC,winP)   
+   winP+winC+draws,draws,winC,winP)
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 
 Sample output:
 ```txt
@@ -2879,7 +2879,7 @@ Results:
 320   ELSE
 330     PRINT "I won!"
 340     LET SCORE(2)=SCORE(2)+1
-350   END IF 
+350   END IF
 360   SET #102:INK 1
 370 LOOP
 380 PRINT :PRINT "Some useless statistics:"
@@ -2958,7 +2958,7 @@ I win
   Choose Rock, Paper or Scissors: rock
     I choose Paper
 I win
-  Choose Rock, Paper or Scissors: 
+  Choose Rock, Paper or Scissors:
 Draws:     0
 My wins:   4
 Your wins: 1
@@ -3149,7 +3149,7 @@ function rps()
 		input == "q" && break
 		!ismatch(r"^[rps]",input) && begin print("Invalid guess: Please enter 'r', 'p', or 's'\n"); continue end
 		answer = new_pick()
-		if input == answer 
+		if input == answer
 			print("\nTie!\nScore still: \nyou $user_score\nme  $comp_score\n>")
 			continue
 		else
@@ -3170,18 +3170,18 @@ r(ock), p(aper), or s(cissors)
 Enter 'q' to quit.
 >r
 
-You win!Score: 
+You win!Score:
 you 1
 me  0
 >p
 
 Sorry you lose!
-Score: 
+Score:
 you 1
 me  1
 >s
 
-You win!Score: 
+You win!Score:
 you 2
 me  1
 ```
@@ -3346,7 +3346,7 @@ define winner(c::string,p::string) => {
 		return 'Nobody'
 		}
 	}
- 
+
 	var(
 		choice 				= web_request->param('choice')->asString,
 	lookup 				= array('rock', 'paper', 'scissors'),
@@ -3360,29 +3360,29 @@ if($choice == 'quit') => {^
 	$historic_choices = map('rock'=0, 'paper'=0, 'scissors'=0)
 	$plays = 0
 	$win_record = array
-	
+
 else(array('rock','paper','scissors') >> $choice)
 		$controls
- 
+
 		if($plays != 0) => {
 			local('possibilities') = array
 			with i in $lookup do => {
 				loop($historic_choices->find(#i)) => { #possibilities->insert(#i) }
 			}
-			
+
 			$computer_choice = $superior->find(#possibilities->get(math_random($plays,1)))
 		}
- 
+
 		'User chose ' + $choice + br
 	'Lasso chose ' + $computer_choice + br
 	winner($computer_choice->asString, $choice) + ' wins!'
- 
+
 		$historic_choices->find($choice) = $historic_choices->find($choice)+1
 		$plays += 1
- 
+
 	else($choice->size == 0)
 		$controls
- 
+
 	else
 		'Invalid Choice.'+ br + $controls
 ^}
@@ -3404,7 +3404,7 @@ User chose paper
 Lasso chose rock
 User wins!
 
-Win record: 
+Win record:
 Lasso: 2
 User: 1
 Tie: 3
@@ -3510,25 +3510,25 @@ loop until 0
 
   You won 3204, and I won 3669. There were 3128 draws.
       I AM THE CHAMPION!!
- 
+
   At first I assumed you'd throw each equally often.
   This means I'd win 1 time in 3; draw 1 in 3; lose 1 in 3.
   However if I detect a bias in your throws,....
   ....this allows me to anticipate your most likely throw & on average beat it.
- 
+
   In fact, keyboard layout & human frailty mean even if you TRY to be even & random...
   ... you may be typing replies with large bias. In 100 tries I gave 48 'P's, 29 'R' & 23 'S'!
-  
+
     This time I played..
       Rock 30.17%    Paper 45.93%    Scissors 23.94%.
- 
+
   ( PS. I have since learned your actual bias had been..
       Rock 45.00%    Paper 24.00%    Scissors 31.00%.)
- 
+
   The advantage I can gain gets bigger the further the 'human' entries are biassed.
   The results statistically smooth out better with large runs.
   Try 10,000,000, & have a cuppa while you wait.
- 
+
   Can you see what will happen if, say, the 'human' is set to give 'Rock' EVERY time?
   Try different %ages by altering the marked code lines.
 
@@ -3571,7 +3571,7 @@ loop until 0
 
 
 ```Lua
-function cpuMove()  
+function cpuMove()
   local totalChance = record.R + record.P + record.S
   if totalChance == 0 then  -- First game, unweighted random
     local choice = math.random(1, 3)
@@ -3584,7 +3584,7 @@ function cpuMove()
   if choice <= record.R + record.P then return "S" end
   return "R"
 end
- 
+
 function playerMove()  -- Get user input for choice of 'weapon'
   local choice
   repeat
@@ -3600,7 +3600,7 @@ function playerMove()  -- Get user input for choice of 'weapon'
   until choice == "R" or choice == "P" or choice == "S"
   return choice
 end
- 
+
 -- Decide who won, increment scores
 function checkWinner (c, p)
   io.write("I chose ")
@@ -3620,7 +3620,7 @@ function checkWinner (c, p)
     score.cpu = score.cpu + 1
   end
 end
- 
+
 -- Main procedure
 math.randomseed(os.time())
 score = {player = 0, cpu = 0, draws = 0}
@@ -3663,17 +3663,17 @@ Press ENTER to continue or enter 'Q' to quit . . .
 
 
 ```mathematica
-DynamicModule[{record, play, text = "\nRock-paper-scissors\n", 
-  choices = {"Rock", "Paper", "Scissors"}}, 
- Evaluate[record /@ choices] = {1, 1, 1}; 
- play[x_] := 
-  Module[{y = RandomChoice[record /@ choices -> RotateLeft@choices]}, 
-   record[x]++; 
+DynamicModule[{record, play, text = "\nRock-paper-scissors\n",
+  choices = {"Rock", "Paper", "Scissors"}},
+ Evaluate[record /@ choices] = {1, 1, 1};
+ play[x_] :=
+  Module[{y = RandomChoice[record /@ choices -> RotateLeft@choices]},
+   record[x]++;
    text = "Your Choice:" <> x <> "\nComputer's Choice:" <> y <> "\n" <>
-      Switch[{x, y}, Alternatives @@ Partition[choices, 2, 1, 1], 
-      "You lost.", 
-      Alternatives @@ Reverse /@ Partition[choices, 2, 1, 1], 
-      "You win.", _, "Draw."]]; 
+      Switch[{x, y}, Alternatives @@ Partition[choices, 2, 1, 1],
+      "You lost.",
+      Alternatives @@ Reverse /@ Partition[choices, 2, 1, 1],
+      "You win.", _, "Draw."]];
  Column@{Dynamic[text], ButtonBar[# :> play[#] & /@ choices]}]
 ```
 
@@ -3796,12 +3796,12 @@ let rec make_moves r p s =
    let cm = comp_move r p s in   (* Computer move is based on game history. *)
    let hm = get_move () in       (* Human move is requested. *)
    pf "Me: %s. You: %s. " (str_of_move cm) (str_of_move hm);
-   let outcome = 
+   let outcome =
       if looses hm cm then
          "I win. You loose.\n"
       else if cm = hm then
          "We draw.\n"
-      else 
+      else
          "You win. I loose.\n"
    in pf "%s" outcome;
    match hm with (* Play on with adapted strategy. *)
@@ -3974,7 +3974,7 @@ sub get_input {
     print "\n" and return if !$input;    # EOF
     chomp $input;
     return if !$input or $input =~ m/\A \s* q/xi;
-    return 
+    return
         ( $input =~ m/\A \s* r/xi ) ? 'rock'
       : ( $input =~ m/\A \s* p/xi ) ? 'paper'
       : ( $input =~ m/\A \s* s/xi ) ? 'scissors'
@@ -4057,7 +4057,7 @@ I won: 5, you won: 2, draws: 0
 
 This is slightly more complicated than it could be; it is a general case framework with input filtering. It weights the computers choices based on your previous choices. Type in at least the first two characters of your choice, or just hit enter to quit. Customize it by supplying your own <tt>%vs</tt> options/outcomes.
 
-Here is standard Rock-Paper-Scissors. 
+Here is standard Rock-Paper-Scissors.
 
 
 ```perl6
@@ -4511,7 +4511,7 @@ Dim playerChoiceHistory(#numChoices - 1)
 Procedure weightedRandomChoice()
   Shared gameCount, playerChoiceHistory()
   Protected x = Random(gameCount - 1), t, c
-  
+
   For i = 0 To #numChoices - 1
     t + playerChoiceHistory(i)
     If t >= x
@@ -4519,7 +4519,7 @@ Procedure weightedRandomChoice()
       Break
     EndIf
   Next
-   
+
   ProcedureReturn (c + 1) % #numChoices
 EndProcedure
 
@@ -4529,23 +4529,23 @@ If OpenConsole()
   PrintN("Rock blunts scissors, which cut paper, which wraps stone.")
   PrintN("If both players choose the same, it is a draw!")
   PrintN("When you've had enough, choose Q.")
-  
+
   Define computerChoice, playerChoice, response.s
   Define playerWins, computerWins, draw, quit
-   
+
   computerChoice = Random(#numChoices - 1)
   Repeat
     Print(#CRLF$ + "What is your move (press R, P, or S)?")
     Repeat
       response = LCase(Input())
     Until FindString("rpsq", response) > 0
-    
+
     If response = "q":
       quit = 1
     Else
       gameCount + 1
       playerChoice = FindString("rps", response) - 1
-      
+
       result = (playerChoice - computerChoice + #numChoices) % #numChoices
       Print("You chose " + choices(playerChoice) + " and I chose " + choices(computerChoice))
       Select result
@@ -4561,9 +4561,9 @@ If OpenConsole()
       EndSelect
       playerChoiceHistory(playerChoice) + 1
       computerChoice = weightedRandomChoice()
-    EndIf 
+    EndIf
   Until quit
-  
+
   Print(#CRLF$ + "You chose: ")
   For i = 0 To #numChoices - 1
     Print(choices(i) + " " + StrF(playerChoiceHistory(i) * 100 / gameCount, 1) + "%; ")
@@ -4571,7 +4571,7 @@ If OpenConsole()
   PrintN("")
   PrintN("You won " + Str(playerWins) + ", and I won " + Str(computerWins) + ". There were " + Str(draw) + " draws.")
   PrintN("Thanks for playing!")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -4712,7 +4712,7 @@ str CheckWinner(a, b){
 		return a;
 	elseif(a == getOneFrom(whatbeats[b]))
 		return b;
-	else return "Nobody"; 
+	else return "Nobody";
 }
 
 public str RPS(human){
@@ -4782,7 +4782,7 @@ str: "Computer played Paper. Paper wins!"
 
 (define (find-winner computer human)
   (define order '(scissors paper rock scissors))
-  (cond 
+  (cond
     [(eq? computer human)                         'none]
     [(eq? (second (member computer order)) human) 'computer]
     [                                             'human]))
@@ -4808,10 +4808,10 @@ str: "Computer played Paper. Paper wins!"
 ===traditional, 3 choices===
 This REXX program version:
 ::*   allows the human player to abbreviate their choice
-::*   issues appropriate error messages for an incorrect (or no) choice(s) 
+::*   issues appropriate error messages for an incorrect (or no) choice(s)
 ::*   allows the human player to   QUIT   at any time
 ::*   keeps track of the human player's responses   (to hopefully make future computer winning choices)
-::*   uses better "English"/grammer,     i.e.:       ''rock breaks scissors'',       and       ''paper covers rock''. 
+::*   uses better "English"/grammer,     i.e.:       ''rock breaks scissors'',       and       ''paper covers rock''.
 
 ```rexx
 /*REXX program plays rock─paper─scissors with a human;  tracks what human tends to use. */
@@ -4951,7 +4951,7 @@ whom.1=! 'the computer wins. ' !;     whom.2=! "you win! " !;     win=words(t.p)
   end   /*forever*/                              /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is similar to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is similar to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -4964,7 +4964,7 @@ whom.1=! 'the computer wins. ' !;     whom.2=! "you win! " !;     win=words(t.p)
 # Project : Rock-paper-scissors
 
 see "
-welcome to the game of rock-paper-scissors. 
+welcome to the game of rock-paper-scissors.
 each player guesses one of these three, and reveals it at the same time.
 rock blunts scissors, which cut paper, which wraps stone.
 if both players choose the same, it is a draw!
@@ -4976,7 +4976,7 @@ pwin=0 cwin=0
 see "what is your move (press r, p, or s)?"
 while true
         c=random(2)+1
-        give q  
+        give q
         gs = floor((substr("rpsq",lower(q))))
         if gs>3 or gs<1
            summarise()
@@ -5049,7 +5049,7 @@ class RockPaperScissorsGame
     'paper'    => 'scissors',
     'scissors' => 'rock',
   }
-  
+
   def initialize()
     @plays = {
       'rock'     => 1,
@@ -5057,10 +5057,10 @@ class RockPaperScissorsGame
       'scissors' => 1,
     }
     @score = [0, 0, 0]          # [0]:Human wins, [1]:Computer wins, [2]:draw
-    
+
     play
   end
-  
+
   def humanPlay
     loop do
       print "\nYour choice: #{CHOICES}? "
@@ -5071,7 +5071,7 @@ class RockPaperScissorsGame
       puts "invalid answer, try again"
     end
   end
-  
+
   def computerPlay
     total = @plays.values.reduce(:+)
     r = rand(total) + 1
@@ -5081,17 +5081,17 @@ class RockPaperScissorsGame
       return BEATS[choice] if r <= sum
     end
   end
-  
+
   def play
     loop do
       h = humanPlay
       break if h == "quit"
       c = computerPlay
       print "H: #{h}, C: #{c} => "
-      
+
       # only update the human player's history after the computer has chosen
       @plays[h] += 1
-      
+
       if h == c
         puts "draw"
         @score[2] += 1
@@ -5167,7 +5167,7 @@ humans chose {"rock"=>10, "paper"=>0, "scissors"=>0}
 
 
 ```runbasic
-pri$ = "RSPR" 
+pri$ = "RSPR"
 rps$ = "Rock,Paper,Sissors"
 [loop]
 button #r, "Rock",    [r]
@@ -5373,7 +5373,7 @@ Your move ('rock, 'paper, 'scissors, 'lizard, 'spock): rock
 ```
 
 
-Here's another code: (I refactored the above code, it is more functional, more testable ) 
+Here's another code: (I refactored the above code, it is more functional, more testable )
 
 ```Scala
 object RockPaperScissors extends App {
@@ -5822,7 +5822,7 @@ loop: while true {
     case "s":
       print("Do you mean Spock, or scissors?")
       continue
-    default: 
+    default:
       print("Unknown choice. Type 'q' to quit")
       continue
   }
@@ -5990,7 +5990,7 @@ function RockPaperScissors::endGame(%this)
 function RockPaperScissors::main(%this)
 {
 	%this.idle = 0;
-	
+
 	if(getRandom(1,2) == 1)
 	{
 		%result = %this.getChoiceByUserFrequency();
@@ -6000,14 +6000,14 @@ function RockPaperScissors::main(%this)
 		%c[0] = "rock";
 		%c[1] = "paper";
 		%c[2] = "scissors";
-		
-		%result = %c[getRandom(0,2)]; 
+
+		%result = %c[getRandom(0,2)];
 	}
-	
+
 	%userChoice = %this.current;
-	
+
 	%winner = thisVSthat(%userChoice,%result);
-	
+
 	if(%winner == 0)
 	{
 		echo("You both chose "@%userChoice@", tie!");
@@ -6022,7 +6022,7 @@ function RockPaperScissors::main(%this)
 	{
 		echo("You chose "@%userChoice@" computer chose "@%result@", you lose!");
 	}
-	
+
 	%this.idle = true;
 }
 
@@ -6031,19 +6031,19 @@ function RockPaperScissors::getChoiceByUserFrequency(%this)
 	%weakness["rock"] = "paper";
 	%weakness["paper"] = "Scissors";
 	%weakness["scissors"] = "rock";
-	
+
 	%a[0] = %this.choice["rock"];
 	%a[1] = %this.choice["paper"];
 	%a[2] = %this.choice["Scissors"];
-	
+
 	%b[0] = "rock";
 	%b[1] = "paper";
 	%b[2] = "scissors";
-	
+
 	for(%i=0;%i<3;%i++)
 	{
 		%curr = %a[%i];
-		
+
 		if(%temp $= "")
 		{
 			%temp = %curr;
@@ -6056,14 +6056,14 @@ function RockPaperScissors::getChoiceByUserFrequency(%this)
 			%tempi = %i;
 		}
 	}
-	
+
 	return %weakness[%b[%tempi]];
 }
 
 function choose(%this)
 {
 	%rps = rockPaperScissors;
-	
+
 	if(!%rps.idle)
 	{
 		return 0;
@@ -6077,7 +6077,7 @@ function choose(%this)
 	%rps.choice[%this]++;
 	%rps.current = %this;
 	%rps.main();
-	
+
 	return %this;
 }
 
@@ -6092,11 +6092,11 @@ function thisVSthat(%this,%that)
 	{
 		return 0;
 	}
-	
+
 	%weakness["rock"] = "paper";
 	%weakness["paper"] = "Scissors";
 	%weakness["scissors"] = "rock";
-	
+
 	if(%weakness[%this] $= %that)
 	{
 		%result = 2;
@@ -6108,7 +6108,7 @@ function thisVSthat(%this,%that)
 	}
 	else
 		%result = 0;
-		
+
 	return %result;
 }
 
@@ -6261,7 +6261,7 @@ A sample game:
 #!/bin/bash
 choices=(rock paper scissors)
 
-# comparison function, works like Perl 
+# comparison function, works like Perl
 # winner x y =  2 if y beats x, 1 if x beats 1, 0 if it's a tie
 winner() {
   local left="$1" right="$2"
@@ -6275,7 +6275,7 @@ computer_counts=(0 0 0)
 games=0 human=0 computer=0
 
 PS3="What do you throw? "
-while true; do 
+while true; do
   select choice in rock paper scissors quit; do
     if [ -z "$choice" ]; then choice="$REPLY"; fi
     if [ "$choice" = "quit" ]; then
@@ -6300,7 +6300,7 @@ while true; do
     fi
   done
   let computer_counts[c]+=1
-  echo 
+  echo
   echo "You chose ${choices[h]^^}"
   echo "I chose ${choices[c]^^}"
   w="$(winner "$c" "$h")"
@@ -6315,7 +6315,7 @@ while true; do
   (( human_counts[(h+1)%3]+=1, human_count+=1 ))
 done
 
-echo 
+echo
 echo "We played $games games.  You won $human, and I won $computer."
 for (( i=0; i<3; ++i )); do
   echo "You picked ${choices[i]} $(( human_counts[ (i+1)%3 ] - 1 )) times."
@@ -6436,7 +6436,7 @@ repeat
         case "P": humanChoice$ = "Paper" : break
         case "S": humanChoice$ = "Scissors" : break
         case "L": humanChoice$ = "Lizard" : break
-        case "K": humanChoice$ = "Spock" : break    
+        case "K": humanChoice$ = "Spock" : break
     end switch
     print "Player chose ", humanChoice$, " and Computer chose ", computerChoice$
     for n = 0 to 9
@@ -6450,7 +6450,7 @@ repeat
             print "Winner was Computer"
             wc = wc + 1
             break
-        end if    
+        end if
     next n
     if n = 10 then
         print "Ouch!"

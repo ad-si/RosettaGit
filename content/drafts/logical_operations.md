@@ -11,11 +11,11 @@ tags = []
 +++
 
 {{task|Basic Data Operations}}
-{{basic data operation}} 
+{{basic data operation}}
 [[Category:Simple]]
 
 ;Task:
-Write a function that takes two logical (boolean) values, and outputs the result of "and" and "or" on both arguments as well as "not" on the first arguments. 
+Write a function that takes two logical (boolean) values, and outputs the result of "and" and "or" on both arguments as well as "not" on the first arguments.
 
 If the programming language doesn't provide a separate type for logical values, use the type most commonly used for that purpose.
 
@@ -28,14 +28,14 @@ If the language supports additional logical operations on booleans such as XOR, 
 ## 360 Assembly
 
 Assembler 360 offers a full set of opcodes for logical operations: or, and, xor (exclusive or).
-The "not" can be done by inversing the branching: BNE (Branch Not Equal) instead of BE (Branch Equal). 
+The "not" can be done by inversing the branching: BNE (Branch Not Equal) instead of BE (Branch Equal).
 An othe way to perform a not is to use a xor with the true value (X'FF').
 
 ```txt
 
  Op-codes
                      Or    And   Xor
-                     ---   ---   ---      
+                     ---   ---   ---
  Memory to memory    OC    NC    XC
  Memory to register  O     N     X
  Immediate           OI    NI    XI
@@ -59,7 +59,7 @@ LOGICAL  CSECT
          MVC    C,A                C=A
          XI     C,X'01'            C=not A
 *     -- if C then goto e
-         CLI    C,X'01'            if C 
+         CLI    C,X'01'            if C
          BE     E                  then goto e
          XPRNT  =C'FALSE',5
 *
@@ -104,8 +104,8 @@ FALSE
 
 
 I have also included logical xor because it is defined for Ada boolean types.
-All the operators below work equally well on arrays of boolean types. 
-In fact, a packed array of boolean is an array of bits, 
+All the operators below work equally well on arrays of boolean types.
+In fact, a packed array of boolean is an array of bits,
 providing a direct link between logical and bitwise operations.
 
 
@@ -190,8 +190,8 @@ PROC print_logic = (BOOL a, b)VOID:
   printf(($"a equivalent to b is "gl$, a EQ b);
   printf(($"a not equivalent to b is "gl$, a NE b);
 
-# Alternatively ASCII # 
-  printf(($"a and b is "gl$, a & b); 
+# Alternatively ASCII #
+  printf(($"a and b is "gl$, a & b);
   printf(($"a and b is "gl$, a /\ b);  <!-- http://web.archive.org/web/20021207211127/http://www.bobbemer.com/BRACES.HTM -->
   printf(($"a or b is "gl$, a \/ b);
   printf(($"a equivalent to b "gl$, a = b);
@@ -280,7 +280,7 @@ sZoneBin:    .space 36,' '
 
 /* code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}     /* save 2 registers */
 
@@ -288,20 +288,20 @@ main:                /* entry of program  */
     mov r1,#0b0110      @ binary value 2
     bl logicfunc
 
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0,#0                   @ return code
     pop {fp,lr}                 @ restore 2 registers
     mov r7,#EXIT                @ request to exit program
     swi 0                       @ perform the system call
 
 /******************************************************************/
-/*     logics functions                              */ 
+/*     logics functions                              */
 /******************************************************************/
 /* r0 contains the first value */
 /* r1 contains the second value */
 logicfunc:
-    push {r2,lr}                     @ save  registers 
-    mov r2,r0                        @ save value 1 in r2 
+    push {r2,lr}                     @ save  registers
+    mov r2,r0                        @ save value 1 in r2
     ldr r0,iAdrszMessResultAnd       @ and
     bl affichageMess
     mov r0,r2                        @ load value 1 in r0
@@ -328,25 +328,25 @@ logicfunc:
     bic r0,r1
     bl affichage2
 100:
-    pop {r2,lr}                      @ restore registers 
-    bx lr	
+    pop {r2,lr}                      @ restore registers
+    bx lr
 iAdrszMessResultAnd:    .int szMessResultAnd
 iAdrszMessResultOr:     .int szMessResultOr
 iAdrszMessResultEor:    .int szMessResultEor
 iAdrszMessResultNot:    .int szMessResultNot
 iAdrszMessResultClear:  .int szMessResultClear
 /******************************************************************/
-/*     register display in binary                              */ 
+/*     register display in binary                              */
 /******************************************************************/
 /* r0 contains the register */
 affichage2:
-    push {r0,lr}     /* save registers */  
+    push {r0,lr}     /* save registers */
     push {r1-r5}     /* save other registers */
     mrs r5,cpsr      /* saves state register in r5 */
     ldr r1,iAdrsZoneBin
     mov r2,#0         @ read bit position counter
     mov r3,#0         @ position counter of the written character
-1:                @ loop 
+1:                @ loop
     lsls r0,#1        @ left shift  with flags
     movcc r4,#48      @ flag carry off   character '0'
     movcs r4,#49      @ flag carry on    character '1'
@@ -364,21 +364,21 @@ affichage2:
 
     ldr r0,iAdrsZoneMessBin    @ address of message result
     bl affichageMess           @ display result
-    
+
 100:
     msr cpsr,r5    /* restore state register */
     pop {r1-r5}    /* restore other registers */
     pop {r0,lr}
-    bx lr	
-iAdrsZoneBin: .int sZoneBin	   
+    bx lr
+iAdrsZoneBin: .int sZoneBin
 iAdrsZoneMessBin: .int sMessAffBin
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save registers */ 
+    push {fp,lr}    			/* save registers */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	            /* loop length calculation */
@@ -392,8 +392,8 @@ affichageMess:
     mov r7,#WRITE               /* "write" system call */
     swi #0                      /* system call */
     pop {r0,r1,r2,r7}     		/* restore other registers */
-    pop {fp,lr}    				/* restore 2 registers */ 
-    bx lr	        			/* return */	
+    pop {fp,lr}    				/* restore 2 registers */
+    bx lr	        			/* return */
 
 
 
@@ -523,7 +523,7 @@ print not a
       PROClogic(TRUE, FALSE)
       PROClogic(TRUE, TRUE)
       END
-      
+
       DEF PROClogic(a%, b%)
       LOCAL @% : @% = 2 : REM Column width
       PRINT a% " AND " b% " = " a% AND b% TAB(20);
@@ -583,7 +583,7 @@ The following program illustrates the use of these operators:
 
 Sub logicalDemo(b1 As Boolean, b2 As Boolean)
   Print "b1             = "; b1
-  Print "b2             = "; b2 
+  Print "b2             = "; b2
   Print "b1 And b2      = "; b1 And b2
   Print "b1 Or b2       = "; b1 Or b2
   Print "b1 XOr b2      = "; b1 Xor b2
@@ -663,7 +663,7 @@ b1 OrElse b2   = true
 
 ## bc
 
-POSIX bc has neither Boolean values nor built-in logical operations. 
+POSIX bc has neither Boolean values nor built-in logical operations.
 Thus one has to write them oneself:
 
 ```bc
@@ -816,9 +816,9 @@ void print_logic(bool a, bool b)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace LogicalOperations
@@ -860,7 +860,7 @@ namespace LogicalOperations
 
 ```clojure
 
-(defn logical [a b] 
+(defn logical [a b]
   (prn (str "a and b is " (and a b)))
   (prn (str "a or b is " (or a b)))
   (prn (str "not a is "  (not a))))
@@ -943,14 +943,14 @@ Logical operations in COBOL are exactly the same as [[Bitwise operations#COBOL|b
 import std.stdio;
 
 void logic(T, U)(T lhs, U rhs) {
-    writefln("'%s' is of type '%s', '%s' is of type '%s';", 
+    writefln("'%s' is of type '%s', '%s' is of type '%s';",
              lhs, typeid(typeof(lhs)), rhs,typeid(typeof(rhs)));
     writefln("\t'%s' AND '%s' is %s, ", lhs, rhs, lhs && rhs);
     writefln("\t'%s' OR '%s' is %s, ", lhs, rhs, lhs || rhs);
     writefln("\tNOT '%s' is %s.\n", lhs, !lhs);
 }
 
-class C { int value; } 
+class C { int value; }
 
 void main() {
     bool theTruth = true;
@@ -967,11 +967,11 @@ void main() {
     // Note: Struct is value type in D, but composite
     //  so no default bool equivalent.
 
-    logic(theTruth, theLie); 
-    logic(zeroReal, NaN);  
-    logic(zeroInt, nullArr); 
-    logic(nullStr, emptyStr);  
-    logic(someC, nullC);  
+    logic(theTruth, theLie);
+    logic(zeroReal, NaN);
+    logic(zeroInt, nullArr);
+    logic(nullStr, emptyStr);
+    logic(someC, nullC);
 }
 ```
 
@@ -979,28 +979,28 @@ void main() {
 
 ```txt
 'true' is of type 'bool', 'false' is of type 'bool';
-    'true' AND 'false' is false, 
-    'true' OR 'false' is true, 
+    'true' AND 'false' is false,
+    'true' OR 'false' is true,
     NOT 'true' is false.
 
 '0' is of type 'real', 'nan' is of type 'real';
-    '0' AND 'nan' is false, 
-    '0' OR 'nan' is true, 
+    '0' AND 'nan' is false,
+    '0' OR 'nan' is true,
     NOT '0' is true.
 
 '0' is of type 'int', '[]' is of type 'real[]';
-    '0' AND '[]' is false, 
-    '0' OR '[]' is false, 
+    '0' AND '[]' is false,
+    '0' OR '[]' is false,
     NOT '0' is true.
 
 '' is of type 'immutable(char)[]', '' is of type 'immutable(char)[]';
-    '' AND '' is false, 
-    '' OR '' is true, 
+    '' AND '' is false,
+    '' OR '' is true,
     NOT '' is true.
 
 'logical_operations.C' is of type 'logical_operations.C', 'null' is of type 'logical_operations.C';
-    'logical_operations.C' AND 'null' is false, 
-    'logical_operations.C' OR 'null' is true, 
+    'logical_operations.C' AND 'null' is false,
+    'logical_operations.C' OR 'null' is true,
     NOT 'logical_operations.C' is false.
 ```
 
@@ -1239,7 +1239,7 @@ compare_bool = fn (A, B) {
     io.format("~n")
 }
 
-@public 
+@public
 run = fn () {
     compare_bool(true, true)
     compare_bool(true, false)
@@ -1256,12 +1256,12 @@ ELENA 4.x:
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     bool a := true;
     bool b := false;
- 
+
     console.printLine("a and b is ", a && b);
     console.printLine("a or b is ", a || b);
     console.printLine("Not a is ", a.Inverted);
@@ -1508,17 +1508,17 @@ In ANSI FORTRAN 66 or later, use LOGICAL data type:
        PRINT *, 'a and b is ', A .AND. B
        PRINT *, 'a or b is ', A .OR. B
        PRINT *, 'not a is ', .NOT. A
-       
+
 C       You did not ask, but the following logical operators are also standard
-C       since ANSI FORTRAN 66 
-C       
+C       since ANSI FORTRAN 66
+C
 ### =================================================================
 
-       
+
 C       This yields the same results as .EQ., but has lower operator precedence
 C       and only works with LOGICAL operands:
        PRINT *, 'a equivalent to b is ', A .EQV. B
-       
+
 C       This yields the same results as .NE., but has lower operator precedence
 C       and only works with LOGICAL operands (this operation is also commonly
 C       called "exclusive or"):
@@ -1586,7 +1586,7 @@ include "ConsoleWindow"
 def tab 6
 
 dim as long a, b
- 
+
 print "In FB the Boolean constants _true = 1, _false = 0"
 print string$( 39, "-" )
 print " a", " b", "and",  "or", "xor", "nand", "nor"
@@ -1801,33 +1801,33 @@ a_or_b  = a || b
 not_a   = not a
 a_xor_b  = a /= b
 a_nxor_b = a == b
-a_implies_b = a <= b -- sic! 
+a_implies_b = a <= b -- sic!
 ```
 
 
 (&&) and (||) are lazy on the second argument and therefore this operations are not symmetric:
 
 ```haskell
-*Main > False && undefined 
+*Main > False && undefined
 False
-Prelude> undefined && False 
+Prelude> undefined && False
 *** Exception: Prelude.undefined
-Prelude> True || undefined 
+Prelude> True || undefined
 True
-Prelude> undefined || True 
+Prelude> undefined || True
 *** Exception: Prelude.undefined
 ```
 
 (<=), (<), (>=) and (>) on the other hand are strict:
 
 ```haskell>Prelude
- False <= undefined 
+ False <= undefined
 *** Exception: Prelude.undefined
-Prelude> undefined <= True 
+Prelude> undefined <= True
 *** Exception: Prelude.undefined
-Prelude> True < undefined 
+Prelude> True < undefined
 *** Exception: Prelude.undefined
-Prelude> undefined < False 
+Prelude> undefined < False
 *** Exception: Prelude.undefined
 ```
 
@@ -1855,7 +1855,7 @@ No logical variables. Nonzero is true, zero is false in logical expressions:
   NOTx  = x == 0
   xANDy = x * y
   xORy  = x + y  /= 0
-  EOR   = x /= y 
+  EOR   = x /= y
 ```
 
 
@@ -1895,13 +1895,13 @@ PrintLogic(TRUE, FALSE);
 printLogic := method(a,b,
   writeln("a and b is ", a and b)
   writeln("a or b is ", a or b)
-  writeln("not a is ", a not) 
+  writeln("not a is ", a not)
 )
 ```
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon/Unicon do not have a native logical or Boolean type; nor do they use Boolean values for flow control.  Instead for flow control they use the concept of success (a result is returned) or failure (a signal). For more on this see see [[Short-circuit_evaluation#Icon_and_Unicon|Short Circuit Evaluation]]. Because there is almost no need for Boolean values the concept is somewhat alien.  
+Icon/Unicon do not have a native logical or Boolean type; nor do they use Boolean values for flow control.  Instead for flow control they use the concept of success (a result is returned) or failure (a signal). For more on this see see [[Short-circuit_evaluation#Icon_and_Unicon|Short Circuit Evaluation]]. Because there is almost no need for Boolean values the concept is somewhat alien.
 
 One likely situation where Boolean values could be encountered is working with an external array of bits/flags.  This example attempts to show a solution that would work in such a scenario.  Some characteristics would include:
 * the ability to work with an entire array of bits
@@ -1935,7 +1935,7 @@ every (i := char(1 to limit)|char2) do {
      write("bistrue(",image(i),",",k,") - ", if bistrue(i,k) then "returns" else "fails")
      write("bisfalse(",image(i),",",k,") - ", if bisfalse(i,k) then "returns" else "fails")
      }
-   every (j := char(1 to limit)) & (iop := "bor"|"band"|"bxor") do 
+   every (j := char(1 to limit)) & (iop := "bor"|"band"|"bxor") do
       write(iop,"( ",image(i),", ",image(j)," ) = ",image(iop(i,j)))
    }
 end
@@ -1974,14 +1974,14 @@ if type(b) ~== "string" then runerr(103,b)
 if v = ishift(ord(b[-p/8-1]), -(p%8)+1) then return b
 end
 
-procedure boolean_op(iop,b1,b2)        #: boolean helper 
+procedure boolean_op(iop,b1,b2)        #: boolean helper
 local b3,i
 static z
 initial z := char(0)
 if type(b1) ~== "string" then runerr(103,b1)
 if type(b2) ~== "string" then runerr(103,b2)
 b3 := ""
-every i := -1 to -max(*b1,*b2) by -1 do 
+every i := -1 to -max(*b1,*b2) by -1 do
    b3 :=  char(iop(ord(b1[i]|z),ord(b2[i]|z))) || b3
 return b3
 end
@@ -2014,7 +2014,7 @@ bxor( "\x02\x00", "\x01" ) = "\x02\x01"
 ## J
 
 
-J uses 0 for logical false and 1 for logical true. 
+J uses 0 for logical false and 1 for logical true.
 
 ```j
    aon=: *.`+.`(-.@[)`:0
@@ -2564,7 +2564,7 @@ Module CheckIt {
       M1=Each(k)
       While M1 {
             Rep$=Format$("Not {0} = {1}",Array(M1),  Not Array(M1))+{
-                        }      
+                        }
       }
       Report Rep$
       Clipboard Rep$
@@ -2661,7 +2661,7 @@ Nor[a, b,...]
 Xnor[a, b,...]
 ```
 
-Note that the functions are not restricted to 2 arguments; any number of arguments are allowed (except for the function Not). 
+Note that the functions are not restricted to 2 arguments; any number of arguments are allowed (except for the function Not).
 All these functions can also be used with infix operators, the characters for that are: \[Xor], \[Nand], \[Nor], and \[Xnor]. Or by typing [escape] [name boolean operator] [escape].
 
 
@@ -2857,7 +2857,7 @@ module Logical
         WriteLine("{0} or {1} is {2}", a, b, a || b);
         WriteLine("not {0} is {1}", a, !a);
     }
-    
+
     Main() : void {WriteLogical(true, false)}
 }
 ```
@@ -2893,7 +2893,7 @@ method showBool(bb = boolean) public static
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 method runSample(arg) private static
   TRUE_  = (1 == 1)
-  FALSE_ = \TRUE_ 
+  FALSE_ = \TRUE_
   lpairs = [ -
     [TRUE_,  TRUE_ ], -
     [TRUE_,  FALSE_], -
@@ -2913,20 +2913,20 @@ method runSample(arg) private static
 
 ```txt
 
-true  AND true  = true 
-true  OR  true  = true 
+true  AND true  = true
+true  OR  true  = true
 true  XOR true  = false
       NOT true  = false
 
 true  AND false = false
-true  OR  false = true 
-true  XOR false = true 
+true  OR  false = true
+true  XOR false = true
       NOT true  = false
 
 false AND true  = false
-false OR  true  = true 
-false XOR true  = true 
-      NOT false = true 
+false OR  true  = true
+false XOR true  = true
+      NOT false = true
 
 false AND false = false
 false OR  false = false
@@ -2944,7 +2944,7 @@ false XOR false = false
 
 (define (logic a b)
 		(print "a and b is: " (and a b) "\n a or b is: " (or a b))
-		(print "\n not a is: " (not a))) 
+		(print "\n not a is: " (not a)))
 
 
 ```
@@ -3070,7 +3070,7 @@ FUNCTION testLogical RETURNS CHAR (
    i_l2 AS LOGICAL
 ):
 
-   RETURN 
+   RETURN
       SUBSTITUTE( '&1 and &2:  &3', i_l1, i_l2, i_l1 AND i_l2 ) + '~n' +
       SUBSTITUTE( '&1 or &2:  &3', i_l1, i_l2, i_l1 OR i_l2 )  + '~n' +
       SUBSTITUTE( 'not &1:  &2', i_l1, NOT i_l1 )
@@ -3081,7 +3081,7 @@ END FUNCTION.
 
 
 ```progress
-MESSAGE 
+MESSAGE
    testLogical( FALSE, FALSE ) SKIP(1)
    testLogical( FALSE, TRUE ) SKIP(1)
    testLogical( TRUE, FALSE ) SKIP(1)
@@ -3102,35 +3102,35 @@ Message (Press HELP to view stack trace)
 ---------------------------
 no and no:  no
 no or no:  no
-not no:  yes 
+not no:  yes
 
 no and yes:  no
 no or yes:  yes
-not no:  yes 
+not no:  yes
 
 yes and no:  no
 yes or no:  yes
-not yes:  no 
+not yes:  no
 
 yes and yes:  yes
 yes or yes:  yes
-not yes:  no 
+not yes:  no
 
 
 ? and ?:  ?
 ? or ?:  ?
-not ?:  ? 
+not ?:  ?
 
 ? and no:  no
 ? or no:  ?
-not ?:  ? 
+not ?:  ?
 
 ? and yes:  ?
 ? or yes:  yes
-not ?:  ? 
+not ?:  ?
 
 ---------------------------
-OK   Help   
+OK   Help
 ---------------------------
 ```
 
@@ -3639,7 +3639,7 @@ all      none
 
 ## REXX
 
-The REXX language's boolean values are well formed: 
+The REXX language's boolean values are well formed:
 
 :::*   '''1'''   <tt> (true)</tt>
 :::*   '''0'''   <tt>(false)</tt>
@@ -3679,7 +3679,7 @@ $: parse arg @.1, @.2, @.3, @.4;         hdr= length(@.1) \== 1;        if hdr  
    return
 ```
 
-{{out|output|text=  when using the default (internal) inputs:}} 
+{{out|output|text=  when using the default (internal) inputs:}}
 
 ```txt
 
@@ -3756,7 +3756,7 @@ $: parse arg @.1, @.2, @.3, @.4;            hdr= length(@.1) \== 1;     if hdr  
    return
 ```
 
-{{out|output|text=  when using the default (internal) inputs:}} 
+{{out|output|text=  when using the default (internal) inputs:}}
 
 ```txt
 
@@ -4030,7 +4030,7 @@ a xor b: true
   func arity = 1 ifTrue: [inform: 'True ' ; (func as: String) ; ' = ' ; (func sendTo: {True}) printString.
                           inform: 'False ' ; (func as: String) ; ' = ' ; (func sendTo: {False}) printString.].
 
-  func arity = 2 
+  func arity = 2
     ifTrue: [{{True. True}. {True. False}. {False. True}. {False. False}} do:
               [ |:each| inform: each first printString ; (func as: String) ; each second printString ; ' = ' ; (func sendTo: each) printString]]
 

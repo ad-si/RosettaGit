@@ -681,10 +681,10 @@ int main () {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Almost exactly how C works.
 
-```csharp
+```c#
 
 static void Main(string[] args)
 {

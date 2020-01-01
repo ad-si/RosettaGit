@@ -220,10 +220,10 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 static void Main()
 {
   Console.WriteLine("Word size = {0} bytes,",sizeof(int));

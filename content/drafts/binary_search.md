@@ -1351,10 +1351,10 @@ bool found = std::binary_search(array, array+len, what); // a custom comparator 
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 '''Recursive'''
 
-```csharp
+```c#
 namespace Search {
   using System;
 
@@ -1430,7 +1430,7 @@ namespace Search {
 
 '''Iterative'''
 
-```csharp
+```c#
 namespace Search {
   using System;
 
@@ -1508,7 +1508,7 @@ namespace Search {
 
 '''Example'''
 
-```csharp
+```c#
 //#define UseRecursiveSearch
 
 using System;

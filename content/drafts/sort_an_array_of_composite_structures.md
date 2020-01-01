@@ -623,7 +623,7 @@ Ten               10
 The easiest way to sort an array of elements in Bracmat is to handle it as a sum of terms. A sum, when evaluated, is automatically sorted.
 
 ```bracmat
-( (tab=("C++",1979)+(Ada,1983)+(Ruby,1995)+(Eiffel,1985))
+( (tab=("cpp",1979)+(Ada,1983)+(Ruby,1995)+(Eiffel,1985))
 & out$"unsorted array:"
 & lst$tab
 & out$("sorted array:" !tab \n)
@@ -638,7 +638,7 @@ Output:
 ```txt
 unsorted array:
 (tab=
-("C++",1979)+(Ada,1983)+(Ruby,1995)+(Eiffel,1985)
+("cpp",1979)+(Ada,1983)+(Ruby,1995)+(Eiffel,1985)
 );
   sorted array:
   (Ada,1983)+(C++,1979)+(Eiffel,1985)+(Ruby,1995)
@@ -646,7 +646,7 @@ unsorted array:
 
 But tab is still unsorted:
 (tab=
-("C++",1979)+(Ada,1983)+(Ruby,1995)+(Eiffel,1985)
+("cpp",1979)+(Ada,1983)+(Ruby,1995)+(Eiffel,1985)
 );
 ```
 
@@ -666,7 +666,7 @@ Output:
 ```txt
 Now tab is sorted:
 (tab=
-(Ada,1983)+("C++",1979)+(Eiffel,1985)+(Ruby,1995)
+(Ada,1983)+("cpp",1979)+(Eiffel,1985)+(Ruby,1995)
 );
 ```
 
@@ -943,11 +943,11 @@ After sorting:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|C#|3+}}
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -2305,7 +2305,7 @@ function sorting( a, b )
     return a[1] < b[1]
 end
 
-tab = { {"C++", 1979}, {"Ada", 1983}, {"Ruby", 1995}, {"Eiffel", 1985} }
+tab = { {"cpp", 1979}, {"Ada", 1983}, {"Ruby", 1995}, {"Eiffel", 1985} }
 
 table.sort( tab, sorting )
 for _, v in ipairs( tab ) do

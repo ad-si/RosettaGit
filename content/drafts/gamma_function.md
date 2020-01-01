@@ -766,11 +766,11 @@ int main()
 ```
 
 
-## C sharp
+## C#
 
 This is just rewritten from the Wikipedia Lanczos article.  Works with complex numbers as well as reals.
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

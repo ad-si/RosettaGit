@@ -868,9 +868,9 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 namespace Sort {
   using System;
 
@@ -896,7 +896,7 @@ namespace Sort {
 
 '''Example''':
 
-```csharp
+```c#
   using Sort;
   using System;
 

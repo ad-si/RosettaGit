@@ -233,7 +233,7 @@ Burlesque.exe --no-stdin "5 5 .+"
 ```
 
 
-Using the official interpreter. 
+Using the official interpreter.
 
 
 ## C
@@ -248,7 +248,7 @@ $ echo 'main() {printf("Hello\n");}' | gcc -w -x c -; ./a.out
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Note: whilst small, this is more than one line.
 
 Requires PowerShell 2:
@@ -377,7 +377,7 @@ Hello, World!
 
 
 ```bash
-emacs -batch -eval '(princ "Hello World!\n")' 
+emacs -batch -eval '(princ "Hello World!\n")'
 ```
 
 Or another example that does something useful: indent a [[C]] source file:
@@ -541,7 +541,7 @@ Su Mo Tu We Th Fr Sa
 
 ```gambas
 Public Sub Main()
- 
+
 Shell "echo Hello World"
 
 End
@@ -703,7 +703,7 @@ $ echo 'public class X{public static void main(String[]args){System.out.println(
 ```
 
 
-{{works with|MS-DOS}} Compatible Environments (such as [[wp:cmd.exe|cmd.exe]]) 
+{{works with|MS-DOS}} Compatible Environments (such as [[wp:cmd.exe|cmd.exe]])
 Works with cmd.exe on Windows (tested on Microsoft Windows XP [Version 5.1.2600])
 
 ```cmd>C:\
@@ -800,7 +800,7 @@ $ lasso9 -s " 'The date and time is: ' + date "
 
 ```lb
 
-echo print "hello">oneLiner.bas & liberty -r oneLiner.bas echo print "hello">oneLiner.bas & liberty -r oneLiner.bas 
+echo print "hello">oneLiner.bas & liberty -r oneLiner.bas echo print "hello">oneLiner.bas & liberty -r oneLiner.bas
 
 ```
 
@@ -882,13 +882,13 @@ He
 Hel
 Hell
 Hello
-Hello 
+Hello
 Hello W
 Hello Wo
 Hello Wor
 Hello Worl
 Hello World
->>> 
+>>>
 ```
 
 
@@ -965,7 +965,7 @@ rexx -e "say 'Goodbye, world.'"
 
 This is difficult to do in Oz because the compiler/interpreter always wants the source code in a file and does not read from stdin. We can do somethings like this on Unix-like systems:
 
-```bash>echo 
+```bash>echo
 tmp.oz "{System.show hello}"; ozc -l System -e tmp.oz
 hello
 ```
@@ -1014,7 +1014,7 @@ Hello, world!
 
 ## Phix
 
-Command line option -e added for 0.8.1. Outer quotes only rqd if snippet contains spaces, otherwise ignored. 
+Command line option -e added for 0.8.1. Outer quotes only rqd if snippet contains spaces, otherwise ignored.
 
 Most one-liners will probably start with '?' since eg "1+2" gives a compilation error.
 
@@ -1054,7 +1054,7 @@ Hello world!
 
 
 ```bash
-$ pike -e 'write("Hello\n");' 
+$ pike -e 'write("Hello\n");'
 Hello
 ```
 
@@ -1093,7 +1093,7 @@ yap
 ```
 
 
-###  <<< 
+###  <<<
 
 
 ```prolog
@@ -1105,7 +1105,7 @@ yap
 ```
 
 
-###  Pipe 
+###  Pipe
 
 
 ```prolog
@@ -1120,7 +1120,7 @@ yap
 
 ## PureBasic
 
-Runs on Linux with(thanks to) bash. Path variables must be set as decribed in INSTALL. 
+Runs on Linux with(thanks to) bash. Path variables must be set as decribed in INSTALL.
 
 ```bash
 $ echo 'messagerequester("Greetings","hello")' > "dib.pb" && ./pbcompiler dib.pb -e "dib" && ./dib
@@ -1187,7 +1187,7 @@ Hello World
 
 
 ```bash
-rebview -vswq --do "print {Hello!} quit" 
+rebview -vswq --do "print {Hello!} quit"
 ```
 
 
@@ -1334,8 +1334,8 @@ Hello
 ```
 
 
-The escaping of quotes is required by Windows. 
-On Unix and shown in the example on [[PowerShell|Windows PowerShell]], 
+The escaping of quotes is required by Windows.
+On Unix and shown in the example on [[PowerShell|Windows PowerShell]],
 one could just use single quotes around the code.
 
 
@@ -1353,7 +1353,7 @@ guile -c '(display "Hello, world!\n")'
 
 
 ```shiny
-shiny -e "say 'hi'" 
+shiny -e "say 'hi'"
 ```
 
 

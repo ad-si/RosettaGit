@@ -905,11 +905,11 @@ further calc:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Recursive version
 
 
-```csharp
+```c#
 
 using System;
 class Derangements

@@ -258,7 +258,7 @@ ExecuteHQ9:
 		pop dx
 		pop ax
 		ret
-		
+
 	.doHelloWorld:
 		push ds
 		mov ax, cs
@@ -269,14 +269,14 @@ ExecuteHQ9:
 		pop si
 		pop ds
 		jmp .interpret
-		
+
 	.doPrintCode:
 		push si
 		mov si, bx
 		call .printString
 		pop si
 		jmp .interpret
-		
+
 	.doDrinkBeer:
 		push ds
 		push si
@@ -301,13 +301,13 @@ ExecuteHQ9:
 		pop si
 		pop ds
 		jmp .interpret
-		
+
 	.doCounter:
 		push ax
 		inc ax
 		pop ax
 		jmp .interpret
-	
+
 	.printString:
 		push ax
 		push si
@@ -322,7 +322,7 @@ ExecuteHQ9:
 		pop si
 		pop ax
 		ret
-		
+
 	.printHexNumber:
 			pusha
 			push ds
@@ -468,7 +468,7 @@ end
 ```bbcbasic
       PROChq9plus("hq9+HqQ+Qq")
       END
-      
+
       DEF PROChq9plus(code$)
       LOCAL accumulator%, i%, bottles%
       FOR i% = 1 TO LEN(code$)
@@ -604,11 +604,11 @@ void runCode(string code)
 
 
 
-## C sharp
+## C#
 
 
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;
@@ -641,7 +641,7 @@ class Program
 
 ```ceylon
 shared void run() {
-	
+
 	void eval(String code) {
 
 		variable value accumulator = 0;
@@ -675,7 +675,7 @@ shared void run() {
 			}
 		}
 	}
-	
+
 	eval("hq9+");
 }
 ```
@@ -731,7 +731,7 @@ shared void run() {
 
        LINKAGE SECTION.
        01  hq9-code    PIC X(Code-Length).
-       
+
        PROCEDURE DIVISION USING BY VALUE hq9-code.
            PERFORM VARYING i FROM 1 BY 1 UNTIL Code-Length < i
                EVALUATE hq9-code (i:1)
@@ -902,7 +902,7 @@ See [[Execute HQ9+/E]].
 
 ```ela
 open unsafe.console char unsafe.cell imperative
- 
+
 eval src = eval' src
      where eval' [] = ()
            eval' (x::xs) | be 'H' = h() `seq` eval' xs
@@ -917,7 +917,7 @@ eval src = eval' src
                                p () = r.+
                                n () = bottles [99,98..1]
                                   where bottles [] = ()
-                                        bottles (x::xs) = rec write 
+                                        bottles (x::xs) = rec write
                                           (show x) " bottles of beer of the wall\r\n"
                                           (show x) " bottles of beer\r\n"
                                           "Take one down, pass it around\r\n"
@@ -934,7 +934,7 @@ An interpreter itself has no side effects:
 
 ```ela
 open list char
- 
+
 eval src = eval' src 0
      where eval' [] a = []
            eval' (x::xs) a | be 'H' = h :: eval' xs a
@@ -947,7 +947,7 @@ eval src = eval' src 0
                                  q  = src
                                  n = (& bottles [99,98..1])
                                      where bottles [] = ""
-                                           bottles (x::xs) = 
+                                           bottles (x::xs) =
                                              show x ++ " bottles of beer of the wall\r\n"
                                              ++ show x ++ " bottles of beer\r\n"
                                              ++ "Take one down, pass it around\r\n"
@@ -990,12 +990,12 @@ bottle(1) ->
 bottle(N) when N > 0 ->
   io:format("~w bottles of beer ", [N]).
 
-%% Implementation of instructions	
+%% Implementation of instructions
 beer(0) ->
   bottle(0), io:format("on the wall~n"),
   bottle(0), io:format("on the wall~nGo to the store and buy some more~n"),
   io:format("99 bottles of beer on the wall.~n");
-	
+
 beer(N) ->
   bottle(N), io:format("on the wall~n"),
   bottle(N), io:format("~nTake one down and pass it around~n"),
@@ -1011,7 +1011,7 @@ prog(Prog) ->
 inc(Acc) ->
   Acc+1.
 
-%% Interpreter	
+%% Interpreter
 execute(Instruction, Prog, Acc) ->
   case Instruction of
     $H -> hello(), Acc;
@@ -1020,14 +1020,14 @@ execute(Instruction, Prog, Acc) ->
     $+ -> inc(Acc);
        _ -> io:format("Invalid instruction: ~c~n", [Instruction]), Acc
   end.
-	
+
 main([], _Prog, Acc) ->
   Acc;
-		
+
 main([Instruction | Rest], Prog, Acc) ->
   NewAcc = execute(Instruction, Prog, Acc),
   main(Rest, Prog, NewAcc).
-	
+
 main(Prog) ->
   Compiled = string:to_upper(Prog),
   main(Compiled, Prog, 0).
@@ -1122,7 +1122,7 @@ variable accumulator
 
 This is F77 style except for the END SUBROUTINE HQ9, since F90+ allows the END statement to name its subroutine, and more seriously, the SELECT CASE construction that avoids interminable IF ... THEN ... ELSE IF ... sequences or even, a computed GO TO. The obvious data structure is the CHARACTER type, introduced with F77.
 
-The only difficulty lies in the phasing of the various components of the recital (note the lines ending with commas or periods), and especially, producing correct grammar for the singular case. One could simply produce the likes of *"1 bottles of beer", or perhaps "1 bottle(s) of beer" but having been hounded for decades by compilers quibbling over syntax trivia, a certain sensitivity has arisen. For this case, the requirement is to append a "s" or not to "bottle" and the task is quite vexing because Fortran does not allow within expressions syntax such as 
+The only difficulty lies in the phasing of the various components of the recital (note the lines ending with commas or periods), and especially, producing correct grammar for the singular case. One could simply produce the likes of *"1 bottles of beer", or perhaps "1 bottle(s) of beer" but having been hounded for decades by compilers quibbling over syntax trivia, a certain sensitivity has arisen. For this case, the requirement is to append a "s" or not to "bottle" and the task is quite vexing because Fortran does not allow within expressions syntax such as
 ```Fortran
 "bottle" // IF (B.NE.1) THEN "s" FI // " of beer"
 ```
@@ -1396,21 +1396,21 @@ end
 
 procedure HQ9(code)
 static bnw,bcr
-initial {  # number matching words and line feeds for the b-th bottle 
+initial {  # number matching words and line feeds for the b-th bottle
    bnw   := table(" bottles"); bnw[1] := " bottle"; bnw[0] := "No more bottles"
    bcr   := table("\n"); bcr[0]:=""
    }
-every c := map(!code) do                         # ignore case 
+every c := map(!code) do                         # ignore case
    case c of {                                   # interpret
    "h"  : write("Hello, World!")                 # . hello
    "q"  : write(code)                            # . quine
-   "9"  : {                                      # . 99 bottles 
+   "9"  : {                                      # . 99 bottles
           every b := 99 to 1 by -1 do writes(
              bcr[b],b,bnw[b]," of beer on the wall\n",
              b,bnw[b]," of beer\nTake one down, pass it around\n",
-             1~=b|"",bnw[b-1]," of beer on the wall",bcr[b-1])            
+             1~=b|"",bnw[b-1]," of beer on the wall",bcr[b-1])
           write(", ",map(bnw[b-1])," of beer.\nGo to the store ",
-                "and buy some more, 99 bottles of beer on the wall.")               
+                "and buy some more, 99 bottles of beer on the wall.")
           }
    "+"  : { /acc := 0 ; acc +:=1 }                # . yes it is weird
    default: stop("Syntax error in ",code)         # . error/exit
@@ -1472,7 +1472,7 @@ The function below executes a HQ9+ program and returns the program output as a s
 function hq9plus(code) {
   var out = '';
   var acc = 0;
-  
+
   for (var i=0; i<code.length; i++) {
     switch (code.charAt(i)) {
       case 'H': out += "hello, world\n"; break;
@@ -1670,15 +1670,15 @@ end
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
-<lang>hq9plus[program_] := 
- Module[{accumulator = 0, bottle}, 
-  bottle[n_] := 
-   ToString[n] <> If[n == 1, " bottle", " bottles"] <> " of beer"; 
-  Do[Switch[chr, "H", Print@"hello, world", "Q", Print@program, "9", 
+<lang>hq9plus[program_] :=
+ Module[{accumulator = 0, bottle},
+  bottle[n_] :=
+   ToString[n] <> If[n == 1, " bottle", " bottles"] <> " of beer";
+  Do[Switch[chr, "H", Print@"hello, world", "Q", Print@program, "9",
     Print@StringJoin[
-      Table[bottle[n] <> " on the wall\n" <> bottle[n] <> 
-        "\ntake one down, pass it around\n" <> bottle[n - 1] <> 
-        " on the wall" <> If[n == 1, "", "\n\n"], {n, 99, 1, -1}]], 
+      Table[bottle[n] <> " on the wall\n" <> bottle[n] <>
+        "\ntake one down, pass it around\n" <> bottle[n - 1] <>
+        " on the wall" <> If[n == 1, "", "\n\n"], {n, 99, 1, -1}]],
     "+", accumulator++], {chr, Characters@program}]; accumulator]
 ```
 
@@ -1934,7 +1934,7 @@ class HQ9Interpreter {
     has @!code;
     has $!accumulator;
     has $!pointer;
- 
+
     method run ($code) {
         @!code = $code.comb;
         $!accumulator = 0;
@@ -2103,7 +2103,7 @@ function Invoke-HQ9PlusInterpreter ([switch]$Global)
     $sb = New-Object -TypeName System.Text.StringBuilder
 
     for ($i = 99; $i -gt 2; $i--)
-    { 
+    {
         $sb.Append((("{0,2} bottles of beer on the wall, " +
                      "{0,2} bottles of beer! Take one down, pass it around, " +
                      "{1,2} bottles of beer on the wall.`n") -f $i, ($i - 1))) | Out-Null
@@ -2163,7 +2163,7 @@ No more bottles of beer on the wall, No more bottles of beer!
 Go to the store and get us some more, 99 bottles of beer on the wall!
 Hello, world!
 9headquarters++
-HQ9+: 
+HQ9+:
 
 PS C:\Scripts> ${+}
 2
@@ -2173,7 +2173,7 @@ Press Ctrl-C or Enter nothing to exit.
 HQ9+: hq++
 Hello, world!
 hq++
-HQ9+: 
+HQ9+:
 
 PS C:\Scripts> ${+}
 4
@@ -2211,7 +2211,7 @@ EndProcedure
 If OpenConsole()
   Define testCode.s = "hq9+HqQ+Qq"
   hq9plus(testCode)
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2345,11 +2345,11 @@ Hello, world!
 # Project : Execute HQ9
 
 bottle("hq9+HqQ+Qq")
- 
+
 func bottle(code)
      accumulator = 0
      for i = 1 to len(code)
-         switch code[i] 
+         switch code[i]
                 on "h"
                     see "Hello, world!" + nl
                 on "H"
@@ -2361,7 +2361,7 @@ func bottle(code)
                 on "9"
                     bottles = 99
                     while bottles > 0
-                          see "" + bottles + " bottles of beer on the wall, " 
+                          see "" + bottles + " bottles of beer on the wall, "
                           see "" + bottles + " bottles of beer," + nl
                           bottles = bottles - 1
                           see "take one down, pass it around, "
@@ -2370,7 +2370,7 @@ func bottle(code)
                 on "+"
                     accumulator = accumulator + 1
          off
-     next 
+     next
 
 ```
 

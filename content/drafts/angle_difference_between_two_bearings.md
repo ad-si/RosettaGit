@@ -580,7 +580,7 @@ Input in wider range
 ## C#
 
 
-```csharp
+```c#
 using System;
 
 namespace Angle_difference_between_two_bearings

@@ -889,11 +889,11 @@ postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7.0}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

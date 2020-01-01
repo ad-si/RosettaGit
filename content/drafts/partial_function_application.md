@@ -571,7 +571,7 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
 
@@ -581,7 +581,7 @@ int main()
 A partial application function for binary functions.
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -632,7 +632,7 @@ class PartialFunctionApplication
 A partial application function that accepts arbitrary function and applied function arity. f1 and f2 also use late binding in this example to work with any argument that can be multiplied.
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

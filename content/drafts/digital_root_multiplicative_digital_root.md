@@ -90,7 +90,7 @@ L min(table.map(row -> row.len)) < 5
 
 print(‘’)
 print(‘MP: [n0..n4]’)
-print(‘==  
+print(‘==
 ### ==
 ’)
 L(val) table
@@ -113,7 +113,7 @@ Number: (MP, MDR)
 899998: (2, 0)
 
 MP: [n0..n4]
-==  
+==
 ### ==
 
  0: [0, 10, 20, 25, 30]
@@ -141,18 +141,18 @@ The solution uses the Package "Generic_Root" from the additive digital roots [[h
 with Ada.Text_IO, Generic_Root;   use Generic_Root;
 
 procedure Multiplicative_Root is
-   
+
    procedure Compute is new Compute_Root("*"); -- "*" for multiplicative roots
-   
+
    package TIO renames Ada.Text_IO;
    package NIO is new TIO.Integer_IO(Number);
-   
+
    procedure Print_Numbers(Target_Root: Number; How_Many: Natural) is
       Current: Number := 0;
       Root, Pers: Number;
    begin
        for I in 1 .. How_Many loop
-	  loop 
+	  loop
 	     Compute(Current, Root, Pers);
 	     exit when Root = Target_Root;
 	     Current := Current + 1;
@@ -164,7 +164,7 @@ procedure Multiplicative_Root is
 	  Current := Current + 1;
        end loop;
    end Print_Numbers;
-   
+
    Inputs: Number_Array := (123321, 7739, 893, 899998);
    Root, Pers: Number;
 begin
@@ -177,7 +177,7 @@ begin
        TIO.New_Line;
    end loop;
    TIO.New_Line;
-   
+
    TIO.Put_Line(" MDR    first_five_numbers_with_that_MDR");
    for I in 0 .. 9 loop
       TIO.Put("  " & Integer'Image(I) & "  ");
@@ -186,7 +186,7 @@ begin
    end loop;
 end Multiplicative_Root;
 ```
-  
+
 
 {{out}}
 
@@ -590,7 +590,7 @@ MDR: [n0..n4]
     .     !arg:%?n ?arg
         & out$(!n "\t:" MP/MDR$!n)
         & test$!arg
-      | 
+      |
   )
 & test$(123321 7739 893 899998)
 & 0:?i
@@ -603,7 +603,7 @@ MDR: [n0..n4]
         & (   !collecting:?A*(!MDR.)^(?is+[5)*?Z
             & !A*!Z:?collecting
             & (!MDR.)^!is*!done:?done
-          | 
+          |
           )
       )
     & !collecting:~1
@@ -653,9 +653,9 @@ void _mdr(int *rmdr, int *rmp, long long n)
 {
     /* Adjust r if 0 case, so we don't return 1 */
     int r = n ? 1 : 0;
-    while (n) { 
+    while (n) {
         r *= (n % 10);
-        n /= 10; 
+        n /= 10;
     }
 
     (*rmp)++;
@@ -695,7 +695,7 @@ int main(void)
     for (i = 0; i < 10; ++i) {
         printf("%3d: [", i);
         for (j = 0; j < twidth; ++j)
-            printf("%d%s", table[i][j], j != twidth - 1 ? ", " : ""); 
+            printf("%d%s", table[i][j], j != twidth - 1 ? ", " : "");
         printf("]\n");
     }
 
@@ -729,9 +729,9 @@ MDR: [n0..n4]
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -761,7 +761,7 @@ class Program
         for (int i = 0; i < 10; i++)
             table[i] = new List<long>();
         long number = -1;
-        while (table.Any(x => x.Count < twidth)) 
+        while (table.Any(x => x.Count < twidth))
         {
             var t = DigitalRoot(++number);
             if (table[t.Item2].Count < twidth)
@@ -898,7 +898,7 @@ int main( int argc, char* argv[] )
 
 (defun mdr/p (n)
   "Return a list with MDR and MP of n"
-  (if (< n 10) 
+  (if (< n 10)
     (list n 0)
     (mdr/p-aux n 1 1)))
 
@@ -928,10 +928,10 @@ int main( int argc, char* argv[] )
 ```txt
 
 Number: MDR  MD
-123321:   8   3 
-  7739:   8   3 
-   893:   2   3 
-899998:   0   2 
+123321:   8   3
+  7739:   8   3
+   893:   2   3
+899998:   0   2
 
 MDR: [n0..n4]
   0: (0 10 20 25 30)
@@ -1089,7 +1089,7 @@ void main() {
         table[n.mdRoot[1]] ~= n;
         n++;
     }
-    "\nMP: [n0..n4]\n==  
+    "\nMP: [n0..n4]\n==
 ### ==
 ".writeln;
     foreach (const mp; table.byKey.array.sort())
@@ -1110,7 +1110,7 @@ Number: (MP, MDR)
 899998: (2, 0)
 
 MP: [n0..n4]
-==  
+==
 ### ==
 
  0: [0, 10, 20, 25, 30]
@@ -1163,7 +1163,7 @@ void main() {
         table[n.mdRoot[1]] ~= n;
         n++;
     }
-    "\nMP: [n0..n4]\n==  
+    "\nMP: [n0..n4]\n==
 ### ==
 ".writeln;
     foreach (const mp; table.byKey.array.sort())
@@ -1211,7 +1211,7 @@ void main() {
         table[n.mdRoot[1]] ~= n;
         n++;
     }
-    "\nMP: [n0..n4]\n==  
+    "\nMP: [n0..n4]\n==
 ### ==
 ".writeln;
     foreach (const mp; table.byKey.array.sort())
@@ -1228,23 +1228,23 @@ The output is similar.
 ```elixir
 defmodule Digital do
   def mdroot(n), do: mdroot(n, 0)
-  
+
   defp mdroot(n, persist) when n < 10, do: {n, persist}
   defp mdroot(n, persist), do: mdroot(product(n, 1), persist+1)
-  
+
   defp product(0, prod), do: prod
   defp product(n, prod), do: product(div(n, 10), prod*rem(n, 10))
-  
+
   def task1(data) do
     IO.puts "Number: MDR  MP\n
-### ===  
+### ===
   =="
     Enum.each(data, fn n ->
       {mdr, persist} = mdroot(n)
       :io.format "~6w:   ~w  ~2w~n", [n, mdr, persist]
     end)
   end
-  
+
   def task2(m \\ 5) do
     IO.puts "\nMDR: [n0..n#{m-1}]\n
 ###   =====
@@ -1255,7 +1255,7 @@ defmodule Digital do
       IO.puts "  #{i}: #{inspect first}"
     end)
   end
-  
+
   defp add_map(n, m, map) do
     {mdr, _persist} = mdroot(n)
     new_map = Map.update(map, mdr, [n], fn vals -> [n | vals] end)
@@ -1276,7 +1276,7 @@ Digital.task2
 
 Number: MDR  MP
 
-### ===  
+### ===
   ==
 123321:   8   3
   7739:   8   3
@@ -1468,7 +1468,7 @@ end subroutine
 
 ```txt
 
-Number   MDR   MP 
+Number   MDR   MP
  ------------------
 123321     8     3
   3939     2     4
@@ -1476,7 +1476,7 @@ Number   MDR   MP
  39398     0     3
 
 
- First five numbers with MDR in first column: 
+ First five numbers with MDR in first column:
  ---------------------------------------------
   0        0       10       20       25       30
   1        1       11      111     1111    11111
@@ -1503,8 +1503,8 @@ Number   MDR   MP
 Function multDigitalRoot(n As UInteger, ByRef mp As Integer, base_ As Integer = 10) As Integer
   Dim mdr As Integer
   mp = 0
-  Do 
-    mdr = IIf(n > 0, 1, 0) 
+  Do
+    mdr = IIf(n > 0, 1, 0)
     While n > 0
       mdr *= n Mod base_
       n = n \ base_
@@ -1710,7 +1710,7 @@ printMpMdrs :: [Integer] -> IO ()
 printMpMdrs ns = do
   putStrLn "Number MP MDR"
   putStrLn "
-### === == 
+### === ==
 "
   sequence_ [printf "%6d %2d %2d\n" n p r | n <- ns, let (p,r) = mpmdr n]
 
@@ -1736,7 +1736,7 @@ Note that the values in the first column of the table are MDRs, as shown in the 
 ```txt
 Number MP MDR
 
-### === == 
+### === ==
 
 123321  3  8
   7739  3  8
@@ -1954,16 +1954,16 @@ NUMBER  MDR   MP
 899998    0    2
 
 MDR: first five numbers with same MDR
-  0:      0     10     20     25     30 
-  1:      1     11    111   1111  11111 
-  2:      2     12     21     26     34 
-  3:      3     13     31    113    131 
-  4:      4     14     22     27     39 
-  5:      5     15     35     51     53 
-  6:      6     16     23     28     32 
-  7:      7     17     71    117    171 
-  8:      8     18     24     29     36 
-  9:      9     19     33     91    119 
+  0:      0     10     20     25     30
+  1:      1     11    111   1111  11111
+  2:      2     12     21     26     34
+  3:      3     13     31    113    131
+  4:      4     14     22     27     39
+  5:      5     15     35     51     53
+  6:      6     16     23     28     32
+  7:      7     17     71    117    171
+  8:      8     18     24     29     36
+  9:      9     19     33     91    119
 ```
 
 
@@ -1994,7 +1994,7 @@ def tabulate(n):
     | .[1] as $i
     | if (.[0]|minlength) == n then .[0]
       else (mdroot($i) | .[0]) as $mdr
-      | if $matrix[$mdr]|length < n then 
+      | if $matrix[$mdr]|length < n then
           ($matrix[$mdr] + [$i]) as $row
           | $matrix | setpath([$mdr]; $row)
         else $matrix
@@ -2011,7 +2011,7 @@ def tabulate(n):
 
 def neatly:
   . as $in
-  | range(0;length) 
+  | range(0;length)
   | "\(.): \($in[.])";
 
 def rjust(n): tostring | (n-length)*" " + .;
@@ -2378,7 +2378,7 @@ print "Number: (MP, MDR)\n
 foreach my $n (123321, 7739, 893, 899998) {
   printf "%6d: (%d, %d)\n", $n, mdr($n);
 }
-print "\nMP: [n0..n4]\n==  
+print "\nMP: [n0..n4]\n==
 ### ==
 \n";
 foreach my $target (0..9) {
@@ -2401,7 +2401,7 @@ Number: (MP, MDR)
 899998: (2, 0)
 
 MP: [n0..n4]
-==  
+==
 ### ==
 
  0: [0, 10, 20, 25, 30]
@@ -2479,7 +2479,7 @@ end function
 constant tests = {123321, 7739, 893, 899998}
 printf(1,"Number     MDR     MP\n")
 printf(1,"
-### ===     
+### ===
      ==\n")
 for i=1 to length(tests) do
     integer ti = tests[i]
@@ -2513,7 +2513,7 @@ end for
 
 Number     MDR     MP
 
-### ===     
+### ===
      ==
 123321      8      3
   7739      8      3
@@ -2695,13 +2695,13 @@ if __name__ == '__main__':
 ')
     for n in (123321, 7739, 893, 899998):
         print('%6i: %r' % (n, mdroot(n)))
-        
+
     table, n = {i: [] for i in range(10)}, 0
     while min(len(row) for row in table.values()) < 5:
         mpersistence, mdr = mdroot(n)
         table[mdr].append(n)
         n += 1
-    print('\nMP: [n0..n4]\n==  
+    print('\nMP: [n0..n4]\n==
 ### ==
 ')
     for mp, val in sorted(table.items()):
@@ -2722,7 +2722,7 @@ Number: (MP, MDR)
 899998: (2, 0)
 
 MP: [n0..n4]
-==  
+==
 ### ==
 
  0: [0, 10, 20, 25, 30]
@@ -2743,7 +2743,7 @@ Substitute the following function to run twice as fast when calculating  mdroot(
 
 ```python
 def mdroot(n):
-    count, mdr = 0, n 
+    count, mdr = 0, n
     while mdr > 9:
         m, digitsMul = mdr, 1
         while m:
@@ -2803,7 +2803,7 @@ Number	MDR	mp
 899998	0	2
 
 MDR	[n0..n4]
-===	
+===
 ### ==
 
 0	(0 10 20 25 30)
@@ -3048,7 +3048,7 @@ func digroot(num)
                     sum = sum + 1
                     numold = pro
                     numn = string(num[n])
-                    sp = 6 - len(string(num[n])) 
+                    sp = 6 - len(string(num[n]))
                     if sp > 0
                        for p = 1 to sp + 2
                            numn = " " + numn
@@ -3081,16 +3081,16 @@ Number  MDR   MP
 899998   0     2
 
 First five numbers with MDR in first column:
-0 => 0  10  20  25  30  
-1 => 1  11  111  1111  11111  
-2 => 2  12  21  26  34  
-3 => 3  13  31  113  131  
-4 => 4  14  22  27  39  
-5 => 5  15  35  51  53  
-6 => 6  16  23  28  32  
-7 => 7  17  71  117  171  
-8 => 8  18  24  29  36  
-9 => 9  19  33  91  119 
+0 => 0  10  20  25  30
+1 => 1  11  111  1111  11111
+2 => 2  12  21  26  34
+3 => 3  13  31  113  131
+4 => 4  14  22  27  39
+5 => 5  15  35  51  53
+6 => 6  16  23  28  32
+7 => 7  17  71  117  171
+8 => 8  18  24  29  36
+9 => 9  19  33  91  119
 
 ```
 
@@ -3111,7 +3111,7 @@ def mdroot(n)
 end
 
 puts "Number: MDR  MP", "
-### ===  
+### ===
   =="
 [123321, 7739, 893, 899998].each{|n| puts "%6d:   %d  %2d" % [n, *mdroot(n)]}
 
@@ -3132,7 +3132,7 @@ puts "", "MDR: [n0..n4]", "
 
 Number: MDR  MP
 
-### ===  
+### ===
   ==
 123321:   8   3
   7739:   8   3
@@ -3183,7 +3183,7 @@ object MDR extends App {
   println
 
   val mdrs: Stream[Int] => Stream[(Int, BigInt)] = i => i map (x => (x, mdr(x)._1))
-  
+
   println("MDR: [n0..n4]")
   println("
 ### = =====
@@ -3201,8 +3201,8 @@ object MDR extends App {
 ```txt
 
          Number        MDR      MP
-         
-### ===        
+
+### ===
       ==
          123321          8       3
            7739          8       3
@@ -3244,7 +3244,7 @@ func mdroot(n) {
 }
 
 say "Number: MDR  MP\n
-### ===  
+### ===
   =="
 [123321, 7739, 893, 899998].each{|n| "%6d: %3d %3d\n" \
                            .printf(n, mdroot(n)...) }
@@ -3269,7 +3269,7 @@ say "\nMDR: [n0..n4]\n
 
 Number: MDR  MP
 
-### ===  
+### ===
   ==
 123321:   8   3
   7739:   8   3
@@ -3398,7 +3398,7 @@ println("Number:  (MP, MDR)\n
 ");
 foreach n in (T(123321, 7739, 893, 899998))
   { println("%7,d: %s".fmt(n, mdroot(n))) }
- 
+
 table:=D([0..9].zip(fcn{List()}).walk());  // dictionary(0:List, 1:List, ...)
 n    :=0;
 while(table.values.filter(fcn(r){r.len()<5})){ // until each entry has >=5 values
@@ -3406,11 +3406,11 @@ while(table.values.filter(fcn(r){r.len()<5})){ // until each entry has >=5 value
    table[mdr].append(n);
    n += 1;
 }
-println("\nMP: [n0..n4]\n==  
+println("\nMP: [n0..n4]\n==
 ### ==
 ");
 foreach mp in (table.keys.sort()){
-   println("%2d: %s".fmt(mp, table[mp][0,5])); //print first five values 
+   println("%2d: %s".fmt(mp, table[mp][0,5])); //print first five values
 }
 ```
 
@@ -3428,7 +3428,7 @@ Number:  (MP, MDR)
 899,998: L(2,0)
 
 MP: [n0..n4]
-==  
+==
 ### ==
 
  0: L(0,10,20,25,30)

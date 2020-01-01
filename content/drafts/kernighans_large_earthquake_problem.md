@@ -255,10 +255,10 @@ Those earthquakes with a magnitude > 6.0 are:
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.IO;
 using System.Linq;

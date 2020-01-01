@@ -1442,7 +1442,7 @@ checkExt(ext, file)=
     )
   );
 }
-ext=["txt","gz","bat","c","c++","exe","pdf"];
+ext=["txt","gz","bat","c","cpp","exe","pdf"];
 filenames=["c:","txt","text.txt","text.TXT","test.tar.gz","test/test2.exe","test","foo.c","foo.C","foo.C++","foo.c#","foo.zkl","document.pdf"];
 select(f -> checkExt(ext, f), filenames)
 ```

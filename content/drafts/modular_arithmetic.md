@@ -236,7 +236,7 @@ f(ModularInteger(10, 13)) = ModularInteger(1, 13)
 
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace ModularArithmetic {

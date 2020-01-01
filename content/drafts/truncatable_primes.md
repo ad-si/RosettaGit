@@ -560,9 +560,9 @@ int main(void)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;  // 4790@3.6
 using System.Collections.Generic;
 class truncatable_primes

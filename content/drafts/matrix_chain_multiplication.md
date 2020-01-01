@@ -143,7 +143,7 @@ Cost  : 1773740
 
 {{trans|Kotlin}}
 
-```csharp
+```c#
 using System;
 
 class MatrixChainOrderOptimizer {

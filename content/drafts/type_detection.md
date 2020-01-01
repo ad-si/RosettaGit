@@ -206,9 +206,9 @@ std::nullptr_t
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 namespace TypeDetection {

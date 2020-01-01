@@ -1320,7 +1320,7 @@ int main(void)
 ===“Manual” Solution===
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 class SudokuSolver
@@ -1431,7 +1431,7 @@ This uses the second version of the [https://rosettacode.org/wiki/Amb#C.23 Amb C
 {{works with|C sharp|C#|7.1}}
 <!-- By Martin Freedman, 9/02/2018 -->
 
-```csharp
+```c#
 using System.Linq;
 using static System.Linq.Enumerable;
 using static System.Console;
@@ -1543,7 +1543,7 @@ Output
 {{libheader|Microsoft Solver Foundation}}
 <!-- By Nigel Galloway, Jan 29, 2012 -->
 
-```csharp
+```c#
 using Microsoft.SolverFoundation.Solvers;
 
 namespace Sudoku
@@ -1640,7 +1640,7 @@ Produces:
 
 ===Using the "Dancing Links" algorithm===
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Text;

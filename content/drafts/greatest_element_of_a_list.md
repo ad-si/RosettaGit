@@ -1149,12 +1149,12 @@ constexpr auto max_value(const C& container, Comp compare = std::less{})
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 C# already has a "Maximum Value" function.
 
 
-```csharp
+```c#
 using System.Linq;
 
 values.Max();

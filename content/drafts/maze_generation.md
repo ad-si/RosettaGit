@@ -1580,10 +1580,10 @@ int main( int argc, char* argv[] )
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -925,12 +925,12 @@ bail:	if (fin != -1)  close(fin);
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 The long way:
 
 
-```csharp
+```c#
 using System.IO;
 
 using (var reader = new StreamReader("input.txt"))
@@ -945,7 +945,7 @@ using (var writer = new StreamWriter("output.txt"))
 The short way:
 
 
-```csharp
+```c#
 using System.IO;
 
 var text = File.ReadAllText("input.txt");

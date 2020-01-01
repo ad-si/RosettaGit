@@ -665,7 +665,7 @@ n = 9876543210987654321, k = 12031, three survivors: 6892710366467541051 1946357
 ## C#
 
 
-```csharp
+```c#
 
 namespace Josephus
 {

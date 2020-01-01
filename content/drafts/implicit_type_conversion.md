@@ -234,11 +234,11 @@ main(){
 
 
 
-## C sharp
+## C#
 
 C# has built-in implicit conversions for primitive numerical types. Any value can be implicitly converted to a value of a larger type. Many non-primitive types also have implicit conversion operators defined, for instance the '''BigInteger''' and '''Complex''' types.
 
-```csharp
+```c#
 byte aByte = 2;
 short aShort = aByte;
 int anInt = aShort;
@@ -254,7 +254,7 @@ Complex c = 2.5; // 2.5 + 0i
 
 Users are able to define implicit (and also explicit) conversion operators. To define a conversion from A to B, the operator must be defined inside either type A or type B. Therefore, we cannot define a conversion from '''char''' to an array of '''char'''.
 
-```csharp
+```c#
 public class Person
 {
     //Define an implicit conversion from string to Person

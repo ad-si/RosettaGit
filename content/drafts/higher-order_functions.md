@@ -740,7 +740,7 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
 Each example below performs the same task and utilizes .NET delegates, which are objects that refer to a static method or to an instance method of a particular object instance.
@@ -760,7 +760,7 @@ f=Div, f(6, 2) = 3
 This implementation works in all standard versions of C#.
 
 
-```csharp
+```c#
 using System;
 
 // A delegate declaration. Because delegates are types, they can exist directly in namespaces.
@@ -813,7 +813,7 @@ class Program
 Anonymous methods were added in C# 2.0. Parameter types must be specified. Anonymous methods must be "coerced" to a delegate type known at compile-time; they cannot be used with a target type of Object or to initialize implicitly typed variables.
 
 
-```csharp
+```c#
 using System;
 
 delegate int Func2(int a, int b);
@@ -848,7 +848,7 @@ For instance, the <code>Action</code> delegate has no parameters, <code>Action<T
 {{works with|C sharp|C#|3+}}
 
 
-```csharp
+```c#
 using System;
 
 class Program

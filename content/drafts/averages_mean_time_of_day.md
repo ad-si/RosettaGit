@@ -17,11 +17,11 @@ tags = []
 A particular activity of bats occurs at these times of the day:
 :<tt>23:00:17</tt>, <tt>23:40:20</tt>, <tt>00:12:45</tt>, <tt>00:17:19</tt>
 
-Using the idea that there are twenty-four hours in a day, 
-which is analogous to there being 360 degrees in a circle, 
-map times of day to and from angles; 
-and using the ideas of [[Averages/Mean angle]] 
-compute and show the average time of the nocturnal activity 
+Using the idea that there are twenty-four hours in a day,
+which is analogous to there being 360 degrees in a circle,
+map times of day to and from angles;
+and using the ideas of [[Averages/Mean angle]]
+compute and show the average time of the nocturnal activity
 to an accuracy of one second of time.
 
 {{task heading|See also}}
@@ -111,13 +111,13 @@ The mean time is: 23:47:43
 {
     c = atan2(0,-1)/(12*60*60);
     x=0.0; y=0.0;
-    for (i=1; i<=NF; i++) {	
+    for (i=1; i<=NF; i++) {
         split($i,a,":");
 	p = (a[1]*3600+a[2]*60+a[3])*c;
 	x += sin(p);
 	y += cos(p);
     }
-    p = atan2(x,y)/c;	
+    p = atan2(x,y)/c;
     if (p<0) p += 24*60*60;
     print strftime("%T",p,1);
 }
@@ -138,7 +138,7 @@ $ echo 23:00:17, 23:40:20, 00:12:45, 00:17:19 | awk -f mean_time_of_day.awk
 ```bbcbasic
       nTimes% = 4
       DATA 23:00:17, 23:40:20, 00:12:45, 00:17:19
-      
+
       DIM angles(nTimes%-1)
       FOR N% = 0 TO nTimes%-1
         READ tim$
@@ -146,7 +146,7 @@ $ echo 23:00:17, 23:40:20, 00:12:45, 00:17:19 | awk -f mean_time_of_day.awk
       NEXT
       PRINT "Mean time is " FNangletotime(FNmeanangle(angles(), nTimes%))
       END
-      
+
       DEF FNtimetoangle(t$)
       LOCAL A%, I%
       REPEAT
@@ -155,7 +155,7 @@ $ echo 23:00:17, 23:40:20, 00:12:45, 00:17:19 | awk -f mean_time_of_day.awk
         t$ = MID$(t$, I%+1)
       UNTIL I% = 0
       = A% / 240 - 180
-      
+
       DEF FNangletotime(a)
       LOCAL A%, I%, t$
       A% = INT((a + 180) * 240 + 0.5)
@@ -164,7 +164,7 @@ $ echo 23:00:17, 23:40:20, 00:12:45, 00:17:19 | awk -f mean_time_of_day.awk
         A% DIV= 60
       NEXT
       = LEFT$(t$)
-      
+
       DEF FNmeanangle(angles(), N%)
       LOCAL I%, addsin, addcos
       FOR I% = 0 TO N%-1
@@ -172,7 +172,7 @@ $ echo 23:00:17, 23:40:20, 00:12:45, 00:17:19 | awk -f mean_time_of_day.awk
         addcos += COSRADangles(I%)
       NEXT
       = DEGFNatan2(addsin, addcos)
-      
+
       DEF FNatan2(y,x) : ON ERROR LOCAL = SGN(y)*PI/2
       IF x>0 THEN = ATN(y/x) ELSE IF y>0 THEN = ATN(y/x)+PI ELSE = ATN(y/x)-PI
 ```
@@ -278,10 +278,10 @@ The mean time is : 23:47:43
 ----
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -293,7 +293,7 @@ namespace RosettaCode
     {
         static void Main(string[] args)
         {
-            Func<TimeSpan, double> TimeToDegrees = (time) => 
+            Func<TimeSpan, double> TimeToDegrees = (time) =>
                 360 * time.Hours / 24.0 +
                 360 * time.Minutes / (24 * 60.0) +
                 360 * time.Seconds / (24 * 3600.0);
@@ -312,8 +312,8 @@ namespace RosettaCode
                 };
             Func<double, TimeSpan> TimeFromDegrees = (angle) =>
                     new TimeSpan(
-                        (int)(24 * 60 * 60 * angle / 360) / 3600, 
-                        ((int)(24 * 60 * 60 * angle / 360) % 3600 - (int)(24 * 60 * 60 * angle / 360) % 60) / 60, 
+                        (int)(24 * 60 * 60 * angle / 360) / 3600,
+                        ((int)(24 * 60 * 60 * angle / 360) % 3600 - (int)(24 * 60 * 60 * angle / 360) % 60) / 60,
                         (int)(24 * 60 * 60 * angle / 360) % 60);
             List<double> digitimes = new List<double>();
             TimeSpan digitime;
@@ -417,10 +417,10 @@ void main() @safe {
 ```scheme
 
 ;; string hh:mm:ss to radians
-(define (time->radian time) 
+(define (time->radian time)
     (define-values (h m s) (map string->number (string-split time ":")))
     (+  (* h (/ PI 12)) (* m (/ PI 12 60)) (* s (/ PI 12 3600))))
-			
+
 ;; radians to string hh:mm;ss
 (define (radian->time rad)
 	(when (< rad 0) (+= rad (* 2 PI)))
@@ -429,12 +429,12 @@ void main() @safe {
 	(define m (quotient (- t (* h 3600)) 60))
 	(define s (- t (* 3600 h) (* 60 m)))
 	(string-join (map number->string (list h m s)) ":"))
-	
+
 (define (mean-time times)
-	(radian->time 
-	 (angle 
+	(radian->time
+	 (angle
 	  (for/sum ((t times)) (make-polar 1 (time->radian t))))))
-	
+
 (mean-time '{"23:00:17" "23:40:20" "00:12:45" "00:17:19"})
     →  "23:47:43"
 
@@ -513,23 +513,23 @@ end function
 function D2T(atom angle)
 	sequence TimeSeq = {0,0,0}
 	atom seconds = 24 * 60 * 60 * angle / 360
-	
+
 	TimeSeq[3] = mod(seconds,60)
 	TimeSeq[2] = (mod(seconds,3600) - TimeSeq[3]) / 60
 	TimeSeq[1] = seconds / 3600
-	
+
 	return TimeSeq
 end function
 
 function MeanAngle(sequence angles)
 	atom x = 0, y = 0
 	integer l = length(angles)
-	
+
 	for i = 1 to length(angles) do
 		x += cos(angles[i] * PI / 180)
 		y += sin(angles[i] * PI / 180)
 	end for
-	
+
 	return atan2(y / l, x / l) * 180 / PI
 end function
 
@@ -540,7 +540,7 @@ while 1 do
  TimeEntry = prompt_string("")
  if equal(TimeEntry,"") then  -- no more entries
  	for i = 1 to length(TimeList) do
- 		TimeList[i] = split(TimeList[i],":") -- split the times into sequences 
+ 		TimeList[i] = split(TimeList[i],":") -- split the times into sequences
  		for j = 1 to 3 do
  			TimeList[i][j] = defaulted_value(TimeList[i][j],0) -- convert to numerical values
  		end for
@@ -560,8 +560,8 @@ sequence MeanTime = D2T(360+MeanAngle(AngleList))
 
 printf(1,"\nMean Time: %d:%d:%d\n",MeanTime)
 
-	
-if getc(0) then end if	
+
+if getc(0) then end if
 
 ```
 
@@ -602,7 +602,7 @@ let main argv =
     |> fun c -> c.Phase |> rad2deg
     |> fun d -> if d < 0. then d + 360. else d
     |> deg2time |> fun t -> t.ToString(@"hh\:mm\:ss")
-    |> printfn "%s: %s" msg 
+    |> printfn "%s: %s" msg
     0
 ```
 
@@ -639,7 +639,7 @@ CONSTANT: input qw{ 23:00:17 23:40:20 00:12:45 00:17:19 }
 
 : mean-time ( seq -- str )
     [ time>deg ] map mean-angle [ 360 + ] when-negative 24 *
-    360 / cutf 60 * cutf 60 * round cutf drop 3array ":" join ; 
+    360 / cutf 60 * cutf 60 * round cutf drop 3array ":" join ;
 
 : mean-time-demo ( -- )
     input dup mean-time "Mean time for %u is %s.\n" printf ;
@@ -753,14 +753,14 @@ end program
 ' FB 1.05.0 Win64
 
 Const pi As Double = 3.1415926535897932
- 
+
 Function meanAngle(angles() As Double) As Double
   Dim As Integer length = Ubound(angles) - Lbound(angles) + 1
   Dim As Double sinSum = 0.0
   Dim As Double cosSum = 0.0
   For i As Integer = LBound(angles) To UBound(angles)
     sinSum += Sin(angles(i) * pi / 180.0)
-    cosSum += Cos(angles(i) * pi / 180.0)    
+    cosSum += Cos(angles(i) * pi / 180.0)
   Next
   Return Atan2(sinSum / length, cosSum / length) * 180.0 / pi
 End Function
@@ -770,7 +770,7 @@ Function timeToSecs(t As String) As Integer
   Dim As Integer hours = Val(Left(t, 2))
   Dim As Integer mins =  Val(Mid(t, 4, 2))
   Dim As Integer secs =  Val(Right(t, 2))
-  Return 3600 * hours + 60 * mins + secs  
+  Return 3600 * hours + 60 * mins + secs
 End Function
 
 ' 1 second of time = 360/(24 * 3600) = 1/240th degree
@@ -780,7 +780,7 @@ Function timeToDegrees(t As String) As Double
 End Function
 
 Function degreesToTime(d As Double) As String
-  If d < 0 Then d += 360.0 
+  If d < 0 Then d += 360.0
   Dim secs As Integer  = d * 240.0
   Dim hours As Integer = secs \ 3600
   Dim mins As Integer  = secs Mod 3600
@@ -925,28 +925,28 @@ import Data.Complex (cis, phase)
 import Data.List.Split (splitOn)
 import Text.Printf (printf)
 
-timeToRadians :: String -> Float 
-timeToRadians time = 
+timeToRadians :: String -> Float
+timeToRadians time =
         let hours:minutes:seconds:_ = splitOn ":" time
             s = fromIntegral (read seconds :: Int)
             m = fromIntegral (read minutes :: Int)
             h = fromIntegral (read hours :: Int)
         in  (2*pi)*(h+ (m + s/60.0 )/60.0 )/24.0
-   
+
 radiansToTime :: Float -> String
 radiansToTime  r =
         let tau = pi*2
             (_,fDay) = properFraction (r / tau) :: (Int, Float)
-            fDayPositive = if fDay < 0 then 1.0+fDay else fDay 
+            fDayPositive = if fDay < 0 then 1.0+fDay else fDay
             (hours, fHours) = properFraction $ 24.0 * fDayPositive
             (minutes, fMinutes) = properFraction $ 60.0 * fHours
             seconds = 60.0 * fMinutes
         in printf "%0d" (hours::Int) ++ ":" ++ printf "%0d" (minutes::Int) ++ ":" ++ printf "%0.0f" (seconds::Float)
- 
+
 meanAngle :: [Float] -> Float
 meanAngle = phase . sum . map cis
- 
-main :: IO ()        
+
+main :: IO ()
 main = putStrLn $ radiansToTime $ meanAngle $ map timeToRadians ["23:00:17", "23:40:20", "00:12:45", "00:17:19"]
 
 ```
@@ -1027,14 +1027,14 @@ meanTime=: 'hh:mm:ss' fmtTime [: secsFromTime [: avgAngleR&.rft parseTimes
 
 ```java
 public class MeanTimeOfDay {
-    
+
     static double meanAngle(double[] angles) {
         int len = angles.length;
         double sinSum = 0.0;
         for (int i = 0; i < len; i++) {
             sinSum += Math.sin(angles[i] * Math.PI / 180.0);
         }
- 
+
         double cosSum = 0.0;
         for (int i = 0; i < len; i++) {
             cosSum += Math.cos(angles[i] * Math.PI / 180.0);
@@ -1069,7 +1069,7 @@ public class MeanTimeOfDay {
     public static void main(String[] args) {
         String[] tm = {"23:00:17", "23:40:20", "00:12:45", "00:17:19"};
         double[] angles = new double[4];
-        for (int i = 0; i < 4; i++) angles[i] = timeToDegrees(tm[i]);        
+        for (int i = 0; i < 4; i++) angles[i] = timeToDegrees(tm[i]);
         double mean = meanAngle(angles);
         System.out.println("Average time is : " + degreesToTime(mean));
     }
@@ -1316,7 +1316,7 @@ pi = acs(-1)
 
 Print "Average of:"
 for i = 1 to 4
-    read t$ 
+    read t$
     print t$
     a=time2angle(t$)
     ss=ss+sin(a)
@@ -1369,7 +1369,7 @@ Average of:
 23:40:20
 00:12:45
 00:17:19
-is 23:47:43 
+is 23:47:43
 
 ```
 
@@ -1423,7 +1423,7 @@ print(angleToTime(meanAngle(times)))
 
 ```txt
 
-23:47:43 
+23:47:43
 
 ```
 
@@ -1431,12 +1431,12 @@ print(angleToTime(meanAngle(times)))
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
-meanTime[list_] := 
+meanTime[list_] :=
   StringJoin@
-   Riffle[ToString /@ 
+   Riffle[ToString /@
        Floor@{Mod[24 #, 24], Mod[24*60 #, 60], Mod[24*60*60 #, 60]} &[
      Arg[Mean[
-        Exp[FromDigits[ToExpression@StringSplit[#, ":"], 60] & /@ 
+        Exp[FromDigits[ToExpression@StringSplit[#, ":"], 60] & /@
             list/(24*60*60) 2 Pi I]]]/(2 Pi)], ":"];
 meanTime[{"23:00:17", "23:40:20", "00:12:45", "00:17:19"}]
 ```
@@ -1451,16 +1451,16 @@ meanTime[{"23:00:17", "23:40:20", "00:12:45", "00:17:19"}]
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```MATLAB
-function t = mean_time_of_day(t) 
+function t = mean_time_of_day(t)
     c = pi/(12*60*60);
     for k=1:length(t)
 	a = sscanf(t{k},'%d:%d:%d');
 	phi(k) = (a(1)*3600+a(2)*60+a(3));
     end;
-    d = angle(mean(exp(i*phi*c)))/(2*pi); % days 
+    d = angle(mean(exp(i*phi*c)))/(2*pi); % days
     if (d<0) d += 1;
     t = datestr(d,"HH:MM:SS");
-end; 
+end;
 ```
 
 
@@ -1477,19 +1477,19 @@ ans = 23:47:43
 
 ```nim
 import math, complex, strutils, sequtils
- 
+
 proc rect(r, phi: float): Complex = (r * cos(phi), sin(phi))
 proc phase(c: Complex): float = arctan2(c.im, c.re)
- 
+
 proc radians(x: float): float = (x * Pi) / 180.0
 proc degrees(x: float): float = (x * 180.0) / Pi
- 
+
 proc meanAngle(deg: openArray[float]): float =
   var c: Complex
   for d in deg:
     c += rect(1.0, radians(d))
   degrees(phase(c / float(deg.len)))
- 
+
 proc meanTime(times: openArray[string]): string =
   const day = 24 * 60 * 60
   let
@@ -1498,9 +1498,9 @@ proc meanTime(times: openArray[string]): string =
       (t[2].parseInt + t[1].parseInt * 60 + t[0].parseInt * 3600) * 360 / day)
     ms = (angles.meanAngle * day / 360 + day) mod day
     (h,m,s) = (ms.int div 3600, (ms.int mod 3600) div 60, ms.int mod 60)
- 
+
   align($h, 2, '0') & ":" & align($m, 2, '0') & ":" & align($s, 2, '0')
- 
+
 echo meanTime(["23:00:17", "23:40:20", "00:12:45", "00:17:19"])
 ```
 
@@ -1570,7 +1570,7 @@ BEGIN
   i := 0;l := LEN(g);sumSin := 0.0;sumCos := 0.0;
   WHILE i < l  DO
     sumSin := sumSin + M.sin(g[i] * toRads);
-    sumCos := sumCos + M.cos(g[i] * toRads);  
+    sumCos := sumCos + M.cos(g[i] * toRads);
     INC(i)
   END;
   RETURN M.arctan2(sumSin / l,sumCos / l) * 180 / M.pi;
@@ -1608,7 +1608,7 @@ let day = float (24 * 60 * 60)
 
 let rad_of_time t =
   t *. pi_twice /. day
- 
+
 let time_of_rad r =
   r *. day /. pi_twice
 
@@ -1768,18 +1768,18 @@ print mean_time(@times) . " is the mean time of " . join(' ', @times) . "\n";
 
 ```perl6
 sub tod2rad($_) { [+](.comb(/\d+/) Z* 3600,60,1) * tau / 86400 }
- 
+
 sub rad2tod ($r) {
     my $x = $r * 86400 / tau;
     (($x xx 3 Z/ 3600,60,1) Z% 24,60,60).fmt('%02d',':');
 }
- 
+
 sub phase ($c) { $c.polar[1] }
- 
+
 sub mean-time (@t) { rad2tod phase [+] map { cis tod2rad $_ }, @t }
 
 my @times = ["23:00:17", "23:40:20", "00:12:45", "00:17:19"];
- 
+
 say "{ mean-time(@times) } is the mean time of @times[]";
 ```
 
@@ -1801,11 +1801,11 @@ say "{ mean-time(@times) } is the mean time of @times[]";
 function atan2(atom y, atom x)
     return 2*arctan((sqrt(power(x,2)+power(y,2))-x)/y)
 end function
- 
+
 function MeanAngle(sequence angles)
 atom x=0, y=0, ai_rad
 integer l=length(angles)
- 
+
     for i=1 to l do
         ai_rad = angles[i]*PI/180
         x += cos(ai_rad)
@@ -1814,7 +1814,7 @@ integer l=length(angles)
     if abs(x)<1e-16 then return "not meaningful" end if
     return atan2(y,x)*180/PI
 end function
- 
+
 function toSecAngle(integer hours, integer minutes, integer seconds)
     return ((hours*60+minutes)*60+seconds)/(24*60*60)*360
 end function
@@ -2035,7 +2035,7 @@ function Get-MeanTimeOfDay
             [double]$x,$y = 0
 
             for ($i = 0; $i -lt $Angles.Count; $i++)
-            { 
+            {
                 $x += [Math]::Cos($Angles[$i] * [Math]::PI / 180)
                 $y += [Math]::Sin($Angles[$i] * [Math]::PI / 180)
             }
@@ -2093,7 +2093,7 @@ def mean_angle(deg):
 
 def mean_time(times):
     t = (time.split(':') for time in times)
-    seconds = ((float(s) + int(m) * 60 + int(h) * 3600) 
+    seconds = ((float(s) + int(m) * 60 + int(h) * 3600)
                for h, m, s in t)
     day = 24 * 60 * 60
     to_angles = [s * 360. / day for s in seconds]
@@ -2306,10 +2306,10 @@ puts mean_time ["23:00:17", "23:40:20", "00:12:45", "00:17:19"]
 ```runbasic
 global pi
 pi = acs(-1)
- 
+
 Print "Average of:"
 for i = 1 to 4
-    read t$ 
+    read t$
     print t$
     a  = time2angle(t$)
     ss = ss+sin(a)
@@ -2320,11 +2320,11 @@ if a < 0 then a = a + 2 * pi
 print "is ";angle2time$(a)
 end
 data "23:00:17", "23:40:20", "00:12:45", "00:17:19"
- 
+
 function nn$(n)
     nn$ = right$("0";n, 2)
 end function
- 
+
 function angle2time$(a)
     a  = int(a / 2 / pi * 24 * 60 * 60)
     ss = a mod 60
@@ -2333,14 +2333,14 @@ function angle2time$(a)
     hh=int(a/60)
     angle2time$=nn$(hh);":";nn$(mm);":";nn$(ss)
 end function
- 
+
 function time2angle(time$)
     hh=val(word$(time$,1,":"))
     mm=val(word$(time$,2,":"))
     ss=val(word$(time$,3,":"))
     time2angle=2*pi*(60*(60*hh+mm)+ss)/24/60/60
 end function
- 
+
 function atan2(y, x)
        if y <> 0 then
         atan2 = (2 * (atn((sqr((x * x) + (y * y)) - x)/ y)))
@@ -2409,7 +2409,7 @@ To be self-contained, this starts with the functions from [[Averages/Mean angle]
 (define (average l)
   (/ (fold + 0 l) (length l)))
 
-(define pi 3.14159265358979323846264338327950288419716939937510582097) 
+(define pi 3.14159265358979323846264338327950288419716939937510582097)
 
 (define (radians a)
   (* pi 1/180 a))
@@ -2639,12 +2639,12 @@ End Sub
 sub atan2(y, x)
     return 2 * atan((sqrt(x **2 + y ** 2) - x) / y)
 end sub
- 
+
 sub MeanAngle(angles())
     local x, y, ai_rad, l, i
-	
+
     l = arraysize(angles(), 1)
- 
+
     for i = 1 to l
         ai_rad = angles(i) * PI / 180
         x = x + cos(ai_rad)
@@ -2653,7 +2653,7 @@ sub MeanAngle(angles())
     if abs(x) < 1e-16 return false
     return atan2(y, x) * 180 / PI
 end sub
- 
+
 sub toSecAngle(hours, minutes, seconds)
     return ((hours * 60 + minutes) * 60 + seconds) / (24 * 60 * 60) * 360
 end sub
@@ -2667,7 +2667,7 @@ Times(4) = toSecAngle(00,17,19)
 
 sub toHMS$(t)
     local s$
-	
+
     if t then
         if t < 0 t = t + 360
         t = 24 * 60 * 60 * t / 360
@@ -2688,8 +2688,8 @@ print "Mean Time is ", toHMS$(MeanAngle(Times()))
 
 ## zkl
 
-This solution is a bit greasy, combining the solution 
-to task "Averages/Mean angle" and some on-the-fly 
+This solution is a bit greasy, combining the solution
+to task "Averages/Mean angle" and some on-the-fly
 time-to-angle and back conversions.
 
 ```zkl
@@ -2698,7 +2698,7 @@ fcn meanT(t1,t2,etc){
    ts:=vm.arglist.apply(fcn(hms){
      (D.toFloat(hms.split(":").xplode())*15).toRad()
    });
-   n:=ts.len(); 
+   n:=ts.len();
    mt:=(ts.apply("sin").sum(0.0)/n)
        .atan2(ts.apply("cos").sum(0.0)/n)
        .toDeg() /15;

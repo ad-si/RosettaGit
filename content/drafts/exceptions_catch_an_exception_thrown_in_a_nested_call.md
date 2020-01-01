@@ -627,11 +627,11 @@ This application has requested the Runtime to terminate it in an unusual way.
 
 The exact behavior for an uncaught exception is implementation-defined.
 
-=={{header|C sharp|C#}}==
+## C#
 This example will first catch U0 and print "U0 Caught" to the console when it does. The uncaught U1 exception will then cause the program to terminate and print the type of the exception, location of the error, and the stack.
 
 
-```csharp
+```c#
 using System; //Used for Exception and Console classes
 class Exceptions
 {

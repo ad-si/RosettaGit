@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 The   [[wp:Pig (dice)|game of Pig]]   is a multiplayer game played with a single six-sided die.   The
-object of the game is to reach   '''100'''   points or more.   
+object of the game is to reach   '''100'''   points or more.
 Play is taken in turns.   On each person's turn that person has the option of either:
 
 :# '''Rolling the dice''':   where a roll of two to six is added to their score for that turn and the player's turn continues as the player is given the same choice again;   or a roll of   '''1'''   loses the player's total points   ''for that turn''   and their turn finishes with play passing to the next player.
@@ -21,7 +21,7 @@ Play is taken in turns.   On each person's turn that person has the option of ei
 
 
 ;Task:
-Create a program to score for, and simulate dice throws for, a two-person game. 
+Create a program to score for, and simulate dice throws for, a two-person game.
 
 
 ;Related task:
@@ -37,7 +37,7 @@ Create a program to score for, and simulate dice throws for, a two-person game.
 ```ActionScript
 
 package {
- 
+
     import flash.display.Graphics;
     import flash.display.Shape;
     import flash.display.Sprite;
@@ -46,112 +46,112 @@ package {
     import flash.text.TextField;
     import flash.text.TextFieldAutoSize;
     import flash.text.TextFormat;
- 
+
     public class PigTheDiceGame extends Sprite {
-        
+
         /**
          * The name of the first player.
-         * 
+         *
          * @private
          */
         private var _name1:String = "Player 1";
-        
+
         /**
          * The name of the second player.
-         * 
+         *
          * @private
          */
         private var _name2:String = "Player 2";
-        
+
         /**
          * True if the next turn is of the second player, false if it is of the first player.
-         * 
+         *
          * @private
          */
         private var _isPlayer2:Boolean = false;
-        
+
         /**
          * The score of the first player.
-         * 
+         *
          * @private
          */
         private var __p1Score:uint;
-        
+
         /**
          * The score of the second player.
-         * 
+         *
          * @private
          */
         private var __p2Score:uint;
-        
+
         /**
          * The number of points in the current turn.
-         * 
+         *
          * @private
          */
         private var __turnPts:uint;
-        
+
         /**
          * The text field displaying the score of the first player.
-         * 
+         *
          * @private
          */
         private var _p1ScoreText:TextField;
-        
+
         /**
          * The text field displaying the score of the second player.
-         * 
+         *
          * @private
          */
         private var _p2ScoreText:TextField;
-        
+
         /**
          * The button which must be clicked for a player to roll the dice.
-         * 
+         *
          * @private
          */
         private var _rollButton:Sprite;
-        
+
         /**
          * The button which must be clicked for a player to hold.
-         * 
+         *
          * @private
          */
         private var _holdButton:Sprite;
-        
+
         /**
          * The text field displaying the name of the current player.
          */
         private var _currentPlayerText:TextField;
-        
+
         /**
          * The text field displaying the number of points in the current turn.
-         * 
+         *
          * @private
          */
         private var _ptsThisTurnText:TextField;
-        
+
         /**
          * The dice.
-         * 
+         *
          * @private
          */
         private var _dice:Shape;
-        
+
         /**
          * The number of points required to win the game.
-         * 
+         *
          * @private
          */
         private var _maxScore:uint = 100;
-        
+
         /**
          * The text field displaying additional information about the game.
-         * 
+         *
          * @private
          */
         private var _statusText:TextField;
-        
+
         /**
          * Creates a new PigTheDiceGame instance.
          */
@@ -159,25 +159,25 @@ package {
             if ( stage ) _init();
             else addEventListener(Event.ADDED_TO_STAGE, _init);
         }
-        
+
         /**
          * Function which constructs the dice game when the object is added to the stage.
-         * 
+         *
          * @private
          */
         private function _init(e:Event = null):void {
-            
+
             // Border and background
-            
+
             graphics.beginFill(0xFFFFDD);
             graphics.lineStyle(2, 0xFFCC00);
             graphics.drawRect(0, 0, 450, 280)
-            
+
             x = 20;
             y = 20;
-            
+
             // Text fields and labels
-            
+
             var currentPlayerText:TextField = _createTextField(_name1 + "'s turn", 20, 0, 10, 0xDD0000, TextFieldAutoSize.CENTER, width);
             var p1ScoreLabel:TextField = _createTextField(_name1 + "'s score:", 15, 20, currentPlayerText.y + currentPlayerText.height + 20, 0x000000, TextFieldAutoSize.LEFT, 120);
             var p1ScoreText:TextField = _createTextField("0", 17, 135, p1ScoreLabel.y, 0xFF0000, TextFieldAutoSize.RIGHT, 50);
@@ -185,18 +185,18 @@ package {
             var p2ScoreText:TextField = _createTextField("0", 17, 135, p2ScoreLabel.y, 0xFF0000, TextFieldAutoSize.RIGHT, 50);
             var ptsThisTurnLabel:TextField = _createTextField("Points in this turn:", 15, 20, p2ScoreText.y + p2ScoreText.height + 15, 0x000000, TextFieldAutoSize.LEFT, 120);
             var ptsThisTurnText:TextField = _createTextField("0", 17, 135, ptsThisTurnLabel.y, 0xFF0000, TextFieldAutoSize.RIGHT, 50);
-            
+
             // Dice
-            
+
             var dice:Shape = new Shape();
             dice.x = 201;
             dice.y = ptsThisTurnText.y + ptsThisTurnText.height + 30;
             dice.visible = false;
-            
+
             var statusText:TextField = _createTextField("Start Play!", 15, 0, dice.y + 70, 0x0000A0, TextFieldAutoSize.CENTER, 450);
-            
+
             // "Roll" button
-            
+
             var rollButton:Sprite = new Sprite();
             var rollButtonText:TextField = _createTextField("Roll dice", 17, 0, 0, 0x000000, TextFieldAutoSize.CENTER, 100);
             rollButton.mouseChildren = false;
@@ -207,9 +207,9 @@ package {
             rollButton.x = 330;
             rollButton.y = 80;
             rollButton.addChild(rollButtonText);
-            
+
             // "Hold" button
-            
+
             var holdButton:Sprite = new Sprite();
             var holdButtonText:TextField = _createTextField("Hold", 17, 0, 0, 0x000000, TextFieldAutoSize.CENTER, 100);
             holdButton.mouseChildren = false;
@@ -218,10 +218,10 @@ package {
             holdButton.x = 330;
             holdButton.y = rollButton.y + rollButton.height + 10;
             holdButton.addChild(holdButtonText);
-            
+
             rollButton.addEventListener(MouseEvent.CLICK, _rollButtonClick);
             holdButton.addEventListener(MouseEvent.CLICK, _holdButtonClick);
-            
+
             _currentPlayerText = currentPlayerText;
             _p1ScoreText = p1ScoreText;
             _p2ScoreText = p2ScoreText;
@@ -230,7 +230,7 @@ package {
             _holdButton = holdButton;
             _dice = dice;
             _statusText = statusText;
-            
+
             addChild(currentPlayerText);
             addChild(p1ScoreLabel);
             addChild(p1ScoreText);
@@ -243,12 +243,12 @@ package {
             addChild(_dice);
             addChild(rollButton);
             addChild(holdButton);
-            
+
         }
-        
+
         /**
          * Creates a new text field.
-         * 
+         *
          * @param text The text to be displayed in the text field.
          * @param size The font size of the text.
          * @param x The x-coordinate of the text field.
@@ -270,32 +270,32 @@ package {
             t.height = t.textHeight + 5;
             return t;
         }
-        
+
         /**
          * Rolls the dice.
-         * 
+         *
          * @return The result of the roll (1-6)
          * @private
          */
         private function _rollDice():uint {
-            
+
             // Since Math.random() returns a number between 0 and 1, multiplying it by 6 and then rounding down
             // gives a number between 0 and 5, so add 1 to it.
-            
+
             var roll:uint = uint(Math.random() * 6) + 1;
-            
+
             _dice.visible = true;
             var diceGraphics:Graphics = _dice.graphics;
-            
+
             // Draw the dice.
-            
+
             diceGraphics.clear();
             diceGraphics.lineStyle(2, 0x555555);
             diceGraphics.beginFill(0xFFFFFF);
             diceGraphics.drawRect(0, 0, 48, 48);
             diceGraphics.beginFill(0x000000);
             diceGraphics.lineStyle(0);
-            
+
             switch ( roll ) {
                 case 1:
                     diceGraphics.drawCircle(24, 24, 3);
@@ -331,27 +331,27 @@ package {
                     diceGraphics.drawCircle(32, 36, 3);
                     break;
             }
-            
+
             return roll;
-            
+
         }
-        
+
         /**
          * The score of the first player.
-         * 
+         *
          * @private
          */
         private function get _p1Score():uint {
             return __p1Score;
         }
-        
+
         /**
          * @private
          */
         private function set _p1Score(value:uint):void {
             __p1Score = value;
             _p1ScoreText.text = String(value);
-            
+
             if ( value >= _maxScore ) {
                 _currentPlayerText.text = "Game over!";
                 _statusText.text = _name1 + " wins!";
@@ -359,23 +359,23 @@ package {
                 removeChild(_holdButton);
             }
         }
-        
+
         /**
          * The score of the second player.
-         * 
+         *
          * @private
          */
         private function get _p2Score():uint {
             return __p2Score;
         }
-        
+
         /**
          * @private
          */
         private function set _p2Score(value:uint):void {
             __p2Score = value;
             _p2ScoreText.text = String(value);
-            
+
             if ( value >= _maxScore ) {
                 _currentPlayerText.text = "Game over!";
                 _statusText.text = _name2 + " wins!";
@@ -383,23 +383,23 @@ package {
                 removeChild(_holdButton);
             }
         }
-        
+
         /**
          * The number of points in the current turn.
-         * 
+         *
          * @private
          */
         private function get _turnPts():uint {
             return __turnPts;
         }
-        
+
         /**
          * @private
          */
         private function set _turnPts(value:uint):void {
             __turnPts = value;
             _ptsThisTurnText.text = String(value);
-            
+
             if ( _isPlayer2 && __p2Score + value >= _maxScore ) {
                 _ptsThisTurnText.text = "0";
                 _p2Score += value;
@@ -409,15 +409,15 @@ package {
                 _p1Score += value;
             }
         }
-        
+
         /**
          * Function called when the "Roll dice" button is clicked.
-         * 
+         *
          * @private
          */
         private function _rollButtonClick(e:MouseEvent):void {
             var roll:uint = _rollDice();
-            
+
             if ( roll == 1 ) {
                 if ( _isPlayer2 ) {
                     _currentPlayerText.text = _name1 + "'s turn";
@@ -427,7 +427,7 @@ package {
                     _currentPlayerText.text = _name2 + "'s turn";
                     _statusText.text = _name1 + " rolls 1 and loses " + __turnPts + " points. " + _name2 + "'s turn now.";
                 }
-                
+
                 _isPlayer2 = ! _isPlayer2;
                 _turnPts = 0;
             }
@@ -436,10 +436,10 @@ package {
                 _statusText.text = "";
             }
         }
-        
+
         /**
          * Function called when the "Hold" button is clicked.
-         * 
+         *
          * @private
          */
         private function _holdButtonClick(e:MouseEvent):void {
@@ -453,14 +453,14 @@ package {
                 _statusText.text = _name1 + " holds and wins " + __turnPts + " points. " + _name2 + "'s turn now.";
                 _p1Score += __turnPts;
             }
-            
+
             _dice.visible = false;
             _turnPts = 0;
             _isPlayer2 = ! _isPlayer2;
         }
- 
+
     }
- 
+
 }
 
 ```
@@ -470,7 +470,7 @@ package {
 ## Ada
 
 
-Uses Ada 2012. 
+Uses Ada 2012.
 
 
 ### The Package Pig
@@ -478,27 +478,27 @@ Uses Ada 2012.
 
 We first define a package Pig, which we also use in the player task [[Pig the dice game/Player]].
 
-Essentially, this package specifies two classes: Player provides the record keeping of the player's score saved so far, the points accumulated in the current round that may be added to the score, and the most recent roll. Actor is an abstract class to model the decision of rolling the dice once more or to save the current points into the score. 
+Essentially, this package specifies two classes: Player provides the record keeping of the player's score saved so far, the points accumulated in the current round that may be added to the score, and the most recent roll. Actor is an abstract class to model the decision of rolling the dice once more or to save the current points into the score.
 
 Also, there is a procedure Play to play the game, following whatever the actors do.
 
 
 ```Ada
 package Pig is
-   
+
    type Dice_Score is range 1 .. 6;
-   
-   type Player is tagged private; 
+
+   type Player is tagged private;
    function Recent(P: Player) return Natural;
    function All_Recent(P: Player) return Natural;
    function Score(P: Player) return Natural;
-   
+
    type Actor is abstract tagged null record;
-   function Roll_More(A: Actor; Self, Opponent: Player'Class) 
+   function Roll_More(A: Actor; Self, Opponent: Player'Class)
 		     return Boolean is abstract;
-   
+
    procedure Play(First, Second: Actor'Class; First_Wins: out Boolean);
-   
+
 private
    type Player is tagged record
       Score: Natural := 0;
@@ -516,32 +516,32 @@ The implementation of Pig is as follows:
 ```Ada
 with Ada.Numerics.Discrete_Random;
 package body Pig is
-   
+
    function Score(P: Player) return Natural is (P.Score);
    function All_Recent(P: Player) return Natural is (P.All_Recent);
    function Recent(P: Player) return Natural is (Natural(P.Recent_Roll));
    function Has_Won(P: Player) return Boolean is (P.Score >= 100);
-   
+
    package RND is new Ada.Numerics.Discrete_Random(Dice_Score);
-   Gen: RND.Generator; 
- 
+   Gen: RND.Generator;
+
    procedure Roll(P: in out Player) is
    begin
       P.Recent_Roll := RND.Random(Gen);
-      if P.Recent = 1 then 
+      if P.Recent = 1 then
 	 P.All_Recent := 0;
       else
 	 P.All_Recent := P.All_Recent + P.Recent;
       end if;
    end Roll;
-   
+
    procedure Add_To_Score(P: in out Player) is
    begin
       P.Score := P.Score + P.All_Recent;
       P.All_Recent := 0;
    end Add_To_Score;
-   
-   procedure Play(First, Second: Actor'Class; 
+
+   procedure Play(First, Second: Actor'Class;
 		  First_Wins: out Boolean) is
       P1, P2: Player;
    begin
@@ -561,8 +561,8 @@ package body Pig is
       end loop;
       First_Wins := P1.Score >= 100;
    end Play;
-   
-begin   
+
+begin
    RND.Reset(Gen);
 end Pig;
 ```
@@ -573,21 +573,21 @@ end Pig;
 
 
 Now, to actually '''play''' the game, we need a procedure Play_Pig. Mainly, we derive a
-class Hand from the class Actor to implement manually playing the game.  
+class Hand from the class Actor to implement manually playing the game.
 
 
 ```Ada
 with Pig, Ada.Text_IO;
 
 procedure Play_Pig is
-   
+
    use Pig;
-   
+
    type Hand is new Actor with record
       Name: String(1 .. 5);
    end record;
    function Roll_More(A: Hand; Self, Opponent: Player'Class) return Boolean;
-   
+
    function Roll_More(A: Hand; Self, Opponent: Player'Class) return Boolean is
       Ch: Character := ' ';
       use Ada.Text_IO;
@@ -600,10 +600,10 @@ procedure Play_Pig is
       Get(Ch);
       return Ch /= '+';
    end Roll_More;
-   
+
    A1: Hand := (Name => "Alice");
    A2: Hand := (Name => "Bob  ");
-   
+
    Alice: Boolean;
 begin
    Play(A1, A2, Alice);
@@ -615,29 +615,29 @@ end Play_Pig;
 {{out}}
 
 ```txt
-Alice you: 0 (opponent: 0) this round: 3 this roll: 3;  add to score(+)? 
-Alice you: 0 (opponent: 0) this round: 5 this roll: 2;  add to score(+)? 
-Alice you: 0 (opponent: 0) this round: 10 this roll: 5;  add to score(+)? 
+Alice you: 0 (opponent: 0) this round: 3 this roll: 3;  add to score(+)?
+Alice you: 0 (opponent: 0) this round: 5 this roll: 2;  add to score(+)?
+Alice you: 0 (opponent: 0) this round: 10 this roll: 5;  add to score(+)?
 Alice you: 0 (opponent: 0) this round: 13 this roll: 3;  add to score(+)?+
-Bob   you: 0 (opponent: 13) this round: 6 this roll: 6;  add to score(+)? 
-Bob   you: 0 (opponent: 13) this round: 8 this roll: 2;  add to score(+)? 
-Bob   you: 0 (opponent: 13) this round: 11 this roll: 3;  add to score(+)? 
-Bob   you: 0 (opponent: 13) this round: 16 this roll: 5;  add to score(+)? 
-Bob   you: 0 (opponent: 13) this round: 18 this roll: 2;  add to score(+)? 
+Bob   you: 0 (opponent: 13) this round: 6 this roll: 6;  add to score(+)?
+Bob   you: 0 (opponent: 13) this round: 8 this roll: 2;  add to score(+)?
+Bob   you: 0 (opponent: 13) this round: 11 this roll: 3;  add to score(+)?
+Bob   you: 0 (opponent: 13) this round: 16 this roll: 5;  add to score(+)?
+Bob   you: 0 (opponent: 13) this round: 18 this roll: 2;  add to score(+)?
 Bob   you: 0 (opponent: 13) this round: 20 this roll: 2;  add to score(+)?+
 Alice you: 13 (opponent: 20) this round: 2 this roll: 2;  add to score(+)?
 
 ... lots of more lines ...
 
-Alice you: 76 (opponent: 66) this round: 8 this roll: 5;  add to score(+)? 
+Alice you: 76 (opponent: 66) this round: 8 this roll: 5;  add to score(+)?
 Alice you: 76 (opponent: 66) this round: 13 this roll: 5;  add to score(+)?+
-Bob   you: 66 (opponent: 89) this round: 4 this roll: 4;  add to score(+)? 
-Bob   you: 66 (opponent: 89) this round: 7 this roll: 3;  add to score(+)? 
-Bob   you: 66 (opponent: 89) this round: 12 this roll: 5;  add to score(+)? 
-Bob   you: 66 (opponent: 89) this round: 15 this roll: 3;  add to score(+)? 
-Bob   you: 66 (opponent: 89) this round: 21 this roll: 6;  add to score(+)? 
-Bob   you: 66 (opponent: 89) this round: 0 this roll: 1;  add to score(+)? 
-Alice you: 89 (opponent: 66) this round: 6 this roll: 6;  add to score(+)? 
+Bob   you: 66 (opponent: 89) this round: 4 this roll: 4;  add to score(+)?
+Bob   you: 66 (opponent: 89) this round: 7 this roll: 3;  add to score(+)?
+Bob   you: 66 (opponent: 89) this round: 12 this roll: 5;  add to score(+)?
+Bob   you: 66 (opponent: 89) this round: 15 this roll: 3;  add to score(+)?
+Bob   you: 66 (opponent: 89) this round: 21 this roll: 6;  add to score(+)?
+Bob   you: 66 (opponent: 89) this round: 0 this roll: 1;  add to score(+)?
+Alice you: 89 (opponent: 66) this round: 6 this roll: 6;  add to score(+)?
 Alice you: 89 (opponent: 66) this round: 11 this roll: 5;  add to score(+)?+
 Winner = Alice!
 ```
@@ -679,7 +679,7 @@ TurnSum := 0
 ButtonHold:
 Sum%CurrentPlayer% += TurnSum
 TurnSum := 0
-GuiControl, , LastRoll, Roll  
+GuiControl, , LastRoll, Roll
 GuiControl, , TurnSum, Sum %TurnSum%
 GuiControl, , Sum%CurrentPlayer%, % Sum%CurrentPlayer%
 If Sum%CurrentPlayer% >= 100
@@ -921,10 +921,10 @@ What do you want to do (H)old or (R)oll?
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
 using System;
 using System.IO;
@@ -967,13 +967,13 @@ namespace Pig {
 		}
 	}
 
-	public class Game {		
+	public class Game {
 		public static void Main(String[] argv){
 			String input = null;
 			Player[] players = new Player[2];
 
 			// Game loop
-			while(true){								
+			while(true){
 				Console.Write("Greetings! Would you like to play a game (y/n)?");
 				while(input == null){
 					input = Console.ReadLine();
@@ -1013,9 +1013,9 @@ namespace Pig {
 								// Do nothing
 							} else if (input.ToLowerInvariant() == "n"){
 								p.FinalizeTurn(roll);
-								currentPlayer = Math.Abs(currentPlayer - 1);			
+								currentPlayer = Math.Abs(currentPlayer - 1);
 								Console.WriteLine();
-							Console.WriteLine(players[0].Name + ": " + players[0].Score + "    " + players[1].Name + ": " + players[1].Score);					
+							Console.WriteLine(players[0].Name + ": " + players[0].Score + "    " + players[1].Name + ": " + players[1].Score);
 								Console.WriteLine(players[currentPlayer].Name + ", your turn begins.");
 								roll = null;
 							} else {
@@ -1217,30 +1217,30 @@ void main() {
 {{out}}
 
 ```txt
- Player 0: (0, 0). Rolling? (y/n) 
+ Player 0: (0, 0). Rolling? (y/n)
    Rolled 6
- Player 0: (0, 6). Rolling? (y/n) 
+ Player 0: (0, 6). Rolling? (y/n)
    Rolled 5
- Player 0: (0, 11). Rolling? (y/n) 
+ Player 0: (0, 11). Rolling? (y/n)
    Rolled 1
  Bust! you lose 11 but keep 0
 
- Player 1: (0, 0). Rolling? (y/n) 
+ Player 1: (0, 0). Rolling? (y/n)
    Rolled 3
- Player 1: (0, 3). Rolling? (y/n) 
+ Player 1: (0, 3). Rolling? (y/n)
    Rolled 4
- Player 1: (0, 7). Rolling? (y/n) 
+ Player 1: (0, 7). Rolling? (y/n)
    Rolled 6
  Player 1: (0, 13). Rolling? (y/n) n
  Sticking with 13
 
  ...
 
- Player 0: (88, 0). Rolling? (y/n) 
+ Player 0: (88, 0). Rolling? (y/n)
    Rolled 6
- Player 0: (88, 6). Rolling? (y/n) 
+ Player 0: (88, 6). Rolling? (y/n)
    Rolled 4
- Player 0: (88, 10). Rolling? (y/n) 
+ Player 0: (88, 10). Rolling? (y/n)
    Rolled 3
  Player 0: (88, 13). Rolling? (y/n)
 
@@ -1397,7 +1397,7 @@ Player2 you throwed 3.
 You currently have 0.
 Do you want to save your points? Press y or no.
 n
-Then throw again. 
+Then throw again.
 ...
 Player2 you throwed 6.
 You currently have 98.
@@ -1569,7 +1569,7 @@ Score 0, next player.
 Currently [{"Player1",14},{"Player2",0}].
 Name "Player1".
 Rolled, score this round 2.
-Roll again (y/n/q): 
+Roll again (y/n/q):
 
 ```
 
@@ -1626,7 +1626,7 @@ Print "El primer jugador en anotar 100 o más puntos gana." + Chr(13) + Chr(10):
 Do
     For jugador = 1 To numjugadores
         puntos = 0
-        
+
         While almacenpuntos(jugador) <= maxpuntos
             Color 15: Print
             Print Using "Jugador #: (&_, &)"; jugador;almacenpuntos(jugador);puntos;: Color 11
@@ -1635,7 +1635,7 @@ Do
                 tirada = Int(Rnd* 5) + 1
                 Print "  Tirada:"; tirada
                 If tirada = 1 Then
-                    Color 11: Print Chr(10) + "­¡Pierdes tu turno! jugador"; jugador; 
+                    Color 11: Print Chr(10) + "­¡Pierdes tu turno! jugador"; jugador;
                     Print " pero mantienes tu puntuación anterior de "; almacenpuntos(jugador): Color 7
                     Exit While
                 End If
@@ -1643,7 +1643,7 @@ Do
             Else
                 almacenpuntos(jugador) = almacenpuntos(jugador) + puntos
                 Print "  Te quedas con:"; almacenpuntos(jugador)
-                If almacenpuntos(jugador) >= maxpuntos Then 
+                If almacenpuntos(jugador) >= maxpuntos Then
                     Color 14: Print Chr(10) + "Gana el jugador"; jugador; " con"; almacenpuntos(jugador); " puntos."
                     Sleep: End
                 End If
@@ -1940,7 +1940,7 @@ getmove=:3 :0
     choice=.'HRQ' e. prompt '..Roll the dice or Hold or Quit? [R or H or Q]: '
   end.
   choice#'HRQ'
-) 
+)
 
 NB. simulate an y player game of pig
 pigsim=:3 :0
@@ -2155,36 +2155,36 @@ public interface PigDice {
 
 
 ```txt
- Player 0: (0, 0) Rolling? (y/n) y 
+ Player 0: (0, 0) Rolling? (y/n) y
  Rolled 3
  Player 0: (0, 3) Rolling? (y/n) Y
  Rolled 5
- Player 0: (0, 8) Rolling? (y/n) 
+ Player 0: (0, 8) Rolling? (y/n)
  Rolled 2
  Player 0: (0, 10) Rolling? (y/n) n
  Sticking with 10
 
- Player 1: (0, 0) Rolling? (y/n) 
+ Player 1: (0, 0) Rolling? (y/n)
  Rolled 1
  Bust! You lose 0 but keep 0
 
- Player 0: (10, 0) Rolling? (y/n) 
+ Player 0: (10, 0) Rolling? (y/n)
  Rolled 1
  Bust! You lose 0 but keep 10
 
- Player 1: (0, 0) Rolling? (y/n) 
+ Player 1: (0, 0) Rolling? (y/n)
  Rolled 4
- Player 1: (0, 4) Rolling? (y/n) 
+ Player 1: (0, 4) Rolling? (y/n)
  Rolled 5
- Player 1: (0, 9) Rolling? (y/n) 
+ Player 1: (0, 9) Rolling? (y/n)
  Rolled 1
  Bust! You lose 9 but keep 0
 
 (...)
 
- Player 1: (96, 0) Rolling? (y/n) 
+ Player 1: (96, 0) Rolling? (y/n)
  Rolled 4
- Player 1: (96, 4) Rolling? (y/n) 
+ Player 1: (96, 4) Rolling? (y/n)
  Rolled 2
  Player 1: (96, 6) Rolling? (y/n) n
 
@@ -2267,40 +2267,40 @@ pig_game([PigPlayer("Alice"), PigPlayer("Bob")])
 Playing a game of Pig the Dice.
 Alice has 0 | Bob has 0
 Alice is now playing.
-Alice there is   0 in the pot.  <ret> to continue rolling? 
-Alice there is   3 in the pot.  <ret> to continue rolling? 
-Alice there is   7 in the pot.  <ret> to continue rolling? 
-Alice there is  13 in the pot.  <ret> to continue rolling? 
-Alice there is  15 in the pot.  <ret> to continue rolling? 
-Alice there is  18 in the pot.  <ret> to continue rolling?  
+Alice there is   0 in the pot.  <ret> to continue rolling?
+Alice there is   3 in the pot.  <ret> to continue rolling?
+Alice there is   7 in the pot.  <ret> to continue rolling?
+Alice there is  13 in the pot.  <ret> to continue rolling?
+Alice there is  15 in the pot.  <ret> to continue rolling?
+Alice there is  18 in the pot.  <ret> to continue rolling?
 Alice played 5 rolls and scored 18 points.
 Alice has 18 | Bob has 0
 Bob is now playing.
-Bob there is   0 in the pot.  <ret> to continue rolling? 
+Bob there is   0 in the pot.  <ret> to continue rolling?
 Bob played 1 rolls and butsted.
 Alice has 18 | Bob has 0
 Alice is now playing.
-Alice there is   0 in the pot.  <ret> to continue rolling? 
-Alice there is   2 in the pot.  <ret> to continue rolling? 
+Alice there is   0 in the pot.  <ret> to continue rolling?
+Alice there is   2 in the pot.  <ret> to continue rolling?
 Alice played 2 rolls and butsted.
 ...
 Alice has 54 | Bob has 94
 Alice is now playing.
-Alice there is   0 in the pot.  <ret> to continue rolling? 
-Alice there is   3 in the pot.  <ret> to continue rolling? 
-Alice there is   9 in the pot.  <ret> to continue rolling? 
-Alice there is  12 in the pot.  <ret> to continue rolling? 
-Alice there is  17 in the pot.  <ret> to continue rolling? 
-Alice there is  22 in the pot.  <ret> to continue rolling? 
-Alice there is  27 in the pot.  <ret> to continue rolling? 
-Alice there is  31 in the pot.  <ret> to continue rolling?  
+Alice there is   0 in the pot.  <ret> to continue rolling?
+Alice there is   3 in the pot.  <ret> to continue rolling?
+Alice there is   9 in the pot.  <ret> to continue rolling?
+Alice there is  12 in the pot.  <ret> to continue rolling?
+Alice there is  17 in the pot.  <ret> to continue rolling?
+Alice there is  22 in the pot.  <ret> to continue rolling?
+Alice there is  27 in the pot.  <ret> to continue rolling?
+Alice there is  31 in the pot.  <ret> to continue rolling?
 Alice played 7 rolls and scored 31 points.
 Alice has 85 | Bob has 94
 Bob is now playing.
-Bob there is   0 in the pot.  <ret> to continue rolling? 
-Bob there is   3 in the pot.  <ret> to continue rolling? 
-Bob there is   5 in the pot.  <ret> to continue rolling? 
-Bob there is   8 in the pot.  <ret> to continue rolling?  
+Bob there is   0 in the pot.  <ret> to continue rolling?
+Bob there is   3 in the pot.  <ret> to continue rolling?
+Bob there is   5 in the pot.  <ret> to continue rolling?
+Bob there is   8 in the pot.  <ret> to continue rolling?
 Bob played 3 rolls and scored 8 points.
 Bob won, scoring 102 points.
 
@@ -2328,7 +2328,7 @@ fun main(Args: Array<String>) {
         println("  Your total score is currently ${totals[player]}")
         var score = 0
         while (true) {
-            print("  Roll or Hold r/h : ")            
+            print("  Roll or Hold r/h : ")
             val rh = readLine()!![0].toLowerCase()
             if (rh == 'h') {
                 totals[player] += score
@@ -2336,25 +2336,25 @@ fun main(Args: Array<String>) {
                 if (totals[player] >= 100) {
                     println("  So, ${names[player]}, YOU'VE WON!")
                     return
-                }                  
+                }
                 player = if (player == 0) 1 else 0
                 break
             }
             if (rh != 'r') {
                 println("    Must be 'r'or 'h', try again")
                 continue
-            }            
+            }
             val dice = 1 + r.nextInt(6)
-            println("    You have thrown a $dice")          
+            println("    You have thrown a $dice")
             if (dice == 1) {
                 println("    Sorry, your score for this round is now 0")
                 println("  Your total score remains at ${totals[player]}")
                 player = if (player == 0) 1 else 0
                 break
             }
-            score += dice 
+            score += dice
             println("    Your score for the round is now $score")
-        } 
+        }
     }
 }
 ```
@@ -2546,7 +2546,7 @@ Module GamePig {
                   Print "Player 1 Win"
             } Else Print "Player 2 Win"
       }
-      
+
       Sub Rolling()
             dice=random(1,6)
             Print "dice=";dice
@@ -2584,7 +2584,7 @@ Module GamePig {
       Sub Score()
             Print "Player1 points="; Player1sum
             Print "Player2 points="; Player2sum
-      End Sub     
+      End Sub
 }
 GamePig
 
@@ -2679,23 +2679,23 @@ Would you like to ROLL or HOLD?
 
 ## Mathematica
 
-<lang>DynamicModule[{score, players = {1, 2}, roundscore = 0, 
-  roll}, (score@# = 0) & /@ players; 
+<lang>DynamicModule[{score, players = {1, 2}, roundscore = 0,
+  roll}, (score@# = 0) & /@ players;
  Panel@Dynamic@
    Column@{Grid[
-      Prepend[{#, score@#} & /@ players, {"Player", "Score"}], 
-      Background -> {None, 2 -> Gray}], roundscore, 
-     If[ValueQ@roll, Row@{"Rolled ", roll}, ""], 
-     If[IntegerQ@roundscore, 
-      Row@{Button["Roll", roll = RandomInteger[{1, 6}]; 
-         If[roll == 1, roundscore = 0; players = RotateLeft@players, 
-          roundscore += roll]], 
-        Button["Hold", score[players[[1]]] += roundscore; 
-         roundscore = 0; 
-         If[score[players[[1]]] >= 100, roll =.; 
-          roundscore = Row@{players[[1]], " wins."}, 
-          players = RotateLeft@players]]}, 
-      Button["Play again.", 
+      Prepend[{#, score@#} & /@ players, {"Player", "Score"}],
+      Background -> {None, 2 -> Gray}], roundscore,
+     If[ValueQ@roll, Row@{"Rolled ", roll}, ""],
+     If[IntegerQ@roundscore,
+      Row@{Button["Roll", roll = RandomInteger[{1, 6}];
+         If[roll == 1, roundscore = 0; players = RotateLeft@players,
+          roundscore += roll]],
+        Button["Hold", score[players[[1]]] += roundscore;
+         roundscore = 0;
+         If[score[players[[1]]] >= 100, roll =.;
+          roundscore = Row@{players[[1]], " wins."},
+          players = RotateLeft@players]]},
+      Button["Play again.",
        roundscore = 0; (score@# = 0) & /@ players]]}]
 ```
 
@@ -2757,40 +2757,40 @@ end while
 ```txt
 Alice: 0  |  Bob: 0
 Alice's Turn!
-Alice, you have 0 in the pot.  [R]oll or Hold? 
+Alice, you have 0 in the pot.  [R]oll or Hold?
    You roll a 4.
-Alice, you have 4 in the pot.  [R]oll or Hold? 
+Alice, you have 4 in the pot.  [R]oll or Hold?
    You roll a 5.
-Alice, you have 9 in the pot.  [R]oll or Hold? 
+Alice, you have 9 in the pot.  [R]oll or Hold?
    You roll a 5.
 Alice, you have 14 in the pot.  [R]oll or Hold? h
 
 Alice: 14  |  Bob: 0
 Bob's Turn!
-Bob, you have 0 in the pot.  [R]oll or Hold? 
+Bob, you have 0 in the pot.  [R]oll or Hold?
    You roll a 6.
-Bob, you have 6 in the pot.  [R]oll or Hold? 
+Bob, you have 6 in the pot.  [R]oll or Hold?
    You roll a 4.
-Bob, you have 10 in the pot.  [R]oll or Hold? 
+Bob, you have 10 in the pot.  [R]oll or Hold?
    You roll a 4.
-Bob, you have 14 in the pot.  [R]oll or Hold? 
+Bob, you have 14 in the pot.  [R]oll or Hold?
    You roll a 6.
 Bob, you have 20 in the pot.  [R]oll or Hold? h
 
 Alice: 14  |  Bob: 20
 Alice's Turn!
-Alice, you have 0 in the pot.  [R]oll or Hold? 
+Alice, you have 0 in the pot.  [R]oll or Hold?
    You roll a 1.  Busted!
 
 ...
 
 Alice: 49  |  Bob: 90
 Bob's Turn!
-Bob, you have 0 in the pot.  [R]oll or Hold? 
+Bob, you have 0 in the pot.  [R]oll or Hold?
    You roll a 5.
-Bob, you have 5 in the pot.  [R]oll or Hold? 
+Bob, you have 5 in the pot.  [R]oll or Hold?
    You roll a 3.
-Bob, you have 8 in the pot.  [R]oll or Hold? 
+Bob, you have 8 in the pot.  [R]oll or Hold?
    You roll a 6.
    BOB WINS WITH 104!
 ```
@@ -2808,7 +2808,7 @@ Bob, you have 8 in the pot.  [R]oll or Hold?
     max_score := 100;
     safe_score := Int->New[player_count];
     player := 0; score := 0;
-    
+
     while(true) {
       safe := safe_score[player];
       " Player {$player}: ({$safe}, {$score}) Rolling? (y/n) "->PrintLine();
@@ -2847,34 +2847,34 @@ Bob, you have 8 in the pot.  [R]oll or Hold?
 
 ```txt
 
- Player 0: (0, 0) Rolling? (y/n) 
+ Player 0: (0, 0) Rolling? (y/n)
 y
  Rolled 3
- Player 0: (0, 3) Rolling? (y/n) 
+ Player 0: (0, 3) Rolling? (y/n)
 y
  Rolled 2
- Player 0: (0, 5) Rolling? (y/n) 
+ Player 0: (0, 5) Rolling? (y/n)
 ...
  Rolled 4
- Player 1: (56, 30) Rolling? (y/n) 
+ Player 1: (56, 30) Rolling? (y/n)
 n
  Sticking with 86
 
- Player 0: (94, 0) Rolling? (y/n) 
+ Player 0: (94, 0) Rolling? (y/n)
 y
  Rolled 6
- Player 0: (94, 6) Rolling? (y/n) 
+ Player 0: (94, 6) Rolling? (y/n)
 n
 ...
  Rolled 4
- Player 1: (56, 30) Rolling? (y/n) 
+ Player 1: (56, 30) Rolling? (y/n)
 n
  Sticking with 86
 
- Player 0: (94, 0) Rolling? (y/n) 
+ Player 0: (94, 0) Rolling? (y/n)
 y
  Rolled 6
- Player 0: (94, 6) Rolling? (y/n) 
+ Player 0: (94, 6) Rolling? (y/n)
 n
 
 ```
@@ -2928,15 +2928,15 @@ let rec one_turn p1 p2 =
                one_turn p2 p1;
      |true -> Printf.printf "Congratulations %s! You've won\n" p1#get_name
   end
-  else 
-  begin 
+  else
+  begin
     print_endline "That's not a choice! Make a real one!";
     one_turn p1 p2
   end;;
 
 Random.self_init ();
-let p1 = new player "Steven" 
-and p2 = new player "John" in 
+let p1 = new player "Steven"
+and p2 = new player "John" in
 one_turn p1 p2;;
 ```
 
@@ -3031,26 +3031,26 @@ procedure Congratulate(Winner: Player);
 begin
 	{ Greet the players and initialize their data. }
 	writeln('Let''s play Pig!');
-	
+
 	writeln ;
 	write('Player 1, what is your name? ');
 	readln(Player1.Name);
 	Player1.Points := 0;
 	Player1.Victory := false;
-	
+
 	writeln ;
 	write('Player 2, what is your name? ');
 	readln(Player2.Name);
 	Player2.Points := 0;
 	Player2.Victory := false;
-	
+
 	{ Take turns until there is a winner. }
 	randomize;
 	repeat
 		TakeTurn(Player1);
 		if not Player1.Victory then TakeTurn(Player2)
 	until Player1.Victory or Player2.Victory;
-	
+
 	{ Announce the winner. }
 	if Player1.Victory then
 		Congratulate(Player1)
@@ -3116,7 +3116,7 @@ __END__
 
 ```perl6
 constant DIE = 1..6;
- 
+
 sub MAIN (Int :$players = 2, Int :$goal = 100) {
     my @safe = 0 xx $players;
     for |^$players xx * -> $player {
@@ -3159,32 +3159,32 @@ Usage:
 > pig --players=3 --goal=20
 
 OK, player #0 is up now.
-#0, you have 0 + 0 = 0. Roll? [Yn] 
+#0, you have 0 + 0 = 0. Roll? [Yn]
   You rolled a 6.
-#0, you have 0 + 6 = 6. Roll? [Yn] 
+#0, you have 0 + 6 = 6. Roll? [Yn]
   You rolled a 6.
 #0, you have 0 + 12 = 12. Roll? [Yn] n
   Sticking with 12.
 
 OK, player #1 is up now.
-#1, you have 0 + 0 = 0. Roll? [Yn] 
+#1, you have 0 + 0 = 0. Roll? [Yn]
   You rolled a 4.
-#1, you have 0 + 4 = 4. Roll? [Yn] 
+#1, you have 0 + 4 = 4. Roll? [Yn]
   You rolled a 6.
-#1, you have 0 + 10 = 10. Roll? [Yn] 
+#1, you have 0 + 10 = 10. Roll? [Yn]
   You rolled a 6.
 #1, you have 0 + 16 = 16. Roll? [Yn] n
   Sticking with 16.
 
 OK, player #2 is up now.
-#2, you have 0 + 0 = 0. Roll? [Yn] 
+#2, you have 0 + 0 = 0. Roll? [Yn]
   You rolled a 5.
-#2, you have 0 + 5 = 5. Roll? [Yn] 
+#2, you have 0 + 5 = 5. Roll? [Yn]
   You rolled a 1.
   Bust!  You lose 5 but keep your previous 0.
 
 OK, player #0 is up now.
-#0, you have 12 + 0 = 12. Roll? [Yn] 
+#0, you have 12 + 0 = 12. Roll? [Yn]
   You rolled a 1.
   Bust!  You lose 0 but keep your previous 12.
 
@@ -3192,13 +3192,13 @@ OK, player #1 is up now.
 #1, you have 16 + 0 = 16. Roll? [Yn] n
 
 OK, player #2 is up now.
-#2, you have 0 + 0 = 0. Roll? [Yn] 
+#2, you have 0 + 0 = 0. Roll? [Yn]
   You rolled a 6.
-#2, you have 0 + 6 = 6. Roll? [Yn] 
+#2, you have 0 + 6 = 6. Roll? [Yn]
   You rolled a 6.
-#2, you have 0 + 12 = 12. Roll? [Yn] 
+#2, you have 0 + 12 = 12. Roll? [Yn]
   You rolled a 4.
-#2, you have 0 + 16 = 16. Roll? [Yn] 
+#2, you have 0 + 16 = 16. Roll? [Yn]
   You rolled a 6.
 
 Player #2 wins with a score of 22!
@@ -3223,7 +3223,7 @@ while true do
     if roll=1 then
         printf(1," Too bad. :(\n")
         points = 0 -- swap turn
-    else            
+    else
         points += roll
         if scores[player]+points>=maxScore then exit end if
         printf(1,"Round score %d. Roll or Hold?",{points})
@@ -3333,7 +3333,7 @@ C:\UniServer\usr\local\php\php pig.php
  sticking with 8
 
  (...)
- 
+
  Player 1: (93, 0) Rolling? (Yn)
  Rolled 5
  Player 1: (93, 5) Rolling? (Yn)
@@ -3384,7 +3384,7 @@ while max(safescore) < maxscore:
             break
         print('  Sticking with %i' % safescore[player])
         score, player = 0, (player + 1) % playercount
-        
+
 print('\nPlayer %i wins with a score of %i' %(player, safescore[player]))
 ```
 
@@ -3392,38 +3392,38 @@ print('\nPlayer %i wins with a score of %i' %(player, safescore[player]))
 ;Samples from a game:
 
 ```txt
-Player 0: (0, 0) Rolling? (Y) 
+Player 0: (0, 0) Rolling? (Y)
   Rolled 6
-Player 0: (0, 6) Rolling? (Y) 
+Player 0: (0, 6) Rolling? (Y)
   Rolled 5
-Player 0: (0, 11) Rolling? (Y) 
+Player 0: (0, 11) Rolling? (Y)
   Rolled 1
   Bust! you lose 11 but still keep your previous 0
-Player 1: (0, 0) Rolling? (Y) 
+Player 1: (0, 0) Rolling? (Y)
   Rolled 3
-Player 1: (0, 3) Rolling? (Y) 
+Player 1: (0, 3) Rolling? (Y)
   Rolled 4
-Player 1: (0, 7) Rolling? (Y) 
+Player 1: (0, 7) Rolling? (Y)
   Rolled 6
 Player 1: (0, 13) Rolling? (Y) n
   Sticking with 13
 ...
 Player 0: (78, 10) Rolling? (Y) n
   Sticking with 88
-Player 1: (63, 0) Rolling? (Y) 
+Player 1: (63, 0) Rolling? (Y)
   Rolled 6
-Player 1: (63, 6) Rolling? (Y) 
+Player 1: (63, 6) Rolling? (Y)
   Rolled 1
   Bust! you lose 6 but still keep your previous 63
 Player 0: (88, 0) Rolling? (Y) n
   Sticking with 88
 Player 1: (63, 0) Rolling? (Y) n
   Sticking with 63
-Player 0: (88, 0) Rolling? (Y) 
+Player 0: (88, 0) Rolling? (Y)
   Rolled 6
-Player 0: (88, 6) Rolling? (Y) 
+Player 0: (88, 6) Rolling? (Y)
   Rolled 4
-Player 0: (88, 10) Rolling? (Y) 
+Player 0: (88, 10) Rolling? (Y)
   Rolled 3
 Player 0: (88, 13) Rolling? (Y) n
 
@@ -3481,7 +3481,7 @@ This REXX program has the following features:
 :::* the score needed to win may be specified
 :::* verbosity was chosen as it's assumed that a human is playing
 :::* code was written to allow for an   '''N'''   sided die
-:::* names are used for the die faces (in addition to the pip value)  
+:::* names are used for the die faces (in addition to the pip value)
 :::* a simple (but aggressive) strategy is used (that favors a human player)
 
 ```rexx
@@ -3588,7 +3588,7 @@ err:     say;   say;   say center(' error! ', max(40, linesize() % 2), "*");    
                         do j=1  for arg();    say arg(j);    say;    end;   say;   exit 13
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
 The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
@@ -3724,27 +3724,27 @@ The score for  RdD2  is  44.
 numPlayers = 2
 maxScore = 100
 safescore = list(numPlayers)
- 
+
 while true
          rolling = ""
          for player = 1 to numPlayers
-              score = 0 
+              score = 0
               while safeScore[player] < maxScore
                        see "Player " + player + " Rolling? (Y) "
                        give rolling
                        if upper(rolling) = "Y"
                           rolled = random(5)  + 1
                           see "Player " + player + " rolled " + rolled + nl
-                          if rolled = 1 
+                          if rolled = 1
                              see "Bust! you lose player " + player + " but still keep your previous score of " + safeScore[player] + nl
                              exit
                           ok
                           score = score + rolled
                        else
                           safeScore[player] = safeScore[player] + score
-                      ok  
+                      ok
               end
-         next 
+         next
 end
 see "Player " + player + " wins with a score of " + safeScore[player]
 
@@ -3787,7 +3787,7 @@ Player 1 rolled 4
 Player 1 Rolling? (Y) y
 Player 1 rolled 1
 Bust! you lose player 1 but still keep your previous score of 0
-Player 2 Rolling? (Y) 
+Player 2 Rolling? (Y)
 
 ```
 
@@ -3808,10 +3808,10 @@ class PigGame
     def stay!() self.safescore = score end
     def to_s() "#{name} (#{safescore}, #{score})" end
   end
-  
+
   def initialize(names, maxscore=100, die_sides=6)
     rotation = names.map {|name| Player.new(name,0,0) }
-    
+
     rotation.cycle do |player|
       loop do
         if wants_to_roll?(player)
@@ -3835,7 +3835,7 @@ class PigGame
       end
     end
   end
-  
+
   def roll_dice(die_sides) rand(1..die_sides) end
   def bust?(roll) roll==1 end
   def wants_to_roll?(player)
@@ -3849,37 +3849,37 @@ PigGame.new( %w|Samuel Elizabeth| )
 
 
 ;Samples from a game:
-<pre style="height:25ex;overflow:scroll">Samuel (0, 0): Roll? (Y) 
+<pre style="height:25ex;overflow:scroll">Samuel (0, 0): Roll? (Y)
 Rolled: 2
-Samuel (0, 2): Roll? (Y) 
+Samuel (0, 2): Roll? (Y)
 Rolled: 4
-Samuel (0, 6): Roll? (Y) 
+Samuel (0, 6): Roll? (Y)
 Rolled: 1
 Busted!
 
-Elizabeth (0, 0): Roll? (Y) 
+Elizabeth (0, 0): Roll? (Y)
 Rolled: 3
-Elizabeth (0, 3): Roll? (Y) 
+Elizabeth (0, 3): Roll? (Y)
 Rolled: 5
-Elizabeth (0, 8): Roll? (Y) 
+Elizabeth (0, 8): Roll? (Y)
 Rolled: 2
 Elizabeth (0, 10): Roll? (Y) n
 Staying with 10!
 
-Samuel (0, 0): Roll? (Y) 
+Samuel (0, 0): Roll? (Y)
 Rolled: 4
-Samuel (0, 4): Roll? (Y) 
+Samuel (0, 4): Roll? (Y)
 Rolled: 1
 Busted!
 
-Elizabeth (10, 10): Roll? (Y) 
+Elizabeth (10, 10): Roll? (Y)
 Rolled: 2
-Elizabeth (10, 12): Roll? (Y) 
+Elizabeth (10, 12): Roll? (Y)
 Rolled: 6
 Elizabeth (10, 18): Roll? (Y) n
 Staying with 18!
 ...
-Elizabeth (83, 97): Roll? (Y) 
+Elizabeth (83, 97): Roll? (Y)
 Rolled: 5
 Elizabeth wins!
 ```
@@ -3914,7 +3914,7 @@ for player = 1 to numPlayers
   wend
 next player
 goto [loop]
-[winner] 
+[winner]
 print "Player ";plater;" wins with a score of ";safeScore(player)
 ```
 
@@ -4281,9 +4281,9 @@ while(True){
       if(rolled==1){
 	 println(" Bust! You lose %d but keep %d\n".fmt(score,S));
       }else{
-	 score+=rolled; 
+	 score+=rolled;
 	 if(score + S>=WIN){ tally(player,score); break; }
-	 continue; 
+	 continue;
       }
    }else{
       if(tally(player,score)) break;
@@ -4298,48 +4298,48 @@ println("\n\nPlayer %d wins with a score of %d".fmt(player+1, safeScores[player]
 
 ```txt
 
-Player 1: (0, 0). Rolling? (y/n) 
+Player 1: (0, 0). Rolling? (y/n)
  Rolled a 5
-Player 1: (0, 5). Rolling? (y/n) 
+Player 1: (0, 5). Rolling? (y/n)
  Rolled a 4
-Player 1: (0, 9). Rolling? (y/n) 
+Player 1: (0, 9). Rolling? (y/n)
  Rolled a 1
  Bust! You lose 9 but keep 0
 
-Player 2: (0, 0). Rolling? (y/n) 
+Player 2: (0, 0). Rolling? (y/n)
  Rolled a 1
  Bust! You lose 0 but keep 0
 ...
 
-Player 1: (49, 0). Rolling? (y/n) 
+Player 1: (49, 0). Rolling? (y/n)
  Rolled a 2
-Player 1: (49, 2). Rolling? (y/n) 
+Player 1: (49, 2). Rolling? (y/n)
  Rolled a 3
-Player 1: (49, 5). Rolling? (y/n) 
+Player 1: (49, 5). Rolling? (y/n)
  Rolled a 1
  Bust! You lose 5 but keep 49
 
-Player 2: (49, 0). Rolling? (y/n) 
+Player 2: (49, 0). Rolling? (y/n)
  Rolled a 6
-Player 2: (49, 6). Rolling? (y/n) 
+Player 2: (49, 6). Rolling? (y/n)
  Rolled a 4
-Player 2: (49, 10). Rolling? (y/n) 
+Player 2: (49, 10). Rolling? (y/n)
  Rolled a 2
 Player 2: (49, 12). Rolling? (y/n) n
  Sticking with 61
 ...
-Player 2: (99, 0). Rolling? (y/n) 
+Player 2: (99, 0). Rolling? (y/n)
  Rolled a 1
  Bust! You lose 0 but keep 99
 
-Player 1: (72, 0). Rolling? (y/n) 
+Player 1: (72, 0). Rolling? (y/n)
  Rolled a 6
-Player 1: (72, 6). Rolling? (y/n) 
+Player 1: (72, 6). Rolling? (y/n)
  Rolled a 4
 Player 1: (72, 10). Rolling? (y/n) n
  Sticking with 82
 
-Player 2: (99, 0). Rolling? (y/n) 
+Player 2: (99, 0). Rolling? (y/n)
  Rolled a 3
 
 Player 2 wins with a score of 102

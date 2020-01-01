@@ -1892,12 +1892,12 @@ lllll=(l1=l1->lll1l)->lll;ll=1-1;
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### Iterative
 
 
-```csharp
+```c#
 using System;
 
 class Program
@@ -1926,7 +1926,7 @@ class Program
 ### Recursive
 
 
-```csharp
+```c#
 using System;
 
 class Program
@@ -1950,7 +1950,7 @@ class Program
 ### Tail Recursive
 
 
-```csharp
+```c#
 using System;
 
 class Program
@@ -1984,7 +1984,7 @@ class Program
 ### Functional
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -2008,7 +2008,7 @@ class Program
 {{libheader|System.Numerics}}
 Can calculate 250000! in under a minute.
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 using System.Linq;

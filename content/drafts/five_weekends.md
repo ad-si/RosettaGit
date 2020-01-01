@@ -1437,12 +1437,12 @@ These are:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### With iteration
 
 
-```csharp
+```c#
 using System;
 
 namespace _5_Weekends
@@ -1509,7 +1509,7 @@ Total number of years with no 5-weekend months 29
 ### With LINQ
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Collections.Generic;

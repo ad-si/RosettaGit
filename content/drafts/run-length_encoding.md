@@ -1050,13 +1050,13 @@ std::string decode ( const std::string & to_decode ) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ###  Linq
 
 <!--Martin Freedman 22/02/2018-->
 
-```csharp
+```c#
 using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
@@ -1110,7 +1110,7 @@ Decode(Encode(raw)) = True
 
 Many solutions do not follow the suggested output guideline in the challenge (not helped by its wording), instead producing a list of tuples or equivalent. This is much simpler (especially for decode) and the following provides an equivalent of those (IMHO deficient) solutions, to make comparisons easier.
 
-```csharp
+```c#
 using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
@@ -1156,7 +1156,7 @@ Decode(Encode(raw)) = True
 Stringbuilder version. Might be more performant but mixes output formatting with encoding/decoding logic.
 <!--Martin Freedman 22/02/2018-->
 
-```csharp
+```c#
 using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
@@ -1213,7 +1213,7 @@ Decode(Encode(raw)) = True
 This example only works if there are no digits in the string to be encoded and then decoded.
 
 
-```csharp
+```c#
        public static void Main(string[] args)
        {
            string input = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW";
@@ -1271,7 +1271,7 @@ This example only works if there are no digits in the string to be encoded and t
 
 Somewhat shorter, using Regex.Replace with MatchEvaluator (using C#2 syntax only):
 
-```csharp
+```c#
 using System;
 using System.Text.RegularExpressions;
 

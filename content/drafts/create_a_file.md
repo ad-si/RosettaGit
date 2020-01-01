@@ -607,10 +607,10 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.IO;
 

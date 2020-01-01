@@ -63,12 +63,12 @@ szMessTopLeft:             .asciz "\033[;HTOP LEFT"
 szCarriageReturn:          .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszMessStartPgm                   @ display start message
     bl affichageMess
@@ -107,21 +107,21 @@ iAdrszMessMoveDown:        .int szMessMoveDown
 iAdrszMessTopLeft:         .int szMessTopLeft
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -284,7 +284,7 @@ REM NOT 80 COLUMN MODE ?
 190 T4 =  PEEK (49183) < 128
 
 REM START HERE
-200 VTAB 12: HTAB 21 
+200 VTAB 12: HTAB 21
 210 PRINT ">"; : UP = -998
 
 REM LEFT
@@ -390,15 +390,15 @@ The conio.h header file in Borland's Turbo C makes keyboard interaction very sim
 #include<conio.h>
 #include<dos.h>
 
-char *strings[] = {"The cursor will move one position to the left", 
+char *strings[] = {"The cursor will move one position to the left",
   		   "The cursor will move one position to the right",
- 		   "The cursor will move vetically up one line", 
- 		   "The cursor will move vertically down one line", 
- 		   "The cursor will move to the beginning of the line", 
- 		   "The cursor will move to the end of the line", 
- 		   "The cursor will move to the top left corner of the screen", 
+ 		   "The cursor will move vetically up one line",
+ 		   "The cursor will move vertically down one line",
+ 		   "The cursor will move to the beginning of the line",
+ 		   "The cursor will move to the end of the line",
+ 		   "The cursor will move to the top left corner of the screen",
  		   "The cursor will move to the bottom right corner of the screen"};
- 		             
+
 int main()
 {
 	int i,j,MAXROW,MAXCOL;
@@ -406,19 +406,19 @@ int main()
 	gettextinfo(&tInfo);
 	MAXROW = tInfo.screenheight;
 	MAXCOL = tInfo.screenwidth;
-	
+
 	clrscr();
 	cprintf("This is a demonstration of cursor control using gotoxy(). Press any key to continue.");
 	getch();
-	
+
 	for(i=0;i<8;i++)
 	{
 		clrscr();
 		gotoxy(5,MAXROW/2);
-		
+
 		cprintf("%s",strings[i]);
 		getch();
-		
+
 		switch(i){
 			case 0:gotoxy(wherex()-1,wherey());
 			break;
@@ -464,7 +464,7 @@ int main()
 			};
 			getch();
 	}
-	
+
 	clrscr();
 	cprintf("End of demonstration.");
 	getch();
@@ -474,11 +474,11 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Mono|1.2}}
 {{works with|Visual C sharp|Visual C#|2003}}
 
-```csharp
+```c#
 static void Main(string[] args)
 {
     //There will be a 3 second pause between each cursor movement.
@@ -499,7 +499,7 @@ static void Main(string[] args)
         * The exact value may vary on different systems.
         * As the cursor position is a 0 based index we must subtract 1 from buffer width or we move the cursor out of bounds.
         * In some cases WindowWidth may be preferable (however in this demonstration window and buffer should be the same).
-        */ 
+        */
     System.Threading.Thread.Sleep(3000);
     Console.SetCursorPosition(0,0); //I have used an alternative method for moving the cursor here which I feel is cleaner for the task at hand.
     System.Threading.Thread.Sleep(3000);
@@ -514,7 +514,7 @@ static void Main(string[] args)
 
 ## Forth
 
-ANS/ISO Forth has a cursor positioning function called AT-XY. The standard language does not define how the cursor is managed however most systems give the programmer direct access to a pair of variables for cursor row and column position. 
+ANS/ISO Forth has a cursor positioning function called AT-XY. The standard language does not define how the cursor is managed however most systems give the programmer direct access to a pair of variables for cursor row and column position.
 
 The following example assumes we are using a terminal that accepts ANSI escape codes. It defines the ANSI codes as Forth words with a markup language look.  With this code compiled into the Forth system, the commands are used like native Forth commands.
 <LANG FORTH>( ANSI terminal control lexicon )
@@ -533,7 +533,7 @@ DECIMAL
 : <CUF>  ( col --) ESC[ <##> ." C" ;
 : <CUB>  ( col --) ESC[ <##> ." D" ;
 : <CPL>  ( -- )    ESC[ <##> ." F" ;
-: <CHA>  ( n --)   ESC[ <##> ." G" ; 
+: <CHA>  ( n --)   ESC[ <##> ." G" ;
 : <EL>   ( -- )    ESC[ ." K" ;
 : <ED>   ( -- )    ESC[ ." 2J" ;
 : <CUP>  ( row col -- ) SWAP ESC[ <##> ." ;" <##> ." H"  ;
@@ -541,7 +541,7 @@ DECIMAL
 ( Define ANSI Forth names for these functions using our markup words)
 : AT-XY ( col row  -- ) SWAP <CUP> ;
 : PAGE  ( -- ) <ED>  1 1 <CUP> ;</LANG>
-Rosetta Task 
+Rosetta Task
 
 ```forth
 ( move the cursor one position to the left)  1 <CUB>
@@ -718,7 +718,7 @@ func main() {
 const ESC = "\u001B" # escape code
 const moves = Dict( "left" => "[1D", "right" => "[1C", "up" => "[1A", "down" => "[1B",
                     "linestart" => "[9D", "topleft" => "[H", "bottomright" => "[24;79H")
- 
+
 print("$ESC[2J")     # clear terminal first
 print("$ESC[10;10H") # move cursor to (10, 10) say
 const count = [0]
@@ -831,11 +831,11 @@ Run["tput cuu1" ]                 (* up one line *)
 Run["tput cud1"]                  (* down one line *)
 Run["tput cr"]                    (* beginning of line *)
 Run["tput home"]                  (* top left corner *)
- 
+
 
 WIDTH=RunThrough["tput cols", ""];
 HEIGHT=RunThrough["tput lines", ""];
- 
+
 Run["tput hpa "<>WIDTH]            (* end of line *)
 Run["tput cup "<>HEIGHT<>"  "<> WIDTH]    (* bottom right corner *)
 ```
@@ -891,7 +891,7 @@ shell "tput cup $rows $cols";       # bottom right corner
 ```Phix
 --
 -- demo\rosetta\Cursor_movement.exw
--- 
+--
 ### ==========================
 
 --
@@ -976,29 +976,29 @@ scr = curses.initscr()
 def move_left():
 	y,x = curses.getyx()
 	curses.move(y,x-1)
-	
+
 #    Demonstrate how to move the cursor one position to the right
 def move_right():
 	y,x = curses.getyx()
 	curses.move(y,x+1)
-	
+
 #    Demonstrate how to move the cursor up one line (without affecting its horizontal position)
 def move_up():
 	y,x = curses.getyx()
 	curses.move(y-1,x)
-	
+
 #    Demonstrate how to move the cursor down one line (without affecting its horizontal position)
 def move_down():
 	y,x = curses.getyx()
 	curses.move(y+1,x)
 
 #    Demonstrate how to move the cursor to the beginning of the line
-def move_line_home()	
+def move_line_home()
 	y,x = curses.getyx()
 	curses.move(y,0)
 
 #    Demonstrate how to move the cursor to the end of the line
-def move_line_end()	
+def move_line_end()
 	y,x = curses.getyx()
 	maxy,maxx = scr.getmaxyx()
 	curses.move(y,maxx)
@@ -1006,8 +1006,8 @@ def move_line_end()
 #    Demonstrate how to move the cursor to the top left corner of the screen
 def move_page_home():
 	curses.move(0,0)
-	
-#    Demonstrate how to move the cursor to the bottom right corner of the screen 
+
+#    Demonstrate how to move the cursor to the bottom right corner of the screen
 def move_page_end():
 	y,x = scr.getmaxyx()
 	curses.move(y,x)
@@ -1038,7 +1038,7 @@ def move_page_end():
   (set! x (+ x dx))
   (set! y (+ y dy))
   (charterm-cursor x y))
- 
+
 (with-charterm
  (charterm-clear-screen)
  (charterm-cursor 0 0)
@@ -1245,7 +1245,7 @@ print("\e[;H");		// top left
 530 RETURN
 
 550 REM set cursor position
-560 PRINT AT cr,cc; 
+560 PRINT AT cr,cc;
 570 RETURN
 
 600 REM alternative set cursor position

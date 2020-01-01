@@ -607,13 +607,13 @@ int main()
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|C#|3.0+}}
 This version uses the C# 3 lambda notation.
 
 
-```csharp
+```c#
 int[] intArray = { 1, 2, 3, 4, 5 };
 // Simplest method:  LINQ, functional
 int[] squares1 = intArray.Select(x => x * x).ToArray();
@@ -632,7 +632,7 @@ foreach (var i in intArray)
 
 {{works with|Visual C sharp|Visual C#|2005}}
 
-```csharp
+```c#
 using System;
 
 static class Program

@@ -323,10 +323,10 @@ int main (int argc, char *argv[]) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{libheader|System.Windows.Forms}}
 
-```csharp
+```c#
 using System;
 using System.Drawing;
 using System.Windows.Forms;

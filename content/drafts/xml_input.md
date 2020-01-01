@@ -1029,10 +1029,10 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 
 class Program
 {

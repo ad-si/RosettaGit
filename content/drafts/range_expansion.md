@@ -823,10 +823,10 @@ Syntax error at --1,3-5,7-11,14,15,17-20
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|3.0}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -862,7 +862,7 @@ class Program
 
 {{works with|C sharp|3.5+}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

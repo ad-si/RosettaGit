@@ -603,7 +603,7 @@ Clipped polygon points:
 
 
 
-## C sharp
+## C#
 
 
 This was written in .net 4.0 using wpf

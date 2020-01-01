@@ -402,7 +402,7 @@ int main() {
 
 {{trans|Java}}
 
-```Csharp
+```c#
 class Test
 {
     static bool valid(int n, int nuts)

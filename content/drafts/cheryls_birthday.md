@@ -804,10 +804,10 @@ Cheryl's birthday is Jul 16
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 public static class CherylsBirthday
 {
     public static void Main() {

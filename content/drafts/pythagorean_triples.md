@@ -768,7 +768,7 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 Based on Ada example, which is a translation of efficient method from C, see [[wp:Pythagorean_triple#Parent.2Fchild_relationships|the WP article]].
 

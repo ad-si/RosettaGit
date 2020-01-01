@@ -595,12 +595,12 @@ public:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### With recursion
 
 
-```csharp
+```c#
 using System;
 
 namespace LCS

@@ -97,7 +97,7 @@ Can specify the number of desired digits on the command line,
 default is 25000, which takes a few seconds
 (depending on your system's performance).
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

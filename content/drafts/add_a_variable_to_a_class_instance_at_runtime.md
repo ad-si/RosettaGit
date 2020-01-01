@@ -211,10 +211,10 @@ anotherMember contains: some other value
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|C sharp|C#|4.0}}
 
-```csharp
+```c#
 // ----------------------------------------------------------------------------------------------
 //
 //  Program.cs - DynamicClassVariable

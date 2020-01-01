@@ -448,7 +448,7 @@ Unsigned 64-bit:
 
 
 
-## C sharp
+## C#
 
 C# has 2 modes for doing arithmetic: checked and unchecked.
 
@@ -459,7 +459,7 @@ Runtime arithmetic is unchecked by default. Values that overflow will simply 'wr
 The default behavior can be changed with a compiler flag.
 
 
-```csharp
+```c#
 using System;
 
 public class IntegerOverflow

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Puzzles}} 
+{{task|Puzzles}}
 [[Category:Constraint Handling Rules]]
 {{omit from|Brlcad}}
 {{omit from|GUISS}}
@@ -42,7 +42,7 @@ Given the following twelve statements, which of them are true?
 
 
 ;Task:
-When you get tired of trying to figure it out in your head, 
+When you get tired of trying to figure it out in your head,
 write a program to solve it, and print the correct answer or answers.
 
 
@@ -57,41 +57,41 @@ Print out a table of near misses, that is, solutions that are contradicted by on
 
 {{works with|Ada 2012}}
 
-Here is the main program, using a generic package Logic. 
-The expression function introduced by the new standard Ada 2012 
+Here is the main program, using a generic package Logic.
+The expression function introduced by the new standard Ada 2012
 are very handy for this task.
 
 
 ```Ada
-with Ada.Text_IO, Logic; 
+with Ada.Text_IO, Logic;
 
 procedure Twelve_Statements is
-   
+
    package L is new Logic(Number_Of_Statements => 12); use L;
-   
+
    -- formally define the 12 statements as expression function predicates
    function P01(T: Table) return Boolean is (T'Length = 12);              -- list of 12 statements
-   function P02(T: Table) return Boolean is (Sum(T(7 .. 12)) = 3);        -- three of last six 
+   function P02(T: Table) return Boolean is (Sum(T(7 .. 12)) = 3);        -- three of last six
    function P03(T: Table) return Boolean is (Sum(Half(T, Even)) = 2);     -- two of the even
    function P04(T: Table) return Boolean is (if T(5) then T(6) and T(7)); -- if 5 is true, then ...
-   function P05(T: Table) return Boolean is 
+   function P05(T: Table) return Boolean is
       ( (not T(2)) and (not T(3)) and (not T(4)) );                       -- none of preceding three
-   function P06(T: Table) return Boolean is (Sum(Half(T, Odd)) = 4);      -- four of the odd 
+   function P06(T: Table) return Boolean is (Sum(Half(T, Odd)) = 4);      -- four of the odd
    function P07(T: Table) return Boolean is (T(2) xor T(3));              -- either 2 or 3, not both
    function P08(T: Table) return Boolean is (if T(7) then T(5) and T(6)); -- if 7 is true, then ...
-   function P09(T: Table) return Boolean is (Sum(T(1 .. 6)) = 3);         -- three of first six 
-   function P10(T: Table) return Boolean is (T(11) and T(12));            -- next two 
+   function P09(T: Table) return Boolean is (Sum(T(1 .. 6)) = 3);         -- three of first six
+   function P10(T: Table) return Boolean is (T(11) and T(12));            -- next two
    function P11(T: Table) return Boolean is (Sum(T(7..9)) = 1);           -- one of 7, 8, 9
    function P12(T: Table) return Boolean is (Sum(T(1 .. 11)) = 4);        -- four of the preding
-   
+
    -- define a global list of statements
    Statement_List: constant Statements :=
-     (P01'Access, P02'Access, P03'Access, P04'Access, P05'Access, P06'Access, 
+     (P01'Access, P02'Access, P03'Access, P04'Access, P05'Access, P06'Access,
       P07'Access, P08'Access, P09'Access, P10'Access, P11'Access, P12'Access);
-   
+
    -- try out all 2^12 possible choices for the table
    procedure Try(T: Table; Fail: Natural; Idx: Indices'Base := Indices'First) is
-      
+
       procedure Print_Table(T: Table) is
 	 use Ada.Text_IO;
       begin
@@ -109,32 +109,32 @@ procedure Twelve_Statements is
 	 else
 	    Put("True are");
 	    for J in T'Range loop
-	       if T(J) then 
+	       if T(J) then
 		  Put(Integer'Image(J));
 	       end if;
 	    end loop;
 	    New_Line;
 	 end if;
       end Print_Table;
-      
-      Wrong_Entries: Natural := 0; 
-	  
+
+      Wrong_Entries: Natural := 0;
+
    begin
-      if Idx <= T'Last then 
+      if Idx <= T'Last then
 	 Try(T(T'First .. Idx-1) & False & T(Idx+1 .. T'Last), Fail, Idx+1);
 	 Try(T(T'First .. Idx-1) & True  & T(Idx+1 .. T'Last), Fail, Idx+1);
       else -- now Index > T'Last and we have one of the 2^12 choices to test
-	 for J in T'Range loop 	 
-	    if Statement_List(J)(T) /= T(J) then 
+	 for J in T'Range loop
+	    if Statement_List(J)(T) /= T(J) then
 	       Wrong_Entries := Wrong_Entries + 1;
 	    end if;
 	 end loop;
-	 if Wrong_Entries = Fail then 
+	 if Wrong_Entries = Fail then
 	    Print_Table(T);
 	 end if;
       end if;
    end Try;
-			 
+
 begin
    Ada.Text_IO.Put_Line("Exact hits:");
    Try(T => (1..12 => False), Fail => 0);
@@ -178,19 +178,19 @@ Here is the definition the package Logic:
 ```Ada
 generic
    Number_Of_Statements: Positive;
-package Logic is   
-   
+package Logic is
+
    --types
    subtype Indices is Natural range 1 .. Number_Of_Statements;
    type Table is array(Indices range <>) of Boolean;
    type Predicate is access function(T: Table) return Boolean;
    type Statements is array(Indices) of Predicate;
    type Even_Odd is (Even, Odd);
-   
+
    -- convenience functions
-   function Sum(T: Table) return Natural; 
+   function Sum(T: Table) return Natural;
    function Half(T: Table; Which: Even_Odd) return Table;
-   
+
 end Logic;
 ```
 
@@ -199,19 +199,19 @@ And here is the implementation of the "convenience functions" in Logic:
 
 
 ```Ada
-package body Logic is   
-   
+package body Logic is
+
    function Sum(T: Table) return Natural is
       Result: Natural := 0;
    begin
       for I in T'Range loop
-         if T(I) then 
+         if T(I) then
             Result := Result + 1;
          end if;
       end loop;
       return Result;
    end Sum;
-   
+
    function Half(T: Table; Which: Even_Odd) return Table is
       Result: Table(T'Range);
       Last: Natural := Result'First - 1;
@@ -292,7 +292,7 @@ begin
         logical array wrong( 1 :: 12 );
         write( heading );
         write( "     1  2  3  4  5  6  7  8  9 10 11 12"  );
-        write( "    
+        write( "
 ### ==============================
 " );
         % there are 12 statements, so we have 2^12 possible combinations    %
@@ -339,13 +339,13 @@ end.
 ```txt
 Solutions
      1  2  3  4  5  6  7  8  9 10 11 12
-    
+
 ### ==============================
 
      T  -  T  T  -  T  T  -  -  -  T  -
 Near solutions (incorrect values marked "*")
      1  2  3  4  5  6  7  8  9 10 11 12
-    
+
 ### ==============================
 
      T  -  -  T  -  -  -  -* -  -  -  -
@@ -381,7 +381,7 @@ The code shows all cases where we have at least S-1 matches (where S = 12 statem
 ; Note: the original puzzle provides 12 statements and starts with
 ; "Given the following twelve statements...", so the first statement
 ; should ignore the F1 flag and always be true (see "( N == 1 )").
- 
+
 S := 12 ; number of statements
 Output := ""
 Loop, % 2**S {
@@ -398,17 +398,17 @@ Loop, % 2**S {
 ToolTip
 MsgBox, % Output . Solution
 Return
- 
+
 ;-------------------------------------------------------------------------------------
- 
+
 SetFlags(D) {
 	Local I
 	Loop, %S%
 		I := S-A_Index+1 , F%I% := (D >> (S-A_Index)) & 1
 }
- 
+
 ;-------------------------------------------------------------------------------------
- 
+
 TestStatement(N) {
 	Local I, C := 0
 	If ( N == 1 ) ; This is a numbered list of twelve statements.
@@ -489,14 +489,14 @@ Solution =  1 0 1 1 0 1 1 0 0 0 1 0
 ```bbcbasic
       nStatements% = 12
       DIM Pass%(nStatements%), T%(nStatements%)
-      
+
       FOR try% = 0 TO 2^nStatements%-1
-        
+
         REM Postulate answer:
         FOR stmt% = 1 TO 12
           T%(stmt%) = (try% AND 2^(stmt%-1)) <> 0
         NEXT
-        
+
         REM Test consistency:
         Pass%(1)  = T%(1) = (nStatements% = 12)
         Pass%(2)  = T%(2) = ((T%(7)+T%(8)+T%(9)+T%(10)+T%(11)+T%(12)) = -3)
@@ -511,7 +511,7 @@ Solution =  1 0 1 1 0 1 1 0 0 0 1 0
         Pass%(11) = T%(11) = ((T%(7)+T%(8)+T%(9)) = -1)
         Pass%(12) = T%(12) = ((T%(1)+T%(2)+T%(3)+T%(4)+T%(5)+T%(6) + \
         \                      T%(7)+T%(8)+T%(9)+T%(10)+T%(11)) = -4)
-        
+
         CASE SUM(Pass%()) OF
           WHEN -11:
             PRINT "Near miss with statements ";
@@ -527,7 +527,7 @@ Solution =  1 0 1 1 0 1 1 0 0 0 1 0
             NEXT
             PRINT "true."
         ENDCASE
-        
+
       NEXT try%
       END
 ```
@@ -579,7 +579,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
   & ( STATEMENTS
     =   ( (1."This is a numbered list of twelve statements.")
         . 1
-        . ( 
+        . (
           =   n nr done toDo
             .   !arg:(?done.?toDo)
               & 0:?n
@@ -596,7 +596,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (2."Exactly 3 of the last 6 statements are true.")
         . end
-        . ( 
+        . (
           =   done toDo lastSix
             .   !arg:(?done.?toDo)
               & !done:? [-7 ?lastSix
@@ -608,7 +608,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (3."Exactly 2 of the even-numbered statements are true.")
         . end
-        . ( 
+        . (
           =   done toDo ii
             .   !arg:(?done.?toDo)
               & (       number
@@ -624,7 +624,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (4."If statement 5 is true, then statements 6 and 7 are both true.")
         . 7
-        . ( 
+        . (
           =   done toDo
             .   !arg:(?done.?toDo)
               & (     !done
@@ -639,7 +639,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (5."The 3 preceding statements are all false.")
         . 5
-        . ( 
+        . (
           =   done toDo
             .   !arg:(?done.?toDo)
               & (     !done
@@ -655,7 +655,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (6."Exactly 4 of the odd-numbered statements are true.")
         . end
-        . ( 
+        . (
           =   done toDo i
             .   !arg:(?done.?toDo)
               & (       number
@@ -671,7 +671,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (7."Either statement 2 or 3 is true, but not both.")
         . 7
-        . ( 
+        . (
           =   done toDo
             .   !arg:(?done.?toDo)
               & (       number
@@ -684,7 +684,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (8."If statement 7 is true, then 5 and 6 are both true.")
         . 8
-        . ( 
+        . (
           =   done toDo
             .   !arg:(?done.?toDo)
               & (     !done
@@ -699,7 +699,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (9."Exactly 3 of the first 6 statements are true.")
         . 9
-        . ( 
+        . (
           =   done toDo firstSix
             .   !arg:(?done.?toDo)
               & !done:?firstSix [6 ?
@@ -711,7 +711,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (10."The next two statements are both true.")
         . 12
-        . ( 
+        . (
           =   done toDo
             .   !arg:(?done.?toDo)
               & (   !done:? (?.true) (?.true)
@@ -722,7 +722,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (11."Exactly 1 of statements 7, 8 and 9 are true.")
         . 11
-        . ( 
+        . (
           =   done toDo
             .   !arg:(?done.?toDo)
               & (       number
@@ -738,7 +738,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
         )
         ( (12."Exactly 4 of the preceding statements are true.")
         . 12
-        . ( 
+        . (
           =   done toDo preceding
             .   !arg:(?done.?toDo)
               & !done:?preceding (?.?)
@@ -770,7 +770,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
               : ((?n.?text).?when.(=?test)) ?toDo
             & "'false' and 'true' are just two symbols, not 'boolean values'.
                 You can choose other symbols if you like.
-                The program first guesses the first symbol and assigns it to the variable FT. 
+                The program first guesses the first symbol and assigns it to the variable FT.
                 After backtracking, the second symbol is guessed and assigned to FT.
                 This is done for each statement."
             &   false true
@@ -790,7 +790,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
                         : !oldFT
                       & !A !Z:?postponedTests
                       )
-                  & "Check that all tests that had to be postponed until now are removed from 
+                  & "Check that all tests that had to be postponed until now are removed from
                      the list of postponed tests. Only then go on with looking at testing
                      the current statement. Backtrack if a test failed."
                   & !postponedTests:~(? (!n.?) ?)
@@ -802,7 +802,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
                       & (!when.!FT.'$test):?testToBePostponed
                     |   "No need to postpone. Test the current statement now."
                       & :?testToBePostponed
-                      & "If the test fails, backtrack. If it succeeds, go on to the next 
+                      & "If the test fails, backtrack. If it succeeds, go on to the next
                          statement."
                       & test$(!done !testNow.!toDo):!FT
                     )
@@ -941,54 +941,54 @@ That's it. I made 220 true/false guesses in all. (A brute force method needs 2^1
 
 ```txt
 
-Missed by one 
-T F F T F F F F F F F F 
-Missed by one 
-T F F F T F F F F F F F 
-Missed by one 
-T F F F T F F T F F F F 
-Missed by one 
-T F T T F T T F T F F F 
-Missed by one 
-T F T T F F F T T F F F 
-Missed by one 
-T F F T F T F T T F F F 
-Missed by one 
-T T F T F F T T T F F F 
-Missed by one 
-T T F T F F T F T T F F 
-Solution: 
-T F T T F T T F F F T F 
-Missed by one 
-F F F F T F F T F F T F 
-Missed by one 
-T F F F T F F T F F T F 
-Missed by one 
-T F F F T T F F T F T F 
-Missed by one 
-T T F T F F T F T F F T 
-Missed by one 
-F F F T F F F T F T T T 
-Missed by one 
-T F F T F F F T F T T T 
-Missed by one 
-F F F F T F F T F T T T 
-Missed by one 
-T F F F T F F T F T T T 
+Missed by one
+T F F T F F F F F F F F
+Missed by one
+T F F F T F F F F F F F
+Missed by one
+T F F F T F F T F F F F
+Missed by one
+T F T T F T T F T F F F
+Missed by one
+T F T T F F F T T F F F
+Missed by one
+T F F T F T F T T F F F
+Missed by one
+T T F T F F T T T F F F
+Missed by one
+T T F T F F T F T T F F
+Solution:
+T F T T F T T F F F T F
+Missed by one
+F F F F T F F T F F T F
+Missed by one
+T F F F T F F T F F T F
+Missed by one
+T F F F T T F F T F T F
+Missed by one
+T T F T F F T F T F F T
+Missed by one
+F F F T F F F T F T T T
+Missed by one
+T F F T F F F T F T T T
+Missed by one
+F F F F T F F T F T T T
+Missed by one
+T F F F T F F T F T T T
 NIL
 ```
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|6}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
-    
+
 public static class TwelveStatements
 {
     public static void Main() {
@@ -1006,7 +1006,7 @@ public static class TwelveStatements
             st => st[11] == (7.To(9).Count(i => st[i]) == 1),
             st => st[12] == (1.To(11).Count(i => st[i]) == 4)
         };
-        
+
         for (Statements statements = new Statements(0); statements.Value < 4096; statements++) {
             int count = 0;
             int falseIndex = 0;
@@ -1019,27 +1019,27 @@ public static class TwelveStatements
             else if (count == 12) Console.WriteLine($"{"All correct:", -13}{statements}");
         }
     }
-    
+
     struct Statements
-    {    
+    {
         public Statements(int value) : this() { Value = value; }
-        
+
         public int Value { get; }
-                
+
         public bool this[int index] => (Value & (1 << index - 1)) != 0;
-        
+
         public static Statements operator ++(Statements statements) => new Statements(statements.Value + 1);
-        
+
         public override string ToString() {
             Statements copy = this; //Cannot access 'this' in anonymous method...
             return string.Join(" ", from i in 1.To(12) select copy[i] ? "T" : "F");
         }
-        
+
     }
-    
+
     //Extension methods
     static bool Implies(this bool x, bool y) => !x || y;
-    
+
     static IEnumerable<int> To(this int start, int end, int by = 1) {
         while (start <= end) {
             yield return start;
@@ -1106,7 +1106,7 @@ int main(void)
         " 3. Exactly 2 of the even-numbered statements are true.",
         " 4. If statement 5 is true, then statements 6 and 7 are both true.",
         " 5. The 3 preceding statements are all false.",
-        " 6. Exactly 4 of the odd-numbered statements are true.",   
+        " 6. Exactly 4 of the odd-numbered statements are true.",
         " 7. Either statement 2 or 3 is true, but not both.",
         " 8. If statement 7 is true, then 5 and 6 are both true.",
         " 9. Exactly 3 of the first 6 statements are true.",
@@ -1114,11 +1114,11 @@ int main(void)
         " 11. Exactly 1 of statements 7, 8 and 9 are true.",
         " 12. Exactly 4 of the preceding statements are true."
     };  //  Good solution is: 1 3 4 6 7 11 are true
-    
+
     int n = 12; // Number of statements.
     int nTemp = (int)pow(2, n); // Number of solutions to check.
     for (int counter = 0; counter < nTemp; counter++)
-    {   
+    {
         vector<int> s;
         for (int k = 0; k < n; k++)
         {
@@ -1126,78 +1126,78 @@ int main(void)
         }
         vector<int> test(12);
         int sum = 0;
-        // check each of the nTemp solutions for match. 
+        // check each of the nTemp solutions for match.
         // 1. This is a numbered list of twelve statements.
         test[0] = s[0];
 
         // 2. Exactly 3 of the last 6 statements are true.
         sum = s[6]+ s[7]+s[8]+s[9]+s[10]+s[11];
         test[1] = ((sum == 3) == s[1]);
-        
+
         // 3. Exactly 2 of the even-numbered statements are true.
         sum = s[1]+s[3]+s[5]+s[7]+s[9]+s[11];
         test[2] = ((sum == 2) == s[2]);
-               
+
         // 4. If statement 5 is true, then statements 6 and 7 are both true.
         test[3] = ((s[4] ? (s[5] && s[6]) : true) == s[3]);
-        
+
         // 5. The 3 preceding statements are all false.
         test[4] = (((s[1] + s[2] + s[3]) == 0) == s[4]);
-        
+
         // 6. Exactly 4 of the odd-numbered statements are true.
         sum = s[0] + s[2] + s[4] + s[6] + s[8] + s[10];
         test[5] = ((sum == 4) == s[5]);
-        
+
         // 7. Either statement 2 or 3 is true, but not both.
         test[6] = (((s[1] + s[2]) == 1) == s[6]);
-        
+
         // 8. If statement 7 is true, then 5 and 6 are both true.
         test[7] = ((s[6] ? (s[4] && s[5]) : true) == s[7]);
-    
+
         // 9. Exactly 3 of the first 6 statements are true.
         sum = s[0]+s[1]+s[2]+s[3]+s[4]+s[5];
         test[8] = ((sum == 3) == s[8]);
-    
+
         // 10. The next two statements are both true.
-        test[9] = ((s[10] && s[11]) == s[9]); 
-        
+        test[9] = ((s[10] && s[11]) == s[9]);
+
         // 11. Exactly 1 of statements 7, 8 and 9 are true.
-        sum = s[6]+ s[7] + s[8]; 
+        sum = s[6]+ s[7] + s[8];
         test[10] = ((sum == 1) == s[10]);
-        
+
         // 12. Exactly 4 of the preceding statements are true.
         sum = s[0]+s[1]+s[2]+s[3]+s[4]+s[5]+s[6]+s[7]+s[8]+s[9]+s[10];
         test[11] = ((sum == 4) == s[11]);
-        
-        // Check test results and print solution if 11 or 12 are true 
+
+        // Check test results and print solution if 11 or 12 are true
         int resultsTrue = 0;
         for(unsigned int i = 0; i < test.size(); i++){
             resultsTrue += test[i];
         }
-        if(resultsTrue == 11 || resultsTrue == 12){ 
+        if(resultsTrue == 11 || resultsTrue == 12){
             cout << solution_list_number++ << ". " ;
             string output = "1:"+str(s[0])+"  2:"+str(s[1])+"  3:"+str(s[2])
                         +"  4:"+str(s[3])+"  5:"+str(s[4])+"  6:"+ str(s[5])
                         +"  7:"+str(s[6])+"  8:"+str(s[7])+"  9:"+str(s[8])
-                        +"  10:"+str(s[9])+"  11:"+str(s[10])+"  12:"+ str(s[11]);               
-            
+                        +"  10:"+str(s[9])+"  11:"+str(s[10])+"  12:"+ str(s[11]);
+
             if (resultsTrue == 12) {
-                cout << "Full Match, good solution!" << endl;               
+                cout << "Full Match, good solution!" << endl;
                 cout << "\t" << output << endl;
-            } 
+            }
             else if(resultsTrue == 11){
                 int i;
                 for(i = 0; i < 12; i++){
                     if(test[i] == 0){
                         break;
                     }
-                }   
+                }
                 cout << "Missed by one statement: " << st[i] << endl;
                 cout << "\t" << output << endl;
             }
         }
     }
-}   
+}
 
 ```
 
@@ -1558,41 +1558,41 @@ extension op
 puzzle = new Func1[]::
 (
     (bits => bits.Length == 12),
-    
+
     (bits => bits.last(6).selectBy:(x => x.toBit()).summarize() == 3 ),
-    
-    (bits => bits.zipBy(new Range(1, 12), 
+
+    (bits => bits.zipBy(new Range(1, 12),
                         (x,i => (i.toInt().isEven()).and:x.toBit())).summarize() == 2 ),
-    
+
     (bits => bits[4].iif(bits[5] && bits[6],true) ),
-    
+
     (bits => ((bits[1] || bits[2]) || bits[3]).Inverted ),
-    
-    (bits => bits.zipBy(new Range(1, 12), 
+
+    (bits => bits.zipBy(new Range(1, 12),
                         (x,i => (i.toInt().isOdd()).and:x.toBit() )).summarize() == 4 ),
-    
+
     (bits => bits[1].xor(bits[2]) ),
-    
+
     (bits => bits[6].iif(bits[5] && bits[4],true) ),
-    
+
     (bits => bits.top(6).selectBy:(x => x.toBit() ).summarize() == 3 ),
-    
+
     (bits => bits[10] && bits[11] ),
-    
+
     (bits => (bits[6].toBit() + bits[7].toBit() + bits[8].toBit())==1 ),
-    
+
     (bits => bits.top(11).selectBy:(x => x.toBit()).summarize() == 4 )
 );
 
 public program()
 {
     console.writeLine();
-    
+
     for(int n := 0, n < 2.power(12), n += 1)
     {
         var bits := BitArray32.load(n).top(12).toArray();
         var results := puzzle.selectBy:(r => r(bits)).toArray();
-        
+
         var counts := bits.zipBy(results, (b,r => b.xor:r.toBit() )).summarize();
 
         counts =>
@@ -1600,7 +1600,7 @@ public program()
             1  { console.printLine("Near miss :",results.printSolution:bits) }
             12 { console.printLine("Total miss:",results.printSolution:bits) };
     };
-    
+
     console.readChar()
 }
 ```
@@ -1914,13 +1914,13 @@ func checkPerm(tz int) {
 
     // 9. Exactly 3 of the first 6 statements are true.
     test(9, ntrue(1, 2, 3, 4, 5, 6) == 3)
-    
+
     // 10. The next two statements are both true.
     test(10, ts(11) && ts(12))
-    
+
     // 11. Exactly 1 of statements 7, 8 and 9 are true.
     test(11, ntrue(7, 8, 9) == 1)
-    
+
     // 12. Exactly 4 of the preceding statements are true.
     test(12, ntrue(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) == 4)
 
@@ -1977,28 +1977,28 @@ enum Rule {
     r10(10, { r(11).truth && r(12).truth }),
     r11(11, { r(7..9).count { it.truth } == 1 }),
     r12(12, { r(1..11).count { it.truth } == 4 });
-    
+
     final int num
     final Closure statement
     boolean truth
-    
+
     static final List<Rule> rules = [ null, r01, r02, r03, r04, r05, r06, r07, r08, r09, r10, r11, r12]
-    
+
     private Rule(num, statement) {
         this.num = num
         this.statement = statement
     }
-    
+
     public static Rule       r(int index) { rules[index] }
     public static List<Rule> r() { rules[1..12] }
     public static List<Rule> r(List<Integer> indices) { rules[indices] }
     public static List<Rule> r(IntRange indices) { rules[indices] }
     public static List<Rule> r(IntRange indices, int step) { r(indices.step(step)) }
-    
+
     public static void setAllTruth(int bits) {
         (1..12).each { r(it).truth = !(bits & (1 << (12 - it))) }
     }
-    
+
     public static void evaluate() {
         def nearMisses = [:]
         (0..<(2**12)).each { i ->
@@ -2056,9 +2056,9 @@ Shows answers with 1 for true, followed by list of indices of contradicting elem
 import Data.List (findIndices)
 
 tf = mapM (\_ -> [1,0])
- 
+
 wrongness b = findIndices id . zipWith (/=) b . map (fromEnum . ($ b))
- 
+
 statements = [	(==12) . length,
 		3 ⊂ [length statements-6..],
 		2 ⊂ [1,3..],
@@ -2071,10 +2071,10 @@ statements = [	(==12) . length,
 		2 ⊂ [10,11],
 		1 ⊂ [6,7,8],
 		4 ⊂ [0..10]
-	] where 
+	] where
 	(s ⊂ x) b = s == (sum . map (b!!) . takeWhile (< length b)) x
 	(a → x) b = (b!!a == 0) || all ((==1).(b!!)) x
- 
+
 testall s n = [(b, w) | b <- tf s, w <- [wrongness b s], length w == n]
 
 main = let t = testall statements in do
@@ -2428,7 +2428,7 @@ public class LogicPuzzle
 
 ```txt
 
-1 3 4 6 7 11 
+1 3 4 6 7 11
 
 1 Solutions found.
 
@@ -2486,7 +2486,7 @@ def evaluate:
 # The following query generates the solution to the problem:
 # generate(12) | . as $vector | if evaluate == $vector then $vector else empty end
 
-# Running "task" as defined next would generate 
+# Running "task" as defined next would generate
 # both the general solution as well as the off-by-one solutions:
 
 def task:
@@ -2515,7 +2515,7 @@ task | length
 
 ## Julia
 
-This task involves only 12 statements, so an exhaustive search of the 2^12 possible statement value combinations is quite feasible.  The program shows "total misses" and the distribution of numbers of hits in addition to solutions and near misses.  
+This task involves only 12 statements, so an exhaustive search of the 2^12 possible statement value combinations is quite feasible.  The program shows "total misses" and the distribution of numbers of hits in addition to solutions and near misses.
 
 ```Julia
 
@@ -2584,24 +2584,24 @@ end
 Checking the 12 statements against all possibilities.
 
                  1  2  3  4  5  6  7  8  9 10 11 12
-      Near Miss: T  F  F  T  F  F  F  T* F  F  F  F 
-      Near Miss: T  F  F  F  T  F  F  T* F  F  F  F 
-      Near Miss: T  F  F  F  T  F  F  T  F  F  T* F 
-      Near Miss: T  F  T  T  F  T  T  F  F* F  F  F 
-      Near Miss: T  F  T  T  F  F  T* T  T  F  F  F 
-      Near Miss: T  F  F  T  F  F* F  T  T  F  F  F 
-      Near Miss: T  T  F  T  F  F  T  F* T  F  F  F 
-      Near Miss: T  T  F  T  F  F  T  F  T  F* F  F 
-    Exact Match: T  F  T  T  F  T  T  F  F  F  T  F 
-      Near Miss: T* F  F  F  T  F  F  T  F  F  T  F 
+      Near Miss: T  F  F  T  F  F  F  T* F  F  F  F
+      Near Miss: T  F  F  F  T  F  F  T* F  F  F  F
+      Near Miss: T  F  F  F  T  F  F  T  F  F  T* F
+      Near Miss: T  F  T  T  F  T  T  F  F* F  F  F
+      Near Miss: T  F  T  T  F  F  T* T  T  F  F  F
+      Near Miss: T  F  F  T  F  F* F  T  T  F  F  F
+      Near Miss: T  T  F  T  F  F  T  F* T  F  F  F
+      Near Miss: T  T  F  T  F  F  T  F  T  F* F  F
+    Exact Match: T  F  T  T  F  T  T  F  F  F  T  F
+      Near Miss: T* F  F  F  T  F  F  T  F  F  T  F
       Near Miss: T  F  F  F  T  F  F  T  F  F  T  T*
-      Near Miss: T  F  F  F  T  T  F  T* T  F  T  F 
+      Near Miss: T  F  F  F  T  T  F  T* T  F  T  F
       Near Miss: T  T  F  T  F  F  T  F  T  F  F  F*
      Total Miss: T* T* F* F* F* F* T* T* F* F* T* F*
      Total Miss: T* F* F* T* F* F* F* T* F* T* F* F*
-      Near Miss: T* F  F  T  F  F  F  T  F  T  T  T 
+      Near Miss: T* F  F  T  F  F  F  T  F  T  T  T
       Near Miss: T  F  F  T  F  F  F  T  F  T  T  F*
-      Near Miss: T* F  F  F  T  F  F  T  F  T  T  T 
+      Near Miss: T* F  F  F  T  F  F  T  F  T  T  T
       Near Miss: T  F  F  F  T  F  F  T  F  T  T  F*
 
 Distribution of matches
@@ -2632,11 +2632,11 @@ Distribution of matches
 
 typealias Predicate = (String) -> Boolean
 
-val predicates = listOf<Predicate>( 
+val predicates = listOf<Predicate>(
     { it.length == 13 },  // indexing starts at 0 but first bit ignored
     { (7..12).count { i -> it[i] == '1' } == 3 },
     { (2..12 step 2).count { i -> it[i] == '1' } == 2 },
-    { it[5] == '0' || (it[6] == '1' && it[7] == '1') }, 
+    { it[5] == '0' || (it[6] == '1' && it[7] == '1') },
     { it[2] == '0' && it[3]  == '0' && it[4] == '0' },
     { (1..11 step 2).count { i -> it[i] == '1' } == 4 },
     { (it[2] == '1') xor (it[3] == '1') },
@@ -2651,7 +2651,7 @@ fun show(s: String, indent: Boolean) {
     if (indent) print("    ")
     for (i in s.indices) if (s[i] == '1') print("$i ")
     println()
-} 
+}
 
 fun main(args: Array<String>) {
     println("Exact hits:")
@@ -2671,7 +2671,7 @@ fun main(args: Array<String>) {
             print("    (Fails at statement ${"%2d".format(iof)})  ")
             show(s, false)
         }
-    }    
+    }
 }
 ```
 
@@ -2681,25 +2681,25 @@ fun main(args: Array<String>) {
 ```txt
 
 Exact hits:
-    1 3 4 6 7 11 
+    1 3 4 6 7 11
 
 Near misses:
-    (Fails at statement  1)  5 8 11 
-    (Fails at statement  1)  5 8 10 11 12 
-    (Fails at statement  1)  4 8 10 11 12 
-    (Fails at statement  8)  1 5 
-    (Fails at statement 11)  1 5 8 
-    (Fails at statement 12)  1 5 8 11 
-    (Fails at statement 12)  1 5 8 10 11 12 
-    (Fails at statement  8)  1 5 6 9 11 
-    (Fails at statement  8)  1 4 
-    (Fails at statement 12)  1 4 8 10 11 12 
-    (Fails at statement  6)  1 4 6 8 9 
-    (Fails at statement  7)  1 3 4 8 9 
-    (Fails at statement  9)  1 3 4 6 7 9 
-    (Fails at statement 12)  1 2 4 7 9 12 
-    (Fails at statement 10)  1 2 4 7 9 10 
-    (Fails at statement  8)  1 2 4 7 8 9 
+    (Fails at statement  1)  5 8 11
+    (Fails at statement  1)  5 8 10 11 12
+    (Fails at statement  1)  4 8 10 11 12
+    (Fails at statement  8)  1 5
+    (Fails at statement 11)  1 5 8
+    (Fails at statement 12)  1 5 8 11
+    (Fails at statement 12)  1 5 8 10 11 12
+    (Fails at statement  8)  1 5 6 9 11
+    (Fails at statement  8)  1 4
+    (Fails at statement 12)  1 4 8 10 11 12
+    (Fails at statement  6)  1 4 6 8 9
+    (Fails at statement  7)  1 3 4 8 9
+    (Fails at statement  9)  1 3 4 6 7 9
+    (Fails at statement 12)  1 2 4 7 9 12
+    (Fails at statement 10)  1 2 4 7 9 10
+    (Fails at statement  8)  1 2 4 7 8 9
 
 ```
 
@@ -2709,15 +2709,15 @@ Near misses:
 
 
 ```mathematica
-Print["Answer:\n", Column@Cases[#, {s_, 0} :> s], "\nNear misses:\n", 
-   Column@Cases[#, {s_, 1} :> s]] &[{#, 
-    Count[Boole /@ {Length@# == 12, Total@#[[7 ;;]] == 3, 
-        Total@#[[2 ;; 12 ;; 2]] == 2, #[[5]] (#[[6]] + #[[7]] - 2) == 
-         0, Total@#[[2 ;; 4]] == 0, 
-        Total@#[[1 ;; 11 ;; 2]] == 4, #[[2]] + #[[3]] == 
-         1, #[[7]] (#[[5]] + #[[6]] - 2) == 0, 
-        Total@#[[;; 6]] == 3, #[[11]] + #[[12]] == 2, 
-        Total@#[[7 ;; 9]] == 1, Total@#[[;; 11]] == 4} - #, 
+Print["Answer:\n", Column@Cases[#, {s_, 0} :> s], "\nNear misses:\n",
+   Column@Cases[#, {s_, 1} :> s]] &[{#,
+    Count[Boole /@ {Length@# == 12, Total@#[[7 ;;]] == 3,
+        Total@#[[2 ;; 12 ;; 2]] == 2, #[[5]] (#[[6]] + #[[7]] - 2) ==
+         0, Total@#[[2 ;; 4]] == 0,
+        Total@#[[1 ;; 11 ;; 2]] == 4, #[[2]] + #[[3]] ==
+         1, #[[7]] (#[[5]] + #[[6]] - 2) == 0,
+        Total@#[[;; 6]] == 3, #[[11]] + #[[12]] == 2,
+        Total@#[[7 ;; 9]] == 1, Total@#[[;; 11]] == 4} - #,
      Except[0]]} & /@ Tuples[{1, 0}, 12]]
 ```
 
@@ -2908,7 +2908,7 @@ Done. Press ENTER.
 ```perl
 use List::Util 'sum';
 
-my @condition = ( 
+my @condition = (
                  sub { 0 }, # dummy sub for index 0
                  sub { 13==@_ },
                  sub { 3==sum @_[7..12] },
@@ -2968,7 +2968,7 @@ Solution: true statements are 1 3 4 6 7 11
 
 ```perl6
 sub infix:<→> ($protasis, $apodosis) { !$protasis or $apodosis }
- 
+
 my @tests =
     { .end == 12 and all(.[1..12]) === any(True, False) },
     { 3 == [+] .[7..12] },
@@ -3147,9 +3147,9 @@ true .
 
 Note: we choose to adapt the statement numbering to zero-based indexing in the constraintinfo lambda expressions but convert back to one-based on output.
 
-The program uses brute force to generate all possible boolean values of the twelve statements, 
-then checks if the actual value of the statements matches the proposed or matches apart from exactly one deviation. 
-Python's boolean type <tt>bool</tt>is a subclass of <tt>int</tt>, so boolean values True, False can be used as integers (1, 0, respectively) in numerical contexts. 
+The program uses brute force to generate all possible boolean values of the twelve statements,
+then checks if the actual value of the statements matches the proposed or matches apart from exactly one deviation.
+Python's boolean type <tt>bool</tt>is a subclass of <tt>int</tt>, so boolean values True, False can be used as integers (1, 0, respectively) in numerical contexts.
 This fact is used in the lambda expressions that use function sum.
 
 ```python
@@ -3157,7 +3157,7 @@ This fact is used in the lambda expressions that use function sum.
 from itertools import product
 #from pprint import pprint as pp
 
-constraintinfo = (  
+constraintinfo = (
   (lambda st: len(st) == 12                 ,(1, 'This is a numbered list of twelve statements')),
   (lambda st: sum(st[-6:]) == 3             ,(2, 'Exactly 3 of the last 6 statements are true')),
   (lambda st: sum(st[1::2]) == 2            ,(3, 'Exactly 2 of the even-numbered statements are true')),
@@ -3170,7 +3170,7 @@ constraintinfo = (
   (lambda st: (st[10]&st[11])               ,(10, 'The next two statements are both true')),
   (lambda st: sum(st[6:9]) == 1             ,(11, 'Exactly 1 of statements 7, 8 and 9 are true')),
   (lambda st: sum(st[0:11]) == 4            ,(12, 'Exactly 4 of the preceding statements are true')),
-)  
+)
 
 def printer(st, matches):
     if False in matches:
@@ -3458,27 +3458,27 @@ m=0                                              /*[↓]  statement one is  TRUE
 
 ```ruby
 constraints = [
-  ->(st) { st.size == 12 }, 
+  ->(st) { st.size == 12 },
   ->(st) { st.last(6).count(true) == 3 },
   ->(st) { st.each_slice(2).map(&:last).count(true) == 2 },
   ->(st) { st[4] ? (st[5] & st[6]) : true },
   ->(st) { st[1..3].none? },
   ->(st) { st.each_slice(2).map(&:first).count(true) == 4 },
   ->(st) { st[1] ^ st[2] },
-  ->(st) { st[6] ? (st[4] & st[5]) : true  }, 
+  ->(st) { st[6] ? (st[4] & st[5]) : true  },
   ->(st) { st.first(6).count(true) == 3 },
   ->(st) { st[10] & st[11] },
   ->(st) { st[6..8].one? },
   ->(st) { st[0,11].count(true) == 4 },
 ]
- 
+
 Result = Struct.new(:truths, :consistency)
- 
+
 results = [true, false].repeated_permutation(12).map do |truths|
   Result.new(truths, constraints.zip(truths).map {|cn,truth| cn[truths] == truth })
 end
 
-puts "solution:", 
+puts "solution:",
   results.find {|r| r.consistency.all? }.truths.to_s
 
 puts "\nnear misses: "
@@ -3496,7 +3496,7 @@ end
 solution:
 [true, false, true, true, false, true, true, false, false, false, true, false]
 
-near misses: 
+near misses:
 missed by statement 8
 [true, true, false, true, false, false, true, true, true, false, false, false]
 missed by statement 10
@@ -3762,7 +3762,7 @@ func check11() -> Bool {
             count++
         }
     }
-    
+
     return statements[11] == (count == 1)
 }
 
@@ -3810,7 +3810,7 @@ println("\(count) solutions found")
 
 ```txt
 
-1 3 4 6 7 11 
+1 3 4 6 7 11
 
 1 solutions found
 Program ended with exit code: 0
@@ -3838,25 +3838,25 @@ extension Array {
             return self + padded
         }
     }
-    
+
     func take(n: Int) -> Array<Element> {
         if n <= 0 {
             return []
         }
-        
+
         return Array(self[0..<Swift.min(n, self.count)])
     }
-    
+
     func drop(n: Int) -> Array<Element> {
         if n <= 0 {
             return self
         } else if n >= self.count {
             return []
         }
-        
+
         return Array(self[n..<self.count])
     }
-    
+
     func stride(n: Int) -> Array<Element> {
         var result:[Element] = []
         for i in Swift.stride(from: 0, to: self.count, by: n) {
@@ -3864,7 +3864,7 @@ extension Array {
         }
         return result
     }
-    
+
     func zipWithIndex() -> Array<(Element, Int)> {
         return [(Element, Int)](zip(self, indices(self)))
     }
@@ -3913,7 +3913,7 @@ let statements:[([Bool] -> Bool)] = [
 
 for variant in 0..<(1<<statements.count) {
     let attempt = variant.binaryRepresentationOfLength(statements.count).map { $0 == 1 }
-    
+
     if statements.map({ $0(attempt) }) == attempt {
         let trueAre = attempt.zipWithIndex().filter { $0.0 }.map { $0.1 + 1 }
         println("Solution found! True are: \(trueAre)")
@@ -4199,7 +4199,7 @@ Near miss with statements 1 5 8 10 11 12 true (failed 12).
 ```vb
 Public s As String    '-- (eg "101101100010")
 Public t As Integer   '-- scratch
- 
+
 Function s1()
     s1 = Len(s) = 12
 End Function
@@ -4260,7 +4260,7 @@ Function s12()
     Next i
     s12 = t = 4
 End Function
- 
+
 Public Sub twelve_statements()
     For i = 0 To 2 ^ 12 - 1
         s = Right(CStr(WorksheetFunction.Dec2Bin(64 + i \ 128)), 5) _
@@ -4310,7 +4310,7 @@ sub s9() local t, i : t=0 : for i=1 to 6 : t = t + mid$(s$, i, 1) <> "0" : next 
 sub s10() return mid$(s$, 11, 1) <> "0" and mid$(s$, 12, 1) <> "0" end sub
 sub s11() local t, i : t=0 : for i=7 to 9 : t = t + mid$(s$, i, 1) <> "0" : next : return t=1 end sub
 sub s12() local t, i : t=0 : for i=1 to 11 : t = t + mid$(s$, i, 1) <> "0" : next : return t=4 end sub
- 
+
 dim r$(12)
 
 for b=1 to 12

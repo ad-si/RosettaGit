@@ -713,7 +713,7 @@ best value: 54500
 
 =={{header|C_sharp|C#}}==
 
-```csharp
+```c#
 /*Knapsack
 
   This model finds the integer optimal packing of a knapsack
@@ -822,7 +822,7 @@ take(Gold): 11
 ## C#
 
 
-```csharp
+```c#
 /*    Items  Value  Weight  Volume
           a     30       3      25
           b     18       2      15

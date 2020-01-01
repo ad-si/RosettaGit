@@ -608,10 +608,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|C}}
 
-```csharp
+```c#
 
 using System;
     public class AksTest

@@ -412,13 +412,13 @@ int main()
 
 
 
-## C sharp
+## C#
 
 
 ### C# 1.0
 
 
-```csharp
+```c#
 static class Program
 {
     static void Main()
@@ -443,7 +443,7 @@ static class Program
 
 An alternative method to add entries is to use the indexer setter, which replaces the old value associated with a key, if any:
 
-```csharp
+```c#
 h[keys[i]] = values[i];
 ```
 
@@ -456,7 +456,7 @@ Uses <code>System.Collections.Generic.Dictionary<TKey, TValue></code>, <code>Enu
 <code>Enumerable.Zip</code> truncates the longer of its arguments.
 
 
-```csharp
+```c#
 using System.Linq;
 
 static class Program

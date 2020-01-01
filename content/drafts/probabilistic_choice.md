@@ -502,12 +502,12 @@ zayin   0.090654             0.0909091
 heth    0.063832             0.063456
 </PRE>
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{trans|Java}}
 
 
-```csharp
+```c#
 
 using System;
 

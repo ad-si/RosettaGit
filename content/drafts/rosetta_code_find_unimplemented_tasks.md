@@ -357,13 +357,13 @@ Loads a list of all languages. Pick the language you would like to see the unimp
 
 [[Image:Ahk_find_unimplemented.png‎]]
 
-=={{header|C sharp|C#}}==
+## C#
 Using JSON (not parsed, just Regex.)
 
 To help demonstrate paging, the cmlimit parameter has been omitted from the search query so that 10 rows are returned by default
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

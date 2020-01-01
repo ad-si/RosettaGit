@@ -1210,13 +1210,13 @@ sys	0m0.000s
 
 My measured time is slower than that posted for the original C code, but on my machine this C++ code is faster than the original C code.
 
-=={{header|C sharp|C#}}==
+## C#
 === "Manual" solution (Norvig-style) ===
 {{works with|C sharp|C#|7+ (but easy to adapt to lower versions)}}
 <!-- By Martin Freedman, 17/01/2018 -->
 This is adapted from a solution to a similar problem by Peter Norvig in his [https://www.udacity.com/course/design-of-computer-programs--cs212 Udacity course CS212], originally written in Python. This is translated from [https://github.com/exercism/python/blob/master/exercises/zebra-puzzle/example.py example python solution on exercism]. This is a Generate-and-Prune Constraint Programming algorithm written with Linq. (See Benchmarks below)
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1327,7 +1327,7 @@ This is similar to the Scala solution although there are differences in how the 
 
 This is a different type of generate-and-prune compared to Norvig.  The Norvig solution generates each attribute for 5 houses, then prunes and repeats with the next attribute. Here all houses with possible attributes are first generated and pruned to 78 candidates. The second phase proceeds over the combination of 5 houses from that 78, generating and pruning 1 house at a time. (See Benchmarks below)
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1459,7 +1459,7 @@ This uses the second version of the [https://rosettacode.org/wiki/Amb#C.23 Amb C
 {{works with|C sharp|C#|7.1}}
 <!-- By Martin Freedman, 9/02/2018 -->
 
-```csharp
+```c#
 using Amb;
 using System;
 using System.Collections.Generic;
@@ -1568,7 +1568,7 @@ House Colour Drink    Nationality Smokes     Pet
 {{libheader|Microsoft Solver Foundation}}
 <!-- By Martin Freedman, 19/01/2018 based on MS example code-->
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

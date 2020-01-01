@@ -1312,10 +1312,10 @@ int main(int argc, char *argv[]) {
 
 </b>
 
-=={{header|C sharp|C#}}==
+## C#
 Requires C#6.0 because of the use of null coalescing operators.
 
-```csharp
+```c#
 
 using System;
 using System.IO;

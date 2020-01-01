@@ -23,7 +23,7 @@ The factorial of a number, written as <math>n!</math>, is defined as <math>n! = 
 
 In all cases, the terms in the products are positive integers.
 
-If we define the degree of the multifactorial as the difference in successive terms that are multiplied together for a multifactorial (the number of exclamation marks), then the task is twofold: 
+If we define the degree of the multifactorial as the difference in successive terms that are multiplied together for a multifactorial (the number of exclamation marks), then the task is twofold:
 # Write a function that given n and the degree, calculates the multifactorial.
 # Use the function to generate and display here a table of the first ten members (1 to 10) of the first five degrees of multifactorial.
 
@@ -35,7 +35,7 @@ If we define the degree of the multifactorial as the difference in successive te
 
 ## 360 Assembly
 
-For maximum compatibility, this program uses only the basic instruction set (S/360 1964 POP). 
+For maximum compatibility, this program uses only the basic instruction set (S/360 1964 POP).
 
 ```360asm
 *        Multifactorial            09/05/2016
@@ -46,7 +46,7 @@ SAVEAR   B     STM-SAVEAR(15)
 STM      STM   14,12,12(13) prolog
          ST    13,4(15)     "
          ST    15,8(13)     "
-         LR    13,15        " 
+         LR    13,15        "
          LA    I,1          i=1
 LOOPI    C     I,D          do i=1 to deg
          BH    ELOOPI       leave i
@@ -64,7 +64,7 @@ LOOPK    C     K,=F'2'          do k=j to 2 by s
          B     LOOPK            next k
 ELOOPK   CVD   R,Y              pack r
          MVC   X,=XL12'402020202020202020202120' ed mask
-         ED    X,Y+2            edit r 
+         ED    X,Y+2            edit r
          MVC   0(8,L),X+4       output r
          LA    L,8(L)           l=l+8
          LA    J,1(J)           j=j+1
@@ -288,7 +288,7 @@ Translation of FreeBASIC.
 
 ```ANSI Standard BASIC
 100 FUNCTION multiFactorial (n, degree)
-110    IF  n < 2 THEN 
+110    IF  n < 2 THEN
 120       LET multiFactorial = 1
 130       EXIT FUNCTION
 140    END IF
@@ -304,7 +304,7 @@ Translation of FreeBASIC.
 240    FOR n = 1 TO 10
 250       PRINT multiFactorial(n, degree); " ";
 260    NEXT n
-270    PRINT 
+270    PRINT
 280 NEXT degree
 290 END
 ```
@@ -385,7 +385,7 @@ degree 5: 1 2 3 4 5 6 14 24 36 50
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 multifact
 FOR i% = 1 TO 5
   PRINT "Degree "; i%; ":";
@@ -470,10 +470,10 @@ Degree 5: 1 2 3 4 5 6 14 24 36 50
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 namespace RosettaCode.Multifactorial
 {
     using System;
@@ -649,16 +649,16 @@ void main() {
 {{out}}
 
 ```txt
- 1: 1 2 6 24 120 720 5040 40320 362880 3628800 
- 2: 1 2 3 8 15 48 105 384 945 3840 
- 3: 1 2 3 4 10 18 28 80 162 280 
- 4: 1 2 3 4 5 12 21 32 45 120 
- 5: 1 2 3 4 5 6 14 24 36 50 
- 6: 1 2 3 4 5 6 7 16 27 40 
- 7: 1 2 3 4 5 6 7 8 18 30 
- 8: 1 2 3 4 5 6 7 8 9 20 
- 9: 1 2 3 4 5 6 7 8 9 10 
-10: 1 2 3 4 5 6 7 8 9 10 
+ 1: 1 2 6 24 120 720 5040 40320 362880 3628800
+ 2: 1 2 3 8 15 48 105 384 945 3840
+ 3: 1 2 3 4 10 18 28 80 162 280
+ 4: 1 2 3 4 5 12 21 32 45 120
+ 5: 1 2 3 4 5 6 14 24 36 50
+ 6: 1 2 3 4 5 6 7 16 27 40
+ 7: 1 2 3 4 5 6 7 8 18 30
+ 8: 1 2 3 4 5 6 7 8 9 20
+ 9: 1 2 3 4 5 6 7 8 9 10
+10: 1 2 3 4 5 6 7 8 9 10
 ```
 
 
@@ -676,9 +676,9 @@ for(var j=1;j<=5;j++)
 {
   print('first 10 numbers of degree $j :');
   for(var i=1;i<=10;i++)
-  {   
+  {
     int z=fact(i,j);
- print('$z'); 
+ print('$z');
 }
   print('\n');
 }
@@ -686,7 +686,7 @@ for(var j=1;j<=5;j++)
 
 int fact(int a,int b)
 {
-  
+
   if(a<=b||a==0)
     return a;
   if(a>1)
@@ -732,7 +732,7 @@ Degree 5: [1, 2, 3, 4, 5, 6, 14, 24, 36, 50]
 
 
 ```erlang
--module(multifac).   
+-module(multifac).
 -compile(export_all).
 
 multifac(N,D) ->
@@ -740,7 +740,7 @@ multifac(N,D) ->
 
 main() ->
     Ds = lists:seq(1,5),
-    Ns = lists:seq(1,10),   
+    Ns = lists:seq(1,10),
     lists:foreach(fun (D) ->
                           io:format("Degree ~b: ~p~n",[D, [ multifac(N,D) || N <- Ns]])
                   end, Ds).
@@ -858,10 +858,10 @@ IN: rosetta-code.multifactorial
 : mf-row ( degree -- )
     dup "Degree %d: " printf
     10 [1,b] [ swap multifactorial pprint bl ] with each ;
-    
+
 : main ( -- )
     5 [1,b] [ mf-row nl ] each ;
-    
+
 MAIN: main
 ```
 
@@ -916,13 +916,13 @@ program test
     end do
     write(*,*)
   end do
-   
+
 contains
 
 function multifactorial (range, degree)
   integer :: multifactorial, range, degree
   integer :: k
-   
+
   multifactorial = product((/(k, k=range, 1, -degree)/))
 
 end function multifactorial
@@ -963,7 +963,7 @@ For degree As Integer = 1 To 5
   For n As Integer = 1 To 10
     Print multiFactorial(n, degree); " ";
   Next n
-  Print 
+  Print
 Next degree
 
 Print
@@ -1150,16 +1150,16 @@ Sample run:
 120   PRINT "Degree";I;":";
 130   FOR N=1 TO 10
 140     PRINT MFACT(N,I);
-150   NEXT 
-160   PRINT 
-170 NEXT 
+150   NEXT
+160   PRINT
+170 NEXT
 180 DEF MFACT(N,D)
 190   NUMERIC I,RES
 200   IF N<2 THEN LET MFACT=1:EXIT DEF
 210   LET RES=N
 220   FOR I=N-D TO 2 STEP-D
 230     LET RES=RES*I
-240   NEXT 
+240   NEXT
 250   LET MFACT=RES
 260 END DEF
 ```
@@ -1174,7 +1174,7 @@ Sample run:
    NB. tacit implementation of the recursive c function
    NB. int multifact(int n,int deg){return n<=deg?n:n*multifact(n-deg,deg);}
 
-   multifact=: [`([ * - $: ])@.(<~)  
+   multifact=: [`([ * - $: ])@.(<~)
    (a:,<'       degree'),multifact table >:i.10
 ┌─────────┬──────────────────────────────────────┐
 │         │       degree                         │
@@ -1209,7 +1209,7 @@ public class MultiFact {
 		}
 		return ans;
 	}
-	
+
 	public static void main(String[] args){
 		for(int deg = 1; deg <= 5; deg++){
 			System.out.print("degree " + deg + ":");
@@ -1277,11 +1277,11 @@ function test (n, deg) {
 ```JavaScript
 
 test(10, 5)
-Degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800 
-Degree 2: 1 2 3 8 15 48 105 384 945 3840 
-Degree 3: 1 2 3 4 10 18 28 80 162 280 
-Degree 4: 1 2 3 4 5 12 21 32 45 120 
-Degree 5: 1 2 3 4 5 6 14 24 36 50 
+Degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800
+Degree 2: 1 2 3 8 15 48 105 384 945 3840
+Degree 3: 1 2 3 4 10 18 28 80 162 280
+Degree 4: 1 2 3 4 5 12 21 32 45 120
+Degree 5: 1 2 3 4 5 6 14 24 36 50
 
 ```
 
@@ -1318,11 +1318,11 @@ function test (n, deg) {
 ```JavaScript
 
 test(10, 5)
-Degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800 
-Degree 2: 1 2 3 8 15 48 105 384 945 3840 
-Degree 3: 1 2 3 4 10 18 28 80 162 280 
-Degree 4: 1 2 3 4 5 12 21 32 45 120 
-Degree 5: 1 2 3 4 5 6 14 24 36 50 
+Degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800
+Degree 2: 1 2 3 8 15 48 105 384 945 3840
+Degree 3: 1 2 3 4 10 18 28 80 162 280
+Degree 4: 1 2 3 4 5 12 21 32 45 120
+Degree 5: 1 2 3 4 5 6 14 24 36 50
 ```
 
 
@@ -1347,7 +1347,7 @@ def multifactorial(d):
 def table(d; n):
   def lpad(i): tostring | (i - length) * " " + .;
   def pp(stream): reduce stream as $i (""; . + ($i | lpad(8)));
-  
+
   range(1; d+1) as $d | "Degree \($d): \( pp(range(1; n+1) | multifactorial($d)) )";
 ```
 
@@ -1485,8 +1485,8 @@ f := proc (n, m)
 	local fac, i;
 	fac := 1;
 	for i from n by -m to 1 do
-		fac := fac*i; 
-	end do; 
+		fac := fac*i;
+	end do;
 	return fac;
 end proc:
 
@@ -1581,10 +1581,10 @@ for i in 1..5:
 Output:
 
 ```txt
-Degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800 
-Degree 2: 1 2 3 8 15 48 105 384 945 3840 
-Degree 3: 1 2 3 4 10 18 28 80 162 280 
-Degree 4: 1 2 3 4 5 12 21 32 45 120 
+Degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800
+Degree 2: 1 2 3 8 15 48 105 384 945 3840
+Degree 3: 1 2 3 4 10 18 28 80 162 280
+Degree 4: 1 2 3 4 5 12 21 32 45 120
 Degree 5: 1 2 3 4 5 6 14 24 36 50
 ```
 
@@ -1642,7 +1642,7 @@ Degree 5:  1 2 3 4 5 6 14 24 36 50
 
 ```Oforth
 : multifact(n, deg)  1 while( n 0 > ) [ n * n deg - ->n ] ;
- 
+
 : printMulti
 | i |
    5 loop: i [ System.Out i << " : " << 10 seq map(#[ i multifact]) << cr ] ;
@@ -1673,10 +1673,10 @@ for(k=1,5,for(n=1,10,print1(fac(n,k)" "));print)
 
 
 ```txt
-1 2 6 24 120 720 5040 40320 362880 3628800 
-1 2 3 8 15 48 105 384 945 3840 
-1 2 3 4 10 18 28 80 162 280 
-1 2 3 4 5 12 21 32 45 120 
+1 2 6 24 120 720 5040 40320 362880 3628800
+1 2 3 8 15 48 105 384 945 3840
+1 2 3 4 10 18 28 80 162 280
+1 2 3 4 5 12 21 32 45 120
 1 2 3 4 5 6 14 24 36 50
 ```
 
@@ -1778,7 +1778,7 @@ function multifactorial(integer n, integer order)
 atom res = 1
     if n>0 then
         res = n*multifactorial(n-order,order)
-    end if 
+    end if
     return res
 end function
 
@@ -1935,7 +1935,7 @@ Degree 5: 1 2 3 4 5 6 14 24 36 50
  8: [1, 2, 3, 4, 5, 6, 7, 8, 9, 20]
  9: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 10: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
->>> 
+>>>
 ```
 
 
@@ -1953,7 +1953,7 @@ Degree 5: 1 2 3 4 5 6 14 24 36 50
  3: [1, 2, 3, 4, 10, 18, 28, 80, 162, 280]
  4: [1, 2, 3, 4, 5, 12, 21, 32, 45, 120]
  5: [1, 2, 3, 4, 5, 6, 14, 24, 36, 50]
->>> 
+>>>
 ```
 
 
@@ -2071,9 +2071,9 @@ n!!!!!!!!!! [10]:  1 2 3 4 5 6 7 8 9 10 11 24 39 56 75
 
 see "Degree  " +  "|" + "           Multifactorials 1 to 10" + nl
 see copy("-", 52) + nl
-for d = 1 to 5 
+for d = 1 to 5
     see "" + d + "       " + "| "
-    for n = 1 to 10 
+    for n = 1 to 10
         see "" + multiFact(n, d) + " "
     next
     see nl
@@ -2081,10 +2081,10 @@ next
 
 func multiFact n, degree
      fact = 1
-     for i = n to 2 step -degree 
+     for i = n to 2 step -degree
          fact = fact * i
      next
-     return fact 
+     return fact
 
 ```
 
@@ -2136,20 +2136,20 @@ Degree 5: 1	2	3	4	5	6	14	24	36	50
 
 print "Degree  " +  "|" + "           Multifactorials 1 to 10" + nl
 print copy("-", 52) + nl
-for d = 1 to 5 
+for d = 1 to 5
     print "" + d + "       " + "| "
-    for n = 1 to 10 
+    for n = 1 to 10
         print "" + multiFact(n, d) + " ";
     next
     print
 next
- 
+
 function multiFact(n,degree)
      fact = 1
-     for i = n to 2 step -degree 
+     for i = n to 2 step -degree
          fact = fact * i
      next
-     multiFact = fact 
+     multiFact = fact
  end function
 ```
 
@@ -2157,11 +2157,11 @@ function multiFact(n,degree)
 ```txt
 Degree  |           Multifactorials 1 to 10
 --------|---------------------------------------------
-1       | 1 2 6 24 120 720 5040 40320 362880 3628800 
-2       | 1 2 3 8 15 48 105 384 945 3840 
-3       | 1 2 3 4 10 18 28 80 162 280 
-4       | 1 2 3 4 5 12 21 32 45 120 
-5       | 1 2 3 4 5 6 14 24 36 50 
+1       | 1 2 6 24 120 720 5040 40320 362880 3628800
+2       | 1 2 3 8 15 48 105 384 945 3840
+3       | 1 2 3 4 10 18 28 80 162 280
+4       | 1 2 3 4 5 12 21 32 45 120
+5       | 1 2 3 4 5 6 14 24 36 50
 
 ```
 
@@ -2207,13 +2207,13 @@ Degree 5: 1 2 3 4 5 6 14 24 36 50
 (define (multi-factorial n m)
   (fold * 1 (iota (ceiling (/ n m)) n (- m))))
 
-(for-each 
-  (lambda (degree) 
+(for-each
+  (lambda (degree)
     (display (string-append "degree "
                             (number->string degree)
                             ": "))
-    (for-each 
-      (lambda (num) 
+    (for-each
+      (lambda (num)
         (display (string-append (number->string (multi-factorial num degree))
                                 " ")))
       (iota 10 1))
@@ -2227,11 +2227,11 @@ Degree 5: 1 2 3 4 5 6 14 24 36 50
 
 ```txt
 
-degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800 
-degree 2: 1 2 3 8 15 48 105 384 945 3840 
-degree 3: 1 2 3 4 10 18 28 80 162 280 
-degree 4: 1 2 3 4 5 12 21 32 45 120 
-degree 5: 1 2 3 4 5 6 14 24 36 50 
+degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800
+degree 2: 1 2 3 8 15 48 105 384 945 3840
+degree 3: 1 2 3 4 10 18 28 80 162 280
+degree 4: 1 2 3 4 5 12 21 32 45 120
+degree 5: 1 2 3 4 5 6 14 24 36 50
 
 ```
 
@@ -2273,11 +2273,11 @@ const proc: main is func
 
 ```txt
 
-Degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800 
-Degree 2: 1 2 3 8 15 48 105 384 945 3840 
-Degree 3: 1 2 3 4 10 18 28 80 162 280 
-Degree 4: 1 2 3 4 5 12 21 32 45 120 
-Degree 5: 1 2 3 4 5 6 14 24 36 50 
+Degree 1: 1 2 6 24 120 720 5040 40320 362880 3628800
+Degree 2: 1 2 3 8 15 48 105 384 945 3840
+Degree 3: 1 2 3 4 10 18 28 80 162 280
+Degree 4: 1 2 3 4 5 12 21 32 45 120
+Degree 5: 1 2 3 4 5 6 14 24 36 50
 
 ```
 
@@ -2529,11 +2529,11 @@ for J:= 1 to 5 do
 
 ```txt
 
-1       2       6       24      120     720     5040    40320   362880  3628800 
-1       2       3       8       15      48      105     384     945     3840    
-1       2       3       4       10      18      28      80      162     280     
-1       2       3       4       5       12      21      32      45      120     
-1       2       3       4       5       6       14      24      36      50      
+1       2       6       24      120     720     5040    40320   362880  3628800
+1       2       3       8       15      48      105     384     945     3840
+1       2       3       4       10      18      28      80      162     280
+1       2       3       4       5       12      21      32      45      120
+1       2       3       4       5       6       14      24      36      50
 
 ```
 

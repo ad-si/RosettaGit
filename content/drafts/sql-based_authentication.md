@@ -223,7 +223,7 @@ From the command line, <tt>program add user password</tt> to add users, and <tt>
 
 Class for hashing and random salt generation.
 
-```csharp
+```c#
 using System.Security.Cryptography;
 using System.Text;
 
@@ -266,7 +266,7 @@ namespace rosettaMySQL
 
 Class for creating and authenticating users.
 
-```csharp
+```c#
 using MySql.Data.MySqlClient;
 
 namespace rosettaMySQL
@@ -336,7 +336,7 @@ namespace rosettaMySQL
 
 Class with main method and database connection method.
 
-```csharp
+```c#
 using System;
 using MySql.Data.MySqlClient;
 

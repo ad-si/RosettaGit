@@ -17,7 +17,7 @@ This article is oriented towards formulating the correct solution to the class S
 The simplest of data structures that support the set membership operator is an unbalanced tree. Set elements are stored in sorted ordered. This is achieved by a set node which is shown below.
 
 
-```csharp
+```c#
 
 class SetNode<T> where T : IComparable<T>
 {
@@ -41,7 +41,7 @@ Modern programming languages such as C# and C++ have facilities for expressing s
 Above is a node for a set of T, where T is the generic class parameter. Note that the generic parameter T inherits from IComparable of T (is constrained in other words). IComparable of T is shown below.
 
 
-```csharp
+```c#
 
 public interface IComparable<T>
 {
@@ -72,10 +72,10 @@ In the above, T derives from IComparable<T>, so T has a CompareTo method. This m
 A set node contains a reference to an object of type T (which is comparable). It also contains a left and right reference to child nodes. The first program uses this definition to place the nodes into a data structure that orders the elements. From a given node, smaller nodes are placed on the left, and greater nodes are placed on the right. A program that does this is shown below.
 
 
-```csharp
+```c#
 
 // Set1 - Binary Search Tree - Constraints
-// Copyright Benedict McNamara 2006 - 2014, All Rights Reserved 
+// Copyright Benedict McNamara 2006 - 2014, All Rights Reserved
 
 using System;
 using System.Collections.Generic;
@@ -210,7 +210,7 @@ In the previous Binary Search Tree, there is no way of progressing from one key 
 By ensuring that each node in a set contains a reference to its parent, it becomes possible to iterate on the set. Thus, the node for a set will be upgraded to the following.
 
 
-```csharp
+```c#
 
 public class SetNode<T> where T : IComparable<T>
 {
@@ -246,7 +246,7 @@ Two fields have been added to the node, a parent reference and a boolean flag in
 When attempting to progress from one key to the next in a binary tree, the problem is simple if the current node has a non-null right child reference. One merely goes right, then all the way left up to when the next left node is null. This is because the first node on the right is greater, and continuing left from there will eventually lead to the smallest node greater than the current node. This is half the algorithm required for iteration, but the real problem comes if the right node is null (the other half). The solution lies in having a parent reference. When the right node is null, one progresses up the parent chain until a node greater than the existing node is found. The logic is not found in the set class, rather it is found in the separate enumerator class. The logic is shown below, and should be carefully examined.
 
 
-```csharp
+```c#
 
 public struct SetEntry<T> : IEnumerator<T> where T : IComparable<T>
 {
@@ -318,7 +318,7 @@ The class SetEntry is an enumerator for the set and it is a separate class. It h
 Set must now be implemented such that it supports parent references and a header node. The following code does this (Project Set2).
 
 
-```csharp
+```c#
 
 // Set2 - Binary Search Set
 //      - Implements: Parents, Iterators
@@ -565,7 +565,7 @@ An algorithm for swapping nodes in a set must be developed. Note that the data c
 The source code for a node swap is shown below (Project Set3). This code was ported from C++ into C#. The code was developed in C++ entirely independently. To correctly master binary trees (in particular deletion) node swapping is required.
 
 
-```csharp
+```c#
 
     static void SwapNodeReference(ref SetNode<T> First,
                                   ref SetNode<T> Second)
@@ -714,7 +714,7 @@ There are five cases, depending upon parent child relationships between the node
 Once swapping has been mastered, deletion then is as follows.
 
 
-```csharp
+```c#
 
     public void Remove(T Key)
     {
@@ -800,7 +800,7 @@ Swapping is performed when required. Near the line containing Nodes--, balancing
 With project Set3, a different approach has been taken with comparability. No longer are generic constraints used. Instead, the following field has been included in the set class.
 
 
-```csharp
+```c#
 
     IComparer<T> Comparer;
 
@@ -810,7 +810,7 @@ With project Set3, a different approach has been taken with comparability. No lo
 The interface IComparer is documented in the .Net documentation. Roughly, an IComparer looks like the following interface class.
 
 
-```csharp
+```c#
 
 public interface IComparer<T>
 {
@@ -823,7 +823,7 @@ public interface IComparer<T>
 There is another interface called IComparable, which is shown below.
 
 
-```csharp
+```c#
 
 public interface IComparable<T>
 {
@@ -836,7 +836,7 @@ public interface IComparable<T>
 Sets work off the IComparer interface. There are two constructors for the set class, as shown below.
 
 
-```csharp
+```c#
 
 class Set<T> : IEnumerable<T>
 {
@@ -867,7 +867,7 @@ class Set<T> : IEnumerable<T>
 The first constructor (the default constructor) generates the IComparer for the set. The way this is done is through another class called Comparer (roughly shown below).
 
 
-```csharp
+```c#
 
 [Serializable]
 public abstract class Comparer<T> : IComparer<T>
@@ -887,13 +887,13 @@ The advantage of this system is that the class T can derive from IComparable<T> 
 Here is the full source code to Set3.
 
 
-```csharp
+```c#
 
 // Set3 - Binary Search Tree
 //      - Using IComparer Generic Interface
 //      - With deletion
 //
-// Copyright Benedict McNamara 2006 - 2014, All Rights Reserved 
+// Copyright Benedict McNamara 2006 - 2014, All Rights Reserved
 
 using System;
 using System.Collections.Generic;
@@ -1515,7 +1515,7 @@ Another shift from the first set program presented will now be introduced. Inste
 The above definition leads to the following base class for node and class for a set node.
 
 
-```csharp
+```c#
 
 public enum Direction { FromLeft, FromRight };
 
@@ -1543,7 +1543,7 @@ public class Node
         Parent = p;
         Balance = State.Balanced;
     }
-    
+
     public bool IsHeader
     { get { return Balance == State.Header; } }
 }
@@ -1553,7 +1553,7 @@ public class SetNode<T> : Node
     public T Data;
 
     public SetNode() { }
-    
+
     public SetNode(T dataType, Node Parent) : base(Parent)
     {
         Data = dataType;
@@ -1568,7 +1568,7 @@ There is a non-generic base class Node. This facilitates non-generic balancing. 
 The routine that balances a set after an insertion is shown below.
 
 
-```csharp
+```c#
 
     public static void BalanceSet(Node Root, Direction From)
     {
@@ -1649,7 +1649,7 @@ The routine that balances a set after an insertion is shown below.
 If the direction is from the left, left set balancing is instigated. If the direction is from the right, right set balancing is performed. This algorithm progresses up the parent chain of the set until the set is balanced. Certain cases can be taken care of immediately. For example, when inserting into the right subtree (FromRight), if the current node is left high, the balance factor is immediately set to State.Balanced and the job is done. Yet other cases require the set to be restructured. Ancilliary procedures BalanceLeft and BalanceRight have been created for this job. They restructure the set as required. The procedures BalanceLeft and BalanceRight are shown below.
 
 
-```csharp
+```c#
 
     static void BalanceLeft(ref Node Root)
     {
@@ -1775,7 +1775,7 @@ It would appear that a third case must be considered. The case where the two sub
 == The Final AVL Tree Code ==
 
 
-```csharp
+```c#
 
 // Set4 -  Finite Ordered Sets - 4State - Balanced
 
@@ -1820,7 +1820,7 @@ public class Node
         Parent = p;
         Balance = State.Balanced;
     }
-    
+
     public bool IsHeader
     { get { return Balance == State.Header; } }
 }
@@ -1830,7 +1830,7 @@ public class SetNode<T> : Node
     public T Data;
 
     public SetNode() { }
-    
+
     public SetNode(T dataType, Node Parent) : base(Parent)
     {
         Data = dataType;

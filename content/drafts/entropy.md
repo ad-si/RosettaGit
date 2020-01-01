@@ -624,11 +624,11 @@ The information content of 1223334444 is 1.84644
 ```
 
 
-## C sharp
+## C#
 
 Translation of C++.
 
-```csharp
+```c#
 
 using System;
 using System.Collections.Generic;
@@ -680,7 +680,7 @@ The Entropy of 1223334444 is 1.84643934467102
 
 Without using Hashtables or Dictionaries:
 
-```csharp
+```c#
 using System;
 namespace Entropy
 {

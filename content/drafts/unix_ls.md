@@ -14,8 +14,8 @@ tags = []
 
 ;Task:
 Write a program that will list everything in the current folder,   similar to:
-:::*   the Unix utility   “<tt>ls</tt>”   [http://man7.org/linux/man-pages/man1/ls.1.html]       or 
-:::*   the Windows terminal command   “<tt>DIR</tt>” 
+:::*   the Unix utility   “<tt>ls</tt>”   [http://man7.org/linux/man-pages/man1/ls.1.html]       or
+:::*   the Windows terminal command   “<tt>DIR</tt>”
 
 
 
@@ -66,7 +66,7 @@ b
 
 ```forth
 
-"*" f:glob 
+"*" f:glob
 ' s:cmp a:sort
 "\n" a:join .
 
@@ -78,17 +78,17 @@ b
 
 
 ```Ada
-with Ada.Text_IO, Ada.Directories, Ada.Containers.Indefinite_Vectors; 
+with Ada.Text_IO, Ada.Directories, Ada.Containers.Indefinite_Vectors;
 
 procedure Directory_List is
-   
+
    use Ada.Directories, Ada.Text_IO;
    Search: Search_Type; Found: Directory_Entry_Type;
    package SV is new Ada.Containers.Indefinite_Vectors(Natural, String);
    Result: SV.Vector;
    package Sorting is new SV.Generic_Sorting; use Sorting;
    function SName return String is (Simple_Name(Found));
-   
+
 begin
    -- search directory and store it in Result, a vector of strings
    Start_Search(Search, Directory => ".", Pattern =>"");
@@ -102,13 +102,13 @@ begin
          end if; -- ingnore filenames beginning with "."
       end;
    end loop; -- Result holds the entire directory in arbitrary order
-   
+
    Sort(Result); -- Result holds the directory in proper order
 
    -- print Result
-   for I in Result.First_Index .. Result.Last_Index loop 
+   for I in Result.First_Index .. Result.Last_Index loop
       Put_Line(Result.Element(I));
-   end loop;   
+   end loop;
 end Directory_List;
 ```
 
@@ -198,7 +198,7 @@ gawk -lreaddir 'BEGIN { FS = "/" } {print $2}' .
 
 
 {{works with|gawk}}
-To replicate 'ls examplefile.txt' 
+To replicate 'ls examplefile.txt'
 
 ```txt
 
@@ -261,7 +261,7 @@ int main(void)
     char **dirnames;
     int diralloc = 128;
     int dirsize  = 0;
-    
+
     if (!(dirnames = malloc(diralloc * sizeof(char*)))) {
         perror("malloc error:");
         return 1;
@@ -334,9 +334,9 @@ int main(void)
 
 ```
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -379,8 +379,8 @@ namespace Unix_ls
 
 ## Common Lisp
 
-In some implementations, `(directory)` results automatically include subdirectories (e.g. SBCL); some require them to be requested separately (e.g. CLISP). 
-The function below asks for both and then removes any duplicates from the resulting list. 
+In some implementations, `(directory)` results automatically include subdirectories (e.g. SBCL); some require them to be requested separately (e.g. CLISP).
+The function below asks for both and then removes any duplicates from the resulting list.
 
 The workhorse is `files-list`, which returns a list of filenames.  The `ls` function sorts the resulting list and formats it for output.
 
@@ -423,21 +423,21 @@ No directory in EchoLisp, which is run in a browser window. Instead, "stores" (f
 ```lisp
 
 ;; ls of stores (kind of folders)
-(for-each writeln (list-sort < (local-stores))) → 
-    AGES    
-    NEMESIS    
-    info    
-    objects.dat    
-    reader    
-    system    
-    user    
-    words    
+(for-each writeln (list-sort < (local-stores))) →
+    AGES
+    NEMESIS
+    info
+    objects.dat
+    reader
+    system
+    user
+    words
 
 ;; ls of "NEMESIS" store
-(for-each writeln (local-keys "NEMESIS")) → 
-    Alan    
-    Glory    
-    Jonah    
+(for-each writeln (local-keys "NEMESIS")) →
+    Alan
+    Glory
+    Jonah
 
 ```
 
@@ -542,7 +542,7 @@ require ffl/car.fs
 
 ## Fortran
 
-This is possible only for those Fortran compilers that offer some sort of interface with the operating system's file handling routines. Not standard at all! 
+This is possible only for those Fortran compilers that offer some sort of interface with the operating system's file handling routines. Not standard at all!
 ```Fortran
       PROGRAM LS		!Names the files in the current directory.
       USE DFLIB			!Mysterious library.
@@ -561,10 +561,10 @@ Call for the next file.
         IF (L.GT.0) WRITE (6,*) INFO.NAME(1:L)	!The object of the exercise!
       END IF				!So much for that entry.
       IF (MARK.NE.FILE$LAST) GO TO 10	!Lastness is discovered after the last file is fingered.
-      END	!If FILE$LAST is not reached, "system resources may be lost." 
+      END	!If FILE$LAST is not reached, "system resources may be lost."
 ```
 
-This relies on the supplied routine GETFILEINFOQQ, which is not at all a standard routine, but it does behave in the same way as is found in many other systems, notably with a file name selection filter, here chosen to be "*" meaning "any file". It supplies successive file names and requires mysterious parameters to keep track of what it is doing. In the installation file C:/Compilers/Furrytran/Compaq Furrytran 6.6a CD/X86/DF/INCLUDE/DFLIB.F90, there is the following segment: 
+This relies on the supplied routine GETFILEINFOQQ, which is not at all a standard routine, but it does behave in the same way as is found in many other systems, notably with a file name selection filter, here chosen to be "*" meaning "any file". It supplies successive file names and requires mysterious parameters to keep track of what it is doing. In the installation file C:/Compilers/Furrytran/Compaq Furrytran 6.6a CD/X86/DF/INCLUDE/DFLIB.F90, there is the following segment:
 ```Fortran
       INTERFACE
 	INTEGER*4 FUNCTION GETFILEINFOQQ(FILES, BUFFER,dwHANDLE)
@@ -621,7 +621,7 @@ $ funl ~/ls
 2
 a
 b
-$ 
+$
 
 ```
 
@@ -834,7 +834,7 @@ fun main(args: Array<String>) {
 
 ```LiveCode
 set the defaultFolder to "/foo"
-put the folders & the files 
+put the folders & the files
 set the defaultFolder to "/foo/bar"
 put the folders & the files
 ```
@@ -1079,7 +1079,7 @@ libs
 python.exe
 pythonw.exe
 tcl
->>> 
+>>>
 ```
 
 
@@ -1098,11 +1098,11 @@ cat(paste(list.files("bar"), collapse = "\n"), "\n")
 
 ```txt
 
-bar 
+bar
 1
 2
 a
-b 
+b
 
 ```
 
@@ -1143,7 +1143,7 @@ Both tests pass.
 
 ## REXX
 
-The following program works under Windows and used the Windows DIR command to list a bare-bones sorted list. 
+The following program works under Windows and used the Windows DIR command to list a bare-bones sorted list.
 
 ```rexx
 /*REXX program lists contents of current folder  (ala mode UNIX's  LS). */
@@ -1177,7 +1177,7 @@ print "rowcount: ";#f ROWCOUNT()		' how many rows in directory
 #f TIMEFORMAT("hh:mm:ss") 			'set format of file time or not
 count = #f rowcount()
 for i = 1 to count				' loop thru the row count
-print "info: ";#f nextfile$()			' file info         
+print "info: ";#f nextfile$()			' file info
 print "name: ";#f NAME$()			' Name of file
 print "size: ";#f SIZE()			' size
 print "date: ";#f DATE$()			' date
@@ -1299,7 +1299,7 @@ scala> new java.io.File("/").listFiles.sorted.foreach(println)
 /tmp
 /user
 /usr
-/var 
+/var
 ```
 
 
@@ -1353,17 +1353,17 @@ Implicit, by using the <i>String.glob</i> method:
 
 
 ```sml
-OS.Process.system "ls -a" 
+OS.Process.system "ls -a"
 ```
 
 Doing it all by yourself:
 
 ```sml
 
-local   (* make a sort function *) 
+local   (* make a sort function *)
   val rec insert = fn s :string =>fn [] => [s]
 	| ll as h::t => if s<=h then s::ll else h::insert s t;
-in 
+in
   val rec sort = fn [] => [] | h::t => insert h (sort t)
 end;
 

@@ -259,7 +259,7 @@ public:
 
 
 
-## C sharp
+## C#
 
 Fields can be made read-only (a runtime constant) with the '''readonly''' keyword.
 
@@ -273,7 +273,7 @@ Primitive types can be declared as a compile-time constant with the '''const''' 
 
 Parameters can be made readonly by preceding them with the '''in''' keyword. Again, when used on reference types, it just means the reference cannot be reassigned.
 
-```csharp
+```c#
 public void Method(in int x) {
     x = 5; //Compile error
 }
@@ -282,7 +282,7 @@ public void Method(in int x) {
 
 Local variables of primitive types can be declared as a compile-time constant with the '''const''' keyword.
 
-```csharp
+```c#
 public void Method() {
     const double sqrt5 = 2.236;
     ...
@@ -292,13 +292,13 @@ public void Method() {
 
 To make a type immutable, the programmer must write it in such a way that mutation is not possible. One important way to this is to use readonly properties. By not providing a setter, the property can only be assigned within the constructor.
 
-```csharp
+```c#
 public string Key { get; }
 ```
 
 On value types (which usually should be immutable from a design perspective), immutability can be enforced by applying the '''readonly''' modifier on the type. It will fail to compile if it contains any members that are not read-only.
 
-```csharp
+```c#
 
 public readonly struct Point
 {

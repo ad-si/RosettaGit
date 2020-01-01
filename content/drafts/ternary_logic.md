@@ -1140,9 +1140,9 @@ F | F ? T
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 /// <summary>

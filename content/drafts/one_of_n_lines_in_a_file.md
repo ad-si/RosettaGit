@@ -528,10 +528,10 @@ output
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 
     class Program
     {

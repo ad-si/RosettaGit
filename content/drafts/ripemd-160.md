@@ -18,16 +18,16 @@ tags = []
 
 '''RIPEMD-160''' is another hash function; it computes a 160-bit message digest.
 
-There is a [http://homes.esat.kuleuven.be/~bosselae/ripemd160.html RIPEMD-160 home page], with test vectors and [http://www.esat.kuleuven.be/~bosselae/ripemd/rmd160.txt pseudocode for RIPEMD-160]. 
+There is a [http://homes.esat.kuleuven.be/~bosselae/ripemd160.html RIPEMD-160 home page], with test vectors and [http://www.esat.kuleuven.be/~bosselae/ripemd/rmd160.txt pseudocode for RIPEMD-160].
 For padding the message, RIPEMD-160 acts like [[MD4]] (RFC 1320).
 
-Find the RIPEMD-160 message digest of a string of [[octet]]s. 
-Use the ASCII encoded string “<tt>Rosetta Code</tt>”. 
+Find the RIPEMD-160 message digest of a string of [[octet]]s.
+Use the ASCII encoded string “<tt>Rosetta Code</tt>”.
 You may either call an RIPEMD-160 library, or implement RIPEMD-160 in your language.
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -81,8 +81,8 @@ b3be159860842cebaa7174c8fff0aa9e50a5199f
 (ql:quickload 'ironclad)
 (defun string-to-ripemd-160 (str)
   "Return the RIPEMD-160 digest of the given ASCII string."
-  (ironclad:byte-array-to-hex-string 
-    (ironclad:digest-sequence :ripemd-160 
+  (ironclad:byte-array-to-hex-string
+    (ironclad:digest-sequence :ripemd-160
                               (ironclad:ascii-string-to-byte-array str)))
 
 (string-to-ripemd-160 "Rosetta Code")
@@ -152,19 +152,19 @@ Function RIPEMD_160(message As String) As String
   #Macro    f1(x, y, z)
     (x Xor y Xor z)               ' (0 <= j <= 15)
   #EndMacro
-  
+
   #Macro    f2(x, y, z)
     ((x And y) Or ((Not x) And z)) ' (16 <= j <= 31)
   #EndMacro
-  
+
   #Macro    f3(x, y, z)
     ((x Or (Not y)) Xor z)          ''(32 <= j <= 47)
   #EndMacro
-  
+
   #Macro    f4(x, y, z)
     ((x And z) Or (y And (Not z)))  ''(48 <= j <= 63)
   #EndMacro
-  
+
   #Macro   f5(x, y, z)
     (x Xor (y Or (Not z)))          ''(64 <= j <= 79)
   #EndMacro
@@ -201,7 +201,7 @@ Function RIPEMD_160(message As String) As String
     11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, _
     11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, _
     9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6 }
-    
+
   Dim As UByte s1(0 To ...) = _
   { 8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, _
     9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, _
@@ -579,41 +579,41 @@ Module Checkit {
 		r(48)=1, 9, 11, 10, 0, 8, 12, 4, 13, 3, 7, 15, 14, 5, 6, 2
 		r(64)=4, 0, 5, 9, 7, 12, 2, 10, 14, 1, 3, 8, 11, 6, 15, 13
 		k=r() : k*=4   ' k is a pointer to array. We have to multiply to make them offsets
-		
+
 		r1(0)=5, 14, 7, 0, 9, 2, 11, 4, 13, 6, 15, 8, 1, 10, 3, 12
 		r1(16)=6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2
 		r1(32)=15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13
 		r1(48)=8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14
 		r1(64)=12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11
-		
+
 		k=r1() : k*=4
-		
+
 		s(0)=11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8
 		s(16)=7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12
 		s(32)=11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5
 		s(48)=11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12
 		s(64)=9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6
-		
+
 		s1(0)=8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6
 		s1(16)=9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11
 		s1(32)=9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5
 		s1(48)=15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8
 		s1(64)=8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
-		
+
 		Dim Base 0, T(5), TT(5)
 		T(0)=lambda ->binary.xor(binary.xor(number,number),number)
 		T(1)=lambda (B,C,D)->binary.or(binary.and(B,C), binary.and(binary.not(B), D))
 		T(2)=lambda ->binary.xor(binary.or(number, binary.not(number)), number)
 		T(3)=lambda (B,C,D)->binary.or(binary.and(B,D), binary.and(C,binary.not(D)))
 		T(4)=lambda ->binary.xor(number, binary.or(number, binary.not(number)))
-		
+
 		\\ no need for variables we read form stack with number
 		TT(0)=lambda ->binary.xor(number, binary.or(number, binary.not(number)))
-		TT(1)=lambda (BB,CC,DD)->binary.or(binary.and(BB,DD), binary.and(CC,binary.not(DD)))	
+		TT(1)=lambda (BB,CC,DD)->binary.or(binary.and(BB,DD), binary.and(CC,binary.not(DD)))
 		TT(2)=lambda ->binary.xor(binary.or(number, binary.not(number)), number)
-		TT(3)=lambda (BB,CC,DD)->binary.or(binary.and(BB,CC), binary.and(binary.not(BB),DD))	
+		TT(3)=lambda (BB,CC,DD)->binary.or(binary.and(BB,CC), binary.and(binary.not(BB),DD))
 		TT(4)=lambda ->binary.xor(binary.xor(number,number),number)
-		
+
 		\\ return of this function is a lambda function
 		\\ all arrays are closures to this lambda
 		=lambda K(),K1(),TT(), T(),r(),r1(), s(), s1() (&message$, ansi as boolean=true, ansiid=1033)-> {
@@ -625,12 +625,12 @@ Module Checkit {
 			\\ we use a buffer of 64 bytes
 			buffer clear message as byte*64
 			l=len(message$)*if(ansi->1,2 )
-			if binary.and(l,63)>55 then  padding=64 
+			if binary.and(l,63)>55 then  padding=64
 			padding+= 64 - (l Mod 64)
 			l1=padding+l+1
-	
+
 			f64=binary.and(l,63)<>0
-	
+
 			blocks=l1 div 64
 rem
 			Print "blocks:";blocks
@@ -643,7 +643,7 @@ rem
 			for J=0 to 79 {
 				JJ=J DIV 16
 				PUSH binary.add(Binary.Rotate(binary.add(A,T(JJ)(B,C,D),eval(message ,r(j) as long),k(jj)), s(j)), e)
-				A = E : E = D : D = Binary.Rotate(C, 10) : C = B : READ B 
+				A = E : E = D : D = Binary.Rotate(C, 10) : C = B : READ B
 				PUSH binary.add(Binary.Rotate(binary.add(AA,TT(JJ)(BB,CC,DD),eval(message, r1(j) as long),k1(jj)),s1(j)),EE)
 				AA = EE : EE = DD : DD = Binary.Rotate(CC, 10) : CC = BB : READ BB
 			}
@@ -668,7 +668,7 @@ rem
 			if ansi then locale oldid
 			set fast
 			Sub PrepareBuffer()
-				
+
 				if l-acc>=64 then
 					LoadPart(64)
 				else.if blocks=1 then
@@ -709,14 +709,14 @@ rem
 		Data "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 		Data "9b752e45573d4b39f4dbd3323cab82bf63326bfb", String$("1234567890",8)
 rem		Data "52783243c1697bdbe16d37f97f68f08325dc1528", String$("a",1000000)
-		
+
 		While not empty
 			Read check$, text$
 			Print "RIPEMD160 for ";quote$(Left$(if$(len(text$)>30->left$(text$,27)+"...",  text$),30))
 			\\ pass text$ by reference
 			Display(RIPEMD(&text$))
 		End While
-		
+
 		sub Display(ans)
 			local answer$
 			for i=0 to len(ans)-1
@@ -726,7 +726,7 @@ rem		Data "52783243c1697bdbe16d37f97f68f08325dc1528", String$("a",1000000)
 			Print lcase$(answer$)=check$
 		end sub
 	}
-	TestHash Prepare_RiPeMd_160()	
+	TestHash Prepare_RiPeMd_160()
 }
 Checkit
 
@@ -837,7 +837,7 @@ RIPEMD160("Rosetta Code")
 ```
 
 
-Output: 
+Output:
 ```txt
 "b3be159860842cebaa7174c8fff0aa9e50a5199f"
 ```
@@ -891,11 +891,11 @@ say ripemd160_hex("Rosetta Code")
 Crypto-JS v2.0.0
 http:#code.google.com/p/crypto-js/
 Copyright (c) 2009, Jeff Mott. All rights reserved.
- 
+
 sub rotl($n, $b) { $n +< $b +| $n +> (32 - $b) }
 sub prefix:<m^> { +^$^x % 2**32 }
 sub infix:<m+> { ($^x + $^y) % 2**32 }
- 
+
 constant r1 = <
     0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
     7 4 13 1 10 6 15 3 12 0 9 5 2 14 11 8
@@ -924,7 +924,7 @@ constant s2 = <
     15 5 8 11 14 14 6 14 6 9 12 9 12 5 15 8
     8 5 12 9 12 5 14 6 8 13 6 5 15 13 11 11
 >;
-constant F = 
+constant F =
     * +^ * +^ *,
     { ($^x +& $^y) +| (m^$^x +& $^z) },
     (* +| m^*) +^ *,
@@ -933,7 +933,7 @@ constant F =
 ;
 constant K1 = flat | <0x00000000 0x5a827999 0x6ed9eba1 0x8f1bbcdc 0xa953fd4e> »xx» 16;
 constant K2 = flat | <0x50a28be6 0x5c4dd124 0x6d703ef3 0x7a6d76e9 0x00000000> »xx» 16;
- 
+
 our proto rmd160($) returns Blob {*}
 multi rmd160(Str $s) { rmd160 $s.encode: 'ascii' }
 multi rmd160(Blob $data) {
@@ -941,17 +941,17 @@ multi rmd160(Blob $data) {
     push @b, 0 until (8*@b-448) %% 512;
     my $len = 8 * $data.elems;
     push @b, | gather for ^8 { take $len % 256; $len div= 256 }
- 
+
     my @word = gather for @b -> $a, $b, $c, $d {
         take reduce * *256 + *, $d, $c, $b, $a;
     }
- 
+
     my @h = 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476, 0xc3d2e1f0;
     loop (my $i = 0; $i < @word; $i += 16) {
         my @X = my @Y = @h;
         for ^80 -> $j {
             my $T = rotl(
-                @X[0] m+ F[$j div 16](|@X[1..3]) m+ (@word[$i+r1[$j]] // 0) m+ K1[$j], s1[$j]              
+                @X[0] m+ F[$j div 16](|@X[1..3]) m+ (@word[$i+r1[$j]] // 0) m+ K1[$j], s1[$j]
             ) m+ @X[4];
             @X = @X[4], $T, @X[1], rotl(@X[2], 10) % 2**32, @X[3];
             $T = rotl(
@@ -965,7 +965,7 @@ multi rmd160(Blob $data) {
         for ^4 { take $word % 256; $word div= 256 }
     }
 }
- 
+
 say rmd160 "Rosetta Code";
 ```
 
@@ -1001,7 +1001,7 @@ The standard include file ripemd160.e is also written in Phix, and is reproduced
 ```Phix
 --
 -- builtins\ripemd160.e
--- 
+--
 ### ==============
 
 --
@@ -1043,18 +1043,18 @@ global function ripemd160(string message, bool asString=true, atom pMem=NULL)
 --
 -- Calculate the ripe-md-160 checksum.
 --
--- if asString is true (the default), returns a string representation of the 
+-- if asString is true (the default), returns a string representation of the
 --  checksum (and pMem is ignored)
 -- if asString is false, returns pMem (for want of anything better), which
 --  must be a non-NULL pointer to at least 20 bytes of memory.
--- 
+--
     atom h0 = #67452301,
          h1 = #EFCDAB89,
          h2 = #98BADCFE,
          h3 = #10325476,
          h4 = #C3D2E1F0,
          mraw, t, tt
- 
+
     integer l = length(message),
             padding = 64 - mod(l+1,64)
     if padding<8 then padding += 64 end if
@@ -1140,13 +1140,13 @@ end function
 
 (de mod32 (N)
    (& N `(hex "FFFFFFFF")) )
- 
+
 (de not32 (N)
    (x| N `(hex "FFFFFFFF")) )
- 
+
 (de add32 @
    (mod32 (pass +)) )
- 
+
 (de leftRotate (X C)
    (| (mod32 (>> (- C) X)) (>> (- 32 C) X)) )
 
@@ -1169,7 +1169,7 @@ end function
       (H0 `(hex "67452301")
          H1 `(hex "EFCDAB89")
          H2 `(hex "98BADCFE")
-         H3 `(hex "10325476") 
+         H3 `(hex "10325476")
          H4 `(hex "C3D2E1F0") )
       (while Str
          (let
@@ -1189,7 +1189,7 @@ end function
                            Func2 '(x| B2 (| C2 (not32 D2)))
                            Hex1 0
                            Hex2 `(hex "50A28BE6") ) )
-                     ((>= 32 I) 
+                     ((>= 32 I)
                         (setq
                            Func1 '(| (& B1 C1) (& (not32 B1) D1))
                            Func2 '(| (& B2 D2) (& C2 (not32 D2)))
@@ -1224,7 +1224,7 @@ end function
                               Hex1 )
                            (pop '*R160-S1) )
                         E1 )
-                     Tmp2      
+                     Tmp2
                      (add32
                         (leftRotate
                            (add32
@@ -1238,8 +1238,8 @@ end function
                      E1 D1
                      D1 (leftRotate C1 10)
                      C1 B1
-                     B1 Tmp1 
-                     
+                     B1 Tmp1
+
                      A2 E2
                      E2 D2
                      D2 (leftRotate C2 10)
@@ -1258,7 +1258,7 @@ end function
                (link (& N 255))
                (setq N (>> 8 N)) ) ) ) ) )
 
-(let Str "Rosetta Code" 
+(let Str "Rosetta Code"
    (println
       (pack
          (mapcar
@@ -1268,7 +1268,7 @@ end function
       (pack
          (mapcar
             '((B) (pad 2 (hex B)))
-            (native 
+            (native
                "libcrypto.so"
                "RIPEMD160"
                '(B . 20)
@@ -1370,7 +1370,7 @@ Type "copyright", "credits" or "license()" for more information.
 >>> h.update(b"Rosetta Code")
 >>> h.hexdigest()
 'b3be159860842cebaa7174c8fff0aa9e50a5199f'
->>> 
+>>>
 ```
 
 
@@ -1555,7 +1555,7 @@ object RosettaRIPEMD160 extends App {
   messageDigest.update(raw, 0, raw.length)
   val out = Array.fill[Byte](messageDigest.getDigestSize())(0)
   messageDigest.doFinal(out, 0)
-  
+
   assert(out.map("%02x".format(_)).mkString == "b3be159860842cebaa7174c8fff0aa9e50a5199f")
 }
 ```
@@ -1593,9 +1593,9 @@ b3be159860842cebaa7174c8fff0aa9e50a5199f
 
 ## Swift
 
-Full implementation on [http://github.com/CryptoCoinSwift/RIPEMD-Swift/ Github]. A single block is processed as shown below. 
+Full implementation on [http://github.com/CryptoCoinSwift/RIPEMD-Swift/ Github]. A single block is processed as shown below.
 
-To apply RIPEMD to "Rosetta Code" takes a single block. The message itself is put in the first 3 words. It's followed by 0x80 in the fourth word.The last two UInt32's (words) are used to specify the length of the message in bits. 
+To apply RIPEMD to "Rosetta Code" takes a single block. The message itself is put in the first 3 words. It's followed by 0x80 in the fourth word.The last two UInt32's (words) are used to specify the length of the message in bits.
 
 Everything is in little endian, so "Rose" becomes "esoR" becomes 0x65_73_6f_52
 
@@ -1612,62 +1612,62 @@ public func ~<< (lhs: UInt32, rhs: Int) -> UInt32 {
 
     public struct Block {
         public init() {}
-        
+
         var message: [UInt32] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        
+
         // Initial values
         var h₀: UInt32 = 0x67452301
         var h₁: UInt32 = 0xEFCDAB89
         var h₂: UInt32 = 0x98BADCFE
         var h₃: UInt32 = 0x10325476
         var h₄: UInt32 = 0xC3D2E1F0
-        
+
         public var hash: [UInt32] {
             return [h₀, h₁, h₂, h₃, h₄]
         }
-        
+
         // FIXME: Make private as soon as tests support that
         public mutating func compress (message: [UInt32]) -> () {
             assert(count(message) == 16, "Wrong message size")
-            
+
             var Aᴸ = h₀
             var Bᴸ = h₁
             var Cᴸ = h₂
             var Dᴸ = h₃
             var Eᴸ = h₄
-            
+
             var Aᴿ = h₀
             var Bᴿ = h₁
             var Cᴿ = h₂
             var Dᴿ = h₃
             var Eᴿ = h₄
-            
+
             for j in 0...79 {
                 // Left side
                 let wordᴸ = message[r.Left[j]]
                 let functionᴸ = f(j)
-                
+
                 let Tᴸ: UInt32 = ((Aᴸ &+ functionᴸ(Bᴸ,Cᴸ,Dᴸ) &+ wordᴸ &+ K.Left[j]) ~<< s.Left[j]) &+ Eᴸ
-                
+
                 Aᴸ = Eᴸ
                 Eᴸ = Dᴸ
                 Dᴸ = Cᴸ ~<< 10
                 Cᴸ = Bᴸ
                 Bᴸ = Tᴸ
-                
+
                 // Right side
                 let wordᴿ = message[r.Right[j]]
                 let functionᴿ = f(79 - j)
-                
+
                 let Tᴿ: UInt32 = ((Aᴿ &+ functionᴿ(Bᴿ,Cᴿ,Dᴿ) &+ wordᴿ &+ K.Right[j]) ~<< s.Right[j]) &+ Eᴿ
-                
+
                 Aᴿ = Eᴿ
                 Eᴿ = Dᴿ
                 Dᴿ = Cᴿ ~<< 10
                 Cᴿ = Bᴿ
                 Bᴿ = Tᴿ
             }
-            
+
             let T = h₁ &+ Cᴸ &+ Dᴿ
             h₁ = h₂ &+ Dᴸ &+ Eᴿ
             h₂ = h₃ &+ Eᴸ &+ Aᴿ
@@ -1675,7 +1675,7 @@ public func ~<< (lhs: UInt32, rhs: Int) -> UInt32 {
             h₄ = h₀ &+ Bᴸ &+ Cᴿ
             h₀ = T
         }
-        
+
         public func f (j: Int) -> ((UInt32, UInt32, UInt32) -> UInt32) {
             switch j {
             case let index where j < 0:
@@ -1696,10 +1696,10 @@ public func ~<< (lhs: UInt32, rhs: Int) -> UInt32 {
                 return {(_, _, _) in 0 }
             }
         }
-        
+
         public enum K {
             case Left, Right
-            
+
             public subscript(j: Int) -> UInt32 {
                 switch j {
                 case let index where j < 0:
@@ -1721,10 +1721,10 @@ public func ~<< (lhs: UInt32, rhs: Int) -> UInt32 {
                     }
             }
         }
-        
+
         public enum r {
             case Left, Right
-            
+
             public subscript (j: Int) -> Int {
                 switch j {
                 case let index where j < 0:
@@ -1767,12 +1767,12 @@ public func ~<< (lhs: UInt32, rhs: Int) -> UInt32 {
                 }
             }
 
-            
+
         }
-        
+
         public enum s {
             case Left, Right
-            
+
             public subscript(j: Int) -> Int {
                 switch j {
                 case let index where j < 0:
@@ -1795,9 +1795,9 @@ public func ~<< (lhs: UInt32, rhs: Int) -> UInt32 {
             }
 
         }
-        
-        
-        
+
+
+
     }
 ```
 
@@ -1812,7 +1812,7 @@ block.compress(message)
 let digest = NSString(format: "%2x%2x%2x%2x%2x", UInt32(bigEndian: block.hash[0]), UInt32(bigEndian: block.hash[1]),UInt32(bigEndian: block.hash[2]), UInt32(bigEndian: block.hash[3]), UInt32(bigEndian: block.hash[4]))
 println(digest)
 ```
- 
+
 {{out}}
 
 ```txt

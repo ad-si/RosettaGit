@@ -288,7 +288,7 @@ Compile with -lcrypto
 
 This requires [https://www.nuget.org/packages/NUnit/ NUnit package] to compile.
 
-```csharp
+```c#
 
 using System;
 using System.Linq;

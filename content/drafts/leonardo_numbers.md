@@ -99,7 +99,7 @@ procedure Leonardo is
      (N      : Natural;
       Step   : Natural := 1;
       First  : Natural := 1;
-      Second : Natural := 1) return Natural   is 
+      Second : Natural := 1) return Natural   is
       L : array (0..1) of Natural := (First, Second);
 	begin
 		for i in 1 .. N loop
@@ -222,7 +222,7 @@ end leo
 on run
     set leonardo to leo(1, 1, 1)
     set fibonacci to leo(0, 1, 0)
-    
+
     unlines({"First 25 Leonardo numbers:", ¬
         twoLines(take(25, leonardo)), "", ¬
         "First 25 Fibonacci numbers:", ¬
@@ -293,7 +293,7 @@ on intercalate(sep, xs)
     return s
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -471,10 +471,10 @@ end
 ```txt
 
 Numeros de Leonardo (1,1,1):
-1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049 
+1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049
 
 Numeros de Fibonacci (0,1,0):
-0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368
 
 ```
 
@@ -543,7 +543,7 @@ Runs on the 1k RAM model with room to spare; hence the long(ish) variable names.
 
 It's a shame when fonts don't make much of a distinction between <tt>l</tt> lower-case L and <tt>1</tt> the number One.
 
-```bbcbasic>REM 
+```bbcbasic>REM
 leonardo
 :
 PRINT "Enter values of L0, L1, and ADD, separated by commas:"
@@ -644,11 +644,11 @@ This implementation fulfills the task requirements which state that the first 2 
 #include<stdio.h>
 
 void leonardo(int a,int b,int step,int num){
-	
+
 	int i,temp;
-	
+
 	printf("First 25 Leonardo numbers : \n");
-	
+
 	for(i=1;i<=num;i++){
 		if(i==1)
 			printf(" %d",a);
@@ -666,13 +666,13 @@ void leonardo(int a,int b,int step,int num){
 int main()
 {
 	int a,b,step;
-	
+
 	printf("Enter first two Leonardo numbers and increment step : ");
-	
+
 	scanf("%d%d%d",&a,&b,&step);
-	
+
 	leonardo(a,b,step,25);
-	
+
 	return 0;
 }
 
@@ -734,11 +734,11 @@ Fibonacci Numbers: 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 41
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 using System;
 using System.Linq;
 
@@ -831,7 +831,7 @@ puts "Leonardo numbers with fibonacci parameters:\n#{ leonardo(0,1,0,25) }"
 
 ```txt
 
-First 25 Leonardo numbers: 
+First 25 Leonardo numbers:
 [1, 1, 3, 5, 9, 15, 25, 41, 67, 109, 177, 287, 465, 753, 1219, 1973, 3193, 5167, 8361, 13529, 21891, 35421, 57313, 92735, 150049]
 Leonardo numbers with fibonacci parameters:
 [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368]
@@ -891,7 +891,7 @@ let leonardo = leo 1 1 1
 let fibonacci = leo 0 1 0
 
 [<EntryPoint>]
-let main _ = 
+let main _ =
     let leoNums = Seq.take 25 leonardo |> Seq.chunkBySize 16
     printfn "First 25 of the (1, 1, 1) Leonardo numbers:\n%A" leoNums
     Console.WriteLine()
@@ -925,9 +925,9 @@ IN: rosetta-code.leonardo-numbers
 
 : first25-leonardo ( vector add -- seq )
     23 swap '[ dup 2 tail* sum _ + over push ] times ;
-    
+
 : print-leo ( seq -- ) [ pprint bl ] each nl ;
-    
+
 "First 25 Leonardo numbers:" print
 V{ 1 1 } 1 first25-leonardo print-leo
 
@@ -950,11 +950,11 @@ First 25 Leonardo numbers with L(0)=0, L(1)=1, add=1:
 
 ## Fortran
 
-Happily, no monster values result for the trial run, so ordinary 32-bit integers suffice. The source style uses the F90 facilities only to name the subroutine being ended (i.e. <code>END SUBROUTINE LEONARDO</code> rather than just <code>END</code>) and the I0 format code that shows an integer without a fixed space allowance, convenient in produced well-formed messages. The "$" format code signifies that the end of output from its WRITE statement should not trigger the starting of a new line for the next WRITE statement, convenient when rolling a sequence of values to a line of output one-by-one as they are concocted. Otherwise, the values would have to be accumulated in a suitable array and then written in one go. 
+Happily, no monster values result for the trial run, so ordinary 32-bit integers suffice. The source style uses the F90 facilities only to name the subroutine being ended (i.e. <code>END SUBROUTINE LEONARDO</code> rather than just <code>END</code>) and the I0 format code that shows an integer without a fixed space allowance, convenient in produced well-formed messages. The "$" format code signifies that the end of output from its WRITE statement should not trigger the starting of a new line for the next WRITE statement, convenient when rolling a sequence of values to a line of output one-by-one as they are concocted. Otherwise, the values would have to be accumulated in a suitable array and then written in one go.
 
 Many versions of Fortran have enabled parameters to be optionally supplied and F90 has standardised a protocol, also introducing a declaration syntax that can specify multiple attributes in one statement which in this case would be <code>INTEGER, OPTIONAL:: AF</code> rather than two statements concerning AF. However, in a test run with <code>CALL LEONARDO(25,1,1)</code> the Compaq F90/95 compiler rejected this attempt because there was another invocation with four parameters, not three, in the same program unit. By adding the rigmarole for declaring a MODULE containing the subroutine LEONARDO, its worries would be assuaged. Many compilers (and linkers, for separately-compiled routines) would check neither the number nor the type of parameters so no such complaint would be made - but when run, the code might produce wrong results or crash.
 
-The method relies on producing a sequence of values, rather than calculating L(n) from the start each time a value from the sequence is required. 
+The method relies on producing a sequence of values, rather than calculating L(n) from the start each time a value from the sequence is required.
 ```Fortran
       SUBROUTINE LEONARDO(LAST,L0,L1,AF)	!Show the first LAST values of the sequence.
        INTEGER LAST	!Limit to show.
@@ -990,7 +990,7 @@ The method relies on producing a sequence of values, rather than calculating L(n
 
       CALL LEONARDO(25,1,1,1)	!The first 25 Leonardo numbers.
       CALL LEONARDO(25,0,1,0)	!Deviates to give the Fibonacci sequence.
-      END 
+      END
 ```
 
 Output:
@@ -1357,7 +1357,7 @@ An array is used for caching, with `.[n]` storing the value L(n).
 def Leonardo(zero; one; incr):
   def leo(n):
     if .[n] then .
-    else leo(n-1)   # optimization of leo(n-2)|leo(n-1)  
+    else leo(n-1)   # optimization of leo(n-2)|leo(n-1)
     | .[n] = .[n-1] + .[n-2] +  incr
     end;
   . as $n | [zero,one] | leo($n) | .[$n];
@@ -1509,14 +1509,14 @@ Fibonacci numbers:
 
 
 ```Maple
-L := proc(n, L_0, L_1, add) 
-if n = 0 then 
-  return L_0; 
-elif n = 1 then 
-  return L_1; 
-else 
-  return L(n - 1) + L(n - 2) + add; 
-end if; 
+L := proc(n, L_0, L_1, add)
+if n = 0 then
+  return L_0;
+elif n = 1 then
+  return L_1;
+else
+  return L(n - 1) + L(n - 2) + add;
+end if;
 end proc:
 
 Leonardo := n -> (L(1, 1, 1),[seq(0..n - 1)])
@@ -1533,11 +1533,11 @@ Fibonacci := n -> (L(0, 1, 0), [seq(0..n - 1)])
 
 =={{Header|Mathematica}}==
 
-{{incorrect|Mathematica| 
+{{incorrect|Mathematica|
 
- The wrong formula is being used (the 4<sup>th</sup> formula is being used, instead, the 3<sup>rd</sup> formula is to be used. 
+ The wrong formula is being used (the 4<sup>th</sup> formula is being used, instead, the 3<sup>rd</sup> formula is to be used.
 
- Also, output is missing for the Fibonacci series calculated via the Leonardo series, the 3<sup>rd</sup> formula. 
+ Also, output is missing for the Fibonacci series calculated via the Leonardo series, the 3<sup>rd</sup> formula.
 
 }}
 
@@ -1626,7 +1626,7 @@ END Leonardo.
 ```Nim
 import strformat
 
-proc leonardoNumbers(count: int, L0: int = 1, 
+proc leonardoNumbers(count: int, L0: int = 1,
                      L1: int = 1, ADD: int = 1) =
   var t = 0
   var (L0_loc, L1_loc) = (L0, L1)
@@ -1656,7 +1656,7 @@ Leonardo Numbers:
    1973   3193   5167   8361  13529
   21891  35421  57313  92735 150049
 
-Fibonacci Numbers: 
+Fibonacci Numbers:
       0      1      1      2      3
       5      8     13     21     34
      55     89    144    233    377
@@ -1786,28 +1786,28 @@ EnableExplicit
 #N = 25
 
 Procedure leon_R(a.i, b.i, s.i = 1, n.i = #N)
-  
+
   If n>2
-    Print(Space(1) + Str(a + b + s))    
+    Print(Space(1) + Str(a + b + s))
     ProcedureReturn leon_R(b, a + b + s, s, n-1)
-  EndIf  
-  
+  EndIf
+
 EndProcedure
 
 If OpenConsole()
-  
+
   Define r$
-  
+
   Print("Enter first two Leonardo numbers and increment step (separated by space) : ")
   r$ = Input()
-  PrintN("First " + Str(#N) + " Leonardo numbers : ")  
-  Print(StringField(r$, 1, Chr(32)) + Space(1) + 
+  PrintN("First " + Str(#N) + " Leonardo numbers : ")
+  Print(StringField(r$, 1, Chr(32)) + Space(1) +
         StringField(r$, 2, Chr(32)))
-  
+
   leon_R(Val(StringField(r$, 1, Chr(32))),
-         Val(StringField(r$, 2, Chr(32))),           
+         Val(StringField(r$, 2, Chr(32))),
          Val(StringField(r$, 3, Chr(32))))
-  
+
   r$ = Input()
 EndIf
 
@@ -1862,9 +1862,9 @@ print out
 ```txt
 
 First 25 Leonardo numbers:
-1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049 
+1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049
 Leonardo numbers with fibonacci parameters:
-0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368
 
 ```
 
@@ -1973,7 +1973,7 @@ First 25 Fibonacci numbers:
 
 leonardo_numbers <- function(add = 1, l0 = 1, l1 = 1, how_many = 25) {
 	result <- c(l0, l1)
-	for (i in 3:how_many) 
+	for (i in 3:how_many)
 		result <- append(result, result[[i - 1]] + result[[i - 2]] + add)
 	result
 }
@@ -1990,9 +1990,9 @@ cat(leonardo_numbers(0, 0, 1), "\n")
 ```txt
 
 First 25 Leonardo numbers
-1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049 
+1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049
 First 25 Leonardo numbers from 0, 1 with add number = 0
-0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368
 
 ```
 
@@ -2116,7 +2116,7 @@ func leonardo()
               n1=n0+n1+add
               n0=temp
              see " "+ n1
-        next 
+        next
         see nl
 
 ```
@@ -2141,7 +2141,7 @@ Enumerators are nice for this.
 ```ruby
 def leonardo(l0=1, l1=1, add=1)
   return to_enum(__method__,l0,l1,add) unless block_given?
-  loop do  
+  loop do
     yield l0
     l0, l1 = l1, l0+l1+add
   end
@@ -2189,9 +2189,9 @@ end
 
 ```txt
 Leonardo add=1
- 1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049 
+ 1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049
 Fibonacci add=0
- 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 
+ 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368
 
 ```
 
@@ -2404,7 +2404,7 @@ fcn leonardoNumber(n, n1=1,n2=1,addnum=1){
 println("The first 25 Leonardo Numbers:");
 foreach n in (25){ print(leonardoNumber(n)," ") }
 println("\n");
- 
+
 println("The first 25 Fibonacci Numbers:");
 foreach n in (25){ print(leonardoNumber(n, 0,1,0)," ") }
 println();
@@ -2415,10 +2415,10 @@ println();
 ```txt
 
 The first 25 Leonardo Numbers:
-1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049 
+1 1 3 5 9 15 25 41 67 109 177 287 465 753 1219 1973 3193 5167 8361 13529 21891 35421 57313 92735 150049
 
 The first 25 Fibonacci Numbers:
-0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368
 
 ```
 

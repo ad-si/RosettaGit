@@ -138,7 +138,7 @@ int writeToIntArray(int *array, size_t array_sz, int loc, int val)
 ==[[C sharp|C #]]==
 '''Language Version:''' 1.0+
 
-```csharp
+```c#
 
         public void WriteToIntArray(int[] array, int loc, int val)
         {

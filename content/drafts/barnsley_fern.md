@@ -177,40 +177,40 @@ This implementation requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ W
 #include<time.h>
 
 void barnsleyFern(int windowWidth, unsigned long iter){
-	
+
 	double x0=0,y0=0,x1,y1;
 	int diceThrow;
 	time_t t;
 	srand((unsigned)time(&t));
-	
+
 	while(iter>0){
 		diceThrow = rand()%100;
-		
+
 		if(diceThrow==0){
 			x1 = 0;
 			y1 = 0.16*y0;
 		}
-		
+
 		else if(diceThrow>=1 && diceThrow<=7){
 			x1 = -0.15*x0 + 0.28*y0;
 			y1 = 0.26*x0 + 0.24*y0 + 0.44;
 		}
-		
+
 		else if(diceThrow>=8 && diceThrow<=15){
 			x1 = 0.2*x0 - 0.26*y0;
 			y1 = 0.23*x0 + 0.22*y0 + 1.6;
 		}
-		
+
 		else{
 			x1 = 0.85*x0 + 0.04*y0;
 			y1 = -0.04*x0 + 0.85*y0 + 1.6;
 		}
-		
+
 		putpixel(30*x1 + windowWidth/2.0,30*y1,GREEN);
-		
+
 		x0 = x1;
 		y0 = y1;
-		
+
 		iter--;
 	}
 
@@ -219,18 +219,18 @@ void barnsleyFern(int windowWidth, unsigned long iter){
 int main()
 {
 	unsigned long num;
-	
+
 	printf("Enter number of iterations : ");
 	scanf("%ld",&num);
-	
+
 	initwindow(500,500,"Barnsley Fern");
-	
+
 	barnsleyFern(500,num);
-	
+
 	getch();
-	
+
 	closegraph();
-	
+
 	return 0;
 }
 
@@ -310,7 +310,7 @@ public:
         fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
         fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
         GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
-        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 
+        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
             FILE_ATTRIBUTE_NORMAL, NULL );
         WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
         WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
@@ -339,11 +339,11 @@ public:
         float x = 0, y = 0; HDC dc = bmp.getDC();
         int hs = BMP_SIZE >> 1;
         for( int f = 0; f < ITERATIONS; f++ ) {
-            SetPixel( dc, hs + static_cast<int>( x * 55.f ), 
-                      BMP_SIZE - 15 - static_cast<int>( y * 55.f ), 
-                      RGB( static_cast<int>( rnd() * 80.f ) + 20, 
-                           static_cast<int>( rnd() * 128.f ) + 128, 
-                           static_cast<int>( rnd() * 80.f ) + 30 ) ); 
+            SetPixel( dc, hs + static_cast<int>( x * 55.f ),
+                      BMP_SIZE - 15 - static_cast<int>( y * 55.f ),
+                      RGB( static_cast<int>( rnd() * 80.f ) + 20,
+                           static_cast<int>( rnd() * 128.f ) + 128,
+                           static_cast<int>( rnd() * 80.f ) + 30 ) );
             getXY( x, y );
         }
         bmp.saveBitmap( "./bf.bmp" );
@@ -352,7 +352,7 @@ private:
     void getXY( float& x, float& y ) {
         float g, xl, yl;
         g = rnd();
-        if( g < .01f ) { xl = 0; yl = .16f * y; } 
+        if( g < .01f ) { xl = 0; yl = .16f * y; }
         else if( g < .07f ) {
             xl = .2f * x - .26f * y;
             yl = .23f * x + .22f * y + 1.6f;
@@ -372,16 +372,16 @@ private:
 };
 int main( int argc, char* argv[]) {
     srand( static_cast<unsigned>( time( 0 ) ) );
-    fern f; f.draw(); return 0;    
+    fern f; f.draw(); return 0;
 }
 
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -606,7 +606,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 ```fortran
 
-!Generates an output file "plot.dat" that contains the x and y coordinates 
+!Generates an output file "plot.dat" that contains the x and y coordinates
 !for a scatter plot that can be visualized with say, GNUPlot
 program BarnsleyFern
 implicit none
@@ -770,7 +770,7 @@ set terminal png font arial 12 size 640,640
 set print dfn append
 set output ofn
 unset border; unset xtics; unset ytics; unset key;
-set size square 
+set size square
 set title ttl font "Arial:Bold,12"
 n=100000; max=100; x=y=xw=yw=p=0;
 randgp(top) = floor(rand(0)*top)
@@ -787,7 +787,7 @@ set output
 unset print
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -937,22 +937,22 @@ main = do
 
 ```j
 require 'plot'
- 
+
 f=: |: 0 ". ];._2 noun define
   0     0     0    0.16   0 0      0.01
   0.85 -0.04  0.04 0.85   0 1.60   0.85
   0.20  0.23 -0.26 0.22   0 1.60   0.07
  -0.15  0.26  0.28 0.24   0 0.44   0.07
 )
- 
+
 fm=: {&(|: 2 2 $ f)
 fa=: {&(|: 4 5 { f)
 prob=: (+/\ 6 { f) I. ?@0:
- 
+
 ifs=: (fa@] + fm@] +/ .* [) prob
 getPoints=: ifs^:(<200000)
 plotFern=: 'dot;grids 0 0;tics 0 0;labels 0 0;color green' plot ;/@|:
- 
+
    plotFern getPoints 0 0
 ```
 
@@ -1069,7 +1069,7 @@ function pBarnsleyFern(canvasId,lim) {
 }
 
 ```
- 
+
 '''Executing:'''
 
 ```html
@@ -1083,7 +1083,7 @@ function pBarnsleyFern(canvasId,lim) {
 </html>
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -1133,10 +1133,10 @@ end
 import java.awt.*
 import java.awt.image.BufferedImage
 import javax.swing.*
- 
+
 class BarnsleyFern(private val dim: Int) : JPanel() {
     private val img: BufferedImage
-    
+
     init {
         preferredSize = Dimension(dim, dim)
         background = Color.black
@@ -1162,11 +1162,11 @@ class BarnsleyFern(private val dim: Int) : JPanel() {
             else if (r <= 0.93) {
                 tmpx = 0.2  * x - 0.26 * y
                 tmpy = 0.23 * x + 0.22 * y + 1.6
-            } 
+            }
             else {
                 tmpx = -0.15 * x + 0.28 * y
                 tmpy =  0.26 * x + 0.24 * y + 0.44
-            }               
+            }
             x = tmpx
             y = tmpy
             img.setRGB(Math.round(w / 2.0 + x * w / 11.0).toInt(),
@@ -1177,9 +1177,9 @@ class BarnsleyFern(private val dim: Int) : JPanel() {
     override protected fun paintComponent(gg: Graphics) {
         super.paintComponent(gg)
         val g = gg as Graphics2D
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON) 
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         g.drawImage(img, 0, 0, null)
-    }   
+    }
 }
 
 fun main(args: Array<String>) {
@@ -1207,9 +1207,9 @@ Needs L&Ouml;VE 2D Engine
 g = love.graphics
 wid, hei = g.getWidth(), g.getHeight()
 
-function choose( i, j ) 
+function choose( i, j )
   local r = math.random()
-  if r < .01 then return 0, .16 * j 
+  if r < .01 then return 0, .16 * j
     elseif r < .07 then return .2 * i - .26 * j, .23 * i + .22 * j + 1.6
     elseif r < .14 then return -.15 * i + .28 * j, .26 * i + .24 * j + .44
     else return .85 * i + .04 * j, -.04 * i + .85 * j + 1.6
@@ -1219,9 +1219,9 @@ function createFern( iterations )
   local hw, x, y, scale = wid / 2, 0, 0, 45
   local pts = {}
   for k = 1, iterations do
-    pts[1] = { hw + x * scale, hei - 15 - y * scale, 
-               20 + math.random( 80 ), 
-               128 + math.random( 128 ), 
+    pts[1] = { hw + x * scale, hei - 15 - y * scale,
+               20 + math.random( 80 ),
+               128 + math.random( 128 ),
                20 + math.random( 80 ), 150 }
     g.points( pts )
     x, y = choose( x, y )
@@ -1279,7 +1279,7 @@ const
 
 var img: array[width * height * 3, char]
 
-proc floatToPixel(x,y:float): tuple[a:int,b:int] = 
+proc floatToPixel(x,y:float): tuple[a:int,b:int] =
   var px = abs(x - minX) / abs(maxX - minX)
   var py = abs(y - minY) / abs(maxY - minY)
 
@@ -1300,7 +1300,7 @@ proc toString(a: openArray[char]): string =
   for ch in items(a):
     result.add(ch)
 
-proc drawPixel(x,y:float) = 
+proc drawPixel(x,y:float) =
   var (a,b) = floatToPixel(x,y)
   var offset = pixelToOffset(a,b)
 
@@ -1433,8 +1433,8 @@ pBarnsleyFern(530,100000);  \\ BarnsleyFern.png
 }
 
 ```
- 
-   
+
+
 {{Output}}
 
 
@@ -1513,7 +1513,7 @@ $png.write: 'Barnsley-fern-perl6.png';
 ## Phix
 
 {{libheader|pGUI}}
-This file is included in the distro as 
+This file is included in the distro as
 [[File:PhixBarnsleyFern.png|250px|thumb|right]]
 
 ```Phix
@@ -1535,7 +1535,7 @@ integer {width, height} = IupGetIntInt(canvas, "DRAWSIZE")
                  iff(r<=8? { 0.20*x-0.26*y, 0.23*x+0.22*y+1.60} :
                  iff(r<=15?{-0.15*x+0.28*y, 0.26*x+0.24*y+0.44} :
                            { 0.85*x+0.04*y,-0.04*x+0.85*y+1.60})))
-        cdCanvasPixel(cddbuffer, width/2+x*60, y*60, #00FF00) 
+        cdCanvasPixel(cddbuffer, width/2+x*60, y*60, #00FF00)
     end for
     cdCanvasFlush(cddbuffer)
     return IUP_DEFAULT
@@ -1599,19 +1599,19 @@ main()
       ((< R 93)
          (list
             (- (*/ 0.2 X 1.0) (*/ 0.26 Y 1.0))
-            (+ (*/ 0.23 X 1.0) (*/ 0.22 Y 1.0) 1.6) ) ) 
+            (+ (*/ 0.23 X 1.0) (*/ 0.22 Y 1.0) 1.6) ) )
       (T
          (list
             (+ (*/ -0.15 X 1.0) (*/ 0.28 Y 1.0))
             (+ (*/ 0.26 X 1.0) (*/ 0.24 Y 1.0) 0.44) ) ) ) )
 (let
    (X 0
-      Y 0 
+      Y 0
       G (make (do 640 (link (need 640 0)))) )
    (do 100000
       (let ((A B) (calc (rand 0 99) X Y))
          (setq X A  Y B)
-         (set (nth G (gridY Y) (gridX X)) 1) ) ) 
+         (set (nth G (gridY Y) (gridX X)) 1) ) )
    (out "fern.pbm"
       (prinl "P1")
       (prinl 640 " " 640)
@@ -1682,11 +1682,11 @@ DataSection
   R100: : Data.d 0.0,0.0,0.0,0.16,0.0
 EndDataSection
 
-Procedure Barnsley(height.i) 
+Procedure Barnsley(height.i)
   Define x.d, y.d, xn.d, yn.d, v1.d, v2.d, v3.d, v4.d, v5.d,
          f.d=height/10.6,
          offset.i=Int(height/4-height/40),
-         n.i, r.i  
+         n.i, r.i
   For n=1 To height*50
     r=Random(99,0)
     Select r
@@ -1696,7 +1696,7 @@ Procedure Barnsley(height.i)
       Default       : Restore R100
     EndSelect
     Read.d v1 : Read.d v2 : Read.d v3 : Read.d v4 : Read.d v5
-    xn=v1*x+v2*y : yn=v3*x+v4*y+v5    
+    xn=v1*x+v2*y : yn=v3*x+v4*y+v5
     x=xn : y=yn
     Plot(offset+x*f,height-y*f,RGB(0,255,0))
   Next
@@ -1706,11 +1706,11 @@ Define w1.i=400,
        h1.i=800
 
 If OpenWindow(0,#PB_Ignore,#PB_Ignore,w1,h1,"Barnsley fern")
-  If CreateImage(0,w1,h1,24,0) And StartDrawing(ImageOutput(0))        
+  If CreateImage(0,w1,h1,24,0) And StartDrawing(ImageOutput(0))
     Barnsley(h1)
     StopDrawing()
   EndIf
-  ImageGadget(0,0,0,0,0,ImageID(0))  
+  ImageGadget(0,0,0,0,0,ImageID(0))
   Repeat : Until WaitWindowEvent(50)=#PB_Event_CloseWindow
 EndIf
 End
@@ -1801,13 +1801,13 @@ pBarnsleyFern <- function(fn, n, clr, ttl, psz=600) {
   for (i in 1:(n-1)) {
     k <- sample(1:4, prob=P, size=1);
     M <- as.matrix(M1[[k]]);
-    z <- M%*%c(x[i],y[i]) + M2[[k]]; 
+    z <- M%*%c(x[i],y[i]) + M2[[k]];
     x[i+1] <- z[1]; y[i+1] <- z[2];
   }
   plot(x, y, main=ttl, axes=FALSE, xlab="", ylab="", col=clr, cex=0.1);
   # Writing png-file
   dev.copy(png, filename=pf,width=psz,height=psz);
-  # Cleaning 
+  # Cleaning
   dev.off(); graphics.off();
   cat(" *** END:",date(),"\n");
 }
@@ -1815,7 +1815,7 @@ pBarnsleyFern <- function(fn, n, clr, ttl, psz=600) {
 pBarnsleyFern("BarnsleyFernR", 100000, "dark green", "Barnsley Fern Fractal", psz=600)
 
 ```
- 
+
 
 {{Output}}
 
@@ -1823,9 +1823,9 @@ pBarnsleyFern("BarnsleyFernR", 100000, "dark green", "Barnsley Fern Fractal", ps
 ```txt
 
 > pBarnsleyFern("BarnsleyFernR", 100000, "dark green", "Barnsley Fern Fractal", psz=600)
- *** START: Wed Jul 27 13:50:49 2016 n= 1e+05 clr= dark green psz= 600 
- *** File name - BarnsleyFernR 
- *** END: Wed Jul 27 13:50:56 2016 
+ *** START: Wed Jul 27 13:50:49 2016 n= 1e+05 clr= dark green psz= 600
+ *** File name - BarnsleyFernR
+ *** END: Wed Jul 27 13:50:56 2016
 + BarnsleyFernR.png file
 
 ```
@@ -1860,7 +1860,7 @@ pBarnsleyFern("BarnsleyFernR", 100000, "dark green", "Barnsley Fern Fractal", ps
 
     (define px (+ (/ w 2) (* x w 1/11)))
     (define py (- h (* y h 1/11)))
-    (send dc set-pixel (exact-round px) (exact-round py) fern-green)                   
+    (send dc set-pixel (exact-round px) (exact-round py) fern-green)
     (values x′ y′)))
 
 
@@ -1877,7 +1877,7 @@ bmp
 ## REXX
 
 This REXX version is modeled after the   '''Fortran'''   entry;   it
-generates an output file   ("BARNSLEY.DAT")   that 
+generates an output file   ("BARNSLEY.DAT")   that
 
 contains the   '''X'''   and   '''Y'''   coördinates for a scatter plot that can be
 visualized with a plotting program.
@@ -1965,17 +1965,17 @@ New qapp {
 
 Func DrawFern
 		p1 = new qpicture()
-		
+
 		colorGreen = new qcolor() { setrgb(0,255,0,255) }
 		penGreen   = new qpen()   { setcolor(colorGreen)    setwidth(1) }
-				 
+
 		new qpainter() {
 			begin(p1)
 			setpen(penGreen)
-															 
+
 				###-------------------------------------
 				### Quadratic equation matrix of arrays
-				
+
 				a = [ 0,    0.85,  0.2,  -0.15 ]
 				b = [ 0,    0.04, -0.26,  0.28 ]
 				c = [ 0,   -0.04,  0.23,  0.26 ]
@@ -1984,56 +1984,56 @@ Func DrawFern
 				f = [ 0,    1.6,   1.6,   0.44 ]
 
 				### Initialize x, y points
-				
+
 				xf = 0.0
 				yf = 0.0
 
 				### Size of output screen
-				
+
 				MaxX = 400
 				MaxY = 500
 				MaxIterations = MaxY * 200
 				Count = 0
 
 				###------------------------------------------------
-				
+
 				while ( Count <= MaxIterations )
-				
-					### NOTE *** RING *** starts at Index 1, 
+
+					### NOTE *** RING *** starts at Index 1,
 					### Do NOT use Random K=0 result
-					
+
 					k = random() % 100
-					k = k +1    
-					
-					### if  (k = 0)                  k = 1  ok   ### Do NOT use 
-					 
+					k = k +1
+
+					### if  (k = 0)                  k = 1  ok   ### Do NOT use
+
 						if ((k > 0)  and (k <= 85))  k = 2  ok
 						if ((k > 85) and (k <= 92))  k = 3  ok
 						if  (k > 92)                 k = 4  ok
-						
-					TempX = ( a[k] * xf ) + ( b[k] * yf ) + e[k]                            
+
+					TempX = ( a[k] * xf ) + ( b[k] * yf ) + e[k]
 					TempY = ( c[k] * xf ) + ( d[k] * yf ) + f[k]
 
 					xf = TempX
 					yf = TempY
 
-					if( (Count >= MaxIterations) or (Count != 0) )                        
+					if( (Count >= MaxIterations) or (Count != 0) )
 						xPoint = (floor(xf *  MaxY / 11) + floor(MaxX / 2))
-						yPoint = (floor(yf * -MaxY / 11) + MaxY )                             
+						yPoint = (floor(yf * -MaxY / 11) + MaxY )
 						drawpoint( xPoint , yPoint  )
-					ok  
-					
-					Count++                           
+					ok
+
+					Count++
 				end
 
 				###----------------------------------------------------
-				
+
 			endpaint()
 		}
-		
+
 		label1 { setpicture(p1) show() }
-return                      
- 
+return
+
 
 ```
 
@@ -2054,13 +2054,13 @@ graphic #g, 200, 200
 #g fill("blue")
 FOR n	= 1 TO maxpoints
 p	= RND(0)*100
-IF p <= 1 THEN 
-	nx	= 0 
+IF p <= 1 THEN
+	nx	= 0
 	ny	= 0.16 * y
-else if p <= 8 THEN 
+else if p <= 8 THEN
 	nx	= 0.2 * x - 0.26 * y
 	ny	= 0.23 * x + 0.22 * y + 1.6
-else if p <= 15 THEN 
+else if p <= 15 THEN
 	nx	= -0.15 * x + 0.28 * y
 	ny	= 0.26 * x + 0.24 * y + 0.44
 else
@@ -2257,7 +2257,7 @@ This version creates a list of points, defining the fern, which are then rescale
                              (list (truncate (+ 20 (* scale-x (- (car point) min-x))))
                                    (truncate (+ 20 (* scale-y (- (cadr point) min-y))))))))
 
-        (display 
+        (display
           (string-append "%!PS-Adobe-3.0 EPSF-3.0\n%%BoundingBox: 0 0 "
                          (number->string width) " " (number->string height) "\n"))
 
@@ -2304,10 +2304,10 @@ while i<iteractions+2
         x = -0.15 * x + 0.28 * y;
         y = 0.26 * xp + 0.24 * y + 0.44;
     end
-    
+
     XY(1,i)=x;
     XY(2,i)=y;
-    
+
     i=i+1;
 end
 
@@ -2332,7 +2332,7 @@ axes.children.children.mark_foreground=13;
 ;
 import <Utilities/Random.sl>;
 
-transform(p(1), rand) := 
+transform(p(1), rand) :=
     let
         x := p[1]; y := p[2];
     in
@@ -2343,7 +2343,7 @@ transform(p(1), rand) :=
         [0.2*x - 0.26*y, 0.23*x + 0.22*y + 1.6] when rand <= 0.93
     else
         [-0.15*x + 0.28*y, 0.26*x + 0.24*y + 0.44];
-        
+
 barnsleyFern(rand, count, result(2)) :=
     let
         nextRand := getRandom(rand);
@@ -2355,7 +2355,7 @@ barnsleyFern(rand, count, result(2)) :=
 
 scale(p(1), width, height) := [round((p[1] + 2.182) * width / 4.8378),
                                round((9.9983 - p[2]) * height / 9.9983)];
-        
+
 entry(seed, count, width, height) :=
     let
         fern := barnsleyFern(seedRandom(seed), count, [[0.0,0.0]]);
@@ -2381,22 +2381,22 @@ int main(int argc, char** argv)
     int height = 600; if(argc > 3) height = atoi(argv[3]);
     int steps = 10000; if(argc > 4) steps = atoi(argv[4]);
     int seed = 314159; if(argc > 5) seed = atoi(argv[5]);
-    
+
     CImg<unsigned char> visu(width, height, 1, 3, 0);
     Sequence< Sequence<int> > result;
 
     sl_init(threads);
 
     sl_entry(seed, steps, width-1, height-1, threads, result);
-    
+
     visu.fill(0);
     for(int i = 1; i <= result.size(); i++)
         visu(result[i][1], result[i][2],1) = 255;
-    
+
     CImgDisplay draw_disp(visu);
     draw_disp.set_title("Barnsley Fern in SequenceL");
     visu.display(draw_disp);
-    
+
     while(!draw_disp.is_closed()) draw_disp.wait();
 
     sl_done();
@@ -2507,10 +2507,10 @@ for _ in 0..<100_000 {
         x1 = 0.85 * x0 + 0.04 * y0
         y1 = -0.04 * x0 + 0.85 * y0 + 1.6
     }
-    
+
     context.fill(CGRect(x: 30 * x1 + Double(imageWH) / 2.0, y: 30 * y1,
                         width: 1, height: 1))
-    
+
     (x0, y0) = (x1, y1)
 }
 
@@ -2581,7 +2581,7 @@ Classic style
 120 NEXT n
 ```
 
-Modern style 
+Modern style
 ```Yabasic
 REM Fractal Fern
 wid = 800 : hei = 600 : open window wid, hei : window origin "cb"
@@ -2634,7 +2634,7 @@ fcn barnsleyFern(){
 
 ```zxbasic
 10 REM Fractal Fern
-20 PAPER 7: BORDER 7: BRIGHT 1: INK 4: CLS 
+20 PAPER 7: BORDER 7: BRIGHT 1: INK 4: CLS
 30 LET maxpoints=20000: LET x=0: LET y=0
 40 FOR n=1 TO maxpoints
 50 LET p=RND*100

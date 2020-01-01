@@ -780,10 +780,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Uses goto as C# has no way to break from multiple loops
 
-```csharp
+```c#
 using System;
 
 class Program {
@@ -816,7 +816,7 @@ class Program {
 
 Same using Linq :
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

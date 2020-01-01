@@ -1035,10 +1035,10 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 using System.Linq;
@@ -1086,7 +1086,7 @@ namespace Hamming {
 
 The algorithm is similar to the one above.
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 using System.Linq;
@@ -1160,7 +1160,7 @@ I've tried to comment it as best I could, without bloating the code too much.
 --Mike Lorenz
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Numerics;
@@ -1263,7 +1263,7 @@ namespace HammingFast {
 I wanted to fix the enumerator (old) version, as it wasn't working.  It became a bit of an obsession... after a few iterations I came up with the following, which is the fastest C# version on my computer - your mileage may vary.  It combines the speed of the Log method; Log(2)+Log(3)=Log(2*3) to help determine which is the next one to use. Then I have added some logic (using the series property) to ensure that exponent sets are never duplicated - which speeds the calculations up a bit.... Adding this trick to the Fast Version will probably result in the fastest version, but I'll leave that to someone else to implement.  Finally it's all enumerated through a crazy one-way-linked-list-type-structure that only exists as long as the enumerator and is left up to the garbage collector to remove the bits no longer needed... I hope it's commented enough... follow it if you dare!
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1421,7 +1421,7 @@ The class implements its own partial version of a lazy list using the Lazy class
 It isn't nearly as fast as a Haskell, Scala or even Clojure and Scheme (GambitC) versions of this algorithm, being about five times slower is primarily due to its use of many small heap based instances of classes, both for the LazyList's and for closures (implemented using at least one class to hold the captured free variables) and the inefficiency of DotNet's allocation and garbage collection of many small instance objects (although about twice as fast as F#'s implementation, whose closures must require even more small object instances); it seems Haskell and the (Java) JVM are much more efficient at doing these allocations/garbage collections for many small objects.  The slower speed to a relatively minor extent is also due to less efficient BigInteger operations:
 {{trans|Haskell}}
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1515,7 +1515,7 @@ The so-called "fast" generic version above isn't really all that fast due to all
 The following code eliminates or reduces all of those problems by being non-generic, eliminating duplicate calculations, saving memory by "draining" the growable List's used in blocks as back pointer indexes are used (thus using memory at the same rate as the functional version), thus avoiding excessive allocations/garbage collections; it also is enumerates through the Hamming numbers although that comes at a slight cost in overhead function calls:
 {{trans|Nim}}
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1638,7 +1638,7 @@ The above code is about 30 times faster than the functional code due to both eli
 The above code is about as fast as one can go generating sequences; however, if one is willing to forego sequences and just calculate the nth Hamming number (again), then some reading on the relationship between the size of numbers to the sequence numbers is helpful (Wikipedia: regular number). One finds that there is a very distinct relationship and that it quite quickly reduces to quite a small error band proportional to the log of the output value for larger ranges. Thus, the following code just scans for logarithmic representations to insert into a sequence for this top error band and extracts the correct nth representation from that band. It reduces time complexity to O(n^(2/3)) from O(n) for the sequence versions, but even more amazingly, reduces memory requirements to O(n^(1/3)) from O(n^(2/3)) and thus makes it possible to calculate very large values in the sequence on common personal computers. The code is as follows:
 {{trans|Nim}}
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;

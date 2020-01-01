@@ -978,7 +978,7 @@ int main() {
 ```
 
 
-## C sharp
+## C#
 
 {{trans|Java}}
 

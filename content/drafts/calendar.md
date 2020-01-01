@@ -2035,11 +2035,11 @@ Output:
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 An attempt to abuse the DateTime class for all static information. In the event that the number of days and months changes, so long as the DateTime class is updated accordingly, this should still print properly. It also abuses iterators to allow for a concise month printing method, but with the ability to still print x months per line.
 
 
-```csharp
+```c#
 
 
 using System;

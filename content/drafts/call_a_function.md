@@ -10,11 +10,11 @@ categories = []
 tags = []
 +++
 
-{{task}}[[Category:Functions and subroutines]] 
+{{task}}[[Category:Functions and subroutines]]
 [[Category:Simple]]
 
 ;Task:
-Demonstrate the different syntax and semantics provided for calling a function. 
+Demonstrate the different syntax and semantics provided for calling a function.
 
 
 This may include:
@@ -50,7 +50,7 @@ Y        DS     F
 Z        DS     F
 ```
 
-If you do not want to use the CALL macro instruction and for a link-edited object-module: 
+If you do not want to use the CALL macro instruction and for a link-edited object-module:
 
 ```360asm
          L      R15,=V(MULTPLIC)
@@ -62,14 +62,14 @@ PARMLIST DC     A(X)
          DC     A(Y)
 ```
 
-If you call a link-edited object-module: 
+If you call a link-edited object-module:
 
 ```360asm
          CALL   MULTPLIC,(X,Y)     call MULTPLIC(X,Y)
          ST     R0,Z               Z=MULTPLIC(X,Y)
 ```
 
-If you call an load-module at execution time: 
+If you call an load-module at execution time:
 
 ```360asm
          LOAD   EP=MULTPLIC        load load-module
@@ -95,11 +95,11 @@ If you call an load-module at execution time:
 ## Ada
 
 
-* Ada provides two kinds of subroutines: procedures without return values and functions with return values. The return values of functions must be used by the callers. If you don't want to deal with the return value, call a procedure instead. 
+* Ada provides two kinds of subroutines: procedures without return values and functions with return values. The return values of functions must be used by the callers. If you don't want to deal with the return value, call a procedure instead.
 
 * As a rule of thumb, an Ada compiler is free to pass arguments either by value or by reference. Parameters have a mode however: either 'in' or 'out' or 'in out'. It is prohibited to write anything to an 'in' parameter. The next language Standard, Ada 2012, will support functions with 'out' and 'in out' mode parameters, so far, only procedures could have parameters with non-'in' modes. So any of the following statements for Ada functions holds for Ada procedures as well.
 
-* There are no differences between calling built-in vs. user defined functions. 
+* There are no differences between calling built-in vs. user defined functions.
 
 * Functions without parameters can be called by omitting the parameter list (no empty brackets!):
 ```Ada
@@ -111,13 +111,13 @@ S: String := Ada.Text_IO.Get_Line;
 ```Ada
 function F(X: Integer; Y: Integer := 0) return Integer; -- Y is optional
 ...
-A : Integer := F(12); 
+A : Integer := F(12);
 B : Integer := F(12, 0); -- the same as A
 C : Integer := F(12, 1); -- something different
 ```
 
 
-* If the number of parameters of F were fixed to two (by omitting the ":= 0" in the specification), then B and C would be OK, but A wouldn't. 
+* If the number of parameters of F were fixed to two (by omitting the ":= 0" in the specification), then B and C would be OK, but A wouldn't.
 
 * Ada does not support functions with a variable number of arguments. But a function argument can be an unconstrained array with as many values as you want:
 ```Ada
@@ -145,16 +145,16 @@ function H (Int: Integer;
 
 ...
 
-X := H(A, F'Access) -- assuming X and A are Integers, and F is a function 
+X := H(A, F'Access) -- assuming X and A are Integers, and F is a function
                      -- taking two Integers and returning an Integer.
 ```
 
 
-* The caller is free to use either positional parameters or named parameters, or a mixture of both (with positional parameters first) 
+* The caller is free to use either positional parameters or named parameters, or a mixture of both (with positional parameters first)
 ```Ada
-Positional := H(A, F'Access); 
-Named      := H(Int => A, Fun => F'Access);  
-Mixed      := H(A, Fun=>F'Access); 
+Positional := H(A, F'Access);
+Named      := H(Int => A, Fun => F'Access);
+Mixed      := H(A, Fun=>F'Access);
 ```
 
 
@@ -180,7 +180,7 @@ print( ( "the result is: ", r, " after ", n, " iterations", newline ) );
 # ALGOL 68 does not support optional arguments, though in some cases an empty array could be passed to a function #
 # expecting an array, e.g.: #
 f( () );
- 
+
 # named arguments - see the Algol 68 sample in: http://rosettacode.org/wiki/Named_parameters #
 
 # In "Talk:Call a function" a statement context is explained as
@@ -305,14 +305,14 @@ szRetourLigne: .asciz "\n"
 szMessResult:  .ascii "Resultat : "      @ message result
 sMessValeur:   .fill 12, 1, ' '
                    .asciz "\n"
-/***********************/				   
+/***********************/
 /* No Initialized data */
 /***********************/
 .bss
 iValeur:  .skip  4     @ reserve 4 bytes in memory
 
 .text
-.global main 
+.global main
 main:
     ldr r0,=szMessage          @ adresse of message  short program
     bl affichageMess            @ call function with 1 parameter (r0)
@@ -332,39 +332,39 @@ main:
     push {r0,r1}
     bl fonction2            @ call function with 2 parameters on the stack
                               @ result in r0
-    ldr r1,=sMessValeur                 
+    ldr r1,=sMessValeur
     bl conversion10S       @ call function with 2 parameter (r0,r1)
     ldr r0,=szMessResult
     bl affichageMess            @ call function with 1 parameter (r0)
- 
- 
+
+
  /* end of  program */
     mov r0, #0                  @ return code
     mov r7, #EXIT              @ request to exit program
     swi 0                       @ perform the system call
 
 /******************************************************************/
-/*     call function parameter in register             */ 
+/*     call function parameter in register             */
 /******************************************************************/
 /* r0 value one */
 /* r1 value two */
 /* return in r0 */
 fonction1:
-    push {fp,lr}    /* save des  2 registres */ 
+    push {fp,lr}    /* save des  2 registres */
     push {r1,r2}    /* save des autres registres */
     mov r2,#20
     mul r0,r2
     add r0,r0,r1
     pop {r1,r2}     /* restaur des autres registres */
-    pop {fp,lr}    /* restaur des  2 registres */ 
-    bx lr           /* retour procedure */	
+    pop {fp,lr}    /* restaur des  2 registres */
+    bx lr           /* retour procedure */
 
 /******************************************************************/
-/*     call function parameter in the stack             */ 
+/*     call function parameter in the stack             */
 /******************************************************************/
 /* return in r0 */
 fonction2:
-    push {fp,lr}    /* save des  2 registres */ 
+    push {fp,lr}    /* save des  2 registres */
     add fp,sp,#8    /* address parameters in the stack*/
     push {r1,r2}    /* save des autres registres */
     ldr r0,[fp]
@@ -373,16 +373,16 @@ fonction2:
     mul r0,r2
     add r0,r0,r1
     pop {r1,r2}     /* restaur des autres registres */
-    pop {fp,lr}    /* restaur des  2 registres */ 
+    pop {fp,lr}    /* restaur des  2 registres */
     add sp,#8      /* very important, for stack aligned */
-    bx lr          /* retour procedure */	
+    bx lr          /* retour procedure */
 
 /******************************************************************/
-/*     affichage des messages   avec calcul longueur              */ 
+/*     affichage des messages   avec calcul longueur              */
 /******************************************************************/
 /* r0 contient l adresse du message */
 affichageMess:
-    push {fp,lr}    /* save des  2 registres */ 
+    push {fp,lr}    /* save des  2 registres */
     push {r0,r1,r2,r7}    /* save des autres registres */
     mov r2,#0   /* compteur longueur */
 1:       /*calcul de la longueur */
@@ -397,8 +397,8 @@ affichageMess:
     mov r7, #WRITE                  /* code de l appel systeme 'write' */
     swi #0                      /* appel systeme */
     pop {r0,r1,r2,r7}     /* restaur des autres registres */
-    pop {fp,lr}    /* restaur des  2 registres */ 
-    bx lr	        /* retour procedure */	
+    pop {fp,lr}    /* restaur des  2 registres */
+    bx lr	        /* retour procedure */
 /***************************************************/
 /*   conversion registre en décimal   signé  */
 /***************************************************/
@@ -417,16 +417,16 @@ conversion10S:
     mov r4,#10   /* longueur de la zone */
 1: /* debut de boucle de conversion */
     bl divisionpar10 /* division  */
-    add r1,#48        /* ajout de 48 au reste pour conversion ascii */	
+    add r1,#48        /* ajout de 48 au reste pour conversion ascii */
     strb r1,[r2,r4]  /* stockage du byte en début de zone r5 + la position r4 */
     sub r4,r4,#1      /* position précedente */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* boucle si quotient different de zéro */
     strb r5,[r2,r4]  /* stockage du signe à la position courante */
     subs r4,r4,#1   /* position précedente */
     blt  100f         /* si r4 < 0  fin  */
     /* sinon il faut completer le debut de la zone avec des blancs */
-    mov r3,#' '   /* caractere espace */	
+    mov r3,#' '   /* caractere espace */
 2:
     strb r3,[r2,r4]  /* stockage du byte  */
     subs r4,r4,#1   /* position précedente */
@@ -434,20 +434,20 @@ conversion10S:
 100:  /* fin standard de la fonction  */
     pop {r0-r5}   /*restaur des autres registres */
     pop {fp,lr}   /* restaur des  2 registres frame et retour  */
-    bx lr   
+    bx lr
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save autres registres  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -633,7 +633,7 @@ Batch files do not have a traditional "function" system like OOP languages, howe
 ```dos
 
 :: http://rosettacode.org/wiki/Call_a_function
-:: Demonstrate the different syntax and semantics provided for calling a function. 
+:: Demonstrate the different syntax and semantics provided for calling a function.
 
 @echo off
 
@@ -682,16 +682,16 @@ exit
 	:: Returns the amount of folders + files in the current directory
 	:: /fi Returns only file count
 	:: /fo Returns only folder count
-	
+
 	setlocal
 	set count=0
-	
+
 	if "%~1"=="" set "command=dir /b"
 	if "%~1"=="/fi" set "command=dir /b /A-d"
 	if "%~1"=="/fo" set "command=dir /b /Ad"
 
 	for /f "usebackq" %%i in (`%command%`) do set /a count+=1
-	
+
 	endlocal & set filecount=%count%
 	goto:eof
 
@@ -711,7 +711,7 @@ exit
 	if "%~1"=="" then goto:eof
 	setlocal enabledelayedexpansion
 	set "param=%~1"
-	
+
 	for /l %%i in (1,1,2) do (
 		for /f "tokens=1,2 delims==" %%j in ("!param!") do set %%j=%%k
 		set "param=%~2"
@@ -816,7 +816,7 @@ aFunctionWithoutArguments'
 ```
 
 
-Both function calls pass the right and side of the <code>$</code> or <code>'</code> operator. This is in fact still something: an empty string. 
+Both function calls pass the right and side of the <code>$</code> or <code>'</code> operator. This is in fact still something: an empty string.
 
 The <code>$</code> operator always evaluates its right hand side before passing it to the function, while the <code>'</code> does not. Therefore it is slightly faster to use the <code>functionName'</code> variant.
 
@@ -838,7 +838,7 @@ There is no special syntax for that. You could pass a list of (name.value) pairs
 
 * Using a function in statement context
 
-A f... 
+A f...
 
 You can do
 
@@ -1002,7 +1002,7 @@ double a = asin(1);
 
 
 
-## C Sharp
+## C#
 
 
 ```c sharp
@@ -1022,7 +1022,7 @@ double a = asin(1);
 		OptArg(1, 2);
 		OptArg(1, 2, 3);
 	}
-	public void ExampleMethod(int required, 
+	public void ExampleMethod(int required,
         string optionalstr = "default string",
 		int optionalint = 10)
 	/* If you know the first and the last parameter */
@@ -1032,7 +1032,7 @@ double a = asin(1);
 	ExampleMethod(3, "Hello World", 4);
 
 	/* Variable number of arguments use array */
-	public static void UseVariableParameters(params int[] list) 
+	public static void UseVariableParameters(params int[] list)
 
 	/* Obtain return value from function */
 	public internal MyFunction();
@@ -1110,7 +1110,7 @@ CALL "Optional-Arguments" USING Foo Bar
 *> If an optional argument is omitted and replaced with OMITTED, any following
 *> arguments can still be specified.
 CALL "Optional-Arguments" USING Foo OMITTED Bar
-*> Interestingly, even arguments not marked as optional can be omitted without 
+*> Interestingly, even arguments not marked as optional can be omitted without
 *> a compiler warning. It is highly unlikely the function will still work,
 *> however.
 CALL "2-Arguments" USING Foo
@@ -1142,9 +1142,9 @@ CALL "CBL_CREATE_DIR" USING Foo
 CALL "CBL_OC_NANOSLEEP" USING Bar
 *> Although some built-in functions identified by numbers.
 CALL X"F4" USING Foo Bar
- 
+
 *> Parameters can be passed in 3 different ways:
-*>  - BY REFERENCE - this is the default way in OpenCOBOL and this clause may 
+*>  - BY REFERENCE - this is the default way in OpenCOBOL and this clause may
 *>       be omitted. The address of the argument is passed to the function.
 *>       The function is allowed to modify the variable.
 *>  - BY CONTENT - a copy is made and the function is passed the address
@@ -1256,7 +1256,7 @@ add2 1 #=> 3
 (f #'a)
 ;Obtaining the return value of a function
 (defvar return-of-a (a))
-;Is partial application possible and how 
+;Is partial application possible and how
 (defun curry (function &rest args-1)
   (lambda (&rest args-2)
     (apply function (append args-1 args-2))))
@@ -1386,7 +1386,7 @@ false
 =={{header|Déjà Vu}}==
 
 ```dejavu
-# all functions used are from the standard library 
+# all functions used are from the standard library
 # calling a function with no arguments:
 random-int
 # calling a function with a fixed number of arguments:
@@ -1399,7 +1399,7 @@ sort-by @len [ "Hello" "World" "Bob" ]
 # calling a function with a variable number of arguments:
 # generally with a special terminator value, which one depends
 # on the function called
-concat( 1 2 3 ) 
+concat( 1 2 3 )
 [ 1 2 3 ]
 set{ :foo :bar :spam }
 # calling a function with named arguments: not possible
@@ -1733,7 +1733,7 @@ funcArgs someFunc
 // Obtaining a return value
 let x = someFunc()
 
-// Built-in functions: do functions like (+) or (-) count? 
+// Built-in functions: do functions like (+) or (-) count?
 
 // Parameters are normally passed by value (as shown in the previous examples),
 // but they can be passed by reference.
@@ -1784,7 +1784,7 @@ send-email
 
 ```Factor>\ foo</lang
 
-Additionally, you can put words directly inside sequences and quotations for deferred execution: 
+Additionally, you can put words directly inside sequences and quotations for deferred execution:
 
 ```Factor
 { foo } [ foo ]
@@ -1950,7 +1950,7 @@ end subroutine
  -----------------
  Distinguish between built-in and user-defined functions: Does not apply!
  -----------------
- Calling a subroutine: 
+ Calling a subroutine:
  Output of subroutine:         3000
  Function call:           10
  -----------------
@@ -1963,9 +1963,9 @@ end subroutine
 
 ### In other words
 
-As described in [[Naming_conventions#Fortran|Naming Conventions]], First Fortran (1958) allowed user-written functions but with restrictions on the names so that an ordinary variable called SIN would be disallowed because it was deemed to be in conflict with the library function SINF. These constraints were eased with Fortran II, and the rule became that a user could employ any correct-form name, such as SQRT, for a variable's name (simple or array) but then the library function SQRT would become inaccessible in such a routine. Similarly, there would be no point in the user writing a function called SQRT, because it could not be invoked - the compiler would take any invocation as being for the library routine SQRT. Thus, a user-written function could perhaps chance to have the name of an obscure (i.e. one forgotten about) library function, but if you were lucky it would have conflicting parameters and the compiler will complain. 
+As described in [[Naming_conventions#Fortran|Naming Conventions]], First Fortran (1958) allowed user-written functions but with restrictions on the names so that an ordinary variable called SIN would be disallowed because it was deemed to be in conflict with the library function SINF. These constraints were eased with Fortran II, and the rule became that a user could employ any correct-form name, such as SQRT, for a variable's name (simple or array) but then the library function SQRT would become inaccessible in such a routine. Similarly, there would be no point in the user writing a function called SQRT, because it could not be invoked - the compiler would take any invocation as being for the library routine SQRT. Thus, a user-written function could perhaps chance to have the name of an obscure (i.e. one forgotten about) library function, but if you were lucky it would have conflicting parameters and the compiler will complain.
 
-A special case is provided by the "arithmetic statement function" that is defined after declarations but before executable statements in a routine and which has access to all the variables of the routine. Consider 
+A special case is provided by the "arithmetic statement function" that is defined after declarations but before executable statements in a routine and which has access to all the variables of the routine. Consider
 ```Fortran
       REAL this,that
       DIST(X,Y,Z) = SQRT(X**2 + Y**2 + Z**2) + this/that !One arithmetic statement, possibly lengthy.
@@ -1975,9 +1975,9 @@ A special case is provided by the "arithmetic statement function" that is define
 
 In this case, even if "DIST" happened to be the name of some library function, invocations within the routine defining it would not be of the library function.
 
-This flexibility in naming can be turned the other way around. For example, some compilers offer the intrinsic function SIND which calculates ''sine'' in degrees. Simply defining an array <code>REAL SIND(0:360)</code> (and properly initialising it) enables the slowish SIND function to be approximated by the faster indexing of an array. Put another way, an array is a function of a limited span of integer-valued arguments and is called in arithmetic expressions with the same syntax as is used for functions, be they intrinsic or user-written. Those writing in Pascal would be blocked by its insistence that arrays employ [] rather than (). Similarly, when testing, an array's declaration might be commented out and a function of that name defined, which function could check its arguments, write to a log file, note time stamps, or whatever else comes to mind. But alas, there is no "palindromic" or reverse-entry facility whereby a function could handle the assignment of a value ''to'' an array that would make this fully flexible. 
+This flexibility in naming can be turned the other way around. For example, some compilers offer the intrinsic function SIND which calculates ''sine'' in degrees. Simply defining an array <code>REAL SIND(0:360)</code> (and properly initialising it) enables the slowish SIND function to be approximated by the faster indexing of an array. Put another way, an array is a function of a limited span of integer-valued arguments and is called in arithmetic expressions with the same syntax as is used for functions, be they intrinsic or user-written. Those writing in Pascal would be blocked by its insistence that arrays employ [] rather than (). Similarly, when testing, an array's declaration might be commented out and a function of that name defined, which function could check its arguments, write to a log file, note time stamps, or whatever else comes to mind. But alas, there is no "palindromic" or reverse-entry facility whereby a function could handle the assignment of a value ''to'' an array that would make this fully flexible.
 
-Within a function there are some delicacies. The usual form is to assign the desired result to the name of the variable as in <code>H = A + B</code> where <code>H</code> is the name of the function. However, during evaluation the desired result might be developed over many stages and with reference to prior values. Suppose function H is to combine results from separate statements and it is not convenient to achieve this via one lengthy expression, perhaps because of conditional tests. Something like 
+Within a function there are some delicacies. The usual form is to assign the desired result to the name of the variable as in <code>H = A + B</code> where <code>H</code> is the name of the function. However, during evaluation the desired result might be developed over many stages and with reference to prior values. Suppose function H is to combine results from separate statements and it is not convenient to achieve this via one lengthy expression, perhaps because of conditional tests. Something like
 ```Fortran
       H = A + B
       IF (blah) H = 3*H - 7
@@ -1987,7 +1987,7 @@ As written, the appearance of <code>H</code> on the right-hand side of an expres
 
 With the belated recognition of recursive possibilities (introduced by Algol in the 1960s) comes the possibility of a function invoking itself. In the above example, <code>H(3.7,5.5,6.6)</code> would clearly be a function invocation (because of the parentheses) whereas <code>H</code> would not be. Actually, Fortran routines have always been able to engage in recursion, it is just the returns that will fail - except on a stack-based system such as the Burroughs 6700 in the 1970s.
 
-Fortran also offers the ability to pass a function as a parameter such that the recipient routine can call it, as in 
+Fortran also offers the ability to pass a function as a parameter such that the recipient routine can call it, as in
 ```Fortran
       REAL FUNCTION INTG8(F,A,B,DX)	!Integrate function F.
        EXTERNAL F	!Some function of one parameter.
@@ -2020,7 +2020,7 @@ This involves a fair amount of juggling special declarations so that the compile
 
 This works because Fortran passes parameters by reference (i.e. by giving the machine address of the entity), so that for functions, the code's entry point for the function is passed. With normal variables this means that a function (or subroutine) might modify the value of a parameter, as well as returning the function's result - and also mess with any COMMON data or other available storage, so a function EATACARD(IN) might read a line of data into a shared work area (called say ACARD) from I/O unit number IN and return ''true'', otherwise ''false'' should it hit end-of-file.
 
-But it is also possible that parameters are passed via copy-in copy-out instead of by reference, with subtle changes in behaviour. This may also be done even on systems that do employ passing by reference. For instance, with 
+But it is also possible that parameters are passed via copy-in copy-out instead of by reference, with subtle changes in behaviour. This may also be done even on systems that do employ passing by reference. For instance, with
 ```Fortran
       TYPE MIXED
        CHARACTER*12 NAME
@@ -2048,8 +2048,8 @@ component call_a_function
 
   printAString(s:String): () = println(s)
 
-  (* Functions can be passed to other functions as arguments. When passing a function as an argument, the argument's type should be 
-  represented as follows: "typeOfArgument(s)->returnType," which, in this case, is "String->()." You could also technically use the 
+  (* Functions can be passed to other functions as arguments. When passing a function as an argument, the argument's type should be
+  represented as follows: "typeOfArgument(s)->returnType," which, in this case, is "String->()." You could also technically use the
   "Any" type, but that isn't type-safe. *)
   printAString(s:String, f:String->()) = f(s)
 
@@ -2160,7 +2160,7 @@ func h(string, ...int)   {}
 ```
 
 * Calling with a variable number of arguments:
-::This is only possible with functions defined with a trailing optional/variable length argument of a single type (as <code>h</code> above). 
+::This is only possible with functions defined with a trailing optional/variable length argument of a single type (as <code>h</code> above).
 ```go
 	h("ex1")
 	h("ex2", 1, 2)
@@ -2173,13 +2173,13 @@ func h(string, ...int)   {}
 ```
 
 * Optional arguments and named arguments are not supported.
-::However, it is reasonably common to see a structure used for this. In this example <code>gif.Options</code> is a structure with multiple members which can initialized/assigned by name or omitted (or the whole third argument can just be <code>nil</code>). 
+::However, it is reasonably common to see a structure used for this. In this example <code>gif.Options</code> is a structure with multiple members which can initialized/assigned by name or omitted (or the whole third argument can just be <code>nil</code>).
 ```go
 	gif.Encode(ioutil.Discard, image.Black, &gif.Options{NumColors: 16})
 ```
 
 * Within a statement context.
-::Assignment statements are shown later. Only functions returning a single value can be used in a single value context: 
+::Assignment statements are shown later. Only functions returning a single value can be used in a single value context:
 ```go
 	if 2*g(1, 3.0)+4 > 0 {}
 ```
@@ -2206,7 +2206,7 @@ func h(string, ...int)   {}
 ```
 
 * Built-in functions and user defined functions can not be distinguished.
-::Functions from the standard packages look like any other. The few truly built-in functions are only different in that they have no package specifier like local functions (and they sometimes have extra capabilities). 
+::Functions from the standard packages look like any other. The few truly built-in functions are only different in that they have no package specifier like local functions (and they sometimes have extra capabilities).
 ```go
 	list = append(list, a, d, e, i)
 	i = len(list)
@@ -2378,7 +2378,7 @@ software {
 	input = read() 				//Obtaining the return value of a function.
 	myprint = print
 	myprint("It was: ", input)	//Calling first class functions, the same as calling ordinary functions.
-	
+
 	//The only distinction that can be made between two functions is if they are 'real' or not.
 	if type(myprint) = concept
 		print("myprint is a not a real function")
@@ -2395,16 +2395,16 @@ software {
 	else if type(DebugPrint) = function
 		print("DebugPrint is a real function")
 	end
-} 
+}
 
 ```
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon and Unicon have generalized procedures and syntax that are used to implement functions, subroutines and generators.  
+Icon and Unicon have generalized procedures and syntax that are used to implement functions, subroutines and generators.
 * Procedures can return values or not and callers may use the returned values or not.
 * Procedures in Icon and Unicon are first class values and can be assigned to variables which can then be used to call procedures.  This also facilitates some additional calling syntax.
-* Additionally, co-expressions are supported which allow for co-routine like transfers of control between two or more procedures.  There are some differences in syntax for co-expression calls. 
+* Additionally, co-expressions are supported which allow for co-routine like transfers of control between two or more procedures.  There are some differences in syntax for co-expression calls.
 * There are no differences between calling built-in vs. user defined functions
 * Named arguments is not natively supported; however, they can be supported using a user defined procedure as shown in [[Named_parameters#Icon_and_Unicon|Named parameters]]
 * Method calling is similar with some extended syntax
@@ -2422,10 +2422,10 @@ procedure main()  # demonstrate and describe function calling syntax and semanti
    f(x)                     # fixed number of arguments
    f(x,h,w)                 # variable number of arguments (varargs)
    y := f(x)                # Obtaining the returned value of a function
-   
-   # procedures as first class values and string invocation 
 
-   f!L                      # Alternate calling syntax using a list as args   
+   # procedures as first class values and string invocation
+
+   f!L                      # Alternate calling syntax using a list as args
    (if \x then f else g)()  # call (f or g)()
    f := write               # assign a procedure
    f("Write is now called") # ... and call it
@@ -2433,15 +2433,15 @@ procedure main()  # demonstrate and describe function calling syntax and semanti
    "-"(1)                   # string invocation, operator
 
    # Co-expressions
-   
-   f{e1,e2}                 # parallel evaluation co-expression call  
-                            # equivalent to f([create e1, create e2]) 
+
+   f{e1,e2}                 # parallel evaluation co-expression call
+                            # equivalent to f([create e1, create e2])
    expr @ coexp             # transmission of a single value to a coexpression
-   [e1,e2]@coexp            # ... of multiple values (list) to a coexpression 
-   coexp(e1,e2)             # ... same as above but only in Unicon 
+   [e1,e2]@coexp            # ... of multiple values (list) to a coexpression
+   coexp(e1,e2)             # ... same as above but only in Unicon
 
    # Other
-   
+
    f("x:=",1,"y:=",2)       # named parameters (user defined)
 end
 ```
@@ -2484,18 +2484,18 @@ Here <code>sum</code> is a verb and <code>(1,2,3)</code> is a noun.
 
 Thus:
 
-''A function that requires no arguments'' can be simulated by calling a function with empty argument list:  
+''A function that requires no arguments'' can be simulated by calling a function with empty argument list:
 ```j
 f''
 ```
   Note that an empty list of characters is not the only constant in the language which is an empty list.  That said, most operations in the language do not care what type of data is not present, in an array which contains nothing.
 
 
-''A function with a fixed number of arguments'' gets special treatment in J when the fixed number is 1 or 2.  
+''A function with a fixed number of arguments'' gets special treatment in J when the fixed number is 1 or 2.
 ```j
 f 'one argument'
 ```
-and 
+and
 ```j
 'this example has two arguments' f 'the other argument'
 ```
@@ -2503,29 +2503,29 @@ and
 
 ''A function with a variable number of arguments (varargs)'':  See above.
 
-If argument types conflict they will need to be put in boxes and the function will have to take its arguments out of the boxes.  Here's an unboxed example with five arguments: 
+If argument types conflict they will need to be put in boxes and the function will have to take its arguments out of the boxes.  Here's an unboxed example with five arguments:
 ```j
  f 1,2,3,4,5
 ```
- and here's a boxed example with five arguments:  
+ and here's a boxed example with five arguments:
 ```j
-f (<1),(<2),(<3),(<4),(<5) 
+f (<1),(<2),(<3),(<4),(<5)
 ```
- Note that the last set of parenthesis is unnecessary 
+ Note that the last set of parenthesis is unnecessary
 ```j
 f (<1),(<2),(<3),(<4),<5
 ```
-  Note also that J offers some syntactic sugar for this kind of list 
+  Note also that J offers some syntactic sugar for this kind of list
 ```j>f 1; 2; 3; 4; <5</lang
-.  Note also that if the last argument in a semicolon list is not boxed there is no need to explicitly box it, since that is unambiguous (it must be boxed so that it conforms with the other members of the list). 
+.  Note also that if the last argument in a semicolon list is not boxed there is no need to explicitly box it, since that is unambiguous (it must be boxed so that it conforms with the other members of the list).
 ```j>f 1; 2; 3; 4; 5</lang
 
 
-''A function with named arguments'' can be accomplished by calling a function with the names of the arguments.  
+''A function with named arguments'' can be accomplished by calling a function with the names of the arguments.
 ```j
 f 'george';'tom';'howard'
 ```
-  Other interpretations of this concept are also possible.  For example, the right argument for a verb might be a list of argument names and the left argument might be a corresponding list of argument values: 
+  Other interpretations of this concept are also possible.  For example, the right argument for a verb might be a list of argument names and the left argument might be a corresponding list of argument values:
 ```j
 1 2 3 f 'george';'tom';'howard'
 ```
@@ -2538,15 +2538,15 @@ f 'george';'tom';'howard'
    f obj
    coerase obj
 ```
-  Name/value pairs can also be used for this purpose and can be implemented in various ways, including passing names followed by values 
+  Name/value pairs can also be used for this purpose and can be implemented in various ways, including passing names followed by values
 ```j
 f 'george';1;'tom';2;'howard';3
 ```
- and passing a structure of pairs 
+ and passing a structure of pairs
 ```j
 f ('george';1),('tom';2),:(howard';3)
 ```
-  Or, for example, the pairs could be individually boxed:  
+  Or, for example, the pairs could be individually boxed:
 ```j
 f ('george';1);('tom';2);<howard';3
 ```
@@ -2554,7 +2554,7 @@ f ('george';1);('tom';2);<howard';3
 
 ''Using a function in command context'' is no different from using a function in any other context, in J.  ''Using a function in first class context within an expression'' is no different from using a function in any other context, in J.
 
-''Obtaining the return value of a function'' is no different from using a function in j.  For example, here we add 1 to the result of a function:  
+''Obtaining the return value of a function'' is no different from using a function in j.  For example, here we add 1 to the result of a function:
 ```j>1 + f 2</lang
 
 
@@ -2596,7 +2596,7 @@ int myMethod(int a){
 ```
 
 
-The compiler figures out which method to call based on the types of the arguments, so in this case the second argument appears to be optional. If you omit it, the value <tt>1.414</tt> is used. 
+The compiler figures out which method to call based on the types of the arguments, so in this case the second argument appears to be optional. If you omit it, the value <tt>1.414</tt> is used.
 
 ```java
 System.out.println( myMethod( 97, 3.14 ) );
@@ -2743,7 +2743,7 @@ jq functions are pure functions that are somewhat unusual in two respects:
 
 * They are like commands in modern operating systems, in that they are <tt>parameterized filters</tt> that can accept input from the previous command and provide output to the next command if there is one in the pipeline of commands.
 
-* Functions can not only process a stream of inputs, one at a time, but each argument can also accept a stream of inputs. The outputs are then a Cartesian product of the various inputs. 
+* Functions can not only process a stream of inputs, one at a time, but each argument can also accept a stream of inputs. The outputs are then a Cartesian product of the various inputs.
 
 In this section, we use the notation fn/N to refer to a function named "fn" with N formal parameters.
 
@@ -2773,14 +2773,14 @@ See above.
 
 This is not directly supported but can be simulated by defining the function to accept JSON objects.  For example, if fn were such a function,
 we might invoke fn like so: <tt>fn( {"required": 1, "optional": 2} )</tt>.
- 
+
 '''Using a function in statement context'''
 
 The assignment to a local variable (e.g. <tt>(2*2) as $two<tt>) is similar to a statement context in that the expression as a whole does nothing to the flow of values from its input to its output.
 
 '''Using a function in first-class context within an expression'''
 
-jq functions cannot be assigned to variables but are otherwise "first-class" in that the composition of functions can be passed as arguments to other functions.  No special syntax is required. 
+jq functions cannot be assigned to variables but are otherwise "first-class" in that the composition of functions can be passed as arguments to other functions.  No special syntax is required.
 * Example: <tt>2 | recurse(. * .)</tt> # generate the sequence 2, 4, 16, 256, ...
 
 '''Obtaining the return value of a function'''
@@ -2823,7 +2823,7 @@ f(3, 4, 2)
 
 
 #  Calling a function with optional arguments:
-#  Note Julia uses multiple dispatch based on argument number and type, so 
+#  Note Julia uses multiple dispatch based on argument number and type, so
 # f() is always different from f(x) unless default arguments are used, as in:
 
 pimultiple(mult=1.0) = pi * mult # so pimultiple() defaults to pi * (1.0) or pi
@@ -2843,8 +2843,8 @@ f(a,b)             # x is () so == 0 - a - b
 
 #  Calling a function with named arguments:
 # Functions with keyword arguments are defined using a semicolon in the function signature,
-#  as in 
-#             function plot(x, y; style="solid", width=1, color="black") 
+#  as in
+#             function plot(x, y; style="solid", width=1, color="black")
 #
 # When the function is called, the semicolon is optional, so plot here can be
 # either called with plot(x, y, width=2) or less commonly as plot(x, y; width=2).
@@ -2853,7 +2853,7 @@ f(a,b)             # x is () so == 0 - a - b
 #  Using a function in statement context:
 #  Any function can be used as a variable by its name.
 
-circlearea(x) = x^2 * pi 
+circlearea(x) = x^2 * pi
 map(circlearea, [r1, r2, r3, r4])
 
 
@@ -2867,8 +2867,8 @@ area = circlearea(2.5)
 
 
 #  Distinguishing built-in functions and user-defined functions:
-#  Julia does not attempt to distinguish these in any special way, 
-#  but at the REPL command line there is ? help available for builtin 
+#  Julia does not attempt to distinguish these in any special way,
+#  but at the REPL command line there is ? help available for builtin
 #  functions that would not generally be available for the user-defined ones.
 
 
@@ -2878,7 +2878,7 @@ area = circlearea(2.5)
 
 #  Stating whether arguments are passed by value or by reference:
 #  As in Python, all arguments are passed by pointer reference, but assignment to a passed argument
-#  only changes the variable within the function. Assignment to the values referenced by the argument 
+#  only changes the variable within the function. Assignment to the values referenced by the argument
 ## DOES however change those values. For instance:
 
 a = 3
@@ -2893,7 +2893,7 @@ end # a and c are now unchanged but b = [0]
 
 
 #  Is partial application possible and how:
-#  In Julia, there are many different ways to compose functions. In particular, 
+#  In Julia, there are many different ways to compose functions. In particular,
 #  Julia has an "arrow" operator -> that may be used to curry other functions.
 
 f(a, b) = a^2 + a + b
@@ -3063,7 +3063,7 @@ ok
 exception error: #(unbound_func #(my-func 4))
 
 ```
- 
+
 
 '''Calling a function with named arguments:'''
 
@@ -3113,7 +3113,7 @@ There are many, many ways to assign function outputs to variables in LFE. One fa
 * There is no distinction made in LFE/Erlang between functions that are built-in and those that are not.
 * "Built-in" for LFE/Erlang usually can be figured out: if a function has the module name <code>erlang</code>, e.g., <code>(: erlang list_to_integer ... )</cod>, then it's built-in.
 * Most of the functions that come with LFE/Erlang are not even in the <code>erlang</code> module, but exist in other modules (e.g., <code>io</code>, <code>math</code>, etc.) and in OTP.
-* One uses user/third-party modules in exactly the same way as one uses built-ins and modules that come with the Erlang distribution. 
+* One uses user/third-party modules in exactly the same way as one uses built-ins and modules that come with the Erlang distribution.
 
 
 '''Distinguishing subroutines and functions:'''
@@ -3129,7 +3129,7 @@ There are many, many ways to assign function outputs to variables in LFE. One fa
 
 '''Is partial application possible?'''
 
-* Not explicitly. 
+* Not explicitly.
 * However, one can use <code>lambda</code>s to achieve the same effect.
 
 
@@ -3377,7 +3377,7 @@ var_arg_func(1, 2, 3);
 // Obtaining the return value of a function
 int s = clock("seconds"); //current time in seconds
 // Calling a function with named arguments
-// format is a named argument in Clock_format 
+// format is a named argument in Clock_format
 int str = Clock_format(s, format: "%B");
 puts(str);
 
@@ -3416,7 +3416,7 @@ print { foo = "bar" } -- also serves as a form of named arguments
 print(("this is backwards uppercase"):gsub("%w+", function (s) return s:upper():reverse() end))
 
 -- Functions can return multiple values (including none), which can be counted via select()
-local iter, obj, start = ipairs { 1, 2, 3 } 
+local iter, obj, start = ipairs { 1, 2, 3 }
 print(select("#", (function () end)())) --> 0
 print(select("#", unpack { 1, 2, 3, 4 })) --> 4
 
@@ -3446,14 +3446,14 @@ f();;
 /* Calling a function with a fixed number of arguments */
 f(1,2);;
 
-/* Calling a function with optional arguments 
+/* Calling a function with optional arguments
    Note: defining the function is cumbersome but will get easier in future versions. */
 f(1,2,new {default with x=3, y=4});;
 
 /* Calling a function with a variable number of arguments */
 printf("%d %d %d %d":char*,2,3,4,5);;
 
-/* Calling a function with named arguments 
+/* Calling a function with named arguments
    Note: may get syntax sugar in future versions */
 f(1,2,new {default with x=3, y=4});;
 
@@ -3565,7 +3565,7 @@ Module CheckIt {
       M=100
       K=5
       N=200
-      Function Alfa { 
+      Function Alfa {
             Read New K
             Local N=3
             M++
@@ -3669,7 +3669,7 @@ Module Checkit {
       \\ interpreter make a line: Read New Z
             k+=z
             Print z
-      } 
+      }
       PassRef &Alfa.Beta()
       Print k=11, z=500
 }
@@ -3691,12 +3691,12 @@ Calling a function with a fixed number of arguments:
 f(1,sin(x), g -> int(g(t),t=0..1)
 ```
 
-Calling a function with optional arguments: 
+Calling a function with optional arguments:
 ```Maple
 f(1, sin(x), g -> int(g(t),t=0..1)
 ```
 
-Calling a function with a variable number of arguments: 
+Calling a function with a variable number of arguments:
 ```Maple
 f(1, sin(x), g -> int(g(t),t=0..1)
 ```
@@ -3797,54 +3797,54 @@ Arguments can be passed by value or by reference.
 ```Matlab
 
     % Calling a function that requires no arguments
-       function a=foo(); 
+       function a=foo();
          a=4;
        end;
-       x = foo(); 
+       x = foo();
     % Calling a function with a fixed number of arguments
-       function foo(a,b,c); 
+       function foo(a,b,c);
          %% function definition;
        end;
-       foo(x,y,z); 
+       foo(x,y,z);
     % Calling a function with optional arguments
-       function foo(a,b,c); 
+       function foo(a,b,c);
 	if nargin<2, b=0; end;
 	if nargin<3, c=0; end;
          %% function definition;
        end;
-       foo(x,y); 
+       foo(x,y);
     % Calling a function with a variable number of arguments
-       function foo(varargin); 
+       function foo(varargin);
 	  for k=1:length(varargin)
-            arg{k} = varargin{k};	
+            arg{k} = varargin{k};
        end;
-       foo(x,y); 
+       foo(x,y);
     % Calling a function with named arguments
 	%% does not apply
     % Using a function in statement context
 	%% does not apply
     % Using a function in first-class context within an expression
     % Obtaining the return value of a function
-       function [a,b]=foo(); 
+       function [a,b]=foo();
          a=4;
          b='result string';
        end;
-       [x,y] = foo(); 
+       [x,y] = foo();
     % Distinguishing built-in functions and user-defined functions
-	fun = 'foo';	
+	fun = 'foo';
 	if (exist(fun,'builtin'))
  		printf('function %s is a builtin\n');
         elseif (exist(fun,'file'))
  		printf('function %s is user-defined\n');
         elseif (exist(fun,'var'))
  		printf('function %s is a variable\n');
-        else 
+        else
  		printf('%s is not a function or variable.\n');
         end
     % Distinguishing subroutines and functions
         % there are only scripts and functions, any function declaration starts with the keyword function, otherwise it is a script that runs in the workspace
-    % Stating whether arguments are passed by value or by reference 
-      % arguments are passed by value, however Matlab has delayed evaluation, such that a copy of large data structures are done only when an element is written to.  
+    % Stating whether arguments are passed by value or by reference
+      % arguments are passed by value, however Matlab has delayed evaluation, such that a copy of large data structures are done only when an element is written to.
 
 ```
 
@@ -3879,8 +3879,8 @@ f(b = 0, a = 'a')
 f('a', b = 0) // if mixing named and unnamed args, unnamed must be first and in correct order
 
 // statement context
-if (f(foo) == 42) 
-    WriteLine($"$foo is the meaning to life, the universe and everything.") 
+if (f(foo) == 42)
+    WriteLine($"$foo is the meaning to life, the universe and everything.")
 else WriteLine($"$foo is meaningless.")
 
 // first class function in an expression
@@ -3896,7 +3896,7 @@ def a = f(3)
 //   N/A
 
 // stating whether passed by value or by reference
-//   .NET distinguishes between value types and reference types; if a reference type is passed by reference (using ref or out), 
+//   .NET distinguishes between value types and reference types; if a reference type is passed by reference (using ref or out),
 //   the reference is passed by reference, which would allow a method to modify the object to which the reference refers
 def f(a, ref b) { ... }
 mutable someVar = "hey there" // doesn't make sense to pass immutable value by ref
@@ -3906,7 +3906,7 @@ mutable someOtherVar // if passed by ref using 'out', the variable needn't be in
 g(2, out someOtherVar)
 
 // partial application
-def f(a, b) { ... } 
+def f(a, b) { ... }
 def g = f(2, _)
 def h = f(_, 2)
 def a = g(3) // equivalent to: def a = f(2, 3)
@@ -4120,7 +4120,7 @@ The receiver must be on the top of the stack before calling the method. If a, b,
 ```Oforth>a b c r m</lang
 
 will call m with r as its receiver.
-It is also possible to use the same "sugar" notation used by functions : 
+It is also possible to use the same "sugar" notation used by functions :
 
 ```Oforth
 r m(a, b, c)
@@ -4367,7 +4367,7 @@ Calling a function with exactly one argument:
 foo 1             # as list operator
 foo(1)            # as named function
 foo.(1)           # as named function, explicit postfix
-$ref(1)           # as object invocation (must be hard ref)   
+$ref(1)           # as object invocation (must be hard ref)
 $ref.(1)          # as object invocation, explicit postfix
 1.$foo            # as pseudo-method meaning $foo(1) (hard ref only)
 1.$foo()          # as pseudo-method meaning $foo(1) (hard ref only)
@@ -4461,7 +4461,7 @@ foo(:a, :b(4), :!c, d => "stuff")
 ```
 
 
-...and so on.  Operators may also be called with named arguments, but only 
+...and so on.  Operators may also be called with named arguments, but only
 colon adverbials are allowed:
 
 
@@ -4731,7 +4731,7 @@ opt_args(3.141)         # 3.141
 
 def var_args(*v):
     print(v)
-# calls	
+# calls
 var_args(1, 2, 3)       # (1, 2, 3)
 var_args(1, (2,3))      # (1, (2, 3))
 var_args()              # ()
@@ -4828,7 +4828,7 @@ x
 
 
 ### Distinguishing built-in functions and user-defined functions
-# Not easily possible. See 
+# Not easily possible. See
 # http://cran.r-project.org/doc/manuals/R-ints.html#g_t_002eInternal-vs-_002ePrimitive
 # for details.
 
@@ -4841,7 +4841,7 @@ x
 # Pass by value.
 
 
-### Is partial application possible and how 
+### Is partial application possible and how
 # Yes, see http://rosettacode.org/wiki/Partial_function_application#R
 ```
 
@@ -5325,7 +5325,7 @@ loop { }                        # Kernel#loop
 
 ::passed by value of object reference.
 
-*Is partial application possible and how 
+*Is partial application possible and how
 ::However something similar can be done, see [[Partial function application#Ruby]]
 
 
@@ -5549,8 +5549,8 @@ val halve = divide(_: Double, 2)  // partial application -- defer application of
 class Foo(var value: Int)
 def incFoo(foo: Foo) = foo.value += 1 // function showing AnyRef's are passed by reference
 /* def incInt(i: Int) = i += 1 */     // error: += is not a member of Int
-                                      // (All arguments are passed by reference, but reassignment 
-                                      // or setter must be defined on a type or a field 
+                                      // (All arguments are passed by reference, but reassignment
+                                      // or setter must be defined on a type or a field
                                       // (respectively) in order to modify its value.)
 
 // No distinction between built-in functions and user-defined functions
@@ -5561,7 +5561,7 @@ def incFoo(foo: Foo) = foo.value += 1 // function showing AnyRef's are passed by
 
 ## Seed7
 
-* Seed7 provides two kinds of subroutines: ''proc'', which has no return value, and ''func'', which has a return value. The return value of a ''func'' must be used by the caller (e.g. assigned to a variable). If you don't want do deal with the return value, use a ''proc'' instead. 
+* Seed7 provides two kinds of subroutines: ''proc'', which has no return value, and ''func'', which has a return value. The return value of a ''func'' must be used by the caller (e.g. assigned to a variable). If you don't want do deal with the return value, use a ''proc'' instead.
 
 * Seed7 supports call-by-value, call-by-reference, and call-by-name parameters. Programmers are free to specify the desired parameter passing mechanism. The most used parameter passing mechanism is 'in'. Depending on the type 'in' specifies call-by-value (for integer, float, ...) or call-by-reference (for string, array, ...). It is prohibited to write something to an 'in' parameter.
 
@@ -5846,54 +5846,54 @@ Public Sub calling_a_function()
     Debug.Print "no arguments", , no_arguments
     Debug.Print "no arguments", , no_arguments()
     'Parentheses are not required
-    
+
     'Calling a function with a fixed number of arguments
     Debug.Print "fixed_number", , fixed_number(1, 1)
-    
+
     'Calling a function with optional arguments
     Debug.Print "optional parameter", optional_parameter
     Debug.Print "optional parameter", optional_parameter(2)
-    
+
     'Calling a function with a variable number of arguments
     Debug.Print "variable number", variable_number([{"hello", "there"}])
     'The variable number of arguments have to be passed as an array
-    
+
     'Calling a function with named arguments
     Debug.Print "named arguments", named_arguments(argument2:=1, argument1:=1)
-    
+
     'Using a function in statement context
     statement
-    
+
     'Using a function in first-class context within an expression
     s = "no_arguments"
     Debug.Print "first-class context", Application.Run(s)
     'A function name can be passed as argument in a string
-    
+
     'Obtaining the return value of a function
     returnvalue = return_value
     Debug.Print "obtained return value", returnvalue
-    
+
     'Distinguishing built-in functions and user-defined functions
-    
+
     'Distinguishing subroutines And functions
     foo
     Debug.Print , bar
-    
+
     'Stating whether arguments are passed by value or by reference
     Dim t As String
     t = "unaltered"
     Debug.Print passed_by_value(t), t
     Debug.Print passed_by_reference(t), t
-    
+
     'Is partial application possible and how
     'I don 't know
-    
+
     'calling a subroutine with arguments does not require parentheses
     no_parentheses "calling a subroutine"
     Debug.Print "does not require parentheses"
     Call no_parentheses("deprecated use")
     Debug.Print "of parentheses"
-    
+
 End Sub
 
 ```
@@ -5902,11 +5902,11 @@ End Sub
 ```txt
 no arguments                ok
 no arguments                ok
-fixed_number                 2 
-optional parameter           1 
-optional parameter           2 
-variable number              2 
-named arguments              2 
+fixed_number                 2
+optional parameter           1
+optional parameter           2
+variable number              2
+named arguments              2
 function called as statement
 first-class context         ok
 obtained return value       ok
@@ -5991,7 +5991,7 @@ m.cos 3 -- print;
             <xsl:call-template name="xslt-template-demos"/>
         </demo>
     </xsl:template>
-    
+
     <xsl:template name="xpath-function-demos">
         <!--
             A 'function' in XSLT 1.0 is a function that can be called from
@@ -5999,20 +5999,20 @@ m.cos 3 -- print;
             attribute of several XSLT elements). The following demos apply
             to these functions.
         -->
-        
+
         <!-- Calling function that requires no arguments -->
         <!-- false() always returns a boolean false value -->
         <line>This test is <xsl:if test="false()">NOT</xsl:if> OK.</line>
-        
+
         <!-- Calling a function with a fixed number of arguments -->
         <!-- not() takes exactly 1 argument. starts-with() takes exactly 2 arguments. -->
         <line>'haystack' does <xsl:if test="not(starts-with('haystack', 'hay'))">NOT</xsl:if> start with 'hay'.</line>
-        
+
         <!-- Calling a function with optional arguments -->
         <!-- If the third argument of substring() is omitted, the length of the string is assumed. -->
         <line>'<xsl:value-of select="substring('haystack', 1, 3)"/>' = 'hay'</line>
         <line>'<xsl:value-of select="substring('haystack', 4)"/>' = 'stack'</line>
-        
+
         <!-- Calling a function with a variable number of arguments -->
         <!-- concat() accepts two or more arguments. -->
         <line>'<xsl:value-of select="concat('abcd', 'efgh')"/>' = 'abcdefgh'</line>
@@ -6023,10 +6023,10 @@ m.cos 3 -- print;
             mentioning.
         -->
         <line>The number of root elements in the input document is <xsl:value-of select="count(/*)"/> (should be 1).</line>
-        
+
         <!-- Calling a function with named arguments -->
         <!-- XPath 1.0 uses only positional parameters. -->
-        
+
         <!-- Using a function in statement context -->
         <!--
             In general, XPath 1.0 functions have no side effects, so calling
@@ -6035,10 +6035,10 @@ m.cos 3 -- print;
             calling a function with side effects are, at the very least,
             implementation-dependent.
         -->
-        
+
         <!-- Using a function in first-class context within an expression -->
         <!-- Functions are not natively first-class values in XPath 1.0. -->
-        
+
         <!-- Obtaining the return value of a function -->
         <!--
             The return value of the function is handled as specified by the
@@ -6051,7 +6051,7 @@ m.cos 3 -- print;
         -->
         <!-- Here, concat() is interpolated into an attribute value using braces ({}). -->
         <line foo="{concat('Hello, ', 'Hello, ', 'Hello')}!">See attribute.</line>
-        
+
         <!-- Distinguishing built-in functions and user-defined functions -->
         <!--
             Given that functions aren't first-class here, the origin of any
@@ -6061,20 +6061,20 @@ m.cos 3 -- print;
             available) must be defined within a separate namespace and
             prefixed.
         -->
-        
+
         <!-- Distinguishing subroutines and functions -->
         <!--
             There are no "subroutines" in this sense—everything that looks
             like a subroutine has some sort of return or result value.
         -->
-        
+
         <!-- Stating whether arguments are passed by value or by reference -->
         <!-- There is no meaningful distinction since there is no mechanism by which to mutate values. -->
-        
+
         <!-- Is partial application possible and how -->
         <!-- Not natively. -->
     </xsl:template>
-    
+
     <xsl:template name="xslt-template-demos">
         <!--
             A 'template' in XSLT 1.0 is a subroutine-like construct. When
@@ -6089,7 +6089,7 @@ m.cos 3 -- print;
             speak of. The ones used here are defined later in this
             transform.
         -->
-        
+
         <!--
             Answers for these prompts are the same as with XPath functions (above):
                 Using a function in statement context
@@ -6097,7 +6097,7 @@ m.cos 3 -- print;
                 Stating whether arguments are passed by value or by reference
                 Is partial application possible and how
         -->
-        
+
         <!-- Calling function that requires no arguments -->
         <xsl:call-template name="nullary-demo"/>
         <!--
@@ -6109,7 +6109,7 @@ m.cos 3 -- print;
             by calling from inside a <xsl:for-each/> loop.
         -->
         <xsl:apply-templates select="/*" mode="nullary-context-demo-mode"/>
-        
+
         <!--
             A template parameter is made optional in the definition of the
             template by supplying an expression as its select attribute,
@@ -6119,7 +6119,7 @@ m.cos 3 -- print;
             attribute is not specified. Therefore, all template parameters
             are always optional, even when semantically they should not be.
         -->
-        
+
         <!-- Calling a function with a fixed number of arguments -->
         <working note="When all parameters are supplied">
             <xsl:call-template name="ternary-demo">
@@ -6134,7 +6134,7 @@ m.cos 3 -- print;
                 <xsl:with-param name="b">3</xsl:with-param>
             </xsl:call-template>
         </broken>
-        
+
         <!-- Calling a function with optional arguments -->
         <!-- With the optional third parameter -->
         <working name="When all parameters are supplied">
@@ -6151,14 +6151,14 @@ m.cos 3 -- print;
                 <xsl:with-param name="b" select="3"/>
             </xsl:call-template>
         </working>
-        
+
         <!-- Calling a function with a variable number of arguments -->
         <!--
             Templates are not varargs-capable. Variable numbers of arguments
             usually appear in the form of a nodeset which is then bound to a
             single parameter name.
         -->
-        
+
         <!-- Calling a function with named arguments -->
         <!--
             Other than what comes with the current context, template
@@ -6167,10 +6167,10 @@ m.cos 3 -- print;
             even arguments not specified by the template may be passed; they
             are silently ignored.
         -->
-        
+
         <!-- Using a function in first-class context within an expression -->
         <!-- Templates are not first-class values in XSLT 1.0. -->
-        
+
         <!-- Obtaining the return value of a function -->
         <!--
             The output of a template is interpolated into the place of the
@@ -6204,28 +6204,28 @@ m.cos 3 -- print;
         <line>
             <xsl:value-of select="concat('And the answer, which should be 12, is ', $lesser-demo-result, ', of course.')"/>
         </line>
-        
+
         <!-- Distinguishing built-in functions and user-defined functions -->
         <!-- Virtually all templates are user-defined. -->
-        
+
     </xsl:template>
-    
+
     <!-- Templates supporting template demos above -->
     <xsl:template match="/*" mode="nullary-context-demo-mode">
         <xsl:call-template name="nullary-context-demo"/>
     </xsl:template>
-    
+
     <xsl:template name="nullary-demo">
         <line>No parameters needed here!</line>
     </xsl:template>
-    
+
     <xsl:template name="nullary-context-demo">
         <!-- When a template is called it has access to the current node of the caller -->
         <xsl:for-each select="self::*">
             <line>The context element here is named "<xsl:value-of select="local-name()"/>"</line>
         </xsl:for-each>
     </xsl:template>
-    
+
     <xsl:template name="ternary-demo">
         <!-- This demo requires, at least semantically, all three parameters. -->
         <xsl:param name="a"/>
@@ -6233,7 +6233,7 @@ m.cos 3 -- print;
         <xsl:param name="c"/>
         <line>(<xsl:value-of select="$a"/> * <xsl:value-of select="$b"/>) + <xsl:value-of select="$c"/> = <xsl:value-of select="($a * $b) + $c"/></line>
     </xsl:template>
-    
+
     <xsl:template name="binary-or-ternary-demo">
         <!-- This demo requires the first two parameters, but defaults the third to 0 if it is not supplied. -->
         <xsl:param name="a"/>
@@ -6241,7 +6241,7 @@ m.cos 3 -- print;
         <xsl:param name="c" select="0"/>
         <line>(<xsl:value-of select="$a"/> * <xsl:value-of select="$b"/>) + <xsl:value-of select="$c"/> = <xsl:value-of select="($a * $b) + $c"/></line>
     </xsl:template>
-    
+
     <xsl:template name="lesser-value">
         <xsl:param name="a"/>
         <xsl:param name="b"/>
@@ -6274,7 +6274,7 @@ execute("test", 1, 2, 3)	// show 1 2 3
 
 sub test$(a$)	// show all members of a "list"
 	local n, i, t$(1)
-	
+
 	n = token(a$, t$(), ", ")
 	for i = 1 to n
 		print t$(i), " ";
@@ -6294,7 +6294,7 @@ The syntax and semantics of function calls is the always the same: name/object(p
 Using f has a function, method or object:
 
 ```zkl
-f(); f(1,2,3,4); 
+f(); f(1,2,3,4);
 fcn f(a=1){}()  // define and call f, which gets a set to 1
 fcn{vm.arglist}(1,2,3,4) // arglist is L(1,2,3,4)
 fcn{a1:=vm.nthArg(1)}(1,2,3)  // a1 == 2
@@ -6359,20 +6359,20 @@ module CallingProcs;
 			return s
 		end Sum;
 
-		(* subroutine 
+		(* subroutine
 		 * @param v: by value
 		 * @param t: by reference
 		 *)
 		procedure Sum2(v: array {math} * of integer; var t: integer);
-		var	
+		var
 			i: integer;
 		begin
 			t := 0;
 			for i := 0 to len(v) - 1 do
 				inc(t,v[i])
-			end	
+			end
 		end Sum2;
-	begin 
+	begin
 		Init; (* calling a function without parameters *)
 		total := Sum(nums);
 		writeln(total);

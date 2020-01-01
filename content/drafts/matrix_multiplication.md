@@ -1001,12 +1001,12 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 This code should work with any version of the .NET Framework and C# language
 
 
-```csharp
+```c#
 public class Matrix
 {
 	int n;

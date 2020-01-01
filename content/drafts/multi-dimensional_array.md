@@ -455,13 +455,13 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|3}}
 C# supports both multidimensional arrays and jagged arrays (e.g. arrays of arrays).<br/>
 A multidimensional array with 2 rows and 3 columns can be initialized with:
 
-```csharp
+```c#
 var array = new int[,] { //Dimensions are inferred
     { 1, 2, 3 },
     { 4, 5, 6}
@@ -477,7 +477,7 @@ Under the hood, this is just one object; one contiguous block of memory is alloc
 
 For jagged arrays, each dimension must be initialized separately. They can be non-rectangular.
 
-```csharp
+```c#
 var array = new int[][] { //Dimensions are inferred
     new [] { 1, 2, 3, 4 },
     new [] { 5, 6, 7, 8, 9, 10 }
@@ -501,7 +501,7 @@ for (int a = 0; a < array.Length; a++) {
 
 C# also supports arrays with non-zero bounds (mainly for handling arrays that are returned from unmanaged code)
 
-```csharp
+```c#
 var array = (int[,,,])Array.CreateInstance(typeof(int), new [] { 5, 4, 3, 2 }, new [] { 10, 10, 10, 10 });
 int n = 1;
 //Note: GetUpperBound is inclusive

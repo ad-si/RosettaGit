@@ -1492,9 +1492,9 @@ Decrypted:	This is a line of plain text, 50 characters long.
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Linq;
 

@@ -359,9 +359,9 @@ Hello , world!
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 class Program
 {
     static void Main(string[] args)

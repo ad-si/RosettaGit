@@ -251,11 +251,11 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Mono|1.2}}
 {{works with|Visual C sharp|Visual C#|2003}}
 
-```csharp
+```c#
 static void Main(string[] args)
 {
     Console.SetCursorPosition(3, 6);

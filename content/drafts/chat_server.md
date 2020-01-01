@@ -377,9 +377,9 @@ int main (int argc, char*argv[])
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;

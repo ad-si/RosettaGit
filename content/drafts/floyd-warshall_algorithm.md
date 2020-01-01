@@ -375,10 +375,10 @@ int main() {
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Java}}
 
-```csharp
+```c#
 using System;
 
 namespace FloydWarshallAlgorithm {

@@ -343,9 +343,9 @@ int main(int argc, char *argv[]) {
 
 However ISO C leaves it up to implementations to define whether or not the last line of a text stream requires a new-line. This means that the C can be targetted to environments where this task is impossible to implement, at least with a direct text stream manipulation like this.
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 class Program

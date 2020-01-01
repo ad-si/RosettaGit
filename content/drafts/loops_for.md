@@ -1022,9 +1022,9 @@ for(int i = 0; i < 5; ++i) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 class Program {

@@ -344,14 +344,14 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 
 ### Recursive
 
 {{works with|C sharp|6}}
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -407,7 +407,7 @@ public static class LIS
 
 {{works with|C sharp|7}}
 
-```csharp
+```c#
 public static class LIS
 {
     public static T[] Find<T>(IList<T> values, IComparer<T> comparer = null) {

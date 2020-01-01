@@ -782,10 +782,10 @@ Body 3 : -1.006089  -4.103186  -3.122591 | -0.359686  -1.177995  -0.875924
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|D}}
 
-```csharp
+```c#
 using System;
 using System.IO;
 

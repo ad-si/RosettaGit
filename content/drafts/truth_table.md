@@ -428,14 +428,14 @@ Boolean expression:
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|7}}
 This implementation allows the user to define the characters for true/false and the operators.<br/>
 To not make it too complicated, operators are limited to a single character.<br/>
 Either postfix or infix expressions are allowed. Infix expressions are converted to postfix.
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Generic;

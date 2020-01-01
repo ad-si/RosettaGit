@@ -1132,10 +1132,10 @@ PASCAL SYMMETRIC MATRIX
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 
 public static class PascalMatrixGeneration

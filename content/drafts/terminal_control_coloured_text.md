@@ -248,13 +248,13 @@ int main(void)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Mono|1.2}}
 {{works with|Visual C sharp|Visual C#|2003}}
 
 Visual Studios Intellisense will list all available colours.
 
-```csharp
+```c#
 
 static void Main(string[] args)
 {

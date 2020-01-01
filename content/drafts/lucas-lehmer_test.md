@@ -897,11 +897,11 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{works with|Visual Studio|2010}}
 {{works with|.NET Framework|4.0}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Numerics;

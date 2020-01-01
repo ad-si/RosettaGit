@@ -508,10 +508,10 @@ Total: 83, Values above 15 : 2
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 {{trans|Visual Basic .NET}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

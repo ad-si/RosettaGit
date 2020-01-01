@@ -716,9 +716,9 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 namespace RosettaCode.SumDigitsOfAnInteger
 {
     using System;

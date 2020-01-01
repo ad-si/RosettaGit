@@ -432,9 +432,9 @@ const main = 195;
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 class P{static void Main(){}}
 ```
 

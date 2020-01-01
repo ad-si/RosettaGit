@@ -601,10 +601,10 @@ Triples below 250: (1 3 7) (5 7 11) (11 13 17) (23 25 29) (41 43 47) (173 175 17
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Collections.Generic;

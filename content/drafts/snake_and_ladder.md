@@ -212,10 +212,10 @@ out:
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|Kotlin}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 

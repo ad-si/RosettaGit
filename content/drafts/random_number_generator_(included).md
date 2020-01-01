@@ -231,7 +231,7 @@ int main()
 
 
 
-## C sharp
+## C#
 
 The .NET Random class says that it uses Knuth's subtractive random number generator algorithm.[http://msdn.microsoft.com/en-us/library/system.random.aspx#remarksToggle]
 

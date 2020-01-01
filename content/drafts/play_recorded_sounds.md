@@ -29,9 +29,9 @@ Where applicable, please categorize examples primarily by the audio facility use
 
 ## AutoHotkey
 
-No builtin functions for: 
+No builtin functions for:
 
-1. monitoring timepoints in the sound  
+1. monitoring timepoints in the sound
 
 2. simultaneous play
 
@@ -79,51 +79,51 @@ BBC BASIC for Windows has native support for playing MIDI files, and WAV files c
       SND_LOOP = 8
       SND_ASYNC = 1
       SND_FILENAME = &20000
-      
+
       PRINT "Playing a MIDI file..."
       *PLAY C:\windows\media\canyon.mid
-      
+
       WAIT 300
       PRINT "Playing the Windows TADA sound quietly..."
       wave$ = "\windows\media\tada.wav"
       volume% = 10000
       SYS "waveOutSetVolume", -1, volume% + (volume% << 16)
       SYS "PlaySound", wave$, 0, SND_FILENAME + SND_ASYNC
-      
+
       WAIT 300
       PRINT "Playing the Windows TADA sound loudly on the left channel..."
       volume% = 65535
       SYS "waveOutSetVolume", -1, volume%
       SYS "PlaySound", wave$, 0, SND_FILENAME + SND_ASYNC
-      
+
       WAIT 300
       PRINT "Playing the Windows TADA sound loudly on the right channel..."
       volume% = 65535
       SYS "waveOutSetVolume", -1, volume% << 16
       SYS "PlaySound", wave$, 0, SND_FILENAME + SND_ASYNC
-      
+
       WAIT 300
       PRINT "Looping the Windows TADA sound on both channels..."
       volume% = 65535
       SYS "waveOutSetVolume", -1, volume% + (volume% << 16)
       SYS "PlaySound", wave$, 0, SND_FILENAME + SND_ASYNC + SND_LOOP
-      
+
       WAIT 300
       SYS "PlaySound", 0, 0, 0
       PRINT "Stopped looping..."
-      
+
       WAIT 300
       SOUND OFF
       PRINT "Stopped MIDI."
-      
+
       END
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Threading;
 using System.Media;
@@ -137,7 +137,7 @@ class Program
         s1.SoundLocation = file; // or "s1 = new SoundPlayer(file)"
 
         //play
-        s1.Play();     
+        s1.Play();
 
         //play for 0.1 seconds
         s1.Play();
@@ -174,9 +174,9 @@ end.
 {{trans|PicoLisp}}
 
 
-Go doesn't have any audio support in its standard library and it's best therefore to invoke a utility such as SoX to complete a task such as this. 
+Go doesn't have any audio support in its standard library and it's best therefore to invoke a utility such as SoX to complete a task such as this.
 
-Although there is at least one third party library which provides Go bindings to the libsox sound library, for casual use it's far easier to invoke SoX directly with a list of arguments.   
+Although there is at least one third party library which provides Go bindings to the libsox sound library, for casual use it's far easier to invoke SoX directly with a list of arguments.
 
 See the PicoLisp entry for a description of what these particular arguments do.
 
@@ -265,7 +265,7 @@ right=65535
 dwVol=right*65536+left
 calldll #winmm, "waveOutSetVolume", 0 as long, _
     dwVol as long, ret as long
- 
+
 ```
 
 
@@ -284,7 +284,7 @@ ListPlay[a, {t, 0, 10}]; ListPlay[b, {t, 0, 10}];
 
 ListPlay[{a,b}, {t, 0, 10}];
 
-Stopping before the end can be done using the GUI or by reducing the parameter range of the ListPlay function. 
+Stopping before the end can be done using the GUI or by reducing the parameter range of the ListPlay function.
 
 While[True,ListPlay[{a,b}, {t, 0, 10}];]
 
@@ -302,8 +302,8 @@ SND file format, equivalent to AU (.snd),
 MIDI format (.mid)
 
 -Suitability for game sound effects :
-low-latency start : yes 
-resource efficiency : low 
+low-latency start : yes
+resource efficiency : low
 support for many simultaneous sounds : yes
 
 -Suitable for playing sound of arbitrary long duration.
@@ -419,9 +419,9 @@ s1.play(-1)         #loops indefinitely
 time.sleep(0.5)
 
 #simultaneously
-s2.play()          #play once 
+s2.play()          #play once
 time.sleep(2)
-s2.play(2)         #optional parameter loops three times 
+s2.play(2)         #optional parameter loops three times
 time.sleep(10)
 
 #set volume down
@@ -476,7 +476,7 @@ chord <- loadSample(file.path(media_dir, "chord.wav"))
 
 # Play sequentially
 play(appendSample(chimes, chord))
- 
+
 # Play simultaneously
 play(chimes + chord)
 
@@ -653,11 +653,11 @@ There aren't many mature sound libraries for Ruby.  The {{libheader|RubyGems}} p
 require 'win32/sound'
 include Win32
 
-sound1 = ENV['WINDIR'] + '\Media\Windows XP Startup.wav' 
-sound2 = ENV['WINDIR'] + '\Media\Windows XP Shutdown.wav' 
+sound1 = ENV['WINDIR'] + '\Media\Windows XP Startup.wav'
+sound2 = ENV['WINDIR'] + '\Media\Windows XP Shutdown.wav'
 
 puts "play the sounds sequentially"
-[sound1, sound2].each do |s| 
+[sound1, sound2].each do |s|
   t1 = Time.now
   Sound.play(s)
   puts "'#{s}' duration: #{(Time.now.to_f - t1.to_f)} seconds"
@@ -667,7 +667,7 @@ puts "attempt to play the sounds simultaneously"
 [sound1, sound2].each {|s| Sound.play(s, Sound::ASYNC)}
 
 puts <<END
-the above only plays the second sound2 because the library only appears 
+the above only plays the second sound2 because the library only appears
 to be able to play one sound at a time.
 END
 
@@ -716,13 +716,13 @@ class PlayerControl: NSObject, AVAudioPlayerDelegate {
         get {
             return player1.volume
         }
-        
+
         set {
             player1.volume = newValue
             player2.volume = newValue
         }
     }
-    
+
     init(player1:AVAudioPlayer, player2:AVAudioPlayer) {
         super.init()
         self.player1 = player1
@@ -730,25 +730,25 @@ class PlayerControl: NSObject, AVAudioPlayerDelegate {
         self.player1.delegate = self
         self.player2.delegate = self
     }
-    
+
     func loop() {
         player1.numberOfLoops = 1
         player1.play()
-        
+
         let time = Int64((Double(player1.duration) + 2.0) * Double(NSEC_PER_SEC))
-        
+
         dispatch_after(dispatch_time(0, time), dispatch_get_main_queue()) {[weak self] in
             println("Stopping track")
             self?.player1.stop()
             exit(0)
         }
     }
-    
+
     func playBoth() {
         player1.play()
         player2.play()
     }
-    
+
     func audioPlayerDidFinishPlaying(player:AVAudioPlayer!, successfully flag:Bool) {
         if player === player2 && !playedBoth {
             playBoth()
@@ -864,7 +864,7 @@ End Sub
 
 ```
 
-Type 
+Type
 ```txt
 Playsound "d:\explode.wav"
 ```

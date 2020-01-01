@@ -519,9 +519,9 @@ This funciton returns one of three states, not a boolean.  One can define boolea
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 namespace RosettaCode.OrderTwoNumericalLists
 {
     using System;

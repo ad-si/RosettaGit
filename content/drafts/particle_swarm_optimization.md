@@ -354,10 +354,10 @@ f(2.20, 1.57)        : -0.801166
 ```
 
 
-=={{header|C#|C sharp}}==
+## C#
 {{trans|java}}
 
-```csharp
+```c#
 using System;
 
 namespace ParticleSwarmOptimization {

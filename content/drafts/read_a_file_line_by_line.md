@@ -1022,18 +1022,18 @@ CONSOLE_APP_MAIN
 
 
 
-## C sharp
+## C#
 
 'File.ReadLines' reads the lines of a file which could easily be stepped through.
 
-```csharp
+```c#
 foreach (string readLine in File.ReadLines("FileName"))
   DoSomething(readLine);
 ```
 
 A full code may look like;
 
-```csharp
+```c#
 using System;
 using System.IO;
 using System.Text;

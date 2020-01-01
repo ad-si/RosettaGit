@@ -383,12 +383,12 @@ int main() {
 
 
 
-## C sharp
+## C#
 
 Signals in C# are called events, and are handled by attaching event handler functions to the event, which are called when the event is triggered.
 
 
-```csharp
+```c#
 using System; //DateTime, Console, Environment classes
 class Program
 {

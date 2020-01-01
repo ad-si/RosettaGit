@@ -528,9 +528,9 @@ int main() {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 Func<char, int> toInt = c => c-'0';
 
 foreach (var i in Enumerable.Range(1,5000)
@@ -552,7 +552,7 @@ foreach (var i in Enumerable.Range(1,5000)
 
 {{Trans|Kotlin}}
 
-```csharp
+```c#
 using System;
 
 namespace Munchhausen
@@ -612,7 +612,7 @@ namespace Munchhausen
 {{trans|Visual Basic .NET}}
 Search covers all 11 digit numbers (as pointed out elsewhere, 11*(9^9) has only 10 digits, so there are no Munchausen numbers with 11+ digits), not just the first half of the 9 digit numbers.  Computation time is under 1.5 seconds.
 
-```csharp
+```c#
 using System;
 
 static class Program

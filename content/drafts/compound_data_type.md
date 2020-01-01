@@ -611,10 +611,10 @@ typedef struct Point
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 struct Point
 {
   public int x, y;

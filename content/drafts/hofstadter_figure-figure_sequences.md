@@ -573,10 +573,10 @@ S(100):
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 Creates an IEnumerable for R and S and uses those to complete the task
 
-```Csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

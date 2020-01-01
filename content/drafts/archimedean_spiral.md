@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-The [[wp:Archimedean_spiral|Archimedean spiral]] is a spiral named after the Greek mathematician Archimedes. 
+The [[wp:Archimedean_spiral|Archimedean spiral]] is a spiral named after the Greek mathematician Archimedes.
 
 
 An Archimedean spiral can be described by the equation:
@@ -127,7 +127,7 @@ function min(x,y) { return((x < y) ? x : y) }
 ```ApplesoftBasic
 110 LET H = 96
 120 LET W = H + H / 2
-130 HGR2 
+130 HGR2
 140 HCOLOR= 3
 150 LET A = 1
 160 LET B = 9
@@ -139,8 +139,8 @@ function min(x,y) { return((x < y) ? x : y) }
 220     LET X = R *  COS (T) + W
 230     LET Y = R *  SIN (T) + H
 240     IF X < 0 THEN  290
-250     IF Y < 0 THEN  290 
-260     IF X > 279 THEN  290  
+250     IF Y < 0 THEN  290
+260     IF X > 279 THEN  290
 270     IF Y > 191 THEN  290
 280     HPLOT X,Y
 290 NEXT
@@ -169,7 +169,7 @@ iter = 150 : q = 30
 
 
 line x,0,x,height
-line 0,y,width,y 
+line 0,y,width,y
 
 penwidth 2
 color red
@@ -179,7 +179,7 @@ while i <= iter
     xn = (1 + (1 * t)) * cos(t) +x
     yn = (1 + (1 * t)) * sin(t) +y
     line x,y,xn,yn
-    x = xn : y = yn    
+    x = xn : y = yn
     print i + chr(9) + int(x) + chr(9) + int(y) + chr(9) + int(t)    # chr(9) = TAB
     i += 1
 
@@ -227,23 +227,23 @@ Commodore BASIC 2.0 lacks in-built graphics capability. This implementation is w
 
 Const As double      deg2rad = Atn(1) * 4 / 180    ' pi = atn(1) * 4, pi/180
 
-Const As UInteger screensize = 600                 ' size of window in pixels     
+Const As UInteger screensize = 600                 ' size of window in pixels
 Const As Double        turns = 5                   ' number of turns
-Const As UInteger   halfscrn = screensize \ 2    
-Const As uinteger         sf = (turns * (screensize - 100)) / halfscrn 
+Const As UInteger   halfscrn = screensize \ 2
+Const As uinteger         sf = (turns * (screensize - 100)) / halfscrn
 
 ScreenRes screensize, screensize, 32   ' screen 600 * 600 pixels, 4 byte color
 
-Dim As Double r, x, y 
+Dim As Double r, x, y
 
 For r = 0 To turns * 360 Step 0.05
-  x = Cos(r * deg2rad) * r / sf 
+  x = Cos(r * deg2rad) * r / sf
   y = Sin(r * deg2rad) * r / sf
-  PSet(halfscrn + x, halfscrn - y), RGB(255, 255, 255)  
+  PSet(halfscrn + x, halfscrn - y), RGB(255, 255, 255)
 Next
 
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -283,7 +283,7 @@ End
   for t=0 to 2*pi*nLoops step 0.01
      'c = c - 1  'changes color parameter
      x=100*t/(2*pi*nLoops)*cos(t)+150  '150x150 is the center
-     y=100*t/(2*pi*nLoops)*sin(t)+150 
+     y=100*t/(2*pi*nLoops)*sin(t)+150
      #g color(c,c,c)  'changes color
      #g set(x,y)
      'if c <1 then c=255
@@ -349,29 +349,29 @@ Interactive code which asks the parameters a and b as inputs, the number of cycl
 
 int main(){
 	double a,b,cycles,incr,i;
-	
+
 	int steps,x=500,y=500;
-	
+
 	printf("Enter the parameters a and b : ");
 	scanf("%lf%lf",&a,&b);
-	
+
 	printf("Enter cycles : ");
 	scanf("%lf",&cycles);
-	
+
 	printf("Enter divisional steps : ");
 	scanf("%d",&steps);
-	
+
 	incr = 1.0/steps;
-	
+
 	initwindow(1000,1000,"Archimedean Spiral");
-	
+
 	for(i=0;i<=cycles*pi;i+=incr){
 		putpixel(x + (a + b*i)*cos(i),x + (a + b*i)*sin(i),15);
 	}
-	
+
 	getch();
-	
-	closegraph();	
+
+	closegraph();
 }
 
 ```
@@ -387,9 +387,9 @@ int main(){
 #include <windows.h>
 #include <string>
 #include <iostream>
- 
+
 const int BMP_SIZE = 600;
- 
+
 class myBitmap {
 public:
     myBitmap() : pen( NULL ), brush( NULL ), clr( 0 ), wid( 1 ) {}
@@ -450,7 +450,7 @@ public:
         fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
         fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
         GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
-        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 
+        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
                                   FILE_ATTRIBUTE_NORMAL, NULL );
         WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
         WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
@@ -498,10 +498,10 @@ int main(int argc, char* argv[]) {
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Drawing;
@@ -564,12 +564,12 @@ Common Lisp doesn't provide native graphical output. Libraries or bitmapped outp
          (scale-factor (* (1- size) (/ 1 real-size)))
          (center-x (* scale-factor -1 min-x))
          (center-y (* scale-factor -1 min-y))
-         (intermediate-result (make-array (list size size) 
-                                          :element-type 'char 
+         (intermediate-result (make-array (list size size)
+                                          :element-type 'char
                                           :initial-element #\space)))
     (dolist (c coords)
       (let ((final-x (floor (+ center-x (* scale-factor (car c)))))
-            (final-y (floor (+ center-y (* scale-factor (cdr c))))))  
+            (final-y (floor (+ center-y (* scale-factor (cdr c))))))
         (setf (aref intermediate-result final-x final-y)
               fill-char)))
     ; print results to output
@@ -581,7 +581,7 @@ Common Lisp doesn't provide native graphical output. Libraries or bitmapped outp
 
 (defun spiral (a b step-resolution step-count)
   "Returns a list of coordinates for r=a+b*theta stepping theta by step-resolution"
-  (loop for theta 
+  (loop for theta
         from 0 upto (* step-count step-resolution)
         by step-resolution
         for r = (+ a (* b theta))
@@ -591,37 +591,37 @@ Common Lisp doesn't provide native graphical output. Libraries or bitmapped outp
 
 (draw-coords-as-text (spiral 10 10 0.01 1500) 30 #\*)
 ; Output:
-; 
-;                         *     
-;          ******          *    
-;       ****    ***        **   
-;     ***          **       *   
-;    **             **       *  
-;   **               **      *  
-;   *                 **     ** 
-;  **                  *      * 
-; **       ******      *      * 
-; *       **    **     **     * 
-; *      **      *      *     * 
+;
+;                         *
+;          ******          *
+;       ****    ***        **
+;     ***          **       *
+;    **             **       *
+;   **               **      *
+;   *                 **     **
+;  **                  *      *
+; **       ******      *      *
+; *       **    **     **     *
+; *      **      *      *     *
 ; *     **       *      *     **
-; *     *        *      *     * 
-; *     *     * **      *     * 
-; *     *     ***      **     * 
-; *     **             *      * 
-; *      *            **      * 
-; *      **          **      ** 
-; **      **        **       *  
-;  *       **      **       **  
-;  **       ********        *   
-;   *                      **   
-;   **                    **    
-;    **                  **     
-;     **               ***      
-;       **            **        
-;        ****      ***          
-;           *******             
-;                               
-                              
+; *     *        *      *     *
+; *     *     * **      *     *
+; *     *     ***      **     *
+; *     **             *      *
+; *      *            **      *
+; *      **          **      **
+; **      **        **       *
+;  *       **      **       **
+;  **       ********        *
+;   *                      **
+;   **                    **
+;    **                  **
+;     **               ***
+;       **            **
+;        ****      ***
+;           *******
+;
+
 
 
 
@@ -655,7 +655,7 @@ Common Lisp doesn't provide native graphical output. Libraries or bitmapped outp
 
 
 ```txt
- 
+
 ```
 
 
@@ -1003,12 +1003,12 @@ function pAS(lps,clr) {
 
 ```
 
-{{Output}} 
+{{Output}}
 
 ```txt
 
-Page with Archimedean spiral like ASjs.png. Right-clicking on the canvas you can save 
-spiral as a png-file, for example. 
+Page with Archimedean spiral like ASjs.png. Right-clicking on the canvas you can save
+spiral as a png-file, for example.
 
 ```
 
@@ -1033,23 +1033,23 @@ println(lineplot(x, y))
 
 ```txt
 
-       ┌────────────────────────────────────────┐ 
-    10 │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⠤⠤⠤⠤⠤⠤⡧⠤⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠀⠀⠀⠀⠀⠀⢀⡠⠔⠊⠉⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠉⠓⠤⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠀⠀⠀⠀⡠⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠉⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠀⠀⡠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢤⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠀⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠔⠊⠉⠉⠙⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠤⡧⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⡴⠥⠤⠤⠤⠤⠤⡧⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⡼⠤⠤⠤⠤⠤⠤⠄│ 
-       │⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠁⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢆⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⣀⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠒⠤⣀⡀⡇⠀⠀⠀⣀⣀⠤⠔⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠀⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡏⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-   -10 │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ 
-       └────────────────────────────────────────┘ 
+       ┌────────────────────────────────────────┐
+    10 │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⠤⠤⠤⠤⠤⠤⡧⠤⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠀⠀⠀⠀⠀⠀⢀⡠⠔⠊⠉⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠉⠓⠤⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠀⠀⠀⠀⡠⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠉⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠀⠀⡠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢤⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠀⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠔⠊⠉⠉⠙⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀│
+       │⠤⡧⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⡴⠥⠤⠤⠤⠤⠤⡧⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⡼⠤⠤⠤⠤⠤⠤⠄│
+       │⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠁⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢆⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⣀⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠒⠤⣀⡀⡇⠀⠀⠀⣀⣀⠤⠔⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠀⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡏⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+   -10 │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+       └────────────────────────────────────────┘
        -10                                     10
 ```
 
@@ -1184,10 +1184,10 @@ Note: cartes2() can be found here on [[Polyspiral#PARI.2FGP| PARI/GP]] page.
 
 ```parigp
 
-\\ The Archimedean spiral  
+\\ The Archimedean spiral
 \\ ArchiSpiral() - Where: lps is a number of loops, c is a direction 0/1
 \\ (counter-clockwise/clockwise). 6/6/16 aev
-\\ Note: cartes2() can be found here on 
+\\ Note: cartes2() can be found here on
 \\ http://rosettacode.org/wiki/Polyspiral#PARI.2FGP page.
 ArchiSpiral(size,lps,c=0)={
 my(a=.0,ai=.1,r=.0,ri=.1,as=lps*2*Pi,n=as/ai,x,y,vc,vx=List(.0),vy=vx);
@@ -1205,8 +1205,8 @@ ArchiSpiral(640,5,1); \\ArchiSpiral2.png
 }
 
 ```
- 
-   
+
+
 {{Output}}
 
 
@@ -1289,7 +1289,7 @@ integer {centerX,centerY} = sq_floor_div({width,height},2)
         atom r = rad*b + a
         integer x = centerX + floor(r*cos(rad))
         integer y = centerY + floor(r*sin(rad))
-        cdCanvasPixel(cddbuffer, x, y, #00FF00) 
+        cdCanvasPixel(cddbuffer, x, y, #00FF00)
     end for
     cdCanvasFlush(cddbuffer)
     return IUP_DEFAULT
@@ -1340,15 +1340,15 @@ float x, y, theta;
 void setup()
 {
   theta = 0;
-  size(500,500); 
+  size(500,500);
 }
 
 void draw()
 {
-  x = (width/2)+theta*cos(theta/PI); 
+  x = (width/2)+theta*cos(theta/PI);
   y = (height/2)+(theta)*sin(theta/PI);
-  point(x,y);   
-  theta = theta + 0.025; 
+  point(x,y);
+  theta = theta + 0.025;
 }
 ```
 
@@ -1364,11 +1364,11 @@ void draw()
 #YCENTER  = 480/2
 #SCALAR   = 200
 
-If OpenWindow(0, 100, 200, 640, 480, "Archimedean spiral")  
+If OpenWindow(0, 100, 200, 640, 480, "Archimedean spiral")
   If CreateImage(0, 640, 480,24,RGB(255,255,255))
-    If StartDrawing(ImageOutput(0))      
+    If StartDrawing(ImageOutput(0))
       i.f=0.0
-      While i<=#MAXLOOP         
+      While i<=#MAXLOOP
         x.f=#XCENTER+Cos(Radian(i))*#SCALAR*i/#MAXLOOP
         y.f=#YCENTER+Sin(Radian(i))*#SCALAR*i/#MAXLOOP
         Plot(x,y,RGB(50,50,50))
@@ -1376,9 +1376,9 @@ If OpenWindow(0, 100, 200, 640, 480, "Archimedean spiral")
       Wend
       StopDrawing()
     EndIf
-  EndIf  
-  ImageGadget(0, 0, 0, 0, 0, ImageID(0))        
-  Repeat : Event = WaitWindowEvent() : Until Event = #PB_Event_CloseWindow 
+  EndIf
+  ImageGadget(0, 0, 0, 0, 0, ImageID(0))
+  Repeat : Event = WaitWindowEvent() : Until Event = #PB_Event_CloseWindow
 EndIf
 End
 ```
@@ -1714,9 +1714,9 @@ sin:   procedure; parse arg x;  x= r2r(x);        numeric fuzz min(5, max(1, dig
 Load "guilib.ring"
 
 horzSize  = 400
-vertSize  = 400 
+vertSize  = 400
 
-counter     = 0  ### cycle thru colors       
+counter     = 0  ### cycle thru colors
 colorRed    = new qcolor() { setrgb(255,000,000,255) }
 colorGreen  = new qcolor() { setrgb(000,255,000,255) }
 colorBlue   = new qcolor() { setrgb(000,000,255,255) }
@@ -1727,54 +1727,54 @@ penUseG = new qpen() { setcolor(colorGreen)  setwidth(1) }
 penUseB = new qpen() { setcolor(colorBlue)   setwidth(1) }
 penUseY = new qpen() { setcolor(colorYellow) setwidth(1) }
 
-        deg2rad    = atan(1) * 4 / 180  
-        screensize = 600                 
-        turns      = 5                
-        halfscrn   = screensize / 2    
-        sf         = (turns * (screensize - 100)) / halfscrn 
+        deg2rad    = atan(1) * 4 / 180
+        screensize = 600
+        turns      = 5
+        halfscrn   = screensize / 2
+        sf         = (turns * (screensize - 100)) / halfscrn
         x = 1
         y = 1
         r = 0
         inc = 0.50   ### control increment speed of r
-        
+
 New qapp
 {
    win1 =  new qwidget()
     {
         setwindowtitle("Draw Spiral")
         setgeometry(100,100,600,600)
-       
+
        label1 = new qlabel(win1)
        {
            setgeometry(10,10,600,600)
            settext("")
        }
-       
-       
+
+
        Canvas = new qlabel(win1)
-       {              
-            MonaLisa = new qPixMap2( 600,600)  
+       {
+            MonaLisa = new qPixMap2( 600,600)
             color    = new qcolor(){ setrgb(255,0,0,255) }
 
-            daVinci  = new qpainter() 
+            daVinci  = new qpainter()
             {
-               begin(MonaLisa)             
+               begin(MonaLisa)
                penUse = new qpen() { setcolor(colorRed) setwidth(1) }
                setpen(penUseR)
                #endpaint()      ### This will Stop the Painting
             }
-            
-            setpixmap(MonaLisa)        
-       }       
-     
-        oTimer = new qTimer(win1) 
+
+            setpixmap(MonaLisa)
+       }
+
+        oTimer = new qTimer(win1)
         {
             setinterval(1)    ### 1 millisecond
             settimeoutevent("DrawCounter()")
             start()
-        }       
-                
-       show()   ### Will show Painting ONLY after exec   
+        }
+
+       show()   ### Will show Painting ONLY after exec
     }
    exec()
 }
@@ -1786,14 +1786,14 @@ New qapp
 
 Func DrawCounter()
 
-    x  = cos(r * deg2rad) * r / sf 
+    x  = cos(r * deg2rad) * r / sf
     y  = sin(r * deg2rad) * r / sf
     r += inc   ###  0.20 fast, 0.90 slow
 
         if r >= turns * 360
-            r = inc 
-            x = 1 
-            y = 1   
+            r = inc
+            x = 1
+            y = 1
             counter++
             whichColor = counter % 4
             See  "whichColor: "+ whichColor +nl
@@ -1807,10 +1807,10 @@ Func DrawCounter()
     hpoint = halfscrn + x
     ypoint = halfscrn - y
 
-    daVinci.drawpoint(hpoint, ypoint)  
+    daVinci.drawpoint(hpoint, ypoint)
     Canvas.setpixmap(MonaLisa)          ### Need this setpixmap to display imageLabel
     win1.show()                         ### Need this show to display imageLabel
-    
+
 return
 
 ```
@@ -1989,7 +1989,7 @@ plot2d(x,y);
 ```scheme
 
 (import (scheme base)
-        (scheme complex) 
+        (scheme complex)
         (rebottled pstk))
 
 ; settings for spiral
@@ -1997,7 +1997,7 @@ plot2d(x,y);
 (define *count* 2000)
 (define *a* 10)
 (define *b* 10)
-(define *center* 
+(define *center*
   (let ((size 200)) ; change this to alter size of display
     (* size 1+i)))
 
@@ -2009,7 +2009,7 @@ plot2d(x,y);
   (do ((i 0 (+ i 1))) ; loop to draw spiral
     ((= i *count*) )
     (let ((c (+ (coords (* i *resolution*)) *center*)))
-      (canvas 'create 'line 
+      (canvas 'create 'line
               (real-part c) (imag-part c)
               (+ 1 (real-part c)) (imag-part c)))))
 
@@ -2017,8 +2017,8 @@ plot2d(x,y);
   (tk/wm 'title tk "Archimedean Spiral")
   (let ((canvas (tk 'create-widget 'canvas)))
     (tk/pack canvas)
-    (canvas 'configure 
-            'height: (* 2 (real-part *center*)) 
+    (canvas 'configure
+            'height: (* 2 (real-part *center*))
             'width: (* 2 (imag-part *center*)))
     (draw-spiral canvas))
   (tk-event-loop tk))

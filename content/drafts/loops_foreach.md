@@ -1101,9 +1101,9 @@ for (auto&& element: container) //use a 'universal reference'
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 string[] things = {"Apple", "Banana", "Coconut"};
 
 foreach (string thing in things)

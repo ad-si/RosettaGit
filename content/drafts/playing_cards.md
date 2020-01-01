@@ -1337,10 +1337,10 @@ inline std::ostream& operator<<(std::ostream& os, const deck& d)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Linq;
 using System.Collections.Generic;

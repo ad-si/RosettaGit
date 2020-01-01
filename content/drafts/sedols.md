@@ -670,9 +670,9 @@ int main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 static int[] sedol_weights = { 1, 3, 1, 7, 3, 9 };
 static int sedolChecksum(string sedol)
 {

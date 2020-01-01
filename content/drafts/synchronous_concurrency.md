@@ -548,10 +548,10 @@ Printed 9 lines
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;

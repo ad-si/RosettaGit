@@ -341,7 +341,7 @@ or recognized, and all whitespace is preserved.
 
 
 
-## C sharp
+## C#
 
 C# has a string literal call which is used for heredoc functionality
 

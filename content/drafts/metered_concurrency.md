@@ -309,11 +309,11 @@ int main()
 
 
 
-## C sharp
+## C#
 
 C# has built in semaphore system where acquire is called via Wait(), release with Release() and count with semaphore.CurrentCount.
 
-```csharp
+```c#
 using System;
 using System.Threading;
 using System.Threading.Tasks;

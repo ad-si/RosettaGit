@@ -497,7 +497,7 @@ Computation time was 7979.042 ms.  Allocation was 110 MiB.
 =={{header|C#|CSharp}}==
 {{trans|Go}}
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

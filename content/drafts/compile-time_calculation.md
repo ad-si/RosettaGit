@@ -356,14 +356,14 @@ _main:
 
 
 
-## C sharp
+## C#
 
 '''Compiler:''' Roslyn C#, language version 7.3
 
 The Roslyn compiler performs constant folding at compile-time and emits IL that contains the result.
 
 
-```csharp
+```c#
 using System;
 
 public static class Program
@@ -381,7 +381,7 @@ public static class Program
 
 <!--CIL assembly has a similar overall syntax to C#, so colorize it as such.-->
 
-```csharp
+```c#
 .class public auto ansi abstract sealed beforefieldinit Program
 	extends [System.Runtime]System.Object
 {
@@ -411,7 +411,7 @@ Note that the constant field is generated only when both it and the containing c
 Constant expressions that appear outside of constant declarations are also folded, so
 
 
-```csharp
+```c#
 using System;
 
 static class Program
@@ -427,7 +427,7 @@ static class Program
 and
 
 
-```csharp
+```c#
 using System;
 
 static class Program
@@ -447,7 +447,7 @@ produce the same IL, except without the field.
 {{out|Emitted IL|note=disassembled with ILSpy}}
 
 
-```csharp
+```c#
 .class private auto ansi abstract sealed beforefieldinit Program
 	extends [System.Runtime]System.Object
 {
@@ -1761,7 +1761,7 @@ End Module
 
 <!--CIL assembly has a similar overall syntax to C#, so colorize it as such.-->
 
-```csharp
+```c#
 .class private auto ansi sealed Program
 	extends [System.Runtime]System.Object
 {
@@ -1822,7 +1822,7 @@ produce the same IL, albeit without the constant field that other assemblies can
 
 {{out|Emitted IL|note=disassembled with ILSpy}}
 
-```csharp
+```c#
 .class private auto ansi sealed Program
 	extends [System.Runtime]System.Object
 {

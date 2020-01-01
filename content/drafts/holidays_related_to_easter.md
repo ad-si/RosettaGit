@@ -1033,12 +1033,12 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
 
 
-## C sharp
+## C#
 
 {{works with|C sharp|3.0}}
 
 
-```csharp
+```c#
 using System;
 using System.Collections;
 using System.Collections.Specialized;

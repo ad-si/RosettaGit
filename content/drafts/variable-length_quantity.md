@@ -339,10 +339,10 @@ seq from 3311a1234df31413: [ b3 88 e8 a4 b4 ef cc a8 13 ] back: 3311a1234df31413
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 For methods involving a '''BinaryReader''' or '''BinaryWriter''' please refer to [http://rosettacode.org/wiki/User:Shimmy/Variable-length_quantity this] page.
 
-```csharp
+```c#
 namespace Vlq
 {
   using System;

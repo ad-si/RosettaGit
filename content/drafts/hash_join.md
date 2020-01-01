@@ -586,11 +586,11 @@ Joined tables:
 
 
 
-## C sharp
+## C#
 
 ;using LINQ to Objects
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;

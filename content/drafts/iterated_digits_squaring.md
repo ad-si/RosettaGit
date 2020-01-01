@@ -508,12 +508,12 @@ int main(void) {
 
 
 
-## C sharp
+## C#
 
 The largest sum possible for any number is 9*9*9, so the first 730 numbers are calculated and stored in an array.<br/>
 The rest is then looked up. A limit of 100 million takes about 6 seconds. int.MaxValue takes about 2 and a half minutes.
 
-```csharp
+```c#
 using System;
 public static class IteratedDigitsSquaring
 {
@@ -567,7 +567,7 @@ public static class IteratedDigitsSquaring
 {{Libheader|System.Numerics}}
 Translation of the first C version, with BigIntegers.  This can get pretty far in six seconds, even on Tio.run.
 
-```csharp
+```c#
 using System;
 using System.Numerics;
 

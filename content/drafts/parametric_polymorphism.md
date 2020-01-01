@@ -159,9 +159,9 @@ void tree<T>::replace_all (T new_value)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
-```csharp
+```c#
 using System;
 
 class BinaryTree<T>
@@ -195,7 +195,7 @@ class BinaryTree<T>
 Creating a tree of integers and using Map to generate a tree of doubles with every node half the value of the first:
 
 
-```csharp
+```c#
 class Program
 {
     static void Main(string[] args)
@@ -212,7 +212,7 @@ class Program
 
 {{anchor|C# modern version}}A version using more modern language constructs:
 
-```csharp
+```c#
 using System;
 
 class BinaryTree<T>

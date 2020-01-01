@@ -1053,10 +1053,10 @@ int main(void)
 
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 namespace RosettaCode.ProperDivisors
 {
     using System;

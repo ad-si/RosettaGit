@@ -2773,13 +2773,13 @@ int main()
 {{out}}
 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946
 
-=={{header|C sharp|C#}}==
+## C#
 
 
 ###  Recursive
 
 
-```csharp
+```c#
 
 public static ulong Fib(uint n) {
     return (n < 2)? n : Fib(n - 1) + Fib(n - 2);
@@ -2790,7 +2790,7 @@ public static ulong Fib(uint n) {
 
 === Tail-Recursive ===
 
-```csharp
+```c#
 
 public static ulong Fib(uint n) {
     return Fib(0, 1, n);
@@ -2807,7 +2807,7 @@ private static ulong Fib(ulong a, ulong b, uint n) {
 ###  Iterative
 
 
-```csharp
+```c#
 
 public static ulong Fib(uint x) {
     if (x == 0) return 0;
@@ -2828,7 +2828,7 @@ public static ulong Fib(uint x) {
 
 === Eager-Generative ===
 
-```csharp
+```c#
 
 public static IEnumerable<long> Fibs(uint x) {
     IList<ulong> fibs = new List<ulong>();
@@ -2850,7 +2850,7 @@ public static IEnumerable<long> Fibs(uint x) {
 
 === Lazy-Generative ===
 
-```csharp
+```c#
 
 public static IEnumerable<ulong> Fibs(uint x) {
     ulong prev = -1;
@@ -2871,7 +2871,7 @@ public static IEnumerable<ulong> Fibs(uint x) {
 
 Only works to the 92<sup>th</sup> fibonacci number.
 
-```csharp
+```c#
 
 private static double Phi = ((1d + Math.Sqrt(5d))/2d);
 private static double D = 1d/Math.Sqrt(5d);
@@ -2893,7 +2893,7 @@ Algorithm is based on
 Needs <code>System.Windows.Media.Matrix</code> or similar Matrix class.
 Calculates in <math>O(n)</math>.
 
-```csharp
+```c#
 
 public static ulong Fib(uint n) {
     var M = new Matrix(1,0,0,1);
@@ -2907,7 +2907,7 @@ public static ulong Fib(uint n) {
 Needs <code>System.Windows.Media.Matrix</code> or similar Matrix class.
 Calculates in <math>O(\log{n})</math>.
 
-```csharp
+```c#
 
 private static Matrix M;
 private static readonly Matrix N = new Matrix(1,1,1,0);
@@ -2931,7 +2931,7 @@ private static void MatrixPow(double n){
 
 === Array (Table) Lookup ===
 
-```csharp
+```c#
 
 private static int[] fibs = new int[]{ -1836311903, 1134903170,
   -701408733, 433494437, -267914296, 165580141, -102334155,
@@ -2960,7 +2960,7 @@ public static int Fib(int n) {
 This large step recurrence routine can calculate the two millionth Fibonacci number in under 1 / 5 second at tio.run.  This routine can generate the fifty millionth Fibonacci number in under 30 seconds at tio.run.  The unused conventional iterative method times out at two million on tio.run, you can only go to around 1,290,000 or so to keep the calculation time (plus string conversion time) under the 60 second timeout limit there.  When using this large step recurrence method, it takes around 5 seconds to convert the two millionth Fibonacci number (417975 digits) into a string (so that one may count those digits).
 
 
-```csharp
+```c#
 using System;
 using System.Collections.Generic;
 using System.Numerics;

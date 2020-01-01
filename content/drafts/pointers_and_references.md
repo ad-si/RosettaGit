@@ -409,10 +409,10 @@ v = (&ref)[3]; // read value of array[3]; however doing this is bad style
 ```
 
 
-=={{header|c sharp|C#}}==
+## C#
 This example represents usage of Reference and Value.
 
-```csharp
+```c#
 
 static void Main(string[] args)
 {

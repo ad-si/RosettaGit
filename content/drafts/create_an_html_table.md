@@ -1077,10 +1077,10 @@ int main( ) {
 </html>
 </LANG>
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Text;
 
@@ -1122,7 +1122,7 @@ namespace prog
 ###  More modern version
 
 
-```csharp
+```c#
 using System;
 using System.Text;
 using System.Xml;

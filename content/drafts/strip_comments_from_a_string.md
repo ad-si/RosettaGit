@@ -579,10 +579,10 @@ apples, pears
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 
 using System.Text.RegularExpressions;
 

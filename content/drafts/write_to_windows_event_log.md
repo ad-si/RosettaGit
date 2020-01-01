@@ -373,11 +373,11 @@ int main(int argc, char *argv[]) {
 
 
 
-## C sharp
+## C#
 
 In Windows Vista and later or Windows Server 2003, you must have administrative privileges to execute this code.
 
-```csharp
+```c#
 using System.Diagnostics;
 
 namespace RC

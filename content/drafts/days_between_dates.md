@@ -106,10 +106,10 @@ generic 2020-01-01 to 2020-03-01 = 60
 ```
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
 using System;
 using System.Globalization;
 
@@ -183,11 +183,11 @@ between(DateOne,DateTwo) ->
   GregOne = calendar:date_to_gregorian_days(Y1,M1,D1),
   GregTwo = calendar:date_to_gregorian_days(Y2,M2,D2),
   GregTwo - GregOne.
-      
+
 
 
 ```
-   
+
 {{out}}
 erlang shell:
 
@@ -255,7 +255,7 @@ func daysBetween(date1, date2 string) int {
     }
     return days
 }
-    
+
 func check(err error) {
     if err != nil {
         log.Fatal(err)
@@ -389,7 +389,7 @@ Day out of range. Is: 29, should be in 1..28
 #!/usr/bin/python
 import sys
 
-''' Difference between two dates = g(y2,m2,d2) - g(y1,m1,d1) 
+''' Difference between two dates = g(y2,m2,d2) - g(y1,m1,d1)
     Where g() gives us the Gregorian Calendar Day
     Inspired  by discussion at:
     https://stackoverflow.com/questions/12862226/the-implementation-of-calculating-the-number-of-days-between-2-dates
@@ -397,7 +397,7 @@ import sys
 
 def days( y,m,d ):
   ''' input year and month are shifted to begin the year in march'''
-  m = (m + 9) % 12 
+  m = (m + 9) % 12
   y = y - m/10
 
   ''' with (m*306 + 5)/10 the number of days from march 1 to the current 'm' month '''
@@ -418,7 +418,7 @@ if __name__ == "__main__":
   print diff(one,two)
 
 ```
- 
+
 
 {{out}}
 
@@ -436,11 +436,11 @@ python days-between.py 2019-01-01 2019-09-30
 
 ### bare bones version
 
-Programming note:   the   '''B'''   ('''B'''ase)   an option for the   '''date'''   BIF which indicates to compute the number of 
+Programming note:   the   '''B'''   ('''B'''ase)   an option for the   '''date'''   BIF which indicates to compute the number of
 
-days since the beginning of the Gregorian calendar,   and   '''I'''   which is the option that indicates the date is in 
+days since the beginning of the Gregorian calendar,   and   '''I'''   which is the option that indicates the date is in
 
-the   '''ISO'''   (International Standards Organization standard 8601:2004)   format.  
+the   '''ISO'''   (International Standards Organization standard 8601:2004)   format.
 
 ```rexx
 /*REXX program computes the number of days between two dates in the form of  YYYY-MM-DD */

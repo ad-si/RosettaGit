@@ -47,7 +47,7 @@ The opcode BXH uses 3 registers, one for index one for step and one for limit.
 LOOPFORS CSECT
          USING  LOOPFORS,R12
          LR     R12,R15
-*     == Algol style 
+*     == Algol style
 ### ==========
  test at the beginning
          LA     R3,BUF             idx=0
@@ -63,7 +63,7 @@ ELOOPI   XPRNT  BUF,80             print buffer
          BR     R14
 BUF      DC     CL80' '            buffer
 XDEC     DS     CL12               temp for edit
-         YREGS  
+         YREGS
          END    LOOPFORS
 ```
 
@@ -79,7 +79,7 @@ XDEC     DS     CL12               temp for edit
 The opcode BXLE uses 3 registers, one for index one for step and one for limit.
 
 ```360asm
-*     == Fortran style 
+*     == Fortran style
 ### ========
  test at the end
          LA     R3,BUF             idx=0
@@ -96,15 +96,15 @@ LOOPJ    XDECO  R5,XDEC            for j=5 to 25 step 5;  edit j
 ;Structured Macros
 
 ```360asm
-*     == Algol style 
+*     == Algol style
 ### ==========
  test at the beginning
          LA     R3,BUF             idx=0
-         LA     R5,5               from 5 
+         LA     R5,5               from 5
          LA     R6,5               step 5
          LA     R7,25              to 25
          DO WHILE=(CR,R5,LE,R7)    for i=5 to 25 step 5
-           XDECO  R5,XDEC            edit i 
+           XDECO  R5,XDEC            edit i
            MVC    0(4,R3),XDEC+8     output i
            LA     R3,4(R3)           idx=idx+4
            AR     R5,R6              i=i+step
@@ -115,12 +115,12 @@ LOOPJ    XDECO  R5,XDEC            for j=5 to 25 step 5;  edit j
 ;Structured Macros HLASM
 
 ```360asm
-*     == Fortran style 
+*     == Fortran style
 ### ========
  test at the end
          LA     R3,BUF             idx=0
          DO FROM=(R5,5),TO=(R7,25),BY=(R6,5)  for i=5 to 25 step 5
-           XDECO  R5,XDEC            edit i 
+           XDECO  R5,XDEC            edit i
            MVC    0(4,R3),XDEC+8     output i
            LA     R3,4(R3)           idx=idx+4
          ENDDO  ,                  next i
@@ -131,10 +131,10 @@ LOOPJ    XDECO  R5,XDEC            for j=5 to 25 step 5;  edit j
 
 ## Ada
 
-The FOR loop construct in Ada does not give the programmer the ability to directly modify the loop control variable during the execution of the loop.  
-Instead, a valid range must always be provided before entering a loop. 
-Because exact adherence to the task is impossible, we have three versions to approximate a solution. Looper_1 goes through a range of values which are even. 
-Looper_2 multiples each value by two. 
+The FOR loop construct in Ada does not give the programmer the ability to directly modify the loop control variable during the execution of the loop.
+Instead, a valid range must always be provided before entering a loop.
+Because exact adherence to the task is impossible, we have three versions to approximate a solution. Looper_1 goes through a range of values which are even.
+Looper_2 multiples each value by two.
 Looper_3 most closely adheres to the requirements of this task, and achieves this by using a second range for the indices.
 
 
@@ -261,7 +261,7 @@ The formal specification of ALGOL 68 states:
           '''fi'''
       '''fi'''
  '''end'''
-Note: Highlighting is as per the formal specification, 
+Note: Highlighting is as per the formal specification,
 c.f. [[:Category:ALGOL 68#Example of different program representations]].
 
 There are several unusual aspects of the construct:
@@ -273,9 +273,9 @@ There are several unusual aspects of the construct:
    sum sq &ne; 70 &times; 70
  '''do'''
    sum sq +:= i &uarr; 2
- '''od''' 
+ '''od'''
 
-Subsequent "extensions" to the standard Algol68 allowed the '''to''' syntactic element to be replaced with '''upto''' and '''downto''' to achieve a small optimisation.  
+Subsequent "extensions" to the standard Algol68 allowed the '''to''' syntactic element to be replaced with '''upto''' and '''downto''' to achieve a small optimisation.
 The same compilers also incorporated:
 * '''until'''<sup>(C)</sup> - for late loop termination.
 * '''foreach'''<sup>(S)</sup> - for working on arrays in [[wp:Parallel computing|parallel]].
@@ -338,16 +338,16 @@ sMessValeur:   .fill 12, 1, ' '
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}      @ saves 2 registers 
+.global main
+main:                @ entry of program
+    push {fp,lr}      @ saves 2 registers
     mov r4,#0
-1:    @ begin loop 
+1:    @ begin loop
     mov r0,r4
     ldr r1,iAdrsMessValeur     @ display value
     bl conversion10             @ call function with 2 parameter (r0,r1)
@@ -357,7 +357,7 @@ main:                @ entry of program
     cmp r4,#MAXI              @
     ble 1b                @ loop
 
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -366,65 +366,65 @@ main:                @ entry of program
 iAdrsMessValeur:          .int sMessValeur
 iAdrszMessResult:         .int szMessResult
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}      @ save  registres
-    mov r2,#0                  @ counter length 
-1:      @ loop length calculation 
-    ldrb r1,[r0,r2]           @ read octet start position + index 
-    cmp r1,#0                  @ if 0 its over 
-    addne r2,r2,#1            @ else add 1 in the length 
-    bne 1b                    @ and loop 
-                                @ so here r2 contains the length of the message 
-    mov r1,r0        			@ address message in r1 
-    mov r0,#STDOUT      		@ code to write to the standard output Linux 
-    mov r7, #WRITE             @ code call system "write" 
-    svc #0                      @ call systeme 
-    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */ 
-    bx lr                       @ return  
+    mov r2,#0                  @ counter length
+1:      @ loop length calculation
+    ldrb r1,[r0,r2]           @ read octet start position + index
+    cmp r1,#0                  @ if 0 its over
+    addne r2,r2,#1            @ else add 1 in the length
+    bne 1b                    @ and loop
+                                @ so here r2 contains the length of the message
+    mov r1,r0        			@ address message in r1
+    mov r0,#STDOUT      		@ code to write to the standard output Linux
+    mov r7, #WRITE             @ code call system "write"
+    svc #0                      @ call systeme
+    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */
+    bx lr                       @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion10:
-    push {r1-r4,lr}    @ save registers 
+    push {r1-r4,lr}    @ save registers
     mov r3,r1
     mov r2,#10
 
 1:	   @ start loop
     bl divisionpar10 @ r0 <- dividende. quotient ->r0 reste -> r1
-    add r1,#48        @ digit	
+    add r1,#48        @ digit
     strb r1,[r3,r2]  @ store digit on area
     sub r2,#1         @ previous position
     cmp r0,#0         @ stop if quotient = 0 */
     bne 1b	          @ else loop
     @ and move spaces in first on area
-    mov r1,#' '   @ space	
-2:	
+    mov r1,#' '   @ space
+2:
     strb r1,[r3,r2]  @ store space in area
     subs r2,#1       @ @ previous position
-    bge 2b           @ loop if r2 >= zéro 
+    bge 2b           @ loop if r2 >= zéro
 
-100:	
-    pop {r1-r4,lr}    @ restaur registres 
+100:
+    pop {r1-r4,lr}    @ restaur registres
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}   /* save registers  */
-    mov r4,r0 
+    mov r4,r0
     mov r3,#0x6667   @ r3 <- magic_number  lower
     movt r3,#0x6666  @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
     mov r1, r0, LSR #31    /* r1 <- r0 >> 31 */
     add r0, r2, r1         /* r0 <- r2 + r1 */
@@ -445,14 +445,14 @@ division:
     mov r3, #0                @ init remainder
     mov r4, #32               @ init counter bits
     b 2f
-1:          @ loop 
+1:          @ loop
     movs r0, r0, LSL #1     @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3           @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1               @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1        @ if r3 >= r1 (C=1) then r3 ? r3 - r1 
-    adc r2, r2, r2           @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3           @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1               @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1        @ if r3 >= r1 (C=1) then r3 ? r3 - r1
+    adc r2, r2, r2           @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1          @ r4 <- r4 - 1 
+    subs r4, r4, #1          @ r4 <- r4 - 1
     bpl 1b                  @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -657,7 +657,7 @@ for (i = 2; i <= 10; i += 2) {
 
 {{trans|C}}
 
-```befunge>1 
+```befunge>1
 :.55+,v
 @_^#`9:+2<
 ```
@@ -715,15 +715,15 @@ for (int i = 1; i < 10; i += 2)
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 
-```csharp
+```c#
 using System;
- 
+
 class Program {
-    static void Main(string[] args) {    
-        for (int i = 2; i <= 8; i+= 2) {        
+    static void Main(string[] args) {
+        for (int i = 2; i <= 8; i+= 2) {
             Console.Write("{0}, ", i);
         }
 
@@ -739,7 +739,7 @@ class Program {
 
 ```ceylon
 shared void run() {
-	
+
 	for(i in (2..8).by(2)) {
 		process.write("``i`` ");
 	}
@@ -751,7 +751,7 @@ shared void run() {
 
 ## Clojure
 
-The first example here is following the literal specification, but is not idiomatic Clojure code. 
+The first example here is following the literal specification, but is not idiomatic Clojure code.
 The second example achieves the same effect without explicit looping, and would (I think) be viewed as better code by the Clojure community.
 
 ```Clojure
@@ -760,7 +760,7 @@ The second example achieves the same effect without explicit looping, and would 
   (when (< i 10)
     (recur (+ 2 i))))
 
-(doseq [i (range 0 12 2)] 
+(doseq [i (range 0 12 2)]
   (println i))
 ```
 
@@ -827,7 +827,7 @@ The second example achieves the same effect without explicit looping, and would 
 ```chapel
 
 // Can be set on commandline via --N=x
-config const N = 3; 
+config const N = 3;
 
 for i in 1 .. 10 by N {
   writeln(i);
@@ -902,7 +902,7 @@ for( i = 1 : 2 : 9 ) io.writeln( i )
 
 ## Delphi
 
-Delphi's For loop doesn't support a step value.  
+Delphi's For loop doesn't support a step value.
 It would have to be simulated using something like a While loop.
 
 
@@ -972,7 +972,7 @@ for i := 2 to 8 step 2 do
 ## E
 
 
-There is no step in the standard numeric range object (a..b and a..!b) in E, which is typically used for numeric iteration. 
+There is no step in the standard numeric range object (a..b and a..!b) in E, which is typically used for numeric iteration.
 An ordinary while loop can of course be used:
 
 
@@ -1032,10 +1032,10 @@ Steps may be integers, float, rationals.
     0 2 4 6 8 10 12 14
 
 (for ((q (in-range 0 15 14/8))) (write q))
-    0 7/4 7/2 21/4 7 35/4 21/2 49/4 14 
+    0 7/4 7/2 21/4 7 35/4 21/2 49/4 14
 
 (for ((x (in-range 0 15 PI))) (write x))
-    0 3.141592653589793 6.283185307179586 9.42477796076938 12.566370614359172 
+    0 3.141592653589793 6.283185307179586 9.42477796076938 12.566370614359172
 
 ```
 
@@ -1047,12 +1047,12 @@ Steps may be integers, float, rationals.
 
 ```ela
 open monad io
- 
+
 for m s n | n > m = do return ()
           | else = do
-              putStrLn (show n) 
+              putStrLn (show n)
               for m s (n+s)
- 
+
 _  = for 10 2 0 ::: IO
 ```
 
@@ -1150,12 +1150,12 @@ iex(1)> Stream.iterate(1, &(&1+2)) |> Enum.take(10)
 %% for_loop/4 by Bengt Kleberg.
 -module(loop_step).
 -export([main/0, for_loop/1, for_loop/4]).
- 
- % This Erlang code for "For Loop" is equivalent to: " for (i=start;  i<end ; i=i+2){ printf("* ");} " in C language. 
- 
+
+ % This Erlang code for "For Loop" is equivalent to: " for (i=start;  i<end ; i=i+2){ printf("* ");} " in C language.
+
 main() ->
-	for_loop(1).    
-  
+	for_loop(1).
+
  for_loop( N ) ->
 	for_loop( N, 4, 2, fun() -> io:fwrite("* ") end ).
 
@@ -1199,8 +1199,8 @@ puts(1, "\n")
 ```
 
 
-<code>print()</code> differs from <code>puts()</code> in that <code>print()</code> will print out the actual <code>sequence</code> it is given.  
-If it is given an <code>integer</code>, or an <code>atom</code> 
+<code>print()</code> differs from <code>puts()</code> in that <code>print()</code> will print out the actual <code>sequence</code> it is given.
+If it is given an <code>integer</code>, or an <code>atom</code>
 (Any number that is not an <code>integer</code>), it will print those out as-is.
 
 
@@ -1529,7 +1529,7 @@ ENDDO
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon and Unicon accomplish loop stepping through the use of a generator, the ternary operator to-by, and the every clause which forces a generator to consume all of its results.  
+Icon and Unicon accomplish loop stepping through the use of a generator, the ternary operator to-by, and the every clause which forces a generator to consume all of its results.
 Because to-by is an operator it has precedence (just higher than assignments) and associativity (left) and can be combined with other operators.
 
 ```Icon
@@ -1550,9 +1550,9 @@ Because to-by is an operator it has precedence (just higher than assignments) an
 
 ```
 
-The ability to combine to-by arbitrarily is quite powerful.  
-Yet it can lead to unexpected results.  In cases of combined to-by operators the left associativity seems natural where the by is omitted.  
-In cases where the by is used it might seem more natural to be right associative.  
+The ability to combine to-by arbitrarily is quite powerful.
+Yet it can lead to unexpected results.  In cases of combined to-by operators the left associativity seems natural where the by is omitted.
+In cases where the by is used it might seem more natural to be right associative.
 If in doubt parenthesize.
 
 
@@ -1923,7 +1923,7 @@ end
 
 ### A for loop
 
-Str$(i) always return decimal separator as "." 
+Str$(i) always return decimal separator as "."
 format$() use same as Locale number specify. So here we use "," from Locale 1036. Str$() place a space before number if it is positive. We can use str$(i, "") to trim lead space. Here we use a space in format$ before number (and for negative numbers)
 
 For this task we use single float numbers, and we make the loop one time from lower to higher value, and one time form higher to lower value.
@@ -2074,7 +2074,7 @@ Do[
 ```Matlab
     for k = 0:10:100,
         printf('%d\n',k)
-    end; 
+    end;
 ```
 
 
@@ -2082,7 +2082,7 @@ A vectorized version of the code is
 
 
 ```Matlab
-  printf('%d\n',0:10:100);  
+  printf('%d\n',0:10:100);
 ```
 
 
@@ -2109,7 +2109,7 @@ for i = 0 to 10 by 2 do format "%\n" i
 Output:
 
 ```MAXScript
- 
+
 0
 2
 4
@@ -2301,11 +2301,11 @@ Works with oo2c Version 2
 ```oberon2
 
 MODULE LoopForStep;
-IMPORT 
+IMPORT
   Out;
 VAR
   i: INTEGER;
- 
+
 BEGIN
   FOR i := 0 TO 10 BY 3 DO
     Out.LongInt(i,0);Out.Ln
@@ -2429,7 +2429,7 @@ forstep(n=1,10,2,print(n))
 ```
 
 
-The <code>forstep</code> construct is actually more powerful.  
+The <code>forstep</code> construct is actually more powerful.
 For example, to print numbers with last digit relatively prime to 10:
 
 ```parigp
@@ -2481,7 +2481,7 @@ With at least two values on the left-hand side, the sequence operator (<code>...
 for 2, 4 ... 8 {
     print "$_, ";
 }
- 
+
 say 'whom do we appreciate?';
 ```
 <!-- "Whom" is infinitely more amusing. -->
@@ -2603,7 +2603,7 @@ If you need a stepping iterator, write one:
 for(Lo,Hi,Step,Lo)  :- Step>0, Lo=<Hi.
 for(Lo,Hi,Step,Val) :- Step>0, plus(Lo,Step,V), V=<Hi, !, for(V,Hi,Step,Val).
 
-example :- 
+example :-
   for(0,10,2,Val), write(Val), write(' '), fail.
 example.
 ```
@@ -2611,7 +2611,7 @@ example.
 
 ```txt
 ?- example.
-0 2 4 6 8 10 
+0 2 4 6 8 10
 true.
 ```
 
@@ -2765,7 +2765,7 @@ print "who do we appreciate?"
 
 
 ```rexx
-  do thing=1  by  3/2  to 10 
+  do thing=1  by  3/2  to 10
   say  thing
   end
 ```
@@ -2780,7 +2780,7 @@ print "who do we appreciate?"
 
 
 ```rexx
-Do v=1  by  3/2  While v**2<30 
+Do v=1  by  3/2  While v**2<30
   Say  v
   End
 Say '('v'**2) is greater than 30 (30.25)'
@@ -3048,7 +3048,7 @@ You can add to the language by wrapping the loop in a function:
 
 ```scheme
 (define-syntax for-loop
-  (syntax-rules () 
+  (syntax-rules ()
     ((for-loop index start end step body ...)
      (let ((evaluated-end end) (evaluated-step step))
        (let loop ((i start))
@@ -3429,7 +3429,7 @@ done
 Bash v4.0+ has inbuilt support for setting up a step value
 
 ```bash
-for x in {2..8..2} 
+for x in {2..8..2}
 do
   echo $x
 done
@@ -3472,7 +3472,7 @@ out "who do we appreciate?" endl console
                                      0004     3 loop:
                                  01  0004     4 	nop					;do nothing
              FFF9 50   0A   3E   4F  0005     5 	acbf	#112.0, #1.25, r0, loop		;limit, step
-                                     000B     6 
+                                     000B     6
                                  04  000B     7 	ret
                                      000C     8 .end	main
 ```
@@ -3481,7 +3481,7 @@ out "who do we appreciate?" endl console
 
 ## Vedit macro language
 
-This prints all odd digits in range 1 to 9: 
+This prints all odd digits in range 1 to 9:
 
 ```vedit
 for (#1 = 1; #1 < 10; #1 += 2) {
@@ -3507,7 +3507,7 @@ End Sub
 
 ```txt
 
- 2  4  6  8 
+ 2  4  6  8
 
 ```
 
@@ -3545,10 +3545,10 @@ endfor
 {{Out}}
 
 ```txt
-2                                                                                                                 
-4                                                                                                                 
-6                                                                                                                 
-8                                                                                                                 
+2
+4
+6
+8
 10
 ```
 
@@ -3572,7 +3572,7 @@ End Sub
 
 ```txt
 
- 2  4  6  8 
+ 2  4  6  8
 
 ```
 
@@ -3599,7 +3599,7 @@ End Class
 
 ```txt
 
-2 4 6 8 
+2 4 6 8
 
 ```
 

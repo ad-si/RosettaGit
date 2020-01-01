@@ -560,12 +560,12 @@ Either GCC's "statement expressions" extension, or a minor piece of undefined be
 
 The list implementation in this example is a) terrible and b) leaks memory, neither of which are important to the example. In reality you would want to combine any lists being generated in expressions with an automatic memory management system (GC, autorelease pools, something like that).
 
-=={{header|C sharp|C#}}==
+## C#
 
 ### LINQ
 
 
-```csharp
+```c#
 using System.Linq;
 
 static class Program

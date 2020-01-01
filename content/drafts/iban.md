@@ -775,10 +775,10 @@ int main( )
  GB82TEST12345698765432 is not valid!
 
 
-## C sharp
+## C#
 
 
-```csharp
+```c#
     public class IbanValidator : IValidateTypes
     {
         public ValidationResult Validate(string value)
@@ -901,7 +901,7 @@ int main( )
 ```
 Demonstrating:
 
-```csharp
+```c#
     public class When_the_IbanValidator_is_told_to_Validate
     {
         [Fact]

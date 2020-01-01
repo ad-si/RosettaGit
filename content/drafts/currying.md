@@ -15,7 +15,7 @@ tags = []
 
 
 ;Task:
-Create a simple demonstrative example of [[wp:Currying|Currying]] in a specific language.  
+Create a simple demonstrative example of [[wp:Currying|Currying]] in a specific language.
 
 Add any historic details as to how the feature made its way into the language.
 <!-- from: http://en.wikipedia.org/w/index.php?title=Currying&direction=prev&oldid=142127294 -->
@@ -113,7 +113,7 @@ curry(add)
 -->  «script»
 
 
--- Test 2. 
+-- Test 2.
 curry(add)'s |λ|(2)
 
 --> «script»
@@ -125,7 +125,7 @@ curry(add)'s |λ|(2)'s |λ|(3)
 --> 5
 
 
--- Test 4. 
+-- Test 4.
 map(curry(product)'s |λ|(7), enumFromTo(1, 10))
 
 --> {7, 14, 21, 28, 35, 42, 49, 56, 63, 70}
@@ -168,7 +168,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -206,14 +206,14 @@ long int factorial(int n){
 long int sumOfFactorials(int num,...){
 	va_list vaList;
 	long int sum = 0;
-	
+
 	va_start(vaList,num);
-	
+
 	while(num--)
 		sum += factorial(va_arg(vaList,int));
-	
+
 	va_end(vaList);
-	
+
 	return sum;
 }
 
@@ -222,7 +222,7 @@ int main()
 	printf("\nSum of factorials of [1,5] : %ld",sumOfFactorials(5,1,2,3,4,5));
 	printf("\nSum of factorials of [3,5] : %ld",sumOfFactorials(3,3,4,5));
 	printf("\nSum of factorials of [1,3] : %ld",sumOfFactorials(3,1,2,3));
-	
+
 	return 0;
 }
 
@@ -242,14 +242,14 @@ Sum of factorials of [1,3] : 9
 
 
 
-## C sharp
+## C#
 
 This shows how to create syntactically natural currying functions in [[C sharp|C#]].
 
-```csharp
-public delegate int Plus(int y); 
+```c#
+public delegate int Plus(int y);
 public delegate Plus CurriedPlus(int x);
-public static CurriedPlus plus = 
+public static CurriedPlus plus =
       delegate(int x) {return delegate(int y) {return x + y;};};
 static void Main()
 {
@@ -271,11 +271,11 @@ Currying may be achieved in [[C++]] using the [[wp:Standard Template Library|Sta
 
 ```ceylon
 shared void run() {
-    
+
     function divide(Integer x, Integer y) => x / y;
-    
+
     value partsOf120 = curry(divide)(120);
-    
+
     print("half of 120 is ``partsOf120(2)``
            a third is ``partsOf120(3)``
            and a quarter is ``partsOf120(4)``");
@@ -289,7 +289,7 @@ shared void run() {
 
 ```clojure
 (def plus-a-hundred (partial + 100))
-(assert (= 
+(assert (=
            (plus-a-hundred 1)
            101))
 
@@ -358,12 +358,12 @@ Add 2 to 3 (curried): 5
 ;; (define (rcurry proc . right-args) (lambda left-args (apply proc (append left-args right-args))))
 ;;
 
-(define add42 (curry + 42)) 
+(define add42 (curry + 42))
 (add42 666) → 708
 
-(map (curry cons 'simon) '( gallubert garfunkel et-merveilles)) 
+(map (curry cons 'simon) '( gallubert garfunkel et-merveilles))
    →   ((simon . gallubert) (simon . garfunkel) (simon . et-merveilles))
-(map (rcurry cons 'simon) '( gallubert garfunkel et-merveilles)) 
+(map (rcurry cons 'simon) '( gallubert garfunkel et-merveilles))
    →   ((gallubert . simon) (garfunkel . simon) (et-merveilles . simon))
 
 ;Implementation : result of currying :
@@ -423,9 +423,9 @@ int main()
 
     g (x: X): FUNCTION [ANY, TUPLE [Y], Z]
         '''do'''
-            '''Result''' := '''agent''' (closed_x: X; y: Y): Z 
-               '''do''' 
-                  '''Result''' := f (closed_x, y) 
+            '''Result''' := '''agent''' (closed_x: X; y: Y): Z
+               '''do'''
+                  '''Result''' := f (closed_x, y)
                '''end''' (x, ?)
         '''end'''
 
@@ -465,10 +465,10 @@ curry(Fun,Arg) ->
 	end.
 
 create_ano_fun(Arity,Fun,Arg) ->
-	Pars = 
-		[{var,1,list_to_atom(lists:flatten(io_lib:format("X~p", [N])))} 
+	Pars =
+		[{var,1,list_to_atom(lists:flatten(io_lib:format("X~p", [N])))}
 		 || N <- lists:seq(2,Arity)],
-	Ano = 
+	Ano =
 		{'fun',1,
 			{clauses,[{clause,1,Pars,[],
 				[{call,1,{var,1,'Fun'},[{var,1,'Arg'}] ++ Pars}]}]}},
@@ -480,26 +480,26 @@ create_ano_fun(Arity,Fun,Arg) ->
 curry_gen(Fun,GivenArgs,PosGivenArgs,PosParArgs) ->
     Pos = PosGivenArgs ++ PosParArgs,
     case erlang:fun_info(Fun,arity) of
-        {arity,ArityFun} -> 
-            case ((length(GivenArgs) + length(PosParArgs)) == ArityFun) and 
-                 (length(GivenArgs) == length(PosGivenArgs)) and 
-                 (length(Pos) == sets:size(sets:from_list(Pos))) of 
-                true -> 
-                    fun(ParArgs) -> 
-                        case length(ParArgs) == length(PosParArgs) of 
-                            true -> 
+        {arity,ArityFun} ->
+            case ((length(GivenArgs) + length(PosParArgs)) == ArityFun) and
+                 (length(GivenArgs) == length(PosGivenArgs)) and
+                 (length(Pos) == sets:size(sets:from_list(Pos))) of
+                true ->
+                    fun(ParArgs) ->
+                        case length(ParArgs) == length(PosParArgs) of
+                            true ->
                                 Given = lists:zip(PosGivenArgs,GivenArgs),
                                 Pars = lists:zip(PosParArgs,ParArgs),
                                 {_,Args} = lists:unzip(lists:sort(Given ++ Pars)),
                                 erlang:apply(Fun,Args);
-                            false -> 
+                            false ->
                                 erlang:error(badarg)
                         end
                     end;
-                false -> 
+                false ->
                     erlang:error(badarg)
             end;
-        _ -> 
+        _ ->
             erlang:error(badarg)
     end.
 
@@ -513,7 +513,7 @@ Output (simple version):
 
 > (currying:curry_first(fun(X,Y) -> X + Y end,3))(2).
 5
-> (currying:curry_first(fun(X,Y) -> X - Y end,3))(2). 
+> (currying:curry_first(fun(X,Y) -> X - Y end,3))(2).
 1
 > (currying:curry_second(fun(X,Y) -> X - Y end,3))(2).
 -1
@@ -545,7 +545,7 @@ Output (generalized version):
 -3.0
 > (currying:curry_gen(fun(A,B,C,D) -> (A + B) * (C - D) end,[1.0,0.0],[4,2],[1,3]))([2.0,5.0]).
 8.0
-> (currying:curry_gen(fun(A,B,C) -> (A + B) * C end,[1.0,0.0],[3,2],[1]))([5.0]).  
+> (currying:curry_gen(fun(A,B,C) -> (A + B) * C end,[1.0,0.0],[3,2],[1]))([5.0]).
 5.0
 
 ```
@@ -554,7 +554,7 @@ Output (generalized version):
 =={{header|F Sharp|F#}}==
 {{trans|Python}}
 
-F# is largely based on ML and has a built-in natural method of defining functions that are curried: 
+F# is largely based on ML and has a built-in natural method of defining functions that are curried:
 
 
 ```fsharp
@@ -669,13 +669,13 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 ## FreeBASIC
 
-FreeBASIC is not a functional language and does not support either currying or nested functions/lambdas which are typically used by otherwise imperative languages to implement the former. The nearest I could get to currying using the features which the language does support is the following: 
+FreeBASIC is not a functional language and does not support either currying or nested functions/lambdas which are typically used by otherwise imperative languages to implement the former. The nearest I could get to currying using the features which the language does support is the following:
 
 ```freebasic
 ' FB 1.05.0 Win64
 
 Type CurriedAdd
-  As Integer i 
+  As Integer i
   Declare Function add(As Integer) As Integer
 End Type
 
@@ -802,7 +802,7 @@ Results:
 
 
 
-###  History 
+###  History
 
 I invite any expert on the history of the Groovy language to correct this if necessary. Groovy is a relatively recent language, with alphas and betas first appearing on the scene in 2003 and a 1.0 release in 2007. To the best of my understanding currying has been a part of the language from the outset.
 
@@ -813,14 +813,14 @@ Likewise in Haskell, function type signatures show the currying-based structure 
 ```haskell
 \ ->
 ```
-" is Haskell's syntax for anonymous functions, in which the sign 
+" is Haskell's syntax for anonymous functions, in which the sign
 ```haskell>\</lang
- has been chosen for its resemblance to the Greek letter λ (lambda); it is followed by a list of space-separated arguments, and the arrow 
+ has been chosen for its resemblance to the Greek letter λ (lambda); it is followed by a list of space-separated arguments, and the arrow
 ```haskell
 ->
 ```
  separates the arguments list from the function body)
-    
+
     Prelude> let plus = \x y -> x + y
     Prelude> :type plus
     plus :: Integer -> Integer -> Integer
@@ -835,11 +835,11 @@ and currying functions is trivial
     Prelude> plus5 3
     8
 
-In fact, the Haskell definition 
+In fact, the Haskell definition
 ```haskell
 \x y -> x + y
 ```
- is merely [[wp:syntactic sugar|syntactic sugar]] for 
+ is merely [[wp:syntactic sugar|syntactic sugar]] for
 ```haskell
 \x -> \y -> x + y
 ```
@@ -930,13 +930,13 @@ increment call(5)
 ## J
 
 
-'''Solution''':Use <tt>&</tt> (bond). This primitive conjunction accepts two arguments: a function (verb) and an object (noun) and binds the object to the function, deriving a new function. 
+'''Solution''':Use <tt>&</tt> (bond). This primitive conjunction accepts two arguments: a function (verb) and an object (noun) and binds the object to the function, deriving a new function.
 '''Example''':
 ```j
    threePlus=: 3&+
    threePlus 7
 10
-   halve =: %&2  NB.  % means divide 
+   halve =: %&2  NB.  % means divide
    halve 20
 10
    someParabola =: _2 3 1 &p. NB. x^2 + 3x - 2
@@ -954,15 +954,15 @@ increment call(5)
         public interface CurriableFunctor<ARG1, ARG2, RET> {
             RET evaluate(ARG1 arg1, ARG2 arg2);
         }
-    
+
         public interface CurriedFunctor<ARG2, RET> {
             RET evaluate(ARG2 arg);
         }
-    
+
         final CurriableFunctor<ARG1, ARG2, RET> functor;
-    
+
         public Currier(CurriableFunctor<ARG1, ARG2, RET> fn) { functor = fn; }
-        
+
         public CurriedFunctor<ARG2, RET> curry(final ARG1 arg1) {
             return new CurriedFunctor<ARG2, RET>() {
                 public RET evaluate(ARG2 arg2) {
@@ -970,7 +970,7 @@ increment call(5)
                 }
             };
         }
-    
+
         public static void main(String[] args) {
             Currier.CurriableFunctor<Integer, Integer, Integer> add
                 = new Currier.CurriableFunctor<Integer, Integer, Integer>() {
@@ -978,13 +978,13 @@ increment call(5)
                         return new Integer(arg1.intValue() + arg2.intValue());
                     }
             };
-            
+
             Currier<Integer, Integer, Integer> currier
                 = new Currier<Integer, Integer, Integer>(add);
-            
+
             Currier.CurriedFunctor<Integer, Integer> add5
                 = currier.curry(new Integer(5));
-            
+
             System.out.println(add5.evaluate(new Integer(2)));
         }
     }
@@ -1002,16 +1002,16 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Curry {
-	
+
 	//Curry a method
 	public static <T, U, R> Function<T, Function<U, R>> curry(BiFunction<T, U, R> biFunction) {
 		return t -> u -> biFunction.apply(t, u);
 	}
-	
+
 	public static int add(int x, int y) {
 		return x + y;
 	}
-	
+
 	public static void curryMethod() {
 		BiFunction<Integer, Integer, Integer> bif = Curry::add;
 		Function<Integer, Function<Integer, Integer>> add = curry(bif);
@@ -1025,7 +1025,7 @@ public class Curry {
 		Function<Integer, Integer> add5 = add.apply(5);
 		System.out.println(add5.apply(2));
 	}
-	
+
 	//prints 7 and 7
 	public static void main(String[] args) {
 		curryMethod();
@@ -1171,7 +1171,7 @@ Functions of arbitrary arity can also be curried:
 
 ### =Y combinator=
 
-Using a definition of currying that does not imply partial application, only conversion of a function of multiple arguments, e.g.: 
+Using a definition of currying that does not imply partial application, only conversion of a function of multiple arguments, e.g.:
 ```javascript
 (a,b) => expr_using_a_and_b
 ```
@@ -1308,7 +1308,7 @@ Or, recursively currying functions of arbitrary arity:
 In jq, functions are filters.  Accordingly, we illustrate currying by defining plus(x) to be a filter that adds x to its input, and then define plus5 as plus(5):
 
 ```jq
- 
+
 def plus(x): . + x;
 
 def plus5: plus(5);
@@ -1505,7 +1505,7 @@ Module Joke {
             Read x
             =x+lambda(![])
       }
-      
+
       Print F1(F1(2),2,F1(-4))=0
       Print F1(-4,F1(2),2)=0
       Print F1(2, F1(F1(2),2))=F1(F1(F1(2),2),2)
@@ -1555,12 +1555,12 @@ Module Puzzle {
             Link F2.Add() to F2()
             P=F1(F1(F1(F2(2)),F2(2), F1(F2(2))),F2(2))=8
             Print F2.Sum=8
-            Print F2.Sum2=7  
+            Print F2.Sum2=7
             \\  We read 7 times x, but we get 8, 2+2+2+2
             \\  So 3 times x was zero, or not?
             \\  but where we pass zero?
             \\  zero return from F1 if no argument pass, so how x  get zero??
-} 
+}
 Puzzle
 
 ```
@@ -1601,14 +1601,14 @@ Currying isn't built in to Nemerle, but is relatively straightforward to define.
 ```Nemerle
 using System;
 using System.Console;
- 
+
 module Curry
 {
     Curry[T, U, R](f : T * U -> R) : T -> U -> R
     {
         fun (x) { fun (y) { f(x, y) } }
     }
- 
+
     Main() : void
     {
         def f(x, y) { x + y }
@@ -1835,7 +1835,7 @@ Add each number in list to its square root:
 
 ## Prolog
 
-Works with SWI-Prolog and module '''lambda.pl''' 
+Works with SWI-Prolog and module '''lambda.pl'''
 
 Module lambda.pl can be found at http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl .
 
@@ -1919,7 +1919,7 @@ But for a true curried function that can take arguments one at a time via normal
 
 
 As an alternative to nesting defs, we can also define curried functions, perhaps more directly, in terms of lambdas.
-We can also write a general '''curry''' function, and a corresponding '''uncurry''' function, for automatic derivation of curried and uncurried functions at run-time, without needing to import ''functools.partial'': 
+We can also write a general '''curry''' function, and a corresponding '''uncurry''' function, for automatic derivation of curried and uncurried functions at run-time, without needing to import ''functools.partial'':
 
 
 ```python
@@ -1994,12 +1994,12 @@ Automatically uncurried:
 10000
 
 Automatically curried
-1         
-9         
-10        
-99        
-100       
-1000      
+1
+9
+10
+99
+100
+1000
 ```
 
 
@@ -2078,14 +2078,14 @@ add:  procedure;  $= 0;       do    j=1  for arg()
 add2: procedure;  return add( arg(1), 2)
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
 
 ## Ruby
 
-The curry method was added in Ruby 1.9.1. It takes an optional arity argument, which determines the number of arguments to be passed to the proc. 
+The curry method was added in Ruby 1.9.1. It takes an optional arity argument, which determines the number of arguments to be passed to the proc.
 If that number is not reached, the curry method returns a new curried  method for the rest of the arguments. (Examples taken from the documentation).
 
 ```ruby
@@ -2459,7 +2459,7 @@ The <code>\</code> operator takes a function and an argument and partial applies
   addOne \+ 1
   subtractFrom1 \- 1
   subtract1 \~- 1
-  
+
   subtract1_2 &\- [. 1]
 
   add ^+
